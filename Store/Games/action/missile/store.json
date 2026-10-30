@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Six cities, three batteries: hold the sky",
+    "tr": "Altı şehir, üç batarya: göğü savun",
+    "de": "Sechs Städte, drei Batterien: halte stand",
+    "fr": "Six villes, trois batteries : tenez bon",
+    "es": "Seis ciudades, tres baterías: resiste",
+    "ja": "6 つの都市、3 つの砲台: 空を守れ",
+    "zh": "六座城市，三座炮台：守住天空",
+    "ko": "도시 여섯 개, 포대 세 개: 하늘을 지키세요"
+  },
+  "description": {
+    "en": "Warheads are raining down on six cities, and only your three missile batteries stand in the way. Aim the crosshair and fire counter-missiles: their blasts spread out and chain through every warhead nearby. Watch out for missiles that split in mid-air, collect wave bonuses for every city still standing and rebuild lost cities as your score climbs.\n\n• Missile Command-style defence with chain explosions\n• Three batteries with limited ammo: fire from the nearest or pick one\n• Splitting missiles and ever-faster waves\n• Wave bonuses and rebuilt cities\n• Stick, D-pad, mouse or a tap on the target",
+    "tr": "Altı şehrin üzerine füzeler yağıyor ve aradaki tek engel senin üç füze bataryan. Nişangâhı hedefe getir ve karşı füzeyi ateşle: patlamalar yayılır ve yakındaki tüm füzeleri zincirleme yok eder. Havada bölünen füzelere dikkat et, ayakta kalan her şehir için dalga bonusu topla, puanın arttıkça yıkılan şehirleri yeniden kur.\n\n• Missile Command tarzı, zincirleme patlamalı savunma\n• Cephanesi sınırlı üç batarya: en yakından ya da seçerek ateş\n• Bölünen füzeler ve giderek hızlanan dalgalar\n• Dalga bonusları ve yeniden kurulan şehirler\n• Çubuk, yön tuşları, fare ya da hedefe dokunma",
+    "de": "Sprengköpfe regnen auf sechs Städte herab, und nur deine drei Raketenbatterien stehen ihnen im Weg. Richte das Fadenkreuz aus und feuere Abwehrraketen ab: Ihre Explosionen breiten sich aus und reißen alle Sprengköpfe in der Nähe mit. Achte auf Raketen, die sich in der Luft teilen, kassiere Wellenboni für jede überlebende Stadt und bau zerstörte Städte wieder auf, wenn dein Punktestand steigt.\n\n• Abwehr im Stil von Missile Command mit Kettenexplosionen\n• Drei Batterien mit begrenzter Munition\n• Sich teilende Raketen und immer schnellere Wellen\n• Wellenboni und wiederaufgebaute Städte\n• Stick, Steuerkreuz, Maus oder Tippen aufs Ziel",
+    "fr": "Des ogives s’abattent sur six villes, et seules vos trois batteries de missiles leur barrent la route. Placez le viseur et tirez vos contre-missiles : leurs explosions s’étendent et emportent en chaîne toutes les ogives proches. Méfiez-vous des missiles qui se divisent en plein vol, gagnez un bonus de vague pour chaque ville encore debout et reconstruisez les villes perdues à mesure que votre score grimpe.\n\n• Une défense façon Missile Command avec explosions en chaîne\n• Trois batteries aux munitions limitées\n• Missiles qui se divisent et vagues de plus en plus rapides\n• Bonus de vague et villes reconstruites\n• Stick, croix directionnelle, souris ou toucher de la cible",
+    "es": "Las ojivas caen sobre seis ciudades y solo tus tres baterías de misiles se interponen. Apunta con la mira y dispara contramisiles: sus explosiones se expanden y arrastran en cadena a todas las ojivas cercanas. Cuidado con los misiles que se dividen en el aire; gana bonos de oleada por cada ciudad en pie y reconstruye las ciudades perdidas a medida que sube tu puntuación.\n\n• Defensa al estilo Missile Command con explosiones en cadena\n• Tres baterías con munición limitada\n• Misiles que se dividen y oleadas cada vez más rápidas\n• Bonos de oleada y ciudades reconstruidas\n• Stick, cruceta, ratón o toca el objetivo",
+    "ja": "6 つの都市に弾頭が降り注ぎ、立ちはだかるのはあなたの 3 つのミサイル砲台だけ。照準を合わせて迎撃ミサイルを発射すると、爆発が広がり近くの弾頭を連鎖的に破壊します。空中で分裂するミサイルに注意し、残った都市ごとにウェーブボーナスを集め、スコアが上がると失った都市を再建できます。\n\n• 連鎖爆発のあるミサイルコマンド風の防衛戦\n• 弾数に限りのある 3 つの砲台: 最も近い砲台から撃つか、選んで撃つ\n• 分裂するミサイルとどんどん速くなるウェーブ\n• ウェーブボーナスと都市の再建\n• スティック、十字ボタン、マウス、または目標をタップ",
+    "zh": "弹头如雨点般落向六座城市，只有你的三座导弹炮台挡在前面。瞄准准星并发射拦截导弹：它们的爆炸会扩散开来，连锁摧毁附近的每一枚弹头。小心在空中分裂的导弹，为每座幸存的城市收集波次奖励，并随着得分攀升重建失去的城市。\n\n• 经典导弹防御玩法，带连锁爆炸\n• 三座弹药有限的炮台：从最近的炮台开火或自选一座\n• 会分裂的导弹和越来越快的波次\n• 波次奖励和城市重建\n• 摇杆、十字键、鼠标或轻点目标",
+    "ko": "탄두가 여섯 도시에 비처럼 쏟아지고, 막을 수 있는 것은 미사일 포대 세 개뿐입니다. 조준점을 맞추고 요격 미사일을 발사하세요. 폭발이 퍼지며 근처의 모든 탄두를 연쇄로 터뜨립니다. 공중에서 갈라지는 미사일을 조심하고, 살아남은 도시마다 웨이브 보너스를 모으고, 점수가 오르면 잃은 도시를 재건하세요.\n\n• 연쇄 폭발이 있는 미사일 커맨드 스타일 방어\n• 탄약이 제한된 포대 세 개: 가장 가까운 곳에서 발사하거나 직접 선택\n• 갈라지는 미사일과 점점 빨라지는 웨이브\n• 웨이브 보너스와 도시 재건\n• 스틱, 방향 버튼, 마우스 또는 목표 탭"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.3 0.35",
+      "wait 0.3",
+      "wclick 0.55 0.3",
+      "wait 0.3",
+      "wclick 0.75 0.4",
+      "wait 0.6"
+    ],
+    [
+      "dark 1",
+      "key space",
+      "wait 1.5"
+    ]
+  ]
+}

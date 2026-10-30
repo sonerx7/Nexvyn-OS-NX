@@ -1,0 +1,7 @@
+{
+  "app": "Uygulama",
+  "hello": "Merhaba dünya!",
+  "edit_me": "src/app/Main.java dosyasını düzenleyin, app.jar'ı PC'de yeniden derleyin ve tekrar çalıştırın.",
+  "tap": "{0} kez dokunuldu",
+  "reset": "Sayacı sıfırla"
+}

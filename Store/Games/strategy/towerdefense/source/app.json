@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.towerdefense",
+  "name": {"en": "Tower Defense", "tr": "Kule Savunması", "de": "Tower Defense", "fr": "Tower Defense", "es": "Defensa de torres", "ja": "タワーディフェンス", "zh": "塔防", "ko": "타워 디펜스"},
+  "description": {
+    "en": "Build guns, cannons and frost towers along the road, upgrade them and hold back 15 waves of enemies, including a boss.",
+    "tr": "Yol boyunca makineli, top ve buz kuleleri kur, onları geliştir ve patronun da geldiği 15 düşman dalgasını durdur.",
+    "de": "Baue Geschütze, Kanonen und Frosttürme entlang der Straße, verbessere sie und halte 15 Gegnerwellen auf, darunter einen Boss.",
+    "fr": "Construisez des mitrailleuses, des canons et des tours de givre le long de la route, améliorez-les et repoussez 15 vagues d’ennemis, dont un boss.",
+    "es": "Construye ametralladoras, cañones y torres de hielo a lo largo del camino, mejóralas y contén 15 oleadas de enemigos, incluido un jefe."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 540, "minWidth": 720, "minHeight": 405, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

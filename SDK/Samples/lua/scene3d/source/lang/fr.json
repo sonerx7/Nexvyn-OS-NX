@@ -1,0 +1,17 @@
+{
+  "hint": "Faites glisser pour orbiter · molette ou pincement pour zoomer",
+  "sun": "dim.",
+  "ambient": "Ambiante",
+  "fog": "Brouillard",
+  "textures": "Textures",
+  "auto_orbit": "Orbite automatique",
+  "auto_sun": "Soleil mobile",
+  "wireframe": "Filaire",
+  "labels": "Étiquettes",
+  "reset_view": "Réinitialiser la caméra",
+  "stats": "{0} triangles · {1} · {2} FPS",
+  "label_pedestal": "Piédestal octogonal + sphère",
+  "label_crates": "Caisses : un jeu d’UV par face",
+  "label_wall": "Mur courbe : les UV suivent l’arc",
+  "menu_title": "Scène"
+}

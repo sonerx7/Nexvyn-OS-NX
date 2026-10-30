@@ -1,0 +1,8 @@
+{
+  "app": "Dice",
+  "roll": "Roll",
+  "total": "Total: {0}",
+  "no_history": "Your rolls appear here. Tap a die to hold it.",
+  "release_all": "Release all dice",
+  "clear_history": "Clear history"
+}

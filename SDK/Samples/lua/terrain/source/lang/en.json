@@ -1,0 +1,13 @@
+{
+  "roughness": "Roughness",
+  "zoom": "Feature size",
+  "water": "Sea level",
+  "flat": "Low-poly shading",
+  "new_island": "New island",
+  "seed": "Seed {0} · built in {1} ms",
+  "stats": "{0} triangles · {1} · {2} FPS",
+  "autopilot": "Autopilot · move or drag to take over",
+  "controls": "Left stick / WASD fly · right stick / arrows / drag look · ZR ZL / E Q up and down",
+  "autopilot_menu": "Autopilot",
+  "menu_title": "Terrain"
+}

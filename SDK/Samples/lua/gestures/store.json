@@ -1,0 +1,36 @@
+{
+  "kind": "demo",
+  "tags": [
+    "input",
+    "touch",
+    "gestures",
+    "motion",
+    "rumble"
+  ],
+  "subtitle": {
+    "en": "Pinch, rotate, pan, tilt and rumble",
+    "tr": "Yakınlaştır, döndür, kaydır, eğ ve titret",
+    "de": "Zoomen, drehen, schieben, neigen und vibrieren",
+    "fr": "Pincer, pivoter, glisser, incliner et vibrer",
+    "es": "Pellizcar, girar, desplazar, inclinar y vibrar",
+    "ja": "ピンチ、回転、パン、傾き、振動",
+    "zh": "捏合、旋转、平移、倾斜和振动",
+    "ko": "핀치, 회전, 이동, 기울이기, 진동"
+  },
+  "description": {
+    "en": "Two-finger pinch, rotate and pan that keep the point between the fingers in place, then a marble you roll by tilting the console that rumbles when it hits a wall. Shows the pinch and rotate events, input.motion and sys.vibrate.",
+    "tr": "Parmakların arasındaki noktayı sabit tutan iki parmakla yakınlaştırma, döndürme ve kaydırma; ardından konsolu eğerek yuvarlanan ve duvara çarpınca titreşen bir bilye. pinch ve rotate olaylarını, input.motion ve sys.vibrate kullanımını gösterir.",
+    "de": "Zoomen, Drehen und Verschieben mit zwei Fingern, bei denen der Punkt zwischen den Fingern bleibt, dann eine Murmel, die du durch Neigen der Konsole rollst und die beim Aufprall vibriert. Zeigt die Ereignisse pinch und rotate, input.motion und sys.vibrate.",
+    "fr": "Pincement, rotation et déplacement à deux doigts qui gardent le point entre les doigts en place, puis une bille que l'on fait rouler en inclinant la console et qui vibre contre les murs. Montre les événements pinch et rotate, input.motion et sys.vibrate.",
+    "es": "Pellizco, giro y desplazamiento con dos dedos que mantienen fijo el punto entre ellos, y una canica que ruedas inclinando la consola y que vibra al chocar. Muestra los eventos pinch y rotate, input.motion y sys.vibrate.",
+    "ja": "指の間の点を固定したままの 2 本指のピンチ、回転、パン、そして本体を傾けて転がし、壁に当たると振動するビー玉。pinch と rotate イベント、input.motion、sys.vibrate の使い方を示します。",
+    "zh": "双指捏合、旋转和平移，并保持手指之间的点位置不变；还有一颗通过倾斜主机来滚动的弹珠，撞墙时会振动。演示了 pinch 和 rotate 事件、input.motion 和 sys.vibrate。",
+    "ko": "손가락 사이의 지점을 고정한 채 두 손가락으로 핀치, 회전, 이동하고, 콘솔을 기울여 굴리는 구슬은 벽에 부딪히면 진동합니다. pinch와 rotate 이벤트, input.motion, sys.vibrate를 보여 줍니다."
+  },
+  "shots": [
+    ["wait 3"],
+    ["key z", "wait 0.3", "key z", "wait 0.3", "key q", "wait 0.3", "key q", "hold right 0.5", "wait 1.5"],
+    ["wclick 0.284 0.05", "wait 2"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

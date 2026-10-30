@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.bowling",
+  "name": {"en": "Bowling", "tr": "Bowling", "de": "Bowling", "fr": "Bowling", "es": "Bolos", "ja": "ボウリング", "zh": "保龄球", "ko": "볼링"},
+  "description": {
+    "en": "Ten-pin bowling from above: set your position, aim and hook, charge the throw and watch the pins fly. Real scoring with strikes, spares and 10th-frame bonus balls.",
+    "tr": "Yukarıdan bakışlı on lobutlu bowling: konumunu, nişanını ve falsonu ayarla, atışı güçlendir ve lobutların dağılmasını izle. Strike, spare ve 10. çerçeve bonus atışlarıyla gerçek puanlama.",
+    "de": "Bowling mit zehn Pins von oben: Wähle Position, Ziel und Effet, lade den Wurf auf und sieh die Pins fliegen. Echte Wertung mit Strikes, Spares und Bonuswürfen im 10. Frame.",
+    "fr": "Du bowling à dix quilles vu de dessus : choisissez la position, la visée et l’effet, chargez le lancer et regardez les quilles voler. Un vrai décompte avec strikes, spares et lancers bonus au 10e carreau.",
+    "es": "Bolos de diez pinos vistos desde arriba: elige posición, puntería y efecto, carga el lanzamiento y mira volar los pinos. Puntuación real con plenos, semiplenos y tiradas extra en el décimo turno."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 560, "minWidth": 480, "minHeight": 300, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

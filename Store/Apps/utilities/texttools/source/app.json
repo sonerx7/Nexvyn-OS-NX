@@ -1,0 +1,23 @@
+{
+  "id": "com.sonerx7.texttools",
+  "name": {"en": "Text Tools", "tr": "Metin Araçları", "de": "Textwerkzeuge", "fr": "Outils texte", "es": "Herramientas de texto", "ja": "テキストツール", "zh": "文本工具", "ko": "텍스트 도구"},
+  "description": {
+    "en": "Convert case with proper Turkish İ/ı rules, tidy spaces, sort lines, remove duplicates and count words and characters.",
+    "tr": "Türkçe İ/ı kurallarına uygun büyük/küçük harf dönüşümü, boşluk temizliği, satır sıralama, tekrar silme ve kelime/karakter sayımı.",
+    "de": "Ändere die Groß-/Kleinschreibung mit korrekten türkischen İ/ı-Regeln, räume Leerzeichen auf, sortiere Zeilen, entferne Duplikate und zähle Wörter und Zeichen.",
+    "fr": "Changez la casse en respectant les règles turques du İ/ı, nettoyez les espaces, triez les lignes, supprimez les doublons et comptez mots et caractères.",
+    "es": "Cambia mayúsculas y minúsculas con las reglas turcas de İ/ı, limpia espacios, ordena líneas, elimina duplicados y cuenta palabras y caracteres."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 900, "height": 580, "minWidth": 560, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "fileTypes": [".txt", ".md", ".csv", ".log"],
+  "minSdk": "1.0",
+  "permissions": []
+}

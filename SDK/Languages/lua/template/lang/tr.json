@@ -1,0 +1,7 @@
+{
+  "app": "Uygulama",
+  "hello": "Merhaba dünya!",
+  "edit_me": "main.lua dosyasını Nexvyn OS Studio'da düzenleyin ve Çalıştır'a basın (Ctrl+R).",
+  "tap": "{0} kez dokunuldu",
+  "reset": "Sayacı sıfırla"
+}

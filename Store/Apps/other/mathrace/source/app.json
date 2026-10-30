@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.mathrace",
+  "name": {"en": "Math Race", "tr": "Matematik Yarışı", "de": "Rechenrennen", "fr": "Course de calcul", "es": "Carrera matemática", "ja": "計算レース", "zh": "数学竞速", "ko": "수학 레이스"},
+  "description": {
+    "en": "Solve as many sums as you can in 60 seconds and race your car to the finish, with streak multipliers and best scores.",
+    "tr": "60 saniyede olabildiğince çok işlem çöz, arabanı bitiş çizgisine sür; seri çarpanları ve rekorlarla.",
+    "de": "Löse in 60 Sekunden so viele Aufgaben wie möglich und fahre dein Auto ins Ziel, mit Serienmultiplikatoren und Bestwerten.",
+    "fr": "Résolvez un maximum de calculs en 60 secondes et menez votre voiture jusqu’à l’arrivée, avec multiplicateurs de série et meilleurs scores.",
+    "es": "Resuelve tantas operaciones como puedas en 60 segundos y lleva tu coche a la meta, con multiplicadores de racha y mejores puntuaciones."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 680, "height": 500, "minWidth": 540, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

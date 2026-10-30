@@ -1,0 +1,13 @@
+{
+  "app": "Partage de pourboire",
+  "bill": "Addition",
+  "tip": "Pourboire",
+  "people": "Personnes",
+  "round_up": "Arrondir",
+  "tip_amount": "Pourboire",
+  "total": "Total",
+  "each": "Chacun paie",
+  "share": "Partager",
+  "share_text": "Total {0} pour {1} personnes : {2} chacun",
+  "clear": "Effacer l'addition"
+}

@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "Back up and restore your game saves",
+    "tr": "Oyun kayıtlarını yedekle, geri yükle",
+    "de": "Spielstände sichern und wiederherstellen",
+    "fr": "Sauvegardez et restaurez vos parties",
+    "es": "Haz copias de tus partidas y restáuralas",
+    "ja": "ゲームのセーブデータをバックアップ・復元",
+    "zh": "备份和恢复你的游戏存档",
+    "ko": "게임 세이브를 백업하고 복원하세요"
+  },
+  "description": {
+    "en": "Protect your progress before an update, a risky mod or a new console setup. Save Backup lists every game with save data for each user account, backs up a save with one tap, or all of them at once, and restores any backup when you need it. Before a restore, your current save is backed up automatically, so nothing is ever lost. Only account saves are touched; system data stays untouched.\n\n• Every game with a save, per user, with search\n• Back up one game or all of them at once\n• Optional zip compression\n• Dated backup history per game and user\n• Automatic safety backup before every restore\n• Backups live in sdmc:/NexvynOS/Backups/Saves",
+    "tr": "İlerlemeni bir güncellemeden, riskli bir moddan ya da yeni konsol kurulumundan önce koru. Kayıt Yedekleme her kullanıcı hesabı için kayıt verisi olan tüm oyunları listeler; bir kaydı tek dokunuşla ya da hepsini birden yedekler, gerektiğinde herhangi bir yedeği geri yükler. Geri yüklemeden önce mevcut kaydın otomatik olarak yedeklenir, böylece hiçbir şey kaybolmaz. Yalnızca hesap kayıtlarına dokunulur; sistem verileri olduğu gibi kalır.\n\n• Kullanıcı başına kaydı olan tüm oyunlar, aramayla\n• Tek oyunu ya da hepsini birden yedekle\n• İsteğe bağlı zip sıkıştırma\n• Oyun ve kullanıcı başına tarihli yedek geçmişi\n• Her geri yüklemeden önce otomatik güvenlik yedeği\n• Yedekler sdmc:/NexvynOS/Backups/Saves içinde durur",
+    "de": "Schütze deinen Fortschritt vor einem Update, einem riskanten Mod oder einer neuen Konsole. Spielstand-Backup listet jedes Spiel mit Spielstand für jedes Benutzerkonto, sichert einen Spielstand mit einem Tipp oder alle auf einmal und stellt jedes Backup bei Bedarf wieder her. Vor dem Wiederherstellen wird dein aktueller Spielstand automatisch gesichert, damit nichts verloren geht. Nur Konto-Spielstände werden angefasst, Systemdaten bleiben unberührt.\n\n• Jedes Spiel mit Spielstand pro Benutzer, mit Suche\n• Ein Spiel oder alle auf einmal sichern\n• Optional als zip komprimiert\n• Datierter Backup-Verlauf pro Spiel und Benutzer\n• Automatisches Sicherheits-Backup vor jeder Wiederherstellung\n• Backups liegen in sdmc:/NexvynOS/Backups/Saves",
+    "fr": "Protégez votre progression avant une mise à jour, un mod risqué ou une nouvelle console. Sauvegarde des parties liste chaque jeu ayant des données de sauvegarde pour chaque compte, sauvegarde une partie d’un geste, ou toutes à la fois, et restaure n’importe quelle copie au besoin. Avant une restauration, la sauvegarde actuelle est copiée automatiquement : rien n’est jamais perdu. Seules les sauvegardes de compte sont concernées ; les données système restent intactes.\n\n• Chaque jeu avec une sauvegarde, par utilisateur, avec recherche\n• Sauvegarde d’un jeu ou de tous à la fois\n• Compression zip en option\n• Historique daté des copies par jeu et par utilisateur\n• Copie de sécurité automatique avant chaque restauration\n• Copies rangées dans sdmc:/NexvynOS/Backups/Saves",
+    "es": "Protege tu progreso antes de una actualización, un mod arriesgado o una consola nueva. Copia de partidas muestra cada juego con datos guardados de cada cuenta de usuario, copia una partida con un toque, o todas a la vez, y restaura cualquier copia cuando la necesites. Antes de restaurar, tu partida actual se copia automáticamente, así que nunca se pierde nada. Solo se tocan las partidas de las cuentas; los datos del sistema quedan intactos.\n\n• Cada juego con partida guardada, por usuario, con búsqueda\n• Copia un juego o todos a la vez\n• Compresión zip opcional\n• Historial de copias con fecha por juego y usuario\n• Copia de seguridad automática antes de cada restauración\n• Las copias se guardan en sdmc:/NexvynOS/Backups/Saves",
+    "ja": "アップデート、危険な Mod、新しい本体のセットアップの前に、進行状況を守りましょう。セーブデータのバックアップは、各ユーザーアカウントのセーブデータがあるすべてのゲームを一覧表示し、ワンタップで 1 つ、またはまとめてすべてをバックアップし、必要なときにいつでも復元できます。復元の前に現在のセーブデータが自動でバックアップされるので、何も失われません。扱うのはアカウントのセーブデータだけで、システムデータには触れません。\n\n• ユーザーごとの、セーブデータのあるすべてのゲーム、検索付き\n• 1 本のゲームまたはすべてをまとめてバックアップ\n• zip 圧縮 (任意)\n• ゲームとユーザーごとの日付付きバックアップ履歴\n• 復元の前に毎回自動で安全バックアップ\n• バックアップは sdmc:/NexvynOS/Backups/Saves に保存",
+    "zh": "在更新、尝试有风险的模组或设置新主机之前保护你的进度。存档备份会列出每个用户账户下有存档数据的所有游戏，一键备份某个存档或一次备份全部，并在需要时恢复任意备份。恢复之前，当前存档会被自动备份，因此绝不会丢失任何内容。只会处理账户存档；系统数据不受影响。\n\n• 每个用户有存档的所有游戏，支持搜索\n• 备份单款游戏或一次备份全部\n• 可选 zip 压缩\n• 每款游戏和每个用户带日期的备份历史\n• 每次恢复前自动创建安全备份\n• 备份保存在 sdmc:/NexvynOS/Backups/Saves",
+    "ko": "업데이트, 위험한 모드, 새 콘솔 설정 전에 진행 상황을 보호하세요. 세이브 백업은 사용자 계정별로 세이브 데이터가 있는 모든 게임을 나열하고, 한 번의 탭으로 하나 또는 전부를 한 번에 백업하며, 필요할 때 어떤 백업이든 복원합니다. 복원하기 전에 현재 세이브가 자동으로 백업되므로 아무것도 잃지 않습니다. 계정 세이브만 다루며 시스템 데이터는 건드리지 않습니다.\n\n• 사용자별로 세이브가 있는 모든 게임, 검색 지원\n• 게임 하나 또는 전부를 한 번에 백업\n• 선택적 zip 압축\n• 게임과 사용자별 날짜가 있는 백업 기록\n• 복원할 때마다 자동 안전 백업\n• 백업은 sdmc:/NexvynOS/Backups/Saves에 보관"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.17 0.333",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

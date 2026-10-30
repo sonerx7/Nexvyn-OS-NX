@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Length, mass, temperature, data and more",
+    "tr": "Uzunluk, kütle, sıcaklık, veri ve fazlası",
+    "de": "Länge, Masse, Temperatur, Daten und mehr",
+    "fr": "Longueurs, masses, températures, données",
+    "es": "Longitud, masa, temperatura, datos y más",
+    "ja": "長さ、質量、温度、データなど",
+    "zh": "长度、质量、温度、数据等",
+    "ko": "길이, 질량, 온도, 데이터 등"
+  },
+  "description": {
+    "en": "Convert between units in eleven categories as you type. Pick a category on the left, choose the units on both sides and type in either field; the other one updates instantly together with the formula. A list of common conversions for the category is always one tap away.\n\n• Length, mass, temperature, volume, area, speed, time, data, energy, pressure and angle\n• Type in either field, swap the units with one tap\n• The conversion formula under the result\n• Common conversions for every category\n• Copy the result; Page Up/Down switch categories",
+    "tr": "Sen yazdıkça on bir kategoride birimler arası dönüştürme yap. Soldan bir kategori seç, iki taraftaki birimleri belirle ve istediğin alana yaz; diğeri formülüyle birlikte anında güncellenir. Kategorinin sık kullanılan dönüşümleri her zaman bir dokunuş uzağında.\n\n• Uzunluk, kütle, sıcaklık, hacim, alan, hız, zaman, veri, enerji, basınç ve açı\n• İki alana da yazabilir, birimleri tek dokunuşla yer değiştirebilirsin\n• Sonucun altında dönüşüm formülü\n• Her kategori için sık kullanılan dönüşümler\n• Sonucu kopyala; Page Up/Down kategoriyi değiştirir",
+    "de": "Rechne beim Tippen zwischen Einheiten aus elf Kategorien um. Wähle links eine Kategorie, stelle die Einheiten auf beiden Seiten ein und tippe in eines der Felder; das andere passt sich sofort an, samt Formel. Eine Liste gängiger Umrechnungen der Kategorie ist immer nur einen Tipp entfernt.\n\n• Länge, Masse, Temperatur, Volumen, Fläche, Geschwindigkeit, Zeit, Daten, Energie, Druck und Winkel\n• In beide Felder tippen, Einheiten mit einem Tipp tauschen\n• Die Umrechnungsformel unter dem Ergebnis\n• Gängige Umrechnungen für jede Kategorie\n• Ergebnis kopieren; Bild auf/ab wechselt die Kategorie",
+    "fr": "Convertissez entre unités de onze catégories pendant la saisie. Choisissez une catégorie à gauche, les unités des deux côtés, et tapez dans l’un ou l’autre champ : le second se met à jour aussitôt, avec la formule. Une liste des conversions courantes de la catégorie est toujours à portée de doigt.\n\n• Longueur, masse, température, volume, surface, vitesse, temps, données, énergie, pression et angle\n• Saisie dans l’un ou l’autre champ, inversion des unités d’un geste\n• La formule de conversion sous le résultat\n• Conversions courantes pour chaque catégorie\n• Copie du résultat ; Page préc./suiv. changent de catégorie",
+    "es": "Convierte entre unidades de once categorías mientras escribes. Elige una categoría a la izquierda, las unidades a cada lado y escribe en cualquiera de los campos; el otro se actualiza al instante junto con la fórmula. Una lista de conversiones habituales de la categoría está siempre a un toque.\n\n• Longitud, masa, temperatura, volumen, área, velocidad, tiempo, datos, energía, presión y ángulo\n• Escribe en cualquier campo e intercambia las unidades con un toque\n• La fórmula de conversión bajo el resultado\n• Conversiones habituales de cada categoría\n• Copia el resultado; Re Pág/Av Pág cambian de categoría",
+    "ja": "11 のカテゴリの単位を入力と同時に変換します。左でカテゴリを選び、両側の単位を選んでどちらかのフィールドに入力すると、もう一方が換算式とともにすぐに更新されます。そのカテゴリのよく使う変換の一覧も、いつでもワンタップで表示できます。\n\n• 長さ、質量、温度、体積、面積、速度、時間、データ、エネルギー、圧力、角度\n• どちらのフィールドにも入力可能、ワンタップで単位を入れ替え\n• 結果の下に換算式\n• すべてのカテゴリのよく使う変換\n• 結果をコピー、Page Up/Down でカテゴリを切り替え",
+    "zh": "输入时即可在十一个类别的单位之间换算。在左侧选择类别，在两侧选择单位，然后在任一输入框中输入；另一个会连同换算公式立即更新。该类别的常用换算列表随时一触即达。\n\n• 长度、质量、温度、体积、面积、速度、时间、数据、能量、压强和角度\n• 可在任一输入框中输入，一键互换单位\n• 结果下方显示换算公式\n• 每个类别的常用换算\n• 复制结果；Page Up/Down 切换类别",
+    "ko": "11개 카테고리의 단위를 입력하는 즉시 변환합니다. 왼쪽에서 카테고리를 고르고, 양쪽 단위를 선택한 후 어느 필드에든 입력하면 다른 쪽이 공식과 함께 즉시 업데이트됩니다. 카테고리별 자주 쓰는 변환 목록도 항상 한 번의 탭으로 볼 수 있습니다.\n\n• 길이, 질량, 온도, 부피, 넓이, 속도, 시간, 데이터, 에너지, 압력, 각도\n• 어느 필드에든 입력, 한 번의 탭으로 단위 바꾸기\n• 결과 아래에 변환 공식\n• 모든 카테고리의 자주 쓰는 변환\n• 결과 복사, Page Up/Down으로 카테고리 전환"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key pagedown",
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "key pagedown",
+      "key pagedown",
+      "key pagedown",
+      "key pagedown",
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

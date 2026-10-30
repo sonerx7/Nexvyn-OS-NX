@@ -1,0 +1,17 @@
+{
+  "hint": "Drag to orbit · wheel or pinch to zoom",
+  "sun": "Sun",
+  "ambient": "Ambient",
+  "fog": "Fog",
+  "textures": "Textures",
+  "auto_orbit": "Auto orbit",
+  "auto_sun": "Moving sun",
+  "wireframe": "Wireframe",
+  "labels": "Labels",
+  "reset_view": "Reset camera",
+  "stats": "{0} triangles · {1} · {2} FPS",
+  "label_pedestal": "Octagon pedestal + sphere",
+  "label_crates": "Crates: one UV set per face",
+  "label_wall": "Curved wall: UVs follow the arc",
+  "menu_title": "Scene"
+}

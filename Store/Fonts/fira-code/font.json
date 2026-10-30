@@ -1,0 +1,31 @@
+{
+  "id": "fira-code",
+  "name": {
+    "en": "Fira Code",
+    "tr": "Fira Code",
+    "de": "Fira Code",
+    "fr": "Fira Code",
+    "es": "Fira Code"
+  },
+  "family": "Fira Code",
+  "styles": {
+    "regular": "FiraCode-Regular.ttf",
+    "bold": "FiraCode-Bold.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "5.002",
+  "author": "The Fira Code Project Authors",
+  "classification": "mono",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Grek"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

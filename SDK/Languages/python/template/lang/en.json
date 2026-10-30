@@ -1,0 +1,7 @@
+{
+  "app": "App",
+  "hello": "Hello world!",
+  "edit_me": "Edit main.py in Nexvyn OS Studio and press Run (Ctrl+R).",
+  "tap": "Tapped {0} times",
+  "reset": "Reset counter"
+}

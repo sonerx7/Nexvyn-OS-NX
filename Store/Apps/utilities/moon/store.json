@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "Tonight's moon and every phase ahead",
+    "tr": "Bu gecenin Ay'ı ve tüm evreleri",
+    "de": "Der Mond heute und alle Phasen danach",
+    "fr": "La lune ce soir et toutes ses phases",
+    "es": "La luna de esta noche y todas sus fases",
+    "ja": "今夜の月とこれからのすべての月相",
+    "zh": "今晚的月亮和未来的每个月相",
+    "ko": "오늘 밤의 달과 앞으로의 모든 위상"
+  },
+  "description": {
+    "en": "See the moon as it looks tonight, or on any date you pick: its phase, how much of it is lit and how old it is, plus when the next new moon and full moon arrive. A monthly calendar draws a tiny moon on every day so you can spot the full moons at a glance.\n\n• Phase name, illumination and moon age for any day\n• Next new moon and full moon with the days left\n• Monthly calendar with a moon for each day, new and full moons ringed\n• Illumination curve of the whole month\n• Northern or southern hemisphere view\n• Arrow keys step by day and week, Page Up/Down by month; copy a day or a month",
+    "tr": "Ay'ı bu gece göründüğü gibi ya da seçtiğin herhangi bir tarihte gör: evresini, ne kadarının aydınlık olduğunu ve yaşını; ayrıca bir sonraki yeni ay ve dolunayın ne zaman geleceğini. Aylık takvim her güne minik bir ay çizer, dolunayları bir bakışta bulursun.\n\n• Her gün için evre adı, aydınlanma oranı ve ay yaşı\n• Kalan günleriyle sonraki yeni ay ve dolunay\n• Her günü minik bir ayla gösteren aylık takvim; yeni ay ve dolunaylar halkalı\n• Ayın tamamı için aydınlanma eğrisi\n• Kuzey ya da güney yarım küre görünümü\n• Ok tuşlarıyla gün ve hafta, Page Up/Down ile ay atla; bir günü ya da ayı kopyala",
+    "de": "Sieh den Mond, wie er heute Nacht aussieht, oder an jedem beliebigen Datum: Phase, beleuchteter Anteil und Alter, dazu wann der nächste Neumond und Vollmond kommen. Ein Monatskalender zeichnet für jeden Tag einen kleinen Mond, so findest du Vollmonde auf einen Blick.\n\n• Phasenname, Beleuchtung und Mondalter für jeden Tag\n• Nächster Neumond und Vollmond mit verbleibenden Tagen\n• Monatskalender mit einem Mond pro Tag, Neu- und Vollmonde umrandet\n• Beleuchtungskurve des ganzen Monats\n• Ansicht für Nord- oder Südhalbkugel\n• Pfeiltasten springen um Tage und Wochen, Bild auf/ab um Monate; Tag oder Monat kopieren",
+    "fr": "Voyez la lune telle qu’elle apparaît ce soir, ou à n’importe quelle date : sa phase, sa part éclairée et son âge, ainsi que l’arrivée de la prochaine nouvelle lune et de la prochaine pleine lune. Un calendrier mensuel dessine une petite lune pour chaque jour, pour repérer les pleines lunes d’un coup d’œil.\n\n• Nom de la phase, illumination et âge de la lune pour chaque jour\n• Prochaine nouvelle lune et pleine lune avec les jours restants\n• Calendrier mensuel avec une lune par jour, nouvelles et pleines lunes cerclées\n• Courbe d’illumination de tout le mois\n• Vue hémisphère nord ou sud\n• Flèches pour avancer par jour et par semaine, Page préc./suiv. par mois ; copie d’un jour ou d’un mois",
+    "es": "Mira la luna tal como se ve esta noche o en cualquier fecha que elijas: su fase, cuánto está iluminada y su edad, además de cuándo llegan la próxima luna nueva y la próxima luna llena. Un calendario mensual dibuja una lunita en cada día para que veas las lunas llenas de un vistazo.\n\n• Nombre de la fase, iluminación y edad de la luna para cualquier día\n• Próxima luna nueva y luna llena con los días que faltan\n• Calendario mensual con una luna por día, lunas nuevas y llenas marcadas\n• Curva de iluminación de todo el mes\n• Vista del hemisferio norte o sur\n• Flechas por días y semanas, Re Pág/Av Pág por meses; copia un día o un mes",
+    "ja": "今夜の月、または選んだ任意の日付の月を見てみましょう。月相、輝面比、月齢、そして次の新月と満月がいつ来るかがわかります。月間カレンダーには毎日小さな月が描かれるので、満月がひと目でわかります。\n\n• 任意の日の月相の名前、輝面比、月齢\n• 次の新月と満月、そこまでの日数\n• 各日に月が描かれ、新月と満月が丸で囲まれた月間カレンダー\n• 1 か月全体の輝面比の曲線\n• 北半球または南半球から見た表示\n• 矢印キーで日と週、Page Up/Down で月を移動。日や月をコピー",
+    "zh": "看看今晚的月亮是什么样子，或你选择的任何日期的月亮：它的月相、被照亮的比例和月龄，以及下一次新月和满月何时到来。月历会在每一天画上一个小月亮，让你一眼就能找到满月。\n\n• 任意一天的月相名称、照明度和月龄\n• 下一次新月和满月及剩余天数\n• 每天都有月亮的月历，新月和满月带有圆圈\n• 整个月的照明度曲线\n• 北半球或南半球视角\n• 方向键按天和周切换，Page Up/Down 按月切换；可复制某一天或某个月",
+    "ko": "오늘 밤 또는 원하는 날짜의 달 모습을 확인하세요: 위상, 밝은 부분의 비율, 월령, 그리고 다음 삭과 보름달이 언제인지. 월간 캘린더는 날마다 작은 달을 그려 보름달을 한눈에 찾을 수 있습니다.\n\n• 모든 날짜의 위상 이름, 밝기, 월령\n• 남은 일수와 함께 다음 삭과 보름달\n• 날마다 달이 그려지고 삭과 보름달에 테두리가 있는 월간 캘린더\n• 한 달 전체의 밝기 곡선\n• 북반구 또는 남반구 보기\n• 화살표 키로 일과 주 단위 이동, Page Up/Down으로 월 단위 이동, 하루나 한 달 복사"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key down",
+      "key down",
+      "wait 1.5"
+    ],
+    [
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

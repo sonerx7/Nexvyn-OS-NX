@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.effects",
+  "name": {"en": "Effects Demo", "tr": "Efekt Demosu", "de": "Effekte-Demo", "fr": "Démo Effets", "es": "Demo de efectos", "ja": "エフェクトデモ", "zh": "特效演示", "ko": "효과 데모"},
+  "description": {
+    "en": "Plasma, tunnel and starfield drawn with fast gfx.rect grids and look-up tables",
+    "tr": "Hızlı gfx.rect ızgaraları ve tablolarla çizilen plazma, tünel ve yıldız alanı",
+    "de": "Plasma, Tunnel und Sternenfeld, gezeichnet mit schnellen gfx.rect-Rastern und Nachschlagetabellen",
+    "fr": "Plasma, tunnel et champ d’étoiles dessinés avec des grilles gfx.rect rapides et des tables de correspondance",
+    "es": "Plasma, túnel y campo de estrellas dibujados con rejillas rápidas de gfx.rect y tablas de consulta"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 900, "height": 560, "minWidth": 480, "minHeight": 320, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

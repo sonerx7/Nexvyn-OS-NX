@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Turkish TDK and English definitions",
+    "tr": "TDK Türkçe ve İngilizce sözlük bir arada",
+    "de": "Türkisch (TDK) und Englisch nachschlagen",
+    "fr": "Définitions en turc (TDK) et en anglais",
+    "es": "Definiciones en turco (TDK) e inglés",
+    "ja": "トルコ語 TDK と英語の定義",
+    "zh": "土耳其语 TDK 和英语释义",
+    "ko": "터키어 TDK와 영어 정의"
+  },
+  "description": {
+    "en": "Look up words in two dictionaries from one window. Turkish entries come from the TDK Current Turkish Dictionary with meanings, examples, compound words and idioms; English entries come from the Free Dictionary API, based on Wiktionary, with synonyms, antonyms and pronunciation audio. Every result is saved, so entries you've opened before still work offline.\n\n• Turkish (TDK) and English sources, one tap to switch\n• Meanings with examples, synonyms and antonyms\n• Compound words, proverbs and idioms for Turkish\n• Pronunciation audio for English words\n• Favourites, search history and back/forward navigation\n• Offline copy of every entry you've looked up",
+    "tr": "İki sözlükte tek pencereden kelime ara. Türkçe maddeler anlamları, örnekleri, birleşik kelimeleri ve deyimleriyle TDK Güncel Türkçe Sözlük'ten; İngilizce maddeler ise eş ve zıt anlamlıları ve sesli telaffuzuyla Wiktionary tabanlı Free Dictionary API'den gelir. Her sonuç kaydedilir; daha önce açtığın maddeler internet yokken de açılır.\n\n• Türkçe (TDK) ve İngilizce kaynak, tek dokunuşla geçiş\n• Örnekli anlamlar, eş ve zıt anlamlı kelimeler\n• Türkçe için birleşik kelimeler, atasözleri ve deyimler\n• İngilizce kelimelerde sesli telaffuz\n• Favoriler, arama geçmişi, ileri/geri gezinme\n• Baktığın her maddenin çevrimdışı kopyası",
+    "de": "Schlag Wörter in zwei Wörterbüchern in einem Fenster nach. Türkische Einträge stammen aus dem aktuellen Türkischwörterbuch der TDK, mit Bedeutungen, Beispielen, Komposita und Redewendungen; englische aus der Free Dictionary API auf Basis von Wiktionary, mit Synonymen, Antonymen und Aussprache. Jedes Ergebnis wird gespeichert, sodass bereits geöffnete Einträge auch offline funktionieren.\n\n• Türkisch (TDK) und Englisch, mit einem Tipp gewechselt\n• Bedeutungen mit Beispielen, Synonymen und Antonymen\n• Komposita, Sprichwörter und Redewendungen im Türkischen\n• Aussprache als Audio für englische Wörter\n• Favoriten, Suchverlauf sowie Vor und Zurück\n• Offline-Kopie jedes nachgeschlagenen Eintrags",
+    "fr": "Cherchez des mots dans deux dictionnaires depuis une seule fenêtre. Les entrées turques viennent du dictionnaire du turc actuel de la TDK, avec sens, exemples, mots composés et expressions ; les entrées anglaises viennent de Free Dictionary API, basé sur Wiktionary, avec synonymes, antonymes et prononciation audio. Chaque résultat est enregistré : les entrées déjà consultées restent disponibles hors ligne.\n\n• Sources turque (TDK) et anglaise, d’un geste\n• Sens avec exemples, synonymes et antonymes\n• Mots composés, proverbes et expressions pour le turc\n• Prononciation audio des mots anglais\n• Favoris, historique et navigation précédent/suivant\n• Copie hors ligne de chaque entrée consultée",
+    "es": "Busca palabras en dos diccionarios desde una sola ventana. Las entradas en turco vienen del Diccionario del Turco Actual de la TDK, con acepciones, ejemplos, palabras compuestas y modismos; las de inglés, de Free Dictionary API, basada en Wiktionary, con sinónimos, antónimos y audio de pronunciación. Cada resultado se guarda, así que lo que ya consultaste funciona sin conexión.\n\n• Fuentes en turco (TDK) e inglés, con un toque\n• Acepciones con ejemplos, sinónimos y antónimos\n• Palabras compuestas, refranes y modismos en turco\n• Audio de pronunciación para palabras en inglés\n• Favoritos, historial y navegación atrás/adelante\n• Copia sin conexión de cada entrada consultada",
+    "ja": "ひとつのウィンドウから 2 つの辞書で単語を調べられます。トルコ語の項目は TDK 現代トルコ語辞書から、意味、例文、複合語、慣用句とともに取得します。英語の項目は Wiktionary に基づく Free Dictionary API から、類義語、対義語、発音の音声とともに取得します。すべての結果が保存されるので、以前開いた項目はオフラインでも使えます。\n\n• トルコ語 (TDK) と英語のソース、ワンタップで切り替え\n• 例文、類義語、対義語付きの意味\n• トルコ語の複合語、ことわざ、慣用句\n• 英単語の発音の音声\n• お気に入り、検索履歴、戻る/進むのナビゲーション\n• 調べたすべての項目のオフラインコピー",
+    "zh": "在一个窗口中查询两部词典。土耳其语词条来自 TDK《现代土耳其语词典》，包含释义、例句、复合词和习语；英语词条来自基于 Wiktionary 的 Free Dictionary API，包含同义词、反义词和发音音频。每个结果都会保存，因此打开过的词条离线时依然可用。\n\n• 土耳其语（TDK）和英语两个来源，一键切换\n• 带例句、同义词和反义词的释义\n• 土耳其语的复合词、谚语和习语\n• 英语单词的发音音频\n• 收藏、搜索历史和后退/前进导航\n• 查过的每个词条都有离线副本",
+    "ko": "한 창에서 두 사전으로 단어를 찾아보세요. 터키어 항목은 TDK 현대 터키어 사전에서 뜻, 예문, 복합어, 관용구와 함께 가져오며, 영어 항목은 Wiktionary 기반의 Free Dictionary API에서 유의어, 반의어, 발음 오디오와 함께 가져옵니다. 모든 결과가 저장되므로 전에 열어 본 항목은 오프라인에서도 볼 수 있습니다.\n\n• 터키어(TDK)와 영어 출처, 한 번의 탭으로 전환\n• 예문, 유의어, 반의어가 있는 뜻\n• 터키어 복합어, 속담, 관용구\n• 영어 단어의 발음 오디오\n• 즐겨찾기, 검색 기록, 뒤로/앞으로 이동\n• 찾아본 모든 항목의 오프라인 사본"
+  },
+  "shots": [
+    ["wait 2", "wclick 0.194 0.127", "wait 0.25", "wclick 0.615 0.046", "wait 0.25", "text serendipity", "key enter", "wait 4", "wclick 0.6 0.7", "wait 0.8"],
+    ["wclick 0.615 0.046", "wait 0.4", "key end", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "text aurora", "key enter", "wait 8", "wclick 0.6 0.7", "wait 0.8"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

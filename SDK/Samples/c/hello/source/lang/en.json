@@ -1,0 +1,22 @@
+{
+  "app_name": "Hello C",
+  "tab_counter": "Counter",
+  "tab_balls": "Balls",
+  "tab_net": "Network",
+  "counter_title": "Written in C",
+  "times": "Tapped {0} times",
+  "reset": "Reset",
+  "note_hint": "A note, saved with store_setStr",
+  "balls_hint": "Tap to push the balls",
+  "net_title": "Live Weather",
+  "net_body": "This button runs net_json(url, callback, user): the request runs in the background and the callback gets the JSON text.",
+  "fetch": "Fetch JSON",
+  "offline": "No internet connection",
+  "failed": "Failed: {0}",
+  "loaded": "Loaded",
+  "no_data": "Press the button to load data",
+  "about": "About Hello C",
+  "about_body": "This app is plain C, compiled on your console by TinyCC when it opens, using the same SDK as the Lua, JavaScript and Python apps. Open main.c to read its code.",
+  "ok": "OK",
+  "open_code": "Open main.c"
+}

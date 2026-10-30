@@ -1,0 +1,41 @@
+{
+  "subtitle": {
+    "en": "A real-time 3D and music demo tour",
+    "tr": "Gerçek zamanlı 3D ve müzik gösterisi",
+    "de": "Eine Echtzeit-Demo mit 3D und Musik",
+    "fr": "Une démo 3D et musicale en temps réel",
+    "es": "Una demo en tiempo real de 3D y música",
+    "ja": "リアルタイムの 3D と音楽のデモツアー",
+    "zh": "实时 3D 与音乐演示之旅",
+    "ko": "실시간 3D와 음악 데모 투어"
+  },
+  "description": {
+    "en": "Sit back and watch what Nexvyn OS can draw and play. Showcase is a cinematic tour through six scenes, from a procedural island with a rolling sea to a city at night, a spiral galaxy of stars, a physics playground, a plasma tunnel and a particle finale. Everything, including the soundtrack from a real-time synthesizer, is generated from code while it runs: no downloaded models, textures or sound files.\n\n• Six scenes with camera paths, crossfades and captions\n• Live stats: FPS, triangles, draw calls and render path\n• Free camera with the sticks, touch drag or pinch\n• Controls: A or Right next, B or Left back, + pause\n• X stats, Y music, − quality (automatic, low, medium, high)\n• Synthesized music that pulses with the visuals",
+    "tr": "Arkana yaslan ve Nexvyn OS'un neler çizip çalabildiğini izle. Gösteri, altı sahnelik sinematik bir tur: dalgalı denizli prosedürel bir adadan gece şehrine, yıldızlardan oluşan sarmal bir galaksiye, fizik oyun alanına, plazma tüneline ve parçacıklı bir finale. Gerçek zamanlı bir sentezleyiciden gelen müzik dahil her şey çalışırken koddan üretilir: indirilen model, doku ya da ses dosyası yok.\n\n• Kamera yolları, geçişler ve açıklamalarla altı sahne\n• Canlı istatistik: FPS, üçgen, çizim çağrısı ve çizim yolu\n• Çubuklarla, dokunup sürükleyerek ya da kıstırarak serbest kamera\n• Kontroller: A ya da Sağ ileri, B ya da Sol geri, + duraklat\n• X istatistik, Y müzik, − kalite (otomatik, düşük, orta, yüksek)\n• Görüntüyle birlikte nabız gibi atan sentez müzik",
+    "de": "Lehn dich zurück und sieh, was Nexvyn OS zeichnen und spielen kann. Schaufenster ist eine filmische Tour durch sechs Szenen: von einer prozeduralen Insel mit wogendem Meer über eine Stadt bei Nacht, eine Spiralgalaxie aus Sternen und einen Physik-Spielplatz bis zu einem Plasmatunnel und einem Partikel-Finale. Alles, auch der Soundtrack aus einem Echtzeit-Synthesizer, entsteht während der Laufzeit aus Code: keine geladenen Modelle, Texturen oder Sounddateien.\n\n• Sechs Szenen mit Kamerafahrten, Überblendungen und Untertiteln\n• Live-Statistik: FPS, Dreiecke, Draw Calls und Renderpfad\n• Freie Kamera mit Sticks, Touch-Ziehen oder Pinch\n• Steuerung: A oder Rechts weiter, B oder Links zurück, + Pause\n• X Statistik, Y Musik, − Qualität (automatisch, niedrig, mittel, hoch)\n• Synthesizer-Musik, die im Takt der Bilder pulsiert",
+    "fr": "Installez-vous et regardez ce que Nexvyn OS sait dessiner et jouer. Vitrine est une visite cinématique en six scènes : d’une île procédurale bordée d’une mer houleuse à une ville de nuit, une galaxie spirale d’étoiles, un terrain de jeu physique, un tunnel de plasma et un final en particules. Tout, y compris la bande-son d’un synthétiseur temps réel, est généré par le code pendant l’exécution : aucun modèle, texture ou son téléchargé.\n\n• Six scènes avec trajets de caméra, fondus et légendes\n• Statistiques en direct : FPS, triangles, appels de dessin, rendu\n• Caméra libre aux sticks, au toucher ou au pincement\n• Commandes : A ou Droite suivant, B ou Gauche retour, + pause\n• X statistiques, Y musique, − qualité (auto, basse, moyenne, haute)\n• Musique synthétisée qui bat au rythme des images",
+    "es": "Ponte cómodo y mira lo que Nexvyn OS sabe dibujar y tocar. Escaparate es un recorrido cinematográfico por seis escenas: de una isla procedural con mar en movimiento a una ciudad de noche, una galaxia espiral de estrellas, un patio de física, un túnel de plasma y un final de partículas. Todo, incluida la banda sonora de un sintetizador en tiempo real, se genera con código mientras se ejecuta: sin modelos, texturas ni sonidos descargados.\n\n• Seis escenas con recorridos de cámara, fundidos y rótulos\n• Estadísticas en directo: FPS, triángulos, llamadas de dibujo y modo de render\n• Cámara libre con los sticks, arrastrando o pellizcando\n• Controles: A o Derecha siguiente, B o Izquierda atrás, + pausa\n• X estadísticas, Y música, − calidad (automática, baja, media, alta)\n• Música sintetizada que late al ritmo de la imagen",
+    "ja": "くつろいで、Nexvyn OS が描き、奏でられるものを眺めましょう。ショーケースは、うねる海のあるプロシージャルな島から、夜の街、星々の渦巻銀河、物理演算プレイグラウンド、プラズマのトンネル、パーティクルのフィナーレまで、6 つのシーンをめぐる映画のようなツアーです。リアルタイムのシンセサイザーによるサウンドトラックを含め、すべてが実行中にコードから生成されます: ダウンロードしたモデル、テクスチャ、サウンドファイルは一切ありません。\n\n• カメラワーク、クロスフェード、キャプション付きの 6 つのシーン\n• リアルタイムの統計: FPS、三角形、ドローコール、描画パス\n• スティック、タッチのドラッグ、ピンチで操作するフリーカメラ\n• 操作: A または右で次へ、B または左で戻る、+ で一時停止\n• X で統計、Y で音楽、− で画質 (自動、低、中、高)\n• 映像に合わせて脈打つシンセサイズされた音楽",
+    "zh": "坐下来欣赏 Nexvyn OS 能绘制和演奏些什么。展示是一场穿越六个场景的电影式之旅，从有着起伏海面的程序化岛屿，到城市之夜、由恒星组成的旋涡星系、物理游乐场、等离子隧道以及粒子终章。包括来自实时合成器的配乐在内，一切都是运行时由代码生成的：没有下载任何模型、纹理或声音文件。\n\n• 六个场景，带镜头路径、交叉淡化和字幕\n• 实时统计：FPS、三角形、绘制调用和渲染路径\n• 用摇杆、触控拖移或捏合控制的自由视角\n• 操作：A 或右键下一个，B 或左键返回，+ 暂停\n• X 统计，Y 音乐，− 画质（自动、低、中、高）\n• 随画面律动的合成音乐",
+    "ko": "편히 앉아 Nexvyn OS가 그리고 연주할 수 있는 것을 감상하세요. 쇼케이스는 출렁이는 바다가 있는 절차적 섬부터 밤의 도시, 별들의 나선 은하, 물리 놀이터, 플라스마 터널, 입자 피날레까지 여섯 장면을 지나는 영화 같은 투어입니다. 실시간 신시사이저로 만든 배경 음악을 포함해 모든 것이 실행 중에 코드로 생성되며, 다운로드한 모델, 텍스처, 사운드 파일은 없습니다.\n\n• 카메라 경로, 크로스페이드, 자막이 있는 장면 6개\n• 실시간 통계: FPS, 삼각형, 드로우 콜, 렌더링 경로\n• 스틱, 터치 드래그, 핀치로 자유 카메라\n• 조작: A 또는 오른쪽 다음, B 또는 왼쪽 뒤로, + 일시 정지\n• X 통계, Y 음악, − 품질(자동, 낮음, 보통, 높음)\n• 영상과 함께 고동치는 합성 음악"
+  },
+  "shots": [
+    [
+      "wait 5"
+    ],
+    [
+      "key right",
+      "wait 4"
+    ],
+    [
+      "key right",
+      "wait 2",
+      "dpad x",
+      "wait 2"
+    ],
+    [
+      "key right",
+      "wait 4"
+    ]
+  ]
+}

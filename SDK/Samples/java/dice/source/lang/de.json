@@ -1,0 +1,8 @@
+{
+  "app": "Würfel",
+  "roll": "Würfeln",
+  "total": "Summe: {0}",
+  "no_history": "Deine Würfe erscheinen hier. Tippe auf einen Würfel, um ihn zu halten.",
+  "release_all": "Alle Würfel freigeben",
+  "clear_history": "Verlauf löschen"
+}

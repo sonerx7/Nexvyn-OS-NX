@@ -1,0 +1,46 @@
+{
+  "kind": "demo",
+  "tags": [
+    "sdk-tour",
+    "minijvm",
+    "network",
+    "store"
+  ],
+  "subtitle": {
+    "en": "A tour of the Java SDK",
+    "tr": "Java SDK turu",
+    "de": "Eine Tour durch das Java-SDK",
+    "fr": "Une visite du SDK Java",
+    "es": "Un recorrido por el SDK de Java",
+    "ja": "Java SDK のツアー",
+    "zh": "Java SDK 导览",
+    "ko": "Java SDK 둘러보기"
+  },
+  "description": {
+    "en": "The built-in Hello Java app as a project: a to-do list saved with Store, an analog clock drawn with Gfx and live weather JSON with Net.json and a Callback lambda. Shows a class extending nexvyn.App, Record values, Menu.bar, Timer and how app.jar is built from src/ on a PC.",
+    "tr": "Yerleşik Merhaba Java uygulamasının proje hâli: Store ile kaydedilen yapılacaklar listesi, Gfx ile çizilen analog saat ve Net.json ile Callback lambdalı canlı hava durumu JSON'u. nexvyn.App'ten türeyen sınıfı, Record değerlerini, Menu.bar'ı, Timer'ı ve app.jar'ın src/ klasöründen PC'de nasıl derlendiğini gösterir.",
+    "de": "Die eingebaute App Hallo Java als Projekt: eine mit Store gespeicherte To-do-Liste, eine mit Gfx gezeichnete Analoguhr und Live-Wetter-JSON mit Net.json und einem Callback-Lambda. Zeigt eine von nexvyn.App abgeleitete Klasse, Record-Werte, Menu.bar, Timer und wie app.jar auf dem PC aus src/ gebaut wird.",
+    "fr": "L'appli intégrée Hello Java sous forme de projet : une liste de tâches enregistrée avec Store, une horloge analogique dessinée avec Gfx et la météo en JSON avec Net.json et un lambda Callback. Montre une classe qui étend nexvyn.App, les valeurs Record, Menu.bar, Timer et comment app.jar est compilé depuis src/ sur un PC.",
+    "es": "La app integrada Hola Java como proyecto: una lista de tareas guardada con Store, un reloj analógico dibujado con Gfx y el tiempo en JSON con Net.json y un lambda Callback. Muestra una clase que extiende nexvyn.App, valores Record, Menu.bar, Timer y cómo se compila app.jar desde src/ en un PC.",
+    "ja": "内蔵の Hello Java アプリをプロジェクトにしたもの: Store で保存する ToDo リスト、Gfx で描くアナログ時計、そして Net.json と Callback のラムダによるリアルタイムの天気 JSON。nexvyn.App を継承したクラス、Record の値、Menu.bar、Timer、そして PC 上で src/ から app.jar をビルドする方法を示します。",
+    "zh": "将内置的 Hello Java 应用作为项目：用 Store 保存的待办事项列表、用 Gfx 绘制的指针式时钟，以及使用 Net.json 和 Callback lambda 获取的实时天气 JSON。演示了继承 nexvyn.App 的类、Record 值、Menu.bar、Timer，以及如何在 PC 上从 src/ 构建 app.jar。",
+    "ko": "기본 제공 Hello Java 앱을 프로젝트로 제공합니다: Store로 저장되는 할 일 목록, Gfx로 그린 아날로그 시계, Net.json과 Callback 람다로 받는 실시간 날씨 JSON. nexvyn.App을 상속하는 클래스, Record 값, Menu.bar, Timer, 그리고 PC에서 src/로 app.jar를 빌드하는 방법을 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.5 0.056",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.69 0.056",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

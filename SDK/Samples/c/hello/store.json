@@ -1,0 +1,46 @@
+{
+  "kind": "demo",
+  "tags": [
+    "sdk-tour",
+    "tinycc",
+    "network",
+    "store"
+  ],
+  "subtitle": {
+    "en": "A tour of the C SDK",
+    "tr": "C SDK turu",
+    "de": "Eine Tour durch das C-SDK",
+    "fr": "Une visite du SDK C",
+    "es": "Un recorrido por el SDK de C",
+    "ja": "C SDK のツアー",
+    "zh": "C SDK 导览",
+    "ko": "C SDK 둘러보기"
+  },
+  "description": {
+    "en": "The built-in Hello C app as a project, compiled on the console by TinyCC: a counter and a note saved with store_*, bouncing balls in a second file (balls.c) animated in app_update, and live weather JSON with net_json and a function-pointer callback. Shows <nexvyn.h>, nxv_fmt with TR1, ui_textfield buffers and a menu.",
+    "tr": "Yerleşik Merhaba C uygulamasının konsolda TinyCC ile derlenen proje hâli: store_* ile kaydedilen sayaç ve not, ikinci bir dosyada (balls.c) app_update ile canlanan zıplayan toplar ve net_json ile fonksiyon işaretçisi geri çağırmalı canlı hava durumu JSON'u. <nexvyn.h>, TR1 ile nxv_fmt, ui_textfield tamponları ve menüyü gösterir.",
+    "de": "Die eingebaute App Hallo C als Projekt, auf der Konsole von TinyCC kompiliert: ein Zähler und eine Notiz mit store_*, springende Bälle in einer zweiten Datei (balls.c), animiert in app_update, und Live-Wetter-JSON mit net_json und einem Funktionszeiger-Callback. Zeigt <nexvyn.h>, nxv_fmt mit TR1, ui_textfield-Puffer und ein Menü.",
+    "fr": "L'appli intégrée Hello C sous forme de projet, compilée sur la console par TinyCC : un compteur et une note enregistrés avec store_*, des balles rebondissantes dans un second fichier (balls.c) animées dans app_update et la météo en JSON avec net_json et un pointeur de fonction comme rappel. Montre <nexvyn.h>, nxv_fmt avec TR1, les tampons ui_textfield et un menu.",
+    "es": "La app integrada Hola C como proyecto, compilada en la consola por TinyCC: un contador y una nota guardados con store_*, pelotas que rebotan en un segundo archivo (balls.c) animadas en app_update y el tiempo en JSON con net_json y un puntero a función como devolución. Muestra <nexvyn.h>, nxv_fmt con TR1, búferes de ui_textfield y un menú.",
+    "ja": "内蔵の Hello C アプリをプロジェクトにしたもので、本体上で TinyCC によってコンパイルされます: store_* で保存するカウンターとメモ、2 つ目のファイル (balls.c) で app_update によってアニメーションする跳ねるボール、そして net_json と関数ポインタのコールバックによるリアルタイムの天気 JSON。<nexvyn.h>、TR1 を使った nxv_fmt、ui_textfield のバッファ、メニューの使い方を示します。",
+    "zh": "将内置的 Hello C 应用作为项目，在主机上由 TinyCC 编译：一个用 store_* 保存的计数器和备注，在第二个文件（balls.c）中实现并在 app_update 中驱动动画的弹跳小球，以及使用 net_json 和函数指针回调获取的实时天气 JSON。演示了 <nexvyn.h>、带 TR1 的 nxv_fmt、ui_textfield 缓冲区和菜单。",
+    "ko": "콘솔에서 TinyCC로 컴파일되는 기본 제공 Hello C 앱을 프로젝트로 제공합니다: store_*로 저장되는 카운터와 메모, 두 번째 파일(balls.c)에서 app_update로 움직이는 튀는 공, 그리고 net_json과 함수 포인터 콜백으로 받는 실시간 날씨 JSON. <nexvyn.h>, TR1과 함께 쓰는 nxv_fmt, ui_textfield 버퍼, 메뉴를 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.5 0.056",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.69 0.056",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

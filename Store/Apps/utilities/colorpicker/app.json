@@ -1,0 +1,25 @@
+{
+  "id": "colorpicker",
+  "name": {
+    "en": "Color Meter",
+    "tr": "Renk Ölçer",
+    "de": "Farbmesser",
+    "fr": "Colorimètre",
+    "es": "Medidor de color",
+    "ko": "색상 측정기"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 420,
+    "height": 390,
+    "minWidth": 420,
+    "minHeight": 390,
+    "resizable": false
+  }
+}

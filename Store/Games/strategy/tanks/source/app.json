@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.tanks",
+  "name": {"en": "Tank Duel", "tr": "Tank Düellosu", "de": "Panzerduell", "fr": "Duel de tanks", "es": "Duelo de tanques", "ja": "タンクデュエル", "zh": "坦克对决", "ko": "탱크 대결"},
+  "description": {
+    "en": "Turn-based artillery on destructible terrain: set angle and power, read the wind and blast the other tank. Two players on one console or against the CPU.",
+    "tr": "Yıkılabilir arazide sıra tabanlı topçu düellosu: açıyı ve gücü ayarla, rüzgârı hesaba kat, rakip tankı vur. Tek konsolda iki kişi ya da bilgisayara karşı.",
+    "de": "Rundenbasierte Artillerie auf zerstörbarem Gelände: Stelle Winkel und Kraft ein, lies den Wind und schieß den anderen Panzer ab. Zu zweit an einer Konsole oder gegen die CPU.",
+    "fr": "De l’artillerie au tour par tour sur un terrain destructible : réglez l’angle et la puissance, lisez le vent et pulvérisez l’autre tank. À deux sur une console ou contre l’ordinateur.",
+    "es": "Artillería por turnos en un terreno destructible: ajusta el ángulo y la potencia, ten en cuenta el viento y revienta el otro tanque. Dos jugadores en una consola o contra la CPU."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 540, "minWidth": 720, "minHeight": 405, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

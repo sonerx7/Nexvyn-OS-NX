@@ -1,0 +1,51 @@
+{
+  "subtitle": {
+    "en": "Roll d4 to d20 dice or flip a coin",
+    "tr": "d4'ten d20'ye zar at ya da yazı tura",
+    "de": "Würfle W4 bis W20 oder wirf eine Münze",
+    "fr": "Lancez des dés d4 à d20 ou une pièce",
+    "es": "Tira dados de d4 a d20 o lanza una moneda",
+    "ja": "d4〜d20 のサイコロを振る、コインを投げる",
+    "zh": "掷 d4 到 d20 骰子或抛硬币",
+    "ko": "d4~d20 주사위 굴리기와 동전 던지기"
+  },
+  "description": {
+    "en": "Roll up to six dice with a satisfying tumble, or flip a coin that spins through the air. Perfect for board games, role-playing sessions and settling arguments. Every roll lands in a history, and the statistics show how evenly each die has really been rolling.\n\n• d4, d6, d8, d10, d12 and d20, from one to six dice at once\n• Tap a die to hold it while the others roll again\n• Heads or tails with a running heads/tails percentage\n• Statistics of every face compared with a fair die\n• Copy the last result or export the whole history as CSV\n• Space rolls, Up/Down change the number of dice; sound and vibration can be switched off",
+    "tr": "Altı zara kadar keyifli bir yuvarlanmayla at ya da havada dönen bir parayla yazı tura yap. Masa oyunları, FRP oturumları ve tartışmaları bitirmek için birebir. Her atış geçmişe kaydedilir; istatistikler her zarın ne kadar adil geldiğini gösterir.\n\n• d4, d6, d8, d10, d12 ve d20; aynı anda birden altıya kadar zar\n• Diğerleri yeniden atılırken bir zarı tutmak için üstüne dokun\n• Yazı ve tura yüzdeleriyle yazı tura\n• Her yüzün dağılımı, adil zarla karşılaştırmalı istatistikler\n• Son sonucu kopyala ya da tüm geçmişi CSV olarak dışa aktar\n• Boşluk atar, Yukarı/Aşağı zar sayısını değiştirir; ses ve titreşim kapatılabilir",
+    "de": "Wirf bis zu sechs Würfel mit schöner Rollanimation oder eine Münze, die durch die Luft wirbelt. Ideal für Brettspiele, Rollenspielrunden und zum Entscheiden von Streitfragen. Jeder Wurf landet im Verlauf, und die Statistik zeigt, wie gleichmäßig jeder Würfel wirklich fällt.\n\n• W4, W6, W8, W10, W12 und W20, ein bis sechs Würfel auf einmal\n• Tippe einen Würfel an, um ihn zu halten, während die anderen neu rollen\n• Kopf oder Zahl mit laufender Prozentanzeige\n• Statistik jeder Augenzahl im Vergleich zu einem fairen Würfel\n• Letztes Ergebnis kopieren oder den ganzen Verlauf als CSV exportieren\n• Leertaste würfelt, Hoch/Runter ändert die Würfelzahl; Ton und Vibration abschaltbar",
+    "fr": "Lancez jusqu’à six dés qui roulent joliment, ou une pièce qui tournoie dans les airs. Idéal pour les jeux de société, les parties de jeu de rôle et pour trancher un débat. Chaque lancer rejoint l’historique, et les statistiques montrent si chaque dé tombe vraiment de façon équilibrée.\n\n• d4, d6, d8, d10, d12 et d20, de un à six dés à la fois\n• Touchez un dé pour le garder pendant que les autres sont relancés\n• Pile ou face avec le pourcentage de chaque côté\n• Statistiques de chaque face comparées à un dé équilibré\n• Copie du dernier résultat ou export de tout l’historique en CSV\n• Espace pour lancer, Haut/Bas pour le nombre de dés ; son et vibration désactivables",
+    "es": "Tira hasta seis dados con una animación de lo más satisfactoria o lanza una moneda que gira en el aire. Perfecto para juegos de mesa, partidas de rol y zanjar discusiones. Cada tirada queda en el historial y las estadísticas muestran si cada dado sale de verdad equilibrado.\n\n• d4, d6, d8, d10, d12 y d20, de uno a seis dados a la vez\n• Toca un dado para guardarlo mientras los demás se vuelven a tirar\n• Cara o cruz con el porcentaje de cada lado\n• Estadísticas de cada cara comparadas con un dado justo\n• Copia el último resultado o exporta todo el historial en CSV\n• Espacio tira, Arriba/Abajo cambian el número de dados; sonido y vibración desactivables",
+    "ja": "気持ちよく転がるサイコロを最大 6 個まで振ったり、空中で回転するコインを投げたりできます。ボードゲーム、TRPG のセッション、ちょっとした決めごとにぴったりです。振った結果はすべて履歴に残り、統計で各サイコロの目が実際にどれだけ均等に出ているかがわかります。\n\n• d4、d6、d8、d10、d12、d20 を 1〜6 個同時に\n• サイコロをタップしてキープし、他のサイコロだけ振り直し\n• 表と裏の割合を表示するコイン投げ\n• 公平なサイコロと比べた各目の統計\n• 最後の結果をコピー、または履歴全体を CSV で書き出し\n• Space で振る、上下でサイコロの数を変更。サウンドと振動はオフにできます",
+    "zh": "掷出最多六颗骰子，享受它们翻滚的畅快感，或抛出一枚在空中旋转的硬币。非常适合桌游、角色扮演和平息争论。每次投掷都会记录在历史中，统计会显示每颗骰子实际上是否掷得均匀。\n\n• d4、d6、d8、d10、d12 和 d20，一次一到六颗\n• 轻点骰子即可保留它，其余骰子重新投掷\n• 正面或反面，并实时显示正反面的百分比\n• 各点数的统计与公平骰子的对比\n• 复制上一次结果或将全部历史导出为 CSV\n• 空格掷骰子，上/下更改骰子数量；声音和振动均可关闭",
+    "ko": "만족스럽게 굴러가는 주사위를 최대 여섯 개까지 굴리거나, 공중에서 회전하는 동전을 던지세요. 보드게임, 롤플레잉 세션, 논쟁 해결에 딱 맞습니다. 모든 굴림은 기록에 남으며, 통계는 각 주사위가 실제로 얼마나 고르게 나왔는지 보여 줍니다.\n\n• d4, d6, d8, d10, d12, d20, 한 번에 1–6개\n• 주사위를 탭하면 고정되고 나머지만 다시 굴림\n• 앞면과 뒷면, 누적 앞면/뒷면 비율\n• 모든 면의 통계를 공정한 주사위와 비교\n• 마지막 결과 복사 또는 전체 기록을 CSV로 내보내기\n• Space 굴리기, 위/아래 주사위 수 변경, 소리와 진동은 끌 수 있음"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "key up",
+      "key up",
+      "wait 0.3",
+      "key space",
+      "wait 1.6",
+      "key space",
+      "wait 1.6",
+      "key space",
+      "wait 2"
+    ],
+    [
+      "key right",
+      "wait 0.6",
+      "key space",
+      "wait 2.2"
+    ],
+    [
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "key right",
+      "wait 1.5"
+    ]
+  ]
+}

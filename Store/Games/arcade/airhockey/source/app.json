@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.airhockey",
+  "name": {"en": "Air Hockey", "tr": "Hava Hokeyi", "de": "Airhockey", "fr": "Air hockey", "es": "Hockey de aire", "ja": "エアホッケー", "zh": "桌上冰球", "ko": "에어 하키"},
+  "description": {
+    "en": "Fast air hockey on your Switch: beat the console on three difficulties or play a friend with one Joy-Con stick each. First to 7 wins.",
+    "tr": "Switch'te hızlı hava hokeyi: konsolu üç zorlukta yen ya da birer Joy-Con çubuğuyla arkadaşınla oyna. 7 golü atan kazanır.",
+    "de": "Schnelles Airhockey auf deiner Switch: Besiege die Konsole in drei Schwierigkeitsstufen oder spiel gegen einen Freund mit je einem Joy-Con-Stick. Wer zuerst 7 hat, gewinnt.",
+    "fr": "Du air hockey rapide sur votre Switch : battez la console en trois difficultés ou affrontez un ami avec un stick de Joy-Con chacun. Le premier à 7 gagne.",
+    "es": "Hockey de aire rápido en tu Switch: vence a la consola en tres dificultades o juega con un amigo con un stick de Joy-Con cada uno. Gana el primero en llegar a 7."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.py",
+  "window": {"width": 900, "height": 520, "minWidth": 640, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.3",
+  "permissions": []
+}

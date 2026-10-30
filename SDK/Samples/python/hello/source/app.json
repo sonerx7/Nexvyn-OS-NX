@@ -1,0 +1,34 @@
+{
+  "id": "hellopy",
+  "name": {
+    "en": "Hello Python",
+    "tr": "Merhaba Python",
+    "de": "Hallo Python",
+    "fr": "Hello Python",
+    "es": "Hola Python",
+    "ja": "Hello Python",
+    "zh": "Hello Python",
+    "ko": "Hello Python"
+  },
+  "description": {
+    "en": "To-do list, clock and live JSON: a tour of the Python SDK",
+    "tr": "Yapılacaklar, saat ve canlı JSON: Python SDK turu",
+    "de": "To-do-Liste, Uhr und Live-JSON: eine Tour durch das Python-SDK",
+    "fr": "Liste de tâches, horloge et JSON en direct : une visite du SDK Python",
+    "es": "Lista de tareas, reloj y JSON en vivo: un recorrido por el SDK de Python"
+  },
+  "category": "developer",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.py",
+  "minSdk": "1.3",
+  "permissions": ["network"],
+  "window": {
+    "width": 640,
+    "height": 520,
+    "resizable": false
+  },
+  "gamepad": false
+}

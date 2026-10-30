@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Crack the secret colour code in 10 tries",
+    "tr": "Gizli renk şifresini 10 denemede kır",
+    "de": "Knack den geheimen Farbcode in 10 Zügen",
+    "fr": "Percez le code couleur secret en 10 essais",
+    "es": "Descifra el código de colores en 10 intentos",
+    "ja": "10 回以内に秘密の色のコードを解読しよう",
+    "zh": "在 10 次之内破解秘密颜色密码",
+    "ko": "10번 안에 비밀 색상 암호를 푸세요"
+  },
+  "description": {
+    "en": "The classic code-breaking game. A secret code of coloured pegs is hidden, and you have ten tries to crack it. After each guess, the feedback pegs tell you how many colours sit in exactly the right spot and how many are right but in the wrong place. Play classic (4 pegs, 6 colours) or hard (5 pegs, 8 colours), with or without repeated colours.\n\n• Classic and hard modes\n• Repeated colours on or off\n• Numbered pegs for colour-blind players\n• Hints, undo and statistics with a guess distribution\n• Touch, controller or number keys 1–8",
+    "tr": "Klasik şifre kırma oyunu. Renkli çivilerden oluşan gizli bir şifre var ve onu çözmek için on hakkın bulunuyor. Her tahminden sonra geri bildirim çivileri kaç rengin tam doğru yerde olduğunu, kaçının doğru ama yanlış yerde olduğunu söyler. Klasik (4 çivi, 6 renk) ya da zor (5 çivi, 8 renk) modda, tekrarlı renkler açık ya da kapalı oyna.\n\n• Klasik ve zor mod\n• Tekrarlı renkler açık ya da kapalı\n• Renk körleri için numaralı çiviler\n• İpucu, geri alma ve tahmin dağılımlı istatistikler\n• Dokunmatik, kumanda ya da 1–8 tuşları",
+    "de": "Das klassische Codeknacker-Spiel. Ein geheimer Code aus farbigen Stiften ist versteckt, und du hast zehn Versuche, ihn zu knacken. Nach jedem Tipp verraten dir die Rückmeldestifte, wie viele Farben genau an der richtigen Stelle sitzen und wie viele zwar stimmen, aber falsch platziert sind. Spiel klassisch (4 Stifte, 6 Farben) oder schwer (5 Stifte, 8 Farben), mit oder ohne doppelte Farben.\n\n• Klassischer und schwerer Modus\n• Doppelte Farben an oder aus\n• Nummerierte Stifte für Farbenblinde\n• Tipps, Rückgängig und Statistik mit Verteilung der Versuche\n• Touch, Controller oder Zifferntasten 1–8",
+    "fr": "Le jeu de déduction classique. Un code secret de pions colorés est caché, et vous avez dix essais pour le percer. Après chaque proposition, les pions de réponse indiquent combien de couleurs sont exactement à la bonne place et combien sont justes mais mal placées. Jouez en classique (4 pions, 6 couleurs) ou en difficile (5 pions, 8 couleurs), avec ou sans couleurs répétées.\n\n• Modes classique et difficile\n• Couleurs répétées activées ou non\n• Pions numérotés pour les daltoniens\n• Indices, annulation et statistiques avec répartition des essais\n• Tactile, manette ou touches 1 à 8",
+    "es": "El clásico juego de descifrar códigos. Hay un código secreto de clavijas de colores escondido y tienes diez intentos para descifrarlo. Tras cada intento, las clavijas de respuesta te dicen cuántos colores están justo en su sitio y cuántos son correctos pero están mal colocados. Juega en clásico (4 clavijas, 6 colores) o difícil (5 clavijas, 8 colores), con o sin colores repetidos.\n\n• Modos clásico y difícil\n• Colores repetidos activados o no\n• Clavijas numeradas para daltónicos\n• Pistas, deshacer y estadísticas con la distribución de intentos\n• Táctil, mando o teclas 1–8",
+    "ja": "定番の暗号解読ゲーム。色のついたピンでできた秘密のコードが隠されていて、10 回以内に解読します。推測するたびに、フィードバックのピンが、位置も色も正しいものと、色は正しいが位置が違うものの数を教えてくれます。クラシック (4 ピン、6 色) またはむずかしい (5 ピン、8 色) で、色の重複ありかなしかを選んで遊べます。\n\n• クラシックとむずかしいモード\n• 色の重複のオン/オフ\n• 色覚に配慮した番号付きのピン\n• ヒント、取り消し、推測回数の分布付きの統計\n• タッチ、コントローラー、数字キー 1–8",
+    "zh": "经典的密码破译游戏。一组由彩色钉组成的秘密密码被隐藏起来，你有十次机会破解它。每次猜测后，反馈钉会告诉你有多少种颜色位置完全正确，有多少种颜色正确但位置不对。可玩经典模式（4 个钉、6 种颜色）或困难模式（5 个钉、8 种颜色），可选择是否允许重复颜色。\n\n• 经典和困难模式\n• 开启或关闭重复颜色\n• 为色盲玩家提供带编号的钉\n• 提示、撤销以及带猜测分布的统计\n• 触控、手柄或数字键 1–8",
+    "ko": "클래식 암호 풀기 게임입니다. 색깔 핀으로 된 비밀 암호가 숨겨져 있고, 열 번 안에 풀어야 합니다. 추측할 때마다 피드백 핀이 정확한 자리에 있는 색이 몇 개인지, 색은 맞지만 자리가 틀린 것이 몇 개인지 알려 줍니다. 클래식(핀 4개, 색 6가지) 또는 어려움(핀 5개, 색 8가지)으로, 색상 중복 허용 여부를 정해 플레이하세요.\n\n• 클래식과 어려움 모드\n• 색상 중복 켜기 또는 끄기\n• 색각 이상이 있는 플레이어를 위한 번호 핀\n• 힌트, 실행 취소, 추측 분포가 포함된 통계\n• 터치, 컨트롤러, 숫자 키 1–8"
+  },
+  "shots": [
+    ["wait 2.5"],
+    ["key enter", "wait 1", "key 1", "key 2", "key 3", "key 4", "key enter", "wait 1", "key 2", "key 5", "key 1", "key 6", "key enter", "wait 1", "key 3", "key 1", "key 4", "key 2", "key enter", "wait 1.2"],
+    ["key escape", "wait 0.6", "key down", "key down", "key down", "key enter", "wait 1", "key down", "key down", "key enter", "wait 1.5"],
+    ["key escape", "wait 0.8", "key enter", "wait 1.2", "dark 1", "wait 1.5"]
+  ]
+}

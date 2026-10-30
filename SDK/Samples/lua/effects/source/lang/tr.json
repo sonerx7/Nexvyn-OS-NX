@@ -1,0 +1,16 @@
+{
+  "plasma": "Plazma",
+  "tunnel": "Tünel",
+  "starfield": "Yıldızlar",
+  "pal_fire": "Ateş",
+  "pal_ocean": "Okyanus",
+  "pal_neon": "Neon",
+  "pal_rainbow": "Gökkuşağı",
+  "cell": "Hücre {0}px",
+  "speed": "Hız",
+  "cycle": "Renkleri döndür",
+  "info_cells": "{0} hücre · {1} FPS",
+  "info_stars": "{0} yıldız · {1} FPS",
+  "hint": "Yönlendirmek için sürükle · 1 2 3 efekt değiştirir",
+  "menu_title": "Efektler"
+}

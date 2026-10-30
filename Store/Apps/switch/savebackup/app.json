@@ -1,0 +1,25 @@
+{
+  "id": "savebackup",
+  "name": {
+    "en": "Save Backup",
+    "tr": "Kayıt Yedekleme",
+    "de": "Spielstand-Backup",
+    "fr": "Sauvegarde des parties",
+    "es": "Copia de partidas",
+    "ko": "세이브 백업"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 960,
+    "height": 580,
+    "minWidth": 560,
+    "minHeight": 380,
+    "resizable": true
+  }
+}

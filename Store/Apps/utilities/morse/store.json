@@ -1,0 +1,50 @@
+{
+  "subtitle": {
+    "en": "Translate, play and practice Morse code",
+    "tr": "Mors kodunu çevir, çal ve pratik yap",
+    "de": "Morsecode übersetzen, hören und üben",
+    "fr": "Traduire, écouter et pratiquer le Morse",
+    "es": "Traduce, escucha y practica Morse",
+    "ja": "モールス符号を変換、再生、練習",
+    "zh": "翻译、播放和练习摩尔斯电码",
+    "ko": "모스 부호를 번역하고, 재생하고, 연습하세요"
+  },
+  "description": {
+    "en": "Type a message and see it in dots and dashes, or paste Morse and read the text. Press Play to hear it beep while a lamp flashes in time and each letter lights up. Then switch to Practice and key Morse yourself: hold the big pad, the A button or Space, and the app decodes your letters and measures your speed.\n\n• Text to Morse and Morse to text, with dot, dash and gap buttons\n• Playback with adjustable speed (WPM) and tone pitch\n• Practice keypad with live decoding and a signal timeline\n• Copy drill that gives you letters and words to key\n• A full chart of letters, Turkish letters, digits and punctuation; tap one to hear it",
+    "tr": "Bir mesaj yaz, nokta ve çizgilere dönüşsün; ya da Mors kodu yapıştır, metni oku. Çal'a bas; bip seslerini duyarken bir lamba ritimle yanıp söner ve her harf sırayla parlar. Sonra Pratik'e geç ve Mors'u kendin gönder: büyük tuşa, A düğmesine ya da Boşluk'a basılı tut; uygulama harflerini çözer ve hızını ölçer.\n\n• Metinden Mors'a ve Mors'tan metne; nokta, çizgi ve boşluk düğmeleriyle\n• Ayarlanabilir hız (WPM) ve ton yüksekliğiyle çalma\n• Canlı çözümleme ve sinyal zaman çizelgesiyle pratik tuşu\n• Gönderman için harf ve kelimeler veren alıştırma modu\n• Harfler, Türkçe harfler, rakamlar ve noktalama işaretleriyle tam tablo; dokun ve dinle",
+    "de": "Tippe eine Nachricht und sieh sie als Punkte und Striche, oder füge Morsecode ein und lies den Text. Drücke Abspielen, um sie piepen zu hören, während eine Lampe im Takt blinkt und jeder Buchstabe aufleuchtet. Dann wechsle zum Üben und morse selbst: Halte das große Feld, die A-Taste oder die Leertaste, und die App entschlüsselt deine Buchstaben und misst dein Tempo.\n\n• Text zu Morse und Morse zu Text, mit Tasten für Punkt, Strich und Pausen\n• Wiedergabe mit einstellbarem Tempo (WpM) und Tonhöhe\n• Übungstaste mit Live-Dekodierung und Signalverlauf\n• Übungsmodus, der dir Buchstaben und Wörter zum Morsen vorgibt\n• Komplette Tabelle mit Buchstaben, türkischen Buchstaben, Ziffern und Satzzeichen; antippen zum Anhören",
+    "fr": "Tapez un message et voyez-le en points et en traits, ou collez du Morse pour lire le texte. Appuyez sur Lecture pour l’entendre biper pendant qu’une lampe clignote en rythme et que chaque lettre s’allume. Passez ensuite à l’entraînement et manipulez vous-même : maintenez le grand pavé, le bouton A ou Espace, et l’app décode vos lettres et mesure votre vitesse.\n\n• Texte vers Morse et Morse vers texte, avec boutons point, trait et espaces\n• Lecture à vitesse (mots/min) et tonalité réglables\n• Manipulateur d’entraînement avec décodage en direct et chronologie du signal\n• Exercice qui vous propose des lettres et des mots à transmettre\n• Tableau complet des lettres, lettres turques, chiffres et ponctuation ; touchez pour écouter",
+    "es": "Escribe un mensaje y míralo en puntos y rayas, o pega código Morse y lee el texto. Pulsa Reproducir para oírlo pitar mientras una lámpara parpadea al ritmo y cada letra se ilumina. Después pasa a Práctica y transmite tú: mantén pulsado el panel grande, el botón A o Espacio, y la app descifra tus letras y mide tu velocidad.\n\n• Texto a Morse y Morse a texto, con botones de punto, raya y espacios\n• Reproducción con velocidad (PPM) y tono ajustables\n• Manipulador de práctica con descodificación en directo y línea de señal\n• Ejercicio que te propone letras y palabras para transmitir\n• Tabla completa de letras, letras turcas, cifras y signos; tócalos para oírlos",
+    "ja": "メッセージを入力すると点と線で表示され、モールス符号を貼り付けるとテキストが読めます。「再生」を押すとビープ音が鳴り、ランプがタイミングに合わせて点滅し、各文字が光ります。次に「練習」に切り替えて自分でモールス符号を打鍵しましょう。大きなパッド、A ボタン、Space を押し続けると、アプリが文字を復号して速度を測定します。\n\n• テキスト → モールス、モールス → テキスト。点、線、区切りのボタン付き\n• 速度 (WPM) と音程を調整できる再生\n• リアルタイムの復号と信号のタイムライン付きの練習用キーパッド\n• 打鍵する文字や単語が出題される写し取り練習\n• 文字、トルコ語の文字、数字、記号の完全な符号表。タップで音を確認",
+    "zh": "输入一条消息，看看它的点和划，或粘贴摩尔斯电码来阅读文本。按“播放”即可听到哔哔声，同时一盏灯随节奏闪烁，每个字母依次亮起。然后切换到“练习”，自己来发报：按住大按钮、A 按钮或空格键，应用会解码你发出的字母并测量你的速度。\n\n• 文本转摩尔斯和摩尔斯转文本，带点、划和间隔按钮\n• 可调速度（WPM）和音调的播放\n• 实时解码的练习键和信号时间线\n• 给出需要发报的字母和单词的抄报练习\n• 包含字母、土耳其语字母、数字和标点的完整对照表；轻点即可收听",
+    "ko": "메시지를 입력하면 점과 선으로 보여 주고, 모스 부호를 붙여넣으면 텍스트로 읽어 줍니다. 재생을 누르면 램프가 박자에 맞춰 깜박이고 각 글자에 불이 들어오면서 신호음이 납니다. 그런 다음 연습으로 전환하여 직접 모스 부호를 입력하세요: 큰 패드, A 버튼 또는 Space를 누르고 있으면 앱이 글자를 해독하고 속도를 측정합니다.\n\n• 점, 선, 간격 버튼이 있는 텍스트 → 모스, 모스 → 텍스트\n• 속도(WPM)와 음높이를 조절할 수 있는 재생\n• 실시간 해독과 신호 타임라인이 있는 연습 키패드\n• 입력할 글자와 단어를 주는 따라 치기 연습\n• 글자, 터키어 글자, 숫자, 문장 부호의 전체 부호표, 탭하면 소리 재생"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "key p",
+      "wait 1.8"
+    ],
+    [
+      "key tab",
+      "wait 0.8",
+      "wclick 0.928 0.581",
+      "wait 0.6",
+      "wclick 0.224 0.322",
+      "wait 0.25",
+      "wclick 0.224 0.322",
+      "wait 0.25",
+      "wclick 0.224 0.322",
+      "wait 2"
+    ],
+    [
+      "key tab",
+      "wait 1.5"
+    ],
+    [
+      "key tab",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

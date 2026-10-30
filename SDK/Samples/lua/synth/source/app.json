@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.synth",
+  "name": {"en": "Synth Demo", "tr": "Synth Demosu", "de": "Synth-Demo", "fr": "Démo Synthé", "es": "Demo de sintetizador", "ja": "シンセデモ", "zh": "合成器演示", "ko": "신시사이저 데모"},
+  "description": {
+    "en": "On-screen keyboard, four waveforms, an ADSR envelope made with timers, chords and a scope",
+    "tr": "Ekran klavyesi, dört dalga biçimi, zamanlayıcılarla ADSR zarfı, akorlar ve osiloskop",
+    "de": "Bildschirmklaviatur, vier Wellenformen, eine mit Timern gebaute ADSR-Hüllkurve, Akkorde und ein Oszilloskop",
+    "fr": "Clavier à l’écran, quatre formes d’onde, une enveloppe ADSR réalisée avec des minuteurs, des accords et un oscilloscope",
+    "es": "Teclado en pantalla, cuatro formas de onda, una envolvente ADSR hecha con temporizadores, acordes y un osciloscopio"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 900, "height": 640, "minWidth": 480, "minHeight": 560, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

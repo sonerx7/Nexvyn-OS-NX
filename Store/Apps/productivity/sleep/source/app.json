@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.sleep",
+  "name": {"en": "Sleep Tracker", "tr": "Uyku Takibi", "de": "Schlaftracker", "fr": "Suivi du sommeil", "es": "Registro de sueño", "ja": "睡眠トラッカー", "zh": "睡眠追踪", "ko": "수면 기록"},
+  "description": {
+    "en": "Log bedtime, wake time and sleep quality with one tap, then follow a 7-night chart against your goal, averages and sleep debt.",
+    "tr": "Yatış ve kalkış saatini, uyku kalitesini tek dokunuşla kaydet; son 7 geceyi hedef çizgili grafikte, ortalamalar ve uyku borcuyla izle.",
+    "de": "Erfasse Schlafenszeit, Aufwachzeit und Schlafqualität mit einem Tipp und verfolge ein 7-Nächte-Diagramm im Vergleich zu deinem Ziel, Durchschnittswerte und Schlafdefizit.",
+    "fr": "Notez l’heure du coucher, du réveil et la qualité du sommeil d’un seul geste, puis suivez un graphique sur 7 nuits par rapport à votre objectif, les moyennes et la dette de sommeil.",
+    "es": "Registra la hora de acostarte, de despertarte y la calidad del sueño con un toque, y sigue un gráfico de 7 noches frente a tu objetivo, promedios y déficit de sueño."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 540, "minWidth": 620, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

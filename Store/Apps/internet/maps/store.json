@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "OpenStreetMap with search and pins",
+    "tr": "Aramalı ve iğneli OpenStreetMap",
+    "de": "OpenStreetMap mit Suche und Pins",
+    "fr": "OpenStreetMap avec recherche et repères",
+    "es": "OpenStreetMap con búsqueda y chinchetas",
+    "ja": "検索とピンに対応した OpenStreetMap",
+    "zh": "支持搜索和大头针的 OpenStreetMap",
+    "ko": "검색과 핀이 있는 OpenStreetMap"
+  },
+  "description": {
+    "en": "Explore the world on OpenStreetMap, right on your Switch. Pan with touch, the mouse or the sticks, zoom smoothly to any level, and search for places, streets and addresses. Drop a pin anywhere to see what's there, save your favourite spots, and measure the distance between two points. Map tiles are cached, so places you've visited still show when you're offline.\n\n• Smooth zoom with touch, wheel, keys or the controller\n• Place and address search with recent searches\n• Dropped pins with the address of the spot\n• Favourites and recently opened places\n• Distance measuring between two points\n• Copy coordinates or open the spot on OpenStreetMap",
+    "tr": "Dünyayı OpenStreetMap'te, doğrudan Switch'inde keşfet. Dokunarak, fareyle ya da çubuklarla kaydır, istediğin seviyeye akıcı biçimde yakınlaş; yerleri, sokakları ve adresleri ara. Neresi olduğunu görmek için herhangi bir yere iğne bırak, sevdiğin yerleri kaydet, iki nokta arasındaki mesafeyi ölç. Harita parçaları önbelleğe alınır; gezdiğin yerler internet yokken de görünür.\n\n• Dokunma, tekerlek, tuşlar ya da kontrolcüyle akıcı yakınlaştırma\n• Son aramalarla yer ve adres arama\n• Bırakılan iğnede o noktanın adresi\n• Favoriler ve son açılan yerler\n• İki nokta arasında mesafe ölçümü\n• Koordinatları kopyala ya da yeri OpenStreetMap'te aç",
+    "de": "Erkunde die Welt mit OpenStreetMap, direkt auf deiner Switch. Verschiebe die Karte per Touch, Maus oder Stick, zoome stufenlos und suche nach Orten, Straßen und Adressen. Setze überall einen Pin, um zu sehen, was dort ist, speichere Lieblingsorte und miss die Entfernung zwischen zwei Punkten. Kartenkacheln werden zwischengespeichert, besuchte Orte bleiben auch offline sichtbar.\n\n• Stufenloser Zoom per Touch, Mausrad, Tasten oder Controller\n• Orts- und Adresssuche mit letzten Suchen\n• Pins mit der Adresse des Ortes\n• Favoriten und zuletzt geöffnete Orte\n• Entfernung zwischen zwei Punkten messen\n• Koordinaten kopieren oder Ort auf OpenStreetMap öffnen",
+    "fr": "Explorez le monde avec OpenStreetMap, directement sur votre Switch. Déplacez la carte au toucher, à la souris ou au stick, zoomez en douceur et cherchez lieux, rues et adresses. Posez un repère n’importe où pour voir ce qui s’y trouve, enregistrez vos endroits favoris et mesurez la distance entre deux points. Les tuiles sont mises en cache : les lieux déjà visités restent visibles hors ligne.\n\n• Zoom fluide au toucher, à la molette, au clavier ou à la manette\n• Recherche de lieux et d’adresses, avec recherches récentes\n• Repères avec l’adresse de l’endroit\n• Favoris et lieux récemment ouverts\n• Mesure de distance entre deux points\n• Copie des coordonnées ou ouverture sur OpenStreetMap",
+    "es": "Explora el mundo con OpenStreetMap, directamente en tu Switch. Desplázate con el táctil, el ratón o los sticks, haz zoom con suavidad y busca lugares, calles y direcciones. Suelta una chincheta en cualquier sitio para ver qué hay, guarda tus lugares favoritos y mide la distancia entre dos puntos. Los mosaicos del mapa se guardan en caché, así que los sitios que ya viste se ven sin conexión.\n\n• Zoom suave con el táctil, la rueda, el teclado o el mando\n• Búsqueda de lugares y direcciones con búsquedas recientes\n• Chinchetas con la dirección del lugar\n• Favoritos y lugares abiertos recientemente\n• Medición de distancias entre dos puntos\n• Copia las coordenadas o abre el lugar en OpenStreetMap",
+    "ja": "Switch で OpenStreetMap を使って世界を探検しましょう。タッチ、マウス、スティックでパンし、どのレベルにも滑らかにズームし、場所、通り、住所を検索できます。どこにでもピンを立ててそこに何があるかを確認し、お気に入りの場所を保存し、2 点間の距離を測れます。地図タイルはキャッシュされるので、訪れた場所はオフラインでも表示されます。\n\n• タッチ、ホイール、キー、コントローラーで滑らかにズーム\n• 最近の検索付きの場所と住所の検索\n• その地点の住所を表示するピン\n• お気に入りと最近開いた場所\n• 2 点間の距離の測定\n• 座標をコピー、または OpenStreetMap でその地点を開く",
+    "zh": "直接在 Switch 上用 OpenStreetMap 探索世界。用触控、鼠标或摇杆平移，流畅地缩放到任意级别，并搜索地点、街道和地址。在任意位置放置大头针，看看那里有什么，保存你喜欢的地点，并测量两点之间的距离。地图图块会被缓存，因此去过的地方离线时仍能显示。\n\n• 通过触控、滚轮、按键或手柄流畅缩放\n• 地点和地址搜索，带最近搜索记录\n• 放置的大头针会显示该位置的地址\n• 收藏和最近打开的地点\n• 测量两点之间的距离\n• 复制坐标或在 OpenStreetMap 上打开该位置",
+    "ko": "Switch에서 바로 OpenStreetMap으로 세계를 탐험하세요. 터치, 마우스, 스틱으로 이동하고, 어떤 수준으로든 부드럽게 확대하고, 장소, 거리, 주소를 검색하세요. 아무 곳에나 핀을 놓아 무엇이 있는지 보고, 즐겨 찾는 장소를 저장하고, 두 지점 사이의 거리를 측정하세요. 지도 타일이 캐시되므로 가 본 곳은 오프라인에서도 보입니다.\n\n• 터치, 휠, 키, 컨트롤러로 부드러운 확대/축소\n• 최근 검색이 있는 장소 및 주소 검색\n• 그 지점의 주소가 표시되는 핀\n• 즐겨찾기와 최근 연 장소\n• 두 지점 사이의 거리 측정\n• 좌표 복사 또는 OpenStreetMap에서 그 지점 열기"
+  },
+  "shots": [
+    ["wait 9"],
+    ["key pageup", "wait 0.5", "key pageup", "wait 3"],
+    ["dark 1", "wait 2"]
+  ]
+}

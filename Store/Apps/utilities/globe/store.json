@@ -1,0 +1,41 @@
+{
+  "subtitle": {
+    "en": "A 3D Earth with live day and night",
+    "tr": "Gece ve gündüzü canlı 3D Dünya",
+    "de": "Eine 3D-Erde mit Tag und Nacht live",
+    "fr": "Une Terre en 3D avec le jour et la nuit",
+    "es": "Una Tierra en 3D con el día y la noche",
+    "ja": "昼と夜がリアルタイムに変わる 3D の地球",
+    "zh": "实时显示昼夜的 3D 地球",
+    "ko": "실시간 낮과 밤이 보이는 3D 지구"
+  },
+  "description": {
+    "en": "Spin a 3D Earth that shows where it is day and where it is night right now, with a soft atmosphere glow and a starry sky behind it. Pick a city and the globe flies there, showing its local time, date and how high the sun stands. Drag to rotate, zoom in and out, or tilt the console to look around.\n\n• Real-time day/night line and the point where the sun is overhead\n• 23 cities with local times, marked as day or night\n• Shift the time up to 12 hours either way and watch the night move\n• Latitude/longitude grid, auto rotation and gyro tilt control\n• Keyboard and controller shortcuts for the next city, zoom and grid",
+    "tr": "Şu anda dünyanın neresinde gündüz, neresinde gece olduğunu gösteren 3D bir Dünya'yı çevir; yumuşak bir atmosfer parıltısı ve arkada yıldızlı bir gökyüzüyle. Bir şehir seç, küre oraya uçsun; yerel saati, tarihi ve güneşin ne kadar yüksekte olduğunu gösterir. Sürükleyerek çevir, yakınlaş ya da konsolu eğerek etrafa bak.\n\n• Gerçek zamanlı gece-gündüz çizgisi ve güneşin tam tepede olduğu nokta\n• Yerel saatleriyle 23 şehir, gece ya da gündüz olarak işaretli\n• Saati iki yöne 12 saate kadar kaydır, gecenin ilerleyişini izle\n• Enlem/boylam ızgarası, otomatik dönüş ve jiroskopla eğme kontrolü\n• Sonraki şehir, yakınlaştırma ve ızgara için klavye ve kumanda kısayolları",
+    "de": "Drehe eine 3D-Erde, die zeigt, wo gerade Tag und wo Nacht ist, mit sanft leuchtender Atmosphäre und Sternenhimmel. Wähle eine Stadt, und der Globus fliegt dorthin und zeigt Ortszeit, Datum und Sonnenstand. Ziehen zum Drehen, zoomen oder die Konsole neigen, um dich umzusehen.\n\n• Tag-Nacht-Grenze in Echtzeit und der Punkt, an dem die Sonne im Zenit steht\n• 23 Städte mit Ortszeit, als Tag oder Nacht markiert\n• Zeit bis zu 12 Stunden vor- oder zurückdrehen und die Nacht wandern sehen\n• Gradnetz, automatische Drehung und Neigungssteuerung per Gyro\n• Tastatur- und Controller-Kürzel für nächste Stadt, Zoom und Gradnetz",
+    "fr": "Faites tourner une Terre en 3D qui montre où il fait jour et où il fait nuit en ce moment, avec le halo de l’atmosphère et un ciel étoilé. Choisissez une ville et le globe s’y envole, avec l’heure locale, la date et la hauteur du soleil. Faites glisser pour tourner, zoomez ou inclinez la console pour regarder autour.\n\n• Limite jour/nuit en temps réel et point où le soleil est au zénith\n• 23 villes avec leur heure locale, marquées jour ou nuit\n• Décalez l’heure jusqu’à 12 heures dans un sens ou l’autre et regardez la nuit avancer\n• Grille des latitudes et longitudes, rotation automatique et contrôle par gyroscope\n• Raccourcis clavier et manette pour la ville suivante, le zoom et la grille",
+    "es": "Gira una Tierra en 3D que muestra dónde es de día y dónde es de noche ahora mismo, con el brillo suave de la atmósfera y un cielo estrellado. Elige una ciudad y el globo vuela hasta ella mostrando su hora local, la fecha y la altura del sol. Arrastra para girar, acerca y aleja o inclina la consola para mirar alrededor.\n\n• Línea del día y la noche en tiempo real y el punto donde el sol está en el cénit\n• 23 ciudades con su hora local, marcadas de día o de noche\n• Adelanta o atrasa la hora hasta 12 horas y mira cómo avanza la noche\n• Cuadrícula de latitud y longitud, giro automático y control por giroscopio\n• Atajos de teclado y mando para la siguiente ciudad, el zoom y la cuadrícula",
+    "ja": "今どこが昼でどこが夜かを示す 3D の地球を回してみましょう。やわらかな大気の輝きと、背景には星空が広がります。都市を選ぶと地球がそこへ飛び、現地の時刻、日付、太陽の高さを表示します。ドラッグで回転、ズームイン・アウト、本体を傾けて見回すこともできます。\n\n• リアルタイムの昼夜の境界線と太陽が真上にある地点\n• 昼か夜かが表示される 23 都市の現地時刻\n• 時刻を前後 12 時間までずらして夜の移動を観察\n• 緯度/経度グリッド、自動回転、ジャイロによる傾き操作\n• 次の都市、ズーム、グリッドのキーボードとコントローラーのショートカット",
+    "zh": "转动一个 3D 地球，实时显示哪里是白天、哪里是黑夜，周围环绕着柔和的大气光晕，背后是满天繁星。选择一座城市，地球就会飞转过去，显示当地时间、日期以及太阳的高度。拖移以旋转，放大缩小，或倾斜主机四处观察。\n\n• 实时昼夜分界线和太阳直射点\n• 23 座城市的当地时间，标明白天或黑夜\n• 将时间前后偏移最多 12 小时，看着黑夜移动\n• 经纬网格、自动旋转和陀螺仪倾斜控制\n• 切换下一座城市、缩放和网格的键盘和手柄快捷键",
+    "ko": "지금 이 순간 어디가 낮이고 어디가 밤인지 보여 주는 3D 지구를 돌려 보세요. 부드러운 대기의 빛과 뒤로 별이 빛나는 하늘이 함께합니다. 도시를 고르면 지구본이 그곳으로 날아가 현지 시간, 날짜, 태양의 높이를 보여 줍니다. 드래그하여 회전하고, 확대/축소하거나, 콘솔을 기울여 둘러보세요.\n\n• 실시간 낮/밤 경계선과 태양이 머리 위에 있는 지점\n• 낮인지 밤인지 표시되는 현지 시간이 있는 도시 23곳\n• 시간을 앞뒤로 최대 12시간 이동하여 밤이 움직이는 것을 보기\n• 위도/경도 격자, 자동 회전, 자이로 기울기 조작\n• 다음 도시, 확대/축소, 격자를 위한 키보드 및 컨트롤러 단축키"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.135 0.73",
+      "wait 3"
+    ],
+    [
+      "key g",
+      "key n",
+      "key n",
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

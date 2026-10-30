@@ -1,0 +1,20 @@
+{
+  "kick": "Grosse caisse",
+  "snare": "Caisse claire",
+  "clap": "Clap",
+  "hat": "Charleston",
+  "open_hat": "Charleston ouvert",
+  "tom": "Tom",
+  "play": "Lire",
+  "stop": "Arrêter",
+  "clear": "Effacer",
+  "tempo": "Tempo {0}",
+  "swing": "Swing {0} %",
+  "preset_house": "House",
+  "preset_break": "Breakbeat",
+  "preset_hiphop": "Hip-hop",
+  "preset_bossa": "Bossa",
+  "hint": "Touchez un pad : activé → accentué → désactivé · touchez un nom pour le couper · Espace lance la lecture, 1-6 coupent les lignes",
+  "unmute_all": "Tout réactiver",
+  "menu_title": "Beatbox"
+}

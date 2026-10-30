@@ -1,0 +1,17 @@
+{
+  "coins": "{0} / {1}",
+  "time": "Temps {0}",
+  "best": "Record {0}",
+  "hint": "Se déplacer : stick / flèches   Sauter : A / Espace   Traverser une planche : bas + saut",
+  "all_coins": "Toutes les pièces ! Courez au drapeau",
+  "coins_left": "{0} pièces restantes",
+  "clear": "Niveau terminé !",
+  "result": "Temps {0}   Chutes {1}",
+  "new_record": "Nouveau record !",
+  "again": "Rejouer",
+  "menu_title": "Plateformes",
+  "restart": "Redémarrer",
+  "debug": "Afficher les collisions (débogage)",
+  "reset_record": "Réinitialiser le meilleur temps",
+  "record_reset": "Meilleur temps effacé"
+}

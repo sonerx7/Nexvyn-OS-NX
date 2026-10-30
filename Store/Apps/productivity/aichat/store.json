@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Claude, Gemini and GPT on your Switch",
+    "tr": "Claude, Gemini ve GPT artık Switch'inde",
+    "de": "Claude, Gemini und GPT auf deiner Switch",
+    "fr": "Claude, Gemini et GPT sur votre Switch",
+    "es": "Claude, Gemini y GPT en tu Switch",
+    "ja": "Switch で Claude、Gemini、GPT",
+    "zh": "在 Switch 上使用 Claude、Gemini 和 GPT",
+    "ko": "Switch에서 Claude, Gemini, GPT를"
+  },
+  "description": {
+    "en": "Chat with the AI model you prefer, right from the desktop. Bring your own API key for Anthropic, Google Gemini, OpenAI or NVIDIA, or point it at any OpenAI-compatible server, including a local model on your computer. Replies stream in live with formatted text and code blocks you can copy. Your conversations are saved, searchable and easy to pick up again.\n\n• Switch provider and model from the toolbar at any time\n• Markdown answers with copyable code blocks\n• Attach text files and ask questions about them\n• Per-chat system prompt and temperature\n• Rename, search, copy or export conversations\n• API keys stay on the console, encrypted",
+    "tr": "Dilediğin yapay zekâ modeliyle doğrudan masaüstünden sohbet et. Anthropic, Google Gemini, OpenAI ya da NVIDIA için kendi API anahtarını ekle veya bilgisayarındaki yerel model dahil herhangi bir OpenAI uyumlu sunucuya bağlan. Yanıtlar biçimlendirilmiş metin ve kopyalanabilir kod bloklarıyla canlı akar. Sohbetlerin kaydedilir, aranabilir ve kaldığın yerden devam edebilirsin.\n\n• Sağlayıcıyı ve modeli araç çubuğundan istediğin an değiştir\n• Kopyalanabilir kod bloklarıyla Markdown yanıtlar\n• Metin dosyası ekle, içeriği hakkında soru sor\n• Sohbete özel sistem istemi ve sıcaklık ayarı\n• Sohbetleri yeniden adlandır, ara, kopyala ya da dışa aktar\n• API anahtarları konsolda, şifreli olarak saklanır",
+    "de": "Chatte direkt vom Desktop aus mit dem KI-Modell deiner Wahl. Nutze deinen eigenen API-Schlüssel für Anthropic, Google Gemini, OpenAI oder NVIDIA oder verbinde dich mit einem beliebigen OpenAI-kompatiblen Server, auch mit einem lokalen Modell auf deinem PC. Antworten erscheinen live, mit formatiertem Text und kopierbaren Codeblöcken. Deine Unterhaltungen werden gespeichert, sind durchsuchbar und jederzeit fortsetzbar.\n\n• Anbieter und Modell jederzeit in der Symbolleiste wechseln\n• Markdown-Antworten mit kopierbaren Codeblöcken\n• Textdateien anhängen und Fragen dazu stellen\n• Systemprompt und Temperatur pro Chat\n• Chats umbenennen, durchsuchen, kopieren oder exportieren\n• API-Schlüssel bleiben verschlüsselt auf der Konsole",
+    "fr": "Discutez avec le modèle d’IA de votre choix, directement depuis le bureau. Utilisez votre propre clé d’API pour Anthropic, Google Gemini, OpenAI ou NVIDIA, ou connectez-vous à n’importe quel serveur compatible OpenAI, y compris un modèle local sur votre ordinateur. Les réponses s’affichent en direct, avec du texte mis en forme et des blocs de code à copier. Vos conversations sont enregistrées, consultables et faciles à reprendre.\n\n• Changez de fournisseur et de modèle depuis la barre d’outils\n• Réponses Markdown avec blocs de code copiables\n• Joignez des fichiers texte et posez vos questions\n• Prompt système et température propres à chaque conversation\n• Renommez, recherchez, copiez ou exportez vos conversations\n• Les clés d’API restent chiffrées sur la console",
+    "es": "Chatea con el modelo de IA que prefieras, directamente desde el escritorio. Usa tu propia clave de API de Anthropic, Google Gemini, OpenAI o NVIDIA, o conéctate a cualquier servidor compatible con OpenAI, incluido un modelo local en tu ordenador. Las respuestas llegan en directo, con texto formateado y bloques de código que puedes copiar. Tus conversaciones se guardan, se pueden buscar y retomar cuando quieras.\n\n• Cambia de proveedor y modelo desde la barra de herramientas\n• Respuestas en Markdown con bloques de código copiables\n• Adjunta archivos de texto y pregunta sobre ellos\n• Prompt de sistema y temperatura para cada chat\n• Renombra, busca, copia o exporta conversaciones\n• Las claves de API se guardan cifradas en la consola",
+    "ja": "好きな AI モデルとデスクトップから直接チャットしましょう。Anthropic、Google Gemini、OpenAI、NVIDIA の自分の API キーを使うか、コンピューター上のローカルモデルを含む任意の OpenAI 互換サーバーに接続できます。回答は書式付きのテキストとコピーできるコードブロックでリアルタイムに表示されます。会話は保存され、検索でき、いつでも続きから再開できます。\n\n• ツールバーからいつでもプロバイダとモデルを切り替え\n• コピーできるコードブロック付きの Markdown の回答\n• テキストファイルを添付して質問\n• チャットごとのシステムプロンプトと Temperature\n• 会話の名前変更、検索、コピー、書き出し\n• API キーは暗号化されて本体に保存",
+    "zh": "直接在桌面上与你喜欢的 AI 模型聊天。使用你自己的 Anthropic、Google Gemini、OpenAI 或 NVIDIA API 密钥，或连接任意 OpenAI 兼容服务器，包括你电脑上的本地模型。回复会实时流式显示，带有格式化文本和可复制的代码块。你的对话会被保存，可以搜索，也很容易接着继续。\n\n• 随时从工具栏切换提供商和模型\n• Markdown 格式的回答，代码块可复制\n• 附加文本文件并就其提问\n• 每个对话可单独设置系统提示词和温度\n• 重命名、搜索、复制或导出对话\n• API 密钥加密保存在主机上",
+    "ko": "데스크톱에서 바로 원하는 AI 모델과 대화하세요. Anthropic, Google Gemini, OpenAI, NVIDIA용 본인의 API 키를 사용하거나, 컴퓨터의 로컬 모델을 포함한 OpenAI 호환 서버를 지정하세요. 답변은 서식이 적용된 텍스트와 복사할 수 있는 코드 블록으로 실시간 스트리밍됩니다. 대화는 저장되고, 검색할 수 있으며, 쉽게 이어 갈 수 있습니다.\n\n• 도구 모음에서 언제든 제공업체와 모델 전환\n• 복사할 수 있는 코드 블록이 있는 Markdown 답변\n• 텍스트 파일을 첨부하고 그에 대해 질문\n• 채팅별 시스템 프롬프트와 온도\n• 대화 이름 변경, 검색, 복사, 내보내기\n• API 키는 콘솔에 암호화되어 보관"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.972 0.042", "wait 1.5"],
+    ["key escape", "wait 0.5", "wclick 0.938 0.042", "wait 1.5"],
+    ["key escape", "wait 0.5", "dark 1", "wait 1.5"]
+  ]
+}

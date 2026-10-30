@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Tip, total and each person's share",
+    "tr": "Bahşiş, toplam ve kişi başı pay",
+    "de": "Trinkgeld, Summe und Anteil pro Person",
+    "fr": "Pourboire, total et part de chacun",
+    "es": "Propina, total y lo que paga cada uno",
+    "ja": "チップ、合計、1 人あたりの負担額",
+    "zh": "小费、总额和每人应付金额",
+    "ko": "팁, 합계, 1인당 금액"
+  },
+  "description": {
+    "en": "Enter the bill, pick a tip and the number of people, and see right away what everyone pays. Round up the total or each share to a whole amount and the extra simply goes to the tip, with the actual tip percentage shown.\n\n• Quick tip chips from 5% to 25%, a slider and a custom percentage\n• Split between up to 50 people\n• Rounding: none, round up the total or round up each share\n• Tip per person, total and the actual tip\n• Lira, dollar, euro or pound\n• Copy or save the result; reset with undo",
+    "tr": "Hesap tutarını gir, bahşişi ve kişi sayısını seç; herkesin ne ödeyeceğini hemen gör. Toplamı ya da kişi başı payı tam sayıya yuvarla; fark bahşişe eklenir, gerçek bahşiş yüzdesi de gösterilir.\n\n• %5 ile %25 arası hızlı bahşiş düğmeleri, kaydırıcı ve özel yüzde\n• 50 kişiye kadar bölüşme\n• Yuvarlama: yok, toplamı yukarı ya da her payı yukarı yuvarla\n• Kişi başı bahşiş, toplam ve gerçek bahşiş\n• Lira, dolar, euro ya da sterlin\n• Sonucu kopyala ya da kaydet; geri alınabilir sıfırlama",
+    "de": "Gib die Rechnung ein, wähle Trinkgeld und Personenzahl und sieh sofort, was jeder zahlt. Runde die Summe oder jeden Anteil auf einen glatten Betrag auf, der Rest geht einfach ins Trinkgeld, und der tatsächliche Prozentsatz wird angezeigt.\n\n• Schnellwahl von 5 % bis 25 %, ein Regler und ein eigener Prozentsatz\n• Aufteilen auf bis zu 50 Personen\n• Runden: gar nicht, die Summe aufrunden oder jeden Anteil aufrunden\n• Trinkgeld pro Person, Summe und tatsächliches Trinkgeld\n• Lira, Dollar, Euro oder Pfund\n• Ergebnis kopieren oder speichern; Zurücksetzen mit Rückgängig",
+    "fr": "Saisissez l’addition, choisissez le pourboire et le nombre de personnes, et voyez aussitôt ce que chacun paie. Arrondissez le total ou chaque part à un montant rond : l’écart va simplement au pourboire, dont le pourcentage réel est affiché.\n\n• Boutons rapides de 5 % à 25 %, un curseur et un pourcentage personnalisé\n• Partage entre 50 personnes maximum\n• Arrondi : aucun, total arrondi ou chaque part arrondie\n• Pourboire par personne, total et pourboire réel\n• Livre turque, dollar, euro ou livre sterling\n• Copie ou enregistrement du résultat ; réinitialisation annulable",
+    "es": "Introduce la cuenta, elige la propina y el número de personas y verás al momento lo que paga cada uno. Redondea el total o cada parte a una cifra entera y la diferencia va a la propina, con el porcentaje real a la vista.\n\n• Botones rápidos del 5 % al 25 %, un control deslizante y un porcentaje propio\n• Divide entre hasta 50 personas\n• Redondeo: ninguno, total hacia arriba o cada parte hacia arriba\n• Propina por persona, total y propina real\n• Liras, dólares, euros o libras\n• Copia o guarda el resultado; restablece con deshacer",
+    "ja": "請求額を入力し、チップと人数を選ぶと、各自の支払額がすぐにわかります。合計または各自の負担額を切り上げて整数にすると、差額はそのままチップになり、実際のチップの割合が表示されます。\n\n• 5%〜25% のクイックチップ、スライダー、カスタムの割合\n• 最大 50 人で割り勘\n• 端数処理: なし、合計を切り上げ、各自の負担額を切り上げ\n• 1 人あたりのチップ、合計、実際のチップ\n• リラ、ドル、ユーロ、ポンド\n• 結果をコピーまたは保存、取り消し可能なリセット",
+    "zh": "输入账单金额，选择小费比例和人数，立即就能看到每个人要付多少。将总额或每人份额向上取整为整数，多出的部分直接计入小费，并显示实际的小费百分比。\n\n• 5% 到 25% 的快捷小费选项、滑块和自定百分比\n• 最多 50 人分摊\n• 取整：不取整、总额向上取整或每人份额向上取整\n• 每人小费、合计和实际小费\n• 里拉、美元、欧元或英镑\n• 复制或保存结果；可撤销的重置",
+    "ko": "청구 금액을 입력하고 팁과 인원을 고르면 각자 낼 금액을 바로 볼 수 있습니다. 합계나 1인당 금액을 정수로 올리면 차액은 팁에 더해지며 실제 팁 비율이 표시됩니다.\n\n• 5%부터 25%까지 빠른 팁 버튼, 슬라이더, 직접 입력 비율\n• 최대 50명까지 나누기\n• 올림: 없음, 합계 올림, 1인당 금액 올림\n• 1인당 팁, 합계, 실제 팁\n• 리라, 달러, 유로, 파운드\n• 결과 복사 또는 저장, 실행 취소 가능한 재설정"
+  },
+  "shots": [
+    ["wait 2", "wclick 0.302 0.126", "wait 0.25", "text 1250", "key escape", "wait 0.3", "key up", "key up", "key up", "wait 1.5"],
+    ["wclick 0.464 0.309", "wait 0.25", "wclick 0.059 0.548", "wait 0.25", "wclick 0.059 0.548", "wait 0.25", "wclick 0.109 0.691", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

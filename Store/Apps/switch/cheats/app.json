@@ -1,0 +1,25 @@
+{
+  "id": "cheats",
+  "name": {
+    "en": "Cheat Manager",
+    "tr": "Hile Yöneticisi",
+    "de": "Cheat-Manager",
+    "fr": "Gestionnaire de triche",
+    "es": "Gestor de trucos",
+    "ko": "치트 관리자"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 980,
+    "height": 620,
+    "minWidth": 420,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

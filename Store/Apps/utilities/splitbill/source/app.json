@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.splitbill",
+  "name": {"en": "Split Bill", "tr": "Hesap Bölüş", "de": "Rechnung teilen", "fr": "Partage de l’addition", "es": "Dividir la cuenta", "ja": "割り勘", "zh": "分账", "ko": "더치페이"},
+  "description": {
+    "en": "Split a restaurant bill fairly: who shared which item, who paid, tip and service, and the fewest transfers to settle up.",
+    "tr": "Hesabı adilce bölüştür: kim hangi kalemi paylaştı, kim ödedi, bahşiş ve servis, ödeşmek için en az sayıda transfer.",
+    "de": "Teile eine Restaurantrechnung fair: wer was geteilt hat, wer bezahlt hat, Trinkgeld und Service und die wenigsten Überweisungen zum Ausgleich.",
+    "fr": "Partagez équitablement une addition au restaurant : qui a partagé quel plat, qui a payé, pourboire et service, et le moins de virements possible pour solder les comptes.",
+    "es": "Divide la cuenta de un restaurante de forma justa: quién compartió cada plato, quién pagó, propina y servicio, y el menor número de transferencias para saldar cuentas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 600, "minWidth": 540, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

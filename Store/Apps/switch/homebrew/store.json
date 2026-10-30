@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "All your .nro apps in one launcher",
+    "tr": "Tüm .nro uygulamaların tek başlatıcıda",
+    "de": "Alle .nro-Apps in einem Launcher",
+    "fr": "Toutes vos apps .nro dans un lanceur",
+    "es": "Todas tus apps .nro en un lanzador",
+    "ja": "すべての .nro アプリをひとつのランチャーに",
+    "zh": "所有 .nro 应用集中在一个启动器中",
+    "ko": "모든 .nro 앱을 하나의 실행기에서"
+  },
+  "description": {
+    "en": "Homebrew finds every .nro program in sdmc:/switch and its folders and shows each one with its real icon, name, author and version, read from the file itself. Launch any of them straight from the desktop, search the list, and sort it the way you like. Icons and details are cached, so the list opens fast even with a big collection.\n\n• Icon grid or detailed list view\n• Sort by name, date modified or size\n• Instant search\n• Launch with one tap through hbloader\n• Get Info with file, location, version and date\n• Show in Files, copy the path or move to the Trash",
+    "tr": "Homebrew, sdmc:/switch ve alt klasörlerindeki tüm .nro programlarını bulur; her birini dosyanın kendisinden okunan gerçek simgesi, adı, yapımcısı ve sürümüyle gösterir. Hepsini doğrudan masaüstünden başlat, listede ara ve istediğin gibi sırala. Simgeler ve bilgiler önbelleğe alınır; koleksiyonun büyük olsa da liste hızla açılır.\n\n• Simge ızgarası ya da ayrıntılı liste görünümü\n• Ada, değiştirilme tarihine ya da boyuta göre sıralama\n• Anında arama\n• hbloader üzerinden tek dokunuşla başlatma\n• Dosya, konum, sürüm ve tarih içeren Bilgi Al\n• Dosyalar'da göster, yolu kopyala ya da Çöp Kutusu'na taşı",
+    "de": "Homebrew findet jedes .nro-Programm in sdmc:/switch und seinen Ordnern und zeigt es mit echtem Symbol, Namen, Autor und Version, direkt aus der Datei gelesen. Starte alles direkt vom Schreibtisch, durchsuche die Liste und sortiere sie nach Wunsch. Symbole und Details werden zwischengespeichert, sodass auch große Sammlungen schnell öffnen.\n\n• Symbolraster oder detaillierte Liste\n• Sortieren nach Name, Änderungsdatum oder Größe\n• Sofortsuche\n• Start mit einem Tipp über hbloader\n• Informationen mit Datei, Ort, Version und Datum\n• In Dateien zeigen, Pfad kopieren oder in den Papierkorb legen",
+    "fr": "Homebrew trouve chaque programme .nro dans sdmc:/switch et ses dossiers et l’affiche avec sa vraie icône, son nom, son auteur et sa version, lus dans le fichier lui-même. Lancez-les directement depuis le bureau, cherchez dans la liste et triez-la à votre goût. Icônes et détails sont mis en cache : la liste s’ouvre vite, même avec une grosse collection.\n\n• Grille d’icônes ou liste détaillée\n• Tri par nom, date de modification ou taille\n• Recherche instantanée\n• Lancement d’un geste via hbloader\n• Lire les informations : fichier, emplacement, version et date\n• Afficher dans Fichiers, copier le chemin ou mettre à la Corbeille",
+    "es": "Homebrew encuentra cada programa .nro en sdmc:/switch y sus carpetas y lo muestra con su icono real, nombre, autor y versión, leídos del propio archivo. Ábrelos directamente desde el escritorio, busca en la lista y ordénala como prefieras. Los iconos y datos se guardan en caché, así que la lista abre rápido aunque tengas una colección grande.\n\n• Cuadrícula de iconos o lista detallada\n• Orden por nombre, fecha de modificación o tamaño\n• Búsqueda instantánea\n• Abre con un toque a través de hbloader\n• Obtener información: archivo, ubicación, versión y fecha\n• Mostrar en Archivos, copiar la ruta o mover a la Papelera",
+    "ja": "Homebrew は sdmc:/switch とそのフォルダにあるすべての .nro プログラムを見つけ、ファイル自体から読み取った本物のアイコン、名前、作者、バージョンとともに表示します。デスクトップから直接起動し、一覧を検索し、好きな順に並べ替えられます。アイコンと詳細はキャッシュされるので、大量のコレクションでも一覧がすばやく開きます。\n\n• アイコングリッドまたは詳細なリスト表示\n• 名前、変更日、サイズで並べ替え\n• 即時検索\n• hbloader 経由でワンタップ起動\n• ファイル、場所、バージョン、日付を表示する「情報を見る」\n• ファイルで表示、パスをコピー、ゴミ箱に入れる",
+    "zh": "自制软件会找出 sdmc:/switch 及其子文件夹中的每个 .nro 程序，并显示从文件本身读取的真实图标、名称、作者和版本。直接从桌面启动任意程序，搜索列表，并按你喜欢的方式排序。图标和详细信息会被缓存，因此即使收藏很多，列表也能快速打开。\n\n• 图标网格或详细列表视图\n• 按名称、修改日期或大小排序\n• 即时搜索\n• 通过 hbloader 一键启动\n• 显示简介，包括文件、位置、版本和日期\n• 在“文件”中显示、复制路径或移到废纸篓",
+    "ko": "홈브루는 sdmc:/switch와 그 하위 폴더의 모든 .nro 프로그램을 찾아 파일 자체에서 읽은 진짜 아이콘, 이름, 제작자, 버전과 함께 보여 줍니다. 데스크톱에서 바로 실행하고, 목록을 검색하고, 원하는 대로 정렬하세요. 아이콘과 정보는 캐시되므로 모음이 많아도 목록이 빠르게 열립니다.\n\n• 아이콘 격자 또는 상세 목록 보기\n• 이름, 수정한 날짜, 크기로 정렬\n• 즉시 검색\n• hbloader를 통해 한 번의 탭으로 실행\n• 파일, 위치, 버전, 날짜가 표시되는 정보 보기\n• 파일에서 보기, 경로 복사, 휴지통으로 이동"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.526 0.046", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

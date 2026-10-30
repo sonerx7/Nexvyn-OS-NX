@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.lavalamp",
+  "name": {"en": "Lava Lamp", "tr": "Lav Lambası", "de": "Lavalampe", "fr": "Lampe à lave", "es": "Lámpara de lava", "ja": "ラバランプ", "zh": "熔岩灯", "ko": "라바 램프"},
+  "description": {
+    "en": "A relaxing lava lamp: glowing wax blobs rise, melt together and sink, with colour themes, soft bubbling sounds and a night-light mode.",
+    "tr": "Rahatlatıcı bir lav lambası: parlayan mum damlaları yükselir, birleşir ve iner; renk temaları, yumuşak fokurtu sesleri ve gece lambası modu.",
+    "de": "Eine entspannende Lavalampe: Leuchtende Wachsblasen steigen auf, verschmelzen und sinken, mit Farbthemen, sanftem Blubbern und Nachtlichtmodus.",
+    "fr": "Une lampe à lave apaisante : des bulles de cire lumineuses montent, fusionnent et redescendent, avec des thèmes de couleurs, de doux gargouillis et un mode veilleuse.",
+    "es": "Una relajante lámpara de lava: burbujas de cera luminosas suben, se funden y bajan, con temas de color, suaves burbujeos y un modo de luz nocturna."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 620, "height": 640, "minWidth": 600, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

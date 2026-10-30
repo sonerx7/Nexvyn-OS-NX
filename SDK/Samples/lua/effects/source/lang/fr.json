@@ -1,0 +1,16 @@
+{
+  "plasma": "Plasma",
+  "tunnel": "Tunnel",
+  "starfield": "Champ d’étoiles",
+  "pal_fire": "Tir",
+  "pal_ocean": "Océan",
+  "pal_neon": "Néon",
+  "pal_rainbow": "Arc-en-ciel",
+  "cell": "Cellule {0} px",
+  "speed": "Vitesse",
+  "cycle": "Faire défiler les couleurs",
+  "info_cells": "{0} cellules · {1} FPS",
+  "info_stars": "{0} étoiles · {1} FPS",
+  "hint": "Faites glisser pour diriger · 1 2 3 changent d’effet",
+  "menu_title": "Effets"
+}

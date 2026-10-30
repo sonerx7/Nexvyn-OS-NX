@@ -1,0 +1,13 @@
+{
+  "roughness": "Rugosidad",
+  "zoom": "Tamaño de los relieves",
+  "water": "Nivel del mar",
+  "flat": "Sombreado low-poly",
+  "new_island": "Nueva isla",
+  "seed": "Semilla {0} · construida en {1} ms",
+  "stats": "{0} triángulos · {1} · {2} FPS",
+  "autopilot": "Piloto automático · muévete o arrastra para tomar el control",
+  "controls": "Stick izquierdo / WASD: volar · stick derecho / flechas / arrastrar: mirar · ZR ZL / E Q: subir y bajar",
+  "autopilot_menu": "Piloto automático",
+  "menu_title": "Terreno"
+}

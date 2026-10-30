@@ -1,0 +1,35 @@
+{
+  "id": "noto-sans-kr",
+  "name": {
+    "en": "Noto Sans KR",
+    "tr": "Noto Sans KR",
+    "de": "Noto Sans KR",
+    "fr": "Noto Sans KR",
+    "es": "Noto Sans KR"
+  },
+  "family": "Noto Sans KR",
+  "styles": {
+    "regular": "NotoSansKR-Regular.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "2.004",
+  "author": "Adobe",
+  "classification": "sans",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Grek",
+    "Viet",
+    "Jpan",
+    "Hang"
+  ],
+  "languages": [
+    "en",
+    "de",
+    "fr",
+    "es",
+    "ja",
+    "ko"
+  ],
+  "cjk": "ko"
+}

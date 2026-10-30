@@ -1,0 +1,35 @@
+{
+  "id": "budget",
+  "name": {
+    "en": "Budget",
+    "tr": "Bütçe",
+    "de": "Budget",
+    "fr": "Budget",
+    "es": "Presupuesto",
+    "ja": "家計簿",
+    "zh": "预算",
+    "ko": "가계부"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 880,
+    "height": 620,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Track income and expenses with charts and CSV export",
+    "tr": "Gelir ve giderlerinizi grafiklerle izleyin, CSV olarak dışa aktarın",
+    "de": "Erfasse Einnahmen und Ausgaben mit Diagrammen und CSV-Export",
+    "fr": "Suivez vos revenus et dépenses avec des graphiques et l’export CSV",
+    "es": "Controla ingresos y gastos con gráficos y exportación CSV"
+  },
+  "permissions": [
+    "notifications"
+  ]
+}

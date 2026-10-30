@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Your RSS and Atom feeds, beautifully",
+    "tr": "RSS ve Atom akışların, şık bir okuyucuda",
+    "de": "Deine RSS- und Atom-Feeds, schön lesbar",
+    "fr": "Vos flux RSS et Atom, joliment présentés",
+    "es": "Tus fuentes RSS y Atom, con estilo",
+    "ja": "RSS と Atom のフィードを美しく",
+    "zh": "精美呈现你的 RSS 和 Atom 订阅源",
+    "ko": "RSS와 Atom 피드를 아름답게"
+  },
+  "description": {
+    "en": "Keep up with the sites you love in one calm reader. News collects articles from your RSS and Atom feeds into Today and Unread views, shows them with pictures and summaries, and opens each one in a clean reading pane. It starts with feeds like BBC, DW, NTV, The Verge and Hacker News, and you can add any site that offers a feed. Articles are saved, so you can keep reading offline.\n\n• Today, Unread and per-source views\n• Article list with images and summaries\n• Clean reading pane, open the full story in the browser\n• Add a feed from its address or from a website\n• Rename or remove sources, mark all as read\n• Search titles and summaries, read offline",
+    "tr": "Sevdiğin siteleri tek ve sakin bir okuyucuda takip et. Haberler, RSS ve Atom akışlarındaki yazıları Bugün ve Okunmamış görünümlerinde toplar, resimleri ve özetleriyle gösterir, her birini sade bir okuma bölmesinde açar. BBC, DW, NTV, The Verge ve Hacker News gibi akışlarla başlar; akış sunan her siteyi ekleyebilirsin. Yazılar kaydedilir, internet yokken de okumaya devam edersin.\n\n• Bugün, Okunmamış ve kaynak bazlı görünümler\n• Resimli ve özetli yazı listesi\n• Sade okuma bölmesi, haberin tamamını tarayıcıda aç\n• Akışı adresinden ya da web sitesinden ekle\n• Kaynakları yeniden adlandır ya da kaldır, tümünü okundu say\n• Başlık ve özetlerde ara, çevrimdışı oku",
+    "de": "Bleib bei deinen Lieblingsseiten auf dem Laufenden, in einem ruhigen Reader. News sammelt Artikel aus deinen RSS- und Atom-Feeds in den Ansichten Heute und Ungelesen, zeigt sie mit Bildern und Zusammenfassungen und öffnet jeden in einer aufgeräumten Leseansicht. Zum Start gibt es Feeds wie BBC, DW, NTV, The Verge und Hacker News, und du kannst jede Seite mit Feed hinzufügen. Artikel werden gespeichert, du liest also auch offline weiter.\n\n• Ansichten Heute, Ungelesen und pro Quelle\n• Artikelliste mit Bildern und Zusammenfassungen\n• Aufgeräumte Leseansicht, ganzer Artikel im Browser\n• Feed per Adresse oder über die Website hinzufügen\n• Quellen umbenennen oder entfernen, alles als gelesen markieren\n• Titel und Zusammenfassungen durchsuchen, offline lesen",
+    "fr": "Suivez vos sites préférés dans un lecteur apaisant. Actualités rassemble les articles de vos flux RSS et Atom dans les vues Aujourd’hui et Non lus, les affiche avec images et résumés, et ouvre chacun dans un volet de lecture épuré. Il démarre avec des flux comme BBC, DW, NTV, The Verge et Hacker News, et vous pouvez ajouter tout site qui propose un flux. Les articles sont enregistrés pour une lecture hors ligne.\n\n• Vues Aujourd’hui, Non lus et par source\n• Liste d’articles avec images et résumés\n• Volet de lecture épuré, article complet dans le navigateur\n• Ajout d’un flux par son adresse ou celle du site\n• Sources renommables ou supprimables, tout marquer comme lu\n• Recherche dans les titres et résumés, lecture hors ligne",
+    "es": "Sigue tus sitios favoritos en un lector tranquilo. Noticias reúne los artículos de tus fuentes RSS y Atom en las vistas Hoy y No leídos, los muestra con imágenes y resúmenes y abre cada uno en un panel de lectura limpio. Empieza con fuentes como BBC, DW, NTV, The Verge y Hacker News, y puedes añadir cualquier web que ofrezca una. Los artículos se guardan, así que sigues leyendo sin conexión.\n\n• Vistas Hoy, No leídos y por fuente\n• Lista de artículos con imágenes y resúmenes\n• Panel de lectura limpio, la noticia completa en el navegador\n• Añade una fuente por su dirección o la de la web\n• Renombra o quita fuentes, marca todo como leído\n• Busca en títulos y resúmenes, lee sin conexión",
+    "ja": "お気に入りのサイトを、落ち着いたひとつのリーダーでチェックしましょう。ニュースは RSS と Atom のフィードから記事を集めて「今日」と「未読」の表示にまとめ、画像と概要とともに表示し、それぞれをすっきりした閲覧ペインで開きます。BBC、DW、NTV、The Verge、Hacker News などのフィードが最初から登録されており、フィードを提供している任意のサイトを追加できます。記事は保存されるので、オフラインでも読み続けられます。\n\n• 今日、未読、ソースごとの表示\n• 画像と概要付きの記事一覧\n• すっきりした閲覧ペイン、全文はブラウザで開く\n• アドレスまたは Web サイトからフィードを追加\n• ソースの名前変更や削除、すべて既読にする\n• タイトルと概要を検索、オフラインで閲覧",
+    "zh": "在一个宁静的阅读器中关注你喜爱的网站。新闻会将你的 RSS 和 Atom 订阅源中的文章汇集到“今天”和“未读”视图，配上图片和摘要，并在简洁的阅读窗格中打开每篇文章。它预置了 BBC、DW、NTV、The Verge 和 Hacker News 等订阅源，你也可以添加任何提供订阅源的网站。文章会被保存，因此离线时也能继续阅读。\n\n• 今天、未读和按来源分类的视图\n• 带图片和摘要的文章列表\n• 简洁的阅读窗格，可在浏览器中打开全文\n• 通过订阅源地址或网站添加订阅源\n• 重命名或移除来源，全部标记为已读\n• 搜索标题和摘要，离线阅读",
+    "ko": "좋아하는 사이트의 소식을 차분한 리더 하나로 따라가세요. 뉴스는 RSS와 Atom 피드의 기사를 오늘과 읽지 않음 보기로 모으고, 사진과 요약과 함께 보여 주며, 각 기사를 깔끔한 읽기 창에서 엽니다. BBC, DW, NTV, The Verge, Hacker News 같은 피드로 시작하며, 피드를 제공하는 어떤 사이트든 추가할 수 있습니다. 기사가 저장되므로 오프라인에서도 계속 읽을 수 있습니다.\n\n• 오늘, 읽지 않음, 소스별 보기\n• 이미지와 요약이 있는 기사 목록\n• 깔끔한 읽기 창, 브라우저에서 전체 기사 열기\n• 주소나 웹사이트에서 피드 추가\n• 소스 이름 변경 또는 제거, 모두 읽음으로 표시\n• 제목과 요약 검색, 오프라인으로 읽기"
+  },
+  "shots": [
+    ["wait 10", "wclick 0.082 0.418", "wait 3"],
+    ["wclick 0.388 0.163", "wait 3"],
+    ["wclick 0.082 0.468", "wait 3", "wclick 0.388 0.163", "wait 3"],
+    ["dark 1", "wclick 0.082 0.518", "wait 3"]
+  ]
+}

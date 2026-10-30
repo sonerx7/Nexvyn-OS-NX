@@ -1,0 +1,8 @@
+{
+  "app": "Dés",
+  "roll": "Lancer",
+  "total": "Total : {0}",
+  "no_history": "Vos lancers s'affichent ici. Touchez un dé pour le garder.",
+  "release_all": "Libérer tous les dés",
+  "clear_history": "Effacer l'historique"
+}

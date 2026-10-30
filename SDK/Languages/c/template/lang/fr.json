@@ -1,0 +1,7 @@
+{
+  "app": "Appli",
+  "hello": "Bonjour le monde !",
+  "edit_me": "Modifiez main.c dans Nexvyn OS Studio et appuyez sur Exécuter (Ctrl+R).",
+  "tap": "Touché {0} fois",
+  "reset": "Remettre à zéro"
+}

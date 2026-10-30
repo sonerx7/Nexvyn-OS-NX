@@ -1,0 +1,53 @@
+{
+  "subtitle": {
+    "en": "Turkish patches for your Switch games",
+    "tr": "Switch oyunların için Türkçe yamalar",
+    "de": "Türkische Patches für deine Switch-Spiele",
+    "fr": "Patchs turcs pour vos jeux Switch",
+    "es": "Parches en turco para tus juegos de Switch",
+    "ja": "Switch ゲーム用トルコ語パッチ",
+    "zh": "Switch 游戏的土耳其语补丁",
+    "ko": "Switch 게임용 터키어 패치"
+  },
+  "description": {
+    "en": "YamaNX finds the Turkish translation patches for the games on your console and installs them with one press. This is the Nexvyn OS port of YamaNX, the Turkish patch installer by SertAy (github.com/sertay1/YamaNX), ported to Lua by Soner Çakır with a new interface for Nexvyn OS windows. Free, no ads, for non-commercial use under the YamaNX license.\n\n• My games: only the games installed on this console that have a Turkish patch\n• More than 700 patches by Swatalk, Soner Çakır, Profesör Pikachu, Dede00 and many other translators, each credited in the patch details\n• Install with a progress bar: download, extract and copy to sdmc:/atmosphere/contents/<Title ID>/\n• Updates when a newer patch is in the list; uninstall removes exactly the files it installed and puts replaced files back\n• Installed badges, version check against your game, search by name or Title ID, cover pictures\n• Compatible with YamaNX itself: patches installed by either one are recognised by the other\n• Gamepad, touch and keyboard; Turkish, English, German, French and Spanish\n\nNeeds Atmosphère for the patches to load. The patches belong to their translators.",
+    "tr": "YamaNX, konsolundaki oyunların Türkçe yamalarını bulur ve tek tuşla kurar. Bu, SertAy'ın Türkçe yama yükleyicisi YamaNX'in (github.com/sertay1/YamaNX) Nexvyn OS uyarlamasıdır; Soner Çakır tarafından Lua'ya taşındı ve Nexvyn OS pencereleri için yeni bir arayüz kazandı. Ücretsizdir, reklam yoktur; YamaNX lisansı gereği ticari olmayan kullanım içindir.\n\n• Oyunlarım: bu konsolda yüklü olup Türkçe yaması bulunan oyunlar\n• Swatalk, Soner Çakır, Profesör Pikachu, Dede00 ve daha pek çok çevirmenden 700'den fazla yama; her yamanın ayrıntısında çevirmeni yazar\n• İlerleme çubuğuyla kurulum: indir, zipten çıkar, sdmc:/atmosphere/contents/<Title ID>/ içine kopyala\n• Listede daha yeni bir yama varsa güncelleme; kaldırma yalnızca kurduğu dosyaları siler ve değiştirdiği dosyaları geri koyar\n• Yüklü rozetleri, oyun sürümüyle uyum kontrolü, ada ya da Title ID'ye göre arama, kapak resimleri\n• YamaNX ile uyumlu: birinin kurduğu yamayı diğeri de tanır\n• Kumanda, dokunmatik ekran ve klavye; Türkçe, İngilizce, Almanca, Fransızca ve İspanyolca\n\nYamaların yüklenmesi için Atmosphère gerekir. Yamalar çevirmenlerine aittir.",
+    "de": "YamaNX findet die türkischen Übersetzungspatches für die Spiele auf deiner Konsole und installiert sie mit einem Tastendruck. Dies ist die Nexvyn-OS-Portierung von YamaNX, dem Installer für türkische Patches von SertAy (github.com/sertay1/YamaNX), von Soner Çakır nach Lua portiert, mit neuer Oberfläche für Nexvyn-OS-Fenster. Kostenlos, ohne Werbung, für nicht-kommerzielle Nutzung gemäß der YamaNX-Lizenz.\n\n• Meine Spiele: nur die auf dieser Konsole installierten Spiele mit türkischem Patch\n• Über 700 Patches von Swatalk, Soner Çakır, Profesör Pikachu, Dede00 und vielen weiteren Übersetzern, jeweils in den Details genannt\n• Installation mit Fortschrittsanzeige: laden, entpacken, nach sdmc:/atmosphere/contents/<Title ID>/ kopieren\n• Updates, wenn ein neuerer Patch in der Liste steht; Entfernen löscht genau die installierten Dateien und legt ersetzte Dateien zurück\n• Installiert-Abzeichen, Versionsprüfung gegen dein Spiel, Suche nach Name oder Title ID, Coverbilder\n• Kompatibel mit YamaNX selbst: Patches des einen werden vom anderen erkannt\n• Controller, Touch und Tastatur; Türkisch, Englisch, Deutsch, Französisch und Spanisch\n\nDamit Patches geladen werden, ist Atmosphère nötig. Die Patches gehören ihren Übersetzern.",
+    "fr": "YamaNX trouve les patchs de traduction turque des jeux de votre console et les installe d'une seule pression. Voici le portage pour Nexvyn OS de YamaNX, l'installateur de patchs turcs de SertAy (github.com/sertay1/YamaNX), porté en Lua par Soner Çakır avec une nouvelle interface pour les fenêtres de Nexvyn OS. Gratuit, sans publicité, pour un usage non commercial selon la licence de YamaNX.\n\n• Mes jeux : uniquement les jeux installés sur cette console qui ont un patch turc\n• Plus de 700 patchs de Swatalk, Soner Çakır, Profesör Pikachu, Dede00 et bien d'autres traducteurs, crédités dans les détails de chaque patch\n• Installation avec barre de progression : téléchargement, extraction et copie dans sdmc:/atmosphere/contents/<Title ID>/\n• Mises à jour quand un patch plus récent est dans la liste ; la suppression efface exactement les fichiers installés et remet en place ceux qui avaient été remplacés\n• Badges Installé, vérification de version avec votre jeu, recherche par nom ou Title ID, jaquettes\n• Compatible avec YamaNX : les patchs installés par l'un sont reconnus par l'autre\n• Manette, écran tactile et clavier ; turc, anglais, allemand, français et espagnol\n\nAtmosphère est nécessaire pour charger les patchs. Les patchs appartiennent à leurs traducteurs.",
+    "es": "YamaNX encuentra los parches de traducción al turco de los juegos de tu consola y los instala con un botón. Esta es la adaptación a Nexvyn OS de YamaNX, el instalador de parches turcos de SertAy (github.com/sertay1/YamaNX), llevada a Lua por Soner Çakır con una interfaz nueva para las ventanas de Nexvyn OS. Gratis, sin anuncios, para uso no comercial según la licencia de YamaNX.\n\n• Mis juegos: solo los juegos instalados en esta consola que tienen parche en turco\n• Más de 700 parches de Swatalk, Soner Çakır, Profesör Pikachu, Dede00 y muchos otros traductores, cada uno acreditado en los detalles\n• Instalación con barra de progreso: descarga, extracción y copia en sdmc:/atmosphere/contents/<Title ID>/\n• Actualizaciones cuando la lista trae un parche más nuevo; al quitarlo se borran exactamente los archivos instalados y se restauran los sustituidos\n• Insignias de instalado, comprobación de versión con tu juego, búsqueda por nombre o Title ID, portadas\n• Compatible con YamaNX: los parches instalados por uno los reconoce el otro\n• Mando, pantalla táctil y teclado; turco, inglés, alemán, francés y español\n\nHace falta Atmosphère para que los parches se carguen. Los parches pertenecen a sus traductores.",
+    "ja": "YamaNX は、本体のゲーム向けのトルコ語翻訳パッチを見つけ、ボタンひとつでインストールします。これは、SertAy によるトルコ語パッチインストーラー YamaNX (github.com/sertay1/YamaNX) を、Soner Çakır が Nexvyn OS のウィンドウ向けの新しいインターフェイスとともに Lua に移植した Nexvyn OS 版です。無料、広告なし、YamaNX のライセンスに基づく非商用利用のみ。\n\n• マイゲーム: この本体にインストールされ、トルコ語パッチのあるゲームのみ\n• Swatalk、Soner Çakır、Profesör Pikachu、Dede00 をはじめ多くの翻訳者による 700 以上のパッチ。各パッチの詳細にクレジットを表示\n• 進捗バー付きのインストール: ダウンロード、展開、sdmc:/atmosphere/contents/<Title ID>/ へのコピー\n• リストに新しいパッチがあればアップデート。アンインストールではインストールしたファイルだけを削除し、置き換えたファイルを元に戻す\n• インストール済みのバッジ、ゲームとのバージョンチェック、名前やタイトル ID での検索、カバー画像\n• YamaNX 本体と互換: どちらでインストールしたパッチも互いに認識\n• ゲームパッド、タッチ、キーボード。トルコ語、英語、ドイツ語、フランス語、スペイン語\n\nパッチを読み込むには Atmosphère が必要です。パッチはそれぞれの翻訳者に帰属します。",
+    "zh": "YamaNX 会为你主机上的游戏查找土耳其语翻译补丁，按一下即可安装。这是 YamaNX 的 Nexvyn OS 移植版：YamaNX 是 SertAy 制作的土耳其语补丁安装器（github.com/sertay1/YamaNX），由 Soner Çakır 移植到 Lua，并为 Nexvyn OS 窗口设计了新界面。免费、无广告，依照 YamaNX 许可证仅供非商业用途。\n\n• 我的游戏：只显示此主机上已安装且有土耳其语补丁的游戏\n• 来自 Swatalk、Soner Çakır、Profesör Pikachu、Dede00 以及许多其他译者的 700 多个补丁，每个补丁的详细信息中都注明了译者\n• 带进度条的安装：下载、解压并复制到 sdmc:/atmosphere/contents/<Title ID>/\n• 列表中有更新的补丁时可以更新；卸载会准确移除它安装的文件，并放回被替换的文件\n• 已安装标记、与你的游戏版本比对、按名称或 Title ID 搜索、封面图片\n• 与 YamaNX 本身兼容：任意一方安装的补丁都能被另一方识别\n• 支持手柄、触控和键盘；土耳其语、英语、德语、法语和西班牙语\n\n补丁需要 Atmosphère 才能载入。补丁归其译者所有。",
+    "ko": "YamaNX는 콘솔에 있는 게임의 터키어 번역 패치를 찾아 한 번에 설치합니다. 이것은 SertAy의 터키어 패치 설치 프로그램인 YamaNX(github.com/sertay1/YamaNX)를 Soner Çakır가 Nexvyn OS 창을 위한 새 인터페이스와 함께 Lua로 이식한 Nexvyn OS판입니다. 광고 없이 무료이며, YamaNX 라이선스에 따라 비상업적 용도로만 사용할 수 있습니다.\n\n• 내 게임: 이 콘솔에 설치된 게임 중 터키어 패치가 있는 게임만\n• Swatalk, Soner Çakır, Profesör Pikachu, Dede00 및 많은 번역가가 만든 700개 이상의 패치, 패치 세부 정보에 각 번역가 표기\n• 진행 막대와 함께 설치: 다운로드, 압축 풀기, sdmc:/atmosphere/contents/<Title ID>/에 복사\n• 목록에 새 패치가 있으면 업데이트, 제거하면 설치한 파일만 정확히 지우고 대체한 파일은 원래대로 복원\n• 설치됨 배지, 게임 버전 확인, 이름이나 Title ID 검색, 표지 사진\n• YamaNX 자체와 호환: 어느 쪽으로 설치한 패치든 서로 인식\n• 게임패드, 터치, 키보드, 터키어, 영어, 독일어, 프랑스어, 스페인어\n\n패치를 불러오려면 Atmosphère가 필요합니다. 패치는 각 번역가의 것입니다."
+  },
+  "shots": [
+    [
+      "wait 5",
+      "wclick 0.2 0.134",
+      "wait 2",
+      "key down",
+      "key down",
+      "key down",
+      "wait 3"
+    ],
+    [
+      "wclick 0.79 0.048",
+      "wait 0.5",
+      "text mario",
+      "wait 3"
+    ],
+    [
+      "key escape",
+      "wclick 0.3 0.5",
+      "wait 0.5",
+      "key tab",
+      "key tab",
+      "wait 2"
+    ],
+    [
+      "key tab",
+      "key tab",
+      "dark 1",
+      "wait 3"
+    ]
+  ]
+}

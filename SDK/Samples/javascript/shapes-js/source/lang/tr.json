@@ -1,0 +1,21 @@
+{
+  "cube": "Küp",
+  "box": "Kutu",
+  "sphere": "Küre",
+  "cylinder": "Silindir",
+  "cone": "Koni",
+  "torus": "Simit",
+  "plane": "Düzlem",
+  "tex_none": "Renk",
+  "tex_grid": "UV ızgara",
+  "tex_stripes": "Şerit",
+  "tex_dots": "Benek",
+  "wire": "Tel kafes",
+  "auto": "Dokuları değiştir",
+  "intro": "Giriş",
+  "triangles": "{0} üçgen",
+  "stats": "{0} üçgen · {1} FPS",
+  "status_intro": "Giriş oynuyor (await timer.sleep)",
+  "status_ready": "Bir şekli seçmek için etiketine dokun",
+  "menu_title": "Şekiller"
+}

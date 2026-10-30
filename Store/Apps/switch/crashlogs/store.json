@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "Find out why something crashed",
+    "tr": "Bir şey neden çöktü, öğren",
+    "de": "Finde heraus, warum etwas abstürzte",
+    "fr": "Comprenez pourquoi un plantage a eu lieu",
+    "es": "Descubre por qué algo se ha cerrado",
+    "ja": "何がクラッシュの原因かを突き止める",
+    "zh": "找出崩溃的原因",
+    "ko": "무엇이 왜 충돌했는지 알아보세요"
+  },
+  "description": {
+    "en": "When a game, homebrew or the whole system crashes, Atmosphère writes a report to the SD card. Crash Reports gathers them in one list and translates the cryptic error codes into plain language, so you can tell whether a damaged SD card, an outdated sysmodule or a broken mod is to blame. Export the reports you need and clean up the rest.\n\n• Program crashes, fatal errors and error reports in one list\n• Filter by type and search by program or code\n• Error codes explained in plain language\n• Program, firmware and date for every report\n• Open as text or export to Documents\n• Delete reports older than 30 days in one go",
+    "tr": "Bir oyun, homebrew ya da tüm sistem çöktüğünde Atmosphère SD karta bir rapor yazar. Çökme Raporları bunları tek listede toplar ve anlaşılmaz hata kodlarını sade bir dile çevirir; böylece suçun bozuk bir SD kartta mı, güncel olmayan bir sysmodule'de mi yoksa hatalı bir modda mı olduğunu anlarsın. İhtiyacın olan raporları dışa aktar, gerisini temizle.\n\n• Program çökmeleri, ölümcül hatalar ve hata raporları tek listede\n• Türe göre süz, programa ya da koda göre ara\n• Hata kodları sade bir dille açıklanır\n• Her rapor için program, sistem sürümü ve tarih\n• Metin olarak aç ya da Belgeler'e aktar\n• 30 günden eski raporları tek seferde sil",
+    "de": "Stürzt ein Spiel, ein Homebrew oder das ganze System ab, schreibt Atmosphère einen Bericht auf die SD-Karte. Absturzberichte sammelt sie in einer Liste und übersetzt die kryptischen Fehlercodes in verständliche Sprache, damit du erkennst, ob eine beschädigte SD-Karte, ein veraltetes Sysmodule oder ein kaputter Mod schuld ist. Exportiere, was du brauchst, und räum den Rest auf.\n\n• Programmabstürze, fatale Fehler und Fehlerberichte in einer Liste\n• Nach Art filtern, nach Programm oder Code suchen\n• Fehlercodes verständlich erklärt\n• Programm, Firmware und Datum zu jedem Bericht\n• Als Text öffnen oder in Dokumente exportieren\n• Berichte älter als 30 Tage auf einmal löschen",
+    "fr": "Quand un jeu, un homebrew ou tout le système plante, Atmosphère écrit un rapport sur la carte SD. Rapports de plantage les réunit dans une liste et traduit les codes d’erreur obscurs en langage clair : vous savez si la faute revient à une carte SD abîmée, à un sysmodule obsolète ou à un mod défectueux. Exportez les rapports utiles et faites le ménage dans les autres.\n\n• Plantages de programmes, erreurs fatales et rapports d’erreur réunis\n• Filtre par type et recherche par programme ou code\n• Codes d’erreur expliqués simplement\n• Programme, firmware et date pour chaque rapport\n• Ouverture en texte ou export dans Documents\n• Suppression des rapports de plus de 30 jours en une fois",
+    "es": "Cuando un juego, un homebrew o todo el sistema falla, Atmosphère escribe un informe en la tarjeta SD. Informes de fallos los reúne en una lista y traduce los códigos de error crípticos a un lenguaje claro, para que sepas si la culpa es de una tarjeta SD dañada, un sysmodule desactualizado o un mod roto. Exporta los informes que necesites y limpia el resto.\n\n• Cierres de programas, errores fatales e informes de error en una lista\n• Filtra por tipo y busca por programa o código\n• Códigos de error explicados con claridad\n• Programa, firmware y fecha de cada informe\n• Ábrelo como texto o expórtalo a Documentos\n• Borra de una vez los informes de más de 30 días",
+    "ja": "ゲーム、homebrew、またはシステム全体がクラッシュすると、Atmosphère が SD カードにレポートを書き込みます。クラッシュレポートはそれらをひとつのリストにまとめ、暗号のようなエラーコードをわかりやすい言葉に置き換えるので、SD カードの破損、古い sysmodule、壊れた Mod のどれが原因かがわかります。必要なレポートを書き出し、残りは整理しましょう。\n\n• プログラムのクラッシュ、致命的エラー、エラーレポートをひとつのリストに\n• 種類で絞り込み、プログラムやコードで検索\n• わかりやすい言葉で説明されるエラーコード\n• 各レポートのプログラム、ファームウェア、日付\n• テキストとして開く、または書類に書き出し\n• 30 日より前のレポートを一度に削除",
+    "zh": "当游戏、自制软件或整个系统崩溃时，Atmosphère 会将报告写入 SD 卡。崩溃报告把它们汇集到一个列表中，并将晦涩的错误代码翻译成通俗的语言，让你分辨问题出在损坏的 SD 卡、过时的系统模块还是有问题的模组。导出你需要的报告，清理其余的。\n\n• 程序崩溃、致命错误和错误报告集中在一个列表中\n• 按类型筛选，按程序或代码搜索\n• 用通俗语言解释错误代码\n• 每份报告的程序、固件和日期\n• 以文本打开或导出到“文稿”\n• 一次删除超过 30 天的报告",
+    "ko": "게임, 홈브루 또는 시스템 전체가 충돌하면 Atmosphère가 SD 카드에 보고서를 작성합니다. 충돌 보고서는 이를 한 목록에 모으고 알기 어려운 오류 코드를 쉬운 말로 풀어 주어, 손상된 SD 카드, 오래된 sysmodule, 잘못된 모드 중 무엇이 원인인지 알 수 있게 합니다. 필요한 보고서는 내보내고 나머지는 정리하세요.\n\n• 프로그램 충돌, 치명적 오류, 오류 보고서를 한 목록에\n• 유형별 필터, 프로그램이나 코드로 검색\n• 쉬운 말로 설명된 오류 코드\n• 보고서마다 프로그램, 펌웨어, 날짜\n• 텍스트로 열기 또는 문서로 내보내기\n• 30일이 지난 보고서를 한 번에 삭제"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.328 0.123",
+      "wait 0.5",
+      "wclick 0.5 0.21",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

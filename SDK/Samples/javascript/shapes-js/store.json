@@ -1,0 +1,41 @@
+{
+  "kind": "demo",
+  "tags": [
+    "g3d",
+    "3d",
+    "textures",
+    "async"
+  ],
+  "subtitle": {
+    "en": "Every g3d primitive in JavaScript",
+    "tr": "JavaScript ile tüm g3d temel şekilleri",
+    "de": "Alle g3d-Grundformen in JavaScript",
+    "fr": "Toutes les primitives g3d en JavaScript",
+    "es": "Todas las primitivas de g3d en JavaScript",
+    "ja": "JavaScript で g3d のすべてのプリミティブ",
+    "zh": "用 JavaScript 展示所有 g3d 基本体",
+    "ko": "JavaScript로 보는 모든 g3d 기본 도형"
+  },
+  "description": {
+    "en": "The seven g3d primitives on a turntable: textures with mesh.setTexture, wireframe, clickable labels placed with g3d.project and an intro animation written with async/await and timer.sleep. A good first look at 3D in JavaScript.",
+    "tr": "Yedi g3d temel şekli bir döner tabla üzerinde: mesh.setTexture ile dokular, tel kafes, g3d.project ile yerleştirilen tıklanabilir etiketler ve async/await ile timer.sleep kullanılarak yazılmış giriş animasyonu. JavaScript ile 3D'ye iyi bir ilk bakış.",
+    "de": "Die sieben g3d-Grundformen auf einem Drehteller: Texturen mit mesh.setTexture, Drahtgitter, mit g3d.project platzierte klickbare Beschriftungen und eine Intro-Animation mit async/await und timer.sleep. Ein guter erster Blick auf 3D in JavaScript.",
+    "fr": "Les sept primitives g3d sur un plateau tournant : textures avec mesh.setTexture, fil de fer, étiquettes cliquables placées avec g3d.project et une animation d'intro écrite avec async/await et timer.sleep. Une bonne première approche de la 3D en JavaScript.",
+    "es": "Las siete primitivas de g3d en un plato giratorio: texturas con mesh.setTexture, alambre, etiquetas clicables situadas con g3d.project y una animación de entrada escrita con async/await y timer.sleep. Un buen primer vistazo al 3D en JavaScript.",
+    "ja": "ターンテーブルの上の 7 つの g3d プリミティブ: mesh.setTexture によるテクスチャ、ワイヤーフレーム、g3d.project で配置したクリックできるラベル、そして async/await と timer.sleep で書いたイントロアニメーション。JavaScript での 3D の最初の一歩に最適です。",
+    "zh": "转台上的七种 g3d 基本体：使用 mesh.setTexture 的纹理、线框、用 g3d.project 放置的可点按标签，以及用 async/await 和 timer.sleep 编写的开场动画。是初次了解 JavaScript 3D 的好例子。",
+    "ko": "회전대 위의 g3d 기본 도형 7개: mesh.setTexture로 입힌 텍스처, 와이어프레임, g3d.project로 배치한 클릭할 수 있는 레이블, async/await와 timer.sleep으로 작성한 인트로 애니메이션. JavaScript로 3D를 처음 살펴보기에 좋습니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

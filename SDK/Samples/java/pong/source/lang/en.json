@@ -1,0 +1,11 @@
+{
+  "game": "Game",
+  "serve": "Serve",
+  "paused": "Paused",
+  "you_win": "You win!",
+  "you_lose": "The console wins",
+  "hint": "A, Enter or a tap to serve · stick, D-pad, arrows or drag to move",
+  "wins": "Games won: {0}",
+  "new_game": "New game",
+  "reset_wins": "Reset wins"
+}

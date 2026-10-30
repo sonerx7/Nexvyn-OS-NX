@@ -1,0 +1,7 @@
+{
+  "app": "Appli",
+  "hello": "Bonjour le monde !",
+  "edit_me": "Modifiez src/app/Main.java, recompilez app.jar sur le PC et relancez l'appli.",
+  "tap": "Touché {0} fois",
+  "reset": "Remettre à zéro"
+}

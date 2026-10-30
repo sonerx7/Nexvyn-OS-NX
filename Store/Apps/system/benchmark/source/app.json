@@ -1,0 +1,33 @@
+{
+  "id": "benchmark",
+  "name": {
+    "en": "Benchmark",
+    "tr": "Performans Testi",
+    "de": "Benchmark",
+    "fr": "Benchmark",
+    "es": "Benchmark",
+    "ja": "ベンチマーク",
+    "zh": "基准测试",
+    "ko": "벤치마크"
+  },
+  "description": {
+    "en": "Escalating 3D scenes measure frame rate and frame time, compute a score and keep a history.",
+    "tr": "Giderek ağırlaşan 3D sahnelerle kare hızını ve kare süresini ölçer, puan verir ve geçmişi saklar.",
+    "de": "Immer anspruchsvollere 3D-Szenen messen Bildrate und Frame-Zeit, berechnen eine Punktzahl und führen einen Verlauf.",
+    "fr": "Des scènes 3D de plus en plus lourdes mesurent la fréquence d’images et le temps par image, calculent un score et conservent un historique.",
+    "es": "Escenas 3D cada vez más exigentes miden la tasa de fotogramas y el tiempo por fotograma, calculan una puntuación y guardan un historial."
+  },
+  "category": "system",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 820,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": []
+}

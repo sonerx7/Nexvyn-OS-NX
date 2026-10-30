@@ -1,0 +1,21 @@
+{
+  "cube": "Cube",
+  "box": "Box",
+  "sphere": "Sphere",
+  "cylinder": "Cylinder",
+  "cone": "Cone",
+  "torus": "Torus",
+  "plane": "Plane",
+  "tex_none": "Colour",
+  "tex_grid": "UV grid",
+  "tex_stripes": "Stripes",
+  "tex_dots": "Dots",
+  "wire": "Wireframe",
+  "auto": "Cycle textures",
+  "intro": "Intro",
+  "triangles": "{0} triangles",
+  "stats": "{0} triangles · {1} FPS",
+  "status_intro": "Intro running (await timer.sleep)",
+  "status_ready": "Tap a label to select a shape",
+  "menu_title": "Shapes"
+}

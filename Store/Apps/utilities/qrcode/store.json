@@ -1,0 +1,46 @@
+{
+  "subtitle": {
+    "en": "QR codes for text, links and Wi-Fi",
+    "tr": "Metin, bağlantı ve Wi-Fi için QR kod",
+    "de": "QR-Codes für Text, Links und WLAN",
+    "fr": "Codes QR pour texte, liens et Wi-Fi",
+    "es": "Códigos QR para texto, enlaces y Wi-Fi",
+    "ja": "テキスト、リンク、Wi-Fi の QR コード",
+    "zh": "为文本、链接和 Wi-Fi 生成二维码",
+    "ko": "텍스트, 링크, Wi-Fi용 QR 코드"
+  },
+  "description": {
+    "en": "Make a QR code from any text, a web address or your Wi-Fi details, and show it on the screen for a phone to scan. The code is redrawn as you type, together with its version, size and how much data it holds. Guests can join your Wi-Fi without typing a long password.\n\n• Text, link (https:// added when missing) and Wi-Fi modes\n• Wi-Fi with WPA/WPA2, WEP or an open network, plus hidden networks\n• Error correction levels L, M, Q and H, up to version 10\n• Save the code as text art in Documents\n• Copy the encoded content",
+    "tr": "Herhangi bir metinden, bir web adresinden ya da Wi-Fi bilgilerinden QR kod oluştur, telefonun okutması için ekranda göster. Sen yazdıkça kod; sürümü, boyutu ve taşıdığı veri miktarıyla birlikte yeniden çizilir. Misafirlerin uzun bir şifre yazmadan Wi-Fi'na bağlanır.\n\n• Metin, bağlantı (eksikse https:// eklenir) ve Wi-Fi modları\n• WPA/WPA2, WEP ya da açık ağ ve gizli ağ desteğiyle Wi-Fi\n• L, M, Q ve H hata düzeltme seviyeleri, 10. sürüme kadar\n• Kodu Belgeler'e metin sanatı olarak kaydet\n• Kodlanan içeriği kopyala",
+    "de": "Erstelle einen QR-Code aus beliebigem Text, einer Webadresse oder deinen WLAN-Daten und zeige ihn zum Scannen mit dem Handy auf dem Bildschirm. Der Code wird beim Tippen neu gezeichnet, samt Version, Größe und Datenmenge. Gäste kommen in dein WLAN, ohne ein langes Passwort abzutippen.\n\n• Modi für Text, Link (https:// wird ergänzt) und WLAN\n• WLAN mit WPA/WPA2, WEP oder offenem Netz, auch versteckte Netze\n• Fehlerkorrektur L, M, Q und H, bis Version 10\n• Code als Textgrafik in Dokumente speichern\n• Kodierten Inhalt kopieren",
+    "fr": "Créez un code QR à partir d’un texte, d’une adresse web ou de vos informations Wi-Fi, et affichez-le à l’écran pour qu’un téléphone le scanne. Le code se redessine pendant la saisie, avec sa version, sa taille et la quantité de données. Vos invités rejoignent votre Wi-Fi sans taper un long mot de passe.\n\n• Modes texte, lien (https:// ajouté si besoin) et Wi-Fi\n• Wi-Fi WPA/WPA2, WEP ou réseau ouvert, réseaux masqués compris\n• Niveaux de correction d’erreur L, M, Q et H, jusqu’à la version 10\n• Enregistrement du code en art texte dans Documents\n• Copie du contenu encodé",
+    "es": "Crea un código QR a partir de cualquier texto, una dirección web o los datos de tu Wi-Fi y muéstralo en pantalla para que un móvil lo escanee. El código se redibuja mientras escribes, con su versión, su tamaño y los datos que contiene. Tus invitados se conectan a tu Wi-Fi sin teclear una contraseña larga.\n\n• Modos de texto, enlace (se añade https:// si falta) y Wi-Fi\n• Wi-Fi con WPA/WPA2, WEP o red abierta, también redes ocultas\n• Niveles de corrección de errores L, M, Q y H, hasta la versión 10\n• Guarda el código como arte de texto en Documentos\n• Copia el contenido codificado",
+    "ja": "任意のテキスト、Web アドレス、Wi-Fi の情報から QR コードを作成し、画面に表示してスマートフォンで読み取れます。入力と同時にコードが描き直され、バージョン、サイズ、データ量も表示されます。来客は長いパスワードを入力せずに Wi-Fi に接続できます。\n\n• テキスト、リンク (https:// がなければ自動で追加)、Wi-Fi のモード\n• WPA/WPA2、WEP、オープンネットワーク、非公開のネットワークに対応した Wi-Fi\n• 誤り訂正レベル L、M、Q、H、バージョン 10 まで\n• コードをテキストアートとして書類に保存\n• エンコードした内容をコピー",
+    "zh": "用任意文本、网址或你的 Wi-Fi 信息生成二维码，并显示在屏幕上供手机扫描。二维码会随着你的输入实时重绘，同时显示其版本、尺寸和所含数据量。访客无需输入冗长的密码就能连上你的 Wi-Fi。\n\n• 文本、链接（缺少时自动添加 https://）和 Wi-Fi 模式\n• 支持 WPA/WPA2、WEP 或开放网络的 Wi-Fi，以及隐藏网络\n• 纠错等级 L、M、Q 和 H，最高版本 10\n• 将二维码以文本图形式保存到“文稿”\n• 复制编码的内容",
+    "ko": "어떤 텍스트, 웹 주소, Wi-Fi 정보로든 QR 코드를 만들어 화면에 띄우고 휴대폰으로 스캔하세요. 입력하는 동안 코드가 다시 그려지며 버전, 크기, 담긴 데이터 양이 함께 표시됩니다. 손님은 긴 암호를 입력하지 않고도 Wi-Fi에 연결할 수 있습니다.\n\n• 텍스트, 링크(https://가 없으면 추가), Wi-Fi 모드\n• WPA/WPA2, WEP 또는 개방형 네트워크와 숨겨진 네트워크를 지원하는 Wi-Fi\n• 버전 10까지 오류 정정 수준 L, M, Q, H\n• 코드를 텍스트 아트로 문서에 저장\n• 인코딩된 내용 복사"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key tab",
+      "wait 1.5"
+    ],
+    [
+      "key tab",
+      "wait 0.6",
+      "wclick 0.238 0.237",
+      "wait 0.3",
+      "text Nexvyn Home",
+      "wclick 0.212 0.443",
+      "wait 0.3",
+      "text switch2026",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

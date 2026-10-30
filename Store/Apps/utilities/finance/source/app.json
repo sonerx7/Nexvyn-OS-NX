@@ -1,0 +1,33 @@
+{
+  "id": "finance",
+  "name": {
+    "en": "Finance Calculator",
+    "tr": "Finans Hesaplayıcı",
+    "de": "Finanzrechner",
+    "fr": "Calculateur financier",
+    "es": "Calculadora financiera",
+    "ja": "金融計算機",
+    "zh": "金融计算器",
+    "ko": "금융 계산기"
+  },
+  "description": {
+    "en": "Loan and mortgage with an amortization table, compound interest with a growth chart, percentages and VAT.",
+    "tr": "Ödeme tablolu kredi ve konut kredisi, büyüme grafikli bileşik faiz, yüzde ve KDV hesapları.",
+    "de": "Kredit und Hypothek mit Tilgungsplan, Zinseszins mit Wachstumsdiagramm, Prozente und Mehrwertsteuer.",
+    "fr": "Prêt et crédit immobilier avec tableau d’amortissement, intérêts composés avec graphique de croissance, pourcentages et TVA.",
+    "es": "Préstamos e hipotecas con tabla de amortización, interés compuesto con gráfico de crecimiento, porcentajes e IVA."
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 640,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": []
+}

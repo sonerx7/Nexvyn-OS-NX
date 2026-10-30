@@ -1,0 +1,13 @@
+{
+  "app": "Tip Splitter",
+  "bill": "Bill",
+  "tip": "Tip",
+  "people": "People",
+  "round_up": "Round up",
+  "tip_amount": "Tip",
+  "total": "Total",
+  "each": "Each person pays",
+  "share": "Share",
+  "share_text": "Total {0} for {1} people: {2} each",
+  "clear": "Clear the bill"
+}

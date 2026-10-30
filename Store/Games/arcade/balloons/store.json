@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Pop the balloons, never the bombs",
+    "tr": "Balonları patlat, bombalara dokunma",
+    "de": "Lass Ballons platzen, aber keine Bomben",
+    "fr": "Éclatez les ballons, jamais les bombes",
+    "es": "Revienta globos, pero nunca las bombas",
+    "ja": "風船を割ろう、爆弾は割らないで",
+    "zh": "戳破气球，千万别碰炸弹",
+    "ko": "풍선은 터뜨리고, 폭탄은 피하세요"
+  },
+  "description": {
+    "en": "Balloons float up from the bottom of the screen: pop them before they drift away. Chain quick pops into combos, go for golden balloons worth extra points, freeze everything with an ice balloon and burst whole groups with a blast balloon. Heart balloons give back a life, but pop a bomb and you lose one. Tap, click or move a crosshair with the controller.\n\n• Golden, ice, blast and heart balloons\n• Bombs to avoid and five lives\n• Combo chains for fast popping\n• Touch, mouse, controller and keyboard\n• Your best score is saved",
+    "tr": "Balonlar ekranın altından yükseliyor: uçup gitmeden patlat. Art arda hızlı patlatmalarla kombo yap, ekstra puan getiren altın balonları kovala, buz balonuyla her şeyi dondur, patlama balonuyla bütün bir grubu uçur. Kalpli balon can geri verir ama bir bombayı patlatırsan can kaybedersin. Dokun, tıkla ya da kumandayla nişangâhı gezdir.\n\n• Altın, buz, patlama ve kalpli balonlar\n• Kaçınman gereken bombalar ve beş can\n• Hızlı patlatmalara kombo zinciri\n• Dokunmatik, fare, kumanda ve klavye\n• En iyi skorun kaydedilir",
+    "de": "Ballons steigen vom unteren Bildschirmrand auf: Bring sie zum Platzen, bevor sie davonschweben. Reihe schnelle Treffer zu Combos aneinander, jag goldene Ballons für Extrapunkte, friere mit einem Eisballon alles ein und sprenge ganze Gruppen mit einem Explosionsballon. Herzballons geben dir ein Leben zurück, aber triffst du eine Bombe, verlierst du eins. Tippe, klicke oder steuere ein Fadenkreuz mit dem Controller.\n\n• Goldene, Eis-, Explosions- und Herzballons\n• Bomben, die du meiden musst, und fünf Leben\n• Combo-Ketten für schnelles Platzenlassen\n• Touch, Maus, Controller und Tastatur\n• Dein Highscore wird gespeichert",
+    "fr": "Des ballons montent du bas de l’écran : éclatez-les avant qu’ils ne s’envolent. Enchaînez les éclatements rapides en combos, visez les ballons dorés qui rapportent davantage, figez tout avec un ballon de glace et faites sauter des groupes entiers avec un ballon explosif. Les ballons cœur vous rendent une vie, mais éclater une bombe vous en coûte une. Touchez, cliquez ou déplacez un viseur à la manette.\n\n• Ballons dorés, de glace, explosifs et cœurs\n• Des bombes à éviter et cinq vies\n• Des combos pour les éclatements rapides\n• Tactile, souris, manette et clavier\n• Votre meilleur score est enregistré",
+    "es": "Los globos suben desde abajo: revientalos antes de que se escapen. Encadena reventones rápidos en combos, busca los globos dorados que dan puntos extra, congélalo todo con un globo de hielo y haz estallar grupos enteros con un globo explosivo. Los globos de corazón te devuelven una vida, pero si revientas una bomba, pierdes una. Toca, haz clic o mueve una mira con el mando.\n\n• Globos dorados, de hielo, explosivos y de corazón\n• Bombas que evitar y cinco vidas\n• Combos por reventar rápido\n• Táctil, ratón, mando y teclado\n• Se guarda tu mejor puntuación",
+    "ja": "画面の下から風船が浮かんできます。飛んでいってしまう前に割りましょう。すばやく割ってコンボをつなげ、高得点の金の風船を狙い、氷の風船ですべてを凍らせ、爆発風船でまとめて割りましょう。ハートの風船はライフを回復しますが、爆弾を割るとライフが減ります。タップ、クリック、またはコントローラーで照準を動かして遊べます。\n\n• 金、氷、爆発、ハートの風船\n• 避けるべき爆弾と 5 つのライフ\n• すばやく割るとつながるコンボ\n• タッチ、マウス、コントローラー、キーボード\n• ベストスコアを保存",
+    "zh": "气球从屏幕底部飘起：在它们飘走之前戳破它们。快速连续戳破可形成连击，瞄准价值更高的金色气球，用冰冻气球冻住一切，用爆破气球一次炸掉一群。爱心气球会补回一条命，但戳破炸弹就会失去一条。轻点、点按或用手柄移动准星。\n\n• 金色、冰冻、爆破和爱心气球\n• 需要避开的炸弹和五条命\n• 快速戳破的连击\n• 触控、鼠标、手柄和键盘\n• 保存你的最高分",
+    "ko": "화면 아래에서 풍선이 떠오릅니다. 날아가기 전에 터뜨리세요. 빠르게 연달아 터뜨려 콤보를 만들고, 추가 점수를 주는 황금 풍선을 노리고, 얼음 풍선으로 모든 것을 얼리고, 폭발 풍선으로 무리를 한꺼번에 터뜨리세요. 하트 풍선은 생명을 돌려주지만, 폭탄을 터뜨리면 생명을 잃습니다. 탭하거나, 클릭하거나, 컨트롤러로 조준점을 움직이세요.\n\n• 황금, 얼음, 폭발, 하트 풍선\n• 피해야 할 폭탄과 생명 다섯 개\n• 빠르게 터뜨리면 이어지는 콤보\n• 터치, 마우스, 컨트롤러, 키보드\n• 최고 점수 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.4 0.55",
+      "wait 0.2",
+      "wclick 0.6 0.5",
+      "wait 0.2",
+      "wclick 0.5 0.4",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

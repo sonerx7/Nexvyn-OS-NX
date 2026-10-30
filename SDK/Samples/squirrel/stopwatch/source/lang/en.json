@@ -1,0 +1,10 @@
+{
+  "app": "Stopwatch",
+  "start": "Start",
+  "stop": "Stop",
+  "lap": "Lap",
+  "reset": "Reset",
+  "no_laps": "Laps appear here. Space starts and stops, L adds a lap.",
+  "lap_n": "Lap {0}",
+  "share": "Share laps…"
+}

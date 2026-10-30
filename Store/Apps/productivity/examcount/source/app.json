@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.examcount",
+  "name": {"en": "Exam Countdown", "tr": "Sınav Geri Sayımı", "de": "Prüfungs-Countdown", "fr": "Compte à rebours des examens", "es": "Cuenta atrás de exámenes", "ja": "試験カウントダウン", "zh": "考试倒计时", "ko": "시험 카운트다운"},
+  "description": {
+    "en": "Count down the days and hours to every exam, time your study sessions and keep a daily study streak going.",
+    "tr": "Her sınava kalan gün ve saati say, çalışma oturumlarını süreyle kaydet ve günlük çalışma serini sürdür.",
+    "de": "Zähle die Tage und Stunden bis zu jeder Prüfung herunter, miss deine Lernzeiten und halte deine tägliche Lernserie am Laufen.",
+    "fr": "Comptez les jours et les heures avant chaque examen, chronométrez vos séances de révision et entretenez votre série quotidienne.",
+    "es": "Cuenta los días y las horas que faltan para cada examen, cronometra tus sesiones de estudio y mantén una racha diaria de estudio."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 860, "height": 620, "minWidth": 540, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

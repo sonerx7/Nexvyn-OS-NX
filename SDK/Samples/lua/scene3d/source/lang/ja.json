@@ -1,0 +1,17 @@
+{
+  "hint": "ドラッグで回転 · ホイールまたはピンチでズーム",
+  "sun": "太陽",
+  "ambient": "環境光",
+  "fog": "霧",
+  "textures": "テクスチャ",
+  "auto_orbit": "自動回転",
+  "auto_sun": "太陽を動かす",
+  "wireframe": "ワイヤーフレーム",
+  "labels": "ラベル",
+  "reset_view": "カメラをリセット",
+  "stats": "{0} 三角形 · {1} · {2} FPS",
+  "label_pedestal": "八角形の台座 + 球",
+  "label_crates": "木箱: 面ごとに 1 つの UV セット",
+  "label_wall": "曲がった壁: UV が弧に沿う",
+  "menu_title": "シーン"
+}

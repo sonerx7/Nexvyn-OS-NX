@@ -1,0 +1,21 @@
+{
+  "cube": "Würfel",
+  "box": "Quader",
+  "sphere": "Kugel",
+  "cylinder": "Zylinder",
+  "cone": "Kegel",
+  "torus": "Torus",
+  "plane": "Ebene",
+  "tex_none": "Farbe",
+  "tex_grid": "UV-Raster",
+  "tex_stripes": "Streifen",
+  "tex_dots": "Punkte",
+  "wire": "Drahtgitter",
+  "auto": "Texturen durchschalten",
+  "intro": "Intro",
+  "triangles": "{0} Dreiecke",
+  "stats": "{0} Dreiecke · {1} FPS",
+  "status_intro": "Intro läuft (await timer.sleep)",
+  "status_ready": "Tippe auf eine Beschriftung, um eine Form auszuwählen",
+  "menu_title": "Formen"
+}

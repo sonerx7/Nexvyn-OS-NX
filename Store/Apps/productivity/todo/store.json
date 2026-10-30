@@ -1,0 +1,34 @@
+{
+  "subtitle": {
+    "en": "Tasks, projects and due dates in one place",
+    "tr": "Görevler, projeler ve tarihler tek yerde",
+    "de": "Aufgaben, Projekte und Termine an einem Ort",
+    "fr": "Tâches, projets et échéances réunis",
+    "es": "Tareas, proyectos y fechas en un solo lugar",
+    "ja": "タスク、プロジェクト、期限をひとまとめに",
+    "zh": "任务、项目和截止日期集中管理",
+    "ko": "작업, 프로젝트, 마감일을 한곳에"
+  },
+  "description": {
+    "en": "To-Do keeps everything you need to do organised and easy to find. Type a task and press Enter to add it, then give it a priority, a due date, a note and a project. Smart lists show what is due Today, what is Upcoming, what is Overdue and what you have Completed, and overdue tasks are marked in red. Search finds any task in a moment, and a small chart shows how much you finished over the last seven days.\n\n• Colour-coded projects plus All, Today, Upcoming, Overdue and Completed\n• Four priority levels and due dates with Today, Tomorrow and +1 Week shortcuts\n• Quick add, instant search and five sort orders\n• Undo for deleted tasks and a 7-day completion chart\n• Export a list as a Markdown checklist\n• Light and dark mode",
+    "tr": "Yapılacaklar, yapman gereken her şeyi düzenli ve kolay bulunur tutar. Bir görev yazıp Enter'a bas, sonra ona öncelik, son tarih, not ve proje ver. Akıllı listeler Bugün yapılacakları, Yaklaşanları, Gecikenleri ve Tamamlananları gösterir; geciken görevler kırmızıyla işaretlenir. Arama her görevi anında bulur, küçük bir grafik de son yedi günde ne kadar iş bitirdiğini gösterir.\n\n• Renkli projeler ve Tümü, Bugün, Yaklaşanlar, Gecikenler, Tamamlananlar listeleri\n• Dört öncelik düzeyi ve Bugün, Yarın, +1 Hafta kısayollu son tarih\n• Hızlı ekleme, anında arama ve beş sıralama\n• Silinen görevler için geri alma ve 7 günlük tamamlama grafiği\n• Listeyi Markdown kontrol listesi olarak dışa aktar\n• Açık ve karanlık mod",
+    "de": "To-do hält alles, was du erledigen musst, geordnet und schnell auffindbar. Tipp eine Aufgabe ein und drück Enter, dann gib ihr Priorität, Fälligkeitsdatum, Notiz und Projekt. Intelligente Listen zeigen, was Heute fällig ist, was Demnächst ansteht, was Überfällig ist und was du Erledigt hast; überfällige Aufgaben sind rot markiert. Die Suche findet jede Aufgabe im Nu, und ein kleines Diagramm zeigt, wie viel du in den letzten sieben Tagen geschafft hast.\n\n• Farbige Projekte plus Alle, Heute, Demnächst, Überfällig und Erledigt\n• Vier Prioritätsstufen und Fälligkeit mit Kurzwahl Heute, Morgen und +1 Woche\n• Schnelles Hinzufügen, Sofortsuche und fünf Sortierungen\n• Rückgängig für gelöschte Aufgaben und 7-Tage-Diagramm\n• Liste als Markdown-Checkliste exportieren\n• Heller und dunkler Modus",
+    "fr": "À faire garde tout ce que vous avez à faire bien rangé et facile à retrouver. Tapez une tâche et appuyez sur Entrée pour l’ajouter, puis donnez-lui une priorité, une échéance, une note et un projet. Les listes intelligentes affichent ce qui est prévu Aujourd’hui, ce qui est À venir, ce qui est En retard et ce qui est Terminé, et les retards sont marqués en rouge. La recherche retrouve n’importe quelle tâche en un instant, et un petit graphique montre ce que vous avez accompli ces sept derniers jours.\n\n• Projets en couleur et listes Toutes, Aujourd’hui, À venir, En retard, Terminés\n• Quatre niveaux de priorité et échéances avec raccourcis Aujourd’hui, Demain, +1 semaine\n• Ajout rapide, recherche instantanée et cinq tris\n• Annulation des suppressions et graphique sur 7 jours\n• Exportez une liste en checklist Markdown\n• Mode clair et mode sombre",
+    "es": "Tareas mantiene todo lo que tienes que hacer ordenado y fácil de encontrar. Escribe una tarea y pulsa Intro para añadirla; luego dale prioridad, fecha límite, una nota y un proyecto. Las listas inteligentes muestran lo de Hoy, lo Próximo, lo Vencido y lo Completado, y las tareas atrasadas se marcan en rojo. La búsqueda encuentra cualquier tarea al instante, y un pequeño gráfico muestra cuánto terminaste en los últimos siete días.\n\n• Proyectos con color y listas Todas, Hoy, Próximos, Vencidas y Completados\n• Cuatro niveles de prioridad y fechas con atajos Hoy, Mañana y +1 semana\n• Añadido rápido, búsqueda instantánea y cinco órdenes\n• Deshacer borrados y gráfico de 7 días\n• Exporta una lista como checklist en Markdown\n• Modo claro y oscuro",
+    "ja": "ToDo は、やるべきことをすべて整理し、見つけやすくします。タスクを入力して Enter を押せば追加でき、優先度、期限、メモ、プロジェクトを設定できます。スマートリストには「今日」「今後」「期限切れ」「完了」のタスクが表示され、期限切れのタスクは赤で示されます。検索でどのタスクもすぐに見つかり、小さなグラフで過去 7 日間にどれだけ完了したかがわかります。\n\n• 色分けされたプロジェクトと、すべて、今日、今後、期限切れ、完了\n• 4 段階の優先度と、今日、明日、+1 週間のショートカット付きの期限\n• クイック追加、即時検索、5 つの並び順\n• 削除したタスクの取り消しと 7 日間の完了グラフ\n• リストを Markdown のチェックリストとして書き出し\n• ライトモードとダークモード",
+    "zh": "待办事项让你需要做的一切井井有条、易于查找。输入任务并按 Enter 即可添加，然后为它设置优先级、截止日期、备注和项目。智能列表会显示今天到期、即将到来、已逾期和已完成的任务，逾期任务会用红色标记。搜索能瞬间找到任何任务，一个小图表会显示你在最近七天完成了多少。\n\n• 按颜色区分的项目，以及全部、今天、即将到来、已逾期和已完成\n• 四个优先级，截止日期带有今天、明天和 +1 周快捷选项\n• 快速添加、即时搜索和五种排序方式\n• 可撤销删除的任务，以及 7 日完成图表\n• 将列表导出为 Markdown 核对清单\n• 浅色和深色模式",
+    "ko": "할 일은 해야 할 모든 일을 정리하고 쉽게 찾게 해 줍니다. 작업을 입력하고 Enter를 누르면 추가되며, 우선순위, 마감일, 메모, 프로젝트를 지정할 수 있습니다. 스마트 목록은 오늘 마감, 예정, 기한 지남, 완료된 작업을 보여 주며, 기한이 지난 작업은 빨간색으로 표시됩니다. 검색은 어떤 작업이든 순식간에 찾아 주고, 작은 차트는 최근 7일 동안 끝낸 작업량을 보여 줍니다.\n\n• 색상 구분 프로젝트와 전체, 오늘, 예정, 기한 지남, 완료됨\n• 우선순위 4단계, 오늘·내일·+1주 바로 가기가 있는 마감일\n• 빠른 추가, 즉시 검색, 정렬 순서 5가지\n• 삭제한 작업 실행 취소와 7일 완료 차트\n• 목록을 Markdown 체크리스트로 내보내기\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 2",
+     "wclick 0.9 0.118", "wait 0.6", "key down", "key down", "key down", "key down", "key down", "key enter", "wait 0.5",
+     "wclick 0.578 0.1857", "text Call the dentist", "key enter", "wait 0.5",
+     "wclick 0.578 0.1857", "text Book train tickets for the holiday", "key enter", "wait 0.5", "key escape", "key up", "key enter", "wait 0.8", "wclick 0.544 0.557", "wclick 0.192 0.0536", "wait 0.8",
+     "wclick 0.578 0.1857", "text Pay the electricity bill", "key enter", "wait 0.5", "key escape", "key up", "key enter", "wait 0.8", "wclick 0.736 0.432", "wclick 0.3555 0.557", "wclick 0.639 0.557", "wclick 0.192 0.0536", "wait 0.8",
+     "wclick 0.578 0.1857", "text Finish the presentation slides", "key enter", "wait 0.5", "key escape", "key up", "key enter", "wait 0.8", "wclick 0.827 0.432", "wclick 0.3555 0.557", "wclick 0.192 0.0536", "wait 0.8",
+     "wclick 0.578 0.1857", "text Buy a birthday gift for Ayşe", "key enter", "wait 0.5", "key escape", "key up", "key enter", "wait 0.8", "wclick 0.827 0.432", "wclick 0.45 0.557", "wclick 0.192 0.0536", "wait 0.8",
+     "wclick 0.9 0.118", "wait 0.6", "key down", "key enter", "wait 2"],
+    ["key escape", "key up", "key enter", "wait 1.5"],
+    ["wclick 0.192 0.0536", "wait 1", "dark 1", "wait 1.5"]
+  ]
+}

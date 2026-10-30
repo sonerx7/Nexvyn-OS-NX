@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.birthdays",
+  "name": {"en": "Birthdays", "tr": "Doğum Günleri", "de": "Geburtstage", "fr": "Anniversaires", "es": "Cumpleaños", "ja": "誕生日", "zh": "生日", "ko": "생일"},
+  "description": {
+    "en": "Never miss a birthday: an upcoming list with days left and the age they turn, a month overview and a reminder on the day before.",
+    "tr": "Hiçbir doğum gününü kaçırma: kalan gün ve gireceği yaşla yaklaşanlar listesi, aylara göre görünüm ve bir gün önceden hatırlatma.",
+    "de": "Verpasse nie wieder einen Geburtstag: eine Liste der nächsten mit verbleibenden Tagen und dem neuen Alter, eine Monatsübersicht und eine Erinnerung am Vortag.",
+    "fr": "Ne manquez plus aucun anniversaire : la liste des prochains avec les jours restants et l’âge atteint, une vue du mois et un rappel la veille.",
+    "es": "No te pierdas ningún cumpleaños: una lista de los próximos con los días que faltan y la edad que cumplen, una vista del mes y un recordatorio el día anterior."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 720, "height": 540, "minWidth": 580, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": ["notifications"]
+}

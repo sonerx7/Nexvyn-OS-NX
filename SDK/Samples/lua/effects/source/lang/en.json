@@ -1,0 +1,16 @@
+{
+  "plasma": "Plasma",
+  "tunnel": "Tunnel",
+  "starfield": "Starfield",
+  "pal_fire": "Fire",
+  "pal_ocean": "Ocean",
+  "pal_neon": "Neon",
+  "pal_rainbow": "Rainbow",
+  "cell": "Cell {0}px",
+  "speed": "Speed",
+  "cycle": "Cycle colours",
+  "info_cells": "{0} cells · {1} FPS",
+  "info_stars": "{0} stars · {1} FPS",
+  "hint": "Drag to steer · 1 2 3 switch effects",
+  "menu_title": "Effects"
+}

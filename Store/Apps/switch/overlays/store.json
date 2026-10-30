@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "Manage Tesla overlays and the menu combo",
+    "tr": "Tesla katmanlarını ve menü tuşlarını yönet",
+    "de": "Tesla-Overlays und Menü-Kombi verwalten",
+    "fr": "Gérez les overlays Tesla et leur raccourci",
+    "es": "Gestiona los overlays de Tesla y su combo",
+    "ja": "Tesla のオーバーレイとメニューのキーを管理",
+    "zh": "管理 Tesla 叠加层和菜单组合键",
+    "ko": "Tesla 오버레이와 메뉴 키 조합 관리"
+  },
+  "description": {
+    "en": "Control the Tesla overlays you open on top of games. Overlays lists every .ovl in sdmc:/switch/.overlays with its name, author and version, lets you turn each one on or off, and shows whether the system module it needs is installed. Check that nx-ovlloader is running and change the button combination that opens the Tesla menu, without editing config files by hand.\n\n• Every overlay with a one-tap on/off switch\n• nx-ovlloader status, with an install button when it's missing\n• Choose the Tesla menu key combination from a list\n• Warns before the Tesla menu itself is turned off\n• Shows which system module an overlay controls\n• Search, show in Files, or move overlays to the Trash",
+    "tr": "Oyunların üzerinde açtığın Tesla katmanlarını yönet. Katmanlar, sdmc:/switch/.overlays içindeki her .ovl dosyasını adı, yapımcısı ve sürümüyle listeler; her birini açıp kapatmanı sağlar ve gerektirdiği sistem modülünün yüklü olup olmadığını gösterir. nx-ovlloader'ın çalıştığını denetle ve Tesla menüsünü açan tuş kombinasyonunu ayar dosyalarını elle düzenlemeden değiştir.\n\n• Her katman için tek dokunuşluk aç/kapat anahtarı\n• nx-ovlloader durumu; eksikse kurulum düğmesi\n• Tesla menüsü tuş kombinasyonunu listeden seç\n• Tesla menüsünün kendisi kapatılmadan önce uyarı\n• Katmanın hangi sistem modülünü yönettiğini gösterir\n• Ara, Dosyalar'da göster ya da Çöp Kutusu'na taşı",
+    "de": "Steuere die Tesla-Overlays, die du über Spielen öffnest. Overlays listet jede .ovl in sdmc:/switch/.overlays mit Namen, Autor und Version, schaltet jede einzeln ein oder aus und zeigt, ob das benötigte Systemmodul installiert ist. Prüfe, ob nx-ovlloader läuft, und ändere die Tastenkombination für das Tesla-Menü, ohne Konfigurationsdateien von Hand zu bearbeiten.\n\n• Jedes Overlay mit eigenem Schalter\n• nx-ovlloader-Status, mit Installieren-Button, falls er fehlt\n• Tastenkombination des Tesla-Menüs aus einer Liste wählen\n• Warnung, bevor das Tesla-Menü selbst ausgeschaltet wird\n• Zeigt, welches Systemmodul ein Overlay steuert\n• Suchen, in Dateien zeigen oder in den Papierkorb legen",
+    "fr": "Pilotez les overlays Tesla que vous ouvrez par-dessus vos jeux. Overlays liste chaque .ovl de sdmc:/switch/.overlays avec son nom, son auteur et sa version, permet d’activer ou de désactiver chacun et indique si le module système requis est installé. Vérifiez que nx-ovlloader tourne et changez la combinaison de touches du menu Tesla sans éditer de fichier de configuration.\n\n• Chaque overlay avec son interrupteur\n• État de nx-ovlloader, avec un bouton d’installation s’il manque\n• Combinaison de touches du menu Tesla choisie dans une liste\n• Avertissement avant de couper le menu Tesla lui-même\n• Module système contrôlé par chaque overlay\n• Recherche, affichage dans Fichiers ou mise à la Corbeille",
+    "es": "Controla los overlays de Tesla que abres encima de tus juegos. Overlays muestra cada .ovl de sdmc:/switch/.overlays con su nombre, autor y versión, te deja activar o desactivar cada uno e indica si está instalado el módulo del sistema que necesita. Comprueba que nx-ovlloader esté en marcha y cambia la combinación de botones del menú Tesla sin editar archivos de configuración a mano.\n\n• Cada overlay con su propio interruptor\n• Estado de nx-ovlloader, con botón de instalación si falta\n• Elige la combinación de botones del menú Tesla de una lista\n• Aviso antes de desactivar el propio menú Tesla\n• Muestra qué módulo del sistema controla cada overlay\n• Busca, muestra en Archivos o mueve a la Papelera",
+    "ja": "ゲームの上に開く Tesla のオーバーレイを管理します。オーバーレイは sdmc:/switch/.overlays のすべての .ovl を名前、作者、バージョンとともに一覧表示し、それぞれのオン/オフを切り替え、必要なシステムモジュールがインストールされているかを表示します。設定ファイルを手で編集せずに、nx-ovlloader が実行中か確認し、Tesla メニューを開くボタンの組み合わせを変更できます。\n\n• すべてのオーバーレイをワンタップでオン/オフ\n• nx-ovlloader の状態と、ない場合のインストールボタン\n• Tesla メニューのキーの組み合わせを一覧から選択\n• Tesla メニュー自体をオフにする前に警告\n• オーバーレイが制御するシステムモジュールを表示\n• 検索、ファイルで表示、オーバーレイをゴミ箱に入れる",
+    "zh": "控制在游戏上方打开的 Tesla 叠加层。叠加层会列出 sdmc:/switch/.overlays 中的每个 .ovl 及其名称、作者和版本，让你逐个开启或关闭，并显示它所需的系统模块是否已安装。检查 nx-ovlloader 是否正在运行，并更改打开 Tesla 菜单的按键组合，无需手动编辑配置文件。\n\n• 每个叠加层都有一键开关\n• nx-ovlloader 状态，缺失时提供安装按钮\n• 从列表中选择 Tesla 菜单组合键\n• 在关闭 Tesla 菜单本身之前发出警告\n• 显示叠加层控制的是哪个系统模块\n• 搜索、在“文件”中显示，或将叠加层移到废纸篓",
+    "ko": "게임 위에 여는 Tesla 오버레이를 제어하세요. 오버레이는 sdmc:/switch/.overlays의 모든 .ovl을 이름, 제작자, 버전과 함께 나열하고, 각각 켜거나 끌 수 있게 하며, 필요한 시스템 모듈이 설치되어 있는지 보여 줍니다. 설정 파일을 직접 편집하지 않고도 nx-ovlloader가 실행 중인지 확인하고 Tesla 메뉴를 여는 버튼 조합을 바꾸세요.\n\n• 원탭 켬/끔 스위치가 있는 모든 오버레이\n• nx-ovlloader 상태와 없을 때 설치 버튼\n• 목록에서 Tesla 메뉴 키 조합 선택\n• Tesla 메뉴 자체를 끄기 전에 경고\n• 오버레이가 제어하는 시스템 모듈 표시\n• 검색, 파일에서 보기, 오버레이를 휴지통으로 이동"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ],
+    [
+      "wmove 0.5 0.47",
+      "wait 1.5"
+    ]
+  ]
+}

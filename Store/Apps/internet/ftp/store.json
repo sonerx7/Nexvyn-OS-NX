@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "FileZilla-style file transfers",
+    "tr": "FileZilla tarzı dosya aktarımı",
+    "de": "Dateitransfer im FileZilla-Stil",
+    "fr": "Transferts de fichiers façon FileZilla",
+    "es": "Transferencias al estilo FileZilla",
+    "ja": "FileZilla 風のファイル転送",
+    "zh": "FileZilla 风格的文件传输",
+    "ko": "FileZilla 스타일의 파일 전송"
+  },
+  "description": {
+    "en": "Move files between your Switch and any server, the way you would with FileZilla. Your SD card or a USB drive sits on one side, the server on the other, and you drag files between the two panes. A transfer queue shows progress and speed, retries failures and asks what to do when a file already exists. FTP always works; FTPS and SFTP are used when the network library supports them.\n\n• Quick-connect bar and a Site Manager for saved servers\n• Local (SD card or USB drive) and remote panes side by side\n• Drag and drop, upload, download, new folder, rename, delete\n• Queue with progress, speed, cancel and retry\n• Overwrite, skip or keep both when a file exists\n• Protocol log, passwords stored encrypted",
+    "tr": "Switch'in ile herhangi bir sunucu arasında dosyaları FileZilla'daki gibi taşı. Bir yanda SD kartın ya da USB belleğin, diğer yanda sunucu durur; dosyaları iki panel arasında sürükleyip bırakırsın. Aktarım kuyruğu ilerlemeyi ve hızı gösterir, başarısız aktarımları yeniden dener, dosya zaten varsa ne yapılacağını sorar. FTP her zaman çalışır; FTPS ve SFTP ağ kitaplığı destekliyorsa kullanılır.\n\n• Hızlı bağlantı çubuğu ve kayıtlı sunucular için Site Yöneticisi\n• Yerel (SD kart ya da USB bellek) ve uzak paneller yan yana\n• Sürükle-bırak, yükle, indir, yeni klasör, yeniden adlandır, sil\n• İlerleme, hız, iptal ve yeniden deneme içeren kuyruk\n• Dosya varsa üzerine yaz, atla ya da ikisini de tut\n• Protokol günlüğü, şifreler şifrelenmiş olarak saklanır",
+    "de": "Verschiebe Dateien zwischen deiner Switch und einem Server, wie du es von FileZilla kennst. Auf der einen Seite deine SD-Karte oder ein USB-Laufwerk, auf der anderen der Server, und du ziehst Dateien zwischen den beiden Bereichen hin und her. Die Warteschlange zeigt Fortschritt und Tempo, wiederholt Fehlschläge und fragt, was bei vorhandenen Dateien passieren soll. FTP geht immer; FTPS und SFTP, wenn die Netzwerkbibliothek sie unterstützt.\n\n• Schnellverbindung und Servermanager für gespeicherte Server\n• Lokaler (SD-Karte oder USB) und entfernter Bereich nebeneinander\n• Ziehen und Ablegen, hoch- und herunterladen, Ordner, umbenennen, löschen\n• Warteschlange mit Fortschritt, Tempo, Abbrechen und Wiederholen\n• Überschreiben, überspringen oder beide behalten\n• Protokoll-Log, Passwörter verschlüsselt gespeichert",
+    "fr": "Transférez des fichiers entre votre Switch et n’importe quel serveur, comme avec FileZilla. D’un côté votre carte SD ou une clé USB, de l’autre le serveur : il suffit de glisser les fichiers d’un panneau à l’autre. La file de transferts affiche la progression et la vitesse, relance les échecs et demande quoi faire si un fichier existe déjà. Le FTP fonctionne toujours ; FTPS et SFTP quand la bibliothèque réseau les prend en charge.\n\n• Barre de connexion rapide et gestionnaire de sites\n• Panneaux local (carte SD ou clé USB) et distant côte à côte\n• Glisser-déposer, envoi, téléchargement, dossier, renommage, suppression\n• File avec progression, vitesse, annulation et nouvel essai\n• Écraser, ignorer ou garder les deux si le fichier existe\n• Journal du protocole, mots de passe chiffrés",
+    "es": "Mueve archivos entre tu Switch y cualquier servidor, igual que con FileZilla. A un lado tu tarjeta SD o una memoria USB, al otro el servidor, y arrastras los archivos entre los dos paneles. La cola de transferencias muestra el progreso y la velocidad, reintenta los fallos y pregunta qué hacer si un archivo ya existe. FTP funciona siempre; FTPS y SFTP, cuando la biblioteca de red los admite.\n\n• Barra de conexión rápida y gestor de sitios guardados\n• Paneles local (tarjeta SD o USB) y remoto, uno al lado del otro\n• Arrastrar y soltar, subir, descargar, nueva carpeta, renombrar, borrar\n• Cola con progreso, velocidad, cancelar y reintentar\n• Sobrescribir, omitir o conservar ambos si el archivo existe\n• Registro del protocolo, contraseñas guardadas cifradas",
+    "ja": "FileZilla と同じ感覚で、Switch と任意のサーバーの間でファイルを移動できます。片側に SD カードまたは USB ドライブ、もう片側にサーバーが並び、2 つのペインの間でファイルをドラッグします。転送キューで進捗と速度を表示し、失敗した転送を再試行し、ファイルがすでに存在する場合の動作を確認します。FTP は常に使え、ネットワークライブラリが対応していれば FTPS と SFTP も使えます。\n\n• クイック接続バーと保存したサーバー用のサイトマネージャー\n• ローカル (SD カードまたは USB ドライブ) とリモートのペインを並べて表示\n• ドラッグ & ドロップ、アップロード、ダウンロード、新規フォルダ、名前の変更、削除\n• 進捗、速度、キャンセル、再試行付きのキュー\n• ファイルが存在する場合は上書き、スキップ、両方残す\n• プロトコルのログ、パスワードは暗号化して保存",
+    "zh": "像使用 FileZilla 那样在 Switch 和任意服务器之间传输文件。一侧是你的 SD 卡或 USB 驱动器，另一侧是服务器，你可以在两个窗格之间拖移文件。传输队列会显示进度和速度，重试失败的传输，并在文件已存在时询问如何处理。FTP 始终可用；网络库支持时可使用 FTPS 和 SFTP。\n\n• 快速连接栏和用于保存服务器的站点管理器\n• 本地（SD 卡或 USB 驱动器）和远程窗格并排显示\n• 拖放、上传、下载、新建文件夹、重命名、删除\n• 带进度、速度、取消和重试的队列\n• 文件已存在时可覆盖、跳过或保留两者\n• 协议日志，密码加密存储",
+    "ko": "FileZilla처럼 Switch와 서버 사이에서 파일을 옮기세요. 한쪽에는 SD 카드나 USB 드라이브, 다른 쪽에는 서버가 있으며, 두 창 사이로 파일을 드래그합니다. 전송 대기열은 진행률과 속도를 보여 주고, 실패하면 다시 시도하며, 파일이 이미 있으면 어떻게 할지 묻습니다. FTP는 항상 작동하며, 네트워크 라이브러리가 지원하면 FTPS와 SFTP를 사용합니다.\n\n• 빠른 연결 막대와 저장된 서버를 위한 사이트 관리자\n• 로컬(SD 카드 또는 USB 드라이브)과 원격 창을 나란히\n• 끌어다 놓기, 업로드, 다운로드, 새 폴더, 이름 변경, 삭제\n• 진행률, 속도, 취소, 다시 시도가 있는 대기열\n• 파일이 있을 때 덮어쓰기, 건너뛰기, 둘 다 유지\n• 프로토콜 로그, 암호화되어 저장되는 암호"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.24 0.041", "wait 0.25", "text 192.168.1.20", "wclick 0.45 0.041", "wait 0.25", "text switch", "key escape", "wait 1.5"],
+    ["wclick 0.751 0.575", "wait 1.5"],
+    ["key escape", "wait 0.5", "dark 1", "wait 1.5"]
+  ]
+}

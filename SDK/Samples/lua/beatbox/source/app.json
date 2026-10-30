@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.beatbox",
+  "name": {"en": "Beatbox Demo", "tr": "Ritim Kutusu Demosu", "de": "Beatbox-Demo", "fr": "Démo Beatbox", "es": "Demo de beatbox", "ja": "ビートボックスデモ", "zh": "节拍盒演示", "ko": "비트박스 데모"},
+  "description": {
+    "en": "A 16-step drum machine with synthesised drums, swing, accents and presets",
+    "tr": "Sentezlenmiş davullar, swing, vurgu ve hazır ritimlerle 16 adımlı davul makinesi",
+    "de": "Ein Drumcomputer mit 16 Schritten, synthetisierten Drums, Swing, Akzenten und Presets",
+    "fr": "Une boîte à rythmes à 16 pas avec batterie synthétisée, swing, accents et préréglages",
+    "es": "Una caja de ritmos de 16 pasos con batería sintetizada, swing, acentos y preajustes"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 900, "height": 560, "minWidth": 520, "minHeight": 400, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

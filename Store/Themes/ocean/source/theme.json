@@ -1,0 +1,26 @@
+{
+  "id": "com.sonerx7.theme.ocean",
+  "name": {
+    "en": "Ocean",
+    "tr": "Okyanus",
+    "de": "Ozean",
+    "fr": "Océan",
+    "es": "Océano"
+  },
+  "description": {
+    "en": "The open sea under the midday sun and a moonlit night. Turquoise accent.",
+    "tr": "Öğle güneşinde ve ay ışıklı bir gecede açık deniz. Turkuaz vurgu rengi.",
+    "de": "Das offene Meer in der Mittagssonne und in einer Mondnacht. Türkiser Akzent.",
+    "fr": "La haute mer sous le soleil de midi et par une nuit de lune. Accent turquoise.",
+    "es": "El mar abierto bajo el sol del mediodía y en una noche de luna. Acento turquesa."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "auto",
+  "accent": "#0A9FD8",
+  "wallpaper": "wallpaper.jpg",
+  "wallpaperDark": "wallpaper-dark.jpg",
+  "settings": {
+    "dock.magnification": 1.7
+  }
+}

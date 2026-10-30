@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.wheel",
+  "name": {"en": "Decision Wheel", "tr": "Karar Çarkı", "de": "Glücksrad", "fr": "Roue de décision", "es": "Ruleta de decisiones", "ja": "決定ルーレット", "zh": "决策转盘", "ko": "결정 룰렛"},
+  "description": {
+    "en": "Can't decide? Spin a colorful wheel of your own options. Keep several wheels, count the winners and drag the wheel to spin it.",
+    "tr": "Karar veremiyor musun? Kendi seçeneklerinle renkli bir çark çevir. Birden çok çark sakla, kazananları say, çarkı sürükleyerek döndür.",
+    "de": "Du kannst dich nicht entscheiden? Dreh ein buntes Rad mit deinen eigenen Optionen. Lege mehrere Räder an, zähle die Gewinner und zieh am Rad, um es zu drehen.",
+    "fr": "Vous n’arrivez pas à choisir ? Faites tourner une roue colorée avec vos propres options. Gardez plusieurs roues, comptez les gagnants et faites glisser la roue pour la lancer.",
+    "es": "¿No te decides? Gira una ruleta de colores con tus propias opciones. Guarda varias ruletas, cuenta los ganadores y arrastra la ruleta para girarla."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 500, "minWidth": 620, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

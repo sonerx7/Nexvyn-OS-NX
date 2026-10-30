@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.worldclock",
+  "name": {"en": "World Clock", "tr": "Dünya Saatleri", "de": "Weltuhr", "fr": "Horloge mondiale", "es": "Reloj mundial", "ja": "世界時計", "zh": "世界时钟", "ko": "세계 시계"},
+  "description": {
+    "en": "See the time in 80 cities with analog mini clocks and daylight-saving rules, travel through time and find the best hour to meet.",
+    "tr": "80 şehirde saati analog mini saatler ve yaz saati kurallarıyla gör, zamanda ileri geri git ve görüşme için en uygun saati bul.",
+    "de": "Sieh die Uhrzeit in 80 Städten mit analogen Mini-Uhren und Sommerzeitregeln, reise durch die Zeit und finde die beste Stunde für ein Treffen.",
+    "fr": "Consultez l’heure dans 80 villes avec des mini-horloges analogiques et les règles d’heure d’été, voyagez dans le temps et trouvez la meilleure heure pour vous réunir.",
+    "es": "Consulta la hora en 80 ciudades con minirrelojes analógicos y reglas de horario de verano, viaja en el tiempo y encuentra la mejor hora para reuniros."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 900, "height": 600, "minWidth": 560, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

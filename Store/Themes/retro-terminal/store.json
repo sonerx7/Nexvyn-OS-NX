@@ -1,0 +1,22 @@
+{
+  "subtitle": {
+    "en": "Green phosphor CRT with 8-bit sounds",
+    "tr": "8 bit sesli yeşil fosfor CRT",
+    "de": "Grüner Phosphor-CRT mit 8-Bit-Tönen",
+    "fr": "CRT phosphore vert, sons 8 bits",
+    "es": "CRT de fósforo verde con sonido 8 bits",
+    "ja": "8 ビットサウンド付きの緑色蛍光 CRT",
+    "zh": "绿色荧光 CRT 与 8 位音效",
+    "ko": "8비트 사운드가 있는 녹색 인광 CRT"
+  },
+  "description": {
+    "en": "Scan lines, a glowing boot log and a blinking prompt on a curved green screen. The theme also swaps the interface sounds for square-wave bleeps.\n\nIncluded:\n• Dark appearance\n• Phosphor green accent color\n• 8-bit sounds for clicks, alerts, trash and startup\n• Opaque panels, clock screen saver\n\nGet installs it and offers to apply it. Switch themes or restore the default look in System Settings > Appearance > Themes.",
+    "tr": "Kavisli yeşil bir ekranda tarama çizgileri, parlayan bir açılış kaydı ve yanıp sönen bir komut istemi. Tema arayüz seslerini de kare dalga bip seslerine çevirir.\n\nİçerik:\n• Koyu görünüm\n• Fosfor yeşili vurgu rengi\n• Tıklama, uyarı, çöp ve açılış için 8 bit sesler\n• Opak paneller, saat ekran koruyucusu\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+    "de": "Scanlines, ein leuchtendes Bootprotokoll und eine blinkende Eingabeaufforderung auf einem gewölbten grünen Bildschirm. Das Theme ersetzt auch die Systemtöne durch Rechteck-Piepser.\n\nEnthalten:\n• Dunkles Erscheinungsbild\n• Phosphorgrüne Akzentfarbe\n• 8-Bit-Töne für Klicks, Hinweise, Papierkorb und Start\n• Deckende Leisten, Uhr-Bildschirmschoner\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+    "fr": "Lignes de balayage, journal de démarrage lumineux et invite clignotante sur un écran vert bombé. Le thème remplace aussi les sons de l’interface par des bips en onde carrée.\n\nInclus:\n• Apparence sombre\n• Couleur d’accent vert phosphore\n• Sons 8 bits pour les clics, alertes, corbeille et démarrage\n• Panneaux opaques, économiseur horloge\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+    "es": "Líneas de barrido, un registro de arranque luminoso y un cursor parpadeante en una pantalla verde curva. El tema también cambia los sonidos de la interfaz por pitidos de onda cuadrada.\n\nIncluye:\n• Aspecto oscuro\n• Color de acento verde fósforo\n• Sonidos de 8 bits para clics, avisos, papelera e inicio\n• Paneles opacos, salvapantallas reloj\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o restaura el aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+    "ja": "湾曲した緑の画面に、走査線、光る起動ログ、点滅するプロンプト。このテーマはインターフェイスのサウンドも矩形波のピコピコ音に置き換えます。\n\n含まれるもの:\n• ダークの外観\n• 蛍光グリーンのアクセントカラー\n• クリック、アラート、ゴミ箱、起動の 8 ビットサウンド\n• 不透明なパネル、時計のスクリーンセーバー\n\n「入手」でインストールし、適用するかを確認します。テーマの切り替えやデフォルトの外観への復元は、システム設定 > 外観 > テーマ で行えます。",
+    "zh": "弯曲的绿色屏幕上有扫描线、发光的启动日志和闪烁的提示符。这个主题还会把界面声音换成方波哔哔声。\n\n包含：\n• 深色外观\n• 荧光绿强调色\n• 用于点击、提醒、废纸篓和启动的 8 位音效\n• 不透明面板，时钟屏幕保护程序\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
+    "ko": "휘어진 녹색 화면 위의 주사선, 빛나는 부팅 로그, 깜박이는 프롬프트. 이 테마는 인터페이스 사운드도 사각파 삐삐 소리로 바꿉니다.\n\n포함 항목:\n• 다크 모양\n• 인광 초록 강조 색상\n• 클릭, 경고, 휴지통, 시작용 8비트 사운드\n• 불투명한 패널, 시계 화면 보호기\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
+  }
+}

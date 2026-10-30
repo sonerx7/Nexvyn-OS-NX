@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Install and switch game mods safely",
+    "tr": "Oyun modlarını güvenle kur, aç, kapat",
+    "de": "Spiel-Mods sicher installieren, schalten",
+    "fr": "Installez et gérez vos mods sans risque",
+    "es": "Instala y gestiona mods con seguridad",
+    "ja": "ゲームの Mod を安全にインストール・切り替え",
+    "zh": "安全地安装和切换游戏模组",
+    "ko": "게임 모드를 안전하게 설치하고 전환하세요"
+  },
+  "description": {
+    "en": "Manage the LayeredFS mods of every game on your console. Install a mod straight from a .zip or a folder, switch it on or off with one tap, and see at once when two mods change the same files. Mod Manager keeps a library in sdmc:/mods, works out which game an archive belongs to, and refuses archives with unsafe paths. Changes apply the next time the game starts.\n\n• Games with mods or all installed games, with search and sorting\n• Install from .zip or folder, with game detection\n• One-tap on/off switch for every mod\n• Conflict warnings when mods touch the same files\n• exefs patches matched to the installed build ID\n• Create an empty mod folder for your own edits",
+    "tr": "Konsolundaki tüm oyunların LayeredFS modlarını yönet. Modu doğrudan bir .zip'ten ya da klasörden kur, tek dokunuşla aç ya da kapat; iki mod aynı dosyaları değiştirdiğinde hemen gör. Mod Yöneticisi sdmc:/mods içinde bir kitaplık tutar, arşivin hangi oyuna ait olduğunu bulur ve güvenli olmayan yollar içeren arşivleri reddeder. Değişiklikler oyun bir sonraki açılışında geçerli olur.\n\n• Modlu oyunlar ya da yüklü tüm oyunlar, arama ve sıralamayla\n• Oyunu tanıyarak .zip'ten ya da klasörden kurulum\n• Her mod için tek dokunuşluk aç/kapat anahtarı\n• Modlar aynı dosyalara dokunduğunda çakışma uyarısı\n• Yüklü build ID ile eşleşen exefs yamaları\n• Kendi düzenlemelerin için boş mod klasörü oluştur",
+    "de": "Verwalte die LayeredFS-Mods aller Spiele deiner Konsole. Installiere einen Mod direkt aus einem .zip oder Ordner, schalte ihn mit einem Tipp ein oder aus und sieh sofort, wenn zwei Mods dieselben Dateien ändern. Der Mod-Manager führt eine Bibliothek in sdmc:/mods, erkennt, zu welchem Spiel ein Archiv gehört, und lehnt Archive mit unsicheren Pfaden ab. Änderungen gelten beim nächsten Spielstart.\n\n• Spiele mit Mods oder alle installierten, mit Suche und Sortierung\n• Installation aus .zip oder Ordner mit Spielerkennung\n• Ein Schalter pro Mod\n• Warnung, wenn Mods dieselben Dateien ändern\n• exefs-Patches passend zur installierten Build-ID\n• Leeren Mod-Ordner für eigene Änderungen anlegen",
+    "fr": "Gérez les mods LayeredFS de tous les jeux de votre console. Installez un mod directement depuis un .zip ou un dossier, activez-le ou désactivez-le d’un geste et voyez tout de suite quand deux mods modifient les mêmes fichiers. Gestionnaire de mods tient une bibliothèque dans sdmc:/mods, identifie le jeu d’une archive et refuse celles aux chemins dangereux. Les changements s’appliquent au prochain lancement du jeu.\n\n• Jeux moddés ou tous les jeux installés, avec recherche et tri\n• Installation depuis un .zip ou un dossier, avec détection du jeu\n• Un interrupteur pour chaque mod\n• Alerte de conflit quand des mods touchent les mêmes fichiers\n• Patchs exefs associés au build ID installé\n• Création d’un dossier de mod vide pour vos propres fichiers",
+    "es": "Gestiona los mods LayeredFS de todos los juegos de tu consola. Instala un mod directamente desde un .zip o una carpeta, actívalo o desactívalo con un toque y ve al instante cuándo dos mods cambian los mismos archivos. El Gestor de mods mantiene una biblioteca en sdmc:/mods, averigua a qué juego pertenece un archivo y rechaza los que tienen rutas inseguras. Los cambios se aplican la próxima vez que se inicie el juego.\n\n• Juegos con mods o todos los instalados, con búsqueda y orden\n• Instalación desde .zip o carpeta, con detección del juego\n• Un interruptor para cada mod\n• Aviso de conflicto cuando los mods tocan los mismos archivos\n• Parches exefs emparejados con el build ID instalado\n• Crea una carpeta de mod vacía para tus propios cambios",
+    "ja": "本体のすべてのゲームの LayeredFS Mod を管理します。.zip やフォルダから直接 Mod をインストールし、ワンタップでオン/オフを切り替え、2 つの Mod が同じファイルを変更する場合はすぐにわかります。Mod マネージャーは sdmc:/mods にライブラリを保持し、アーカイブがどのゲーム用かを判別し、安全でないパスを含むアーカイブは拒否します。変更は次回ゲーム起動時に適用されます。\n\n• 検索と並べ替え付きの、Mod のあるゲームまたはすべてのインストール済みゲーム\n• ゲームを判別して .zip やフォルダからインストール\n• すべての Mod をワンタップでオン/オフ\n• Mod が同じファイルを変更する場合の競合警告\n• インストール済みのビルド ID と照合する exefs パッチ\n• 自分で編集するための空の Mod フォルダを作成",
+    "zh": "管理主机上每款游戏的 LayeredFS 模组。直接从 .zip 或文件夹安装模组，一键开启或关闭，并在两个模组更改相同文件时立即看到提示。模组管理器在 sdmc:/mods 中维护一个模组库，能识别压缩包属于哪款游戏，并拒绝包含不安全路径的压缩包。更改将在下次启动游戏时生效。\n\n• 有模组的游戏或所有已安装的游戏，支持搜索和排序\n• 从 .zip 或文件夹安装，自动识别游戏\n• 每个模组一键开关\n• 模组修改相同文件时发出冲突警告\n• 与已安装 Build ID 匹配的 exefs 补丁\n• 创建空的模组文件夹用于你自己的修改",
+    "ko": "콘솔의 모든 게임의 LayeredFS 모드를 관리하세요. .zip이나 폴더에서 바로 모드를 설치하고, 한 번의 탭으로 켜거나 끄고, 두 모드가 같은 파일을 바꾸면 바로 알 수 있습니다. 모드 관리자는 sdmc:/mods에 라이브러리를 두고, 압축 파일이 어떤 게임용인지 알아내며, 안전하지 않은 경로가 있는 압축 파일은 거부합니다. 변경 사항은 다음에 게임을 시작할 때 적용됩니다.\n\n• 모드가 있는 게임 또는 설치된 모든 게임, 검색 및 정렬\n• 게임 감지와 함께 .zip이나 폴더에서 설치\n• 모든 모드에 원탭 켬/끔 스위치\n• 모드가 같은 파일을 건드릴 때 충돌 경고\n• 설치된 빌드 ID와 연결되는 exefs 패치\n• 직접 편집할 빈 모드 폴더 만들기"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.239 0.108", "wait 0.25", "wclick 0.16 0.269", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

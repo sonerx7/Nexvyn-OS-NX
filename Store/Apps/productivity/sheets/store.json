@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "Formulas, charts and Excel files",
+    "tr": "Formüller, grafikler ve Excel dosyaları",
+    "de": "Formeln, Diagramme und Excel-Dateien",
+    "fr": "Formules, graphiques et fichiers Excel",
+    "es": "Fórmulas, gráficos y archivos de Excel",
+    "ja": "数式、グラフ、Excel ファイル",
+    "zh": "公式、图表和 Excel 文件",
+    "ko": "수식, 차트, Excel 파일"
+  },
+  "description": {
+    "en": "A real spreadsheet for your Switch. Spreadsheet handles formulas with more than 70 functions, in English or Turkish names (SUM or TOPLA, VLOOKUP or DUSEYARA), number, currency and date formats, bar, line and pie charts, and multiple sheets per document. Start from ready-made templates for a budget, grades, an invoice or a workout log, and open or save Excel .xlsx and CSV files. Your work is saved automatically.\n\n• Over 70 functions, including IF, SUMIF, VLOOKUP and dates\n• Bold, colours, borders, alignment, wrap and merged cells\n• Bar, line and pie charts from your selection\n• Sort, fill, find and replace, freeze rows and columns\n• Templates: budget, grades, invoice, workout\n• .xlsx, .csv and .tsv import and export, HTML export, autosave",
+    "tr": "Switch'in için gerçek bir hesap tablosu. Hesap Tablosu, İngilizce ya da Türkçe adlarla (SUM ya da TOPLA, VLOOKUP ya da DUSEYARA) 70'ten fazla işlevli formülleri, sayı, para birimi ve tarih biçimlerini, çubuk, çizgi ve pasta grafiklerini ve belge başına birden çok sayfayı destekler. Bütçe, not çizelgesi, fatura ya da antrenman günlüğü için hazır şablonlarla başla; Excel .xlsx ve CSV dosyalarını aç ya da kaydet. Çalışmaların otomatik kaydedilir.\n\n• EGER, ETOPLA, DUSEYARA ve tarih işlevleri dahil 70'ten fazla işlev\n• Kalın yazı, renkler, kenarlıklar, hizalama, kaydırma ve birleştirilmiş hücreler\n• Seçimden çubuk, çizgi ve pasta grafikleri\n• Sıralama, doldurma, bul ve değiştir, satır ve sütun dondurma\n• Şablonlar: bütçe, notlar, fatura, antrenman\n• .xlsx, .csv ve .tsv içe / dışa aktarma, HTML çıktısı, otomatik kayıt",
+    "de": "Eine echte Tabellenkalkulation für deine Switch. Sie beherrscht Formeln mit über 70 Funktionen, mit englischen oder türkischen Namen (SUM oder TOPLA, VLOOKUP oder DUSEYARA), Zahlen-, Währungs- und Datumsformate, Balken-, Linien- und Kreisdiagramme sowie mehrere Blätter pro Dokument. Starte mit Vorlagen für Budget, Noten, Rechnung oder Trainingstagebuch und öffne oder speichere Excel-.xlsx- und CSV-Dateien. Deine Arbeit wird automatisch gesichert.\n\n• Über 70 Funktionen, darunter IF, SUMIF, VLOOKUP und Datumsfunktionen\n• Fett, Farben, Rahmen, Ausrichtung, Umbruch und verbundene Zellen\n• Balken-, Linien- und Kreisdiagramme aus deiner Auswahl\n• Sortieren, Ausfüllen, Suchen und Ersetzen, Zeilen und Spalten fixieren\n• Vorlagen: Budget, Noten, Rechnung, Training\n• .xlsx-, .csv- und .tsv-Import und -Export, HTML-Export, Autosave",
+    "fr": "Un vrai tableur pour votre Switch. Tableur gère les formules avec plus de 70 fonctions, en noms anglais ou turcs (SUM ou TOPLA, VLOOKUP ou DUSEYARA), les formats nombre, monétaire et date, les graphiques en barres, en courbes et en secteurs, et plusieurs feuilles par document. Partez de modèles prêts à l’emploi pour un budget, des notes, une facture ou un carnet d’entraînement, et ouvrez ou enregistrez des fichiers Excel .xlsx et CSV. Votre travail est enregistré automatiquement.\n\n• Plus de 70 fonctions, dont IF, SUMIF, VLOOKUP et les dates\n• Gras, couleurs, bordures, alignement, retour à la ligne, fusion\n• Graphiques en barres, courbes et secteurs depuis la sélection\n• Tri, recopie, rechercher et remplacer, volets figés\n• Modèles : budget, notes, facture, entraînement\n• Import et export .xlsx, .csv et .tsv, export HTML, enregistrement auto",
+    "es": "Una hoja de cálculo de verdad para tu Switch. Admite fórmulas con más de 70 funciones, con nombres en inglés o en turco (SUM o TOPLA, VLOOKUP o DUSEYARA), formatos de número, moneda y fecha, gráficos de barras, líneas y sectores, y varias hojas por documento. Empieza con plantillas listas para un presupuesto, notas, una factura o un registro de entrenamiento, y abre o guarda archivos de Excel .xlsx y CSV. Tu trabajo se guarda automáticamente.\n\n• Más de 70 funciones, entre ellas IF, SUMIF, VLOOKUP y fechas\n• Negrita, colores, bordes, alineación, ajuste y celdas combinadas\n• Gráficos de barras, líneas y sectores desde la selección\n• Ordenar, rellenar, buscar y reemplazar, inmovilizar filas y columnas\n• Plantillas: presupuesto, notas, factura, entrenamiento\n• Importa y exporta .xlsx, .csv y .tsv, exporta HTML, autoguardado",
+    "ja": "Switch で使える本格的な表計算。スプレッドシートは 70 以上の関数を英語名またはトルコ語名 (SUM または TOPLA、VLOOKUP または DUSEYARA) で使える数式、数値・通貨・日付の表示形式、棒・折れ線・円グラフ、1 つの書類に複数のシートを扱えます。家計、成績、請求書、トレーニング記録の既製テンプレートから始め、Excel の .xlsx や CSV ファイルを開いたり保存したりできます。作業は自動で保存されます。\n\n• IF、SUMIF、VLOOKUP、日付を含む 70 以上の関数\n• 太字、色、罫線、配置、折り返し、セルの結合\n• 選択範囲から棒、折れ線、円グラフ\n• 並べ替え、フィル、検索と置換、行と列の固定\n• テンプレート: 家計、成績、請求書、トレーニング\n• .xlsx、.csv、.tsv の読み込みと書き出し、HTML 書き出し、自動保存",
+    "zh": "一款真正的 Switch 电子表格。电子表格支持 70 多个函数的公式，函数名可用英语或土耳其语（SUM 或 TOPLA、VLOOKUP 或 DUSEYARA），支持数字、货币和日期格式，柱形图、折线图和饼图，以及每个文档多个工作表。从预算、成绩、发票或健身记录等现成模板开始，打开或保存 Excel .xlsx 和 CSV 文件。你的工作会自动存储。\n\n• 70 多个函数，包括 IF、SUMIF、VLOOKUP 和日期函数\n• 粗体、颜色、边框、对齐、自动换行和合并单元格\n• 根据所选内容生成柱形图、折线图和饼图\n• 排序、填充、查找和替换，冻结行和列\n• 模板：预算、成绩、发票、健身\n• .xlsx、.csv 和 .tsv 导入导出，HTML 导出，自动存储",
+    "ko": "Switch를 위한 진짜 스프레드시트입니다. 스프레드시트는 영어나 터키어 이름(SUM 또는 TOPLA, VLOOKUP 또는 DUSEYARA)으로 70개가 넘는 함수의 수식, 숫자·통화·날짜 형식, 막대·꺾은선·원형 차트, 문서당 여러 시트를 지원합니다. 예산, 성적, 청구서, 운동 일지용 기본 템플릿으로 시작하고, Excel .xlsx와 CSV 파일을 열고 저장하세요. 작업은 자동으로 저장됩니다.\n\n• IF, SUMIF, VLOOKUP, 날짜 함수 등 70개 이상의 함수\n• 굵게, 색상, 테두리, 정렬, 줄 바꿈, 셀 병합\n• 선택 영역으로 막대, 꺾은선, 원형 차트\n• 정렬, 채우기, 찾기 및 바꾸기, 행과 열 고정\n• 템플릿: 예산, 성적, 청구서, 운동\n• .xlsx, .csv, .tsv 가져오기 및 내보내기, HTML 내보내기, 자동 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.281 0.26",
+      "wait 2.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

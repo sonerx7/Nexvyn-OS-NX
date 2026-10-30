@@ -1,0 +1,46 @@
+{
+  "subtitle": {
+    "en": "Three in a row, solo or with a friend",
+    "tr": "Üçünü yan yana diz, tek ya da ikili",
+    "de": "Drei in einer Reihe, allein oder zu zweit",
+    "fr": "Trois à la suite, seul ou à deux",
+    "es": "Tres en línea, solo o con un amigo",
+    "ja": "3 つ並べよう、1 人でも友だちとでも",
+    "zh": "三子连线，单人或与朋友对战",
+    "ko": "혼자 또는 친구와, 세 개를 한 줄로"
+  },
+  "description": {
+    "en": "The timeless game of X and O: get three in a row across, down or diagonally before your opponent does. Warm up against the easy computer, try your luck against the unbeatable one that never makes a mistake, or play a friend on the same console. A hint shows the best move, and a running score keeps track of every round.\n\n• Easy and unbeatable (minimax) computer\n• Two players on one console\n• Play as X or O\n• Hints, undo and a score for each mode\n• Touch, D-pad or the 1–9 keys in keypad layout",
+    "tr": "X ile O'nun eskimeyen oyunu: rakibinden önce üç işareti yatay, dikey ya da çapraz olarak yan yana getir. Kolay bilgisayarla ısın, hiç hata yapmayan yenilmez bilgisayara karşı şansını dene ya da aynı konsolda bir arkadaşınla oyna. İpucu en iyi hamleyi gösterir, skor tablosu da her turu kayda geçirir.\n\n• Kolay ve yenilmez (minimax) bilgisayar\n• Aynı konsolda iki oyuncu\n• X ya da O olarak oyna\n• İpucu, geri alma ve her mod için skor\n• Dokunmatik, yön tuşları ya da sayısal tuş takımı düzeninde 1–9",
+    "de": "Das zeitlose Spiel mit X und O: Bring drei Zeichen waagerecht, senkrecht oder diagonal in eine Reihe, bevor es dein Gegner schafft. Wärm dich gegen den leichten Computer auf, versuch dein Glück gegen den unschlagbaren, der nie einen Fehler macht, oder spiel gegen einen Freund an derselben Konsole. Ein Tipp zeigt den besten Zug, und ein Punktestand hält jede Runde fest.\n\n• Leichter und unschlagbarer Computer (Minimax)\n• Zwei Spieler an einer Konsole\n• Spiel als X oder O\n• Tipps, Rückgängig und Punktestand pro Modus\n• Touch, Steuerkreuz oder Tasten 1–9 im Ziffernblock-Layout",
+    "fr": "L’indémodable jeu des X et des O : alignez trois symboles à l’horizontale, à la verticale ou en diagonale avant votre adversaire. Échauffez-vous contre l’ordinateur facile, tentez votre chance contre l’imbattable qui ne se trompe jamais, ou jouez avec un ami sur la même console. Un indice montre le meilleur coup, et un tableau des scores garde la trace de chaque manche.\n\n• Ordinateur facile ou imbattable (minimax)\n• Deux joueurs sur une console\n• Jouez les X ou les O\n• Indices, annulation et score par mode\n• Tactile, croix ou touches 1 à 9 disposées comme un pavé numérique",
+    "es": "El clásico de siempre con X y O: consigue tres en línea en horizontal, vertical o diagonal antes que tu rival. Calienta contra la computadora fácil, prueba suerte contra la imbatible que nunca se equivoca o juega con un amigo en la misma consola. Una pista te muestra la mejor jugada y un marcador lleva la cuenta de cada ronda.\n\n• Computadora fácil o imbatible (minimax)\n• Dos jugadores en una consola\n• Juega con X o con O\n• Pistas, deshacer y marcador por modo\n• Táctil, cruceta o teclas 1–9 como en un teclado numérico",
+    "ja": "時代を超えた X と O のゲーム: 相手より先に、横、縦、斜めのいずれかに 3 つ並べましょう。かんたんなコンピューターで肩慣らしをし、決して間違えない最強のコンピューターに挑戦するか、同じ本体で友だちと対戦しましょう。ヒントで最善手がわかり、スコアで全ラウンドの成績を記録します。\n\n• かんたんと最強 (ミニマックス法) のコンピューター\n• 1 台の本体で 2 人対戦\n• X または O でプレイ\n• ヒント、取り消し、モードごとのスコア\n• タッチ、十字ボタン、テンキー配置の 1–9 キー",
+    "zh": "永不过时的 X 和 O 游戏：抢在对手之前在横向、纵向或斜向连成三子。先和简单难度的电脑热身，再挑战永不失误的无敌电脑，或在同一台主机上与朋友对战。提示会显示最佳落子，累计比分会记录每一局。\n\n• 简单和无敌（极小化极大算法）电脑\n• 同一台主机上双人对战\n• 执 X 或执 O\n• 提示、撤销以及每种模式的比分\n• 触控、十字键或按数字键盘布局的 1–9 键",
+    "ko": "시대를 초월한 X와 O 게임: 상대보다 먼저 가로, 세로, 대각선으로 세 개를 한 줄로 놓으세요. 쉬운 컴퓨터로 몸을 풀고, 절대 실수하지 않는 무적 컴퓨터에 도전하거나, 같은 콘솔에서 친구와 대결하세요. 힌트는 최선의 수를 보여 주며, 누적 점수가 모든 판을 기록합니다.\n\n• 쉬움과 무적(미니맥스) 컴퓨터\n• 콘솔 하나로 2인 플레이\n• X 또는 O로 플레이\n• 모드별 힌트, 무르기, 점수\n• 터치, 방향 버튼 또는 숫자 패드 배치의 1–9 키"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key 5",
+      "wait 1.5"
+    ],
+    [
+      "key h",
+      "wait 0.5",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "key h",
+      "wait 0.5",
+      "key enter",
+      "wait 1.5"
+    ]
+  ]
+}

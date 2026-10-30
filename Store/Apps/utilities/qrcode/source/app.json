@@ -1,0 +1,33 @@
+{
+  "id": "qrcode",
+  "name": {
+    "en": "QR Code",
+    "tr": "QR Kod",
+    "de": "QR-Code",
+    "fr": "Code QR",
+    "es": "Código QR",
+    "ja": "QR コード",
+    "zh": "二维码",
+    "ko": "QR 코드"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 840,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Create QR codes for text, links and Wi-Fi",
+    "tr": "Metin, bağlantı ve Wi-Fi için QR kod oluşturun",
+    "de": "Erstelle QR-Codes für Text, Links und WLAN",
+    "fr": "Créez des codes QR pour du texte, des liens et le Wi-Fi",
+    "es": "Crea códigos QR para texto, enlaces y Wi-Fi"
+  },
+  "permissions": ["notifications"]
+}

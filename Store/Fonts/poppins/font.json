@@ -1,0 +1,32 @@
+{
+  "id": "poppins",
+  "name": {
+    "en": "Poppins",
+    "tr": "Poppins",
+    "de": "Poppins",
+    "fr": "Poppins",
+    "es": "Poppins"
+  },
+  "family": "Poppins",
+  "styles": {
+    "regular": "Poppins-Regular.ttf",
+    "semibold": "Poppins-SemiBold.ttf",
+    "bold": "Poppins-Bold.ttf",
+    "italic": "Poppins-Italic.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "4.004",
+  "author": "The Poppins Project Authors",
+  "classification": "sans",
+  "scripts": [
+    "Latn",
+    "Deva"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

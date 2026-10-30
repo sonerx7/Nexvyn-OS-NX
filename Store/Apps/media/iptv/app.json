@@ -1,0 +1,28 @@
+{
+  "id": "iptv",
+  "name": {
+    "en": "Live TV",
+    "tr": "Canlı TV",
+    "de": "Live-TV",
+    "fr": "TV en direct",
+    "es": "TV en directo",
+    "ko": "라이브 TV"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1080,
+    "height": 620,
+    "minWidth": 720,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "fileTypes": [
+    ".m3u"
+  ]
+}

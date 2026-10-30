@@ -1,0 +1,51 @@
+{
+  "subtitle": {
+    "en": "Find the five-letter Turkish word",
+    "tr": "Beş harfli kelimeyi altı denemede bul",
+    "de": "Finde das türkische Wort mit fünf Buchstaben",
+    "fr": "Trouvez le mot turc de cinq lettres",
+    "es": "Encuentra la palabra turca de cinco letras",
+    "ja": "5 文字のトルコ語の単語を見つけよう",
+    "zh": "找出五个字母的土耳其语单词",
+    "ko": "다섯 글자 터키어 단어를 찾으세요"
+  },
+  "description": {
+    "en": "Guess the hidden five-letter Turkish word in six tries. After every guess the tiles flip and change colour: green for the right letter in the right place, yellow for a letter that is in the word but somewhere else, grey for one that isn't in it at all. Play the daily word, which is the same for everyone on a given day, or switch to unlimited mode and play as often as you like. The interface comes in five languages; the words are always Turkish.\n\n• Daily word and unlimited mode\n• On-screen Turkish Q keyboard with Ç, Ğ, İ, Ö, Ş and Ü\n• Flip animations and coloured keyboard hints\n• Streaks and statistics\n• Touch, controller or keyboard",
+    "tr": "Gizli beş harfli kelimeyi altı denemede bul. Her tahminden sonra kareler döner ve renk değiştirir: yeşil, harf doğru yerde; sarı, harf kelimede var ama başka yerde; gri, harf kelimede hiç yok demek. Belli bir günde herkes için aynı olan günün kelimesini çöz ya da sınırsız moda geçip istediğin kadar oyna. Seriyi koru, istatistiklerini büyüt.\n\n• Günün kelimesi ve sınırsız mod\n• Ç, Ğ, İ, Ö, Ş ve Ü harfli ekran Q klavyesi\n• Dönen kareler ve renklenen klavye tuşları\n• Seriler ve istatistikler\n• Dokunmatik, kumanda ya da klavye",
+    "de": "Errate das versteckte türkische Wort mit fünf Buchstaben in sechs Versuchen. Nach jedem Versuch drehen sich die Felder und färben sich: Grün heißt richtiger Buchstabe an der richtigen Stelle, Gelb heißt im Wort, aber woanders, Grau heißt gar nicht im Wort. Spiel das Wort des Tages, das an einem Tag für alle gleich ist, oder wechsle in den unbegrenzten Modus und spiel, so oft du willst. Die Oberfläche gibt es in fünf Sprachen, die Wörter sind immer türkisch.\n\n• Wort des Tages und unbegrenzter Modus\n• Türkische Q-Bildschirmtastatur mit Ç, Ğ, İ, Ö, Ş und Ü\n• Dreh-Animationen und gefärbte Tastaturhinweise\n• Serien und Statistik\n• Touch, Controller oder Tastatur",
+    "fr": "Devinez le mot turc caché de cinq lettres en six essais. Après chaque proposition, les cases se retournent et changent de couleur : vert pour une lettre bien placée, jaune pour une lettre présente mais ailleurs, gris pour une lettre absente du mot. Jouez le mot du jour, le même pour tout le monde à une date donnée, ou passez en mode illimité pour jouer autant que vous voulez. L’interface existe en cinq langues ; les mots sont toujours en turc.\n\n• Mot du jour et mode illimité\n• Clavier turc Q à l’écran avec Ç, Ğ, İ, Ö, Ş et Ü\n• Animations de retournement et clavier coloré\n• Séries et statistiques\n• Tactile, manette ou clavier",
+    "es": "Adivina la palabra turca oculta de cinco letras en seis intentos. Tras cada intento, las casillas giran y cambian de color: verde si la letra está en su sitio, amarillo si está en la palabra pero en otro lugar y gris si no está. Juega la palabra del día, igual para todos en una misma fecha, o pasa al modo ilimitado y juega tanto como quieras. La interfaz está en cinco idiomas; las palabras siempre son en turco.\n\n• Palabra del día y modo ilimitado\n• Teclado turco Q en pantalla con Ç, Ğ, İ, Ö, Ş y Ü\n• Animaciones de giro y teclado con colores\n• Rachas y estadísticas\n• Táctil, mando o teclado",
+    "ja": "隠された 5 文字のトルコ語の単語を 6 回以内に当てましょう。推測するたびにタイルがめくれて色が変わります: 緑は文字も位置も正しい、黄は単語に含まれるが別の位置、灰は単語にまったく含まれない文字です。その日は誰にとっても同じ「今日の単語」で遊ぶか、無制限モードに切り替えて好きなだけ遊べます。インターフェイスは 5 つの言語に対応していますが、単語は常にトルコ語です。\n\n• 今日の単語と無制限モード\n• Ç、Ğ、İ、Ö、Ş、Ü のある画面のトルコ語 Q キーボード\n• めくれるアニメーションと色付きのキーボードのヒント\n• 連続記録と統計\n• タッチ、コントローラー、キーボード",
+    "zh": "在六次之内猜出隐藏的五个字母的土耳其语单词。每次猜测后，方块会翻转并变色：绿色表示字母正确且位置正确，黄色表示字母在单词中但位置不对，灰色表示字母根本不在单词中。玩每日一词（同一天所有人的单词都相同），或切换到无限模式，想玩多少次都可以。界面提供五种语言；单词始终是土耳其语。\n\n• 每日一词和无限模式\n• 带 Ç、Ğ、İ、Ö、Ş 和 Ü 的屏幕土耳其语 Q 键盘\n• 翻转动画和彩色键盘提示\n• 连胜纪录和统计\n• 触控、手柄或键盘",
+    "ko": "숨겨진 다섯 글자 터키어 단어를 여섯 번 안에 맞히세요. 추측할 때마다 타일이 뒤집히며 색이 바뀝니다: 초록은 글자와 위치가 맞음, 노랑은 단어에 있지만 다른 위치, 회색은 단어에 없음. 그날 모두에게 같은 오늘의 단어를 풀거나, 무제한 모드로 원하는 만큼 플레이하세요. 인터페이스는 다섯 가지 언어로 제공되지만 단어는 항상 터키어입니다.\n\n• 오늘의 단어와 무제한 모드\n• Ç, Ğ, İ, Ö, Ş, Ü가 있는 화면 터키어 Q 키보드\n• 뒤집기 애니메이션과 색으로 표시되는 키보드 힌트\n• 연속 기록과 통계\n• 터치, 컨트롤러, 키보드"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.2"
+    ],
+    [
+      "text k",
+      "text a",
+      "text l",
+      "text e",
+      "text m",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "text d",
+      "text e",
+      "text n",
+      "text i",
+      "text z",
+      "key enter",
+      "wait 1.5",
+      "dark 1",
+      "wait 1"
+    ]
+  ]
+}

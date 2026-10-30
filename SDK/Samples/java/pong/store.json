@@ -1,0 +1,34 @@
+{
+  "kind": "game",
+  "tags": [
+    "gamepad",
+    "touch",
+    "arcade",
+    "store"
+  ],
+  "subtitle": {
+    "en": "You against the console, first to 7",
+    "tr": "Konsola karşı, 7 sayıyı alan kazanır",
+    "de": "Du gegen die Konsole, wer zuerst 7 hat",
+    "fr": "Vous contre la console, en 7 points",
+    "es": "Tú contra la consola, a 7 puntos",
+    "ja": "本体と対決、7 点先取",
+    "zh": "你与主机对战，先得 7 分者胜",
+    "ko": "콘솔과 대결, 먼저 7점"
+  },
+  "description": {
+    "en": "The classic paddle game: hit the ball past the console's paddle, the further from the centre you hit it the steeper it flies, and every return is a little faster. Play with the stick, the D-pad, the arrow keys or by dragging on the touch screen; the court scales to any window size and the number of games you have won is saved.\n\nWhat it teaches in Java: \"gamepad\": true, polling Input.stick and Input.down every frame, keyboard state from keydown and keyup events, touch with Ui.mouse and Ui.hit, a virtual court scaled with Gfx.push, Audio.tone effects and pausing in suspend() and focus(false).",
+    "tr": "Klasik raket oyunu: topu konsolun raketinin arkasına geçir; topa merkezden ne kadar uzak vurursan o kadar dik gider ve her dönüşte biraz hızlanır. Çubukla, yön tuşlarıyla, oklarla ya da dokunmatik ekranda sürükleyerek oyna; saha her pencere boyutuna ölçeklenir ve kazandığın oyun sayısı kaydedilir.\n\nJava'da öğrettikleri: \"gamepad\": true, her karede Input.stick ve Input.down okumak, keydown ve keyup olaylarından klavye durumu, Ui.mouse ve Ui.hit ile dokunmatik, Gfx.push ile ölçeklenen sanal saha, Audio.tone efektleri ve suspend() ile focus(false) içinde duraklatma.",
+    "de": "Das klassische Schlägerspiel: Spiele den Ball am Schläger der Konsole vorbei; je weiter vom Zentrum du triffst, desto steiler fliegt er, und jeder Return wird etwas schneller. Spiele mit Stick, Steuerkreuz, Pfeiltasten oder durch Ziehen auf dem Touchscreen; das Feld passt sich jeder Fenstergröße an, und deine Siege werden gespeichert.\n\nWas es in Java zeigt: \"gamepad\": true, Input.stick und Input.down in jedem Frame abfragen, Tastaturzustand aus keydown- und keyup-Ereignissen, Touch mit Ui.mouse und Ui.hit, ein mit Gfx.push skaliertes virtuelles Feld, Audio.tone-Effekte und Pausieren in suspend() und focus(false).",
+    "fr": "Le jeu de raquettes classique : faites passer la balle derrière la raquette de la console ; plus vous frappez loin du centre, plus elle part en angle, et chaque renvoi est un peu plus rapide. Jouez au stick, à la croix, aux flèches ou en glissant sur l'écran tactile ; le terrain s'adapte à toute taille de fenêtre et vos victoires sont enregistrées.\n\nCe qu'il enseigne en Java : \"gamepad\": true, lire Input.stick et Input.down à chaque image, l'état du clavier depuis keydown et keyup, le toucher avec Ui.mouse et Ui.hit, un terrain virtuel mis à l'échelle avec Gfx.push, des effets Audio.tone et la pause dans suspend() et focus(false).",
+    "es": "El clásico juego de palas: haz pasar la pelota por detrás de la pala de la consola; cuanto más lejos del centro golpees, más inclinada sale, y cada devolución es un poco más rápida. Juega con el stick, la cruceta, las flechas o arrastrando en la pantalla táctil; la pista se adapta a cualquier tamaño de ventana y se guardan tus victorias.\n\nLo que enseña en Java: \"gamepad\": true, leer Input.stick e Input.down en cada fotograma, el estado del teclado con keydown y keyup, el táctil con Ui.mouse y Ui.hit, una pista virtual escalada con Gfx.push, efectos de Audio.tone y la pausa en suspend() y focus(false).",
+    "ja": "定番のパドルゲーム: 本体のパドルの横をボールで抜きましょう。中心から離れた位置で打つほど急な角度で飛び、打ち返すたびに少しずつ速くなります。スティック、十字ボタン、矢印キー、またはタッチスクリーンのドラッグで操作できます。コートは任意のウィンドウサイズに合わせて拡大縮小され、勝ったゲーム数は保存されます。\n\nJava で学べること: \"gamepad\": true、毎フレームの Input.stick と Input.down のポーリング、keydown と keyup イベントによるキーボードの状態、Ui.mouse と Ui.hit によるタッチ、Gfx.push で拡大縮小する仮想コート、Audio.tone の効果音、そして suspend() と focus(false) での一時停止。",
+    "zh": "经典的球拍游戏：把球打过主机的球拍，击球点离中心越远，球飞得越陡，每次回球都会稍快一些。可用摇杆、十字键、方向键或在触摸屏上拖动来游玩；球场会适应任意窗口大小，你赢得的局数会被保存。\n\n在 Java 中学到的内容：\"gamepad\": true、每帧轮询 Input.stick 和 Input.down、来自 keydown 和 keyup 事件的键盘状态、使用 Ui.mouse 和 Ui.hit 的触控、用 Gfx.push 缩放的虚拟球场、Audio.tone 音效，以及在 suspend() 和 focus(false) 中暂停。",
+    "ko": "클래식 패들 게임: 공을 콘솔의 패들 너머로 보내세요. 중앙에서 멀리 맞힐수록 더 가파르게 날아가고, 받아칠 때마다 조금씩 빨라집니다. 스틱, 방향 버튼, 화살표 키 또는 터치스크린 드래그로 플레이하세요. 코트는 어떤 창 크기에도 맞춰지며 이긴 게임 수가 저장됩니다.\n\nJava로 배우는 내용: \"gamepad\": true, 매 프레임 Input.stick과 Input.down 확인, keydown과 keyup 이벤트로 키보드 상태 관리, Ui.mouse와 Ui.hit을 이용한 터치, Gfx.push로 크기를 조정하는 가상 코트, Audio.tone 효과, suspend()와 focus(false)에서 일시 정지."
+  },
+  "shots": [
+    ["wait 2"],
+    ["key enter", "wait 4", "key enter", "wait 4", "key enter", "wait 1.5"],
+    ["dark 1", "wait 3", "key enter", "wait 4", "key enter", "wait 4", "key enter", "wait 4", "key enter", "wait 4", "key enter", "wait 4", "wait 2"]
+  ]
+}

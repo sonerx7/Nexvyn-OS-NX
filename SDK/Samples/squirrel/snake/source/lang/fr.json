@@ -1,0 +1,11 @@
+{
+  "game": "Jeu",
+  "title": "Serpent",
+  "score": "Score : {0}",
+  "best": "Record : {0}",
+  "game_over": "Partie terminée",
+  "paused": "Pause",
+  "start_hint": "A, Entrée ou un toucher pour jouer · Croix, flèches ou WASD pour diriger",
+  "new_game": "Nouvelle partie",
+  "reset_best": "Effacer le record"
+}

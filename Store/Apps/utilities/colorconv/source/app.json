@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.colorconv",
+  "name": {"en": "Color Converter", "tr": "Renk Dönüştürücü", "de": "Farbkonverter", "fr": "Convertisseur de couleurs", "es": "Conversor de colores", "ja": "カラーコンバーター", "zh": "颜色转换器", "ko": "색상 변환기"},
+  "description": {
+    "en": "Convert colors between HEX, RGB, HSL, HSV and CMYK with synced sliders, check WCAG contrast against white and black and copy any format.",
+    "tr": "Renkleri HEX, RGB, HSL, HSV ve CMYK arasında eşzamanlı kaydırıcılarla dönüştür, beyaz ve siyaha karşı WCAG kontrastını gör, her biçimi kopyala.",
+    "de": "Rechne Farben zwischen HEX, RGB, HSL, HSV und CMYK mit synchronen Schiebereglern um, prüfe den WCAG-Kontrast zu Weiß und Schwarz und kopiere jedes Format.",
+    "fr": "Convertissez les couleurs entre HEX, RGB, HSL, HSV et CMJN avec des curseurs synchronisés, vérifiez le contraste WCAG sur blanc et sur noir et copiez n’importe quel format.",
+    "es": "Convierte colores entre HEX, RGB, HSL, HSV y CMYK con controles deslizantes sincronizados, comprueba el contraste WCAG frente al blanco y el negro y copia cualquier formato."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 520, "minWidth": 640, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

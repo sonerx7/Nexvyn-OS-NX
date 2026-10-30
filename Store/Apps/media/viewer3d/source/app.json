@@ -1,0 +1,37 @@
+{
+  "id": "viewer3d",
+  "name": {
+    "en": "3D Viewer",
+    "tr": "3D Görüntüleyici",
+    "de": "3D-Betrachter",
+    "fr": "Visionneuse 3D",
+    "es": "Visor 3D",
+    "ja": "3D ビューアー",
+    "zh": "3D 查看器",
+    "ko": "3D 뷰어"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 900,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": true,
+  "fileTypes": [
+    ".obj",
+    ".stl"
+  ],
+  "description": {
+    "en": "View 3D models (.obj, .stl) and built-in samples",
+    "tr": "3D modelleri (.obj, .stl) ve hazır örnekleri görüntüle",
+    "de": "Zeige 3D-Modelle (.obj, .stl) und integrierte Beispiele an",
+    "fr": "Affichez des modèles 3D (.obj, .stl) et des exemples intégrés",
+    "es": "Visualiza modelos 3D (.obj, .stl) y ejemplos integrados"
+  },
+  "permissions": []
+}

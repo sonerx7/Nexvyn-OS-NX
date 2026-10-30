@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "Gesten",
+  "tab_tilt": "Neigen",
+  "reset": "Ansicht zurücksetzen",
+  "calibrate": "Kalibrieren",
+  "test_rumble": "Vibration testen",
+  "view_info": "Zoom {0} · Winkel {1}° · Verschiebung {2}, {3}",
+  "event_info": "Ereignisse: Pinch {0} · Drehen {1} · Zwei-Finger-Verschiebung {2}",
+  "hint_gestures": "Zwei Finger: zoomen, drehen, verschieben · Maus: ziehen, Mausrad · Q/E drehen · Doppeltipp setzt zurück",
+  "hint_tilt": "Neige die Konsole, um die Murmel zu rollen (Pfeiltasten oder der Stick funktionieren auch)",
+  "stars": "Sterne: {0}",
+  "no_motion": "Keine Bewegungssensordaten: Verwende die Pfeiltasten oder den linken Stick",
+  "motion_title": "input.motion()",
+  "menu_title": "Gesten"
+}

@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Thousands of live stations worldwide",
+    "tr": "Dünyadan binlerce canlı radyo istasyonu",
+    "de": "Tausende Live-Sender aus aller Welt",
+    "fr": "Des milliers de stations en direct",
+    "es": "Miles de emisoras en directo",
+    "ja": "世界中の何千ものライブ放送局",
+    "zh": "全球数千个直播电台",
+    "ko": "전 세계 수천 개의 실시간 방송국"
+  },
+  "description": {
+    "en": "Listen to internet radio from all over the world. Radio draws on the community Radio Browser directory, so you can browse popular stations, explore by country or genre, or search by name. The now-playing bar shows the current song when the station sends it, and playback keeps going after you close the window, with a desktop widget to control it.\n\n• Popular stations, countries with flags and 18 genres\n• Station search with logos and bitrate\n• Favourites you can reorder, and Recently Played\n• Song titles from the stream, when the station provides them\n• Sleep timer and background playback\n• Add your own stream address (MP3, AAC, HLS)",
+    "tr": "Dünyanın her yerinden internet radyosu dinle. Radyo, topluluğun Radio Browser dizinini kullanır; popüler istasyonlara göz atabilir, ülkeye ya da türe göre keşfedebilir veya ada göre arayabilirsin. Çalan bar, istasyon gönderiyorsa o an çalan şarkıyı gösterir; pencereyi kapatsan da yayın sürer, masaüstü bileşeninden kontrol edebilirsin.\n\n• Popüler istasyonlar, bayraklı ülkeler ve 18 tür\n• Logolu ve bit hızı bilgili istasyon arama\n• Sıralanabilir favoriler ve Son Çalınanlar\n• İstasyon sağlıyorsa yayından şarkı adları\n• Uyku zamanlayıcısı ve arka planda çalma\n• Kendi yayın adresini ekle (MP3, AAC, HLS)",
+    "de": "Hör Internetradio aus aller Welt. Radio nutzt das Community-Verzeichnis Radio Browser: Stöbere durch beliebte Sender, entdecke Sender nach Land oder Genre oder suche nach Namen. Die Wiedergabeleiste zeigt den aktuellen Song, wenn der Sender ihn mitschickt, und die Musik läuft weiter, wenn du das Fenster schließt, gesteuert über ein Schreibtisch-Widget.\n\n• Beliebte Sender, Länder mit Flaggen und 18 Genres\n• Sendersuche mit Logos und Bitrate\n• Sortierbare Favoriten und zuletzt gehört\n• Songtitel aus dem Stream, wenn der Sender sie liefert\n• Sleep-Timer und Wiedergabe im Hintergrund\n• Eigene Stream-Adresse hinzufügen (MP3, AAC, HLS)",
+    "fr": "Écoutez la radio sur Internet du monde entier. Radio s’appuie sur l’annuaire communautaire Radio Browser : parcourez les stations populaires, explorez par pays ou par genre, ou cherchez par nom. La barre de lecture affiche le titre en cours quand la station l’envoie, et l’écoute continue après la fermeture de la fenêtre, avec un widget de bureau pour la contrôler.\n\n• Stations populaires, pays avec drapeaux et 18 genres\n• Recherche de stations avec logos et débit\n• Favoris réorganisables et Écoutées récemment\n• Titres des morceaux depuis le flux, quand la station les fournit\n• Minuterie de veille et lecture en arrière-plan\n• Ajout de votre propre adresse de flux (MP3, AAC, HLS)",
+    "es": "Escucha radio por internet de todo el mundo. Radio usa el directorio comunitario Radio Browser, así que puedes ver las emisoras populares, explorar por país o género o buscar por nombre. La barra de reproducción muestra la canción actual cuando la emisora la envía, y el sonido sigue aunque cierres la ventana, con un widget de escritorio para controlarlo.\n\n• Emisoras populares, países con banderas y 18 géneros\n• Búsqueda de emisoras con logos y tasa de bits\n• Favoritas reordenables y Escuchadas recientemente\n• Títulos de canciones desde la emisión, si la emisora los envía\n• Temporizador de apagado y reproducción en segundo plano\n• Añade tu propia dirección de emisión (MP3, AAC, HLS)",
+    "ja": "世界中のインターネットラジオを聴きましょう。ラジオはコミュニティの Radio Browser ディレクトリを利用しているので、人気の放送局を閲覧したり、国やジャンルで探したり、名前で検索したりできます。再生中のバーには、放送局が送信していれば現在の曲が表示され、ウィンドウを閉じても再生が続き、デスクトップウィジェットで操作できます。\n\n• 人気の放送局、国旗付きの国、18 のジャンル\n• ロゴとビットレート付きの放送局検索\n• 並べ替えできるお気に入りと最近再生した局\n• 放送局が提供していればストリームからの曲名\n• スリープタイマーとバックグラウンド再生\n• 自分のストリームのアドレス (MP3、AAC、HLS) を追加",
+    "zh": "收听来自世界各地的网络电台。收音机使用社区维护的 Radio Browser 目录，你可以浏览热门电台，按国家或类型探索，或按名称搜索。当电台提供歌曲信息时，正在播放栏会显示当前歌曲；关闭窗口后播放仍会继续，并可通过桌面小组件控制。\n\n• 热门电台、带国旗的国家列表和 18 种类型\n• 带台标和码率的电台搜索\n• 可重新排序的收藏以及最近播放\n• 电台提供时显示音频流中的歌曲标题\n• 睡眠定时器和后台播放\n• 添加你自己的音频流地址（MP3、AAC、HLS）",
+    "ko": "전 세계의 인터넷 라디오를 들어 보세요. 라디오는 커뮤니티 Radio Browser 디렉터리를 사용하므로 인기 방송국을 둘러보거나, 국가나 장르별로 탐색하거나, 이름으로 검색할 수 있습니다. 방송국이 보내 주면 재생 막대에 현재 곡이 표시되며, 창을 닫아도 재생이 계속되고 데스크톱 위젯으로 제어할 수 있습니다.\n\n• 인기 방송국, 국기가 있는 국가, 18개 장르\n• 로고와 비트레이트가 표시되는 방송국 검색\n• 순서를 바꿀 수 있는 즐겨찾기와 최근 재생\n• 방송국이 제공하면 스트림의 곡 제목 표시\n• 취침 타이머와 백그라운드 재생\n• 나만의 스트림 주소 추가(MP3, AAC, HLS)"
+  },
+  "shots": [
+    ["wait 6"],
+    ["wclick 0.07 0.424", "wait 5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "roughness": "거칠기",
+  "zoom": "지형 크기",
+  "water": "해수면",
+  "flat": "로우 폴리 셰이딩",
+  "new_island": "새 섬",
+  "seed": "시드 {0} · {1} ms 만에 생성",
+  "stats": "삼각형 {0}개 · {1} · {2} FPS",
+  "autopilot": "자동 비행 · 움직이거나 드래그하면 직접 조종",
+  "controls": "왼쪽 스틱 / WASD 비행 · 오른쪽 스틱 / 화살표 / 드래그 시점 · ZR ZL / E Q 위아래",
+  "autopilot_menu": "자동 비행",
+  "menu_title": "지형"
+}

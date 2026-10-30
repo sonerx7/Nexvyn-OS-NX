@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.balloons",
+  "name": {
+    "en": "Balloon Pop",
+    "tr": "Balon Patlat",
+    "de": "Ballonplatzen",
+    "fr": "Éclate-ballons",
+    "es": "Revienta globos",
+    "ja": "風船割り",
+    "zh": "戳气球",
+    "ko": "풍선 터뜨리기"
+  },
+  "description": {
+    "en": "Pop the rising balloons before they float away. Chain pops for combos, grab golden, ice, heart and blast balloons, and stay away from bombs.",
+    "tr": "Yükselen balonları uçup gitmeden patlat. Ardışık patlatmalarla kombo yap; altın, buz, kalp ve patlama balonlarını yakala, bombalardan uzak dur.",
+    "de": "Lass die aufsteigenden Ballons platzen, bevor sie davonschweben. Verkette Treffer für Kombos, schnapp dir Gold-, Eis-, Herz- und Explosionsballons und halte dich von Bomben fern.",
+    "fr": "Éclatez les ballons qui montent avant qu’ils ne s’envolent. Enchaînez pour des combos, attrapez les ballons dorés, de glace, cœur et explosifs, et évitez les bombes.",
+    "es": "Revienta los globos que suben antes de que se escapen. Encadena explosiones para hacer combos, consigue globos dorados, de hielo, de corazón y explosivos, y aléjate de las bombas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 600,
+    "minWidth": 480,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

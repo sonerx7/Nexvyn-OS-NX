@@ -1,0 +1,41 @@
+{
+  "subtitle": {
+    "en": "Five percentage calculators, one window",
+    "tr": "Beş yüzde hesaplayıcısı tek pencerede",
+    "de": "Fünf Prozentrechner in einem Fenster",
+    "fr": "Cinq calculs de pourcentage réunis",
+    "es": "Cinco calculadoras de porcentajes",
+    "ja": "5 つのパーセント計算機をひとつのウィンドウに",
+    "zh": "五种百分比计算器，一个窗口搞定",
+    "ko": "한 창에 퍼센트 계산기 다섯 가지"
+  },
+  "description": {
+    "en": "Every percentage question you meet in daily life, answered as you type. Pick a calculator on the left, fill in two numbers and the result appears with the formula that produced it, so you always know how it was worked out.\n\n• X% of Y, with the amount added to and taken off the value\n• X is what percent of Y\n• Percentage change from A to B: increase or decrease and the difference\n• Add or subtract a percentage, for VAT, markups and discounts\n• Price before a percentage: find the original price from a final price\n• Quick rate buttons, copy the result, clear with undo",
+    "tr": "Günlük hayatta karşına çıkan her yüzde sorusu, sen yazdıkça yanıtlanır. Soldan bir hesaplayıcı seç, iki sayıyı gir; sonuç, onu veren formülle birlikte görünür, böylece nasıl hesaplandığını hep bilirsin.\n\n• Y'nin %X'i; tutarın değere eklenmiş ve düşülmüş haliyle\n• X, Y'nin yüzde kaçı\n• A'dan B'ye yüzde değişim: artış ya da azalış ve fark\n• KDV, kâr payı ve indirim için yüzde ekleme ya da çıkarma\n• Yüzde öncesi fiyat: son fiyattan ilk fiyatı bul\n• Hızlı oran düğmeleri, sonucu kopyalama, geri alınabilir temizleme",
+    "de": "Jede Prozentfrage aus dem Alltag, beantwortet beim Tippen. Wähle links einen Rechner, gib zwei Zahlen ein, und das Ergebnis erscheint mit der Formel, die es liefert, damit du immer weißt, wie gerechnet wurde.\n\n• X % von Y, mit dem Betrag auf den Wert aufgeschlagen und abgezogen\n• X ist wie viel Prozent von Y\n• Prozentuale Änderung von A nach B: Anstieg oder Rückgang und Differenz\n• Prozente aufschlagen oder abziehen, für MwSt., Aufschläge und Rabatte\n• Preis vor Prozent: den Ausgangspreis aus einem Endpreis ermitteln\n• Schnelle Satztasten, Ergebnis kopieren, Leeren mit Rückgängig",
+    "fr": "Toutes les questions de pourcentage du quotidien, résolues pendant la saisie. Choisissez un calcul à gauche, entrez deux nombres et le résultat s’affiche avec la formule utilisée, pour toujours savoir comment il a été obtenu.\n\n• X % de Y, avec le montant ajouté à la valeur et retiré de celle-ci\n• X représente quel pourcentage de Y\n• Variation de A à B : hausse ou baisse et différence\n• Ajouter ou retirer un pourcentage : TVA, marges et remises\n• Prix avant pourcentage : retrouvez le prix d’origine à partir du prix final\n• Boutons de taux rapides, copie du résultat, effacement annulable",
+    "es": "Todas las preguntas de porcentajes del día a día, resueltas mientras escribes. Elige una calculadora a la izquierda, introduce dos números y el resultado aparece con la fórmula que lo produce, para que siempre sepas cómo se ha calculado.\n\n• El X % de Y, con la cantidad sumada al valor y restada de él\n• Qué porcentaje de Y es X\n• Variación de A a B: subida o bajada y la diferencia\n• Sumar o restar un porcentaje, para IVA, márgenes y descuentos\n• Precio antes del porcentaje: el precio original a partir del final\n• Botones de tipo rápidos, copia el resultado, borra con deshacer",
+    "ja": "日常で出会うあらゆるパーセントの問題に、入力と同時に答えます。左で計算機を選び、2 つの数を入力すると、結果がそれを導いた式とともに表示されるので、どう計算されたかがいつもわかります。\n\n• Y の X%。その値に加えた額と引いた額も表示\n• X は Y の何パーセントか\n• A から B への変化率: 増加または減少と差\n• 消費税、上乗せ、割引のためのパーセンテージの加算・減算\n• % を適用する前の価格: 最終価格から元の価格を求める\n• クイック割合ボタン、結果のコピー、取り消し可能な消去",
+    "zh": "日常生活中遇到的各种百分比问题，输入时即可得到解答。在左侧选择一个计算器，填入两个数字，结果会连同计算公式一起显示，让你始终清楚它是怎么算出来的。\n\n• Y 的 X%，以及在该值上加上和减去后的金额\n• X 是 Y 的百分之几\n• 从 A 到 B 的百分比变化：增加或减少，以及差值\n• 加上或减去百分比，用于增值税、加价和折扣\n• 百分比之前的价格：根据最终价格求出原价\n• 快捷比率按钮、复制结果、可撤销的清除",
+    "ko": "일상에서 만나는 모든 퍼센트 문제에 입력하는 즉시 답합니다. 왼쪽에서 계산기를 고르고 두 숫자를 입력하면 결과가 계산에 쓰인 공식과 함께 나타나므로 어떻게 계산되었는지 항상 알 수 있습니다.\n\n• Y의 X%와 그 금액을 더하거나 뺀 값\n• X는 Y의 몇 퍼센트인가\n• A에서 B로의 증감률: 증가 또는 감소와 차이\n• 부가세, 이윤, 할인을 위한 퍼센트 더하기 또는 빼기\n• 퍼센트 적용 전 가격: 최종 가격에서 원래 가격 구하기\n• 빠른 비율 버튼, 결과 복사, 실행 취소 가능한 지우기"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key down",
+      "key down",
+      "wait 1.5"
+    ],
+    [
+      "key down",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "key down",
+      "wait 1.5"
+    ]
+  ]
+}

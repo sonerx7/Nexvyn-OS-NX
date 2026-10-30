@@ -1,0 +1,33 @@
+{
+  "id": "noto-sans-jp",
+  "name": {
+    "en": "Noto Sans JP",
+    "tr": "Noto Sans JP",
+    "de": "Noto Sans JP",
+    "fr": "Noto Sans JP",
+    "es": "Noto Sans JP"
+  },
+  "family": "Noto Sans JP",
+  "styles": {
+    "regular": "NotoSansJP-Regular.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "2.004",
+  "author": "Adobe",
+  "classification": "sans",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Grek",
+    "Viet",
+    "Jpan"
+  ],
+  "languages": [
+    "en",
+    "de",
+    "fr",
+    "es",
+    "ja"
+  ],
+  "cjk": "ja"
+}

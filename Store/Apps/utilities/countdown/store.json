@@ -1,0 +1,64 @@
+{
+  "subtitle": {
+    "en": "Big ticking countdowns to your big days",
+    "tr": "Beklediğin günlere canlı geri sayım",
+    "de": "Große Countdowns zu deinen großen Tagen",
+    "fr": "Le compte à rebours de vos grands jours",
+    "es": "Cuenta atrás hasta tus grandes días",
+    "ja": "大切な日までを大きく刻むカウントダウン",
+    "zh": "为重要的日子显示醒目的倒计时",
+    "ko": "중요한 날까지 째깍째깍 크게 세어 보세요"
+  },
+  "description": {
+    "en": "Count down to holidays, birthdays, trips and everything you look forward to. The selected countdown fills a colorful card with rolling days, hours, minutes and seconds and a progress ring, while all your other events sit in a grid below. When the moment arrives you get a notification, a sound and a burst of confetti.\n\n• One-tap presets for New Year, a birthday, the first day of summer and the weekend\n• Pick the date on a calendar, set the time, a color and an icon\n• Yearly events such as birthdays roll over to next year by themselves\n• Sort by soonest, by name or by recently added\n• Edit, duplicate and delete from the card menu or with the keyboard",
+    "tr": "Tatillere, doğum günlerine, yolculuklara ve heyecanla beklediğin her şeye geri say. Seçtiğin etkinlik; akan gün, saat, dakika ve saniye rakamları ve bir ilerleme halkasıyla renkli bir kartta duruyor, diğerleri de altta düzenli bir ızgarada. An geldiğinde bildirim, ses ve konfeti yağmuruyla haber verir.\n\n• Yılbaşı, doğum günü, yaz başlangıcı ve hafta sonu için tek dokunuşluk hazır ayarlar\n• Tarihi takvimden seç; saati, rengi ve simgeyi belirle\n• Doğum günü gibi her yıl tekrarlanan etkinlikler kendiliğinden sonraki yıla geçer\n• En yakın, ada göre ya da son eklenen sıralaması\n• Kart menüsünden ya da klavyeyle düzenle, çoğalt, sil",
+    "de": "Zähle die Tage bis zu Feiertagen, Geburtstagen, Reisen und allem, worauf du dich freust. Der ausgewählte Countdown füllt eine farbige Karte mit rollenden Tagen, Stunden, Minuten und Sekunden und einem Fortschrittsring, alle anderen Termine liegen darunter im Raster. Ist der Moment da, gibt es eine Benachrichtigung, einen Ton und Konfetti.\n\n• Vorlagen mit einem Tipp für Neujahr, Geburtstag, Sommeranfang und Wochenende\n• Datum im Kalender wählen, Uhrzeit, Farbe und Symbol festlegen\n• Jährliche Termine wie Geburtstage springen von selbst ins nächste Jahr\n• Sortierung nach Nähe, Name oder zuletzt hinzugefügt\n• Bearbeiten, duplizieren und löschen per Kartenmenü oder Tastatur",
+    "fr": "Comptez les jours jusqu’aux vacances, aux anniversaires, aux voyages et à tout ce que vous attendez avec impatience. Le compte à rebours sélectionné occupe une carte colorée avec jours, heures, minutes et secondes qui défilent et un anneau de progression, les autres événements se rangent en grille en dessous. Le moment venu, une notification, un son et une pluie de confettis vous préviennent.\n\n• Préréglages en un geste : Nouvel An, anniversaire, début de l’été et week-end\n• Choix de la date sur un calendrier, de l’heure, d’une couleur et d’une icône\n• Les événements annuels comme les anniversaires passent tout seuls à l’année suivante\n• Tri par échéance, par nom ou par ajout récent\n• Modifier, dupliquer et supprimer depuis le menu de la carte ou au clavier",
+    "es": "Cuenta los días que faltan para las fiestas, los cumpleaños, los viajes y todo lo que esperas con ganas. La cuenta seleccionada llena una tarjeta de color con días, horas, minutos y segundos que ruedan y un anillo de progreso, y el resto de eventos queda en una cuadrícula debajo. Cuando llega el momento recibes una notificación, un sonido y una lluvia de confeti.\n\n• Preajustes de un toque para Año Nuevo, cumpleaños, inicio del verano y fin de semana\n• Elige la fecha en un calendario, la hora, un color y un icono\n• Los eventos anuales, como los cumpleaños, pasan solos al año siguiente\n• Ordena por el más cercano, por nombre o por los últimos añadidos\n• Edita, duplica y borra desde el menú de la tarjeta o con el teclado",
+    "ja": "休日、誕生日、旅行など、楽しみなことまでカウントダウンしましょう。選択したカウントダウンは、回転する日、時間、分、秒と進捗リングでカラフルなカードいっぱいに表示され、他のイベントはその下にグリッドで並びます。その瞬間が来ると、通知、サウンド、紙吹雪でお知らせします。\n\n• お正月、誕生日、夏の初日、週末のワンタッププリセット\n• カレンダーで日付を選び、時刻、色、アイコンを設定\n• 誕生日のような毎年のイベントは自動的に翌年へ繰り越し\n• 近い順、名前順、最近追加した順で並べ替え\n• カードのメニューまたはキーボードで編集、複製、削除",
+    "zh": "为节假日、生日、旅行以及所有你期待的事情倒计时。选中的倒计时会以滚动的天、时、分、秒和进度环填满一张彩色卡片，其他所有事件则排列在下方的网格中。时刻到来时，你会收到通知、听到提示音，还会看到一阵彩纸。\n\n• 新年、生日、夏季第一天和周末的一键预设\n• 在日历上选择日期，设置时间、颜色和图标\n• 生日等每年重复的事件会自动顺延到下一年\n• 按最近、名称或最近添加排序\n• 通过卡片菜单或键盘编辑、复制和删除",
+    "ko": "휴일, 생일, 여행 등 기다려지는 모든 날까지 카운트다운하세요. 선택한 카운트다운은 굴러가는 일, 시간, 분, 초와 진행 링으로 알록달록한 카드를 채우며, 다른 이벤트는 모두 아래 격자에 놓입니다. 그 순간이 오면 알림, 소리, 색종이가 터집니다.\n\n• 새해, 생일, 여름의 첫날, 주말을 위한 원탭 프리셋\n• 캘린더에서 날짜를 고르고 시간, 색상, 아이콘 설정\n• 생일 같은 매년 이벤트는 자동으로 다음 해로 넘어감\n• 가까운 순, 이름순, 최근 추가순 정렬\n• 카드 메뉴나 키보드로 편집, 복제, 삭제"
+  },
+  "shots": [
+    [
+      "wait 2.5",
+      "wclick 0.247 0.635",
+      "wait 1",
+      "key enter",
+      "wait 1",
+      "key n",
+      "wait 0.5",
+      "key down",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1",
+      "key enter",
+      "wait 1",
+      "key n",
+      "wait 0.5",
+      "key down",
+      "key down",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1",
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "wclick 0.878 0.157",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.5",
+      "wclick 0.26 0.58",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "kick": "キック",
+  "snare": "スネア",
+  "clap": "クラップ",
+  "hat": "ハイハット",
+  "open_hat": "オープンハット",
+  "tom": "タム",
+  "play": "プレイ",
+  "stop": "停止",
+  "clear": "消去",
+  "tempo": "テンポ {0}",
+  "swing": "スウィング {0}%",
+  "preset_house": "ハウス",
+  "preset_break": "ブレイクビーツ",
+  "preset_hiphop": "ヒップホップ",
+  "preset_bossa": "ボサノヴァ",
+  "hint": "パッドをタップ: オン → アクセント → オフ · 名前をタップでミュート · Space で再生、1-6 で行をミュート",
+  "unmute_all": "すべてのミュートを解除",
+  "menu_title": "ビートボックス"
+}

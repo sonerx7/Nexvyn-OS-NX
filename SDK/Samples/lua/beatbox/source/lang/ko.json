@@ -1,0 +1,20 @@
+{
+  "kick": "킥",
+  "snare": "스네어",
+  "clap": "클랩",
+  "hat": "하이햇",
+  "open_hat": "오픈 햇",
+  "tom": "탐",
+  "play": "재생",
+  "stop": "정지",
+  "clear": "지우기",
+  "tempo": "템포 {0}",
+  "swing": "스윙 {0}%",
+  "preset_house": "하우스",
+  "preset_break": "브레이크비트",
+  "preset_hiphop": "힙합",
+  "preset_bossa": "보사노바",
+  "hint": "패드 탭: 켬 → 강조 → 끔 · 이름을 탭하면 음소거 · Space로 재생, 1-6으로 줄 음소거",
+  "unmute_all": "모두 음소거 해제",
+  "menu_title": "비트박스"
+}

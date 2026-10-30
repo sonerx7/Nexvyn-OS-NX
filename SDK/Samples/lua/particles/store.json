@@ -1,0 +1,41 @@
+{
+  "kind": "demo",
+  "tags": [
+    "nexvyn.game",
+    "particles",
+    "touch"
+  ],
+  "subtitle": {
+    "en": "Emitters, bursts and gravity wells",
+    "tr": "Yayıcılar, patlamalar ve çekim kuyuları",
+    "de": "Emitter, Explosionen und Gravitationsquellen",
+    "fr": "Émetteurs, explosions et puits de gravité",
+    "es": "Emisores, explosiones y pozos de gravedad",
+    "ja": "エミッター、バースト、重力井戸",
+    "zh": "发射器、爆发和引力井",
+    "ko": "이미터, 폭발, 중력 우물"
+  },
+  "description": {
+    "en": "Five emitter presets of nexvyn.game (fire, fountain, sparks, snow, magic) you can move and tune live, bursts where you tap, and gravity wells placed with a finger that bend every particle. Shows game.emitter, game.particles and how to keep thousands of particles at 60 fps.",
+    "tr": "nexvyn.game'in beş hazır yayıcısı (ateş, fıskiye, kıvılcım, kar, büyü) canlı olarak taşınır ve ayarlanır; dokunduğunuz yerde patlamalar olur, parmakla yerleştirilen çekim kuyuları tüm parçacıkları büker. game.emitter, game.particles ve binlerce parçacığın 60 fps'te nasıl tutulduğunu gösterir.",
+    "de": "Fünf Emitter-Vorlagen von nexvyn.game (Feuer, Fontäne, Funken, Schnee, Magie), live verschieb- und einstellbar, Explosionen beim Tippen und mit dem Finger gesetzte Gravitationsquellen, die jedes Partikel ablenken. Zeigt game.emitter, game.particles und wie Tausende Partikel bei 60 fps bleiben.",
+    "fr": "Cinq émetteurs prédéfinis de nexvyn.game (feu, fontaine, étincelles, neige, magie) à déplacer et régler en direct, des explosions là où vous touchez et des puits de gravité posés du doigt qui courbent chaque particule. Montre game.emitter, game.particles et comment garder des milliers de particules à 60 i/s.",
+    "es": "Cinco emisores predefinidos de nexvyn.game (fuego, fuente, chispas, nieve, magia) que se mueven y ajustan en vivo, explosiones donde tocas y pozos de gravedad colocados con el dedo que curvan cada partícula. Muestra game.emitter, game.particles y cómo mantener miles de partículas a 60 fps.",
+    "ja": "nexvyn.game の 5 つのエミッタープリセット (炎、噴水、火花、雪、魔法) をリアルタイムに動かして調整でき、タップした場所でバーストし、指で配置した重力井戸がすべてのパーティクルを曲げます。game.emitter、game.particles、そして数千のパーティクルを 60 fps に保つ方法を示します。",
+    "zh": "nexvyn.game 的五种发射器预设（火焰、喷泉、火花、雪、魔法），可以实时移动和调整；轻点处产生爆发；用手指放置的引力井会让每个粒子弯曲轨迹。演示了 game.emitter、game.particles，以及如何让数千个粒子保持 60 fps。",
+    "ko": "실시간으로 옮기고 조정할 수 있는 nexvyn.game 이미터 프리셋 5종(불, 분수, 불꽃, 눈, 마법), 탭한 곳의 폭발, 손가락으로 놓아 모든 입자를 휘게 하는 중력 우물. game.emitter, game.particles, 그리고 수천 개의 입자를 60 fps로 유지하는 방법을 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.5 0.5",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

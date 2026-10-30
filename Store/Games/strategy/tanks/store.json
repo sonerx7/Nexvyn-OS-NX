@@ -1,0 +1,38 @@
+{
+  "subtitle": {
+    "en": "Turn-based artillery on destructible land",
+    "tr": "Yıkılabilir arazide sıra tabanlı topçu",
+    "de": "Rundenbasierte Artillerie, zerstörbares Land",
+    "fr": "Artillerie au tour par tour, sol destructible",
+    "es": "Artillería por turnos en terreno destructible",
+    "ja": "壊れる地形でターン制の砲撃戦",
+    "zh": "在可破坏地形上的回合制炮战",
+    "ko": "부서지는 지형에서 펼치는 턴제 포격전"
+  },
+  "description": {
+    "en": "Two tanks, one battlefield and the wind to think about. Set your angle and power, fire, and watch the shell arc across the sky. Explosions carve craters into the terrain, the ground above collapses and the tanks drop onto whatever is left. The wind shifts every turn. Take on the CPU on three difficulty levels or a friend on the same console; the first tank to win three rounds takes the match.\n\n• Destructible terrain with falling dirt\n• Wind that shifts every turn\n• CPU on easy, normal or hard, or two players\n• First to three rounds, with saved match records\n• Controller, keyboard or drag-to-aim touch",
+    "tr": "İki tank, bir savaş alanı ve hesaba katılması gereken rüzgâr. Açını ve gücünü ayarla, ateş et ve merminin gökyüzünde kavis çizişini izle. Patlamalar arazide krater açar, üstteki toprak çöker, tanklar da geriye ne kaldıysa onun üstüne düşer. Rüzgâr her turda değişir. Bilgisayara karşı üç zorluk seviyesinde ya da aynı konsolda bir arkadaşınla oyna; üç raunt kazanan ilk tank maçı alır.\n\n• Toprağı çöken, yıkılabilir arazi\n• Her turda değişen rüzgâr\n• Kolay, normal ya da zor bilgisayar veya iki oyuncu\n• Üç raunt alan kazanır, maç kayıtları saklanır\n• Kumanda, klavye ya da sürükleyerek nişan alma",
+    "de": "Zwei Panzer, ein Schlachtfeld und der Wind, den du einrechnen musst. Stell Winkel und Kraft ein, feuere und verfolge, wie die Granate ihren Bogen über den Himmel zieht. Explosionen reißen Krater ins Gelände, die Erde darüber rutscht nach, und die Panzer sacken auf das, was übrig bleibt. Der Wind dreht jede Runde. Tritt gegen die CPU auf drei Schwierigkeitsstufen oder gegen einen Freund an derselben Konsole an; wer zuerst drei Runden gewinnt, holt sich das Match.\n\n• Zerstörbares Gelände mit nachrutschender Erde\n• Wind, der jede Runde dreht\n• CPU auf Leicht, Normal oder Schwer oder zwei Spieler\n• Wer drei Runden gewinnt, siegt, mit gespeicherten Bilanzen\n• Controller, Tastatur oder Zielen durch Ziehen per Touch",
+    "fr": "Deux tanks, un champ de bataille et le vent à prendre en compte. Réglez l’angle et la puissance, tirez et suivez l’obus dans sa courbe à travers le ciel. Les explosions creusent des cratères, la terre au-dessus s’effondre et les tanks retombent sur ce qu’il en reste. Le vent change à chaque tour. Affrontez l’ordinateur sur trois niveaux de difficulté ou un ami sur la même console ; le premier tank à remporter trois manches gagne le match.\n\n• Terrain destructible et terre qui s’effondre\n• Un vent qui change à chaque tour\n• Ordinateur facile, normal ou difficile, ou deux joueurs\n• Le premier à trois manches gagne, bilans sauvegardés\n• Manette, clavier ou visée tactile en glissant",
+    "es": "Dos tanques, un campo de batalla y el viento que hay que tener en cuenta. Ajusta el ángulo y la fuerza, dispara y mira cómo el proyectil traza su arco por el cielo. Las explosiones abren cráteres en el terreno, la tierra de encima se derrumba y los tanques caen sobre lo que queda. El viento cambia cada turno. Enfréntate a la CPU en tres niveles de dificultad o a un amigo en la misma consola; el primer tanque en ganar tres rondas se lleva la partida.\n\n• Terreno destructible con tierra que se derrumba\n• Viento que cambia cada turno\n• CPU fácil, normal o difícil, o dos jugadores\n• Gana quien llegue a tres rondas, con récords guardados\n• Mando, teclado o puntería táctil arrastrando",
+    "ja": "2 台の戦車、1 つの戦場、そして考慮すべき風。角度とパワーを設定して発射し、砲弾が空に弧を描く様子を見守りましょう。爆発で地形にクレーターができ、上の地面が崩れ、戦車は残った地面に落ちます。風はターンごとに変わります。3 段階の CPU、または同じ本体で友だちと対戦し、先に 3 ラウンド取った戦車が試合に勝ちます。\n\n• 土が崩れ落ちる壊れる地形\n• ターンごとに変わる風\n• かんたん、ふつう、むずかしいの CPU、または 2 人対戦\n• 3 ラウンド先取、保存される試合記録\n• コントローラー、キーボード、ドラッグで狙うタッチ",
+    "zh": "两辆坦克，一片战场，还要考虑风向。设定角度和力度，开火，看着炮弹划过天空。爆炸会在地形上炸出弹坑，上方的地面会坍塌，坦克也会落到剩下的地面上。风向每回合都会改变。与三种难度的电脑对战，或在同一台主机上与朋友对决；先赢三回合的坦克赢得比赛。\n\n• 可破坏的地形和掉落的泥土\n• 每回合都会变化的风\n• 简单、普通或困难的电脑，或双人对战\n• 先赢三回合，保存比赛纪录\n• 手柄、键盘或拖移瞄准的触控操作",
+    "ko": "탱크 두 대, 전장 하나, 그리고 고려해야 할 바람. 각도와 힘을 정하고 발사하면 포탄이 하늘을 가로질러 포물선을 그립니다. 폭발은 지형에 구덩이를 파고, 위쪽 땅이 무너지며, 탱크는 남은 땅 위로 떨어집니다. 바람은 매 턴 바뀝니다. CPU와 3단계 난이도로 대결하거나 같은 콘솔에서 친구와 대결하세요. 먼저 3라운드를 이긴 탱크가 경기에서 승리합니다.\n\n• 흙이 무너져 내리는 부서지는 지형\n• 매 턴 바뀌는 바람\n• 쉬움, 보통, 어려움 CPU 또는 2인 플레이\n• 저장되는 경기 기록과 함께 먼저 3라운드\n• 컨트롤러, 키보드, 드래그하여 조준하는 터치"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key space",
+      "wait 1.2"
+    ],
+    [
+      "wait 4"
+    ]
+  ]
+}

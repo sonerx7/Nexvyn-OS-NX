@@ -1,0 +1,51 @@
+{
+  "subtitle": {
+    "en": "Rotate, drop and clear the lines",
+    "tr": "Döndür, bırak, satırları temizle",
+    "de": "Drehen, fallen lassen, Reihen räumen",
+    "fr": "Tournez, lâchez, effacez les lignes",
+    "es": "Gira, suelta y limpia las líneas",
+    "ja": "回して、落として、ラインを消そう",
+    "zh": "旋转、落下、消除整行",
+    "ko": "돌리고, 떨어뜨리고, 줄을 지우세요"
+  },
+  "description": {
+    "en": "The falling-block puzzle, done right. The seven pieces come from a shuffled bag, so you never wait too long for the one you need. Rotate with wall kicks, slide, soft drop or hard drop, keep a piece in hold for later and plan ahead with a three-piece preview and a ghost piece. Clear lines to level up, chain combos and go for the four-line clear.\n\n• Seven-piece bag, hold and a three-piece preview\n• Ghost piece, lock delay and wall kicks\n• Soft and hard drop, combos and levels\n• Controller, keyboard or touch gestures\n• Best score and statistics",
+    "tr": "Düşen blok bulmacası, olması gerektiği gibi. Yedi parça karıştırılmış bir torbadan gelir; ihtiyacın olan parçayı asla çok uzun beklemezsin. Duvar itmeli döndürme, kaydırma, yumuşak ya da anında bırakma; bir parçayı sonraya sakla, üç parçalık önizleme ve gölge parçayla önünü gör. Satırları temizleyip seviye atla, kombo yap ve dört satırı birden silmeye oyna.\n\n• Yedi parçalı torba, saklama ve üç parçalık önizleme\n• Gölge parça, kilit gecikmesi ve duvar itmesi\n• Yumuşak ve anında bırakma, kombolar ve seviyeler\n• Kumanda, klavye ya da dokunmatik hareketler\n• En iyi skor ve istatistikler",
+    "de": "Das Fallende-Blöcke-Puzzle, richtig gemacht. Die sieben Teile kommen aus einem gemischten Beutel, du wartest also nie zu lange auf das passende. Dreh mit Wall Kicks, schieb, lass sanft oder sofort fallen, leg ein Teil für später zurück und plane mit der Vorschau auf drei Teile und dem Geisterteil voraus. Räum Reihen ab, steig Level auf, verkette Combos und versuch den Vierfach-Abräumer.\n\n• Sieben-Teile-Beutel, Halten und Vorschau auf drei Teile\n• Geisterteil, Lock Delay und Wall Kicks\n• Sanftes und sofortiges Fallen, Combos und Level\n• Controller, Tastatur oder Touch-Gesten\n• Highscore und Statistik",
+    "fr": "Le puzzle des blocs qui tombent, comme il se doit. Les sept pièces sortent d’un sac mélangé : vous n’attendez jamais trop longtemps celle qu’il vous faut. Tournez avec rebond sur les murs, déplacez, faites descendre doucement ou d’un coup, gardez une pièce en réserve et anticipez grâce à l’aperçu de trois pièces et à la pièce fantôme. Effacez des lignes pour monter de niveau, enchaînez les combos et visez les quatre lignes d’un coup.\n\n• Sac de sept pièces, réserve et aperçu de trois pièces\n• Pièce fantôme, délai de verrouillage et rebond sur les murs\n• Descente douce ou instantanée, combos et niveaux\n• Manette, clavier ou gestes tactiles\n• Meilleur score et statistiques",
+    "es": "El puzle de bloques que caen, bien hecho. Las siete piezas salen de una bolsa barajada, así que nunca esperas demasiado la que necesitas. Gira con rebote en las paredes, desliza, baja suave o de golpe, guarda una pieza para después y planifica con la vista previa de tres piezas y la pieza fantasma. Limpia líneas para subir de nivel, encadena combos y busca las cuatro líneas a la vez.\n\n• Bolsa de siete piezas, reserva y vista previa de tres\n• Pieza fantasma, retardo de bloqueo y rebote en paredes\n• Caída suave y rápida, combos y niveles\n• Mando, teclado o gestos táctiles\n• Mejor puntuación y estadísticas",
+    "ja": "落ち物パズルを正しく。7 種類のピースはシャッフルされた袋から出てくるので、必要なピースを長く待つことはありません。壁蹴り付きの回転、スライド、ソフトドロップ、ハードドロップ、ピースを後で使うためのホールド、3 つ先までのネクスト表示とゴーストで先を読みましょう。ラインを消してレベルを上げ、コンボをつなげ、4 ライン消しを狙いましょう。\n\n• 7 種 1 巡、ホールド、3 つ先までのネクスト\n• ゴースト、固定までの猶予、壁蹴り\n• ソフトドロップとハードドロップ、コンボ、レベル\n• コントローラー、キーボード、タッチジェスチャー\n• ベストスコアと統計",
+    "zh": "做得恰到好处的下落方块解谜游戏。七种方块来自打乱的方块袋，因此你永远不用等太久就能拿到需要的那一块。可借助踢墙旋转、平移、软降或硬降，把方块暂存起来留待以后，并借助三块预览和投影方块提前规划。消除整行以升级，打出连击，挑战四行消除。\n\n• 七块方块袋、暂存和三块预览\n• 投影方块、锁定延迟和踢墙\n• 软降和硬降、连击和等级\n• 手柄、键盘或触控手势\n• 最高分和统计",
+    "ko": "제대로 만든 낙하 블록 퍼즐입니다. 일곱 가지 블록이 섞인 가방에서 나오므로 필요한 블록을 너무 오래 기다리지 않습니다. 벽 차기로 회전하고, 밀고, 천천히 또는 바로 떨어뜨리고, 나중을 위해 블록을 보관하고, 3개 미리 보기와 고스트 블록으로 미리 계획하세요. 줄을 지워 레벨을 올리고, 콤보를 이어 가고, 4줄 지우기에 도전하세요.\n\n• 7종 블록 가방, 보관, 3개 미리 보기\n• 고스트 블록, 고정 지연, 벽 차기\n• 천천히 내리기와 바로 떨어뜨리기, 콤보, 레벨\n• 컨트롤러, 키보드, 터치 제스처\n• 최고 점수와 통계"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2",
+      "key space",
+      "wait 0.6",
+      "key up",
+      "key space",
+      "wait 0.6"
+    ],
+    [
+      "key c",
+      "wait 0.4",
+      "key space",
+      "wait 0.6",
+      "key up",
+      "key up",
+      "key space",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "key space",
+      "wait 1.5"
+    ]
+  ]
+}

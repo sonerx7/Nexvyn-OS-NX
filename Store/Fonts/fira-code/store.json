@@ -1,0 +1,16 @@
+{
+  "subtitle": {
+    "en": "A monospaced font for code",
+    "tr": "Kod için eş aralıklı bir yazı tipi",
+    "de": "Eine Monospace-Schrift für Code",
+    "fr": "Une police à chasse fixe pour le code",
+    "es": "Una fuente monoespaciada para código"
+  },
+  "description": {
+    "en": "Fira Code is a monospaced font with clear, distinct letters (0 and O, 1, l and I never look alike) for the Text Editor, Studio and the Console. Every character has the same width, so columns line up.\n\n• Regular and Bold\n• Latin with Turkish, German, French and Spanish letters, Cyrillic, Greek\n• SIL Open Font License",
+    "tr": "Fira Code, Metin Düzenleyici, Studio ve Konsol için net ve birbirinden kolay ayrılan harfleri olan (0 ile O, 1, l ve I asla karışmaz) eş aralıklı bir yazı tipidir. Her karakter aynı genişlikte olduğundan sütunlar hizalı durur.\n\n• Regular ve Bold\n• Türkçe, Almanca, Fransızca ve İspanyolca harfleriyle Latin, Kiril, Yunanca\n• SIL Open Font License",
+    "de": "Fira Code ist eine Monospace-Schrift mit klaren, unterscheidbaren Zeichen (0 und O, 1, l und I sehen nie gleich aus) für den Texteditor, Studio und die Konsole. Alle Zeichen sind gleich breit, Spalten bleiben bündig.\n\n• Regular und Bold\n• Lateinisch mit türkischen, deutschen, französischen und spanischen Zeichen, Kyrillisch, Griechisch\n• SIL Open Font License",
+    "fr": "Fira Code est une police à chasse fixe aux lettres nettes et bien distinctes (0 et O, 1, l et I ne se ressemblent jamais) pour l’éditeur de texte, Studio et la Console. Tous les caractères ont la même largeur : les colonnes restent alignées.\n\n• Regular et Bold\n• Latin avec les lettres turques, allemandes, françaises et espagnoles, cyrillique, grec\n• SIL Open Font License",
+    "es": "Fira Code es una fuente monoespaciada con letras claras y fáciles de distinguir (0 y O, 1, l e I nunca se confunden) para el Editor de texto, Studio y la Consola. Todos los caracteres miden lo mismo, así que las columnas quedan alineadas.\n\n• Regular y Bold\n• Latín con letras turcas, alemanas, francesas y españolas, cirílico, griego\n• SIL Open Font License"
+  }
+}

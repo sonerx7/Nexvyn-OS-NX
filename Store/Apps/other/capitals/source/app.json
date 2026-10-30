@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.capitals",
+  "name": {"en": "Capitals", "tr": "Başkentler", "de": "Hauptstädte", "fr": "Capitales", "es": "Capitales", "ja": "首都クイズ", "zh": "首都", "ko": "수도 퀴즈"},
+  "description": {
+    "en": "Quiz yourself on the capitals of 150 countries by continent, practise the ones you missed and browse a searchable list.",
+    "tr": "150 ülkenin başkentini kıtalara göre test et, yanlış yaptıklarını tekrar çalış ve aranabilir listeye göz at.",
+    "de": "Teste dein Wissen über die Hauptstädte von 150 Ländern nach Kontinent, übe die verpassten und durchsuche eine Liste.",
+    "fr": "Testez-vous sur les capitales de 150 pays par continent, révisez celles que vous avez manquées et parcourez une liste avec recherche.",
+    "es": "Ponte a prueba con las capitales de 150 países por continente, practica las que fallaste y consulta una lista con búsqueda."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 680, "height": 520, "minWidth": 560, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

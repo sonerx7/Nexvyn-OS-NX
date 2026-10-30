@@ -1,0 +1,47 @@
+{
+  "kind": "app",
+  "tags": [
+    "dice",
+    "random",
+    "store",
+    "animation"
+  ],
+  "subtitle": {
+    "en": "d4 to d20, hold dice, keep a history",
+    "tr": "d4'ten d20'ye, zar tut, geçmişi sakla",
+    "de": "W4 bis W20, Würfel halten, Verlauf",
+    "fr": "De d4 à d20, garder des dés, historique",
+    "es": "De d4 a d20, retener dados, historial",
+    "ja": "d4〜d20、サイコロのキープ、履歴",
+    "zh": "d4 到 d20，可保留骰子，保留历史记录",
+    "ko": "d4부터 d20까지, 주사위 고정, 기록 보관"
+  },
+  "description": {
+    "en": "Roll one to six dice of the same kind, from d4 to d20, with a short rolling animation, a click and a rumble. Tap a die to hold it for the next roll, read the total at a glance and look back at your last twelve rolls, which are kept between runs.\n\nWhat it teaches in Java: a class extending nexvyn.App, update() only while something moves, java.util.Random, Ui.segmented with a String array, Ui.hit for tappable shapes, Record and List values in Store, Menu.bar with disabled items, Audio.tone and Sys.vibrate.",
+    "tr": "Aynı türden bir ile altı zarı, d4'ten d20'ye kadar kısa bir yuvarlanma animasyonu, tık sesi ve titreşimle at. Bir sonraki atışta tutmak için zara dokun, toplamı bir bakışta gör ve uygulamayı kapatınca da korunan son on iki atışına göz at.\n\nJava'da öğrettikleri: nexvyn.App'ten türeyen sınıf, yalnızca bir şey hareket ederken update(), java.util.Random, String dizisiyle Ui.segmented, dokunulabilir şekiller için Ui.hit, Store içinde Record ve List değerleri, kapalı öğeli Menu.bar, Audio.tone ve Sys.vibrate.",
+    "de": "Wirf ein bis sechs gleiche Würfel von W4 bis W20 mit kurzer Rollanimation, Klick und Vibration. Tippe auf einen Würfel, um ihn für den nächsten Wurf zu halten, lies die Summe auf einen Blick und sieh dir deine letzten zwölf Würfe an, die erhalten bleiben.\n\nWas es in Java zeigt: eine von nexvyn.App abgeleitete Klasse, update() nur während sich etwas bewegt, java.util.Random, Ui.segmented mit einem String-Array, Ui.hit für antippbare Formen, Record- und List-Werte in Store, Menu.bar mit deaktivierten Einträgen, Audio.tone und Sys.vibrate.",
+    "fr": "Lancez de un à six dés identiques, du d4 au d20, avec une courte animation, un clic et une vibration. Touchez un dé pour le garder au prochain lancer, lisez le total d'un coup d'œil et retrouvez vos douze derniers lancers, conservés entre les sessions.\n\nCe qu'il enseigne en Java : une classe qui étend nexvyn.App, update() seulement quand quelque chose bouge, java.util.Random, Ui.segmented avec un tableau de String, Ui.hit pour des formes cliquables, des valeurs Record et List dans Store, Menu.bar avec des éléments désactivés, Audio.tone et Sys.vibrate.",
+    "es": "Lanza de uno a seis dados del mismo tipo, de d4 a d20, con una breve animación, un clic y una vibración. Toca un dado para retenerlo en la siguiente tirada, lee el total de un vistazo y repasa tus últimas doce tiradas, que se guardan entre sesiones.\n\nLo que enseña en Java: una clase que extiende nexvyn.App, update() solo mientras algo se mueve, java.util.Random, Ui.segmented con un array de String, Ui.hit para formas que se tocan, valores Record y List en Store, Menu.bar con elementos desactivados, Audio.tone y Sys.vibrate.",
+    "ja": "d4 から d20 までの同じ種類のサイコロを 1〜6 個、短い転がるアニメーション、クリック音、振動とともに振りましょう。サイコロをタップすると次に振るときにキープされ、合計がひと目でわかり、直近 12 回の結果を振り返れます (実行をまたいで保持されます)。\n\nJava で学べること: nexvyn.App を継承したクラス、何かが動いている間だけの update()、java.util.Random、String 配列を使った Ui.segmented、タップできる図形のための Ui.hit、Store の Record と List の値、無効な項目のある Menu.bar、Audio.tone と Sys.vibrate。",
+    "zh": "掷一到六颗同类骰子，从 d4 到 d20，带有简短的滚动动画、咔嗒声和振动。轻点骰子即可在下一次投掷时保留它，一眼看清总点数，并回看最近十二次投掷记录，这些记录在多次运行之间都会保留。\n\n在 Java 中学到的内容：继承 nexvyn.App 的类、仅在有东西移动时调用 update()、java.util.Random、使用 String 数组的 Ui.segmented、用于可点按形状的 Ui.hit、Store 中的 Record 和 List 值、带禁用项的 Menu.bar、Audio.tone 和 Sys.vibrate。",
+    "ko": "d4부터 d20까지 같은 종류의 주사위를 1–6개, 짧은 굴림 애니메이션과 딸깍 소리, 진동과 함께 굴리세요. 주사위를 탭하면 다음 굴림에서 고정되고, 합계를 한눈에 보고, 실행 간에 보관되는 최근 12번의 굴림을 돌아보세요.\n\nJava로 배우는 내용: nexvyn.App을 상속하는 클래스, 무언가 움직일 때만 update(), java.util.Random, String 배열을 쓰는 Ui.segmented, 탭할 수 있는 도형을 위한 Ui.hit, Store의 Record와 List 값, 비활성 항목이 있는 Menu.bar, Audio.tone과 Sys.vibrate."
+  },
+  "shots": [
+    [
+      "wait 2"
+    ],
+    [
+      "key space",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.41 0.23",
+      "key space",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

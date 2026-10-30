@@ -1,0 +1,10 @@
+{
+  "app": "Cronómetro",
+  "start": "Iniciar",
+  "stop": "Parar",
+  "lap": "Vuelta",
+  "reset": "Reiniciar",
+  "no_laps": "Las vueltas aparecen aquí. Espacio inicia y para, L añade una vuelta.",
+  "lap_n": "Vuelta {0}",
+  "share": "Compartir vueltas…"
+}

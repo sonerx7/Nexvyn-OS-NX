@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.gestures",
+  "name": {"en": "Gestures Demo", "tr": "Hareketler Demosu", "de": "Gesten-Demo", "fr": "Démo Gestes", "es": "Demo de gestos", "ja": "ジェスチャーデモ", "zh": "手势演示", "ko": "제스처 데모"},
+  "description": {
+    "en": "Pinch, rotate and two-finger pan, the motion sensors and HD rumble",
+    "tr": "İki parmakla yakınlaştırma, döndürme ve kaydırma, hareket sensörleri ve HD titreşim",
+    "de": "Zoomen, Drehen und Verschieben mit zwei Fingern, die Bewegungssensoren und HD-Vibration",
+    "fr": "Pincer, pivoter et faire glisser à deux doigts, les capteurs de mouvement et la vibration HD",
+    "es": "Pellizcar, girar y desplazar con dos dedos, los sensores de movimiento y la vibración HD"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 900, "height": 600, "minWidth": 480, "minHeight": 400, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

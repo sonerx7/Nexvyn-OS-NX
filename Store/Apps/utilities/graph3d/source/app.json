@@ -1,0 +1,33 @@
+{
+  "id": "graph3d",
+  "name": {
+    "en": "3D Surface",
+    "tr": "3D Yüzey",
+    "de": "3D-Fläche",
+    "fr": "Surface 3D",
+    "es": "Superficie 3D",
+    "ja": "3D サーフェス",
+    "zh": "3D 曲面",
+    "ko": "3D 곡면"
+  },
+  "description": {
+    "en": "Plot z = f(x, y, t) as a coloured 3D surface you can rotate, zoom and animate.",
+    "tr": "z = f(x, y, t) fonksiyonlarını döndürülebilir, yakınlaştırılabilir ve canlandırılabilir renkli 3D yüzey olarak çizer.",
+    "de": "Zeichne z = f(x, y, t) als farbige 3D-Fläche, die du drehen, zoomen und animieren kannst.",
+    "fr": "Tracez z = f(x, y, t) sous forme de surface 3D colorée que vous pouvez faire pivoter, zoomer et animer.",
+    "es": "Representa z = f(x, y, t) como una superficie 3D de colores que puedes rotar, ampliar y animar."
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": true,
+  "permissions": []
+}

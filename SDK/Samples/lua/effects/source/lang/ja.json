@@ -1,0 +1,16 @@
+{
+  "plasma": "プラズマ",
+  "tunnel": "トンネル",
+  "starfield": "星空",
+  "pal_fire": "ファイア",
+  "pal_ocean": "オーシャン",
+  "pal_neon": "ネオン",
+  "pal_rainbow": "レインボー",
+  "cell": "セル {0}px",
+  "speed": "速度",
+  "cycle": "色を循環",
+  "info_cells": "{0} セル · {1} FPS",
+  "info_stars": "{0} 個の星 · {1} FPS",
+  "hint": "ドラッグで操縦 · 1 2 3 でエフェクトを切り替え",
+  "menu_title": "エフェクト"
+}

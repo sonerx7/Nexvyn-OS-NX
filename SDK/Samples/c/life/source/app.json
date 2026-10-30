@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.sample.life",
+  "name": {
+    "en": "Game of Life (C)",
+    "tr": "Hayat Oyunu (C)",
+    "de": "Spiel des Lebens (C)",
+    "fr": "Jeu de la vie (C)",
+    "es": "Juego de la vida (C)",
+    "ja": "ライフゲーム (C)",
+    "zh": "生命游戏（C）",
+    "ko": "생명 게임(C)"
+  },
+  "description": {
+    "en": "Conway's cellular automaton: paint cells, run, step and save the board: C sample",
+    "tr": "Conway'in hücresel otomatı: hücre çiz, çalıştır, adım adım ilerlet ve tahtayı kaydet: C örneği",
+    "de": "Conways Zellautomat: Zellen malen, laufen lassen, Schritt für Schritt, Brett speichern: C-Beispiel",
+    "fr": "L'automate cellulaire de Conway : dessinez, lancez, avancez pas à pas, gardez la grille : exemple C",
+    "es": "El autómata celular de Conway: pinta celdas, ejecuta, avanza paso a paso y guarda el tablero: ejemplo en C"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "runtime": "c",
+  "main": "main.c",
+  "minSdk": "1.5",
+  "window": {
+    "width": 720,
+    "height": 520,
+    "minWidth": 600,
+    "minHeight": 380,
+    "resizable": true
+  },
+  "gamepad": false,
+  "permissions": []
+}

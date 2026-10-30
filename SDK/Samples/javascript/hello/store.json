@@ -1,0 +1,47 @@
+{
+  "kind": "demo",
+  "tags": [
+    "sdk-tour",
+    "promises",
+    "modules",
+    "network",
+    "store"
+  ],
+  "subtitle": {
+    "en": "A tour of the JavaScript SDK",
+    "tr": "JavaScript SDK turu",
+    "de": "Eine Tour durch das JavaScript-SDK",
+    "fr": "Une visite du SDK JavaScript",
+    "es": "Un recorrido por el SDK de JavaScript",
+    "ja": "JavaScript SDK のツアー",
+    "zh": "JavaScript SDK 导览",
+    "ko": "JavaScript SDK 둘러보기"
+  },
+  "description": {
+    "en": "The built-in Hello JS app as a project: a to-do list saved with store (todos.js), an analog clock drawn with gfx (clock.js) and live weather JSON with await net.fetchJson and proper error handling. Shows ES modules, Promises, toasts with timers and a menu.",
+    "tr": "Yerleşik Merhaba JS uygulamasının proje hâli: store ile kaydedilen yapılacaklar listesi (todos.js), gfx ile çizilen analog saat (clock.js) ve await net.fetchJson ile hata yönetimli canlı hava durumu JSON'u. ES modüllerini, Promise'leri, zamanlayıcılı bildirimleri ve menüyü gösterir.",
+    "de": "Die eingebaute App Hallo JS als Projekt: eine mit store gespeicherte To-do-Liste (todos.js), eine mit gfx gezeichnete Analoguhr (clock.js) und Live-Wetter-JSON mit await net.fetchJson samt Fehlerbehandlung. Zeigt ES-Module, Promises, Toasts mit Timern und ein Menü.",
+    "fr": "L'appli intégrée Hello JS sous forme de projet : une liste de tâches enregistrée avec store (todos.js), une horloge analogique dessinée avec gfx (clock.js) et la météo en JSON avec await net.fetchJson et une vraie gestion d'erreurs. Montre les modules ES, les promesses, des toasts avec minuteurs et un menu.",
+    "es": "La app integrada Hola JS como proyecto: una lista de tareas guardada con store (todos.js), un reloj analógico dibujado con gfx (clock.js) y el tiempo en JSON con await net.fetchJson y manejo de errores. Muestra módulos ES, promesas, avisos con temporizadores y un menú.",
+    "ja": "内蔵の Hello JS アプリをプロジェクトにしたもの: store で保存する ToDo リスト (todos.js)、gfx で描くアナログ時計 (clock.js)、そして await net.fetchJson と適切なエラー処理によるリアルタイムの天気 JSON。ES モジュール、Promise、タイマー付きのトースト、メニューの使い方を示します。",
+    "zh": "将内置的 Hello JS 应用作为项目：用 store 保存的待办事项列表（todos.js）、用 gfx 绘制的指针式时钟（clock.js），以及使用 await net.fetchJson 获取并妥善处理错误的实时天气 JSON。演示了 ES 模块、Promise、带计时器的提示消息和菜单。",
+    "ko": "기본 제공 Hello JS 앱을 프로젝트로 제공합니다: store로 저장되는 할 일 목록(todos.js), gfx로 그린 아날로그 시계(clock.js), await net.fetchJson과 적절한 오류 처리로 받는 실시간 날씨 JSON. ES 모듈, Promise, 타이머가 있는 토스트, 메뉴를 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.5 0.056",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.69 0.056",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

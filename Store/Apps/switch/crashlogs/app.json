@@ -1,0 +1,32 @@
+{
+  "id": "crashlogs",
+  "name": {
+    "en": "Crash Reports",
+    "tr": "Çökme Raporları",
+    "de": "Absturzberichte",
+    "fr": "Rapports de plantage",
+    "es": "Informes de fallos",
+    "ko": "충돌 보고서"
+  },
+  "description": {
+    "en": "Read, export and clean up Atmosphère's crash and error reports.",
+    "tr": "Atmosphère'in çökme ve hata raporlarını oku, dışa aktar, temizle.",
+    "de": "Lies, exportiere und bereinige die Absturz- und Fehlerberichte von Atmosphère.",
+    "fr": "Lisez, exportez et nettoyez les rapports de plantage et d’erreur d’Atmosphère.",
+    "es": "Lee, exporta y limpia los informes de fallos y errores de Atmosphère."
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 900,
+    "height": 620,
+    "minWidth": 420,
+    "minHeight": 400,
+    "resizable": true
+  }
+}

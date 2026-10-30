@@ -1,0 +1,38 @@
+{
+  "id": "com.sonerx7.sample.pong",
+  "name": {
+    "en": "Pong (Java)",
+    "tr": "Pong (Java)",
+    "de": "Pong (Java)",
+    "fr": "Pong (Java)",
+    "es": "Pong (Java)",
+    "ja": "ポン (Java)",
+    "zh": "乒乓（Java）",
+    "ko": "퐁(Java)"
+  },
+  "description": {
+    "en": "Classic paddle game against the console, first to 7: Java sample",
+    "tr": "Konsola karşı klasik raket oyunu, 7 sayıyı alan kazanır: Java örneği",
+    "de": "Klassisches Schlägerspiel gegen die Konsole, wer zuerst 7 hat: Java-Beispiel",
+    "fr": "Le jeu de raquettes classique contre la console, en 7 points : exemple Java",
+    "es": "El clásico juego de palas contra la consola, a 7 puntos: ejemplo en Java"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "runtime": "java",
+  "main": "app.jar",
+  "mainClass": "pong.PongApp",
+  "minSdk": "1.5",
+  "window": {
+    "width": 800,
+    "height": 450,
+    "minWidth": 480,
+    "minHeight": 270,
+    "resizable": true
+  },
+  "gamepad": true,
+  "permissions": []
+}

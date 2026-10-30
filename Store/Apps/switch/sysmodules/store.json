@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "See and control background sysmodules",
+    "tr": "Arka plan sistem modüllerini gör, yönet",
+    "de": "Hintergrund-Sysmodules sehen und steuern",
+    "fr": "Voyez et pilotez vos sysmodules",
+    "es": "Ve y controla los sysmodules en segundo plano",
+    "ja": "バックグラウンドの sysmodule を確認・制御",
+    "zh": "查看和控制后台系统模块",
+    "ko": "백그라운드 sysmodule을 보고 제어하세요"
+  },
+  "description": {
+    "en": "System modules are the homebrew parts that run in the background, like sys-clk, nx-ovlloader or MissionControl. System Modules lists every one in sdmc:/atmosphere/contents with its name, version and whether it's running, lets you choose which ones start at boot, and starts or stops modules on the spot when they support it. A clear warning reminds you before stopping something that other tools rely on.\n\n• Every module with its name, title ID and running state\n• Start at boot switch (boot2 flag) for each module\n• Start and stop modules live, where supported\n• Marks modules that only change after a restart\n• Restart button when a boot setting changed\n• Search, show in Files, copy the name or title ID",
+    "tr": "Sistem modülleri, sys-clk, nx-ovlloader ya da MissionControl gibi arka planda çalışan homebrew parçalarıdır. Sistem Modülleri, sdmc:/atmosphere/contents içindeki her modülü adı, sürümü ve çalışıp çalışmadığıyla listeler; hangilerinin açılışta başlayacağını seçmeni sağlar ve destekleyen modülleri anında başlatıp durdurur. Başka araçların dayandığı bir şeyi durdurmadan önce açık bir uyarı seni hatırlatır.\n\n• Her modül adı, title ID'si ve çalışma durumuyla\n• Her modül için açılışta başlat anahtarı (boot2 bayrağı)\n• Destekleyen modülleri canlı başlat ve durdur\n• Yalnızca yeniden başlatınca değişen modüller işaretlenir\n• Açılış ayarı değişince Yeniden Başlat düğmesi\n• Ara, Dosyalar'da göster, adı ya da title ID'yi kopyala",
+    "de": "Systemmodule sind die Homebrew-Teile, die im Hintergrund laufen, etwa sys-clk, nx-ovlloader oder MissionControl. Systemmodule listet jedes Modul in sdmc:/atmosphere/contents mit Namen, Version und Laufstatus, lässt dich festlegen, welche beim Booten starten, und startet oder stoppt Module sofort, wenn sie es unterstützen. Eine klare Warnung erinnert dich, bevor du etwas stoppst, auf das andere Tools angewiesen sind.\n\n• Jedes Modul mit Namen, Title-ID und Laufstatus\n• Schalter „Beim Booten starten“ (boot2-Flag) pro Modul\n• Module live starten und stoppen, wo möglich\n• Markiert Module, die erst nach einem Neustart wirken\n• Neustart-Button nach geänderten Boot-Einstellungen\n• Suchen, in Dateien zeigen, Name oder Title-ID kopieren",
+    "fr": "Les modules système sont les composants homebrew qui tournent en arrière-plan, comme sys-clk, nx-ovlloader ou MissionControl. Modules système liste chacun d’eux dans sdmc:/atmosphere/contents avec son nom, sa version et son état, vous laisse choisir ceux qui démarrent au boot, et lance ou arrête sur-le-champ ceux qui le permettent. Un avertissement clair vous prévient avant d’arrêter un module dont d’autres outils dépendent.\n\n• Chaque module avec son nom, son title ID et son état\n• Interrupteur « Démarrer au boot » (drapeau boot2) par module\n• Démarrage et arrêt en direct, quand c’est possible\n• Modules qui ne changent qu’au redémarrage signalés\n• Bouton Redémarrer après un changement de démarrage\n• Recherche, affichage dans Fichiers, copie du nom ou du title ID",
+    "es": "Los módulos del sistema son las piezas homebrew que funcionan en segundo plano, como sys-clk, nx-ovlloader o MissionControl. Módulos del sistema muestra cada uno en sdmc:/atmosphere/contents con su nombre, versión y si está en marcha, te deja elegir cuáles arrancan al iniciar y los inicia o detiene al momento cuando lo admiten. Un aviso claro te lo recuerda antes de detener algo de lo que dependen otras herramientas.\n\n• Cada módulo con su nombre, title ID y estado\n• Interruptor «Iniciar al arrancar» (indicador boot2) por módulo\n• Inicia y detén módulos en directo, cuando es posible\n• Marca los módulos que solo cambian tras reiniciar\n• Botón Reiniciar tras cambiar un ajuste de arranque\n• Busca, muestra en Archivos, copia el nombre o el title ID",
+    "ja": "システムモジュールは、sys-clk、nx-ovlloader、MissionControl など、バックグラウンドで動作する homebrew の部品です。システムモジュールは sdmc:/atmosphere/contents のすべてのモジュールを名前、バージョン、実行中かどうかとともに一覧表示し、起動時に開始するモジュールを選び、対応していればその場でモジュールを開始・停止できます。他のツールが依存しているものを停止する前には、わかりやすい警告が表示されます。\n\n• 名前、タイトル ID、実行状態付きのすべてのモジュール\n• 各モジュールの起動時に開始のスイッチ (boot2 フラグ)\n• 対応していればリアルタイムで開始・停止\n• 再起動後にのみ変更されるモジュールを表示\n• 起動時の設定を変更したときの再起動ボタン\n• 検索、ファイルで表示、名前やタイトル ID をコピー",
+    "zh": "系统模块是在后台运行的自制组件，例如 sys-clk、nx-ovlloader 或 MissionControl。系统模块会列出 sdmc:/atmosphere/contents 中的每个模块及其名称、版本和运行状态，让你选择哪些在开机时启动，并在模块支持时当场启动或停止它们。在停止其他工具所依赖的模块之前，会有清晰的警告提醒你。\n\n• 每个模块的名称、Title ID 和运行状态\n• 每个模块的开机启动开关（boot2 标志）\n• 在支持的情况下实时启动和停止模块\n• 标记仅在重新启动后才会改变的模块\n• 开机设置更改后显示重新启动按钮\n• 搜索、在“文件”中显示、复制名称或 Title ID",
+    "ko": "시스템 모듈은 sys-clk, nx-ovlloader, MissionControl처럼 백그라운드에서 실행되는 홈브루 구성 요소입니다. 시스템 모듈은 sdmc:/atmosphere/contents의 모든 모듈을 이름, 버전, 실행 여부와 함께 나열하고, 부팅 시 시작할 모듈을 고르게 하며, 지원되면 그 자리에서 모듈을 시작하거나 중지합니다. 다른 도구가 의존하는 것을 중지하기 전에 명확한 경고가 표시됩니다.\n\n• 이름, 타이틀 ID, 실행 상태가 표시되는 모든 모듈\n• 모듈별 부팅 시 시작 스위치(boot2 플래그)\n• 지원되는 경우 실시간으로 모듈 시작 및 중지\n• 다시 시작해야만 바뀌는 모듈 표시\n• 부팅 설정이 바뀌면 다시 시작 버튼\n• 검색, 파일에서 보기, 이름이나 타이틀 ID 복사"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.798 0.043",
+      "wait 0.5",
+      "text sys",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

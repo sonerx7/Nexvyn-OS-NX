@@ -1,0 +1,21 @@
+{
+  "cube": "큐브",
+  "box": "상자",
+  "sphere": "구",
+  "cylinder": "원기둥",
+  "cone": "원뿔",
+  "torus": "토러스",
+  "plane": "평면",
+  "tex_none": "색상",
+  "tex_grid": "UV 격자",
+  "tex_stripes": "줄무늬",
+  "tex_dots": "점무늬",
+  "wire": "와이어프레임",
+  "auto": "텍스처 순환",
+  "intro": "인트로",
+  "triangles": "삼각형 {0}개",
+  "stats": "삼각형 {0}개 · {1} FPS",
+  "status_intro": "인트로 실행 중(await timer.sleep)",
+  "status_ready": "레이블을 탭하여 도형을 선택하세요",
+  "menu_title": "도형"
+}

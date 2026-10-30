@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "They march. You hold the line",
+    "tr": "Onlar yürüyor, sen hattı tut",
+    "de": "Sie marschieren. Du hältst die Stellung",
+    "fr": "Ils avancent. Vous tenez la ligne",
+    "es": "Ellos avanzan. Tú resistes",
+    "ja": "奴らが迫る。防衛線を守れ",
+    "zh": "他们步步逼近，你要守住防线",
+    "ko": "그들이 진군합니다. 방어선을 지키세요"
+  },
+  "description": {
+    "en": "Rows of invaders march across the screen and step closer with every turn. Slide your cannon left and right, hide behind shields that crumble as they take hits, and shoot down the mystery saucer for big points. Every wave starts lower and fires faster, so how long can you hold out?\n\n• A marching formation of three invader types that speeds up as it shrinks\n• Destructible shields and a mystery saucer\n• Waves that start lower and shoot faster, hit streaks and combos\n• Saved best score, end-of-game stats with accuracy\n• Controls: D-pad, stick or arrows to move, A, B or Space to fire (hold for auto)\n• Touch: drag to move, the cannon fires on its own",
+    "tr": "Uzaylı sıraları ekranda ilerliyor ve her turda biraz daha yaklaşıyor. Topunu sağa sola kaydır, isabet aldıkça ufalanan kalkanların arkasına saklan ve yüksek puan için gizemli daireyi vur. Her dalga daha aşağıdan başlar ve daha hızlı ateş eder; ne kadar dayanabileceksin?\n\n• Azaldıkça hızlanan, üç farklı uzaylıdan oluşan yürüyen bir düzen\n• Yıkılabilen kalkanlar ve gizemli daire\n• Daha aşağıdan başlayıp daha hızlı ateş eden dalgalar, isabet serileri ve kombolar\n• Kaydedilen en yüksek skor, isabet oranlı oyun sonu istatistikleri\n• Kontroller: hareket için yön tuşları, analog çubuk ya da oklar; ateş için A, B ya da Boşluk (basılı tut, otomatik ateş)\n• Dokunmatik: hareket için sürükle, top kendiliğinden ateş eder",
+    "de": "Reihen von Invasoren marschieren über den Bildschirm und rücken mit jedem Zug näher. Schieb deine Kanone nach links und rechts, versteck dich hinter Schilden, die unter Treffern zerbröseln, und schieß das mysteriöse UFO für viele Punkte ab. Jede Welle beginnt tiefer und schießt schneller, wie lange hältst du durch?\n\n• Eine marschierende Formation aus drei Invasorentypen, die schneller wird, je kleiner sie ist\n• Zerstörbare Schilde und ein mysteriöses UFO\n• Wellen, die tiefer beginnen und schneller schießen, Trefferserien und Kombos\n• Gespeicherter Rekord, Statistik mit Trefferquote am Spielende\n• Steuerung: Steuerkreuz, Stick oder Pfeile zum Bewegen, A, B oder Leertaste zum Feuern (halten für Dauerfeuer)\n• Touch: ziehen zum Bewegen, die Kanone feuert von selbst",
+    "fr": "Des rangées d’envahisseurs traversent l’écran et se rapprochent à chaque passage. Déplacez votre canon à gauche et à droite, abritez-vous derrière des boucliers qui s’effritent sous les tirs et abattez la soucoupe mystère pour gagner gros. Chaque vague commence plus bas et tire plus vite : combien de temps tiendrez-vous ?\n\n• Une formation en marche de trois types d’envahisseurs qui accélère en se réduisant\n• Boucliers destructibles et soucoupe mystère\n• Vagues qui commencent plus bas et tirent plus vite, séries de tirs réussis et combos\n• Meilleur score enregistré, statistiques de fin de partie avec précision\n• Commandes : croix, stick ou flèches pour bouger, A, B ou Espace pour tirer (maintenir pour le tir auto)\n• Tactile : glissez pour bouger, le canon tire tout seul",
+    "es": "Filas de invasores avanzan por la pantalla y se acercan en cada pasada. Mueve tu cañón a izquierda y derecha, escóndete tras escudos que se desmoronan con cada impacto y derriba el platillo misterioso para ganar muchos puntos. Cada oleada empieza más abajo y dispara más rápido: ¿cuánto aguantarás?\n\n• Una formación en marcha de tres tipos de invasores que acelera al menguar\n• Escudos destructibles y un platillo misterioso\n• Oleadas que empiezan más abajo y disparan más rápido, rachas de aciertos y combos\n• Mejor puntuación guardada y estadísticas finales con precisión\n• Controles: cruceta, stick o flechas para moverte, A, B o Espacio para disparar (mantén para ráfaga)\n• Táctil: arrastra para moverte, el cañón dispara solo",
+    "ja": "インベーダーの列が画面を横切り、ターンごとに迫ってきます。砲台を左右に動かし、被弾すると崩れていくシールドに隠れ、謎の円盤を撃ち落として高得点を狙いましょう。ウェーブごとに開始位置が低くなり、撃つのも速くなります。どこまで持ちこたえられるかな？\n\n• 数が減るほど速くなる 3 種類のインベーダーの行進\n• 壊れるシールドと謎の円盤\n• 開始位置が低く攻撃が速くなるウェーブ、連続命中とコンボ\n• 保存されるベストスコア、命中率付きのゲーム終了時の統計\n• 操作: 十字ボタン、スティック、矢印キーで移動、A、B、Space で発射 (長押しで連射)\n• タッチ: ドラッグで移動、砲台は自動で発射",
+    "zh": "一排排入侵者横穿屏幕，每一轮都更逼近一步。左右移动你的炮台，躲在被击中后会逐渐碎裂的护盾后面，击落神秘飞碟以获得高分。每一波都从更低的位置开始，射击也更快，你能坚持多久？\n\n• 由三种入侵者组成的行进队形，数量越少速度越快\n• 可破坏的护盾和神秘飞碟\n• 起始位置更低、射击更快的波次，连续命中和连击\n• 保存最高分，游戏结束时显示含命中率的统计\n• 操作：十字键、摇杆或方向键移动，A、B 或空格开火（按住连发）\n• 触控：拖移以移动，炮台自动开火",
+    "ko": "줄지어 선 침략자들이 화면을 가로질러 진군하며 매번 더 가까이 다가옵니다. 포대를 좌우로 움직이고, 맞을수록 부서지는 방어막 뒤에 숨고, 미스터리 비행접시를 격추하여 큰 점수를 얻으세요. 웨이브마다 더 낮은 곳에서 시작해 더 빨리 쏘니, 얼마나 버틸 수 있을까요?\n\n• 줄어들수록 빨라지는 세 종류 침략자의 진군 대형\n• 부서지는 방어막과 미스터리 비행접시\n• 더 낮게 시작하고 더 빨리 쏘는 웨이브, 연속 명중과 콤보\n• 저장되는 최고 점수, 명중률이 포함된 게임 종료 통계\n• 조작: 방향 버튼, 스틱, 화살표로 이동, A, B, Space로 발사(길게 누르면 연사)\n• 터치: 드래그하여 이동, 포대가 자동으로 발사"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 1.5",
+      "hold space 6",
+      "wait 2"
+    ],
+    [
+      "hold left 0.8",
+      "wait 1.2",
+      "hold right 0.4",
+      "wait 1.5"
+    ],
+    [
+      "wait 1.5",
+      "key escape",
+      "wait 1"
+    ]
+  ]
+}

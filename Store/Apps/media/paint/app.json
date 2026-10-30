@@ -1,0 +1,26 @@
+{
+  "id": "paint",
+  "name": {
+    "en": "Paint",
+    "tr": "Çizim",
+    "de": "Malen",
+    "fr": "Dessin",
+    "es": "Dibujo",
+    "ko": "그림판"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1000,
+    "height": 600,
+    "minWidth": 640,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "fileTypes": []
+}

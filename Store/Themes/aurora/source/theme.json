@@ -1,0 +1,25 @@
+{
+  "id": "com.sonerx7.theme.aurora",
+  "name": {
+    "en": "Aurora",
+    "tr": "Kutup Işıkları",
+    "de": "Polarlicht",
+    "fr": "Aurore boréale",
+    "es": "Aurora boreal"
+  },
+  "description": {
+    "en": "Northern lights over a mountain lake, in the dark appearance with a mint accent.",
+    "tr": "Dağ gölünün üzerinde kuzey ışıkları; koyu görünüm ve nane yeşili vurgu rengi.",
+    "de": "Nordlichter über einem Bergsee, im dunklen Erscheinungsbild mit Mintakzent.",
+    "fr": "Des aurores boréales sur un lac de montagne, en apparence sombre avec un accent menthe.",
+    "es": "Auroras boreales sobre un lago de montaña, con aspecto oscuro y acento menta."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "dark",
+  "accent": "#3DDC97",
+  "wallpaper": "wallpaper.jpg",
+  "settings": {
+    "screensaver.style": 1
+  }
+}

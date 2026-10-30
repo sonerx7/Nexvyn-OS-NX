@@ -1,0 +1,11 @@
+{
+  "game": "Oyun",
+  "title": "Yılan",
+  "score": "Puan: {0}",
+  "best": "En iyi: {0}",
+  "game_over": "Oyun bitti",
+  "paused": "Duraklatıldı",
+  "start_hint": "Oynamak için A, Enter ya da dokunun · Yön tuşları, oklar ya da WASD ile yönlendirin",
+  "new_game": "Yeni oyun",
+  "reset_best": "En iyi puanı sıfırla"
+}

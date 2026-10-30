@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.interval",
+  "name": {"en": "Interval Timer", "tr": "Aralıklı Zamanlayıcı", "de": "Intervall-Timer", "fr": "Minuteur d’intervalles", "es": "Temporizador de intervalos", "ja": "インターバルタイマー", "zh": "间歇计时器", "ko": "인터벌 타이머"},
+  "description": {
+    "en": "A HIIT and Tabata timer with warm-up, work, rest, rounds, sets and cool-down, a big color-coded countdown, beeps, vibration and your own saved workouts.",
+    "tr": "Isınma, çalışma, dinlenme, tur, set ve soğuma aşamalı HIIT ve Tabata zamanlayıcısı: renkli büyük geri sayım, sesli uyarılar, titreşim ve kaydedilen kendi antrenmanların.",
+    "de": "Ein HIIT- und Tabata-Timer mit Aufwärmen, Belastung, Pause, Runden, Sätzen und Abkühlen, einem großen farbcodierten Countdown, Pieptönen, Vibration und deinen eigenen gespeicherten Workouts.",
+    "fr": "Un minuteur HIIT et Tabata avec échauffement, effort, repos, tours, séries et retour au calme, un grand compte à rebours coloré, des bips, des vibrations et vos propres entraînements enregistrés.",
+    "es": "Un temporizador HIIT y Tabata con calentamiento, trabajo, descanso, rondas, series y vuelta a la calma, una gran cuenta atrás por colores, pitidos, vibración y tus propios entrenamientos guardados."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 540, "minWidth": 620, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

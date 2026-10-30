@@ -1,0 +1,25 @@
+{
+  "id": "dictionary",
+  "name": {
+    "en": "Dictionary",
+    "tr": "Sözlük",
+    "de": "Wörterbuch",
+    "fr": "Dictionnaire",
+    "es": "Diccionario",
+    "ko": "사전"
+  },
+  "category": "internet",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 820,
+    "height": 560,
+    "minWidth": 600,
+    "minHeight": 380,
+    "resizable": true
+  }
+}

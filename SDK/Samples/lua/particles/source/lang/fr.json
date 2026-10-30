@@ -1,0 +1,16 @@
+{
+  "fire": "Tir",
+  "fountain": "Fontaine",
+  "sparks": "Étincelles",
+  "snow": "Neige",
+  "magic": "Magie",
+  "tool_spawn": "Créer",
+  "tool_attract": "Attirer",
+  "tool_repel": "Repousser",
+  "clear": "Effacer",
+  "stats": "{0} particules · {1} puits · {2} FPS",
+  "hint": "Touchez pour une explosion, faites glisser pour peindre. Attirer / Repousser placent des puits : faites-en glisser un pour le déplacer, touchez-le pour le supprimer.",
+  "wells_full": "{0} puits au maximum",
+  "menu_title": "Particules",
+  "debug": "Superposition de débogage"
+}

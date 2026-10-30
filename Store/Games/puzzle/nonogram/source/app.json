@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.nonogram",
+  "name": {
+    "en": "Nonogram",
+    "tr": "Resim Bulmaca",
+    "de": "Nonogramm",
+    "fr": "Nonogramme",
+    "es": "Nonograma",
+    "ja": "ノノグラム",
+    "zh": "数织",
+    "ko": "노노그램"
+  },
+  "description": {
+    "en": "Use the number clues to fill in the grid and reveal 25 handcrafted pictures, from 5×5 to 10×10.",
+    "tr": "Sayı ipuçlarına göre kareleri boyayın ve 5×5'ten 10×10'a 25 el yapımı resmi ortaya çıkarın.",
+    "de": "Fülle das Raster anhand der Zahlenhinweise aus und enthülle 25 handgemachte Bilder, von 5×5 bis 10×10.",
+    "fr": "Utilisez les indices numériques pour remplir la grille et révéler 25 images faites main, de 5×5 à 10×10.",
+    "es": "Usa las pistas numéricas para rellenar la cuadrícula y descubrir 25 dibujos hechos a mano, de 5×5 a 10×10."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 640,
+    "height": 640,
+    "minWidth": 460,
+    "minHeight": 540,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

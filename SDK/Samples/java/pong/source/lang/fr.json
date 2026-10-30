@@ -1,0 +1,11 @@
+{
+  "game": "Jeu",
+  "serve": "Service",
+  "paused": "Pause",
+  "you_win": "Gagné !",
+  "you_lose": "La console gagne",
+  "hint": "A, Entrée ou un toucher pour servir · stick, croix, flèches ou glisser pour bouger",
+  "wins": "Parties gagnées : {0}",
+  "new_game": "Nouvelle partie",
+  "reset_wins": "Remettre les victoires à zéro"
+}

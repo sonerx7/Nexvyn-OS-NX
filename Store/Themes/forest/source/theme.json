@@ -1,0 +1,23 @@
+{
+  "id": "com.sonerx7.theme.forest",
+  "name": {
+    "en": "Forest",
+    "tr": "Orman",
+    "de": "Wald",
+    "fr": "Forêt",
+    "es": "Bosque"
+  },
+  "description": {
+    "en": "Misty pine ridges in the morning sun and a starry night with fireflies. Green accent.",
+    "tr": "Sabah güneşinde sisli çam sırtları ve ateş böcekli yıldızlı bir gece. Yeşil vurgu rengi.",
+    "de": "Neblige Kiefernhänge in der Morgensonne und eine Sternennacht mit Glühwürmchen. Grüner Akzent.",
+    "fr": "Des crêtes de pins dans la brume du matin et une nuit étoilée avec des lucioles. Accent vert.",
+    "es": "Crestas de pinos con niebla al sol de la mañana y una noche estrellada con luciérnagas. Acento verde."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "auto",
+  "accent": "#3E9B5B",
+  "wallpaper": "wallpaper.jpg",
+  "wallpaperDark": "wallpaper-dark.jpg"
+}

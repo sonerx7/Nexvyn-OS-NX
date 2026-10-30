@@ -1,0 +1,20 @@
+{
+  "kick": "Bombo",
+  "snare": "Caja",
+  "clap": "Palmada",
+  "hat": "Hi-hat",
+  "open_hat": "Hi-hat abierto",
+  "tom": "Tom",
+  "play": "Reproducir",
+  "stop": "Detener",
+  "clear": "Borrar",
+  "tempo": "Tempo {0}",
+  "swing": "Swing {0}%",
+  "preset_house": "House",
+  "preset_break": "Breakbeat",
+  "preset_hiphop": "Hip-hop",
+  "preset_bossa": "Bossa",
+  "hint": "Toca un pad: activado → acento → desactivado · toca un nombre para silenciarlo · Espacio reproduce, 1-6 silencian filas",
+  "unmute_all": "Activar todo el sonido",
+  "menu_title": "Beatbox"
+}

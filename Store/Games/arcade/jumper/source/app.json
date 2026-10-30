@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.jumper",
+  "name": {
+    "en": "Sky Jumper",
+    "tr": "Zıpla Zıpla",
+    "de": "Himmelsspringer",
+    "fr": "Sky Jumper",
+    "es": "Saltador del cielo",
+    "ja": "スカイジャンパー",
+    "zh": "天空跳跃",
+    "ko": "스카이 점퍼"
+  },
+  "description": {
+    "en": "Bounce higher and higher from platform to platform. Use springs and rockets, collect coins and climb from the sky into space.",
+    "tr": "Platformdan platforma zıplayarak hep daha yükseğe çık. Yay ve roketleri kullan, altın topla, gökyüzünden uzaya tırman.",
+    "de": "Spring immer höher von Plattform zu Plattform. Nutze Federn und Raketen, sammle Münzen und steig vom Himmel bis ins All auf.",
+    "fr": "Rebondissez toujours plus haut de plateforme en plateforme. Utilisez ressorts et fusées, ramassez des pièces et montez du ciel jusqu’à l’espace.",
+    "es": "Salta cada vez más alto de plataforma en plataforma. Usa muelles y cohetes, recoge monedas y sube del cielo al espacio."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 680,
+    "minWidth": 420,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

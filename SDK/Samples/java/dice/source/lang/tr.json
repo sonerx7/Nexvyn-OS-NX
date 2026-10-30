@@ -1,0 +1,8 @@
+{
+  "app": "Zarlar",
+  "roll": "At",
+  "total": "Toplam: {0}",
+  "no_history": "Atışların burada görünür. Tutmak için bir zara dokun.",
+  "release_all": "Tüm zarları bırak",
+  "clear_history": "Geçmişi temizle"
+}

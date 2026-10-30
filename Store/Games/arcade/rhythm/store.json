@@ -1,0 +1,47 @@
+{
+  "subtitle": {
+    "en": "Hit the notes and play the song yourself",
+    "tr": "Notaları yakala, şarkıyı sen çal",
+    "de": "Triff die Noten und spiel den Song selbst",
+    "fr": "Frappez les notes et jouez le morceau",
+    "es": "Acierta las notas y toca la canción tú",
+    "ja": "ノーツを叩いて自分で曲を奏でよう",
+    "zh": "击中音符，亲自演奏乐曲",
+    "ko": "음표를 맞혀 직접 노래를 연주하세요"
+  },
+  "description": {
+    "en": "A four-lane rhythm game where you really play the music. Notes fall toward the hit line, and every note you hit plays its part of the melody, so the song only sounds complete when you play it well. A bass line and a soft beat keep time underneath. Pick one of three songs on Easy or Hard, aim for PERFECT timing and build long combos.\n\n• Three songs: Ode to Joy, Korobeiniki and the original Neon Drive\n• Easy and Hard charts for every song\n• Perfect, Great and Good timing, combos and full combos\n• D-pad, face or shoulder buttons, the D F J K keys or touch\n• Best score per song and difficulty",
+    "tr": "Müziği gerçekten senin çaldığın dört şeritli bir ritim oyunu. Notalar vuruş çizgisine doğru düşer ve yakaladığın her nota melodideki kendi sesini çalar; yani şarkı ancak iyi çalarsan tam duyulur. Altta bir bas hattı ve yumuşak bir ritim tempoyu tutar. Üç şarkıdan birini Kolay ya da Zor seç, KUSURSUZ zamanlamanın peşine düş, uzun kombolar yap.\n\n• Üç şarkı: Ode to Joy, Korobeiniki ve özgün Neon Drive\n• Her şarkı için Kolay ve Zor nota dizileri\n• Kusursuz, Harika ve İyi zamanlama, kombolar ve tam kombo\n• Yön tuşları, A B X Y, omuz tuşları, D F J K tuşları ya da dokunmatik\n• Her şarkı ve zorluk için en iyi skor",
+    "de": "Ein Rhythmusspiel mit vier Spuren, in dem du die Musik wirklich selbst spielst. Noten fallen auf die Trefferlinie zu, und jede getroffene Note spielt ihren Teil der Melodie: Der Song klingt nur vollständig, wenn du gut spielst. Eine Basslinie und ein sanfter Beat halten darunter den Takt. Wähl einen von drei Songs auf Leicht oder Schwer, zieh auf PERFEKTES Timing und bau lange Combos auf.\n\n• Drei Songs: Ode to Joy, Korobeiniki und das Original Neon Drive\n• Leichte und schwere Notenfolgen für jeden Song\n• Perfect-, Great- und Good-Timing, Combos und Full Combos\n• Steuerkreuz, Aktions- oder Schultertasten, D F J K oder Touch\n• Bestwert pro Song und Schwierigkeit",
+    "fr": "Un jeu de rythme à quatre pistes où c’est vous qui jouez vraiment la musique. Les notes descendent vers la ligne de frappe, et chaque note réussie joue sa part de la mélodie : le morceau n’est complet que si vous jouez bien. Une ligne de basse et un rythme léger marquent le tempo en dessous. Choisissez l’un des trois morceaux en Facile ou Difficile, visez le timing PARFAIT et enchaînez de longs combos.\n\n• Trois morceaux : Ode to Joy, Korobeiniki et l’original Neon Drive\n• Partitions Facile et Difficile pour chaque morceau\n• Timing Parfait, Super et Bien, combos et full combos\n• Croix, boutons, gâchettes, touches D F J K ou tactile\n• Meilleur score par morceau et par difficulté",
+    "es": "Un juego de ritmo de cuatro carriles en el que tocas la música de verdad. Las notas caen hacia la línea de acierto y cada nota que aciertas toca su parte de la melodía, así que la canción solo suena completa si tocas bien. Un bajo y un ritmo suave marcan el compás por debajo. Elige una de tres canciones en Fácil o Difícil, busca el timing PERFECTO y encadena combos largos.\n\n• Tres canciones: Ode to Joy, Korobeiniki y la original Neon Drive\n• Partituras Fácil y Difícil para cada canción\n• Timing Perfecto, Genial y Bien, combos y full combos\n• Cruceta, botones frontales o gatillos, teclas D F J K o táctil\n• Mejor puntuación por canción y dificultad",
+    "ja": "本当に音楽を演奏する 4 レーンのリズムゲーム。ノーツが判定ラインに向かって落ちてきて、叩いたノーツがメロディのそのパートを奏でるので、上手に演奏しないと曲は完成しません。ベースラインとやわらかなビートがリズムを刻みます。3 曲から選び、かんたんまたはむずかしいで、PERFECT のタイミングを狙って長いコンボをつなげましょう。\n\n• 3 曲: 歓喜の歌、コロブチカ、オリジナルのネオンドライブ\n• すべての曲にかんたんとむずかしいの譜面\n• Perfect、Great、Good のタイミング、コンボ、フルコンボ\n• 十字ボタン、ABXY ボタン、L/R ボタン、D F J K キー、またはタッチ\n• 曲と難易度ごとのベストスコア",
+    "zh": "一款四轨节奏游戏，你在其中真正地演奏音乐。音符落向判定线，你击中的每个音符都会奏出旋律中属于它的那一段，所以只有演奏得好，乐曲听起来才完整。底下有贝斯线和柔和的鼓点保持节奏。从三首乐曲中选择一首，选择简单或困难难度，追求完美的时机并打出长连击。\n\n• 三首乐曲：《欢乐颂》《货郎》和原创的《霓虹驰骋》\n• 每首乐曲都有简单和困难谱面\n• 完美、很好和不错的判定，连击和全连击\n• 十字键、功能键或肩键、D F J K 键或触控\n• 每首乐曲和每种难度的最高分",
+    "ko": "직접 음악을 연주하는 4레인 리듬 게임입니다. 음표가 판정선으로 떨어지며, 맞힌 음표마다 멜로디의 그 부분이 연주되므로 잘 연주해야 노래가 완성됩니다. 베이스 라인과 부드러운 비트가 아래에서 박자를 맞춥니다. 세 곡 중 하나를 쉬움이나 어려움으로 골라 퍼펙트 타이밍을 노리고 긴 콤보를 쌓으세요.\n\n• 세 곡: 환희의 송가, 코로베이니키, 오리지널 곡 네온 드라이브\n• 곡마다 쉬움과 어려움 채보\n• 퍼펙트, 그레이트, 굿 판정, 콤보와 풀 콤보\n• 방향 버튼, 페이스 버튼이나 숄더 버튼, D F J K 키 또는 터치\n• 곡과 난이도별 최고 점수"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key down",
+      "wait 0.4",
+      "key enter",
+      "wait 4"
+    ],
+    [
+      "key d",
+      "wait 0.2",
+      "key j",
+      "wait 0.2",
+      "key f",
+      "wait 0.2",
+      "key k",
+      "wait 0.3"
+    ]
+  ]
+}

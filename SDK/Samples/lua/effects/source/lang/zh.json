@@ -1,0 +1,16 @@
+{
+  "plasma": "等离子",
+  "tunnel": "隧道",
+  "starfield": "星空",
+  "pal_fire": "火焰",
+  "pal_ocean": "海洋",
+  "pal_neon": "霓虹",
+  "pal_rainbow": "彩虹",
+  "cell": "单元 {0}px",
+  "speed": "速度",
+  "cycle": "循环颜色",
+  "info_cells": "{0} 个单元 · {1} FPS",
+  "info_stars": "{0} 颗星 · {1} FPS",
+  "hint": "拖移以操控 · 1 2 3 切换效果",
+  "menu_title": "特效"
+}

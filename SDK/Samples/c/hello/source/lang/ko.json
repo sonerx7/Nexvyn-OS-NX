@@ -1,0 +1,22 @@
+{
+  "app_name": "Hello C",
+  "tab_counter": "카운터",
+  "tab_balls": "공",
+  "tab_net": "네트워크",
+  "counter_title": "C로 작성됨",
+  "times": "{0}번 탭함",
+  "reset": "재설정",
+  "note_hint": "store_setStr로 저장되는 메모",
+  "balls_hint": "탭하여 공을 밀어 보세요",
+  "net_title": "실시간 날씨",
+  "net_body": "이 버튼은 net_json(url, callback, user)을 실행합니다. 요청은 백그라운드에서 실행되며 콜백이 JSON 텍스트를 받습니다.",
+  "fetch": "JSON 가져오기",
+  "offline": "인터넷에 연결되어 있지 않습니다",
+  "failed": "실패: {0}",
+  "loaded": "불러옴",
+  "no_data": "버튼을 눌러 데이터를 불러오세요",
+  "about": "Hello C 정보",
+  "about_body": "이 앱은 순수 C로 작성되었으며, 열릴 때 콘솔에서 TinyCC로 컴파일됩니다. Lua, JavaScript, Python 앱과 같은 SDK를 사용합니다. main.c를 열어 코드를 확인하세요.",
+  "ok": "확인",
+  "open_code": "main.c 열기"
+}

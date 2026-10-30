@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Pick any color on screen, copy its code",
+    "tr": "Ekrandaki her rengi yakala, kodunu kopyala",
+    "de": "Jede Farbe am Bildschirm messen",
+    "fr": "Mesurez toute couleur à l’écran",
+    "es": "Captura cualquier color de la pantalla",
+    "ja": "画面上の任意の色を取得してコードをコピー",
+    "zh": "拾取屏幕上的任意颜色并复制其代码",
+    "ko": "화면의 아무 색이나 집어 코드를 복사하세요"
+  },
+  "description": {
+    "en": "Point at anything on screen and Color Meter shows the exact color under the pointer, magnified pixel by pixel. Read it as Hex, RGB, HSL or CMYK and copy any format with one tap. Hold a color to keep it, nudge the pointer by single pixels with the arrow keys, and collect your favourites in a saved palette.\n\n• Magnifier with 1 px, 3 × 3 or 5 × 5 averaging\n• Hex, RGB, HSL and CMYK values, each one copyable\n• Contrast ratio against white and black text\n• Type a color as hex, rgb() or hsl()\n• Saved palette, exported as GIMP .gpl, CSS or plain hex",
+    "tr": "Ekranda herhangi bir yeri göster, Renk Ölçer imlecin altındaki rengi piksel piksel büyüterek tam olarak göstersin. Rengi Hex, RGB, HSL veya CMYK olarak oku, istediğin biçimi tek dokunuşla kopyala. Rengi sabitle, ok tuşlarıyla imleci piksel piksel kaydır ve sevdiğin renkleri kayıtlı paletinde topla.\n\n• 1 piksel, 3 × 3 veya 5 × 5 ortalamalı büyüteç\n• Hex, RGB, HSL ve CMYK değerleri, her biri kopyalanabilir\n• Beyaz ve siyah metne karşı kontrast oranı\n• Rengi hex, rgb() ya da hsl() olarak yaz\n• GIMP .gpl, CSS veya düz hex olarak dışa aktarılan kayıtlı palet",
+    "de": "Zeig auf irgendetwas am Bildschirm, und der Farbmesser zeigt dir die genaue Farbe unter dem Zeiger, Pixel für Pixel vergrößert. Lies sie als Hex, RGB, HSL oder CMYK und kopiere jedes Format mit einem Tipp. Halte eine Farbe fest, bewege den Zeiger mit den Pfeiltasten pixelgenau und sammle deine Lieblingsfarben in einer Palette.\n\n• Lupe mit 1 px, 3 × 3 oder 5 × 5 Mittelwert\n• Hex-, RGB-, HSL- und CMYK-Werte, jeweils kopierbar\n• Kontrastverhältnis zu weißem und schwarzem Text\n• Farben als Hex, rgb() oder hsl() eingeben\n• Gespeicherte Palette, Export als GIMP .gpl, CSS oder Hex-Liste",
+    "fr": "Pointez n’importe quel endroit de l’écran : le Colorimètre affiche la couleur exacte sous le pointeur, agrandie pixel par pixel. Lisez-la en Hex, RVB, TSL ou CMJN et copiez le format voulu d’un geste. Figez une couleur, déplacez le pointeur pixel par pixel avec les flèches et rassemblez vos couleurs préférées dans une palette.\n\n• Loupe avec moyenne sur 1 px, 3 × 3 ou 5 × 5\n• Valeurs Hex, RGB, HSL et CMYK, toutes copiables\n• Rapport de contraste avec un texte blanc ou noir\n• Saisie d’une couleur en hex, rgb() ou hsl()\n• Palette enregistrée, exportable en GIMP .gpl, CSS ou hex",
+    "es": "Apunta a cualquier parte de la pantalla y el Medidor de color te muestra el color exacto bajo el puntero, ampliado píxel a píxel. Léelo en Hex, RGB, HSL o CMYK y copia cualquier formato con un toque. Fija un color, mueve el puntero píxel a píxel con las flechas y guarda tus favoritos en una paleta.\n\n• Lupa con promedio de 1 px, 3 × 3 o 5 × 5\n• Valores Hex, RGB, HSL y CMYK, todos copiables\n• Relación de contraste con texto blanco y negro\n• Escribe un color en hex, rgb() o hsl()\n• Paleta guardada, exportable como GIMP .gpl, CSS o hex",
+    "ja": "画面上の何かにポインタを合わせると、カラーメーターがポインタの下の正確な色を 1 ピクセルずつ拡大して表示します。Hex、RGB、HSL、CMYK で読み取り、どの形式もワンタップでコピーできます。色を固定して保持し、矢印キーでポインタを 1 ピクセルずつ動かし、お気に入りを保存パレットに集めましょう。\n\n• 1 px、3 × 3、5 × 5 の平均化ができる拡大鏡\n• それぞれコピーできる Hex、RGB、HSL、CMYK の値\n• 白と黒の文字に対するコントラスト比\n• hex、rgb()、hsl() で色を入力\n• GIMP .gpl、CSS、プレーンな hex で書き出せる保存パレット",
+    "zh": "指向屏幕上的任何东西，颜色拾取器就会显示指针下的精确颜色，并逐像素放大。可读取 Hex、RGB、HSL 或 CMYK 值，一键复制任意格式。锁定颜色以保留它，用方向键逐像素微移指针，并把你喜欢的颜色收集到已存调色板中。\n\n• 放大镜，支持 1 px、3 × 3 或 5 × 5 取平均值\n• Hex、RGB、HSL 和 CMYK 值，均可复制\n• 与白色和黑色文字的对比度\n• 以 hex、rgb() 或 hsl() 输入颜色\n• 已存调色板，可导出为 GIMP .gpl、CSS 或纯 hex",
+    "ko": "화면의 아무 곳이나 가리키면 색상 측정기가 포인터 아래의 정확한 색을 픽셀 단위로 확대하여 보여 줍니다. Hex, RGB, HSL, CMYK로 읽고 한 번의 탭으로 어떤 형식이든 복사하세요. 색을 고정하고, 화살표 키로 포인터를 1픽셀씩 옮기고, 마음에 드는 색을 저장한 팔레트에 모으세요.\n\n• 1 px, 3 × 3, 5 × 5 평균의 돋보기\n• 각각 복사할 수 있는 Hex, RGB, HSL, CMYK 값\n• 흰색 및 검은색 텍스트와의 대비율\n• hex, rgb(), hsl()로 색 입력\n• GIMP .gpl, CSS 또는 일반 hex로 내보내는 저장한 팔레트"
+  },
+  "shots": [
+    ["wait 2", "wclick 0.905 0.108", "wait 0.6", "key end", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "text #3A7BD5", "key enter", "wait 0.5", "wclick 0.888 0.577", "wait 0.6", "wait 1"],
+    ["wclick 0.905 0.108", "wait 0.6", "key end", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "text #FF9500", "key enter", "wait 0.5", "wclick 0.888 0.577", "wait 0.6", "wclick 0.905 0.108", "wait 0.6", "key end", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "text #34C759", "key enter", "wait 0.5", "wclick 0.888 0.577", "wait 0.6", "wait 1"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

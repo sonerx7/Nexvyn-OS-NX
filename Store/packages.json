@@ -1,0 +1,272 @@
+{
+  "schema": 1,
+  "revision": 3,
+  "comment": "Homebrew packages Nexvyn OS can download from their GitHub releases and install as separate programs (core/hbpkg). Paths are relative to the SD card root. 'asset' is a file-name pattern (* and ?, case-insensitive). Nexvyn OS never links or runs their code itself; it only installs and starts the .nro.",
+  "packages": [
+    {
+      "id": "corkdeck",
+      "name": "CorkDeck",
+      "author": "plv890",
+      "repo": "plv890/CorkDeck",
+      "homepage": "https://github.com/plv890/CorkDeck",
+      "license": "LGPL-2.1",
+      "type": "zip",
+      "asset": "CorkDeck-*.zip",
+      "zipInclude": ["switch/"],
+      "keepExisting": ["switch/wine/config/keys.txt"],
+      "proof": ["switch/wine/wine-nx-runtime.nro"],
+      "nacpName": "CorkDeck",
+      "marker": "switch/wine/steamworks-local",
+      "launch": "switch/wine/wine-nx-runtime.nro",
+      "app": "pcgames",
+      "pin": "pcgames",
+      "group": "wine",
+      "conflicts": ["autorun"],
+      "keepOnRemove": "switch/wine",
+      "downloadSize": 16513771,
+      "installSize": 54256269,
+      "category": "games",
+      "glyph": "videogame_asset",
+      "color": "#2F6BFF",
+      "description": {
+        "tr": "PC oyunlarını Wine ile çalıştırır. Kendi küçük Steam istemcisiyle Steam hesabına girer ve sahip olduğun oyunları konsola indirir. Steam kitaplığın ve PC oyunların Nexvyn OS'taki PC Oyunları uygulamasında görünür.",
+        "en": "Runs PC games through Wine. Its small Steam client signs in to your Steam account and downloads the games you own to the console. Your Steam library and PC games appear in the PC Games app in Nexvyn OS."
+      },
+      "warnings": {
+        "tr": [
+          "Deneysel bir proje: birçok oyun çalışmayabilir.",
+          "Yalnızca emuMMC ile kullanın; çevrim içi kullanım ban riski taşır.",
+          "İlk kurulum adımı önyükleme yamaları kurabilir: önce atmosphere ve bootloader klasörlerini yedekleyin.",
+          "Autorun ile aynı klasörü (switch/wine) kullanır; ikisinden yalnızca biri kurulu olabilir."
+        ],
+        "en": [
+          "Experimental project: many games may not run.",
+          "Use it with emuMMC only; going online carries a ban risk.",
+          "Its first-run setup can install boot patches: back up the atmosphere and bootloader folders first.",
+          "Uses the same folder as Autorun (switch/wine); only one of the two can be installed."
+        ]
+      }
+    },
+    {
+      "id": "autorun",
+      "name": "Autorun",
+      "author": "autorunhq",
+      "repo": "autorunhq/autorun",
+      "homepage": "https://github.com/autorunhq/autorun",
+      "license": "LGPL-2.1",
+      "type": "zip",
+      "asset": "autorun-*.zip",
+      "zipInclude": ["switch/wine/"],
+      "keepExisting": ["switch/wine/config/settings.json", "switch/wine/config/keys.txt", "switch/wine/target.txt", "switch/wine/args.txt"],
+      "proof": ["switch/wine/wine-nx-runtime.nro"],
+      "nacpName": "Autorun",
+      "launch": "switch/wine/wine-nx-runtime.nro",
+      "app": "pcgames",
+      "pin": "pcgames",
+      "group": "wine",
+      "conflicts": ["corkdeck"],
+      "keepOnRemove": "switch/wine",
+      "downloadSize": 64978068,
+      "installSize": 195409964,
+      "category": "games",
+      "glyph": "computer",
+      "color": "#5B5BD6",
+      "description": {
+        "tr": "PC (x86/x64) oyun ve programlarını Wine, FEX ve DXVK ile çalıştırır (eski adı Wine-NX). Oyun klasörlerini switch/wine/drive_c içine kopyalarsın; Nexvyn OS'taki PC Oyunları uygulamasından başlatırsın.",
+        "en": "Runs PC (x86/x64) games and programs through Wine, FEX and DXVK (formerly Wine-NX). Copy game folders into switch/wine/drive_c and start them from the PC Games app in Nexvyn OS."
+      },
+      "warnings": {
+        "tr": [
+          "Deneysel bir test sürümü: birçok oyun çalışmayabilir.",
+          "İlk kurulum adımı önyükleme yamaları kurabilir: önce atmosphere ve bootloader klasörlerini yedekleyin.",
+          "CorkDeck ile aynı klasörü (switch/wine) kullanır; ikisinden yalnızca biri kurulu olabilir."
+        ],
+        "en": [
+          "Experimental test build: many games may not run.",
+          "Its first-run setup can install boot patches: back up the atmosphere and bootloader folders first.",
+          "Uses the same folder as CorkDeck (switch/wine); only one of the two can be installed."
+        ]
+      }
+    },
+    {
+      "id": "moonlight",
+      "name": "Moonlight",
+      "author": "XITRIX",
+      "repo": "XITRIX/Moonlight-Switch",
+      "homepage": "https://github.com/XITRIX/Moonlight-Switch",
+      "license": "GPL-3.0",
+      "type": "nro",
+      "asset": "Moonlight-Switch.nro",
+      "installPath": "switch/Moonlight-Switch/Moonlight-Switch.nro",
+      "proof": ["switch/Moonlight-Switch/Moonlight-Switch.nro", "switch/Moonlight-Switch.nro", "switch/moonlight/Moonlight-Switch.nro"],
+      "downloadSize": 17677907,
+      "installSize": 17677907,
+      "category": "games",
+      "glyph": "cast",
+      "color": "#7A4DFF",
+      "recommended": true,
+      "description": {
+        "tr": "Bilgisayarındaki oyunları yerel ağ üzerinden konsola aktarır (Sunshine veya NVIDIA GameStream ile). Oyun bilgisayarda çalışır, görüntü ve kontrol konsolda olur.",
+        "en": "Streams games from your PC to the console over your home network (with Sunshine or NVIDIA GameStream). The game runs on the PC; picture and controls are on the console."
+      },
+      "warnings": {
+        "tr": ["Bilgisayarda Sunshine (veya GeForce Experience) kurulu olmalı."],
+        "en": ["Your PC needs Sunshine (or GeForce Experience) installed."]
+      }
+    },
+    {
+      "id": "jksv",
+      "name": "JKSV",
+      "author": "J-D-K",
+      "repo": "J-D-K/JKSV",
+      "homepage": "https://github.com/J-D-K/JKSV",
+      "license": "GPL-3.0",
+      "type": "nro",
+      "asset": "JKSV.nro",
+      "installPath": "switch/JKSV/JKSV.nro",
+      "proof": ["switch/JKSV/JKSV.nro", "switch/JKSV.nro"],
+      "downloadSize": 10130471,
+      "installSize": 10130471,
+      "category": "utilities",
+      "glyph": "backup",
+      "color": "#1F9D55",
+      "recommended": true,
+      "description": {
+        "tr": "Oyun kayıtlarını SD karta yedekler ve geri yükler. Konsol değiştirirken veya bir oyunu silmeden önce kayıtlarını korur.",
+        "en": "Backs up game saves to the SD card and restores them. Keeps your saves safe before you delete a game or move to another console."
+      },
+      "warnings": {"tr": [], "en": []}
+    },
+    {
+      "id": "activitylog",
+      "name": "NX Activity Log",
+      "author": "tallbl0nde",
+      "repo": "tallbl0nde/NX-Activity-Log",
+      "homepage": "https://github.com/tallbl0nde/NX-Activity-Log",
+      "license": "MIT",
+      "type": "nro",
+      "asset": "NX-Activity-Log.nro",
+      "installPath": "switch/NX-Activity-Log/NX-Activity-Log.nro",
+      "proof": ["switch/NX-Activity-Log/NX-Activity-Log.nro", "switch/NX-Activity-Log.nro"],
+      "downloadSize": 10121093,
+      "installSize": 10121093,
+      "category": "utilities",
+      "glyph": "history",
+      "color": "#E8833A",
+      "description": {
+        "tr": "Oyun başına oynama süresini gün gün, ayrıntılı grafiklerle gösterir.",
+        "en": "Shows your play time per game, day by day, with detailed charts."
+      },
+      "warnings": {
+        "tr": ["Son sürümü 2021'den; yeni sistem sürümlerinde sorun çıkarabilir."],
+        "en": ["Its latest release is from 2021; it may misbehave on newer system versions."]
+      }
+    },
+    {
+      "id": "yamanx",
+      "name": "YamaNX",
+      "author": "SertAy",
+      "repo": "sertay1/YamaNX",
+      "homepage": "https://github.com/sertay1/YamaNX",
+      "license": "SertAy — tüm hakları saklıdır (ticari olmayan kullanım)",
+      "type": "nro",
+      "asset": "YamaNX.nro",
+      "installPath": "switch/YamaNX/YamaNX.nro",
+      "proof": ["switch/YamaNX/YamaNX.nro", "switch/YamaNX.nro"],
+      "nacpName": "YamaNX",
+      "downloadSize": 11312922,
+      "installSize": 11312922,
+      "category": "games",
+      "glyph": "translate",
+      "color": "#C8102E",
+      "description": {
+        "tr": "SertAy'ın Türkçe yama yükleyicisi: oyunların için Türkçe çeviri yamalarını internetten bulur ve konsola kurar. Nexvyn OS'taki Türkçe Yamalar uygulaması onu açabilir ve kurduğu yamaları listeler.",
+        "en": "SertAy's Turkish patch installer: finds Turkish translation patches for your games online and installs them on the console. The Turkish Patches app in Nexvyn OS can open it and lists the patches it installed."
+      },
+      "warnings": {
+        "tr": ["Üçüncü taraf bir uygulamadır; Nexvyn OS ekibi tarafından geliştirilmez. Yamalar onları hazırlayan çevirmenlere aittir.",
+               "Lisansı yalnızca ticari olmayan kullanıma izin verir; kodu ve dosyaları başka yerde yayımlanamaz."],
+        "en": ["A third-party app, not made by the Nexvyn OS team. The patches belong to the translators who made them.",
+               "Its licence allows non-commercial use only; its code and files may not be redistributed."]
+      }
+    },
+    {
+      "id": "sys-clk",
+      "name": "sys-clk",
+      "author": "RetroNX team",
+      "repo": "retronx-team/sys-clk",
+      "homepage": "https://github.com/retronx-team/sys-clk",
+      "license": "Beerware",
+      "type": "zip",
+      "asset": "sys-clk-*.zip",
+      "zipInclude": ["atmosphere/", "config/", "switch/"],
+      "proof": ["atmosphere/contents/00FF0000636C6BFF/exefs.nsp"],
+      "app": "sysclk",
+      "downloadSize": 3325359,
+      "installSize": 8150000,
+      "category": "utilities",
+      "glyph": "speed",
+      "color": "#B45309",
+      "description": {
+        "tr": "Oyun başına CPU, GPU ve bellek hızlarını ayarlayan sistem modülü; yanında bir yönetici uygulaması ve Tesla katmanı gelir. Profilleri Nexvyn OS'taki Saat Profilleri uygulamasında düzenlersin.",
+        "en": "A system module that sets CPU, GPU and memory clocks per game, with a manager app and a Tesla overlay. Edit its profiles in the Clock Profiles app in Nexvyn OS."
+      },
+      "warnings": {
+        "tr": ["Yeniden başlattıktan sonra çalışır.", "Yüksek hızlar konsolu ısıtır ve pili daha hızlı bitirir.", "Yeni bir sistem sürümünden sonra güncel sürümü gerekebilir."],
+        "en": ["Starts after a restart.", "Higher clocks make the console warmer and drain the battery faster.", "May need a newer release after a system update."]
+      }
+    },
+    {
+      "id": "nx-ovlloader",
+      "name": "nx-ovlloader",
+      "author": "WerWolv",
+      "repo": "WerWolv/nx-ovlloader",
+      "homepage": "https://github.com/WerWolv/nx-ovlloader",
+      "license": "ISC",
+      "type": "zip",
+      "asset": "nx-ovlloader.zip",
+      "zipInclude": ["atmosphere/"],
+      "proof": ["atmosphere/contents/420000000007E51A/exefs.nsp"],
+      "app": "overlays",
+      "downloadSize": 19547,
+      "installSize": 25420,
+      "category": "utilities",
+      "glyph": "layers",
+      "color": "#1D4ED8",
+      "description": {
+        "tr": "Tesla katmanlarını oyunların üzerinde çalıştıran sistem modülü. Katmanları listeleyen Tesla Menüsü ile birlikte kurulur.",
+        "en": "The system module that runs Tesla overlays on top of games. Install it together with Tesla Menu, which lists the overlays."
+      },
+      "warnings": {
+        "tr": ["Yeniden başlattıktan sonra çalışır."],
+        "en": ["Starts after a restart."]
+      }
+    },
+    {
+      "id": "tesla-menu",
+      "name": "Tesla Menu",
+      "author": "WerWolv",
+      "repo": "WerWolv/Tesla-Menu",
+      "homepage": "https://github.com/WerWolv/Tesla-Menu",
+      "license": "GPL-2.0",
+      "type": "zip",
+      "asset": "ovlmenu.zip",
+      "zipInclude": ["switch/"],
+      "proof": ["switch/.overlays/ovlmenu.ovl"],
+      "app": "overlays",
+      "downloadSize": 156762,
+      "installSize": 366789,
+      "category": "utilities",
+      "glyph": "menu",
+      "color": "#2563EB",
+      "description": {
+        "tr": "Katman menüsü: L + aşağı + sağ çubuk ile her yerden açılır ve switch/.overlays içindeki katmanları listeler. nx-ovlloader gerekir.",
+        "en": "The overlay menu: opens anywhere with L + down + right stick and lists the overlays in switch/.overlays. Needs nx-ovlloader."
+      },
+      "warnings": {
+        "tr": [],
+        "en": []
+      }
+    }
+  ]
+}

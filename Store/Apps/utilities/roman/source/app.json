@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.roman",
+  "name": {"en": "Roman Numerals", "tr": "Romen Rakamları", "de": "Römische Zahlen", "fr": "Chiffres romains", "es": "Números romanos", "ja": "ローマ数字", "zh": "罗马数字", "ko": "로마 숫자"},
+  "description": {
+    "en": "Convert numbers and Roman numerals both ways as you type, see how each one is built, look up the rules and test yourself in a quiz.",
+    "tr": "Sayıları ve Romen rakamlarını yazarken iki yönlü çevir, her birinin nasıl oluştuğunu adım adım gör, kurallara göz at ve bilgini testle sına.",
+    "de": "Wandle Zahlen und römische Zahlen beim Tippen in beide Richtungen um, sieh, wie jede aufgebaut ist, schlage die Regeln nach und teste dich in einem Quiz.",
+    "fr": "Convertissez nombres et chiffres romains dans les deux sens pendant la saisie, voyez comment chacun est construit, consultez les règles et testez-vous avec un quiz.",
+    "es": "Convierte números y números romanos en ambos sentidos mientras escribes, mira cómo se forma cada uno, consulta las reglas y ponte a prueba con un cuestionario."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 620, "height": 480, "minWidth": 540, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

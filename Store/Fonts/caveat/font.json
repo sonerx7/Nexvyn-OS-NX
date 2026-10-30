@@ -1,0 +1,30 @@
+{
+  "id": "caveat",
+  "name": {
+    "en": "Caveat",
+    "tr": "Caveat",
+    "de": "Caveat",
+    "fr": "Caveat",
+    "es": "Caveat"
+  },
+  "family": "Caveat",
+  "styles": {
+    "regular": "Caveat-Regular.ttf",
+    "bold": "Caveat-Bold.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "2.000",
+  "author": "The Caveat Project Authors",
+  "classification": "handwriting",
+  "scripts": [
+    "Latn",
+    "Cyrl"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "game",
+  "tags": [
+    "nexvyn.game",
+    "tilemap",
+    "camera",
+    "animation",
+    "gamepad",
+    "touch"
+  ],
+  "subtitle": {
+    "en": "A complete platformer level with nexvyn.game",
+    "tr": "nexvyn.game ile eksiksiz bir platform bölümü",
+    "de": "Ein komplettes Jump'n'Run-Level mit nexvyn.game",
+    "fr": "Un niveau de plateforme complet avec nexvyn.game",
+    "es": "Un nivel de plataformas completo con nexvyn.game",
+    "ja": "nexvyn.game で作った完全なアクションゲームのレベル",
+    "zh": "用 nexvyn.game 制作的完整平台跳跃关卡",
+    "ko": "nexvyn.game으로 만든 완전한 플랫포머 레벨"
+  },
+  "description": {
+    "en": "A small but complete platformer made with the built-in 2D engine: a tilemap from text rows with tiles drawn by code, a smooth camera with parallax, animation without a sprite sheet, one-way platforms, coyote time and a jump buffer, coins, particles, a goal flag and a saved best time. The best place to start a 2D game.",
+    "tr": "Yerleşik 2D motorla yapılmış küçük ama eksiksiz bir platform oyunu: metin satırlarından, kodla çizilen döşemeli harita, paralakslı yumuşak kamera, sprite sayfası olmadan animasyon, tek yönlü platformlar, coyote süresi ve zıplama tamponu, altınlar, parçacıklar, bitiş bayrağı ve kaydedilen en iyi süre. Bir 2D oyuna başlamak için en iyi yer.",
+    "de": "Ein kleines, aber vollständiges Jump'n'Run mit der eingebauten 2D-Engine: Tilemap aus Textzeilen mit per Code gezeichneten Kacheln, weiche Kamera mit Parallax, Animation ohne Spritesheet, Einweg-Plattformen, Coyote-Time und Sprungpuffer, Münzen, Partikel, Zielflagge und gespeicherte Bestzeit. Der beste Startpunkt für ein 2D-Spiel.",
+    "fr": "Un petit jeu de plateforme complet avec le moteur 2D intégré : carte de tuiles à partir de lignes de texte et dessinée par code, caméra fluide avec parallaxe, animation sans planche de sprites, plateformes à sens unique, coyote time et tampon de saut, pièces, particules, drapeau d'arrivée et meilleur temps enregistré. Le meilleur point de départ pour un jeu 2D.",
+    "es": "Un juego de plataformas pequeño pero completo hecho con el motor 2D integrado: mapa de casillas a partir de filas de texto dibujado por código, cámara suave con paralaje, animación sin hoja de sprites, plataformas de un solo sentido, coyote time y búfer de salto, monedas, partículas, bandera de meta y mejor tiempo guardado. El mejor punto de partida para un juego 2D.",
+    "ja": "内蔵の 2D エンジンで作った、小さいながらも完全なアクションゲーム: テキストの行から作るタイルマップとコードで描くタイル、パララックス付きの滑らかなカメラ、スプライトシートを使わないアニメーション、一方通行の足場、コヨーテタイムとジャンプの先行入力、コイン、パーティクル、ゴールの旗、保存されるベストタイム。2D ゲームを始めるのに最適です。",
+    "zh": "一个用内置 2D 引擎制作的小巧而完整的平台跳跃游戏：由文本行生成并用代码绘制图块的图块地图、带视差的平滑镜头、无需精灵图集的动画、单向平台、土狼时间和跳跃缓冲、金币、粒子、终点旗以及保存的最佳用时。开始制作 2D 游戏的最佳起点。",
+    "ko": "내장 2D 엔진으로 만든 작지만 완전한 플랫포머: 코드로 그린 타일이 있는 텍스트 행 기반 타일맵, 시차 효과가 있는 부드러운 카메라, 스프라이트 시트 없는 애니메이션, 단방향 발판, 코요테 타임과 점프 버퍼, 코인, 입자, 목표 깃발, 저장되는 최고 기록. 2D 게임을 시작하기에 가장 좋은 곳입니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key right",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

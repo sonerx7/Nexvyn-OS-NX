@@ -1,0 +1,14 @@
+{
+  "cloth": "Tissu",
+  "ropes": "Cordes",
+  "bridge": "Pont",
+  "tool_drag": "Saisir",
+  "tool_cut": "Couper",
+  "tool_pin": "Épingler",
+  "wind": "Vent",
+  "tear": "Déchirer",
+  "reset": "Réinitialiser",
+  "stats": "{0} points · {1} liens · {2} FPS",
+  "hint": "Saisir : faites glisser n’importe quel point. Couper : balayez à travers les liens. Épingler : touchez un point pour le fixer ou le libérer.",
+  "menu_title": "Physique"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "spacearena",
+  "name": {
+    "en": "Orbit Arena",
+    "tr": "Uzay Arenası",
+    "de": "Orbit-Arena",
+    "fr": "Arène orbitale",
+    "es": "Arena orbital",
+    "ja": "Orbit Arena",
+    "zh": "轨道竞技场",
+    "ko": "오빗 아레나"
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 560,
+    "minWidth": 480,
+    "minHeight": 300,
+    "resizable": true
+  },
+  "gamepad": true,
+  "description": {
+    "en": "Top-down arena shooter: survive the waves and beat your high score",
+    "tr": "Yukarıdan bakışlı arena nişancı: dalgalara dayan, rekorunu kır",
+    "de": "Arena-Shooter von oben: Überlebe die Wellen und schlage deinen Highscore",
+    "fr": "Jeu de tir en arène vu de dessus : survivez aux vagues et battez votre meilleur score",
+    "es": "Shooter de arena cenital: sobrevive a las oleadas y supera tu récord"
+  },
+  "permissions": []
+}

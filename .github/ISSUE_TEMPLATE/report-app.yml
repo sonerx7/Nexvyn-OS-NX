@@ -1,0 +1,45 @@
+name: Report an app / Uygulama bildir
+description: Something in the App Market breaks the rules (malware, tracking, harmful ads, stolen content, broken).
+title: "[Report] "
+labels: ["report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The maintainer looks at every report. Items that break the
+        [rules](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/REVIEW.en.md) are removed from the
+        App Market. / Bakımcı her bildirime bakar; kurallara uymayan öğeler Uygulama Mağazası'ndan kaldırılır.
+  - type: input
+    id: app-id
+    attributes:
+      label: App id / Uygulama kimliği
+      description: Filled in when you use "Report This App" in the App Market. / Mağazadaki "Bu Uygulamayı Bildir" doldurur.
+    validations:
+      required: true
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Reason / Neden
+      options:
+        - Malware or harmful code / Kötü amaçlı kod
+        - Tracking or data collection / İzleme ya da veri toplama
+        - Harmful or deceptive ads / Zararlı ya da aldatıcı reklam
+        - Copyright or license problem / Telif ya da lisans sorunu
+        - Inappropriate content / Uygunsuz içerik
+        - Does not work / Çalışmıyor
+        - Other / Diğer
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details / Ayrıntılar
+      description: What happens, the version, and how to see it. / Ne oluyor, sürüm ve nasıl görülür.
+    validations:
+      required: true
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights holder / Hak sahibi
+      options:
+        - label: I own the rights to content used in this item. / Bu öğede kullanılan içeriğin hak sahibiyim.

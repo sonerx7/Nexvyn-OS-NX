@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.whack",
+  "name": {
+    "en": "Whack-a-Mole",
+    "tr": "Köstebek Vur",
+    "de": "Hau den Maulwurf",
+    "fr": "Tape-taupe",
+    "es": "Aplasta topos",
+    "ja": "モグラたたき",
+    "zh": "打地鼠",
+    "ko": "두더지 잡기"
+  },
+  "description": {
+    "en": "Whack as many moles as you can in 60 seconds. Chain hits for a combo multiplier, grab golden moles and clocks, and never hit a bomb.",
+    "tr": "60 saniyede olabildiğince çok köstebek vur. Ardışık vuruşlarla kombo çarpanı kazan, altın köstebek ve saatleri yakala, bombaya asla vurma.",
+    "de": "Hau in 60 Sekunden so viele Maulwürfe wie möglich. Verkette Treffer für einen Kombo-Multiplikator, schnapp dir goldene Maulwürfe und Uhren und triff nie eine Bombe.",
+    "fr": "Tapez un maximum de taupes en 60 secondes. Enchaînez les coups pour un multiplicateur de combo, attrapez les taupes dorées et les horloges, et ne touchez jamais une bombe.",
+    "es": "Aplasta tantos topos como puedas en 60 segundos. Encadena golpes para un multiplicador de combo, consigue topos dorados y relojes, y nunca golpees una bomba."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 640,
+    "minWidth": 480,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

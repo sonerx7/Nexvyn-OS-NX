@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "Gestes",
+  "tab_tilt": "Inclinaison",
+  "reset": "Réinitialiser la vue",
+  "calibrate": "Calibrer",
+  "test_rumble": "Tester la vibration",
+  "view_info": "zoom {0} · angle {1}° · déplacement {2}, {3}",
+  "event_info": "événements : pincement {0} · rotation {1} · déplacement à deux doigts {2}",
+  "hint_gestures": "Deux doigts : pincer, pivoter, déplacer · souris : glisser, molette · Q/E pivoter · double toucher pour réinitialiser",
+  "hint_tilt": "Inclinez la console pour faire rouler la bille (les flèches ou le stick fonctionnent aussi)",
+  "stars": "Étoiles : {0}",
+  "no_motion": "Aucune donnée du capteur de mouvement : utilisez les flèches ou le stick gauche",
+  "motion_title": "input.motion()",
+  "menu_title": "Gestes"
+}

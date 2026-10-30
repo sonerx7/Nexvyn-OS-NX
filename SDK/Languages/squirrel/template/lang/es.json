@@ -1,0 +1,7 @@
+{
+  "app": "App",
+  "hello": "¡Hola, mundo!",
+  "edit_me": "Edita main.nut en Nexvyn OS Studio y pulsa Ejecutar (Ctrl+R).",
+  "tap": "Tocado {0} veces",
+  "reset": "Reiniciar contador"
+}

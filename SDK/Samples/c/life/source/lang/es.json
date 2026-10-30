@@ -1,0 +1,11 @@
+{
+  "board": "Tablero",
+  "play": "Iniciar",
+  "pause": "Pausa",
+  "step": "Paso",
+  "speed": "Velocidad {0}/s",
+  "status": "Generación {0} · {1} celdas",
+  "random": "Aleatorio",
+  "add_glider": "Añadir un planeador",
+  "clear": "Vaciar"
+}

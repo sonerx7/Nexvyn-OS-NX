@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.dice",
+  "name": {"en": "Dice & Coin", "tr": "Zar ve Yazı Tura", "de": "Würfel & Münze", "fr": "Dés et pièce", "es": "Dados y moneda", "ja": "サイコロとコイン", "zh": "骰子和硬币", "ko": "주사위와 동전"},
+  "description": {
+    "en": "Roll up to six dice from d4 to d20 or flip a coin, with tumbling animations, held dice, a history and roll statistics.",
+    "tr": "d4'ten d20'ye kadar altı zara kadar at ya da yazı tura at; yuvarlanma animasyonu, zar sabitleme, geçmiş ve atış istatistikleri.",
+    "de": "Wirf bis zu sechs Würfel von W4 bis W20 oder eine Münze, mit Rollanimationen, gehaltenen Würfeln, Verlauf und Wurfstatistik.",
+    "fr": "Lancez jusqu’à six dés de d4 à d20 ou jouez à pile ou face, avec animations de roulement, dés bloqués, historique et statistiques de lancers.",
+    "es": "Lanza hasta seis dados de d4 a d20 o una moneda, con animaciones de rodar, dados retenidos, historial y estadísticas de tiradas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 700, "height": 480, "minWidth": 560, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,21 @@
+{
+  "cube": "Cube",
+  "box": "Boîte",
+  "sphere": "Sphère",
+  "cylinder": "Cylindre",
+  "cone": "Cône",
+  "torus": "Tore",
+  "plane": "Plan",
+  "tex_none": "Couleur",
+  "tex_grid": "Grille UV",
+  "tex_stripes": "Rayures",
+  "tex_dots": "Points",
+  "wire": "Filaire",
+  "auto": "Alterner les textures",
+  "intro": "Intro",
+  "triangles": "{0} triangles",
+  "stats": "{0} triangles · {1} FPS",
+  "status_intro": "Intro en cours (await timer.sleep)",
+  "status_ready": "Touchez une étiquette pour sélectionner une forme",
+  "menu_title": "Formes"
+}

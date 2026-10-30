@@ -1,0 +1,35 @@
+{
+  "id": "journal",
+  "name": {
+    "en": "Journal",
+    "tr": "Günlük",
+    "de": "Tagebuch",
+    "fr": "Journal",
+    "es": "Diario",
+    "ja": "日記",
+    "zh": "日记",
+    "ko": "일기"
+  },
+  "description": {
+    "en": "A daily journal with mood, tags, search, word count and a writing streak.",
+    "tr": "Ruh hâli, etiketler, arama, kelime sayısı ve yazma serisiyle günlük defteri.",
+    "de": "Ein tägliches Tagebuch mit Stimmung, Tags, Suche, Wortzählung und Schreibserie.",
+    "fr": "Un journal quotidien avec humeur, tags, recherche, nombre de mots et série d’écriture.",
+    "es": "Un diario con estado de ánimo, etiquetas, búsqueda, recuento de palabras y racha de escritura."
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": [
+    "notifications"
+  ]
+}

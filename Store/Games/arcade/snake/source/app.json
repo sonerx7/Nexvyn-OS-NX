@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.snake",
+  "name": {
+    "en": "Snake",
+    "tr": "Yılan",
+    "de": "Snake",
+    "fr": "Snake",
+    "es": "Serpiente",
+    "ja": "スネーク",
+    "zh": "贪吃蛇",
+    "ko": "스네이크"
+  },
+  "description": {
+    "en": "Classic snake: eat apples, grow longer and go faster. Play with walls or wrap around the edges.",
+    "tr": "Klasik yılan: elmaları ye, uza ve hızlan. Duvarlı ya da kenarlardan geçişli modda oyna.",
+    "de": "Klassisches Snake: Friss Äpfel, werde länger und schneller. Spiel mit Wänden oder lauf über die Ränder hinweg.",
+    "fr": "Le snake classique : mangez des pommes, grandissez et accélérez. Jouez avec des murs ou traversez les bords.",
+    "es": "La serpiente clásica: come manzanas, crece y ve más rápido. Juega con paredes o atraviesa los bordes."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 580,
+    "minWidth": 560,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

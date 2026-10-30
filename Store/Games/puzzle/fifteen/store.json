@@ -1,0 +1,48 @@
+{
+  "subtitle": {
+    "en": "Slide the tiles back into order",
+    "tr": "Karoları kaydır, sayıları sıraya diz",
+    "de": "Schieb die Plättchen in die richtige Reihe",
+    "fr": "Faites glisser les carreaux dans l’ordre",
+    "es": "Desliza las fichas hasta ordenarlas",
+    "ja": "タイルをスライドして元の順番に戻そう",
+    "zh": "把方块滑回正确的顺序",
+    "ko": "타일을 밀어 순서대로 맞추세요"
+  },
+  "description": {
+    "en": "The classic sliding puzzle on 3×3, 4×4 or 5×5 boards. Slide tiles into the gap until every number is back in order; you can even move a whole row or column of tiles at once. Every shuffle is guaranteed to be solvable. Stuck? A hint shows a good next move, and on the 3×3 board it is always the optimal one. Your best moves and best time are kept for each size.\n\n• Three board sizes, each with its own saved game\n• Multi-tile slides, swipes and undo\n• Hints, optimal on 3×3\n• Best moves and best time per size\n• Colour mode, controller and keyboard support",
+    "tr": "3×3, 4×4 ya da 5×5 tahtada klasik kaydırmalı bulmaca. Karoları boşluğa kaydır, bütün sayılar yeniden sıraya girsin; istersen bir satırı ya da sütunu tek seferde kaydırabilirsin. Her karıştırmanın çözülebilir olduğu garanti. Takıldın mı? İpucu iyi bir sonraki hamleyi gösterir, 3×3'te ise her zaman en iyisini. Her boyut için en az hamle ve en iyi süre saklanır.\n\n• Her biri ayrı kaydedilen üç tahta boyutu\n• Çoklu karo kaydırma, kaydırma hareketi ve geri alma\n• İpuçları, 3×3'te en iyi hamle\n• Her boyut için en az hamle ve en iyi süre\n• Renk modu, kumanda ve klavye desteği",
+    "de": "Das klassische Schiebepuzzle auf 3×3-, 4×4- oder 5×5-Brettern. Schieb die Plättchen in die Lücke, bis alle Zahlen wieder in der richtigen Reihenfolge stehen; du kannst sogar eine ganze Reihe oder Spalte auf einmal verschieben. Jede Mischung ist garantiert lösbar. Kommst du nicht weiter? Ein Tipp zeigt einen guten nächsten Zug, auf 3×3 immer den optimalen. Für jede Größe werden deine wenigsten Züge und deine Bestzeit gespeichert.\n\n• Drei Brettgrößen mit jeweils eigenem Spielstand\n• Mehrere Plättchen auf einmal, Wischen und Rückgängig\n• Tipps, auf 3×3 optimal\n• Wenigste Züge und Bestzeit pro Größe\n• Farbmodus, Controller und Tastatur",
+    "fr": "Le taquin classique sur plateaux 3×3, 4×4 ou 5×5. Faites glisser les carreaux dans la case vide jusqu’à remettre tous les nombres dans l’ordre ; vous pouvez même déplacer toute une ligne ou une colonne d’un coup. Chaque mélange est garanti soluble. Bloqué ? Un indice propose un bon coup suivant, toujours optimal sur le 3×3. Votre meilleur nombre de coups et votre meilleur temps sont conservés pour chaque taille.\n\n• Trois tailles de plateau, chacune avec sa partie sauvegardée\n• Glissement de plusieurs carreaux, gestes et annulation\n• Indices, optimaux sur le 3×3\n• Meilleurs coups et meilleur temps par taille\n• Mode couleur, manette et clavier",
+    "es": "El clásico puzle deslizante en tableros de 3×3, 4×4 o 5×5. Desliza las fichas hacia el hueco hasta que todos los números vuelvan a estar en orden; incluso puedes mover una fila o columna entera de una vez. Cada mezcla tiene solución garantizada. ¿Atascado? Una pista te muestra un buen siguiente movimiento, y en 3×3 siempre el óptimo. Se guardan tus mejores movimientos y tu mejor tiempo para cada tamaño.\n\n• Tres tamaños de tablero, cada uno con su partida guardada\n• Mover varias fichas a la vez, deslizar y deshacer\n• Pistas, óptimas en 3×3\n• Mejores movimientos y mejor tiempo por tamaño\n• Modo de color, mando y teclado",
+    "ja": "3×3、4×4、5×5 の盤で遊ぶ定番のスライドパズル。すべての数字が順番に戻るまでタイルを空きマスにスライドしましょう。行や列のタイルをまとめて動かすこともできます。どのシャッフルも必ず解けるようになっています。行き詰まったら、ヒントが次の良い手を示し、3×3 の盤では常に最適な手を示します。サイズごとに最少手数とベストタイムが記録されます。\n\n• それぞれゲームが保存される 3 つの盤サイズ\n• 複数タイルのスライド、スワイプ、取り消し\n• ヒント (3×3 では最適手)\n• サイズごとの最少手数とベストタイム\n• 色分けモード、コントローラーとキーボードに対応",
+    "zh": "在 3×3、4×4 或 5×5 棋盘上进行的经典滑块拼图。把方块滑入空位，直到所有数字恢复顺序；你甚至可以一次移动整行或整列的方块。每次打乱都保证有解。卡住了？提示会给出一个好的下一步，在 3×3 棋盘上始终是最优解。每种尺寸都会保留你的最少步数和最佳用时。\n\n• 三种棋盘尺寸，各有独立的存档\n• 多方块滑动、轻扫和撤销\n• 提示，在 3×3 上为最优解\n• 每种尺寸的最少步数和最佳用时\n• 着色模式，支持手柄和键盘",
+    "ko": "3×3, 4×4, 5×5 보드의 클래식 슬라이딩 퍼즐입니다. 모든 숫자가 순서대로 돌아올 때까지 타일을 빈칸으로 미세요. 한 줄이나 한 열의 타일을 한꺼번에 밀 수도 있습니다. 모든 섞기는 반드시 풀 수 있게 만들어집니다. 막혔나요? 힌트가 좋은 다음 수를 보여 주며, 3×3 보드에서는 항상 최적의 수입니다. 크기별로 최소 이동과 최고 기록이 보관됩니다.\n\n• 각자 저장된 게임이 있는 보드 크기 3종\n• 여러 타일 밀기, 쓸어 넘기기, 실행 취소\n• 3×3에서 최적인 힌트\n• 크기별 최소 이동과 최고 기록\n• 색상 모드, 컨트롤러와 키보드 지원"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key left",
+      "wait 0.3",
+      "key up",
+      "wait 0.3",
+      "key right",
+      "wait 0.3",
+      "key up",
+      "wait 0.3",
+      "key h",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "key c",
+      "wait 1.5"
+    ]
+  ]
+}

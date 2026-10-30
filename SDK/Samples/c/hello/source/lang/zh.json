@@ -1,0 +1,22 @@
+{
+  "app_name": "Hello C",
+  "tab_counter": "计数器",
+  "tab_balls": "小球",
+  "tab_net": "网络",
+  "counter_title": "用 C 编写",
+  "times": "已轻点 {0} 次",
+  "reset": "重置",
+  "note_hint": "一条备注，通过 store_setStr 保存",
+  "balls_hint": "轻点以推动小球",
+  "net_title": "实时天气",
+  "net_body": "此按钮会运行 net_json(url, callback, user)：请求在后台运行，回调函数会收到 JSON 文本。",
+  "fetch": "获取 JSON",
+  "offline": "没有互联网连接",
+  "failed": "失败：{0}",
+  "loaded": "已载入",
+  "no_data": "按下按钮以载入数据",
+  "about": "关于 Hello C",
+  "about_body": "此应用使用纯 C 编写，打开时由 TinyCC 在你的主机上编译，使用与 Lua、JavaScript 和 Python 应用相同的 SDK。打开 main.c 即可阅读其代码。",
+  "ok": "好",
+  "open_code": "打开 main.c"
+}

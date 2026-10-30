@@ -1,0 +1,25 @@
+{
+  "id": "aichat",
+  "name": {
+    "en": "AI Chat",
+    "tr": "AI Sohbet",
+    "de": "KI-Chat",
+    "fr": "Chat IA",
+    "es": "Chat de IA",
+    "ko": "AI 채팅"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 980,
+    "height": 620,
+    "minWidth": 560,
+    "minHeight": 400,
+    "resizable": true
+  }
+}

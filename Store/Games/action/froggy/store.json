@@ -1,0 +1,42 @@
+{
+  "subtitle": {
+    "en": "Cross the road, ride the river, get home",
+    "tr": "Yolu geç, nehri aş, yuvana ulaş",
+    "de": "Über die Straße, den Fluss, nach Hause",
+    "fr": "Traversez la route et la rivière",
+    "es": "Cruza la carretera y el río hasta casa",
+    "ja": "道路を渡り、川を越え、おうちに帰ろう",
+    "zh": "穿过马路，乘着河流，回到家",
+    "ko": "길을 건너고, 강을 타고, 집으로 가세요"
+  },
+  "description": {
+    "en": "Hop your frog across five lanes of busy traffic, then over a fast river on drifting logs and turtles that dive without warning. Fill all five lily-pad homes before the timer runs out and the next level speeds everything up. Grab the fly for a bonus.\n\n• Cars, trucks and logs moving at different speeds in every lane\n• Diving turtles, a timer for each frog and four lives\n• Fly bonus, chain combos and faster levels\n• Saved best score and end-of-game stats\n• Controls: D-pad, stick, arrows or WASD to hop; + or P to pause\n• Touch: swipe, or tap beside the frog to hop that way",
+    "tr": "Kurbağanı kalabalık trafiğin aktığı beş şeritten zıplatarak geçir, sonra sürüklenen kütüklere ve habersizce dalan kaplumbağalara binerek hızlı nehri aş. Süre bitmeden beş nilüfer yuvasının hepsini doldur; bir sonraki bölümde her şey hızlanır. Bonus için sineği yakala.\n\n• Her şeritte farklı hızda akan arabalar, kamyonlar ve kütükler\n• Dalan kaplumbağalar, her kurbağa için süre ve dört can\n• Sinek bonusu, zincir kombolar ve hızlanan bölümler\n• Kaydedilen en yüksek skor ve oyun sonu istatistikleri\n• Kontroller: zıplamak için yön tuşları, analog çubuk, oklar ya da WASD; duraklatmak için + ya da P\n• Dokunmatik: kaydır ya da o yöne zıplamak için kurbağanın yanına dokun",
+    "de": "Lass deinen Frosch über fünf Spuren voller Verkehr hüpfen und dann über einen reißenden Fluss auf treibenden Baumstämmen und Schildkröten, die ohne Vorwarnung abtauchen. Besetze alle fünf Seerosenplätze, bevor die Zeit abläuft, und im nächsten Level wird alles schneller. Schnapp dir die Fliege für einen Bonus.\n\n• Autos, Lastwagen und Baumstämme mit unterschiedlichem Tempo auf jeder Spur\n• Abtauchende Schildkröten, ein Timer pro Frosch und vier Leben\n• Fliegenbonus, Kettenkombos und schnellere Level\n• Gespeicherter Rekord und Statistik am Spielende\n• Steuerung: Steuerkreuz, Stick, Pfeile oder WASD zum Hüpfen; + oder P für Pause\n• Touch: wischen oder neben den Frosch tippen, um in diese Richtung zu hüpfen",
+    "fr": "Faites traverser à votre grenouille cinq voies d’une circulation dense, puis une rivière rapide sur des rondins à la dérive et des tortues qui plongent sans prévenir. Remplissez les cinq nénuphars avant la fin du temps imparti et le niveau suivant accélère tout. Attrapez la mouche pour un bonus.\n\n• Voitures, camions et rondins à vitesses différentes sur chaque voie\n• Tortues plongeuses, un chrono par grenouille et quatre vies\n• Bonus mouche, combos en chaîne et niveaux plus rapides\n• Meilleur score enregistré et statistiques de fin de partie\n• Commandes : croix, stick, flèches ou ZQSD/WASD pour sauter ; + ou P pour la pause\n• Tactile : glissez, ou touchez à côté de la grenouille pour sauter dans cette direction",
+    "es": "Haz que tu rana salte cinco carriles de tráfico intenso y después un río rápido sobre troncos a la deriva y tortugas que se sumergen sin avisar. Llena los cinco nenúfares antes de que se acabe el tiempo y el siguiente nivel lo acelera todo. Atrapa la mosca para ganar un bonus.\n\n• Coches, camiones y troncos a distinta velocidad en cada carril\n• Tortugas que se sumergen, un tiempo por rana y cuatro vidas\n• Bonus de mosca, combos en cadena y niveles más rápidos\n• Mejor puntuación guardada y estadísticas al final\n• Controles: cruceta, stick, flechas o WASD para saltar; + o P para pausar\n• Táctil: desliza o toca junto a la rana para saltar en esa dirección",
+    "ja": "交通量の多い 5 車線をカエルで跳んで渡り、流れる丸太や突然潜るカメに乗って速い川を越えましょう。タイマーが切れる前に 5 つのハスの葉のおうちをすべて埋めると、次のレベルではすべてが速くなります。ハエを取るとボーナス。\n\n• 車線ごとに異なる速さで動く車、トラック、丸太\n• 潜るカメ、カエルごとのタイマー、4 つのライフ\n• ハエボーナス、連鎖コンボ、速くなるレベル\n• 保存されるベストスコアとゲーム終了時の統計\n• 操作: 十字ボタン、スティック、矢印キー、WASD でジャンプ、+ または P で一時停止\n• タッチ: スワイプ、またはカエルの横をタップしてその方向へジャンプ",
+    "zh": "让你的青蛙跳过五条车流繁忙的车道，再踩着漂流的木头和会毫无预兆潜水的乌龟越过湍急的河流。在计时结束前填满全部五个荷叶小窝，下一关所有东西都会变得更快。抓住苍蝇可获得奖励。\n\n• 每条车道上的汽车、卡车和木头速度各不相同\n• 会潜水的乌龟、每只青蛙的计时和四条命\n• 苍蝇奖励、连击和越来越快的关卡\n• 保存最高分和游戏结束统计\n• 操作：十字键、摇杆、方向键或 WASD 跳跃；+ 或 P 暂停\n• 触控：轻扫，或轻点青蛙旁边朝那个方向跳",
+    "ko": "개구리를 점프시켜 바쁜 차도 다섯 차선을 건넌 후, 떠내려가는 통나무와 예고 없이 잠수하는 거북이를 타고 빠른 강을 건너세요. 시간이 다 되기 전에 연잎 집 다섯 곳을 모두 채우면 다음 레벨에서는 모든 것이 빨라집니다. 파리를 잡으면 보너스를 얻습니다.\n\n• 차선마다 다른 속도로 움직이는 자동차, 트럭, 통나무\n• 잠수하는 거북이, 개구리마다 타이머, 생명 네 개\n• 파리 보너스, 연쇄 콤보, 빨라지는 레벨\n• 저장되는 최고 점수와 게임 종료 통계\n• 조작: 방향 버튼, 스틱, 화살표, WASD로 점프, + 또는 P로 일시 정지\n• 터치: 쓸어 넘기거나 개구리 옆을 탭하여 그쪽으로 점프"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key up",
+      "wait 0.5",
+      "key up",
+      "wait 1"
+    ],
+    [
+      "wait 1",
+      "key escape",
+      "wait 1"
+    ]
+  ]
+}

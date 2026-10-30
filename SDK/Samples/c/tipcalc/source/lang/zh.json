@@ -1,0 +1,13 @@
+{
+  "app": "小费分摊",
+  "bill": "账单",
+  "tip": "小费",
+  "people": "人数",
+  "round_up": "向上取整",
+  "tip_amount": "小费",
+  "total": "合计",
+  "each": "每人支付",
+  "share": "分享",
+  "share_text": "{1} 人共 {0}：每人 {2}",
+  "clear": "清除账单"
+}

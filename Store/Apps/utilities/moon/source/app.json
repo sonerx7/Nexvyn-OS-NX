@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.moon",
+  "name": {"en": "Moon Phase", "tr": "Ay Evresi", "de": "Mondphase", "fr": "Phase lunaire", "es": "Fase lunar", "ja": "月齢", "zh": "月相", "ko": "달의 위상"},
+  "description": {
+    "en": "See the moon's phase, illumination and age for any date, the next new and full moon, and a monthly calendar with a tiny moon for every day.",
+    "tr": "Herhangi bir gün için ayın evresini, aydınlanmasını ve yaşını, sonraki yeni ay ile dolunayı, her gün için küçük bir ay çizen aylık takvimi gör.",
+    "de": "Sieh Mondphase, Beleuchtung und Alter des Mondes für jedes Datum, den nächsten Neu- und Vollmond und einen Monatskalender mit einem kleinen Mond für jeden Tag.",
+    "fr": "Consultez la phase, l’illumination et l’âge de la Lune pour n’importe quelle date, la prochaine nouvelle et pleine lune, et un calendrier mensuel avec une petite lune pour chaque jour.",
+    "es": "Consulta la fase, la iluminación y la edad de la Luna en cualquier fecha, la próxima luna nueva y llena, y un calendario mensual con una pequeña luna para cada día."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 520, "minWidth": 640, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

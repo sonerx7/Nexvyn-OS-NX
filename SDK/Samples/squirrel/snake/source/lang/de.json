@@ -1,0 +1,11 @@
+{
+  "game": "Spiel",
+  "title": "Snake",
+  "score": "Punkte: {0}",
+  "best": "Rekord: {0}",
+  "game_over": "Game Over",
+  "paused": "Pause",
+  "start_hint": "A, Enter oder Tippen zum Spielen · Steuerkreuz, Pfeile oder WASD zum Lenken",
+  "new_game": "Neues Spiel",
+  "reset_best": "Rekord zurücksetzen"
+}

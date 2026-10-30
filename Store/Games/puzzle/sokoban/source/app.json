@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.sokoban",
+  "name": {
+    "en": "Sokoban",
+    "tr": "Sokoban",
+    "de": "Sokoban",
+    "fr": "Sokoban",
+    "es": "Sokoban",
+    "ja": "倉庫番",
+    "zh": "推箱子",
+    "ko": "소코반"
+  },
+  "description": {
+    "en": "Push every crate onto a goal in 20 solver-verified warehouse puzzles, with unlimited undo and tap-to-walk.",
+    "tr": "Çözücüyle doğrulanmış 20 depo bulmacasında tüm kasaları hedeflere itin; sınırsız geri alma ve dokunarak yürüme.",
+    "de": "Schiebe jede Kiste auf ein Ziel in 20 vom Löser geprüften Lagerhaus-Rätseln, mit unbegrenztem Rückgängig und Tippen zum Laufen.",
+    "fr": "Poussez chaque caisse sur une cible dans 20 puzzles d’entrepôt vérifiés par un solveur, avec annulation illimitée et déplacement au toucher.",
+    "es": "Empuja cada caja hasta un objetivo en 20 puzles de almacén verificados por un solucionador, con deshacer ilimitado y tocar para caminar."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 640,
+    "height": 600,
+    "minWidth": 440,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

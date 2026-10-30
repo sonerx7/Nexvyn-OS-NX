@@ -1,0 +1,7 @@
+# Every change is reviewed by the maintainer. With branch protection on main ("Require review from Code Owners"),
+# nothing in Store/ (what the App Market installs) or SDK/ (what developers build on) is merged without that approval.
+*         @sonerx7
+/Store/   @sonerx7
+/SDK/     @sonerx7
+/Tools/   @sonerx7
+/.github/ @sonerx7

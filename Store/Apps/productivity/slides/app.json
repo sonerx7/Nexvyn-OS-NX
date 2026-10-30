@@ -1,0 +1,30 @@
+{
+  "id": "slides",
+  "name": {
+    "en": "Presenter",
+    "tr": "Sunum",
+    "de": "Präsentation",
+    "fr": "Présentation",
+    "es": "Presentaciones",
+    "ko": "프레젠터"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1040,
+    "height": 600,
+    "minWidth": 720,
+    "minHeight": 440,
+    "resizable": true
+  },
+  "fileTypes": [
+    ".nxvslides"
+  ],
+  "singleInstance": false,
+  "dpadArrows": true
+}

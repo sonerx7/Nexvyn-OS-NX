@@ -1,0 +1,13 @@
+{
+  "app": "Divisor de propinas",
+  "bill": "Cuenta",
+  "tip": "Propina",
+  "people": "Personas",
+  "round_up": "Redondear",
+  "tip_amount": "Propina",
+  "total": "Total",
+  "each": "Cada uno paga",
+  "share": "Compartir",
+  "share_text": "Total {0} para {1} personas: {2} cada una",
+  "clear": "Borrar la cuenta"
+}

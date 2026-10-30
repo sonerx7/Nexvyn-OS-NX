@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Glowing wax blobs to help you unwind",
+    "tr": "Süzülen ışıltılı damlalarla rahatla",
+    "de": "Leuchtende Wachsblasen zum Entspannen",
+    "fr": "Des bulles de cire pour vous détendre",
+    "es": "Burbujas de cera para relajarte",
+    "ja": "光るワックスのしずくでリラックス",
+    "zh": "发光的蜡团，助你放松身心",
+    "ko": "긴장을 풀어 주는 빛나는 왁스 방울"
+  },
+  "description": {
+    "en": "Lava Lamp brings a calming retro lamp to your screen. Glowing wax blobs warm up at the bottom, rise, cool off at the top and sink again, softly merging when they meet. Pick one of five colour themes, change the speed and the number of blobs, or shake the lamp to start over. Night Light Mode hides the controls after a few seconds and shows a small clock in the corner.\n\n• Simple heat physics with blobs that melt together\n• Classic, Ocean, Lime, Purple and a slowly shifting Rainbow\n• Speed and 3–12 blobs, remembered between sessions\n• Optional soft bubbling sounds\n• Keyboard: Space for night light, left/right for theme, up/down for speed",
+    "tr": "Lav Lambası, ekranına dinlendirici bir retro lamba getirir. Işıldayan mum damlaları altta ısınıp yükselir, üstte soğuyup yeniden iner, birbirine yaklaşınca yumuşakça birleşir. Beş renk temasından birini seç, hızı ve damla sayısını ayarla ya da lambayı sallayıp her şeye baştan başla. Gece Lambası Modu birkaç saniye sonra kontrolleri gizler, köşede küçük bir saat gösterir.\n\n• Damlaları birbirine karıştıran basit ısı fiziği\n• Klasik, Okyanus, Limon, Mor ve yavaşça renk değiştiren Gökkuşağı\n• Hız ve 3–12 damla; ayarlar hatırlanır\n• İsteğe bağlı yumuşak fokurtu sesleri\n• Klavye: Boşluk gece lambası, sol/sağ tema, yukarı/aşağı hız",
+    "de": "Die Lavalampe holt eine beruhigende Retro-Lampe auf deinen Bildschirm. Leuchtende Wachsblasen erwärmen sich unten, steigen auf, kühlen oben ab und sinken wieder – und verschmelzen sanft, wenn sie sich treffen. Wähle eines von fünf Farbthemen, ändere Tempo und Anzahl der Blasen oder schüttle die Lampe für einen Neustart. Der Nachtlichtmodus blendet die Bedienelemente nach ein paar Sekunden aus und zeigt eine kleine Uhr in der Ecke.\n\n• Einfache Wärmephysik mit verschmelzenden Blasen\n• Klassiker, Ozean, Limette, Lila und ein langsam wechselnder Regenbogen\n• Tempo und 3–12 Blasen, die gespeichert bleiben\n• Optionale sanfte Blubbergeräusche\n• Tastatur: Leertaste für Nachtlicht, links/rechts Thema, hoch/runter Tempo",
+    "fr": "Lampe à lave installe une lampe rétro apaisante sur votre écran. Des bulles de cire lumineuses chauffent en bas, montent, refroidissent en haut puis redescendent, et fusionnent en douceur quand elles se rencontrent. Choisissez l’un des cinq thèmes de couleurs, réglez la vitesse et le nombre de bulles, ou secouez la lampe pour tout relancer. Le mode veilleuse masque les commandes au bout de quelques secondes et affiche une petite horloge dans le coin.\n\n• Physique de chaleur simple, bulles qui fusionnent\n• Classiques, Océan, Citron vert, Violet et un Arc-en-ciel changeant\n• Vitesse et 3 à 12 bulles, mémorisées\n• Doux bruits de bouillonnement en option\n• Clavier : Espace pour la veilleuse, gauche/droite pour le thème, haut/bas pour la vitesse",
+    "es": "Lámpara de lava lleva a tu pantalla una relajante lámpara retro. Las burbujas de cera brillante se calientan abajo, suben, se enfrían arriba y vuelven a bajar, y se funden suavemente al encontrarse. Elige uno de los cinco temas de color, cambia la velocidad y el número de burbujas o agita la lámpara para empezar de nuevo. El modo luz nocturna oculta los controles a los pocos segundos y muestra un pequeño reloj en la esquina.\n\n• Física de calor sencilla con burbujas que se funden\n• Clásicos, Océano, Lima, Morado y un Arcoíris que cambia poco a poco\n• Velocidad y de 3 a 12 burbujas, se recuerdan\n• Suaves burbujeos opcionales\n• Teclado: Espacio para la luz nocturna, izquierda/derecha cambia el tema, arriba/abajo la velocidad",
+    "ja": "ラバランプは、心を落ち着かせるレトロなランプを画面に再現します。光るワックスのしずくが底で温まって上昇し、上で冷えてまた沈み、ぶつかるとやさしく溶け合います。5 つのカラーテーマから選び、速さやしずくの数を変えたり、ランプを振って最初からやり直したりできます。常夜灯モードでは数秒後にコントロールが隠れ、隅に小さな時計が表示されます。\n\n• しずくが溶け合うシンプルな熱の物理演算\n• クラシック、オーシャン、ライム、パープル、ゆっくり色が変わるレインボー\n• 速さと 3〜12 個のしずく、次回も記憶\n• やわらかな泡の音 (任意)\n• キーボード: Space で常夜灯、左右でテーマ、上下で速さ",
+    "zh": "熔岩灯为你的屏幕带来一盏令人平静的复古灯。发光的蜡团在底部受热、上升，到顶部冷却后再缓缓下沉，相遇时会柔和地融合在一起。可从五种颜色主题中选择，调整速度和蜡团数量，或摇晃灯让一切重新开始。夜灯模式会在几秒后隐藏控制项，并在角落显示一个小时钟。\n\n• 简单的热力物理，蜡团会融合在一起\n• 经典、海洋、青柠、紫色以及缓慢变幻的彩虹\n• 速度和 3–12 个蜡团，设置会被记住\n• 可选的柔和冒泡声\n• 键盘：空格切换夜灯，左/右切换主题，上/下调整速度",
+    "ko": "라바 램프는 마음을 진정시키는 레트로 램프를 화면에 가져옵니다. 빛나는 왁스 방울이 아래에서 데워져 올라가고, 위에서 식으면 다시 가라앉으며, 서로 만나면 부드럽게 합쳐집니다. 다섯 가지 색상 테마 중 하나를 고르고, 속도와 방울 수를 바꾸거나, 램프를 흔들어 다시 시작하세요. 수면등 모드는 몇 초 후 컨트롤을 숨기고 모서리에 작은 시계를 보여 줍니다.\n\n• 방울이 함께 녹아드는 간단한 열 물리\n• 클래식, 바다, 라임, 보라, 그리고 천천히 변하는 무지개\n• 속도와 방울 3–12개, 세션 간에 기억됨\n• 선택적으로 부드러운 보글보글 소리\n• 키보드: Space 수면등, 왼쪽/오른쪽 테마, 위/아래 속도"
+  },
+  "shots": [
+    ["wait 4"],
+    ["key right", "wait 3"],
+    ["key right", "key right", "key right", "key up", "key up", "wait 3"],
+    ["key left", "key space", "wait 6"]
+  ]
+}

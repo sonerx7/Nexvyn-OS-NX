@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.hangman",
+  "name": {
+    "en": "Hangman",
+    "tr": "Adam Asmaca",
+    "de": "Galgenmännchen",
+    "fr": "Le pendu",
+    "es": "Ahorcado",
+    "ja": "ハングマン",
+    "zh": "猜词游戏",
+    "ko": "행맨"
+  },
+  "description": {
+    "en": "Guess the Turkish word letter by letter before the hangman is complete. Eight categories with an on-screen Turkish keyboard.",
+    "tr": "Adam asılmadan Türkçe kelimeyi harf harf tahmin edin. Sekiz kategori ve ekranda Türkçe klavye.",
+    "de": "Errate das türkische Wort Buchstabe für Buchstabe, bevor das Galgenmännchen fertig ist. Acht Kategorien mit türkischer Bildschirmtastatur.",
+    "fr": "Devinez le mot turc lettre par lettre avant que le pendu soit complet. Huit catégories avec un clavier turc à l’écran.",
+    "es": "Adivina la palabra en turco letra a letra antes de que se complete el ahorcado. Ocho categorías con un teclado turco en pantalla."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 640,
+    "height": 640,
+    "minWidth": 480,
+    "minHeight": 560,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

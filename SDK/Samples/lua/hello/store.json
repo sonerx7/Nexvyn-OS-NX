@@ -1,0 +1,47 @@
+{
+  "kind": "demo",
+  "tags": [
+    "sdk-tour",
+    "ui",
+    "gfx",
+    "store",
+    "notifications"
+  ],
+  "subtitle": {
+    "en": "A tour of the Lua SDK",
+    "tr": "Lua SDK turu",
+    "de": "Eine Tour durch das Lua-SDK",
+    "fr": "Une visite du SDK Lua",
+    "es": "Un recorrido por el SDK de Lua",
+    "ja": "Lua SDK のツアー",
+    "zh": "Lua SDK 导览",
+    "ko": "Lua SDK 둘러보기"
+  },
+  "description": {
+    "en": "The built-in Hello SDK app as a project you can open and change. Three tabs: live widgets (text field, slider, switch, segmented control, buttons, an alert and a notification), animated drawing with gradients, shadows, arcs and icons, and system information (time, battery, network, model, firmware, language). About 120 lines of commented Lua.",
+    "tr": "Yerleşik Merhaba SDK uygulamasının açıp değiştirebileceğiniz proje hâli. Üç sekme: canlı bileşenler (metin alanı, kaydırıcı, anahtar, bölümlü seçim, düğmeler, uyarı ve bildirim), geçiş, gölge, yay ve simgelerle canlı çizim ve sistem bilgisi (saat, pil, ağ, model, yazılım sürümü, dil). Yaklaşık 120 satır açıklamalı Lua.",
+    "de": "Die eingebaute App Hallo SDK als Projekt zum Öffnen und Ändern. Drei Tabs: Live-Widgets (Textfeld, Schieberegler, Schalter, Segmente, Buttons, ein Hinweis und eine Benachrichtigung), animiertes Zeichnen mit Verläufen, Schatten, Bögen und Symbolen sowie Systeminfos (Uhrzeit, Akku, Netz, Modell, Firmware, Sprache). Rund 120 Zeilen kommentiertes Lua.",
+    "fr": "L'appli intégrée Hello SDK sous forme de projet à ouvrir et modifier. Trois onglets : widgets en direct (champ de texte, curseur, interrupteur, segments, boutons, une alerte et une notification), dessin animé avec dégradés, ombres, arcs et icônes, et infos système (heure, batterie, réseau, modèle, firmware, langue). Environ 120 lignes de Lua commenté.",
+    "es": "La app integrada Hola SDK como proyecto que puedes abrir y cambiar. Tres pestañas: widgets en vivo (campo de texto, deslizador, interruptor, segmentos, botones, una alerta y una notificación), dibujo animado con degradados, sombras, arcos e iconos, e información del sistema (hora, batería, red, modelo, firmware, idioma). Unas 120 líneas de Lua comentado.",
+    "ja": "内蔵の Hello SDK アプリを、開いて変更できるプロジェクトにしたもの。3 つのタブ: ライブウィジェット (テキストフィールド、スライダー、スイッチ、セグメントコントロール、ボタン、アラート、通知)、グラデーション、影、円弧、アイコンを使ったアニメーション描画、そしてシステム情報 (時刻、バッテリー、ネットワーク、モデル、ファームウェア、言語)。コメント付きの Lua 約 120 行です。",
+    "zh": "将内置的 Hello SDK 应用作为一个可以打开和修改的项目。三个标签页：实时控件（文本框、滑块、开关、分段控件、按钮、提示框和通知）、带渐变、阴影、圆弧和图标的动画绘图，以及系统信息（时间、电池、网络、型号、固件、语言）。约 120 行带注释的 Lua 代码。",
+    "ko": "열어서 바꿀 수 있는 프로젝트로 제공되는 기본 제공 Hello SDK 앱입니다. 세 개의 탭: 실시간 위젯(텍스트 필드, 슬라이더, 스위치, 세그먼트 컨트롤, 버튼, 알림 대화 상자와 알림), 그라데이션, 그림자, 호, 아이콘으로 만든 애니메이션 그리기, 시스템 정보(시간, 배터리, 네트워크, 모델, 펌웨어, 언어). 주석이 달린 Lua 약 120줄입니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

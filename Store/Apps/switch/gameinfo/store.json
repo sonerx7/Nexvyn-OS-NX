@@ -1,0 +1,37 @@
+{
+  "subtitle": {
+    "en": "Versions, build IDs and mods per game",
+    "tr": "Oyun başına sürüm, build ID ve modlar",
+    "de": "Version, Build-ID und Mods pro Spiel",
+    "fr": "Version, build ID et mods par jeu",
+    "es": "Versión, build ID y mods de cada juego",
+    "ja": "ゲームごとのバージョン、ビルド ID、Mod",
+    "zh": "每款游戏的版本、Build ID 和模组",
+    "ko": "게임별 버전, 빌드 ID, 모드"
+  },
+  "description": {
+    "en": "Everything about your installed games on one screen. Pick a game to see its title ID, installed version, update and DLC, the build ID that cheat files and patches must match, the space it uses, and how many mods and cheat files it has. The System page sums up your firmware, Atmosphère version, emuMMC or sysMMC and SD card space.\n\n• Installed games list with search\n• Title ID, version, update, DLC and save data\n• Build ID and the matching cheat file name\n• Space used, active and waiting mods, cheat files\n• Jump to Cheats, Mods or the game's Clock Profile\n• Copy all information with one command",
+    "tr": "Yüklü oyunlarınla ilgili her şey tek ekranda. Bir oyun seç; title ID'sini, yüklü sürümünü, güncellemesini ve DLC'lerini, hile dosyalarının ve yamaların eşleşmesi gereken build ID'yi, kapladığı alanı ve kaç modu ile hile dosyası olduğunu gör. Sistem sayfası sistem yazılımını, Atmosphère sürümünü, emuMMC ya da sysMMC kullanımını ve SD kart alanını özetler.\n\n• Aramalı yüklü oyunlar listesi\n• Title ID, sürüm, güncelleme, DLC ve kayıt verisi\n• Build ID ve buna uyan hile dosyası adı\n• Kullanılan alan, etkin ve bekleyen modlar, hile dosyaları\n• Hileler, Modlar ya da oyunun Saat Profili'ne tek dokunuşla geç\n• Tüm bilgileri tek komutla kopyala",
+    "de": "Alles über deine installierten Spiele auf einem Bildschirm. Wähle ein Spiel und sieh Title-ID, installierte Version, Update und DLC, die Build-ID, zu der Cheat-Dateien und Patches passen müssen, den belegten Speicher sowie die Zahl der Mods und Cheat-Dateien. Die Seite System fasst Firmware, Atmosphère-Version, emuMMC oder sysMMC und den Platz auf der SD-Karte zusammen.\n\n• Liste der installierten Spiele mit Suche\n• Title-ID, Version, Update, DLC und Spielstände\n• Build-ID und passender Name der Cheat-Datei\n• Belegter Speicher, aktive und wartende Mods, Cheat-Dateien\n• Direkt zu Cheats, Mods oder dem Taktprofil des Spiels\n• Alle Infos mit einem Befehl kopieren",
+    "fr": "Tout sur vos jeux installés, sur un seul écran. Choisissez un jeu pour voir son title ID, sa version installée, sa mise à jour et ses DLC, le build ID auquel doivent correspondre les triches et les patchs, l’espace occupé et le nombre de mods et de fichiers de triche. La page Système résume le firmware, la version d’Atmosphère, emuMMC ou sysMMC et l’espace de la carte SD.\n\n• Liste des jeux installés, avec recherche\n• Title ID, version, mise à jour, DLC et sauvegardes\n• Build ID et nom du fichier de triche correspondant\n• Espace occupé, mods actifs et en attente, fichiers de triche\n• Accès direct aux triches, aux mods ou au profil d’horloge du jeu\n• Copie de toutes les infos en une commande",
+    "es": "Todo sobre tus juegos instalados en una sola pantalla. Elige un juego para ver su title ID, la versión instalada, la actualización y los DLC, el build ID con el que deben coincidir los trucos y parches, el espacio que ocupa y cuántos mods y archivos de trucos tiene. La página Sistema resume el firmware, la versión de Atmosphère, emuMMC o sysMMC y el espacio de la tarjeta SD.\n\n• Lista de juegos instalados con búsqueda\n• Title ID, versión, actualización, DLC y datos guardados\n• Build ID y nombre del archivo de trucos que le corresponde\n• Espacio ocupado, mods activos y pendientes, archivos de trucos\n• Salta a Trucos, Mods o al perfil de reloj del juego\n• Copia toda la información con un solo comando",
+    "ja": "インストール済みのゲームのすべてをひとつの画面に。ゲームを選ぶと、タイトル ID、インストール済みのバージョン、アップデートと DLC、チートファイルやパッチが一致すべきビルド ID、使用容量、Mod とチートファイルの数が表示されます。システムのページでは、ファームウェア、Atmosphère のバージョン、emuMMC または sysMMC、SD カードの容量をまとめて確認できます。\n\n• 検索付きのインストール済みゲームの一覧\n• タイトル ID、バージョン、アップデート、DLC、セーブデータ\n• ビルド ID と一致するチートファイル名\n• 使用容量、有効な Mod と待機中の Mod、チートファイル\n• チート、Mod、ゲームのクロックプロファイルへ移動\n• ひとつのコマンドですべての情報をコピー",
+    "zh": "在一个界面中了解已安装游戏的一切。选择一款游戏，即可查看其 Title ID、已安装版本、更新和 DLC、金手指文件和补丁必须匹配的 Build ID、所占空间，以及它有多少模组和金手指文件。“系统”页面汇总了你的固件、Atmosphère 版本、emuMMC 或 sysMMC 以及 SD 卡空间。\n\n• 可搜索的已安装游戏列表\n• Title ID、版本、更新、DLC 和存档数据\n• Build ID 以及匹配的金手指文件名\n• 已用空间、已启用和等待中的模组、金手指文件\n• 跳转到金手指、模组或该游戏的频率配置\n• 一条命令复制全部信息",
+    "ko": "설치된 게임에 관한 모든 것을 한 화면에서 보세요. 게임을 고르면 타이틀 ID, 설치된 버전, 업데이트와 DLC, 치트 파일과 패치가 맞춰야 하는 빌드 ID, 사용 공간, 모드와 치트 파일 수를 볼 수 있습니다. 시스템 페이지는 펌웨어, Atmosphère 버전, emuMMC 또는 sysMMC, SD 카드 공간을 요약합니다.\n\n• 검색이 가능한 설치된 게임 목록\n• 타이틀 ID, 버전, 업데이트, DLC, 세이브 데이터\n• 빌드 ID와 일치하는 치트 파일 이름\n• 사용 공간, 활성 및 대기 중인 모드, 치트 파일\n• 치트, 모드 또는 게임의 클럭 프로필로 이동\n• 명령 하나로 모든 정보 복사"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.17 0.122",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.17 0.297",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

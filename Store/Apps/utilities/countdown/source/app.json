@@ -1,0 +1,35 @@
+{
+  "id": "countdown",
+  "name": {
+    "en": "Countdown",
+    "tr": "Geri Sayım",
+    "de": "Countdown",
+    "fr": "Compte à rebours",
+    "es": "Cuenta atrás",
+    "ja": "カウントダウン",
+    "zh": "倒计时",
+    "ko": "카운트다운"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 720,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Count down to the events you look forward to",
+    "tr": "Heyecanla beklediğiniz anlara geri sayın",
+    "de": "Zähle die Zeit bis zu Ereignissen herunter, auf die du dich freust",
+    "fr": "Comptez le temps qui vous sépare des événements que vous attendez",
+    "es": "Cuenta atrás para los eventos que esperas con ganas"
+  },
+  "permissions": [
+    "notifications"
+  ]
+}

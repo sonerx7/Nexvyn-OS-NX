@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.mastermind",
+  "name": {
+    "en": "Code Breaker",
+    "tr": "Şifre Kır",
+    "de": "Codeknacker",
+    "fr": "Casse-code",
+    "es": "Descifra el código",
+    "ja": "コードブレーカー",
+    "zh": "密码破译",
+    "ko": "코드 브레이커"
+  },
+  "description": {
+    "en": "Crack the secret colour code in ten tries using the black and white clue pegs. Classic and hard modes with full statistics.",
+    "tr": "Siyah ve beyaz ipucu pimlerini kullanarak gizli renk şifresini on denemede kırın. Klasik ve zor mod, ayrıntılı istatistikler.",
+    "de": "Knacke den geheimen Farbcode in zehn Versuchen mit den schwarzen und weißen Hinweisstiften. Klassischer und schwerer Modus mit vollständiger Statistik.",
+    "fr": "Percez le code couleur secret en dix essais grâce aux fiches indices noires et blanches. Modes classique et difficile avec statistiques complètes.",
+    "es": "Descifra el código secreto de colores en diez intentos con las clavijas de pista blancas y negras. Modos clásico y difícil con estadísticas completas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 520,
+    "height": 640,
+    "minWidth": 420,
+    "minHeight": 560,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "Dodge the storm, grab every star",
+    "tr": "Fırtınadan kaç, yıldızları topla",
+    "de": "Weich dem Sturm aus, sammle Sterne",
+    "fr": "Esquivez la tempête, attrapez les étoiles",
+    "es": "Esquiva la tormenta, atrapa estrellas",
+    "ja": "嵐をよけて、星を全部集めよう",
+    "zh": "躲避风暴，抓住每一颗星星",
+    "ko": "폭풍을 피하고 모든 별을 잡으세요"
+  },
+  "description": {
+    "en": "Fly your little ship through a meteor storm that never stops. Weave between the falling rocks, collect stars and earn bonus points for every near miss. Shields, slow motion and a star magnet drop in to help, but the storm keeps getting faster. Steer with the stick, the D-pad, the keyboard or just drag your finger.\n\n• Three lives and an ever-faster storm\n• Bonus points for daring near misses\n• Shield, slow-motion and star-magnet power-ups\n• Touch, mouse, controller and keyboard controls\n• Your best score is saved",
+    "tr": "Küçük geminle hiç dinmeyen bir meteor fırtınasının içinden geç. Düşen kayaların arasından süzül, yıldızları topla, kıl payı kurtuluşlarla ekstra puan kap. Kalkan, ağır çekim ve yıldız mıknatısı yardımına koşar ama fırtına durmadan hızlanır. Gemiyi çubukla, yön tuşlarıyla, klavyeyle ya da parmağını sürükleyerek yönet.\n\n• Üç can ve giderek hızlanan bir fırtına\n• Kıl payı kaçışlara bonus puan\n• Kalkan, ağır çekim ve yıldız mıknatısı\n• Dokunmatik, fare, kumanda ve klavye desteği\n• En iyi skorun kaydedilir",
+    "de": "Steuere dein kleines Schiff durch einen Meteoritensturm, der niemals aufhört. Schlängle dich zwischen den fallenden Felsen hindurch, sammle Sterne und hol dir Bonuspunkte für jedes knappe Ausweichen. Schild, Zeitlupe und Sternmagnet helfen dir, doch der Sturm wird immer schneller. Du steuerst mit Stick, Steuerkreuz, Tastatur oder einfach mit dem Finger.\n\n• Drei Leben und ein immer schnellerer Sturm\n• Bonuspunkte für knappe Ausweichmanöver\n• Power-ups: Schild, Zeitlupe und Sternmagnet\n• Touch-, Maus-, Controller- und Tastatursteuerung\n• Dein Highscore wird gespeichert",
+    "fr": "Pilotez votre petit vaisseau à travers une pluie de météores qui ne s’arrête jamais. Faufilez-vous entre les rochers, ramassez des étoiles et gagnez des points bonus chaque fois que vous les frôlez. Bouclier, ralenti et aimant à étoiles viennent vous aider, mais la tempête accélère sans cesse. Dirigez au stick, à la croix directionnelle, au clavier ou simplement du doigt.\n\n• Trois vies et une tempête toujours plus rapide\n• Des points bonus pour les esquives de justesse\n• Bonus bouclier, ralenti et aimant à étoiles\n• Commandes tactiles, souris, manette et clavier\n• Votre meilleur score est enregistré",
+    "es": "Pilota tu pequeña nave a través de una lluvia de meteoritos que nunca se detiene. Esquiva las rocas que caen, recoge estrellas y gana puntos extra cada vez que pasas rozándolas. El escudo, la cámara lenta y el imán de estrellas te echan una mano, pero la tormenta es cada vez más rápida. Controla la nave con el stick, la cruceta, el teclado o arrastrando el dedo.\n\n• Tres vidas y una tormenta cada vez más rápida\n• Puntos extra por las esquivas al límite\n• Escudo, cámara lenta e imán de estrellas\n• Controles táctiles, ratón, mando y teclado\n• Se guarda tu mejor puntuación",
+    "ja": "止むことのない流れ星の嵐の中を、小さな宇宙船で飛び抜けましょう。降ってくる岩の間を縫うように進み、星を集め、ニアミスのたびにボーナスポイントを獲得します。シールド、スローモーション、スターマグネットが助けてくれますが、嵐はどんどん速くなります。スティック、十字ボタン、キーボード、または指のドラッグで操縦できます。\n\n• 3 つのライフと加速し続ける嵐\n• 大胆なニアミスでボーナスポイント\n• シールド、スローモーション、スターマグネットのパワーアップ\n• タッチ、マウス、コントローラー、キーボードで操作\n• ベストスコアを保存",
+    "zh": "驾驶你的小飞船穿越永不停歇的流星风暴。在坠落的岩石间穿梭，收集星星，每一次惊险擦过都能获得奖励分。护盾、慢动作和星星磁铁会落下来帮忙，但风暴会越来越快。可用摇杆、十字键、键盘操控，或者直接拖动手指。\n\n• 三条命和越来越快的风暴\n• 大胆擦过可获得奖励分\n• 护盾、慢动作和星星磁铁道具\n• 触控、鼠标、手柄和键盘操作\n• 保存你的最高分",
+    "ko": "멈추지 않는 유성 폭풍 속으로 작은 우주선을 몰아 보세요. 떨어지는 바위 사이를 누비며 별을 모으고, 아슬아슬하게 피할 때마다 보너스 점수를 얻으세요. 방어막, 슬로 모션, 별 자석이 도움을 주지만 폭풍은 계속 빨라집니다. 스틱, 방향 버튼, 키보드로 조종하거나 손가락으로 드래그하세요.\n\n• 생명 세 개와 점점 빨라지는 폭풍\n• 대담한 아슬아슬 회피에 보너스 점수\n• 방어막, 슬로 모션, 별 자석 파워업\n• 터치, 마우스, 컨트롤러, 키보드 조작\n• 최고 점수 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "hold left 0.6",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

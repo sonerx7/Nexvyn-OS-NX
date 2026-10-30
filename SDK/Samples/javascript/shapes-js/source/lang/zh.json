@@ -1,0 +1,21 @@
+{
+  "cube": "立方体",
+  "box": "长方体",
+  "sphere": "球体",
+  "cylinder": "圆柱",
+  "cone": "圆锥",
+  "torus": "圆环",
+  "plane": "平面",
+  "tex_none": "颜色",
+  "tex_grid": "UV 网格",
+  "tex_stripes": "条纹",
+  "tex_dots": "圆点",
+  "wire": "线框",
+  "auto": "循环纹理",
+  "intro": "开场",
+  "triangles": "{0} 个三角形",
+  "stats": "{0} 个三角形 · {1} FPS",
+  "status_intro": "开场动画运行中（await timer.sleep）",
+  "status_ready": "轻点标签以选择形状",
+  "menu_title": "形状"
+}

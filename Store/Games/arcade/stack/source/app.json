@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.stack",
+  "name": {
+    "en": "Tower Stack",
+    "tr": "Kule Kur",
+    "de": "Turmstapler",
+    "fr": "Tower Stack",
+    "es": "Torre de bloques",
+    "ja": "タワースタック",
+    "zh": "堆塔",
+    "ko": "타워 스택"
+  },
+  "description": {
+    "en": "Drop the sliding blocks at the right moment to build the tallest tower. Overhangs are cut off; perfect drops build streaks that grow your block back.",
+    "tr": "Kayan blokları doğru anda bırakıp en yüksek kuleyi kur. Taşan kısımlar kesilir; kusursuz bırakışlar seri yapar ve bloğunu yeniden büyütür.",
+    "de": "Lass die gleitenden Blöcke im richtigen Moment fallen und bau den höchsten Turm. Überstände werden abgeschnitten; perfekte Würfe bilden Serien, die deinen Block wieder wachsen lassen.",
+    "fr": "Lâchez les blocs coulissants au bon moment pour bâtir la plus haute tour. Les débords sont coupés ; les lâchers parfaits forment des séries qui font regrandir votre bloc.",
+    "es": "Suelta los bloques deslizantes en el momento justo para construir la torre más alta. Lo que sobresale se corta; las caídas perfectas forman rachas que hacen crecer de nuevo tu bloque."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 640,
+    "height": 680,
+    "minWidth": 400,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

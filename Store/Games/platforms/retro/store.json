@@ -1,0 +1,37 @@
+{
+  "subtitle": {
+    "en": "NES to GBA classics, with save states",
+    "tr": "NES'ten GBA'ya klasikler, kayıt noktalarıyla",
+    "de": "Klassiker von NES bis GBA, mit Savestates",
+    "fr": "Les classiques NES à GBA, avec sauvegardes",
+    "es": "Clásicos de NES a GBA, con estados guardados",
+    "ja": "NES から GBA までの名作をステートセーブ付きで",
+    "zh": "从 NES 到 GBA 的经典游戏，支持即时存档",
+    "ko": "NES부터 GBA까지 고전 게임과 세이브 스테이트"
+  },
+  "description": {
+    "en": "Play your own cartridge backups of NES, SNES, Game Boy, Game Boy Color, Game Boy Advance and Mega Drive games in a window or full screen. Retro builds a library from the ROM folders on your SD card, remembers your favourites and play time, and keeps battery saves plus six save-state slots with pictures. Rewind a mistake, fast-forward the slow parts, and play with a controller, the keyboard or touch controls. No games are included.\n\n• Six classic systems through built-in libretro cores\n• Library with systems, favourites and recently played\n• Battery saves, six save-state slots and Auto Save & Resume\n• Rewind and fast-forward on ZL / ZR\n• Controller, keyboard and multi-touch on-screen controls\n• Integer scaling, sharp or smooth picture, emulator options",
+    "tr": "Sahip olduğun NES, SNES, Game Boy, Game Boy Color, Game Boy Advance ve Mega Drive kartuşlarının yedeklerini pencerede ya da tam ekranda oyna. Retro, SD karttaki ROM klasörlerinden bir kitaplık oluşturur, favorilerini ve oynama süreni hatırlar; pil kayıtlarını ve resimli altı kayıt noktası yuvasını saklar. Hatanı geri sar, yavaş kısımları hızlı geç; kontrolcüyle, klavyeyle ya da dokunmatik tuşlarla oyna. Uygulamayla birlikte oyun gelmez.\n\n• Dahili libretro çekirdekleriyle altı klasik sistem\n• Sistemler, favoriler ve son oynananlarla kitaplık\n• Pil kayıtları, altı kayıt noktası yuvası ve Otomatik Kaydet ve Devam Et\n• ZL / ZR ile geri sarma ve hızlı ileri\n• Kontrolcü, klavye ve çoklu dokunmatik ekran tuşları\n• Tam sayı ölçekleme, keskin ya da yumuşak görüntü, emülatör seçenekleri",
+    "de": "Spiele deine eigenen Modul-Backups von NES, SNES, Game Boy, Game Boy Color, Game Boy Advance und Mega Drive im Fenster oder im Vollbild. Retro baut eine Bibliothek aus den ROM-Ordnern deiner SD-Karte, merkt sich Favoriten und Spielzeit und speichert Batteriespeicher sowie sechs Savestate-Plätze mit Vorschaubild. Spul Fehler zurück, spul langweilige Stellen vor und spiel mit Controller, Tastatur oder Touch-Steuerung. Spiele sind nicht enthalten.\n\n• Sechs klassische Systeme über integrierte libretro-Cores\n• Bibliothek mit Systemen, Favoriten und zuletzt gespielt\n• Batteriespeicher, sechs Savestate-Plätze, automatisches Fortsetzen\n• Zurückspulen und Vorspulen mit ZL / ZR\n• Controller, Tastatur und Multitouch-Steuerung auf dem Bildschirm\n• Ganzzahlige Skalierung, scharfes oder weiches Bild, Emulator-Optionen",
+    "fr": "Jouez à vos propres sauvegardes de cartouches NES, SNES, Game Boy, Game Boy Color, Game Boy Advance et Mega Drive, en fenêtre ou en plein écran. Retro crée une bibliothèque à partir des dossiers de ROM de votre carte SD, retient vos favoris et votre temps de jeu, et conserve les sauvegardes internes ainsi que six emplacements de sauvegarde d’état illustrés. Revenez en arrière après une erreur, accélérez les passages lents et jouez à la manette, au clavier ou au tactile. Aucun jeu n’est fourni.\n\n• Six consoles classiques grâce aux cœurs libretro intégrés\n• Bibliothèque par console, favoris et parties récentes\n• Sauvegardes internes, six emplacements d’état, reprise automatique\n• Retour arrière et avance rapide avec ZL / ZR\n• Manette, clavier et commandes tactiles multipoint\n• Mise à l’échelle entière, image nette ou lissée, options d’émulation",
+    "es": "Juega a tus propias copias de cartuchos de NES, SNES, Game Boy, Game Boy Color, Game Boy Advance y Mega Drive en una ventana o a pantalla completa. Retro crea una biblioteca con las carpetas de ROM de tu tarjeta SD, recuerda tus favoritos y tu tiempo de juego, y guarda las partidas de batería y seis ranuras de estado con imagen. Rebobina un error, acelera las partes lentas y juega con mando, teclado o controles táctiles. No incluye juegos.\n\n• Seis sistemas clásicos con núcleos libretro integrados\n• Biblioteca por sistemas, favoritos y jugados recientemente\n• Partidas de batería, seis ranuras de estado y Guardar y continuar\n• Rebobinado y avance rápido con ZL / ZR\n• Mando, teclado y controles táctiles multitáctiles\n• Escalado entero, imagen nítida o suave, opciones del emulador",
+    "ja": "自分で所有するカートリッジからバックアップした NES、SNES、ゲームボーイ、ゲームボーイカラー、ゲームボーイアドバンス、メガドライブのゲームを、ウィンドウまたはフルスクリーンで遊べます。Retro は SD カードの ROM フォルダからライブラリを作り、お気に入りとプレイ時間を記憶し、バッテリーセーブと画像付きの 6 つのステートセーブスロットを保持します。ミスは巻き戻し、退屈な部分は早送りし、コントローラー、キーボード、タッチ操作で遊べます。ゲームは付属していません。\n\n• 内蔵の libretro コアによる 6 つの定番システム\n• システム、お気に入り、最近遊んだゲームのあるライブラリ\n• バッテリーセーブ、6 つのステートセーブスロット、自動保存と再開\n• ZL / ZR で巻き戻しと早送り\n• コントローラー、キーボード、マルチタッチの画面操作\n• 整数倍拡大、くっきりまたはスムーズな画質、エミュレーターのオプション",
+    "zh": "在窗口或全屏中游玩你自己的 NES、SNES、Game Boy、Game Boy Color、Game Boy Advance 和 Mega Drive 卡带备份。Retro 会根据 SD 卡上的 ROM 文件夹建立游戏库，记住你的收藏和游玩时间，并保存电池存档以及六个带截图的即时存档位。倒带纠正失误，快进跳过冗长的部分，可使用手柄、键盘或触控按键游玩。不附带任何游戏。\n\n• 通过内置 libretro 核心支持六种经典主机\n• 包含主机平台、收藏和最近游玩的游戏库\n• 电池存档、六个即时存档位以及自动存档并继续\n• ZL / ZR 倒带和快进\n• 手柄、键盘和多点触控屏幕按键\n• 整数倍缩放、锐利或平滑画面、模拟器选项",
+    "ko": "직접 보유한 NES, SNES, Game Boy, Game Boy Color, Game Boy Advance, Mega Drive 게임의 카트리지 백업을 창이나 전체 화면으로 플레이하세요. Retro는 SD 카드의 ROM 폴더로 라이브러리를 만들고, 즐겨찾기와 플레이 시간을 기억하며, 배터리 세이브와 사진이 있는 세이브 스테이트 슬롯 6개를 보관합니다. 실수는 되감고, 지루한 부분은 빨리 감고, 컨트롤러, 키보드, 터치 컨트롤로 플레이하세요. 게임은 포함되어 있지 않습니다.\n\n• 내장 libretro 코어로 고전 시스템 6종\n• 시스템, 즐겨찾기, 최근 플레이가 있는 라이브러리\n• 배터리 세이브, 세이브 스테이트 슬롯 6개, 자동 저장 및 이어하기\n• ZL / ZR로 되감기와 빨리 감기\n• 컨트롤러, 키보드, 멀티 터치 화면 컨트롤\n• 정수배 크기 조정, 선명하거나 부드러운 화면, 에뮬레이터 옵션"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.11 0.412",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.11 0.562",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

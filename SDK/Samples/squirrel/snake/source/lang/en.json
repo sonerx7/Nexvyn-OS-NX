@@ -1,0 +1,11 @@
+{
+  "game": "Game",
+  "title": "Snake",
+  "score": "Score: {0}",
+  "best": "Best: {0}",
+  "game_over": "Game over",
+  "paused": "Paused",
+  "start_hint": "A, Enter or a tap to play · D-pad, arrows or WASD to steer",
+  "new_game": "New game",
+  "reset_best": "Reset best score"
+}

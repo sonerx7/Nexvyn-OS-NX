@@ -1,0 +1,50 @@
+{
+  "subtitle": {
+    "en": "Strong passwords and easy passphrases",
+    "tr": "Güçlü şifreler, akılda kalan parolalar",
+    "de": "Starke Passwörter und Passphrasen",
+    "fr": "Mots de passe forts et phrases secrètes",
+    "es": "Contraseñas fuertes y frases de paso",
+    "ja": "強力なパスワードと覚えやすいパスフレーズ",
+    "zh": "强密码和易记的密码短语",
+    "ko": "강력한 암호와 기억하기 쉬운 암호 문구"
+  },
+  "description": {
+    "en": "Create a strong password or an easy-to-remember passphrase in one tap. A strength meter shows the entropy in bits and roughly how long cracking it would take, so you can see what each option is worth. Everything is generated on your console and nothing leaves it.\n\n• Passwords of 4 to 64 characters from uppercase, lowercase, digits and symbols\n• Avoid look-alike characters such as 0/O and 1/l\n• Passphrases of 3 to 10 Turkish or English words, with separator, capitals and a number\n• Strength meter with bits and estimated cracking time\n• History of the last 10 copied passwords, hidden until you reveal them\n• Space generates, C copies, Left/Right change the length",
+    "tr": "Tek dokunuşla güçlü bir şifre ya da akılda kalması kolay bir parola üret. Güç göstergesi entropiyi bit olarak ve kırılmasının kabaca ne kadar süreceğini gösterir; her seçeneğin neye değdiğini görürsün. Her şey konsolunda üretilir, hiçbir şey dışarı çıkmaz.\n\n• Büyük harf, küçük harf, rakam ve sembollerden 4–64 karakterlik şifreler\n• 0/O ve 1/l gibi birbirine benzeyen karakterlerden kaçınma\n• Ayraç, büyük harf ve sayı seçenekleriyle 3–10 Türkçe ya da İngilizce kelimelik parolalar\n• Bit ve tahmini kırılma süresiyle güç göstergesi\n• Son kopyalanan 10 şifrenin geçmişi, sen gösterene kadar gizli\n• Boşluk üretir, C kopyalar, Sol/Sağ uzunluğu değiştirir",
+    "de": "Erzeuge mit einem Tipp ein starkes Passwort oder eine leicht merkbare Passphrase. Eine Stärkeanzeige zeigt die Entropie in Bit und ungefähr, wie lange das Knacken dauern würde, damit du siehst, was jede Option bringt. Alles entsteht auf deiner Konsole, nichts verlässt sie.\n\n• Passwörter mit 4 bis 64 Zeichen aus Groß- und Kleinbuchstaben, Ziffern und Symbolen\n• Verwechselbare Zeichen wie 0/O und 1/l vermeiden\n• Passphrasen aus 3 bis 10 türkischen oder englischen Wörtern, mit Trennzeichen, Großbuchstaben und Zahl\n• Stärkeanzeige mit Bit und geschätzter Knackzeit\n• Verlauf der letzten 10 kopierten Passwörter, verborgen bis zum Aufdecken\n• Leertaste erzeugt, C kopiert, Links/Rechts ändert die Länge",
+    "fr": "Créez en un geste un mot de passe solide ou une phrase secrète facile à retenir. Un indicateur de robustesse affiche l’entropie en bits et le temps approximatif pour le casser, pour voir ce que vaut chaque option. Tout est généré sur votre console, rien n’en sort.\n\n• Mots de passe de 4 à 64 caractères : majuscules, minuscules, chiffres et symboles\n• Option pour éviter les caractères ambigus comme 0/O et 1/l\n• Phrases secrètes de 3 à 10 mots turcs ou anglais, avec séparateur, majuscules et nombre\n• Indicateur de robustesse en bits avec temps de cassage estimé\n• Historique des 10 derniers mots de passe copiés, masqués jusqu’à ce que vous les révéliez\n• Espace génère, C copie, Gauche/Droite changent la longueur",
+    "es": "Crea con un toque una contraseña fuerte o una frase de paso fácil de recordar. Un medidor de seguridad muestra la entropía en bits y cuánto se tardaría más o menos en descifrarla, para que veas lo que aporta cada opción. Todo se genera en tu consola y nada sale de ella.\n\n• Contraseñas de 4 a 64 caracteres con mayúsculas, minúsculas, cifras y símbolos\n• Evita caracteres que se confunden, como 0/O y 1/l\n• Frases de 3 a 10 palabras en turco o inglés, con separador, mayúsculas y un número\n• Medidor de seguridad con bits y tiempo estimado de descifrado\n• Historial de las 10 últimas contraseñas copiadas, ocultas hasta que las muestres\n• Espacio genera, C copia, Izquierda/Derecha cambian la longitud",
+    "ja": "強力なパスワードや覚えやすいパスフレーズをワンタップで作成できます。強度メーターがエントロピーのビット数と解読にかかるおおよその時間を表示するので、各オプションの価値がわかります。すべて本体上で生成され、外部に送信されることはありません。\n\n• 大文字、小文字、数字、記号からなる 4〜64 文字のパスワード\n• 0/O や 1/l のような紛らわしい文字を避ける\n• 区切り文字、先頭の大文字、数字付きの 3〜10 語のトルコ語または英語のパスフレーズ\n• ビット数と推定解読時間を表示する強度メーター\n• 表示するまで隠される直近 10 件のコピー履歴\n• Space で生成、C でコピー、左右で長さを変更",
+    "zh": "一键生成强密码或易记的密码短语。强度表会以位数显示熵值以及大致的破解时间，让你了解每个选项的价值。一切都在你的主机上生成，不会有任何内容离开主机。\n\n• 由大写字母、小写字母、数字和符号组成的 4 到 64 位密码\n• 避免 0/O 和 1/l 等易混淆的字符\n• 由 3 到 10 个土耳其语或英语单词组成的密码短语，可设分隔符、大写和数字\n• 显示位数和预估破解时间的强度表\n• 最近复制的 10 个密码的历史记录，显示前会隐藏\n• 空格生成，C 复制，左/右更改长度",
+    "ko": "한 번의 탭으로 강력한 암호나 기억하기 쉬운 암호 문구를 만드세요. 강도 측정기가 비트 단위 엔트로피와 해독에 대략 얼마나 걸리는지 보여 주므로 각 옵션의 가치를 알 수 있습니다. 모든 것은 콘솔에서 생성되며 밖으로 나가지 않습니다.\n\n• 대문자, 소문자, 숫자, 기호로 된 4–64자 암호\n• 0/O, 1/l 같은 비슷하게 생긴 문자 제외\n• 구분 기호, 대문자, 숫자를 넣을 수 있는 3–10개의 터키어 또는 영어 단어 암호 문구\n• 비트 수와 예상 해독 시간이 표시되는 강도 측정기\n• 표시하기 전까지 숨겨지는 최근 복사한 암호 10개 기록\n• Space 생성, C 복사, 왼쪽/오른쪽 길이 변경"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "key right",
+      "key right",
+      "key right",
+      "key right",
+      "key c",
+      "wait 0.5",
+      "key g",
+      "key c",
+      "wait 0.5",
+      "key g",
+      "wait 3"
+    ],
+    [
+      "key tab",
+      "wait 0.5",
+      "key c",
+      "wait 0.5",
+      "key g",
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

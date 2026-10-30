@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.primes",
+  "name": {"en": "Primes", "tr": "Asal Sayılar", "de": "Primzahlen", "fr": "Nombres premiers", "es": "Números primos", "ja": "素数", "zh": "质数", "ko": "소수"},
+  "description": {
+    "en": "Explore prime numbers: an animated Sieve of Eratosthenes, a zoomable Ulam spiral and a factorizer for numbers up to 10^12 with a factor tree.",
+    "tr": "Asal sayıları keşfet: adım adım Eratosthenes kalburu, yakınlaştırılabilir Ulam sarmalı ve 10^12'ye kadar sayılar için çarpan ağaçlı ayrıştırıcı.",
+    "de": "Entdecke Primzahlen: ein animiertes Sieb des Eratosthenes, eine zoombare Ulam-Spirale und eine Primfaktorzerlegung für Zahlen bis 10^12 mit Faktorbaum.",
+    "fr": "Explorez les nombres premiers : un crible d’Ératosthène animé, une spirale d’Ulam zoomable et un outil de factorisation jusqu’à 10^12 avec arbre des facteurs.",
+    "es": "Explora los números primos: una criba de Eratóstenes animada, una espiral de Ulam con zoom y un factorizador para números de hasta 10^12 con árbol de factores."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 560, "minWidth": 640, "minHeight": 470, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.theme.sunset",
+  "name": {
+    "en": "Sunset",
+    "tr": "Gün Batımı",
+    "de": "Sonnenuntergang",
+    "fr": "Coucher de soleil",
+    "es": "Atardecer"
+  },
+  "description": {
+    "en": "Warm layered hills under a glowing evening sky, in the light appearance with an orange accent.",
+    "tr": "Parlayan akşam göğünün altında sıcak tonlu tepeler; açık görünüm ve turuncu vurgu rengi.",
+    "de": "Warme Hügelketten unter einem glühenden Abendhimmel, im hellen Erscheinungsbild mit orangem Akzent.",
+    "fr": "Des collines aux tons chauds sous un ciel du soir embrasé, en apparence claire avec un accent orange.",
+    "es": "Colinas de tonos cálidos bajo un cielo de tarde encendido, con aspecto claro y acento naranja."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "light",
+  "accent": "#F7821B",
+  "wallpaper": "wallpaper.jpg"
+}

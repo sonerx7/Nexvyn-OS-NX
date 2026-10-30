@@ -1,0 +1,33 @@
+{
+  "id": "minesweeper",
+  "name": {
+    "en": "Minesweeper",
+    "tr": "Mayın Tarlası",
+    "de": "Minesweeper",
+    "fr": "Démineur",
+    "es": "Buscaminas",
+    "ja": "マインスイーパー",
+    "zh": "扫雷",
+    "ko": "지뢰 찾기"
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 580,
+    "resizable": false
+  },
+  "gamepad": true,
+  "description": {
+    "en": "Classic mine-clearing puzzle with three difficulties",
+    "tr": "Üç zorluk seviyeli klasik mayın temizleme bulmacası",
+    "de": "Klassisches Minenräumer-Puzzle mit drei Schwierigkeitsstufen",
+    "fr": "Le puzzle de déminage classique avec trois niveaux de difficulté",
+    "es": "El clásico puzle de buscar minas con tres dificultades"
+  },
+  "permissions": []
+}

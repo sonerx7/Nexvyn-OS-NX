@@ -1,0 +1,32 @@
+{
+  "id": "amsconfig",
+  "name": {
+    "en": "Atmosphère Settings",
+    "tr": "Atmosphère Ayarları",
+    "de": "Atmosphère-Einstellungen",
+    "fr": "Réglages Atmosphère",
+    "es": "Ajustes de Atmosphère",
+    "ko": "Atmosphère 설정"
+  },
+  "description": {
+    "en": "The documented switches of Atmosphère's configuration files, explained.",
+    "tr": "Atmosphère ayar dosyalarındaki belgelenmiş seçenekler, açıklamalarıyla.",
+    "de": "Die dokumentierten Schalter der Konfigurationsdateien von Atmosphère, verständlich erklärt.",
+    "fr": "Les options documentées des fichiers de configuration d’Atmosphère, expliquées.",
+    "es": "Las opciones documentadas de los archivos de configuración de Atmosphère, explicadas."
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 880,
+    "height": 640,
+    "minWidth": 420,
+    "minHeight": 400,
+    "resizable": true
+  }
+}

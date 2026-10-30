@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.fuel",
+  "name": {"en": "Fuel Calculator", "tr": "Yakıt Hesaplayıcı", "de": "Spritrechner", "fr": "Calculateur de carburant", "es": "Calculadora de combustible", "ja": "燃費計算", "zh": "油耗计算器", "ko": "연료 계산기"},
+  "description": {
+    "en": "Work out litres per 100 km and the cost of a trip, and keep a fill-up log with averages and a chart.",
+    "tr": "100 km'de kaç litre yaktığını ve yol masrafını hesapla; ortalamalar ve grafikle yakıt dolum kaydı tut.",
+    "de": "Berechne Liter pro 100 km und die Kosten einer Fahrt und führe ein Tankbuch mit Durchschnittswerten und Diagramm.",
+    "fr": "Calculez les litres aux 100 km et le coût d’un trajet, et tenez un carnet de pleins avec moyennes et graphique.",
+    "es": "Calcula los litros a los 100 km y el coste de un viaje, y lleva un registro de repostajes con promedios y un gráfico."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 820, "height": 600, "minWidth": 520, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

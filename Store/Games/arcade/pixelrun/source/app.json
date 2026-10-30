@@ -1,0 +1,35 @@
+{
+  "id": "pixelrun",
+  "name": {
+    "en": "Pixel Run",
+    "tr": "Pixel Koşu",
+    "de": "Pixel Run",
+    "fr": "Pixel Run",
+    "es": "Pixel Run",
+    "ja": "ピクセルラン",
+    "zh": "像素奔跑",
+    "ko": "픽셀 런"
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 560,
+    "minWidth": 480,
+    "minHeight": 300,
+    "resizable": true
+  },
+  "gamepad": true,
+  "description": {
+    "en": "A pixel-art platformer: run, jump, stomp and collect coins across three levels",
+    "tr": "Piksel sanatlı platform oyunu: üç bölümde koş, zıpla, düşmanları ez, altın topla",
+    "de": "Ein Pixel-Art-Plattformer: Renne, springe, stampfe und sammle Münzen in drei Levels",
+    "fr": "Un jeu de plateforme en pixel art : courez, sautez, écrasez et ramassez des pièces sur trois niveaux",
+    "es": "Un juego de plataformas en pixel art: corre, salta, aplasta y recoge monedas en tres niveles"
+  },
+  "permissions": []
+}

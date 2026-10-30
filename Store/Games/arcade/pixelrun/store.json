@@ -1,0 +1,41 @@
+{
+  "subtitle": {
+    "en": "Run, jump and stomp through three worlds",
+    "tr": "Üç dünyada koş, zıpla, düşmanları ez",
+    "de": "Lauf, spring und stampf durch drei Welten",
+    "fr": "Courez, sautez et écrasez sur trois mondes",
+    "es": "Corre, salta y aplasta en tres mundos",
+    "ja": "3 つの世界を走って、跳んで、踏みつけよう",
+    "zh": "在三个世界中奔跑、跳跃和踩踏",
+    "ko": "세 개의 세계를 달리고, 점프하고, 밟으세요"
+  },
+  "description": {
+    "en": "A retro pixel platformer with three levels to beat: Meadow, Cave and Castle. Run and jump across the tilemap, stomp enemies from above and collect every coin you can reach. Checkpoints keep a fall from sending you all the way back, and you can drop through platforms by holding down while you jump. Finish a level quickly to set a new record.\n\n• Three levels: Meadow, Cave and Castle\n• Coins, stompable enemies and checkpoints\n• Drop-through platforms\n• Level select, lives and record times\n• Controller, keyboard or an on-screen touch stick",
+    "tr": "Geçilecek üç bölümü olan retro bir piksel platform oyunu: Çayır, Mağara ve Kale. Koş, zıpla, düşmanların tepesine basıp ez ve ulaşabildiğin bütün paraları topla. Kontrol noktaları sayesinde bir düşüş seni en başa göndermez; aşağı basılı tutup zıplayarak platformların içinden aşağı inebilirsin. Bölümü hızlı bitir, yeni rekor kır.\n\n• Üç bölüm: Çayır, Mağara ve Kale\n• Paralar, üstüne basılarak yenen düşmanlar ve kontrol noktaları\n• İçinden aşağı inilebilen platformlar\n• Bölüm seçimi, canlar ve rekor süreler\n• Kumanda, klavye ya da ekrandaki dokunmatik çubuk",
+    "de": "Ein Pixel-Plattformer im Retrostil mit drei Leveln: Wiese, Höhle und Burg. Lauf und spring über die Karte, stampf Gegner von oben platt und sammle jede Münze, die du erreichen kannst. Checkpoints sorgen dafür, dass dich ein Sturz nicht ganz zurückwirft, und mit Unten plus Sprung fällst du durch Plattformen hindurch. Schaff ein Level schnell und stell einen neuen Rekord auf.\n\n• Drei Level: Wiese, Höhle und Burg\n• Münzen, Gegner zum Plattstampfen und Checkpoints\n• Plattformen zum Durchfallen\n• Levelauswahl, Leben und Rekordzeiten\n• Controller, Tastatur oder Touch-Stick auf dem Bildschirm",
+    "fr": "Un jeu de plateformes rétro en pixels avec trois niveaux à finir : la Prairie, la Grotte et le Château. Courez et sautez à travers le décor, écrasez les ennemis par le dessus et ramassez toutes les pièces à votre portée. Les points de contrôle vous évitent de tout recommencer après une chute, et vous pouvez traverser certaines plateformes en sautant avec la touche bas. Finissez vite un niveau pour battre votre record.\n\n• Trois niveaux : Prairie, Grotte et Château\n• Pièces, ennemis à écraser et points de contrôle\n• Plateformes traversables par le dessous\n• Choix du niveau, vies et meilleurs temps\n• Manette, clavier ou stick tactile à l’écran",
+    "es": "Un plataformas retro de píxeles con tres niveles que superar: Pradera, Cueva y Castillo. Corre y salta por el mapa, aplasta a los enemigos desde arriba y recoge todas las monedas que alcances. Los puntos de control evitan que una caída te devuelva al principio, y puedes bajar a través de las plataformas saltando mientras mantienes abajo. Termina rápido un nivel para batir tu récord.\n\n• Tres niveles: Pradera, Cueva y Castillo\n• Monedas, enemigos que aplastar y puntos de control\n• Plataformas que se pueden atravesar hacia abajo\n• Selección de nivel, vidas y mejores tiempos\n• Mando, teclado o stick táctil en pantalla",
+    "ja": "草原、洞くつ、お城の 3 つのレベルに挑むレトロなピクセルアクションゲーム。タイルマップを走って跳び、敵を上から踏みつけ、届く限りのコインを集めましょう。チェックポイントがあるので落ちても最初からやり直す必要はなく、下を押しながらジャンプすると足場をすり抜けられます。すばやくクリアして新記録を目指しましょう。\n\n• 3 つのレベル: 草原、洞くつ、お城\n• コイン、踏める敵、チェックポイント\n• すり抜けられる足場\n• レベル選択、ライフ、記録タイム\n• コントローラー、キーボード、または画面のタッチスティック",
+    "zh": "一款复古像素平台跳跃游戏，有三个关卡等你挑战：草地、洞穴和城堡。在图块地图上奔跑跳跃，从上方踩扁敌人，收集你能拿到的每一枚金币。检查点让你掉落后不必从头再来，跳跃时按住下就能穿过平台下落。快速通关即可创造新纪录。\n\n• 三个关卡：草地、洞穴和城堡\n• 金币、可踩踏的敌人和检查点\n• 可穿过下落的平台\n• 关卡选择、生命和纪录时间\n• 手柄、键盘或屏幕触控摇杆",
+    "ko": "초원, 동굴, 성 세 레벨을 클리어하는 레트로 픽셀 플랫포머입니다. 타일맵을 달리고 점프하며, 위에서 적을 밟고, 닿는 코인을 모두 모으세요. 체크포인트 덕분에 떨어져도 처음으로 돌아가지 않으며, 점프할 때 아래를 누르면 발판 아래로 내려갈 수 있습니다. 레벨을 빨리 끝내면 신기록을 세울 수 있습니다.\n\n• 레벨 3개: 초원, 동굴, 성\n• 코인, 밟을 수 있는 적, 체크포인트\n• 아래로 내려갈 수 있는 발판\n• 레벨 선택, 생명, 기록\n• 컨트롤러, 키보드 또는 화면 터치 스틱"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "hold right 1.2",
+      "hold space 0.3"
+    ],
+    [
+      "hold right 1",
+      "hold space 0.3",
+      "hold right 0.6",
+      "hold space 0.3"
+    ]
+  ]
+}

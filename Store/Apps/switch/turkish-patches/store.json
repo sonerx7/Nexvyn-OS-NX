@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Install Turkish translation patches",
+    "tr": "Oyunlarını Türkçe oynat, yamaları kolayca kur",
+    "de": "Türkische Übersetzungspatches installieren",
+    "fr": "Installez les patchs de traduction turcs",
+    "es": "Instala parches de traducción al turco",
+    "ja": "トルコ語翻訳パッチをインストール",
+    "zh": "安装土耳其语翻译补丁",
+    "ko": "터키어 번역 패치를 설치하세요"
+  },
+  "description": {
+    "en": "Play your games in Turkish with community translation patches. Download a patch as a .zip from the translation team's own site, choose it here, and Turkish Patches detects the game and folder layout, checks that the patch matches your game version and installs it as an Atmosphère mod. Any file it replaces is backed up first and put back when you remove the patch. Nexvyn OS never downloads or re-hosts patches itself.\n\n• Install from a .zip with game and layout detection\n• Version check against the installed game\n• Turn patches on or off, or remove them cleanly\n• Original files backed up and restored automatically\n• Patches installed by YamaNX are listed too\n• Catalog and translator sites, with credit to every team",
+    "tr": "Oyunlarını topluluğun çeviri yamalarıyla Türkçe oyna. Yamayı çeviri ekibinin kendi sitesinden .zip olarak indir, burada seç; Türkçe Yamalar oyunu ve klasör yapısını tanır, yamanın oyun sürümüne uyduğunu denetler ve onu bir Atmosphère modu olarak kurar. Yamanın değiştirdiği her dosya önce yedeklenir, yamayı kaldırdığında yerine konur. Nexvyn OS yamaları kendisi indirmez ya da yeniden yayımlamaz.\n\n• Oyunu ve yapıyı tanıyarak .zip'ten kurulum\n• Yüklü oyunla sürüm denetimi\n• Yamaları aç, kapat ya da temizce kaldır\n• Özgün dosyalar otomatik yedeklenir ve geri yüklenir\n• YamaNX ile kurulan yamalar da listelenir\n• Katalog ve çevirmen siteleri; her ekibe emeğinin hakkı verilir",
+    "de": "Spiel deine Spiele auf Türkisch, mit Übersetzungspatches der Community. Lade einen Patch als .zip von der Seite des Übersetzerteams, wähle ihn hier aus, und Türkische Patches erkennt Spiel und Ordnerstruktur, prüft, ob der Patch zu deiner Spielversion passt, und installiert ihn als Atmosphère-Mod. Jede ersetzte Datei wird vorher gesichert und beim Entfernen zurückgelegt. Nexvyn OS lädt oder verbreitet selbst keine Patches.\n\n• Installation aus .zip mit Spiel- und Strukturerkennung\n• Versionsprüfung gegen das installierte Spiel\n• Patches ein- und ausschalten oder sauber entfernen\n• Originaldateien automatisch gesichert und wiederhergestellt\n• Auch mit YamaNX installierte Patches werden angezeigt\n• Katalog und Übersetzerseiten, mit Dank an jedes Team",
+    "fr": "Jouez à vos jeux en turc grâce aux patchs de traduction de la communauté. Téléchargez un patch au format .zip sur le site de l’équipe de traduction, choisissez-le ici : Patchs turcs détecte le jeu et l’organisation des dossiers, vérifie que le patch correspond à votre version et l’installe comme mod Atmosphère. Chaque fichier remplacé est d’abord sauvegardé, puis remis en place si vous retirez le patch. Nexvyn OS ne télécharge ni ne rediffuse lui-même aucun patch.\n\n• Installation depuis un .zip, avec détection du jeu et des dossiers\n• Vérification de la version du jeu installé\n• Activez, désactivez ou retirez proprement un patch\n• Fichiers d’origine sauvegardés et restaurés automatiquement\n• Les patchs installés avec YamaNX sont aussi listés\n• Catalogue et sites des traducteurs, avec crédit à chaque équipe",
+    "es": "Juega a tus juegos en turco con los parches de traducción de la comunidad. Descarga un parche en .zip desde la web del equipo de traducción, elígelo aquí y Parches en turco detecta el juego y la estructura de carpetas, comprueba que el parche coincide con tu versión y lo instala como mod de Atmosphère. Cada archivo que sustituye se respalda antes y se restaura al quitar el parche. Nexvyn OS nunca descarga ni redistribuye parches por su cuenta.\n\n• Instalación desde .zip con detección del juego y la estructura\n• Comprobación de versión con el juego instalado\n• Activa, desactiva o quita parches limpiamente\n• Archivos originales respaldados y restaurados automáticamente\n• También aparecen los parches instalados con YamaNX\n• Catálogo y webs de los traductores, con crédito a cada equipo",
+    "ja": "コミュニティの翻訳パッチでゲームをトルコ語で遊びましょう。翻訳チーム自身のサイトからパッチを .zip でダウンロードしてここで選ぶと、トルコ語パッチがゲームとフォルダの構成を検出し、パッチがゲームのバージョンと一致するか確認して、Atmosphère の Mod としてインストールします。置き換えるファイルは先にバックアップされ、パッチを削除すると元に戻されます。Nexvyn OS がパッチを自らダウンロードしたり再配布したりすることはありません。\n\n• ゲームと構成を検出して .zip からインストール\n• インストール済みのゲームとのバージョンチェック\n• パッチのオン/オフ、またはきれいに削除\n• 元のファイルを自動でバックアップ・復元\n• YamaNX でインストールしたパッチも表示\n• カタログと翻訳者のサイト、すべてのチームへのクレジット",
+    "zh": "借助社区翻译补丁用土耳其语玩你的游戏。从翻译团队自己的网站下载 .zip 格式的补丁，在这里选择它，土耳其语补丁就会识别游戏和文件夹结构，检查补丁是否与你的游戏版本匹配，并将其作为 Atmosphère 模组安装。它替换的任何文件都会先备份，并在你移除补丁时放回。Nexvyn OS 本身绝不会下载或转载补丁。\n\n• 从 .zip 安装，自动识别游戏和结构\n• 与已安装游戏的版本比对\n• 开启或关闭补丁，或干净地移除它们\n• 自动备份并恢复原始文件\n• 也会列出通过 YamaNX 安装的补丁\n• 目录和翻译者网站，并注明每个团队的功劳",
+    "ko": "커뮤니티 번역 패치로 게임을 터키어로 즐기세요. 번역 팀 사이트에서 패치를 .zip으로 다운로드하고 여기서 선택하면, 터키어 패치가 게임과 폴더 구조를 감지하고, 패치가 게임 버전과 맞는지 확인한 후 Atmosphère 모드로 설치합니다. 대체되는 파일은 먼저 백업되며 패치를 제거하면 원래대로 돌아갑니다. Nexvyn OS는 패치를 직접 다운로드하거나 다시 호스팅하지 않습니다.\n\n• 게임과 구조를 감지하여 .zip에서 설치\n• 설치된 게임과 버전 확인\n• 패치 켜기, 끄기 또는 깔끔하게 제거\n• 원본 파일 자동 백업 및 복원\n• YamaNX로 설치한 패치도 표시\n• 모든 팀을 표기한 카탈로그와 번역가 사이트"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.117 0.162",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.117 0.222",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.117 0.282",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.117 0.342",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

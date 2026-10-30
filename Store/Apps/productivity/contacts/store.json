@@ -1,0 +1,80 @@
+{
+  "subtitle": {
+    "en": "Your address book, with vCard import",
+    "tr": "vCard destekli adres defterin",
+    "de": "Dein Adressbuch, mit vCard-Import",
+    "fr": "Votre carnet d’adresses, avec vCard",
+    "es": "Tu agenda, con importación vCard",
+    "ja": "vCard の読み込みに対応したアドレス帳",
+    "zh": "你的通讯录，支持导入 vCard",
+    "ko": "vCard 가져오기를 지원하는 주소록"
+  },
+  "description": {
+    "en": "Keep the people who matter in one tidy place. Contacts lists everyone alphabetically with section headers and instant search, and shows each person on a clean card with their phone, email, birthday and notes. Bring your address book over from your phone or computer with vCard import, and export single contacts or all of them.\n\n• Alphabetical list with sections and live search\n• Name, company, phone, email, birthday with age, and notes\n• Edit in place, Tab moves between the fields\n• vCard import that skips contacts you already have\n• Export one contact or the whole book as .vcf\n• Duplicate a contact or copy its card as text",
+    "tr": "Hayatındaki önemli insanları tek ve düzenli bir yerde tut. Kişiler herkesi bölüm başlıklarıyla alfabetik olarak listeler, anında arama sunar ve her kişiyi telefonu, e-postası, doğum günü ve notlarıyla sade bir kartta gösterir. Telefonundaki ya da bilgisayarındaki rehberini vCard ile içe aktar, tek bir kişiyi ya da hepsini dışa aktar.\n\n• Bölümlü alfabetik liste ve anlık arama\n• Ad, şirket, telefon, e-posta, yaşıyla birlikte doğum günü ve notlar\n• Yerinde düzenleme, Tab ile alanlar arasında geçiş\n• Zaten kayıtlı kişileri atlayan vCard içe aktarma\n• Tek kişiyi ya da tüm rehberi .vcf olarak dışa aktar\n• Kişiyi çoğalt ya da kartını metin olarak kopyala",
+    "de": "Behalte die wichtigen Menschen an einem aufgeräumten Ort. Kontakte listet alle alphabetisch mit Abschnitten und Sofortsuche und zeigt jede Person auf einer klaren Karte mit Telefon, E-Mail, Geburtstag und Notizen. Hol dein Adressbuch per vCard-Import vom Handy oder PC und exportiere einzelne oder alle Kontakte.\n\n• Alphabetische Liste mit Abschnitten und Live-Suche\n• Name, Firma, Telefon, E-Mail, Geburtstag mit Alter und Notizen\n• Direkt bearbeiten, mit Tab von Feld zu Feld\n• vCard-Import, der vorhandene Kontakte überspringt\n• Einen Kontakt oder das ganze Buch als .vcf exportieren\n• Kontakte duplizieren oder als Text kopieren",
+    "fr": "Gardez les personnes qui comptent au même endroit. Contacts les classe par ordre alphabétique, avec des sections et une recherche instantanée, et présente chacune sur une fiche claire avec téléphone, e-mail, anniversaire et notes. Importez votre carnet depuis votre téléphone ou votre ordinateur au format vCard, et exportez un contact ou tous.\n\n• Liste alphabétique avec sections et recherche en direct\n• Nom, société, téléphone, e-mail, anniversaire avec l’âge, et notes\n• Modification sur place, Tab pour passer d’un champ à l’autre\n• Import vCard qui ignore les contacts déjà présents\n• Export d’un contact ou de tout le carnet en .vcf\n• Dupliquez un contact ou copiez sa fiche en texte",
+    "es": "Ten a las personas importantes en un solo lugar ordenado. Contactos las muestra en orden alfabético, con secciones y búsqueda instantánea, y presenta a cada una en una ficha clara con teléfono, correo, cumpleaños y notas. Trae tu agenda del móvil o del ordenador con la importación vCard y exporta un contacto o todos.\n\n• Lista alfabética con secciones y búsqueda en directo\n• Nombre, empresa, teléfono, correo, cumpleaños con edad y notas\n• Edición en el sitio, Tab para pasar de un campo a otro\n• Importación vCard que omite los contactos repetidos\n• Exporta un contacto o toda la agenda como .vcf\n• Duplica un contacto o copia su ficha como texto",
+    "ja": "大切な人たちをひとつの場所にすっきりまとめましょう。連絡先は全員をセクション見出し付きのアルファベット順で一覧表示してすぐに検索でき、各人を電話番号、メール、誕生日、メモ付きのすっきりしたカードで表示します。vCard の読み込みでスマートフォンやコンピューターからアドレス帳を移行でき、1 件ずつまたはすべての連絡先を書き出せます。\n\n• セクションとリアルタイム検索付きのアルファベット順リスト\n• 名前、会社、電話、メール、年齢付きの誕生日、メモ\n• その場で編集、Tab でフィールド間を移動\n• 既存の連絡先をスキップする vCard の読み込み\n• 1 件またはアドレス帳全体を .vcf で書き出し\n• 連絡先の複製、カードをテキストとしてコピー",
+    "zh": "把重要的人整齐地放在一处。通讯录按字母顺序列出所有人，带分组标题和即时搜索，并在简洁的卡片上显示每个人的电话、电子邮件、生日和备注。通过导入 vCard 把手机或电脑上的通讯录搬过来，并可导出单个或全部联系人。\n\n• 带分组和实时搜索的字母顺序列表\n• 姓名、公司、电话、电子邮件、带年龄的生日以及备注\n• 就地编辑，Tab 在字段之间移动\n• 导入 vCard 时跳过已有的联系人\n• 将单个联系人或整个通讯录导出为 .vcf\n• 复制联系人或将其名片复制为文本",
+    "ko": "소중한 사람들을 깔끔한 한곳에 모아 두세요. 연락처는 모두를 구역 머리글과 즉시 검색이 있는 가나다순으로 나열하고, 각 사람을 전화, 이메일, 생일, 메모가 담긴 깔끔한 카드로 보여 줍니다. vCard 가져오기로 휴대폰이나 컴퓨터의 주소록을 옮기고, 연락처를 하나씩 또는 전부 내보내세요.\n\n• 구역과 실시간 검색이 있는 가나다순 목록\n• 이름, 회사, 전화, 이메일, 나이가 표시되는 생일, 메모\n• 그 자리에서 편집, Tab으로 필드 간 이동\n• 이미 있는 연락처는 건너뛰는 vCard 가져오기\n• 연락처 하나 또는 주소록 전체를 .vcf로 내보내기\n• 연락처 복제 또는 카드를 텍스트로 복사"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.305 0.05",
+      "wait 1",
+      "text Elif",
+      "key tab",
+      "text Kaya",
+      "key tab",
+      "text Nexvyn Labs",
+      "key tab",
+      "text +90 532 555 01 23",
+      "key tab",
+      "text elif.kaya@example.com",
+      "wait 0.5",
+      "wclick 0.935 0.048",
+      "wait 0.7",
+      "wclick 0.305 0.05",
+      "wait 1",
+      "text Lucas",
+      "key tab",
+      "text Martin",
+      "key tab",
+      "text Studio Nord",
+      "key tab",
+      "text +33 6 12 34 56 78",
+      "key tab",
+      "text lucas@example.com",
+      "wait 0.5",
+      "wclick 0.935 0.048",
+      "wait 0.7",
+      "wclick 0.305 0.05",
+      "wait 1",
+      "text Sofia",
+      "key tab",
+      "text Garcia",
+      "key tab",
+      "text Pixel Forge",
+      "key tab",
+      "text +34 612 345 678",
+      "key tab",
+      "text sofia.garcia@example.com",
+      "wait 0.5",
+      "wclick 0.935 0.048",
+      "wait 0.7",
+      "wait 1"
+    ],
+    [
+      "wclick 0.935 0.048",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.935 0.048",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

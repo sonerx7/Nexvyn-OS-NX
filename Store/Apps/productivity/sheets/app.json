@@ -1,0 +1,30 @@
+{
+  "id": "sheets",
+  "name": {
+    "en": "Spreadsheet",
+    "tr": "Hesap Tablosu",
+    "de": "Tabellenkalkulation",
+    "fr": "Tableur",
+    "es": "Hoja de cálculo",
+    "ko": "스프레드시트"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1040,
+    "height": 600,
+    "minWidth": 640,
+    "minHeight": 400,
+    "resizable": true
+  },
+  "fileTypes": [
+    ".nxvsheet",
+    ".csv",
+    ".tsv"
+  ]
+}

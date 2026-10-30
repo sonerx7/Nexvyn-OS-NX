@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.tally",
+  "name": {"en": "Tally Counter", "tr": "Sayaç", "de": "Zähler", "fr": "Compteur", "es": "Contador", "ja": "数取器", "zh": "计数器", "ko": "계수기"},
+  "description": {
+    "en": "Count anything with several named counters: big +/- buttons, step sizes, targets with progress rings, undo and a history chart.",
+    "tr": "Birden çok adlandırılmış sayaçla her şeyi say: büyük +/- düğmeleri, adım boyu, ilerleme halkalı hedefler, geri alma ve geçmiş grafiği.",
+    "de": "Zähle alles mit mehreren benannten Zählern: große Plus-/Minus-Tasten, Schrittweiten, Ziele mit Fortschrittsringen, Rückgängig und Verlaufsdiagramm.",
+    "fr": "Comptez tout avec plusieurs compteurs nommés : gros boutons +/-, pas réglables, objectifs avec anneaux de progression, annulation et graphique d’historique.",
+    "es": "Cuenta cualquier cosa con varios contadores con nombre: botones +/- grandes, tamaños de paso, objetivos con anillos de progreso, deshacer y un gráfico de historial."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 500, "minWidth": 600, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

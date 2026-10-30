@@ -1,0 +1,10 @@
+{
+  "app": "Stoppuhr",
+  "start": "Start",
+  "stop": "Stopp",
+  "lap": "Runde",
+  "reset": "Zurücksetzen",
+  "no_laps": "Runden erscheinen hier. Leertaste startet und stoppt, L fügt eine Runde hinzu.",
+  "lap_n": "Runde {0}",
+  "share": "Runden teilen…"
+}

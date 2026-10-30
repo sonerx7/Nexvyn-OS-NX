@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.shopping",
+  "name": {"en": "Shopping List", "tr": "Alışveriş Listesi", "de": "Einkaufsliste", "fr": "Liste de courses", "es": "Lista de la compra", "ja": "買い物リスト", "zh": "购物清单", "ko": "장보기 목록"},
+  "description": {
+    "en": "Shopping lists grouped by aisle: quantities and units, check-off into the cart, and quick re-add from your history.",
+    "tr": "Reyonlara göre gruplanan alışveriş listeleri: miktar ve birim, sepete atınca işaretleme ve geçmişten hızlıca yeniden ekleme.",
+    "de": "Einkaufslisten nach Gängen gruppiert: Mengen und Einheiten, Abhaken in den Wagen und schnelles erneutes Hinzufügen aus dem Verlauf.",
+    "fr": "Des listes de courses classées par rayon : quantités et unités, articles cochés dans le panier et ajout rapide depuis l’historique.",
+    "es": "Listas de la compra agrupadas por pasillo: cantidades y unidades, marcar al pasar al carrito y volver a añadir rápido desde el historial."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 520, "minWidth": 600, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

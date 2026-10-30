@@ -1,0 +1,25 @@
+{
+  "id": "sysinfo",
+  "name": {
+    "en": "System Information",
+    "tr": "Sistem Bilgisi",
+    "de": "Systeminformationen",
+    "fr": "Informations système",
+    "es": "Información del sistema",
+    "ko": "시스템 정보"
+  },
+  "category": "system",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 780,
+    "height": 520,
+    "minWidth": 620,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

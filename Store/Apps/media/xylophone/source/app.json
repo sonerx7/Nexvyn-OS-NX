@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.xylophone",
+  "name": {"en": "Xylophone", "tr": "Ksilofon", "de": "Xylofon", "fr": "Xylophone", "es": "Xilófono", "ja": "木琴", "zh": "木琴", "ko": "실로폰"},
+  "description": {
+    "en": "A colourful xylophone with 8 or 15 bars: tap or use the keyboard, record and replay melodies, and learn songs as the next bar lights up.",
+    "tr": "8 ya da 15 tuşlu renkli bir ksilofon: dokunarak ya da klavyeyle çal, melodilerini kaydedip dinle, sıradaki tuşu yakarak şarkı öğren.",
+    "de": "Ein buntes Xylofon mit 8 oder 15 Klangstäben: Tippe oder nutze die Tastatur, nimm Melodien auf, spiele sie ab und lerne Lieder, indem der nächste Stab aufleuchtet.",
+    "fr": "Un xylophone coloré à 8 ou 15 lames : tapotez ou utilisez le clavier, enregistrez et rejouez des mélodies, et apprenez des chansons grâce à la lame suivante qui s’allume.",
+    "es": "Un colorido xilófono de 8 o 15 láminas: toca o usa el teclado, graba y reproduce melodías y aprende canciones mientras se ilumina la siguiente lámina."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 560, "minWidth": 680, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

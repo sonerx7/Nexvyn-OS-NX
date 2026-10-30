@@ -1,0 +1,11 @@
+{
+  "board": "Board",
+  "play": "Play",
+  "pause": "Pause",
+  "step": "Step",
+  "speed": "Speed {0}/s",
+  "status": "Generation {0} · {1} cells",
+  "random": "Random",
+  "add_glider": "Add a glider",
+  "clear": "Clear"
+}

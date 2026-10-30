@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.asteroids",
+  "name": {
+    "en": "Asteroids",
+    "tr": "Asteroitler",
+    "de": "Asteroids",
+    "fr": "Astéroïdes",
+    "es": "Asteroides",
+    "ja": "アステロイド",
+    "zh": "小行星",
+    "ko": "소행성"
+  },
+  "description": {
+    "en": "Pilot a tiny ship through an asteroid field: rotate, thrust and blast the rocks into smaller pieces, dodge flying saucers and survive the waves.",
+    "tr": "Küçük bir gemiyle asteroit kuşağında uç: dön, hızlan ve kayaları küçük parçalara ayır, uçan dairelerden kaç, dalgalara dayan.",
+    "de": "Steuere ein winziges Schiff durch ein Asteroidenfeld: Drehe, gib Schub, sprenge die Felsen in kleinere Stücke, weiche fliegenden Untertassen aus und überlebe die Wellen.",
+    "fr": "Pilotez un petit vaisseau dans un champ d’astéroïdes : pivotez, accélérez et pulvérisez les rochers en morceaux plus petits, esquivez les soucoupes volantes et survivez aux vagues.",
+    "es": "Pilota una pequeña nave por un campo de asteroides: gira, acelera y destroza las rocas en trozos más pequeños, esquiva platillos volantes y sobrevive a las oleadas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 900,
+    "height": 600,
+    "minWidth": 560,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

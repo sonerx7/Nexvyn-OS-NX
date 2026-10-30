@@ -1,0 +1,49 @@
+{
+  "subtitle": {
+    "en": "Live exchange rates for 36 currencies",
+    "tr": "36 para birimi için canlı döviz kurları",
+    "de": "Live-Wechselkurse für 36 Währungen",
+    "fr": "Taux de change en direct, 36 devises",
+    "es": "Tipos de cambio en directo, 36 divisas",
+    "ja": "36 通貨のリアルタイム為替レート",
+    "zh": "36 种货币的实时汇率",
+    "ko": "36개 통화의 실시간 환율"
+  },
+  "description": {
+    "en": "Convert between 36 currencies with up-to-date exchange rates. Type an amount on either side and the other updates instantly; you can even type a quick calculation like 120*3. Keep your favourite currencies in a list that shows the value of one unit at a glance, and the last rates stay saved for when you're offline.\n\n• Two editable amounts with a one-tap swap\n• Simple calculations right in the amount field\n• Favourites list you can reorder, with live values\n• Searchable currency picker\n• Saved rates keep working offline\n• Copy the conversion to the clipboard",
+    "tr": "Güncel kurlarla 36 para birimi arasında çeviri yap. İki taraftan birine tutar yaz, diğeri anında güncellensin; 120*3 gibi kısa bir hesap bile yazabilirsin. Sık kullandığın para birimlerini tek birimin değerini bir bakışta gösteren bir listede tut; son kurlar kayıtlı kalır, internet yokken de işe yarar.\n\n• Tek dokunuşla yer değiştiren iki düzenlenebilir tutar\n• Tutar alanında basit hesaplama\n• Sıralanabilir, canlı değerli favori listesi\n• Ada göre aranabilir para birimi seçici\n• Kayıtlı kurlar çevrimdışı da çalışır\n• Çeviriyi panoya kopyala",
+    "de": "Rechne mit aktuellen Wechselkursen zwischen 36 Währungen um. Gib auf einer Seite einen Betrag ein, und die andere passt sich sofort an; sogar kleine Rechnungen wie 120*3 sind möglich. Deine Lieblingswährungen zeigen in einer Liste auf einen Blick den Wert einer Einheit, und die letzten Kurse bleiben auch offline gespeichert.\n\n• Zwei bearbeitbare Beträge, mit einem Tipp vertauscht\n• Einfache Rechnungen direkt im Betragsfeld\n• Sortierbare Favoritenliste mit Live-Werten\n• Durchsuchbare Währungsauswahl\n• Gespeicherte Kurse funktionieren auch offline\n• Umrechnung in die Zwischenablage kopieren",
+    "fr": "Convertissez entre 36 devises avec des taux à jour. Saisissez un montant d’un côté et l’autre se met à jour aussitôt ; vous pouvez même taper un petit calcul comme 120*3. Gardez vos devises favorites dans une liste qui affiche d’un coup d’œil la valeur d’une unité, et les derniers taux restent enregistrés hors ligne.\n\n• Deux montants modifiables, inversés d’un geste\n• Calculs simples directement dans le champ du montant\n• Liste de favoris réorganisable, avec valeurs en direct\n• Sélecteur de devises avec recherche par nom\n• Les taux enregistrés fonctionnent hors ligne\n• Copie de la conversion dans le presse-papiers",
+    "es": "Convierte entre 36 divisas con tipos de cambio actualizados. Escribe una cantidad en cualquier lado y el otro se actualiza al instante; incluso puedes escribir un cálculo rápido como 120*3. Guarda tus divisas favoritas en una lista que muestra de un vistazo el valor de una unidad, y los últimos tipos quedan guardados para cuando no tengas conexión.\n\n• Dos cantidades editables que se intercambian con un toque\n• Cálculos sencillos en el propio campo\n• Lista de favoritas reordenable, con valores en directo\n• Selector de divisas con búsqueda por nombre\n• Los tipos guardados funcionan sin conexión\n• Copia la conversión al portapapeles",
+    "ja": "最新の為替レートで 36 の通貨を換算します。どちらの側に金額を入力しても、もう一方がすぐに更新されます。120*3 のような簡単な計算も入力できます。お気に入りの通貨を、1 単位の価値がひと目でわかるリストにまとめられ、最後のレートはオフライン時のために保存されます。\n\n• ワンタップで入れ替えられる 2 つの編集可能な金額\n• 金額フィールドでそのまま簡単な計算\n• 並べ替えできるリアルタイムの値付きのお気に入りリスト\n• 検索できる通貨の選択\n• 保存したレートはオフラインでも使用可能\n• 換算結果をクリップボードにコピー",
+    "zh": "使用最新汇率在 36 种货币之间换算。在任一侧输入金额，另一侧会立即更新；你甚至可以输入像 120*3 这样的简单算式。把常用货币放在一个列表中，一眼就能看到一个单位的价值，最近的汇率会保存下来，离线时也能使用。\n\n• 两个可编辑的金额，一键互换\n• 直接在金额栏中进行简单计算\n• 可重新排序的常用货币列表，显示实时数值\n• 可搜索的货币选择器\n• 保存的汇率离线也能使用\n• 将换算结果复制到剪贴板",
+    "ko": "최신 환율로 36개 통화를 변환하세요. 어느 쪽에든 금액을 입력하면 다른 쪽이 즉시 업데이트되며, 120*3 같은 간단한 계산도 입력할 수 있습니다. 즐겨찾는 통화를 목록에 두면 1단위의 가치를 한눈에 볼 수 있고, 마지막 환율은 오프라인일 때를 위해 저장됩니다.\n\n• 한 번의 탭으로 바꿀 수 있는 편집 가능한 두 금액\n• 금액 필드에서 바로 간단한 계산\n• 실시간 값이 표시되고 순서를 바꿀 수 있는 즐겨찾기 목록\n• 검색 가능한 통화 선택기\n• 저장된 환율로 오프라인에서도 작동\n• 변환 결과를 클립보드에 복사"
+  },
+  "shots": [
+    [
+      "wait 4"
+    ],
+    [
+      "wclick 0.70 0.163",
+      "wait 0.5",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "text 250",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.81 0.447",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

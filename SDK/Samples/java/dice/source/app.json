@@ -1,0 +1,38 @@
+{
+  "id": "com.sonerx7.sample.dice",
+  "name": {
+    "en": "Dice Roller (Java)",
+    "tr": "Zar Atıcı (Java)",
+    "de": "Würfelbecher (Java)",
+    "fr": "Lanceur de dés (Java)",
+    "es": "Lanzador de dados (Java)",
+    "ja": "サイコロ (Java)",
+    "zh": "掷骰子（Java）",
+    "ko": "주사위 굴리기(Java)"
+  },
+  "description": {
+    "en": "Roll up to six d4 to d20 dice, hold some and keep a history: Java sample",
+    "tr": "d4'ten d20'ye altı zara kadar at, bazılarını tut, geçmişi sakla: Java örneği",
+    "de": "Bis zu sechs W4- bis W20-Würfel werfen, einige halten, Verlauf behalten: Java-Beispiel",
+    "fr": "Lancez jusqu'à six dés d4 à d20, gardez-en certains, conservez l'historique : exemple Java",
+    "es": "Lanza hasta seis dados de d4 a d20, retén algunos y guarda el historial: ejemplo en Java"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "runtime": "java",
+  "main": "app.jar",
+  "mainClass": "dice.DiceApp",
+  "minSdk": "1.5",
+  "window": {
+    "width": 560,
+    "height": 520,
+    "minWidth": 460,
+    "minHeight": 300,
+    "resizable": true
+  },
+  "gamepad": false,
+  "permissions": []
+}

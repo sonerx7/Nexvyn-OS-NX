@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.maze3d",
+  "name": {"en": "3D Maze", "tr": "3D Labirent", "de": "3D-Labyrinth", "fr": "Labyrinthe 3D", "es": "Laberinto 3D", "ja": "3D 迷路", "zh": "3D 迷宫", "ko": "3D 미로"},
+  "description": {
+    "en": "Find the glowing exit of ten first-person 3D labyrinths, from 5×5 to 25×25 rooms, with a minimap and best times.",
+    "tr": "5×5'ten 25×25 odaya kadar on birinci şahıs 3D labirentin parlayan çıkışını bul; mini harita ve en iyi süreler.",
+    "de": "Finde den leuchtenden Ausgang von zehn 3D-Labyrinthen aus der Ich-Perspektive, von 5×5 bis 25×25 Räumen, mit Minikarte und Bestzeiten.",
+    "fr": "Trouvez la sortie lumineuse de dix labyrinthes 3D à la première personne, de 5×5 à 25×25 salles, avec mini-carte et meilleurs temps.",
+    "es": "Encuentra la salida luminosa de diez laberintos 3D en primera persona, de 5×5 a 25×25 salas, con minimapa y mejores tiempos."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 540, "minWidth": 640, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

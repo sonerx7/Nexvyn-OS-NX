@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Validate, format and explore JSON",
+    "tr": "JSON'u doğrula, biçimlendir, keşfet",
+    "de": "JSON prüfen, formatieren, erkunden",
+    "fr": "Validez, formatez et explorez du JSON",
+    "es": "Valida, formatea y explora JSON",
+    "ja": "JSON を検証、整形、探索",
+    "zh": "验证、格式化和浏览 JSON",
+    "ko": "JSON을 검증하고, 서식을 적용하고, 탐색하세요"
+  },
+  "description": {
+    "en": "JSON Formatter checks your JSON as you type and points to the exact line and column of any error, with a plain explanation such as a trailing comma, single quotes or a comment. Valid JSON can be pretty-printed with 2 or 4 spaces or tabs, or minified, keeping the key order and number spelling. The Tree tab folds objects open, searches keys and values and copies the path of any item.\n\n• Strict parser with clear, line-marked error messages\n• Format, minify and optionally sort keys\n• Searchable tree with copyable paths like $.users[0].name\n• Statistics: keys, depth, value types and sizes\n• Paste, open and save .json files up to 2 MB\n• Light and dark mode",
+    "tr": "JSON Biçimlendirici, sen yazarken JSON'u denetler ve hatanın tam satırını ve sütununu gösterir; sondaki virgül, tek tırnak ya da yorum gibi sorunları anlaşılır biçimde açıklar. Geçerli JSON'u 2 ya da 4 boşluk veya sekmeyle düzenler ya da küçültür; anahtar sırası ve sayıların yazımı korunur. Ağaç sekmesinde nesneleri açıp kapatabilir, anahtar ve değerlerde arama yapabilir, herhangi bir öğenin yolunu kopyalayabilirsin.\n\n• Hatayı satırında işaretleyen katı ayrıştırıcı\n• Biçimlendirme, küçültme ve isteğe bağlı anahtar sıralama\n• $.users[0].name gibi yolları kopyalanan, aranabilir ağaç\n• İstatistikler: anahtarlar, derinlik, değer türleri, boyutlar\n• 2 MB'a kadar .json dosyalarını yapıştır, aç, kaydet\n• Açık ve karanlık mod",
+    "de": "Der JSON-Formatierer prüft dein JSON schon beim Tippen und zeigt Zeile und Spalte jedes Fehlers – mit einer verständlichen Erklärung wie Komma am Ende, einfache Anführungszeichen oder Kommentar. Gültiges JSON formatierst du mit 2 oder 4 Leerzeichen oder Tabs, oder du minimierst es; Schlüsselreihenfolge und Zahlenschreibweise bleiben erhalten. Im Tab Baum klappst du Objekte auf, durchsuchst Schlüssel und Werte und kopierst den Pfad jedes Elements.\n\n• Strenger Parser mit klaren, zeilengenauen Fehlermeldungen\n• Formatieren, minimieren und Schlüssel sortieren\n• Durchsuchbarer Baum mit Pfaden wie $.users[0].name\n• Statistik: Schlüssel, Tiefe, Werttypen und Größen\n• .json-Dateien bis 2 MB einfügen, öffnen und speichern\n• Heller und dunkler Modus",
+    "fr": "Formateur JSON vérifie votre JSON pendant la saisie et indique la ligne et la colonne exactes de chaque erreur, avec une explication claire : virgule finale, guillemets simples, commentaire… Le JSON valide peut être indenté avec 2 ou 4 espaces ou des tabulations, ou minifié, en conservant l’ordre des clés et l’écriture des nombres. L’onglet Arbre déplie les objets, cherche dans les clés et les valeurs et copie le chemin de n’importe quel élément.\n\n• Analyseur strict aux messages d’erreur précis\n• Formatage, minification et tri des clés en option\n• Arbre consultable avec des chemins comme $.users[0].name\n• Statistiques : clés, profondeur, types de valeurs, tailles\n• Collez, ouvrez et enregistrez des fichiers .json jusqu’à 2 Mo\n• Mode clair et mode sombre",
+    "es": "Formateador JSON revisa tu JSON mientras escribes y señala la línea y la columna exactas de cada error, con una explicación clara: coma final, comillas simples, un comentario… El JSON válido se puede formatear con 2 o 4 espacios o tabulaciones, o minificar, conservando el orden de las claves y la escritura de los números. La pestaña Árbol despliega objetos, busca en claves y valores y copia la ruta de cualquier elemento.\n\n• Analizador estricto con errores marcados en su línea\n• Formatea, minifica y ordena las claves si quieres\n• Árbol con búsqueda y rutas como $.users[0].name\n• Estadísticas: claves, profundidad, tipos de valor y tamaños\n• Pega, abre y guarda archivos .json de hasta 2 MB\n• Modo claro y oscuro",
+    "ja": "JSON フォーマッターは入力中に JSON をチェックし、エラーの正確な行と列を示して、末尾のカンマ、シングルクォート、コメントなどをわかりやすく説明します。有効な JSON は 2 または 4 スペース、またはタブで整形したり、圧縮したりでき、キーの順序と数値の表記はそのまま保たれます。ツリータブではオブジェクトを展開し、キーと値を検索し、任意の項目のパスをコピーできます。\n\n• 行を示すわかりやすいエラーメッセージ付きの厳密なパーサー\n• 整形、圧縮、キーの並べ替え (任意)\n• $.users[0].name のようなパスをコピーできる検索可能なツリー\n• 統計: キー、深さ、値の種類、サイズ\n• 2 MB までの .json ファイルの貼り付け、読み込み、保存\n• ライトモードとダークモード",
+    "zh": "JSON 格式化工具会在你输入时检查 JSON，精确指出任何错误所在的行和列，并用通俗的语言解释原因，例如末尾逗号、单引号或注释。有效的 JSON 可以用 2 个或 4 个空格或制表符美化排版，也可以压缩，同时保留键的顺序和数字的写法。“树状”标签页可展开对象、搜索键和值，并复制任意项目的路径。\n\n• 严格的解析器，错误信息清晰并标明行号\n• 格式化、压缩，并可选择对键排序\n• 可搜索的树状视图，可复制 $.users[0].name 这样的路径\n• 统计：键、深度、值类型和大小\n• 粘贴、打开和保存最大 2 MB 的 .json 文件\n• 浅色和深色模式",
+    "ko": "JSON 포맷터는 입력하는 동안 JSON을 확인하고, 후행 쉼표, 작은따옴표, 주석 같은 오류의 정확한 줄과 열을 쉬운 설명과 함께 알려 줍니다. 올바른 JSON은 공백 2칸, 4칸 또는 탭으로 보기 좋게 정리하거나 압축할 수 있으며, 키 순서와 숫자 표기는 그대로 유지됩니다. 트리 탭에서는 객체를 펼치고, 키와 값을 검색하고, 모든 항목의 경로를 복사할 수 있습니다.\n\n• 줄 위치가 표시되는 명확한 오류 메시지를 갖춘 엄격한 파서\n• 서식 적용, 압축 및 선택적 키 정렬\n• $.users[0].name 같은 경로를 복사할 수 있는 검색 가능한 트리\n• 통계: 키, 깊이, 값 유형, 크기\n• 최대 2 MB의 .json 파일 붙여넣기, 열기, 저장\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 3", "wclick 0.555 0.128", "wait 1.5"],
+    ["key tab", "wait 1.5"],
+    ["key tab", "wait 1", "wclick 0.732 0.128", "wait 1.5"],
+    ["key tab", "dark 1", "wait 1.5"]
+  ]
+}

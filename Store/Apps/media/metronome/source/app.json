@@ -1,0 +1,33 @@
+{
+  "id": "metronome",
+  "name": {
+    "en": "Metronome",
+    "tr": "Metronom",
+    "de": "Metronom",
+    "fr": "Métronome",
+    "es": "Metrónomo",
+    "ja": "メトロノーム",
+    "zh": "节拍器",
+    "ko": "메트로놈"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 440,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": true,
+  "description": {
+    "en": "Metronome with tap tempo, time signatures and a swinging pendulum",
+    "tr": "Tempo tıklama, ölçü seçenekleri ve sallanan sarkaçlı metronom",
+    "de": "Metronom mit Tap-Tempo, Taktarten und schwingendem Pendel",
+    "fr": "Métronome avec tempo par tapotement, signatures rythmiques et balancier oscillant",
+    "es": "Metrónomo con tempo por pulsación, compases y un péndulo oscilante"
+  },
+  "permissions": []
+}

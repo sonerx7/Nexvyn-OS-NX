@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Switch off every light in the fewest moves",
+    "tr": "Bütün ışıkları en az hamleyle söndür",
+    "de": "Schalte alle Lichter mit wenigen Zügen aus",
+    "fr": "Éteignez toutes les lumières en peu de coups",
+    "es": "Apaga todas las luces con pocos movimientos",
+    "ja": "最少手数ですべてのライトを消そう",
+    "zh": "用最少的步数关掉所有灯",
+    "ko": "최소한의 이동으로 모든 불을 끄세요"
+  },
+  "description": {
+    "en": "Every press toggles a light and its four neighbours, and your goal is to switch the whole 5×5 board off. Work your way through 60 levels that are always solvable, each with a par worked out by an exact solver, and earn stars by matching it. Fancy something new? Generate a random puzzle. If you get stuck, the solver can point you to the next press.\n\n• 60 levels with par moves and stars\n• Random puzzles, always solvable\n• Hints from the built-in solver\n• Undo and best moves per level\n• Touch, controller or keyboard",
+    "tr": "Her dokunuş bir ışığı ve dört komşusunu açıp kapatır; amacın 5×5 tahtanın tamamını söndürmek. Her zaman çözülebilen 60 bölümü geç; her birinin kesin bir çözücüyle hesaplanmış bir hamle hedefi var, onu tutturunca yıldız kazanırsın. Yeni bir şey mi istiyorsun? Rastgele bir bulmaca üret. Takılırsan çözücü sana bir sonraki hamleyi gösterir.\n\n• Hamle hedefi ve yıldızlı 60 bölüm\n• Her zaman çözülebilen rastgele bulmacalar\n• Yerleşik çözücüden ipuçları\n• Geri alma ve bölüm başına en az hamle\n• Dokunmatik, kumanda ya da klavye",
+    "de": "Jeder Druck schaltet ein Licht und seine vier Nachbarn um, und dein Ziel ist es, das ganze 5×5-Brett dunkel zu bekommen. Arbeite dich durch 60 garantiert lösbare Level, jedes mit einer Zugvorgabe, die ein exakter Löser berechnet hat, und verdien Sterne, wenn du sie erreichst. Lust auf etwas Neues? Erzeug ein Zufallsrätsel. Hängst du fest, zeigt dir der Löser den nächsten Druck.\n\n• 60 Level mit Zugvorgabe und Sternen\n• Zufallsrätsel, immer lösbar\n• Tipps vom eingebauten Löser\n• Rückgängig und wenigste Züge pro Level\n• Touch, Controller oder Tastatur",
+    "fr": "Chaque pression inverse une lumière et ses quatre voisines, et votre but est d’éteindre tout le plateau 5×5. Avancez à travers 60 niveaux toujours solubles, chacun avec un par calculé par un solveur exact, et gagnez des étoiles en l’égalant. Envie de nouveauté ? Générez une grille aléatoire. Si vous bloquez, le solveur vous indique la prochaine case à presser.\n\n• 60 niveaux avec par et étoiles\n• Grilles aléatoires, toujours solubles\n• Indices du solveur intégré\n• Annulation et meilleur nombre de coups par niveau\n• Tactile, manette ou clavier",
+    "es": "Cada pulsación cambia una luz y sus cuatro vecinas, y tu objetivo es apagar todo el tablero de 5×5. Supera 60 niveles siempre resolubles, cada uno con un par calculado por un solucionador exacto, y gana estrellas al igualarlo. ¿Te apetece algo nuevo? Genera un puzle aleatorio. Si te atascas, el solucionador te indica la siguiente pulsación.\n\n• 60 niveles con par y estrellas\n• Puzles aleatorios, siempre resolubles\n• Pistas del solucionador integrado\n• Deshacer y mejores movimientos por nivel\n• Táctil, mando o teclado",
+    "ja": "押すたびにライトとその上下左右の 4 つが反転します。5×5 の盤のライトをすべて消すのが目標です。必ず解ける 60 のレベルに挑戦し、厳密なソルバーで求めた目標手数と同じ手数でクリアすると星がもらえます。新しいものに挑戦したければ、ランダムなパズルを生成しましょう。行き詰まったら、ソルバーが次に押す場所を教えてくれます。\n\n• 目標手数と星のある 60 レベル\n• 必ず解けるランダムパズル\n• 内蔵ソルバーによるヒント\n• 取り消しとレベルごとの最少手数\n• タッチ、コントローラー、キーボード",
+    "zh": "每次按下都会切换一盏灯及其相邻的四盏灯，你的目标是把整个 5×5 棋盘的灯全部关掉。挑战 60 个始终有解的关卡，每关都有由精确求解器算出的标准步数，达到它即可获得星星。想来点新鲜的？生成一个随机谜题。如果卡住了，求解器可以告诉你下一步该按哪里。\n\n• 60 个带标准步数和星星的关卡\n• 始终有解的随机谜题\n• 来自内置求解器的提示\n• 撤销以及每关的最少步数\n• 触控、手柄或键盘",
+    "ko": "누를 때마다 불 하나와 이웃한 네 개의 불이 바뀌며, 목표는 5×5 보드 전체를 끄는 것입니다. 항상 풀 수 있는 60개 레벨을 차례로 풀어 나가세요. 각 레벨에는 정확한 해법기로 계산한 기준 횟수가 있으며, 기준을 맞추면 별을 얻습니다. 새로운 것을 원하나요? 무작위 퍼즐을 만드세요. 막히면 해법기가 다음에 누를 곳을 알려 줍니다.\n\n• 기준 횟수와 별이 있는 60개 레벨\n• 항상 풀 수 있는 무작위 퍼즐\n• 내장 해법기의 힌트\n• 실행 취소와 레벨별 최소 이동\n• 터치, 컨트롤러, 키보드"
+  },
+  "shots": [
+    ["wait 2.5"],
+    ["key enter", "wait 1.2", "key h", "wait 0.3", "key enter", "wait 1.2"],
+    ["key h", "key enter", "wait 0.4", "key h", "key enter", "wait 2.5"],
+    ["dark 1", "key escape", "wait 0.6", "key l", "wait 1.5"]
+  ]
+}

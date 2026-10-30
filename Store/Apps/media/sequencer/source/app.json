@@ -1,0 +1,35 @@
+{
+  "id": "sequencer",
+  "name": {
+    "en": "Melody Studio",
+    "tr": "Melodi Stüdyosu",
+    "de": "Melodie-Studio",
+    "fr": "Studio Mélodie",
+    "es": "Melody Studio",
+    "ja": "メロディスタジオ",
+    "zh": "旋律工作室",
+    "ko": "멜로디 스튜디오"
+  },
+  "description": {
+    "en": "A two-octave, 32-step piano roll with instruments, tempo, transpose, looping and saved songs.",
+    "tr": "İki oktav, 32 adımlı piyano rulosu: enstrümanlar, tempo, transpoze, döngü ve kayıtlı şarkılar.",
+    "de": "Eine Pianorolle mit zwei Oktaven und 32 Schritten, mit Instrumenten, Tempo, Transponieren, Schleifen und gespeicherten Songs.",
+    "fr": "Un piano roll de deux octaves et 32 pas avec instruments, tempo, transposition, boucle et morceaux enregistrés.",
+    "es": "Un piano roll de dos octavas y 32 pasos con instrumentos, tempo, transposición, bucle y canciones guardadas."
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": [
+    "notifications"
+  ]
+}

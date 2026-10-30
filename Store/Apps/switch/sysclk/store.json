@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "Per-game CPU, GPU and memory clocks",
+    "tr": "Oyun başına CPU, GPU ve bellek hızları",
+    "de": "CPU-, GPU- und RAM-Takt pro Spiel",
+    "fr": "Fréquences CPU, GPU et mémoire par jeu",
+    "es": "Frecuencias de CPU, GPU y memoria por juego",
+    "ja": "ゲームごとの CPU、GPU、メモリのクロック",
+    "zh": "按游戏设置 CPU、GPU 和内存频率",
+    "ko": "게임별 CPU, GPU, 메모리 클럭"
+  },
+  "description": {
+    "en": "Give each game the clocks it needs. Clock Profiles is an easy editor for sys-clk's config.ini: pick a game, then set the CPU, GPU and memory speed separately for docked, handheld and each charging mode. Clear notes explain sys-clk's handheld GPU caps and which profile wins while charging. Every save backs up the previous file first, and if sys-clk isn't installed yet, it offers to install it.\n\n• Installed games with search, or any title ID\n• CPU, GPU and memory clocks per power mode\n• Docked, handheld, charging, USB and official charger profiles\n• Stock clocks marked, notes on caps and heat\n• Backup before every save, restore any backup\n• sys-clk status, with an install button when it's missing",
+    "tr": "Her oyuna ihtiyaç duyduğu hızı ver. Saat Profilleri, sys-clk'in config.ini dosyası için kolay bir düzenleyicidir: bir oyun seç, ardından CPU, GPU ve bellek hızını dock, avuçiçi ve her şarj modu için ayrı ayrı ayarla. Anlaşılır notlar sys-clk'in avuçiçi GPU sınırlarını ve şarj sırasında hangi profilin geçerli olduğunu açıklar. Her kayıttan önce eski dosya yedeklenir; sys-clk henüz yüklü değilse kurmayı önerir.\n\n• Aramalı yüklü oyunlar ya da herhangi bir title ID\n• Güç moduna göre CPU, GPU ve bellek hızları\n• Dock, avuçiçi, şarj, USB ve resmi şarj aleti profilleri\n• İşaretli fabrika hızları, sınır ve ısı notları\n• Her kayıttan önce yedek, istediğin yedeği geri yükle\n• sys-clk durumu; eksikse kurulum düğmesi",
+    "de": "Gib jedem Spiel den Takt, den es braucht. Taktprofile ist ein einfacher Editor für die config.ini von sys-clk: Wähle ein Spiel und stelle CPU-, GPU- und Speichertakt getrennt für Dock, Handheld und jeden Lademodus ein. Verständliche Hinweise erklären die GPU-Grenzen im Handheld-Modus und welches Profil beim Laden gilt. Vor jedem Speichern wird die alte Datei gesichert, und fehlt sys-clk noch, bietet die App die Installation an.\n\n• Installierte Spiele mit Suche oder beliebige Title-ID\n• CPU-, GPU- und Speichertakt pro Energiemodus\n• Profile für Dock, Handheld, Laden, USB und Original-Netzteil\n• Standardtakt markiert, Hinweise zu Grenzen und Wärme\n• Backup vor jedem Speichern, Backups wiederherstellen\n• sys-clk-Status, mit Installieren-Button, falls er fehlt",
+    "fr": "Donnez à chaque jeu les fréquences qu’il lui faut. Profils d’horloge est un éditeur simple du config.ini de sys-clk : choisissez un jeu, puis réglez séparément les fréquences CPU, GPU et mémoire en mode dock, portable et pour chaque mode de charge. Des notes claires expliquent les plafonds GPU en mode portable et le profil retenu pendant la charge. Chaque enregistrement sauvegarde d’abord l’ancien fichier, et si sys-clk n’est pas encore installé, l’app propose de l’installer.\n\n• Jeux installés avec recherche, ou n’importe quel title ID\n• Fréquences CPU, GPU et mémoire par mode d’alimentation\n• Profils dock, portable, en charge, USB et chargeur officiel\n• Fréquences d’origine signalées, notes sur plafonds et chauffe\n• Sauvegarde avant chaque enregistrement, restauration possible\n• État de sys-clk, avec bouton d’installation s’il manque",
+    "es": "Da a cada juego las frecuencias que necesita. Perfiles de reloj es un editor sencillo del config.ini de sys-clk: elige un juego y ajusta por separado la velocidad de CPU, GPU y memoria en modo dock, portátil y en cada modo de carga. Notas claras explican los límites de GPU en modo portátil y qué perfil manda mientras carga. Cada guardado respalda antes el archivo anterior y, si sys-clk aún no está instalado, te ofrece instalarlo.\n\n• Juegos instalados con búsqueda, o cualquier title ID\n• Frecuencias de CPU, GPU y memoria por modo de energía\n• Perfiles para dock, portátil, cargando, USB y cargador oficial\n• Frecuencias de fábrica marcadas, notas sobre límites y calor\n• Copia antes de cada guardado, restaura cualquier copia\n• Estado de sys-clk, con botón de instalación si falta",
+    "ja": "ゲームごとに必要なクロックを設定しましょう。クロックプロファイルは sys-clk の config.ini をかんたんに編集できるエディタです: ゲームを選び、TV モード、携帯モード、各充電モードごとに CPU、GPU、メモリの速度を設定します。携帯モードでの sys-clk の GPU 上限や、充電中にどのプロファイルが優先されるかをわかりやすく説明します。保存のたびに以前のファイルがバックアップされ、sys-clk がまだインストールされていなければインストールを提案します。\n\n• 検索付きのインストール済みゲーム、または任意のタイトル ID\n• 電源モードごとの CPU、GPU、メモリのクロック\n• TV モード、携帯モード、充電中、USB、純正充電器のプロファイル\n• 標準クロックの表示、上限と発熱についての説明\n• 保存のたびにバックアップ、任意のバックアップから復元\n• sys-clk の状態と、ない場合のインストールボタン",
+    "zh": "为每款游戏设置它所需的频率。频率配置是 sys-clk 的 config.ini 的简易编辑器：选择一款游戏，然后分别为底座模式、掌机模式和每种充电模式设置 CPU、GPU 和内存频率。清晰的说明会解释 sys-clk 在掌机模式下的 GPU 上限，以及充电时哪个配置优先。每次保存前都会先备份之前的文件；如果尚未安装 sys-clk，它会提供安装。\n\n• 可搜索的已安装游戏，或任意 Title ID\n• 按电源模式设置 CPU、GPU 和内存频率\n• 底座模式、掌机模式、充电、USB 和官方充电器配置\n• 标记默认频率，并说明频率上限和发热\n• 每次保存前备份，可恢复任意备份\n• sys-clk 状态，缺失时提供安装按钮",
+    "ko": "게임마다 필요한 클럭을 주세요. 클럭 프로필은 sys-clk의 config.ini를 쉽게 편집하는 도구입니다: 게임을 고른 후 독 모드, 휴대 모드, 각 충전 모드별로 CPU, GPU, 메모리 속도를 따로 설정하세요. 명확한 안내가 sys-clk의 휴대 모드 GPU 제한과 충전 중 어떤 프로필이 우선하는지 설명합니다. 저장할 때마다 이전 파일을 먼저 백업하며, sys-clk가 아직 설치되어 있지 않으면 설치를 제안합니다.\n\n• 검색이 가능한 설치된 게임 또는 모든 타이틀 ID\n• 전원 모드별 CPU, GPU, 메모리 클럭\n• 독 모드, 휴대 모드, 충전, USB, 정품 충전기 프로필\n• 기본 클럭 표시, 제한과 발열에 대한 안내\n• 저장할 때마다 백업, 어떤 백업이든 복원\n• sys-clk 상태와 없을 때 설치 버튼"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.17 0.219",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

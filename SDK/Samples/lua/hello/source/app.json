@@ -1,0 +1,37 @@
+{
+  "id": "hello",
+  "name": {
+    "en": "Hello SDK",
+    "tr": "Merhaba SDK",
+    "de": "Hallo SDK",
+    "fr": "Hello SDK",
+    "es": "Hola SDK",
+    "ja": "Hello SDK",
+    "zh": "Hello SDK",
+    "ko": "Hello SDK"
+  },
+  "description": {
+    "en": "Widgets, animated drawing and system info: a tour of the Lua SDK",
+    "tr": "Arayüz bileşenleri, canlı çizim ve sistem bilgisi: Lua SDK turu",
+    "de": "Widgets, animierte Zeichnung und Systeminfos: eine Tour durch das Lua-SDK",
+    "fr": "Widgets, dessin animé et infos système : une visite du SDK Lua",
+    "es": "Widgets, dibujo animado e información del sistema: un recorrido por el SDK de Lua"
+  },
+  "category": "developer",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 560,
+    "height": 420,
+    "resizable": false
+  },
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": [
+    "notifications",
+    "launch"
+  ]
+}

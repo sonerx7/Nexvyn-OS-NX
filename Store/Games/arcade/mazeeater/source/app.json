@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.mazeeater",
+  "name": {
+    "en": "Maze Eater",
+    "tr": "Labirent Yiyici",
+    "de": "Labyrinthfresser",
+    "fr": "Mange-labyrinthe",
+    "es": "Come laberintos",
+    "ja": "迷路イーター",
+    "zh": "迷宫吃豆",
+    "ko": "미로 먹보"
+  },
+  "description": {
+    "en": "Gobble every dot in the maze while three ghosts hunt you down. Grab a power pellet and turn the tables.",
+    "tr": "Üç hayalet peşindeyken labirentteki bütün noktaları ye. Güç hapını kap ve avcıyı av yap.",
+    "de": "Friss jeden Punkt im Labyrinth, während dich drei Geister jagen. Schnapp dir eine Kraftpille und dreh den Spieß um.",
+    "fr": "Gobez tous les points du labyrinthe pendant que trois fantômes vous traquent. Attrapez une super pastille et renversez la situation.",
+    "es": "Cómete todos los puntos del laberinto mientras tres fantasmas te persiguen. Coge una píldora de poder y dale la vuelta a la tortilla."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 640,
+    "minWidth": 480,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

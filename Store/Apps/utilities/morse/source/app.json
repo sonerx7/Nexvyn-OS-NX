@@ -1,0 +1,33 @@
+{
+  "id": "morse",
+  "name": {
+    "en": "Morse Code",
+    "tr": "Mors Kodu",
+    "de": "Morsecode",
+    "fr": "Code Morse",
+    "es": "Código Morse",
+    "ja": "モールス符号",
+    "zh": "摩尔斯电码",
+    "ko": "모스 부호"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 580,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Translate, play and practice Morse code",
+    "tr": "Mors kodunu çevirin, dinleyin ve alıştırma yapın",
+    "de": "Morsecode übersetzen, abspielen und üben",
+    "fr": "Traduisez, écoutez et pratiquez le code Morse",
+    "es": "Traduce, reproduce y practica código Morse"
+  },
+  "permissions": []
+}

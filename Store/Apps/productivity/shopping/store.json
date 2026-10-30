@@ -1,0 +1,36 @@
+{
+  "subtitle": {
+    "en": "Lists sorted by aisle, quick to refill",
+    "tr": "Reyonlara göre sıralı, hızlı alışveriş",
+    "de": "Nach Regalen sortiert, schnell aufgefüllt",
+    "fr": "Des listes triées par rayon",
+    "es": "Listas ordenadas por pasillo",
+    "ja": "売り場順に並ぶ、すぐ補充できるリスト",
+    "zh": "按货架分类的清单，补货快捷",
+    "ko": "매장 구역별로 정리되는 장보기 목록"
+  },
+  "description": {
+    "en": "Shopping List keeps your groceries organized the way you walk through the shop. Add an item with its quantity, unit and category, and the list groups everything by aisle: fruit and veg, dairy, bakery, drinks and more. Check an item off and it goes in the cart: it fades out and moves down to the In the cart section. Everything you add is remembered, so next time a single tap on a suggestion puts it back on the list.\n\n• Several lists, such as Groceries, Home or Party\n• Quantities in pcs, kg, g, L or packs, and eight categories\n• Quick suggestions from your history; adding an item twice raises its quantity\n• Clear checked items, with undo for every delete\n• Copy the list or save it as a text file\n• Keyboard: Enter adds, arrows select, Space checks off, E edits",
+    "tr": "Alışveriş Listesi, alışverişini markette dolaştığın sıraya göre düzenli tutar. Bir ürünü miktarı, birimi ve kategorisiyle ekle; liste her şeyi reyonlara göre gruplar: meyve-sebze, süt ürünleri, fırın, içecek ve daha fazlası. Ürünü işaretlediğinde sepete düşer: soluklaşır ve en alttaki Sepette bölümüne iner. Eklediğin her şey hatırlanır; bir dahaki sefere tek dokunuşla öneriden listeye geri gelir.\n\n• Market, Ev ya da Parti gibi birden çok liste\n• Adet, kg, g, L ya da paket olarak miktar ve sekiz kategori\n• Geçmişten hızlı öneriler; aynı ürün tekrar eklenince miktarı artar\n• Alınanları temizle, her silme geri alınabilir\n• Listeyi kopyala ya da metin dosyası olarak kaydet\n• Klavye: Enter ekler, oklar seçer, Boşluk işaretler, E düzenler",
+    "de": "Die Einkaufsliste ordnet deinen Einkauf so, wie du durch den Laden gehst. Füge einen Artikel mit Menge, Einheit und Kategorie hinzu, und die Liste gruppiert alles nach Regalen: Obst & Gemüse, Milchprodukte, Backwaren, Getränke und mehr. Hakst du einen Artikel ab, landet er im Wagen – er wird blasser und rutscht nach unten in den Bereich „Im Wagen“. Alles, was du hinzufügst, wird gemerkt, sodass es beim nächsten Mal mit einem Tipp auf einen Vorschlag wieder auf der Liste steht.\n\n• Mehrere Listen, etwa Lebensmittel, Haushalt oder Party\n• Mengen in Stück, kg, g, L oder Packungen und acht Kategorien\n• Schnelle Vorschläge aus dem Verlauf; doppelt hinzugefügt erhöht die Menge\n• Erledigtes entfernen, jedes Löschen lässt sich rückgängig machen\n• Liste kopieren oder als Textdatei speichern\n• Tastatur: Enter fügt hinzu, Pfeile wählen, Leertaste hakt ab, E bearbeitet",
+    "fr": "Liste de courses organise vos achats dans l’ordre où vous parcourez le magasin. Ajoutez un article avec sa quantité, son unité et sa catégorie, et la liste regroupe tout par rayon : fruits et légumes, produits laitiers, boulangerie, boissons et plus encore. Cochez un article pour le mettre dans le panier : il s’estompe et descend dans la section Dans le panier. Tout ce que vous ajoutez est mémorisé : la prochaine fois, une simple suggestion le remet sur la liste.\n\n• Plusieurs listes, comme Courses, Maison ou Fête\n• Quantités en pièces, kg, g, L ou paquets, et huit catégories\n• Suggestions rapides tirées de l’historique ; un doublon augmente la quantité\n• Retirez les articles cochés, chaque suppression peut être annulée\n• Copiez la liste ou enregistrez-la en fichier texte\n• Clavier : Entrée ajoute, flèches pour choisir, Espace coche, E modifie",
+    "es": "Lista de la compra ordena tus compras tal como recorres la tienda. Añade un producto con su cantidad, unidad y categoría, y la lista lo agrupa todo por pasillos: frutas y verduras, lácteos, panadería, bebidas y más. Marca un producto para echarlo al carro: se atenúa y baja a la sección En el carro. Todo lo que añades se recuerda, así que la próxima vez basta un toque en una sugerencia para volver a ponerlo en la lista.\n\n• Varias listas, como Supermercado, Casa o Fiesta\n• Cantidades en unidades, kg, g, L o paquetes, y ocho categorías\n• Sugerencias rápidas del historial; añadir algo dos veces sube la cantidad\n• Quita lo comprado, y deshaz cualquier borrado\n• Copia la lista o guárdala como archivo de texto\n• Teclado: Intro añade, flechas eligen, Espacio marca, E edita",
+    "ja": "買い物リストは、お店を回る順番に合わせて食料品を整理します。数量、単位、カテゴリを添えて項目を追加すると、野菜・果物、乳製品、パン、飲み物などの売り場ごとにまとめられます。項目にチェックを付けるとカートに入り、薄くなって「カート内」セクションに移動します。追加したものはすべて記憶されるので、次回は候補をタップするだけでリストに戻せます。\n\n• 食料品、家庭用品、パーティーなど複数のリスト\n• 個、kg、g、L、パックの数量と 8 つのカテゴリ\n• 履歴からのクイック候補。同じ項目を追加すると数量が増えます\n• チェック済みの項目を消去。すべての削除を取り消し可能\n• リストをコピー、またはテキストファイルとして保存\n• キーボード: Enter で追加、矢印キーで選択、Space でチェック、E で編集",
+    "zh": "购物清单按照你逛商店的路线整理你的日用品。添加项目时填写数量、单位和类别，清单会按货架分组：蔬菜水果、乳制品、烘焙食品、饮料等。勾选一个项目，它就会放进购物车：逐渐淡出并移到“已放入购物车”区域。你添加过的所有项目都会被记住，下次只需轻点一个建议就能把它放回清单。\n\n• 多个清单，例如日用品、家居或派对\n• 数量单位可选个、kg、g、L 或包，共八个类别\n• 根据历史记录提供快速建议；重复添加同一项目会增加其数量\n• 清除已勾选的项目，每次删除都可撤销\n• 复制清单或将其保存为文本文件\n• 键盘：Enter 添加，方向键选择，空格勾选，E 编辑",
+    "ko": "장보기 목록은 매장을 돌아다니는 순서대로 장볼 것을 정리해 줍니다. 수량, 단위, 카테고리와 함께 항목을 추가하면 과일과 채소, 유제품, 빵, 음료 등 구역별로 묶입니다. 항목을 체크하면 장바구니에 담겨 흐려지며 장바구니 영역으로 내려갑니다. 추가한 모든 것이 기억되므로 다음에는 추천을 한 번 탭하면 목록에 다시 들어갑니다.\n\n• 장보기, 집, 파티 등 여러 목록\n• 개, kg, g, L, 팩 단위의 수량과 카테고리 8개\n• 기록 기반 빠른 추천, 같은 항목을 두 번 추가하면 수량 증가\n• 체크한 항목 지우기, 모든 삭제 실행 취소 가능\n• 목록 복사 또는 텍스트 파일로 저장\n• 키보드: Enter 추가, 화살표 선택, Space 체크, E 편집"
+  },
+  "shots": [
+    ["wait 2",
+     "wclick 0.749 0.158", "wait 0.6", "key down", "key enter", "wait 0.3",
+     "wclick 0.413 0.158", "text Apples", "key enter", "text Tomatoes", "key enter", "text Bananas", "key enter",
+     "wclick 0.749 0.158", "wait 0.6", "key down", "key down", "key enter", "wait 0.3",
+     "wclick 0.413 0.158", "text Milk", "key enter", "text Cheese", "key enter",
+     "wclick 0.749 0.158", "wait 0.6", "key down", "key down", "key down", "key down", "key enter", "wait 0.3",
+     "wclick 0.413 0.158", "text Bread", "key enter",
+     "wclick 0.749 0.158", "wait 0.6", "key down", "key down", "key down", "key down", "key down", "key down", "key enter", "wait 0.3",
+     "wclick 0.413 0.158", "text Orange juice", "key enter",
+     "key escape", "key down", "key space", "wait 0.5", "key down", "key space", "wait 2"],
+    ["key escape", "key down", "key e", "wait 1.5"],
+    ["key escape", "wait 1", "dark 1", "wait 1.5"]
+  ]
+}

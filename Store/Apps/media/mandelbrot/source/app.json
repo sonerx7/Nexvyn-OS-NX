@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.mandelbrot",
+  "name": {"en": "Fractal Explorer", "tr": "Fraktal Gezgini", "de": "Fraktal-Explorer", "fr": "Explorateur de fractales", "es": "Explorador de fractales", "ja": "フラクタルエクスプローラー", "zh": "分形探索器", "ko": "프랙탈 탐색기"},
+  "description": {
+    "en": "Dive into the Mandelbrot set and its Julia sets: pan, pinch to zoom, pick colour schemes, save favourite places and export PNG images.",
+    "tr": "Mandelbrot kümesine ve Julia kümelerine dal: kaydır, iki parmakla yakınlaştır, renk şeması seç, sevdiğin yerleri kaydet ve PNG olarak dışa aktar.",
+    "de": "Tauche in die Mandelbrot-Menge und ihre Julia-Mengen ein: verschieben, mit zwei Fingern zoomen, Farbschemata wählen, Lieblingsorte speichern und PNG-Bilder exportieren.",
+    "fr": "Plongez dans l’ensemble de Mandelbrot et ses ensembles de Julia : déplacez-vous, pincez pour zoomer, choisissez des palettes, enregistrez vos lieux favoris et exportez des images PNG.",
+    "es": "Sumérgete en el conjunto de Mandelbrot y sus conjuntos de Julia: desplázate, pellizca para ampliar, elige esquemas de color, guarda tus lugares favoritos y exporta imágenes PNG."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 560, "minWidth": 680, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

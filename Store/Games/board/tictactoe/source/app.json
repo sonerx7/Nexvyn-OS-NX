@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.tictactoe",
+  "name": {
+    "en": "Tic-Tac-Toe",
+    "tr": "XOX",
+    "de": "Tic-Tac-Toe",
+    "fr": "Morpion",
+    "es": "Tres en raya",
+    "ja": "三目並べ",
+    "zh": "井字棋",
+    "ko": "틱택토"
+  },
+  "description": {
+    "en": "The classic three-in-a-row game against an easy or an unbeatable computer, or a friend.",
+    "tr": "Klasik üçü bir sıra oyunu: kolay ya da yenilmez bilgisayara veya bir arkadaşınıza karşı oynayın.",
+    "de": "Das klassische Drei-in-einer-Reihe-Spiel gegen einen leichten oder unschlagbaren Computer oder einen Freund.",
+    "fr": "Le jeu classique des trois en ligne contre un ordinateur facile ou imbattable, ou un ami.",
+    "es": "El clásico juego de tres en línea contra un ordenador fácil o imbatible, o un amigo."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 560,
+    "height": 640,
+    "minWidth": 420,
+    "minHeight": 560,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

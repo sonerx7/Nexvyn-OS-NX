@@ -1,0 +1,16 @@
+{
+  "fire": "Feuer",
+  "fountain": "Brunnen",
+  "sparks": "Funken",
+  "snow": "Schnee",
+  "magic": "Magie",
+  "tool_spawn": "Erzeugen",
+  "tool_attract": "Anziehen",
+  "tool_repel": "Abstoßen",
+  "clear": "Leeren",
+  "stats": "{0} Partikel · {1} Quellen · {2} FPS",
+  "hint": "Tippe für einen Ausbruch, ziehe zum Malen. Anziehen / Abstoßen setzen Quellen: Ziehe eine, um sie zu bewegen, tippe darauf, um sie zu entfernen.",
+  "wells_full": "Höchstens {0} Quellen",
+  "menu_title": "Partikel",
+  "debug": "Debug-Overlay"
+}

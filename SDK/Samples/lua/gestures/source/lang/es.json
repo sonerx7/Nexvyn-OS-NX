@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "Gestos",
+  "tab_tilt": "Inclinación",
+  "reset": "Restablecer vista",
+  "calibrate": "Calibrar",
+  "test_rumble": "Probar vibración",
+  "view_info": "zoom {0} · ángulo {1}° · desplazamiento {2}, {3}",
+  "event_info": "eventos: pellizco {0} · rotación {1} · desplazamiento con dos dedos {2}",
+  "hint_gestures": "Dos dedos: pellizcar, girar, desplazar · ratón: arrastrar, rueda · Q/E: girar · doble toque restablece",
+  "hint_tilt": "Inclina la consola para hacer rodar la canica (también funcionan las flechas o el stick)",
+  "stars": "Estrellas: {0}",
+  "no_motion": "No hay datos del sensor de movimiento: usa las flechas o el stick izquierdo",
+  "motion_title": "input.motion()",
+  "menu_title": "Gestos"
+}

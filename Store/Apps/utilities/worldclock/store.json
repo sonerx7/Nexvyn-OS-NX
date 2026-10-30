@@ -1,0 +1,58 @@
+{
+  "subtitle": {
+    "en": "Time around the world, and when to meet",
+    "tr": "Dünyada saat kaç, ne zaman buluşmalı",
+    "de": "Uhrzeiten weltweit und wann ihr euch trefft",
+    "fr": "L’heure dans le monde et quand se réunir",
+    "es": "La hora en el mundo y cuándo reunirse",
+    "ja": "世界の時刻と、会議に最適な時間",
+    "zh": "世界各地的时间，以及何时开会",
+    "ko": "세계의 시간, 그리고 만나기 좋은 때"
+  },
+  "description": {
+    "en": "Keep your favorite cities side by side with analog mini clocks, the date and the difference to your own time, with daylight saving time handled for you. Travel through time with a slider to see what time it will be everywhere, and let the planner find the best hour for a call when everyone is at work.\n\n• 80 cities around the world, searchable by city or country\n• Analog mini clocks, day and night, DST marks\n• Time travel up to 12 hours either way\n• Meeting planner with working hours and the best overlap\n• Sort by your order, by time zone or by name; reorder and remove with undo\n• 24-hour or 12-hour format",
+    "tr": "Sevdiğin şehirleri analog mini saatler, tarih ve kendi saatinle farkıyla yan yana tut; yaz saati uygulamasını uygulama senin yerine hesaplar. Bir kaydırıcıyla zamanda yolculuk yap, her yerde saatin kaç olacağını gör; planlayıcı herkesin mesaide olduğu en iyi görüşme saatini bulsun.\n\n• Şehir ya da ülke adıyla aranabilen, dünyanın dört bir yanından 80 şehir\n• Analog mini saatler, gece ve gündüz, yaz saati işaretleri\n• İki yöne 12 saate kadar zamanda yolculuk\n• Mesai saatleri ve en iyi ortak zamanla toplantı planlayıcı\n• Kendi sıran, saat dilimi ya da ada göre sıralama; geri alınabilir taşıma ve silme\n• 24 saat ya da 12 saat biçimi",
+    "de": "Behalte deine Lieblingsstädte nebeneinander im Blick, mit analogen Mini-Uhren, Datum und Unterschied zu deiner Zeit, inklusive Sommerzeit. Reise mit einem Regler durch die Zeit, um zu sehen, wie spät es überall sein wird, und lass den Planer die beste Stunde für einen Anruf finden, wenn alle arbeiten.\n\n• 80 Städte weltweit, suchbar nach Stadt oder Land\n• Analoge Mini-Uhren, Tag und Nacht, Sommerzeit-Hinweise\n• Zeitreise bis zu 12 Stunden vor oder zurück\n• Meeting-Planer mit Arbeitszeiten und der besten Überschneidung\n• Sortierung nach eigener Reihenfolge, Zeitzone oder Name; Verschieben und Entfernen mit Rückgängig\n• 24- oder 12-Stunden-Format",
+    "fr": "Gardez vos villes préférées côte à côte avec des mini-horloges analogiques, la date et le décalage avec votre heure, heure d’été comprise. Voyagez dans le temps avec un curseur pour voir l’heure qu’il sera partout, et laissez le planificateur trouver le meilleur créneau d’appel quand tout le monde travaille.\n\n• 80 villes du monde entier, recherche par ville ou par pays\n• Mini-horloges analogiques, jour et nuit, indication de l’heure d’été\n• Voyage dans le temps jusqu’à 12 heures dans un sens ou l’autre\n• Planificateur de réunions avec heures de bureau et meilleur créneau commun\n• Tri selon votre ordre, le fuseau ou le nom ; déplacement et suppression annulables\n• Format 24 heures ou 12 heures",
+    "es": "Ten tus ciudades favoritas una junto a otra con minirrelojes analógicos, la fecha y la diferencia con tu hora, con el horario de verano ya calculado. Viaja en el tiempo con un control deslizante para ver qué hora será en todas partes y deja que el planificador encuentre la mejor hora para una llamada cuando todos estén trabajando.\n\n• 80 ciudades de todo el mundo, con búsqueda por ciudad o país\n• Minirrelojes analógicos, día y noche, avisos de horario de verano\n• Viaje en el tiempo de hasta 12 horas en cada sentido\n• Planificador de reuniones con horario laboral y la mejor coincidencia\n• Orden propio, por huso horario o por nombre; mueve y quita con deshacer\n• Formato de 24 o de 12 horas",
+    "ja": "お気に入りの都市を、アナログのミニ時計、日付、自分の時刻との差とともに並べて表示します。夏時間も自動で扱われます。スライダーで時間を旅して、各地が何時になるかを確認し、プランナーで全員が勤務中の通話に最適な時間を見つけましょう。\n\n• 都市名や国名で検索できる世界の 80 都市\n• アナログのミニ時計、昼と夜、夏時間の表示\n• 前後 12 時間までのタイムトラベル\n• 勤務時間と最適な重なりを表示する会議プランナー\n• 自分の並び順、タイムゾーン、名前で並べ替え。並び替えと取り消し可能な削除\n• 24 時間表示または 12 時間表示",
+    "zh": "用指针式迷你时钟并排显示你喜欢的城市，附有日期以及与你所在时间的时差，夏令时也会自动处理。拖动滑块穿越时间，看看各地届时是几点，并让规划工具找出大家都在上班时最适合通话的时间。\n\n• 全球 80 座城市，可按城市或国家搜索\n• 指针式迷你时钟、昼夜显示和夏令时标记\n• 前后穿越最多 12 小时\n• 带工作时间和最佳重叠时段的会议规划工具\n• 按你的顺序、时区或名称排序；可撤销的重新排列和移除\n• 24 小时制或 12 小时制",
+    "ko": "즐겨 찾는 도시를 아날로그 미니 시계, 날짜, 내 시간과의 차이와 함께 나란히 두세요. 서머타임도 자동으로 처리됩니다. 슬라이더로 시간 여행을 하며 모든 곳의 시간을 확인하고, 플래너가 모두 근무 중인 최적의 통화 시간을 찾아 줍니다.\n\n• 도시나 나라로 검색할 수 있는 전 세계 80개 도시\n• 아날로그 미니 시계, 낮과 밤, 서머타임 표시\n• 앞뒤로 최대 12시간 시간 여행\n• 근무 시간과 최적의 겹치는 시간을 보여 주는 회의 플래너\n• 내 순서, 시간대, 이름으로 정렬, 순서 변경과 실행 취소 가능한 제거\n• 24시간제 또는 12시간제"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.101 0.233",
+      "wait 0.6",
+      "wclick 0.5 0.118",
+      "wait 0.3",
+      "text Paris",
+      "wait 0.5",
+      "key enter",
+      "wait 0.6",
+      "wclick 0.101 0.233",
+      "wait 0.6",
+      "wclick 0.5 0.118",
+      "wait 0.3",
+      "text Dubai",
+      "wait 0.5",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key right",
+      "key right",
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "key home",
+      "key tab",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

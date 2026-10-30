@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "제스처",
+  "tab_tilt": "기울이기",
+  "reset": "보기 재설정",
+  "calibrate": "보정",
+  "test_rumble": "진동 테스트",
+  "view_info": "확대 {0} · 각도 {1}° · 이동 {2}, {3}",
+  "event_info": "이벤트: 핀치 {0} · 회전 {1} · 두 손가락 이동 {2}",
+  "hint_gestures": "두 손가락: 핀치, 회전, 이동 · 마우스: 드래그, 휠 · Q/E 회전 · 두 번 탭하면 재설정",
+  "hint_tilt": "콘솔을 기울여 구슬을 굴리세요(화살표 키나 스틱도 사용 가능)",
+  "stars": "별: {0}",
+  "no_motion": "모션 센서 데이터 없음: 화살표 키나 왼쪽 스틱을 사용하세요",
+  "motion_title": "input.motion()",
+  "menu_title": "제스처"
+}

@@ -1,0 +1,48 @@
+{
+  "subtitle": {
+    "en": "Flip the cards and find all the pairs",
+    "tr": "Kartları çevir, bütün eşleri bul",
+    "de": "Dreh die Karten um, finde alle Paare",
+    "fr": "Retournez les cartes, trouvez les paires",
+    "es": "Da la vuelta a las cartas y busca parejas",
+    "ja": "カードをめくってペアをすべて見つけよう",
+    "zh": "翻开卡牌，找出所有配对",
+    "ko": "카드를 뒤집어 모든 짝을 찾으세요"
+  },
+  "description": {
+    "en": "Turn over two cards at a time and remember where everything is to find all the matching pairs. Choose a small 4×3 board, the classic 4×4 or a big 6×5 challenge. Play solo against the clock and your own records, or take turns with a friend and see who finds more pairs. The cards flip with a smooth 3D-style animation, and a game in progress is saved.\n\n• Three board sizes\n• Solo with timer, moves and records, or two players\n• 3D-style card flips\n• Hints and a saved game in progress\n• Touch, controller or keyboard",
+    "tr": "Kartları ikişer ikişer çevir, neyin nerede olduğunu aklında tut ve bütün eşleri bul. Küçük 4×3 tahtayı, klasik 4×4'ü ya da büyük 6×5 meydan okumasını seç. Tek başına süreye ve kendi rekorlarına karşı oyna ya da bir arkadaşınla sırayla oynayıp kimin daha çok eş bulduğunu gör. Kartlar akıcı, 3B havasında bir animasyonla döner; yarım kalan oyunun kaydedilir.\n\n• Üç tahta boyutu\n• Süre, hamle ve rekorlarla tek kişilik ya da iki oyuncu\n• 3B havasında kart çevirme\n• İpucu ve kaydedilen yarım oyun\n• Dokunmatik, kumanda ya da klavye",
+    "de": "Dreh jeweils zwei Karten um und merk dir, wo was liegt, um alle passenden Paare zu finden. Wähle ein kleines 4×3-Brett, das klassische 4×4 oder die große 6×5-Herausforderung. Spiel allein gegen die Uhr und deine eigenen Rekorde oder abwechselnd mit einem Freund und schau, wer mehr Paare findet. Die Karten drehen sich mit einer flüssigen Animation im 3D-Stil, und ein laufendes Spiel wird gespeichert.\n\n• Drei Brettgrößen\n• Allein mit Zeit, Zügen und Rekorden oder zu zweit\n• Kartendrehungen im 3D-Stil\n• Tipps und gespeichertes laufendes Spiel\n• Touch, Controller oder Tastatur",
+    "fr": "Retournez deux cartes à la fois et retenez l’emplacement de chacune pour trouver toutes les paires. Choisissez un petit plateau 4×3, le 4×4 classique ou le grand défi 6×5. Jouez seul contre la montre et vos propres records, ou à tour de rôle avec un ami pour voir qui trouve le plus de paires. Les cartes se retournent avec une animation fluide façon 3D, et la partie en cours est sauvegardée.\n\n• Trois tailles de plateau\n• Seul avec chrono, coups et records, ou à deux\n• Cartes qui se retournent façon 3D\n• Indices et partie en cours sauvegardée\n• Tactile, manette ou clavier",
+    "es": "Da la vuelta a dos cartas cada vez y recuerda dónde está cada una para encontrar todas las parejas. Elige un tablero pequeño de 4×3, el clásico 4×4 o el gran reto de 6×5. Juega solo contra el reloj y tus propios récords, o por turnos con un amigo para ver quién encuentra más parejas. Las cartas giran con una animación fluida de estilo 3D y la partida en curso se guarda.\n\n• Tres tamaños de tablero\n• Solo con tiempo, movimientos y récords, o dos jugadores\n• Cartas que giran con estilo 3D\n• Pistas y partida en curso guardada\n• Táctil, mando o teclado",
+    "ja": "カードを 2 枚ずつめくり、どこに何があったかを覚えて、すべてのペアを見つけましょう。小さな 4×3、定番の 4×4、大きな 6×5 の盤から選べます。1 人でタイムと自己記録に挑むか、友だちと交互にめくってどちらが多くペアを見つけるか競いましょう。カードは滑らかな 3D 風のアニメーションでめくれ、プレイ中のゲームは保存されます。\n\n• 3 つの盤サイズ\n• タイム、手数、記録付きの 1 人プレイ、または 2 人プレイ\n• 3D 風のカードめくり\n• ヒントとプレイ中のゲームの保存\n• タッチ、コントローラー、キーボード",
+    "zh": "一次翻开两张牌，记住每张牌的位置，找出所有相同的配对。可选择小号 4×3 牌面、经典 4×4 或大号 6×5 挑战。单人与时间和自己的纪录较量，或与朋友轮流翻牌，看谁找到的配对更多。卡牌翻转带有流畅的 3D 风格动画，进行中的游戏会被保存。\n\n• 三种牌面大小\n• 带计时、步数和纪录的单人模式，或双人模式\n• 3D 风格的翻牌效果\n• 提示和进行中游戏的存档\n• 触控、手柄或键盘",
+    "ko": "카드를 두 장씩 뒤집으며 위치를 기억해 짝이 맞는 카드를 모두 찾으세요. 작은 4×3 보드, 클래식 4×4, 큰 6×5 도전 중에서 고르세요. 시간과 나만의 기록에 맞서 혼자 하거나, 친구와 번갈아 하며 누가 더 많은 짝을 찾는지 겨루세요. 카드는 부드러운 3D 스타일 애니메이션으로 뒤집히며, 진행 중인 게임은 저장됩니다.\n\n• 보드 크기 3종\n• 타이머, 이동 횟수, 기록이 있는 혼자 하기 또는 2인 플레이\n• 3D 스타일 카드 뒤집기\n• 힌트와 진행 중인 게임 저장\n• 터치, 컨트롤러, 키보드"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.2"
+    ],
+    [
+      "key enter",
+      "wait 0.5",
+      "key right",
+      "key enter",
+      "wait 0.5"
+    ],
+    [
+      "wait 1.2",
+      "key down",
+      "key enter",
+      "wait 0.3",
+      "key h",
+      "wait 0.5",
+      "dark 1",
+      "wait 1"
+    ]
+  ]
+}

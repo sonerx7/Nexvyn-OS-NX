@@ -1,0 +1,17 @@
+{
+  "hint": "드래그하여 궤도 회전 · 휠 또는 핀치로 확대/축소",
+  "sun": "태양",
+  "ambient": "주변광",
+  "fog": "안개",
+  "textures": "텍스처",
+  "auto_orbit": "자동 궤도 회전",
+  "auto_sun": "움직이는 태양",
+  "wireframe": "와이어프레임",
+  "labels": "레이블",
+  "reset_view": "카메라 재설정",
+  "stats": "삼각형 {0}개 · {1} · {2} FPS",
+  "label_pedestal": "팔각 받침대 + 구",
+  "label_crates": "상자: 면마다 UV 세트 하나",
+  "label_wall": "곡면 벽: UV가 호를 따라감",
+  "menu_title": "장면"
+}

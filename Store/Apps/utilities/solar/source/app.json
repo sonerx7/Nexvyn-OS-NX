@@ -1,0 +1,33 @@
+{
+  "id": "solar",
+  "name": {
+    "en": "Solar System",
+    "tr": "Güneş Sistemi",
+    "de": "Sonnensystem",
+    "fr": "Système solaire",
+    "es": "Sistema solar",
+    "ja": "太陽系",
+    "zh": "太阳系",
+    "ko": "태양계"
+  },
+  "description": {
+    "en": "The Sun, eight planets and the Moon moving on their real orbital periods, starting from today's date.",
+    "tr": "Güneş, sekiz gezegen ve Ay, bugünün tarihinden başlayarak gerçek yörünge süreleriyle hareket eder.",
+    "de": "Die Sonne, acht Planeten und der Mond bewegen sich mit ihren echten Umlaufzeiten, ausgehend vom heutigen Datum.",
+    "fr": "Le Soleil, huit planètes et la Lune se déplacent selon leurs vraies périodes orbitales, à partir de la date du jour.",
+    "es": "El Sol, ocho planetas y la Luna se mueven según sus periodos orbitales reales, a partir de la fecha de hoy."
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 980,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": true,
+  "permissions": []
+}

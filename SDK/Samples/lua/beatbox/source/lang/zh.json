@@ -1,0 +1,20 @@
+{
+  "kick": "底鼓",
+  "snare": "军鼓",
+  "clap": "拍手",
+  "hat": "踩镲",
+  "open_hat": "开镲",
+  "tom": "嗵鼓",
+  "play": "播放",
+  "stop": "停止",
+  "clear": "清除",
+  "tempo": "速度 {0}",
+  "swing": "摇摆 {0}%",
+  "preset_house": "浩室",
+  "preset_break": "碎拍",
+  "preset_hiphop": "嘻哈",
+  "preset_bossa": "波萨诺瓦",
+  "hint": "轻点打击垫：开 → 重音 → 关 · 轻点名称可静音 · 空格播放，1-6 静音对应行",
+  "unmute_all": "全部取消静音",
+  "menu_title": "节拍盒"
+}

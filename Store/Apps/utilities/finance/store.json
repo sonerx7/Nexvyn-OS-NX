@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "Loans, savings, percentages and VAT",
+    "tr": "Kredi, birikim, yüzde ve KDV hesapları",
+    "de": "Kredit, Sparen, Prozente und Mehrwertsteuer",
+    "fr": "Prêts, épargne, pourcentages et TVA",
+    "es": "Préstamos, ahorro, porcentajes e IVA",
+    "ja": "ローン、貯蓄、パーセント、消費税",
+    "zh": "贷款、储蓄、百分比和增值税",
+    "ko": "대출, 저축, 퍼센트, 부가세"
+  },
+  "description": {
+    "en": "Four everyday money calculators in one window, each with live results as you type. Work out a loan or mortgage with its full payment plan, watch savings grow with compound interest, solve percentage questions and add or remove VAT.\n\n• Loan: monthly payment, total payment and interest, term in years or months\n• Amortization schedule by month or by year\n• Savings: initial deposit, monthly contributions and return, with a growth chart by year\n• Percent: percentage of a value, what percent, percentage change and adding a percentage\n• VAT: common rates or your own, adding or removing VAT, with the net/VAT split",
+    "tr": "Dört günlük para hesaplayıcısı tek pencerede; hepsi sen yazdıkça sonucu gösterir. Kredi ya da konut kredisini tam ödeme planıyla hesapla, birikimin bileşik faizle nasıl büyüdüğünü izle, yüzde sorularını çöz, KDV ekle ya da çıkar.\n\n• Kredi: aylık taksit, toplam ödeme ve faiz; vade yıl ya da ay olarak\n• Aylık ya da yıllık ödeme tablosu\n• Birikim: başlangıç tutarı, aylık katkı ve getiri, yıllara göre büyüme grafiği\n• Yüzde: bir sayının yüzdesi, kaç yüzde, yüzde değişim ve yüzde ekleme\n• KDV: yaygın oranlar ya da kendi oranın, KDV ekleme veya çıkarma, net/KDV dağılımıyla",
+    "de": "Vier alltägliche Geldrechner in einem Fenster, alle mit Live-Ergebnissen beim Tippen. Berechne einen Kredit oder eine Hypothek samt Tilgungsplan, sieh dein Erspartes mit Zinseszins wachsen, löse Prozentfragen und rechne Mehrwertsteuer hinzu oder heraus.\n\n• Kredit: Monatsrate, Gesamtbetrag und Zinsen, Laufzeit in Jahren oder Monaten\n• Tilgungsplan nach Monaten oder Jahren\n• Sparen: Startbetrag, monatliche Einzahlung und Rendite, mit Wachstumsdiagramm\n• Prozent: Anteil eines Werts, wie viel Prozent, prozentuale Änderung und Aufschlag\n• MwSt.: gängige oder eigene Sätze, hinzurechnen oder herausrechnen, mit Netto/MwSt.-Aufteilung",
+    "fr": "Quatre calculatrices financières du quotidien dans une seule fenêtre, avec des résultats en direct pendant la saisie. Calculez un prêt ou un crédit immobilier avec son tableau d’amortissement, regardez votre épargne grandir grâce aux intérêts composés, résolvez vos pourcentages et ajoutez ou retirez la TVA.\n\n• Prêt : mensualité, coût total et intérêts, durée en années ou en mois\n• Tableau d’amortissement par mois ou par année\n• Épargne : dépôt initial, versements mensuels et rendement, avec un graphique par année\n• Pourcentages : part d’une valeur, quel pourcentage, variation et ajout d’un pourcentage\n• TVA : taux courants ou personnalisé, ajout ou retrait, avec la répartition HT/TVA",
+    "es": "Cuatro calculadoras de dinero del día a día en una sola ventana, todas con resultados al instante mientras escribes. Calcula un préstamo o una hipoteca con su plan de pagos, mira cómo crecen tus ahorros con interés compuesto, resuelve porcentajes y suma o quita el IVA.\n\n• Préstamo: cuota mensual, total a pagar e intereses, plazo en años o meses\n• Cuadro de amortización por meses o por años\n• Ahorro: depósito inicial, aportación mensual y rentabilidad, con gráfico por años\n• Porcentajes: porcentaje de un valor, qué porcentaje es, variación y sumar un porcentaje\n• IVA: tipos habituales o propio, sumar o quitar, con el reparto neto/IVA",
+    "ja": "日常で使う 4 つのお金の計算機をひとつのウィンドウに。どれも入力と同時に結果が表示されます。ローンや住宅ローンの返済計画を計算し、複利で貯蓄が増える様子を確認し、パーセントの問題を解き、税の加算や除外ができます。\n\n• ローン: 毎月の返済額、返済総額と利息、年または月単位の期間\n• 月ごとまたは年ごとの返済予定表\n• 貯蓄: 初期預金、毎月の積立と利回り、年ごとの推移グラフ\n• パーセント: 値のパーセンテージ、何パーセントか、変化率、パーセンテージの加算\n• 消費税: よく使う税率または任意の税率、税の加算・除外と税抜/税の内訳",
+    "zh": "四种日常理财计算器集于一个窗口，输入时即可实时得出结果。计算贷款或房贷及完整的还款计划，看着储蓄在复利下增长，解答百分比问题，以及加上或扣除增值税。\n\n• 贷款：每月还款、还款总额和利息，期限以年或月计\n• 按月或按年的还款计划表\n• 储蓄：初始存款、每月存入和收益率，附逐年增长图表\n• 百分比：某值的百分比、占百分之几、百分比变化和加上百分比\n• 增值税：常用税率或自定税率，加上或扣除增值税，并显示净额与税额的拆分",
+    "ko": "일상적인 금융 계산기 네 가지를 한 창에 담았으며, 입력하는 즉시 결과가 나옵니다. 전체 상환 계획과 함께 대출이나 주택 담보 대출을 계산하고, 복리로 저축이 불어나는 것을 확인하고, 퍼센트 문제를 풀고, 부가세를 더하거나 빼세요.\n\n• 대출: 월 상환액, 총 상환액과 이자, 년 또는 개월 단위 기간\n• 월별 또는 연도별 상환 일정\n• 저축: 초기 예치금, 월 납입액, 수익률과 연도별 증가 차트\n• 퍼센트: 값의 퍼센트, 몇 퍼센트인지, 증감률, 퍼센트 더하기\n• 부가세: 일반 세율 또는 직접 입력, 부가세 더하기 또는 빼기와 공급가액/부가세 분할"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "key 4",
+      "wait 1.5"
+    ],
+    [
+      "key 3",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

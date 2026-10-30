@@ -1,0 +1,13 @@
+{
+  "roughness": "Rugosité",
+  "zoom": "Taille des reliefs",
+  "water": "Niveau de la mer",
+  "flat": "Ombrage low-poly",
+  "new_island": "Nouvelle île",
+  "seed": "Graine {0} · générée en {1} ms",
+  "stats": "{0} triangles · {1} · {2} FPS",
+  "autopilot": "Pilote automatique · bougez ou faites glisser pour reprendre la main",
+  "controls": "Stick gauche / WASD : voler · stick droit / flèches / glisser : regarder · ZR ZL / E Q : monter et descendre",
+  "autopilot_menu": "Pilote automatique",
+  "menu_title": "Terrain"
+}

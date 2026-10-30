@@ -1,0 +1,17 @@
+{
+  "coins": "{0} / {1}",
+  "time": "Süre {0}",
+  "best": "En iyi {0}",
+  "hint": "Hareket: çubuk / oklar   Zıpla: A / Boşluk   Tahtadan aşağı in: aşağı + zıpla",
+  "all_coins": "Tüm altınlar toplandı! Bayrağa koş",
+  "coins_left": "{0} altın kaldı",
+  "clear": "Bölüm tamam!",
+  "result": "Süre {0}   Düşüş {1}",
+  "new_record": "Yeni rekor!",
+  "again": "Tekrar oyna",
+  "menu_title": "Platform",
+  "restart": "Yeniden başlat",
+  "debug": "Çarpışma kutularını göster (hata ayıklama)",
+  "reset_record": "En iyi süreyi sıfırla",
+  "record_reset": "En iyi süre silindi"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "gameinfo",
+  "name": {
+    "en": "Game Info",
+    "tr": "Oyun Bilgileri",
+    "de": "Spielinfo",
+    "fr": "Infos jeu",
+    "es": "Información del juego",
+    "ko": "게임 정보"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 960,
+    "height": 620,
+    "minWidth": 420,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

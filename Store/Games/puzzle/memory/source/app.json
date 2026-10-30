@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.memory",
+  "name": {
+    "en": "Memory Cards",
+    "tr": "Hafıza Kartları",
+    "de": "Memory",
+    "fr": "Memory",
+    "es": "Cartas de memoria",
+    "ja": "神経衰弱",
+    "zh": "记忆翻牌",
+    "ko": "카드 짝 맞추기"
+  },
+  "description": {
+    "en": "Flip the cards and find all the pairs. Three board sizes, best times, and a two-player mode.",
+    "tr": "Kartları çevirip tüm eşleri bulun. Üç tahta boyutu, en iyi süreler ve iki oyunculu mod.",
+    "de": "Decke die Karten auf und finde alle Paare. Drei Feldgrößen, Bestzeiten und ein Modus für zwei Spieler.",
+    "fr": "Retournez les cartes et trouvez toutes les paires. Trois tailles de plateau, meilleurs temps et un mode à deux joueurs.",
+    "es": "Da la vuelta a las cartas y encuentra todas las parejas. Tres tamaños de tablero, mejores tiempos y un modo para dos jugadores."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 640,
+    "height": 640,
+    "minWidth": 460,
+    "minHeight": 520,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

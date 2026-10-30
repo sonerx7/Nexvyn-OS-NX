@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Fresh puzzles in three difficulties",
+    "tr": "Üç zorlukta, her seferinde yeni bulmaca",
+    "de": "Immer neue Rätsel in drei Stufen",
+    "fr": "Des grilles inédites en trois niveaux",
+    "es": "Sudokus nuevos en tres dificultades",
+    "ja": "3 つの難易度の新しいパズル",
+    "zh": "三种难度的全新谜题",
+    "ko": "세 가지 난이도의 새로운 퍼즐"
+  },
+  "description": {
+    "en": "Fill every row, column and 3×3 box with the digits 1 to 9. Every puzzle is freshly generated with exactly one solution, in easy, medium or hard. Pencil in notes, let mistakes light up, and see the selected row, column, box and digit highlighted across the grid. A hint is there whenever you need one, and your best time is saved for each difficulty.\n\n• Unlimited generated puzzles with a unique solution\n• Easy, medium and hard\n• Pencil notes and mistake highlighting\n• Hints, undo, a timer and best times\n• Touch number pad, controller or keyboard",
+    "tr": "Her satırı, sütunu ve 3×3 kutuyu 1'den 9'a kadar rakamlarla doldur. Her bulmaca tek çözümlü olarak yeniden üretilir: kolay, orta ya da zor. Kurşun kalem notları al, hatalar kırmızıyla belirsin; seçili satır, sütun, kutu ve rakam ızgara boyunca vurgulanır. İhtiyacın olduğunda ipucu hep hazır, her zorluk için en iyi süren kaydedilir.\n\n• Tek çözümlü, sınırsız üretilen bulmacalar\n• Kolay, orta ve zor\n• Kurşun kalem notları ve hata vurgulama\n• İpucu, geri alma, süre ve en iyi süreler\n• Dokunmatik tuş takımı, kumanda ya da klavye",
+    "de": "Füll jede Zeile, jede Spalte und jeden 3×3-Block mit den Ziffern 1 bis 9. Jedes Rätsel wird frisch erzeugt und hat genau eine Lösung, wahlweise leicht, mittel oder schwer. Trag Notizen ein, lass Fehler aufleuchten und sieh die gewählte Zeile, Spalte, den Block und die Ziffer im ganzen Gitter hervorgehoben. Ein Tipp ist immer da, wenn du ihn brauchst, und deine Bestzeit wird für jede Stufe gespeichert.\n\n• Unbegrenzt erzeugte Rätsel mit eindeutiger Lösung\n• Leicht, mittel und schwer\n• Bleistiftnotizen und Fehlermarkierung\n• Tipps, Rückgängig, Timer und Bestzeiten\n• Touch-Ziffernblock, Controller oder Tastatur",
+    "fr": "Remplissez chaque ligne, chaque colonne et chaque carré 3×3 avec les chiffres de 1 à 9. Chaque grille est générée à neuf avec une solution unique, en facile, moyen ou difficile. Notez vos candidats au crayon, laissez les erreurs s’allumer et voyez la ligne, la colonne, le carré et le chiffre sélectionnés mis en évidence. Un indice est toujours disponible, et votre meilleur temps est conservé pour chaque difficulté.\n\n• Des grilles générées à l’infini, à solution unique\n• Facile, moyen et difficile\n• Notes au crayon et erreurs mises en évidence\n• Indices, annulation, chrono et meilleurs temps\n• Pavé numérique tactile, manette ou clavier",
+    "es": "Rellena cada fila, columna y caja de 3×3 con los números del 1 al 9. Cada sudoku se genera de nuevo con una única solución, en fácil, medio o difícil. Apunta notas a lápiz, deja que los errores se iluminen y ve resaltadas en toda la cuadrícula la fila, la columna, la caja y el número seleccionados. Siempre tienes una pista a mano y se guarda tu mejor tiempo en cada dificultad.\n\n• Sudokus generados sin límite y con solución única\n• Fácil, medio y difícil\n• Notas a lápiz y errores resaltados\n• Pistas, deshacer, cronómetro y mejores tiempos\n• Teclado numérico táctil, mando o teclado",
+    "ja": "すべての行、列、3×3 のブロックを 1〜9 の数字で埋めましょう。どのパズルも解がちょうど 1 つになるように新しく生成され、かんたん、ふつう、むずかしいから選べます。メモを書き込み、ミスを強調表示し、選択した行、列、ブロック、数字がグリッド全体で強調されます。ヒントはいつでも使え、難易度ごとにベストタイムが保存されます。\n\n• 解が 1 つだけの無制限に生成されるパズル\n• かんたん、ふつう、むずかしい\n• メモとミスの強調表示\n• ヒント、取り消し、タイマー、ベストタイム\n• タッチの数字パッド、コントローラー、キーボード",
+    "zh": "用 1 到 9 的数字填满每一行、每一列和每个 3×3 宫。每个谜题都是新生成的，且只有唯一解，分为简单、中等和困难。用铅笔记下笔记，让错误高亮显示，所选的行、列、宫和数字会在整个网格中高亮。需要时随时可以使用提示，每种难度都会保存你的最佳用时。\n\n• 无限生成、具有唯一解的谜题\n• 简单、中等和困难\n• 铅笔笔记和错误高亮\n• 提示、撤销、计时器和最佳用时\n• 触控数字键盘、手柄或键盘",
+    "ko": "모든 행, 열, 3×3 상자를 1부터 9까지의 숫자로 채우세요. 모든 퍼즐은 해답이 정확히 하나인 새 퍼즐로 쉬움, 보통, 어려움 중에서 생성됩니다. 메모를 적고, 실수를 강조 표시하고, 선택한 행, 열, 상자, 숫자가 격자 전체에서 강조되는 것을 보세요. 필요할 때마다 힌트가 있으며, 난이도별 최고 기록이 저장됩니다.\n\n• 해답이 하나뿐인 무제한 생성 퍼즐\n• 쉬움, 보통, 어려움\n• 메모와 실수 강조 표시\n• 힌트, 실행 취소, 타이머, 최고 기록\n• 터치 숫자 패드, 컨트롤러, 키보드"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key h",
+      "wait 0.6",
+      "key h",
+      "wait 0.6",
+      "key h",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "key n",
+      "wait 1.2"
+    ]
+  ]
+}

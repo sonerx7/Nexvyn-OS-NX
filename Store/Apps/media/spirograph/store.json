@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Draw dazzling curves with rolling gears",
+    "tr": "Dönen çarklarla büyüleyici desenler çiz",
+    "de": "Faszinierende Kurven mit rollenden Rädern",
+    "fr": "Des courbes éblouissantes à l’engrenage",
+    "es": "Dibuja curvas fascinantes con engranajes",
+    "ja": "回る歯車で目を見張る曲線を描く",
+    "zh": "用滚动的齿轮画出炫目的曲线",
+    "ko": "굴러가는 톱니바퀴로 눈부신 곡선을 그리세요"
+  },
+  "description": {
+    "en": "Spirograph brings the classic drawing toy to your screen. Roll a wheel inside or outside a ring and watch the pen trace the curve live, with the turning gear and pen arm on show. Adjust the ring size, wheel size and pen distance, then stack up to eight layers, each with its own colour and line width. Start from the Flower, Star, Rose, Galaxy or Lace presets, or let Random surprise you.\n\n• Inside ring (hypotrochoid) and outside ring (epitrochoid) curves\n• Up to 8 layers with their own colour and line width\n• Live drawing with speed control, pause and redraw\n• Gallery for up to 24 designs with thumbnails\n• Dark or light canvas; Space pauses, R randomizes, Enter redraws",
+    "tr": "Spirograf, klasik çizim oyuncağını ekranına getirir. Bir çarkı halkanın içinde ya da dışında döndür, kalemin eğriyi canlı çizişini izle; dönen çark ve kalem kolu da ekranda görünür. Halka ve çark boyutunu, kalem uzaklığını ayarla, her biri kendi rengi ve çizgi kalınlığına sahip sekiz katmana kadar üst üste ekle. Çiçek, Yıldız, Gül, Galaksi ya da Dantel desenleriyle başla ya da Rastgele seni şaşırtsın.\n\n• İç halka (hipotrokoid) ve dış halka (epitrokoid) eğrileri\n• Kendi rengi ve kalınlığı olan 8 katmana kadar\n• Hız ayarı, duraklatma ve yeniden çizme ile canlı çizim\n• Küçük resimli galeride 24 tasarıma kadar\n• Koyu ya da açık tuval; Boşluk duraklatır, R rastgele, Enter yeniden çizer",
+    "de": "Der Spirograph bringt das klassische Zeichenspielzeug auf deinen Bildschirm. Lass ein Rad innerhalb oder außerhalb eines Rings abrollen und sieh zu, wie der Stift die Kurve live zeichnet – mit sichtbarem Zahnrad und Stiftarm. Stell Ring- und Radgröße sowie den Stiftabstand ein und lege bis zu acht Ebenen übereinander, jede mit eigener Farbe und Linienstärke. Starte mit den Vorlagen Blume, Stern, Rose, Galaxie oder Spitze, oder lass dich von Zufällig überraschen.\n\n• Kurven im inneren Ring (Hypotrochoide) und äußeren Ring (Epitrochoide)\n• Bis zu 8 Ebenen mit eigener Farbe und Linienstärke\n• Live-Zeichnen mit Tempo, Pause und Neuzeichnen\n• Galerie für bis zu 24 Designs mit Vorschaubildern\n• Dunkle oder helle Leinwand; Leertaste pausiert, R würfelt, Enter zeichnet neu",
+    "fr": "Spirographe fait revivre le célèbre jouet de dessin sur votre écran. Faites rouler une roue à l’intérieur ou à l’extérieur d’un anneau et regardez le stylo tracer la courbe en direct, engrenage et bras du stylo bien visibles. Réglez la taille de l’anneau, celle de la roue et la distance du stylo, puis superposez jusqu’à huit calques, chacun avec sa couleur et son épaisseur. Partez des modèles Fleur, Étoile, Rose, Galaxie ou Dentelle, ou laissez Aléatoire vous surprendre.\n\n• Courbes en anneau intérieur (hypotrochoïde) et extérieur (épitrochoïde)\n• Jusqu’à 8 calques avec couleur et épaisseur propres\n• Tracé en direct avec vitesse, pause et nouveau tracé\n• Galerie de 24 créations avec vignettes\n• Toile sombre ou claire ; Espace met en pause, R pour l’aléatoire, Entrée retrace",
+    "es": "Espirógrafo trae el clásico juguete de dibujo a tu pantalla. Haz rodar una rueda dentro o fuera de un anillo y mira cómo el lápiz traza la curva en directo, con el engranaje y el brazo del lápiz a la vista. Ajusta el tamaño del anillo, el de la rueda y la distancia del lápiz, y apila hasta ocho capas, cada una con su color y grosor de línea. Empieza con los diseños Flor, Estrella, Rosa, Galaxia o Encaje, o deja que Aleatorio te sorprenda.\n\n• Curvas de anillo interior (hipotrocoide) y exterior (epitrocoide)\n• Hasta 8 capas con su propio color y grosor\n• Dibujo en directo con velocidad, pausa y redibujado\n• Galería de hasta 24 diseños con miniaturas\n• Lienzo oscuro o claro; Espacio pausa, R aleatoriza, Intro redibuja",
+    "ja": "スピログラフは、おなじみのお絵かきおもちゃを画面に再現します。リングの内側や外側で歯車を転がし、ペンが曲線をリアルタイムに描く様子を、回る歯車とペンの腕と一緒に眺めましょう。リングのサイズ、歯車のサイズ、ペンの位置を調整し、それぞれ独自の色と線の太さを持つレイヤーを最大 8 枚重ねられます。花、星、バラ、銀河、レースのプリセットから始めるか、ランダムにおまかせしましょう。\n\n• 内側のリング (内トロコイド) と外側のリング (外トロコイド) の曲線\n• 色と線の太さを個別に設定できる最大 8 枚のレイヤー\n• 速度調整、一時停止、描き直しができるリアルタイム描画\n• サムネイル付きで最大 24 個のデザインを保存できるギャラリー\n• ダークまたはライトのキャンバス、Space で一時停止、R でランダム、Enter で描き直し",
+    "zh": "万花尺把经典的绘画玩具搬上了你的屏幕。让齿轮在圆环内侧或外侧滚动，实时看着笔尖描绘出曲线，转动的齿轮和笔臂一目了然。调整圆环大小、齿轮大小和笔尖距离，然后叠加最多八个图层，每层都有自己的颜色和线宽。从花朵、星星、玫瑰、星系或蕾丝预设开始，或让“随机”给你惊喜。\n\n• 内圈（内摆线）和外圈（外摆线）曲线\n• 最多 8 个图层，各有颜色和线宽\n• 实时绘制，可控制速度、暂停和重新绘制\n• 可保存最多 24 个图案的带缩略图图库\n• 深色或浅色画布；空格暂停，R 随机，Enter 重新绘制",
+    "ko": "스피로그래프는 클래식 그리기 장난감을 화면으로 가져옵니다. 링 안쪽이나 바깥쪽으로 바퀴를 굴리면 펜이 곡선을 실시간으로 그리며, 돌아가는 톱니바퀴와 펜 팔도 보입니다. 링 크기, 바퀴 크기, 펜 거리를 조절한 후 저마다 색상과 선 굵기가 다른 레이어를 최대 8개까지 쌓으세요. 꽃, 별, 장미, 은하, 레이스 프리셋으로 시작하거나 무작위로 놀라움을 경험해 보세요.\n\n• 안쪽 링(하이포트로코이드)과 바깥쪽 링(에피트로코이드) 곡선\n• 각자 색상과 선 굵기를 가진 최대 8개 레이어\n• 속도 조절, 일시 정지, 다시 그리기가 가능한 실시간 그리기\n• 썸네일이 있는 최대 24개 디자인 갤러리\n• 어두운 또는 밝은 캔버스, Space 일시 정지, R 무작위, Enter 다시 그리기"
+  },
+  "shots": [
+    ["wait 6"],
+    ["key r", "wait 6"],
+    ["key right", "key r", "wait 6"],
+    ["dark 1", "key r", "wait 6"]
+  ]
+}

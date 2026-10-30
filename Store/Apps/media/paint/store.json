@@ -1,0 +1,68 @@
+{
+  "subtitle": {
+    "en": "Draw, sketch and edit images",
+    "tr": "Çiz, karala, resim düzenle",
+    "de": "Zeichnen, skizzieren, Bilder bearbeiten",
+    "fr": "Dessinez, esquissez, retouchez",
+    "es": "Dibuja, haz bocetos y edita imágenes",
+    "ja": "描いて、スケッチして、画像を編集",
+    "zh": "绘画、素描和编辑图像",
+    "ko": "그리고, 스케치하고, 이미지를 편집하세요"
+  },
+  "description": {
+    "en": "A friendly paint program for your Switch, made for touch as much as for a mouse. Draw with a pencil or a soft brush, add lines, rectangles, ellipses and text, fill areas with a tap, and pick colours with the eyedropper or a full colour panel. Select, move, copy and paste parts of the picture, and undo anything. Open PNG images to edit them, then save as PNG or export to JPEG or BMP.\n\n• Pencil, brush, eraser, fill, eyedropper and text\n• Lines, rectangles and ellipses, outlined or filled\n• Size, opacity, hardness and fill tolerance\n• Colour square, hex input and recent colours\n• Selections with copy, cut, paste, crop and delete\n• Flip, rotate, invert, grayscale, zoom and undo / redo",
+    "tr": "Switch'in için, fare kadar dokunmatik ekrana da uygun sevimli bir çizim programı. Kalemle ya da yumuşak fırçayla çiz; çizgi, dikdörtgen, elips ve metin ekle, alanları tek dokunuşla boya, renkleri damlalıkla ya da tam renk panelinden seç. Resmin parçalarını seç, taşı, kopyala, yapıştır, her şeyi geri al. PNG resimleri açıp düzenle, PNG olarak kaydet ya da JPEG veya BMP olarak dışa aktar.\n\n• Kalem, fırça, silgi, boya kovası, damlalık ve metin\n• Dış çizgili ya da dolgulu çizgi, dikdörtgen ve elips\n• Boyut, opaklık, sertlik ve dolgu toleransı\n• Renk karesi, hex girişi ve son kullanılan renkler\n• Kopyala, kes, yapıştır, kırp ve sil seçenekli seçimler\n• Çevir, döndür, renkleri ters çevir, gri tonlama, yakınlaştırma, geri al / yinele",
+    "de": "Ein freundliches Malprogramm für deine Switch, für Touch genauso gemacht wie für die Maus. Zeichne mit Bleistift oder weichem Pinsel, füge Linien, Rechtecke, Ellipsen und Text hinzu, fülle Flächen mit einem Tipp und wähle Farben mit der Pipette oder einem vollständigen Farbfeld. Markiere, verschiebe, kopiere und füge Bildteile ein und mach alles rückgängig. Öffne PNG-Bilder, speichere als PNG oder exportiere als JPEG oder BMP.\n\n• Bleistift, Pinsel, Radierer, Füllen, Pipette und Text\n• Linien, Rechtecke und Ellipsen, umrandet oder gefüllt\n• Größe, Deckkraft, Härte und Fülltoleranz\n• Farbfeld, Hex-Eingabe und zuletzt benutzte Farben\n• Auswahl mit Kopieren, Ausschneiden, Einfügen, Zuschneiden\n• Spiegeln, Drehen, Invertieren, Graustufen, Zoom, Rückgängig",
+    "fr": "Un logiciel de dessin convivial pour votre Switch, pensé pour le tactile autant que pour la souris. Dessinez au crayon ou au pinceau doux, ajoutez lignes, rectangles, ellipses et texte, remplissez des zones d’un geste et choisissez vos couleurs à la pipette ou dans un panneau complet. Sélectionnez, déplacez, copiez et collez des parties de l’image, et annulez tout. Ouvrez des PNG pour les retoucher, puis enregistrez en PNG ou exportez en JPEG ou BMP.\n\n• Crayon, pinceau, gomme, remplissage, pipette et texte\n• Lignes, rectangles et ellipses, en contour ou pleins\n• Taille, opacité, dureté et tolérance de remplissage\n• Carré de couleur, saisie hexadécimale et couleurs récentes\n• Sélections avec copier, couper, coller, rogner et supprimer\n• Miroir, rotation, inversion, niveaux de gris, zoom, annuler / rétablir",
+    "es": "Un programa de dibujo amigable para tu Switch, pensado tanto para el táctil como para el ratón. Dibuja con lápiz o pincel suave, añade líneas, rectángulos, elipses y texto, rellena zonas con un toque y elige colores con el cuentagotas o un panel de color completo. Selecciona, mueve, copia y pega partes de la imagen, y deshaz lo que quieras. Abre imágenes PNG para editarlas y guárdalas en PNG o expórtalas a JPEG o BMP.\n\n• Lápiz, pincel, borrador, relleno, cuentagotas y texto\n• Líneas, rectángulos y elipses, con contorno o rellenos\n• Tamaño, opacidad, dureza y tolerancia del relleno\n• Cuadro de color, entrada hexadecimal y colores recientes\n• Selecciones con copiar, cortar, pegar, recortar y borrar\n• Voltear, girar, invertir, escala de grises, zoom, deshacer / rehacer",
+    "ja": "マウスと同じくらいタッチにも適した、Switch 向けの使いやすいペイントプログラム。鉛筆や柔らかいブラシで描き、直線、長方形、楕円、テキストを加え、タップで範囲を塗りつぶし、スポイトやフルカラーパネルで色を選べます。絵の一部を選択、移動、コピー、ペーストでき、何でも取り消せます。PNG 画像を開いて編集し、PNG で保存したり JPEG や BMP に書き出したりできます。\n\n• 鉛筆、ブラシ、消しゴム、塗りつぶし、スポイト、テキスト\n• 輪郭または塗りつぶしの直線、長方形、楕円\n• サイズ、不透明度、硬さ、塗りつぶしの許容値\n• カラースクエア、16 進入力、最近使った色\n• コピー、カット、ペースト、切り抜き、削除ができる選択範囲\n• 反転、回転、色の反転、グレースケール、ズーム、取り消し / やり直し",
+    "zh": "一款友好的 Switch 绘图程序，触控和鼠标同样好用。用铅笔或柔边画笔绘画，添加直线、矩形、椭圆和文字，轻点即可填充区域，用吸管或完整的颜色面板选择颜色。选择、移动、复制和粘贴图片的局部，任何操作都可以撤销。打开 PNG 图像进行编辑，然后存储为 PNG 或导出为 JPEG 或 BMP。\n\n• 铅笔、画笔、橡皮擦、填充、吸管和文字\n• 直线、矩形和椭圆，可为轮廓或填充\n• 大小、不透明度、硬度和填充容差\n• 颜色方块、十六进制输入和最近使用的颜色\n• 选区支持复制、剪切、粘贴、裁剪和删除\n• 翻转、旋转、反转、灰度、缩放和撤销 / 重做",
+    "ko": "마우스만큼 터치를 위해서도 만든 Switch용 친근한 그림 프로그램입니다. 연필이나 부드러운 브러시로 그리고, 선, 사각형, 타원, 텍스트를 추가하고, 탭 한 번으로 영역을 채우고, 스포이트나 전체 색상 패널로 색을 고르세요. 그림의 일부를 선택, 이동, 복사, 붙여넣기하고, 무엇이든 실행 취소하세요. PNG 이미지를 열어 편집한 후 PNG로 저장하거나 JPEG, BMP로 내보내세요.\n\n• 연필, 브러시, 지우개, 채우기, 스포이트, 텍스트\n• 윤곽선 또는 채움의 선, 사각형, 타원\n• 크기, 불투명도, 경도, 채우기 허용 범위\n• 색상 사각형, 16진수 입력, 최근 색상\n• 복사, 잘라내기, 붙여넣기, 자르기, 삭제가 가능한 선택 영역\n• 뒤집기, 회전, 반전, 회색조, 확대/축소, 실행 취소 / 다시 실행"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.066 0.267",
+      "wait 0.5",
+      "wclick 0.934 0.413",
+      "wait 0.5",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "text #5AC8FA",
+      "key enter",
+      "wait 0.5",
+      "wclick 0.428 0.52",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.934 0.413",
+      "wait 0.5",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "text #FFFFFF",
+      "key enter",
+      "wait 0.5",
+      "wclick 0.066 0.333",
+      "wait 0.5",
+      "wclick 0.3 0.4",
+      "wait 1",
+      "text Hello, Nexvyn!",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

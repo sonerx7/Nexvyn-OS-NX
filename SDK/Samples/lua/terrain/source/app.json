@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.terrain",
+  "name": {"en": "Terrain Demo", "tr": "Arazi Demosu", "de": "Gelände-Demo", "fr": "Démo Terrain", "es": "Demo de terreno", "ja": "地形デモ", "zh": "地形演示", "ko": "지형 데모"},
+  "description": {
+    "en": "A procedural island from noise, with water, fog, a minimap and a fly camera",
+    "tr": "Gürültüden üretilen ada: su, sis, mini harita ve uçuş kamerası",
+    "de": "Eine prozedurale Insel aus Rauschen, mit Wasser, Nebel, Minikarte und Flugkamera",
+    "fr": "Une île procédurale générée par du bruit, avec eau, brouillard, mini-carte et caméra libre",
+    "es": "Una isla procedural generada con ruido, con agua, niebla, minimapa y cámara de vuelo"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 860, "height": 520, "minWidth": 420, "minHeight": 340, "resizable": true},
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

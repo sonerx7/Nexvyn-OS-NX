@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.tipcalc",
+  "name": {"en": "Tip Calculator", "tr": "Bahşiş Hesapla", "de": "Trinkgeldrechner", "fr": "Calculateur de pourboire", "es": "Calculadora de propinas", "ja": "チップ計算", "zh": "小费计算器", "ko": "팁 계산기"},
+  "description": {
+    "en": "Work out the tip, the total and each person's share: quick tip chips, splitting between people and rounding up.",
+    "tr": "Bahşişi, toplamı ve kişi başı payı hesapla: hızlı bahşiş seçenekleri, hesabı bölüşme ve yukarı yuvarlama.",
+    "de": "Berechne Trinkgeld, Gesamtbetrag und den Anteil jeder Person: Schnellauswahl fürs Trinkgeld, Aufteilen auf mehrere Personen und Aufrunden.",
+    "fr": "Calculez le pourboire, le total et la part de chacun : pastilles de pourboire rapides, partage entre plusieurs personnes et arrondi.",
+    "es": "Calcula la propina, el total y lo que paga cada persona: botones rápidos de propina, reparto entre personas y redondeo al alza."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 640, "height": 460, "minWidth": 560, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,10 @@
+{
+  "app": "Kronometre",
+  "start": "Başlat",
+  "stop": "Durdur",
+  "lap": "Tur",
+  "reset": "Sıfırla",
+  "no_laps": "Turlar burada görünür. Boşluk başlatır ve durdurur, L tur ekler.",
+  "lap_n": "Tur {0}",
+  "share": "Turları paylaş…"
+}

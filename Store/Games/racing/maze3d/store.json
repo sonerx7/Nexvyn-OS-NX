@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "Find the glowing exit of ten labyrinths",
+    "tr": "On labirentte parlayan çıkışı bul",
+    "de": "Finde den leuchtenden Ausgang",
+    "fr": "Trouvez la sortie lumineuse de dix dédales",
+    "es": "Halla la salida brillante de diez laberintos",
+    "ja": "10 の迷宮の光る出口を見つけよう",
+    "zh": "找到十座迷宫的发光出口",
+    "ko": "열 개 미로의 빛나는 출구를 찾으세요"
+  },
+  "description": {
+    "en": "Step inside a first-person labyrinth and find the glowing exit as fast as you can. Ten levels grow from a cosy 5×5 maze to a sprawling 25×25 one, and each new level unlocks when you escape the last. A level is always the same maze, so you can learn it and beat your best time. A minimap helps you keep your bearings, and a big map is there for when you're lost.\n\n• Ten 3D mazes from 5×5 to 25×25\n• Best time per level and unlockable levels\n• Minimap and big map\n• Run, strafe and turn with sticks, D-pad, keyboard or touch",
+    "tr": "Birinci şahıs bakışlı bir labirente gir ve parlayan çıkışı olabildiğince hızlı bul. On bölüm, küçük bir 5×5 labirentten upuzun bir 25×25 labirente kadar büyür; her yeni bölüm bir öncekinden kaçınca açılır. Bir bölüm hep aynı labirenttir, yani yolu öğrenip en iyi süreni geçebilirsin. Mini harita yönünü bulmana yardım eder, kaybolduğunda da büyük harita hazır.\n\n• 5×5'ten 25×25'e on 3B labirent\n• Bölüm başına en iyi süre ve açılan bölümler\n• Mini harita ve büyük harita\n• Çubuklar, yön tuşları, klavye ya da dokunmatikle koş, yana kay, dön",
+    "de": "Tritt in ein Labyrinth aus der Ich-Perspektive und finde den leuchtenden Ausgang so schnell wie möglich. Zehn Level wachsen von einem gemütlichen 5×5-Labyrinth bis zu einem weitläufigen 25×25, und jedes neue Level wird frei, sobald du dem vorigen entkommst. Ein Level ist immer dasselbe Labyrinth, du kannst es also lernen und deine Bestzeit schlagen. Eine Minikarte hilft bei der Orientierung, und für den Notfall gibt es die große Karte.\n\n• Zehn 3D-Labyrinthe von 5×5 bis 25×25\n• Bestzeit pro Level und freischaltbare Level\n• Minikarte und große Karte\n• Laufen, seitwärts gehen und drehen mit Sticks, Steuerkreuz, Tastatur oder Touch",
+    "fr": "Entrez dans un labyrinthe à la première personne et trouvez la sortie lumineuse le plus vite possible. Dix niveaux vont d’un petit dédale 5×5 à un immense 25×25, et chaque niveau se débloque quand vous sortez du précédent. Un niveau est toujours le même labyrinthe : vous pouvez l’apprendre et battre votre meilleur temps. Une mini-carte vous aide à vous repérer, et une grande carte vous attend quand vous êtes perdu.\n\n• Dix labyrinthes 3D, du 5×5 au 25×25\n• Meilleur temps par niveau et niveaux à débloquer\n• Mini-carte et grande carte\n• Courir, se déplacer latéralement et tourner aux sticks, à la croix, au clavier ou au tactile",
+    "es": "Entra en un laberinto en primera persona y encuentra la salida brillante lo antes posible. Diez niveles crecen desde un pequeño laberinto de 5×5 hasta uno enorme de 25×25, y cada nivel se desbloquea al escapar del anterior. Un nivel siempre es el mismo laberinto, así que puedes aprendértelo y batir tu mejor tiempo. Un minimapa te ayuda a orientarte, y el mapa grande está ahí para cuando te pierdas.\n\n• Diez laberintos 3D de 5×5 a 25×25\n• Mejor tiempo por nivel y niveles desbloqueables\n• Minimapa y mapa grande\n• Corre, muévete de lado y gira con sticks, cruceta, teclado o táctil",
+    "ja": "一人称視点の迷宮に入り込み、光る出口をできるだけ早く見つけましょう。10 のレベルは、こぢんまりした 5×5 の迷路から広大な 25×25 の迷路まで大きくなり、前のレベルを脱出すると次のレベルが解放されます。レベルは常に同じ迷路なので、覚えてベストタイムを更新できます。ミニマップで方向を見失わず、迷ったら大きな地図を使いましょう。\n\n• 5×5 から 25×25 までの 10 の 3D 迷路\n• レベルごとのベストタイムと解放されるレベル\n• ミニマップと大きな地図\n• スティック、十字ボタン、キーボード、タッチで走る、横移動、旋回",
+    "zh": "走进第一人称视角的迷宫，尽快找到发光的出口。十个关卡从小巧的 5×5 迷宫逐渐扩展到庞大的 25×25 迷宫，每逃出一关就会解锁下一关。同一关始终是同一座迷宫，所以你可以记住路线并打破自己的最佳用时。小地图帮你辨明方向，迷路时还有大地图可用。\n\n• 十座从 5×5 到 25×25 的 3D 迷宫\n• 每关的最佳用时和可解锁的关卡\n• 小地图和大地图\n• 用摇杆、十字键、键盘或触控奔跑、平移和转向",
+    "ko": "1인칭 미로 안으로 들어가 최대한 빨리 빛나는 출구를 찾으세요. 열 개의 레벨은 아늑한 5×5 미로부터 넓게 뻗은 25×25 미로까지 커지며, 이전 레벨을 탈출하면 새 레벨이 열립니다. 레벨은 항상 같은 미로이므로 익혀서 최고 기록을 깰 수 있습니다. 미니맵이 방향을 잡아 주고, 길을 잃으면 큰 지도를 볼 수 있습니다.\n\n• 5×5부터 25×25까지 3D 미로 10개\n• 레벨별 최고 기록과 잠금 해제되는 레벨\n• 미니맵과 큰 지도\n• 스틱, 방향 버튼, 키보드, 터치로 달리기, 옆걸음, 회전"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "hold a 0.6",
+      "hold w 1.2",
+      "wait 0.5"
+    ],
+    [
+      "key m",
+      "wait 1"
+    ]
+  ]
+}

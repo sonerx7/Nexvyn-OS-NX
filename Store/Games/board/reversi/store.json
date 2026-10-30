@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Flip the discs and take over the board",
+    "tr": "Taşları çevir, tahtayı ele geçir",
+    "de": "Dreh die Steine und erobere das Brett",
+    "fr": "Retournez les pions, prenez le plateau",
+    "es": "Voltea las fichas y conquista el tablero",
+    "ja": "石をひっくり返して盤面を制しよう",
+    "zh": "翻转棋子，占领棋盘",
+    "ko": "돌을 뒤집어 보드를 차지하세요"
+  },
+  "description": {
+    "en": "Othello rules on a classic 8×8 board: place a disc so that it traps a line of your opponent's discs, and they all flip to your colour. Whoever owns the most discs when the board is full wins. Small dots show every legal move, and a hint is just one button away. Play the computer on three levels or a friend on the same console.\n\n• Three computer levels or two players\n• Play as black or white\n• Legal-move dots and a flip animation\n• Hints, undo and statistics\n• Your game is saved automatically",
+    "tr": "Klasik 8×8 tahtada Othello kuralları: rakibinin taşlarından bir sırayı arada bırakacak şekilde taşını koy, hepsi senin rengine dönsün. Tahta dolduğunda en çok taşı olan kazanır. Küçük noktalar bütün geçerli hamleleri gösterir, ipucu ise bir tuş uzağında. Bilgisayara karşı üç seviyede ya da aynı konsolda bir arkadaşınla oyna.\n\n• Üç bilgisayar seviyesi ya da iki oyuncu\n• Siyah ya da beyazla oyna\n• Geçerli hamle noktaları ve çevirme animasyonu\n• İpucu, geri alma ve istatistikler\n• Oyunun otomatik olarak kaydedilir",
+    "de": "Othello-Regeln auf dem klassischen 8×8-Brett: Setz einen Stein so, dass er eine Reihe gegnerischer Steine einschließt, und alle drehen sich in deine Farbe. Wer am Ende die meisten Steine besitzt, gewinnt. Kleine Punkte zeigen jeden erlaubten Zug, und ein Tipp ist nur einen Tastendruck entfernt. Spiel gegen den Computer auf drei Stufen oder gegen einen Freund an derselben Konsole.\n\n• Drei Computerstufen oder zwei Spieler\n• Spiel mit Schwarz oder Weiß\n• Punkte für erlaubte Züge und Dreh-Animation\n• Tipps, Rückgängig und Statistik\n• Dein Spiel wird automatisch gespeichert",
+    "fr": "Les règles de l’Othello sur un plateau 8×8 classique : posez un pion de façon à encadrer une ligne de pions adverses, et ils passent tous à votre couleur. Celui qui possède le plus de pions quand le plateau est plein l’emporte. De petits points indiquent chaque coup possible, et un indice n’est qu’à un bouton. Affrontez l’ordinateur sur trois niveaux ou un ami sur la même console.\n\n• Trois niveaux d’ordinateur ou deux joueurs\n• Jouez les noirs ou les blancs\n• Points des coups possibles et animation de retournement\n• Indices, annulation et statistiques\n• Votre partie est sauvegardée automatiquement",
+    "es": "Reglas de Othello en un tablero clásico de 8×8: coloca una ficha de modo que encierre una fila de fichas rivales y todas se voltearán a tu color. Gana quien tenga más fichas cuando se llene el tablero. Unos puntitos muestran cada jugada válida y una pista está a un solo botón. Juega contra la computadora en tres niveles o contra un amigo en la misma consola.\n\n• Tres niveles de dificultad o dos jugadores\n• Juega con negras o blancas\n• Puntos de jugadas válidas y animación de volteo\n• Pistas, deshacer y estadísticas\n• La partida se guarda automáticamente",
+    "ja": "定番の 8×8 の盤でオセロのルール: 相手の石の列を挟むように石を置くと、すべて自分の色にひっくり返ります。盤が埋まったときに石が多い方が勝ちです。小さな点で打てる場所がすべて表示され、ヒントもボタンひとつで使えます。3 段階のコンピューター、または同じ本体で友だちと対戦できます。\n\n• 3 段階のコンピューター、または 2 人対戦\n• 黒または白でプレイ\n• 打てる場所の点表示とひっくり返るアニメーション\n• ヒント、取り消し、統計\n• ゲームは自動で保存",
+    "zh": "在经典 8×8 棋盘上按黑白棋规则对弈：落下一枚棋子，夹住一排对手的棋子，它们就会全部翻成你的颜色。棋盘下满时，拥有棋子最多的一方获胜。小圆点会标出所有合法落子位置，提示也只需按一个按钮。与三种难度的电脑对战，或在同一台主机上与朋友对弈。\n\n• 三种电脑难度或双人对战\n• 执黑或执白\n• 合法落子圆点和翻转动画\n• 提示、撤销和统计\n• 自动保存你的对局",
+    "ko": "클래식 8×8 보드에서 오델로 규칙으로 즐기세요: 상대의 돌 한 줄을 가두도록 돌을 놓으면 모두 내 색으로 뒤집힙니다. 보드가 가득 찼을 때 돌이 가장 많은 쪽이 이깁니다. 작은 점이 둘 수 있는 모든 수를 보여 주며, 버튼 하나로 힌트를 볼 수 있습니다. 컴퓨터 3단계나 같은 콘솔의 친구와 대결하세요.\n\n• 컴퓨터 3단계 또는 2인 플레이\n• 흑 또는 백으로 플레이\n• 둘 수 있는 수 표시와 뒤집기 애니메이션\n• 힌트, 무르기, 통계\n• 게임 자동 저장"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key h",
+      "wait 1.5",
+      "key enter",
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "key h",
+      "wait 1.5",
+      "key enter",
+      "wait 2.5"
+    ]
+  ]
+}

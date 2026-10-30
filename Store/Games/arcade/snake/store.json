@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Eat, grow and don't bite yourself",
+    "tr": "Ye, uza, sakın kendini ısırma",
+    "de": "Fressen, wachsen, nicht selbst beißen",
+    "fr": "Mangez, grandissez, ne vous mordez pas",
+    "es": "Come, crece y no te muerdas la cola",
+    "ja": "食べて、伸びて、自分をかまないで",
+    "zh": "吃东西，长身体，别咬到自己",
+    "ko": "먹고, 자라고, 자기 몸은 물지 마세요"
+  },
+  "description": {
+    "en": "The classic snake game with smooth, gliding movement. Eat apples to grow longer, chain quick bites into combos and grab the bonus stars before they vanish. The longer you get, the faster you go. Play with solid walls or switch to wrap-around mode, where you leave one side of the board and come back on the other. Each mode keeps its own best score.\n\n• Walls or wrap-around mode, each with its own best score\n• Apple combos and bonus stars\n• Speeds up as you grow\n• D-pad, stick, keyboard or swipe controls\n• An AI snake plays behind the title screen",
+    "tr": "Akıcı, süzülen hareketleriyle klasik yılan oyunu. Elmaları ye ve uza, art arda hızlı lokmalarla kombo yap, kaybolmadan önce bonus yıldızları kap. Uzadıkça hızlanırsın. Duvarlı modda oyna ya da kenarlardan geçişli moda geç: tahtanın bir yanından çıkıp öbür yanından girersin. Her modun kendi en iyi skoru vardır.\n\n• Duvarlı ya da kenarlardan geçişli mod, her birinin kendi rekoru\n• Elma komboları ve bonus yıldızlar\n• Uzadıkça hızlanan oyun\n• Yön tuşları, çubuk, klavye ya da kaydırma\n• Başlık ekranının arkasında yapay zekâ yılanı",
+    "de": "Das klassische Snake mit flüssiger, gleitender Bewegung. Friss Äpfel, um länger zu werden, verkette schnelle Bissen zu Combos und schnapp dir die Bonussterne, bevor sie verschwinden. Je länger du wirst, desto schneller geht es. Spiel mit festen Wänden oder wechsle in den Modus ohne Ränder, in dem du auf einer Seite hinausläufst und auf der anderen wieder auftauchst. Jeder Modus hat seinen eigenen Highscore.\n\n• Wände oder offene Ränder, jeweils mit eigenem Highscore\n• Apfel-Combos und Bonussterne\n• Wird schneller, je länger du bist\n• Steuerkreuz, Stick, Tastatur oder Wischen\n• Hinter dem Titelbildschirm spielt eine KI-Schlange",
+    "fr": "Le snake classique, avec des mouvements fluides et glissés. Mangez des pommes pour grandir, enchaînez les bouchées rapides en combos et attrapez les étoiles bonus avant qu’elles ne disparaissent. Plus vous êtes long, plus vous allez vite. Jouez avec des murs ou passez en mode sans bords : sortez d’un côté du plateau pour revenir de l’autre. Chaque mode garde son propre meilleur score.\n\n• Mode murs ou sans bords, chacun avec son meilleur score\n• Combos de pommes et étoiles bonus\n• Le serpent accélère en grandissant\n• Croix, stick, clavier ou glissements du doigt\n• Un serpent IA joue derrière l’écran titre",
+    "es": "La serpiente clásica con un movimiento suave y fluido. Come manzanas para crecer, encadena bocados rápidos en combos y atrapa las estrellas extra antes de que desaparezcan. Cuanto más larga, más rápida. Juega con paredes o cambia al modo sin bordes, en el que sales por un lado del tablero y vuelves a entrar por el otro. Cada modo guarda su propia mejor puntuación.\n\n• Modo con paredes o sin bordes, cada uno con su récord\n• Combos de manzanas y estrellas extra\n• Acelera a medida que creces\n• Cruceta, stick, teclado o deslizar el dedo\n• Una serpiente de la IA juega tras la pantalla de título",
+    "ja": "滑らかに動く定番のスネークゲーム。リンゴを食べて長くなり、すばやく食べてコンボをつなげ、消える前にボーナスの星を取りましょう。長くなるほど速くなります。壁ありで遊ぶか、画面の端から出ると反対側から戻ってくるループモードに切り替えられます。モードごとにベストスコアが記録されます。\n\n• 壁ありまたはループモード、それぞれのベストスコア\n• リンゴのコンボとボーナスの星\n• 伸びるほどスピードアップ\n• 十字ボタン、スティック、キーボード、スワイプで操作\n• タイトル画面の後ろで AI のヘビがプレイ",
+    "zh": "经典的贪吃蛇游戏，移动流畅顺滑。吃苹果让身体变长，快速连续进食形成连击，并在奖励星星消失前抓住它们。身体越长，速度越快。可以选择有实心墙壁的模式，或切换到穿墙模式，从棋盘一侧出去会从另一侧回来。每种模式各自记录最高分。\n\n• 墙壁或穿墙模式，各有最高分\n• 苹果连击和奖励星星\n• 越长越快\n• 十字键、摇杆、键盘或轻扫操作\n• 标题画面背后有 AI 贪吃蛇在玩",
+    "ko": "부드럽게 미끄러지듯 움직이는 클래식 스네이크 게임입니다. 사과를 먹어 길어지고, 빠르게 연달아 먹어 콤보를 만들고, 사라지기 전에 보너스 별을 잡으세요. 길어질수록 빨라집니다. 단단한 벽 모드로 하거나, 보드 한쪽으로 나가면 반대쪽으로 들어오는 통과 모드로 전환하세요. 모드마다 최고 점수가 따로 기록됩니다.\n\n• 벽 또는 통과 모드, 모드별 최고 점수\n• 사과 콤보와 보너스 별\n• 자랄수록 빨라짐\n• 방향 버튼, 스틱, 키보드, 쓸어 넘기기 조작\n• 타이틀 화면 뒤에서 AI 뱀이 플레이"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key enter", "wait 1", "key down", "wait 0.8", "key left", "wait 1.2"],
+    ["key up", "wait 6", "dark 1", "wait 2"]
+  ]
+}

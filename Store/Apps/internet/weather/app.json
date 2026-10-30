@@ -1,0 +1,25 @@
+{
+  "id": "weather",
+  "name": {
+    "en": "Weather",
+    "tr": "Hava Durumu",
+    "de": "Wetter",
+    "fr": "Météo",
+    "es": "El Tiempo",
+    "ko": "날씨"
+  },
+  "category": "internet",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 940,
+    "height": 620,
+    "minWidth": 700,
+    "minHeight": 480,
+    "resizable": true
+  }
+}

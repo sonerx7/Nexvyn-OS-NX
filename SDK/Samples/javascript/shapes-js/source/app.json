@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.shapes-js",
+  "name": {"en": "Shapes JS Demo", "tr": "Şekiller JS Demosu", "de": "Formen-JS-Demo", "fr": "Démo Formes JS", "es": "Demo de formas JS", "ja": "図形デモ (JS)", "zh": "形状 JS 演示", "ko": "도형 JS 데모"},
+  "description": {
+    "en": "JavaScript: every g3d primitive, mesh.setTexture and async timers",
+    "tr": "JavaScript: tüm g3d temel şekilleri, mesh.setTexture ve asenkron zamanlayıcılar",
+    "de": "JavaScript: alle g3d-Grundkörper, mesh.setTexture und asynchrone Timer",
+    "fr": "JavaScript : toutes les primitives g3d, mesh.setTexture et les minuteurs asynchrones",
+    "es": "JavaScript: todas las primitivas de g3d, mesh.setTexture y temporizadores asíncronos"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.js",
+  "window": {"width": 900, "height": 560, "minWidth": 480, "minHeight": 380, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.1",
+  "permissions": []
+}

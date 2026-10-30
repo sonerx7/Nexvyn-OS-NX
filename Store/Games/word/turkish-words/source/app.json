@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.kelime",
+  "name": {
+    "en": "Word Finder",
+    "tr": "Kelime Bul",
+    "de": "Wortfinder",
+    "fr": "Trouve-mot",
+    "es": "Buscapalabras",
+    "ja": "ワードファインダー",
+    "zh": "猜单词",
+    "ko": "단어 찾기"
+  },
+  "description": {
+    "en": "Guess the five-letter Turkish word in six tries: a new daily word for everyone plus unlimited play.",
+    "tr": "Beş harfli Türkçe kelimeyi altı denemede bulun: herkes için günün kelimesi ve sınırsız mod.",
+    "de": "Errate das türkische Wort mit fünf Buchstaben in sechs Versuchen: täglich ein neues Wort für alle plus unbegrenztes Spielen.",
+    "fr": "Devinez le mot turc de cinq lettres en six essais : un nouveau mot du jour pour tous, plus des parties illimitées.",
+    "es": "Adivina la palabra turca de cinco letras en seis intentos: una palabra diaria nueva para todos y partidas ilimitadas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 560,
+    "height": 660,
+    "minWidth": 440,
+    "minHeight": 580,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

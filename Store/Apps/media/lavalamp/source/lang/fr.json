@@ -1,0 +1,14 @@
+{
+  "app_name": "Lampe à lave",
+  "speed": "Vitesse",
+  "blobs": "Bulles",
+  "night_mode": "Mode veilleuse",
+  "sound": "Bruit de bouillonnement",
+  "shake": "Secouer la lampe",
+  "themes": "Thèmes",
+  "th_classic": "Classiques",
+  "th_ocean": "Océan",
+  "th_lime": "Citron vert",
+  "th_purple": "Violet",
+  "th_rainbow": "Arc-en-ciel"
+}

@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Learn the capitals of 150 countries",
+    "tr": "150 ülkenin başkentini öğren",
+    "de": "Die Hauptstädte von 150 Ländern lernen",
+    "fr": "Apprenez les capitales de 150 pays",
+    "es": "Aprende las capitales de 150 países",
+    "ja": "150 か国の首都を覚えよう",
+    "zh": "学习 150 个国家的首都",
+    "ko": "150개국의 수도를 배워 보세요"
+  },
+  "description": {
+    "en": "Capitals is a quick, friendly geography quiz covering 150 countries. Guess the capital of a country or the country of a capital, in rounds of 10 or 20 questions, for the whole world or a single continent. Wrong answers come from the same continent, so it stays challenging, and the right answer is shown straight away. Every country you miss goes to My Mistakes, where you can practise it until you get it right.\n\n• Country → capital and capital → country questions\n• World or one continent, 10 or 20 questions\n• Practise Mistakes until the list is empty\n• Best scores per continent, streaks and new-record celebrations\n• Browse and search all countries and capitals\n• Keyboard: 1–4 answer, Enter starts, Esc goes back",
+    "tr": "Başkentler, 150 ülkeyi kapsayan hızlı ve eğlenceli bir coğrafya testidir. Bir ülkenin başkentini ya da bir başkentin ülkesini bil; 10 ya da 20 soruluk turlarda, tüm dünya ya da tek bir kıta için. Yanlış seçenekler aynı kıtadan geldiği için iş hep zorlu kalır, doğru cevap ise hemen gösterilir. Bilemediğin her ülke Hatalarım listesine girer; orada doğru bilene kadar çalışabilirsin.\n\n• Ülke → başkent ve başkent → ülke soruları\n• Dünya ya da tek kıta, 10 ya da 20 soru\n• Liste boşalana kadar Hatalarımı Çalış\n• Kıtalara göre en iyi skorlar, seriler ve rekor kutlaması\n• Tüm ülke ve başkentlerde göz at ve ara\n• Klavye: 1–4 cevap, Enter başlatır, Esc geri döner",
+    "de": "Hauptstädte ist ein schnelles, freundliches Geografie-Quiz mit 150 Ländern. Rate die Hauptstadt eines Landes oder das Land zu einer Hauptstadt – in Runden mit 10 oder 20 Fragen, für die ganze Welt oder einen Kontinent. Die falschen Antworten stammen vom selben Kontinent, damit es knifflig bleibt, und die richtige Lösung siehst du sofort. Jedes verpasste Land landet unter Meine Fehler, wo du es üben kannst, bis es sitzt.\n\n• Fragen Land → Hauptstadt und Hauptstadt → Land\n• Ganze Welt oder ein Kontinent, 10 oder 20 Fragen\n• Fehler üben, bis die Liste leer ist\n• Bestwerte pro Kontinent, Serien und Rekordjubel\n• Alle Länder und Hauptstädte durchsuchen\n• Tastatur: 1–4 antworten, Enter startet, Esc geht zurück",
+    "fr": "Capitales est un quiz de géographie rapide et sympathique qui couvre 150 pays. Trouvez la capitale d’un pays ou le pays d’une capitale, en séries de 10 ou 20 questions, pour le monde entier ou un seul continent. Les mauvaises réponses viennent du même continent pour garder le défi, et la bonne réponse s’affiche aussitôt. Chaque pays raté rejoint Mes erreurs, où vous pouvez le réviser jusqu’à le maîtriser.\n\n• Questions pays → capitale et capitale → pays\n• Monde ou un continent, 10 ou 20 questions\n• Réviser les erreurs jusqu’à vider la liste\n• Meilleurs scores par continent, séries et célébration des records\n• Parcourez et cherchez tous les pays et capitales\n• Clavier : 1–4 pour répondre, Entrée pour lancer, Échap pour revenir",
+    "es": "Capitales es un concurso de geografía rápido y ameno con 150 países. Adivina la capital de un país o el país de una capital, en rondas de 10 o 20 preguntas, para todo el mundo o un solo continente. Las respuestas incorrectas son del mismo continente para que siga siendo un reto, y la correcta se muestra al momento. Cada país que fallas va a Mis errores, donde puedes practicarlo hasta acertarlo.\n\n• Preguntas país → capital y capital → país\n• Mundo o un continente, 10 o 20 preguntas\n• Practicar errores hasta vaciar la lista\n• Mejores puntuaciones por continente, rachas y celebración de récords\n• Explora y busca todos los países y capitales\n• Teclado: 1–4 responden, Intro empieza, Esc vuelve",
+    "ja": "首都クイズは、150 か国を網羅した手軽で楽しい地理クイズです。国の首都、または首都の国を、10 問または 20 問のラウンドで、世界全体またはひとつの大陸から当てましょう。誤答の選択肢は同じ大陸から出るので歯ごたえがあり、正解はすぐに表示されます。間違えた国は「間違えた問題」に入り、正解できるまで練習できます。\n\n• 国 → 首都、首都 → 国の問題\n• 世界またはひとつの大陸、10 問または 20 問\n• リストが空になるまで間違えた問題を練習\n• 大陸ごとのベストスコア、連続正解、記録更新のお祝い\n• すべての国と首都の一覧と検索\n• キーボード: 1–4 で回答、Enter でスタート、Esc で戻る",
+    "zh": "首都是一款涵盖 150 个国家的轻松地理测验。猜出某个国家的首都，或某个首都所属的国家，每轮 10 题或 20 题，范围可以是全世界或单个大洲。错误选项来自同一个大洲，因此依然有挑战性，并且会立即显示正确答案。每个答错的国家都会进入“我的错题”，你可以反复练习直到答对。\n\n• 国家 → 首都和首都 → 国家两种题型\n• 全世界或单个大洲，10 题或 20 题\n• 练习错题，直到列表清空\n• 各大洲的最高分、连对记录和新纪录庆祝\n• 浏览和搜索所有国家及首都\n• 键盘：1–4 作答，Enter 开始，Esc 返回",
+    "ko": "수도 퀴즈는 150개국을 다루는 빠르고 친근한 지리 퀴즈입니다. 전 세계 또는 한 대륙을 대상으로 10문제나 20문제씩 나라의 수도나 수도의 나라를 맞혀 보세요. 오답 보기는 같은 대륙에서 나오므로 계속 도전적이며, 정답은 바로 표시됩니다. 틀린 나라는 모두 틀린 문제로 들어가 맞힐 때까지 연습할 수 있습니다.\n\n• 나라 → 수도, 수도 → 나라 문제\n• 전 세계 또는 한 대륙, 10문제 또는 20문제\n• 목록이 빌 때까지 틀린 문제 연습\n• 대륙별 최고 점수, 연속 정답, 신기록 축하\n• 모든 나라와 수도 둘러보기 및 검색\n• 키보드: 1–4 답하기, Enter 시작, Esc 뒤로"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key enter", "wait 1.5"],
+    ["key 1", "wait 1"],
+    ["key escape", "wait 1", "wclick 0.871 0.065", "dark 1", "wait 1.5"]
+  ]
+}

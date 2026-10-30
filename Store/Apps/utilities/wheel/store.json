@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Can't decide? Spin the wheel",
+    "tr": "Karar veremiyor musun? Çarkı çevir",
+    "de": "Unentschlossen? Dreh am Rad",
+    "fr": "Vous hésitez ? Faites tourner la roue",
+    "es": "¿No te decides? Gira la ruleta",
+    "ja": "決められない？ルーレットを回そう",
+    "zh": "拿不定主意？转一转",
+    "ko": "결정하기 어렵나요? 룰렛을 돌리세요"
+  },
+  "description": {
+    "en": "What to eat, who does the dishes, yes or no: put your options on a colorful wheel and let it decide. Press Spin or flick the wheel with your finger, listen to it tick as it slows down and celebrate the winner with confetti. Keep several wheels for different questions and see how often each option has won.\n\n• Several wheels, each with up to 24 options\n• Spin with a button, Space, or by dragging the wheel\n• Remove the winner from the wheel on the next spin, for fair turns\n• Results tab that counts every winner\n• Sort or shuffle options, rename them, undo a removal\n• Copy the winner or the results; sound can be switched off",
+    "tr": "Ne yesek, bulaşığı kim yıkasın, evet mi hayır mı: seçeneklerini renkli bir çarka koy, o karar versin. Çevir'e bas ya da çarkı parmağınla savur; yavaşlarken tık tık sesini dinle, kazananı konfetiyle kutla. Farklı sorular için birkaç çark tut, her seçeneğin kaç kez kazandığını gör.\n\n• Her biri 24 seçeneğe kadar birden çok çark\n• Düğmeyle, Boşluk'la ya da çarkı sürükleyerek çevir\n• Adil sıra için kazananı bir sonraki çevirişte çarktan çıkar\n• Her kazananı sayan Sonuçlar sekmesi\n• Seçenekleri sırala ya da karıştır, yeniden adlandır, silmeyi geri al\n• Kazananı ya da sonuçları kopyala; ses kapatılabilir",
+    "de": "Was essen wir, wer spült ab, ja oder nein: Pack deine Optionen auf ein buntes Rad und lass es entscheiden. Drücke Drehen oder gib dem Rad mit dem Finger Schwung, hör es beim Abbremsen klicken und feiere den Gewinner mit Konfetti. Lege mehrere Räder für verschiedene Fragen an und sieh, wie oft jede Option gewonnen hat.\n\n• Mehrere Räder mit je bis zu 24 Optionen\n• Drehen per Taste, Leertaste oder durch Ziehen am Rad\n• Gewinner beim nächsten Drehen entfernen, damit jeder drankommt\n• Ergebnis-Tab, der jeden Gewinner zählt\n• Optionen sortieren oder mischen, umbenennen, Entfernen rückgängig machen\n• Gewinner oder Ergebnisse kopieren; Ton abschaltbar",
+    "fr": "Que manger, qui fait la vaisselle, oui ou non : placez vos options sur une roue colorée et laissez-la décider. Appuyez sur Tourner ou lancez la roue du doigt, écoutez-la cliqueter en ralentissant et fêtez le gagnant sous les confettis. Gardez plusieurs roues pour différentes questions et voyez combien de fois chaque option a gagné.\n\n• Plusieurs roues, chacune avec jusqu’à 24 options\n• Lancement par bouton, par Espace ou en faisant glisser la roue\n• Retrait du gagnant au tour suivant, pour un tour de rôle équitable\n• Onglet Résultats qui compte chaque gagnant\n• Tri ou mélange des options, renommage, suppression annulable\n• Copie du gagnant ou des résultats ; son désactivable",
+    "es": "Qué comer, quién friega, sí o no: pon tus opciones en una ruleta de colores y deja que decida. Pulsa Girar o lanza la ruleta con el dedo, escucha cómo hace clic al frenar y celebra al ganador con confeti. Ten varias ruletas para distintas preguntas y mira cuántas veces ha ganado cada opción.\n\n• Varias ruletas, cada una con hasta 24 opciones\n• Gira con el botón, con Espacio o arrastrando la ruleta\n• Quita al ganador en el siguiente giro para repartir turnos con justicia\n• Pestaña de resultados que cuenta cada ganador\n• Ordena o mezcla opciones, renómbralas y deshaz un borrado\n• Copia el ganador o los resultados; el sonido se puede desactivar",
+    "ja": "何を食べるか、誰が皿洗いをするか、はいかいいえか。選択肢をカラフルなルーレットに乗せて決めてもらいましょう。「回す」を押すか指でルーレットをはじくと、速度が落ちるにつれてカチカチと音が鳴り、当選した項目を紙吹雪でお祝いします。質問ごとに複数のルーレットを用意し、各選択肢が何回当選したかを確認できます。\n\n• 複数のルーレット、それぞれ最大 24 個の選択肢\n• ボタン、Space、またはルーレットのドラッグで回す\n• 公平に順番を回すため、当選した項目を次回ルーレットから外す\n• すべての当選を数える結果タブ\n• 選択肢の並べ替え、シャッフル、名前の変更、削除の取り消し\n• 当選した項目や結果をコピー。サウンドはオフにできます",
+    "zh": "吃什么、谁洗碗、是或否：把你的选项放到一个彩色转盘上，让它来决定。按“旋转”或用手指拨动转盘，听着它减速时的滴答声，并用彩纸庆祝选中的结果。为不同的问题保留多个转盘，看看每个选项被选中了多少次。\n\n• 多个转盘，每个最多 24 个选项\n• 用按钮、空格或拖动转盘来旋转\n• 下次旋转时将选中项移出转盘，轮流更公平\n• 统计每次选中结果的“结果”标签页\n• 对选项排序或打乱、重命名，撤销移除\n• 复制选中项或统计结果；声音可关闭",
+    "ko": "무엇을 먹을지, 누가 설거지할지, 예 또는 아니요: 선택지를 알록달록한 룰렛에 올리고 결정하게 하세요. 돌리기를 누르거나 손가락으로 룰렛을 튕기면 느려지며 째깍거리는 소리가 나고, 당첨 항목을 색종이로 축하합니다. 질문마다 룰렛을 여러 개 두고 각 선택지가 얼마나 자주 당첨되었는지 확인하세요.\n\n• 각각 최대 24개 옵션을 가진 여러 룰렛\n• 버튼, Space, 또는 룰렛을 드래그하여 돌리기\n• 공정한 차례를 위해 다음 돌리기에서 당첨 항목 제거\n• 모든 당첨을 세는 결과 탭\n• 옵션 정렬 또는 섞기, 이름 변경, 제거 실행 취소\n• 당첨 항목이나 결과 복사, 소리는 끌 수 있음"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key space",
+      "wait 7"
+    ],
+    [
+      "key space",
+      "wait 7",
+      "key tab",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "key tab",
+      "key right",
+      "wait 1.5"
+    ]
+  ]
+}

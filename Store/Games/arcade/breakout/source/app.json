@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.breakout",
+  "name": {
+    "en": "Breakout",
+    "tr": "Tuğla Kır",
+    "de": "Breakout",
+    "fr": "Casse-briques",
+    "es": "Breakout",
+    "ja": "ブロック崩し",
+    "zh": "打砖块",
+    "ko": "벽돌 깨기"
+  },
+  "description": {
+    "en": "Smash every brick with the ball and catch power-ups: wide paddle, multi-ball, slow ball and extra lives.",
+    "tr": "Topla bütün tuğlaları kır, güçlendirmeleri yakala: geniş raket, çoklu top, yavaş top ve ekstra can.",
+    "de": "Zerschlage jeden Stein mit dem Ball und fange Power-ups: breiter Schläger, Multiball, langsamer Ball und Extraleben.",
+    "fr": "Cassez toutes les briques avec la balle et attrapez des bonus : raquette large, multi-balle, balle lente et vies supplémentaires.",
+    "es": "Rompe todos los ladrillos con la bola y atrapa potenciadores: pala ancha, multibola, bola lenta y vidas extra."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 800,
+    "height": 600,
+    "minWidth": 480,
+    "minHeight": 400,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

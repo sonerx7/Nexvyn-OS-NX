@@ -1,0 +1,22 @@
+{
+  "app_name": "Hello C",
+  "tab_counter": "カウンター",
+  "tab_balls": "ボール",
+  "tab_net": "ネットワーク",
+  "counter_title": "C で書かれています",
+  "times": "{0} 回タップしました",
+  "reset": "リセット",
+  "note_hint": "store_setStr で保存されるメモ",
+  "balls_hint": "タップしてボールを押す",
+  "net_title": "リアルタイムの天気",
+  "net_body": "このボタンは net_json(url, callback, user) を実行します。リクエストはバックグラウンドで実行され、コールバックが JSON テキストを受け取ります。",
+  "fetch": "JSON を取得",
+  "offline": "インターネットに接続されていません",
+  "failed": "失敗しました: {0}",
+  "loaded": "読み込み完了",
+  "no_data": "ボタンを押してデータを読み込みます",
+  "about": "Hello C について",
+  "about_body": "このアプリは純粋な C で書かれており、開いたときに TinyCC によって本体上でコンパイルされます。Lua、JavaScript、Python のアプリと同じ SDK を使用しています。main.c を開いてコードを読んでみてください。",
+  "ok": "OK",
+  "open_code": "main.c を開く"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "automation",
+  "name": {
+    "en": "Automation",
+    "tr": "Otomasyon",
+    "de": "Automatisierung",
+    "fr": "Automatisation",
+    "es": "Automatización",
+    "ko": "자동화"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 960,
+    "height": 620,
+    "minWidth": 640,
+    "minHeight": 440,
+    "resizable": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.audio-py",
+  "name": {"en": "Melody Player (Python)", "tr": "Melodi Çalar (Python)", "de": "Melodie-Player (Python)", "fr": "Lecteur de mélodies (Python)", "es": "Reproductor de melodías (Python)", "ja": "メロディプレーヤー (Python)", "zh": "旋律播放器（Python）", "ko": "멜로디 플레이어(Python)"},
+  "description": {
+    "en": "Python: play tunes note by note with timer callbacks, type your own melody, see when callbacks run",
+    "tr": "Python: zamanlayıcı geri çağırmalarıyla nota nota ezgi çal, kendi melodini yaz, geri çağırmaların ne zaman çalıştığını gör",
+    "de": "Python: Spiele Melodien Note für Note mit Timer-Callbacks, tippe deine eigene Melodie ein und sieh, wann Callbacks laufen",
+    "fr": "Python : jouez des airs note par note avec des callbacks de minuteur, saisissez votre propre mélodie et voyez quand les callbacks s’exécutent",
+    "es": "Python: reproduce melodías nota a nota con callbacks de temporizador, escribe tu propia melodía y mira cuándo se ejecutan los callbacks"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.py",
+  "window": {"width": 900, "height": 560, "minWidth": 560, "minHeight": 440, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.3",
+  "permissions": []
+}

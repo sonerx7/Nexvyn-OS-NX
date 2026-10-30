@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Compose melodies on a piano roll",
+    "tr": "Piyano rulosunda melodi besteleyin",
+    "de": "Melodien in der Pianorolle komponieren",
+    "fr": "Composez des mélodies sur un piano roll",
+    "es": "Compón melodías en un piano roll",
+    "ja": "ピアノロールでメロディを作曲",
+    "zh": "在钢琴卷帘上谱写旋律",
+    "ko": "피아노 롤로 멜로디를 작곡하세요"
+  },
+  "description": {
+    "en": "Melody Studio is a simple piano roll for writing your own tunes. Tap the grid to place notes across two octaves and 32 steps, drag to make them longer, and press Play to hear your melody loop. Choose a Flute, Soft, Chiptune or Brass sound, set the tempo and transpose the whole song up or down. It opens with Ode to Joy, so there is something to play with right away.\n\n• Two-octave, 32-step grid with adjustable note lengths\n• Four instruments, tempo from 60 to 200 BPM, transpose ±12\n• Save songs by name and switch between them\n• Export the score as a text file to Documents\n• Keyboard: Space plays, up/down transposes, left/right change the tempo",
+    "tr": "Melodi Stüdyosu, kendi ezgilerini yazman için sade bir piyano rulosudur. İki oktav ve 32 adımlık ızgaraya dokunarak nota yerleştir, sürükleyerek uzat, Oynat'a basıp melodinin döngüde çalışını dinle. Flüt, Yumuşak, Çiptün ya da Bakır sesini seç, tempoyu ayarla, şarkının tamamını yukarı ya da aşağı transpoze et. Neşeye Övgü ile açıldığı için hemen denemeye başlayabilirsin.\n\n• Nota uzunluğu ayarlanabilen iki oktav, 32 adımlık ızgara\n• Dört enstrüman, 60–200 BPM tempo, ±12 transpoze\n• Şarkıları adıyla kaydet, aralarında geçiş yap\n• Notaları metin dosyası olarak Belgeler'e aktar\n• Klavye: Boşluk çalar, yukarı/aşağı transpoze, sol/sağ tempo",
+    "de": "Das Melodie-Studio ist eine einfache Pianorolle für deine eigenen Melodien. Tippe ins Raster, um Noten über zwei Oktaven und 32 Steps zu setzen, zieh sie länger und drück auf Abspielen, um deine Melodie in Schleife zu hören. Wähle Flöte, Weich, Chiptune oder Blechbläser, stell das Tempo ein und transponiere den ganzen Song nach oben oder unten. Zum Start ist „Ode an die Freude“ geladen, damit du gleich loslegen kannst.\n\n• Raster mit zwei Oktaven und 32 Steps, Notenlänge per Ziehen\n• Vier Instrumente, Tempo 60–200 BPM, Transponieren um ±12\n• Songs unter einem Namen speichern und wechseln\n• Die Partitur als Textdatei in Dokumente exportieren\n• Tastatur: Leertaste spielt, hoch/runter transponiert, links/rechts ändert das Tempo",
+    "fr": "Studio Mélodie est un piano roll simple pour écrire vos propres airs. Touchez la grille pour placer des notes sur deux octaves et 32 pas, faites-les glisser pour les allonger, puis appuyez sur Lecture pour écouter votre mélodie en boucle. Choisissez un son Flûte, Doux, Chiptune ou Cuivres, réglez le tempo et transposez tout le morceau vers le haut ou le bas. L’app s’ouvre sur l’Ode à la joie : de quoi jouer tout de suite.\n\n• Grille de deux octaves et 32 pas, durée des notes réglable\n• Quatre instruments, tempo de 60 à 200 BPM, transposition ±12\n• Enregistrez vos morceaux sous un nom et passez de l’un à l’autre\n• Exportez la partition en fichier texte dans Documents\n• Clavier : Espace pour lire, haut/bas pour transposer, gauche/droite pour le tempo",
+    "es": "Melody Studio es un piano roll sencillo para escribir tus propias melodías. Toca la cuadrícula para poner notas en dos octavas y 32 pasos, arrástralas para alargarlas y pulsa Reproducir para oír tu melodía en bucle. Elige el sonido Flauta, Suave, Chiptune o Metales, ajusta el tempo y transpón la canción entera hacia arriba o hacia abajo. Se abre con el Himno de la alegría para que puedas probar enseguida.\n\n• Cuadrícula de dos octavas y 32 pasos con notas de duración ajustable\n• Cuatro instrumentos, tempo de 60 a 200 BPM, transposición ±12\n• Guarda canciones con nombre y cambia entre ellas\n• Exporta la partitura como archivo de texto a Documentos\n• Teclado: Espacio reproduce, arriba/abajo transpone, izquierda/derecha cambia el tempo",
+    "ja": "メロディスタジオは、自分の曲を書くためのシンプルなピアノロールです。2 オクターブ、32 ステップのグリッドをタップして音符を置き、ドラッグして長くし、再生を押すとメロディがループします。フルート、ソフト、チップチューン、ブラスの音色を選び、テンポを設定し、曲全体を上下に移調できます。最初に「歓喜の歌」が開くので、すぐに遊べます。\n\n• 音の長さを調整できる 2 オクターブ、32 ステップのグリッド\n• 4 つの楽器、60〜200 BPM のテンポ、±12 の移調\n• 曲に名前を付けて保存し、切り替え\n• 楽譜をテキストファイルとして書類に書き出し\n• キーボード: Space で再生、上下で移調、左右でテンポを変更",
+    "zh": "旋律工作室是一个简单的钢琴卷帘，用来谱写你自己的曲子。轻点网格即可在两个八度和 32 步中放置音符，拖移以延长音符，按“播放”即可循环聆听你的旋律。可选择长笛、柔和、芯片音乐或铜管音色，设置速度并整体升降调。打开时会载入《欢乐颂》，让你马上就有东西可以玩。\n\n• 两个八度、32 步的网格，音符时值可调\n• 四种乐器，速度 60 到 200 BPM，移调 ±12\n• 按名称保存乐曲并在它们之间切换\n• 将乐谱导出为文本文件到“文稿”\n• 键盘：空格播放，上/下移调，左/右调整速度",
+    "ko": "멜로디 스튜디오는 나만의 곡을 쓰기 위한 간단한 피아노 롤입니다. 격자를 탭하여 2옥타브, 32스텝에 걸쳐 음을 놓고, 드래그하여 길게 만들고, 재생을 눌러 멜로디가 반복되는 것을 들어 보세요. 플루트, 부드러운 음, 칩튠, 브라스 소리 중에서 고르고, 템포를 설정하고, 곡 전체를 조옮김하세요. 환희의 송가로 시작하므로 바로 가지고 놀 수 있습니다.\n\n• 음 길이를 조절할 수 있는 2옥타브, 32스텝 격자\n• 악기 4종, 60에서 200 BPM 템포, ±12 조옮김\n• 곡을 이름으로 저장하고 전환\n• 악보를 텍스트 파일로 문서에 내보내기\n• 키보드: Space 재생, 위/아래 조옮김, 왼쪽/오른쪽 템포 변경"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.557 0.05", "wait 0.25", "key up", "key up", "key up", "key right", "key right", "key right", "key space", "wait 2.5"],
+    ["dark 1", "wait 2"]
+  ]
+}

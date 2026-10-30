@@ -1,0 +1,32 @@
+{
+  "id": "writer",
+  "name": {
+    "en": "Writer",
+    "tr": "Kelime İşlemci",
+    "de": "Writer",
+    "fr": "Writer",
+    "es": "Writer",
+    "ko": "Writer"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1000,
+    "height": 600,
+    "minWidth": 640,
+    "minHeight": 400,
+    "resizable": true
+  },
+  "singleInstance": false,
+  "fileTypes": [
+    ".nxvdoc",
+    ".docx",
+    ".md"
+  ],
+  "dpadArrows": true
+}

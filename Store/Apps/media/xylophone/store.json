@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Tap colourful bars and learn simple songs",
+    "tr": "Renkli tuşlara vur, şarkıları öğren",
+    "de": "Bunte Klangstäbe spielen, Lieder lernen",
+    "fr": "Tapez les lames, apprenez des comptines",
+    "es": "Toca las teclas y aprende canciones",
+    "ja": "カラフルな鍵盤を叩いてやさしい曲を覚えよう",
+    "zh": "敲击彩色琴键，学习简单的乐曲",
+    "ko": "알록달록 막대로 쉬운 노래 배우기"
+  },
+  "description": {
+    "en": "Xylophone gives you 8 or 15 colourful bars with a warm, wooden sound. Tap them, or use the number keys and Q–U, and watch each bar bounce with a ripple. Press Record to capture what you play with its timing, then play it back, rename or delete it. Five well-known songs are built in: listen to them, or switch on learning mode, where the next bar lights up and you move on with every correct hit.\n\n• 8 bars (C5–C6) or 15 bars (C5–C7)\n• Record and replay your melodies with timing\n• Five songs, including Twinkle, Twinkle and Happy Birthday\n• Learning mode with an accuracy score at the end\n• Playback speed from ×0.5 to ×2\n• Light and dark mode",
+    "tr": "Ksilofon, sıcak, tahta tınılı 8 ya da 15 renkli tuş sunar. Tuşlara dokun ya da rakam tuşlarını ve Q–U'yu kullan; her tuş vurduğunda sekip dalga halkası çıkarır. Kaydet'e bas, çaldığını zamanlamasıyla birlikte kaydet; sonra dinle, yeniden adlandır ya da sil. Beş tanıdık şarkı hazır: dinleyebilir ya da öğrenme modunu açabilirsin; sıradaki tuş yanar, her doğru vuruşta ilerlersin.\n\n• 8 tuş (Do5–Do6) ya da 15 tuş (Do5–Do7)\n• Melodilerini zamanlamasıyla kaydet ve dinle\n• Parla Parla Küçük Yıldız, İyi ki Doğdun ve daha fazlası\n• Sonunda isabet yüzdesi veren öğrenme modu\n• ×0,5 ile ×2 arası çalma hızı\n• Açık ve karanlık mod",
+    "de": "Das Xylofon bietet dir 8 oder 15 bunte Klangstäbe mit warmem Holzklang. Tippe sie an oder nutze die Zifferntasten und Q–U, und sieh zu, wie jeder Stab mit einer Welle federt. Mit Aufnehmen hältst du dein Spiel samt Timing fest, spielst es ab, benennst es um oder löschst es. Fünf bekannte Lieder sind dabei: Hör sie dir an oder schalte den Lernmodus ein – der nächste Stab leuchtet auf, und mit jedem richtigen Treffer geht es weiter.\n\n• 8 Stäbe (C5–C6) oder 15 Stäbe (C5–C7)\n• Melodien mit Timing aufnehmen und abspielen\n• Fünf Lieder, darunter „Happy Birthday“ und „Bruder Jakob“\n• Lernmodus mit Trefferquote am Ende\n• Wiedergabetempo von ×0,5 bis ×2\n• Heller und dunkler Modus",
+    "fr": "Xylophone vous offre 8 ou 15 lames colorées au son chaud et boisé. Touchez-les, ou utilisez les touches numériques et Q–U, et regardez chaque lame rebondir dans une onde. Appuyez sur Enregistrer pour capturer ce que vous jouez avec son rythme, puis réécoutez, renommez ou supprimez. Cinq airs connus sont inclus : écoutez-les, ou activez le mode apprentissage, où la lame suivante s’allume et vous avancez à chaque bonne note.\n\n• 8 lames (Do5–Do6) ou 15 lames (Do5–Do7)\n• Enregistrez et réécoutez vos mélodies avec leur rythme\n• Cinq airs, dont « Joyeux anniversaire » et « Frère Jacques »\n• Mode apprentissage avec score de précision à la fin\n• Vitesse de lecture de ×0,5 à ×2\n• Mode clair et mode sombre",
+    "es": "Xilófono te ofrece 8 o 15 teclas de colores con un sonido cálido de madera. Tócalas o usa las teclas numéricas y Q–U, y mira cómo cada tecla rebota con una onda. Pulsa Grabar para guardar lo que tocas con su ritmo, y luego escúchalo, cámbiale el nombre o bórralo. Incluye cinco canciones conocidas: escúchalas o activa el modo aprendizaje, en el que se ilumina la siguiente tecla y avanzas con cada acierto.\n\n• 8 teclas (Do5–Do6) o 15 teclas (Do5–Do7)\n• Graba y reproduce tus melodías con su ritmo\n• Cinco canciones, como «Cumpleaños feliz» y «Frère Jacques»\n• Modo aprendizaje con porcentaje de aciertos al final\n• Velocidad de reproducción de ×0,5 a ×2\n• Modo claro y oscuro",
+    "ja": "木琴には、温かな木の音がする 8 本または 15 本のカラフルな鍵盤があります。タップするか、数字キーと Q–U を使うと、鍵盤が波紋とともに弾みます。「録音」を押すと演奏をタイミングごと記録でき、再生、名前の変更、削除ができます。よく知られた 5 曲を内蔵: 聴くこともできますし、学習モードをオンにすると次に叩く鍵盤が光り、正しく叩くたびに先へ進みます。\n\n• 8 本 (C5–C6) または 15 本 (C5–C7) の鍵盤\n• タイミング付きでメロディを録音・再生\n• 「きらきら星」や「ハッピーバースデー」を含む 5 曲\n• 最後に正確さのスコアが出る学習モード\n• ×0.5〜×2 の再生速度\n• ライトモードとダークモード",
+    "zh": "木琴为你提供 8 根或 15 根彩色琴键，音色温暖如木。轻点琴键，或使用数字键和 Q–U，看着每根琴键随着涟漪弹起。按“录制”即可连同节奏录下你的演奏，然后回放、重命名或删除。内置五首耳熟能详的乐曲：可以直接聆听，也可以开启学习模式，下一根要敲的琴键会亮起，每敲对一次就前进一步。\n\n• 8 根琴键（C5–C6）或 15 根琴键（C5–C7）\n• 连同节奏录制和回放你的旋律\n• 五首乐曲，包括《小星星》和《生日快乐》\n• 学习模式，结束时给出准确率\n• 回放速度 ×0.5 到 ×2\n• 浅色和深色模式",
+    "ko": "실로폰은 따뜻한 나무 소리를 내는 알록달록한 막대 8개 또는 15개를 제공합니다. 막대를 탭하거나 숫자 키와 Q–U를 사용하면 막대가 물결치며 튀어 오릅니다. 녹음을 누르면 연주한 것을 타이밍과 함께 기록하고, 다시 재생하거나 이름을 바꾸거나 삭제할 수 있습니다. 잘 알려진 노래 5곡이 들어 있습니다. 들어 보거나 학습 모드를 켜면 다음 막대에 불이 들어오고 맞힐 때마다 넘어갑니다.\n\n• 막대 8개(C5–C6) 또는 15개(C5–C7)\n• 멜로디를 타이밍과 함께 녹음하고 다시 재생\n• 반짝반짝 작은 별, 생일 축하 노래 등 5곡\n• 끝나면 정확도 점수가 나오는 학습 모드\n• ×0.5에서 ×2까지 재생 속도\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.895 0.665", "wait 2.5"],
+    ["wclick 0.449 0.052", "wait 1", "wclick 0.94 0.744", "wait 1", "key 3", "key 3", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

@@ -1,0 +1,33 @@
+name: App submission question / Gönderim sorusu
+description: Ask about publishing an app, game, theme or font in the App Market.
+title: "[Submission] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read [the publishing guide](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.en.md)
+        first ([Türkçe](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.tr.md)).
+        English or Turkish is fine. / İngilizce ya da Türkçe yazabilirsiniz.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you publishing? / Ne yayımlıyorsunuz?
+      options:
+        - App / Uygulama
+        - Game / Oyun
+        - Theme / Tema
+        - Font / Yazı tipi
+    validations:
+      required: true
+  - type: input
+    id: pr
+    attributes:
+      label: Pull request (if any) / Varsa pull request
+      placeholder: "#123"
+  - type: textarea
+    id: question
+    attributes:
+      label: Question / Soru
+    validations:
+      required: true

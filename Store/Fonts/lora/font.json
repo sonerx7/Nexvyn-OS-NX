@@ -1,0 +1,32 @@
+{
+  "id": "lora",
+  "name": {
+    "en": "Lora",
+    "tr": "Lora",
+    "de": "Lora",
+    "fr": "Lora",
+    "es": "Lora"
+  },
+  "family": "Lora",
+  "styles": {
+    "regular": "Lora-Regular.ttf",
+    "bold": "Lora-Bold.ttf",
+    "italic": "Lora-Italic.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "3.008",
+  "author": "The Lora Project Authors",
+  "classification": "serif",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Viet"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

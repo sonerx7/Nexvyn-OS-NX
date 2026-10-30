@@ -1,0 +1,54 @@
+{
+  "subtitle": {
+    "en": "All 118 elements, one tap away",
+    "tr": "118 elementin hepsi bir dokunuş uzakta",
+    "de": "Alle 118 Elemente auf einen Tipp",
+    "fr": "Les 118 éléments à portée de doigt",
+    "es": "Los 118 elementos a un toque",
+    "ja": "118 の元素すべてにワンタップで",
+    "zh": "全部 118 种元素，一触即达",
+    "ko": "118개 원소 전부를 한 번의 탭으로"
+  },
+  "description": {
+    "en": "The whole periodic table in a clear, colorful layout. Tap an element to open its card with the atomic mass, electron configuration, group and period, melting and boiling points and the year it was discovered. Search by name, symbol or number, and switch views to see which elements are solid, liquid or gas.\n\n• All 118 elements, colored by category, with a legend you can filter by\n• Detail card for the selected element\n• Search by name, symbol or atomic number\n• State view with a temperature slider from 0 to 6000 K\n• Arrow keys and the D-pad move through the table; copy a symbol or a name",
+    "tr": "Periyodik tablonun tamamı, sade ve renkli bir düzende. Bir elemente dokun; atom kütlesi, elektron dizilimi, grup ve periyodu, erime ve kaynama noktaları ve keşif yılıyla kartı açılsın. Ad, sembol ya da numarayla ara; görünümü değiştirerek hangi elementlerin katı, sıvı ya da gaz olduğunu gör.\n\n• Kategoriye göre renklendirilmiş 118 elementin hepsi, süzülebilen açıklamayla\n• Seçili element için ayrıntı kartı\n• Ad, sembol ya da atom numarasıyla arama\n• 0–6000 K arası sıcaklık kaydırıcısıyla hâl görünümü\n• Ok tuşları ve yön tuşlarıyla tabloda gezinme; sembolü ya da adı kopyalama",
+    "de": "Das ganze Periodensystem in einem klaren, farbigen Layout. Tippe ein Element an, um seine Karte mit Atommasse, Elektronenkonfiguration, Gruppe und Periode, Schmelz- und Siedepunkt und Entdeckungsjahr zu öffnen. Suche nach Name, Symbol oder Ordnungszahl und wechsle die Ansicht, um zu sehen, welche Elemente fest, flüssig oder gasförmig sind.\n\n• Alle 118 Elemente, nach Kategorie gefärbt, mit filterbarer Legende\n• Detailkarte für das gewählte Element\n• Suche nach Name, Symbol oder Ordnungszahl\n• Aggregatzustand-Ansicht mit Temperaturregler von 0 bis 6000 K\n• Pfeiltasten und Steuerkreuz bewegen durch die Tabelle; Symbol oder Name kopieren",
+    "fr": "Tout le tableau périodique dans une présentation claire et colorée. Touchez un élément pour ouvrir sa fiche : masse atomique, configuration électronique, groupe et période, points de fusion et d’ébullition et année de découverte. Cherchez par nom, symbole ou numéro, et changez de vue pour voir quels éléments sont solides, liquides ou gazeux.\n\n• Les 118 éléments, colorés par famille, avec une légende filtrable\n• Fiche détaillée de l’élément sélectionné\n• Recherche par nom, symbole ou numéro atomique\n• Vue des états avec un curseur de température de 0 à 6000 K\n• Flèches et croix directionnelle pour parcourir le tableau ; copie du symbole ou du nom",
+    "es": "Toda la tabla periódica en un diseño claro y colorido. Toca un elemento para abrir su ficha con la masa atómica, la configuración electrónica, el grupo y el periodo, los puntos de fusión y ebullición y el año de su descubrimiento. Busca por nombre, símbolo o número y cambia de vista para ver qué elementos son sólidos, líquidos o gases.\n\n• Los 118 elementos, coloreados por categoría, con una leyenda para filtrar\n• Ficha de detalle del elemento seleccionado\n• Búsqueda por nombre, símbolo o número atómico\n• Vista de estados con un control de temperatura de 0 a 6000 K\n• Flechas y cruceta para moverte por la tabla; copia el símbolo o el nombre",
+    "ja": "周期表全体を、わかりやすくカラフルなレイアウトで。元素をタップすると、原子量、電子配置、族と周期、融点と沸点、発見年が載ったカードが開きます。名前、元素記号、原子番号で検索し、表示を切り替えるとどの元素が固体、液体、気体かがわかります。\n\n• 分類ごとに色分けされた 118 の元素すべてと、絞り込みに使える凡例\n• 選択した元素の詳細カード\n• 名前、元素記号、原子番号で検索\n• 0〜6000 K の温度スライダー付きの状態表示\n• 矢印キーと十字ボタンで表を移動、元素記号や名前をコピー",
+    "zh": "清晰、多彩的完整元素周期表。轻点一个元素即可打开它的卡片，查看原子质量、电子排布、族和周期、熔点和沸点以及发现年份。按名称、符号或原子序数搜索，并切换视图查看哪些元素是固态、液态或气态。\n\n• 全部 118 种元素，按类别着色，图例可用于筛选\n• 所选元素的详细信息卡片\n• 按名称、符号或原子序数搜索\n• 状态视图，带 0 到 6000 K 的温度滑块\n• 方向键和十字键可在表中移动；可复制符号或名称",
+    "ko": "명확하고 알록달록한 배치로 보는 주기율표 전체입니다. 원소를 탭하면 원자량, 전자 배치, 족과 주기, 녹는점과 끓는점, 발견 연도가 담긴 카드가 열립니다. 이름, 기호, 번호로 검색하고, 보기를 전환하여 어떤 원소가 고체, 액체, 기체인지 확인하세요.\n\n• 분류별로 색칠되고 필터 가능한 범례가 있는 118개 원소 전체\n• 선택한 원소의 상세 카드\n• 이름, 기호, 원자 번호로 검색\n• 0에서 6000 K까지 온도 슬라이더가 있는 상태 보기\n• 화살표 키와 방향 버튼으로 표 이동, 기호나 이름 복사"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "key down",
+      "key down",
+      "key down",
+      "key right",
+      "key right",
+      "key right",
+      "key right",
+      "key right",
+      "key right",
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "key tab",
+      "wait 1.5"
+    ],
+    [
+      "key tab",
+      "wclick 0.29 0.04",
+      "wait 0.4",
+      "text Au",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "stickies",
+  "name": {
+    "en": "Sticky Notes",
+    "tr": "Yapışkan Notlar",
+    "de": "Haftnotizen",
+    "fr": "Pense-bêtes",
+    "es": "Notas adhesivas",
+    "ko": "스티커 메모"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 260,
+    "height": 240,
+    "minWidth": 180,
+    "minHeight": 160,
+    "resizable": true
+  },
+  "singleInstance": false
+}

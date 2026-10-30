@@ -1,0 +1,10 @@
+{
+  "app": "Chronomètre",
+  "start": "Démarrer",
+  "stop": "Arrêter",
+  "lap": "Tour",
+  "reset": "Réinitialiser",
+  "no_laps": "Les tours s'affichent ici. Espace démarre et arrête, L ajoute un tour.",
+  "lap_n": "Tour {0}",
+  "share": "Partager les tours…"
+}

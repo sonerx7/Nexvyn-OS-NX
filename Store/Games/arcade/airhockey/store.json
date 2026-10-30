@@ -1,0 +1,38 @@
+{
+  "subtitle": {
+    "en": "Fast table hockey, solo or with a friend",
+    "tr": "Hızlı masa hokeyi, tek başına ya da ikili",
+    "de": "Schnelles Tischhockey, allein oder zu zweit",
+    "fr": "Du hockey de table rapide, seul ou à deux",
+    "es": "Hockey de mesa rápido, solo o con amigos",
+    "ja": "1 人でも 2 人でも熱いテーブルホッケー",
+    "zh": "快节奏桌上冰球，单人或与朋友对战",
+    "ko": "혼자 또는 친구와 즐기는 빠른 테이블 하키"
+  },
+  "description": {
+    "en": "Grab your mallet and slam the puck into the goal before the console does. The puck bounces off the rails, speeds up with every hard hit and leaves a trail as it flies. Play against the console on easy, normal or hard, or give a friend one Joy-Con stick for a two-player match on the same Switch. The first to seven goals wins.\n\n• One player against three console levels, or two players on one console\n• Touch, mouse, sticks, WASD or arrow keys\n• Goal effects, screen shake and confetti for the winner\n• Win records per difficulty, including your biggest win\n• Written in Python for Nexvyn OS",
+    "tr": "Tokmağını kap ve diski konsoldan önce kaleye gönder. Disk kenarlardan seker, her sert vuruşta hızlanır ve arkasında iz bırakır. Konsola karşı kolay, normal ya da zor seviyede oyna; ya da bir Joy-Con çubuğunu arkadaşına ver, aynı Switch'te iki kişilik maç yapın. Yedi golü ilk atan kazanır.\n\n• Konsola karşı üç seviye ya da aynı konsolda iki oyuncu\n• Dokunmatik, fare, çubuklar, WASD ya da yön tuşları\n• Gol efektleri, ekran sarsıntısı ve kazanana konfeti\n• Her zorluk için galibiyet kaydı ve en farklı galibiyetin\n• Nexvyn OS için Python ile yazıldı",
+    "de": "Schnapp dir deinen Schläger und versenk den Puck im Tor, bevor die Konsole es tut. Der Puck prallt von den Banden ab, wird mit jedem harten Schlag schneller und zieht eine Spur hinter sich her. Spiel gegen die Konsole auf Leicht, Normal oder Schwer oder gib einem Freund einen Joy-Con-Stick für ein Duell auf derselben Switch. Wer zuerst sieben Tore schießt, gewinnt.\n\n• Allein gegen drei Konsolenstufen oder zu zweit an einer Konsole\n• Touch, Maus, Sticks, WASD oder Pfeiltasten\n• Toreffekte, Bildschirmwackeln und Konfetti für den Sieger\n• Siegstatistik pro Stufe samt deinem höchsten Sieg\n• In Python für Nexvyn OS geschrieben",
+    "fr": "Prenez votre maillet et envoyez le palet au fond du but avant la console. Le palet rebondit sur les bandes, accélère à chaque frappe appuyée et laisse une traînée derrière lui. Affrontez la console en facile, normal ou difficile, ou confiez un stick Joy-Con à un ami pour un duel sur la même Switch. Le premier à sept buts l’emporte.\n\n• Seul contre trois niveaux de console, ou à deux sur une console\n• Tactile, souris, sticks, WASD ou touches fléchées\n• Effets de but, secousses d’écran et confettis pour le vainqueur\n• Victoires par difficulté, avec votre plus large victoire\n• Écrit en Python pour Nexvyn OS",
+    "es": "Agarra tu mazo y mete el disco en la portería antes que la consola. El disco rebota en las bandas, acelera con cada golpe fuerte y deja una estela al volar. Juega contra la consola en fácil, normal o difícil, o pásale un stick del Joy-Con a un amigo para un duelo en la misma Switch. Gana quien marque siete goles primero.\n\n• Un jugador contra tres niveles o dos jugadores en una consola\n• Táctil, ratón, sticks, WASD o flechas\n• Efectos de gol, temblor de pantalla y confeti para el ganador\n• Victorias por dificultad, incluida tu mayor goleada\n• Escrito en Python para Nexvyn OS",
+    "ja": "マレットを握り、本体より先にパックをゴールに叩き込みましょう。パックはレールで跳ね返り、強く打つたびに速くなり、軌跡を残して飛んでいきます。本体とかんたん、ふつう、むずかしいで対戦するか、友だちに Joy-Con のスティックを 1 本渡して同じ Switch で 2 人対戦しましょう。先に 7 ゴールした方が勝ちです。\n\n• 3 段階の本体と 1 人で対戦、または 1 台の本体で 2 人対戦\n• タッチ、マウス、スティック、WASD、矢印キー\n• ゴールのエフェクト、画面の揺れ、勝者への紙吹雪\n• 難易度ごとの勝利記録と最大得点差\n• Nexvyn OS 向けに Python で作成",
+    "zh": "握住你的球槌，抢在主机之前把冰球打进球门。冰球会在边栏间反弹，每次重击都会加速，飞行时还会留下轨迹。可与简单、普通或困难难度的主机对战，或者把一个 Joy-Con 摇杆交给朋友，在同一台 Switch 上进行双人对战。先进七球者获胜。\n\n• 单人对战三种难度的主机，或在同一台主机上双人对战\n• 触控、鼠标、摇杆、WASD 或方向键\n• 进球特效、屏幕震动和胜利者的彩纸\n• 每种难度的胜场纪录，包括你最大的胜利\n• 用 Python 为 Nexvyn OS 编写",
+    "ko": "말렛을 잡고 콘솔보다 먼저 퍽을 골대에 꽂아 넣으세요. 퍽은 레일에 튕기고, 세게 칠 때마다 빨라지며, 날아가면서 궤적을 남깁니다. 쉬움, 보통, 어려움 단계의 콘솔과 대결하거나, 친구에게 Joy-Con 스틱 하나를 건네 같은 Switch에서 2인 대결을 하세요. 먼저 7골을 넣으면 승리합니다.\n\n• 콘솔 3단계와 1인 플레이, 또는 콘솔 하나로 2인 플레이\n• 터치, 마우스, 스틱, WASD, 화살표 키\n• 골 효과, 화면 흔들림, 승자를 위한 색종이\n• 가장 큰 점수 차 승리를 포함한 난이도별 승리 기록\n• Nexvyn OS용 Python으로 작성"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "hold d 0.5",
+      "wait 1.5"
+    ],
+    [
+      "wait 3"
+    ]
+  ]
+}

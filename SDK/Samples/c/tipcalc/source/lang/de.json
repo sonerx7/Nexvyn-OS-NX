@@ -1,0 +1,13 @@
+{
+  "app": "Trinkgeld-Teiler",
+  "bill": "Rechnung",
+  "tip": "Trinkgeld",
+  "people": "Personen",
+  "round_up": "Aufrunden",
+  "tip_amount": "Trinkgeld",
+  "total": "Summe",
+  "each": "Pro Person",
+  "share": "Teilen",
+  "share_text": "Summe {0} für {1} Personen: {2} pro Person",
+  "clear": "Rechnung leeren"
+}

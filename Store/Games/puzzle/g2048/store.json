@@ -1,0 +1,60 @@
+{
+  "subtitle": {
+    "en": "Slide, merge and reach the 2048 tile",
+    "tr": "Kaydır, birleştir, 2048'e ulaş",
+    "de": "Schieben, verschmelzen, 2048 erreichen",
+    "fr": "Glissez, fusionnez, atteignez 2048",
+    "es": "Desliza, combina y llega al 2048",
+    "ja": "スライドして合体させ、2048 を目指そう",
+    "zh": "滑动、合并，达成 2048",
+    "ko": "밀고, 합치고, 2048 타일에 도달하세요"
+  },
+  "description": {
+    "en": "Slide all the tiles on the board at once; when two equal numbers touch, they merge into one. Keep merging to build bigger and bigger tiles and reach 2048, then keep going for an even higher score. Play the classic 4×4 board or switch to 3×3, 5×5 or 6×6. Each board size keeps its own saved game and best score, and undo is there for that one wrong swipe.\n\n• Board sizes from 3×3 to 6×6\n• A saved game and best score for each size\n• Undo and statistics\n• Swipe, arrow keys, WASD, D-pad or stick",
+    "tr": "Tahtadaki bütün karoları aynı anda kaydır; iki eşit sayı birbirine değince tek karoda birleşir. Birleştirmeye devam ederek karoları büyüt, 2048'e ulaş, sonra daha yüksek bir skor için sürdür. Klasik 4×4 tahtada oyna ya da 3×3, 5×5 veya 6×6'ya geç. Her tahta boyutunun kendi kayıtlı oyunu ve rekoru vardır; o tek yanlış kaydırma için de geri alma hazır.\n\n• 3×3'ten 6×6'ya tahta boyutları\n• Her boyut için kayıtlı oyun ve rekor\n• Geri alma ve istatistikler\n• Kaydırma, yön tuşları, WASD, yön düğmeleri ya da çubuk",
+    "de": "Schieb alle Plättchen auf dem Brett auf einmal; berühren sich zwei gleiche Zahlen, verschmelzen sie zu einer. Verschmilz immer weiter zu größeren Plättchen, bis du 2048 erreichst, und mach dann für einen noch höheren Punktestand weiter. Spiel auf dem klassischen 4×4-Brett oder wechsle zu 3×3, 5×5 oder 6×6. Jede Brettgröße hat ihren eigenen Spielstand und Highscore, und für den einen falschen Wisch gibt es Rückgängig.\n\n• Brettgrößen von 3×3 bis 6×6\n• Eigener Spielstand und Highscore pro Größe\n• Rückgängig und Statistik\n• Wischen, Pfeiltasten, WASD, Steuerkreuz oder Stick",
+    "fr": "Faites glisser toutes les tuiles du plateau en même temps ; quand deux nombres identiques se touchent, ils fusionnent. Continuez à fusionner pour former des tuiles toujours plus grandes jusqu’à 2048, puis poursuivez pour un score encore plus élevé. Jouez sur le plateau 4×4 classique ou passez au 3×3, 5×5 ou 6×6. Chaque taille garde sa propre partie et son record, et l’annulation rattrape le mauvais glissement.\n\n• Plateaux de 3×3 à 6×6\n• Une partie sauvegardée et un record par taille\n• Annulation et statistiques\n• Glisser, flèches, WASD, croix ou stick",
+    "es": "Desliza todas las fichas del tablero a la vez; cuando dos números iguales se tocan, se combinan en uno. Sigue combinando para formar fichas cada vez más grandes hasta llegar al 2048, y luego continúa por una puntuación aún mayor. Juega en el clásico 4×4 o cambia a 3×3, 5×5 o 6×6. Cada tamaño guarda su propia partida y su récord, y deshacer te salva de ese deslizamiento equivocado.\n\n• Tableros de 3×3 a 6×6\n• Partida guardada y récord por tamaño\n• Deshacer y estadísticas\n• Desliza, flechas, WASD, cruceta o stick",
+    "ja": "盤上のすべてのタイルを一度にスライドさせ、同じ数字がぶつかると 1 つに合体します。合体を続けてどんどん大きなタイルを作り、2048 に到達したら、さらに高いスコアを目指しましょう。定番の 4×4 の盤で遊ぶか、3×3、5×5、6×6 に切り替えられます。盤サイズごとにゲームとベストスコアが保存され、うっかりのスワイプには取り消しがあります。\n\n• 3×3 から 6×6 までの盤サイズ\n• サイズごとに保存されるゲームとベストスコア\n• 取り消しと統計\n• スワイプ、矢印キー、WASD、十字ボタン、スティック",
+    "zh": "一次滑动棋盘上的所有方块；两个相同的数字相碰时会合并成一个。不断合并，拼出越来越大的方块，达成 2048，然后继续追求更高的分数。可以玩经典的 4×4 棋盘，或切换到 3×3、5×5 或 6×6。每种棋盘尺寸各自保留存档和最高分，失手滑错一步时还可以撤销。\n\n• 从 3×3 到 6×6 的棋盘尺寸\n• 每种尺寸各有存档和最高分\n• 撤销和统计\n• 轻扫、方向键、WASD、十字键或摇杆",
+    "ko": "보드의 모든 타일을 한 번에 밀면, 같은 숫자 두 개가 닿을 때 하나로 합쳐집니다. 계속 합쳐 점점 큰 타일을 만들어 2048에 도달하고, 더 높은 점수를 위해 계속하세요. 클래식 4×4 보드나 3×3, 5×5, 6×6으로 플레이하세요. 보드 크기마다 저장된 게임과 최고 점수가 따로 있으며, 잘못 민 한 번을 위한 실행 취소도 있습니다.\n\n• 3×3부터 6×6까지 보드 크기\n• 크기별 저장된 게임과 최고 점수\n• 실행 취소와 통계\n• 쓸어 넘기기, 화살표 키, WASD, 방향 버튼, 스틱"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key left",
+      "wait 0.3",
+      "key down",
+      "wait 0.3",
+      "key right",
+      "wait 0.3",
+      "key down",
+      "wait 0.6"
+    ],
+    [
+      "key left",
+      "wait 0.3",
+      "key down",
+      "wait 0.3",
+      "key right",
+      "wait 0.3",
+      "key down",
+      "wait 0.3",
+      "key left",
+      "wait 0.3",
+      "key down",
+      "wait 0.6"
+    ],
+    [
+      "dark 1",
+      "key right",
+      "wait 0.3",
+      "key down",
+      "wait 1"
+    ]
+  ]
+}

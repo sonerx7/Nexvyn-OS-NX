@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Dive deep into Mandelbrot and Julia",
+    "tr": "Mandelbrot ve Julia'nın derinliklerine dal",
+    "de": "Tauche tief in Mandelbrot und Julia ein",
+    "fr": "Plongez dans Mandelbrot et Julia",
+    "es": "Sumérgete en Mandelbrot y Julia",
+    "ja": "マンデルブロ集合とジュリア集合の奥深くへ",
+    "zh": "深入探索 Mandelbrot 和 Julia 集",
+    "ko": "망델브로와 쥘리아 집합 깊숙이 들어가 보세요"
+  },
+  "description": {
+    "en": "Fractal Explorer lets you dive into the Mandelbrot set and its Julia sets. Drag to pan, pinch, scroll or double-tap to zoom, and watch the picture sharpen from coarse blocks into fine detail while the interface stays smooth. Switch to Julia mode and the centre of your Mandelbrot view becomes the Julia constant. Jump to famous places like Seahorse Valley, save your own spots and export what you find as a PNG image.\n\n• Progressive rendering that never freezes the app\n• Five colour schemes with smooth shading\n• Detail from 50 to 2000 iterations, three quality levels\n• Built-in places plus your own, coordinates to the clipboard\n• Keyboard: arrows pan, Z/X zoom, R resets, J for Julia, C changes colours",
+    "tr": "Fraktal Gezgini, Mandelbrot kümesine ve Julia kümelerine dalmanı sağlar. Sürükleyerek kaydır; iki parmakla, tekerlekle ya da çift dokunuşla yakınlaştır. Görüntü önce kaba bloklarla belirir, sonra ince ayrıntılara kavuşur; bu sırada arayüz hep akıcı kalır. Julia moduna geçtiğinde Mandelbrot görünümünün ortası Julia sabiti olur. Denizatı Vadisi gibi ünlü yerlere atla, kendi keşiflerini kaydet ve bulduklarını PNG olarak dışa aktar.\n\n• Uygulamayı hiç dondurmayan aşamalı çizim\n• Yumuşak geçişli beş renk şeması\n• 50–2000 arası ayrıntı, üç kalite düzeyi\n• Hazır yerler ve kendi yerlerin, koordinatları panoya kopyalama\n• Klavye: oklar kaydırır, Z/X yakınlaştırır, R sıfırlar, J Julia, C renkleri değiştirir",
+    "de": "Mit dem Fraktal-Explorer tauchst du in die Mandelbrot-Menge und ihre Julia-Mengen ein. Ziehe zum Verschieben, zoome per Pinch, Mausrad oder Doppeltipp und sieh zu, wie das Bild von groben Blöcken zu feinen Details wird – die Oberfläche bleibt dabei flüssig. Im Julia-Modus wird die Mitte deiner Mandelbrot-Ansicht zur Julia-Konstante. Spring zu berühmten Orten wie dem Seepferdchental, speichere eigene Fundstücke und exportiere sie als PNG.\n\n• Schrittweises Rendern, das die App nie einfriert\n• Fünf Farbschemata mit weichen Übergängen\n• Detail von 50 bis 2000 Iterationen, drei Qualitätsstufen\n• Vorgegebene und eigene Orte, Koordinaten in die Zwischenablage\n• Tastatur: Pfeile verschieben, Z/X zoomen, R setzt zurück, J für Julia, C wechselt die Farben",
+    "fr": "Explorateur de fractales vous emmène au cœur de l’ensemble de Mandelbrot et de ses ensembles de Julia. Faites glisser pour vous déplacer, pincez, utilisez la molette ou touchez deux fois pour zoomer, et regardez l’image passer de gros blocs aux détails les plus fins sans que l’interface ralentisse. En mode Julia, le centre de votre vue de Mandelbrot devient la constante de Julia. Rejoignez des lieux célèbres comme la Vallée des hippocampes, enregistrez vos propres découvertes et exportez-les en PNG.\n\n• Rendu progressif qui ne fige jamais l’app\n• Cinq palettes de couleurs aux dégradés doux\n• De 50 à 2000 itérations, trois niveaux de qualité\n• Lieux intégrés et lieux personnels, coordonnées copiables\n• Clavier : flèches pour se déplacer, Z/X pour zoomer, R réinitialise, J pour Julia, C change les couleurs",
+    "es": "Explorador de fractales te lleva al interior del conjunto de Mandelbrot y sus conjuntos de Julia. Arrastra para moverte, pellizca, usa la rueda o toca dos veces para acercar, y mira cómo la imagen pasa de bloques gruesos a detalles finos mientras la interfaz sigue fluida. En el modo Julia, el centro de tu vista de Mandelbrot se convierte en la constante de Julia. Salta a lugares famosos como el Valle del caballito de mar, guarda tus propios hallazgos y expórtalos como PNG.\n\n• Dibujo progresivo que nunca congela la app\n• Cinco esquemas de color con degradados suaves\n• De 50 a 2000 iteraciones y tres niveles de calidad\n• Lugares incluidos y propios, coordenadas al portapapeles\n• Teclado: flechas para moverte, Z/X para el zoom, R reinicia, J para Julia, C cambia los colores",
+    "ja": "フラクタルエクスプローラーで、マンデルブロ集合とそのジュリア集合に飛び込みましょう。ドラッグでパン、ピンチ、スクロール、ダブルタップでズームでき、インターフェイスは滑らかなまま、画像が粗いブロックから細部へと鮮明になっていきます。ジュリアモードに切り替えると、マンデルブロの表示の中心がジュリア定数になります。「タツノオトシゴの谷」などの有名な場所にジャンプし、自分の場所を保存し、見つけたものを PNG 画像として書き出せます。\n\n• アプリが固まらない段階的レンダリング\n• 滑らかなシェーディングの 5 つの配色\n• 50〜2000 回の反復回数、3 段階の画質\n• 内蔵の場所と自分の場所、座標をクリップボードにコピー\n• キーボード: 矢印キーでパン、Z/X でズーム、R でリセット、J でジュリア、C で配色を変更",
+    "zh": "分形探索器带你深入 Mandelbrot 集及其 Julia 集。拖移以平移，捏合、滚动或双击以缩放，看着画面从粗糙的色块逐渐变得细腻，而界面始终保持流畅。切换到 Julia 模式后，你的 Mandelbrot 视图中心就会成为 Julia 常数。跳转到海马谷等著名地点，保存你自己的地点，并把你的发现导出为 PNG 图像。\n\n• 渐进式渲染，应用绝不会卡住\n• 五种平滑着色的配色方案\n• 细节从 50 到 2000 次迭代，三种画质\n• 内置地点以及你自己的地点，坐标可复制到剪贴板\n• 键盘：方向键平移，Z/X 缩放，R 重置，J 切换 Julia，C 更换颜色",
+    "ko": "프랙탈 탐색기로 망델브로 집합과 쥘리아 집합을 탐험하세요. 드래그하여 이동하고, 핀치, 스크롤 또는 두 번 탭하여 확대하면, 인터페이스가 부드럽게 유지되는 동안 그림이 거친 블록에서 세밀한 디테일로 선명해집니다. 쥘리아 모드로 전환하면 망델브로 보기의 중심이 쥘리아 상수가 됩니다. 해마 골짜기 같은 유명한 장소로 이동하고, 나만의 장소를 저장하고, 발견한 것을 PNG 이미지로 내보내세요.\n\n• 앱이 멈추지 않는 점진적 렌더링\n• 부드러운 음영의 색상 구성 5가지\n• 50에서 2000회 반복의 디테일, 품질 3단계\n• 기본 장소와 나만의 장소, 좌표를 클립보드로 복사\n• 키보드: 화살표 이동, Z/X 확대/축소, R 재설정, J 쥘리아, C 색상 변경"
+  },
+  "shots": [
+    ["wait 5"],
+    ["key z", "key left", "key up", "key z", "key c", "wait 5"],
+    ["key j", "key c", "wait 5"],
+    ["dark 1", "key c", "wait 4"]
+  ]
+}

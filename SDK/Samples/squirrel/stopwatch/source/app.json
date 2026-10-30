@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.sample.stopwatch",
+  "name": {
+    "en": "Stopwatch",
+    "tr": "Kronometre",
+    "de": "Stoppuhr",
+    "fr": "Chronomètre",
+    "es": "Cronómetro",
+    "ja": "ストップウォッチ",
+    "zh": "秒表",
+    "ko": "스톱워치"
+  },
+  "description": {
+    "en": "Start, stop and laps with the fastest and slowest marked: Squirrel sample",
+    "tr": "Başlat, durdur ve en hızlı ile en yavaşı işaretli turlar: Squirrel örneği",
+    "de": "Start, Stopp und Runden mit schnellster und langsamster markiert: Squirrel-Beispiel",
+    "fr": "Départ, arrêt et tours avec le plus rapide et le plus lent marqués : exemple Squirrel",
+    "es": "Iniciar, parar y vueltas con la más rápida y la más lenta marcadas: ejemplo en Squirrel"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "runtime": "squirrel",
+  "main": "main.nut",
+  "minSdk": "1.5",
+  "window": {
+    "width": 480,
+    "height": 520,
+    "minWidth": 440,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": false,
+  "permissions": []
+}

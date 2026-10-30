@@ -1,0 +1,7 @@
+{
+  "app": "App",
+  "hello": "Hallo Welt!",
+  "edit_me": "Bearbeite src/app/Main.java, baue app.jar auf dem PC neu und starte die App erneut.",
+  "tap": "{0}-mal getippt",
+  "reset": "Zähler zurücksetzen"
+}

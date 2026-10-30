@@ -1,0 +1,33 @@
+{
+  "id": "kanban",
+  "name": {
+    "en": "Kanban",
+    "tr": "Görev Panosu",
+    "de": "Kanban",
+    "fr": "Kanban",
+    "es": "Kanban",
+    "ja": "かんばん",
+    "zh": "看板",
+    "ko": "칸반"
+  },
+  "description": {
+    "en": "Kanban boards with editable columns, cards with notes, due dates and colour labels; drag cards or move them with the controller.",
+    "tr": "Düzenlenebilir sütunlu Kanban panoları; notlu, tarihli ve renk etiketli kartlar. Kartları sürükleyin ya da kumandayla taşıyın.",
+    "de": "Kanban-Boards mit bearbeitbaren Spalten, Karten mit Notizen, Fälligkeitsdaten und Farbmarkierungen; ziehe Karten oder verschiebe sie mit dem Controller.",
+    "fr": "Des tableaux Kanban avec colonnes modifiables, cartes avec notes, échéances et étiquettes de couleur ; faites glisser les cartes ou déplacez-les avec la manette.",
+    "es": "Tableros Kanban con columnas editables, tarjetas con notas, fechas de vencimiento y etiquetas de color; arrastra las tarjetas o muévelas con el mando."
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 980,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": []
+}

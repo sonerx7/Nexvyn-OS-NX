@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "A word processor with Word file support",
+    "tr": "Word uyumlu kelime işlemci",
+    "de": "Textverarbeitung mit Word-Unterstützung",
+    "fr": "Un traitement de texte compatible Word",
+    "es": "Un procesador de textos compatible con Word",
+    "ja": "Word ファイルに対応したワープロ",
+    "zh": "支持 Word 文件的文字处理器",
+    "ko": "DOCX 파일을 지원하는 워드 프로세서"
+  },
+  "description": {
+    "en": "Write letters, reports and notes with real formatting. Writer offers paragraph styles from Title to Quote and Code, bold, italic, underline and highlight, bullet, numbered and check lists, tables and images, in a page layout that looks like A4 paper or a flowing web layout. Start from a template for a letter, report, résumé or meeting notes, open .docx and Markdown files, and export to Word, HTML, Markdown or plain text. Your document saves itself as you write.\n\n• Paragraph styles, alignment, line spacing and indents\n• Bold, italic, underline, strikethrough and highlight\n• Bullets, numbering, checklists, tables, images and page breaks\n• Templates: letter, report, résumé, meeting notes\n• .docx, .md and .txt import; .docx, .html, .md and .txt export\n• Find & replace, word count, zoom, undo / redo and autosave",
+    "tr": "Mektup, rapor ve notlarını gerçek biçimlendirmeyle yaz. Kelime İşlemci başlıktan alıntı ve koda kadar paragraf stilleri, kalın, italik, altı çizili ve vurgulu yazı, madde işaretli, numaralı ve onay kutulu listeler, tablolar ve resimler sunar; A4 kâğıda benzeyen sayfa düzeni ya da akan web düzeniyle. Mektup, rapor, özgeçmiş ya da toplantı notu şablonuyla başla, .docx ve Markdown dosyalarını aç; Word, HTML, Markdown ya da düz metin olarak dışa aktar. Belgen sen yazarken kendiliğinden kaydedilir.\n\n• Paragraf stilleri, hizalama, satır aralığı ve girintiler\n• Kalın, italik, altı çizili, üstü çizili ve vurgu\n• Madde işaretleri, numaralar, onay listeleri, tablolar, resimler ve sayfa sonları\n• Şablonlar: mektup, rapor, özgeçmiş, toplantı notları\n• .docx, .md ve .txt içe aktarma; .docx, .html, .md ve .txt dışa aktarma\n• Bul ve değiştir, sözcük sayısı, yakınlaştırma, geri al / yinele, otomatik kayıt",
+    "de": "Schreib Briefe, Berichte und Notizen mit echter Formatierung. Writer bietet Absatzformate von Titel bis Zitat und Code, Fett, Kursiv, Unterstrichen und Hervorhebung, Aufzählungen, nummerierte Listen und Checklisten, Tabellen und Bilder, in einer Seitenansicht wie auf A4-Papier oder einer fließenden Web-Ansicht. Starte mit Vorlagen für Brief, Bericht, Lebenslauf oder Besprechungsnotizen, öffne .docx- und Markdown-Dateien und exportiere nach Word, HTML, Markdown oder Text. Dein Dokument speichert sich beim Schreiben.\n\n• Absatzformate, Ausrichtung, Zeilenabstand und Einzüge\n• Fett, Kursiv, Unterstrichen, Durchgestrichen und Hervorhebung\n• Aufzählungen, Nummerierung, Checklisten, Tabellen, Bilder, Seitenumbrüche\n• Vorlagen: Brief, Bericht, Lebenslauf, Besprechung\n• Import von .docx, .md und .txt; Export als .docx, .html, .md und .txt\n• Suchen & Ersetzen, Wortanzahl, Zoom, Rückgängig und Autosave",
+    "fr": "Rédigez lettres, rapports et notes avec une vraie mise en forme. Writer propose des styles de paragraphe du Titre à la Citation et au Code, gras, italique, souligné et surlignage, listes à puces, numérotées et cases à cocher, tableaux et images, en mise en page A4 ou en affichage web continu. Partez d’un modèle de lettre, de rapport, de CV ou de compte rendu, ouvrez des fichiers .docx et Markdown, et exportez en Word, HTML, Markdown ou texte brut. Votre document s’enregistre pendant que vous écrivez.\n\n• Styles de paragraphe, alignement, interligne et retraits\n• Gras, italique, souligné, barré et surlignage\n• Puces, numérotation, cases à cocher, tableaux, images, sauts de page\n• Modèles : lettre, rapport, CV, compte rendu de réunion\n• Import .docx, .md et .txt ; export .docx, .html, .md et .txt\n• Rechercher et remplacer, nombre de mots, zoom, annuler et enregistrement auto",
+    "es": "Escribe cartas, informes y notas con formato de verdad. Writer ofrece estilos de párrafo desde Título hasta Cita y Código, negrita, cursiva, subrayado y resaltado, listas con viñetas, numeradas y de verificación, tablas e imágenes, en una vista de página como un A4 o en una vista web continua. Empieza con una plantilla de carta, informe, currículum o acta de reunión, abre archivos .docx y Markdown, y exporta a Word, HTML, Markdown o texto plano. Tu documento se guarda mientras escribes.\n\n• Estilos de párrafo, alineación, interlineado y sangrías\n• Negrita, cursiva, subrayado, tachado y resaltado\n• Viñetas, numeración, listas de verificación, tablas, imágenes y saltos de página\n• Plantillas: carta, informe, currículum, acta de reunión\n• Importa .docx, .md y .txt; exporta .docx, .html, .md y .txt\n• Buscar y reemplazar, recuento de palabras, zoom, deshacer y autoguardado",
+    "ja": "本格的な書式で手紙、レポート、メモを書きましょう。ライターには、タイトルから引用やコードまでの段落スタイル、太字、斜体、下線、ハイライト、箇条書き、番号付きリスト、チェックリスト、表、画像があり、A4 用紙のようなページレイアウトか、流れるような Web レイアウトで表示できます。手紙、レポート、履歴書、議事録のテンプレートから始め、.docx や Markdown ファイルを開き、Word、HTML、Markdown、プレーンテキストに書き出せます。書類は書いている間に自動で保存されます。\n\n• 段落スタイル、配置、行間、インデント\n• 太字、斜体、下線、取り消し線、ハイライト\n• 箇条書き、番号付け、チェックリスト、表、画像、改ページ\n• テンプレート: 手紙、レポート、履歴書、議事録\n• .docx、.md、.txt の読み込み、.docx、.html、.md、.txt の書き出し\n• 検索と置換、単語数、ズーム、取り消し / やり直し、自動保存",
+    "zh": "用真正的格式撰写信函、报告和笔记。文稿编辑器提供从标题到引文和代码的段落样式，粗体、斜体、下划线和高亮，项目符号、编号和核对清单，表格和图像，可使用类似 A4 纸张的页面布局或流动的网页布局。从信函、报告、简历或会议记录模板开始，打开 .docx 和 Markdown 文件，并导出为 Word、HTML、Markdown 或纯文本。你的文稿会在书写时自动存储。\n\n• 段落样式、对齐、行距和缩进\n• 粗体、斜体、下划线、删除线和高亮\n• 项目符号、编号、核对清单、表格、图像和分页符\n• 模板：信函、报告、简历、会议记录\n• 导入 .docx、.md 和 .txt；导出 .docx、.html、.md 和 .txt\n• 查找和替换、字数统计、缩放、撤销 / 重做和自动存储",
+    "ko": "제대로 된 서식으로 편지, 보고서, 메모를 쓰세요. Writer는 제목부터 인용과 코드까지의 단락 스타일, 굵게, 기울임꼴, 밑줄, 강조 표시, 글머리 기호·번호 매기기·체크리스트, 표와 이미지를 A4 용지 같은 페이지 레이아웃이나 흐르는 웹 레이아웃으로 제공합니다. 편지, 보고서, 이력서, 회의록 템플릿으로 시작하고, .docx와 Markdown 파일을 열고, DOCX, HTML, Markdown, 일반 텍스트로 내보내세요. 문서는 쓰는 동안 자동으로 저장됩니다.\n\n• 단락 스타일, 정렬, 줄 간격, 들여쓰기\n• 굵게, 기울임꼴, 밑줄, 취소선, 강조 표시\n• 글머리 기호, 번호 매기기, 체크리스트, 표, 이미지, 페이지 나누기\n• 템플릿: 편지, 보고서, 이력서, 회의록\n• .docx, .md, .txt 가져오기, .docx, .html, .md, .txt 내보내기\n• 찾기 및 바꾸기, 단어 수, 확대/축소, 실행 취소 / 다시 실행, 자동 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.423 0.318",
+      "wait 2.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

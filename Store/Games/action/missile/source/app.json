@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.missile",
+  "name": {
+    "en": "Missile Defense",
+    "tr": "Füze Savunması",
+    "de": "Raketenabwehr",
+    "fr": "Défense antimissile",
+    "es": "Defensa antimisiles",
+    "ja": "ミサイル防衛",
+    "zh": "导弹防御",
+    "ko": "미사일 방어"
+  },
+  "description": {
+    "en": "Defend six cities from falling warheads. Aim, fire counter-missiles from three batteries and catch several missiles in one chain blast.",
+    "tr": "Altı şehri düşen füzelerden koru. Nişan al, üç bataryadan karşı füze ateşle ve tek patlamayla zincirleme birçok füze düşür.",
+    "de": "Verteidige sechs Städte gegen herabstürzende Sprengköpfe. Ziele, feuere Abfangraketen aus drei Batterien ab und erwische mehrere Raketen mit einer Kettenexplosion.",
+    "fr": "Défendez six villes contre les ogives qui tombent. Visez, tirez des contre-missiles depuis trois batteries et détruisez plusieurs missiles en une seule réaction en chaîne.",
+    "es": "Defiende seis ciudades de las ojivas que caen. Apunta, dispara contramisiles desde tres baterías y alcanza varios misiles con una sola explosión en cadena."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 820,
+    "height": 620,
+    "minWidth": 520,
+    "minHeight": 440,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,26 @@
+{
+  "id": "techdemo",
+  "name": {
+    "en": "Showcase",
+    "tr": "Gösteri",
+    "de": "Schaufenster",
+    "fr": "Vitrine",
+    "es": "Escaparate",
+    "ko": "쇼케이스"
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "gamepad": true,
+  "window": {
+    "width": 1120,
+    "height": 630,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  }
+}

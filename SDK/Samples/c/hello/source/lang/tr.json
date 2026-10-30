@@ -1,0 +1,22 @@
+{
+  "app_name": "Merhaba C",
+  "tab_counter": "Sayaç",
+  "tab_balls": "Toplar",
+  "tab_net": "Ağ",
+  "counter_title": "C ile yazıldı",
+  "times": "{0} kez dokunuldu",
+  "reset": "Sıfırla",
+  "note_hint": "store_setStr ile kaydedilen bir not",
+  "balls_hint": "Topları itmek için dokunun",
+  "net_title": "Canlı Hava Durumu",
+  "net_body": "Bu düğme net_json(url, callback, user) çalıştırır: istek arka planda yapılır, geri çağırma JSON metnini alır.",
+  "fetch": "JSON Getir",
+  "offline": "İnternet bağlantısı yok",
+  "failed": "Başarısız: {0}",
+  "loaded": "Yüklendi",
+  "no_data": "Veriyi yüklemek için düğmeye basın",
+  "about": "Merhaba C Hakkında",
+  "about_body": "Bu uygulama düz C'dir; açıldığında konsolunuzda TinyCC ile derlenir ve Lua, JavaScript ve Python uygulamalarıyla aynı SDK'yı kullanır. Kodunu okumak için main.c dosyasını açın.",
+  "ok": "Tamam",
+  "open_code": "main.c'yi aç"
+}

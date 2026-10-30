@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Keep perfect time with a swinging pendulum",
+    "tr": "Sallanan sarkaçla tempoyu hiç kaçırma",
+    "de": "Immer im Takt mit schwingendem Pendel",
+    "fr": "Gardez le tempo avec un pendule animé",
+    "es": "Lleva el compás con un péndulo animado",
+    "ja": "揺れる振り子で正確なテンポを刻む",
+    "zh": "摆锤摇动，节拍精准",
+    "ko": "흔들리는 추로 정확한 박자를 맞추세요"
+  },
+  "description": {
+    "en": "Metronome keeps you on the beat with a swinging pendulum and a clear row of beat lights. Set any tempo from 30 to 250 BPM with the buttons, or tap the rhythm you hear and let Tap Tempo work it out. Choose 2/4, 3/4, 4/4 or 6/8, accent the first beat and pick a beep, click or woodblock sound. The classic tempo marking, from Grave to Prestissimo, is shown as you change the speed.\n\n• 30–250 BPM with fine and coarse steps\n• Tap Tempo for songs you already know\n• Four time signatures with an accented downbeat\n• Three sounds to choose from\n• Play it with the controller: A starts, X taps, L/R change the meter, the D-pad sets the tempo",
+    "tr": "Metronom, sallanan bir sarkaç ve net vuruş ışıklarıyla seni ritimde tutar. Tempoyu düğmelerle 30 ile 250 BPM arasında ayarla ya da duyduğun ritme dokun, Tempo Tıkla hızını kendisi bulsun. 2/4, 3/4, 4/4 ya da 6/8 seç, ilk vuruşu vurgula; bip, tık ya da tahta blok sesinden birini kullan. Hızı değiştirdikçe Grave'den Prestissimo'ya klasik tempo adı da görünür.\n\n• İnce ve kaba adımlarla 30–250 BPM\n• Bildiğin şarkılar için Tempo Tıkla\n• Vurgulu ilk vuruşla dört ölçü\n• Üç farklı ses\n• Kumandayla kullan: A başlatır, X tempo tıklar, L/R ölçüyü değiştirir, yön tuşları tempoyu ayarlar",
+    "de": "Das Metronom hält dich mit einem schwingenden Pendel und einer klaren Reihe von Schlaglichtern im Takt. Stell jedes Tempo von 30 bis 250 BPM über die Tasten ein oder tippe den Rhythmus mit und lass „Tempo tippen“ den Wert ermitteln. Wähle 2/4, 3/4, 4/4 oder 6/8, betone den ersten Schlag und nimm Piep, Klick oder Holzblock als Klang. Beim Ändern des Tempos siehst du die klassische Tempobezeichnung von Grave bis Prestissimo.\n\n• 30–250 BPM in feinen und groben Schritten\n• Tempo tippen für Songs, die du kennst\n• Vier Taktarten mit betonter Eins\n• Drei Klänge zur Auswahl\n• Mit dem Controller: A startet, X tippt, L/R ändern die Taktart, das Steuerkreuz das Tempo",
+    "fr": "Métronome vous garde dans le rythme grâce à un pendule qui oscille et une rangée de voyants de temps bien lisible. Réglez le tempo de 30 à 250 BPM avec les boutons, ou tapez le rythme que vous entendez et laissez Tempo au toucher le calculer. Choisissez 2/4, 3/4, 4/4 ou 6/8, accentuez le premier temps et optez pour un bip, un clic ou un woodblock. L’indication de tempo classique, de Grave à Prestissimo, s’affiche quand vous changez la vitesse.\n\n• De 30 à 250 BPM, par petits ou grands pas\n• Tempo au toucher pour les morceaux que vous connaissez\n• Quatre mesures avec premier temps accentué\n• Trois sons au choix\n• À la manette : A démarre, X tape le tempo, L/R changent la mesure, la croix règle le tempo",
+    "es": "Metrónomo te mantiene a tiempo con un péndulo que oscila y una fila clara de luces de pulso. Ajusta cualquier tempo de 30 a 250 BPM con los botones, o toca el ritmo que oyes y deja que Marcar tempo lo calcule. Elige 2/4, 3/4, 4/4 o 6/8, acentúa el primer tiempo y usa un pitido, un clic o una caja china. Al cambiar la velocidad verás la indicación clásica, de Grave a Prestissimo.\n\n• De 30 a 250 BPM en pasos finos o gruesos\n• Marcar tempo para canciones que ya conoces\n• Cuatro compases con el primer tiempo acentuado\n• Tres sonidos a elegir\n• Con el mando: A inicia, X marca el tempo, L/R cambian el compás y la cruceta ajusta el tempo",
+    "ja": "メトロノームは、揺れる振り子とわかりやすい拍のライトで、あなたをビートに乗せ続けます。ボタンで 30〜250 BPM の任意のテンポを設定するか、聞こえたリズムをタップしてタップテンポに計算させましょう。2/4、3/4、4/4、6/8 から選び、1 拍目にアクセントを付け、ビープ、クリック、ウッドブロックの音を選べます。速さを変えると、Grave から Prestissimo までの伝統的な速度標語が表示されます。\n\n• 細かい刻みと大きな刻みで 30〜250 BPM\n• 知っている曲にはタップテンポ\n• 1 拍目にアクセントのある 4 種類の拍子\n• 3 種類の音から選択\n• コントローラーで操作: A で開始、X でタップ、L/R で拍子を変更、十字ボタンでテンポを設定",
+    "zh": "节拍器用摇摆的摆锤和一排清晰的节拍灯帮你踩准节拍。用按钮设置 30 到 250 BPM 之间的任意速度，或者敲出你听到的节奏，让“敲击测速”帮你算出来。可选择 2/4、3/4、4/4 或 6/8 拍，重音第一拍，并选择哔声、咔嗒声或木鱼声。改变速度时会显示从庄板到最急板的经典速度术语。\n\n• 30–250 BPM，支持细调和粗调\n• 用“敲击测速”测出熟悉歌曲的速度\n• 四种拍号，第一拍重音\n• 三种声音可选\n• 用手柄演奏：A 开始，X 敲击，L/R 更改拍号，十字键设置速度",
+    "ko": "메트로놈은 흔들리는 추와 선명한 박자 표시등으로 박자를 지켜 줍니다. 버튼으로 30에서 250 BPM 사이의 템포를 설정하거나, 들리는 리듬을 탭하면 탭 템포가 계산해 줍니다. 2/4, 3/4, 4/4, 6/8 중에서 고르고, 첫 박을 강조하고, 삐, 딸깍, 우드블록 소리를 선택하세요. 속도를 바꾸면 Grave부터 Prestissimo까지 클래식 빠르기말이 표시됩니다.\n\n• 미세 및 큰 단위 조절이 가능한 30–250 BPM\n• 이미 아는 곡에는 탭 템포\n• 첫 박이 강조되는 박자 4종\n• 소리 3종 중 선택\n• 컨트롤러로 조작: A 시작, X 탭, L/R 박자 변경, 방향 버튼 템포 설정"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key space", "wait 1.3"],
+    ["key escape", "wait 0.5", "key 3", "key t", "wait 0.5", "key t", "wait 0.5", "key t", "wait 0.5", "key t", "wait 1"],
+    ["key space", "dark 1", "wait 1.3"]
+  ]
+}

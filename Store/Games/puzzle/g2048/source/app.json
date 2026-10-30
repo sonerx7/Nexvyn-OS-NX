@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.g2048",
+  "name": {"en": "2048", "tr": "2048", "de": "2048", "fr": "2048", "es": "2048", "ja": "2048", "zh": "2048", "ko": "2048"},
+  "description": {
+    "en": "Slide and merge numbered tiles to reach 2048. Four board sizes, undo and best scores.",
+    "tr": "Sayılı karoları kaydırıp birleştirerek 2048'e ulaşın. Dört tahta boyutu, geri alma ve en iyi skorlar.",
+    "de": "Schiebe und verbinde nummerierte Kacheln, um 2048 zu erreichen. Vier Feldgrößen, Rückgängig und Bestwerte.",
+    "fr": "Faites glisser et fusionnez les tuiles numérotées pour atteindre 2048. Quatre tailles de plateau, annulation et meilleurs scores.",
+    "es": "Desliza y combina fichas numeradas hasta llegar a 2048. Cuatro tamaños de tablero, deshacer y mejores puntuaciones."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 500, "height": 640, "minWidth": 400, "minHeight": 520, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

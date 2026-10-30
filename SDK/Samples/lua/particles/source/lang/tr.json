@@ -1,0 +1,16 @@
+{
+  "fire": "Ateş",
+  "fountain": "Fıskiye",
+  "sparks": "Kıvılcım",
+  "snow": "Kar",
+  "magic": "Büyü",
+  "tool_spawn": "Üret",
+  "tool_attract": "Çek",
+  "tool_repel": "İt",
+  "clear": "Temizle",
+  "stats": "{0} parçacık · {1} kuyu · {2} FPS",
+  "hint": "Dokun: patlama, sürükle: boya. Çek / İt kuyu yerleştirir: sürükleyerek taşı, dokunarak kaldır.",
+  "wells_full": "En fazla {0} kuyu",
+  "menu_title": "Parçacıklar",
+  "debug": "Hata ayıklama katmanı"
+}

@@ -1,0 +1,11 @@
+{
+  "board": "Grille",
+  "play": "Lancer",
+  "pause": "Pause",
+  "step": "Pas",
+  "speed": "Vitesse {0}/s",
+  "status": "Génération {0} · {1} cellules",
+  "random": "Aléatoire",
+  "add_glider": "Ajouter un planeur",
+  "clear": "Effacer"
+}

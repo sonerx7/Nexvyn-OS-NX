@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.minigolf",
+  "name": {"en": "Mini Golf", "tr": "Mini Golf", "de": "Minigolf", "fr": "Minigolf", "es": "Minigolf", "ja": "ミニゴルフ", "zh": "迷你高尔夫", "ko": "미니 골프"},
+  "description": {
+    "en": "Nine hand-made top-down holes with banks, sand, water and a windmill: drag back like a slingshot or charge the power meter, and beat your best round.",
+    "tr": "Duvarları, kumu, suyu ve yel değirmeni olan dokuz özenle tasarlanmış delik: sapan gibi geri çek ya da güç göstergesini doldur, en iyi turunu geç.",
+    "de": "Neun handgemachte Löcher von oben mit Banden, Sand, Wasser und einer Windmühle: Zieh zurück wie bei einer Steinschleuder oder lade die Kraftanzeige auf und schlage deine beste Runde.",
+    "fr": "Neuf trous faits main vus de dessus avec bandes, sable, eau et moulin : tirez en arrière comme un lance-pierre ou chargez la jauge de puissance, et battez votre meilleure partie.",
+    "es": "Nueve hoyos hechos a mano vistos desde arriba con bandas, arena, agua y un molino: tira hacia atrás como un tirachinas o carga el medidor de potencia y supera tu mejor ronda."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 560, "minWidth": 480, "minHeight": 300, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

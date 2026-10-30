@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.particles",
+  "name": {"en": "Particles Demo", "tr": "Parçacık Demosu", "de": "Partikel-Demo", "fr": "Démo Particules", "es": "Demo de partículas", "ja": "パーティクルデモ", "zh": "粒子演示", "ko": "입자 데모"},
+  "description": {
+    "en": "Emitter presets, gravity wells and touch bursts with nexvyn.game",
+    "tr": "nexvyn.game ile yayıcı hazır ayarları, çekim kuyuları ve dokunarak patlamalar",
+    "de": "Emitter-Vorlagen, Gravitationsquellen und Touch-Explosionen mit nexvyn.game",
+    "fr": "Préréglages d’émetteurs, puits de gravité et explosions tactiles avec nexvyn.game",
+    "es": "Preajustes de emisores, pozos de gravedad y ráfagas táctiles con nexvyn.game"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 450, "minWidth": 400, "minHeight": 240, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.2",
+  "permissions": []
+}

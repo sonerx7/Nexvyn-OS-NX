@@ -1,0 +1,25 @@
+{
+  "id": "network",
+  "name": {
+    "en": "Network Tools",
+    "tr": "Ağ Araçları",
+    "de": "Netzwerktools",
+    "fr": "Outils réseau",
+    "es": "Herramientas de red",
+    "ko": "네트워크 도구"
+  },
+  "category": "system",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 760,
+    "height": 520,
+    "minWidth": 620,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

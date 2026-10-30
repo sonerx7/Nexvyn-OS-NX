@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "Free TV channels and your M3U playlists",
+    "tr": "Ücretsiz TV kanalları ve M3U listelerin",
+    "de": "Gratis-TV-Sender und deine M3U-Listen",
+    "fr": "Chaînes gratuites et vos listes M3U",
+    "es": "Canales gratis y tus listas M3U",
+    "ja": "無料テレビと自分の M3U プレイリスト",
+    "zh": "免费电视频道和你的 M3U 播放列表",
+    "ko": "무료 TV 채널과 나의 M3U 재생 목록"
+  },
+  "description": {
+    "en": "Watch live TV on your Switch. Live TV plays M3U and M3U8 playlists and comes with ready-made lists of free, publicly available channels collected by the iptv-org project, sorted by country, category and language. Add your own playlist from an address or a file, browse channels by group with logos and search, and zap between them in the player.\n\n• Ready-made lists by country, category and language\n• Your own M3U / M3U8 playlists from a URL or a file\n• Favourites and Recently Watched\n• Channel groups, logos and instant search\n• Full-window player with previous / next channel\n• Playlists are cached and open instantly",
+    "tr": "Switch'inde canlı TV izle. Canlı TV, M3U ve M3U8 oynatma listelerini oynatır; iptv-org projesinin topladığı ücretsiz ve herkese açık kanallardan ülkeye, kategoriye ve dile göre ayrılmış hazır listelerle gelir. Kendi listeni bir adresten ya da dosyadan ekle, kanallara logolarıyla gruplar halinde göz at, ara ve oynatıcıda kanallar arasında geçiş yap.\n\n• Ülkeye, kategoriye ve dile göre hazır listeler\n• Adresten ya da dosyadan kendi M3U / M3U8 listelerin\n• Favoriler ve Son İzlenenler\n• Kanal grupları, logolar ve anında arama\n• Önceki / sonraki kanal geçişli tam pencere oynatıcı\n• Listeler önbelleğe alınır, anında açılır",
+    "de": "Schau Live-TV auf deiner Switch. Live-TV spielt M3U- und M3U8-Playlists ab und bringt fertige Listen mit kostenlosen, öffentlich verfügbaren Sendern des Projekts iptv-org mit, sortiert nach Land, Kategorie und Sprache. Füge eigene Playlists per Adresse oder Datei hinzu, stöbere mit Logos und Suche durch Sendergruppen und zappe im Player.\n\n• Fertige Listen nach Land, Kategorie und Sprache\n• Eigene M3U-/M3U8-Playlists per URL oder Datei\n• Favoriten und zuletzt gesehen\n• Sendergruppen, Logos und Sofortsuche\n• Player im ganzen Fenster mit vorherigem / nächstem Sender\n• Playlists werden zwischengespeichert und öffnen sofort",
+    "fr": "Regardez la télé en direct sur votre Switch. TV en direct lit les listes M3U et M3U8 et propose des listes prêtes à l’emploi de chaînes gratuites et publiques réunies par le projet iptv-org, classées par pays, catégorie et langue. Ajoutez votre propre liste depuis une adresse ou un fichier, parcourez les groupes de chaînes avec logos et recherche, et zappez dans le lecteur.\n\n• Listes prêtes par pays, catégorie et langue\n• Vos listes M3U / M3U8 depuis une URL ou un fichier\n• Favoris et Récemment regardées\n• Groupes de chaînes, logos et recherche instantanée\n• Lecteur pleine fenêtre avec chaîne précédente / suivante\n• Listes mises en cache, ouvertes instantanément",
+    "es": "Mira la tele en directo en tu Switch. TV en directo reproduce listas M3U y M3U8 e incluye listas listas para usar con canales gratuitos y públicos recopilados por el proyecto iptv-org, ordenados por país, categoría e idioma. Añade tu propia lista desde una dirección o un archivo, explora los grupos de canales con logos y búsqueda, y haz zapping en el reproductor.\n\n• Listas preparadas por país, categoría e idioma\n• Tus propias listas M3U / M3U8 desde una URL o un archivo\n• Favoritos y Vistos recientemente\n• Grupos de canales, logos y búsqueda al instante\n• Reproductor a ventana completa con canal anterior / siguiente\n• Las listas se guardan en caché y abren al momento",
+    "ja": "Switch でライブテレビを視聴しましょう。ライブ TV は M3U と M3U8 のプレイリストを再生し、iptv-org プロジェクトが集めた無料で公開されているチャンネルの既製リストが、国、カテゴリ、言語別に用意されています。アドレスやファイルから自分のプレイリストを追加し、ロゴと検索付きでグループごとにチャンネルを閲覧し、プレーヤーでチャンネルを切り替えられます。\n\n• 国、カテゴリ、言語別の既製リスト\n• URL やファイルからの自分の M3U / M3U8 プレイリスト\n• お気に入りと最近視聴したチャンネル\n• チャンネルのグループ、ロゴ、即時検索\n• 前 / 次のチャンネルに切り替えられるウィンドウいっぱいのプレーヤー\n• プレイリストはキャッシュされ、すぐに開く",
+    "zh": "在 Switch 上观看电视直播。电视直播可播放 M3U 和 M3U8 播放列表，并附带由 iptv-org 项目收集的免费公开频道现成列表，按国家、类别和语言分类。从地址或文件添加你自己的播放列表，按分组浏览带台标的频道并搜索，在播放器中切换频道。\n\n• 按国家、类别和语言分类的现成列表\n• 来自 URL 或文件的你自己的 M3U / M3U8 播放列表\n• 收藏和最近观看\n• 频道分组、台标和即时搜索\n• 全窗口播放器，可切换上一个 / 下一个频道\n• 播放列表会被缓存，可即时打开",
+    "ko": "Switch에서 라이브 TV를 시청하세요. 라이브 TV는 M3U와 M3U8 재생 목록을 재생하며, iptv-org 프로젝트가 수집한 무료 공개 채널을 국가, 카테고리, 언어별로 정리한 기본 목록을 제공합니다. 주소나 파일에서 나만의 재생 목록을 추가하고, 로고와 검색으로 그룹별 채널을 둘러보고, 플레이어에서 채널을 넘기세요.\n\n• 국가, 카테고리, 언어별 기본 목록\n• URL이나 파일에서 나만의 M3U / M3U8 재생 목록\n• 즐겨찾기와 최근 시청\n• 채널 그룹, 로고, 즉시 검색\n• 이전 / 다음 채널이 있는 창 전체 플레이어\n• 재생 목록이 캐시되어 즉시 열림"
+  },
+  "shots": [
+    [
+      "wait 4"
+    ],
+    [
+      "wclick 0.104 0.948",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

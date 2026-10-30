@@ -1,0 +1,42 @@
+{
+  "id": "retro",
+  "name": {
+    "en": "Retro",
+    "tr": "Retro",
+    "de": "Retro",
+    "fr": "Retro",
+    "es": "Retro",
+    "ko": "Retro"
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "gamepad": true,
+  "window": {
+    "width": 980,
+    "height": 600,
+    "minWidth": 640,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "fileTypes": [
+    ".nes",
+    ".fds",
+    ".unf",
+    ".unif",
+    ".sfc",
+    ".smc",
+    ".gb",
+    ".gbc",
+    ".gba",
+    ".agb",
+    ".md",
+    ".gen",
+    ".smd",
+    ".bin"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.reading",
+  "name": {"en": "Reading List", "tr": "Okuma Listesi", "de": "Leseliste", "fr": "Liste de lecture", "es": "Lista de lectura", "ja": "読書リスト", "zh": "阅读清单", "ko": "독서 목록"},
+  "description": {
+    "en": "Keep track of the books you want to read, are reading and have finished: page progress, ratings, notes and a yearly reading goal.",
+    "tr": "Okumak istediğin, okuduğun ve bitirdiğin kitapları takip et: sayfa ilerlemesi, puanlar, notlar ve yıllık okuma hedefi.",
+    "de": "Behalte die Bücher im Blick, die du lesen willst, gerade liest und beendet hast: Seitenfortschritt, Bewertungen, Notizen und ein jährliches Leseziel.",
+    "fr": "Suivez les livres que vous voulez lire, que vous lisez et que vous avez terminés : progression des pages, notes, commentaires et objectif de lecture annuel.",
+    "es": "Lleva el control de los libros que quieres leer, estás leyendo y has terminado: progreso de páginas, valoraciones, notas y un objetivo anual de lectura."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 560, "minWidth": 640, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

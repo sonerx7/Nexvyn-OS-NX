@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "The planets in motion, starting today",
+    "tr": "Gezegenler bugünden itibaren hareket hâlinde",
+    "de": "Die Planeten in Bewegung, ab heute",
+    "fr": "Les planètes en mouvement dès aujourd’hui",
+    "es": "Los planetas en movimiento desde hoy",
+    "ja": "今日から動き出す惑星たち",
+    "zh": "从今天开始运行的行星",
+    "ko": "오늘부터 움직이는 행성들"
+  },
+  "description": {
+    "en": "Watch the Sun, the eight planets and the Moon move on their real orbital periods, starting from where they are today. Speed time up from minutes to 100 days per second, fly to any planet and read its card full of facts. Drag to look around and zoom in close.\n\n• Positions computed for today's date\n• Time speed from paused to 100 days per second, and back to today in one tap\n• Fly to the Sun, any planet or the Moon\n• Info cards with diameter, distance, orbit, rotation, tilt, temperature and moons\n• A fun fact for every body\n• Orbit lines and labels you can hide; number keys 0–9 jump to a body",
+    "tr": "Güneş'i, sekiz gezegeni ve Ay'ı gerçek yörünge süreleriyle, bugün bulundukları yerden başlayarak izle. Zamanı dakikalardan saniyede 100 güne kadar hızlandır, istediğin gezegene uç ve bilgilerle dolu kartını oku. Sürükleyerek etrafa bak, yakınlaş.\n\n• Bugünün tarihine göre hesaplanan konumlar\n• Duraklatmadan saniyede 100 güne kadar zaman hızı, tek dokunuşla bugüne dönüş\n• Güneş'e, herhangi bir gezegene ya da Ay'a uç\n• Çap, uzaklık, yörünge, dönüş, eksen eğikliği, sıcaklık ve uydu sayısıyla bilgi kartları\n• Her gök cismi için ilginç bir bilgi\n• Gizlenebilen yörünge çizgileri ve etiketler; 0–9 tuşlarıyla bir gök cismine atla",
+    "de": "Sieh die Sonne, die acht Planeten und den Mond auf ihren echten Umlaufzeiten wandern, ausgehend von ihrer heutigen Position. Beschleunige die Zeit von Minuten bis 100 Tage pro Sekunde, fliege zu jedem Planeten und lies seine Karte voller Fakten. Ziehen zum Umsehen, zoomen für die Nähe.\n\n• Positionen für das heutige Datum berechnet\n• Zeittempo von Pause bis 100 Tage pro Sekunde, mit einem Tipp zurück zu heute\n• Flug zur Sonne, zu jedem Planeten oder zum Mond\n• Infokarten mit Durchmesser, Entfernung, Umlauf, Rotation, Achsneigung, Temperatur und Monden\n• Ein spannender Fakt zu jedem Himmelskörper\n• Ausblendbare Umlaufbahnen und Beschriftungen; Zifferntasten 0–9 springen zu einem Körper",
+    "fr": "Regardez le Soleil, les huit planètes et la Lune tourner selon leurs vraies périodes orbitales, à partir de leur position d’aujourd’hui. Accélérez le temps, de quelques minutes à 100 jours par seconde, volez vers n’importe quelle planète et lisez sa fiche riche en informations. Faites glisser pour regarder autour et zoomez de près.\n\n• Positions calculées pour la date du jour\n• Vitesse du temps de l’arrêt à 100 jours par seconde, retour à aujourd’hui en un geste\n• Vol vers le Soleil, une planète ou la Lune\n• Fiches avec diamètre, distance, orbite, rotation, inclinaison, température et lunes\n• Une anecdote pour chaque astre\n• Orbites et étiquettes masquables ; touches 0 à 9 pour aller à un astre",
+    "es": "Mira cómo el Sol, los ocho planetas y la Luna se mueven según sus periodos orbitales reales, empezando desde donde están hoy. Acelera el tiempo de minutos a 100 días por segundo, vuela a cualquier planeta y lee su ficha llena de datos. Arrastra para mirar alrededor y acércate.\n\n• Posiciones calculadas para la fecha de hoy\n• Velocidad del tiempo desde pausa hasta 100 días por segundo, y vuelta a hoy con un toque\n• Vuela al Sol, a cualquier planeta o a la Luna\n• Fichas con diámetro, distancia, órbita, rotación, inclinación, temperatura y lunas\n• Un dato curioso de cada astro\n• Órbitas y etiquetas que puedes ocultar; las teclas 0–9 saltan a un astro",
+    "ja": "太陽、8 つの惑星、月が、今日の位置から実際の公転周期で動く様子を見てみましょう。時間の速さを 1 秒あたり数分から 100 日まで上げ、任意の惑星へ飛び、知識が詰まったカードを読めます。ドラッグで見回し、近くまでズームできます。\n\n• 今日の日付で計算した位置\n• 一時停止から 1 秒あたり 100 日までの時間の速さ、ワンタップで今日に戻る\n• 太陽、任意の惑星、月へ移動\n• 直径、距離、公転、自転、傾き、温度、衛星が載った情報カード\n• すべての天体の豆知識\n• 隠せる軌道線とラベル、数字キー 0–9 で天体にジャンプ",
+    "zh": "从行星今天所在的位置开始，看着太阳、八大行星和月球按真实的公转周期运行。把时间加速到每秒几分钟到每秒 100 天，飞向任意一颗行星，阅读它那张满是知识的卡片。拖移以环顾四周，放大近距离观察。\n\n• 根据今天的日期计算位置\n• 时间速度从暂停到每秒 100 天，一键回到今天\n• 飞向太阳、任意行星或月球\n• 信息卡片包含直径、距离、公转、自转、轴倾角、温度和卫星\n• 每个天体都有一条趣闻\n• 可隐藏的轨道线和标签；数字键 0–9 跳转到天体",
+    "ko": "태양, 여덟 행성, 달이 오늘의 위치에서 출발하여 실제 공전 주기대로 움직이는 모습을 지켜보세요. 시간 속도를 초당 몇 분에서 100일까지 높이고, 원하는 행성으로 날아가 정보가 가득한 카드를 읽어 보세요. 드래그하여 둘러보고 가까이 확대하세요.\n\n• 오늘 날짜 기준으로 계산된 위치\n• 일시 정지부터 초당 100일까지의 시간 속도, 한 번의 탭으로 오늘로 돌아가기\n• 태양, 모든 행성, 달로 이동\n• 지름, 거리, 공전, 자전, 기울기, 온도, 위성이 담긴 정보 카드\n• 천체마다 재미있는 사실 하나\n• 숨길 수 있는 궤도선과 레이블, 숫자 키 0–9로 천체 이동"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key 6",
+      "wait 3"
+    ],
+    [
+      "key 3",
+      "wait 3"
+    ],
+    [
+      "key 5",
+      "wait 3"
+    ]
+  ]
+}

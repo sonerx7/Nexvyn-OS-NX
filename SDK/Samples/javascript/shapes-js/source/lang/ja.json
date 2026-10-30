@@ -1,0 +1,21 @@
+{
+  "cube": "立方体",
+  "box": "直方体",
+  "sphere": "球",
+  "cylinder": "円柱",
+  "cone": "円錐",
+  "torus": "トーラス",
+  "plane": "平面",
+  "tex_none": "単色",
+  "tex_grid": "UV グリッド",
+  "tex_stripes": "ストライプ",
+  "tex_dots": "ドット",
+  "wire": "ワイヤーフレーム",
+  "auto": "テクスチャを順に切り替え",
+  "intro": "イントロ",
+  "triangles": "{0} 三角形",
+  "stats": "{0} 三角形 · {1} FPS",
+  "status_intro": "イントロ実行中 (await timer.sleep)",
+  "status_ready": "ラベルをタップして図形を選択",
+  "menu_title": "図形"
+}

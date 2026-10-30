@@ -1,0 +1,33 @@
+{
+  "id": "pcgames",
+  "name": {
+    "en": "PC Games",
+    "tr": "PC Oyunları",
+    "de": "PC-Spiele",
+    "fr": "Jeux PC",
+    "es": "Juegos de PC",
+    "ko": "PC 게임"
+  },
+  "description": {
+    "en": "Your Steam library and PC games, played through CorkDeck or Autorun.",
+    "tr": "Steam kitaplığın ve PC oyunların; CorkDeck veya Autorun ile oynanır.",
+    "de": "Deine Steam-Bibliothek und PC-Spiele, gespielt über CorkDeck oder Autorun.",
+    "fr": "Votre bibliothèque Steam et vos jeux PC, joués via CorkDeck ou Autorun.",
+    "es": "Tu biblioteca de Steam y tus juegos de PC, a través de CorkDeck o Autorun."
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "fileTypes": [".exe"],
+  "window": {
+    "width": 1100,
+    "height": 640,
+    "minWidth": 760,
+    "minHeight": 480,
+    "resizable": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "plasma": "Plasma",
+  "tunnel": "Tunnel",
+  "starfield": "Sternenfeld",
+  "pal_fire": "Feuer",
+  "pal_ocean": "Ozean",
+  "pal_neon": "Neon",
+  "pal_rainbow": "Regenbogen",
+  "cell": "Zelle {0}px",
+  "speed": "Geschwindigkeit",
+  "cycle": "Farben durchlaufen",
+  "info_cells": "{0} Zellen · {1} FPS",
+  "info_stars": "{0} Sterne · {1} FPS",
+  "hint": "Ziehen zum Steuern · 1 2 3 wechseln Effekte",
+  "menu_title": "Effekte"
+}

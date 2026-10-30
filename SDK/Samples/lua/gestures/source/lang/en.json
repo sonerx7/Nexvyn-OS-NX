@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "Gestures",
+  "tab_tilt": "Tilt",
+  "reset": "Reset view",
+  "calibrate": "Calibrate",
+  "test_rumble": "Test rumble",
+  "view_info": "zoom {0} · angle {1}° · pan {2}, {3}",
+  "event_info": "events: pinch {0} · rotate {1} · two-finger pan {2}",
+  "hint_gestures": "Two fingers: pinch, rotate, pan · mouse: drag, wheel · Q/E rotate · double tap resets",
+  "hint_tilt": "Tilt the console to roll the marble (arrow keys or the stick work too)",
+  "stars": "Stars: {0}",
+  "no_motion": "No motion sensor data: use the arrow keys or the left stick",
+  "motion_title": "input.motion()",
+  "menu_title": "Gestures"
+}

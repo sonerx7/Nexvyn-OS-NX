@@ -1,0 +1,33 @@
+{
+  "id": "passgen",
+  "name": {
+    "en": "Password Generator",
+    "tr": "Şifre Üretici",
+    "de": "Passwortgenerator",
+    "fr": "Générateur de mots de passe",
+    "es": "Generador de contraseñas",
+    "ja": "パスワード生成",
+    "zh": "密码生成器",
+    "ko": "암호 생성기"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 560,
+    "height": 620,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Strong passwords and passphrases with an entropy meter",
+    "tr": "Entropi ölçerli güçlü şifreler ve parola cümleleri",
+    "de": "Starke Passwörter und Passphrasen mit Entropieanzeige",
+    "fr": "Mots de passe et phrases de passe robustes avec indicateur d’entropie",
+    "es": "Contraseñas y frases de contraseña seguras con medidor de entropía"
+  },
+  "permissions": []
+}

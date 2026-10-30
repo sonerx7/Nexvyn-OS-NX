@@ -1,0 +1,17 @@
+{
+  "coins": "{0} / {1}",
+  "time": "Zeit {0}",
+  "best": "Bestzeit {0}",
+  "hint": "Bewegen: Stick / Pfeile   Springen: A / Leertaste   Durch ein Brett fallen: unten + springen",
+  "all_coins": "Alle Münzen! Lauf zur Flagge",
+  "coins_left": "Noch {0} Münzen",
+  "clear": "Level geschafft!",
+  "result": "Zeit {0}   Stürze {1}",
+  "new_record": "Neuer Rekord!",
+  "again": "Nochmal spielen",
+  "menu_title": "Jump ’n’ Run",
+  "restart": "Neu starten",
+  "debug": "Kollider anzeigen (Debug)",
+  "reset_record": "Bestzeit zurücksetzen",
+  "record_reset": "Bestzeit gelöscht"
+}

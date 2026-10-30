@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.hashtool",
+  "name": {"en": "Base64 & Hash", "tr": "Base64 ve Hash", "de": "Base64 & Hash", "fr": "Base64 et hachage", "es": "Base64 y hash", "ja": "Base64 とハッシュ", "zh": "Base64 和哈希", "ko": "Base64 및 해시"},
+  "description": {
+    "en": "Encode and decode Base64, URL-safe Base64, hex and URL text, and compute CRC32, Adler-32, FNV-1a, MD5, SHA-1 and SHA-256 checksums of text or files.",
+    "tr": "Base64, URL güvenli Base64, onaltılık ve URL metinlerini kodlayıp çöz; metin ya da dosyaların CRC32, Adler-32, FNV-1a, MD5, SHA-1 ve SHA-256 özetlerini hesapla.",
+    "de": "Kodiere und dekodiere Base64, URL-sicheres Base64, Hex und URL-Text und berechne CRC32-, Adler-32-, FNV-1a-, MD5-, SHA-1- und SHA-256-Prüfsummen von Text oder Dateien.",
+    "fr": "Encodez et décodez du Base64, du Base64 compatible URL, de l’hexadécimal et du texte URL, et calculez les sommes de contrôle CRC32, Adler-32, FNV-1a, MD5, SHA-1 et SHA-256 de textes ou de fichiers.",
+    "es": "Codifica y decodifica Base64, Base64 seguro para URL, hex y texto URL, y calcula sumas de comprobación CRC32, Adler-32, FNV-1a, MD5, SHA-1 y SHA-256 de texto o archivos."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 560, "minWidth": 600, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

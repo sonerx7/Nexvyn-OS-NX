@@ -1,0 +1,58 @@
+{
+  "subtitle": {
+    "en": "Count anything with named counters",
+    "tr": "İsimli sayaçlarla her şeyi say",
+    "de": "Zähle alles mit benannten Zählern",
+    "fr": "Comptez tout avec des compteurs nommés",
+    "es": "Cuenta lo que quieras con contadores",
+    "ja": "名前付きのカウンターで何でも数える",
+    "zh": "用命名计数器计数任何东西",
+    "ko": "이름 붙인 계수기로 무엇이든 세어 보세요"
+  },
+  "description": {
+    "en": "Laps, cups of water, visitors, push-ups: keep as many named counters as you need and tap the big + and − buttons to count. Give a counter a target and a ring fills up until you reach it, then a sound and a message tell you that you made it. Every change is recorded, so you can undo it and see a chart of the history.\n\n• Up to 60 counters with their own name and color\n• Steps of 1, 2, 5, 10, 25, 50 or 100\n• Targets with progress rings and a notice when reached\n• Undo, history chart and the time of the last change\n• Search, sort by name or value, reorder\n• Copy all counters or export them as CSV; Space or Up counts, Down subtracts",
+    "tr": "Tur, su bardağı, ziyaretçi, şınav: ihtiyacın kadar isimli sayaç tut, büyük + ve − düğmeleriyle say. Bir sayaca hedef ver; hedefe ulaşana kadar bir halka dolar, ulaşınca bir ses ve mesajla haber verir. Her değişiklik kaydedilir; geri alabilir ve geçmişin grafiğini görebilirsin.\n\n• Kendi adı ve rengiyle 60 sayaca kadar\n• 1, 2, 5, 10, 25, 50 ya da 100'lük adımlar\n• İlerleme halkalı hedefler ve ulaşınca bildirim\n• Geri alma, geçmiş grafiği ve son değişikliğin saati\n• Arama, ada ya da değere göre sıralama, yeniden düzenleme\n• Tüm sayaçları kopyala ya da CSV olarak dışa aktar; Boşluk ya da Yukarı sayar, Aşağı azaltır",
+    "de": "Runden, Gläser Wasser, Besucher, Liegestütze: Lege so viele benannte Zähler an, wie du brauchst, und zähle mit den großen Plus- und Minustasten. Gib einem Zähler ein Ziel, und ein Ring füllt sich, bis du es erreichst, dann melden dich ein Ton und eine Nachricht. Jede Änderung wird festgehalten, du kannst sie rückgängig machen und den Verlauf als Diagramm sehen.\n\n• Bis zu 60 Zähler mit eigenem Namen und eigener Farbe\n• Schritte von 1, 2, 5, 10, 25, 50 oder 100\n• Ziele mit Fortschrittsringen und Hinweis beim Erreichen\n• Rückgängig, Verlaufsdiagramm und Zeit der letzten Änderung\n• Suchen, nach Name oder Wert sortieren, Reihenfolge ändern\n• Alle Zähler kopieren oder als CSV exportieren; Leertaste oder Hoch zählt, Runter zieht ab",
+    "fr": "Tours de piste, verres d’eau, visiteurs, pompes : gardez autant de compteurs nommés que nécessaire et comptez avec les grands boutons + et −. Donnez un objectif à un compteur et un anneau se remplit jusqu’à ce que vous l’atteigniez, puis un son et un message vous le confirment. Chaque changement est enregistré, pour l’annuler et voir l’historique en graphique.\n\n• Jusqu’à 60 compteurs avec leur nom et leur couleur\n• Pas de 1, 2, 5, 10, 25, 50 ou 100\n• Objectifs avec anneaux de progression et avis une fois atteints\n• Annulation, graphique de l’historique et heure du dernier changement\n• Recherche, tri par nom ou par valeur, réorganisation\n• Copie de tous les compteurs ou export CSV ; Espace ou Haut compte, Bas retire",
+    "es": "Vueltas, vasos de agua, visitantes, flexiones: ten tantos contadores con nombre como necesites y cuenta con los grandes botones + y −. Ponle un objetivo a un contador y un anillo se llena hasta que lo alcanzas; entonces un sonido y un mensaje te lo anuncian. Cada cambio queda registrado, así que puedes deshacerlo y ver un gráfico del historial.\n\n• Hasta 60 contadores con su propio nombre y color\n• Pasos de 1, 2, 5, 10, 25, 50 o 100\n• Objetivos con anillos de progreso y aviso al alcanzarlos\n• Deshacer, gráfico del historial y hora del último cambio\n• Busca, ordena por nombre o valor y reordena\n• Copia todos los contadores o expórtalos en CSV; Espacio o Arriba suman, Abajo resta",
+    "ja": "周回、飲んだ水の杯数、来客数、腕立て伏せ。名前付きのカウンターを必要なだけ用意し、大きな + と − のボタンをタップして数えましょう。カウンターに目標を設定するとリングが満ちていき、到達するとサウンドとメッセージでお知らせします。すべての変更が記録されるので、取り消したり履歴のグラフを見たりできます。\n\n• 名前と色を設定できる最大 60 個のカウンター\n• 1、2、5、10、25、50、100 の増減幅\n• 進捗リングと到達時のお知らせ付きの目標\n• 取り消し、履歴のグラフ、最終変更の時刻\n• 検索、名前や値で並べ替え、並び順の変更\n• すべてのカウンターをコピーまたは CSV で書き出し。Space か上で加算、下で減算",
+    "zh": "圈数、喝水杯数、访客、俯卧撑：想要多少个命名计数器都可以，轻点大大的 + 和 − 按钮即可计数。为计数器设置目标后，圆环会逐渐填满，达成时会有提示音和消息告诉你成功了。每次更改都会被记录，因此你可以撤销，并查看历史图表。\n\n• 最多 60 个计数器，各有名称和颜色\n• 步长可为 1、2、5、10、25、50 或 100\n• 带进度环的目标，达成时发出提示\n• 撤销、历史图表和上次更改时间\n• 搜索、按名称或数值排序、重新排列\n• 复制所有计数器或导出为 CSV；空格或上键计数，下键减少",
+    "ko": "랩, 물 컵 수, 방문자, 팔굽혀펴기: 필요한 만큼 이름 붙인 계수기를 두고 큰 +와 − 버튼을 탭하여 세세요. 계수기에 목표를 정하면 도달할 때까지 링이 차오르고, 도달하면 소리와 메시지로 알려 줍니다. 모든 변경이 기록되므로 실행 취소하고 기록 차트를 볼 수 있습니다.\n\n• 각자 이름과 색상이 있는 최대 60개 계수기\n• 1, 2, 5, 10, 25, 50, 100 단위\n• 진행 링이 있고 도달 시 알려 주는 목표\n• 실행 취소, 기록 차트, 마지막 변경 시각\n• 검색, 이름이나 값으로 정렬, 순서 변경\n• 모든 계수기 복사 또는 CSV로 내보내기, Space나 위로 세기, 아래로 빼기"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "wait 0.6",
+      "key right",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "key space",
+      "wait 0.6",
+      "key left",
+      "wait 1.5"
+    ],
+    [
+      "key space",
+      "wait 0.4",
+      "key space",
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

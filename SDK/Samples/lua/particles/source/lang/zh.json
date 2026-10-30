@@ -1,0 +1,16 @@
+{
+  "fire": "火焰",
+  "fountain": "喷泉",
+  "sparks": "火花",
+  "snow": "雪",
+  "magic": "魔法",
+  "tool_spawn": "生成",
+  "tool_attract": "吸引",
+  "tool_repel": "排斥",
+  "clear": "清除",
+  "stats": "{0} 个粒子 · {1} 个引力井 · {2} FPS",
+  "hint": "轻点产生爆发，拖移进行绘制。“吸引”/“排斥”会放置引力井：拖移可移动它，轻点可移除它。",
+  "wells_full": "最多 {0} 个引力井",
+  "menu_title": "粒子",
+  "debug": "调试叠加层"
+}

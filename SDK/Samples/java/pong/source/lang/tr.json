@@ -1,0 +1,11 @@
+{
+  "game": "Oyun",
+  "serve": "Servis",
+  "paused": "Duraklatıldı",
+  "you_win": "Kazandın!",
+  "you_lose": "Konsol kazandı",
+  "hint": "Servis için A, Enter ya da dokunun · çubuk, yön tuşları, oklar ya da sürükleyerek oynatın",
+  "wins": "Kazanılan oyun: {0}",
+  "new_game": "Yeni oyun",
+  "reset_wins": "Galibiyetleri sıfırla"
+}

@@ -1,0 +1,16 @@
+{
+  "plasma": "Plasma",
+  "tunnel": "Túnel",
+  "starfield": "Campo de estrellas",
+  "pal_fire": "Disparar",
+  "pal_ocean": "Océano",
+  "pal_neon": "Neón",
+  "pal_rainbow": "Arcoíris",
+  "cell": "Celda {0}px",
+  "speed": "Velocidad",
+  "cycle": "Alternar colores",
+  "info_cells": "{0} celdas · {1} FPS",
+  "info_stars": "{0} estrellas · {1} FPS",
+  "hint": "Arrastra para dirigir · 1 2 3 cambian de efecto",
+  "menu_title": "Efectos"
+}

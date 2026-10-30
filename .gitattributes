@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.nxvapp binary
+*.nro binary
+*.ttf binary
+*.otf binary
+*.nxvtheme binary
+*.nxvfont binary
+*.zip binary
+*.woff2 binary

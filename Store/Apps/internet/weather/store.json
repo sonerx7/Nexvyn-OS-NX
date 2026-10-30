@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "Hourly and 10-day forecasts, beautifully",
+    "tr": "Saatlik ve 10 günlük tahmin, şık görünümle",
+    "de": "Stündliche und 10-Tage-Vorhersage",
+    "fr": "Prévisions horaires et sur 10 jours",
+    "es": "Previsión por horas y a 10 días",
+    "ja": "1 時間ごとと 10 日間の予報を美しく",
+    "zh": "精美的逐小时和 10 日天气预报",
+    "ko": "시간별 및 10일 예보를 아름답게"
+  },
+  "description": {
+    "en": "Check the weather for all your places at a glance. Weather shows the current conditions over a sky gradient that matches them, an hourly strip with a short summary of what's coming, and a 10-day forecast with temperature range bars. Detail tiles cover feels-like temperature, humidity, wind, pressure, UV index, sunrise and sunset. Forecasts come from Open-Meteo, and the desktop widget stays up to date even when the app is closed.\n\n• Saved locations with city search and a default location\n• Hourly forecast with rain and snow summaries\n• 10-day forecast with temperature range bars\n• Feels like, humidity, wind, pressure, UV, sunrise and sunset\n• Celsius or Fahrenheit\n• Desktop widget kept fresh in the background, offline cache",
+    "tr": "Tüm konumlarının hava durumuna bir bakışta göz at. Hava Durumu anlık koşulları onlara uyan bir gökyüzü renk geçişi üzerinde, ileride neler olacağını kısaca anlatan saatlik bir şeritle ve sıcaklık aralığı çubuklu 10 günlük tahminle gösterir. Ayrıntı kutucukları hissedilen sıcaklığı, nemi, rüzgârı, basıncı, UV indeksini, gün doğumunu ve batımını kapsar. Tahminler Open-Meteo'dan gelir; uygulama kapalıyken bile masaüstü bileşeni güncel kalır.\n\n• Şehir aramalı kayıtlı konumlar ve varsayılan konum\n• Yağmur ve kar özetli saatlik tahmin\n• Sıcaklık aralığı çubuklu 10 günlük tahmin\n• Hissedilen, nem, rüzgâr, basınç, UV, gün doğumu ve batımı\n• Celsius ya da Fahrenheit\n• Arka planda güncellenen masaüstü bileşeni, çevrimdışı önbellek",
+    "de": "Sieh das Wetter für all deine Orte auf einen Blick. Wetter zeigt die aktuellen Bedingungen vor einem passenden Himmelsverlauf, eine Stundenleiste mit kurzer Zusammenfassung des Kommenden und eine 10-Tage-Vorhersage mit Temperaturbalken. Detailkacheln zeigen gefühlte Temperatur, Luftfeuchtigkeit, Wind, Luftdruck, UV-Index, Sonnenauf- und -untergang. Die Daten stammen von Open-Meteo, und das Schreibtisch-Widget bleibt auch bei geschlossener App aktuell.\n\n• Gespeicherte Orte mit Städtesuche und Standardort\n• Stündliche Vorhersage mit Regen- und Schneehinweisen\n• 10-Tage-Vorhersage mit Temperaturbalken\n• Gefühlt, Feuchtigkeit, Wind, Druck, UV, Sonnenauf- und -untergang\n• Celsius oder Fahrenheit\n• Widget im Hintergrund aktuell, Offline-Cache",
+    "fr": "Consultez la météo de tous vos lieux d’un coup d’œil. Météo affiche les conditions actuelles sur un dégradé de ciel assorti, une bande horaire avec un court résumé de ce qui arrive et des prévisions sur 10 jours avec des barres de températures. Des tuiles détaillent température ressentie, humidité, vent, pression, indice UV, lever et coucher du soleil. Les prévisions viennent d’Open-Meteo, et le widget du bureau reste à jour même app fermée.\n\n• Lieux enregistrés, recherche de ville et lieu par défaut\n• Prévisions horaires avec résumés pluie et neige\n• Prévisions sur 10 jours avec barres de températures\n• Ressenti, humidité, vent, pression, UV, lever et coucher du soleil\n• Celsius ou Fahrenheit\n• Widget mis à jour en arrière-plan, cache hors ligne",
+    "es": "Consulta el tiempo de todos tus lugares de un vistazo. El Tiempo muestra las condiciones actuales sobre un degradado de cielo a juego, una franja por horas con un breve resumen de lo que viene y la previsión a 10 días con barras de temperatura. Los recuadros de detalle incluyen sensación térmica, humedad, viento, presión, índice UV, amanecer y atardecer. Los datos vienen de Open-Meteo y el widget del escritorio sigue al día aunque cierres la app.\n\n• Lugares guardados con búsqueda de ciudades y lugar predeterminado\n• Previsión por horas con resúmenes de lluvia y nieve\n• Previsión a 10 días con barras de temperatura\n• Sensación, humedad, viento, presión, UV, amanecer y atardecer\n• Celsius o Fahrenheit\n• Widget actualizado en segundo plano, caché sin conexión",
+    "ja": "すべての場所の天気をひと目で確認できます。天気は、現在の天候に合わせた空のグラデーションの上に現在の状況を表示し、これからの天気の短い概要付きの 1 時間ごとの帯と、気温の範囲バー付きの 10 日間予報を表示します。詳細タイルには、体感温度、湿度、風、気圧、UV 指数、日の出と日の入りが表示されます。予報は Open-Meteo から取得し、デスクトップウィジェットはアプリを閉じていても最新の状態に保たれます。\n\n• 都市の検索とデフォルトの場所に対応した保存済みの場所\n• 雨と雪の概要付きの 1 時間ごとの予報\n• 気温の範囲バー付きの 10 日間予報\n• 体感温度、湿度、風、気圧、UV、日の出と日の入り\n• 摂氏または華氏\n• バックグラウンドで更新されるデスクトップウィジェット、オフラインキャッシュ",
+    "zh": "一眼查看你所有地点的天气。天气会在与当前天气相称的天空渐变上显示实况，附有一条带未来天气简述的逐小时预报条，以及带温度范围条的 10 日预报。详细信息磁贴涵盖体感温度、湿度、风、气压、紫外线指数、日出和日落。预报数据来自 Open-Meteo，即使应用关闭，桌面小组件也会保持更新。\n\n• 已保存的位置，支持城市搜索和默认位置\n• 带雨雪摘要的逐小时预报\n• 带温度范围条的 10 日预报\n• 体感温度、湿度、风、气压、紫外线、日出和日落\n• 摄氏度或华氏度\n• 在后台保持更新的桌面小组件，离线缓存",
+    "ko": "모든 장소의 날씨를 한눈에 확인하세요. 날씨는 현재 날씨에 어울리는 하늘 그라데이션 위에 현재 상태를 보여 주고, 앞으로의 날씨를 짧게 요약한 시간별 줄과 기온 범위 막대가 있는 10일 예보를 제공합니다. 세부 타일에는 체감 온도, 습도, 바람, 기압, 자외선 지수, 일출과 일몰이 있습니다. 예보는 Open-Meteo에서 가져오며, 데스크톱 위젯은 앱이 닫혀 있어도 최신 상태로 유지됩니다.\n\n• 도시 검색과 기본 위치가 있는 저장된 위치\n• 비와 눈 요약이 있는 시간별 예보\n• 기온 범위 막대가 있는 10일 예보\n• 체감 온도, 습도, 바람, 기압, 자외선, 일출과 일몰\n• 섭씨 또는 화씨\n• 백그라운드에서 갱신되는 데스크톱 위젯, 오프라인 캐시"
+  },
+  "shots": [
+    [
+      "wait 5"
+    ],
+    [
+      "wclick 0.133 0.105",
+      "wait 0.5",
+      "text Ankara",
+      "wait 3"
+    ],
+    [
+      "key escape",
+      "wait 0.5",
+      "dark 1",
+      "wait 2"
+    ]
+  ]
+}

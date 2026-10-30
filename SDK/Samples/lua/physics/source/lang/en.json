@@ -1,0 +1,14 @@
+{
+  "cloth": "Cloth",
+  "ropes": "Ropes",
+  "bridge": "Bridge",
+  "tool_drag": "Grab",
+  "tool_cut": "Cut",
+  "tool_pin": "Pin",
+  "wind": "Wind",
+  "tear": "Tear",
+  "reset": "Reset",
+  "stats": "{0} points · {1} links · {2} FPS",
+  "hint": "Grab: drag any point. Cut: swipe across links. Pin: tap a point to fix or free it.",
+  "menu_title": "Physics"
+}

@@ -1,0 +1,1318 @@
+{
+  "schema": 1,
+  "count": 24,
+  "samples": [
+    {
+      "id": "helloc",
+      "slug": "hello",
+      "language": "c",
+      "kind": "demo",
+      "name": {
+        "en": "Hello C",
+        "tr": "Merhaba C",
+        "de": "Hallo C",
+        "fr": "Hello C",
+        "es": "Hola C",
+        "ja": "Hello C",
+        "zh": "Hello C",
+        "ko": "Hello C"
+      },
+      "subtitle": {
+        "en": "A tour of the C SDK",
+        "tr": "C SDK turu",
+        "de": "Eine Tour durch das C-SDK",
+        "fr": "Une visite du SDK C",
+        "es": "Un recorrido por el SDK de C",
+        "ja": "C SDK のツアー",
+        "zh": "C SDK 导览",
+        "ko": "C SDK 둘러보기"
+      },
+      "description": {
+        "en": "The built-in Hello C app as a project, compiled on the console by TinyCC: a counter and a note saved with store_*, bouncing balls in a second file (balls.c) animated in app_update, and live weather JSON with net_json and a function-pointer callback. Shows <nexvyn.h>, nxv_fmt with TR1, ui_textfield buffers and a menu.",
+        "tr": "Yerleşik Merhaba C uygulamasının konsolda TinyCC ile derlenen proje hâli: store_* ile kaydedilen sayaç ve not, ikinci bir dosyada (balls.c) app_update ile canlanan zıplayan toplar ve net_json ile fonksiyon işaretçisi geri çağırmalı canlı hava durumu JSON'u. <nexvyn.h>, TR1 ile nxv_fmt, ui_textfield tamponları ve menüyü gösterir.",
+        "de": "Die eingebaute App Hallo C als Projekt, auf der Konsole von TinyCC kompiliert: ein Zähler und eine Notiz mit store_*, springende Bälle in einer zweiten Datei (balls.c), animiert in app_update, und Live-Wetter-JSON mit net_json und einem Funktionszeiger-Callback. Zeigt <nexvyn.h>, nxv_fmt mit TR1, ui_textfield-Puffer und ein Menü.",
+        "fr": "L'appli intégrée Hello C sous forme de projet, compilée sur la console par TinyCC : un compteur et une note enregistrés avec store_*, des balles rebondissantes dans un second fichier (balls.c) animées dans app_update et la météo en JSON avec net_json et un pointeur de fonction comme rappel. Montre <nexvyn.h>, nxv_fmt avec TR1, les tampons ui_textfield et un menu.",
+        "es": "La app integrada Hola C como proyecto, compilada en la consola por TinyCC: un contador y una nota guardados con store_*, pelotas que rebotan en un segundo archivo (balls.c) animadas en app_update y el tiempo en JSON con net_json y un puntero a función como devolución. Muestra <nexvyn.h>, nxv_fmt con TR1, búferes de ui_textfield y un menú.",
+        "ja": "内蔵の Hello C アプリをプロジェクトにしたもので、本体上で TinyCC によってコンパイルされます: store_* で保存するカウンターとメモ、2 つ目のファイル (balls.c) で app_update によってアニメーションする跳ねるボール、そして net_json と関数ポインタのコールバックによるリアルタイムの天気 JSON。<nexvyn.h>、TR1 を使った nxv_fmt、ui_textfield のバッファ、メニューの使い方を示します。",
+        "zh": "将内置的 Hello C 应用作为项目，在主机上由 TinyCC 编译：一个用 store_* 保存的计数器和备注，在第二个文件（balls.c）中实现并在 app_update 中驱动动画的弹跳小球，以及使用 net_json 和函数指针回调获取的实时天气 JSON。演示了 <nexvyn.h>、带 TR1 的 nxv_fmt、ui_textfield 缓冲区和菜单。",
+        "ko": "콘솔에서 TinyCC로 컴파일되는 기본 제공 Hello C 앱을 프로젝트로 제공합니다: store_*로 저장되는 카운터와 메모, 두 번째 파일(balls.c)에서 app_update로 움직이는 튀는 공, 그리고 net_json과 함수 포인터 콜백으로 받는 실시간 날씨 JSON. <nexvyn.h>, TR1과 함께 쓰는 nxv_fmt, ui_textfield 버퍼, 메뉴를 보여 줍니다."
+      },
+      "tags": [
+        "sdk-tour",
+        "tinycc",
+        "network",
+        "store"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/hello.zip",
+      "size": 18404,
+      "sha256": "42f171bab0bca9056dfacbc2b3fa59e0db2399e3d7a93442aad2a83c4e37d651",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.sample.life",
+      "slug": "life",
+      "language": "c",
+      "kind": "demo",
+      "name": {
+        "en": "Game of Life (C)",
+        "tr": "Hayat Oyunu (C)",
+        "de": "Spiel des Lebens (C)",
+        "fr": "Jeu de la vie (C)",
+        "es": "Juego de la vida (C)",
+        "ja": "ライフゲーム (C)",
+        "zh": "生命游戏（C）",
+        "ko": "생명 게임(C)"
+      },
+      "subtitle": {
+        "en": "Conway's cellular automaton in C",
+        "tr": "C ile Conway'in hücresel otomatı",
+        "de": "Conways Zellautomat in C",
+        "fr": "L'automate cellulaire de Conway en C",
+        "es": "El autómata celular de Conway en C",
+        "ja": "C で書かれたコンウェイのセル・オートマトン",
+        "zh": "用 C 编写的康威细胞自动机",
+        "ko": "C로 만든 콘웨이의 세포 자동자"
+      },
+      "description": {
+        "en": "Paint living cells with a finger or the cursor, then run the simulation, step one generation at a time or fill the board at random; the edges wrap around and the speed goes from 1 to 30 generations a second. The board is saved when you close the app.\n\nWhat it teaches in C: static arrays, a fixed step in app_update, painting with ui_hit and ui_mouse, ui_slider, icon buttons, copying a returned string before a loop, app_menu, and saving with store_setStr in app_autosave and app_close.",
+        "tr": "Parmakla ya da imleçle canlı hücreler çiz, sonra benzetimi çalıştır, nesil nesil ilerlet ya da tahtayı rastgele doldur; kenarlar karşı taraftan devam eder ve hız saniyede 1 ile 30 nesil arasında ayarlanır. Uygulamayı kapatınca tahta kaydedilir.\n\nC'de öğrettikleri: statik diziler, app_update içinde sabit adım, ui_hit ve ui_mouse ile boyama, ui_slider, simgeli düğmeler, dönen metni döngüden önce kopyalamak, app_menu ve app_autosave ile app_close içinde store_setStr ile kayıt.",
+        "de": "Male lebende Zellen mit Finger oder Cursor, dann lass die Simulation laufen, gehe Generation für Generation vor oder fülle das Brett zufällig; die Ränder gehen ineinander über, das Tempo reicht von 1 bis 30 Generationen pro Sekunde. Das Brett wird beim Schließen gespeichert.\n\nWas es in C zeigt: statische Arrays, ein fester Schritt in app_update, Malen mit ui_hit und ui_mouse, ui_slider, Symbol-Buttons, das Kopieren eines zurückgegebenen Strings vor einer Schleife, app_menu und Speichern mit store_setStr in app_autosave und app_close.",
+        "fr": "Dessinez des cellules vivantes au doigt ou au curseur, puis lancez la simulation, avancez génération par génération ou remplissez la grille au hasard ; les bords se rejoignent et la vitesse va de 1 à 30 générations par seconde. La grille est enregistrée à la fermeture.\n\nCe qu'il enseigne en C : tableaux statiques, pas fixe dans app_update, dessin avec ui_hit et ui_mouse, ui_slider, boutons à icône, copie d'une chaîne retournée avant une boucle, app_menu et sauvegarde avec store_setStr dans app_autosave et app_close.",
+        "es": "Pinta celdas vivas con el dedo o el cursor y luego ejecuta la simulación, avanza generación a generación o llena el tablero al azar; los bordes se conectan y la velocidad va de 1 a 30 generaciones por segundo. El tablero se guarda al cerrar.\n\nLo que enseña en C: arrays estáticos, un paso fijo en app_update, pintar con ui_hit y ui_mouse, ui_slider, botones con icono, copiar una cadena devuelta antes de un bucle, app_menu y guardar con store_setStr en app_autosave y app_close.",
+        "ja": "指やカーソルで生きたセルを描き、シミュレーションを実行するか、1 世代ずつ進めるか、盤面をランダムに埋めましょう。端はループしており、速さは毎秒 1〜30 世代です。アプリを閉じると盤面が保存されます。\n\nC で学べること: 静的配列、app_update での固定ステップ、ui_hit と ui_mouse による描画、ui_slider、アイコンボタン、ループの前に返された文字列をコピーすること、app_menu、そして app_autosave と app_close での store_setStr による保存。",
+        "zh": "用手指或光标绘制活细胞，然后运行模拟、逐代单步运行或随机填满棋盘；边缘首尾相连，速度可在每秒 1 到 30 代之间调整。关闭应用时会保存棋盘。\n\n在 C 中学到的内容：静态数组、app_update 中的固定步长、使用 ui_hit 和 ui_mouse 绘制、ui_slider、图标按钮、在循环前复制返回的字符串、app_menu，以及在 app_autosave 和 app_close 中用 store_setStr 保存。",
+        "ko": "손가락이나 커서로 살아 있는 세포를 그린 후 시뮬레이션을 실행하거나, 한 세대씩 진행하거나, 보드를 무작위로 채우세요. 가장자리는 이어져 있고 속도는 초당 1세대부터 30세대까지입니다. 앱을 닫으면 보드가 저장됩니다.\n\nC로 배우는 내용: 정적 배열, app_update의 고정 단계, ui_hit과 ui_mouse로 칠하기, ui_slider, 아이콘 버튼, 반복 전에 반환된 문자열 복사하기, app_menu, app_autosave와 app_close에서 store_setStr로 저장하기."
+      },
+      "tags": [
+        "simulation",
+        "touch",
+        "store",
+        "tinycc"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/life/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/life/life.zip",
+      "size": 16187,
+      "sha256": "2112243c50395490f25d05ee13dc3329415a2cdfb8b3a08ad45d4583f37d44a6",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/life/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/life/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/life/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/life/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.sample.tipcalc",
+      "slug": "tipcalc",
+      "language": "c",
+      "kind": "app",
+      "name": {
+        "en": "Tip Splitter (C)",
+        "tr": "Bahşiş Bölüşücü (C)",
+        "de": "Trinkgeld-Teiler (C)",
+        "fr": "Partage de pourboire (C)",
+        "es": "Divisor de propinas (C)",
+        "ja": "チップ割り勘 (C)",
+        "zh": "小费分摊（C）",
+        "ko": "팁 나누기(C)"
+      },
+      "subtitle": {
+        "en": "Split a bill and its tip fairly",
+        "tr": "Hesabı ve bahşişi adilce bölüştür",
+        "de": "Rechnung und Trinkgeld fair teilen",
+        "fr": "Partagez l'addition et le pourboire",
+        "es": "Divide la cuenta y la propina",
+        "ja": "請求額とチップを公平に割り勘",
+        "zh": "公平分摊账单和小费",
+        "ko": "청구 금액과 팁을 공정하게 나누세요"
+      },
+      "description": {
+        "en": "Type the bill, pick a tip from 0 to 25 % or slide to any value up to 40 %, choose how many people pay and optionally round each share up to a whole number. The tip, the total and each person's share update as you type, a decimal comma works as well as a dot, and the result can be shared with any app.\n\nWhat it teaches in C: ui_textfield editing a char buffer in place with the numeric flag, strtod, ui_segmented with labels built in a loop, ui_slider, ui_toggle, ui_iconButton, settings-style rows with ui_group and ui_separator, store_* and sys_share with TR3.",
+        "tr": "Hesabı yaz, 0 ile %25 arasında bir bahşiş seç ya da %40'a kadar istediğin değere kaydır, kaç kişinin ödeyeceğini belirle ve istersen her payı tam sayıya yuvarla. Bahşiş, toplam ve kişi başı pay sen yazarken güncellenir; ondalık virgül de nokta gibi çalışır ve sonuç herhangi bir uygulamayla paylaşılabilir.\n\nC'de öğrettikleri: numeric bayrağıyla bir char tamponunu yerinde düzenleyen ui_textfield, strtod, etiketleri döngüde kurulan ui_segmented, ui_slider, ui_toggle, ui_iconButton, ui_group ve ui_separator ile ayar satırları, store_* ve TR3 ile sys_share.",
+        "de": "Gib die Rechnung ein, wähle ein Trinkgeld von 0 bis 25 % oder schiebe auf jeden Wert bis 40 %, lege fest, wie viele Personen zahlen, und runde auf Wunsch jeden Anteil auf. Trinkgeld, Summe und Anteil pro Person aktualisieren sich beim Tippen, ein Dezimalkomma funktioniert wie ein Punkt, und das Ergebnis lässt sich mit jeder App teilen.\n\nWas es in C zeigt: ui_textfield, das einen char-Puffer mit dem Flag numeric direkt bearbeitet, strtod, ui_segmented mit in einer Schleife gebauten Beschriftungen, ui_slider, ui_toggle, ui_iconButton, Einstellungszeilen mit ui_group und ui_separator, store_* und sys_share mit TR3.",
+        "fr": "Saisissez l'addition, choisissez un pourboire de 0 à 25 % ou glissez jusqu'à 40 %, indiquez combien de personnes paient et arrondissez chaque part si vous voulez. Le pourboire, le total et la part de chacun se mettent à jour pendant la saisie, la virgule décimale fonctionne comme le point et le résultat se partage avec n'importe quelle appli.\n\nCe qu'il enseigne en C : ui_textfield qui modifie un tampon char sur place avec l'option numeric, strtod, ui_segmented avec des libellés construits en boucle, ui_slider, ui_toggle, ui_iconButton, des lignes de réglages avec ui_group et ui_separator, store_* et sys_share avec TR3.",
+        "es": "Escribe la cuenta, elige una propina de 0 a 25 % o desliza hasta cualquier valor de 40 %, indica cuántas personas pagan y, si quieres, redondea cada parte. La propina, el total y la parte de cada uno se actualizan al escribir, la coma decimal funciona como el punto y el resultado se puede compartir con cualquier app.\n\nLo que enseña en C: ui_textfield que edita un búfer char en su sitio con la opción numeric, strtod, ui_segmented con etiquetas creadas en un bucle, ui_slider, ui_toggle, ui_iconButton, filas de ajustes con ui_group y ui_separator, store_* y sys_share con TR3.",
+        "ja": "請求額を入力し、チップを 0〜25 % から選ぶか、スライダーで 40 % までの任意の値にし、支払う人数を選び、必要なら各自の負担額を整数に切り上げます。チップ、合計、1 人あたりの負担額は入力と同時に更新され、小数点にはドットだけでなくカンマも使え、結果は任意のアプリと共有できます。\n\nC で学べること: numeric フラグ付きで char バッファをその場で編集する ui_textfield、strtod、ループで作ったラベルの ui_segmented、ui_slider、ui_toggle、ui_iconButton、ui_group と ui_separator による設定風の行、store_*、そして TR3 を使った sys_share。",
+        "zh": "输入账单金额，选择 0 到 25 % 的小费或滑动到最高 40 % 的任意值，选择付款人数，并可选择将每人的份额向上取整。小费、总额和每人份额会在输入时实时更新，小数点用逗号或点都可以，结果可以分享给任何应用。\n\n在 C 中学到的内容：使用 numeric 标志的 ui_textfield 就地编辑 char 缓冲区、strtod、在循环中构建标签的 ui_segmented、ui_slider、ui_toggle、ui_iconButton、用 ui_group 和 ui_separator 实现的设置风格行、store_* 以及带 TR3 的 sys_share。",
+        "ko": "청구 금액을 입력하고, 0부터 25 %까지 팁을 고르거나 슬라이더로 최대 40 %까지 정하고, 낼 사람 수를 선택하고, 선택적으로 1인당 금액을 정수로 올리세요. 입력하는 대로 팁, 합계, 1인당 금액이 업데이트되며, 소수점으로 쉼표와 점을 모두 쓸 수 있고, 결과를 어떤 앱과도 공유할 수 있습니다.\n\nC로 배우는 내용: numeric 플래그로 char 버퍼를 제자리에서 편집하는 ui_textfield, strtod, 반복문으로 레이블을 만드는 ui_segmented, ui_slider, ui_toggle, ui_iconButton, ui_group과 ui_separator로 만드는 설정 스타일 행, store_*, TR3과 함께 쓰는 sys_share."
+      },
+      "tags": [
+        "calculator",
+        "money",
+        "forms",
+        "share"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/tipcalc/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/tipcalc/tipcalc.zip",
+      "size": 14308,
+      "sha256": "0bcdc311cf808237d564ff4ec08ad5600cd35eee38d1a4cab00e5063d75618fa",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/tipcalc/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/tipcalc/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/tipcalc/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/tipcalc/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.sample.dice",
+      "slug": "dice",
+      "language": "java",
+      "kind": "app",
+      "name": {
+        "en": "Dice Roller (Java)",
+        "tr": "Zar Atıcı (Java)",
+        "de": "Würfelbecher (Java)",
+        "fr": "Lanceur de dés (Java)",
+        "es": "Lanzador de dados (Java)",
+        "ja": "サイコロ (Java)",
+        "zh": "掷骰子（Java）",
+        "ko": "주사위 굴리기(Java)"
+      },
+      "subtitle": {
+        "en": "d4 to d20, hold dice, keep a history",
+        "tr": "d4'ten d20'ye, zar tut, geçmişi sakla",
+        "de": "W4 bis W20, Würfel halten, Verlauf",
+        "fr": "De d4 à d20, garder des dés, historique",
+        "es": "De d4 a d20, retener dados, historial",
+        "ja": "d4〜d20、サイコロのキープ、履歴",
+        "zh": "d4 到 d20，可保留骰子，保留历史记录",
+        "ko": "d4부터 d20까지, 주사위 고정, 기록 보관"
+      },
+      "description": {
+        "en": "Roll one to six dice of the same kind, from d4 to d20, with a short rolling animation, a click and a rumble. Tap a die to hold it for the next roll, read the total at a glance and look back at your last twelve rolls, which are kept between runs.\n\nWhat it teaches in Java: a class extending nexvyn.App, update() only while something moves, java.util.Random, Ui.segmented with a String array, Ui.hit for tappable shapes, Record and List values in Store, Menu.bar with disabled items, Audio.tone and Sys.vibrate.",
+        "tr": "Aynı türden bir ile altı zarı, d4'ten d20'ye kadar kısa bir yuvarlanma animasyonu, tık sesi ve titreşimle at. Bir sonraki atışta tutmak için zara dokun, toplamı bir bakışta gör ve uygulamayı kapatınca da korunan son on iki atışına göz at.\n\nJava'da öğrettikleri: nexvyn.App'ten türeyen sınıf, yalnızca bir şey hareket ederken update(), java.util.Random, String dizisiyle Ui.segmented, dokunulabilir şekiller için Ui.hit, Store içinde Record ve List değerleri, kapalı öğeli Menu.bar, Audio.tone ve Sys.vibrate.",
+        "de": "Wirf ein bis sechs gleiche Würfel von W4 bis W20 mit kurzer Rollanimation, Klick und Vibration. Tippe auf einen Würfel, um ihn für den nächsten Wurf zu halten, lies die Summe auf einen Blick und sieh dir deine letzten zwölf Würfe an, die erhalten bleiben.\n\nWas es in Java zeigt: eine von nexvyn.App abgeleitete Klasse, update() nur während sich etwas bewegt, java.util.Random, Ui.segmented mit einem String-Array, Ui.hit für antippbare Formen, Record- und List-Werte in Store, Menu.bar mit deaktivierten Einträgen, Audio.tone und Sys.vibrate.",
+        "fr": "Lancez de un à six dés identiques, du d4 au d20, avec une courte animation, un clic et une vibration. Touchez un dé pour le garder au prochain lancer, lisez le total d'un coup d'œil et retrouvez vos douze derniers lancers, conservés entre les sessions.\n\nCe qu'il enseigne en Java : une classe qui étend nexvyn.App, update() seulement quand quelque chose bouge, java.util.Random, Ui.segmented avec un tableau de String, Ui.hit pour des formes cliquables, des valeurs Record et List dans Store, Menu.bar avec des éléments désactivés, Audio.tone et Sys.vibrate.",
+        "es": "Lanza de uno a seis dados del mismo tipo, de d4 a d20, con una breve animación, un clic y una vibración. Toca un dado para retenerlo en la siguiente tirada, lee el total de un vistazo y repasa tus últimas doce tiradas, que se guardan entre sesiones.\n\nLo que enseña en Java: una clase que extiende nexvyn.App, update() solo mientras algo se mueve, java.util.Random, Ui.segmented con un array de String, Ui.hit para formas que se tocan, valores Record y List en Store, Menu.bar con elementos desactivados, Audio.tone y Sys.vibrate.",
+        "ja": "d4 から d20 までの同じ種類のサイコロを 1〜6 個、短い転がるアニメーション、クリック音、振動とともに振りましょう。サイコロをタップすると次に振るときにキープされ、合計がひと目でわかり、直近 12 回の結果を振り返れます (実行をまたいで保持されます)。\n\nJava で学べること: nexvyn.App を継承したクラス、何かが動いている間だけの update()、java.util.Random、String 配列を使った Ui.segmented、タップできる図形のための Ui.hit、Store の Record と List の値、無効な項目のある Menu.bar、Audio.tone と Sys.vibrate。",
+        "zh": "掷一到六颗同类骰子，从 d4 到 d20，带有简短的滚动动画、咔嗒声和振动。轻点骰子即可在下一次投掷时保留它，一眼看清总点数，并回看最近十二次投掷记录，这些记录在多次运行之间都会保留。\n\n在 Java 中学到的内容：继承 nexvyn.App 的类、仅在有东西移动时调用 update()、java.util.Random、使用 String 数组的 Ui.segmented、用于可点按形状的 Ui.hit、Store 中的 Record 和 List 值、带禁用项的 Menu.bar、Audio.tone 和 Sys.vibrate。",
+        "ko": "d4부터 d20까지 같은 종류의 주사위를 1–6개, 짧은 굴림 애니메이션과 딸깍 소리, 진동과 함께 굴리세요. 주사위를 탭하면 다음 굴림에서 고정되고, 합계를 한눈에 보고, 실행 간에 보관되는 최근 12번의 굴림을 돌아보세요.\n\nJava로 배우는 내용: nexvyn.App을 상속하는 클래스, 무언가 움직일 때만 update(), java.util.Random, String 배열을 쓰는 Ui.segmented, 탭할 수 있는 도형을 위한 Ui.hit, Store의 Record와 List 값, 비활성 항목이 있는 Menu.bar, Audio.tone과 Sys.vibrate."
+      },
+      "tags": [
+        "dice",
+        "random",
+        "store",
+        "animation"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/dice.zip",
+      "size": 20496,
+      "sha256": "43ecc9ada627f1b7fd2138e0b252d55e5aaf9212b77f1a0cbae3d40af00fba5d",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/dice/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "hellojava",
+      "slug": "hello",
+      "language": "java",
+      "kind": "demo",
+      "name": {
+        "en": "Hello Java",
+        "tr": "Merhaba Java",
+        "de": "Hallo Java",
+        "fr": "Hello Java",
+        "es": "Hola Java",
+        "ja": "Hello Java",
+        "zh": "Hello Java",
+        "ko": "Hello Java"
+      },
+      "subtitle": {
+        "en": "A tour of the Java SDK",
+        "tr": "Java SDK turu",
+        "de": "Eine Tour durch das Java-SDK",
+        "fr": "Une visite du SDK Java",
+        "es": "Un recorrido por el SDK de Java",
+        "ja": "Java SDK のツアー",
+        "zh": "Java SDK 导览",
+        "ko": "Java SDK 둘러보기"
+      },
+      "description": {
+        "en": "The built-in Hello Java app as a project: a to-do list saved with Store, an analog clock drawn with Gfx and live weather JSON with Net.json and a Callback lambda. Shows a class extending nexvyn.App, Record values, Menu.bar, Timer and how app.jar is built from src/ on a PC.",
+        "tr": "Yerleşik Merhaba Java uygulamasının proje hâli: Store ile kaydedilen yapılacaklar listesi, Gfx ile çizilen analog saat ve Net.json ile Callback lambdalı canlı hava durumu JSON'u. nexvyn.App'ten türeyen sınıfı, Record değerlerini, Menu.bar'ı, Timer'ı ve app.jar'ın src/ klasöründen PC'de nasıl derlendiğini gösterir.",
+        "de": "Die eingebaute App Hallo Java als Projekt: eine mit Store gespeicherte To-do-Liste, eine mit Gfx gezeichnete Analoguhr und Live-Wetter-JSON mit Net.json und einem Callback-Lambda. Zeigt eine von nexvyn.App abgeleitete Klasse, Record-Werte, Menu.bar, Timer und wie app.jar auf dem PC aus src/ gebaut wird.",
+        "fr": "L'appli intégrée Hello Java sous forme de projet : une liste de tâches enregistrée avec Store, une horloge analogique dessinée avec Gfx et la météo en JSON avec Net.json et un lambda Callback. Montre une classe qui étend nexvyn.App, les valeurs Record, Menu.bar, Timer et comment app.jar est compilé depuis src/ sur un PC.",
+        "es": "La app integrada Hola Java como proyecto: una lista de tareas guardada con Store, un reloj analógico dibujado con Gfx y el tiempo en JSON con Net.json y un lambda Callback. Muestra una clase que extiende nexvyn.App, valores Record, Menu.bar, Timer y cómo se compila app.jar desde src/ en un PC.",
+        "ja": "内蔵の Hello Java アプリをプロジェクトにしたもの: Store で保存する ToDo リスト、Gfx で描くアナログ時計、そして Net.json と Callback のラムダによるリアルタイムの天気 JSON。nexvyn.App を継承したクラス、Record の値、Menu.bar、Timer、そして PC 上で src/ から app.jar をビルドする方法を示します。",
+        "zh": "将内置的 Hello Java 应用作为项目：用 Store 保存的待办事项列表、用 Gfx 绘制的指针式时钟，以及使用 Net.json 和 Callback lambda 获取的实时天气 JSON。演示了继承 nexvyn.App 的类、Record 值、Menu.bar、Timer，以及如何在 PC 上从 src/ 构建 app.jar。",
+        "ko": "기본 제공 Hello Java 앱을 프로젝트로 제공합니다: Store로 저장되는 할 일 목록, Gfx로 그린 아날로그 시계, Net.json과 Callback 람다로 받는 실시간 날씨 JSON. nexvyn.App을 상속하는 클래스, Record 값, Menu.bar, Timer, 그리고 PC에서 src/로 app.jar를 빌드하는 방법을 보여 줍니다."
+      },
+      "tags": [
+        "sdk-tour",
+        "minijvm",
+        "network",
+        "store"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/hello.zip",
+      "size": 24516,
+      "sha256": "a915d4b73f0539972216a77cfcfc5cc9254c06cdb6da3e7c99df89aa89e6a262",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/hello/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.sample.pong",
+      "slug": "pong",
+      "language": "java",
+      "kind": "game",
+      "name": {
+        "en": "Pong (Java)",
+        "tr": "Pong (Java)",
+        "de": "Pong (Java)",
+        "fr": "Pong (Java)",
+        "es": "Pong (Java)",
+        "ja": "ポン (Java)",
+        "zh": "乒乓（Java）",
+        "ko": "퐁(Java)"
+      },
+      "subtitle": {
+        "en": "You against the console, first to 7",
+        "tr": "Konsola karşı, 7 sayıyı alan kazanır",
+        "de": "Du gegen die Konsole, wer zuerst 7 hat",
+        "fr": "Vous contre la console, en 7 points",
+        "es": "Tú contra la consola, a 7 puntos",
+        "ja": "本体と対決、7 点先取",
+        "zh": "你与主机对战，先得 7 分者胜",
+        "ko": "콘솔과 대결, 먼저 7점"
+      },
+      "description": {
+        "en": "The classic paddle game: hit the ball past the console's paddle, the further from the centre you hit it the steeper it flies, and every return is a little faster. Play with the stick, the D-pad, the arrow keys or by dragging on the touch screen; the court scales to any window size and the number of games you have won is saved.\n\nWhat it teaches in Java: \"gamepad\": true, polling Input.stick and Input.down every frame, keyboard state from keydown and keyup events, touch with Ui.mouse and Ui.hit, a virtual court scaled with Gfx.push, Audio.tone effects and pausing in suspend() and focus(false).",
+        "tr": "Klasik raket oyunu: topu konsolun raketinin arkasına geçir; topa merkezden ne kadar uzak vurursan o kadar dik gider ve her dönüşte biraz hızlanır. Çubukla, yön tuşlarıyla, oklarla ya da dokunmatik ekranda sürükleyerek oyna; saha her pencere boyutuna ölçeklenir ve kazandığın oyun sayısı kaydedilir.\n\nJava'da öğrettikleri: \"gamepad\": true, her karede Input.stick ve Input.down okumak, keydown ve keyup olaylarından klavye durumu, Ui.mouse ve Ui.hit ile dokunmatik, Gfx.push ile ölçeklenen sanal saha, Audio.tone efektleri ve suspend() ile focus(false) içinde duraklatma.",
+        "de": "Das klassische Schlägerspiel: Spiele den Ball am Schläger der Konsole vorbei; je weiter vom Zentrum du triffst, desto steiler fliegt er, und jeder Return wird etwas schneller. Spiele mit Stick, Steuerkreuz, Pfeiltasten oder durch Ziehen auf dem Touchscreen; das Feld passt sich jeder Fenstergröße an, und deine Siege werden gespeichert.\n\nWas es in Java zeigt: \"gamepad\": true, Input.stick und Input.down in jedem Frame abfragen, Tastaturzustand aus keydown- und keyup-Ereignissen, Touch mit Ui.mouse und Ui.hit, ein mit Gfx.push skaliertes virtuelles Feld, Audio.tone-Effekte und Pausieren in suspend() und focus(false).",
+        "fr": "Le jeu de raquettes classique : faites passer la balle derrière la raquette de la console ; plus vous frappez loin du centre, plus elle part en angle, et chaque renvoi est un peu plus rapide. Jouez au stick, à la croix, aux flèches ou en glissant sur l'écran tactile ; le terrain s'adapte à toute taille de fenêtre et vos victoires sont enregistrées.\n\nCe qu'il enseigne en Java : \"gamepad\": true, lire Input.stick et Input.down à chaque image, l'état du clavier depuis keydown et keyup, le toucher avec Ui.mouse et Ui.hit, un terrain virtuel mis à l'échelle avec Gfx.push, des effets Audio.tone et la pause dans suspend() et focus(false).",
+        "es": "El clásico juego de palas: haz pasar la pelota por detrás de la pala de la consola; cuanto más lejos del centro golpees, más inclinada sale, y cada devolución es un poco más rápida. Juega con el stick, la cruceta, las flechas o arrastrando en la pantalla táctil; la pista se adapta a cualquier tamaño de ventana y se guardan tus victorias.\n\nLo que enseña en Java: \"gamepad\": true, leer Input.stick e Input.down en cada fotograma, el estado del teclado con keydown y keyup, el táctil con Ui.mouse y Ui.hit, una pista virtual escalada con Gfx.push, efectos de Audio.tone y la pausa en suspend() y focus(false).",
+        "ja": "定番のパドルゲーム: 本体のパドルの横をボールで抜きましょう。中心から離れた位置で打つほど急な角度で飛び、打ち返すたびに少しずつ速くなります。スティック、十字ボタン、矢印キー、またはタッチスクリーンのドラッグで操作できます。コートは任意のウィンドウサイズに合わせて拡大縮小され、勝ったゲーム数は保存されます。\n\nJava で学べること: \"gamepad\": true、毎フレームの Input.stick と Input.down のポーリング、keydown と keyup イベントによるキーボードの状態、Ui.mouse と Ui.hit によるタッチ、Gfx.push で拡大縮小する仮想コート、Audio.tone の効果音、そして suspend() と focus(false) での一時停止。",
+        "zh": "经典的球拍游戏：把球打过主机的球拍，击球点离中心越远，球飞得越陡，每次回球都会稍快一些。可用摇杆、十字键、方向键或在触摸屏上拖动来游玩；球场会适应任意窗口大小，你赢得的局数会被保存。\n\n在 Java 中学到的内容：\"gamepad\": true、每帧轮询 Input.stick 和 Input.down、来自 keydown 和 keyup 事件的键盘状态、使用 Ui.mouse 和 Ui.hit 的触控、用 Gfx.push 缩放的虚拟球场、Audio.tone 音效，以及在 suspend() 和 focus(false) 中暂停。",
+        "ko": "클래식 패들 게임: 공을 콘솔의 패들 너머로 보내세요. 중앙에서 멀리 맞힐수록 더 가파르게 날아가고, 받아칠 때마다 조금씩 빨라집니다. 스틱, 방향 버튼, 화살표 키 또는 터치스크린 드래그로 플레이하세요. 코트는 어떤 창 크기에도 맞춰지며 이긴 게임 수가 저장됩니다.\n\nJava로 배우는 내용: \"gamepad\": true, 매 프레임 Input.stick과 Input.down 확인, keydown과 keyup 이벤트로 키보드 상태 관리, Ui.mouse와 Ui.hit을 이용한 터치, Gfx.push로 크기를 조정하는 가상 코트, Audio.tone 효과, suspend()와 focus(false)에서 일시 정지."
+      },
+      "tags": [
+        "gamepad",
+        "touch",
+        "arcade",
+        "store"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/pong/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/pong/pong.zip",
+      "size": 22582,
+      "sha256": "4741c31e4981856c49076d2079b13a9cef63b8ca8eb6477135387feaa7be0be5",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/pong/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/pong/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/pong/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/java/pong/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "hellojs",
+      "slug": "hello",
+      "language": "javascript",
+      "kind": "demo",
+      "name": {
+        "en": "Hello JS",
+        "tr": "Merhaba JS",
+        "de": "Hallo JS",
+        "fr": "Hello JS",
+        "es": "Hola JS",
+        "ja": "Hello JS",
+        "zh": "Hello JS",
+        "ko": "Hello JS"
+      },
+      "subtitle": {
+        "en": "A tour of the JavaScript SDK",
+        "tr": "JavaScript SDK turu",
+        "de": "Eine Tour durch das JavaScript-SDK",
+        "fr": "Une visite du SDK JavaScript",
+        "es": "Un recorrido por el SDK de JavaScript",
+        "ja": "JavaScript SDK のツアー",
+        "zh": "JavaScript SDK 导览",
+        "ko": "JavaScript SDK 둘러보기"
+      },
+      "description": {
+        "en": "The built-in Hello JS app as a project: a to-do list saved with store (todos.js), an analog clock drawn with gfx (clock.js) and live weather JSON with await net.fetchJson and proper error handling. Shows ES modules, Promises, toasts with timers and a menu.",
+        "tr": "Yerleşik Merhaba JS uygulamasının proje hâli: store ile kaydedilen yapılacaklar listesi (todos.js), gfx ile çizilen analog saat (clock.js) ve await net.fetchJson ile hata yönetimli canlı hava durumu JSON'u. ES modüllerini, Promise'leri, zamanlayıcılı bildirimleri ve menüyü gösterir.",
+        "de": "Die eingebaute App Hallo JS als Projekt: eine mit store gespeicherte To-do-Liste (todos.js), eine mit gfx gezeichnete Analoguhr (clock.js) und Live-Wetter-JSON mit await net.fetchJson samt Fehlerbehandlung. Zeigt ES-Module, Promises, Toasts mit Timern und ein Menü.",
+        "fr": "L'appli intégrée Hello JS sous forme de projet : une liste de tâches enregistrée avec store (todos.js), une horloge analogique dessinée avec gfx (clock.js) et la météo en JSON avec await net.fetchJson et une vraie gestion d'erreurs. Montre les modules ES, les promesses, des toasts avec minuteurs et un menu.",
+        "es": "La app integrada Hola JS como proyecto: una lista de tareas guardada con store (todos.js), un reloj analógico dibujado con gfx (clock.js) y el tiempo en JSON con await net.fetchJson y manejo de errores. Muestra módulos ES, promesas, avisos con temporizadores y un menú.",
+        "ja": "内蔵の Hello JS アプリをプロジェクトにしたもの: store で保存する ToDo リスト (todos.js)、gfx で描くアナログ時計 (clock.js)、そして await net.fetchJson と適切なエラー処理によるリアルタイムの天気 JSON。ES モジュール、Promise、タイマー付きのトースト、メニューの使い方を示します。",
+        "zh": "将内置的 Hello JS 应用作为项目：用 store 保存的待办事项列表（todos.js）、用 gfx 绘制的指针式时钟（clock.js），以及使用 await net.fetchJson 获取并妥善处理错误的实时天气 JSON。演示了 ES 模块、Promise、带计时器的提示消息和菜单。",
+        "ko": "기본 제공 Hello JS 앱을 프로젝트로 제공합니다: store로 저장되는 할 일 목록(todos.js), gfx로 그린 아날로그 시계(clock.js), await net.fetchJson과 적절한 오류 처리로 받는 실시간 날씨 JSON. ES 모듈, Promise, 타이머가 있는 토스트, 메뉴를 보여 줍니다."
+      },
+      "tags": [
+        "sdk-tour",
+        "promises",
+        "modules",
+        "network",
+        "store"
+      ],
+      "minSdk": "1.1",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/hello.zip",
+      "size": 20520,
+      "sha256": "93931d4852e39f7ab5e12e862d5682182fcb8fc5230b9a8f1fd1ca1cdbef4b38",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/hello/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.shapes-js",
+      "slug": "shapes-js",
+      "language": "javascript",
+      "kind": "demo",
+      "name": {
+        "en": "Shapes JS Demo",
+        "tr": "Şekiller JS Demosu",
+        "de": "Formen-JS-Demo",
+        "fr": "Démo Formes JS",
+        "es": "Demo de formas JS",
+        "ja": "図形デモ (JS)",
+        "zh": "形状 JS 演示",
+        "ko": "도형 JS 데모"
+      },
+      "subtitle": {
+        "en": "Every g3d primitive in JavaScript",
+        "tr": "JavaScript ile tüm g3d temel şekilleri",
+        "de": "Alle g3d-Grundformen in JavaScript",
+        "fr": "Toutes les primitives g3d en JavaScript",
+        "es": "Todas las primitivas de g3d en JavaScript",
+        "ja": "JavaScript で g3d のすべてのプリミティブ",
+        "zh": "用 JavaScript 展示所有 g3d 基本体",
+        "ko": "JavaScript로 보는 모든 g3d 기본 도형"
+      },
+      "description": {
+        "en": "The seven g3d primitives on a turntable: textures with mesh.setTexture, wireframe, clickable labels placed with g3d.project and an intro animation written with async/await and timer.sleep. A good first look at 3D in JavaScript.",
+        "tr": "Yedi g3d temel şekli bir döner tabla üzerinde: mesh.setTexture ile dokular, tel kafes, g3d.project ile yerleştirilen tıklanabilir etiketler ve async/await ile timer.sleep kullanılarak yazılmış giriş animasyonu. JavaScript ile 3D'ye iyi bir ilk bakış.",
+        "de": "Die sieben g3d-Grundformen auf einem Drehteller: Texturen mit mesh.setTexture, Drahtgitter, mit g3d.project platzierte klickbare Beschriftungen und eine Intro-Animation mit async/await und timer.sleep. Ein guter erster Blick auf 3D in JavaScript.",
+        "fr": "Les sept primitives g3d sur un plateau tournant : textures avec mesh.setTexture, fil de fer, étiquettes cliquables placées avec g3d.project et une animation d'intro écrite avec async/await et timer.sleep. Une bonne première approche de la 3D en JavaScript.",
+        "es": "Las siete primitivas de g3d en un plato giratorio: texturas con mesh.setTexture, alambre, etiquetas clicables situadas con g3d.project y una animación de entrada escrita con async/await y timer.sleep. Un buen primer vistazo al 3D en JavaScript.",
+        "ja": "ターンテーブルの上の 7 つの g3d プリミティブ: mesh.setTexture によるテクスチャ、ワイヤーフレーム、g3d.project で配置したクリックできるラベル、そして async/await と timer.sleep で書いたイントロアニメーション。JavaScript での 3D の最初の一歩に最適です。",
+        "zh": "转台上的七种 g3d 基本体：使用 mesh.setTexture 的纹理、线框、用 g3d.project 放置的可点按标签，以及用 async/await 和 timer.sleep 编写的开场动画。是初次了解 JavaScript 3D 的好例子。",
+        "ko": "회전대 위의 g3d 기본 도형 7개: mesh.setTexture로 입힌 텍스처, 와이어프레임, g3d.project로 배치한 클릭할 수 있는 레이블, async/await와 timer.sleep으로 작성한 인트로 애니메이션. JavaScript로 3D를 처음 살펴보기에 좋습니다."
+      },
+      "tags": [
+        "g3d",
+        "3d",
+        "textures",
+        "async"
+      ],
+      "minSdk": "1.1",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/shapes-js.zip",
+      "size": 33015,
+      "sha256": "baa20a8703041239974133d4a462e63bb08d8410bf443ea475dcce6cba24b3a7",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.beatbox",
+      "slug": "beatbox",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Beatbox Demo",
+        "tr": "Ritim Kutusu Demosu",
+        "de": "Beatbox-Demo",
+        "fr": "Démo Beatbox",
+        "es": "Demo de beatbox",
+        "ja": "ビートボックスデモ",
+        "zh": "节拍盒演示",
+        "ko": "비트박스 데모"
+      },
+      "subtitle": {
+        "en": "A 16-step drum machine",
+        "tr": "16 adımlı davul makinesi",
+        "de": "Ein Drumcomputer mit 16 Schritten",
+        "fr": "Une boîte à rythmes à 16 pas",
+        "es": "Una caja de ritmos de 16 pasos",
+        "ja": "16 ステップのドラムマシン",
+        "zh": "16 步鼓机",
+        "ko": "16스텝 드럼 머신"
+      },
+      "description": {
+        "en": "Six drums synthesised with audio.tone (no sound files), tempo, swing, accents, mutes, preset beats and automatic saving. Shows timing a sequencer from app.update without drift and building sounds from waveforms.",
+        "tr": "audio.tone ile sentezlenen altı davul (ses dosyası yok), tempo, swing, vurgular, susturma, hazır ritimler ve otomatik kayıt. Kaymadan app.update ile sıralayıcı zamanlamayı ve dalga biçimlerinden ses kurmayı gösterir.",
+        "de": "Sechs mit audio.tone synthetisierte Drums (keine Sounddateien), Tempo, Swing, Akzente, Stummschaltung, Preset-Beats und automatisches Speichern. Zeigt driftfreies Sequencer-Timing in app.update und Klänge aus Wellenformen.",
+        "fr": "Six percussions synthétisées avec audio.tone (aucun fichier son), tempo, swing, accents, sourdines, rythmes prédéfinis et sauvegarde automatique. Montre comment cadencer un séquenceur depuis app.update sans dérive et créer des sons à partir de formes d'onde.",
+        "es": "Seis tambores sintetizados con audio.tone (sin archivos de sonido), tempo, swing, acentos, silencios, ritmos predefinidos y guardado automático. Muestra cómo temporizar un secuenciador desde app.update sin deriva y crear sonidos a partir de formas de onda.",
+        "ja": "audio.tone で合成した 6 つのドラム (サウンドファイルなし)、テンポ、スウィング、アクセント、ミュート、プリセットのビート、自動保存。ずれのないように app.update からシーケンサーのタイミングを取る方法と、波形から音を作る方法を示します。",
+        "zh": "用 audio.tone 合成的六种鼓（无需声音文件），支持速度、摇摆、重音、静音、预设节拍和自动保存。演示了如何在 app.update 中无漂移地为音序器计时，以及如何用波形构建声音。",
+        "ko": "audio.tone으로 합성한 드럼 6종(사운드 파일 없음), 템포, 스윙, 강조, 음소거, 프리셋 비트, 자동 저장. 어긋남 없이 app.update에서 시퀀서 타이밍을 맞추는 방법과 파형으로 소리를 만드는 방법을 보여 줍니다."
+      },
+      "tags": [
+        "audio",
+        "synth",
+        "sequencer",
+        "store"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/beatbox/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/beatbox/beatbox.zip",
+      "size": 16519,
+      "sha256": "a06d66571a08b5e9f569f4f69198c4930ecfebedaee2ca85bf5e0327450511ee",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/beatbox/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/beatbox/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/beatbox/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/beatbox/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.effects",
+      "slug": "effects",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Effects Demo",
+        "tr": "Efekt Demosu",
+        "de": "Effekte-Demo",
+        "fr": "Démo Effets",
+        "es": "Demo de efectos",
+        "ja": "エフェクトデモ",
+        "zh": "特效演示",
+        "ko": "효과 데모"
+      },
+      "subtitle": {
+        "en": "Plasma, tunnel and starfield",
+        "tr": "Plazma, tünel ve yıldız alanı",
+        "de": "Plasma, Tunnel und Sternenfeld",
+        "fr": "Plasma, tunnel et champ d'étoiles",
+        "es": "Plasma, túnel y campo de estrellas",
+        "ja": "プラズマ、トンネル、星空",
+        "zh": "等离子、隧道和星空",
+        "ko": "플라스마, 터널, 별밭"
+      },
+      "description": {
+        "en": "Three classic demoscene effects drawn with nothing but gfx.rect, gfx.line and colours, with four palettes and a cell size control. Shows look-up tables, avoiding allocations in app.draw and keeping a full-window effect at 60 fps.",
+        "tr": "Yalnızca gfx.rect, gfx.line ve renklerle çizilen üç klasik demo sahnesi efekti; dört palet ve hücre boyutu ayarı. Arama tablolarını, app.draw içinde bellek ayırmaktan kaçınmayı ve tam pencere efektini 60 fps'te tutmayı gösterir.",
+        "de": "Drei klassische Demoszene-Effekte, nur mit gfx.rect, gfx.line und Farben gezeichnet, mit vier Paletten und einstellbarer Zellgröße. Zeigt Lookup-Tabellen, Verzicht auf Allokationen in app.draw und einen Vollfenster-Effekt bei 60 fps.",
+        "fr": "Trois effets classiques de la démoscène dessinés uniquement avec gfx.rect, gfx.line et des couleurs, avec quatre palettes et une taille de cellule réglable. Montre les tables de correspondance, l'absence d'allocations dans app.draw et un effet plein écran à 60 i/s.",
+        "es": "Tres efectos clásicos de la demoscene dibujados solo con gfx.rect, gfx.line y colores, con cuatro paletas y tamaño de celda ajustable. Muestra tablas de consulta, evitar asignaciones en app.draw y un efecto a ventana completa a 60 fps.",
+        "ja": "gfx.rect、gfx.line、色だけで描く 3 つの定番デモシーンエフェクト。4 つのパレットとセルサイズの調整付き。ルックアップテーブル、app.draw での割り当ての回避、ウィンドウ全体のエフェクトを 60 fps に保つ方法を示します。",
+        "zh": "三种经典的 demoscene 特效，仅用 gfx.rect、gfx.line 和颜色绘制，带四种调色板和单元大小控制。演示了查找表、在 app.draw 中避免内存分配，以及让全窗口特效保持 60 fps。",
+        "ko": "gfx.rect, gfx.line, 색상만으로 그린 클래식 데모씬 효과 3가지와 팔레트 4종, 셀 크기 조절. 조회 테이블, app.draw에서 메모리 할당 피하기, 창 전체 효과를 60 fps로 유지하는 방법을 보여 줍니다."
+      },
+      "tags": [
+        "gfx",
+        "effects",
+        "performance"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/effects.zip",
+      "size": 18295,
+      "sha256": "13e41dce1e389ae1fb16cccbb260947c6a98664f2c0f5e106782ed7afb897584",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.gestures",
+      "slug": "gestures",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Gestures Demo",
+        "tr": "Hareketler Demosu",
+        "de": "Gesten-Demo",
+        "fr": "Démo Gestes",
+        "es": "Demo de gestos",
+        "ja": "ジェスチャーデモ",
+        "zh": "手势演示",
+        "ko": "제스처 데모"
+      },
+      "subtitle": {
+        "en": "Pinch, rotate, pan, tilt and rumble",
+        "tr": "Yakınlaştır, döndür, kaydır, eğ ve titret",
+        "de": "Zoomen, drehen, schieben, neigen und vibrieren",
+        "fr": "Pincer, pivoter, glisser, incliner et vibrer",
+        "es": "Pellizcar, girar, desplazar, inclinar y vibrar",
+        "ja": "ピンチ、回転、パン、傾き、振動",
+        "zh": "捏合、旋转、平移、倾斜和振动",
+        "ko": "핀치, 회전, 이동, 기울이기, 진동"
+      },
+      "description": {
+        "en": "Two-finger pinch, rotate and pan that keep the point between the fingers in place, then a marble you roll by tilting the console that rumbles when it hits a wall. Shows the pinch and rotate events, input.motion and sys.vibrate.",
+        "tr": "Parmakların arasındaki noktayı sabit tutan iki parmakla yakınlaştırma, döndürme ve kaydırma; ardından konsolu eğerek yuvarlanan ve duvara çarpınca titreşen bir bilye. pinch ve rotate olaylarını, input.motion ve sys.vibrate kullanımını gösterir.",
+        "de": "Zoomen, Drehen und Verschieben mit zwei Fingern, bei denen der Punkt zwischen den Fingern bleibt, dann eine Murmel, die du durch Neigen der Konsole rollst und die beim Aufprall vibriert. Zeigt die Ereignisse pinch und rotate, input.motion und sys.vibrate.",
+        "fr": "Pincement, rotation et déplacement à deux doigts qui gardent le point entre les doigts en place, puis une bille que l'on fait rouler en inclinant la console et qui vibre contre les murs. Montre les événements pinch et rotate, input.motion et sys.vibrate.",
+        "es": "Pellizco, giro y desplazamiento con dos dedos que mantienen fijo el punto entre ellos, y una canica que ruedas inclinando la consola y que vibra al chocar. Muestra los eventos pinch y rotate, input.motion y sys.vibrate.",
+        "ja": "指の間の点を固定したままの 2 本指のピンチ、回転、パン、そして本体を傾けて転がし、壁に当たると振動するビー玉。pinch と rotate イベント、input.motion、sys.vibrate の使い方を示します。",
+        "zh": "双指捏合、旋转和平移，并保持手指之间的点位置不变；还有一颗通过倾斜主机来滚动的弹珠，撞墙时会振动。演示了 pinch 和 rotate 事件、input.motion 和 sys.vibrate。",
+        "ko": "손가락 사이의 지점을 고정한 채 두 손가락으로 핀치, 회전, 이동하고, 콘솔을 기울여 굴리는 구슬은 벽에 부딪히면 진동합니다. pinch와 rotate 이벤트, input.motion, sys.vibrate를 보여 줍니다."
+      },
+      "tags": [
+        "input",
+        "touch",
+        "gestures",
+        "motion",
+        "rumble"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/gestures.zip",
+      "size": 18866,
+      "sha256": "9c333caa3539bfaa75f31be655023cd233d5520d93b349cd7c069da861889ebf",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "hello",
+      "slug": "hello",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Hello SDK",
+        "tr": "Merhaba SDK",
+        "de": "Hallo SDK",
+        "fr": "Hello SDK",
+        "es": "Hola SDK",
+        "ja": "Hello SDK",
+        "zh": "Hello SDK",
+        "ko": "Hello SDK"
+      },
+      "subtitle": {
+        "en": "A tour of the Lua SDK",
+        "tr": "Lua SDK turu",
+        "de": "Eine Tour durch das Lua-SDK",
+        "fr": "Une visite du SDK Lua",
+        "es": "Un recorrido por el SDK de Lua",
+        "ja": "Lua SDK のツアー",
+        "zh": "Lua SDK 导览",
+        "ko": "Lua SDK 둘러보기"
+      },
+      "description": {
+        "en": "The built-in Hello SDK app as a project you can open and change. Three tabs: live widgets (text field, slider, switch, segmented control, buttons, an alert and a notification), animated drawing with gradients, shadows, arcs and icons, and system information (time, battery, network, model, firmware, language). About 120 lines of commented Lua.",
+        "tr": "Yerleşik Merhaba SDK uygulamasının açıp değiştirebileceğiniz proje hâli. Üç sekme: canlı bileşenler (metin alanı, kaydırıcı, anahtar, bölümlü seçim, düğmeler, uyarı ve bildirim), geçiş, gölge, yay ve simgelerle canlı çizim ve sistem bilgisi (saat, pil, ağ, model, yazılım sürümü, dil). Yaklaşık 120 satır açıklamalı Lua.",
+        "de": "Die eingebaute App Hallo SDK als Projekt zum Öffnen und Ändern. Drei Tabs: Live-Widgets (Textfeld, Schieberegler, Schalter, Segmente, Buttons, ein Hinweis und eine Benachrichtigung), animiertes Zeichnen mit Verläufen, Schatten, Bögen und Symbolen sowie Systeminfos (Uhrzeit, Akku, Netz, Modell, Firmware, Sprache). Rund 120 Zeilen kommentiertes Lua.",
+        "fr": "L'appli intégrée Hello SDK sous forme de projet à ouvrir et modifier. Trois onglets : widgets en direct (champ de texte, curseur, interrupteur, segments, boutons, une alerte et une notification), dessin animé avec dégradés, ombres, arcs et icônes, et infos système (heure, batterie, réseau, modèle, firmware, langue). Environ 120 lignes de Lua commenté.",
+        "es": "La app integrada Hola SDK como proyecto que puedes abrir y cambiar. Tres pestañas: widgets en vivo (campo de texto, deslizador, interruptor, segmentos, botones, una alerta y una notificación), dibujo animado con degradados, sombras, arcos e iconos, e información del sistema (hora, batería, red, modelo, firmware, idioma). Unas 120 líneas de Lua comentado.",
+        "ja": "内蔵の Hello SDK アプリを、開いて変更できるプロジェクトにしたもの。3 つのタブ: ライブウィジェット (テキストフィールド、スライダー、スイッチ、セグメントコントロール、ボタン、アラート、通知)、グラデーション、影、円弧、アイコンを使ったアニメーション描画、そしてシステム情報 (時刻、バッテリー、ネットワーク、モデル、ファームウェア、言語)。コメント付きの Lua 約 120 行です。",
+        "zh": "将内置的 Hello SDK 应用作为一个可以打开和修改的项目。三个标签页：实时控件（文本框、滑块、开关、分段控件、按钮、提示框和通知）、带渐变、阴影、圆弧和图标的动画绘图，以及系统信息（时间、电池、网络、型号、固件、语言）。约 120 行带注释的 Lua 代码。",
+        "ko": "열어서 바꿀 수 있는 프로젝트로 제공되는 기본 제공 Hello SDK 앱입니다. 세 개의 탭: 실시간 위젯(텍스트 필드, 슬라이더, 스위치, 세그먼트 컨트롤, 버튼, 알림 대화 상자와 알림), 그라데이션, 그림자, 호, 아이콘으로 만든 애니메이션 그리기, 시스템 정보(시간, 배터리, 네트워크, 모델, 펌웨어, 언어). 주석이 달린 Lua 약 120줄입니다."
+      },
+      "tags": [
+        "sdk-tour",
+        "ui",
+        "gfx",
+        "store",
+        "notifications"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/hello.zip",
+      "size": 18704,
+      "sha256": "70c686ad1656e93ea4ba9253447fcd3e21d20de1c2f2186ab42b699e5f0e6c52",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.particles",
+      "slug": "particles",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Particles Demo",
+        "tr": "Parçacık Demosu",
+        "de": "Partikel-Demo",
+        "fr": "Démo Particules",
+        "es": "Demo de partículas",
+        "ja": "パーティクルデモ",
+        "zh": "粒子演示",
+        "ko": "입자 데모"
+      },
+      "subtitle": {
+        "en": "Emitters, bursts and gravity wells",
+        "tr": "Yayıcılar, patlamalar ve çekim kuyuları",
+        "de": "Emitter, Explosionen und Gravitationsquellen",
+        "fr": "Émetteurs, explosions et puits de gravité",
+        "es": "Emisores, explosiones y pozos de gravedad",
+        "ja": "エミッター、バースト、重力井戸",
+        "zh": "发射器、爆发和引力井",
+        "ko": "이미터, 폭발, 중력 우물"
+      },
+      "description": {
+        "en": "Five emitter presets of nexvyn.game (fire, fountain, sparks, snow, magic) you can move and tune live, bursts where you tap, and gravity wells placed with a finger that bend every particle. Shows game.emitter, game.particles and how to keep thousands of particles at 60 fps.",
+        "tr": "nexvyn.game'in beş hazır yayıcısı (ateş, fıskiye, kıvılcım, kar, büyü) canlı olarak taşınır ve ayarlanır; dokunduğunuz yerde patlamalar olur, parmakla yerleştirilen çekim kuyuları tüm parçacıkları büker. game.emitter, game.particles ve binlerce parçacığın 60 fps'te nasıl tutulduğunu gösterir.",
+        "de": "Fünf Emitter-Vorlagen von nexvyn.game (Feuer, Fontäne, Funken, Schnee, Magie), live verschieb- und einstellbar, Explosionen beim Tippen und mit dem Finger gesetzte Gravitationsquellen, die jedes Partikel ablenken. Zeigt game.emitter, game.particles und wie Tausende Partikel bei 60 fps bleiben.",
+        "fr": "Cinq émetteurs prédéfinis de nexvyn.game (feu, fontaine, étincelles, neige, magie) à déplacer et régler en direct, des explosions là où vous touchez et des puits de gravité posés du doigt qui courbent chaque particule. Montre game.emitter, game.particles et comment garder des milliers de particules à 60 i/s.",
+        "es": "Cinco emisores predefinidos de nexvyn.game (fuego, fuente, chispas, nieve, magia) que se mueven y ajustan en vivo, explosiones donde tocas y pozos de gravedad colocados con el dedo que curvan cada partícula. Muestra game.emitter, game.particles y cómo mantener miles de partículas a 60 fps.",
+        "ja": "nexvyn.game の 5 つのエミッタープリセット (炎、噴水、火花、雪、魔法) をリアルタイムに動かして調整でき、タップした場所でバーストし、指で配置した重力井戸がすべてのパーティクルを曲げます。game.emitter、game.particles、そして数千のパーティクルを 60 fps に保つ方法を示します。",
+        "zh": "nexvyn.game 的五种发射器预设（火焰、喷泉、火花、雪、魔法），可以实时移动和调整；轻点处产生爆发；用手指放置的引力井会让每个粒子弯曲轨迹。演示了 game.emitter、game.particles，以及如何让数千个粒子保持 60 fps。",
+        "ko": "실시간으로 옮기고 조정할 수 있는 nexvyn.game 이미터 프리셋 5종(불, 분수, 불꽃, 눈, 마법), 탭한 곳의 폭발, 손가락으로 놓아 모든 입자를 휘게 하는 중력 우물. game.emitter, game.particles, 그리고 수천 개의 입자를 60 fps로 유지하는 방법을 보여 줍니다."
+      },
+      "tags": [
+        "nexvyn.game",
+        "particles",
+        "touch"
+      ],
+      "minSdk": "1.2",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/particles.zip",
+      "size": 17486,
+      "sha256": "4f37e43fd7259cd37fdd93c31ae034aff1c22657700a29d89ca37f625e270c0c",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.physics",
+      "slug": "physics",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Verlet Physics Demo",
+        "tr": "Verlet Fizik Demosu",
+        "de": "Verlet-Physik-Demo",
+        "fr": "Démo Physique de Verlet",
+        "es": "Demo de física Verlet",
+        "ja": "ベルレ物理デモ",
+        "zh": "Verlet 物理演示",
+        "ko": "버릿 물리 데모"
+      },
+      "subtitle": {
+        "en": "Ropes, a bridge and tearable cloth",
+        "tr": "Halatlar, köprü ve yırtılan kumaş",
+        "de": "Seile, eine Brücke und reißbarer Stoff",
+        "fr": "Cordes, un pont et un tissu déchirable",
+        "es": "Cuerdas, un puente y tela que se rasga",
+        "ja": "ロープ、橋、裂ける布",
+        "zh": "绳索、吊桥和可撕裂的布料",
+        "ko": "밧줄, 다리, 찢어지는 천"
+      },
+      "description": {
+        "en": "A Verlet physics playground in plain Lua: ropes, a rope bridge and a cloth that tears. Grab and drag points with a finger or the cursor, cut links, pin and unpin points and switch on the wind. Shows fixed-step simulation, constraint solving and fast drawing with gfx.lines.",
+        "tr": "Düz Lua ile Verlet fizik oyun alanı: halatlar, halat köprü ve yırtılan bir kumaş. Noktaları parmakla ya da imleçle tutup sürükleyin, bağları kesin, noktaları iğneleyin ve rüzgârı açın. Sabit adımlı benzetimi, kısıt çözmeyi ve gfx.lines ile hızlı çizimi gösterir.",
+        "de": "Ein Verlet-Physik-Spielplatz in reinem Lua: Seile, eine Seilbrücke und ein reißbarer Stoff. Punkte mit Finger oder Cursor greifen und ziehen, Verbindungen schneiden, Punkte fixieren und Wind einschalten. Zeigt Simulation mit festem Zeitschritt, Constraint-Lösung und schnelles Zeichnen mit gfx.lines.",
+        "fr": "Un bac à sable de physique de Verlet en Lua pur : cordes, pont de cordes et tissu qui se déchire. Attrapez et tirez des points au doigt ou au curseur, coupez des liens, épinglez des points et activez le vent. Montre la simulation à pas fixe, la résolution de contraintes et le dessin rapide avec gfx.lines.",
+        "es": "Un patio de física de Verlet en Lua puro: cuerdas, un puente de cuerdas y una tela que se rasga. Agarra y arrastra puntos con el dedo o el cursor, corta uniones, fija puntos y activa el viento. Muestra simulación con paso fijo, resolución de restricciones y dibujo rápido con gfx.lines.",
+        "ja": "純粋な Lua によるベルレ物理演算のプレイグラウンド: ロープ、つり橋、裂ける布。指やカーソルで点をつかんでドラッグし、リンクを切り、点を固定・解除し、風をオンにしましょう。固定ステップのシミュレーション、拘束の解決、gfx.lines による高速な描画を示します。",
+        "zh": "用纯 Lua 编写的 Verlet 物理游乐场：绳索、吊桥和可撕裂的布料。用手指或光标抓取并拖动点，剪断连接，固定和释放点，并开启风。演示了固定步长模拟、约束求解以及用 gfx.lines 快速绘制。",
+        "ko": "순수 Lua로 만든 버릿(Verlet) 물리 놀이터: 밧줄, 밧줄 다리, 찢어지는 천. 손가락이나 커서로 점을 잡아 끌고, 연결을 자르고, 점을 고정하거나 풀고, 바람을 켜세요. 고정 단계 시뮬레이션, 제약 조건 풀기, gfx.lines로 빠르게 그리기를 보여 줍니다."
+      },
+      "tags": [
+        "physics",
+        "verlet",
+        "touch"
+      ],
+      "minSdk": "1.2",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/physics.zip",
+      "size": 18959,
+      "sha256": "1b0d4388281679158b94a1477cd89db382705298a25e25f5cc81266608377ad2",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.platformer",
+      "slug": "platformer",
+      "language": "lua",
+      "kind": "game",
+      "name": {
+        "en": "Platformer Demo",
+        "tr": "Platform Demosu",
+        "de": "Plattformer-Demo",
+        "fr": "Démo Plateforme",
+        "es": "Demo de plataformas",
+        "ja": "アクションゲームデモ",
+        "zh": "平台跳跃演示",
+        "ko": "플랫포머 데모"
+      },
+      "subtitle": {
+        "en": "A complete platformer level with nexvyn.game",
+        "tr": "nexvyn.game ile eksiksiz bir platform bölümü",
+        "de": "Ein komplettes Jump'n'Run-Level mit nexvyn.game",
+        "fr": "Un niveau de plateforme complet avec nexvyn.game",
+        "es": "Un nivel de plataformas completo con nexvyn.game",
+        "ja": "nexvyn.game で作った完全なアクションゲームのレベル",
+        "zh": "用 nexvyn.game 制作的完整平台跳跃关卡",
+        "ko": "nexvyn.game으로 만든 완전한 플랫포머 레벨"
+      },
+      "description": {
+        "en": "A small but complete platformer made with the built-in 2D engine: a tilemap from text rows with tiles drawn by code, a smooth camera with parallax, animation without a sprite sheet, one-way platforms, coyote time and a jump buffer, coins, particles, a goal flag and a saved best time. The best place to start a 2D game.",
+        "tr": "Yerleşik 2D motorla yapılmış küçük ama eksiksiz bir platform oyunu: metin satırlarından, kodla çizilen döşemeli harita, paralakslı yumuşak kamera, sprite sayfası olmadan animasyon, tek yönlü platformlar, coyote süresi ve zıplama tamponu, altınlar, parçacıklar, bitiş bayrağı ve kaydedilen en iyi süre. Bir 2D oyuna başlamak için en iyi yer.",
+        "de": "Ein kleines, aber vollständiges Jump'n'Run mit der eingebauten 2D-Engine: Tilemap aus Textzeilen mit per Code gezeichneten Kacheln, weiche Kamera mit Parallax, Animation ohne Spritesheet, Einweg-Plattformen, Coyote-Time und Sprungpuffer, Münzen, Partikel, Zielflagge und gespeicherte Bestzeit. Der beste Startpunkt für ein 2D-Spiel.",
+        "fr": "Un petit jeu de plateforme complet avec le moteur 2D intégré : carte de tuiles à partir de lignes de texte et dessinée par code, caméra fluide avec parallaxe, animation sans planche de sprites, plateformes à sens unique, coyote time et tampon de saut, pièces, particules, drapeau d'arrivée et meilleur temps enregistré. Le meilleur point de départ pour un jeu 2D.",
+        "es": "Un juego de plataformas pequeño pero completo hecho con el motor 2D integrado: mapa de casillas a partir de filas de texto dibujado por código, cámara suave con paralaje, animación sin hoja de sprites, plataformas de un solo sentido, coyote time y búfer de salto, monedas, partículas, bandera de meta y mejor tiempo guardado. El mejor punto de partida para un juego 2D.",
+        "ja": "内蔵の 2D エンジンで作った、小さいながらも完全なアクションゲーム: テキストの行から作るタイルマップとコードで描くタイル、パララックス付きの滑らかなカメラ、スプライトシートを使わないアニメーション、一方通行の足場、コヨーテタイムとジャンプの先行入力、コイン、パーティクル、ゴールの旗、保存されるベストタイム。2D ゲームを始めるのに最適です。",
+        "zh": "一个用内置 2D 引擎制作的小巧而完整的平台跳跃游戏：由文本行生成并用代码绘制图块的图块地图、带视差的平滑镜头、无需精灵图集的动画、单向平台、土狼时间和跳跃缓冲、金币、粒子、终点旗以及保存的最佳用时。开始制作 2D 游戏的最佳起点。",
+        "ko": "내장 2D 엔진으로 만든 작지만 완전한 플랫포머: 코드로 그린 타일이 있는 텍스트 행 기반 타일맵, 시차 효과가 있는 부드러운 카메라, 스프라이트 시트 없는 애니메이션, 단방향 발판, 코요테 타임과 점프 버퍼, 코인, 입자, 목표 깃발, 저장되는 최고 기록. 2D 게임을 시작하기에 가장 좋은 곳입니다."
+      },
+      "tags": [
+        "nexvyn.game",
+        "tilemap",
+        "camera",
+        "animation",
+        "gamepad",
+        "touch"
+      ],
+      "minSdk": "1.2",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/platformer.zip",
+      "size": 19300,
+      "sha256": "dee7d631392aed8d4a3ff11450441889681c29fb0d394b01e8c0c734ddb3291c",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.scene3d",
+      "slug": "scene3d",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "3D Scene Demo",
+        "tr": "3B Sahne Demosu",
+        "de": "3D-Szenen-Demo",
+        "fr": "Démo Scène 3D",
+        "es": "Demo de escena 3D",
+        "ja": "3D シーンデモ",
+        "zh": "3D 场景演示",
+        "ko": "3D 장면 데모"
+      },
+      "subtitle": {
+        "en": "Textured 3D meshes, sun, fog and glow",
+        "tr": "Dokulu 3D modeller, güneş, sis ve parıltı",
+        "de": "Texturierte 3D-Modelle, Sonne, Nebel und Leuchten",
+        "fr": "Maillages 3D texturés, soleil, brouillard et halos",
+        "es": "Mallas 3D con textura, sol, niebla y brillo",
+        "ja": "テクスチャ付き 3D メッシュ、太陽、霧、グロー",
+        "zh": "带纹理的 3D 网格、太阳、雾和光晕",
+        "ko": "텍스처가 입혀진 3D 메시, 태양, 안개, 빛"
+      },
+      "description": {
+        "en": "Custom g3d meshes built with UV coordinates (crates, an octagonal pedestal, a curved brick wall, a tiled floor), a sun that follows the time of day, fog, glowing lamp halos with the glow flag and an orbit camera you drag. Shows g3d.custom, mesh:setTexture, lighting and what runs on the GPU.",
+        "tr": "UV koordinatlarıyla kurulan özel g3d modeller (sandıklar, sekizgen kaide, kavisli tuğla duvar, döşeme zemin), gün saatini izleyen güneş, sis, glow bayrağıyla parlayan lamba haleleri ve sürükleyerek döndürülen yörünge kamerası. g3d.custom, mesh:setTexture, ışıklandırma ve GPU'da nelerin çalıştığını gösterir.",
+        "de": "Eigene g3d-Modelle mit UV-Koordinaten (Kisten, ein achteckiger Sockel, eine gebogene Ziegelmauer, ein gefliester Boden), eine Sonne nach Tageszeit, Nebel, leuchtende Lampenhöfe mit dem Glow-Flag und eine Orbit-Kamera zum Ziehen. Zeigt g3d.custom, mesh:setTexture, Beleuchtung und was auf der GPU läuft.",
+        "fr": "Des maillages g3d construits avec des coordonnées UV (caisses, piédestal octogonal, mur de briques courbe, sol carrelé), un soleil qui suit l'heure, du brouillard, des halos de lampes avec l'option glow et une caméra orbitale à faire glisser. Montre g3d.custom, mesh:setTexture, l'éclairage et ce qui tourne sur le GPU.",
+        "es": "Mallas g3d propias con coordenadas UV (cajas, un pedestal octogonal, un muro de ladrillo curvo, un suelo de baldosas), un sol que sigue la hora del día, niebla, halos de lámparas con la opción glow y una cámara orbital que se arrastra. Muestra g3d.custom, mesh:setTexture, la iluminación y lo que corre en la GPU.",
+        "ja": "UV 座標で作った独自の g3d メッシュ (木箱、八角形の台座、曲がったレンガの壁、タイルの床)、時刻に合わせて動く太陽、霧、glow フラグによる光るランプの光輪、ドラッグで操作するオービットカメラ。g3d.custom、mesh:setTexture、ライティング、そして GPU で何が動くかを示します。",
+        "zh": "使用 UV 坐标构建的自定义 g3d 网格（箱子、八角底座、弧形砖墙、铺砖地面）、随一天中时间移动的太阳、雾效、使用 glow 标志的发光灯晕，以及可拖动的环绕摄像机。演示了 g3d.custom、mesh:setTexture、光照以及哪些内容在 GPU 上运行。",
+        "ko": "UV 좌표로 만든 사용자 지정 g3d 메시(상자, 팔각 받침대, 휘어진 벽돌 벽, 타일 바닥), 하루의 시간을 따라가는 태양, 안개, glow 플래그로 빛나는 램프 후광, 드래그하는 궤도 카메라. g3d.custom, mesh:setTexture, 조명, 그리고 GPU에서 실행되는 것을 보여 줍니다."
+      },
+      "tags": [
+        "g3d",
+        "3d",
+        "textures",
+        "fog",
+        "lighting"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/scene3d.zip",
+      "size": 57625,
+      "sha256": "3ee5e347d27201a756f5247692b55d930d55e48aaa244a46f068fe4f2190370b",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.synth",
+      "slug": "synth",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Synth Demo",
+        "tr": "Synth Demosu",
+        "de": "Synth-Demo",
+        "fr": "Démo Synthé",
+        "es": "Demo de sintetizador",
+        "ja": "シンセデモ",
+        "zh": "合成器演示",
+        "ko": "신시사이저 데모"
+      },
+      "subtitle": {
+        "en": "Piano, waveforms and an ADSR envelope",
+        "tr": "Piyano, dalga biçimleri ve ADSR zarfı",
+        "de": "Klavier, Wellenformen und ADSR-Hüllkurve",
+        "fr": "Piano, formes d'onde et enveloppe ADSR",
+        "es": "Piano, formas de onda y envolvente ADSR",
+        "ja": "ピアノ、波形、ADSR エンベロープ",
+        "zh": "钢琴、波形和 ADSR 包络",
+        "ko": "피아노, 파형, ADSR 엔벨로프"
+      },
+      "description": {
+        "en": "An on-screen piano of two or three octaves with four waveforms, an ADSR envelope made with timers, chords and strumming, an envelope graph and an oscilloscope. Shows audio.tone channels, timer.after / timer.every and multi-touch friendly keys.",
+        "tr": "İki ya da üç oktavlık ekran piyanosu: dört dalga biçimi, zamanlayıcılarla yapılmış ADSR zarfı, akorlar ve tel tel çalma, zarf grafiği ve osiloskop. audio.tone kanallarını, timer.after / timer.every kullanımını ve dokunmaya uygun tuşları gösterir.",
+        "de": "Ein Bildschirmklavier mit zwei oder drei Oktaven, vier Wellenformen, einer mit Timern gebauten ADSR-Hüllkurve, Akkorden und Strumming, Hüllkurvengrafik und Oszilloskop. Zeigt audio.tone-Kanäle, timer.after / timer.every und touchfreundliche Tasten.",
+        "fr": "Un piano à l'écran de deux ou trois octaves avec quatre formes d'onde, une enveloppe ADSR faite de minuteurs, des accords et du strumming, un graphe d'enveloppe et un oscilloscope. Montre les canaux audio.tone, timer.after / timer.every et des touches adaptées au toucher.",
+        "es": "Un piano en pantalla de dos o tres octavas con cuatro formas de onda, una envolvente ADSR hecha con temporizadores, acordes y rasgueo, gráfica de la envolvente y osciloscopio. Muestra canales de audio.tone, timer.after / timer.every y teclas cómodas al tacto.",
+        "ja": "4 つの波形、タイマーで作った ADSR エンベロープ、コードとストラム、エンベロープのグラフ、オシロスコープを備えた 2〜3 オクターブの画面ピアノ。audio.tone のチャンネル、timer.after / timer.every、マルチタッチに適した鍵盤を示します。",
+        "zh": "一个两到三个八度的屏幕钢琴，带四种波形、用计时器实现的 ADSR 包络、和弦和扫弦、包络图和示波器。演示了 audio.tone 声道、timer.after / timer.every 以及适合多点触控的琴键。",
+        "ko": "파형 4종, 타이머로 만든 ADSR 엔벨로프, 화음과 스트럼, 엔벨로프 그래프, 오실로스코프가 있는 2–3옥타브 화면 피아노. audio.tone 채널, timer.after / timer.every, 멀티 터치 친화적인 건반을 보여 줍니다."
+      },
+      "tags": [
+        "audio",
+        "synth",
+        "timers",
+        "touch"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/synth.zip",
+      "size": 17697,
+      "sha256": "8ab369e2d13dfbf0884736644ed9680484bb18583ddd9cebae71e677dfd02a42",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.terrain",
+      "slug": "terrain",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Terrain Demo",
+        "tr": "Arazi Demosu",
+        "de": "Gelände-Demo",
+        "fr": "Démo Terrain",
+        "es": "Demo de terreno",
+        "ja": "地形デモ",
+        "zh": "地形演示",
+        "ko": "지형 데모"
+      },
+      "subtitle": {
+        "en": "A procedural island to fly over",
+        "tr": "Üzerinde uçulan, kodla üretilmiş bir ada",
+        "de": "Eine prozedurale Insel zum Überfliegen",
+        "fr": "Une île procédurale à survoler",
+        "es": "Una isla procedural para sobrevolar",
+        "ja": "上空を飛べるプロシージャルな島",
+        "zh": "可以飞越的程序化岛屿",
+        "ko": "날아다닐 수 있는 절차적 섬"
+      },
+      "description": {
+        "en": "An island generated from value noise and fBm, coloured by height and slope, with a see-through sea, fog, a minimap, an autopilot and a fly camera for the controller. Shows building one large g3d.custom mesh from a height field and keeping it on the GPU.",
+        "tr": "Değer gürültüsü ve fBm ile üretilen, yüksekliğe ve eğime göre renklenen bir ada: saydam deniz, sis, mini harita, otopilot ve kumandayla uçuş kamerası. Bir yükseklik alanından tek büyük g3d.custom modeli kurmayı ve GPU'da tutmayı gösterir.",
+        "de": "Eine Insel aus Value Noise und fBm, nach Höhe und Steigung eingefärbt, mit durchsichtigem Meer, Nebel, Minikarte, Autopilot und Flugkamera für den Controller. Zeigt, wie aus einem Höhenfeld ein großes g3d.custom-Modell entsteht, das auf der GPU bleibt.",
+        "fr": "Une île générée par bruit de valeur et fBm, colorée selon l'altitude et la pente, avec une mer transparente, du brouillard, une minicarte, un pilote automatique et une caméra de vol à la manette. Montre comment construire un grand maillage g3d.custom à partir d'un champ de hauteurs et le garder sur le GPU.",
+        "es": "Una isla generada con ruido de valor y fBm, coloreada por altura y pendiente, con mar transparente, niebla, minimapa, piloto automático y cámara de vuelo con el mando. Muestra cómo construir una gran malla g3d.custom a partir de un campo de alturas y mantenerla en la GPU.",
+        "ja": "バリューノイズと fBm で生成し、高さと傾斜で色分けした島。透き通った海、霧、ミニマップ、自動操縦、コントローラー用のフライカメラ付き。高さのデータから 1 つの大きな g3d.custom メッシュを作り、GPU 上に保持する方法を示します。",
+        "zh": "一座由值噪声和 fBm 生成的岛屿，按高度和坡度着色，带有透明海水、雾效、小地图、自动驾驶和适用于手柄的飞行摄像机。演示了如何从高度场构建一个大型 g3d.custom 网格并将其保留在 GPU 上。",
+        "ko": "밸류 노이즈와 fBm으로 생성하고 높이와 경사에 따라 색칠한 섬으로, 비치는 바다, 안개, 미니맵, 자동 비행, 컨트롤러용 비행 카메라가 있습니다. 높이 필드로 큰 g3d.custom 메시 하나를 만들어 GPU에 유지하는 방법을 보여 줍니다."
+      },
+      "tags": [
+        "g3d",
+        "3d",
+        "procedural",
+        "noise",
+        "gamepad"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/terrain.zip",
+      "size": 17525,
+      "sha256": "4430d09a1bd09bf50d16211638da2493d19fcc2ba855fd8d1a3a9490e0e50113",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.ui-gallery",
+      "slug": "ui-gallery",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "UI Gallery",
+        "tr": "Arayüz Galerisi",
+        "de": "UI-Galerie",
+        "fr": "Galerie d’interface",
+        "es": "Galería de UI",
+        "ja": "UI ギャラリー",
+        "zh": "UI 组件库",
+        "ko": "UI 갤러리"
+      },
+      "subtitle": {
+        "en": "Every ui widget with its code",
+        "tr": "Tüm ui bileşenleri ve kodları",
+        "de": "Alle UI-Widgets mit ihrem Code",
+        "fr": "Chaque widget ui avec son code",
+        "es": "Cada widget de ui con su código",
+        "ja": "すべての ui ウィジェットとそのコード",
+        "zh": "每个 ui 控件及其代码",
+        "ko": "모든 ui 위젯과 그 코드"
+      },
+      "description": {
+        "en": "Every ui.* widget of the SDK, live, with the Lua code that draws it beside it: buttons, switches, text fields, choices, progress and spinners, lists and scrolling, pointer helpers and system dialogs. Keep it open while you build your own interface.",
+        "tr": "SDK'daki tüm ui.* bileşenleri canlı olarak, her birinin yanında onu çizen Lua koduyla: düğmeler, anahtarlar, metin alanları, seçimler, ilerleme ve bekleme göstergeleri, listeler ve kaydırma, işaretçi yardımcıları ve sistem iletişim kutuları. Kendi arayüzünüzü kurarken açık tutun.",
+        "de": "Alle ui.*-Widgets des SDK live, daneben der Lua-Code, der sie zeichnet: Buttons, Schalter, Textfelder, Auswahlen, Fortschritt und Spinner, Listen und Scrollen, Zeigerhilfen und Systemdialoge. Lass sie offen, während du deine eigene Oberfläche baust.",
+        "fr": "Tous les widgets ui.* du SDK en direct, avec à côté le code Lua qui les dessine : boutons, interrupteurs, champs de texte, choix, progression et indicateurs d'attente, listes et défilement, aides de pointeur et dialogues système. Gardez-la ouverte pendant que vous construisez votre interface.",
+        "es": "Todos los widgets ui.* del SDK en vivo, con el código Lua que los dibuja al lado: botones, interruptores, campos de texto, selecciones, progreso y spinners, listas y desplazamiento, ayudas del puntero y diálogos del sistema. Tenla abierta mientras construyes tu interfaz.",
+        "ja": "SDK のすべての ui.* ウィジェットを、それを描く Lua コードと並べてリアルタイムに表示します: ボタン、スイッチ、テキストフィールド、選択、進捗とスピナー、リストとスクロール、ポインタのヘルパー、システムダイアログ。自分のインターフェイスを作る間、開いておきましょう。",
+        "zh": "SDK 中的每个 ui.* 控件都实时展示，旁边附有绘制它的 Lua 代码：按钮、开关、文本框、选择控件、进度条和加载指示器、列表和滚动、指针辅助函数以及系统对话框。在构建你自己的界面时让它保持打开吧。",
+        "ko": "SDK의 모든 ui.* 위젯을 그리는 Lua 코드와 함께 실시간으로 보여 줍니다: 버튼, 스위치, 텍스트 필드, 선택, 진행률과 스피너, 목록과 스크롤, 포인터 도우미, 시스템 대화 상자. 나만의 인터페이스를 만드는 동안 열어 두세요."
+      },
+      "tags": [
+        "ui",
+        "widgets",
+        "reference"
+      ],
+      "minSdk": "1.0",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/ui-gallery.zip",
+      "size": 30452,
+      "sha256": "a7c9b52ab890c0055793437397f2f4ef6d4ee254c436146229c3eaf73aff31f5",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.audio-py",
+      "slug": "audio-py",
+      "language": "python",
+      "kind": "demo",
+      "name": {
+        "en": "Melody Player (Python)",
+        "tr": "Melodi Çalar (Python)",
+        "de": "Melodie-Player (Python)",
+        "fr": "Lecteur de mélodies (Python)",
+        "es": "Reproductor de melodías (Python)",
+        "ja": "メロディプレーヤー (Python)",
+        "zh": "旋律播放器（Python）",
+        "ko": "멜로디 플레이어(Python)"
+      },
+      "subtitle": {
+        "en": "A note-by-note melody player",
+        "tr": "Nota nota melodi çalar",
+        "de": "Ein Melodie-Player Note für Note",
+        "fr": "Un lecteur de mélodies note par note",
+        "es": "Un reproductor de melodías nota a nota",
+        "ja": "1 音ずつ再生するメロディプレーヤー",
+        "zh": "逐个音符播放的旋律播放器",
+        "ko": "음 하나하나 재생하는 멜로디 플레이어"
+      },
+      "description": {
+        "en": "Play tunes note by note with timer callbacks: a piano roll, tempo, waveform, loop, a field to type your own melody and a live log that shows when each callback runs. Shows timer.after chains in Python and why callbacks must return quickly.",
+        "tr": "Zamanlayıcı geri çağırmalarıyla nota nota melodi çalar: piyano rulosu, tempo, dalga biçimi, döngü, kendi melodinizi yazdığınız alan ve her geri çağırmanın ne zaman çalıştığını gösteren canlı günlük. Python'da timer.after zincirlerini ve geri çağırmaların neden hızlı dönmesi gerektiğini gösterir.",
+        "de": "Melodien Note für Note mit Timer-Callbacks: Pianoroll, Tempo, Wellenform, Schleife, ein Feld für deine eigene Melodie und ein Live-Log, das zeigt, wann jeder Callback läuft. Zeigt timer.after-Ketten in Python und warum Callbacks schnell zurückkehren müssen.",
+        "fr": "Jouez des airs note par note avec des rappels de minuteur : piano roll, tempo, forme d'onde, boucle, un champ pour écrire votre mélodie et un journal en direct qui montre quand chaque rappel s'exécute. Montre les chaînes timer.after en Python et pourquoi les rappels doivent rendre la main vite.",
+        "es": "Toca melodías nota a nota con devoluciones de temporizador: piano roll, tempo, forma de onda, bucle, un campo para escribir tu melodía y un registro en vivo que muestra cuándo corre cada devolución. Muestra cadenas de timer.after en Python y por qué deben terminar rápido.",
+        "ja": "タイマーのコールバックで曲を 1 音ずつ再生します: ピアノロール、テンポ、波形、ループ、自分のメロディを入力するフィールド、そして各コールバックがいつ実行されるかを示すライブログ。Python での timer.after の連鎖と、コールバックがすぐに戻らなければならない理由を示します。",
+        "zh": "借助计时器回调逐个音符地演奏曲子：钢琴卷帘、速度、波形、循环、一个输入你自己旋律的输入框，以及显示每个回调何时运行的实时日志。演示了 Python 中的 timer.after 链，以及为什么回调必须快速返回。",
+        "ko": "타이머 콜백으로 곡을 음 하나씩 재생하세요: 피아노 롤, 템포, 파형, 반복, 나만의 멜로디를 입력하는 필드, 각 콜백이 언제 실행되는지 보여 주는 실시간 로그. Python에서 timer.after 체인과 콜백이 빨리 반환되어야 하는 이유를 보여 줍니다."
+      },
+      "tags": [
+        "audio",
+        "timers",
+        "callbacks"
+      ],
+      "minSdk": "1.3",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/audio-py.zip",
+      "size": 20010,
+      "sha256": "148f40663565270f71e83b42821015f1987d4d584e8230fa7aed6c66e62b2ef6",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/audio-py/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "hellopy",
+      "slug": "hello",
+      "language": "python",
+      "kind": "demo",
+      "name": {
+        "en": "Hello Python",
+        "tr": "Merhaba Python",
+        "de": "Hallo Python",
+        "fr": "Hello Python",
+        "es": "Hola Python",
+        "ja": "Hello Python",
+        "zh": "Hello Python",
+        "ko": "Hello Python"
+      },
+      "subtitle": {
+        "en": "A tour of the Python SDK",
+        "tr": "Python SDK turu",
+        "de": "Eine Tour durch das Python-SDK",
+        "fr": "Une visite du SDK Python",
+        "es": "Un recorrido por el SDK de Python",
+        "ja": "Python SDK のツアー",
+        "zh": "Python SDK 导览",
+        "ko": "Python SDK 둘러보기"
+      },
+      "description": {
+        "en": "The built-in Hello Python app as a project: a to-do list saved with store (todos.py), an analog clock drawn with gfx (clock.py) and live weather JSON with net.json and a callback. Shows classes as the app object, imports between bundle files, timers and a menu.",
+        "tr": "Yerleşik Merhaba Python uygulamasının proje hâli: store ile kaydedilen yapılacaklar listesi (todos.py), gfx ile çizilen analog saat (clock.py) ve net.json ile geri çağırmalı canlı hava durumu JSON'u. Uygulama nesnesi olarak sınıfları, paket dosyaları arasında import'u, zamanlayıcıları ve menüyü gösterir.",
+        "de": "Die eingebaute App Hallo Python als Projekt: eine mit store gespeicherte To-do-Liste (todos.py), eine mit gfx gezeichnete Analoguhr (clock.py) und Live-Wetter-JSON mit net.json und Callback. Zeigt Klassen als App-Objekt, Importe zwischen Paketdateien, Timer und ein Menü.",
+        "fr": "L'appli intégrée Hello Python sous forme de projet : une liste de tâches enregistrée avec store (todos.py), une horloge analogique dessinée avec gfx (clock.py) et la météo en JSON avec net.json et un rappel. Montre les classes comme objet app, les imports entre fichiers du paquet, les minuteurs et un menu.",
+        "es": "La app integrada Hola Python como proyecto: una lista de tareas guardada con store (todos.py), un reloj analógico dibujado con gfx (clock.py) y el tiempo en JSON con net.json y una devolución de llamada. Muestra clases como objeto app, imports entre archivos del paquete, temporizadores y un menú.",
+        "ja": "内蔵の Hello Python アプリをプロジェクトにしたもの: store で保存する ToDo リスト (todos.py)、gfx で描くアナログ時計 (clock.py)、そして net.json とコールバックによるリアルタイムの天気 JSON。アプリオブジェクトとしてのクラス、バンドル内のファイル間のインポート、タイマー、メニューの使い方を示します。",
+        "zh": "将内置的 Hello Python 应用作为项目：用 store 保存的待办事项列表（todos.py）、用 gfx 绘制的指针式时钟（clock.py），以及使用 net.json 和回调获取的实时天气 JSON。演示了作为应用对象的类、包内文件之间的导入、计时器和菜单。",
+        "ko": "기본 제공 Hello Python 앱을 프로젝트로 제공합니다: store로 저장되는 할 일 목록(todos.py), gfx로 그린 아날로그 시계(clock.py), net.json과 콜백으로 받는 실시간 날씨 JSON. 앱 객체로서의 클래스, 번들 파일 간 import, 타이머, 메뉴를 보여 줍니다."
+      },
+      "tags": [
+        "sdk-tour",
+        "callbacks",
+        "modules",
+        "network",
+        "store"
+      ],
+      "minSdk": "1.3",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/hello.zip",
+      "size": 22774,
+      "sha256": "d7ce85dd86b58708f4255bc38ab052fcd9fed657a6f954bf09d4641c56c09dfc",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "hellosq",
+      "slug": "hello",
+      "language": "squirrel",
+      "kind": "demo",
+      "name": {
+        "en": "Hello Squirrel",
+        "tr": "Merhaba Squirrel",
+        "de": "Hallo Squirrel",
+        "fr": "Hello Squirrel",
+        "es": "Hola Squirrel",
+        "ja": "Hello Squirrel",
+        "zh": "Hello Squirrel",
+        "ko": "Hello Squirrel"
+      },
+      "subtitle": {
+        "en": "A tour of the Squirrel SDK",
+        "tr": "Squirrel SDK turu",
+        "de": "Eine Tour durch das Squirrel-SDK",
+        "fr": "Une visite du SDK Squirrel",
+        "es": "Un recorrido por el SDK de Squirrel",
+        "ja": "Squirrel SDK のツアー",
+        "zh": "Squirrel SDK 导览",
+        "ko": "Squirrel SDK 둘러보기"
+      },
+      "description": {
+        "en": "The built-in Hello Squirrel app as a project: a to-do list saved with store, an analog clock in clock.nut loaded with import, and live weather JSON with net.json and a closure callback. Shows a class as the app, foreach, lambdas, timers and a menu.",
+        "tr": "Yerleşik Merhaba Squirrel uygulamasının proje hâli: store ile kaydedilen yapılacaklar listesi, import ile yüklenen clock.nut içindeki analog saat ve net.json ile kapanış geri çağırmalı canlı hava durumu JSON'u. Uygulama olarak sınıfı, foreach'i, lambdaları, zamanlayıcıları ve menüyü gösterir.",
+        "de": "Die eingebaute App Hallo Squirrel als Projekt: eine mit store gespeicherte To-do-Liste, eine Analoguhr in clock.nut, geladen mit import, und Live-Wetter-JSON mit net.json und einem Closure-Callback. Zeigt eine Klasse als App, foreach, Lambdas, Timer und ein Menü.",
+        "fr": "L'appli intégrée Hello Squirrel sous forme de projet : une liste de tâches enregistrée avec store, une horloge analogique dans clock.nut chargée par import et la météo en JSON avec net.json et une fermeture comme rappel. Montre une classe comme appli, foreach, les lambdas, les minuteurs et un menu.",
+        "es": "La app integrada Hola Squirrel como proyecto: una lista de tareas guardada con store, un reloj analógico en clock.nut cargado con import y el tiempo en JSON con net.json y un cierre como devolución. Muestra una clase como app, foreach, lambdas, temporizadores y un menú.",
+        "ja": "内蔵の Hello Squirrel アプリをプロジェクトにしたもの: store で保存する ToDo リスト、import で読み込む clock.nut のアナログ時計、そして net.json とクロージャのコールバックによるリアルタイムの天気 JSON。アプリとしてのクラス、foreach、ラムダ、タイマー、メニューの使い方を示します。",
+        "zh": "将内置的 Hello Squirrel 应用作为项目：用 store 保存的待办事项列表、在 clock.nut 中并通过 import 载入的指针式时钟，以及使用 net.json 和闭包回调获取的实时天气 JSON。演示了作为应用的类、foreach、lambda、计时器和菜单。",
+        "ko": "기본 제공 Hello Squirrel 앱을 프로젝트로 제공합니다: store로 저장되는 할 일 목록, import로 불러오는 clock.nut의 아날로그 시계, net.json과 클로저 콜백으로 받는 실시간 날씨 JSON. 앱으로서의 클래스, foreach, 람다, 타이머, 메뉴를 보여 줍니다."
+      },
+      "tags": [
+        "sdk-tour",
+        "classes",
+        "import",
+        "network",
+        "store"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/hello.zip",
+      "size": 19089,
+      "sha256": "fa58f4e06589bb5d15bf64e08dea376551a3ac0f1d16a5c8fa79affe48ca71a2",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/hello/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.sample.snake",
+      "slug": "snake",
+      "language": "squirrel",
+      "kind": "game",
+      "name": {
+        "en": "Snake (Squirrel)",
+        "tr": "Yılan (Squirrel)",
+        "de": "Snake (Squirrel)",
+        "fr": "Serpent (Squirrel)",
+        "es": "Serpiente (Squirrel)",
+        "ja": "スネーク (Squirrel)",
+        "zh": "贪吃蛇（Squirrel）",
+        "ko": "스네이크(Squirrel)"
+      },
+      "subtitle": {
+        "en": "The classic, with controller, keys and touch",
+        "tr": "Klasik oyun: kumanda, klavye ve dokunmatik",
+        "de": "Der Klassiker mit Controller, Tasten und Touch",
+        "fr": "Le classique, à la manette, au clavier et au toucher",
+        "es": "El clásico, con mando, teclado y táctil",
+        "ja": "コントローラー、キー、タッチで遊ぶ定番ゲーム",
+        "zh": "经典游戏，支持手柄、键盘和触控",
+        "ko": "컨트롤러, 키, 터치로 즐기는 고전"
+      },
+      "description": {
+        "en": "Steer the snake to the food, grow and do not bite yourself; the walls wrap around and every bite makes it a little faster. Play with the D-pad, the arrow keys or WASD, or tap beside the head on the touch screen. The best score is saved, and the game pauses on the HOME button.\n\nWhat it teaches in Squirrel: gamepad events, a fixed-step loop in update(dt), queued turns, arrays of tables, rand and srand, audio.tone, sys.vibrate and pausing in suspend and focus.",
+        "tr": "Yılanı yeme yönlendir, büyü ve kendini ısırma; kenarlar karşı taraftan devam eder ve her lokma onu biraz hızlandırır. Yön tuşları, oklar ya da WASD ile oyna ya da dokunmatik ekranda başın yanına dokun. En iyi puan kaydedilir, HOME tuşunda oyun duraklar.\n\nSquirrel'da öğrettikleri: kumanda olayları, update(dt) içinde sabit adımlı döngü, sıraya alınan dönüşler, tablo dizileri, rand ve srand, audio.tone, sys.vibrate ve suspend ile focus'ta duraklatma.",
+        "de": "Lenke die Schlange zum Futter, wachse und beiß dich nicht selbst; die Ränder gehen ineinander über, und jeder Bissen macht sie etwas schneller. Spiele mit Steuerkreuz, Pfeiltasten oder WASD oder tippe neben den Kopf. Der Rekord wird gespeichert, und mit HOME pausiert das Spiel.\n\nWas es in Squirrel zeigt: Controller-Ereignisse, eine Schleife mit festem Schritt in update(dt), vorgemerkte Richtungswechsel, Arrays von Tabellen, rand und srand, audio.tone, sys.vibrate und Pausieren in suspend und focus.",
+        "fr": "Guidez le serpent vers la nourriture, grandissez et ne vous mordez pas ; les bords se rejoignent et chaque bouchée l'accélère un peu. Jouez à la croix, aux flèches ou en WASD, ou touchez à côté de la tête. Le record est enregistré et le jeu se met en pause avec HOME.\n\nCe qu'il enseigne en Squirrel : les événements de manette, une boucle à pas fixe dans update(dt), les virages mis en file, des tableaux de tables, rand et srand, audio.tone, sys.vibrate et la pause dans suspend et focus.",
+        "es": "Lleva la serpiente a la comida, crece y no te muerdas; los bordes se conectan y cada bocado la acelera un poco. Juega con la cruceta, las flechas o WASD, o toca junto a la cabeza. El récord se guarda y el juego se pausa con HOME.\n\nLo que enseña en Squirrel: eventos del mando, un bucle de paso fijo en update(dt), giros en cola, arrays de tablas, rand y srand, audio.tone, sys.vibrate y la pausa en suspend y focus.",
+        "ja": "ヘビをエサに導き、伸びていき、自分をかまないようにしましょう。壁はループしており、食べるたびに少しずつ速くなります。十字ボタン、矢印キー、WASD、またはタッチスクリーンで頭の横をタップして操作します。ベストスコアは保存され、HOME ボタンでゲームが一時停止します。\n\nSquirrel で学べること: ゲームパッドのイベント、update(dt) での固定ステップのループ、方向転換のキュー、テーブルの配列、rand と srand、audio.tone、sys.vibrate、そして suspend と focus での一時停止。",
+        "zh": "操控蛇去吃食物、长大，别咬到自己；墙壁首尾相连，每吃一口都会稍快一些。可用十字键、方向键或 WASD 游玩，或在触摸屏上轻点蛇头旁边。最高分会被保存，按 HOME 按钮时游戏会暂停。\n\n在 Squirrel 中学到的内容：手柄事件、update(dt) 中的固定步长循环、排队的转向、table 数组、rand 和 srand、audio.tone、sys.vibrate，以及在 suspend 和 focus 中暂停。",
+        "ko": "뱀을 먹이 쪽으로 몰고, 자라되 자기 몸은 물지 마세요. 벽은 이어져 있고 먹을 때마다 조금씩 빨라집니다. 방향 버튼, 화살표 키, WASD로 플레이하거나 터치스크린에서 머리 옆을 탭하세요. 최고 점수가 저장되며, HOME 버튼을 누르면 게임이 일시 정지됩니다.\n\nSquirrel로 배우는 내용: 게임패드 이벤트, update(dt)의 고정 단계 루프, 대기열에 넣는 방향 전환, 테이블 배열, rand와 srand, audio.tone, sys.vibrate, suspend와 focus에서 일시 정지."
+      },
+      "tags": [
+        "gamepad",
+        "touch",
+        "arcade",
+        "store"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/snake/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/snake/snake.zip",
+      "size": 16442,
+      "sha256": "cf2d80e4c6853154ae497d0655b7f022bbdb0672869856ae4d65025f38ca0944",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/snake/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/snake/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/snake/screenshots/3.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/snake/README.md",
+      "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.sample.stopwatch",
+      "slug": "stopwatch",
+      "language": "squirrel",
+      "kind": "app",
+      "name": {
+        "en": "Stopwatch",
+        "tr": "Kronometre",
+        "de": "Stoppuhr",
+        "fr": "Chronomètre",
+        "es": "Cronómetro",
+        "ja": "ストップウォッチ",
+        "zh": "秒表",
+        "ko": "스톱워치"
+      },
+      "subtitle": {
+        "en": "Laps, best and worst, kept between runs",
+        "tr": "Turlar, en iyi ve en kötü; kapatınca da korunur",
+        "de": "Runden, beste und schlechteste, bleiben erhalten",
+        "fr": "Tours, meilleur et pire, conservés entre les sessions",
+        "es": "Vueltas, mejor y peor, guardadas entre sesiones",
+        "ja": "ラップ、最速と最遅、実行をまたいで保持",
+        "zh": "计次、最快和最慢，运行之间都会保留",
+        "ko": "랩, 최고와 최저, 실행 간에 보관"
+      },
+      "description": {
+        "en": "A precise stopwatch with laps: the fastest lap is green, the slowest red, the newest on top. The time and the laps survive closing the app and the console going to sleep, and the lap list can be shared with any app. Space starts and stops, L adds a lap, R resets.\n\nWhat it teaches in Squirrel: a class as the app, update() only to redraw while running, arrays of tables in store, ui.beginScroll, menu items with enabled, sys.share, suspend and autosave.",
+        "tr": "Turlu, hassas bir kronometre: en hızlı tur yeşil, en yavaşı kırmızı, en yenisi üstte. Süre ve turlar uygulama kapanınca ve konsol uykuya geçince de korunur; tur listesi herhangi bir uygulamayla paylaşılabilir. Boşluk başlatır ve durdurur, L tur ekler, R sıfırlar.\n\nSquirrel'da öğrettikleri: uygulama olarak sınıf, yalnızca çalışırken yeniden çizmek için update(), store içinde tablo dizileri, ui.beginScroll, enabled alanlı menü öğeleri, sys.share, suspend ve autosave.",
+        "de": "Eine genaue Stoppuhr mit Runden: die schnellste Runde grün, die langsamste rot, die neueste oben. Zeit und Runden überstehen das Schließen der App und den Ruhemodus, und die Rundenliste lässt sich mit jeder App teilen. Leertaste startet und stoppt, L setzt eine Runde, R setzt zurück.\n\nWas es in Squirrel zeigt: eine Klasse als App, update() nur zum Neuzeichnen während des Laufs, Arrays von Tabellen in store, ui.beginScroll, Menüeinträge mit enabled, sys.share, suspend und autosave.",
+        "fr": "Un chronomètre précis avec tours : le plus rapide en vert, le plus lent en rouge, le plus récent en haut. Le temps et les tours survivent à la fermeture de l'appli et à la mise en veille, et la liste des tours se partage avec n'importe quelle appli. Espace démarre et arrête, L ajoute un tour, R remet à zéro.\n\nCe qu'il enseigne en Squirrel : une classe comme appli, update() seulement pour redessiner pendant la course, des tableaux de tables dans store, ui.beginScroll, des éléments de menu avec enabled, sys.share, suspend et autosave.",
+        "es": "Un cronómetro preciso con vueltas: la más rápida en verde, la más lenta en rojo, la más reciente arriba. El tiempo y las vueltas sobreviven al cerrar la app y al reposo de la consola, y la lista se puede compartir con cualquier app. Espacio inicia y para, L añade una vuelta, R reinicia.\n\nLo que enseña en Squirrel: una clase como app, update() solo para redibujar mientras corre, arrays de tablas en store, ui.beginScroll, elementos de menú con enabled, sys.share, suspend y autosave.",
+        "ja": "ラップ付きの正確なストップウォッチ: 最速のラップは緑、最も遅いラップは赤、最新のラップが一番上に表示されます。時間とラップはアプリを閉じても本体がスリープしても保持され、ラップの一覧は任意のアプリと共有できます。Space で開始と停止、L でラップを追加、R でリセット。\n\nSquirrel で学べること: アプリとしてのクラス、実行中に再描画するときだけの update()、store のテーブルの配列、ui.beginScroll、enabled 付きのメニュー項目、sys.share、suspend と autosave。",
+        "zh": "一个带计次功能的精确秒表：最快的一圈显示为绿色，最慢的为红色，最新的在最上方。关闭应用或主机进入睡眠后，时间和计次都会保留，计次列表可以分享给任何应用。空格开始和停止，L 添加计次，R 重置。\n\n在 Squirrel 中学到的内容：作为应用的类、仅在运行时调用 update() 重绘、store 中的 table 数组、ui.beginScroll、带 enabled 的菜单项、sys.share、suspend 和自动保存。",
+        "ko": "랩이 있는 정밀한 스톱워치: 가장 빠른 랩은 초록, 가장 느린 랩은 빨강, 최신 랩은 맨 위에 표시됩니다. 앱을 닫거나 콘솔이 절전 모드에 들어가도 시간과 랩이 유지되며, 랩 목록은 어떤 앱과도 공유할 수 있습니다. Space로 시작과 정지, L로 랩 추가, R로 재설정합니다.\n\nSquirrel로 배우는 내용: 앱으로서의 클래스, 실행 중에 다시 그릴 때만 update(), store의 테이블 배열, ui.beginScroll, enabled가 있는 메뉴 항목, sys.share, suspend와 autosave."
+      },
+      "tags": [
+        "timer",
+        "store",
+        "share",
+        "lists"
+      ],
+      "minSdk": "1.5",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/stopwatch.zip",
+      "size": 15186,
+      "sha256": "30d457f0ef66f3af66f6fd9124b4f4017b1869d86a3b425a16e5f208145551fe",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/squirrel/stopwatch/README.md",
+      "added": "2026-10-29"
+    }
+  ]
+}

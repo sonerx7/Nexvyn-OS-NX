@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.water",
+  "name": {"en": "Water", "tr": "Su Takibi", "de": "Wasser", "fr": "Eau", "es": "Agua", "ja": "水分補給", "zh": "喝水", "ko": "물 마시기"},
+  "description": {
+    "en": "Track how much water you drink each day: one-tap glasses, a daily goal, a 7-day chart and optional reminders.",
+    "tr": "Gün içinde ne kadar su içtiğini takip et: tek dokunuşla bardak ekle, günlük hedef, 7 günlük grafik ve isteğe bağlı hatırlatıcılar.",
+    "de": "Verfolge, wie viel Wasser du täglich trinkst: Gläser per Tipp, ein Tagesziel, ein 7-Tage-Diagramm und optionale Erinnerungen.",
+    "fr": "Suivez la quantité d’eau que vous buvez chaque jour : des verres en un geste, un objectif quotidien, un graphique sur 7 jours et des rappels facultatifs.",
+    "es": "Controla cuánta agua bebes cada día: vasos con un toque, un objetivo diario, un gráfico de 7 días y recordatorios opcionales."
+  },
+  "version": "1.1",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 600, "height": 440, "minWidth": 520, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": ["notifications"]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "sysclk",
+  "name": {
+    "en": "Clock Profiles",
+    "tr": "Saat Profilleri",
+    "de": "Taktprofile",
+    "fr": "Profils d’horloge",
+    "es": "Perfiles de reloj",
+    "ko": "클럭 프로필"
+  },
+  "description": {
+    "en": "Per-game CPU, GPU and memory clocks for sys-clk.",
+    "tr": "sys-clk için oyun başına CPU, GPU ve bellek hızları.",
+    "de": "CPU-, GPU- und Speichertakt pro Spiel für sys-clk.",
+    "fr": "Fréquences CPU, GPU et mémoire par jeu pour sys-clk.",
+    "es": "Frecuencias de CPU, GPU y memoria por juego para sys-clk."
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 980,
+    "height": 620,
+    "minWidth": 420,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "com.sonerx7.theme.retroterminal",
+  "name": {
+    "en": "Retro Terminal",
+    "tr": "Retro Terminal",
+    "de": "Retro-Terminal",
+    "fr": "Terminal rétro",
+    "es": "Terminal retro"
+  },
+  "description": {
+    "en": "A green phosphor CRT with a boot log, dark appearance, opaque panels and 8-bit interface sounds.",
+    "tr": "Açılış kayıtlı yeşil fosforlu bir CRT ekran; koyu görünüm, opak paneller ve 8 bit arayüz sesleri.",
+    "de": "Ein grüner Phosphor-Röhrenmonitor mit Bootprotokoll, dunkles Erscheinungsbild, deckende Leisten und 8-Bit-Systemtöne.",
+    "fr": "Un écran cathodique à phosphore vert avec un journal de démarrage, apparence sombre, panneaux opaques et sons 8 bits.",
+    "es": "Una pantalla CRT de fósforo verde con un registro de arranque, aspecto oscuro, paneles opacos y sonidos de 8 bits."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "dark",
+  "accent": "#2FD25B",
+  "wallpaper": "wallpaper.jpg",
+  "sounds": "sounds",
+  "settings": {
+    "appearance.reduceTransparency": true,
+    "screensaver.style": 2
+  }
+}

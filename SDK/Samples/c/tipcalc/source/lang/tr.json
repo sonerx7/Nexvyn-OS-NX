@@ -1,0 +1,13 @@
+{
+  "app": "Bahşiş Bölüşücü",
+  "bill": "Hesap",
+  "tip": "Bahşiş",
+  "people": "Kişi",
+  "round_up": "Yukarı yuvarla",
+  "tip_amount": "Bahşiş",
+  "total": "Toplam",
+  "each": "Kişi başı",
+  "share": "Paylaş",
+  "share_text": "Toplam {0}, {1} kişi: kişi başı {2}",
+  "clear": "Hesabı temizle"
+}

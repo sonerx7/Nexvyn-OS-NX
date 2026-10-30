@@ -1,0 +1,28 @@
+{
+  "id": "homebrew",
+  "name": {
+    "en": "Homebrew",
+    "tr": "Homebrew",
+    "de": "Homebrew",
+    "fr": "Homebrew",
+    "es": "Homebrew",
+    "ko": "홈브루"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 900,
+    "height": 560,
+    "minWidth": 600,
+    "minHeight": 400,
+    "resizable": true
+  },
+  "fileTypes": [
+    ".nro"
+  ]
+}

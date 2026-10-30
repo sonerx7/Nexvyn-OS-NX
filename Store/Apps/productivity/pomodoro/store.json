@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Focus in sprints, rest in between",
+    "tr": "Odaklanarak çalış, aralarda dinlen",
+    "de": "Konzentriert arbeiten, bewusst pausieren",
+    "fr": "Concentrez-vous, puis faites une pause",
+    "es": "Concéntrate a ratos y descansa entre medias",
+    "ja": "集中して、合間に休む",
+    "zh": "分段专注，适时休息",
+    "ko": "짧게 집중하고, 사이사이 쉬세요"
+  },
+  "description": {
+    "en": "Pomodoro helps you get more done with the classic focus technique: work for 25 minutes, take a short break, and after four sessions enjoy a longer one. A clear ring counts down each phase, and a notification tells you when it is time to rest or get back to work. Breaks and focus sessions can start on their own, so you can stay in the flow. Your statistics show today’s sessions and focus time, your daily streak and the last seven days.\n\n• Focus, short break and long break with adjustable lengths\n• Choose how many sessions come before a long break\n• Optional auto-start, sounds and countdown ticks\n• Notifications at the end of every phase\n• Sessions today, focus time, streak and a 7-day chart\n• Space starts and pauses, N skips, R resets",
+    "tr": "Pomodoro, klasik odaklanma tekniğiyle daha çok iş çıkarmana yardım eder: 25 dakika çalış, kısa bir mola ver, dört seanstan sonra daha uzun bir molanın tadını çıkar. Net bir halka her aşamayı geri sayar, dinlenme ya da işe dönme zamanı geldiğinde bildirim gelir. Molalar ve odak seansları kendiliğinden başlayabilir; böylece akıştan kopmazsın. İstatistikler bugünkü seansları ve odak süreni, günlük serini ve son yedi günü gösterir.\n\n• Süreleri ayarlanabilen odak, kısa mola ve uzun mola\n• Uzun moladan önceki seans sayısını sen seç\n• İsteğe bağlı otomatik başlatma, sesler ve geri sayım tıkırtısı\n• Her aşamanın sonunda bildirim\n• Bugünkü seanslar, odak süresi, seri ve 7 günlük grafik\n• Boşluk başlatır ve duraklatır, N atlar, R sıfırlar",
+    "de": "Pomodoro hilft dir, mit der klassischen Fokus-Technik mehr zu schaffen: 25 Minuten arbeiten, kurz Pause machen und nach vier Einheiten eine längere Pause genießen. Ein klarer Ring zählt jede Phase herunter, und eine Mitteilung sagt dir, wann Pause ist und wann es weitergeht. Pausen und Fokus-Einheiten können automatisch starten, damit du im Flow bleibst. Die Statistik zeigt die heutigen Einheiten und Fokuszeit, deine Tagesserie und die letzten sieben Tage.\n\n• Fokus, kurze und lange Pause mit einstellbarer Dauer\n• Wähle, wie viele Einheiten vor der langen Pause kommen\n• Optionaler Autostart, Töne und Countdown-Ticken\n• Mitteilungen am Ende jeder Phase\n• Einheiten heute, Fokuszeit, Serie und 7-Tage-Diagramm\n• Leertaste startet und pausiert, N überspringt, R setzt zurück",
+    "fr": "Pomodoro vous aide à avancer avec la célèbre technique de concentration : 25 minutes de travail, une courte pause, puis une pause plus longue après quatre sessions. Un anneau bien lisible décompte chaque phase, et une notification vous indique quand vous reposer ou reprendre. Pauses et sessions de concentration peuvent démarrer seules pour ne pas casser votre élan. Les statistiques montrent les sessions et le temps de concentration du jour, votre série quotidienne et les sept derniers jours.\n\n• Concentration, pause courte et pause longue aux durées réglables\n• Choisissez le nombre de sessions avant la pause longue\n• Démarrage automatique, sons et tic-tac en option\n• Notification à la fin de chaque phase\n• Sessions du jour, temps de concentration, série et graphique sur 7 jours\n• Espace lance et met en pause, N passe, R réinitialise",
+    "es": "Pomodoro te ayuda a rendir más con la clásica técnica de concentración: trabaja 25 minutos, haz una pausa corta y, tras cuatro sesiones, disfruta de una más larga. Un anillo claro descuenta cada fase y una notificación te avisa cuando toca descansar o volver al trabajo. Las pausas y las sesiones pueden empezar solas para que no pierdas el ritmo. Las estadísticas muestran las sesiones y el tiempo de concentración de hoy, tu racha diaria y los últimos siete días.\n\n• Concentración, pausa corta y pausa larga con duración ajustable\n• Elige cuántas sesiones van antes de la pausa larga\n• Inicio automático, sonidos y tic-tac opcionales\n• Notificación al final de cada fase\n• Sesiones de hoy, tiempo de concentración, racha y gráfico de 7 días\n• Espacio inicia y pausa, N salta, R reinicia",
+    "ja": "ポモドーロは、定番の集中法でもっと多くのことをこなす手助けをします。25 分作業し、短い休憩を取り、4 セッションごとに長めの休憩を楽しみましょう。わかりやすいリングが各フェーズをカウントダウンし、休憩や作業再開の時間になると通知でお知らせします。休憩や集中セッションを自動で開始できるので、流れを途切れさせずに続けられます。統計には、今日のセッション数と集中時間、連続日数、過去 7 日間が表示されます。\n\n• 長さを調整できる集中、短い休憩、長い休憩\n• 長い休憩までのセッション数を選択\n• 自動開始、サウンド、カウントダウンの音 (任意)\n• 各フェーズの終わりに通知\n• 今日のセッション数、集中時間、連続日数、7 日間のグラフ\n• Space で開始と一時停止、N でスキップ、R でリセット",
+    "zh": "番茄钟借助经典的专注方法帮你完成更多事情：工作 25 分钟，短暂休息，四个时段后享受一次较长的休息。清晰的圆环为每个阶段倒计时，通知会提醒你何时该休息或回到工作中。休息和专注时段可以自动开始，让你保持心流状态。统计会显示今天的时段数和专注时间、你的连续天数以及最近七天的情况。\n\n• 专注、短休息和长休息，时长均可调整\n• 选择长休息之前的时段数\n• 可选的自动开始、声音和倒计时滴答声\n• 每个阶段结束时发送通知\n• 今日时段、专注时间、连续天数和 7 日图表\n• 空格开始和暂停，N 跳过，R 重置",
+    "ko": "뽀모도로는 클래식 집중 기법으로 더 많은 일을 해내도록 돕습니다: 25분 동안 일하고, 짧게 쉬고, 네 번의 세션 후에는 더 길게 쉬세요. 선명한 링이 각 단계를 카운트다운하고, 쉴 때나 다시 일할 때가 되면 알림이 알려 줍니다. 휴식과 집중 세션이 자동으로 시작되게 하여 흐름을 유지할 수 있습니다. 통계에는 오늘의 세션과 집중 시간, 연속 일수, 최근 7일이 표시됩니다.\n\n• 길이를 조절할 수 있는 집중, 짧은 휴식, 긴 휴식\n• 긴 휴식 전 세션 수 선택\n• 선택적 자동 시작, 소리, 카운트다운 틱 소리\n• 각 단계가 끝날 때 알림\n• 오늘 세션, 집중 시간, 연속 기록, 7일 차트\n• Space 시작 및 일시 정지, N 건너뛰기, R 재설정"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key space", "wait 3"],
+    ["key 3", "wait 1.5"],
+    ["key 1", "dark 1", "wait 1.5"]
+  ]
+}

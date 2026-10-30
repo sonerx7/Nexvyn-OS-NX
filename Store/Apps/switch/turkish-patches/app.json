@@ -1,0 +1,25 @@
+{
+  "id": "turkceyama",
+  "name": {
+    "en": "Turkish Patches",
+    "tr": "Türkçe Yamalar",
+    "de": "Türkische Patches",
+    "fr": "Patchs turcs",
+    "es": "Parches en turco",
+    "ko": "터키어 패치"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 980,
+    "height": 600,
+    "minWidth": 600,
+    "minHeight": 400,
+    "resizable": true
+  }
+}

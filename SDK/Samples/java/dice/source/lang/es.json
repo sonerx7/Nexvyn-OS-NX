@@ -1,0 +1,8 @@
+{
+  "app": "Dados",
+  "roll": "Lanzar",
+  "total": "Total: {0}",
+  "no_history": "Tus tiradas aparecen aquí. Toca un dado para retenerlo.",
+  "release_all": "Soltar todos los dados",
+  "clear_history": "Borrar historial"
+}

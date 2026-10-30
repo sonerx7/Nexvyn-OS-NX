@@ -1,0 +1,32 @@
+{
+  "id": "com.yourname.myapp",
+  "name": {
+    "en": "My App",
+    "tr": "Uygulamam",
+    "de": "Meine App",
+    "fr": "Mon appli",
+    "es": "Mi app",
+    "ko": "내 앱"
+  },
+  "description": {
+    "en": "A new Nexvyn OS app",
+    "tr": "Yeni bir Nexvyn OS uygulaması",
+    "de": "Eine neue Nexvyn-OS-App",
+    "fr": "Une nouvelle appli Nexvyn OS",
+    "es": "Una nueva app de Nexvyn OS"
+  },
+  "version": "1.0",
+  "author": "Your Name",
+  "category": "utilities",
+  "icon": "icon.png",
+  "runtime": "c",
+  "main": "main.c",
+  "minSdk": "1.5",
+  "window": {
+    "width": 560,
+    "height": 400,
+    "resizable": true
+  },
+  "gamepad": false,
+  "permissions": []
+}

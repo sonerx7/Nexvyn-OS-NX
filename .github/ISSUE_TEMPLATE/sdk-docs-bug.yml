@@ -1,0 +1,35 @@
+name: Bug in the SDK or docs / SDK ya da belgelerde hata
+description: A mistake in the SDK reference, a guide, a template, a sample or the nxv tool.
+title: "[SDK] "
+labels: ["sdk"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where / Nerede
+      options:
+        - SDK reference / SDK başvurusu
+        - Guide / Rehber
+        - Language template / Dil şablonu
+        - Sample / Örnek
+        - nxv tool / nxv aracı
+        - AI prompts / AI istemleri
+        - Other / Diğer
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: File or page / Dosya ya da sayfa
+      placeholder: SDK/Reference/SDK.en.md
+  - type: input
+    id: version
+    attributes:
+      label: Nexvyn OS version / sürümü
+      placeholder: "1.0.0"
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong, and what should it say? / Yanlış olan nedir, ne olmalıydı?
+    validations:
+      required: true

@@ -1,0 +1,14 @@
+{
+  "cloth": "Kumaş",
+  "ropes": "Halatlar",
+  "bridge": "Köprü",
+  "tool_drag": "Tut",
+  "tool_cut": "Kes",
+  "tool_pin": "İğnele",
+  "wind": "Rüzgâr",
+  "tear": "Yırtılma",
+  "reset": "Sıfırla",
+  "stats": "{0} nokta · {1} bağ · {2} FPS",
+  "hint": "Tut: bir noktayı sürükle. Kes: bağların üzerinden kaydır. İğnele: noktayı sabitlemek ya da bırakmak için dokun.",
+  "menu_title": "Fizik"
+}

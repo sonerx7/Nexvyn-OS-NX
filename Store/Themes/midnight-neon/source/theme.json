@@ -1,0 +1,26 @@
+{
+  "id": "com.sonerx7.theme.midnightneon",
+  "name": {
+    "en": "Midnight Neon",
+    "tr": "Gece Yarısı Neonu",
+    "de": "Mitternachtsneon",
+    "fr": "Néon de minuit",
+    "es": "Neón de medianoche"
+  },
+  "description": {
+    "en": "A retro-wave sun over a glowing grid, in the dark appearance with a magenta accent.",
+    "tr": "Parlayan bir ızgaranın üzerinde retro dalga güneşi; koyu görünüm ve eflatun vurgu rengi.",
+    "de": "Eine Retrowave-Sonne über einem leuchtenden Raster, im dunklen Erscheinungsbild mit Magenta-Akzent.",
+    "fr": "Un soleil rétro au-dessus d’une grille lumineuse, en apparence sombre avec un accent magenta.",
+    "es": "Un sol retro sobre una cuadrícula luminosa, con aspecto oscuro y acento magenta."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "dark",
+  "accent": "#FF2BD6",
+  "wallpaper": "wallpaper.jpg",
+  "settings": {
+    "screensaver.style": 1,
+    "dock.magnification": 1.8
+  }
+}

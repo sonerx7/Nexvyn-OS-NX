@@ -1,0 +1,14 @@
+{
+  "cloth": "Stoff",
+  "ropes": "Seile",
+  "bridge": "Brücke",
+  "tool_drag": "Greifen",
+  "tool_cut": "Schneiden",
+  "tool_pin": "Fixieren",
+  "wind": "Wind",
+  "tear": "Reißen",
+  "reset": "Zurücksetzen",
+  "stats": "{0} Punkte · {1} Verbindungen · {2} FPS",
+  "hint": "Greifen: beliebigen Punkt ziehen. Schneiden: über Verbindungen wischen. Fixieren: auf einen Punkt tippen, um ihn zu fixieren oder zu lösen.",
+  "menu_title": "Physik"
+}

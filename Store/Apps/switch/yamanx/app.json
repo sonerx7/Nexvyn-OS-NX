@@ -1,0 +1,33 @@
+{
+  "id": "yamanx",
+  "name": "YamaNX",
+  "category": "switch",
+  "version": "1.0",
+  "author": "SertAy (YamaNX) · Nexvyn OS port: Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sertay1/YamaNX",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 1040,
+    "height": 620,
+    "minWidth": 560,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.6",
+  "license": "YamaNX license (SertAy, all rights reserved, non-commercial) - see LICENSE and NOTICE.md",
+  "description": {
+    "en": "Turkish patch installer for Switch games. Based on YamaNX by SertAy",
+    "tr": "Switch oyunları için Türkçe yama yükleyici. SertAy'ın YamaNX'i temel alınmıştır",
+    "de": "Installer für türkische Patches für Switch-Spiele. Basiert auf YamaNX von SertAy",
+    "fr": "Installateur de patchs turcs pour les jeux Switch. Basé sur YamaNX de SertAy",
+    "es": "Instalador de parches turcos para juegos de Switch. Basado en YamaNX de SertAy"
+  },
+  "permissions": [
+    "network",
+    "files",
+    "games"
+  ]
+}

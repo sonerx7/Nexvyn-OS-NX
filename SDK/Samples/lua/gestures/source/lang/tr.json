@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "Hareketler",
+  "tab_tilt": "Eğme",
+  "reset": "Görünümü sıfırla",
+  "calibrate": "Ayarla",
+  "test_rumble": "Titreşimi dene",
+  "view_info": "yakınlık {0} · açı {1}° · kaydırma {2}, {3}",
+  "event_info": "olaylar: pinch {0} · rotate {1} · iki parmak kaydırma {2}",
+  "hint_gestures": "İki parmak: yakınlaştır, döndür, kaydır · fare: sürükle, tekerlek · Q/E döndürür · çift dokunuş sıfırlar",
+  "hint_tilt": "Bilyeyi yuvarlamak için konsolu eğ (ok tuşları ve çubuk da çalışır)",
+  "stars": "Yıldız: {0}",
+  "no_motion": "Hareket sensörü verisi yok: ok tuşlarını ya da sol çubuğu kullan",
+  "motion_title": "input.motion()",
+  "menu_title": "Hareketler"
+}

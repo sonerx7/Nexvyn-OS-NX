@@ -1,0 +1,35 @@
+{
+  "id": "drums",
+  "name": {
+    "en": "Drum Machine",
+    "tr": "Ritim Makinesi",
+    "de": "Drumcomputer",
+    "fr": "Boîte à rythmes",
+    "es": "Caja de ritmos",
+    "ja": "ドラムマシン",
+    "zh": "鼓机",
+    "ko": "드럼 머신"
+  },
+  "description": {
+    "en": "A 16-step drum machine with 8 synthesized tracks, BPM, swing, presets and saved patterns.",
+    "tr": "8 sentezlenmiş kanallı 16 adımlı ritim makinesi: BPM, swing, hazır ritimler ve kayıtlı desenler.",
+    "de": "Ein Drumcomputer mit 16 Schritten, 8 synthetisierten Spuren, BPM, Swing, Presets und gespeicherten Patterns.",
+    "fr": "Une boîte à rythmes à 16 pas avec 8 pistes synthétisées, BPM, swing, préréglages et motifs enregistrés.",
+    "es": "Una caja de ritmos de 16 pasos con 8 pistas sintetizadas, BPM, swing, preajustes y patrones guardados."
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 900,
+    "height": 520,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": [
+    "notifications"
+  ]
+}

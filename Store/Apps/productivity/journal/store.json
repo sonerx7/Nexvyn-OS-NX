@@ -1,0 +1,30 @@
+{
+  "subtitle": {
+    "en": "A few lines a day, a mood, a memory",
+    "tr": "Her gün birkaç satır, bir ruh hali, bir anı",
+    "de": "Jeden Tag ein paar Zeilen und deine Laune",
+    "fr": "Quelques lignes par jour, votre humeur",
+    "es": "Unas líneas al día, tu ánimo y tus recuerdos",
+    "ja": "1 日数行、気分、そして思い出",
+    "zh": "每天几行字，一份心情，一段回忆",
+    "ko": "하루 몇 줄, 기분 하나, 추억 하나"
+  },
+  "description": {
+    "en": "Journal is a calm place to write down how your day went. Pick a day from the week strip, choose a mood from Awful to Great, add tags like work or family and write as many lines as you like. The sidebar lists all your entries with their mood and a preview, and the search finds any word in your texts and tags. Watch your writing streak, entry count and total words grow over time.\n\n• One entry per day with mood, tags and text\n• Browse days and weeks with the arrows or the week strip\n• Search across all entries and tags\n• Day streak, entries and word count at a glance\n• Export the whole journal to Documents\n• Light and dark mode",
+    "tr": "Günlük, gününün nasıl geçtiğini yazabileceğin sakin bir köşe. Hafta şeridinden bir gün seç, Berbat'tan Harika'ya bir ruh hali belirle, iş ya da aile gibi etiketler ekle ve istediğin kadar satır yaz. Kenar çubuğu tüm kayıtlarını ruh hali ve kısa bir önizlemeyle listeler; arama ise yazılarındaki ve etiketlerindeki her kelimeyi bulur. Yazma serinin, kayıt sayının ve toplam kelimenin zamanla büyüyüşünü izle.\n\n• Her gün için ruh hali, etiket ve metinle bir kayıt\n• Günler ve haftalar arasında oklarla ya da hafta şeridiyle gezin\n• Tüm kayıtlarda ve etiketlerde arama\n• Günlük seri, kayıt ve kelime sayısı bir bakışta\n• Tüm günlüğü Belgeler'e aktar\n• Açık ve karanlık mod",
+    "de": "Das Tagebuch ist ein ruhiger Ort, um festzuhalten, wie dein Tag war. Wähle einen Tag in der Wochenleiste, eine Stimmung von Furchtbar bis Großartig, füge Tags wie Arbeit oder Familie hinzu und schreib so viele Zeilen, wie du möchtest. Die Seitenleiste zeigt alle Einträge mit Stimmung und Vorschau, und die Suche findet jedes Wort in Texten und Tags. Sieh zu, wie deine Schreibserie, die Zahl der Einträge und deine Wörter wachsen.\n\n• Ein Eintrag pro Tag mit Stimmung, Tags und Text\n• Mit Pfeiltasten oder Wochenleiste durch Tage und Wochen blättern\n• Suche in allen Einträgen und Tags\n• Tagesserie, Einträge und Wortzahl auf einen Blick\n• Das ganze Tagebuch in Dokumente exportieren\n• Heller und dunkler Modus",
+    "fr": "Journal est un espace paisible pour noter comment s’est passée votre journée. Choisissez un jour dans la frise de la semaine, une humeur d’Horrible à Excellente, ajoutez des étiquettes comme travail ou famille et écrivez autant de lignes que vous voulez. La barre latérale liste toutes vos entrées avec leur humeur et un aperçu, et la recherche retrouve n’importe quel mot dans vos textes et étiquettes. Regardez votre série d’écriture, vos entrées et votre nombre de mots grandir.\n\n• Une entrée par jour avec humeur, étiquettes et texte\n• Parcourez jours et semaines avec les flèches ou la frise\n• Recherche dans toutes les entrées et étiquettes\n• Série de jours, entrées et nombre de mots d’un coup d’œil\n• Exportez tout le journal dans Documents\n• Mode clair et mode sombre",
+    "es": "Diario es un rincón tranquilo para escribir cómo te fue el día. Elige un día en la franja semanal, un estado de ánimo de Fatal a Genial, añade etiquetas como trabajo o familia y escribe tantas líneas como quieras. La barra lateral muestra todas tus entradas con su ánimo y una vista previa, y la búsqueda encuentra cualquier palabra en tus textos y etiquetas. Mira cómo crecen tu racha de escritura, tus entradas y tus palabras.\n\n• Una entrada al día con ánimo, etiquetas y texto\n• Recorre días y semanas con las flechas o la franja semanal\n• Busca en todas las entradas y etiquetas\n• Racha de días, entradas y palabras de un vistazo\n• Exporta todo el diario a Documentos\n• Modo claro y oscuro",
+    "ja": "日記は、一日の出来事を書き留める落ち着いた場所です。週の帯から日付を選び、「最悪」から「最高」まで気分を選び、仕事や家族などのタグを付け、好きなだけ書きましょう。サイドバーにはすべてのエントリが気分とプレビュー付きで並び、検索でテキストやタグの任意の語句を見つけられます。書き続けた日数、エントリ数、合計語数が増えていく様子を見守りましょう。\n\n• 気分、タグ、テキスト付きで 1 日 1 エントリ\n• 矢印キーや週の帯で日や週を移動\n• すべてのエントリとタグを横断検索\n• 連続日数、エントリ数、語数がひと目でわかる\n• 日記全体を書類に書き出し\n• ライトモードとダークモード",
+    "zh": "日记是一个记录你一天过得如何的宁静角落。从周条中选择一天，选择从“很糟”到“很棒”的心情，添加工作或家庭等标签，想写多少行都可以。边栏列出你的所有日记及其心情和预览，搜索可以找到文字和标签中的任何词。看着你的连续写作天数、日记数和总字数随时间增长。\n\n• 每天一篇日记，包含心情、标签和文字\n• 用方向键或周条浏览日期和星期\n• 在所有日记和标签中搜索\n• 连续天数、日记数和字数一目了然\n• 将整本日记导出到“文稿”\n• 浅色和深色模式",
+    "ko": "일기는 하루가 어땠는지 적어 두는 차분한 공간입니다. 주간 줄에서 날짜를 고르고, 최악부터 최고까지 기분을 선택하고, 일이나 가족 같은 태그를 추가하고, 원하는 만큼 써 보세요. 사이드바에는 모든 일기가 기분과 미리 보기와 함께 나열되며, 검색은 글과 태그의 어떤 단어든 찾아 줍니다. 쓰기 연속 기록, 일기 수, 총 단어 수가 늘어나는 것을 지켜보세요.\n\n• 하루 한 편, 기분, 태그, 글\n• 화살표나 주간 줄로 날짜와 주 둘러보기\n• 모든 일기와 태그 검색\n• 연속 일수, 일기 수, 단어 수를 한눈에\n• 일기 전체를 문서로 내보내기\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 2",
+     "key left", "key left", "wait 0.5", "wclick 0.5477 0.3357", "wclick 0.655 0.514", "text Rainy and slow, but a great movie in the evening.", "key escape", "wait 0.5",
+     "key right", "wait 0.5", "wclick 0.6105 0.3357", "wclick 0.686 0.416", "text work", "wclick 0.655 0.514", "text Productive day, we shipped the new feature.", "key escape", "wait 0.5",
+     "key right", "wait 0.5", "wclick 0.673 0.3357", "wclick 0.686 0.416", "text family, weekend", "wclick 0.655 0.514", "text Long walk by the sea with Ayşe.", "key enter", "wait 0.5", "text Finished the book I started last month.", "key escape", "wait 2"],
+    ["wclick 0.145 0.048", "text walk", "wait 1.5"],
+    ["key escape", "key escape", "wait 0.5", "dark 1", "wait 1.5"]
+  ]
+}

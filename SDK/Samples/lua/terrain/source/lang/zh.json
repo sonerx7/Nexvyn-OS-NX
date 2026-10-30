@@ -1,0 +1,13 @@
+{
+  "roughness": "粗糙度",
+  "zoom": "地貌尺度",
+  "water": "海平面",
+  "flat": "低多边形着色",
+  "new_island": "新岛屿",
+  "seed": "种子 {0} · 用时 {1} ms 生成",
+  "stats": "{0} 个三角形 · {1} · {2} FPS",
+  "autopilot": "自动驾驶 · 移动或拖移即可接管",
+  "controls": "左摇杆 / WASD 飞行 · 右摇杆 / 方向键 / 拖移 观察 · ZR ZL / E Q 上升和下降",
+  "autopilot_menu": "自动驾驶",
+  "menu_title": "地形"
+}

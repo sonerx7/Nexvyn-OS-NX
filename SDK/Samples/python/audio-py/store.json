@@ -1,0 +1,34 @@
+{
+  "kind": "demo",
+  "tags": [
+    "audio",
+    "timers",
+    "callbacks"
+  ],
+  "subtitle": {
+    "en": "A note-by-note melody player",
+    "tr": "Nota nota melodi çalar",
+    "de": "Ein Melodie-Player Note für Note",
+    "fr": "Un lecteur de mélodies note par note",
+    "es": "Un reproductor de melodías nota a nota",
+    "ja": "1 音ずつ再生するメロディプレーヤー",
+    "zh": "逐个音符播放的旋律播放器",
+    "ko": "음 하나하나 재생하는 멜로디 플레이어"
+  },
+  "description": {
+    "en": "Play tunes note by note with timer callbacks: a piano roll, tempo, waveform, loop, a field to type your own melody and a live log that shows when each callback runs. Shows timer.after chains in Python and why callbacks must return quickly.",
+    "tr": "Zamanlayıcı geri çağırmalarıyla nota nota melodi çalar: piyano rulosu, tempo, dalga biçimi, döngü, kendi melodinizi yazdığınız alan ve her geri çağırmanın ne zaman çalıştığını gösteren canlı günlük. Python'da timer.after zincirlerini ve geri çağırmaların neden hızlı dönmesi gerektiğini gösterir.",
+    "de": "Melodien Note für Note mit Timer-Callbacks: Pianoroll, Tempo, Wellenform, Schleife, ein Feld für deine eigene Melodie und ein Live-Log, das zeigt, wann jeder Callback läuft. Zeigt timer.after-Ketten in Python und warum Callbacks schnell zurückkehren müssen.",
+    "fr": "Jouez des airs note par note avec des rappels de minuteur : piano roll, tempo, forme d'onde, boucle, un champ pour écrire votre mélodie et un journal en direct qui montre quand chaque rappel s'exécute. Montre les chaînes timer.after en Python et pourquoi les rappels doivent rendre la main vite.",
+    "es": "Toca melodías nota a nota con devoluciones de temporizador: piano roll, tempo, forma de onda, bucle, un campo para escribir tu melodía y un registro en vivo que muestra cuándo corre cada devolución. Muestra cadenas de timer.after en Python y por qué deben terminar rápido.",
+    "ja": "タイマーのコールバックで曲を 1 音ずつ再生します: ピアノロール、テンポ、波形、ループ、自分のメロディを入力するフィールド、そして各コールバックがいつ実行されるかを示すライブログ。Python での timer.after の連鎖と、コールバックがすぐに戻らなければならない理由を示します。",
+    "zh": "借助计时器回调逐个音符地演奏曲子：钢琴卷帘、速度、波形、循环、一个输入你自己旋律的输入框，以及显示每个回调何时运行的实时日志。演示了 Python 中的 timer.after 链，以及为什么回调必须快速返回。",
+    "ko": "타이머 콜백으로 곡을 음 하나씩 재생하세요: 피아노 롤, 템포, 파형, 반복, 나만의 멜로디를 입력하는 필드, 각 콜백이 언제 실행되는지 보여 주는 실시간 로그. Python에서 timer.after 체인과 콜백이 빨리 반환되어야 하는 이유를 보여 줍니다."
+  },
+  "shots": [
+    ["wait 3"],
+    ["key space", "wait 2.5"],
+    ["wait 3"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

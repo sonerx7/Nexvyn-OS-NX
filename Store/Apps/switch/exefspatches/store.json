@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "Turn IPS patch sets on and off",
+    "tr": "IPS yama setlerini aç, kapat",
+    "de": "IPS-Patch-Sets ein- und ausschalten",
+    "fr": "Activez ou coupez vos patchs IPS",
+    "es": "Activa y desactiva parches IPS",
+    "ja": "IPS パッチのセットをオン/オフ",
+    "zh": "开启和关闭 IPS 补丁集",
+    "ko": "IPS 패치 세트를 켜고 끄세요"
+  },
+  "description": {
+    "en": "See every IPS patch set Atmosphère applies, for games (exefs_patches) and system modules (kip_patches), and switch whole sets or single files on and off without renaming anything by hand. Patch Manager reads the build ID of each file and names the installed game it was made for, so you know right away whether a patch matches your game version.\n\n• Program and system module patches in two clear sections\n• Toggle a whole set or individual patch files\n• Target game shown for every build ID\n• Invalid IPS files are flagged\n• A warning before system patches are turned off\n• Sets go to the Trash in Files, so they can be restored",
+    "tr": "Atmosphère'in uyguladığı tüm IPS yama setlerini, oyunlar (exefs_patches) ve sistem modülleri (kip_patches) için gör; dosyaları elle yeniden adlandırmadan setleri ya da tek tek dosyaları aç, kapat. Yama Yöneticisi her dosyanın build ID'sini okuyup hangi yüklü oyun için yapıldığını gösterir; yamanın oyun sürümüne uyup uymadığını hemen anlarsın.\n\n• Program ve sistem modülü yamaları iki ayrı bölümde\n• Setin tamamını ya da tek tek yama dosyalarını aç/kapat\n• Her build ID için hedef oyun gösterilir\n• Geçersiz IPS dosyaları işaretlenir\n• Sistem yamaları kapatılmadan önce uyarı\n• Setler Dosyalar'daki Çöp Kutusu'na gider, geri alınabilir",
+    "de": "Sieh alle IPS-Patch-Sets, die Atmosphère anwendet, für Spiele (exefs_patches) und Systemmodule (kip_patches), und schalte ganze Sets oder einzelne Dateien ein und aus, ohne etwas von Hand umzubenennen. Der Patch-Manager liest die Build-ID jeder Datei und nennt das installierte Spiel, für das sie gemacht wurde, so siehst du sofort, ob ein Patch zu deiner Spielversion passt.\n\n• Programm- und Systemmodul-Patches in zwei klaren Bereichen\n• Ganze Sets oder einzelne Patch-Dateien schalten\n• Zielspiel für jede Build-ID\n• Ungültige IPS-Dateien werden markiert\n• Warnung, bevor System-Patches ausgeschaltet werden\n• Sets wandern in den Papierkorb von Dateien und lassen sich zurückholen",
+    "fr": "Visualisez tous les jeux de patchs IPS appliqués par Atmosphère, pour les jeux (exefs_patches) et les modules système (kip_patches), et activez ou désactivez un jeu entier ou un seul fichier sans rien renommer à la main. Gestionnaire de patchs lit le build ID de chaque fichier et indique le jeu installé visé : vous savez tout de suite si un patch correspond à votre version.\n\n• Patchs de programmes et de modules système en deux sections\n• Activation d’un jeu entier ou de fichiers individuels\n• Jeu cible affiché pour chaque build ID\n• Fichiers IPS invalides signalés\n• Avertissement avant de couper un patch système\n• Les jeux partent dans la Corbeille de Fichiers, récupérables",
+    "es": "Consulta todos los conjuntos de parches IPS que aplica Atmosphère, para juegos (exefs_patches) y módulos del sistema (kip_patches), y activa o desactiva conjuntos enteros o archivos sueltos sin renombrar nada a mano. Gestor de parches lee el build ID de cada archivo e indica el juego instalado al que va dirigido, así sabes al momento si un parche encaja con tu versión.\n\n• Parches de programas y de módulos del sistema en dos secciones\n• Activa un conjunto entero o archivos de parche sueltos\n• Juego de destino para cada build ID\n• Los archivos IPS no válidos se señalan\n• Aviso antes de desactivar parches del sistema\n• Los conjuntos van a la Papelera de Archivos y se pueden recuperar",
+    "ja": "Atmosphère が適用するすべての IPS パッチのセットを、ゲーム (exefs_patches) とシステムモジュール (kip_patches) ごとに表示し、手で名前を変えることなく、セット全体や個々のファイルをオン/オフできます。パッチマネージャーは各ファイルのビルド ID を読み取り、対象のインストール済みゲームの名前を表示するので、パッチがゲームのバージョンと一致するかすぐにわかります。\n\n• プログラムとシステムモジュールのパッチをわかりやすい 2 つのセクションに\n• セット全体または個々のパッチファイルを切り替え\n• すべてのビルド ID の対象ゲームを表示\n• 無効な IPS ファイルを表示\n• システムパッチをオフにする前に警告\n• セットはファイルのゴミ箱に移動するので復元可能",
+    "zh": "查看 Atmosphère 为游戏（exefs_patches）和系统模块（kip_patches）应用的每一组 IPS 补丁，无需手动重命名即可开启或关闭整组补丁或单个文件。补丁管理器会读取每个文件的 Build ID 并指出它所针对的已安装游戏，让你立即知道补丁是否与你的游戏版本匹配。\n\n• 程序补丁和系统模块补丁分为两个清晰的部分\n• 切换整组补丁或单个补丁文件\n• 显示每个 Build ID 对应的目标游戏\n• 标记无效的 IPS 文件\n• 关闭系统补丁前发出警告\n• 补丁组会进入“文件”中的废纸篓，因此可以恢复",
+    "ko": "Atmosphère가 게임(exefs_patches)과 시스템 모듈(kip_patches)에 적용하는 모든 IPS 패치 세트를 보고, 직접 이름을 바꾸지 않고도 세트 전체나 개별 파일을 켜고 끄세요. 패치 관리자는 각 파일의 빌드 ID를 읽어 대상인 설치된 게임의 이름을 보여 주므로, 패치가 게임 버전과 맞는지 바로 알 수 있습니다.\n\n• 프로그램과 시스템 모듈 패치를 두 개의 명확한 섹션으로\n• 세트 전체 또는 개별 패치 파일 전환\n• 빌드 ID마다 대상 게임 표시\n• 잘못된 IPS 파일 표시\n• 시스템 패치를 끄기 전에 경고\n• 세트는 파일의 휴지통으로 이동하므로 복원 가능"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.3 0.32",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

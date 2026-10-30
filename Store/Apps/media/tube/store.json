@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "YouTube videos, Shorts and channels",
+    "tr": "YouTube videoları, Shorts ve kanallar",
+    "de": "YouTube-Videos, Shorts und Kanäle",
+    "fr": "Vidéos YouTube, Shorts et chaînes",
+    "es": "Vídeos de YouTube, Shorts y canales",
+    "ja": "YouTube の動画、ショート、チャンネル",
+    "zh": "YouTube 视频、Shorts 和频道",
+    "ko": "YouTube 동영상, Shorts, 채널"
+  },
+  "description": {
+    "en": "Watch YouTube videos in a fast, native player made for the Switch. YousTube's home page groups videos by topic, search has filters for type, length, date and sort order, and channel pages show videos, playlists, live streams and info. Swipe through Shorts, read and sort comments, jump between chapters and pick quality, speed and captions. Follow channels and save playlists on the console without an account, or sign in with your own Google API client for subscriptions and likes.\n\n• Home topics, Continue Watching and a new-videos feed\n• Search with filters, suggestions and recent searches\n• Player with quality, speed, captions, chapters and mini player\n• Shorts feed with swipe, loop and comments\n• Queue, shuffle, repeat, sleep timer and audio-only mode\n• Local history with resume, Watch Later and saved playlists",
+    "tr": "YouTube videolarını Switch için yapılmış hızlı, yerel bir oynatıcıda izle. YousTube'un ana sayfası videoları konulara göre gruplar; arama türe, süreye, tarihe ve sıralamaya göre süzer; kanal sayfaları videoları, oynatma listelerini, canlı yayınları ve hakkında bilgisini gösterir. Shorts'ları kaydırarak izle, yorumları oku ve sırala, bölümler arasında atla, kaliteyi, hızı ve altyazıyı seç. Hesapsız da kanalları takip edip listeleri konsola kaydedebilir, abonelikler ve beğeniler için kendi Google API istemcinle giriş yapabilirsin.\n\n• Ana sayfa konuları, İzlemeye Devam Et ve yeni videolar akışı\n• Süzgeçli, önerili ve son aramalı arama\n• Kalite, hız, altyazı, bölümler ve mini oynatıcı\n• Kaydırmalı, döngülü ve yorumlu Shorts akışı\n• Sıra, karıştır, tekrarla, uyku zamanlayıcısı ve yalnızca ses\n• Kaldığın yerden devam eden geçmiş, Daha Sonra İzle ve kayıtlı listeler",
+    "de": "Schau YouTube-Videos in einem schnellen, nativen Player, gemacht für die Switch. Die Startseite von YousTube ordnet Videos nach Themen, die Suche filtert nach Typ, Länge, Datum und Sortierung, und Kanalseiten zeigen Videos, Playlists, Livestreams und Infos. Wische durch Shorts, lies und sortiere Kommentare, spring zwischen Kapiteln und wähle Qualität, Tempo und Untertitel. Folge Kanälen und speichere Playlists ganz ohne Konto auf der Konsole, oder melde dich mit deinem eigenen Google-API-Client für Abos und Likes an.\n\n• Themen auf der Startseite, Weiterschauen und Neu-Feed\n• Suche mit Filtern, Vorschlägen und letzten Suchen\n• Player mit Qualität, Tempo, Untertiteln, Kapiteln und Mini-Player\n• Shorts-Feed mit Wischen, Schleife und Kommentaren\n• Warteschlange, Zufall, Wiederholen, Sleep-Timer und Nur-Audio\n• Lokaler Verlauf mit Fortsetzen, Später ansehen und gespeicherte Playlists",
+    "fr": "Regardez des vidéos YouTube dans un lecteur natif et rapide, pensé pour la Switch. L’accueil de YousTube classe les vidéos par thème, la recherche filtre par type, durée, date et tri, et les pages de chaîne affichent vidéos, playlists, directs et infos. Faites défiler les Shorts, lisez et triez les commentaires, sautez d’un chapitre à l’autre et choisissez qualité, vitesse et sous-titres. Suivez des chaînes et enregistrez des playlists sur la console sans compte, ou connectez-vous avec votre propre client API Google pour les abonnements et les « J’aime ».\n\n• Thèmes à l’accueil, Reprendre la lecture et fil des nouveautés\n• Recherche avec filtres, suggestions et recherches récentes\n• Lecteur avec qualité, vitesse, sous-titres, chapitres et mini-lecteur\n• Fil de Shorts avec balayage, boucle et commentaires\n• File d’attente, aléatoire, répétition, minuterie et audio seul\n• Historique local avec reprise, À regarder plus tard et playlists enregistrées",
+    "es": "Mira vídeos de YouTube en un reproductor nativo y rápido, hecho para la Switch. El inicio de YousTube agrupa los vídeos por temas, la búsqueda filtra por tipo, duración, fecha y orden, y las páginas de canal muestran vídeos, listas, directos e información. Desliza por los Shorts, lee y ordena comentarios, salta entre capítulos y elige calidad, velocidad y subtítulos. Sigue canales y guarda listas en la consola sin cuenta, o inicia sesión con tu propio cliente de la API de Google para suscripciones y «me gusta».\n\n• Temas en el inicio, Seguir viendo y feed de vídeos nuevos\n• Búsqueda con filtros, sugerencias y búsquedas recientes\n• Reproductor con calidad, velocidad, subtítulos, capítulos y minirreproductor\n• Feed de Shorts con deslizar, bucle y comentarios\n• Cola, aleatorio, repetir, temporizador y solo audio\n• Historial local con reanudación, Ver más tarde y listas guardadas",
+    "ja": "Switch 向けに作られた高速なネイティブプレーヤーで YouTube の動画を視聴しましょう。YousTube のホームではトピックごとに動画がまとめられ、検索には種類、長さ、日付、並び順のフィルタがあり、チャンネルページには動画、再生リスト、ライブ配信、概要が表示されます。ショートをスワイプし、コメントを読んで並べ替え、チャプター間を移動し、画質、速度、字幕を選べます。アカウントなしで本体上でチャンネルをフォローして再生リストを保存するか、自分の Google API クライアントでログインして登録チャンネルや高評価を使えます。\n\n• ホームのトピック、続きを見る、新着動画のフィード\n• フィルタ、候補、最近の検索付きの検索\n• 画質、速度、字幕、チャプター、ミニプレーヤー付きのプレーヤー\n• スワイプ、ループ、コメント付きのショートのフィード\n• キュー、シャッフル、リピート、スリープタイマー、音声のみモード\n• 再開できるローカルの履歴、後で見る、保存した再生リスト",
+    "zh": "在专为 Switch 打造的快速原生播放器中观看 YouTube 视频。YousTube 的首页按主题分组视频，搜索提供类型、时长、日期和排序筛选，频道页面显示视频、播放列表、直播和简介。滑动浏览 Shorts，阅读评论并排序，在章节之间跳转，选择画质、速度和字幕。无需账户即可在主机上关注频道和保存播放列表，或使用你自己的 Google API 客户端登录以获取订阅和点赞。\n\n• 首页主题、继续观看和新视频动态\n• 带筛选、建议和最近搜索的搜索功能\n• 支持画质、速度、字幕、章节和迷你播放器的播放器\n• 可滑动、循环和查看评论的 Shorts 动态\n• 队列、随机播放、重复、睡眠定时器和仅音频模式\n• 可续播的本地历史记录、稍后观看和已保存的播放列表",
+    "ko": "Switch를 위해 만든 빠른 네이티브 플레이어로 YouTube 동영상을 시청하세요. YousTube의 홈 페이지는 주제별로 동영상을 묶고, 검색에는 유형, 길이, 날짜, 정렬 필터가 있으며, 채널 페이지에는 동영상, 재생목록, 라이브 스트림, 정보가 표시됩니다. Shorts를 쓸어 넘기고, 댓글을 읽고 정렬하고, 챕터 사이를 이동하고, 화질, 속도, 자막을 고르세요. 계정 없이 콘솔에서 채널을 구독하고 재생목록을 저장하거나, 본인의 Google API 클라이언트로 로그인하여 구독과 좋아요를 사용하세요.\n\n• 홈 주제, 이어서 보기, 새 동영상 피드\n• 필터, 추천, 최근 검색이 있는 검색\n• 화질, 속도, 자막, 챕터, 미니 플레이어가 있는 플레이어\n• 쓸어 넘기기, 반복, 댓글이 있는 Shorts 피드\n• 대기열, 셔플, 반복, 취침 타이머, 오디오만 모드\n• 이어보기가 있는 로컬 기록, 나중에 볼 동영상, 저장된 재생목록"
+  },
+  "shots": [
+    [
+      "wait 6"
+    ],
+    [
+      "wclick 0.095 0.194",
+      "wait 4"
+    ],
+    [
+      "wclick 0.095 0.661",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

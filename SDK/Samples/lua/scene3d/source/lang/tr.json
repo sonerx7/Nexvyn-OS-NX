@@ -1,0 +1,17 @@
+{
+  "hint": "Döndürmek için sürükle · yakınlaşmak için tekerlek ya da iki parmak",
+  "sun": "Güneş",
+  "ambient": "Ortam ışığı",
+  "fog": "Sis",
+  "textures": "Dokular",
+  "auto_orbit": "Kendiliğinden dön",
+  "auto_sun": "Hareketli güneş",
+  "wireframe": "Tel kafes",
+  "labels": "Etiketler",
+  "reset_view": "Kamerayı sıfırla",
+  "stats": "{0} üçgen · {1} · {2} FPS",
+  "label_pedestal": "Sekizgen kaide + küre",
+  "label_crates": "Sandıklar: her yüze ayrı UV",
+  "label_wall": "Kavisli duvar: UV yayı izler",
+  "menu_title": "Sahne"
+}

@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Plot functions, find roots and crossings",
+    "tr": "Fonksiyon çiz, kökleri ve kesişimleri bul",
+    "de": "Funktionen zeichnen, Nullstellen finden",
+    "fr": "Tracez des fonctions, trouvez les racines",
+    "es": "Dibuja funciones y encuentra sus raíces",
+    "ja": "関数を描画し、根と交点を求める",
+    "zh": "绘制函数图像，求根与交点",
+    "ko": "함수를 그리고 근과 교점을 찾으세요"
+  },
+  "description": {
+    "en": "Type up to six functions of x and see them drawn in color on a smooth, zoomable grid. Point at a curve to trace exact values, and the side panel lists every root and intersection in the visible area; tap one to jump to it. A table of values sits one switch away.\n\n• Up to six functions, each with its own color and visibility toggle\n• Clear error messages while you type an expression\n• Drag to pan, scroll or +/− to zoom, one button to reset the view\n• Roots and intersections of the visible area, updated as you move\n• Table of values with your own start and step",
+    "tr": "x'e bağlı altı fonksiyona kadar yaz, akıcı ve yakınlaştırılabilir bir ızgarada renk renk çizilsin. Bir eğrinin üzerine gelerek tam değerleri izle; yan panel görünen alandaki tüm kökleri ve kesişimleri listeler, birine dokununca oraya gider. Değer tablosu da tek bir anahtar uzağında.\n\n• Her biri kendi rengi ve göster/gizle düğmesiyle altı fonksiyona kadar\n• İfade yazarken anlaşılır hata mesajları\n• Sürükleyerek kaydır, tekerlek ya da +/− ile yakınlaş, tek düğmeyle görünümü sıfırla\n• Görünen alandaki kökler ve kesişimler, sen gezindikçe güncellenir\n• Başlangıç ve adımını seçtiğin değer tablosu",
+    "de": "Tippe bis zu sechs Funktionen von x ein und sieh sie farbig auf einem flüssigen, zoombaren Raster. Zeige auf eine Kurve, um genaue Werte abzulesen; die Seitenleiste listet alle Nullstellen und Schnittpunkte im sichtbaren Bereich, ein Tipp springt dorthin. Eine Wertetabelle ist nur einen Schalter entfernt.\n\n• Bis zu sechs Funktionen, jede mit eigener Farbe und Sichtbarkeit\n• Verständliche Fehlermeldungen beim Eintippen\n• Ziehen zum Verschieben, Mausrad oder +/− zum Zoomen, Ansicht mit einem Knopf zurücksetzen\n• Nullstellen und Schnittpunkte im sichtbaren Bereich, laufend aktualisiert\n• Wertetabelle mit eigenem Start und Schritt",
+    "fr": "Saisissez jusqu’à six fonctions de x et voyez-les tracées en couleur sur une grille fluide et zoomable. Pointez une courbe pour lire ses valeurs exactes ; le panneau latéral liste toutes les racines et intersections de la zone visible, et un geste vous y emmène. Un tableau de valeurs n’est qu’à un interrupteur.\n\n• Jusqu’à six fonctions, chacune avec sa couleur et son affichage\n• Messages d’erreur clairs pendant la saisie\n• Glisser pour se déplacer, molette ou +/− pour zoomer, un bouton pour recentrer\n• Racines et intersections de la zone visible, mises à jour en continu\n• Tableau de valeurs avec départ et pas au choix",
+    "es": "Escribe hasta seis funciones de x y míralas dibujadas en color sobre una cuadrícula fluida y ampliable. Señala una curva para leer valores exactos; el panel lateral lista todas las raíces e intersecciones del área visible y un toque te lleva a ellas. La tabla de valores está a un interruptor.\n\n• Hasta seis funciones, cada una con su color y su visibilidad\n• Mensajes de error claros mientras escribes\n• Arrastra para moverte, rueda o +/− para ampliar y un botón para restablecer la vista\n• Raíces e intersecciones del área visible, actualizadas al moverte\n• Tabla de valores con inicio y paso a tu elección",
+    "ja": "x の関数を最大 6 つ入力すると、滑らかでズームできるグリッド上に色分けして描画されます。曲線にポインタを合わせると正確な値をトレースでき、サイドパネルには表示範囲内のすべての根と交点が一覧表示され、タップするとそこへ移動します。値の表もスイッチひとつで表示できます。\n\n• それぞれ独自の色と表示切り替えを持つ最大 6 つの関数\n• 式の入力中にわかりやすいエラーメッセージ\n• ドラッグでパン、スクロールまたは +/− でズーム、ボタンひとつで表示をリセット\n• 移動に合わせて更新される表示範囲内の根と交点\n• 開始値と刻みを指定できる値の表",
+    "zh": "输入最多六个关于 x 的函数，它们会以彩色绘制在流畅、可缩放的网格上。指向曲线即可追踪精确数值，侧边面板会列出可见区域内的每个根和交点；轻点其中一个即可跳转过去。切换一下就能看到数值表。\n\n• 最多六个函数，各有颜色和显示开关\n• 输入表达式时给出清晰的错误信息\n• 拖移平移，滚动或 +/− 缩放，一个按钮重置视图\n• 可见区域内的根与交点，随移动实时更新\n• 可自定起始值和步长的数值表",
+    "ko": "x에 대한 함수를 최대 여섯 개까지 입력하면 부드럽게 확대할 수 있는 격자 위에 색깔별로 그려집니다. 곡선을 가리키면 정확한 값을 추적하며, 사이드 패널에는 보이는 영역의 모든 근과 교점이 나열되고, 탭하면 그곳으로 이동합니다. 스위치 하나로 값 표도 볼 수 있습니다.\n\n• 각자 색상과 표시 토글을 가진 최대 6개 함수\n• 수식을 입력하는 동안 명확한 오류 메시지\n• 드래그로 이동, 스크롤 또는 +/−로 확대/축소, 버튼 하나로 보기 재설정\n• 이동할 때마다 업데이트되는 보이는 영역의 근과 교점\n• 시작값과 간격을 직접 정하는 값 표"
+  },
+  "shots": [
+    ["wait 2", "wclick 0.153 0.303", "wait 0.25", "text x^3/8-x", "key escape", "wait 2"],
+    ["wclick 0.266 0.553", "wait 1.5"],
+    ["wclick 0.266 0.553", "wait 0.5", "key pageup", "wait 0.5", "wmove 0.653 0.5", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

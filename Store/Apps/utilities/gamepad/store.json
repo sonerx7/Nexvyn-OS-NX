@@ -1,0 +1,41 @@
+{
+  "subtitle": {
+    "en": "Test buttons, sticks, motion and rumble",
+    "tr": "Tuşları, çubukları ve titreşimi test et",
+    "de": "Tasten, Sticks, Bewegung und Rumble testen",
+    "fr": "Testez boutons, sticks, gyroscope, vibration",
+    "es": "Prueba botones, sticks, sensores y vibración",
+    "ja": "ボタン、スティック、モーション、振動をテスト",
+    "zh": "测试按钮、摇杆、体感和振动",
+    "ko": "버튼, 스틱, 모션, 진동을 테스트하세요"
+  },
+  "description": {
+    "en": "See exactly what your controllers are doing. Controller Test draws every connected Joy-Con, Pro Controller or retro controller and lights up each button as you press it, plots both sticks with tilt, angle and dead zone, and shows the shoulder and trigger buttons. Check the motion sensors in 3D, try HD Rumble at any frequency and strength, and read battery, colours and connection details.\n\n• All connected controllers, from handheld to player 8\n• Live button view and stick plots with dead zone\n• Motion tab: 3D orientation, acceleration and rotation\n• Rumble tab: low and high band, presets like Heartbeat\n• Info tab: device, connection, battery and colours\n• Capture mode: press L and R together to get the cursor back",
+    "tr": "Kontrolcülerinin tam olarak ne yaptığını gör. Kontrolcü Testi bağlı her Joy-Con'u, Pro Controller'ı ya da retro kontrolcüyü çizer, bastığın her tuşu yakar, iki çubuğu eğim, açı ve ölü bölgeyle gösterir, omuz ve tetik tuşlarını da izler. Hareket sensörlerini 3D olarak denetle, HD Rumble'ı istediğin frekans ve güçte dene, pil, renk ve bağlantı bilgilerini oku.\n\n• Avuçiçi modundan 8. oyuncuya kadar tüm bağlı kontrolcüler\n• Canlı tuş görünümü ve ölü bölgeli çubuk grafikleri\n• Hareket sekmesi: 3D yönelim, ivme ve dönüş\n• Titreşim sekmesi: alçak ve yüksek bant, Kalp Atışı gibi hazır ayarlar\n• Bilgi sekmesi: cihaz, bağlantı, pil ve renkler\n• Yakalama modu: imleci geri almak için L ve R'ye birlikte bas",
+    "de": "Sieh genau, was deine Controller tun. Der Controller-Test zeigt jeden verbundenen Joy-Con, Pro Controller oder Retro-Controller, lässt jede gedrückte Taste aufleuchten, stellt beide Sticks mit Neigung, Winkel und Totzone dar und zeigt Schulter- und Triggertasten. Prüfe die Bewegungssensoren in 3D, teste HD-Rumble mit beliebiger Frequenz und Stärke und lies Akku, Farben und Verbindung aus.\n\n• Alle verbundenen Controller, vom Handheld bis Spieler 8\n• Live-Tastenansicht und Stick-Diagramme mit Totzone\n• Bewegung: 3D-Ausrichtung, Beschleunigung und Drehung\n• Rumble: unteres und oberes Band, Vorlagen wie Herzschlag\n• Info: Gerät, Verbindung, Akku und Farben\n• Testmodus: L und R zusammen geben den Zeiger zurück",
+    "fr": "Voyez exactement ce que font vos manettes. Test de manette dessine chaque Joy-Con, Pro Controller ou manette rétro connecté, allume chaque bouton pressé, trace les deux sticks avec inclinaison, angle et zone morte, et affiche gâchettes et boutons de tranche. Vérifiez les capteurs de mouvement en 3D, essayez la vibration HD à la fréquence et la force voulues, et consultez batterie, couleurs et connexion.\n\n• Toutes les manettes connectées, du mode portable au joueur 8\n• Boutons en direct et tracés des sticks avec zone morte\n• Mouvement : orientation 3D, accélération et rotation\n• Vibration : bandes basse et haute, préréglages comme Battement\n• Infos : appareil, connexion, batterie et couleurs\n• Mode test : L et R ensemble rendent le pointeur",
+    "es": "Mira exactamente lo que hacen tus mandos. Prueba del mando dibuja cada Joy-Con, Pro Controller o mando retro conectado, ilumina cada botón que pulsas, muestra los dos sticks con inclinación, ángulo y zona muerta, y enseña los gatillos y botones laterales. Comprueba los sensores de movimiento en 3D, prueba la vibración HD con la frecuencia y fuerza que quieras y consulta batería, colores y conexión.\n\n• Todos los mandos conectados, del modo portátil al jugador 8\n• Botones en directo y gráficas de los sticks con zona muerta\n• Movimiento: orientación 3D, aceleración y rotación\n• Vibración: banda baja y alta, ajustes como Latido\n• Información: dispositivo, conexión, batería y colores\n• Modo de prueba: L y R a la vez devuelven el cursor",
+    "ja": "コントローラーが何をしているかを正確に確認できます。コントローラーテストは、接続中のすべての Joy-Con、Pro コントローラー、レトロコントローラーを描画し、押したボタンを光らせ、両方のスティックを傾き、角度、デッドゾーンとともにグラフ表示し、L/R やトリガーボタンも表示します。モーションセンサーを 3D で確認し、任意の周波数と強さで HD 振動を試し、バッテリー、色、接続の詳細を読み取れます。\n\n• 携帯モードからプレイヤー 8 まで、接続中のすべてのコントローラー\n• リアルタイムのボタン表示とデッドゾーン付きのスティックのグラフ\n• モーションタブ: 3D の向き、加速度、回転\n• 振動タブ: 低周波帯と高周波帯、心拍などのプリセット\n• 情報タブ: デバイス、接続、バッテリー、色\n• キャプチャモード: L と R を同時に押すとカーソルに戻る",
+    "zh": "准确了解你的手柄在做什么。手柄测试会绘制每个已连接的 Joy-Con、Pro 手柄或复古手柄，按下按钮时会点亮对应按钮，绘制两个摇杆的倾斜、角度和死区，并显示肩键和扳机键。在 3D 中检查体感传感器，以任意频率和强度试用 HD 振动，并查看电量、颜色和连接详情。\n\n• 所有已连接的手柄，从掌机模式到玩家 8\n• 实时按钮视图和带死区的摇杆图\n• 体感标签页：3D 方向、加速度和旋转\n• 振动标签页：低频段和高频段，以及“心跳”等预设\n• 信息标签页：设备、连接、电量和颜色\n• 接管模式：同时按下 L 和 R 即可收回光标",
+    "ko": "컨트롤러가 정확히 무엇을 하는지 확인하세요. 컨트롤러 테스트는 연결된 모든 Joy-Con, Pro 컨트롤러, 레트로 컨트롤러를 그리고 버튼을 누를 때마다 불을 켜며, 두 스틱의 기울기, 각도, 데드존을 그래프로 보여 주고, 숄더와 트리거 버튼도 표시합니다. 3D로 모션 센서를 확인하고, 원하는 주파수와 세기로 HD 진동을 시험하고, 배터리, 색상, 연결 정보를 읽으세요.\n\n• 휴대 모드부터 플레이어 8까지 연결된 모든 컨트롤러\n• 실시간 버튼 보기와 데드존이 있는 스틱 그래프\n• 모션 탭: 3D 방향, 가속도, 회전\n• 진동 탭: 저주파와 고주파 대역, 심장 박동 같은 프리셋\n• 정보 탭: 장치, 연결, 배터리, 색상\n• 입력 가져오기 모드: L과 R을 함께 누르면 커서를 되찾음"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.805 0.15",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.922 0.15",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.688 0.15",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "subtitle": {
+    "en": "Fuel use, trip costs and a fill-up log",
+    "tr": "Yakıt tüketimi, yol masrafı ve depo kaydı",
+    "de": "Verbrauch, Fahrtkosten und Tankbuch",
+    "fr": "Consommation, coût du trajet et carnet",
+    "es": "Consumo, coste del viaje y registro",
+    "ja": "燃費、旅費、給油の記録",
+    "zh": "油耗、行程费用和加油记录",
+    "ko": "연비, 여행 비용, 주유 기록"
+  },
+  "description": {
+    "en": "Enter the kilometres you drove and the litres it took, and a gauge shows your consumption in litres per 100 km, from frugal green to thirsty red. Plan the cost of a trip, share it with your passengers, and keep a log of fill-ups to see how your car really does over time.\n\n• L/100 km, km per litre, MPG (US/UK), cost per km and the fill-up cost\n• Trip cost for petrol, diesel or LPG, with round trip, passengers and CO₂ emitted\n• Turn a fill-up into a trip plan, or use your logged average\n• Fill-up log with totals, averages and a chart of the last 12 fill-ups\n• Sort the log, undo a deletion and export it as CSV\n• Lira, dollar, euro or pound",
+    "tr": "Gittiğin kilometreyi ve harcadığın litreyi gir; gösterge tüketimini 100 km'de litre olarak, tasarruflu yeşilden obur kırmızıya kadar gösterir. Bir yolculuğun masrafını planla, yolcularınla paylaştır ve depo dolumlarını kaydederek aracının gerçekte ne yaktığını zaman içinde izle.\n\n• 100 km'de litre, litre başına km, MPG (ABD/İngiltere), km başı maliyet ve dolum tutarı\n• Benzin, dizel ya da LPG için yol masrafı; gidiş-dönüş, yolcu sayısı ve salınan CO₂\n• Bir dolumu tek dokunuşla yolculuk planına çevir ya da kayıtlı ortalamanı kullan\n• Toplamlar, ortalamalar ve son 12 dolumun grafiğiyle depo kaydı\n• Kaydı sırala, silmeyi geri al, CSV olarak dışa aktar\n• Lira, dolar, euro ya da sterlin",
+    "de": "Gib die gefahrenen Kilometer und die getankten Liter ein, und eine Anzeige zeigt deinen Verbrauch in Litern pro 100 km, von sparsamem Grün bis durstigem Rot. Plane die Kosten einer Fahrt, teile sie mit deinen Mitfahrern und führe ein Tankbuch, um zu sehen, wie sich dein Auto wirklich schlägt.\n\n• L/100 km, km pro Liter, MPG (US/UK), Kosten pro km und Tankkosten\n• Fahrtkosten für Benzin, Diesel oder Autogas, mit Hin- und Rückfahrt, Mitfahrern und CO₂-Ausstoß\n• Eine Tankfüllung direkt als Fahrt planen oder den Durchschnitt aus dem Tankbuch nutzen\n• Tankbuch mit Summen, Durchschnitten und einem Diagramm der letzten 12 Tankfüllungen\n• Sortieren, Löschen rückgängig machen und als CSV exportieren\n• Lira, Dollar, Euro oder Pfund",
+    "fr": "Saisissez les kilomètres parcourus et les litres consommés : une jauge affiche votre consommation en litres aux 100 km, du vert économe au rouge gourmand. Estimez le coût d’un trajet, partagez-le avec vos passagers et tenez un carnet des pleins pour voir ce que consomme vraiment votre voiture.\n\n• L/100 km, km par litre, MPG (US/UK), coût au km et coût du plein\n• Coût du trajet en essence, diesel ou GPL, aller-retour, passagers et CO₂ émis\n• Transformez un plein en trajet ou utilisez la moyenne de votre carnet\n• Carnet des pleins avec totaux, moyennes et graphique des 12 derniers pleins\n• Tri, suppression annulable et export CSV\n• Livre turque, dollar, euro ou livre sterling",
+    "es": "Introduce los kilómetros recorridos y los litros repostados y un indicador muestra tu consumo en litros cada 100 km, del verde ahorrador al rojo derrochador. Calcula el coste de un viaje, repártelo entre los pasajeros y lleva un registro de repostajes para ver lo que gasta de verdad tu coche.\n\n• L/100 km, km por litro, MPG (EE. UU./R. U.), coste por km y coste del repostaje\n• Coste del viaje en gasolina, diésel o GLP, con ida y vuelta, pasajeros y CO₂ emitido\n• Convierte un repostaje en un plan de viaje o usa tu media registrada\n• Registro con totales, medias y un gráfico de los últimos 12 repostajes\n• Ordena el registro, deshaz un borrado y expórtalo en CSV\n• Lira, dólar, euro o libra",
+    "ja": "走った距離 (km) と給油量 (L) を入力すると、ゲージが燃費を 100 km あたりのリットル数で、経済的な緑から燃費の悪い赤まで表示します。旅行の費用を計画して同乗者と分担し、給油の記録を付けて、車の実際の燃費を長期的に確認しましょう。\n\n• L/100 km、km/L、MPG (米/英)、1 km あたりの費用、給油費用\n• ガソリン、軽油、LPG の旅費。往復、同乗者、CO₂ 排出量にも対応\n• 給油の記録から旅行の計画を作成、または記録した平均値を使用\n• 合計、平均、直近 12 回の給油グラフ付きの給油記録\n• 記録の並べ替え、削除の取り消し、CSV 書き出し\n• リラ、ドル、ユーロ、ポンド",
+    "zh": "输入行驶的公里数和加入的升数，仪表就会以每 100 公里升数显示你的油耗，从省油的绿色到费油的红色。规划行程费用并与乘客分摊，记录每次加油，看看你的车随时间的真实表现。\n\n• L/100 km、每升公里数、MPG（美制/英制）、每公里费用和加油费用\n• 汽油、柴油或液化石油气的行程费用，可计算往返、乘客分摊和 CO₂ 排放量\n• 将一次加油转为行程规划，或使用你记录的平均值\n• 加油记录，带合计、平均值和最近 12 次加油的图表\n• 对记录排序、撤销删除并导出为 CSV\n• 里拉、美元、欧元或英镑",
+    "ko": "주행한 킬로미터와 넣은 리터를 입력하면 게이지가 100 km당 리터 단위의 연비를 알뜰한 초록부터 기름 먹는 빨강까지 보여 줍니다. 여행 비용을 계획하고 탑승자와 나누며, 주유 기록을 남겨 자동차의 실제 연비를 시간에 따라 확인하세요.\n\n• L/100 km, 리터당 km, MPG(미국/영국), km당 비용, 주유 비용\n• 휘발유, 경유, LPG 여행 비용과 왕복, 탑승자, CO₂ 배출량\n• 주유를 여행 계획으로 바꾸거나 기록된 평균 사용\n• 합계, 평균, 최근 12회 주유 차트가 있는 주유 기록\n• 기록 정렬, 삭제 취소, CSV로 내보내기\n• 리라, 달러, 유로, 파운드"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.218 0.165",
+      "wait 0.3",
+      "text 612",
+      "wclick 0.218 0.288",
+      "wait 0.3",
+      "text 38",
+      "wclick 0.218 0.412",
+      "wait 0.3",
+      "text 44",
+      "wait 2"
+    ],
+    [
+      "wclick 0.249 0.53",
+      "wait 0.8",
+      "wclick 0.249 0.597",
+      "wait 0.8",
+      "wclick 0.218 0.165",
+      "wait 0.3",
+      "text 450",
+      "wait 2"
+    ],
+    [
+      "wclick 0.626 0.047",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

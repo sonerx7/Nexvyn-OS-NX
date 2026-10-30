@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.pixelart",
+  "name": {"en": "Pixel Art", "tr": "Piksel Sanatı", "de": "Pixel-Art", "fr": "Pixel Art", "es": "Pixel Art", "ja": "ピクセルアート", "zh": "像素画", "ko": "픽셀 아트"},
+  "description": {
+    "en": "Draw 8×8, 16×16 or 32×32 pixel art with pencil, fill, line and mirror tools, keep a gallery and export real PNG files.",
+    "tr": "Kalem, doldurma, çizgi ve ayna araçlarıyla 8×8, 16×16 ya da 32×32 piksel çizimler yap, galeride sakla ve gerçek PNG olarak dışa aktar.",
+    "de": "Zeichne Pixel-Art in 8×8, 16×16 oder 32×32 mit Stift, Füllen, Linie und Spiegeln, führe eine Galerie und exportiere echte PNG-Dateien.",
+    "fr": "Dessinez du pixel art en 8×8, 16×16 ou 32×32 avec crayon, remplissage, ligne et miroir, gardez une galerie et exportez de vrais fichiers PNG.",
+    "es": "Dibuja pixel art de 8×8, 16×16 o 32×32 con lápiz, relleno, línea y espejo, guarda una galería y exporta archivos PNG reales."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 860, "height": 600, "minWidth": 760, "minHeight": 540, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

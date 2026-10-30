@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.percent",
+  "name": {"en": "Percentage Calculator", "tr": "Yüzde Hesaplayıcı", "de": "Prozentrechner", "fr": "Calculateur de pourcentages", "es": "Calculadora de porcentajes", "ja": "パーセント計算", "zh": "百分比计算器", "ko": "퍼센트 계산기"},
+  "description": {
+    "en": "Five percentage calculators with live results and the formula: X% of Y, what percent, change from A to B, adding VAT or a discount, and the price before a percentage.",
+    "tr": "Canlı sonuç ve formülüyle beş yüzde hesabı: Y'nin %X'i, yüzde kaç, A'dan B'ye değişim, KDV ya da indirim ekleme ve yüzde eklenmeden önceki fiyat.",
+    "de": "Fünf Prozentrechner mit sofortigem Ergebnis und Formel: X % von Y, wie viel Prozent, Änderung von A nach B, Mehrwertsteuer oder Rabatt hinzurechnen und der Preis vor einem Prozentsatz.",
+    "fr": "Cinq calculateurs de pourcentage avec résultat en direct et formule : X % de Y, quel pourcentage, variation de A à B, ajout de TVA ou d’une remise, et prix avant un pourcentage.",
+    "es": "Cinco calculadoras de porcentajes con resultado al instante y la fórmula: X % de Y, qué porcentaje, cambio de A a B, añadir IVA o un descuento, y el precio antes de un porcentaje."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 680, "height": 480, "minWidth": 600, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

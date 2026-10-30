@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Publishing guide / Yayımlama rehberi
+    url: https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.en.md
+    about: How to publish an app, game, theme or font in the App Market (English and Turkish).

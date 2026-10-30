@@ -1,0 +1,51 @@
+{
+  "subtitle": {
+    "en": "Plot z = f(x, y) as a 3D surface",
+    "tr": "z = f(x, y) fonksiyonlarını 3D çiz",
+    "de": "z = f(x, y) als 3D-Fläche darstellen",
+    "fr": "Tracez z = f(x, y) en surface 3D",
+    "es": "Dibuja z = f(x, y) como superficie 3D",
+    "ja": "z = f(x, y) を 3D サーフェスで描画",
+    "zh": "将 z = f(x, y) 绘制为 3D 曲面",
+    "ko": "z = f(x, y)를 3D 곡면으로 그리세요"
+  },
+  "description": {
+    "en": "Turn a formula into a colorful 3D landscape you can spin around. Start from beautiful presets like the sinc wave, a saddle or the famous peaks, or type your own function of x, y and time t to make it move. Drag to rotate, zoom in, and choose how the surface is drawn.\n\n• Presets: sin(r)/r, saddle, ripple, peaks, animated waves and egg crate\n• Your own expressions with sin, cos, sqrt, exp, log, abs and more\n• Solid, wireframe or both, in rainbow, viridis or heat colors\n• Adjustable range and resolution, axes with a grid\n• Auto rotation and animated time t\n• Controller support: L/R presets, A draw mode, B colors",
+    "tr": "Bir formülü etrafında dönebileceğin renkli bir 3D manzaraya çevir. sinc dalgası, eyer yüzeyi ya da ünlü tepeler gibi güzel hazır ayarlarla başla ya da x, y ve zaman t'ye bağlı kendi fonksiyonunu yazıp hareketlendir. Sürükleyerek döndür, yakınlaş, yüzeyin nasıl çizileceğini seç.\n\n• Hazırlar: sin(r)/r, eyer, dalgacık, tepeler, hareketli dalgalar ve yumurta kolisi\n• sin, cos, sqrt, exp, log, abs ve fazlasıyla kendi ifadelerin\n• Dolu, tel kafes ya da ikisi birden; gökkuşağı, viridis ya da ısı renkleri\n• Ayarlanabilir aralık ve çözünürlük, ızgaralı eksenler\n• Otomatik dönüş ve hareketli zaman t\n• Kumanda desteği: L/R hazır ayar, A çizim modu, B renkler",
+    "de": "Verwandle eine Formel in eine farbige 3D-Landschaft, um die du herumfliegen kannst. Starte mit schönen Vorlagen wie der sinc-Welle, einem Sattel oder den berühmten Peaks, oder tippe deine eigene Funktion von x, y und der Zeit t, um sie zu bewegen. Ziehen zum Drehen, zoomen und die Darstellung wählen.\n\n• Vorlagen: sin(r)/r, Sattel, Welle, Peaks, animierte Wellen und Eierkarton\n• Eigene Ausdrücke mit sin, cos, sqrt, exp, log, abs und mehr\n• Fläche, Drahtgitter oder beides, in Regenbogen-, Viridis- oder Hitzefarben\n• Einstellbarer Bereich und Auflösung, Achsen mit Raster\n• Automatische Drehung und animierte Zeit t\n• Controller: L/R Vorlagen, A Darstellung, B Farben",
+    "fr": "Transformez une formule en paysage 3D coloré autour duquel tourner. Partez de beaux préréglages comme l’onde sinc, une selle ou les célèbres pics, ou saisissez votre propre fonction de x, y et du temps t pour l’animer. Faites glisser pour pivoter, zoomez et choisissez le rendu.\n\n• Préréglages : sin(r)/r, selle, ondulation, pics, vagues animées et boîte à œufs\n• Vos expressions avec sin, cos, sqrt, exp, log, abs et plus encore\n• Plein, fil de fer ou les deux, en couleurs arc-en-ciel, viridis ou chaleur\n• Plage et résolution réglables, axes avec grille\n• Rotation automatique et temps t animé\n• Manette : L/R préréglages, A mode de rendu, B couleurs",
+    "es": "Convierte una fórmula en un paisaje 3D de colores que puedes rodear. Empieza con preajustes preciosos como la onda sinc, una silla de montar o los famosos picos, o escribe tu propia función de x, y y el tiempo t para darle movimiento. Arrastra para girar, acércate y elige cómo se dibuja.\n\n• Preajustes: sin(r)/r, silla, ondas, picos, olas animadas y huevera\n• Tus propias expresiones con sin, cos, sqrt, exp, log, abs y más\n• Sólido, malla o ambos, en colores arcoíris, viridis o calor\n• Rango y resolución ajustables, ejes con cuadrícula\n• Giro automático y tiempo t animado\n• Mando: L/R preajustes, A modo de dibujo, B colores",
+    "ja": "数式を、回転させられるカラフルな 3D の風景に変えましょう。sinc 波、鞍形、有名なピークなどの美しいプリセットから始めるか、x、y、時間 t の関数を自分で入力して動かしてみましょう。ドラッグで回転、ズームイン、サーフェスの描画方法を選べます。\n\n• プリセット: sin(r)/r、鞍形、さざ波、ピーク、アニメーションする波、エッグクレート\n• sin、cos、sqrt、exp、log、abs などを使った自分の式\n• ソリッド、ワイヤーフレーム、両方。レインボー、viridis、ヒートの配色\n• 範囲と解像度の調整、グリッド付きの軸\n• 自動回転と時間 t のアニメーション\n• コントローラー対応: L/R でプリセット、A で描画モード、B で配色",
+    "zh": "把公式变成一片可以旋转观赏的彩色 3D 地形。从 sinc 波、马鞍面或著名的山峰等精美预设开始，或输入你自己关于 x、y 和时间 t 的函数，让它动起来。拖移以旋转、放大，并选择曲面的绘制方式。\n\n• 预设：sin(r)/r、马鞍面、涟漪、山峰、动画波浪和蛋托\n• 自定义表达式，支持 sin、cos、sqrt、exp、log、abs 等\n• 实体、线框或两者，彩虹、viridis 或热度配色\n• 可调整范围和分辨率，带网格的坐标轴\n• 自动旋转和动画时间 t\n• 手柄支持：L/R 切换预设，A 切换绘制模式，B 切换配色",
+    "ko": "수식을 돌려 볼 수 있는 알록달록한 3D 풍경으로 바꾸세요. sinc 파동, 안장, 유명한 봉우리 같은 아름다운 프리셋으로 시작하거나, x, y, 시간 t에 대한 나만의 함수를 입력해 움직이게 하세요. 드래그하여 회전하고, 확대하고, 곡면을 그리는 방식을 고르세요.\n\n• 프리셋: sin(r)/r, 안장, 잔물결, 봉우리, 움직이는 파도, 달걀판\n• sin, cos, sqrt, exp, log, abs 등을 사용한 나만의 수식\n• 무지개, viridis, 열지도 색상의 솔리드, 와이어프레임 또는 둘 다\n• 조절 가능한 범위와 해상도, 격자가 있는 축\n• 자동 회전과 움직이는 시간 t\n• 컨트롤러 지원: L/R 프리셋, A 그리기 모드, B 색상"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "dpad r",
+      "wait 0.3",
+      "dpad r",
+      "wait 0.3",
+      "dpad r",
+      "wait 2.5"
+    ],
+    [
+      "dpad l",
+      "wait 0.3",
+      "dpad a",
+      "wait 0.3",
+      "dpad a",
+      "wait 0.3",
+      "dpad b",
+      "wait 0.3",
+      "dpad b",
+      "wait 2.5"
+    ],
+    [
+      "dark 1",
+      "wait 2"
+    ]
+  ]
+}

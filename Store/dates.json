@@ -1,0 +1,1907 @@
+{
+  "aichat": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "amsconfig": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "automation": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "bebas-neue": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "2.000",
+    "history": [
+      {
+        "version": "2.000",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "benchmark": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "breathe": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "budget": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "caveat": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "2.000",
+    "history": [
+      {
+        "version": "2.000",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "cheats": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "colorpicker": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.airhockey": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.asteroids": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.balloons": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.birthdays": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.blocks": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.bmi": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.bowling": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.breakout": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.capitals": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.checkers": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.colorconv": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.connect4": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.datecalc": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.dice": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.examcount": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.fifteen": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.fishing": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.flappy": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.froggy": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.fuel": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.g2048": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.hangman": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.hashtool": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.interval": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.invaders": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.jsonfmt": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.jumper": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.kelime": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.lavalamp": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.life": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.lightsout": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.loancalc": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.mandelbrot": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.mastermind": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.mathrace": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.maze3d": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.mazeeater": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.memory": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.meteor": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.minigolf": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.missile": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.mood": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.moon": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.multiply": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.noise": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.nonogram": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.palette": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.percent": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.pinball": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.pixelart": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.pong": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.primes": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.reading": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.reversi": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.rhythm": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.roman": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.shopping": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.sleep": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.snake": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.sokoban": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.spirograph": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.splitbill": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.stack": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.sudoku": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.tally": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.tanks": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.texttools": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.aurora": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.forest": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.midnightneon": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.ocean": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.paper": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.retroterminal": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.sakura": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.theme.sunset": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.tictactoe": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.tipcalc": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.todo": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.tonegen": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.towerdefense": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.turtle": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.water": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.1",
+    "history": [
+      {
+        "version": "1.1",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.watersort": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.whack": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.wheel": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.worldclock": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "com.sonerx7.xylophone": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "contacts": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "countdown": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "crashlogs": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "currency": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "dictionary": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "drums": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "exefspatches": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "finance": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "fira-code": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "5.002",
+    "history": [
+      {
+        "version": "5.002",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "flashcards": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "fontbook": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "ftp": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "gameinfo": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "gamepad": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "globe": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "graph": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "graph3d": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "habits": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "homebrew": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "iptv": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "journal": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "kanban": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "lexend": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.007",
+    "history": [
+      {
+        "version": "1.007",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "lora": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "3.008",
+    "history": [
+      {
+        "version": "3.008",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "maps": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "merriweather": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "2.100",
+    "history": [
+      {
+        "version": "2.100",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "metronome": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "minesweeper": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "modeler": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "modfinder": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "modmanager": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "morse": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "network": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "news": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "noto-sans-jp": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "2.004",
+    "history": [
+      {
+        "version": "2.004",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "noto-sans-kr": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "2.004",
+    "history": [
+      {
+        "version": "2.004",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "noto-sans-sc": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "2.004",
+    "history": [
+      {
+        "version": "2.004",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "nunito": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "3.602",
+    "history": [
+      {
+        "version": "3.602",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "overlays": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "paint": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "passgen": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "pcgames": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "periodic": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "piano": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "pixelrun": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "pomodoro": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "poppins": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "4.004",
+    "history": [
+      {
+        "version": "4.004",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "qrcode": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "racer": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "radio": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "retro": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "sample:audio-py": {
+    "added": "2026-10-29"
+  },
+  "sample:beatbox": {
+    "added": "2026-10-29"
+  },
+  "sample:dice": {
+    "added": "2026-10-29"
+  },
+  "sample:effects": {
+    "added": "2026-10-29"
+  },
+  "sample:gestures": {
+    "added": "2026-10-29"
+  },
+  "sample:hello": {
+    "added": "2026-10-29"
+  },
+  "sample:life": {
+    "added": "2026-10-29"
+  },
+  "sample:particles": {
+    "added": "2026-10-29"
+  },
+  "sample:physics": {
+    "added": "2026-10-29"
+  },
+  "sample:platformer": {
+    "added": "2026-10-29"
+  },
+  "sample:pong": {
+    "added": "2026-10-29"
+  },
+  "sample:scene3d": {
+    "added": "2026-10-29"
+  },
+  "sample:shapes-js": {
+    "added": "2026-10-29"
+  },
+  "sample:snake": {
+    "added": "2026-10-29"
+  },
+  "sample:stopwatch": {
+    "added": "2026-10-29"
+  },
+  "sample:synth": {
+    "added": "2026-10-29"
+  },
+  "sample:terrain": {
+    "added": "2026-10-29"
+  },
+  "sample:tipcalc": {
+    "added": "2026-10-29"
+  },
+  "sample:ui-gallery": {
+    "added": "2026-10-29"
+  },
+  "savebackup": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "sequencer": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "sheets": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "slides": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "solar": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "source-serif": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "4.004",
+    "history": [
+      {
+        "version": "4.004",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "spacearena": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "stickies": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "sysclk": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "sysinfo": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "sysmodules": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "techdemo": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "tube": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "turkceyama": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "typing": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "unitconv": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "viewer3d": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "weather": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "writer": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  },
+  "yamanx": {
+    "added": "2026-10-29",
+    "updated": "2026-10-29",
+    "version": "1.0",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-10-29"
+      }
+    ]
+  }
+}

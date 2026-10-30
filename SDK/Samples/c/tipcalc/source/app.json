@@ -1,0 +1,35 @@
+{
+  "id": "com.sonerx7.sample.tipcalc",
+  "name": {
+    "en": "Tip Splitter (C)",
+    "tr": "Bahşiş Bölüşücü (C)",
+    "de": "Trinkgeld-Teiler (C)",
+    "fr": "Partage de pourboire (C)",
+    "es": "Divisor de propinas (C)",
+    "ja": "チップ割り勘 (C)",
+    "zh": "小费分摊（C）",
+    "ko": "팁 나누기(C)"
+  },
+  "description": {
+    "en": "Tip, total and each person's share of a bill, with rounding and sharing: C sample",
+    "tr": "Hesabın bahşişi, toplamı ve kişi başı payı; yuvarlama ve paylaşma ile: C örneği",
+    "de": "Trinkgeld, Summe und Anteil pro Person, mit Aufrunden und Teilen: C-Beispiel",
+    "fr": "Pourboire, total et part de chacun, avec arrondi et partage : exemple C",
+    "es": "Propina, total y parte de cada persona, con redondeo y compartir: ejemplo en C"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "runtime": "c",
+  "main": "main.c",
+  "minSdk": "1.5",
+  "window": {
+    "width": 520,
+    "height": 410,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": []
+}

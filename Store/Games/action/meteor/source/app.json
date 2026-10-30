@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.meteor",
+  "name": {
+    "en": "Meteor Shower",
+    "tr": "Meteor Yağmuru",
+    "de": "Meteoritenschauer",
+    "fr": "Pluie de météores",
+    "es": "Lluvia de meteoritos",
+    "ja": "流れ星よけ",
+    "zh": "流星雨",
+    "ko": "유성우"
+  },
+  "description": {
+    "en": "Dodge a storm of falling meteors that keeps getting faster. Collect stars, score near misses and grab shields, slow motion and magnets.",
+    "tr": "Gittikçe hızlanan meteor yağmurundan kaç. Yıldız topla, kıl payı kaçışlarla puan al; kalkan, ağır çekim ve mıknatısları kap.",
+    "de": "Weiche einem Sturm fallender Meteoriten aus, der immer schneller wird. Sammle Sterne, punkte mit knappen Ausweichmanövern und schnapp dir Schilde, Zeitlupe und Magneten.",
+    "fr": "Esquivez une pluie de météores qui accélère sans cesse. Ramassez des étoiles, marquez des points en les frôlant et attrapez boucliers, ralentis et aimants.",
+    "es": "Esquiva una tormenta de meteoritos que cae cada vez más rápido. Recoge estrellas, suma puntos al rozarlos y consigue escudos, cámara lenta e imanes."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 600,
+    "minWidth": 480,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

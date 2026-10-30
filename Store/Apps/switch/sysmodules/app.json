@@ -1,0 +1,25 @@
+{
+  "id": "sysmodules",
+  "name": {
+    "en": "System Modules",
+    "tr": "Sistem Modülleri",
+    "de": "Systemmodule",
+    "fr": "Modules système",
+    "es": "Módulos del sistema",
+    "ko": "시스템 모듈"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 820,
+    "height": 600,
+    "minWidth": 420,
+    "minHeight": 380,
+    "resizable": true
+  }
+}

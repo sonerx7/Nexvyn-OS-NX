@@ -1,0 +1,33 @@
+{
+  "id": "breathe",
+  "name": {
+    "en": "Breathe",
+    "tr": "Nefes",
+    "de": "Atmen",
+    "fr": "Respirer",
+    "es": "Respira",
+    "ja": "呼吸",
+    "zh": "呼吸",
+    "ko": "호흡"
+  },
+  "description": {
+    "en": "Guided breathing with box, 4-7-8 and coherent patterns, soft cues and session history.",
+    "tr": "Kutu, 4-7-8 ve uyumlu nefes kalıplarıyla rehberli nefes egzersizi; yumuşak uyarılar ve oturum geçmişi.",
+    "de": "Geführtes Atmen mit Box-, 4-7-8- und Kohärenzmuster, sanften Hinweisen und Sitzungsverlauf.",
+    "fr": "Respiration guidée avec les rythmes carré, 4-7-8 et cohérence cardiaque, des signaux doux et l’historique des séances.",
+    "es": "Respiración guiada con patrones de caja, 4-7-8 y coherente, señales suaves e historial de sesiones."
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 520,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": []
+}

@@ -1,0 +1,17 @@
+{
+  "coins": "{0} / {1}",
+  "time": "Time {0}",
+  "best": "Best {0}",
+  "hint": "Move: stick / arrows   Jump: A / Space   Drop through a plank: down + jump",
+  "all_coins": "All coins! Run to the flag",
+  "coins_left": "{0} coins left",
+  "clear": "Level clear!",
+  "result": "Time {0}   Falls {1}",
+  "new_record": "New record!",
+  "again": "Play again",
+  "menu_title": "Platformer",
+  "restart": "Restart",
+  "debug": "Show colliders (debug)",
+  "reset_record": "Reset best time",
+  "record_reset": "Best time cleared"
+}

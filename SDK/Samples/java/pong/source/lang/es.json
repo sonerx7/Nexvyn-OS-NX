@@ -1,0 +1,11 @@
+{
+  "game": "Juego",
+  "serve": "Saque",
+  "paused": "En pausa",
+  "you_win": "¡Has ganado!",
+  "you_lose": "Gana la consola",
+  "hint": "A, Intro o un toque para sacar · stick, cruceta, flechas o arrastrar para moverte",
+  "wins": "Partidas ganadas: {0}",
+  "new_game": "Nueva partida",
+  "reset_wins": "Reiniciar victorias"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "modeler",
+  "name": {
+    "en": "3D Modeler",
+    "tr": "3D Modelleme",
+    "de": "3D-Modellierer",
+    "fr": "Modeleur 3D",
+    "es": "Modelador 3D",
+    "ko": "3D 모델러"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1120,
+    "height": 620,
+    "minWidth": 720,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "fileTypes": [
+    ".nxv3d"
+  ],
+  "description": {
+    "en": "Model low-poly objects with primitives, edit mode, OBJ/STL import and export",
+    "tr": "İlkel şekiller, düzenleme modu ve OBJ/STL içe/dışa aktarma ile düşük poligonlu modeller yapın",
+    "de": "Modelliere Low-Poly-Objekte mit Grundkörpern, Bearbeitungsmodus sowie OBJ/STL-Import und -Export",
+    "fr": "Modélisez des objets low-poly avec des primitives, un mode édition, l’import et l’export OBJ/STL",
+    "es": "Modela objetos low-poly con primitivas, modo de edición e importación y exportación OBJ/STL"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "subtitle": {
+    "en": "Build good habits one day at a time",
+    "tr": "İyi alışkanlıkları gün gün kazan",
+    "de": "Gute Gewohnheiten, Tag für Tag",
+    "fr": "De bonnes habitudes, jour après jour",
+    "es": "Crea buenos hábitos día a día",
+    "ja": "一日ずつ良い習慣を身につけよう",
+    "zh": "一天一天养成好习惯",
+    "ko": "하루하루 좋은 습관을 만드세요"
+  },
+  "description": {
+    "en": "Habits helps you turn small daily actions into lasting routines. Add the habits you want to keep, give each a colour and an icon, and check them off every day in a clear weekly grid. Watch your streaks grow, browse each month on a calendar and see how you are doing in the statistics, with completion rates, perfect days and a 12-week heatmap. A gentle daily reminder can nudge you when you need it.\n\n• Week view to check off any habit with one tap\n• Month calendar per habit or for all habits together\n• Current and best streaks, perfect days and completion rates\n• 12-week heatmap and a 30-day chart\n• Colours, icons and an optional daily reminder per habit\n• Light and dark mode; arrows and Enter work too",
+    "tr": "Alışkanlıklar, küçük günlük adımları kalıcı rutinlere dönüştürmene yardım eder. Sürdürmek istediğin alışkanlıkları ekle, her birine bir renk ve simge ver, net bir haftalık tabloda her gün işaretle. Serilerinin büyüyüşünü izle, her ayı takvimde gör, istatistiklerde tamamlama oranlarına, kusursuz günlere ve 12 haftalık ısı haritasına bak. İstersen günlük bir hatırlatma seni nazikçe dürter.\n\n• Her alışkanlığı tek dokunuşla işaretleyebileceğin haftalık görünüm\n• Tek bir alışkanlık ya da hepsi için aylık takvim\n• Güncel ve en uzun seri, kusursuz günler ve tamamlama oranları\n• 12 haftalık ısı haritası ve 30 günlük grafik\n• Alışkanlık başına renk, simge ve isteğe bağlı günlük hatırlatma\n• Açık ve karanlık mod; oklar ve Enter da çalışır",
+    "de": "Gewohnheiten hilft dir, aus kleinen täglichen Schritten feste Routinen zu machen. Leg die Gewohnheiten an, die du pflegen willst, gib jeder eine Farbe und ein Symbol und hak sie jeden Tag in einer übersichtlichen Wochentabelle ab. Sieh deine Serien wachsen, blättere durch jeden Monat im Kalender und verfolge deinen Fortschritt in der Statistik mit Erfüllungsquoten, perfekten Tagen und einer 12-Wochen-Heatmap. Eine sanfte tägliche Erinnerung gibt dir bei Bedarf einen Schubs.\n\n• Wochenansicht zum Abhaken mit einem Tipp\n• Monatskalender pro Gewohnheit oder für alle zusammen\n• Aktuelle und beste Serie, perfekte Tage und Erfüllungsquoten\n• 12-Wochen-Heatmap und 30-Tage-Diagramm\n• Farben, Symbole und optionale tägliche Erinnerung pro Gewohnheit\n• Heller und dunkler Modus; auch mit Pfeiltasten und Enter",
+    "fr": "Habitudes vous aide à transformer de petits gestes quotidiens en routines durables. Ajoutez les habitudes à tenir, donnez à chacune une couleur et une icône, et cochez-les chaque jour dans un tableau hebdomadaire clair. Regardez vos séries grandir, parcourez chaque mois dans un calendrier et suivez vos progrès dans les statistiques : taux de réussite, jours parfaits et carte de chaleur sur 12 semaines. Un rappel quotidien discret peut vous relancer au besoin.\n\n• Vue semaine pour cocher une habitude d’un geste\n• Calendrier mensuel par habitude ou pour toutes\n• Série en cours, meilleure série, jours parfaits et taux de réussite\n• Carte de chaleur sur 12 semaines et graphique sur 30 jours\n• Couleurs, icônes et rappel quotidien facultatif par habitude\n• Mode clair et mode sombre ; flèches et Entrée fonctionnent aussi",
+    "es": "Hábitos te ayuda a convertir pequeños gestos diarios en rutinas duraderas. Añade los hábitos que quieres mantener, dale a cada uno un color y un icono y márcalos cada día en una tabla semanal clara. Mira cómo crecen tus rachas, recorre cada mes en un calendario y sigue tu progreso en las estadísticas, con porcentajes de cumplimiento, días perfectos y un mapa de calor de 12 semanas. Un suave recordatorio diario te avisa cuando lo necesites.\n\n• Vista semanal para marcar cualquier hábito con un toque\n• Calendario mensual por hábito o de todos juntos\n• Racha actual y mejor racha, días perfectos y cumplimiento\n• Mapa de calor de 12 semanas y gráfico de 30 días\n• Colores, iconos y recordatorio diario opcional por hábito\n• Modo claro y oscuro; también con flechas e Intro",
+    "ja": "習慣は、毎日の小さな行動を長続きする日課に変える手助けをします。続けたい習慣を追加し、それぞれに色とアイコンを付け、わかりやすい週間グリッドで毎日チェックしましょう。連続記録が伸びていく様子を見守り、月ごとのカレンダーを眺め、達成率、パーフェクトな日、12 週間のヒートマップで調子を確認できます。必要なときには、毎日のやさしいリマインダーが背中を押してくれます。\n\n• ワンタップで任意の習慣をチェックできる週表示\n• 習慣ごと、またはすべての習慣をまとめた月のカレンダー\n• 現在と最長の連続記録、パーフェクトな日、達成率\n• 12 週間のヒートマップと 30 日間のグラフ\n• 習慣ごとの色、アイコン、毎日のリマインダー (任意)\n• ライトモードとダークモード。矢印キーと Enter でも操作可能",
+    "zh": "习惯帮助你把每天的小行动变成持久的日常。添加你想坚持的习惯，为每个习惯设置颜色和图标，然后每天在清晰的周视图中打卡。看着你的连续记录不断增长，在日历上浏览每个月，并在统计中查看完成率、完美天数和 12 周热力图，了解自己的进展。需要时，温和的每日提醒会推你一把。\n\n• 周视图，一键为任意习惯打卡\n• 单个习惯或所有习惯的月历\n• 当前和最长连续记录、完美天数和完成率\n• 12 周热力图和 30 天图表\n• 每个习惯可设置颜色、图标和可选的每日提醒\n• 浅色和深色模式；方向键和 Enter 同样可用",
+    "ko": "습관은 작은 일상 행동을 오래가는 루틴으로 바꾸도록 도와줍니다. 지키고 싶은 습관을 추가하고, 각각 색상과 아이콘을 정하고, 명확한 주간 격자에서 매일 체크하세요. 연속 기록이 늘어나는 것을 지켜보고, 캘린더에서 달마다 살펴보고, 달성률, 완벽한 날, 12주 히트맵으로 통계를 확인하세요. 필요할 때 부드러운 매일 알림이 상기시켜 줍니다.\n\n• 한 번의 탭으로 습관을 체크하는 주간 보기\n• 습관별 또는 모든 습관을 함께 보는 월간 캘린더\n• 현재 및 최고 연속 기록, 완벽한 날, 달성률\n• 12주 히트맵과 30일 차트\n• 습관별 색상, 아이콘, 선택적 매일 알림\n• 라이트 및 다크 모드, 화살표와 Enter도 사용 가능"
+  },
+  "shots": [
+    ["wait 2",
+     "key n", "wait 1", "wclick 0.5 0.2603", "text Drink water", "wclick 0.2372 0.3724", "key enter", "wait 1",
+     "key n", "wait 1", "wclick 0.5 0.2603", "text Read 20 minutes", "wclick 0.2808 0.3724", "key enter", "wait 1",
+     "key n", "wait 1", "wclick 0.5 0.2603", "text Morning walk", "wclick 0.3244 0.3724", "key enter", "wait 1",
+     "key n", "wait 1", "wclick 0.5 0.2603", "text Meditate", "wclick 0.3679 0.3724", "key enter", "wait 1",
+     "key down", "key enter", "key left", "key enter", "key left", "key enter",
+     "key down", "key enter", "key right", "key enter", "key right", "key enter",
+     "key down", "key enter", "key left", "key enter",
+     "key down", "key enter", "key escape", "wait 2"],
+    ["key tab", "wait 1.5"],
+    ["key tab", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

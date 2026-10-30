@@ -1,0 +1,26 @@
+{
+  "id": "com.sonerx7.theme.paper",
+  "name": {
+    "en": "Paper",
+    "tr": "Kâğıt",
+    "de": "Papier",
+    "fr": "Papier",
+    "es": "Papel"
+  },
+  "description": {
+    "en": "Calm printed shapes on warm paper: a minimal light look with opaque panels and a terracotta accent.",
+    "tr": "Sıcak tonlu kâğıt üzerinde sakin baskı şekilleri: opak panelli, kiremit vurgu renkli sade bir açık görünüm.",
+    "de": "Ruhige gedruckte Formen auf warmem Papier: ein schlichtes helles Aussehen mit deckenden Leisten und Terrakotta-Akzent.",
+    "fr": "Des formes imprimées sur un papier chaleureux : un style clair et épuré, panneaux opaques et accent terre cuite.",
+    "es": "Formas impresas serenas sobre papel cálido: un aspecto claro y sobrio con paneles opacos y acento terracota."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "light",
+  "accent": "#C8553D",
+  "wallpaper": "wallpaper.jpg",
+  "settings": {
+    "appearance.reduceTransparency": true,
+    "dock.magnify": false
+  }
+}

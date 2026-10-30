@@ -1,0 +1,37 @@
+{
+  "id": "helloc",
+  "name": {
+    "en": "Hello C",
+    "tr": "Merhaba C",
+    "de": "Hallo C",
+    "fr": "Hello C",
+    "es": "Hola C",
+    "ja": "Hello C",
+    "zh": "Hello C",
+    "ko": "Hello C"
+  },
+  "description": {
+    "en": "Counter, bouncing balls and live JSON: C compiled on the console",
+    "tr": "Sayaç, zıplayan toplar ve canlı JSON: konsolda derlenen C",
+    "de": "Zähler, springende Bälle und Live-JSON: C, auf der Konsole kompiliert",
+    "fr": "Compteur, balles rebondissantes et JSON en direct : du C compilé sur la console",
+    "es": "Contador, pelotas que rebotan y JSON en vivo: C compilado en la consola"
+  },
+  "category": "developer",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "runtime": "c",
+  "main": "main.c",
+  "minSdk": "1.5",
+  "permissions": [
+    "network"
+  ],
+  "window": {
+    "width": 640,
+    "height": 520,
+    "resizable": false
+  },
+  "gamepad": false
+}

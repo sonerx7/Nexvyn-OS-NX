@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Drop discs and line up four in a row",
+    "tr": "Pulları bırak, dördünü yan yana getir",
+    "de": "Lass Steine fallen, bilde eine Viererreihe",
+    "fr": "Lâchez vos jetons et alignez-en quatre",
+    "es": "Suelta fichas y alinea cuatro seguidas",
+    "ja": "円盤を落として 4 つ並べよう",
+    "zh": "投下棋子，连成四子",
+    "ko": "원판을 떨어뜨려 네 개를 한 줄로"
+  },
+  "description": {
+    "en": "Take turns dropping discs into the grid and be the first to line up four in a row: across, down or diagonally. The computer opponent comes in three levels, from a relaxed easy game to a hard one that thinks many moves ahead, or you can play a friend on the same console. Discs fall into place with a bouncy drop animation, and hints and undo are always at hand.\n\n• Three computer levels or two players\n• Choose to go first or second\n• Hints, undo and statistics\n• Tap a column, use the D-pad or press 1–7\n• A bouncy drop animation",
+    "tr": "Sırayla pulları ızgaraya bırak ve dört pulu yatay, dikey ya da çapraz olarak ilk sıralayan sen ol. Bilgisayar rakibin üç seviyesi var: rahat bir kolay oyundan birçok hamle sonrasını düşünen zor seviyeye kadar. İstersen aynı konsolda bir arkadaşınla da oynayabilirsin. Pullar zıplayarak yerine düşer; ipucu ve geri alma her zaman elinin altında.\n\n• Üç bilgisayar seviyesi ya da iki oyuncu\n• İlk ya da ikinci başlamayı seç\n• İpucu, geri alma ve istatistikler\n• Sütuna dokun, yön tuşlarını kullan ya da 1–7'ye bas\n• Zıplayarak düşen pullar",
+    "de": "Lasst abwechselnd Steine ins Gitter fallen: Wer zuerst vier in einer Reihe hat, waagerecht, senkrecht oder diagonal, gewinnt. Den Computergegner gibt es in drei Stufen, vom entspannten leichten Spiel bis zum schweren, das viele Züge vorausdenkt, oder du spielst gegen einen Freund an derselben Konsole. Die Steine fallen mit einer federnden Animation an ihren Platz, und Tipps sowie Rückgängig sind immer griffbereit.\n\n• Drei Computerstufen oder zwei Spieler\n• Beginne als Erster oder Zweiter\n• Tipps, Rückgängig und Statistik\n• Spalte antippen, Steuerkreuz oder Tasten 1–7\n• Federnde Fallanimation",
+    "fr": "Lâchez vos jetons à tour de rôle dans la grille et soyez le premier à en aligner quatre : à l’horizontale, à la verticale ou en diagonale. L’ordinateur propose trois niveaux, d’une partie détendue en facile à un adversaire difficile qui anticipe de nombreux coups, ou vous pouvez affronter un ami sur la même console. Les jetons tombent avec une animation rebondissante, et indices comme annulation sont toujours à portée de main.\n\n• Trois niveaux d’ordinateur ou deux joueurs\n• Commencez en premier ou en second\n• Indices, annulation et statistiques\n• Touchez une colonne, utilisez la croix ou les touches 1 à 7\n• Une animation de chute rebondissante",
+    "es": "Suelta fichas por turnos en la cuadrícula y sé el primero en alinear cuatro: en horizontal, vertical o diagonal. La computadora tiene tres niveles, desde una partida tranquila en fácil hasta un rival difícil que piensa muchas jugadas por delante, o puedes jugar con un amigo en la misma consola. Las fichas caen con una animación con rebote, y las pistas y deshacer siempre están a mano.\n\n• Tres niveles de dificultad o dos jugadores\n• Elige empezar primero o segundo\n• Pistas, deshacer y estadísticas\n• Toca una columna, usa la cruceta o pulsa 1–7\n• Animación de caída con rebote",
+    "ja": "交互に円盤をグリッドに落とし、横、縦、斜めのいずれかに先に 4 つ並べた方が勝ちです。コンピューターの相手は、気楽なかんたんから、何手も先を読むむずかしいまで 3 段階。同じ本体で友だちと対戦することもできます。円盤は弾むようなアニメーションで落ち、ヒントと取り消しはいつでも使えます。\n\n• 3 段階のコンピューター、または 2 人対戦\n• 先手か後手を選択\n• ヒント、取り消し、統計\n• 列をタップ、十字ボタン、または 1–7 キー\n• 弾むような落下アニメーション",
+    "zh": "轮流把棋子投入网格，率先在横向、纵向或斜向连成四子者获胜。电脑对手有三种难度，从轻松的简单难度到能预判多步的困难难度，你也可以在同一台主机上与朋友对战。棋子会带着弹跳动画落到位，提示和撤销随时可用。\n\n• 三种电脑难度或双人对战\n• 选择先手或后手\n• 提示、撤销和统计\n• 轻点一列、使用十字键或按 1–7\n• 弹跳的落子动画",
+    "ko": "번갈아 가며 격자에 원판을 떨어뜨리고 가로, 세로, 대각선으로 먼저 네 개를 한 줄로 만드세요. 컴퓨터 상대는 느긋한 쉬움부터 여러 수 앞을 내다보는 어려움까지 3단계가 있으며, 같은 콘솔에서 친구와 대결할 수도 있습니다. 원판은 통통 튀는 애니메이션과 함께 자리를 잡고, 힌트와 무르기를 언제든 쓸 수 있습니다.\n\n• 컴퓨터 3단계 또는 2인 플레이\n• 선공 또는 후공 선택\n• 힌트, 무르기, 통계\n• 열 탭, 방향 버튼 또는 1–7 누르기\n• 통통 튀는 떨어뜨리기 애니메이션"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key 4",
+      "wait 2.5"
+    ],
+    [
+      "key 4",
+      "wait 2.5",
+      "key 3",
+      "wait 2.5"
+    ],
+    [
+      "dark 1",
+      "key h",
+      "wait 2"
+    ]
+  ]
+}

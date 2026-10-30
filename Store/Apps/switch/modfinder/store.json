@@ -1,0 +1,35 @@
+{
+  "subtitle": {
+    "en": "GameBanana mods for the games you own",
+    "tr": "Sahip olduğun oyunlar için GameBanana modları",
+    "de": "GameBanana-Mods für deine Spiele",
+    "fr": "Les mods GameBanana de vos jeux",
+    "es": "Mods de GameBanana para tus juegos",
+    "ja": "持っているゲームの GameBanana の Mod",
+    "zh": "为你拥有的游戏查找 GameBanana 模组",
+    "ko": "보유한 게임의 GameBanana 모드"
+  },
+  "description": {
+    "en": "Find mods for the games installed on your console without touching a computer. Pick a game and Mod Finder looks it up on GameBanana, then lists its mods with pictures, authors, views and downloads. Sort by featured, newest or recently updated, search by name, and open a mod to see its files and licence. A downloaded .zip goes straight to Mod Manager, which checks it and installs it for you.\n\n• Your installed games, matched to GameBanana automatically\n• Change the match when a game has several entries\n• Featured, newest and updated sorting, plus search\n• Mod pages with pictures, files and licence details\n• Download & install in one step through Mod Manager\n• Credits every author and links to the mod's page",
+    "tr": "Konsolunda yüklü oyunlar için bilgisayara dokunmadan mod bul. Bir oyun seç; Mod Bulucu onu GameBanana'da arar, modlarını resimleri, yapımcıları, görüntülenme ve indirme sayılarıyla listeler. Öne çıkanlara, en yenilere ya da son güncellenenlere göre sırala, ada göre ara, bir modu açıp dosyalarını ve lisansını gör. İndirilen .zip doğrudan Mod Yöneticisi'ne gider; o da denetleyip senin için kurar.\n\n• Yüklü oyunların GameBanana ile otomatik eşleşir\n• Oyunun birden çok kaydı varsa eşleşmeyi değiştir\n• Öne çıkan, en yeni ve güncellenen sıralaması, arama\n• Resimli, dosyalı ve lisans bilgili mod sayfaları\n• Mod Yöneticisi ile tek adımda indir ve kur\n• Her yapımcıya hakkını verir, modun sayfasına bağlantı sunar",
+    "de": "Finde Mods für die auf deiner Konsole installierten Spiele, ganz ohne PC. Wähle ein Spiel, der Mod-Finder sucht es auf GameBanana und listet die Mods mit Bildern, Autoren, Aufrufen und Downloads. Sortiere nach empfohlen, neu oder zuletzt aktualisiert, suche nach Namen und öffne einen Mod, um Dateien und Lizenz zu sehen. Ein geladenes .zip geht direkt an den Mod-Manager, der es prüft und installiert.\n\n• Deine installierten Spiele, automatisch mit GameBanana verknüpft\n• Zuordnung ändern, wenn ein Spiel mehrere Einträge hat\n• Sortierung nach empfohlen, neu und aktualisiert, mit Suche\n• Mod-Seiten mit Bildern, Dateien und Lizenzangaben\n• Herunterladen und installieren in einem Schritt\n• Nennt jeden Autor und verlinkt die Seite des Mods",
+    "fr": "Trouvez des mods pour les jeux installés sur votre console sans passer par un ordinateur. Choisissez un jeu : Chercheur de mods le retrouve sur GameBanana et liste ses mods avec images, auteurs, vues et téléchargements. Triez par mis en avant, nouveautés ou mises à jour, cherchez par nom et ouvrez un mod pour voir ses fichiers et sa licence. Le .zip téléchargé part directement dans Gestionnaire de mods, qui le vérifie et l’installe.\n\n• Vos jeux installés, associés automatiquement à GameBanana\n• Changez l’association quand un jeu a plusieurs fiches\n• Tri par mis en avant, nouveautés et mises à jour, recherche\n• Pages de mods avec images, fichiers et licence\n• Téléchargement et installation en une étape\n• Chaque auteur est crédité, avec un lien vers la page du mod",
+    "es": "Encuentra mods para los juegos instalados en tu consola sin usar un ordenador. Elige un juego y el Buscador de mods lo localiza en GameBanana y muestra sus mods con imágenes, autores, visitas y descargas. Ordena por destacados, más nuevos o actualizados, busca por nombre y abre un mod para ver sus archivos y su licencia. El .zip descargado pasa directamente al Gestor de mods, que lo revisa y lo instala.\n\n• Tus juegos instalados, emparejados con GameBanana automáticamente\n• Cambia el emparejamiento si un juego tiene varias fichas\n• Orden por destacados, nuevos y actualizados, con búsqueda\n• Páginas de mods con imágenes, archivos y licencia\n• Descarga e instala en un solo paso con el Gestor de mods\n• Da crédito a cada autor y enlaza a la página del mod",
+    "ja": "コンピューターに触れずに、本体にインストールされたゲームの Mod を見つけられます。ゲームを選ぶと Mod Finder が GameBanana で検索し、画像、作者、閲覧数、ダウンロード数とともに Mod を一覧表示します。注目、新着、最近更新で並べ替え、名前で検索し、Mod を開くとファイルとライセンスを確認できます。ダウンロードした .zip は Mod マネージャーに直接送られ、確認してインストールされます。\n\n• インストール済みのゲームを GameBanana と自動で照合\n• ゲームに複数の項目がある場合は照合を変更\n• 注目、新着、更新での並べ替えと検索\n• 画像、ファイル、ライセンスの詳細を載せた Mod のページ\n• Mod マネージャー経由でダウンロードとインストールをワンステップで\n• すべての作者をクレジットし、Mod のページにリンク",
+    "zh": "无需电脑即可为主机上安装的游戏查找模组。选择一款游戏，模组查找器会在 GameBanana 上查找它，并列出其模组，附带图片、作者、浏览量和下载量。按精选、最新或最近更新排序，按名称搜索，打开模组即可查看其文件和许可证。下载的 .zip 会直接交给模组管理器，由它为你检查并安装。\n\n• 你已安装的游戏会自动与 GameBanana 匹配\n• 当一款游戏有多个条目时可更改匹配\n• 精选、最新和最近更新排序，以及搜索\n• 带图片、文件和许可证详细信息的模组页面\n• 通过模组管理器一步下载并安装\n• 注明每位作者并链接到模组页面",
+    "ko": "컴퓨터 없이 콘솔에 설치된 게임의 모드를 찾으세요. 게임을 고르면 모드 찾기가 GameBanana에서 찾아 사진, 제작자, 조회수, 다운로드 수와 함께 모드를 나열합니다. 추천, 최신, 최근 업데이트순으로 정렬하고, 이름으로 검색하고, 모드를 열어 파일과 라이선스를 확인하세요. 다운로드한 .zip은 바로 모드 관리자로 전달되어 확인 후 설치됩니다.\n\n• 자동으로 GameBanana와 연결되는 설치된 게임\n• 게임에 항목이 여러 개일 때 연결 변경\n• 추천, 최신, 업데이트순 정렬과 검색\n• 사진, 파일, 라이선스 정보가 있는 모드 페이지\n• 모드 관리자를 통해 한 번에 다운로드 및 설치\n• 모든 제작자를 표기하고 모드 페이지로 연결"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.148 0.206",
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

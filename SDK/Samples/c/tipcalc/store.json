@@ -1,0 +1,34 @@
+{
+  "kind": "app",
+  "tags": [
+    "calculator",
+    "money",
+    "forms",
+    "share"
+  ],
+  "subtitle": {
+    "en": "Split a bill and its tip fairly",
+    "tr": "Hesabı ve bahşişi adilce bölüştür",
+    "de": "Rechnung und Trinkgeld fair teilen",
+    "fr": "Partagez l'addition et le pourboire",
+    "es": "Divide la cuenta y la propina",
+    "ja": "請求額とチップを公平に割り勘",
+    "zh": "公平分摊账单和小费",
+    "ko": "청구 금액과 팁을 공정하게 나누세요"
+  },
+  "description": {
+    "en": "Type the bill, pick a tip from 0 to 25 % or slide to any value up to 40 %, choose how many people pay and optionally round each share up to a whole number. The tip, the total and each person's share update as you type, a decimal comma works as well as a dot, and the result can be shared with any app.\n\nWhat it teaches in C: ui_textfield editing a char buffer in place with the numeric flag, strtod, ui_segmented with labels built in a loop, ui_slider, ui_toggle, ui_iconButton, settings-style rows with ui_group and ui_separator, store_* and sys_share with TR3.",
+    "tr": "Hesabı yaz, 0 ile %25 arasında bir bahşiş seç ya da %40'a kadar istediğin değere kaydır, kaç kişinin ödeyeceğini belirle ve istersen her payı tam sayıya yuvarla. Bahşiş, toplam ve kişi başı pay sen yazarken güncellenir; ondalık virgül de nokta gibi çalışır ve sonuç herhangi bir uygulamayla paylaşılabilir.\n\nC'de öğrettikleri: numeric bayrağıyla bir char tamponunu yerinde düzenleyen ui_textfield, strtod, etiketleri döngüde kurulan ui_segmented, ui_slider, ui_toggle, ui_iconButton, ui_group ve ui_separator ile ayar satırları, store_* ve TR3 ile sys_share.",
+    "de": "Gib die Rechnung ein, wähle ein Trinkgeld von 0 bis 25 % oder schiebe auf jeden Wert bis 40 %, lege fest, wie viele Personen zahlen, und runde auf Wunsch jeden Anteil auf. Trinkgeld, Summe und Anteil pro Person aktualisieren sich beim Tippen, ein Dezimalkomma funktioniert wie ein Punkt, und das Ergebnis lässt sich mit jeder App teilen.\n\nWas es in C zeigt: ui_textfield, das einen char-Puffer mit dem Flag numeric direkt bearbeitet, strtod, ui_segmented mit in einer Schleife gebauten Beschriftungen, ui_slider, ui_toggle, ui_iconButton, Einstellungszeilen mit ui_group und ui_separator, store_* und sys_share mit TR3.",
+    "fr": "Saisissez l'addition, choisissez un pourboire de 0 à 25 % ou glissez jusqu'à 40 %, indiquez combien de personnes paient et arrondissez chaque part si vous voulez. Le pourboire, le total et la part de chacun se mettent à jour pendant la saisie, la virgule décimale fonctionne comme le point et le résultat se partage avec n'importe quelle appli.\n\nCe qu'il enseigne en C : ui_textfield qui modifie un tampon char sur place avec l'option numeric, strtod, ui_segmented avec des libellés construits en boucle, ui_slider, ui_toggle, ui_iconButton, des lignes de réglages avec ui_group et ui_separator, store_* et sys_share avec TR3.",
+    "es": "Escribe la cuenta, elige una propina de 0 a 25 % o desliza hasta cualquier valor de 40 %, indica cuántas personas pagan y, si quieres, redondea cada parte. La propina, el total y la parte de cada uno se actualizan al escribir, la coma decimal funciona como el punto y el resultado se puede compartir con cualquier app.\n\nLo que enseña en C: ui_textfield que edita un búfer char en su sitio con la opción numeric, strtod, ui_segmented con etiquetas creadas en un bucle, ui_slider, ui_toggle, ui_iconButton, filas de ajustes con ui_group y ui_separator, store_* y sys_share con TR3.",
+    "ja": "請求額を入力し、チップを 0〜25 % から選ぶか、スライダーで 40 % までの任意の値にし、支払う人数を選び、必要なら各自の負担額を整数に切り上げます。チップ、合計、1 人あたりの負担額は入力と同時に更新され、小数点にはドットだけでなくカンマも使え、結果は任意のアプリと共有できます。\n\nC で学べること: numeric フラグ付きで char バッファをその場で編集する ui_textfield、strtod、ループで作ったラベルの ui_segmented、ui_slider、ui_toggle、ui_iconButton、ui_group と ui_separator による設定風の行、store_*、そして TR3 を使った sys_share。",
+    "zh": "输入账单金额，选择 0 到 25 % 的小费或滑动到最高 40 % 的任意值，选择付款人数，并可选择将每人的份额向上取整。小费、总额和每人份额会在输入时实时更新，小数点用逗号或点都可以，结果可以分享给任何应用。\n\n在 C 中学到的内容：使用 numeric 标志的 ui_textfield 就地编辑 char 缓冲区、strtod、在循环中构建标签的 ui_segmented、ui_slider、ui_toggle、ui_iconButton、用 ui_group 和 ui_separator 实现的设置风格行、store_* 以及带 TR3 的 sys_share。",
+    "ko": "청구 금액을 입력하고, 0부터 25 %까지 팁을 고르거나 슬라이더로 최대 40 %까지 정하고, 낼 사람 수를 선택하고, 선택적으로 1인당 금액을 정수로 올리세요. 입력하는 대로 팁, 합계, 1인당 금액이 업데이트되며, 소수점으로 쉼표와 점을 모두 쓸 수 있고, 결과를 어떤 앱과도 공유할 수 있습니다.\n\nC로 배우는 내용: numeric 플래그로 char 버퍼를 제자리에서 편집하는 ui_textfield, strtod, 반복문으로 레이블을 만드는 ui_segmented, ui_slider, ui_toggle, ui_iconButton, ui_group과 ui_separator로 만드는 설정 스타일 행, store_*, TR3과 함께 쓰는 sys_share."
+  },
+  "shots": [
+    ["wait 6", "wclick 0.6 0.08", "wait 0.25", "text 84.50", "key escape", "wait 1.5"],
+    ["wclick 0.796 0.202", "wait 0.25", "wclick 0.517 0.417", "wait 0.25", "wclick 0.517 0.417", "wait 0.25", "wclick 0.898 0.417", "wait 1"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

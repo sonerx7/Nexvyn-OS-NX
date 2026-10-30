@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Learn the times tables and earn stars",
+    "tr": "Çarpım tablosunu öğren, yıldız topla",
+    "de": "Das Einmaleins lernen und Sterne sammeln",
+    "fr": "Apprenez les tables, gagnez des étoiles",
+    "es": "Aprende las tablas y gana estrellas",
+    "ja": "九九を覚えて星を集めよう",
+    "zh": "学习乘法表并赢取星星",
+    "ko": "구구단을 배우고 별을 모으세요"
+  },
+  "description": {
+    "en": "Times Tables turns learning multiplication from 1 to 10 into a game. Start on the Learn screen, where you tap a row to reveal its answer, then take on short timed quizzes to earn up to three stars per level. There are twelve levels, one for each table plus Mixed 1–5 and Mixed 1–10, and each star opens the next one. Answer with four big buttons or type on the number pad, whichever suits you.\n\n• 12 levels, 10 questions each, 12 seconds per question\n• Multiple choice (keys 1–4) or Number Pad\n• Stars, streaks, sounds and confetti for a perfect score\n• Statistics show how well you know each number and what to practise\n• Big, colourful buttons for touch, controller cursor and keyboard\n• Light and dark mode",
+    "tr": "Çarpım Tablosu, 1'den 10'a çarpmayı öğrenmeyi bir oyuna dönüştürür. Önce Öğren ekranında bir satıra dokunup cevabını aç, sonra kısa ve süreli testlerle her seviyede üç yıldıza kadar kazan. Her tablo için bir seviye, ayrıca Karışık 1–5 ve Karışık 1–10 olmak üzere on iki seviye var; kazandığın yıldız bir sonrakinin kilidini açar. Dört büyük düğmeyle ya da tuş takımıyla, hangisi sana uyarsa öyle cevap ver.\n\n• 12 seviye, her biri 10 soru, soru başına 12 saniye\n• Çoktan Seçmeli (1–4 tuşları) ya da Tuş Takımı\n• Yıldızlar, seriler, sesler ve tam puanda konfeti\n• İstatistikler her sayıyı ne kadar bildiğini ve neye çalışman gerektiğini gösterir\n• Dokunma, kumanda imleci ve klavye için büyük, renkli düğmeler\n• Açık ve karanlık mod",
+    "de": "Einmaleins macht das Lernen der Malreihen von 1 bis 10 zum Spiel. Fang im Bereich Lernen an, wo du eine Zeile antippst, um das Ergebnis aufzudecken, und stell dich dann kurzen Quiz-Runden auf Zeit, um bis zu drei Sterne pro Level zu holen. Es gibt zwölf Level – eins pro Reihe plus Gemischt 1–5 und Gemischt 1–10 – und jeder Stern schaltet das nächste frei. Antworte mit vier großen Tasten oder tipp auf dem Ziffernfeld, ganz wie du magst.\n\n• 12 Level mit je 10 Fragen und 12 Sekunden pro Frage\n• Multiple Choice (Tasten 1–4) oder Ziffernfeld\n• Sterne, Serien, Sounds und Konfetti bei voller Punktzahl\n• Statistik zeigt, wie gut du jede Zahl kannst und was du üben solltest\n• Große, bunte Tasten für Touch, Controller-Zeiger und Tastatur\n• Heller und dunkler Modus",
+    "fr": "Tables de multiplication transforme l’apprentissage des tables de 1 à 10 en jeu. Commencez par l’écran Apprendre, où vous touchez une ligne pour en révéler le résultat, puis relevez de courts quiz chronométrés pour gagner jusqu’à trois étoiles par niveau. Il y a douze niveaux, un par table plus Mélange 1–5 et Mélange 1–10, et chaque étoile débloque le suivant. Répondez avec quatre grands boutons ou sur le pavé numérique, comme vous préférez.\n\n• 12 niveaux de 10 questions, 12 secondes par question\n• Choix multiple (touches 1–4) ou pavé numérique\n• Étoiles, séries, sons et confettis pour un score parfait\n• Les statistiques montrent votre maîtrise de chaque nombre et ce qu’il faut réviser\n• Grands boutons colorés pour le tactile, le curseur de la manette et le clavier\n• Mode clair et mode sombre",
+    "es": "Tablas de multiplicar convierte en un juego aprender a multiplicar del 1 al 10. Empieza en la pantalla Aprender, donde tocas una fila para ver su resultado, y luego afronta pruebas cortas con tiempo para ganar hasta tres estrellas por nivel. Hay doce niveles, uno por tabla más Mezcla 1–5 y Mezcla 1–10, y cada estrella desbloquea el siguiente. Responde con cuatro botones grandes o con el teclado numérico, como prefieras.\n\n• 12 niveles de 10 preguntas, 12 segundos por pregunta\n• Opción múltiple (teclas 1–4) o teclado numérico\n• Estrellas, rachas, sonidos y confeti con puntuación perfecta\n• Las estadísticas muestran cuánto dominas cada número y qué practicar\n• Botones grandes y coloridos para táctil, cursor del mando y teclado\n• Modo claro y oscuro",
+    "ja": "九九は、1〜10 のかけ算の学習をゲームにします。まず「覚える」画面で行をタップして答えを表示し、次に時間制限のある短いクイズに挑戦して、レベルごとに最大 3 つの星を獲得しましょう。レベルは 12 個あり、各段と「1–5 の段ミックス」「1–10 の段ミックス」で構成され、星を取ると次のレベルが開きます。4 つの大きなボタンで答えるか、数字パッドで入力するか、好きな方を選べます。\n\n• 12 レベル、各 10 問、1 問 12 秒\n• 選択式 (キー 1–4) または数字入力\n• 星、連続正解、サウンド、パーフェクト時の紙吹雪\n• 統計で各数の理解度と練習すべき段がわかる\n• タッチ、コントローラーのカーソル、キーボード向けの大きくカラフルなボタン\n• ライトモードとダークモード",
+    "zh": "乘法表把学习 1 到 10 的乘法变成了一场游戏。先在“学习”界面轻点某一行来显示答案，然后挑战简短的限时测验，每关最多获得三颗星。共有十二关：每个乘法表一关，外加混合 1–5 和混合 1–10，每获得一颗星就会解锁下一关。可以用四个大按钮作答，也可以用数字键盘输入，怎么顺手怎么来。\n\n• 12 关，每关 10 题，每题 12 秒\n• 选择题（1–4 键）或数字键盘\n• 星星、连对、音效以及满分时的彩纸\n• 统计显示你对每个数字的掌握程度以及需要练习什么\n• 适合触控、手柄光标和键盘的大号彩色按钮\n• 浅色和深色模式",
+    "ko": "구구단은 1단부터 10단까지 곱셈 배우기를 게임으로 바꿉니다. 줄을 탭하면 답이 보이는 배우기 화면에서 시작한 후, 짧은 시간제한 퀴즈에 도전하여 단계마다 별을 최대 세 개까지 모으세요. 각 단과 1–5단 섞기, 1–10단 섞기까지 12단계가 있으며, 별을 얻을 때마다 다음 단계가 열립니다. 네 개의 큰 버튼으로 답하거나 숫자 패드로 입력하는 등 편한 방법을 고르세요.\n\n• 12단계, 단계마다 10문제, 문제당 12초\n• 객관식(키 1–4) 또는 숫자 패드\n• 별, 연속 정답, 소리, 만점일 때 색종이\n• 숫자별로 얼마나 잘 아는지와 연습할 것을 보여 주는 통계\n• 터치, 컨트롤러 커서, 키보드를 위한 크고 알록달록한 버튼\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.141 0.252", "wait 1.5"],
+    ["key escape", "wait 1", "wclick 0.148 0.936", "wait 1", "key right", "key right", "key right", "key right", "key right", "key right", "key space", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

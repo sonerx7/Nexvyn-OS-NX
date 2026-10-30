@@ -1,0 +1,26 @@
+{
+  "id": "gamepad",
+  "name": {
+    "en": "Controller Test",
+    "tr": "Kontrolcü Testi",
+    "de": "Controller-Test",
+    "fr": "Test de manette",
+    "es": "Prueba del mando",
+    "ko": "컨트롤러 테스트"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "gamepad": true,
+  "window": {
+    "width": 820,
+    "height": 520,
+    "minWidth": 820,
+    "minHeight": 520,
+    "resizable": false
+  }
+}

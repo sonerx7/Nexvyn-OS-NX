@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Preview, inspect and install fonts",
+    "tr": "Yazı tiplerini önizle, incele ve yükle",
+    "de": "Schriften ansehen, prüfen, installieren",
+    "fr": "Prévisualisez et installez des polices",
+    "es": "Previsualiza, examina e instala fuentes",
+    "ja": "フォントのプレビュー、詳細確認、インストール",
+    "zh": "预览、查看和安装字体",
+    "ko": "글꼴을 미리 보고, 살펴보고, 설치하세요"
+  },
+  "description": {
+    "en": "Browse every font on your console in one place: the Nexvyn OS system fonts, the fonts you've installed and the Switch's own shared system fonts. Preview any font with your own sample text at any size, explore its full character repertoire glyph by glyph, and check its technical details. Installing a new .ttf or .otf takes a single step.\n\n• Collections for system, user and console fonts, with search\n• Editable sample text with presets and a size slider up to 160 pt\n• Repertoire grid with code point, decimal and UTF-8 details\n• Find a character by typing it or its code\n• Font info: family, style, glyph count, fixed width\n• Install or remove fonts, copy names and characters",
+    "tr": "Konsolundaki tüm yazı tiplerine tek yerden göz at: Nexvyn OS sistem yazı tipleri, kendi yüklediklerin ve Switch'in paylaşılan sistem yazı tipleri. İstediğin yazı tipini kendi örnek metninle, istediğin boyutta önizle, karakter dağarcığını glif glif incele ve teknik ayrıntılarına bak. Yeni bir .ttf ya da .otf yüklemek tek adım.\n\n• Sistem, kullanıcı ve konsol koleksiyonları, aramayla\n• Hazır seçenekli örnek metin ve 160 punto'ya kadar boyut kaydırıcısı\n• Kod noktası, ondalık ve UTF-8 bilgili karakter tablosu\n• Karakteri ya da kodunu yazarak bul\n• Bilgi: aile, stil, glif sayısı, sabit genişlik\n• Yazı tipi yükle ya da kaldır, adları ve karakterleri kopyala",
+    "de": "Durchstöbere alle Schriften deiner Konsole an einem Ort: die Systemschriften von Nexvyn OS, deine installierten Schriften und die gemeinsamen Systemschriften der Switch. Sieh dir jede Schrift mit eigenem Beispieltext in beliebiger Größe an, erkunde ihren Zeichenvorrat Glyphe für Glyphe und prüfe die technischen Details. Eine neue .ttf oder .otf ist mit einem Schritt installiert.\n\n• Sammlungen für System-, Benutzer- und Konsolenschriften, mit Suche\n• Eigener Beispieltext mit Vorlagen und Größenregler bis 160 pt\n• Zeichenraster mit Codepunkt, Dezimalwert und UTF-8\n• Zeichen per Eingabe oder Code finden\n• Infos: Familie, Stil, Glyphenzahl, feste Breite\n• Schriften installieren oder entfernen, Namen und Zeichen kopieren",
+    "fr": "Parcourez toutes les polices de votre console au même endroit : les polices système de Nexvyn OS, celles que vous avez installées et les polices système partagées de la Switch. Prévisualisez une police avec votre propre texte, à la taille voulue, explorez son répertoire glyphe par glyphe et consultez ses détails techniques. Installer un nouveau .ttf ou .otf se fait en une étape.\n\n• Collections système, utilisateur et console, avec recherche\n• Texte d’exemple modifiable, modèles et curseur de taille jusqu’à 160 pt\n• Grille des caractères avec point de code, décimal et UTF-8\n• Recherche d’un caractère par saisie ou par code\n• Infos : famille, style, nombre de glyphes, chasse fixe\n• Installation ou retrait de polices, copie des noms et caractères",
+    "es": "Explora todas las fuentes de tu consola en un solo lugar: las fuentes del sistema de Nexvyn OS, las que has instalado y las fuentes compartidas del sistema de la Switch. Previsualiza cualquier fuente con tu propio texto y al tamaño que quieras, recorre su repertorio glifo a glifo y consulta sus detalles técnicos. Instalar un .ttf o .otf nuevo es cuestión de un paso.\n\n• Colecciones del sistema, del usuario y de la consola, con búsqueda\n• Texto de muestra editable, plantillas y tamaño de hasta 160 pt\n• Cuadrícula de caracteres con punto de código, decimal y UTF-8\n• Busca un carácter escribiéndolo o con su código\n• Información: familia, estilo, número de glifos, ancho fijo\n• Instala o quita fuentes, copia nombres y caracteres",
+    "ja": "本体のすべてのフォントをひとつの場所で閲覧できます: Nexvyn OS のシステムフォント、インストールしたフォント、そして Switch 自身の共有システムフォント。任意のフォントを自分のサンプルテキストで任意のサイズでプレビューし、文字一覧をグリフごとに探り、技術的な詳細を確認できます。新しい .ttf や .otf のインストールはワンステップです。\n\n• 検索付きのシステム、ユーザー、本体のフォントのコレクション\n• プリセットと最大 160 pt のサイズスライダー付きの編集可能なサンプルテキスト\n• コードポイント、10 進数、UTF-8 の詳細付きの文字一覧グリッド\n• 文字そのものやそのコードを入力して文字を検索\n• フォント情報: ファミリー、スタイル、グリフ数、等幅\n• フォントのインストールと削除、名前と文字のコピー",
+    "zh": "在一处浏览主机上的所有字体：Nexvyn OS 系统字体、你安装的字体以及 Switch 自带的共享系统字体。用你自己的示例文字以任意大小预览任何字体，逐个字形浏览其完整字符集，并查看其技术细节。安装新的 .ttf 或 .otf 只需一步。\n\n• 系统、用户和主机字体的字体集，支持搜索\n• 可编辑的示例文字，带预设和最大 160 磅的大小滑块\n• 显示码位、十进制和 UTF-8 详细信息的字符集网格\n• 输入字符或其代码即可查找\n• 字体信息：字体系列、样式、字形数量、是否等宽\n• 安装或移除字体，复制名称和字符",
+    "ko": "Nexvyn OS 시스템 글꼴, 직접 설치한 글꼴, Switch 자체의 공유 시스템 글꼴까지 콘솔의 모든 글꼴을 한곳에서 둘러보세요. 원하는 샘플 텍스트로 어떤 크기로든 미리 보고, 전체 문자 목록을 글리프 하나하나 살펴보고, 기술적 세부 정보를 확인하세요. 새 .ttf나 .otf 설치는 한 단계면 됩니다.\n\n• 시스템, 사용자, 콘솔 글꼴 모음과 검색\n• 프리셋과 최대 160 pt 크기 슬라이더가 있는 편집 가능한 샘플 텍스트\n• 코드 포인트, 10진수, UTF-8 정보가 있는 문자 목록 격자\n• 문자나 코드를 입력하여 문자 찾기\n• 글꼴 정보: 패밀리, 스타일, 글리프 수, 고정폭\n• 글꼴 설치 또는 제거, 이름과 문자 복사"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.379 0.231",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.651 0.048",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.733 0.048",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.567 0.048",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

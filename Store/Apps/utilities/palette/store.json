@@ -1,0 +1,52 @@
+{
+  "subtitle": {
+    "en": "Color harmonies from a single base color",
+    "tr": "Tek renkten uyumlu renk paletleri",
+    "de": "Farbharmonien aus einer einzigen Farbe",
+    "fr": "Des harmonies à partir d’une couleur",
+    "es": "Armonías de color a partir de un tono",
+    "ja": "1 つのベースカラーから配色を生成",
+    "zh": "从一种基础色生成配色方案",
+    "ko": "기본 색상 하나로 만드는 색상 조화"
+  },
+  "description": {
+    "en": "Pick one base color on the hue wheel, with sliders or as a hex code, and get matching palettes instantly. Each harmony comes with a short explanation, big swatches and the hex values ready to copy. Keep the palettes you like as favorites and take them into your design tools.\n\n• Complementary, analogous, triadic, tetradic, split complementary, monochromatic, shades and tints\n• Hue wheel, hue/saturation/lightness sliders and hex input\n• Random color for inspiration\n• Tap any swatch to copy its hex code, or copy the whole palette as CSS variables\n• Up to 40 favorite palettes, removal with undo\n• Save as a GIMP palette file",
+    "tr": "Renk tekerleğinden, kaydırıcılarla ya da hex koduyla tek bir temel renk seç; uyumlu paletler anında hazır. Her uyumun kısa bir açıklaması, büyük renk örnekleri ve kopyalanmaya hazır hex değerleri var. Beğendiğin paletleri sık kullanılanlara ekle, tasarım araçlarına taşı.\n\n• Tamamlayıcı, analog, üçlü, dörtlü, bölünmüş tamamlayıcı, tek renkli, koyu ve açık tonlar\n• Renk tekerleği, ton/doygunluk/açıklık kaydırıcıları ve hex girişi\n• İlham için rastgele renk\n• Hex kodunu kopyalamak için bir renge dokun ya da tüm paleti CSS değişkenleri olarak kopyala\n• 40 sık kullanılan palete kadar, geri alınabilir silme\n• GIMP palet dosyası olarak kaydet",
+    "de": "Wähle eine Grundfarbe am Farbrad, mit Reglern oder als Hex-Code und erhalte sofort passende Paletten. Jede Harmonie kommt mit einer kurzen Erklärung, großen Farbfeldern und Hex-Werten zum Kopieren. Behalte deine Lieblingspaletten als Favoriten und nimm sie in deine Design-Tools mit.\n\n• Komplementär, analog, triadisch, tetradisch, geteilt komplementär, monochrom, Schattierungen und Aufhellungen\n• Farbrad, Regler für Farbton, Sättigung und Helligkeit sowie Hex-Eingabe\n• Zufallsfarbe zur Inspiration\n• Farbfeld antippen kopiert den Hex-Code, oder die ganze Palette als CSS-Variablen\n• Bis zu 40 Lieblingspaletten, Entfernen mit Rückgängig\n• Als GIMP-Palette speichern",
+    "fr": "Choisissez une couleur de base sur la roue chromatique, avec des curseurs ou en code hexadécimal, et obtenez aussitôt des palettes assorties. Chaque harmonie est accompagnée d’une courte explication, de grands échantillons et des codes hex prêts à copier. Gardez vos palettes préférées en favoris et emportez-les dans vos outils de design.\n\n• Complémentaire, analogue, triadique, tétradique, complémentaire divisée, monochrome, ombres et teintes\n• Roue chromatique, curseurs teinte/saturation/luminosité et saisie hex\n• Couleur aléatoire pour l’inspiration\n• Touchez un échantillon pour copier son code, ou copiez toute la palette en variables CSS\n• Jusqu’à 40 palettes favorites, suppression annulable\n• Enregistrement en palette GIMP",
+    "es": "Elige un color base en la rueda de color, con controles deslizantes o con su código hex, y obtén al instante paletas a juego. Cada armonía trae una breve explicación, muestras grandes y los valores hex listos para copiar. Guarda tus paletas favoritas y llévalas a tus herramientas de diseño.\n\n• Complementaria, análoga, triádica, tetrádica, complementaria dividida, monocromática, sombras y tintes\n• Rueda de color, controles de tono, saturación y luminosidad y entrada hex\n• Color aleatorio para inspirarte\n• Toca una muestra para copiar su código o copia toda la paleta como variables CSS\n• Hasta 40 paletas favoritas, borrado con deshacer\n• Guarda como paleta de GIMP",
+    "ja": "色相環、スライダー、または 16 進コードでベースカラーを 1 つ選ぶと、合う配色パレットがすぐに得られます。各配色には短い説明、大きな色見本、すぐにコピーできる 16 進値が付いています。気に入ったパレットはお気に入りに保存し、デザインツールで活用しましょう。\n\n• 補色、類似色、トライアド、テトラード、分裂補色、モノクロマティック、シェードとティント\n• 色相環、色相/彩度/明度のスライダー、16 進入力\n• インスピレーションのためのランダムな色\n• 色見本をタップして 16 進コードをコピー、またはパレット全体を CSS 変数としてコピー\n• 最大 40 個のお気に入りパレット、取り消し可能な削除\n• GIMP パレットファイルとして保存",
+    "zh": "在色相环上、用滑块或以十六进制代码选择一种基础色，立即获得与之相配的调色板。每种配色方案都附有简短的说明、大色块以及可直接复制的十六进制值。把喜欢的调色板保存为收藏，带到你的设计工具中使用。\n\n• 互补色、类似色、三角色、四角色、分裂互补色、单色、暗调和亮调\n• 色相环、色相/饱和度/亮度滑块和十六进制输入\n• 随机颜色带来灵感\n• 轻点任意色块即可复制其十六进制代码，或将整个调色板复制为 CSS 变量\n• 最多 40 个收藏的调色板，移除可撤销\n• 存储为 GIMP 调色板文件",
+    "ko": "색상환, 슬라이더 또는 16진수 코드로 기본 색상 하나를 고르면 어울리는 팔레트가 바로 만들어집니다. 각 조화에는 짧은 설명, 큰 색상 견본, 복사할 수 있는 16진수 값이 함께 제공됩니다. 마음에 드는 팔레트를 즐겨찾기에 보관하고 디자인 도구로 가져가세요.\n\n• 보색, 유사색, 3색 조화, 4색 조화, 분할 보색, 단색, 음영과 틴트\n• 색상환, 색상/채도/명도 슬라이더, 16진수 입력\n• 영감을 위한 무작위 색상\n• 견본을 탭하여 16진수 코드 복사, 또는 팔레트 전체를 CSS 변수로 복사\n• 최대 40개 즐겨찾기 팔레트, 실행 취소 가능한 제거\n• GIMP 팔레트 파일로 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.569 0.137",
+      "wait 0.6",
+      "key down",
+      "key down",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.359 0.237",
+      "wait 0.4",
+      "wclick 0.308 0.237",
+      "wait 0.4",
+      "wclick 0.359 0.237",
+      "wait 0.4",
+      "wclick 0.704 0.057",
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "wclick 0.512 0.057",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.loancalc",
+  "name": {"en": "Loan Calculator", "tr": "Kredi Hesapla", "de": "Kreditrechner", "fr": "Calculateur de prêt", "es": "Calculadora de préstamos", "ja": "ローン計算", "zh": "贷款计算器", "ko": "대출 계산기"},
+  "description": {
+    "en": "Monthly payment, total cost and interest of a loan with a full amortization table by month or year; the rate can be annual or monthly.",
+    "tr": "Kredinin aylık taksitini, toplam geri ödemesini ve faizini hesapla; aylık ya da yıllık ödeme tablosu, aylık veya yıllık faiz oranı.",
+    "de": "Monatliche Rate, Gesamtkosten und Zinsen eines Kredits mit vollständigem Tilgungsplan nach Monat oder Jahr; der Zinssatz kann jährlich oder monatlich sein.",
+    "fr": "Mensualité, coût total et intérêts d’un prêt avec un tableau d’amortissement complet par mois ou par an ; le taux peut être annuel ou mensuel.",
+    "es": "Cuota mensual, coste total e intereses de un préstamo con una tabla de amortización completa por meses o por años; el tipo puede ser anual o mensual."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 720, "height": 540, "minWidth": 620, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

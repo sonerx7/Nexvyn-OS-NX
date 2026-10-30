@@ -1,0 +1,34 @@
+{
+  "kind": "demo",
+  "tags": [
+    "simulation",
+    "touch",
+    "store",
+    "tinycc"
+  ],
+  "subtitle": {
+    "en": "Conway's cellular automaton in C",
+    "tr": "C ile Conway'in hücresel otomatı",
+    "de": "Conways Zellautomat in C",
+    "fr": "L'automate cellulaire de Conway en C",
+    "es": "El autómata celular de Conway en C",
+    "ja": "C で書かれたコンウェイのセル・オートマトン",
+    "zh": "用 C 编写的康威细胞自动机",
+    "ko": "C로 만든 콘웨이의 세포 자동자"
+  },
+  "description": {
+    "en": "Paint living cells with a finger or the cursor, then run the simulation, step one generation at a time or fill the board at random; the edges wrap around and the speed goes from 1 to 30 generations a second. The board is saved when you close the app.\n\nWhat it teaches in C: static arrays, a fixed step in app_update, painting with ui_hit and ui_mouse, ui_slider, icon buttons, copying a returned string before a loop, app_menu, and saving with store_setStr in app_autosave and app_close.",
+    "tr": "Parmakla ya da imleçle canlı hücreler çiz, sonra benzetimi çalıştır, nesil nesil ilerlet ya da tahtayı rastgele doldur; kenarlar karşı taraftan devam eder ve hız saniyede 1 ile 30 nesil arasında ayarlanır. Uygulamayı kapatınca tahta kaydedilir.\n\nC'de öğrettikleri: statik diziler, app_update içinde sabit adım, ui_hit ve ui_mouse ile boyama, ui_slider, simgeli düğmeler, dönen metni döngüden önce kopyalamak, app_menu ve app_autosave ile app_close içinde store_setStr ile kayıt.",
+    "de": "Male lebende Zellen mit Finger oder Cursor, dann lass die Simulation laufen, gehe Generation für Generation vor oder fülle das Brett zufällig; die Ränder gehen ineinander über, das Tempo reicht von 1 bis 30 Generationen pro Sekunde. Das Brett wird beim Schließen gespeichert.\n\nWas es in C zeigt: statische Arrays, ein fester Schritt in app_update, Malen mit ui_hit und ui_mouse, ui_slider, Symbol-Buttons, das Kopieren eines zurückgegebenen Strings vor einer Schleife, app_menu und Speichern mit store_setStr in app_autosave und app_close.",
+    "fr": "Dessinez des cellules vivantes au doigt ou au curseur, puis lancez la simulation, avancez génération par génération ou remplissez la grille au hasard ; les bords se rejoignent et la vitesse va de 1 à 30 générations par seconde. La grille est enregistrée à la fermeture.\n\nCe qu'il enseigne en C : tableaux statiques, pas fixe dans app_update, dessin avec ui_hit et ui_mouse, ui_slider, boutons à icône, copie d'une chaîne retournée avant une boucle, app_menu et sauvegarde avec store_setStr dans app_autosave et app_close.",
+    "es": "Pinta celdas vivas con el dedo o el cursor y luego ejecuta la simulación, avanza generación a generación o llena el tablero al azar; los bordes se conectan y la velocidad va de 1 a 30 generaciones por segundo. El tablero se guarda al cerrar.\n\nLo que enseña en C: arrays estáticos, un paso fijo en app_update, pintar con ui_hit y ui_mouse, ui_slider, botones con icono, copiar una cadena devuelta antes de un bucle, app_menu y guardar con store_setStr en app_autosave y app_close.",
+    "ja": "指やカーソルで生きたセルを描き、シミュレーションを実行するか、1 世代ずつ進めるか、盤面をランダムに埋めましょう。端はループしており、速さは毎秒 1〜30 世代です。アプリを閉じると盤面が保存されます。\n\nC で学べること: 静的配列、app_update での固定ステップ、ui_hit と ui_mouse による描画、ui_slider、アイコンボタン、ループの前に返された文字列をコピーすること、app_menu、そして app_autosave と app_close での store_setStr による保存。",
+    "zh": "用手指或光标绘制活细胞，然后运行模拟、逐代单步运行或随机填满棋盘；边缘首尾相连，速度可在每秒 1 到 30 代之间调整。关闭应用时会保存棋盘。\n\n在 C 中学到的内容：静态数组、app_update 中的固定步长、使用 ui_hit 和 ui_mouse 绘制、ui_slider、图标按钮、在循环前复制返回的字符串、app_menu，以及在 app_autosave 和 app_close 中用 store_setStr 保存。",
+    "ko": "손가락이나 커서로 살아 있는 세포를 그린 후 시뮬레이션을 실행하거나, 한 세대씩 진행하거나, 보드를 무작위로 채우세요. 가장자리는 이어져 있고 속도는 초당 1세대부터 30세대까지입니다. 앱을 닫으면 보드가 저장됩니다.\n\nC로 배우는 내용: 정적 배열, app_update의 고정 단계, ui_hit과 ui_mouse로 칠하기, ui_slider, 아이콘 버튼, 반복 전에 반환된 문자열 복사하기, app_menu, app_autosave와 app_close에서 store_setStr로 저장하기."
+  },
+  "shots": [
+    ["wait 3"],
+    ["key r", "key space", "wait 3"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

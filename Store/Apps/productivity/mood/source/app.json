@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.mood",
+  "name": {"en": "Mood Journal", "tr": "Ruh Hali Günlüğü", "de": "Stimmungstagebuch", "fr": "Journal d’humeur", "es": "Diario de ánimo", "ja": "気分日記", "zh": "心情日记", "ko": "기분 일기"},
+  "description": {
+    "en": "Log how you feel each day with a mood, tags and a note, then see your month as a coloured calendar with trends and statistics.",
+    "tr": "Her gün nasıl hissettiğini ruh hali, etiketler ve kısa bir notla kaydet; ayını renkli bir takvimde, grafik ve istatistiklerle gör.",
+    "de": "Halte jeden Tag mit Stimmung, Tags und Notiz fest, wie du dich fühlst, und sieh deinen Monat als farbigen Kalender mit Trends und Statistiken.",
+    "fr": "Notez chaque jour comment vous vous sentez avec une humeur, des tags et une note, puis voyez votre mois sous forme de calendrier coloré avec tendances et statistiques.",
+    "es": "Registra cada día cómo te sientes con un estado de ánimo, etiquetas y una nota, y mira tu mes como un calendario de colores con tendencias y estadísticas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 540, "minWidth": 660, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

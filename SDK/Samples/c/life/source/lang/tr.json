@@ -1,0 +1,11 @@
+{
+  "board": "Tahta",
+  "play": "Oynat",
+  "pause": "Duraklat",
+  "step": "Adım",
+  "speed": "Hız {0}/sn",
+  "status": "Nesil {0} · {1} hücre",
+  "random": "Rastgele",
+  "add_glider": "Planör ekle",
+  "clear": "Temizle"
+}

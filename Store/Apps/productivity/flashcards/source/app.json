@@ -1,0 +1,33 @@
+{
+  "id": "flashcards",
+  "name": {
+    "en": "Flashcards",
+    "tr": "Kelime Kartları",
+    "de": "Karteikarten",
+    "fr": "Cartes mémoire",
+    "es": "Tarjetas",
+    "ja": "単語カード",
+    "zh": "抽认卡",
+    "ko": "플래시카드"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 580,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Learn with flashcards and spaced repetition",
+    "tr": "Kelime kartları ve aralıklı tekrar ile öğrenin",
+    "de": "Lerne mit Karteikarten und verteilter Wiederholung",
+    "fr": "Apprenez avec des cartes mémoire et la répétition espacée",
+    "es": "Aprende con tarjetas y repetición espaciada"
+  },
+  "permissions": []
+}

@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Flippers, bumpers and a real plunger",
+    "tr": "Paletler, tamponlar ve gerçek bir fırlatıcı",
+    "de": "Flipperfinger, Bumper und echter Kolben",
+    "fr": "Batteurs, bumpers et un vrai lanceur",
+    "es": "Flippers, bumpers y un lanzador de verdad",
+    "ja": "フリッパー、バンパー、本物のプランジャー",
+    "zh": "挡板、弹柱和真正的弹簧杆",
+    "ko": "플리퍼, 범퍼, 진짜 플런저"
+  },
+  "description": {
+    "en": "A full portrait pinball table with smooth, precise physics. Pull back the plunger, then keep the ball alive with two flippers while it ricochets off pop bumpers and slingshots. Knock down every drop target and light the top rollover lanes to raise the playfield multiplier, and collect your end-of-ball bonus. A ball save gives you a second chance right after the launch.\n\n• Two flippers, a plunger, three pop bumpers and slingshots\n• Drop targets, rollover lanes and a playfield multiplier\n• End-of-ball bonus, ball save and three balls per game\n• Sub-stepped physics, so the ball never slips through\n• Buttons, keyboard or touch: hold either half of the screen",
+    "tr": "Akıcı ve hassas fiziğe sahip, dikey ve eksiksiz bir langırt masası. Fırlatıcıyı çek, ardından top tamponlardan ve sapanlardan sekerken iki paletle onu oyunda tut. Bütün düşen hedefleri devir, üstteki şeritleri yak ve masa çarpanını yükselt; her topun sonunda bonusunu topla. Atıştan hemen sonra top kurtarma sana ikinci bir şans verir.\n\n• İki palet, fırlatıcı, üç tampon ve sapanlar\n• Düşen hedefler, üst şeritler ve masa çarpanı\n• Top sonu bonusu, top kurtarma ve oyun başına üç top\n• Ara adımlı fizik: top asla duvardan geçmez\n• Tuşlar, klavye ya da dokunmatik: ekranın bir yarısına basılı tut",
+    "de": "Ein kompletter Flippertisch im Hochformat mit flüssiger, präziser Physik. Zieh den Kolben zurück und halte die Kugel dann mit zwei Flipperfingern im Spiel, während sie von Bumpern und Slingshots abprallt. Räum alle Fallziele ab, aktiviere die oberen Rollover-Bahnen, um den Spielfeld-Multiplikator zu erhöhen, und kassier deinen Bonus am Ende jeder Kugel. Direkt nach dem Abschuss gibt dir ein Ball-Save eine zweite Chance.\n\n• Zwei Flipperfinger, Kolben, drei Bumper und Slingshots\n• Fallziele, Rollover-Bahnen und Spielfeld-Multiplikator\n• Kugelbonus, Ball-Save und drei Kugeln pro Spiel\n• Physik mit Zwischenschritten: Die Kugel rutscht nie durch\n• Tasten, Tastatur oder Touch: eine Bildschirmhälfte gedrückt halten",
+    "fr": "Une table de flipper complète au format portrait, avec une physique fluide et précise. Tirez le lanceur, puis gardez la bille en jeu avec deux batteurs pendant qu’elle ricoche sur les bumpers et les slingshots. Abattez toutes les cibles tombantes et allumez les couloirs du haut pour augmenter le multiplicateur, puis encaissez votre bonus de fin de bille. Juste après le lancement, une sauvegarde de bille vous offre une seconde chance.\n\n• Deux batteurs, un lanceur, trois bumpers et des slingshots\n• Cibles tombantes, couloirs du haut et multiplicateur\n• Bonus de fin de bille, sauvegarde de bille et trois billes par partie\n• Physique à sous-pas : la bille ne traverse jamais rien\n• Boutons, clavier ou tactile : maintenez une moitié de l’écran",
+    "es": "Una mesa de pinball completa en vertical, con física fluida y precisa. Tira del lanzador y mantén la bola en juego con dos flippers mientras rebota en los bumpers y los slingshots. Derriba todas las dianas abatibles y enciende los carriles superiores para subir el multiplicador, y cobra tu bono al final de cada bola. Justo después del lanzamiento, el salvabolas te da una segunda oportunidad.\n\n• Dos flippers, lanzador, tres bumpers y slingshots\n• Dianas abatibles, carriles superiores y multiplicador\n• Bono de final de bola, salvabolas y tres bolas por partida\n• Física por subpasos: la bola nunca atraviesa nada\n• Botones, teclado o táctil: mantén pulsada una mitad de la pantalla",
+    "ja": "滑らかで精密な物理演算を備えた縦長の本格ピンボール台。プランジャーを引いて発射し、ポップバンパーやスリングショットで跳ね回るボールを 2 つのフリッパーで生かし続けましょう。ドロップターゲットをすべて倒し、上部のロールオーバーレーンを点灯させて倍率を上げ、ボール終了時のボーナスを獲得しましょう。発射直後はボールセーブがもう一度チャンスをくれます。\n\n• 2 つのフリッパー、プランジャー、3 つのポップバンパー、スリングショット\n• ドロップターゲット、ロールオーバーレーン、プレイフィールド倍率\n• ボール終了時のボーナス、ボールセーブ、1 ゲーム 3 球\n• ボールがすり抜けないサブステップの物理演算\n• ボタン、キーボード、またはタッチ: 画面の左右半分を押し続ける",
+    "zh": "一张完整的竖版弹珠台，物理效果流畅精确。拉回弹簧杆，然后用两个挡板让球保持在场上，看着它在弹柱和弹弓之间来回反弹。击倒所有落靶并点亮顶部的滚动通道以提高场地倍数，并收集每球结束时的奖励。发射后立即生效的保球功能给你第二次机会。\n\n• 两个挡板、一个弹簧杆、三个弹柱和弹弓\n• 落靶、滚动通道和场地倍数\n• 每球结束奖励、保球和每局三个球\n• 细分步长的物理，球绝不会穿模\n• 按钮、键盘或触控：按住屏幕的左半边或右半边",
+    "ko": "부드럽고 정밀한 물리를 갖춘 세로형 핀볼 테이블입니다. 플런저를 당겨 공을 쏘고, 팝 범퍼와 슬링샷에 튕기는 공을 플리퍼 두 개로 계속 살려 두세요. 드롭 타깃을 모두 쓰러뜨리고 위쪽 롤오버 레인에 불을 켜 필드 배율을 높이고, 공이 끝날 때 보너스를 받으세요. 발사 직후에는 볼 세이브가 두 번째 기회를 줍니다.\n\n• 플리퍼 두 개, 플런저, 팝 범퍼 세 개, 슬링샷\n• 드롭 타깃, 롤오버 레인, 필드 배율\n• 공 종료 보너스, 볼 세이브, 게임당 공 세 개\n• 공이 빠져나가지 않는 세분화된 물리\n• 버튼, 키보드 또는 터치: 화면 양쪽 절반 누르기"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key enter", "wait 2", "hold down 1.5", "wait 3", "hold z 0.2", "hold m 0.2", "wait 1", "hold z 0.2", "hold m 0.2", "wait 1"],
+    ["wait 12", "hold down 1", "wait 14", "hold down 1", "wait 14", "hold down 1", "wait 14", "hold down 1", "wait 14", "wait 2"]
+  ]
+}

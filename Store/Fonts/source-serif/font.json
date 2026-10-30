@@ -1,0 +1,33 @@
+{
+  "id": "source-serif",
+  "name": {
+    "en": "Source Serif 4",
+    "tr": "Source Serif 4",
+    "de": "Source Serif 4",
+    "fr": "Source Serif 4",
+    "es": "Source Serif 4"
+  },
+  "family": "Source Serif 4",
+  "styles": {
+    "regular": "SourceSerif4-Regular.ttf",
+    "bold": "SourceSerif4-Bold.ttf",
+    "italic": "SourceSerif4-Italic.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "4.004",
+  "author": "The Source Serif 4 Project Authors",
+  "classification": "serif",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Grek",
+    "Viet"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

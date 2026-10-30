@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Know your payment before you borrow",
+    "tr": "Borçlanmadan önce taksitini bil",
+    "de": "Kenne deine Rate, bevor du leihst",
+    "fr": "Connaissez votre mensualité à l’avance",
+    "es": "Conoce tu cuota antes de pedir prestado",
+    "ja": "借りる前に返済額を知ろう",
+    "zh": "借款前先了解还款额",
+    "ko": "빌리기 전에 상환액을 알아 두세요"
+  },
+  "description": {
+    "en": "Enter the loan amount, the interest rate and the term, and see the monthly payment, the total you will pay back and how much of it is interest. A chart splits principal from interest and the full payment plan shows every month or every year until the last payment.\n\n• Interest rate per year or per month, converted both ways with the effective rate\n• Term in months or years\n• Amortization table by month or by year, with dates\n• Copy a summary or export the table as CSV\n• Reset with undo, Page Up/Down switches the table view",
+    "tr": "Kredi tutarını, faiz oranını ve vadeyi gir; aylık taksiti, toplam geri ödemeyi ve bunun ne kadarının faiz olduğunu gör. Bir grafik anaparayı faizden ayırır, ödeme planı da son taksite kadar her ayı ya da her yılı gösterir.\n\n• Yıllık ya da aylık faiz; efektif oranla birlikte iki yönlü çevrilir\n• Ay ya da yıl olarak vade\n• Tarihleriyle aylık ya da yıllık ödeme tablosu\n• Özeti kopyala ya da tabloyu CSV olarak dışa aktar\n• Geri alınabilir sıfırlama; Page Up/Down tablo görünümünü değiştirir",
+    "de": "Gib Kreditbetrag, Zinssatz und Laufzeit ein und sieh Monatsrate, Gesamtrückzahlung und wie viel davon Zinsen sind. Ein Diagramm trennt Tilgung und Zinsen, und der Tilgungsplan zeigt jeden Monat oder jedes Jahr bis zur letzten Rate.\n\n• Zinssatz pro Jahr oder pro Monat, in beide Richtungen umgerechnet, mit Effektivzins\n• Laufzeit in Monaten oder Jahren\n• Tilgungsplan nach Monaten oder Jahren, mit Datum\n• Zusammenfassung kopieren oder Tabelle als CSV exportieren\n• Zurücksetzen mit Rückgängig, Bild auf/ab wechselt die Ansicht",
+    "fr": "Saisissez le montant, le taux et la durée du prêt, et voyez la mensualité, le total remboursé et la part des intérêts. Un graphique sépare le capital des intérêts et le tableau d’amortissement détaille chaque mois ou chaque année jusqu’à la dernière échéance.\n\n• Taux annuel ou mensuel, converti dans les deux sens avec le taux effectif\n• Durée en mois ou en années\n• Tableau d’amortissement par mois ou par année, avec les dates\n• Copie d’un résumé ou export du tableau en CSV\n• Réinitialisation annulable, Page préc./suiv. change la vue",
+    "es": "Introduce el importe, el tipo de interés y el plazo, y verás la cuota mensual, el total a devolver y cuánto de eso son intereses. Un gráfico separa el capital de los intereses y el cuadro de amortización muestra cada mes o cada año hasta la última cuota.\n\n• Interés anual o mensual, convertido en ambos sentidos con el tipo efectivo\n• Plazo en meses o en años\n• Cuadro de amortización por meses o por años, con fechas\n• Copia un resumen o exporta el cuadro en CSV\n• Restablecer con deshacer; Re Pág/Av Pág cambian la vista",
+    "ja": "借入額、金利、期間を入力すると、毎月の返済額、返済総額、そのうちの利息が表示されます。グラフで元金と利息の内訳を示し、返済計画では最終返済まで毎月または毎年の明細を表示します。\n\n• 年利または月利、実効金利とともに相互に換算\n• 月または年単位の期間\n• 日付付きの月ごとまたは年ごとの返済予定表\n• 概要をコピー、または表を CSV で書き出し\n• 取り消し可能なリセット、Page Up/Down で表の表示を切り替え",
+    "zh": "输入贷款金额、利率和期限，即可看到每月还款额、还款总额以及其中有多少是利息。图表会将本金与利息分开显示，完整的还款计划会列出直到最后一期的每个月或每一年。\n\n• 按年或按月的利率，可双向换算并显示实际利率\n• 期限以月或年计\n• 按月或按年的还款计划表，附日期\n• 复制摘要或将表格导出为 CSV\n• 可撤销的重置，Page Up/Down 切换表格视图",
+    "ko": "대출 금액, 이자율, 기간을 입력하면 월 상환액, 갚아야 할 총액, 그중 이자가 얼마인지 볼 수 있습니다. 차트가 원금과 이자를 나눠 보여 주며, 전체 상환 계획은 마지막 상환까지 매월 또는 매년을 보여 줍니다.\n\n• 연이율 또는 월이율, 실효 이율과 함께 양방향 변환\n• 개월 또는 년 단위 기간\n• 날짜가 포함된 월별 또는 연도별 상환표\n• 요약 복사 또는 표를 CSV로 내보내기\n• 실행 취소가 가능한 재설정, Page Up/Down으로 표 보기 전환"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key pagedown", "wait 1.5"],
+    ["dark 1", "key pageup", "wait 1.5"]
+  ]
+}

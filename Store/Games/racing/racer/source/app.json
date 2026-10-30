@@ -1,0 +1,33 @@
+{
+  "id": "racer",
+  "name": {
+    "en": "Racer",
+    "tr": "Yarışçı",
+    "de": "Racer",
+    "fr": "Racer",
+    "es": "Racer",
+    "ja": "レーサー",
+    "zh": "赛车",
+    "ko": "레이서"
+  },
+  "description": {
+    "en": "A three-lap 3D circuit race with hills, AI rivals, touch pedals and tilt steering.",
+    "tr": "Yokuşlu pistte üç turluk 3D yarış: yapay zekâ rakipler, dokunmatik pedallar ve eğerek direksiyon.",
+    "de": "Ein 3D-Rundstreckenrennen über drei Runden mit Hügeln, KI-Gegnern, Touch-Pedalen und Neigungslenkung.",
+    "fr": "Une course 3D sur circuit en trois tours avec collines, rivaux IA, pédales tactiles et direction par inclinaison.",
+    "es": "Una carrera 3D de tres vueltas en circuito con colinas, rivales de IA, pedales táctiles y dirección por inclinación."
+  },
+  "category": "games",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 900,
+    "height": 580,
+    "resizable": false
+  },
+  "gamepad": true,
+  "permissions": []
+}

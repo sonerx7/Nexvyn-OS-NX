@@ -1,0 +1,13 @@
+{
+  "app": "팁 나누기",
+  "bill": "금액",
+  "tip": "팁",
+  "people": "인원",
+  "round_up": "올림",
+  "tip_amount": "팁",
+  "total": "합계",
+  "each": "1인당 금액",
+  "share": "공유",
+  "share_text": "총 {0}, {1}명: 1인당 {2}",
+  "clear": "금액 지우기"
+}

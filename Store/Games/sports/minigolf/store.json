@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Nine holes of tricky top-down putting",
+    "tr": "Dokuz çukurlu, kuşbakışı mini golf",
+    "de": "Neun knifflige Bahnen von oben",
+    "fr": "Neuf trous de minigolf vus de dessus",
+    "es": "Nueve hoyos de minigolf vistos desde arriba",
+    "ja": "上から見る 9 ホールのトリッキーなパット",
+    "zh": "九个刁钻的俯视推杆洞",
+    "ko": "까다로운 탑다운 퍼팅 9홀"
+  },
+  "description": {
+    "en": "A round of mini golf on nine hand-made holes. Drag back and release like a slingshot, or aim with the stick and hold A to charge your putt. Bank shots off angled walls, curve around posts, avoid the sand that slows you down and the water that costs a penalty stroke, and time your shot past the windmill. Every hole has a par, and your best round is saved.\n\n• Nine hand-made holes with a par each\n• Angled banks, posts, sand, water and a windmill\n• Slingshot touch aiming or stick and power meter\n• A scorecard with birdies, eagles and holes in one\n• Your best round is saved",
+    "tr": "Elde tasarlanmış dokuz çukurda bir tur mini golf. Sapan gibi geri çekip bırak ya da çubukla nişan alıp vuruş gücünü doldurmak için A'yı basılı tut. Açılı duvarlardan sektir, direklerin etrafından dolan, topu yavaşlatan kumdan ve ceza vuruşuna mal olan sudan uzak dur, yel değirmeninin önünden geçmek için zamanlamanı iyi ayarla. Her çukurun bir par değeri var, en iyi turun kaydedilir.\n\n• Her biri par değerli, elde tasarlanmış dokuz çukur\n• Açılı bantlar, direkler, kum, su ve yel değirmeni\n• Sapan gibi dokunmatik nişan ya da çubuk ve güç göstergesi\n• Birdie, eagle ve hole-in-one'lı skor kartı\n• En iyi turun kaydedilir",
+    "de": "Eine Runde Minigolf auf neun handgemachten Bahnen. Zieh zurück und lass los wie bei einer Schleuder oder ziel mit dem Stick und halte A gedrückt, um deinen Schlag aufzuladen. Spiel über schräge Banden, umkurve Pfosten, meide den Sand, der dich bremst, und das Wasser, das einen Strafschlag kostet, und pass den richtigen Moment an der Windmühle ab. Jede Bahn hat ein Par, und deine beste Runde wird gespeichert.\n\n• Neun handgemachte Bahnen mit Par\n• Schräge Banden, Pfosten, Sand, Wasser und eine Windmühle\n• Zielen per Touch wie mit einer Schleuder oder Stick und Kraftanzeige\n• Scorekarte mit Birdies, Eagles und Holes-in-one\n• Deine beste Runde wird gespeichert",
+    "fr": "Une partie de minigolf sur neuf trous faits main. Tirez en arrière et relâchez comme un lance-pierre, ou visez au stick et maintenez A pour charger votre coup. Jouez les bandes en biais, contournez les poteaux, évitez le sable qui vous freine et l’eau qui coûte un coup de pénalité, et passez le moulin au bon moment. Chaque trou a son par, et votre meilleure partie est sauvegardée.\n\n• Neuf trous faits main, chacun avec son par\n• Bandes en biais, poteaux, sable, eau et moulin\n• Visée tactile façon lance-pierre ou stick et jauge de puissance\n• Carte de score avec birdies, eagles et trous en un\n• Votre meilleure partie est sauvegardée",
+    "es": "Una ronda de minigolf en nueve hoyos hechos a mano. Tira hacia atrás y suelta como un tirachinas, o apunta con el stick y mantén A para cargar el golpe. Haz carambolas en las paredes inclinadas, rodea los postes, evita la arena que te frena y el agua que cuesta un golpe de penalización, y calcula bien el momento de pasar el molino. Cada hoyo tiene su par y se guarda tu mejor ronda.\n\n• Nueve hoyos hechos a mano, cada uno con su par\n• Bandas inclinadas, postes, arena, agua y un molino\n• Puntería táctil tipo tirachinas o stick y medidor de fuerza\n• Tarjeta con birdies, eagles y hoyos en uno\n• Se guarda tu mejor ronda",
+    "ja": "手作りの 9 ホールで遊ぶミニゴルフ。スリングショットのように後ろに引いて離すか、スティックで狙って A を長押ししてパットをためましょう。斜めの壁でバンクショット、柱を回り込み、減速する砂と 1 打罰の池を避け、風車をタイミングよくくぐり抜けましょう。各ホールにパーがあり、ベストラウンドが保存されます。\n\n• パー付きの手作りの 9 ホール\n• 斜めの壁、柱、砂、池、風車\n• スリングショット式のタッチ照準、またはスティックとパワーメーター\n• バーディー、イーグル、ホールインワンのあるスコアカード\n• ベストラウンドを保存",
+    "zh": "在九个手工打造的球洞上打一轮迷你高尔夫。像弹弓一样向后拖移再松开，或用摇杆瞄准并按住 A 蓄力推杆。借助斜墙打出反弹球，绕过立柱，避开会让球减速的沙坑和会罚一杆的水域，并把握好时机穿过风车。每个洞都有标准杆，你的最佳一轮会被保存。\n\n• 九个手工打造的球洞，各有标准杆\n• 斜墙、立柱、沙坑、水域和风车\n• 弹弓式触控瞄准，或摇杆加力度条\n• 记录小鸟球、老鹰球和一杆进洞的记分卡\n• 保存你的最佳一轮",
+    "ko": "직접 만든 9개 홀에서 미니 골프 한 라운드를 즐기세요. 새총처럼 뒤로 당겼다가 놓거나, 스틱으로 조준하고 A를 길게 눌러 퍼팅 힘을 모으세요. 비스듬한 벽에 튕기고, 기둥을 돌아가고, 속도를 줄이는 모래와 벌타를 주는 물을 피하고, 풍차를 지나도록 타이밍을 맞추세요. 홀마다 파가 있으며, 최고 라운드가 저장됩니다.\n\n• 각자 파가 있는 직접 만든 9개 홀\n• 비스듬한 벽, 기둥, 모래, 물, 풍차\n• 새총식 터치 조준 또는 스틱과 힘 게이지\n• 버디, 이글, 홀인원이 기록되는 스코어카드\n• 최고 라운드 저장"
+  },
+  "shots": [
+    ["wait 2.5"],
+    ["key enter", "wait 2", "hold space 1.0", "wait 1.3"],
+    ["wait 2.5"],
+    ["key enter", "wait 2.5"]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "merriweather",
+  "name": {
+    "en": "Merriweather",
+    "tr": "Merriweather",
+    "de": "Merriweather",
+    "fr": "Merriweather",
+    "es": "Merriweather"
+  },
+  "family": "Merriweather",
+  "styles": {
+    "regular": "Merriweather-Regular.ttf",
+    "bold": "Merriweather-Bold.ttf",
+    "italic": "Merriweather-Italic.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "2.100",
+  "author": "The Merriweather Project Authors",
+  "classification": "serif",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Viet"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

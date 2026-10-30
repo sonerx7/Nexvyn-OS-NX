@@ -1,0 +1,47 @@
+{
+  "kind": "demo",
+  "tags": [
+    "sdk-tour",
+    "callbacks",
+    "modules",
+    "network",
+    "store"
+  ],
+  "subtitle": {
+    "en": "A tour of the Python SDK",
+    "tr": "Python SDK turu",
+    "de": "Eine Tour durch das Python-SDK",
+    "fr": "Une visite du SDK Python",
+    "es": "Un recorrido por el SDK de Python",
+    "ja": "Python SDK のツアー",
+    "zh": "Python SDK 导览",
+    "ko": "Python SDK 둘러보기"
+  },
+  "description": {
+    "en": "The built-in Hello Python app as a project: a to-do list saved with store (todos.py), an analog clock drawn with gfx (clock.py) and live weather JSON with net.json and a callback. Shows classes as the app object, imports between bundle files, timers and a menu.",
+    "tr": "Yerleşik Merhaba Python uygulamasının proje hâli: store ile kaydedilen yapılacaklar listesi (todos.py), gfx ile çizilen analog saat (clock.py) ve net.json ile geri çağırmalı canlı hava durumu JSON'u. Uygulama nesnesi olarak sınıfları, paket dosyaları arasında import'u, zamanlayıcıları ve menüyü gösterir.",
+    "de": "Die eingebaute App Hallo Python als Projekt: eine mit store gespeicherte To-do-Liste (todos.py), eine mit gfx gezeichnete Analoguhr (clock.py) und Live-Wetter-JSON mit net.json und Callback. Zeigt Klassen als App-Objekt, Importe zwischen Paketdateien, Timer und ein Menü.",
+    "fr": "L'appli intégrée Hello Python sous forme de projet : une liste de tâches enregistrée avec store (todos.py), une horloge analogique dessinée avec gfx (clock.py) et la météo en JSON avec net.json et un rappel. Montre les classes comme objet app, les imports entre fichiers du paquet, les minuteurs et un menu.",
+    "es": "La app integrada Hola Python como proyecto: una lista de tareas guardada con store (todos.py), un reloj analógico dibujado con gfx (clock.py) y el tiempo en JSON con net.json y una devolución de llamada. Muestra clases como objeto app, imports entre archivos del paquete, temporizadores y un menú.",
+    "ja": "内蔵の Hello Python アプリをプロジェクトにしたもの: store で保存する ToDo リスト (todos.py)、gfx で描くアナログ時計 (clock.py)、そして net.json とコールバックによるリアルタイムの天気 JSON。アプリオブジェクトとしてのクラス、バンドル内のファイル間のインポート、タイマー、メニューの使い方を示します。",
+    "zh": "将内置的 Hello Python 应用作为项目：用 store 保存的待办事项列表（todos.py）、用 gfx 绘制的指针式时钟（clock.py），以及使用 net.json 和回调获取的实时天气 JSON。演示了作为应用对象的类、包内文件之间的导入、计时器和菜单。",
+    "ko": "기본 제공 Hello Python 앱을 프로젝트로 제공합니다: store로 저장되는 할 일 목록(todos.py), gfx로 그린 아날로그 시계(clock.py), net.json과 콜백으로 받는 실시간 날씨 JSON. 앱 객체로서의 클래스, 번들 파일 간 import, 타이머, 메뉴를 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.5 0.056",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.69 0.056",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

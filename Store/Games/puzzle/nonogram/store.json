@@ -1,0 +1,59 @@
+{
+  "subtitle": {
+    "en": "Fill the grid and reveal a hidden picture",
+    "tr": "Kareleri boya, gizli resmi ortaya çıkar",
+    "de": "Füll das Raster und enthülle ein Bild",
+    "fr": "Remplissez la grille, révélez une image",
+    "es": "Rellena la cuadrícula y descubre un dibujo",
+    "ja": "マスを塗って隠された絵を浮かび上がらせよう",
+    "zh": "填满网格，揭示隐藏的图画",
+    "ko": "격자를 채워 숨은 그림을 드러내세요"
+  },
+  "description": {
+    "en": "Use the number clues on every row and column to work out which squares to fill, and a hidden picture appears. There are 25 handcrafted puzzles from 5×5 to 10×10, and each one can be solved with pure logic, no guessing needed. Mark empty squares with crosses, paint whole lines by dragging and use a hint when you get stuck. Every solved picture joins your gallery.\n\n• 25 handcrafted puzzles from 5×5 to 10×10\n• Fill and cross modes with drag painting\n• Hints, undo and a timer with best times\n• A gallery of the pictures you've solved\n• Touch, controller or keyboard",
+    "tr": "Her satır ve sütundaki sayı ipuçlarına bakarak hangi karelerin boyanacağını bul; gizli bir resim belirsin. 5×5'ten 10×10'a 25 elde hazırlanmış bulmaca var ve her biri tahmine gerek kalmadan saf mantıkla çözülür. Boş karelere çarpı koy, sürükleyerek koca satırları boya, takıldığında ipucu kullan. Çözdüğün her resim galerine eklenir.\n\n• 5×5'ten 10×10'a 25 elde hazırlanmış bulmaca\n• Sürükleyerek boyamalı boya ve çarpı modları\n• İpucu, geri alma, süre ve en iyi süreler\n• Çözdüğün resimlerin galerisi\n• Dokunmatik, kumanda ya da klavye",
+    "de": "Nutze die Zahlenhinweise an jeder Zeile und Spalte, um herauszufinden, welche Felder gefüllt werden, und ein verstecktes Bild erscheint. Es gibt 25 handgemachte Rätsel von 5×5 bis 10×10, und jedes lässt sich mit reiner Logik lösen, ganz ohne Raten. Markiere leere Felder mit Kreuzen, mal ganze Linien durch Ziehen aus und hol dir einen Tipp, wenn du feststeckst. Jedes gelöste Bild landet in deiner Galerie.\n\n• 25 handgemachte Rätsel von 5×5 bis 10×10\n• Füll- und Kreuzmodus mit Malen durch Ziehen\n• Tipps, Rückgängig und Timer mit Bestzeiten\n• Eine Galerie deiner gelösten Bilder\n• Touch, Controller oder Tastatur",
+    "fr": "Servez-vous des indices chiffrés de chaque ligne et colonne pour trouver les cases à noircir, et une image cachée apparaît. Il y a 25 grilles faites main, du 5×5 au 10×10, et chacune se résout par la seule logique, sans rien deviner. Marquez les cases vides d’une croix, peignez des lignes entières en glissant et demandez un indice si vous bloquez. Chaque image résolue rejoint votre galerie.\n\n• 25 grilles faites main, du 5×5 au 10×10\n• Modes remplissage et croix, peinture en glissant\n• Indices, annulation et chrono avec meilleurs temps\n• Une galerie des images résolues\n• Tactile, manette ou clavier",
+    "es": "Usa las pistas numéricas de cada fila y columna para averiguar qué casillas rellenar, y aparecerá un dibujo oculto. Hay 25 puzles hechos a mano, de 5×5 a 10×10, y todos se resuelven con pura lógica, sin adivinar. Marca las casillas vacías con cruces, pinta líneas enteras arrastrando y pide una pista si te atascas. Cada dibujo resuelto se suma a tu galería.\n\n• 25 puzles hechos a mano, de 5×5 a 10×10\n• Modos de relleno y de cruz, con pintura arrastrando\n• Pistas, deshacer y cronómetro con mejores tiempos\n• Una galería de los dibujos resueltos\n• Táctil, mando o teclado",
+    "ja": "各行と列の数字のヒントを使ってどのマスを塗るかを推理すると、隠された絵が現れます。5×5 から 10×10 まで 25 の手作りパズルがあり、どれも当て推量なしに純粋な論理だけで解けます。空白のマスにはバツを付け、ドラッグで列をまとめて塗り、行き詰まったらヒントを使いましょう。完成した絵はすべてギャラリーに加わります。\n\n• 5×5 から 10×10 までの 25 の手作りパズル\n• ドラッグで塗れる塗り/バツのモード\n• ヒント、取り消し、ベストタイム付きのタイマー\n• 完成した絵のギャラリー\n• タッチ、コントローラー、キーボード",
+    "zh": "根据每行每列的数字线索推断出要填充哪些格子，一幅隐藏的图画就会显现。共有 25 个从 5×5 到 10×10 的手工设计谜题，每个都可以纯靠逻辑解开，无需猜测。用叉号标记空格，拖移即可涂满整行，卡住时可以使用提示。每幅完成的图画都会加入你的图库。\n\n• 25 个从 5×5 到 10×10 的手工设计谜题\n• 填充和打叉模式，支持拖移涂色\n• 提示、撤销以及带最佳用时的计时器\n• 收录你已完成图画的图库\n• 触控、手柄或键盘",
+    "ko": "모든 행과 열의 숫자 단서로 어떤 칸을 채울지 알아내면 숨은 그림이 나타납니다. 5×5부터 10×10까지 직접 만든 퍼즐 25개가 있으며, 모두 추측 없이 순수한 논리로 풀 수 있습니다. 빈칸에는 X를 표시하고, 드래그하여 한 줄을 통째로 칠하고, 막히면 힌트를 사용하세요. 완성한 그림은 모두 갤러리에 모입니다.\n\n• 5×5부터 10×10까지 직접 만든 퍼즐 25개\n• 드래그 칠하기가 가능한 채우기 및 X 표시 모드\n• 힌트, 실행 취소, 최고 기록이 있는 타이머\n• 완성한 그림 갤러리\n• 터치, 컨트롤러, 키보드"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key l",
+      "wait 1"
+    ],
+    [
+      "key down",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1",
+      "key h",
+      "wait 0.3",
+      "key h",
+      "wait 0.3",
+      "key h",
+      "wait 0.3",
+      "key h",
+      "wait 0.3",
+      "key h",
+      "wait 0.3",
+      "key h",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "key m",
+      "key right",
+      "key enter",
+      "wait 1.2"
+    ]
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Low-poly 3D modeling, OBJ and STL",
+    "tr": "Low-poly 3D modelleme, OBJ ve STL",
+    "de": "Low-Poly-3D-Modellierung, OBJ und STL",
+    "fr": "Modélisation 3D low-poly, OBJ et STL",
+    "es": "Modelado 3D low-poly, OBJ y STL",
+    "ja": "ローポリ 3D モデリング、OBJ と STL",
+    "zh": "低多边形 3D 建模，支持 OBJ 和 STL",
+    "ko": "로우 폴리 3D 모델링, OBJ와 STL"
+  },
+  "description": {
+    "en": "Build low-poly 3D models with touch, the controller or a keyboard and mouse. Start from primitives with adjustable parameters, move, rotate and scale them with gizmos or exact numbers, then switch to edit mode to extrude, inset, subdivide and merge vertices, edges and faces. Organise parts in a scene tree with materials and textures, and export your work as OBJ or STL for 3D printing or other tools.\n\n• Primitives with adjustable parameters, plus House, Tree and Car samples\n• Object mode with gizmos, snapping, duplicate and mirror\n• Edit mode: vertex, edge and face selection, box select\n• Extrude, inset, subdivide, merge, flip and recalculate normals\n• Scene tree with names, visibility, parents and materials\n• OBJ + MTL and STL import / export, PNG renders, undo / redo",
+    "tr": "Dokunmatik ekran, kontrolcü ya da klavye ve fareyle low-poly 3D modeller oluştur. Ayarlanabilir ilkel şekillerle başla, onları tutamaçlarla ya da tam değerlerle taşı, döndür, ölçekle; ardından düzenleme moduna geçip köşe, kenar ve yüzleri ekstrüde et, içe kaydır, alt böl ve birleştir. Parçaları malzeme ve dokularla bir sahne ağacında düzenle, işini 3D baskı ya da başka araçlar için OBJ veya STL olarak dışa aktar.\n\n• Ayarlanabilir ilkel şekiller; Ev, Ağaç ve Araba örnekleri\n• Tutamaçlı, yakalamalı, çoğaltmalı ve aynalamalı nesne modu\n• Düzenleme modu: köşe, kenar ve yüz seçimi, kutu seçimi\n• Ekstrüde, içe kaydır, alt böl, birleştir, normalleri çevir ve yeniden hesapla\n• Adlar, görünürlük, ebeveynler ve malzemelerle sahne ağacı\n• OBJ + MTL ve STL içe / dışa aktarma, PNG görüntü, geri al / yinele",
+    "de": "Baue Low-Poly-3D-Modelle per Touch, Controller oder mit Tastatur und Maus. Starte mit Grundkörpern mit einstellbaren Parametern, verschiebe, drehe und skaliere sie per Gizmo oder exakten Werten und extrudiere, inset-e, unterteile und verschmelze im Bearbeitungsmodus Punkte, Kanten und Flächen. Ordne Teile in einem Szenenbaum mit Materialien und Texturen und exportiere als OBJ oder STL für 3D-Druck oder andere Programme.\n\n• Grundkörper mit Parametern, dazu Beispiele: Haus, Baum, Auto\n• Objektmodus mit Gizmos, Raster, Duplizieren und Spiegeln\n• Bearbeitungsmodus: Punkt-, Kanten- und Flächenauswahl, Rahmenauswahl\n• Extrudieren, Inset, Unterteilen, Verschmelzen, Normalen umkehren\n• Szenenbaum mit Namen, Sichtbarkeit, Eltern und Materialien\n• OBJ + MTL und STL Import / Export, PNG-Renderings, Rückgängig",
+    "fr": "Créez des modèles 3D low-poly au toucher, à la manette ou au clavier et à la souris. Partez de primitives aux paramètres réglables, déplacez-les, faites-les pivoter et redimensionnez-les avec des manipulateurs ou des valeurs exactes, puis passez en mode édition pour extruder, insérer, subdiviser et fusionner sommets, arêtes et faces. Organisez les pièces dans une arborescence avec matériaux et textures, et exportez en OBJ ou STL pour l’impression 3D ou d’autres outils.\n\n• Primitives réglables, et exemples Maison, Arbre et Voiture\n• Mode objet avec manipulateurs, magnétisme, duplication et miroir\n• Mode édition : sommets, arêtes, faces et sélection rectangle\n• Extruder, insérer, subdiviser, fusionner, inverser les normales\n• Arborescence avec noms, visibilité, parents et matériaux\n• Import / export OBJ + MTL et STL, rendus PNG, annuler / rétablir",
+    "es": "Crea modelos 3D low-poly con el táctil, el mando o con teclado y ratón. Empieza con primitivas de parámetros ajustables, muévelas, gíralas y escálalas con manipuladores o valores exactos, y pasa al modo de edición para extruir, insertar, subdividir y fusionar vértices, aristas y caras. Organiza las piezas en un árbol de escena con materiales y texturas, y exporta tu trabajo en OBJ o STL para impresión 3D u otras herramientas.\n\n• Primitivas ajustables y ejemplos de Casa, Árbol y Coche\n• Modo objeto con manipuladores, ajuste, duplicar y reflejar\n• Modo edición: vértices, aristas, caras y selección por caja\n• Extruir, insertar, subdividir, fusionar, invertir normales\n• Árbol de escena con nombres, visibilidad, padres y materiales\n• Importa y exporta OBJ + MTL y STL, renders PNG, deshacer / rehacer",
+    "ja": "タッチ、コントローラー、またはキーボードとマウスで、ローポリの 3D モデルを作りましょう。パラメーターを調整できるプリミティブから始め、ギズモまたは正確な数値で移動、回転、拡大縮小し、編集モードに切り替えて頂点、辺、面の押し出し、差し込み、細分化、結合を行います。マテリアルとテクスチャを付けたパーツをシーンツリーで整理し、作品を OBJ や STL で書き出して 3D プリントや他のツールで使えます。\n\n• パラメーターを調整できるプリミティブと、家、木、車のサンプル\n• ギズモ、スナップ、複製、ミラーのあるオブジェクトモード\n• 編集モード: 頂点、辺、面の選択、矩形選択\n• 押し出し、差し込み、細分化、結合、法線の反転と再計算\n• 名前、表示、親、マテリアル付きのシーンツリー\n• OBJ + MTL と STL の読み込み / 書き出し、PNG レンダリング、取り消し / やり直し",
+    "zh": "用触控、手柄或键盘鼠标制作低多边形 3D 模型。从参数可调的基本体开始，用操纵柄或精确数值移动、旋转和缩放，然后切换到编辑模式，对顶点、边和面进行挤出、内插、细分和合并。在带有材质和纹理的场景树中组织各个部件，并将作品导出为 OBJ 或 STL，用于 3D 打印或其他工具。\n\n• 参数可调的基本体，以及房子、树和汽车示例\n• 物体模式，支持操纵柄、吸附、复制和镜像\n• 编辑模式：顶点、边和面选择，框选\n• 挤出、内插、细分、合并、翻转和重新计算法线\n• 带名称、可见性、父级和材质的场景树\n• OBJ + MTL 和 STL 导入 / 导出、PNG 渲染图、撤销 / 重做",
+    "ko": "터치, 컨트롤러 또는 키보드와 마우스로 로우 폴리 3D 모델을 만드세요. 매개변수를 조절할 수 있는 기본 도형으로 시작해 기즈모나 정확한 숫자로 이동, 회전, 크기 조절을 하고, 편집 모드로 전환하여 버텍스, 에지, 면을 돌출, 인셋, 세분화, 병합하세요. 재질과 텍스처와 함께 장면 트리에서 부품을 정리하고, 3D 프린팅이나 다른 도구를 위해 OBJ나 STL로 내보내세요.\n\n• 매개변수를 조절할 수 있는 기본 도형과 집, 나무, 자동차 샘플\n• 기즈모, 스냅, 복제, 대칭이 있는 오브젝트 모드\n• 편집 모드: 버텍스, 에지, 면 선택, 상자 선택\n• 돌출, 인셋, 세분화, 병합, 노멀 뒤집기 및 다시 계산\n• 이름, 표시, 부모, 재질이 있는 장면 트리\n• OBJ + MTL 및 STL 가져오기 / 내보내기, PNG 렌더, 실행 취소 / 다시 실행"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.600 0.605",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.477 0.5",
+      "wait 1.5"
+    ],
+    [
+      "key tab",
+      "wait 1.5"
+    ],
+    [
+      "key tab",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "habits",
+  "name": {
+    "en": "Habits",
+    "tr": "Alışkanlıklar",
+    "de": "Gewohnheiten",
+    "fr": "Habitudes",
+    "es": "Hábitos",
+    "ja": "習慣",
+    "zh": "习惯",
+    "ko": "습관"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 780,
+    "height": 580,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Track daily habits, streaks and progress",
+    "tr": "Günlük alışkanlıkları, serileri ve ilerlemeyi takip edin",
+    "de": "Verfolge tägliche Gewohnheiten, Serien und Fortschritte",
+    "fr": "Suivez vos habitudes quotidiennes, vos séries et vos progrès",
+    "es": "Sigue tus hábitos diarios, rachas y progreso"
+  },
+  "permissions": [
+    "notifications"
+  ]
+}

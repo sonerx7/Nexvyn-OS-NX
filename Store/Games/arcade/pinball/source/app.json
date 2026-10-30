@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.pinball",
+  "name": {"en": "Pinball", "tr": "Langırt", "de": "Flipper", "fr": "Flipper", "es": "Pinball", "ja": "ピンボール", "zh": "弹珠台", "ko": "핀볼"},
+  "description": {
+    "en": "A neon pinball table with two flippers, a plunger, pop bumpers, slingshots, drop targets and rollover lanes. Build up the multiplier and chase the high score.",
+    "tr": "İki paleti, fırlatıcısı, tamponları, sapanları, düşen hedefleri ve şeritleri olan neon bir langırt masası. Çarpanı yükselt, rekorun peşine düş.",
+    "de": "Ein Neon-Flippertisch mit zwei Flipperfingern, Abschussfeder, Pop-Bumpern, Slingshots, Fallzielen und Rollover-Bahnen. Bau den Multiplikator auf und jag den Highscore.",
+    "fr": "Un flipper néon avec deux batteurs, un lanceur, des bumpers, des slingshots, des cibles tombantes et des couloirs rollover. Augmentez le multiplicateur et visez le meilleur score.",
+    "es": "Una mesa de pinball de neón con dos flippers, lanzador, bumpers, slingshots, dianas abatibles y carriles rollover. Sube el multiplicador y persigue el récord."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 560, "minWidth": 480, "minHeight": 300, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

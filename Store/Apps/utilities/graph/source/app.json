@@ -1,0 +1,33 @@
+{
+  "id": "graph",
+  "name": {
+    "en": "Graph Plotter",
+    "tr": "Grafik Çizici",
+    "de": "Funktionsplotter",
+    "fr": "Traceur de courbes",
+    "es": "Trazador de gráficas",
+    "ja": "グラフ描画",
+    "zh": "函数绘图",
+    "ko": "그래프 그리기"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 980,
+    "height": 620,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Plot functions, trace curves and find roots",
+    "tr": "Fonksiyon grafikleri çizin, eğrileri izleyin, kökleri bulun",
+    "de": "Funktionen zeichnen, Kurven verfolgen und Nullstellen finden",
+    "fr": "Tracez des fonctions, suivez les courbes et trouvez les racines",
+    "es": "Representa funciones, recorre curvas y encuentra raíces"
+  },
+  "permissions": []
+}

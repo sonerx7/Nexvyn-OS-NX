@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Encode text and verify checksums",
+    "tr": "Metni kodla, sağlama toplamını doğrula",
+    "de": "Text kodieren, Prüfsummen prüfen",
+    "fr": "Encodez du texte, vérifiez des empreintes",
+    "es": "Codifica texto y verifica hashes",
+    "ja": "テキストをエンコードしてチェックサムを検証",
+    "zh": "编码文本并验证校验和",
+    "ko": "텍스트를 인코딩하고 체크섬을 확인하세요"
+  },
+  "description": {
+    "en": "Base64 & Hash turns text into Base64, URL-safe Base64, hex or URL encoding and back again, instantly as you type. Invalid input gets a clear message that says exactly what is wrong. The Checksums tab computes CRC32, Adler-32, FNV-1a, MD5, SHA-1 and SHA-256 of your text or of a file up to 1 MB, and shows which algorithm matches a hash you paste.\n\n• Encode and decode in four formats with one tap\n• Six checksums in pure Lua, tested against known vectors\n• Paste an expected hash to verify a download\n• Character, byte and line counters that understand UTF-8\n• Copy, save or move the result back into the input\n• Light and dark mode",
+    "tr": "Base64 ve Hash, metni Base64, URL güvenli Base64, onaltılık (hex) ya da URL kodlamasına çevirir ve geri çözer; sonuç sen yazarken anında belirir. Girdi geçersizse neyin yanlış olduğunu açıkça söyler. Sağlama Toplamları sekmesi metnin ya da 1 MB'a kadar bir dosyanın CRC32, Adler-32, FNV-1a, MD5, SHA-1 ve SHA-256 özetlerini hesaplar, yapıştırdığın özetin hangi algoritmayla eşleştiğini gösterir.\n\n• Dört biçimde tek dokunuşla kodla ve çöz\n• Saf Lua ile yazılmış, test vektörleriyle doğrulanmış altı özet\n• Beklenen özeti yapıştır, indirdiğin dosyayı doğrula\n• UTF-8'i anlayan karakter, bayt ve satır sayaçları\n• Sonucu kopyala, kaydet ya da yeniden girdiye taşı\n• Açık ve karanlık mod",
+    "de": "Base64 & Hash wandelt Text in Base64, URL-sicheres Base64, Hex oder URL-Kodierung um und wieder zurück – sofort, während du tippst. Bei ungültiger Eingabe erfährst du genau, was nicht stimmt. Der Tab Prüfsummen berechnet CRC32, Adler-32, FNV-1a, MD5, SHA-1 und SHA-256 für Text oder eine Datei bis 1 MB und zeigt, welcher Algorithmus zu einem eingefügten Hash passt.\n\n• Kodieren und Dekodieren in vier Formaten per Tipp\n• Sechs Prüfsummen in reinem Lua, mit Testvektoren geprüft\n• Erwarteten Hash einfügen und einen Download prüfen\n• UTF-8-fähige Zähler für Zeichen, Bytes und Zeilen\n• Ergebnis kopieren, speichern oder zurück in die Eingabe holen\n• Heller und dunkler Modus",
+    "fr": "Base64 et hachage convertit du texte en Base64, Base64 URL, hexadécimal ou encodage URL, et inversement, instantanément pendant la saisie. Une entrée invalide affiche un message clair qui indique précisément le problème. L’onglet Sommes de contrôle calcule CRC32, Adler-32, FNV-1a, MD5, SHA-1 et SHA-256 d’un texte ou d’un fichier jusqu’à 1 Mo, et indique quel algorithme correspond à l’empreinte que vous collez.\n\n• Encodage et décodage en quatre formats d’un geste\n• Six sommes de contrôle en Lua pur, vérifiées sur des vecteurs de test\n• Collez l’empreinte attendue pour vérifier un téléchargement\n• Compteurs de caractères, d’octets et de lignes compatibles UTF-8\n• Copiez, enregistrez ou renvoyez le résultat dans l’entrée\n• Mode clair et mode sombre",
+    "es": "Base64 y hash convierte texto a Base64, Base64 seguro para URL, hexadecimal o codificación URL y viceversa, al instante mientras escribes. Si la entrada no es válida, un mensaje claro te dice exactamente qué falla. La pestaña Sumas de comprobación calcula CRC32, Adler-32, FNV-1a, MD5, SHA-1 y SHA-256 de un texto o de un archivo de hasta 1 MB, y te muestra qué algoritmo coincide con el hash que pegues.\n\n• Codifica y descodifica en cuatro formatos con un toque\n• Seis sumas en Lua puro, comprobadas con vectores conocidos\n• Pega el hash esperado para verificar una descarga\n• Contadores de caracteres, bytes y líneas compatibles con UTF-8\n• Copia, guarda o devuelve el resultado a la entrada\n• Modo claro y oscuro",
+    "ja": "Base64 とハッシュは、入力と同時にテキストを Base64、URL セーフな Base64、16 進数、URL エンコードに変換し、元に戻すこともできます。無効な入力には、何が間違っているかを正確に示すわかりやすいメッセージが表示されます。チェックサムタブでは、テキストまたは 1 MB までのファイルの CRC32、Adler-32、FNV-1a、MD5、SHA-1、SHA-256 を計算し、貼り付けたハッシュと一致するアルゴリズムを表示します。\n\n• ワンタップで 4 つの形式のエンコードとデコード\n• 純粋な Lua で実装し、既知のテストベクタで検証済みの 6 種類のチェックサム\n• 想定のハッシュを貼り付けてダウンロードを検証\n• UTF-8 に対応した文字数、バイト数、行数のカウンター\n• 結果をコピー、保存、または入力に戻す\n• ライトモードとダークモード",
+    "zh": "Base64 和哈希可将文本转换为 Base64、URL 安全 Base64、十六进制或 URL 编码，也可以反向转换，输入时立即出结果。输入无效时会给出清晰的提示，准确说明哪里有问题。“校验和”标签页可计算文本或最大 1 MB 文件的 CRC32、Adler-32、FNV-1a、MD5、SHA-1 和 SHA-256，并显示哪种算法与你粘贴的哈希值匹配。\n\n• 一键在四种格式间编码和解码\n• 六种用纯 Lua 实现的校验和，均经过已知向量测试\n• 粘贴预期的哈希值以验证下载的文件\n• 支持 UTF-8 的字符、字节和行数统计\n• 复制、保存结果，或将其移回输入\n• 浅色和深色模式",
+    "ko": "Base64 및 해시는 입력하는 즉시 텍스트를 Base64, URL 안전 Base64, 16진수 또는 URL 인코딩으로 바꾸고 다시 되돌립니다. 입력이 잘못되면 정확히 무엇이 문제인지 알려 주는 명확한 메시지가 나타납니다. 체크섬 탭은 텍스트나 최대 1 MB 파일의 CRC32, Adler-32, FNV-1a, MD5, SHA-1, SHA-256을 계산하고, 붙여넣은 해시와 일치하는 알고리즘을 보여 줍니다.\n\n• 한 번의 탭으로 네 가지 형식 인코딩 및 디코딩\n• 순수 Lua로 구현하고 알려진 테스트 벡터로 검증한 체크섬 6종\n• 예상 해시를 붙여넣어 다운로드 확인\n• UTF-8을 이해하는 문자, 바이트, 줄 카운터\n• 결과를 복사, 저장하거나 다시 입력으로 옮기기\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 3", "key enter", "text Hello, Nexvyn OS! Hello world", "key escape", "wait 1.5"],
+    ["key tab", "wait 2"],
+    ["key tab", "wait 0.3", "key right", "key right", "dark 1", "wait 1.5"]
+  ]
+}

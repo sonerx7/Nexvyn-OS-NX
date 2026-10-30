@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Colourful notes that stay on your desktop",
+    "tr": "Masaüstünde kalan renkli notlar",
+    "de": "Bunte Notizen direkt auf dem Schreibtisch",
+    "fr": "Des notes colorées sur votre bureau",
+    "es": "Notas de colores en tu escritorio",
+    "ja": "デスクトップに貼っておけるカラフルなメモ",
+    "zh": "停留在桌面上的彩色便笺",
+    "ko": "데스크톱에 머무는 알록달록한 메모"
+  },
+  "description": {
+    "en": "Jot down a quick thought and keep it in sight. Every sticky note is its own small window on the desktop, so you can scatter reminders, lists and ideas wherever you like. Notes save themselves as you type and come back exactly where you left them the next time you start Nexvyn OS.\n\n• Each note is its own resizable window\n• Eight colours: yellow, blue, green, pink, purple, grey, orange, mint\n• Bigger or smaller text per note\n• Float on top of other windows\n• Duplicate, copy the text or export it as a text file\n• Arrange all stickies or show them all with one command",
+    "tr": "Aklına geleni hemen not al ve göz önünde tut. Her yapışkan not masaüstünde kendi küçük penceresidir; hatırlatmaları, listeleri ve fikirleri istediğin yere dağıtabilirsin. Notlar sen yazarken kendiliğinden kaydedilir ve Nexvyn OS'u bir sonraki açışında tam bıraktığın yerde seni bekler.\n\n• Her not, boyutu değiştirilebilen ayrı bir pencere\n• Sekiz renk: sarı, mavi, yeşil, pembe, mor, gri, turuncu, nane\n• Not başına büyük ya da küçük yazı\n• Diğer pencerelerin üstünde kalma\n• Çoğalt, metni kopyala ya da metin dosyası olarak dışa aktar\n• Tek komutla tüm notları düzenle ya da hepsini göster",
+    "de": "Schreib schnell einen Gedanken auf und behalte ihn im Blick. Jede Haftnotiz ist ein eigenes kleines Fenster auf dem Schreibtisch, so verteilst du Erinnerungen, Listen und Ideen, wo du willst. Notizen speichern sich beim Tippen und sind beim nächsten Start von Nexvyn OS genau dort, wo du sie gelassen hast.\n\n• Jede Notiz ist ein eigenes, skalierbares Fenster\n• Acht Farben: Gelb, Blau, Grün, Rosa, Lila, Grau, Orange, Mint\n• Größere oder kleinere Schrift pro Notiz\n• Über anderen Fenstern schweben lassen\n• Duplizieren, Text kopieren oder als Textdatei exportieren\n• Alle Haftnotizen anordnen oder alle anzeigen",
+    "fr": "Notez une idée en vitesse et gardez-la sous les yeux. Chaque pense-bête est sa propre petite fenêtre sur le bureau : dispersez rappels, listes et idées où vous voulez. Les notes s’enregistrent pendant la frappe et reviennent exactement à leur place au prochain démarrage de Nexvyn OS.\n\n• Chaque note est une fenêtre redimensionnable\n• Huit couleurs : jaune, bleu, vert, rose, violet, gris, orange, menthe\n• Texte plus grand ou plus petit pour chaque note\n• Toujours au premier plan, au choix\n• Duplication, copie du texte ou export en fichier texte\n• Rangez ou affichez tous les pense-bêtes d’une commande",
+    "es": "Apunta una idea rápida y tenla siempre a la vista. Cada nota adhesiva es su propia ventanita en el escritorio, así que puedes repartir recordatorios, listas e ideas donde quieras. Las notas se guardan mientras escribes y vuelven justo donde las dejaste la próxima vez que inicies Nexvyn OS.\n\n• Cada nota es una ventana que puedes redimensionar\n• Ocho colores: amarillo, azul, verde, rosa, morado, gris, naranja, menta\n• Texto más grande o más pequeño en cada nota\n• Opción de mantenerla siempre encima\n• Duplica, copia el texto o expórtalo como archivo de texto\n• Ordena todas las notas o muéstralas todas con un comando",
+    "ja": "ちょっとした考えを書き留めて、目に入るところに置いておきましょう。付箋は 1 枚ずつがデスクトップ上の小さなウィンドウなので、リマインダー、リスト、アイデアを好きな場所に散らしておけます。メモは入力と同時に保存され、次に Nexvyn OS を起動したときにまったく同じ場所に戻ってきます。\n\n• 1 枚ずつがサイズ変更できるウィンドウ\n• 8 色: 黄、青、緑、ピンク、紫、灰、オレンジ、ミント\n• メモごとに文字を大きく・小さく\n• 他のウィンドウの最前面に表示\n• 複製、テキストのコピー、テキストファイルとして書き出し\n• ひとつのコマンドですべての付箋を整列または表示",
+    "zh": "随手记下一个想法，让它一直在眼前。每张便笺都是桌面上一个独立的小窗口，你可以把提醒、清单和点子放在任何你喜欢的地方。便笺会在你输入时自动保存，下次启动 Nexvyn OS 时还会出现在原来的位置。\n\n• 每张便笺都是一个可调整大小的窗口\n• 八种颜色：黄、蓝、绿、粉、紫、灰、橙、薄荷绿\n• 每张便笺可单独放大或缩小文字\n• 浮动在其他窗口之上\n• 复制便笺、拷贝文本或导出为文本文件\n• 一条命令排列或显示所有便笺",
+    "ko": "떠오른 생각을 빠르게 적어 눈에 보이는 곳에 두세요. 스티커 메모 하나하나가 데스크톱의 작은 창이므로 알림, 목록, 아이디어를 원하는 곳에 흩어 둘 수 있습니다. 메모는 입력하는 동안 저장되며, 다음에 Nexvyn OS를 시작하면 두었던 자리에 그대로 돌아옵니다.\n\n• 메모마다 크기를 조절할 수 있는 창\n• 8가지 색상: 노랑, 파랑, 초록, 분홍, 보라, 회색, 주황, 민트\n• 메모별 텍스트 크기 조절\n• 다른 창 위에 항상 표시\n• 복제, 텍스트 복사, 텍스트 파일로 내보내기\n• 명령 하나로 모든 스티커 메모 정렬 또는 보기"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.5 0.55",
+      "wait 0.5",
+      "text Weekend plan",
+      "key enter",
+      "text - Finish Zelda shrine",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "text - Call Elif at 6",
+      "key enter",
+      "text - Back up saves!",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

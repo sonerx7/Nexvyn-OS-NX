@@ -1,0 +1,14 @@
+{
+  "cloth": "Tela",
+  "ropes": "Cuerdas",
+  "bridge": "Puente",
+  "tool_drag": "Agarrar",
+  "tool_cut": "Cortar",
+  "tool_pin": "Fijar",
+  "wind": "Viento",
+  "tear": "Rasgar",
+  "reset": "Restablecer",
+  "stats": "{0} puntos · {1} enlaces · {2} FPS",
+  "hint": "Agarrar: arrastra cualquier punto. Cortar: desliza a través de los enlaces. Fijar: toca un punto para fijarlo o soltarlo.",
+  "menu_title": "Física"
+}

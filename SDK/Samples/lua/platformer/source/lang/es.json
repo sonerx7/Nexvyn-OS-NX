@@ -1,0 +1,17 @@
+{
+  "coins": "{0} / {1}",
+  "time": "Tiempo {0}",
+  "best": "Mejor {0}",
+  "hint": "Moverse: stick / flechas   Saltar: A / Espacio   Atravesar un tablón: abajo + saltar",
+  "all_coins": "¡Todas las monedas! Corre hacia la bandera",
+  "coins_left": "Quedan {0} monedas",
+  "clear": "¡Nivel superado!",
+  "result": "Tiempo {0}   Caídas {1}",
+  "new_record": "¡Nuevo récord!",
+  "again": "Jugar de nuevo",
+  "menu_title": "Plataformas",
+  "restart": "Reiniciar",
+  "debug": "Mostrar colisionadores (depuración)",
+  "reset_record": "Restablecer mejor tiempo",
+  "record_reset": "Mejor tiempo borrado"
+}

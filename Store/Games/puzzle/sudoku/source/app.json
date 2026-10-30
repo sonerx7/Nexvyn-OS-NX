@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.sudoku",
+  "name": {
+    "en": "Sudoku",
+    "tr": "Sudoku",
+    "de": "Sudoku",
+    "fr": "Sudoku",
+    "es": "Sudoku",
+    "ja": "数独",
+    "zh": "数独",
+    "ko": "스도쿠"
+  },
+  "description": {
+    "en": "Freshly generated Sudoku puzzles with a unique solution in three difficulties, with notes, hints and best times.",
+    "tr": "Üç zorlukta, tek çözümlü ve her seferinde yeniden üretilen Sudoku bulmacaları; not alma, ipucu ve en iyi süreler.",
+    "de": "Frisch erzeugte Sudoku-Rätsel mit eindeutiger Lösung in drei Schwierigkeitsstufen, mit Notizen, Tipps und Bestzeiten.",
+    "fr": "Des grilles de sudoku fraîchement générées à solution unique, en trois difficultés, avec notes, indices et meilleurs temps.",
+    "es": "Sudokus recién generados con solución única en tres dificultades, con notas, pistas y mejores tiempos."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 600,
+    "minWidth": 440,
+    "minHeight": 540,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

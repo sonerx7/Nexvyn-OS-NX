@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.fishing",
+  "name": {"en": "Go Fishing", "tr": "Balık Tut", "de": "Angeln gehen", "fr": "À la pêche", "es": "A pescar", "ja": "釣りに行こう", "zh": "去钓鱼", "ko": "낚시하러 가자"},
+  "description": {
+    "en": "A relaxed fishing game: cast, wait for the bite and reel with care. 19 species, three spots, day and night, and a collection log.",
+    "tr": "Rahatlatıcı bir balık tutma oyunu: oltayı at, vuruşu bekle ve dikkatle çek. 19 tür, üç yer, gece ve gündüz, bir de koleksiyon defteri.",
+    "de": "Ein entspanntes Angelspiel: Auswerfen, auf den Biss warten und vorsichtig einholen. 19 Arten, drei Angelplätze, Tag und Nacht und ein Sammelbuch.",
+    "fr": "Un jeu de pêche relaxant : lancez, attendez la touche et moulinez avec soin. 19 espèces, trois coins de pêche, le jour et la nuit, et un carnet de collection.",
+    "es": "Un relajante juego de pesca: lanza, espera a que piquen y recoge el sedal con cuidado. 19 especies, tres lugares, día y noche y un registro de capturas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 540, "minWidth": 480, "minHeight": 300, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

@@ -1,0 +1,32 @@
+{
+  "id": "overlays",
+  "name": {
+    "en": "Overlays",
+    "tr": "Katmanlar",
+    "de": "Overlays",
+    "fr": "Overlays",
+    "es": "Overlays",
+    "ko": "오버레이"
+  },
+  "description": {
+    "en": "Turn Tesla overlays on and off and set the menu's key combination.",
+    "tr": "Tesla katmanlarını aç / kapat ve menünün tuş kombinasyonunu ayarla.",
+    "de": "Schalte Tesla-Overlays ein und aus und lege die Tastenkombination des Menüs fest.",
+    "fr": "Activez ou désactivez les overlays Tesla et définissez la combinaison de touches du menu.",
+    "es": "Activa y desactiva los overlays de Tesla y define la combinación de botones del menú."
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 860,
+    "height": 600,
+    "minWidth": 420,
+    "minHeight": 380,
+    "resizable": true
+  }
+}

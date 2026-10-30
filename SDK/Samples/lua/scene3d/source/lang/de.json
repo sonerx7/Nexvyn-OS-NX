@@ -1,0 +1,17 @@
+{
+  "hint": "Ziehen zum Umkreisen · Mausrad oder Finger spreizen zum Zoomen",
+  "sun": "So",
+  "ambient": "Umgebungslicht",
+  "fog": "Nebel",
+  "textures": "Texturen",
+  "auto_orbit": "Automatisch umkreisen",
+  "auto_sun": "Wandernde Sonne",
+  "wireframe": "Drahtgitter",
+  "labels": "Beschriftungen",
+  "reset_view": "Kamera zurücksetzen",
+  "stats": "{0} Dreiecke · {1} · {2} FPS",
+  "label_pedestal": "Achteckiger Sockel + Kugel",
+  "label_crates": "Kisten: ein UV-Satz pro Fläche",
+  "label_wall": "Gebogene Wand: UVs folgen dem Bogen",
+  "menu_title": "Szene"
+}

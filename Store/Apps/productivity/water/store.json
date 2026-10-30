@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Track water, hit your daily goal",
+    "tr": "Suyunu takip et, günlük hedefe ulaş",
+    "de": "Wasser zählen, Tagesziel erreichen",
+    "fr": "Suivez votre eau, atteignez l’objectif",
+    "es": "Controla el agua y alcanza tu meta",
+    "ja": "水分補給を記録して 1 日の目標を達成",
+    "zh": "记录饮水量，达成每日目标",
+    "ko": "물 섭취를 기록하고 하루 목표를 달성하세요"
+  },
+  "description": {
+    "en": "Water makes drinking enough each day a little easier. Add a glass with one tap or the Space key, or a 500 ml bottle or any custom amount, and watch the glass fill up with gently moving water. When you reach your daily goal, you get a notification. The History tab shows the last seven days against your goal, and optional reminders nudge you every so often with how much is left.\n\n• One-tap glasses (150–500 ml), a bottle or a custom amount, with undo\n• Daily goal from 1000 to 4000 ml with an animated glass\n• 7-day chart with a goal line and the days you reached it\n• Optional reminders every 15 to 180 minutes\n• Keyboard: Space/Enter adds a glass, Backspace undoes, arrows switch tabs\n• Light and dark mode",
+    "tr": "Su Takibi, her gün yeterince su içmeyi biraz daha kolaylaştırır. Tek dokunuşla ya da Boşluk tuşuyla bir bardak, 500 ml'lik bir şişe ya da istediğin miktarı ekle, bardağın hafifçe dalgalanan suyla doluşunu izle. Günlük hedefine ulaştığında bildirim alırsın. Geçmiş sekmesi son yedi günü hedefinle karşılaştırır; isteğe bağlı hatırlatıcılar da arada bir ne kadar kaldığını söyler.\n\n• Tek dokunuşla bardak (150–500 ml), şişe ya da özel miktar; geri alma\n• Hareketli bardakla 1000–4000 ml arası günlük hedef\n• Hedef çizgili ve hedefe ulaşılan günleri gösteren 7 günlük grafik\n• 15–180 dakikada bir isteğe bağlı hatırlatıcı\n• Klavye: Boşluk/Enter bardak ekler, Backspace geri alır, oklar sekme değiştirir\n• Açık ve karanlık mod",
+    "de": "Wasser hilft dir, jeden Tag genug zu trinken. Füge mit einem Tipp oder der Leertaste ein Glas hinzu, eine 500-ml-Flasche oder eine eigene Menge, und sieh zu, wie sich das Glas mit sanft bewegtem Wasser füllt. Erreichst du dein Tagesziel, bekommst du eine Mitteilung. Der Tab Verlauf zeigt die letzten sieben Tage im Vergleich zum Ziel, und optionale Erinnerungen sagen dir zwischendurch, wie viel noch fehlt.\n\n• Gläser per Tipp (150–500 ml), Flasche oder eigene Menge, mit Rückgängig\n• Tagesziel von 1000 bis 4000 ml mit animiertem Glas\n• 7-Tage-Diagramm mit Ziellinie und erreichten Tagen\n• Optionale Erinnerungen alle 15 bis 180 Minuten\n• Tastatur: Leertaste/Enter fügt ein Glas hinzu, Rücktaste macht rückgängig, Pfeile wechseln den Tab\n• Heller und dunkler Modus",
+    "fr": "Eau vous aide à boire suffisamment chaque jour. Ajoutez un verre d’un geste ou avec la touche Espace, une bouteille de 500 ml ou la quantité de votre choix, et regardez le verre se remplir d’une eau qui ondule doucement. Une notification vous prévient quand l’objectif du jour est atteint. L’onglet Historique compare les sept derniers jours à votre objectif, et des rappels facultatifs vous indiquent de temps en temps ce qu’il reste à boire.\n\n• Verres d’un geste (150 à 500 ml), bouteille ou quantité libre, avec annulation\n• Objectif quotidien de 1000 à 4000 ml avec verre animé\n• Graphique sur 7 jours avec ligne d’objectif et jours réussis\n• Rappels facultatifs toutes les 15 à 180 minutes\n• Clavier : Espace/Entrée ajoute un verre, Retour arrière annule, flèches pour les onglets\n• Mode clair et mode sombre",
+    "es": "Agua te ayuda a beber lo suficiente cada día. Añade un vaso con un toque o con la tecla Espacio, una botella de 500 ml o la cantidad que quieras, y mira cómo el vaso se llena de agua que se mueve suavemente. Al alcanzar tu meta diaria recibes una notificación. La pestaña Historial compara los últimos siete días con tu meta, y los recordatorios opcionales te avisan de vez en cuando de cuánto te falta.\n\n• Vasos con un toque (150–500 ml), botella o cantidad propia, con deshacer\n• Meta diaria de 1000 a 4000 ml con un vaso animado\n• Gráfico de 7 días con línea de meta y días cumplidos\n• Recordatorios opcionales cada 15 a 180 minutos\n• Teclado: Espacio/Intro añade un vaso, Retroceso deshace, flechas cambian de pestaña\n• Modo claro y oscuro",
+    "ja": "水分補給は、毎日十分な水を飲むことを少しだけ簡単にします。ワンタップまたは Space キーでグラス 1 杯、500 ml のボトル、または任意の量を追加すると、グラスがゆらめく水で満たされていきます。1 日の目標に達すると通知が届きます。履歴タブには過去 7 日間が目標とともに表示され、リマインダー (任意) が時々残りの量を知らせてくれます。\n\n• ワンタップでグラス (150〜500 ml)、ボトル、任意の量。取り消し可能\n• アニメーションするグラス付きの 1000〜4000 ml の 1 日の目標\n• 目標ラインと達成日が表示される 7 日間のグラフ\n• 15〜180 分ごとのリマインダー (任意)\n• キーボード: Space/Enter でグラスを追加、Backspace で取り消し、矢印キーでタブを切り替え\n• ライトモードとダークモード",
+    "zh": "喝水让每天喝够水变得更容易一些。轻点一下或按空格键即可添加一杯水，也可以添加一瓶 500 ml 的水或任意自定分量，看着杯子里轻轻晃动的水逐渐满上。达到每日目标时，你会收到通知。“历史记录”标签页会显示最近七天与目标的对比，可选的提醒会不时告诉你还差多少。\n\n• 一键添加一杯（150–500 ml）、一瓶或自定分量，可撤销\n• 1000 到 4000 ml 的每日目标，配有动画水杯\n• 带目标线和达标天数的 7 日图表\n• 可选提醒，每 15 到 180 分钟一次\n• 键盘：空格/Enter 添加一杯，Backspace 撤销，方向键切换标签页\n• 浅色和深色模式",
+    "ko": "물 마시기는 매일 충분히 마시는 것을 조금 더 쉽게 해 줍니다. 한 번의 탭이나 Space 키로 한 컵을, 또는 500 ml 병이나 원하는 양을 추가하면 부드럽게 출렁이는 물로 잔이 채워집니다. 하루 목표에 도달하면 알림을 받습니다. 기록 탭은 최근 7일을 목표와 비교해 보여 주며, 선택적 알림이 남은 양을 알려 주며 가끔 상기시켜 줍니다.\n\n• 한 번의 탭으로 컵(150–500 ml), 병 또는 원하는 양 추가, 실행 취소 가능\n• 움직이는 잔과 함께하는 1000–4000 ml 하루 목표\n• 목표선과 달성한 날이 표시되는 7일 차트\n• 15–180분마다 선택적 알림\n• 키보드: Space/Enter 한 컵 추가, Backspace 실행 취소, 화살표 탭 전환\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 2", "key space", "wait 0.4", "key space", "wait 0.4", "key space", "wait 0.4", "key space", "wait 0.4", "key space", "wait 2.5"],
+    ["key right", "wait 1.5"],
+    ["key right", "wait 1.5"],
+    ["key right", "dark 1", "wait 2"]
+  ]
+}

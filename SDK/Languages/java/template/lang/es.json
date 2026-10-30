@@ -1,0 +1,7 @@
+{
+  "app": "App",
+  "hello": "¡Hola, mundo!",
+  "edit_me": "Edita src/app/Main.java, recompila app.jar en el PC y vuelve a ejecutarla.",
+  "tap": "Tocado {0} veces",
+  "reset": "Reiniciar contador"
+}

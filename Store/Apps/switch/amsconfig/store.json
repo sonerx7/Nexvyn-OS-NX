@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "Atmosphère's hidden switches, explained",
+    "tr": "Atmosphère'in gizli ayarları, açıklamalı",
+    "de": "Atmosphères versteckte Schalter, erklärt",
+    "fr": "Les réglages cachés d’Atmosphère, expliqués",
+    "es": "Los ajustes ocultos de Atmosphère, explicados",
+    "ja": "Atmosphère の隠れたスイッチをわかりやすく",
+    "zh": "Atmosphère 的隐藏开关，逐一讲解",
+    "ko": "Atmosphère의 숨겨진 스위치를 쉽게 설명"
+  },
+  "description": {
+    "en": "Change Atmosphère's configuration without editing INI files by hand. Every documented option of system_settings.ini and override_config.ini appears as a clear card with a plain-language explanation, its current value and a toggle or menu. The file is backed up before the first change, and a Restart button appears when a change needs a reboot.\n\n• DNS MITM blocking of Nintendo servers and error report upload\n• Cheat defaults, USB 3.0 for homebrew and fatal error restart\n• Keys for the Homebrew Menu over a game, Album, mods and cheats\n• Search across every option by name, help text or key\n• Open the raw file as text or reset it from Atmosphère's template",
+    "tr": "Atmosphère ayarlarını INI dosyalarını elle düzenlemeden değiştir. system_settings.ini ve override_config.ini içindeki belgelenmiş her seçenek, anlaşılır bir açıklama, mevcut değeri ve bir anahtar ya da menüyle ayrı bir kartta görünür. İlk değişiklikten önce dosyanın yedeği alınır; yeniden başlatma gerektiren bir değişiklikte Yeniden Başlat düğmesi çıkar.\n\n• Nintendo sunucularını DNS MITM ile engelleme ve hata raporu gönderimi\n• Hile varsayılanları, homebrew için USB 3.0, ölümcül hatada yeniden başlatma\n• Oyun üstünde Homebrew Menüsü, Albüm, mod ve hile tuşları\n• Tüm seçeneklerde ada, açıklamaya ya da anahtara göre arama\n• Ham dosyayı metin olarak aç ya da Atmosphère şablonuyla sıfırla",
+    "de": "Ändere die Konfiguration von Atmosphère, ohne INI-Dateien von Hand zu bearbeiten. Jede dokumentierte Option aus system_settings.ini und override_config.ini erscheint als eigene Karte mit verständlicher Erklärung, aktuellem Wert und Schalter oder Menü. Vor der ersten Änderung wird die Datei gesichert, und wenn ein Neustart nötig ist, erscheint ein Neustart-Button.\n\n• DNS-MITM-Sperre der Nintendo-Server und Upload von Fehlerberichten\n• Cheat-Standard, USB 3.0 für Homebrew und Neustart nach Fehlern\n• Tasten für das Homebrew-Menü über einem Spiel, Album, Mods und Cheats\n• Suche über alle Optionen nach Name, Hilfetext oder Schlüssel\n• Rohdatei als Text öffnen oder aus der Atmosphère-Vorlage zurücksetzen",
+    "fr": "Modifiez la configuration d’Atmosphère sans éditer les fichiers INI à la main. Chaque option documentée de system_settings.ini et d’override_config.ini s’affiche sur une carte claire, avec une explication simple, sa valeur actuelle et un interrupteur ou un menu. Le fichier est sauvegardé avant la première modification, et un bouton Redémarrer apparaît quand c’est nécessaire.\n\n• Blocage DNS MITM des serveurs Nintendo et envoi des rapports d’erreur\n• Triches par défaut, USB 3.0 pour le homebrew, redémarrage après erreur fatale\n• Touches du menu Homebrew sur un jeu, de l’Album, des mods et des triches\n• Recherche dans toutes les options par nom, aide ou clé\n• Ouvrez le fichier brut en texte ou réinitialisez-le depuis le modèle d’Atmosphère",
+    "es": "Cambia la configuración de Atmosphère sin editar archivos INI a mano. Cada opción documentada de system_settings.ini y override_config.ini aparece en una tarjeta clara, con una explicación sencilla, su valor actual y un interruptor o un menú. El archivo se respalda antes del primer cambio y, si hace falta reiniciar, aparece un botón Reiniciar.\n\n• Bloqueo DNS MITM de los servidores de Nintendo y envío de informes de error\n• Trucos por defecto, USB 3.0 para homebrew y reinicio tras un error fatal\n• Botones del menú Homebrew sobre un juego, Álbum, mods y trucos\n• Busca entre todas las opciones por nombre, ayuda o clave\n• Abre el archivo como texto o restáuralo desde la plantilla de Atmosphère",
+    "ja": "INI ファイルを手で編集せずに Atmosphère の設定を変更できます。system_settings.ini と override_config.ini のすべての文書化されたオプションが、わかりやすい説明、現在の値、スイッチまたはメニュー付きのカードとして表示されます。最初の変更の前にファイルがバックアップされ、再起動が必要な変更には「再起動」ボタンが表示されます。\n\n• DNS MITM による Nintendo のサーバーのブロックとエラーレポートのアップロード\n• チートのデフォルト、homebrew での USB 3.0、致命的エラー後の再起動\n• ゲームの上での Homebrew Menu、アルバム、Mod、チートのキー\n• 名前、説明、キーですべてのオプションを検索\n• 元のファイルをテキストとして開く、または Atmosphère のテンプレートからリセット",
+    "zh": "无需手动编辑 INI 文件即可更改 Atmosphère 的配置。system_settings.ini 和 override_config.ini 中每个有文档说明的选项都显示为一张清晰的卡片，附有通俗的解释、当前值以及开关或菜单。首次更改前会备份文件，需要重启才能生效时会出现“重新启动”按钮。\n\n• 通过 DNS MITM 屏蔽 Nintendo 服务器和错误报告上传\n• 金手指默认值、自制软件 USB 3.0 和致命错误后重启\n• 通过游戏进入自制软件菜单、相册、模组和金手指的按键\n• 按名称、帮助文本或键名搜索所有选项\n• 以文本方式打开原始文件，或从 Atmosphère 模板重置",
+    "ko": "INI 파일을 직접 편집하지 않고 Atmosphère 설정을 변경하세요. system_settings.ini와 override_config.ini의 문서화된 모든 옵션이 쉬운 설명, 현재 값, 토글이나 메뉴가 있는 명확한 카드로 나타납니다. 처음 변경하기 전에 파일이 백업되며, 다시 시작이 필요한 변경에는 다시 시작 버튼이 나타납니다.\n\n• Nintendo 서버의 DNS MITM 차단과 오류 보고서 업로드\n• 치트 기본값, 홈브루용 USB 3.0, 치명적 오류 후 다시 시작\n• 게임 위 Homebrew Menu, 앨범, 모드, 치트 키\n• 이름, 도움말, 키로 모든 옵션 검색\n• 원본 파일을 텍스트로 열거나 Atmosphère 템플릿으로 재설정"
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.811 0.041", "wait 0.5", "text cheat", "wait 1.5"],
+    ["key escape", "wait 0.5", "dark 1", "wait 1.5"]
+  ]
+}

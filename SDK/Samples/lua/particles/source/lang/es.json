@@ -1,0 +1,16 @@
+{
+  "fire": "Disparar",
+  "fountain": "Fuente",
+  "sparks": "Chispas",
+  "snow": "Nieve",
+  "magic": "Magia",
+  "tool_spawn": "Generar",
+  "tool_attract": "Atraer",
+  "tool_repel": "Repeler",
+  "clear": "Borrar",
+  "stats": "{0} partículas · {1} pozos · {2} FPS",
+  "hint": "Toca para una ráfaga y arrastra para pintar. Atraer / Repeler colocan pozos: arrastra uno para moverlo y tócalo para quitarlo.",
+  "wells_full": "Como máximo {0} pozos",
+  "menu_title": "Partículas",
+  "debug": "Superposición de depuración"
+}

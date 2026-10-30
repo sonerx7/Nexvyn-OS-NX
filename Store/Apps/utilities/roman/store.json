@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "Convert, learn and quiz Roman numerals",
+    "tr": "Romen rakamlarını çevir, öğren, sına",
+    "de": "Römische Zahlen umrechnen und üben",
+    "fr": "Convertir et réviser les chiffres romains",
+    "es": "Convierte y practica números romanos",
+    "ja": "ローマ数字を変換、学習、クイズ",
+    "zh": "转换、学习和测验罗马数字",
+    "ko": "로마 숫자 변환, 학습, 퀴즈"
+  },
+  "description": {
+    "en": "Type a number or a Roman numeral and the other one fills in by itself, with a step-by-step breakdown of how it is built. If a numeral breaks the rules, you get a clear explanation and a suggestion. Look up the symbols and rules any time, then test yourself in a quiz.\n\n• Both directions from 1 to 3999, as you type\n• Step-by-step breakdown of every place value\n• Friendly error messages with \"Did you mean\" suggestions\n• Reference of symbols, subtractive pairs and rules\n• Quiz in three levels with streaks, best streak and all-time accuracy\n• Copy the result",
+    "tr": "Bir sayı ya da Romen rakamı yaz, diğeri kendiliğinden dolsun; nasıl oluştuğu adım adım gösterilir. Bir rakam kurallara uymuyorsa anlaşılır bir açıklama ve öneri alırsın. Simgelere ve kurallara her an göz at, sonra kendini bir testle sına.\n\n• Yazarken iki yönlü çeviri, 1'den 3999'a kadar\n• Her basamağın adım adım açılımı\n• \"Bunu mu demek istediniz\" önerili anlaşılır hata mesajları\n• Simgeler, çıkarma çiftleri ve kurallar rehberi\n• Seri, en iyi seri ve tüm zamanların doğruluk oranıyla üç seviyeli test\n• Sonucu kopyala",
+    "de": "Tippe eine Zahl oder eine römische Zahl, und die andere erscheint von selbst, mit einer Schritt-für-Schritt-Zerlegung. Verstößt eine Zahl gegen die Regeln, bekommst du eine klare Erklärung und einen Vorschlag. Schlag Symbole und Regeln jederzeit nach und teste dich dann im Quiz.\n\n• Beide Richtungen von 1 bis 3999, schon beim Tippen\n• Schritt-für-Schritt-Zerlegung jeder Stelle\n• Verständliche Fehlermeldungen mit „Meintest du“-Vorschlägen\n• Übersicht über Symbole, Subtraktionspaare und Regeln\n• Quiz in drei Stufen mit Serien, bester Serie und Gesamttrefferquote\n• Ergebnis kopieren",
+    "fr": "Tapez un nombre ou un chiffre romain et l’autre se remplit tout seul, avec une décomposition pas à pas. Si un chiffre enfreint les règles, vous obtenez une explication claire et une suggestion. Consultez symboles et règles à tout moment, puis testez-vous avec un quiz.\n\n• Conversion dans les deux sens de 1 à 3999, dès la saisie\n• Décomposition pas à pas de chaque rang\n• Messages d’erreur clairs avec suggestions « Vouliez-vous dire »\n• Mémo des symboles, des paires soustractives et des règles\n• Quiz sur trois niveaux avec séries, meilleure série et précision globale\n• Copie du résultat",
+    "es": "Escribe un número o un número romano y el otro se rellena solo, con un desglose paso a paso de cómo se forma. Si un número rompe las reglas, recibes una explicación clara y una sugerencia. Consulta los símbolos y las reglas cuando quieras y ponte a prueba con un test.\n\n• En ambos sentidos del 1 al 3999, mientras escribes\n• Desglose paso a paso de cada posición\n• Mensajes de error claros con sugerencias de «¿Quisiste decir?»\n• Referencia de símbolos, pares de resta y reglas\n• Test en tres niveles con rachas, mejor racha y acierto total\n• Copia el resultado",
+    "ja": "数またはローマ数字を入力すると、もう一方が自動的に入力され、どのように組み立てられているかがステップごとに表示されます。数字がルールに反している場合は、わかりやすい説明と候補が示されます。記号とルールはいつでも確認でき、クイズで腕試しもできます。\n\n• 1〜3999 の双方向変換、入力と同時に\n• 各位をステップごとに分解\n• 「もしかして」の候補付きのわかりやすいエラーメッセージ\n• 記号、減算表記、ルールの早見表\n• 連続正解、最長連続正解、通算の正答率付きの 3 段階のクイズ\n• 結果をコピー",
+    "zh": "输入一个数字或罗马数字，另一个就会自动填写，并逐步拆解它的构成方式。如果某个罗马数字违反了规则，你会得到清晰的解释和建议。随时查阅符号和规则，然后在测验中检验自己。\n\n• 1 到 3999 双向转换，输入即出结果\n• 逐步拆解每个数位\n• 友好的错误提示，并给出“你是不是想输入”建议\n• 符号、减法组合和规则参考\n• 三个难度的测验，带连对、最长连对和累计正确率\n• 复制结果",
+    "ko": "숫자나 로마 숫자를 입력하면 다른 쪽이 자동으로 채워지며, 어떻게 만들어지는지 단계별로 풀어 보여 줍니다. 규칙에 어긋나는 숫자에는 명확한 설명과 제안이 나옵니다. 언제든 기호와 규칙을 찾아보고 퀴즈로 실력을 시험하세요.\n\n• 1부터 3999까지 입력하는 즉시 양방향 변환\n• 모든 자릿값의 단계별 풀이\n• \"다음을 의미하셨나요\" 제안이 있는 친절한 오류 메시지\n• 기호, 빼기 쌍, 규칙 참고\n• 연속 정답, 최고 연속 정답, 전체 정확도가 있는 3단계 퀴즈\n• 결과 복사"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "key pagedown",
+      "wait 1.5"
+    ]
+  ]
+}

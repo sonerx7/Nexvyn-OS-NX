@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.flappy",
+  "name": {
+    "en": "Flappy Bird",
+    "tr": "Kanatlı Kuş",
+    "de": "Flappy Bird",
+    "fr": "Flappy Bird",
+    "es": "Flappy Bird",
+    "ja": "フラッピーバード",
+    "zh": "飞翔小鸟",
+    "ko": "플래피 버드"
+  },
+  "description": {
+    "en": "Tap to flap and squeeze through the gaps between the pipes. Fly through the middle for perfect-pass combos and earn medals.",
+    "tr": "Kanat çırpmak için dokun, boruların arasındaki boşluklardan geç. Tam ortadan geçerek kusursuz kombolar yap, madalya kazan.",
+    "de": "Tippe zum Flattern und zwäng dich durch die Lücken zwischen den Rohren. Flieg genau durch die Mitte für Perfekt-Kombos und verdiene Medaillen.",
+    "fr": "Touchez pour battre des ailes et faufilez-vous entre les tuyaux. Passez pile au milieu pour des combos parfaits et gagnez des médailles.",
+    "es": "Toca para aletear y cuélate por los huecos entre las tuberías. Pasa justo por el centro para lograr combos perfectos y gana medallas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 600,
+    "minWidth": 480,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

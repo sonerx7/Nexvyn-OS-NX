@@ -1,0 +1,58 @@
+# Store checks for pull requests and pushes. Copy this file to .github/workflows/store.yml (GitHub web UI: Add file >
+# Create new file); pushing workflow files needs a token with the "workflow" scope.
+#
+# 1. build_store.py --check: the catalog, packages, samples.json and listings are up to date and every item is valid
+#    (ids, permissions declared for the calls the code makes, font licenses ...).
+# 2. The checkers of the source repository (catalog_check.py, lua_check.py, js_check.mjs, py_check.py) on the items the
+#    pull request changes. The source repository is private for now: add a read-only token as the secret
+#    SOURCE_REPO_TOKEN, or this step only prints a notice. Once it is public the token is not needed.
+name: store
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Catalog, packages and listings are up to date
+        run: python Tools/build_store.py --check
+      - name: Source repository (checkers)
+        id: src
+        env:
+          TOKEN: ${{ secrets.SOURCE_REPO_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "notice: SOURCE_REPO_TOKEN not set, the language checkers are skipped"; exit 0; fi
+          git clone --depth 1 --filter=blob:none --sparse "https://x-access-token:${TOKEN}@github.com/sonerx7/Nexvyn-OS-NX-Source.git" src
+          git -C src sparse-checkout set tools romfs/System
+          echo "ok=1" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        if: steps.src.outputs.ok == '1'
+        with:
+          node-version: "20"
+      - name: Catalog check and language checkers on the changed items
+        if: steps.src.outputs.ok == '1'
+        run: |
+          pip install lupa
+          python src/tools/catalog_check.py Store/catalog.json
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          items=$(git diff --name-only "$base" HEAD -- Store/Apps Store/Games SDK/Samples | awk -F/ '{print $1"/"$2"/"$3"/"$4}' | sort -u)
+          for item in $items; do
+            src_dir="$item/source"
+            [ -f "$src_dir/app.json" ] || continue
+            main=$(python -c "import json,sys;a=json.load(open(sys.argv[1]));print(a.get('main') or a.get('runtime') or 'main.lua')" "$src_dir/app.json")
+            case "$main" in
+              *.js|js) node src/tools/js_check.mjs "$src_dir" ;;
+              *.py|python) python src/tools/py_check.py "$src_dir" ;;
+              *.lua|lua) python src/tools/lua_check.py "$src_dir" ;;
+              *) echo "notice: $item ($main) is checked in review (rt_check.py)" ;;
+            esac
+          done

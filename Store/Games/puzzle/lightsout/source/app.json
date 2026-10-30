@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.lightsout",
+  "name": {
+    "en": "Lights Out",
+    "tr": "Işıkları Söndür",
+    "de": "Lights Out",
+    "fr": "Lights Out",
+    "es": "Apaga las luces",
+    "ja": "ライツアウト",
+    "zh": "关灯游戏",
+    "ko": "라이트 아웃"
+  },
+  "description": {
+    "en": "Turn off every light on a 5×5 board: each press toggles a light and its neighbours. 60 levels with stars plus random puzzles.",
+    "tr": "5×5 tahtadaki tüm ışıkları söndürün: her dokunuş bir ışığı ve komşularını değiştirir. Yıldızlı 60 seviye ve rastgele bulmacalar.",
+    "de": "Schalte jedes Licht auf einem 5×5-Feld aus: Jeder Druck schaltet ein Licht und seine Nachbarn um. 60 Level mit Sternen und dazu Zufallsrätsel.",
+    "fr": "Éteignez toutes les lumières d’un plateau 5×5 : chaque pression inverse une lumière et ses voisines. 60 niveaux avec étoiles, plus des puzzles aléatoires.",
+    "es": "Apaga todas las luces de un tablero de 5×5: cada pulsación cambia una luz y sus vecinas. 60 niveles con estrellas y puzles aleatorios."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 540,
+    "height": 640,
+    "minWidth": 420,
+    "minHeight": 520,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

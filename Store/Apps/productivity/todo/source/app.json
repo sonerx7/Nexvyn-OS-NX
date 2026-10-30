@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.todo",
+  "name": {"en": "To-Do", "tr": "Yapılacaklar", "de": "To-do", "fr": "À faire", "es": "Tareas", "ja": "ToDo", "zh": "待办事项", "ko": "할 일"},
+  "description": {
+    "en": "Organise tasks into projects with priorities and due dates; overdue tasks stand out and search finds anything.",
+    "tr": "Görevlerini projelere ayır, öncelik ve son tarih ver; geciken görevler öne çıkar, arama her şeyi bulur.",
+    "de": "Ordne Aufgaben in Projekten mit Prioritäten und Fälligkeitsdaten; überfällige Aufgaben fallen auf und die Suche findet alles.",
+    "fr": "Organisez vos tâches en projets avec priorités et échéances ; les tâches en retard ressortent et la recherche trouve tout.",
+    "es": "Organiza las tareas en proyectos con prioridades y fechas de vencimiento; las tareas atrasadas destacan y la búsqueda lo encuentra todo."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 860, "height": 560, "minWidth": 520, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

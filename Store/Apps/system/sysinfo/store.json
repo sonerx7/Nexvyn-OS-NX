@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Everything about your console, live",
+    "tr": "Konsolunla ilgili her şey, canlı",
+    "de": "Alles über deine Konsole, live",
+    "fr": "Tout sur votre console, en direct",
+    "es": "Todo sobre tu consola, en directo",
+    "ja": "本体のすべてをリアルタイムに",
+    "zh": "实时了解主机的一切",
+    "ko": "콘솔에 관한 모든 것을 실시간으로"
+  },
+  "description": {
+    "en": "See what's inside your Switch and how it's doing right now. System Information reads its details live from the console: the hardware and memory pools, firmware and Atmosphère versions, battery charge and health, network, SD card and internal storage, controllers, display and installed applications. Copy a single value or save a full report to share when asking for help.\n\n• Hardware: model, SoC, memory pools and SoC temperature\n• Software: system version, Atmosphère, launch mode, uptime\n• Battery & Power: charge, state, power source, capacity\n• Network, storage, controllers and display details\n• Installed applications overview\n• Copy values or save the whole report to Documents",
+    "tr": "Switch'inin içinde ne olduğunu ve şu an nasıl çalıştığını gör. Sistem Bilgisi ayrıntıları doğrudan konsoldan canlı okur: donanım ve bellek havuzları, sistem yazılımı ve Atmosphère sürümleri, pil doluluğu ve sağlığı, ağ, SD kart ve dahili depolama, kontrolcüler, ekran ve yüklü uygulamalar. Tek bir değeri kopyala ya da yardım isterken paylaşmak için tam bir rapor kaydet.\n\n• Donanım: model, SoC, bellek havuzları ve SoC sıcaklığı\n• Yazılım: sistem sürümü, Atmosphère, çalışma modu, açık kalma süresi\n• Pil ve Güç: doluluk, durum, güç kaynağı, kapasite\n• Ağ, depolama, kontrolcü ve ekran bilgileri\n• Yüklü uygulamalara genel bakış\n• Değerleri kopyala ya da tüm raporu Belgeler'e kaydet",
+    "de": "Sieh, was in deiner Switch steckt und wie es ihr gerade geht. Systeminformationen liest alle Details live von der Konsole: Hardware und Speicherpools, Firmware- und Atmosphère-Version, Akkustand und -zustand, Netzwerk, SD-Karte und internen Speicher, Controller, Display und installierte Apps. Kopiere einzelne Werte oder speichere einen vollständigen Bericht, wenn du um Hilfe bittest.\n\n• Hardware: Modell, SoC, Speicherpools und SoC-Temperatur\n• Software: Systemversion, Atmosphère, Startmodus, Laufzeit\n• Akku & Energie: Ladung, Zustand, Stromquelle, Kapazität\n• Netzwerk, Speicher, Controller und Display\n• Überblick über installierte Anwendungen\n• Werte kopieren oder den ganzen Bericht in Dokumente sichern",
+    "fr": "Découvrez ce que contient votre Switch et comment elle se porte en ce moment. Informations système lit tout en direct sur la console : matériel et pools de mémoire, versions du firmware et d’Atmosphère, charge et santé de la batterie, réseau, carte SD et stockage interne, manettes, écran et applications installées. Copiez une valeur ou enregistrez un rapport complet à partager quand vous demandez de l’aide.\n\n• Matériel : modèle, SoC, pools de mémoire et température du SoC\n• Logiciel : version système, Atmosphère, mode de lancement, durée d’activité\n• Batterie et alimentation : charge, état, source, capacité\n• Réseau, stockage, manettes et écran\n• Vue d’ensemble des applications installées\n• Copie des valeurs ou rapport complet enregistré dans Documents",
+    "es": "Mira qué hay dentro de tu Switch y cómo está ahora mismo. Información del sistema lee los datos en directo de la consola: hardware y reservas de memoria, versiones del firmware y de Atmosphère, carga y salud de la batería, red, tarjeta SD y almacenamiento interno, mandos, pantalla y aplicaciones instaladas. Copia un valor o guarda un informe completo para compartirlo cuando pidas ayuda.\n\n• Hardware: modelo, SoC, reservas de memoria y temperatura del SoC\n• Software: versión del sistema, Atmosphère, modo de inicio, tiempo encendida\n• Batería y energía: carga, estado, fuente, capacidad\n• Red, almacenamiento, mandos y pantalla\n• Resumen de las aplicaciones instaladas\n• Copia valores o guarda el informe completo en Documentos",
+    "ja": "Switch の中身と今の状態を確認しましょう。システム情報は本体から詳細をリアルタイムに読み取ります: ハードウェアとメモリプール、ファームウェアと Atmosphère のバージョン、バッテリー残量と状態、ネットワーク、SD カードと内部ストレージ、コントローラー、ディスプレイ、インストール済みのアプリケーション。値を 1 つコピーするか、レポート全体を保存して、助けを求めるときに共有できます。\n\n• ハードウェア: モデル、SoC、メモリプール、SoC 温度\n• ソフトウェア: システムバージョン、Atmosphère、起動モード、稼働時間\n• バッテリーと電源: 残量、状態、電源、容量\n• ネットワーク、ストレージ、コントローラー、ディスプレイの詳細\n• インストール済みのアプリケーションの概要\n• 値をコピー、またはレポート全体を書類に保存",
+    "zh": "看看你的 Switch 内部有什么，以及它此刻的状态。系统信息会实时从主机读取详细信息：硬件和内存池、固件和 Atmosphère 版本、电池电量和健康度、网络、SD 卡和内部存储、手柄、显示以及已安装的应用。复制单个值，或保存完整报告，在求助时分享。\n\n• 硬件：型号、SoC、内存池和 SoC 温度\n• 软件：系统版本、Atmosphère、启动模式、运行时间\n• 电池和电源：电量、状态、电源、容量\n• 网络、存储、手柄和显示详细信息\n• 已安装应用概览\n• 复制数值或将完整报告保存到“文稿”",
+    "ko": "Switch 안에 무엇이 있고 지금 어떤 상태인지 확인하세요. 시스템 정보는 하드웨어와 메모리 풀, 펌웨어와 Atmosphère 버전, 배터리 충전량과 상태, 네트워크, SD 카드와 내부 저장 공간, 컨트롤러, 디스플레이, 설치된 응용 프로그램을 콘솔에서 실시간으로 읽습니다. 값 하나를 복사하거나 도움을 요청할 때 공유할 전체 보고서를 저장하세요.\n\n• 하드웨어: 모델, SoC, 메모리 풀, SoC 온도\n• 소프트웨어: 시스템 버전, Atmosphère, 실행 모드, 가동 시간\n• 배터리 및 전원: 충전량, 상태, 전원, 용량\n• 네트워크, 저장 공간, 컨트롤러, 디스플레이 정보\n• 설치된 응용 프로그램 개요\n• 값 복사 또는 전체 보고서를 문서에 저장"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "wclick 0.13 0.181",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.13 0.242",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.13 0.427",
+      "wait 2"
+    ],
+    [
+      "wclick 0.13 0.304",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subtitle": {
+    "en": "First to 7 against the CPU or a friend",
+    "tr": "Bilgisayara ya da arkadaşına karşı 7 sayı",
+    "de": "Wer zuerst 7 hat: gegen CPU oder Freund",
+    "fr": "Le premier à 7, contre l’IA ou un ami",
+    "es": "Llega a 7 antes que la CPU o un amigo",
+    "ja": "CPU や友だちと 7 点先取",
+    "zh": "与电脑或朋友对战，先得 7 分者胜",
+    "ko": "CPU나 친구와 먼저 7점 내기"
+  },
+  "description": {
+    "en": "The original video game, polished to a shine. Return the ball with your paddle and steer it with where it hits: the edges send it off at sharp angles, and every long rally makes it faster. Play the CPU on easy, normal or hard, or challenge a friend on the same console with one player on each side. The first to seven points wins the match.\n\n• Single player against three CPU levels\n• Two players on one console\n• Angled returns and speeding rallies with rally callouts\n• Sticks, D-pad, keyboard or drag your paddle\n• A CPU-vs-CPU demo plays behind the title screen",
+    "tr": "İlk video oyunu, pırıl pırıl yenilenmiş hâliyle. Topu raketinle karşıla ve çarptığı yerle yönünü belirle: kenarlar topu keskin açılarla gönderir, uzayan her ralli onu biraz daha hızlandırır. Bilgisayara karşı kolay, normal ya da zor seviyede oyna ya da aynı konsolda karşılıklı geçip bir arkadaşınla kapış. Yedi sayıya ilk ulaşan maçı kazanır.\n\n• Üç bilgisayar seviyesine karşı tek oyunculu\n• Aynı konsolda iki oyuncu\n• Açılı dönüşler ve hızlanan, anonslu ralliler\n• Çubuklar, yön tuşları, klavye ya da raketi sürükleme\n• Başlık ekranının arkasında bilgisayar bilgisayara karşı",
+    "de": "Das allererste Videospiel, auf Hochglanz gebracht. Schlag den Ball mit deinem Schläger zurück und bestimme die Richtung über den Treffpunkt: Die Kanten schicken ihn in spitzen Winkeln davon, und jeder lange Ballwechsel macht ihn schneller. Spiel gegen die CPU auf Leicht, Normal oder Schwer oder fordere einen Freund an derselben Konsole heraus. Wer zuerst sieben Punkte hat, gewinnt.\n\n• Einzelspieler gegen drei CPU-Stufen\n• Zwei Spieler an einer Konsole\n• Winkelschläge und immer schnellere, angesagte Ballwechsel\n• Sticks, Steuerkreuz, Tastatur oder Schläger ziehen\n• Hinter dem Titelbildschirm läuft eine CPU-gegen-CPU-Demo",
+    "fr": "Le tout premier jeu vidéo, poli jusqu’au moindre détail. Renvoyez la balle avec votre raquette et orientez-la selon l’endroit de l’impact : les bords l’envoient avec des angles serrés, et chaque long échange l’accélère. Affrontez l’ordinateur en facile, normal ou difficile, ou défiez un ami sur la même console, chacun de son côté. Le premier à sept points remporte la partie.\n\n• Un joueur contre trois niveaux d’ordinateur\n• Deux joueurs sur une console\n• Renvois en angle et échanges qui s’accélèrent, annoncés à l’écran\n• Sticks, croix, clavier ou raquette glissée du doigt\n• Une démo ordinateur contre ordinateur derrière l’écran titre",
+    "es": "El primer videojuego de la historia, pulido hasta brillar. Devuelve la pelota con tu pala y dirígela según dónde golpee: los bordes la mandan con ángulos cerrados y cada peloteo largo la acelera. Juega contra la CPU en fácil, normal o difícil, o reta a un amigo en la misma consola, cada uno en su lado. Gana quien llegue primero a siete puntos.\n\n• Un jugador contra tres niveles de CPU\n• Dos jugadores en una consola\n• Devoluciones en ángulo y peloteos cada vez más rápidos\n• Sticks, cruceta, teclado o arrastra tu pala\n• Una demo CPU contra CPU tras la pantalla de título",
+    "ja": "元祖ビデオゲームを磨き上げました。パドルでボールを打ち返し、当てる位置で方向を操りましょう: 端に当てると鋭い角度で飛び、ラリーが続くほど速くなります。かんたん、ふつう、むずかしいの CPU と対戦するか、同じ本体で左右に分かれて友だちと対戦しましょう。先に 7 点取った方が勝ちです。\n\n• 3 段階の CPU と 1 人で対戦\n• 1 台の本体で 2 人対戦\n• 角度のある返球、ラリーの掛け声とともに速くなるラリー\n• スティック、十字ボタン、キーボード、またはパドルをドラッグ\n• タイトル画面の後ろで CPU 同士のデモプレイ",
+    "zh": "最早的电子游戏，打磨得焕然一新。用球拍把球打回去，并通过击球位置控制方向：击中边缘会让球以锐角飞出，每次长回合都会让球更快。与简单、普通或困难难度的电脑对战，或者在同一台主机上与朋友对决，一人守一边。先得七分者赢得比赛。\n\n• 单人对战三种难度的电脑\n• 同一台主机上双人对战\n• 带角度的回球、越来越快的回合以及回合播报\n• 摇杆、十字键、键盘或拖动你的球拍\n• 标题画面背后有电脑对电脑的演示",
+    "ko": "최초의 비디오 게임을 반짝반짝 다듬었습니다. 패들로 공을 받아 치고, 맞는 위치로 방향을 조절하세요. 가장자리에 맞으면 날카로운 각도로 튀어 나가며, 랠리가 길어질수록 빨라집니다. 쉬움, 보통, 어려움 CPU와 대결하거나, 같은 콘솔에서 양쪽에 한 명씩 앉아 친구와 대결하세요. 먼저 7점을 내면 경기에서 이깁니다.\n\n• CPU 3단계와 1인 플레이\n• 콘솔 하나로 2인 플레이\n• 각도 있는 리턴과 빨라지는 랠리, 랠리 알림\n• 스틱, 방향 버튼, 키보드 또는 패들 드래그\n• 타이틀 화면 뒤에서 CPU 대 CPU 데모 플레이"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key enter", "wait 1", "wmove 0.15 0.45", "wait 2.5"],
+    ["wmove 0.15 0.05", "wait 40", "dark 1", "wait 2"]
+  ]
+}

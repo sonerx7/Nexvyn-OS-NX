@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.noise",
+  "name": {"en": "White Noise", "tr": "Beyaz Gürültü", "de": "Weißes Rauschen", "fr": "Bruit blanc", "es": "Ruido blanco", "ja": "ホワイトノイズ", "zh": "白噪音", "ko": "백색 소음"},
+  "description": {
+    "en": "Calming white, pink and brown noise, rain, ocean waves and a crackling fire with a sleep timer that fades out gently.",
+    "tr": "Beyaz, pembe ve kahverengi gürültü, yağmur, okyanus dalgaları ve çıtırdayan ateş; sesi yavaşça azaltan uyku zamanlayıcısıyla.",
+    "de": "Beruhigendes weißes, rosa und braunes Rauschen, Regen, Meereswellen und knisterndes Feuer mit einem Schlaf-Timer, der sanft ausblendet.",
+    "fr": "Bruit blanc, rose et brun apaisant, pluie, vagues de l’océan et feu crépitant, avec une minuterie de sommeil qui s’estompe en douceur.",
+    "es": "Ruido blanco, rosa y marrón relajante, lluvia, olas del mar y un fuego crepitante, con un temporizador de sueño que se apaga suavemente."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 720, "height": 520, "minWidth": 560, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

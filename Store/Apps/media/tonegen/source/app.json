@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.tonegen",
+  "name": {"en": "Tone Generator", "tr": "Ton Üretici", "de": "Tongenerator", "fr": "Générateur de tonalité", "es": "Generador de tonos", "ja": "トーンジェネレーター", "zh": "音调发生器", "ko": "톤 생성기"},
+  "description": {
+    "en": "Play test tones from 20 Hz to 20 kHz in sine, square, saw or triangle waves, snap to musical notes and run frequency sweeps with a live waveform view.",
+    "tr": "20 Hz ile 20 kHz arasında sinüs, kare, testere ya da üçgen dalga test tonları çal, notalara yuvarla ve canlı dalga görünümüyle frekans taraması yap.",
+    "de": "Spiele Testtöne von 20 Hz bis 20 kHz als Sinus-, Rechteck-, Sägezahn- oder Dreieckwelle, richte sie an Musiknoten aus und fahre Frequenz-Sweeps mit Live-Wellenformansicht.",
+    "fr": "Jouez des sons de test de 20 Hz à 20 kHz en ondes sinusoïdales, carrées, en dents de scie ou triangulaires, calez-les sur les notes de musique et lancez des balayages de fréquence avec affichage de la forme d’onde en direct.",
+    "es": "Reproduce tonos de prueba de 20 Hz a 20 kHz en ondas senoidales, cuadradas, de sierra o triangulares, ajústalos a notas musicales y haz barridos de frecuencia con la forma de onda en vivo."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 540, "minWidth": 600, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "60 seconds of mental maths, full speed",
+    "tr": "60 saniyede tam gaz zihinden matematik",
+    "de": "60 Sekunden Kopfrechnen mit Vollgas",
+    "fr": "60 secondes de calcul mental à fond",
+    "es": "60 segundos de cálculo mental a tope",
+    "ja": "全速力で 60 秒間の暗算",
+    "zh": "60 秒全速心算挑战",
+    "ko": "60초 동안 전속력으로 암산하세요"
+  },
+  "description": {
+    "en": "Math Race gives you 60 seconds to solve as many sums as you can, and every correct answer drives your car closer to the finish flag. Choose Easy, Medium or Hard, from addition up to 20 to all four operations up to 100, where divisions always come out even. Just type the digits: answers are checked automatically as soon as they are long enough. Correct answers in a row raise your score multiplier up to ×5.\n\n• Three difficulty levels with fair, whole-number questions\n• Big on-screen number pad or your keyboard\n• Streak multiplier up to ×5, particles and a little shake on mistakes\n• Results with accuracy, time per answer and your last 12 scores\n• Best score per difficulty with a record celebration\n• Light and dark mode",
+    "tr": "Matematik Yarışı sana 60 saniye verir: olabildiğince çok işlem çöz, her doğru cevap arabanı bitiş bayrağına biraz daha yaklaştırsın. Kolay, Orta ya da Zor'u seç; 20'ye kadar toplamadan, bölmelerin hep tam çıktığı 100'e kadar dört işleme. Sadece rakamları yaz: cevap yeterince uzun olunca kendiliğinden denetlenir. Üst üste doğrular puan çarpanını ×5'e kadar yükseltir.\n\n• Adil, tam sayılı sorularla üç zorluk düzeyi\n• Ekrandaki büyük tuş takımı ya da klavye\n• ×5'e kadar seri çarpanı, doğruda parçacıklar, yanlışta sarsıntı\n• İsabet, soru başına süre ve son 12 tur grafiğiyle sonuç ekranı\n• Her zorluk için rekor ve rekor kutlaması\n• Açık ve karanlık mod",
+    "de": "Beim Rechenrennen hast du 60 Sekunden, um so viele Aufgaben wie möglich zu lösen – jede richtige Antwort bringt dein Auto näher an die Zielflagge. Wähle Leicht, Mittel oder Schwer, von Plus bis 20 bis zu allen vier Grundrechenarten bis 100, wobei Divisionen immer glatt aufgehen. Tipp einfach die Ziffern ein: Die Antwort wird automatisch geprüft, sobald sie lang genug ist. Richtige Antworten in Serie steigern deinen Multiplikator bis ×5.\n\n• Drei Schwierigkeitsstufen mit fairen, ganzzahligen Aufgaben\n• Großes Ziffernfeld auf dem Bildschirm oder deine Tastatur\n• Serienmultiplikator bis ×5, Partikel und ein kleines Wackeln bei Fehlern\n• Ergebnis mit Trefferquote, Zeit pro Antwort und deinen letzten 12 Runden\n• Bestwert pro Stufe mit Rekordjubel\n• Heller und dunkler Modus",
+    "fr": "Course de calcul vous donne 60 secondes pour résoudre un maximum d’opérations, et chaque bonne réponse rapproche votre voiture du drapeau d’arrivée. Choisissez Facile, Moyen ou Difficile, de l’addition jusqu’à 20 aux quatre opérations jusqu’à 100, avec des divisions toujours exactes. Tapez simplement les chiffres : la réponse est vérifiée automatiquement dès qu’elle est complète. Les bonnes réponses d’affilée font grimper votre multiplicateur jusqu’à ×5.\n\n• Trois niveaux de difficulté aux questions justes et entières\n• Grand pavé numérique à l’écran ou votre clavier\n• Multiplicateur de série jusqu’à ×5, particules et petite secousse en cas d’erreur\n• Résultats avec précision, temps par réponse et vos 12 dernières parties\n• Meilleur score par niveau, avec célébration des records\n• Mode clair et mode sombre",
+    "es": "Carrera matemática te da 60 segundos para resolver todas las operaciones que puedas, y cada respuesta correcta acerca tu coche a la bandera de meta. Elige Fácil, Mediano o Difícil, desde sumas hasta 20 hasta las cuatro operaciones hasta 100, con divisiones siempre exactas. Solo escribe los dígitos: la respuesta se comprueba sola en cuanto tiene la longitud justa. Las respuestas correctas seguidas suben tu multiplicador hasta ×5.\n\n• Tres niveles de dificultad con preguntas justas y enteras\n• Teclado numérico grande en pantalla o tu teclado\n• Multiplicador de racha hasta ×5, partículas y una sacudida al fallar\n• Resultados con precisión, tiempo por respuesta y tus últimas 12 partidas\n• Mejor puntuación por nivel con celebración de récord\n• Modo claro y oscuro",
+    "ja": "計算レースでは、60 秒間にできるだけ多くの計算を解きます。正解するたびに車がゴールの旗に近づきます。かんたん、ふつう、むずかしいから選べ、20 までの足し算から、100 までの四則演算 (割り算は必ず割り切れます) まであります。数字を入力するだけで、桁数がそろった時点で自動的に判定されます。連続で正解するとスコアの倍率が最大 ×5 まで上がります。\n\n• 公平な整数の問題が出る 3 つの難易度\n• 画面の大きな数字パッドまたはキーボード\n• 最大 ×5 の連続正解倍率、パーティクル、ミス時の小さな揺れ\n• 正答率、1 問あたりの時間、直近 12 回のスコアを表示する結果画面\n• 難易度ごとのベストスコアと記録更新のお祝い\n• ライトモードとダークモード",
+    "zh": "数学竞速给你 60 秒时间尽可能多地解题，每答对一题，你的赛车就离终点旗更近一步。可选择简单、中等或困难，从 20 以内的加法到 100 以内的四则运算，除法总能整除。只需输入数字：答案位数够了就会自动检查。连续答对会让得分倍数最高提升到 ×5。\n\n• 三种难度，题目公平，答案都是整数\n• 屏幕上的大号数字键盘或你的键盘\n• 连对倍数最高 ×5，答错时有粒子效果和轻微震动\n• 结果包含正确率、每题用时和最近 12 次得分\n• 每种难度的最高分，并有破纪录庆祝\n• 浅色和深色模式",
+    "ko": "수학 레이스는 60초 안에 최대한 많은 문제를 풀게 하며, 정답을 맞힐 때마다 자동차가 결승 깃발에 가까워집니다. 20까지의 덧셈부터 100까지의 사칙연산까지 쉬움, 보통, 어려움 중에서 고르세요. 나눗셈은 항상 나누어떨어집니다. 숫자만 입력하면 자릿수가 충분해지는 즉시 답이 자동으로 확인됩니다. 연속으로 맞히면 점수 배율이 최대 ×5까지 올라갑니다.\n\n• 공정한 정수 문제의 난이도 3단계\n• 큰 화면 숫자 패드 또는 키보드\n• 최대 ×5 연속 정답 배율, 입자 효과, 실수할 때 살짝 흔들림\n• 정확도, 문제당 시간, 최근 12개 점수가 표시되는 결과\n• 난이도별 최고 점수와 신기록 축하\n• 라이트 및 다크 모드"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key right", "key enter", "wait 5"],
+    ["dark 1", "key 4", "wait 1.5"],
+    ["key escape", "wait 1.5"]
+  ]
+}

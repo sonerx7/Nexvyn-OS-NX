@@ -1,0 +1,22 @@
+{
+  "app_name": "Hallo C",
+  "tab_counter": "Zähler",
+  "tab_balls": "Bälle",
+  "tab_net": "Netzwerk",
+  "counter_title": "In C geschrieben",
+  "times": "{0}-mal getippt",
+  "reset": "Zurücksetzen",
+  "note_hint": "Eine Notiz, gespeichert mit store_setStr",
+  "balls_hint": "Tippe, um die Bälle anzustoßen",
+  "net_title": "Live-Wetter",
+  "net_body": "Diese Taste führt net_json(url, callback, user) aus: Die Anfrage läuft im Hintergrund und der Callback erhält den JSON-Text.",
+  "fetch": "JSON abrufen",
+  "offline": "Keine Internetverbindung",
+  "failed": "Fehlgeschlagen: {0}",
+  "loaded": "Geladen",
+  "no_data": "Drücke die Taste, um Daten zu laden",
+  "about": "Über Hallo C",
+  "about_body": "Diese App ist reines C, das beim Öffnen von TinyCC auf deiner Konsole kompiliert wird, und nutzt dasselbe SDK wie die Lua-, JavaScript- und Python-Apps. Öffne main.c, um ihren Code zu lesen.",
+  "ok": "OK",
+  "open_code": "main.c öffnen"
+}

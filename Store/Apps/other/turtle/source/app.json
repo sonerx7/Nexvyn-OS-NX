@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.turtle",
+  "name": {"en": "Turtle Graphics", "tr": "Kaplumbağa Grafikleri", "de": "Turtle-Grafik", "fr": "Graphisme tortue", "es": "Gráficos de tortuga", "ja": "タートルグラフィックス", "zh": "海龟绘图", "ko": "거북이 그래픽"},
+  "description": {
+    "en": "Learn to code by drawing: give the turtle commands like forward, right and repeat (in Turkish or English) and watch it draw stars, spirals and flowers.",
+    "tr": "Çizerek kodlamayı öğren: kaplumbağaya ileri, sağ, tekrarla gibi Türkçe ya da İngilizce komutlar ver; yıldız, sarmal ve çiçek çizişini izle.",
+    "de": "Lerne Programmieren durch Zeichnen: Gib der Schildkröte Befehle wie vorwärts, rechts und wiederhole (auf Türkisch oder Englisch) und sieh zu, wie sie Sterne, Spiralen und Blumen zeichnet.",
+    "fr": "Apprenez à coder en dessinant : donnez à la tortue des commandes comme avancer, droite et répéter (en turc ou en anglais) et regardez-la dessiner des étoiles, des spirales et des fleurs.",
+    "es": "Aprende a programar dibujando: da a la tortuga órdenes como avanzar, derecha y repetir (en turco o en inglés) y mira cómo dibuja estrellas, espirales y flores."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "main": "main.py",
+  "window": {"width": 900, "height": 600, "minWidth": 760, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.3",
+  "permissions": []
+}

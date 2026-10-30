@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.ui-gallery",
+  "name": {"en": "UI Gallery", "tr": "Arayüz Galerisi", "de": "UI-Galerie", "fr": "Galerie d’interface", "es": "Galería de UI", "ja": "UI ギャラリー", "zh": "UI 组件库", "ko": "UI 갤러리"},
+  "description": {
+    "en": "Every ui.* widget, live, with the Lua code that draws it beside it",
+    "tr": "Tüm ui.* bileşenleri canlı olarak ve yanında onları çizen Lua kodu",
+    "de": "Jedes ui.*-Widget live, daneben der Lua-Code, der es zeichnet",
+    "fr": "Chaque widget ui.* en direct, avec à côté le code Lua qui le dessine",
+    "es": "Todos los widgets ui.* en vivo, con el código Lua que los dibuja al lado"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 620, "minWidth": 420, "minHeight": 360, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

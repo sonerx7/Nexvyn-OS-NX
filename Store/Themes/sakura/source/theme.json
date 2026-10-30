@@ -1,0 +1,23 @@
+{
+  "id": "com.sonerx7.theme.sakura",
+  "name": {
+    "en": "Sakura",
+    "tr": "Sakura",
+    "de": "Kirschblüte",
+    "fr": "Sakura",
+    "es": "Sakura"
+  },
+  "description": {
+    "en": "A cherry blossom branch in soft spring light, and at night under the moon. Pink accent.",
+    "tr": "Yumuşak bahar ışığında, geceleri de ay altında bir kiraz çiçeği dalı. Pembe vurgu rengi.",
+    "de": "Ein Kirschblütenzweig im sanften Frühlingslicht und nachts unter dem Mond. Rosa Akzent.",
+    "fr": "Une branche de cerisier en fleurs dans la douce lumière du printemps, et la nuit sous la lune. Accent rose.",
+    "es": "Una rama de cerezo en flor con la suave luz de primavera, y de noche bajo la luna. Acento rosa."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "appearance": "auto",
+  "accent": "#E86A92",
+  "wallpaper": "wallpaper.jpg",
+  "wallpaperDark": "wallpaper-dark.jpg"
+}

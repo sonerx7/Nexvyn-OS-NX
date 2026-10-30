@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.life",
+  "name": {"en": "Game of Life", "tr": "Hayat Oyunu", "de": "Game of Life", "fr": "Jeu de la vie", "es": "Juego de la vida", "ja": "ライフゲーム", "zh": "生命游戏", "ko": "생명 게임"},
+  "description": {
+    "en": "Conway's Game of Life: draw cells, place classic patterns like the glider gun, try other rules and watch the population evolve.",
+    "tr": "Conway'in Hayat Oyunu: hücre çiz, planör tabancası gibi klasik desenleri yerleştir, farklı kuralları dene ve nüfusun değişimini izle.",
+    "de": "Conways Game of Life: Zeichne Zellen, platziere klassische Muster wie die Gleiterkanone, probiere andere Regeln aus und sieh zu, wie sich die Population entwickelt.",
+    "fr": "Le jeu de la vie de Conway : dessinez des cellules, placez des motifs classiques comme le canon à planeurs, essayez d’autres règles et regardez la population évoluer.",
+    "es": "El juego de la vida de Conway: dibuja células, coloca patrones clásicos como el cañón de planeadores, prueba otras reglas y observa cómo evoluciona la población."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 760, "height": 540, "minWidth": 620, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

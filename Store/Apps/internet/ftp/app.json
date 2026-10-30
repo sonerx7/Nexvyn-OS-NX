@@ -1,0 +1,25 @@
+{
+  "id": "ftp",
+  "name": {
+    "en": "FTP Client",
+    "tr": "FTP İstemcisi",
+    "de": "FTP-Client",
+    "fr": "Client FTP",
+    "es": "Cliente FTP",
+    "ko": "FTP 클라이언트"
+  },
+  "category": "internet",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1100,
+    "height": 640,
+    "minWidth": 800,
+    "minHeight": 480,
+    "resizable": true
+  }
+}

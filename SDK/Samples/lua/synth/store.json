@@ -1,0 +1,35 @@
+{
+  "kind": "demo",
+  "tags": [
+    "audio",
+    "synth",
+    "timers",
+    "touch"
+  ],
+  "subtitle": {
+    "en": "Piano, waveforms and an ADSR envelope",
+    "tr": "Piyano, dalga biçimleri ve ADSR zarfı",
+    "de": "Klavier, Wellenformen und ADSR-Hüllkurve",
+    "fr": "Piano, formes d'onde et enveloppe ADSR",
+    "es": "Piano, formas de onda y envolvente ADSR",
+    "ja": "ピアノ、波形、ADSR エンベロープ",
+    "zh": "钢琴、波形和 ADSR 包络",
+    "ko": "피아노, 파형, ADSR 엔벨로프"
+  },
+  "description": {
+    "en": "An on-screen piano of two or three octaves with four waveforms, an ADSR envelope made with timers, chords and strumming, an envelope graph and an oscilloscope. Shows audio.tone channels, timer.after / timer.every and multi-touch friendly keys.",
+    "tr": "İki ya da üç oktavlık ekran piyanosu: dört dalga biçimi, zamanlayıcılarla yapılmış ADSR zarfı, akorlar ve tel tel çalma, zarf grafiği ve osiloskop. audio.tone kanallarını, timer.after / timer.every kullanımını ve dokunmaya uygun tuşları gösterir.",
+    "de": "Ein Bildschirmklavier mit zwei oder drei Oktaven, vier Wellenformen, einer mit Timern gebauten ADSR-Hüllkurve, Akkorden und Strumming, Hüllkurvengrafik und Oszilloskop. Zeigt audio.tone-Kanäle, timer.after / timer.every und touchfreundliche Tasten.",
+    "fr": "Un piano à l'écran de deux ou trois octaves avec quatre formes d'onde, une enveloppe ADSR faite de minuteurs, des accords et du strumming, un graphe d'enveloppe et un oscilloscope. Montre les canaux audio.tone, timer.after / timer.every et des touches adaptées au toucher.",
+    "es": "Un piano en pantalla de dos o tres octavas con cuatro formas de onda, una envolvente ADSR hecha con temporizadores, acordes y rasgueo, gráfica de la envolvente y osciloscopio. Muestra canales de audio.tone, timer.after / timer.every y teclas cómodas al tacto.",
+    "ja": "4 つの波形、タイマーで作った ADSR エンベロープ、コードとストラム、エンベロープのグラフ、オシロスコープを備えた 2〜3 オクターブの画面ピアノ。audio.tone のチャンネル、timer.after / timer.every、マルチタッチに適した鍵盤を示します。",
+    "zh": "一个两到三个八度的屏幕钢琴，带四种波形、用计时器实现的 ADSR 包络、和弦和扫弦、包络图和示波器。演示了 audio.tone 声道、timer.after / timer.every 以及适合多点触控的琴键。",
+    "ko": "파형 4종, 타이머로 만든 ADSR 엔벨로프, 화음과 스트럼, 엔벨로프 그래프, 오실로스코프가 있는 2–3옥타브 화면 피아노. audio.tone 채널, timer.after / timer.every, 멀티 터치 친화적인 건반을 보여 줍니다."
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.168 0.098", "wait 0.3", "hold a 3", "wait 0.6"],
+    ["wclick 0.268 0.098", "wait 0.25", "wclick 0.158 0.161", "wait 0.3", "hold g 3", "wait 0.6"],
+    ["dark 1", "hold j 3", "wait 0.8"]
+  ]
+}

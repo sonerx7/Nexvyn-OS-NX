@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.datecalc",
+  "name": {"en": "Date Calculator", "tr": "Tarih Hesaplayıcı", "de": "Datumsrechner", "fr": "Calculateur de dates", "es": "Calculadora de fechas", "ja": "日付計算", "zh": "日期计算器", "ko": "날짜 계산기"},
+  "description": {
+    "en": "Days, weeks and working days between two dates, adding or subtracting time from a date, and the weekday, ISO week and day of year of any date.",
+    "tr": "İki tarih arasındaki gün, hafta ve iş günü sayısı; bir tarihe süre ekleme ya da çıkarma; herhangi bir günün haftanın günü, ISO haftası ve yılın kaçıncı günü olduğu.",
+    "de": "Tage, Wochen und Arbeitstage zwischen zwei Daten, Zeit zu einem Datum addieren oder davon abziehen sowie Wochentag, ISO-Woche und Tag des Jahres für jedes Datum.",
+    "fr": "Jours, semaines et jours ouvrés entre deux dates, ajout ou retrait d’une durée à une date, et jour de la semaine, semaine ISO et jour de l’année de n’importe quelle date.",
+    "es": "Días, semanas y días laborables entre dos fechas, sumar o restar tiempo a una fecha, y el día de la semana, la semana ISO y el día del año de cualquier fecha."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 660, "height": 480, "minWidth": 560, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

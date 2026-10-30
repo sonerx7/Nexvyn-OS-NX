@@ -1,0 +1,32 @@
+{
+  "id": "nunito",
+  "name": {
+    "en": "Nunito",
+    "tr": "Nunito",
+    "de": "Nunito",
+    "fr": "Nunito",
+    "es": "Nunito"
+  },
+  "family": "Nunito",
+  "styles": {
+    "regular": "Nunito-Regular.ttf",
+    "bold": "Nunito-Bold.ttf",
+    "italic": "Nunito-Italic.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "3.602",
+  "author": "The Nunito Project Authors",
+  "classification": "sans",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Viet"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

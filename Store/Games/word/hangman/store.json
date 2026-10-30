@@ -1,0 +1,50 @@
+{
+  "subtitle": {
+    "en": "Guess the Turkish word letter by letter",
+    "tr": "Kelimeyi harf harf tahmin et",
+    "de": "Errate das türkische Wort Stück für Stück",
+    "fr": "Devinez le mot turc lettre par lettre",
+    "es": "Adivina la palabra turca letra a letra",
+    "ja": "トルコ語の単語を 1 文字ずつ当てよう",
+    "zh": "逐个字母猜出土耳其语单词",
+    "ko": "터키어 단어를 한 글자씩 맞히세요"
+  },
+  "description": {
+    "en": "Guess the hidden Turkish word one letter at a time before the hangman figure is complete. Choose one of eight categories (animals, Turkish cities, fruits, vegetables, jobs, countries, household items or sports) or a mix, with more than 40 words in each. The on-screen keyboard includes Ç, Ğ, İ, Ö, Ş and Ü, and you get one hint per word. A fun way to practise Turkish words, too.\n\n• Eight categories with 40+ Turkish words each\n• On-screen Turkish keyboard\n• One hint per word\n• Win streaks and statistics\n• Touch, controller or a physical keyboard",
+    "tr": "Adam asılmadan önce gizli kelimeyi harf harf tahmin et. Her birinde 40'tan fazla kelime bulunan sekiz kategoriden birini seç (hayvanlar, Türkiye'nin şehirleri, meyveler, sebzeler, meslekler, ülkeler, ev eşyaları ya da sporlar) ya da karışık oyna. Ekrandaki klavyede Ç, Ğ, İ, Ö, Ş ve Ü de var; her kelime için bir ipucu hakkın bulunuyor. Seriyi bozmadan kaç kelime bilebileceğini gör.\n\n• Her biri 40'tan fazla kelimelik sekiz kategori\n• Ekranda Türkçe klavye\n• Kelime başına bir ipucu\n• Galibiyet serileri ve istatistikler\n• Dokunmatik, kumanda ya da fiziksel klavye",
+    "de": "Errate das versteckte türkische Wort Buchstabe für Buchstabe, bevor das Galgenmännchen fertig ist. Wähle eine von acht Kategorien (Tiere, türkische Städte, Obst, Gemüse, Berufe, Länder, Haushaltsgegenstände oder Sport) oder eine Mischung, jede mit über 40 Wörtern. Die Bildschirmtastatur enthält Ç, Ğ, İ, Ö, Ş und Ü, und pro Wort gibt es einen Tipp. Ganz nebenbei lernst du so auch türkische Wörter.\n\n• Acht Kategorien mit je über 40 türkischen Wörtern\n• Türkische Bildschirmtastatur\n• Ein Tipp pro Wort\n• Siegesserien und Statistik\n• Touch, Controller oder echte Tastatur",
+    "fr": "Devinez le mot turc caché lettre par lettre avant que le pendu ne soit complet. Choisissez l’une des huit catégories (animaux, villes turques, fruits, légumes, métiers, pays, objets de la maison ou sports) ou un mélange, avec plus de 40 mots dans chacune. Le clavier à l’écran comprend Ç, Ğ, İ, Ö, Ş et Ü, et vous avez droit à un indice par mot. Une façon ludique de découvrir des mots turcs.\n\n• Huit catégories de plus de 40 mots turcs chacune\n• Clavier turc à l’écran\n• Un indice par mot\n• Séries de victoires et statistiques\n• Tactile, manette ou clavier physique",
+    "es": "Adivina la palabra turca oculta letra a letra antes de que se complete el ahorcado. Elige una de ocho categorías (animales, ciudades turcas, frutas, verduras, profesiones, países, objetos de casa o deportes) o una mezcla, con más de 40 palabras cada una. El teclado en pantalla incluye Ç, Ğ, İ, Ö, Ş y Ü, y tienes una pista por palabra. Una forma divertida de aprender palabras en turco.\n\n• Ocho categorías con más de 40 palabras turcas cada una\n• Teclado turco en pantalla\n• Una pista por palabra\n• Rachas de victorias y estadísticas\n• Táctil, mando o teclado físico",
+    "ja": "ハングマンの絵が完成する前に、隠されたトルコ語の単語を 1 文字ずつ当てましょう。8 つのカテゴリ (動物、トルコの都市、果物、野菜、職業、国、家庭用品、スポーツ) またはミックスから選べ、各カテゴリに 40 語以上あります。画面のキーボードには Ç、Ğ、İ、Ö、Ş、Ü があり、単語ごとに 1 回ヒントが使えます。トルコ語の単語を楽しく練習する方法でもあります。\n\n• 各 40 語以上のトルコ語の単語がある 8 つのカテゴリ\n• 画面のトルコ語キーボード\n• 単語ごとに 1 回のヒント\n• 連勝記録と統計\n• タッチ、コントローラー、物理キーボード",
+    "zh": "在绞刑架上的小人画完之前，一个字母一个字母地猜出隐藏的土耳其语单词。从八个类别（动物、土耳其城市、水果、蔬菜、职业、国家、家居用品或运动）或混合类别中选择，每个类别有 40 多个单词。屏幕键盘包含 Ç、Ğ、İ、Ö、Ş 和 Ü，每个单词可以使用一次提示。这也是练习土耳其语单词的有趣方式。\n\n• 八个类别，每个有 40 多个土耳其语单词\n• 屏幕土耳其语键盘\n• 每个单词一次提示\n• 连胜纪录和统计\n• 触控、手柄或实体键盘",
+    "ko": "행맨 그림이 완성되기 전에 숨겨진 터키어 단어를 한 글자씩 맞히세요. 동물, 튀르키예 도시, 과일, 채소, 직업, 나라, 생활용품, 스포츠 등 여덟 가지 카테고리 중 하나나 섞기를 고르세요. 카테고리마다 40개가 넘는 단어가 있습니다. 화면 키보드에는 Ç, Ğ, İ, Ö, Ş, Ü가 있으며, 단어마다 힌트가 하나 있습니다. 터키어 단어를 연습하는 재미있는 방법이기도 합니다.\n\n• 각각 터키어 단어 40개 이상의 카테고리 8개\n• 화면 터키어 키보드\n• 단어마다 힌트 하나\n• 연승 기록과 통계\n• 터치, 컨트롤러, 실물 키보드"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key a",
+      "wait 0.4",
+      "key e",
+      "wait 0.4",
+      "key r",
+      "wait 0.4",
+      "key k",
+      "wait 0.6"
+    ],
+    [
+      "dark 1",
+      "key i",
+      "wait 0.4",
+      "key l",
+      "wait 0.4",
+      "key 1",
+      "wait 1"
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "board": "Brett",
+  "play": "Start",
+  "pause": "Pause",
+  "step": "Schritt",
+  "speed": "Tempo {0}/s",
+  "status": "Generation {0} · {1} Zellen",
+  "random": "Zufällig",
+  "add_glider": "Gleiter hinzufügen",
+  "clear": "Leeren"
+}

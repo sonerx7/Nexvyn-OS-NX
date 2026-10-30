@@ -1,0 +1,38 @@
+{
+  "id": "hellojava",
+  "name": {
+    "en": "Hello Java",
+    "tr": "Merhaba Java",
+    "de": "Hallo Java",
+    "fr": "Hello Java",
+    "es": "Hola Java",
+    "ja": "Hello Java",
+    "zh": "Hello Java",
+    "ko": "Hello Java"
+  },
+  "description": {
+    "en": "To-do list, clock and live JSON: a tour of the Java SDK",
+    "tr": "Yapılacaklar, saat ve canlı JSON: Java SDK turu",
+    "de": "To-do-Liste, Uhr und Live-JSON: eine Tour durch das Java-SDK",
+    "fr": "Liste de tâches, horloge et JSON en direct : une visite du SDK Java",
+    "es": "Lista de tareas, reloj y JSON en vivo: un recorrido por el SDK de Java"
+  },
+  "category": "developer",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "runtime": "java",
+  "main": "app.jar",
+  "mainClass": "hello.HelloApp",
+  "minSdk": "1.5",
+  "permissions": [
+    "network"
+  ],
+  "window": {
+    "width": 640,
+    "height": 520,
+    "resizable": false
+  },
+  "gamepad": false
+}

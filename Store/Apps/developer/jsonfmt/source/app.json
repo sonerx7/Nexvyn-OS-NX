@@ -1,0 +1,23 @@
+{
+  "id": "com.sonerx7.jsonfmt",
+  "name": {"en": "JSON Formatter", "tr": "JSON Biçimlendirici", "de": "JSON-Formatierer", "fr": "Formateur JSON", "es": "Formateador JSON", "ja": "JSON フォーマッター", "zh": "JSON 格式化工具", "ko": "JSON 포맷터"},
+  "description": {
+    "en": "Validate JSON with exact line and column errors, format or minify it with key order kept, sort keys, and explore it as a searchable tree with statistics.",
+    "tr": "JSON'u satır ve sütunu gösteren hatalarla doğrula, anahtar sırasını koruyarak biçimlendir ya da küçült, anahtarları sırala ve aranabilir bir ağaçta istatistikleriyle incele.",
+    "de": "Prüfe JSON mit genauer Zeilen- und Spaltenangabe bei Fehlern, formatiere oder minimiere es mit unveränderter Schlüsselreihenfolge, sortiere Schlüssel und erkunde es als durchsuchbaren Baum mit Statistiken.",
+    "fr": "Validez du JSON avec la ligne et la colonne exactes des erreurs, formatez-le ou minifiez-le en gardant l’ordre des clés, triez les clés et explorez-le sous forme d’arbre consultable avec des statistiques.",
+    "es": "Valida JSON con la línea y la columna exactas de cada error, formatéalo o minifícalo conservando el orden de las claves, ordena las claves y explóralo como un árbol con búsqueda y estadísticas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 820, "height": 580, "minWidth": 640, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "fileTypes": [".json"],
+  "minSdk": "1.0",
+  "permissions": []
+}

@@ -1,0 +1,17 @@
+{
+  "hint": "拖移以环绕 · 滚轮或捏合以缩放",
+  "sun": "太阳",
+  "ambient": "环境光",
+  "fog": "雾",
+  "textures": "纹理",
+  "auto_orbit": "自动环绕",
+  "auto_sun": "移动的太阳",
+  "wireframe": "线框",
+  "labels": "标签",
+  "reset_view": "重置摄像机",
+  "stats": "{0} 个三角形 · {1} · {2} FPS",
+  "label_pedestal": "八角底座 + 球体",
+  "label_crates": "箱子：每个面一组 UV",
+  "label_wall": "弧形墙：UV 沿弧线分布",
+  "menu_title": "场景"
+}

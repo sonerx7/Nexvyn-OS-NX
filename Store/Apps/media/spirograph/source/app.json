@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.spirograph",
+  "name": {"en": "Spirograph", "tr": "Spirograf", "de": "Spirograph", "fr": "Spirographe", "es": "Espirógrafo", "ja": "スピログラフ", "zh": "万花尺", "ko": "스피로그래프"},
+  "description": {
+    "en": "Draw spirograph art with rolling gears: layer curves in different colours, watch the pen trace them and keep your designs in a gallery.",
+    "tr": "Dönen dişlilerle spirograf çizimleri yap: farklı renklerde eğrileri üst üste koy, kalemin çizişini izle ve tasarımlarını galeride sakla.",
+    "de": "Zeichne Spirograph-Kunst mit rollenden Zahnrädern: Lege Kurven in verschiedenen Farben übereinander, sieh dem Stift beim Zeichnen zu und bewahre deine Entwürfe in einer Galerie auf.",
+    "fr": "Dessinez au spirographe avec des engrenages qui roulent : superposez des courbes de différentes couleurs, regardez le stylo les tracer et gardez vos créations dans une galerie.",
+    "es": "Dibuja arte de espirógrafo con engranajes que ruedan: superpone curvas de distintos colores, mira cómo las traza el lápiz y guarda tus diseños en una galería."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 560, "minWidth": 640, "minHeight": 520, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

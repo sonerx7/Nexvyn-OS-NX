@@ -1,0 +1,11 @@
+{
+  "game": "游戏",
+  "title": "贪吃蛇",
+  "score": "得分：{0}",
+  "best": "最高：{0}",
+  "game_over": "游戏结束",
+  "paused": "已暂停",
+  "start_hint": "按 A、Enter 或轻点开始 · 用十字键、方向键或 WASD 转向",
+  "new_game": "新游戏",
+  "reset_best": "重置最高分"
+}

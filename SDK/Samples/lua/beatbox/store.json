@@ -1,0 +1,42 @@
+{
+  "kind": "demo",
+  "tags": [
+    "audio",
+    "synth",
+    "sequencer",
+    "store"
+  ],
+  "subtitle": {
+    "en": "A 16-step drum machine",
+    "tr": "16 adımlı davul makinesi",
+    "de": "Ein Drumcomputer mit 16 Schritten",
+    "fr": "Une boîte à rythmes à 16 pas",
+    "es": "Una caja de ritmos de 16 pasos",
+    "ja": "16 ステップのドラムマシン",
+    "zh": "16 步鼓机",
+    "ko": "16스텝 드럼 머신"
+  },
+  "description": {
+    "en": "Six drums synthesised with audio.tone (no sound files), tempo, swing, accents, mutes, preset beats and automatic saving. Shows timing a sequencer from app.update without drift and building sounds from waveforms.",
+    "tr": "audio.tone ile sentezlenen altı davul (ses dosyası yok), tempo, swing, vurgular, susturma, hazır ritimler ve otomatik kayıt. Kaymadan app.update ile sıralayıcı zamanlamayı ve dalga biçimlerinden ses kurmayı gösterir.",
+    "de": "Sechs mit audio.tone synthetisierte Drums (keine Sounddateien), Tempo, Swing, Akzente, Stummschaltung, Preset-Beats und automatisches Speichern. Zeigt driftfreies Sequencer-Timing in app.update und Klänge aus Wellenformen.",
+    "fr": "Six percussions synthétisées avec audio.tone (aucun fichier son), tempo, swing, accents, sourdines, rythmes prédéfinis et sauvegarde automatique. Montre comment cadencer un séquenceur depuis app.update sans dérive et créer des sons à partir de formes d'onde.",
+    "es": "Seis tambores sintetizados con audio.tone (sin archivos de sonido), tempo, swing, acentos, silencios, ritmos predefinidos y guardado automático. Muestra cómo temporizar un secuenciador desde app.update sin deriva y crear sonidos a partir de formas de onda.",
+    "ja": "audio.tone で合成した 6 つのドラム (サウンドファイルなし)、テンポ、スウィング、アクセント、ミュート、プリセットのビート、自動保存。ずれのないように app.update からシーケンサーのタイミングを取る方法と、波形から音を作る方法を示します。",
+    "zh": "用 audio.tone 合成的六种鼓（无需声音文件），支持速度、摇摆、重音、静音、预设节拍和自动保存。演示了如何在 app.update 中无漂移地为音序器计时，以及如何用波形构建声音。",
+    "ko": "audio.tone으로 합성한 드럼 6종(사운드 파일 없음), 템포, 스윙, 강조, 음소거, 프리셋 비트, 자동 저장. 어긋남 없이 app.update에서 시퀀서 타이밍을 맞추는 방법과 파형으로 소리를 만드는 방법을 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key space",
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "unitconv",
+  "name": {
+    "en": "Unit Converter",
+    "tr": "Birim Dönüştürücü",
+    "de": "Einheitenrechner",
+    "fr": "Convertisseur d’unités",
+    "es": "Conversor de unidades",
+    "ja": "単位変換",
+    "zh": "单位换算",
+    "ko": "단위 변환기"
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 660,
+    "height": 500,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Convert length, mass, temperature, data and more",
+    "tr": "Uzunluk, kütle, sıcaklık, veri ve daha fazlasını dönüştürün",
+    "de": "Rechne Länge, Masse, Temperatur, Datenmengen und mehr um",
+    "fr": "Convertissez longueurs, masses, températures, données et plus encore",
+    "es": "Convierte longitud, masa, temperatura, datos y más"
+  },
+  "permissions": []
+}

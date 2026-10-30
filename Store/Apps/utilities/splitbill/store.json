@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Split the bill fairly, item by item",
+    "tr": "Hesabı ürün ürün, hakkaniyetle böl",
+    "de": "Die Rechnung fair teilen, Posten für Posten",
+    "fr": "Partagez l’addition, plat par plat",
+    "es": "Divide la cuenta con justicia, plato a plato",
+    "ja": "品目ごとに公平に割り勘",
+    "zh": "逐项公平分摊账单",
+    "ko": "항목별로 공정하게 계산을 나누세요"
+  },
+  "description": {
+    "en": "Dinner with friends, and not everyone had the same? Add the people at the table and the items you ordered, mark who shared what and who paid, and Split Bill works out everyone's fair share, including tip and service. It even finds the fewest transfers needed to settle up.\n\n• Up to 12 people, each with their own color\n• Items with quantity and unit price, shared by everyone or only some\n• Who paid for each item\n• Tip and service/tax percentages, in lira, dollar, euro or pound\n• Balances with a chart and \"who pays whom\" with the fewest transfers\n• Copy the summary or save it as text; undo for removed items",
+    "tr": "Arkadaşlarla yemek yediniz ama herkes aynı şeyi yemedi mi? Masadakileri ve sipariş edilenleri ekle, kimin neyi paylaştığını ve kimin ödediğini işaretle; Hesap Bölüş bahşiş ve servis dahil herkesin adil payını hesaplasın. Hesaplaşmak için gereken en az para transferini bile bulur.\n\n• Her birinin kendi rengiyle 12 kişiye kadar\n• Adet ve birim fiyatıyla ürünler; herkes ya da yalnızca bazıları paylaşır\n• Her ürünü kimin ödediği\n• Lira, dolar, euro ya da sterlinle bahşiş ve servis/vergi yüzdeleri\n• Grafikli bakiyeler ve en az transferle \"kim kime ne ödeyecek\"\n• Özeti kopyala ya da metin olarak kaydet; silinen ürünleri geri al",
+    "de": "Essen mit Freunden, aber nicht alle hatten dasselbe? Trage die Leute am Tisch und die bestellten Posten ein, markiere, wer was geteilt und wer bezahlt hat, und Rechnung teilen berechnet den fairen Anteil jedes Einzelnen, samt Trinkgeld und Service. Es findet sogar die wenigsten Überweisungen, um alles auszugleichen.\n\n• Bis zu 12 Personen, jede mit eigener Farbe\n• Posten mit Menge und Stückpreis, von allen oder nur einigen geteilt\n• Wer welchen Posten bezahlt hat\n• Trinkgeld und Service/Steuer in Prozent, in Lira, Dollar, Euro oder Pfund\n• Salden mit Diagramm und „Wer zahlt wem“ mit den wenigsten Überweisungen\n• Zusammenfassung kopieren oder als Text speichern; Rückgängig für entfernte Posten",
+    "fr": "Un dîner entre amis où personne n’a pris la même chose ? Ajoutez les convives et les plats commandés, indiquez qui a partagé quoi et qui a payé, et l’app calcule la part juste de chacun, pourboire et service compris. Elle trouve même le minimum de virements pour solder les comptes.\n\n• Jusqu’à 12 personnes, chacune avec sa couleur\n• Plats avec quantité et prix unitaire, partagés par tous ou par certains\n• Qui a payé chaque plat\n• Pourboire et service/taxes en pourcentage, en livre turque, dollar, euro ou livre sterling\n• Soldes avec graphique et « qui paie qui » avec le moins de virements possible\n• Copie du résumé ou enregistrement en texte ; annulation des suppressions",
+    "es": "¿Cena con amigos y no todos pidieron lo mismo? Añade a la gente de la mesa y lo que se pidió, marca quién compartió qué y quién pagó, y la app calcula la parte justa de cada uno, propina y servicio incluidos. Incluso encuentra el mínimo de transferencias para saldar cuentas.\n\n• Hasta 12 personas, cada una con su color\n• Platos con cantidad y precio unitario, compartidos por todos o solo por algunos\n• Quién pagó cada plato\n• Porcentajes de propina y servicio/impuestos, en liras, dólares, euros o libras\n• Saldos con gráfico y «quién paga a quién» con el mínimo de transferencias\n• Copia el resumen o guárdalo como texto; deshacer para lo eliminado",
+    "ja": "友だちとの食事で、みんな同じものを頼んだわけではない？テーブルの人と注文した品目を追加し、誰が何を分けたか、誰が支払ったかを指定すれば、割り勘がチップやサービス料も含めて各自の公平な負担額を計算します。精算に必要な送金の回数が最も少なくなる方法も見つけます。\n\n• 最大 12 人、それぞれに独自の色\n• 数量と単価付きの品目。全員または一部の人で分担\n• 各品目を誰が支払ったか\n• チップとサービス料/税の割合。リラ、ドル、ユーロ、ポンドに対応\n• グラフ付きの差額と、最少の送金で済む「誰が誰に支払うか」\n• 概要をコピーまたはテキストとして保存、削除した品目の取り消し",
+    "zh": "和朋友一起吃饭，每个人点的不一样？添加同桌的人和点的菜，标明谁分摊了什么、谁付了钱，分账就会算出每个人的公平份额，包括小费和服务费。它甚至能找出结清账目所需的最少转账次数。\n\n• 最多 12 人，每人有自己的颜色\n• 带数量和单价的项目，可由所有人或部分人分摊\n• 每个项目由谁付款\n• 小费和服务费/税的百分比，可用里拉、美元、欧元或英镑\n• 带图表的差额，以及转账次数最少的“谁付给谁”\n• 复制摘要或保存为文本；移除的项目可撤销",
+    "ko": "친구들과 저녁을 먹었는데 모두 같은 걸 먹지 않았나요? 함께한 사람과 주문한 항목을 추가하고, 누가 무엇을 나눴는지와 누가 냈는지 표시하면 더치페이가 팁과 봉사료를 포함해 각자의 공정한 몫을 계산합니다. 정산에 필요한 최소한의 송금까지 찾아 줍니다.\n\n• 각자 색상이 있는 최대 12명\n• 모두 또는 일부만 나누는 수량과 단가가 있는 항목\n• 항목마다 낸 사람\n• 리라, 달러, 유로, 파운드 단위의 팁과 봉사료/세금 비율\n• 차트로 보는 잔액과 최소 송금의 \"누가 누구에게 낼까요\"\n• 요약 복사 또는 텍스트로 저장, 제거한 항목 실행 취소"
+  },
+  "shots": [
+    ["wait 2", "wclick 0.423 0.125", "wait 0.25", "text Ayşe", "key enter", "wait 0.4", "wclick 0.423 0.125", "wait 0.25", "text Mehmet", "key enter", "wait 0.4", "wclick 0.423 0.125", "wait 0.25", "text Zeynep", "key enter", "wait 0.4", "wclick 0.423 0.125", "wait 0.25", "text Can", "key enter", "wait 0.4", "key escape", "wait 1.5"],
+    ["wclick 0.5 0.047", "wait 0.6", "wclick 0.322 0.125", "wait 0.25", "text Pizza", "wclick 0.724 0.125", "wait 0.25", "text 420", "key enter", "wait 0.4", "wclick 0.322 0.125", "wait 0.25", "text Salad", "wclick 0.724 0.125", "wait 0.25", "text 160", "key enter", "wait 0.4", "wclick 0.322 0.125", "wait 0.25", "text Drinks", "wclick 0.724 0.125", "wait 0.25", "text 240", "key enter", "wait 0.4", "key escape", "wait 1.5"],
+    ["wclick 0.679 0.047", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

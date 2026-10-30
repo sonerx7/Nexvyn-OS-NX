@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.physics",
+  "name": {"en": "Verlet Physics Demo", "tr": "Verlet Fizik Demosu", "de": "Verlet-Physik-Demo", "fr": "Démo Physique de Verlet", "es": "Demo de física Verlet", "ja": "ベルレ物理デモ", "zh": "Verlet 物理演示", "ko": "버릿 물리 데모"},
+  "description": {
+    "en": "Ropes, a rope bridge and a tearable cloth you can grab, cut and pin",
+    "tr": "Tutup kesebileceğin ve iğneleyebileceğin halatlar, halat köprü ve yırtılabilen kumaş",
+    "de": "Seile, eine Hängebrücke und ein zerreißbares Tuch, das du greifen, zerschneiden und fixieren kannst",
+    "fr": "Des cordes, un pont de corde et un tissu déchirable que vous pouvez saisir, couper et épingler",
+    "es": "Cuerdas, un puente colgante y una tela que se rasga y que puedes agarrar, cortar y fijar"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 450, "minWidth": 400, "minHeight": 240, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.2",
+  "permissions": []
+}

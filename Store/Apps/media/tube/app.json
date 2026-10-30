@@ -1,0 +1,25 @@
+{
+  "id": "tube",
+  "name": {
+    "en": "YousTube",
+    "tr": "YousTube",
+    "de": "YousTube",
+    "fr": "YousTube",
+    "es": "YousTube",
+    "ko": "YousTube"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1100,
+    "height": 620,
+    "minWidth": 720,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

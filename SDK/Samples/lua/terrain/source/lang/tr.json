@@ -1,0 +1,13 @@
+{
+  "roughness": "Pürüzlülük",
+  "zoom": "Şekil boyutu",
+  "water": "Deniz seviyesi",
+  "flat": "Düşük poligon gölge",
+  "new_island": "Yeni ada",
+  "seed": "Tohum {0} · {1} ms'de üretildi",
+  "stats": "{0} üçgen · {1} · {2} FPS",
+  "autopilot": "Otopilot · devralmak için hareket et ya da sürükle",
+  "controls": "Sol çubuk / WASD uç · sağ çubuk / oklar / sürükle bak · ZR ZL / E Q yukarı aşağı",
+  "autopilot_menu": "Otopilot",
+  "menu_title": "Arazi"
+}

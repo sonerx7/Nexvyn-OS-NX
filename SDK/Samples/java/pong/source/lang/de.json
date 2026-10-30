@@ -1,0 +1,11 @@
+{
+  "game": "Spiel",
+  "serve": "Aufschlag",
+  "paused": "Pause",
+  "you_win": "Gewonnen!",
+  "you_lose": "Die Konsole gewinnt",
+  "hint": "A, Enter oder Tippen zum Aufschlag · Stick, Steuerkreuz, Pfeile oder Ziehen zum Bewegen",
+  "wins": "Gewonnene Spiele: {0}",
+  "new_game": "Neues Spiel",
+  "reset_wins": "Siege zurücksetzen"
+}

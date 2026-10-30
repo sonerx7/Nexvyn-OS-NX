@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.palette",
+  "name": {"en": "Color Palette", "tr": "Renk Paleti", "de": "Farbpalette", "fr": "Palette de couleurs", "es": "Paleta de colores", "ja": "カラーパレット", "zh": "调色板", "ko": "색상 팔레트"},
+  "description": {
+    "en": "Build color harmonies from one base color: complementary, analogous, triadic, tetradic, split, monochromatic and shades. Copy any swatch and keep favorite palettes.",
+    "tr": "Tek bir ana renkten renk uyumları oluştur: tamamlayıcı, analog, üçlü, dörtlü, ayrık, monokromatik ve tonlar. Her rengi kopyala, sevdiğin paletleri sakla.",
+    "de": "Erstelle Farbharmonien aus einer Grundfarbe: komplementär, analog, triadisch, tetradisch, geteilt komplementär, monochromatisch und Abstufungen. Kopiere jedes Farbfeld und speichere Lieblingspaletten.",
+    "fr": "Créez des harmonies à partir d’une couleur de base : complémentaire, analogue, triadique, tétradique, complémentaire adjacente, monochrome et nuances. Copiez n’importe quelle teinte et gardez vos palettes favorites.",
+    "es": "Crea armonías a partir de un color base: complementaria, análoga, triádica, tetrádica, complementaria dividida, monocromática y tonos. Copia cualquier muestra y guarda tus paletas favoritas."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 780, "height": 540, "minWidth": 620, "minHeight": 460, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

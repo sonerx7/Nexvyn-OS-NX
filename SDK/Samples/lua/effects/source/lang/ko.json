@@ -1,0 +1,16 @@
+{
+  "plasma": "플라스마",
+  "tunnel": "터널",
+  "starfield": "별밭",
+  "pal_fire": "불꽃",
+  "pal_ocean": "바다",
+  "pal_neon": "네온",
+  "pal_rainbow": "무지개",
+  "cell": "셀 {0}px",
+  "speed": "속도",
+  "cycle": "색상 순환",
+  "info_cells": "셀 {0}개 · {1} FPS",
+  "info_stars": "별 {0}개 · {1} FPS",
+  "hint": "드래그하여 조종 · 1 2 3으로 효과 전환",
+  "menu_title": "효과"
+}

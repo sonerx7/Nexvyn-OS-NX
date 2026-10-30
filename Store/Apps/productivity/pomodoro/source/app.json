@@ -1,0 +1,35 @@
+{
+  "id": "pomodoro",
+  "name": {
+    "en": "Pomodoro",
+    "tr": "Pomodoro",
+    "de": "Pomodoro",
+    "fr": "Pomodoro",
+    "es": "Pomodoro",
+    "ja": "ポモドーロ",
+    "zh": "番茄钟",
+    "ko": "뽀모도로"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 440,
+    "height": 560,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Focus timer with breaks and daily statistics",
+    "tr": "Molalı odaklanma zamanlayıcısı ve günlük istatistikler",
+    "de": "Fokus-Timer mit Pausen und Tagesstatistiken",
+    "fr": "Minuteur de concentration avec pauses et statistiques quotidiennes",
+    "es": "Temporizador de concentración con descansos y estadísticas diarias"
+  },
+  "permissions": [
+    "notifications"
+  ]
+}

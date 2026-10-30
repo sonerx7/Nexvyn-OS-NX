@@ -1,0 +1,16 @@
+{
+  "subtitle": {
+    "en": "Simplified Chinese font pack (CJK)",
+    "tr": "Basitleştirilmiş Çince yazı tipi paketi (CJK)",
+    "de": "Schriftpaket vereinfachtes Chinesisch (CJK)",
+    "fr": "Pack de police chinois simplifié (CJK)",
+    "es": "Paquete de fuente chino simplificado (CJK)"
+  },
+  "description": {
+    "en": "Noto Sans SC is a Simplified Chinese font from the Noto family. Install it on a console that does not have the system's shared fonts (for example in an emulator without firmware fonts): Nexvyn OS then draws Simplified Chinese text with it everywhere, from the menus to web pages. It also appears in the Fonts app and in the font menus of the apps.\n\n• Regular weight\n• SIL Open Font License",
+    "tr": "Noto Sans SC, Noto ailesinden bir Basitleştirilmiş Çince yazı tipidir. Sistemin paylaşılan yazı tipleri olmayan bir konsola (örneğin donanım yazılımı yazı tipleri olmayan bir emülatöre) kurun: Nexvyn OS Basitleştirilmiş Çince metinleri menülerden web sayfalarına kadar her yerde bununla çizer. Yazı Tipleri uygulamasında ve uygulamaların yazı tipi menülerinde de görünür.\n\n• Regular kalınlık\n• SIL Open Font License",
+    "de": "Noto Sans SC ist eine Schrift für vereinfachtes Chinesisch aus der Noto-Familie. Installiere sie auf einer Konsole ohne die gemeinsamen Systemschriften (etwa in einem Emulator ohne Firmware-Schriften): Nexvyn OS zeichnet Text in vereinfachtes Chinesisch dann überall damit, von den Menüs bis zu Webseiten. Sie erscheint auch in der App „Schriften“ und in den Schriftmenüs der Apps.\n\n• Regular\n• SIL Open Font License",
+    "fr": "Noto Sans SC est une police chinois simplifié de la famille Noto. Installez-la sur une console qui n’a pas les polices partagées du système (par exemple un émulateur sans les polices du firmware) : Nexvyn OS affiche alors le texte en chinois simplifié partout, des menus aux pages web. Elle apparaît aussi dans l’app Polices et dans les menus de police des apps.\n\n• Graisse Regular\n• SIL Open Font License",
+    "es": "Noto Sans SC es una fuente de chino simplificado de la familia Noto. Instálala en una consola que no tenga las fuentes compartidas del sistema (por ejemplo, un emulador sin las fuentes del firmware): Nexvyn OS mostrará con ella el texto en chino simplificado en todas partes, desde los menús hasta las páginas web. También aparece en la app Tipografías y en los menús de fuentes de las apps.\n\n• Peso Regular\n• SIL Open Font License"
+  }
+}

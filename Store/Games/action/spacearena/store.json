@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "Survive endless waves in a neon arena",
+    "tr": "Neon arenada dalga dalga düşmana dayan",
+    "de": "Überlebe endlose Wellen in der Neon-Arena",
+    "fr": "Survivez aux vagues dans une arène néon",
+    "es": "Sobrevive a oleadas en una arena de neón",
+    "ja": "ネオンの闘技場で無限ウェーブを生き抜け",
+    "zh": "在霓虹竞技场中抵御无尽的敌潮",
+    "ko": "네온 아레나에서 끝없는 웨이브를 버텨 내세요"
+  },
+  "description": {
+    "en": "A fast top-down arena shooter in glowing vector style. Fly around the arena while your ship automatically aims at the nearest enemy, or take over the aiming with the right stick or the mouse. Every wave brings more chasers, drifters, shooters and splitters that break apart into smaller ships. Grab rapid fire, shields and extra lives, keep your multiplier high and save a bomb for tight spots.\n\n• Endless waves of five enemy types\n• Auto-aim, or aim with the right stick or the mouse\n• Rapid fire, shield and extra-life power-ups\n• Score multiplier, bombs and a saved high score\n• Built on the nexvyn.game engine, all art drawn with shapes",
+    "tr": "Parlayan vektör görünümlü, hızlı bir kuşbakışı arena nişancı oyunu. Arenada uçarken gemin en yakın düşmana kendiliğinden nişan alır; istersen sağ çubukla ya da fareyle nişanı sen al. Her dalgada daha fazla takipçi, gezgin, nişancı ve küçük gemilere bölünen düşman gelir. Seri atış, kalkan ve ekstra can topla, çarpanını yüksek tut, zor anlar için bir bomba sakla.\n\n• Beş düşman türüyle sonsuz dalgalar\n• Otomatik nişan, sağ çubuk ya da fareyle nişan\n• Seri atış, kalkan ve ekstra can\n• Puan çarpanı, bombalar ve kaydedilen rekor\n• nexvyn.game motoruyla yapıldı, tüm çizimler şekillerden",
+    "de": "Ein rasanter Arena-Shooter von oben im leuchtenden Vektorstil. Flieg durch die Arena, während dein Schiff automatisch auf den nächsten Gegner zielt, oder übernimm das Zielen mit dem rechten Stick oder der Maus. Jede Welle bringt mehr Jäger, Treiber, Schützen und Spalter, die in kleinere Schiffe zerfallen. Schnapp dir Schnellfeuer, Schilde und Extraleben, halte deinen Multiplikator hoch und heb dir eine Bombe für brenzlige Momente auf.\n\n• Endlose Wellen mit fünf Gegnertypen\n• Automatisches Zielen, rechter Stick oder Maus\n• Power-ups: Schnellfeuer, Schild und Extraleben\n• Punktemultiplikator, Bomben und gespeicherter Highscore\n• Mit der nexvyn.game-Engine gebaut, alles aus Formen gezeichnet",
+    "fr": "Un shoot’em up d’arène vu de dessus, nerveux et au style vectoriel lumineux. Volez dans l’arène pendant que votre vaisseau vise tout seul l’ennemi le plus proche, ou prenez la visée en main au stick droit ou à la souris. Chaque vague amène davantage de chasseurs, de dériveurs, de tireurs et de diviseurs qui éclatent en petits vaisseaux. Récupérez tir rapide, boucliers et vies supplémentaires, gardez votre multiplicateur élevé et gardez une bombe pour les coups durs.\n\n• Des vagues sans fin et cinq types d’ennemis\n• Visée automatique, au stick droit ou à la souris\n• Bonus tir rapide, bouclier et vie supplémentaire\n• Multiplicateur de score, bombes et record enregistré\n• Conçu avec le moteur nexvyn.game, tout en formes dessinées",
+    "es": "Un shooter de arena con vista cenital, rápido y con un estilo vectorial luminoso. Vuela por la arena mientras tu nave apunta sola al enemigo más cercano, o toma el control de la puntería con el stick derecho o el ratón. Cada oleada trae más perseguidores, errantes, tiradores y divisores que se rompen en naves más pequeñas. Consigue disparo rápido, escudos y vidas extra, mantén alto tu multiplicador y guarda una bomba para los apuros.\n\n• Oleadas infinitas con cinco tipos de enemigos\n• Puntería automática, con el stick derecho o con el ratón\n• Disparo rápido, escudo y vida extra\n• Multiplicador, bombas y récord guardado\n• Hecho con el motor nexvyn.game, todo dibujado con formas",
+    "ja": "光るベクタースタイルのスピーディーな見下ろし型アリーナシューティング。アリーナを飛び回る間、宇宙船は最も近い敵を自動で狙いますが、右スティックやマウスで照準を操作することもできます。ウェーブごとに、追跡型、漂流型、射撃型、そして小さな船に分裂する分裂型の敵が増えていきます。連射、シールド、エクストラライフを取り、倍率を高く保ち、ピンチのためにボムを取っておきましょう。\n\n• 5 種類の敵が出現する終わりなきウェーブ\n• 自動照準、または右スティックやマウスで照準\n• 連射、シールド、エクストラライフのパワーアップ\n• スコア倍率、ボム、保存されるハイスコア\n• nexvyn.game エンジンで作られ、すべての絵は図形で描画",
+    "zh": "一款发光矢量风格的快节奏俯视竞技场射击游戏。在竞技场中飞行，你的飞船会自动瞄准最近的敌人，也可以用右摇杆或鼠标接管瞄准。每一波都会带来更多追击者、漂流者、射手和会分裂成小飞船的分裂者。抓住快速射击、护盾和额外生命，保持高倍数，并把炸弹留到危急时刻。\n\n• 由五种敌人组成的无尽波次\n• 自动瞄准，或用右摇杆或鼠标瞄准\n• 快速射击、护盾和额外生命道具\n• 得分倍数、炸弹和保存的最高分\n• 基于 nexvyn.game 引擎制作，所有美术均由图形绘制",
+    "ko": "빛나는 벡터 스타일의 빠른 탑다운 아레나 슈팅 게임입니다. 아레나를 날아다니면 우주선이 가장 가까운 적을 자동으로 조준하며, 오른쪽 스틱이나 마우스로 직접 조준할 수도 있습니다. 웨이브마다 추격자, 표류자, 사격수, 그리고 작은 우주선으로 쪼개지는 분열자가 더 많이 나타납니다. 연사, 방어막, 추가 생명을 잡고, 배율을 높게 유지하고, 위급할 때를 위해 폭탄을 아껴 두세요.\n\n• 적 5종의 끝없는 웨이브\n• 자동 조준 또는 오른쪽 스틱이나 마우스로 조준\n• 연사, 방어막, 추가 생명 파워업\n• 점수 배율, 폭탄, 저장되는 최고 점수\n• nexvyn.game 엔진으로 제작, 모든 그래픽은 도형으로 그림"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5",
+      "hold space 3"
+    ],
+    [
+      "hold d 0.5",
+      "hold space 2.5"
+    ],
+    [
+      "key x",
+      "wait 0.6"
+    ]
+  ]
+}

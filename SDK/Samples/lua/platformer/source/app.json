@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.platformer",
+  "name": {"en": "Platformer Demo", "tr": "Platform Demosu", "de": "Plattformer-Demo", "fr": "Démo Plateforme", "es": "Demo de plataformas", "ja": "アクションゲームデモ", "zh": "平台跳跃演示", "ko": "플랫포머 데모"},
+  "description": {
+    "en": "nexvyn.game tour: tilemap, camera, animation, one-way platforms and coins",
+    "tr": "nexvyn.game turu: döşeme haritası, kamera, animasyon, tek yönlü platformlar ve altınlar",
+    "de": "nexvyn.game-Tour: Tilemap, Kamera, Animation, Einweg-Plattformen und Münzen",
+    "fr": "Visite de nexvyn.game : tilemap, caméra, animation, plateformes à sens unique et pièces",
+    "es": "Recorrido por nexvyn.game: tilemap, cámara, animación, plataformas de un solo sentido y monedas"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 800, "height": 450, "minWidth": 400, "minHeight": 240, "resizable": true},
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

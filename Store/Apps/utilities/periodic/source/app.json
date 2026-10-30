@@ -1,0 +1,33 @@
+{
+  "id": "periodic",
+  "name": {
+    "en": "Periodic Table",
+    "tr": "Periyodik Tablo",
+    "de": "Periodensystem",
+    "fr": "Tableau périodique",
+    "es": "Tabla periódica",
+    "ja": "周期表",
+    "zh": "元素周期表",
+    "ko": "주기율표"
+  },
+  "description": {
+    "en": "All 118 elements with detail cards, search, category and state views and a temperature slider.",
+    "tr": "118 elementin tamamı: ayrıntı kartları, arama, kategori ve hâl görünümleri, sıcaklık kaydırıcısı.",
+    "de": "Alle 118 Elemente mit Detailkarten, Suche, Ansichten nach Kategorie und Aggregatzustand und einem Temperaturregler.",
+    "fr": "Les 118 éléments avec fiches détaillées, recherche, vues par catégorie et par état, et un curseur de température.",
+    "es": "Los 118 elementos con fichas detalladas, búsqueda, vistas por categoría y estado y un control de temperatura."
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 1000,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": []
+}

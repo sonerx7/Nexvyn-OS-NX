@@ -1,0 +1,15 @@
+{
+  "tab_gestures": "手势",
+  "tab_tilt": "倾斜",
+  "reset": "重置视图",
+  "calibrate": "校准",
+  "test_rumble": "测试振动",
+  "view_info": "缩放 {0} · 角度 {1}° · 平移 {2}, {3}",
+  "event_info": "事件：捏合 {0} · 旋转 {1} · 双指平移 {2}",
+  "hint_gestures": "双指：捏合、旋转、平移 · 鼠标：拖移、滚轮 · Q/E 旋转 · 双击重置",
+  "hint_tilt": "倾斜主机来滚动弹珠（方向键或摇杆同样可用）",
+  "stars": "星星：{0}",
+  "no_motion": "没有体感传感器数据：请使用方向键或左摇杆",
+  "motion_title": "input.motion()",
+  "menu_title": "手势"
+}

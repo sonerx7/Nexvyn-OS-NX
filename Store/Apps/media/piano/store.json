@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Play, record and learn with demo songs",
+    "tr": "Çal, kaydet, örnek şarkılarla öğren",
+    "de": "Spielen, aufnehmen, mit Songs üben",
+    "fr": "Jouez, enregistrez, apprenez des airs",
+    "es": "Toca, graba y aprende con canciones",
+    "ja": "演奏、録音、デモ曲で練習",
+    "zh": "演奏、录音，跟着演示曲目学习",
+    "ko": "연주하고, 녹음하고, 데모 곡으로 배우세요"
+  },
+  "description": {
+    "en": "Piano gives you a three-octave keyboard that you can play by touch, with a keyboard or with the controller. Slide across the keys to glide through notes and watch them rise as colourful bars on the piano roll. Pick a sine, square, saw or triangle waveform, turn on sustain, and shift the octave up or down. Record what you play and listen back, or let the piano perform Ode to Joy, Für Elise and other demo songs.\n\n• Three playable octaves with a moving piano roll\n• Four waveforms and a sustain switch\n• Record and play back your own melodies\n• Four demo songs to listen to and learn from\n• Computer keys A–L play notes, Z/X change the octave, R records\n• Controller: D-pad picks a key, A plays, X records, Y changes the waveform",
+    "tr": "Piyano, dokunarak, klavyeyle ya da kumandayla çalabileceğin üç oktavlık bir klavye sunar. Parmağını tuşların üzerinde kaydırarak notalar arasında süzül, çaldıkların piyano rulosunda renkli çubuklar olarak yükselsin. Sinüs, kare, testere ya da üçgen dalga seç, uzatmayı aç, oktavı yukarı ya da aşağı kaydır. Çaldığını kaydedip dinle ya da Neşeye Övgü, Für Elise ve diğer örnek şarkıları piyanoya çaldır.\n\n• Hareketli piyano rulosuyla üç çalınabilir oktav\n• Dört dalga biçimi ve uzatma anahtarı\n• Kendi melodilerini kaydet ve dinle\n• Dinleyip öğrenebileceğin dört örnek şarkı\n• Bilgisayar klavyesinde A–L nota çalar, Z/X oktav, R kayıt\n• Kumanda: yön tuşları tuş seçer, A çalar, X kaydeder, Y dalga biçimini değiştirir",
+    "de": "Das Klavier bietet dir drei Oktaven, die du per Touch, Tastatur oder Controller spielst. Wische über die Tasten, um durch die Töne zu gleiten, und sieh zu, wie sie als bunte Balken in der Pianorolle aufsteigen. Wähle Sinus, Quadrat, Sägezahn oder Dreieck, schalte Sustain ein und verschiebe die Oktave nach oben oder unten. Nimm dein Spiel auf und hör es dir an, oder lass das Klavier „Ode an die Freude“, „Für Elise“ und weitere Demo-Songs spielen.\n\n• Drei spielbare Oktaven mit laufender Pianorolle\n• Vier Wellenformen und ein Sustain-Schalter\n• Eigene Melodien aufnehmen und abspielen\n• Vier Demo-Songs zum Anhören und Nachspielen\n• Tastatur: A–L spielen Töne, Z/X wechseln die Oktave, R nimmt auf\n• Controller: Steuerkreuz wählt eine Taste, A spielt, X nimmt auf, Y wechselt die Wellenform",
+    "fr": "Piano vous offre un clavier de trois octaves à jouer au toucher, au clavier ou à la manette. Faites glisser le doigt sur les touches pour enchaîner les notes et regardez-les monter en barres colorées sur le rouleau. Choisissez une onde sinusoïde, carrée, en dent de scie ou triangle, activez le maintien et changez d’octave. Enregistrez ce que vous jouez pour le réécouter, ou laissez le piano interpréter l’Ode à la joie, Für Elise et d’autres airs de démonstration.\n\n• Trois octaves jouables avec rouleau animé\n• Quatre formes d’onde et un maintien\n• Enregistrez et réécoutez vos mélodies\n• Quatre airs de démonstration pour écouter et apprendre\n• Clavier : A à L jouent les notes, Z/X changent d’octave, R enregistre\n• Manette : la croix choisit une touche, A joue, X enregistre, Y change l’onde",
+    "es": "Piano te ofrece un teclado de tres octavas que puedes tocar con los dedos, con el teclado o con el mando. Desliza por las teclas para pasar de una nota a otra y mira cómo suben como barras de colores en el rollo de piano. Elige onda senoidal, cuadrada, de sierra o triangular, activa el sostenido y sube o baja de octava. Graba lo que tocas para escucharlo o deja que el piano interprete el Himno de la alegría, Para Elisa y otras canciones de demostración.\n\n• Tres octavas con un rollo de piano en movimiento\n• Cuatro formas de onda y sostenido\n• Graba y reproduce tus propias melodías\n• Cuatro canciones de demostración para escuchar y aprender\n• Teclado: A–L tocan notas, Z/X cambian de octava, R graba\n• Mando: la cruceta elige una tecla, A toca, X graba, Y cambia la onda",
+    "ja": "ピアノは、タッチ、キーボード、コントローラーで演奏できる 3 オクターブの鍵盤です。鍵盤の上をスライドすると音がつながり、ピアノロール上にカラフルなバーとなって流れていきます。サイン波、矩形波、のこぎり波、三角波から波形を選び、サステインをオンにし、オクターブを上下に移動できます。演奏を録音して聴き返したり、「歓喜の歌」や「エリーゼのために」などのデモ曲をピアノに演奏させたりしましょう。\n\n• 動くピアノロール付きの演奏可能な 3 オクターブ\n• 4 つの波形とサステインのスイッチ\n• 自分のメロディを録音・再生\n• 聴いて学べる 4 つのデモ曲\n• コンピューターのキー A–L で演奏、Z/X でオクターブを変更、R で録音\n• コントローラー: 十字ボタンで鍵盤を選択、A で演奏、X で録音、Y で波形を変更",
+    "zh": "钢琴为你提供一个三个八度的键盘，可用触控、键盘或手柄演奏。在琴键上滑动即可连贯地演奏音符，并看着它们在钢琴卷帘上化作彩色的条块升起。可选择正弦波、方波、锯齿波或三角波，开启延音，并升高或降低八度。录下你的演奏并回放，或让钢琴为你演奏《欢乐颂》《致爱丽丝》等演示曲目。\n\n• 三个可演奏的八度和滚动的钢琴卷帘\n• 四种波形和延音开关\n• 录制并回放你自己的旋律\n• 四首可聆听和学习的演示曲目\n• 电脑键盘 A–L 演奏音符，Z/X 切换八度，R 录音\n• 手柄：十字键选择琴键，A 演奏，X 录音，Y 切换波形",
+    "ko": "피아노는 터치, 키보드 또는 컨트롤러로 연주할 수 있는 3옥타브 건반을 제공합니다. 건반 위를 밀면 음을 미끄러지듯 연주할 수 있고, 음이 피아노 롤 위에 화려한 막대로 올라가는 것을 볼 수 있습니다. 사인파, 사각파, 톱니파, 삼각파 중에서 고르고, 서스테인을 켜고, 옥타브를 올리거나 내리세요. 연주한 것을 녹음해 다시 듣거나, 환희의 송가, 엘리제를 위하여 등의 데모 곡을 들어 보세요.\n\n• 움직이는 피아노 롤과 연주 가능한 3옥타브\n• 파형 4종과 서스테인 스위치\n• 나만의 멜로디 녹음 및 재생\n• 듣고 배울 수 있는 데모 곡 4곡\n• 컴퓨터 키 A–L 음 연주, Z/X 옥타브 변경, R 녹음\n• 컨트롤러: 방향 버튼 건반 선택, A 연주, X 녹음, Y 파형 변경"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key enter", "wait 3.5"],
+    ["key 2", "key tab", "key tab", "key enter", "wait 4"],
+    ["dark 1", "wait 2"]
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.rhythm",
+  "name": {"en": "Rhythm", "tr": "Ritim", "de": "Rhythmus", "fr": "Rythme", "es": "Ritmo", "ja": "リズム", "zh": "节奏", "ko": "리듬"},
+  "description": {
+    "en": "A four-lane rhythm game: hit the falling notes to play the melody yourself. Three songs, Easy and Hard charts, grades and best scores.",
+    "tr": "Dört şeritli ritim oyunu: düşen notalara basarak melodiyi kendin çal. Üç şarkı, Kolay ve Zor bölümler, notlar ve rekorlar.",
+    "de": "Ein Rhythmusspiel mit vier Spuren: Triff die fallenden Noten und spiel die Melodie selbst. Drei Songs, leichte und schwere Charts, Bewertungen und Bestwerte.",
+    "fr": "Un jeu de rythme à quatre couloirs : frappez les notes qui tombent pour jouer vous-même la mélodie. Trois morceaux, partitions Facile et Difficile, mentions et meilleurs scores.",
+    "es": "Un juego de ritmo de cuatro carriles: pulsa las notas que caen para tocar tú la melodía. Tres canciones, partituras Fácil y Difícil, calificaciones y mejores puntuaciones."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 540, "minWidth": 480, "minHeight": 300, "resizable": true},
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.2",
+  "permissions": []
+}

@@ -1,0 +1,49 @@
+{
+  "subtitle": {
+    "en": "Clear the field and flag every mine",
+    "tr": "Tarlayı temizle, her mayına bayrak dik",
+    "de": "Räum das Feld und markiere jede Mine",
+    "fr": "Déminez le terrain, signalez chaque mine",
+    "es": "Despeja el campo y marca cada mina",
+    "ja": "地雷にすべて旗を立てて盤面をクリア",
+    "zh": "清空雷区，标出每一颗地雷",
+    "ko": "필드를 정리하고 모든 지뢰에 깃발을 꽂으세요"
+  },
+  "description": {
+    "en": "The classic logic game of mines and numbers. Reveal tiles, read the numbers to work out where the mines are hiding and flag them as you clear the whole field. Your first click is always safe, empty areas open up on their own, and a chord on a number reveals its neighbours once the flags are in place. Pick beginner, intermediate or expert and chase your best time.\n\n• Beginner, intermediate and expert boards\n• Safe first click and automatic flood reveal\n• Flags, flag mode and chords\n• Best times and win statistics\n• Full controller, keyboard and touch support",
+    "tr": "Mayınların ve sayıların klasik mantık oyunu. Kareleri aç, sayılara bakarak mayınların nerede saklandığını çıkar ve bütün tarlayı temizlerken onlara bayrak dik. İlk tıklaman her zaman güvenlidir, boş alanlar kendiliğinden açılır; bayraklar yerindeyse bir sayıya akor yaparak komşularını tek seferde açarsın. Başlangıç, orta ya da uzman seviyesini seç, en iyi süreni kovala.\n\n• Başlangıç, orta ve uzman tahtalar\n• Güvenli ilk tıklama ve otomatik alan açılması\n• Bayraklar, bayrak modu ve akor\n• En iyi süreler ve galibiyet istatistikleri\n• Tam kumanda, klavye ve dokunmatik desteği",
+    "de": "Das klassische Logikspiel mit Minen und Zahlen. Deck Felder auf, lies an den Zahlen ab, wo sich die Minen verstecken, und markiere sie, während du das ganze Feld räumst. Dein erster Klick ist immer sicher, leere Bereiche öffnen sich von selbst, und ein Akkord auf einer Zahl deckt ihre Nachbarn auf, sobald die Flaggen stehen. Wähle Anfänger, Fortgeschritten oder Experte und jag deine Bestzeit.\n\n• Bretter für Anfänger, Fortgeschrittene und Experten\n• Sicherer erster Klick und automatisches Aufdecken\n• Flaggen, Flaggenmodus und Akkorde\n• Bestzeiten und Siegstatistik\n• Volle Unterstützung für Controller, Tastatur und Touch",
+    "fr": "Le jeu de logique classique des mines et des chiffres. Révélez des cases, lisez les chiffres pour deviner où se cachent les mines et posez des drapeaux pendant que vous déminez tout le terrain. Le premier clic est toujours sûr, les zones vides s’ouvrent toutes seules, et un accord sur un chiffre révèle ses voisines une fois les drapeaux posés. Choisissez débutant, intermédiaire ou expert et battez votre meilleur temps.\n\n• Grilles débutant, intermédiaire et expert\n• Premier clic sûr et ouverture automatique des zones vides\n• Drapeaux, mode drapeau et accords\n• Meilleurs temps et statistiques de victoires\n• Prise en charge complète de la manette, du clavier et du tactile",
+    "es": "El clásico juego de lógica con minas y números. Descubre casillas, lee los números para deducir dónde se esconden las minas y márcalas con banderas mientras despejas todo el campo. El primer clic siempre es seguro, las zonas vacías se abren solas y, con las banderas puestas, un acorde sobre un número descubre sus vecinas. Elige principiante, intermedio o experto y supera tu mejor tiempo.\n\n• Tableros principiante, intermedio y experto\n• Primer clic seguro y apertura automática\n• Banderas, modo bandera y acordes\n• Mejores tiempos y estadísticas de victorias\n• Compatibilidad total con mando, teclado y táctil",
+    "ja": "地雷と数字の定番ロジックゲーム。マスを開け、数字を読んで地雷の場所を推理し、旗を立てながら盤面全体をクリアしましょう。最初のクリックは必ず安全で、空白の領域は自動で開き、旗を立て終えた数字をコード操作すると周囲のマスが開きます。初級、中級、上級から選んでベストタイムを目指しましょう。\n\n• 初級、中級、上級の盤面\n• 安全な最初のクリックと自動で広がる開放\n• 旗、旗モード、コード操作\n• ベストタイムと勝利の統計\n• コントローラー、キーボード、タッチに完全対応",
+    "zh": "经典的地雷与数字逻辑游戏。翻开格子，根据数字推断地雷藏在哪里，并在清空整个雷区的过程中为它们插上旗子。第一次点按总是安全的，空白区域会自动展开，在插好旗后对数字进行双键点按即可翻开其周围的格子。选择初级、中级或高级，挑战你的最佳用时。\n\n• 初级、中级和高级棋盘\n• 安全的首次点按和自动展开\n• 旗子、插旗模式和双键点按\n• 最佳用时和胜场统计\n• 完整的手柄、键盘和触控支持",
+    "ko": "지뢰와 숫자로 하는 클래식 논리 게임입니다. 칸을 열고, 숫자를 읽어 지뢰가 숨은 곳을 알아내고, 필드 전체를 정리하면서 깃발을 꽂으세요. 첫 클릭은 항상 안전하며, 빈 영역은 자동으로 열리고, 깃발을 다 꽂은 숫자를 코드(chord)하면 이웃 칸이 열립니다. 초급, 중급, 고급 중에서 골라 최고 기록에 도전하세요.\n\n• 초급, 중급, 고급 보드\n• 안전한 첫 클릭과 자동으로 열리는 빈 영역\n• 깃발, 깃발 모드, 코드\n• 최고 기록과 승리 통계\n• 완전한 컨트롤러, 키보드, 터치 지원"
+  },
+  "shots": [
+    [
+      "wait 2",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key 2",
+      "wait 0.5",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key 3",
+      "wait 0.5",
+      "key enter",
+      "wait 1",
+      "key right",
+      "key right",
+      "key f",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

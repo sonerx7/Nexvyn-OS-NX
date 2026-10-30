@@ -1,0 +1,11 @@
+{
+  "game": "게임",
+  "title": "스네이크",
+  "score": "점수: {0}",
+  "best": "최고: {0}",
+  "game_over": "게임 오버",
+  "paused": "일시 정지됨",
+  "start_hint": "A, Enter 또는 탭으로 시작 · 방향 버튼, 화살표 또는 WASD로 조종",
+  "new_game": "새 게임",
+  "reset_best": "최고 점수 재설정"
+}

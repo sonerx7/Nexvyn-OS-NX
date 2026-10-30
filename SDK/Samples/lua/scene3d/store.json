@@ -1,0 +1,42 @@
+{
+  "kind": "demo",
+  "tags": [
+    "g3d",
+    "3d",
+    "textures",
+    "fog",
+    "lighting"
+  ],
+  "subtitle": {
+    "en": "Textured 3D meshes, sun, fog and glow",
+    "tr": "Dokulu 3D modeller, güneş, sis ve parıltı",
+    "de": "Texturierte 3D-Modelle, Sonne, Nebel und Leuchten",
+    "fr": "Maillages 3D texturés, soleil, brouillard et halos",
+    "es": "Mallas 3D con textura, sol, niebla y brillo",
+    "ja": "テクスチャ付き 3D メッシュ、太陽、霧、グロー",
+    "zh": "带纹理的 3D 网格、太阳、雾和光晕",
+    "ko": "텍스처가 입혀진 3D 메시, 태양, 안개, 빛"
+  },
+  "description": {
+    "en": "Custom g3d meshes built with UV coordinates (crates, an octagonal pedestal, a curved brick wall, a tiled floor), a sun that follows the time of day, fog, glowing lamp halos with the glow flag and an orbit camera you drag. Shows g3d.custom, mesh:setTexture, lighting and what runs on the GPU.",
+    "tr": "UV koordinatlarıyla kurulan özel g3d modeller (sandıklar, sekizgen kaide, kavisli tuğla duvar, döşeme zemin), gün saatini izleyen güneş, sis, glow bayrağıyla parlayan lamba haleleri ve sürükleyerek döndürülen yörünge kamerası. g3d.custom, mesh:setTexture, ışıklandırma ve GPU'da nelerin çalıştığını gösterir.",
+    "de": "Eigene g3d-Modelle mit UV-Koordinaten (Kisten, ein achteckiger Sockel, eine gebogene Ziegelmauer, ein gefliester Boden), eine Sonne nach Tageszeit, Nebel, leuchtende Lampenhöfe mit dem Glow-Flag und eine Orbit-Kamera zum Ziehen. Zeigt g3d.custom, mesh:setTexture, Beleuchtung und was auf der GPU läuft.",
+    "fr": "Des maillages g3d construits avec des coordonnées UV (caisses, piédestal octogonal, mur de briques courbe, sol carrelé), un soleil qui suit l'heure, du brouillard, des halos de lampes avec l'option glow et une caméra orbitale à faire glisser. Montre g3d.custom, mesh:setTexture, l'éclairage et ce qui tourne sur le GPU.",
+    "es": "Mallas g3d propias con coordenadas UV (cajas, un pedestal octogonal, un muro de ladrillo curvo, un suelo de baldosas), un sol que sigue la hora del día, niebla, halos de lámparas con la opción glow y una cámara orbital que se arrastra. Muestra g3d.custom, mesh:setTexture, la iluminación y lo que corre en la GPU.",
+    "ja": "UV 座標で作った独自の g3d メッシュ (木箱、八角形の台座、曲がったレンガの壁、タイルの床)、時刻に合わせて動く太陽、霧、glow フラグによる光るランプの光輪、ドラッグで操作するオービットカメラ。g3d.custom、mesh:setTexture、ライティング、そして GPU で何が動くかを示します。",
+    "zh": "使用 UV 坐标构建的自定义 g3d 网格（箱子、八角底座、弧形砖墙、铺砖地面）、随一天中时间移动的太阳、雾效、使用 glow 标志的发光灯晕，以及可拖动的环绕摄像机。演示了 g3d.custom、mesh:setTexture、光照以及哪些内容在 GPU 上运行。",
+    "ko": "UV 좌표로 만든 사용자 지정 g3d 메시(상자, 팔각 받침대, 휘어진 벽돌 벽, 타일 바닥), 하루의 시간을 따라가는 태양, 안개, glow 플래그로 빛나는 램프 후광, 드래그하는 궤도 카메라. g3d.custom, mesh:setTexture, 조명, 그리고 GPU에서 실행되는 것을 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

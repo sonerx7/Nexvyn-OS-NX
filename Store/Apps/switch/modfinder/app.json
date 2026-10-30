@@ -1,0 +1,32 @@
+{
+  "id": "modfinder",
+  "name": {
+    "en": "Mod Finder",
+    "tr": "Mod Bulucu",
+    "de": "Mod-Finder",
+    "fr": "Chercheur de mods",
+    "es": "Buscador de mods",
+    "ko": "모드 찾기"
+  },
+  "description": {
+    "en": "Find mods for your games on GameBanana and install them with Mod Manager.",
+    "tr": "Oyunların için GameBanana'da mod bul ve Mod Yöneticisi ile kur.",
+    "de": "Finde Mods für deine Spiele auf GameBanana und installiere sie mit dem Mod-Manager.",
+    "fr": "Trouvez des mods pour vos jeux sur GameBanana et installez-les avec Gestionnaire de mods.",
+    "es": "Encuentra mods para tus juegos en GameBanana e instálalos con el Gestor de mods."
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1080,
+    "height": 660,
+    "minWidth": 420,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

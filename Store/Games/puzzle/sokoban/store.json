@@ -1,0 +1,54 @@
+{
+  "subtitle": {
+    "en": "Push every crate onto its goal",
+    "tr": "Her kasayı hedefine it",
+    "de": "Schieb jede Kiste auf ihr Ziel",
+    "fr": "Poussez chaque caisse sur sa cible",
+    "es": "Empuja cada caja hasta su objetivo",
+    "ja": "すべての箱をゴールに押し込もう",
+    "zh": "把每个箱子推到目标上",
+    "ko": "모든 상자를 목표 지점으로 미세요"
+  },
+  "description": {
+    "en": "The classic warehouse puzzle: push every crate onto a goal square. You can only push, never pull, so one careless move can trap a crate in a corner. The 20 levels, each verified solvable, get trickier as you go. Undo as many moves as you like, restart anytime and jump to any level from the level select, which also shows your records.\n\n• 20 solver-verified levels\n• Unlimited undo and quick restart\n• Level select with records\n• Smooth movement and hold-to-repeat\n• Tap to walk with path finding, or swipe",
+    "tr": "Klasik depo bulmacası: her kasayı bir hedef kareye it. Kasaları yalnızca itebilirsin, çekemezsin; bu yüzden tek bir dikkatsiz hamle bir kasayı köşeye sıkıştırabilir. Her biri çözülebilirliği doğrulanmış 20 bölüm ilerledikçe zorlaşır. İstediğin kadar hamle geri al, dilediğin an baştan başla ve rekorlarını da gösteren bölüm seçiminden istediğin bölüme geç.\n\n• Çözücüyle doğrulanmış 20 bölüm\n• Sınırsız geri alma ve hızlı yeniden başlatma\n• Rekorları gösteren bölüm seçimi\n• Akıcı hareket ve basılı tutunca tekrarlama\n• Yol bulmalı dokunarak yürüme ya da kaydırma",
+    "de": "Das klassische Lagerhaus-Puzzle: Schieb jede Kiste auf ein Zielfeld. Du kannst nur schieben, niemals ziehen, und so kann ein unbedachter Zug eine Kiste in einer Ecke einsperren. Die 20 Level, alle nachweislich lösbar, werden nach und nach kniffliger. Mach beliebig viele Züge rückgängig, starte jederzeit neu und spring über die Levelauswahl, die auch deine Rekorde zeigt, zu jedem Level.\n\n• 20 per Löser geprüfte Level\n• Unbegrenztes Rückgängig und schneller Neustart\n• Levelauswahl mit Rekorden\n• Flüssige Bewegung und Wiederholen beim Halten\n• Tippen zum Hinlaufen mit Wegfindung oder Wischen",
+    "fr": "Le casse-tête d’entrepôt classique : poussez chaque caisse sur une case cible. On peut seulement pousser, jamais tirer, et un seul geste maladroit peut coincer une caisse dans un angle. Les 20 niveaux, tous vérifiés solubles, se corsent au fil du jeu. Annulez autant de coups que vous voulez, recommencez à tout moment et rejoignez n’importe quel niveau depuis le menu des niveaux, qui affiche aussi vos records.\n\n• 20 niveaux vérifiés par un solveur\n• Annulation illimitée et redémarrage rapide\n• Choix du niveau avec vos records\n• Déplacements fluides et répétition en maintenant\n• Touchez pour vous déplacer avec recherche de chemin, ou glissez",
+    "es": "El clásico puzle del almacén: empuja cada caja hasta una casilla objetivo. Solo puedes empujar, nunca tirar, así que un movimiento descuidado puede dejar una caja atrapada en una esquina. Los 20 niveles, todos con solución comprobada, se complican a medida que avanzas. Deshaz tantos movimientos como quieras, reinicia cuando quieras y salta a cualquier nivel desde el selector, que también muestra tus récords.\n\n• 20 niveles verificados con un solucionador\n• Deshacer ilimitado y reinicio rápido\n• Selector de niveles con récords\n• Movimiento suave y repetición al mantener pulsado\n• Toca para caminar con búsqueda de ruta, o desliza",
+    "ja": "定番の倉庫パズル: すべての箱をゴールのマスに押し込みましょう。押すことしかできず引けないので、不注意な一手で箱が隅に閉じ込められてしまいます。解けることが確認済みの 20 のレベルは、進むほど難しくなります。何手でも取り消し、いつでもやり直し、記録も表示されるレベル選択から任意のレベルにジャンプできます。\n\n• ソルバーで確認済みの 20 レベル\n• 無制限の取り消しとすばやいやり直し\n• 記録付きのレベル選択\n• 滑らかな移動と長押しでの連続移動\n• 経路探索付きのタップで歩く、またはスワイプ",
+    "zh": "经典的仓库谜题：把每个箱子推到目标格上。你只能推，不能拉，所以一步不慎就可能把箱子困在角落里。20 个关卡都经过可解性验证，越往后越难。想撤销多少步都可以，随时重新开始，并可在关卡选择中跳转到任意关卡，那里还会显示你的纪录。\n\n• 20 个经过求解器验证的关卡\n• 无限撤销和快速重新开始\n• 带纪录的关卡选择\n• 流畅的移动和按住连续移动\n• 轻点行走并自动寻路，或轻扫",
+    "ko": "클래식 창고 퍼즐: 모든 상자를 목표 칸으로 미세요. 밀 수만 있고 당길 수는 없으므로, 부주의한 한 수가 상자를 구석에 가둘 수 있습니다. 모두 풀 수 있는지 검증된 20개 레벨은 갈수록 까다로워집니다. 원하는 만큼 실행 취소하고, 언제든 다시 시작하고, 기록도 보여 주는 레벨 선택에서 어느 레벨로든 이동하세요.\n\n• 해법기로 검증된 20개 레벨\n• 무제한 실행 취소와 빠른 다시 시작\n• 기록이 표시되는 레벨 선택\n• 부드러운 이동과 길게 눌러 반복\n• 경로 찾기로 탭하여 걷기 또는 쓸어 넘기기"
+  },
+  "shots": [
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key l",
+      "wait 1"
+    ],
+    [
+      "key right",
+      "key down",
+      "key enter",
+      "wait 1",
+      "key up",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "key down",
+      "wait 0.4",
+      "key left",
+      "wait 0.4",
+      "key left",
+      "wait 0.4",
+      "key up",
+      "wait 0.4",
+      "key right",
+      "wait 1"
+    ]
+  ]
+}

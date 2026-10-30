@@ -1,0 +1,42 @@
+{
+  "kind": "demo",
+  "tags": [
+    "g3d",
+    "3d",
+    "procedural",
+    "noise",
+    "gamepad"
+  ],
+  "subtitle": {
+    "en": "A procedural island to fly over",
+    "tr": "Üzerinde uçulan, kodla üretilmiş bir ada",
+    "de": "Eine prozedurale Insel zum Überfliegen",
+    "fr": "Une île procédurale à survoler",
+    "es": "Una isla procedural para sobrevolar",
+    "ja": "上空を飛べるプロシージャルな島",
+    "zh": "可以飞越的程序化岛屿",
+    "ko": "날아다닐 수 있는 절차적 섬"
+  },
+  "description": {
+    "en": "An island generated from value noise and fBm, coloured by height and slope, with a see-through sea, fog, a minimap, an autopilot and a fly camera for the controller. Shows building one large g3d.custom mesh from a height field and keeping it on the GPU.",
+    "tr": "Değer gürültüsü ve fBm ile üretilen, yüksekliğe ve eğime göre renklenen bir ada: saydam deniz, sis, mini harita, otopilot ve kumandayla uçuş kamerası. Bir yükseklik alanından tek büyük g3d.custom modeli kurmayı ve GPU'da tutmayı gösterir.",
+    "de": "Eine Insel aus Value Noise und fBm, nach Höhe und Steigung eingefärbt, mit durchsichtigem Meer, Nebel, Minikarte, Autopilot und Flugkamera für den Controller. Zeigt, wie aus einem Höhenfeld ein großes g3d.custom-Modell entsteht, das auf der GPU bleibt.",
+    "fr": "Une île générée par bruit de valeur et fBm, colorée selon l'altitude et la pente, avec une mer transparente, du brouillard, une minicarte, un pilote automatique et une caméra de vol à la manette. Montre comment construire un grand maillage g3d.custom à partir d'un champ de hauteurs et le garder sur le GPU.",
+    "es": "Una isla generada con ruido de valor y fBm, coloreada por altura y pendiente, con mar transparente, niebla, minimapa, piloto automático y cámara de vuelo con el mando. Muestra cómo construir una gran malla g3d.custom a partir de un campo de alturas y mantenerla en la GPU.",
+    "ja": "バリューノイズと fBm で生成し、高さと傾斜で色分けした島。透き通った海、霧、ミニマップ、自動操縦、コントローラー用のフライカメラ付き。高さのデータから 1 つの大きな g3d.custom メッシュを作り、GPU 上に保持する方法を示します。",
+    "zh": "一座由值噪声和 fBm 生成的岛屿，按高度和坡度着色，带有透明海水、雾效、小地图、自动驾驶和适用于手柄的飞行摄像机。演示了如何从高度场构建一个大型 g3d.custom 网格并将其保留在 GPU 上。",
+    "ko": "밸류 노이즈와 fBm으로 생성하고 높이와 경사에 따라 색칠한 섬으로, 비치는 바다, 안개, 미니맵, 자동 비행, 컨트롤러용 비행 카메라가 있습니다. 높이 필드로 큰 g3d.custom 메시 하나를 만들어 GPU에 유지하는 방법을 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

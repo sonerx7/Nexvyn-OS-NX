@@ -1,0 +1,21 @@
+{
+  "id": "com.sonerx7.demo.scene3d",
+  "name": {"en": "3D Scene Demo", "tr": "3B Sahne Demosu", "de": "3D-Szenen-Demo", "fr": "Démo Scène 3D", "es": "Demo de escena 3D", "ja": "3D シーンデモ", "zh": "3D 场景演示", "ko": "3D 장면 데모"},
+  "description": {
+    "en": "Textured custom meshes with UVs, a moving sun, fog and an orbit camera",
+    "tr": "UV'li dokulu özel modeller, hareket eden güneş, sis ve yörünge kamerası",
+    "de": "Texturierte eigene Meshes mit UVs, eine wandernde Sonne, Nebel und eine Orbit-Kamera",
+    "fr": "Maillages personnalisés texturés avec UV, un soleil en mouvement, du brouillard et une caméra orbitale",
+    "es": "Mallas personalizadas con textura y UV, un sol en movimiento, niebla y una cámara orbital"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 860, "height": 520, "minWidth": 420, "minHeight": 340, "resizable": true},
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

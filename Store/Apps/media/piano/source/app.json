@@ -1,0 +1,33 @@
+{
+  "id": "piano",
+  "name": {
+    "en": "Piano",
+    "tr": "Piyano",
+    "de": "Klavier",
+    "fr": "Piano",
+    "es": "Piano",
+    "ja": "ピアノ",
+    "zh": "钢琴",
+    "ko": "피아노"
+  },
+  "category": "media",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 900,
+    "height": 420,
+    "resizable": false
+  },
+  "gamepad": true,
+  "description": {
+    "en": "Playable piano with waveforms, recording and demo songs",
+    "tr": "Dalga biçimleri, kayıt ve örnek şarkılarla çalınabilir piyano",
+    "de": "Spielbares Klavier mit Wellenformen, Aufnahme und Demo-Songs",
+    "fr": "Piano jouable avec formes d’onde, enregistrement et morceaux de démo",
+    "es": "Piano para tocar con formas de onda, grabación y canciones de demostración"
+  },
+  "permissions": []
+}

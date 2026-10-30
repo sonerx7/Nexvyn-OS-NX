@@ -1,0 +1,22 @@
+{
+  "id": "com.sonerx7.bmi",
+  "name": {"en": "BMI", "tr": "Vücut Kitle İndeksi", "de": "BMI", "fr": "IMC", "es": "IMC", "ja": "BMI", "zh": "BMI", "ko": "BMI"},
+  "description": {
+    "en": "Body mass index in metric or imperial units with the WHO category, a colored gauge, your healthy weight range and a history chart.",
+    "tr": "Metrik ya da imparatorluk birimleriyle vücut kitle indeksi: DSÖ kategorisi, renkli gösterge, boyuna göre sağlıklı kilo aralığı ve geçmiş grafiği.",
+    "de": "Body-Mass-Index in metrischen oder imperialen Einheiten mit WHO-Kategorie, farbiger Skala, deinem gesunden Gewichtsbereich und Verlaufsdiagramm.",
+    "fr": "Indice de masse corporelle en unités métriques ou impériales avec la catégorie OMS, une jauge colorée, votre plage de poids santé et un graphique d’historique.",
+    "es": "Índice de masa corporal en unidades métricas o imperiales con la categoría de la OMS, un indicador de colores, tu rango de peso saludable y un gráfico de historial."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 680, "height": 500, "minWidth": 600, "minHeight": 440, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.0",
+  "permissions": []
+}

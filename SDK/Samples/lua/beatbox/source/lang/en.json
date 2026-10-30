@@ -1,0 +1,20 @@
+{
+  "kick": "Kick",
+  "snare": "Snare",
+  "clap": "Clap",
+  "hat": "Hi-hat",
+  "open_hat": "Open hat",
+  "tom": "Tom",
+  "play": "Play",
+  "stop": "Stop",
+  "clear": "Clear",
+  "tempo": "Tempo {0}",
+  "swing": "Swing {0}%",
+  "preset_house": "House",
+  "preset_break": "Breakbeat",
+  "preset_hiphop": "Hip-hop",
+  "preset_bossa": "Bossa",
+  "hint": "Tap a pad: on → accent → off · tap a name to mute · Space plays, 1-6 mute rows",
+  "unmute_all": "Unmute all",
+  "menu_title": "Beatbox"
+}

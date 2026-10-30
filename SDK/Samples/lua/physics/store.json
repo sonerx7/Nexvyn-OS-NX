@@ -1,0 +1,41 @@
+{
+  "kind": "demo",
+  "tags": [
+    "physics",
+    "verlet",
+    "touch"
+  ],
+  "subtitle": {
+    "en": "Ropes, a bridge and tearable cloth",
+    "tr": "Halatlar, köprü ve yırtılan kumaş",
+    "de": "Seile, eine Brücke und reißbarer Stoff",
+    "fr": "Cordes, un pont et un tissu déchirable",
+    "es": "Cuerdas, un puente y tela que se rasga",
+    "ja": "ロープ、橋、裂ける布",
+    "zh": "绳索、吊桥和可撕裂的布料",
+    "ko": "밧줄, 다리, 찢어지는 천"
+  },
+  "description": {
+    "en": "A Verlet physics playground in plain Lua: ropes, a rope bridge and a cloth that tears. Grab and drag points with a finger or the cursor, cut links, pin and unpin points and switch on the wind. Shows fixed-step simulation, constraint solving and fast drawing with gfx.lines.",
+    "tr": "Düz Lua ile Verlet fizik oyun alanı: halatlar, halat köprü ve yırtılan bir kumaş. Noktaları parmakla ya da imleçle tutup sürükleyin, bağları kesin, noktaları iğneleyin ve rüzgârı açın. Sabit adımlı benzetimi, kısıt çözmeyi ve gfx.lines ile hızlı çizimi gösterir.",
+    "de": "Ein Verlet-Physik-Spielplatz in reinem Lua: Seile, eine Seilbrücke und ein reißbarer Stoff. Punkte mit Finger oder Cursor greifen und ziehen, Verbindungen schneiden, Punkte fixieren und Wind einschalten. Zeigt Simulation mit festem Zeitschritt, Constraint-Lösung und schnelles Zeichnen mit gfx.lines.",
+    "fr": "Un bac à sable de physique de Verlet en Lua pur : cordes, pont de cordes et tissu qui se déchire. Attrapez et tirez des points au doigt ou au curseur, coupez des liens, épinglez des points et activez le vent. Montre la simulation à pas fixe, la résolution de contraintes et le dessin rapide avec gfx.lines.",
+    "es": "Un patio de física de Verlet en Lua puro: cuerdas, un puente de cuerdas y una tela que se rasga. Agarra y arrastra puntos con el dedo o el cursor, corta uniones, fija puntos y activa el viento. Muestra simulación con paso fijo, resolución de restricciones y dibujo rápido con gfx.lines.",
+    "ja": "純粋な Lua によるベルレ物理演算のプレイグラウンド: ロープ、つり橋、裂ける布。指やカーソルで点をつかんでドラッグし、リンクを切り、点を固定・解除し、風をオンにしましょう。固定ステップのシミュレーション、拘束の解決、gfx.lines による高速な描画を示します。",
+    "zh": "用纯 Lua 编写的 Verlet 物理游乐场：绳索、吊桥和可撕裂的布料。用手指或光标抓取并拖动点，剪断连接，固定和释放点，并开启风。演示了固定步长模拟、约束求解以及用 gfx.lines 快速绘制。",
+    "ko": "순수 Lua로 만든 버릿(Verlet) 물리 놀이터: 밧줄, 밧줄 다리, 찢어지는 천. 손가락이나 커서로 점을 잡아 끌고, 연결을 자르고, 점을 고정하거나 풀고, 바람을 켜세요. 고정 단계 시뮬레이션, 제약 조건 풀기, gfx.lines로 빠르게 그리기를 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key w",
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

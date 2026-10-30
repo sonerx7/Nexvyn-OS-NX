@@ -1,0 +1,35 @@
+{
+  "kind": "app",
+  "tags": [
+    "timer",
+    "store",
+    "share",
+    "lists"
+  ],
+  "subtitle": {
+    "en": "Laps, best and worst, kept between runs",
+    "tr": "Turlar, en iyi ve en kötü; kapatınca da korunur",
+    "de": "Runden, beste und schlechteste, bleiben erhalten",
+    "fr": "Tours, meilleur et pire, conservés entre les sessions",
+    "es": "Vueltas, mejor y peor, guardadas entre sesiones",
+    "ja": "ラップ、最速と最遅、実行をまたいで保持",
+    "zh": "计次、最快和最慢，运行之间都会保留",
+    "ko": "랩, 최고와 최저, 실행 간에 보관"
+  },
+  "description": {
+    "en": "A precise stopwatch with laps: the fastest lap is green, the slowest red, the newest on top. The time and the laps survive closing the app and the console going to sleep, and the lap list can be shared with any app. Space starts and stops, L adds a lap, R resets.\n\nWhat it teaches in Squirrel: a class as the app, update() only to redraw while running, arrays of tables in store, ui.beginScroll, menu items with enabled, sys.share, suspend and autosave.",
+    "tr": "Turlu, hassas bir kronometre: en hızlı tur yeşil, en yavaşı kırmızı, en yenisi üstte. Süre ve turlar uygulama kapanınca ve konsol uykuya geçince de korunur; tur listesi herhangi bir uygulamayla paylaşılabilir. Boşluk başlatır ve durdurur, L tur ekler, R sıfırlar.\n\nSquirrel'da öğrettikleri: uygulama olarak sınıf, yalnızca çalışırken yeniden çizmek için update(), store içinde tablo dizileri, ui.beginScroll, enabled alanlı menü öğeleri, sys.share, suspend ve autosave.",
+    "de": "Eine genaue Stoppuhr mit Runden: die schnellste Runde grün, die langsamste rot, die neueste oben. Zeit und Runden überstehen das Schließen der App und den Ruhemodus, und die Rundenliste lässt sich mit jeder App teilen. Leertaste startet und stoppt, L setzt eine Runde, R setzt zurück.\n\nWas es in Squirrel zeigt: eine Klasse als App, update() nur zum Neuzeichnen während des Laufs, Arrays von Tabellen in store, ui.beginScroll, Menüeinträge mit enabled, sys.share, suspend und autosave.",
+    "fr": "Un chronomètre précis avec tours : le plus rapide en vert, le plus lent en rouge, le plus récent en haut. Le temps et les tours survivent à la fermeture de l'appli et à la mise en veille, et la liste des tours se partage avec n'importe quelle appli. Espace démarre et arrête, L ajoute un tour, R remet à zéro.\n\nCe qu'il enseigne en Squirrel : une classe comme appli, update() seulement pour redessiner pendant la course, des tableaux de tables dans store, ui.beginScroll, des éléments de menu avec enabled, sys.share, suspend et autosave.",
+    "es": "Un cronómetro preciso con vueltas: la más rápida en verde, la más lenta en rojo, la más reciente arriba. El tiempo y las vueltas sobreviven al cerrar la app y al reposo de la consola, y la lista se puede compartir con cualquier app. Espacio inicia y para, L añade una vuelta, R reinicia.\n\nLo que enseña en Squirrel: una clase como app, update() solo para redibujar mientras corre, arrays de tablas en store, ui.beginScroll, elementos de menú con enabled, sys.share, suspend y autosave.",
+    "ja": "ラップ付きの正確なストップウォッチ: 最速のラップは緑、最も遅いラップは赤、最新のラップが一番上に表示されます。時間とラップはアプリを閉じても本体がスリープしても保持され、ラップの一覧は任意のアプリと共有できます。Space で開始と停止、L でラップを追加、R でリセット。\n\nSquirrel で学べること: アプリとしてのクラス、実行中に再描画するときだけの update()、store のテーブルの配列、ui.beginScroll、enabled 付きのメニュー項目、sys.share、suspend と autosave。",
+    "zh": "一个带计次功能的精确秒表：最快的一圈显示为绿色，最慢的为红色，最新的在最上方。关闭应用或主机进入睡眠后，时间和计次都会保留，计次列表可以分享给任何应用。空格开始和停止，L 添加计次，R 重置。\n\n在 Squirrel 中学到的内容：作为应用的类、仅在运行时调用 update() 重绘、store 中的 table 数组、ui.beginScroll、带 enabled 的菜单项、sys.share、suspend 和自动保存。",
+    "ko": "랩이 있는 정밀한 스톱워치: 가장 빠른 랩은 초록, 가장 느린 랩은 빨강, 최신 랩은 맨 위에 표시됩니다. 앱을 닫거나 콘솔이 절전 모드에 들어가도 시간과 랩이 유지되며, 랩 목록은 어떤 앱과도 공유할 수 있습니다. Space로 시작과 정지, L로 랩 추가, R로 재설정합니다.\n\nSquirrel로 배우는 내용: 앱으로서의 클래스, 실행 중에 다시 그릴 때만 update(), store의 테이블 배열, ui.beginScroll, enabled가 있는 메뉴 항목, sys.share, suspend와 autosave."
+  },
+  "shots": [
+    ["wait 2"],
+    ["key space", "wait 2.5", "key l", "wait 1.2", "key l", "wait 1.6", "key l", "wait 0.8"],
+    ["key l", "wait 1", "key space", "wait 1"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fire": "Fire",
+  "fountain": "Fountain",
+  "sparks": "Sparks",
+  "snow": "Snow",
+  "magic": "Magic",
+  "tool_spawn": "Spawn",
+  "tool_attract": "Attract",
+  "tool_repel": "Repel",
+  "clear": "Clear",
+  "stats": "{0} particles · {1} wells · {2} FPS",
+  "hint": "Tap for a burst, drag to paint. Attract / Repel place wells: drag one to move it, tap it to remove it.",
+  "wells_full": "At most {0} wells",
+  "menu_title": "Particles",
+  "debug": "Debug overlay"
+}

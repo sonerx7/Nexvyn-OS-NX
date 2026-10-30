@@ -1,0 +1,33 @@
+{
+  "id": "globe",
+  "name": {
+    "en": "Globe",
+    "tr": "Dünya Küresi",
+    "de": "Globus",
+    "fr": "Globe",
+    "es": "Globo terráqueo",
+    "ja": "地球儀",
+    "zh": "地球仪",
+    "ko": "지구본"
+  },
+  "description": {
+    "en": "A 3D Earth with real-time day and night, an atmosphere glow and city markers with local times.",
+    "tr": "Gerçek zamanlı gece-gündüz, atmosfer parıltısı ve yerel saatli şehir işaretleriyle 3D Dünya.",
+    "de": "Eine 3D-Erde mit Tag und Nacht in Echtzeit, leuchtender Atmosphäre und Stadtmarkierungen mit Ortszeiten.",
+    "fr": "Une Terre en 3D avec le jour et la nuit en temps réel, une lueur atmosphérique et des repères de villes avec l’heure locale.",
+    "es": "Una Tierra en 3D con día y noche en tiempo real, brillo atmosférico y marcadores de ciudades con su hora local."
+  },
+  "category": "utilities",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 760,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": true,
+  "permissions": []
+}

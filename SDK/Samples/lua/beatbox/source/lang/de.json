@@ -1,0 +1,20 @@
+{
+  "kick": "Bassdrum",
+  "snare": "Snare",
+  "clap": "Clap",
+  "hat": "Hi-Hat",
+  "open_hat": "Offene Hi-Hat",
+  "tom": "Tom",
+  "play": "Abspielen",
+  "stop": "Stopp",
+  "clear": "Leeren",
+  "tempo": "Tempo {0}",
+  "swing": "Swing {0}%",
+  "preset_house": "House",
+  "preset_break": "Breakbeat",
+  "preset_hiphop": "Hip-Hop",
+  "preset_bossa": "Bossa",
+  "hint": "Tippe auf ein Pad: an → Akzent → aus · tippe auf einen Namen zum Stummschalten · Leertaste spielt ab, 1–6 schalten Reihen stumm",
+  "unmute_all": "Alle laut schalten",
+  "menu_title": "Beatbox"
+}

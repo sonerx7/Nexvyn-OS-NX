@@ -1,0 +1,41 @@
+{
+  "kind": "demo",
+  "tags": [
+    "gfx",
+    "effects",
+    "performance"
+  ],
+  "subtitle": {
+    "en": "Plasma, tunnel and starfield",
+    "tr": "Plazma, tünel ve yıldız alanı",
+    "de": "Plasma, Tunnel und Sternenfeld",
+    "fr": "Plasma, tunnel et champ d'étoiles",
+    "es": "Plasma, túnel y campo de estrellas",
+    "ja": "プラズマ、トンネル、星空",
+    "zh": "等离子、隧道和星空",
+    "ko": "플라스마, 터널, 별밭"
+  },
+  "description": {
+    "en": "Three classic demoscene effects drawn with nothing but gfx.rect, gfx.line and colours, with four palettes and a cell size control. Shows look-up tables, avoiding allocations in app.draw and keeping a full-window effect at 60 fps.",
+    "tr": "Yalnızca gfx.rect, gfx.line ve renklerle çizilen üç klasik demo sahnesi efekti; dört palet ve hücre boyutu ayarı. Arama tablolarını, app.draw içinde bellek ayırmaktan kaçınmayı ve tam pencere efektini 60 fps'te tutmayı gösterir.",
+    "de": "Drei klassische Demoszene-Effekte, nur mit gfx.rect, gfx.line und Farben gezeichnet, mit vier Paletten und einstellbarer Zellgröße. Zeigt Lookup-Tabellen, Verzicht auf Allokationen in app.draw und einen Vollfenster-Effekt bei 60 fps.",
+    "fr": "Trois effets classiques de la démoscène dessinés uniquement avec gfx.rect, gfx.line et des couleurs, avec quatre palettes et une taille de cellule réglable. Montre les tables de correspondance, l'absence d'allocations dans app.draw et un effet plein écran à 60 i/s.",
+    "es": "Tres efectos clásicos de la demoscene dibujados solo con gfx.rect, gfx.line y colores, con cuatro paletas y tamaño de celda ajustable. Muestra tablas de consulta, evitar asignaciones en app.draw y un efecto a ventana completa a 60 fps.",
+    "ja": "gfx.rect、gfx.line、色だけで描く 3 つの定番デモシーンエフェクト。4 つのパレットとセルサイズの調整付き。ルックアップテーブル、app.draw での割り当ての回避、ウィンドウ全体のエフェクトを 60 fps に保つ方法を示します。",
+    "zh": "三种经典的 demoscene 特效，仅用 gfx.rect、gfx.line 和颜色绘制，带四种调色板和单元大小控制。演示了查找表、在 app.draw 中避免内存分配，以及让全窗口特效保持 60 fps。",
+    "ko": "gfx.rect, gfx.line, 색상만으로 그린 클래식 데모씬 효과 3가지와 팔레트 4종, 셀 크기 조절. 조회 테이블, app.draw에서 메모리 할당 피하기, 창 전체 효과를 60 fps로 유지하는 방법을 보여 줍니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key c",
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "roughness": "Rauheit",
+  "zoom": "Strukturgröße",
+  "water": "Meeresspiegel",
+  "flat": "Low-Poly-Schattierung",
+  "new_island": "Neue Insel",
+  "seed": "Seed {0} · erstellt in {1} ms",
+  "stats": "{0} Dreiecke · {1} · {2} FPS",
+  "autopilot": "Autopilot · bewegen oder ziehen zum Übernehmen",
+  "controls": "Linker Stick / WASD fliegen · rechter Stick / Pfeile / ziehen umsehen · ZR ZL / E Q hoch und runter",
+  "autopilot_menu": "Autopilot",
+  "menu_title": "Terrain"
+}

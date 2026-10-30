@@ -1,0 +1,35 @@
+{
+  "id": "noto-sans-sc",
+  "name": {
+    "en": "Noto Sans SC",
+    "tr": "Noto Sans SC",
+    "de": "Noto Sans SC",
+    "fr": "Noto Sans SC",
+    "es": "Noto Sans SC"
+  },
+  "family": "Noto Sans SC",
+  "styles": {
+    "regular": "NotoSansSC-Regular.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "2.004",
+  "author": "Adobe",
+  "classification": "sans",
+  "scripts": [
+    "Latn",
+    "Cyrl",
+    "Grek",
+    "Viet",
+    "Jpan",
+    "Hans"
+  ],
+  "languages": [
+    "en",
+    "de",
+    "fr",
+    "es",
+    "ja",
+    "zh"
+  ],
+  "cjk": "zh"
+}

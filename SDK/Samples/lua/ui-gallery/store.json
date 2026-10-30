@@ -1,0 +1,45 @@
+{
+  "kind": "demo",
+  "tags": [
+    "ui",
+    "widgets",
+    "reference"
+  ],
+  "subtitle": {
+    "en": "Every ui widget with its code",
+    "tr": "Tüm ui bileşenleri ve kodları",
+    "de": "Alle UI-Widgets mit ihrem Code",
+    "fr": "Chaque widget ui avec son code",
+    "es": "Cada widget de ui con su código",
+    "ja": "すべての ui ウィジェットとそのコード",
+    "zh": "每个 ui 控件及其代码",
+    "ko": "모든 ui 위젯과 그 코드"
+  },
+  "description": {
+    "en": "Every ui.* widget of the SDK, live, with the Lua code that draws it beside it: buttons, switches, text fields, choices, progress and spinners, lists and scrolling, pointer helpers and system dialogs. Keep it open while you build your own interface.",
+    "tr": "SDK'daki tüm ui.* bileşenleri canlı olarak, her birinin yanında onu çizen Lua koduyla: düğmeler, anahtarlar, metin alanları, seçimler, ilerleme ve bekleme göstergeleri, listeler ve kaydırma, işaretçi yardımcıları ve sistem iletişim kutuları. Kendi arayüzünüzü kurarken açık tutun.",
+    "de": "Alle ui.*-Widgets des SDK live, daneben der Lua-Code, der sie zeichnet: Buttons, Schalter, Textfelder, Auswahlen, Fortschritt und Spinner, Listen und Scrollen, Zeigerhilfen und Systemdialoge. Lass sie offen, während du deine eigene Oberfläche baust.",
+    "fr": "Tous les widgets ui.* du SDK en direct, avec à côté le code Lua qui les dessine : boutons, interrupteurs, champs de texte, choix, progression et indicateurs d'attente, listes et défilement, aides de pointeur et dialogues système. Gardez-la ouverte pendant que vous construisez votre interface.",
+    "es": "Todos los widgets ui.* del SDK en vivo, con el código Lua que los dibuja al lado: botones, interruptores, campos de texto, selecciones, progreso y spinners, listas y desplazamiento, ayudas del puntero y diálogos del sistema. Tenla abierta mientras construyes tu interfaz.",
+    "ja": "SDK のすべての ui.* ウィジェットを、それを描く Lua コードと並べてリアルタイムに表示します: ボタン、スイッチ、テキストフィールド、選択、進捗とスピナー、リストとスクロール、ポインタのヘルパー、システムダイアログ。自分のインターフェイスを作る間、開いておきましょう。",
+    "zh": "SDK 中的每个 ui.* 控件都实时展示，旁边附有绘制它的 Lua 代码：按钮、开关、文本框、选择控件、进度条和加载指示器、列表和滚动、指针辅助函数以及系统对话框。在构建你自己的界面时让它保持打开吧。",
+    "ko": "SDK의 모든 ui.* 위젯을 그리는 Lua 코드와 함께 실시간으로 보여 줍니다: 버튼, 스위치, 텍스트 필드, 선택, 진행률과 스피너, 목록과 스크롤, 포인터 도우미, 시스템 대화 상자. 나만의 인터페이스를 만드는 동안 열어 두세요."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "key pagedown",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

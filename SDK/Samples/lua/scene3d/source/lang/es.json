@@ -1,0 +1,17 @@
+{
+  "hint": "Arrastra para orbitar · rueda o pellizca para hacer zoom",
+  "sun": "Dom",
+  "ambient": "Ambiente",
+  "fog": "Niebla",
+  "textures": "Texturas",
+  "auto_orbit": "Órbita automática",
+  "auto_sun": "Sol en movimiento",
+  "wireframe": "Alámbrico",
+  "labels": "Etiquetas",
+  "reset_view": "Restablecer cámara",
+  "stats": "{0} triángulos · {1} · {2} FPS",
+  "label_pedestal": "Pedestal octogonal + esfera",
+  "label_crates": "Cajas: un conjunto de UV por cara",
+  "label_wall": "Muro curvo: las UV siguen el arco",
+  "menu_title": "Escena"
+}

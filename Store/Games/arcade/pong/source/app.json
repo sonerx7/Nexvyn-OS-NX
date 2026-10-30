@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.pong",
+  "name": {
+    "en": "Pong",
+    "tr": "Pong",
+    "de": "Pong",
+    "fr": "Pong",
+    "es": "Pong",
+    "ja": "ポン",
+    "zh": "乒乓",
+    "ko": "퐁"
+  },
+  "description": {
+    "en": "The table-tennis classic: first to 7 against the CPU on three difficulty levels, or two players on one console.",
+    "tr": "Masa tenisi klasiği: üç zorluk seviyesinde bilgisayara karşı 7 sayıya ilk ulaşan kazanır ya da aynı konsolda iki kişi oynayın.",
+    "de": "Der Tischtennis-Klassiker: Wer zuerst 7 Punkte hat, gewinnt – gegen die CPU in drei Schwierigkeitsstufen oder zu zweit an einer Konsole.",
+    "fr": "Le classique du tennis de table : le premier à 7 l’emporte, contre l’ordinateur en trois niveaux de difficulté ou à deux sur une seule console.",
+    "es": "El clásico del tenis de mesa: gana el primero en llegar a 7, contra la CPU en tres niveles de dificultad o dos jugadores en una consola."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 600,
+    "minWidth": 560,
+    "minHeight": 470,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

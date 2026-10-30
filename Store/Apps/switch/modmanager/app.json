@@ -1,0 +1,25 @@
+{
+  "id": "modmanager",
+  "name": {
+    "en": "Mod Manager",
+    "tr": "Mod Yöneticisi",
+    "de": "Mod-Manager",
+    "fr": "Gestionnaire de mods",
+    "es": "Gestor de mods",
+    "ko": "모드 관리자"
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1040,
+    "height": 640,
+    "minWidth": 420,
+    "minHeight": 420,
+    "resizable": true
+  }
+}

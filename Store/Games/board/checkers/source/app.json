@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.checkers",
+  "name": {
+    "en": "Checkers",
+    "tr": "Dama",
+    "de": "Dame",
+    "fr": "Dames",
+    "es": "Damas",
+    "ja": "チェッカー",
+    "zh": "跳棋",
+    "ko": "체커"
+  },
+  "description": {
+    "en": "Classic checkers with forced captures, multi-jumps and kings against a three-level computer or a friend.",
+    "tr": "Zorunlu alma, çoklu atlama ve damalarla klasik dama; üç seviyeli bilgisayara ya da bir arkadaşınıza karşı.",
+    "de": "Klassisches Dame mit Schlagzwang, Mehrfachsprüngen und Damen gegen einen Computer mit drei Stufen oder einen Freund.",
+    "fr": "Le jeu de dames classique avec prises obligatoires, rafles et dames, contre un ordinateur à trois niveaux ou un ami.",
+    "es": "Damas clásicas con capturas obligatorias, saltos múltiples y damas contra un ordenador de tres niveles o un amigo."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 600,
+    "height": 660,
+    "minWidth": 440,
+    "minHeight": 560,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}

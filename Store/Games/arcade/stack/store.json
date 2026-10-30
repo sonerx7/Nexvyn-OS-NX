@@ -1,0 +1,46 @@
+{
+  "subtitle": {
+    "en": "Drop each block in time, build up high",
+    "tr": "Bloğu tam zamanında bırak, kuleyi yükselt",
+    "de": "Lass jeden Block im richtigen Moment fallen",
+    "fr": "Lâchez chaque bloc au bon moment",
+    "es": "Suelta cada bloque a tiempo y sube alto",
+    "ja": "タイミングよくブロックを落として高く積もう",
+    "zh": "看准时机放下方块，越堆越高",
+    "ko": "제때 블록을 떨어뜨려 높이 쌓으세요"
+  },
+  "description": {
+    "en": "A block slides back and forth above your tower: drop it at just the right moment. Whatever hangs over the edge is sliced off and tumbles away, so the tower gets narrower with every miss. Perfect drops keep the full width, build a streak and can even grow the block back. The colours drift with every floor while the camera eases up the growing tower.\n\n• A one-button timing game\n• Overhangs sliced off with tumbling pieces\n• Perfect-drop streaks that grow the block back\n• Colours that change floor by floor\n• Tap, click or press any button",
+    "tr": "Kulenin üstünde bir blok bir o yana bir bu yana kayıyor: tam doğru anda bırak. Kenardan taşan kısım kesilip aşağı yuvarlanır, yani her ıskalamada kule biraz daha incelir. Kusursuz bırakışlar bloğun genişliğini korur, seri yapar, hatta bloğu yeniden büyütebilir. Her katta renkler değişir, kamera da yükselen kuleyi yumuşakça takip eder.\n\n• Tek tuşla oynanan bir zamanlama oyunu\n• Taşan parçalar kesilip yuvarlanır\n• Bloğu yeniden büyüten kusursuz bırakış serileri\n• Kat kat değişen renkler\n• Dokun, tıkla ya da herhangi bir tuşa bas",
+    "de": "Über deinem Turm gleitet ein Block hin und her: Lass ihn genau im richtigen Moment fallen. Was über den Rand hinausragt, wird abgeschnitten und purzelt davon, sodass der Turm mit jedem Fehler schmaler wird. Perfekte Würfe behalten die volle Breite, bauen eine Serie auf und lassen den Block sogar wieder wachsen. Mit jedem Stockwerk ändern sich die Farben, und die Kamera fährt sanft mit nach oben.\n\n• Ein Timing-Spiel mit nur einer Taste\n• Überhänge werden abgeschnitten und purzeln weg\n• Perfekt-Serien lassen den Block wieder wachsen\n• Farben, die sich von Stockwerk zu Stockwerk ändern\n• Tippen, klicken oder eine beliebige Taste drücken",
+    "fr": "Un bloc glisse d’un côté à l’autre au-dessus de votre tour : lâchez-le pile au bon moment. Ce qui dépasse est tranché et dégringole, si bien que la tour s’affine à chaque erreur. Les lâchers parfaits conservent toute la largeur, lancent une série et peuvent même faire regrandir le bloc. Les couleurs changent à chaque étage pendant que la caméra suit la tour qui grandit.\n\n• Un jeu de timing à un seul bouton\n• Les débords sont tranchés et dégringolent\n• Des séries parfaites qui font regrandir le bloc\n• Des couleurs qui changent d’étage en étage\n• Touchez, cliquez ou appuyez sur n’importe quel bouton",
+    "es": "Un bloque se desliza de un lado a otro sobre tu torre: suéltalo en el momento justo. Lo que sobresale se corta y cae rodando, así que la torre se estrecha con cada fallo. Las caídas perfectas mantienen todo el ancho, crean una racha e incluso pueden hacer crecer el bloque de nuevo. Los colores cambian en cada piso mientras la cámara sube suavemente con la torre.\n\n• Un juego de precisión con un solo botón\n• Los sobrantes se cortan y caen rodando\n• Rachas perfectas que vuelven a agrandar el bloque\n• Colores que cambian piso a piso\n• Toca, haz clic o pulsa cualquier botón",
+    "ja": "タワーの上をブロックが左右に動いています。ちょうどいい瞬間に落としましょう。はみ出した部分は切り落とされて転がり落ちるので、ミスするたびにタワーは細くなります。パーフェクトに落とすと幅がそのまま保たれ、連続すると幅が元に戻ることもあります。階ごとに色が移り変わり、カメラは伸びていくタワーをゆっくりと追いかけます。\n\n• ボタンひとつのタイミングゲーム\n• はみ出しは切り落とされて転がる\n• パーフェクトの連続でブロックの幅が回復\n• 階ごとに変わる色\n• タップ、クリック、または任意のボタン",
+    "zh": "一个方块在你的塔顶来回滑动：在恰当的时刻放下它。悬在边缘外的部分会被切掉并翻滚落下，所以每次失误都会让塔变窄。完美的放置会保持完整宽度，形成连续纪录，甚至能让方块重新变宽。每一层的颜色都在渐变，镜头会随着增高的塔缓缓上升。\n\n• 单键时机游戏\n• 悬出的部分被切掉并翻滚落下\n• 完美放置连续纪录可让方块重新变宽\n• 颜色逐层变化\n• 轻点、点按或按任意按钮",
+    "ko": "탑 위에서 블록이 좌우로 미끄러집니다. 딱 맞는 순간에 떨어뜨리세요. 가장자리 밖으로 튀어나온 부분은 잘려 떨어지므로 빗나갈 때마다 탑이 좁아집니다. 퍼펙트 드롭은 너비를 그대로 유지하고, 연속 기록을 쌓으며, 블록을 다시 넓힐 수도 있습니다. 층마다 색이 바뀌고 카메라가 자라나는 탑을 따라 부드럽게 올라갑니다.\n\n• 버튼 하나로 하는 타이밍 게임\n• 잘려 떨어지는 튀어나온 부분\n• 블록을 다시 넓혀 주는 퍼펙트 드롭 연속 기록\n• 층마다 바뀌는 색\n• 탭, 클릭 또는 아무 버튼"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 1.5",
+      "key space",
+      "wait 1"
+    ],
+    [
+      "key space",
+      "wait 1.2",
+      "key space",
+      "wait 1.2",
+      "key space",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "key space",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "app": "App",
+  "hello": "Hallo Welt!",
+  "edit_me": "Bearbeite main.nut in Nexvyn OS Studio und drücke Ausführen (Ctrl+R).",
+  "tap": "{0}-mal getippt",
+  "reset": "Zähler zurücksetzen"
+}

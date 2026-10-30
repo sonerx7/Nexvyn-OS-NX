@@ -1,0 +1,33 @@
+{
+  "id": "typing",
+  "name": {
+    "en": "Typing Tutor",
+    "tr": "Klavye Ustası",
+    "de": "Tipptrainer",
+    "fr": "Apprentissage de la frappe",
+    "es": "Mecanografía",
+    "ja": "タイピング練習",
+    "zh": "打字练习",
+    "ko": "타자 연습"
+  },
+  "category": "productivity",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 860,
+    "height": 620,
+    "resizable": false
+  },
+  "gamepad": false,
+  "description": {
+    "en": "Learn touch typing with live speed and accuracy",
+    "tr": "Canlı hız ve doğruluk ölçümüyle on parmak klavye öğrenin",
+    "de": "Lerne Zehnfingerschreiben mit Live-Anzeige von Tempo und Genauigkeit",
+    "fr": "Apprenez la dactylographie avec vitesse et précision en direct",
+    "es": "Aprende mecanografía con velocidad y precisión en vivo"
+  },
+  "permissions": []
+}

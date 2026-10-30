@@ -1,0 +1,32 @@
+{
+  "id": "exefspatches",
+  "name": {
+    "en": "Patch Manager",
+    "tr": "Yama Yöneticisi",
+    "de": "Patch-Manager",
+    "fr": "Gestionnaire de patchs",
+    "es": "Gestor de parches",
+    "ko": "패치 관리자"
+  },
+  "description": {
+    "en": "IPS patch sets for games and system modules, with the game each patch targets.",
+    "tr": "Oyunlar ve sistem modülleri için IPS yama setleri, her yamanın hedef oyunuyla.",
+    "de": "IPS-Patch-Sets für Spiele und Systemmodule, jeweils mit dem Spiel, für das der Patch gedacht ist.",
+    "fr": "Des jeux de patchs IPS pour les jeux et les modules système, avec le jeu visé par chaque patch.",
+    "es": "Conjuntos de parches IPS para juegos y módulos del sistema, con el juego al que va dirigido cada parche."
+  },
+  "category": "switch",
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 900,
+    "height": 620,
+    "minWidth": 420,
+    "minHeight": 400,
+    "resizable": true
+  }
+}

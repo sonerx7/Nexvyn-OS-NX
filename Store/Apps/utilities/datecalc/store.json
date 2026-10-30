@@ -1,0 +1,28 @@
+{
+  "subtitle": {
+    "en": "Days between dates, date math and more",
+    "tr": "Tarih farkı, gün ekleme ve fazlası",
+    "de": "Tage zwischen Daten und Datumsrechnung",
+    "fr": "Écarts entre dates et calculs de dates",
+    "es": "Días entre fechas y cálculos de fechas",
+    "ja": "日付の間の日数、日付の計算など",
+    "zh": "日期间隔、日期加减等",
+    "ko": "날짜 사이의 일수, 날짜 계산 등"
+  },
+  "description": {
+    "en": "Find out how far apart two dates are, what the date will be after a number of years, months, weeks and days, and everything about a single day. Results update as you change a date, with steppers, a month menu and a Today button for quick picking.\n\n• Difference in days, weeks, years-months-days, working days (Mon–Fri) and hours\n• Optionally count the end date too, or swap the two dates in one tap\n• Add or subtract years, months, weeks and days, with the weekday of the result\n• Date Info shows the weekday, ISO week, day of the year, quarter, leap year and days left\n• A month calendar you can browse with the arrow keys or the D-pad\n• Copy any result to the clipboard",
+    "tr": "İki tarih arasında ne kadar zaman olduğunu, birkaç yıl, ay, hafta ve gün sonra hangi tarihe denk geldiğini ve tek bir günün tüm ayrıntılarını bul. Tarihi değiştirdikçe sonuçlar anında güncellenir; hızlı seçim için artı/eksi düğmeleri, ay menüsü ve Bugün düğmesi var.\n\n• Gün, hafta, yıl-ay-gün, iş günü (Pzt–Cum) ve saat olarak fark\n• İstersen bitiş gününü de say ya da iki tarihi tek dokunuşla yer değiştir\n• Yıl, ay, hafta ve gün ekle ya da çıkar; sonucun hangi güne denk geldiğini gör\n• Tarih Bilgisi: haftanın günü, ISO hafta, yılın kaçıncı günü, çeyrek, artık yıl ve yılın kalan günleri\n• Ok tuşlarıyla ya da yön tuşlarıyla gezilebilen aylık takvim\n• Her sonucu panoya kopyala",
+    "de": "Finde heraus, wie weit zwei Daten auseinanderliegen, welches Datum nach einigen Jahren, Monaten, Wochen und Tagen kommt und alles über einen einzelnen Tag. Die Ergebnisse folgen jeder Änderung sofort, mit Plus/Minus-Tasten, einem Monatsmenü und einer Heute-Taste zum schnellen Wählen.\n\n• Abstand in Tagen, Wochen, Jahren-Monaten-Tagen, Werktagen (Mo–Fr) und Stunden\n• Enddatum auf Wunsch mitzählen oder beide Daten mit einem Tipp tauschen\n• Jahre, Monate, Wochen und Tage addieren oder abziehen, samt Wochentag des Ergebnisses\n• Datumsinfo mit Wochentag, ISO-Woche, Tag des Jahres, Quartal, Schaltjahr und Resttagen\n• Monatskalender, der sich mit Pfeiltasten oder Steuerkreuz durchblättern lässt\n• Jedes Ergebnis in die Zwischenablage kopieren",
+    "fr": "Découvrez l’écart entre deux dates, la date obtenue après quelques années, mois, semaines et jours, et tout ce qu’il faut savoir sur un jour donné. Les résultats suivent chaque changement, avec des boutons plus/moins, un menu des mois et un bouton Aujourd’hui pour choisir vite.\n\n• Écart en jours, semaines, années-mois-jours, jours ouvrés (lun–ven) et heures\n• Comptez aussi le jour de fin ou inversez les deux dates d’un geste\n• Ajoutez ou retirez années, mois, semaines et jours, avec le jour de la semaine du résultat\n• Infos date : jour de la semaine, semaine ISO, jour de l’année, trimestre, année bissextile et jours restants\n• Un calendrier mensuel à parcourir avec les flèches ou la croix directionnelle\n• Copie de chaque résultat dans le presse-papiers",
+    "es": "Descubre cuánto hay entre dos fechas, qué fecha resulta tras unos años, meses, semanas y días, y todo sobre un día concreto. Los resultados cambian al instante, con botones de más y menos, un menú de meses y un botón Hoy para elegir rápido.\n\n• Diferencia en días, semanas, años-meses-días, días laborables (lun–vie) y horas\n• Cuenta también el día final o intercambia las dos fechas con un toque\n• Suma o resta años, meses, semanas y días, con el día de la semana del resultado\n• Info de fecha: día de la semana, semana ISO, día del año, trimestre, año bisiesto y días restantes\n• Un calendario mensual que recorres con las flechas o la cruceta\n• Copia cualquier resultado al portapapeles",
+    "ja": "2 つの日付がどれだけ離れているか、何年、何か月、何週、何日後が何日になるか、そしてある 1 日のすべてがわかります。日付を変えると結果がすぐに更新され、ステッパー、月のメニュー、「今日」ボタンですばやく選べます。\n\n• 日数、週数、年・月・日、平日 (月–金)、時間で差を表示\n• 終了日も数える (任意)、またはワンタップで 2 つの日付を入れ替え\n• 年、月、週、日を加算・減算し、結果の曜日も表示\n• 日付の情報: 曜日、ISO 週番号、年間通算日、四半期、うるう年、残りの日数\n• 矢印キーや十字ボタンで移動できる月のカレンダー\n• 任意の結果をクリップボードにコピー",
+    "zh": "算出两个日期相隔多久、经过若干年、月、周和天之后是哪一天，以及某一天的所有信息。更改日期时结果会立即更新，步进按钮、月份菜单和“今天”按钮让选择更快捷。\n\n• 以天、周、年-月-日、工作日（周一至周五）和小时表示的日期差\n• 可选择包含结束日期，或一键交换两个日期\n• 加上或减去年、月、周和天，并显示结果是星期几\n• 日期信息显示星期、ISO 周、一年中的第几天、季度、是否闰年和剩余天数\n• 可用方向键或十字键浏览的月历\n• 将任意结果复制到剪贴板",
+    "ko": "두 날짜가 얼마나 떨어져 있는지, 몇 년, 몇 달, 몇 주, 며칠 후가 어떤 날짜인지, 그리고 하루에 관한 모든 것을 알아보세요. 날짜를 바꾸면 결과가 바로 업데이트되며, 스테퍼, 월 메뉴, 오늘 버튼으로 빠르게 고를 수 있습니다.\n\n• 일, 주, 년-개월-일, 근무일(월–금), 시간 단위 차이\n• 선택적으로 종료 날짜도 세거나 한 번의 탭으로 두 날짜 바꾸기\n• 년, 개월, 주, 일 더하기 또는 빼기와 결과 날짜의 요일\n• 날짜 정보: 요일, ISO 주, 연중 일수, 분기, 윤년, 남은 일수\n• 화살표 키나 방향 버튼으로 둘러볼 수 있는 월간 캘린더\n• 모든 결과를 클립보드에 복사"
+  },
+  "shots": [
+    ["wait 3"],
+    ["key pagedown", "wait 0.8", "wclick 0.381 0.456", "wait 0.25", "text 3", "key escape", "wait 1.5"],
+    ["key pagedown", "wait 1.5"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

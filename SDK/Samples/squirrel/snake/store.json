@@ -1,0 +1,34 @@
+{
+  "kind": "game",
+  "tags": [
+    "gamepad",
+    "touch",
+    "arcade",
+    "store"
+  ],
+  "subtitle": {
+    "en": "The classic, with controller, keys and touch",
+    "tr": "Klasik oyun: kumanda, klavye ve dokunmatik",
+    "de": "Der Klassiker mit Controller, Tasten und Touch",
+    "fr": "Le classique, à la manette, au clavier et au toucher",
+    "es": "El clásico, con mando, teclado y táctil",
+    "ja": "コントローラー、キー、タッチで遊ぶ定番ゲーム",
+    "zh": "经典游戏，支持手柄、键盘和触控",
+    "ko": "컨트롤러, 키, 터치로 즐기는 고전"
+  },
+  "description": {
+    "en": "Steer the snake to the food, grow and do not bite yourself; the walls wrap around and every bite makes it a little faster. Play with the D-pad, the arrow keys or WASD, or tap beside the head on the touch screen. The best score is saved, and the game pauses on the HOME button.\n\nWhat it teaches in Squirrel: gamepad events, a fixed-step loop in update(dt), queued turns, arrays of tables, rand and srand, audio.tone, sys.vibrate and pausing in suspend and focus.",
+    "tr": "Yılanı yeme yönlendir, büyü ve kendini ısırma; kenarlar karşı taraftan devam eder ve her lokma onu biraz hızlandırır. Yön tuşları, oklar ya da WASD ile oyna ya da dokunmatik ekranda başın yanına dokun. En iyi puan kaydedilir, HOME tuşunda oyun duraklar.\n\nSquirrel'da öğrettikleri: kumanda olayları, update(dt) içinde sabit adımlı döngü, sıraya alınan dönüşler, tablo dizileri, rand ve srand, audio.tone, sys.vibrate ve suspend ile focus'ta duraklatma.",
+    "de": "Lenke die Schlange zum Futter, wachse und beiß dich nicht selbst; die Ränder gehen ineinander über, und jeder Bissen macht sie etwas schneller. Spiele mit Steuerkreuz, Pfeiltasten oder WASD oder tippe neben den Kopf. Der Rekord wird gespeichert, und mit HOME pausiert das Spiel.\n\nWas es in Squirrel zeigt: Controller-Ereignisse, eine Schleife mit festem Schritt in update(dt), vorgemerkte Richtungswechsel, Arrays von Tabellen, rand und srand, audio.tone, sys.vibrate und Pausieren in suspend und focus.",
+    "fr": "Guidez le serpent vers la nourriture, grandissez et ne vous mordez pas ; les bords se rejoignent et chaque bouchée l'accélère un peu. Jouez à la croix, aux flèches ou en WASD, ou touchez à côté de la tête. Le record est enregistré et le jeu se met en pause avec HOME.\n\nCe qu'il enseigne en Squirrel : les événements de manette, une boucle à pas fixe dans update(dt), les virages mis en file, des tableaux de tables, rand et srand, audio.tone, sys.vibrate et la pause dans suspend et focus.",
+    "es": "Lleva la serpiente a la comida, crece y no te muerdas; los bordes se conectan y cada bocado la acelera un poco. Juega con la cruceta, las flechas o WASD, o toca junto a la cabeza. El récord se guarda y el juego se pausa con HOME.\n\nLo que enseña en Squirrel: eventos del mando, un bucle de paso fijo en update(dt), giros en cola, arrays de tablas, rand y srand, audio.tone, sys.vibrate y la pausa en suspend y focus.",
+    "ja": "ヘビをエサに導き、伸びていき、自分をかまないようにしましょう。壁はループしており、食べるたびに少しずつ速くなります。十字ボタン、矢印キー、WASD、またはタッチスクリーンで頭の横をタップして操作します。ベストスコアは保存され、HOME ボタンでゲームが一時停止します。\n\nSquirrel で学べること: ゲームパッドのイベント、update(dt) での固定ステップのループ、方向転換のキュー、テーブルの配列、rand と srand、audio.tone、sys.vibrate、そして suspend と focus での一時停止。",
+    "zh": "操控蛇去吃食物、长大，别咬到自己；墙壁首尾相连，每吃一口都会稍快一些。可用十字键、方向键或 WASD 游玩，或在触摸屏上轻点蛇头旁边。最高分会被保存，按 HOME 按钮时游戏会暂停。\n\n在 Squirrel 中学到的内容：手柄事件、update(dt) 中的固定步长循环、排队的转向、table 数组、rand 和 srand、audio.tone、sys.vibrate，以及在 suspend 和 focus 中暂停。",
+    "ko": "뱀을 먹이 쪽으로 몰고, 자라되 자기 몸은 물지 마세요. 벽은 이어져 있고 먹을 때마다 조금씩 빨라집니다. 방향 버튼, 화살표 키, WASD로 플레이하거나 터치스크린에서 머리 옆을 탭하세요. 최고 점수가 저장되며, HOME 버튼을 누르면 게임이 일시 정지됩니다.\n\nSquirrel로 배우는 내용: 게임패드 이벤트, update(dt)의 고정 단계 루프, 대기열에 넣는 방향 전환, 테이블 배열, rand와 srand, audio.tone, sys.vibrate, suspend와 focus에서 일시 정지."
+  },
+  "shots": [
+    ["wait 2"],
+    ["key enter", "wait 1", "key down", "wait 0.8", "key right", "wait 1"],
+    ["dark 1", "key up", "wait 1.2"]
+  ]
+}

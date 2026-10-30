@@ -1,0 +1,28 @@
+{
+  "id": "bebas-neue",
+  "name": {
+    "en": "Bebas Neue",
+    "tr": "Bebas Neue",
+    "de": "Bebas Neue",
+    "fr": "Bebas Neue",
+    "es": "Bebas Neue"
+  },
+  "family": "Bebas Neue",
+  "styles": {
+    "regular": "BebasNeue-Regular.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "2.000",
+  "author": "Dharma Type",
+  "classification": "display",
+  "scripts": [
+    "Latn"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

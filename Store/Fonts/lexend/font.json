@@ -1,0 +1,30 @@
+{
+  "id": "lexend",
+  "name": {
+    "en": "Lexend",
+    "tr": "Lexend",
+    "de": "Lexend",
+    "fr": "Lexend",
+    "es": "Lexend"
+  },
+  "family": "Lexend",
+  "styles": {
+    "regular": "Lexend-Regular.ttf",
+    "bold": "Lexend-Bold.ttf"
+  },
+  "license": "OFL-1.1",
+  "version": "1.007",
+  "author": "The Lexend Project Authors",
+  "classification": "sans",
+  "scripts": [
+    "Latn",
+    "Viet"
+  ],
+  "languages": [
+    "en",
+    "tr",
+    "de",
+    "fr",
+    "es"
+  ]
+}

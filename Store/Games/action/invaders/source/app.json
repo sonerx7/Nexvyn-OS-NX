@@ -1,0 +1,37 @@
+{
+  "id": "com.sonerx7.invaders",
+  "name": {
+    "en": "Space Invaders",
+    "tr": "Uzay İstilası",
+    "de": "Space Invaders",
+    "fr": "Space Invaders",
+    "es": "Invasores espaciales",
+    "ja": "スペースインベーダー",
+    "zh": "太空入侵者",
+    "ko": "우주 침략자"
+  },
+  "description": {
+    "en": "Hold the line against rows of marching invaders. Hide behind the shields, shoot down the mystery saucer and survive wave after wave.",
+    "tr": "Yürüyen uzaylı sıralarına karşı hattı koru. Kalkanların arkasına saklan, gizemli daireyi vur ve dalga dalga gelen istilaya dayan.",
+    "de": "Halte die Stellung gegen Reihen anrückender Invasoren. Versteck dich hinter den Schilden, schieß das mysteriöse UFO ab und überlebe Welle um Welle.",
+    "fr": "Tenez bon face aux rangées d’envahisseurs en marche. Abritez-vous derrière les boucliers, abattez la soucoupe mystère et survivez vague après vague.",
+    "es": "Resiste frente a filas de invasores que avanzan. Escóndete tras los escudos, derriba el platillo misterioso y sobrevive oleada tras oleada."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 820,
+    "height": 620,
+    "minWidth": 520,
+    "minHeight": 440,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.0",
+  "permissions": []
+}
