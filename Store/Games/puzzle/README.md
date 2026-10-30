@@ -14,4 +14,4 @@
 | <img src="nonogram/icon.png" width="32"> | [Nonogram](nonogram/) | 1.0 | Fill the grid and reveal a hidden picture |
 | <img src="sokoban/icon.png" width="32"> | [Sokoban](sokoban/) | 1.0 | Push every crate onto its goal |
 | <img src="sudoku/icon.png" width="32"> | [Sudoku](sudoku/) | 1.0 | Fresh puzzles in three difficulties |
-| <img src="watersort/icon.png" width="32"> | [Water Sort](watersort/) | 1.0 | Pour until every tube holds one colour |
+| <img src="watersort/icon.png" width="32"> | [Water Sort](watersort/) | 1.0.1 | Pour until every tube holds one colour |

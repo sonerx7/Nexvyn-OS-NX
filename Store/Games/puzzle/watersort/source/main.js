@@ -146,6 +146,7 @@ function tryPour(a, b) {
 
 function choose(i) {
   if (modal() || isWon || !tubes.length) return;
+  if (!(i >= 0 && i < tubes.length)) { cursor = Math.max(0, Math.min(cursor, tubes.length - 1)); return; }
   if (anim && sys.time() - anim.t0 < POUR_TOTAL) return;
   cursor = i;
   if (sel < 0) {

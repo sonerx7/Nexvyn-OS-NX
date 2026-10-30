@@ -17,7 +17,7 @@
     "fr": "Transvasez les couches colorées entre les tubes jusqu’à ce que chaque tube ne contienne qu’une seule couleur. Des niveaux générés à l’infini, tous vérifiés comme solubles.",
     "es": "Vierte las capas de colores entre los tubos hasta que cada tubo tenga un solo color. Niveles generados sin fin, todos comprobados para que tengan solución."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

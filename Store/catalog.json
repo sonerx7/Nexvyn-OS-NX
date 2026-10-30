@@ -8300,13 +8300,13 @@
         "zh": "一款关于倒水的宁静解谜游戏。轻点一根试管拿起最上层的颜色，再轻点另一根试管倒进去：只能倒在相同的颜色上或倒进空试管，并且必须有空间。把每种颜色分别归入各自的试管即可过关。随着进度推进，关卡的颜色会越来越多，而且每一关都经过求解器检查，因此总是有解的。\n\n• 无尽关卡，颜色随进度增多\n• 每一关都经过可解性验证\n• 提示、撤销、重新开始以及每关一根额外试管\n• 统计和最佳成绩\n• 用 JavaScript 为 Nexvyn OS 编写",
         "ko": "붓기에 관한 차분한 퍼즐입니다. 관을 탭하여 맨 위의 색을 집고, 다른 관을 탭하여 부으세요. 같은 색 위나 빈 관에만, 그리고 공간이 있을 때만 부을 수 있습니다. 모든 색을 각자의 관으로 정렬하면 레벨이 끝납니다. 진행할수록 레벨이 더 알록달록해지며, 모든 레벨은 해법기로 확인되어 항상 풀 수 있습니다.\n\n• 진행할수록 색이 많아지는 끝없는 레벨\n• 모든 레벨이 풀 수 있도록 검증됨\n• 힌트, 실행 취소, 다시 시작, 레벨당 추가 관 하나\n• 통계와 최고 결과\n• Nexvyn OS용 JavaScript로 작성"
       },
-      "version": "1.0",
+      "version": "1.0.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/watersort/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/watersort/watersort.nxvapp",
-      "size": 33116,
-      "sha256": "b4f71190fc5270b545a29364a5fdf1f3263a5d5229c2de85a89c0174ccff3c16",
+      "size": 33151,
+      "sha256": "bc10cbdbeaa118d4d7f822fe6b3b1177aeb16fe5af82bb46215fcb135be02c5a",
       "minSdk": "1.1",
       "permissions": [],
       "screenshots": [
@@ -8329,8 +8329,12 @@
         "ko": "관마다 한 가지 색이 될 때까지 부으세요"
       },
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-10-30",
       "history": [
+        {
+          "version": "1.0.1",
+          "date": "2026-10-30"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"

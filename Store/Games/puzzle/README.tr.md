@@ -14,4 +14,4 @@
 | <img src="nonogram/icon.png" width="32"> | [Resim Bulmaca](nonogram/) | 1.0 | Kareleri boya, gizli resmi ortaya çıkar |
 | <img src="sokoban/icon.png" width="32"> | [Sokoban](sokoban/) | 1.0 | Her kasayı hedefine it |
 | <img src="sudoku/icon.png" width="32"> | [Sudoku](sudoku/) | 1.0 | Üç zorlukta, her seferinde yeni bulmaca |
-| <img src="watersort/icon.png" width="32"> | [Su Sıralama](watersort/) | 1.0 | Her tüpte tek renk kalana dek dök |
+| <img src="watersort/icon.png" width="32"> | [Su Sıralama](watersort/) | 1.0.1 | Her tüpte tek renk kalana dek dök |
