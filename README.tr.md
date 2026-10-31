@@ -74,6 +74,38 @@ birlikte götürmez.
 - **Kısayollar:** Hızlı Arama için Ctrl+Boşluk, Pencere Görünümü için F3, Başlatıcı için F4, uygulamalar arasında
   Alt+Tab, masaüstleri arasında Ctrl+Sol/Sağ. Kumandada + uygulamaları, ZR aramayı açar; L ve R pencere değiştirir.
 
+## Nexvyn OS Studio — uygulamaları konsolda geliştirin
+
+Doğrudan Switch üzerinde çalışan eksiksiz bir kod stüdyosu. Uygulamanızı yazın, **Çalıştır**'a basın; uygulama kodun
+hemen yanında kendi penceresinde açılır, çıktısı anında konsola akar. Bir satırı değiştirin, **Yeniden Başlat**'a basın;
+değişiklik hemen görünür. Bilgisayar yok, derleme adımı yok.
+
+| | |
+|:---:|:---:|
+| <img src=".github/assets/studio-autocomplete.jpg" alt="Nexvyn OS Studio: kodun yanında SDK başvurusuyla SDK otomatik tamamlama"> | <img src=".github/assets/studio-python.jpg" alt="Nexvyn OS Studio'da kodunun yanında çalışan bir CPython 3.12 uygulaması"> |
+| **Tüm SDK için otomatik tamamlama**, başvuru o fonksiyonda açık | **Gerçek CPython 3.12:** dataclasses, statistics ve konsolda `print()` |
+| <img src=".github/assets/studio-javascript.jpg" alt="Nexvyn OS Studio'da kodunun yanında çalışan bir JavaScript uygulaması"> | <img src=".github/assets/studio-error.jpg" alt="Konsolda ve düzenleyicide satır numarasıyla bir çalışma zamanı hatası"> |
+| **JavaScript:** Çalıştır'a basın, uygulama kodun yanında açılır | **Satır numaralı hatalar:** satıra gitmek için tıklayın ya da F8'e basın |
+| <img src=".github/assets/studio-templates.jpg" alt="Yeni Proje: Lua, JavaScript, Python, Squirrel, C ve Java şablonları"> | <img src=".github/assets/studio-samples.jpg" alt="Çevrimiçi örnekler: ekran görüntüleri ve İndir ve Aç düğmesiyle bir örnek sayfası"> |
+| Altı dilde **18 şablon**, hepsi olduğu gibi çalışır | **Örnekler:** hazır bir projeyi tek dokunuşla indirip açın |
+
+- **Altı dil:** **Lua 5.4**, **JavaScript**, **Python** (hafif çalışma ortamı ya da standart kütüphanesiyle gerçek
+  **CPython 3.12**), **Squirrel**, konsolda TinyCC ile derlenen **C** ve miniJVM üzerinde **Java 8**.
+- **Tüm SDK için otomatik tamamlama:** `gfx.` yazın, her fonksiyon parametreleriyle listelenir; F1, SDK başvurusunu
+  tam o fonksiyonda açar. Söz dizimi hataları siz yazarken işaretlenir.
+- **Canlı konsolla çalıştırma:** F5 ya da Ctrl+R uygulamayı kendi penceresinde başlatır; `print()` ve `sys.log()`
+  çıktısı anında konsolda görünür. **Yeniden Başlat** değişikliklerinizi alır, isterseniz **Kaydedince Yeniden Başlat**
+  bunu sizin yerinize yapar.
+- **Tıklanabilir hatalar:** bir çalışma zamanı hatası dosyası ve satırıyla konsolda, düzenleyicide ve uygulamanın
+  penceresinde görünür. Tıklayın ya da F8'e basın, doğrudan o satıra gidin.
+- **Şablonlar ve örnekler:** 18 şablondan biriyle başlayın (boş uygulamalar, platform oyunu, nişancı, bulmaca, 3D sahne,
+  ağ, yapılacaklar listesi…) ya da çevrimiçi katalogdan bir örnek indirip proje olarak açın.
+- **Kodun etrafındaki her şey:** projede bul ve değiştir, Hızlı Aç, sprite, tilemap ve sahne düzenleyicileri, anlık
+  görüntüler ve AI Chat'te ayarladığınız sağlayıcı ve anahtarı kullanan bir **AI'ya sor** paneli.
+- **Uygulama Mağazası'nda yayımlayın:** **Dışa Aktar** hemen paylaşabileceğiniz bir `.nxvapp` üretir; **Yayınla**
+  sihirbazı projenizi pull request ile bu depoya eklemeniz için sizi adım adım yönlendirir. Uygulama Mağazası'nda
+  görünmeden önce bakımcı tarafından incelenir.
+
 ## İnternet ve medya
 
 | | |
@@ -123,7 +155,7 @@ birlikte götürmez.
 | <img src=".github/assets/game-engine-3d.jpg" alt="3D'de Oyun Motoru"> | <img src=".github/assets/modeler-3d.jpg" alt="3D Modelleme"> |
 | 3D'de **Oyun Motoru** | **3D Modelleme:** örneklerden bir ev |
 
-- **Nexvyn OS Studio:** altı dilde 15 şablondan projeler: **Lua 5.4**, **JavaScript**, **Python** (hafif çalışma
+- **Nexvyn OS Studio:** altı dilde 18 şablondan projeler: **Lua 5.4**, **JavaScript**, **Python** (hafif çalışma
   ortamı ya da standart kütüphanesiyle gerçek **CPython 3.12**), **Squirrel**, **C** ve **Java**. Söz dizimi
   renklendirmesi, canlı hata denetimi, otomatik tamamlama, konsol, sprite, tilemap ve sahne düzenleyicileri, hemen
   yanında SDK başvurusu ve tek adımda `.nxvapp` paketleme.

@@ -68,6 +68,37 @@ Virtual desktops switch with a 3D cube, and a crashing app never takes the syste
 - **Shortcuts:** Ctrl+Space for Quick Search, F3 for Window Overview, F4 for the Launcher, Alt+Tab to switch apps,
   Ctrl+Left/Right for desktops. With a controller, + opens the apps, ZR opens search, L and R switch windows.
 
+## Nexvyn OS Studio — build apps on the console
+
+A complete code studio that runs on the Switch itself. Write an app, press **Run** and it opens in its own window next to
+the code, with its output streaming into the console. Change a line, press **Restart** and the change is live. No PC,
+no build step.
+
+| | |
+|:---:|:---:|
+| <img src=".github/assets/studio-autocomplete.jpg" alt="Nexvyn OS Studio: SDK autocomplete with the SDK reference beside the code"> | <img src=".github/assets/studio-python.jpg" alt="A CPython 3.12 app running next to its code in Nexvyn OS Studio"> |
+| **Autocomplete for the whole SDK**, with the reference open at the function | **Real CPython 3.12:** dataclasses, statistics and `print()` in the console |
+| <img src=".github/assets/studio-javascript.jpg" alt="A JavaScript app running next to its code in Nexvyn OS Studio"> | <img src=".github/assets/studio-error.jpg" alt="A runtime error with its line number in the console and in the editor"> |
+| **JavaScript:** press Run and the app opens beside the code | **Errors with line numbers:** click one, or press F8, to jump to the line |
+| <img src=".github/assets/studio-templates.jpg" alt="New Project: templates in Lua, JavaScript, Python, Squirrel, C and Java"> | <img src=".github/assets/studio-samples.jpg" alt="Online samples: a sample page with screenshots and Download and Open"> |
+| **18 templates** in six languages, every one runs as is | **Samples:** download a ready-made project and open it in one tap |
+
+- **Six languages:** **Lua 5.4**, **JavaScript**, **Python** (the light runtime or real **CPython 3.12** with its
+  standard library), **Squirrel**, **C** compiled on the console by TinyCC, and **Java 8** on miniJVM.
+- **Autocomplete for the whole SDK:** type `gfx.` and every function appears with its parameters; F1 opens the SDK
+  reference right at that function. Syntax errors are marked while you type.
+- **Run with a live console:** F5 or Ctrl+R starts the app in its own window, and `print()` and `sys.log()` output
+  appears in the console as it happens. **Restart** picks up your changes, or let **Restart on Save** do it for you.
+- **Errors you can click:** a runtime error shows its file and line in the console, in the editor and in the app's
+  window. Click it or press F8 to jump straight to the line.
+- **Templates and samples:** start from 18 templates (blank apps, platformer, shooter, puzzle, 3D scene, network,
+  to-do list…) or download a sample from the online catalog and open it as a project.
+- **Everything around the code:** find and replace across the project, Quick Open, sprite, tilemap and scene editors,
+  snapshots, and an **Ask AI** panel that uses the provider and key you set up in AI Chat.
+- **Publish to the App Market:** **Export** makes a `.nxvapp` you can share right away, and the **Publish** wizard walks
+  you through adding your project to this repository with a pull request; the maintainer reviews it before it appears
+  in the App Market.
+
 ## Internet and media
 
 | | |
@@ -117,7 +148,7 @@ Virtual desktops switch with a 3D cube, and a crashing app never takes the syste
 | <img src=".github/assets/game-engine-3d.jpg" alt="Game Engine in 3D"> | <img src=".github/assets/modeler-3d.jpg" alt="3D Modeler"> |
 | **Game Engine** in 3D | **3D Modeler:** a house from the samples |
 
-- **Nexvyn OS Studio:** projects from 15 templates in six languages: **Lua 5.4**, **JavaScript**, **Python** (the
+- **Nexvyn OS Studio:** projects from 18 templates in six languages: **Lua 5.4**, **JavaScript**, **Python** (the
   light runtime or real **CPython 3.12** with its standard library), **Squirrel**, **C** and **Java**. Syntax
   highlighting, live error checking, autocomplete, a console, sprite, tilemap and scene editors, the SDK reference at
   your side and packaging into a `.nxvapp` in one step.
