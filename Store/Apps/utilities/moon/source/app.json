@@ -8,7 +8,7 @@
     "fr": "Consultez la phase, l’illumination et l’âge de la Lune pour n’importe quelle date, la prochaine nouvelle et pleine lune, et un calendrier mensuel avec une petite lune pour chaque jour.",
     "es": "Consulta la fase, la iluminación y la edad de la Luna en cualquier fecha, la próxima luna nueva y llena, y un calendario mensual con una pequeña luna para cada día."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

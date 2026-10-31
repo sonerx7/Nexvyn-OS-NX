@@ -184,7 +184,9 @@ screen. **Advanced** mode adds a numeric inspector, layers, behaviour parameters
 (events → conditions → actions, variables, timers), Studio's pixel sprite and tilemap editors, sounds, generated
 Lua ("turn into code") and per-object Lua scripts.
 
-Projects live in `~/Documents/Oyunlarım/<name>/project.json` (format above). Games are not code-generated: the
+Projects live in `~/Documents/Oyunlarım/<name>/project.json` (format above). `<name>`, oyunun adının düz harflerle
+yazılışıdır (`Yarış` → `Yaris`: konsolun FAT sürücüsü UTF-8 adların bir kısmını Shift-JIS olarak okur, bazı adları
+listeleyemez ya da açamaz); project.json'daki ad her harfiyle kalır, içteki dosyaların adları değişmez. Games are not code-generated: the
 `nexvyn.workshop` Lua runtime (on `nexvyn.game`; `nexvyn.workshop3d` for 3D on `g3d`) interprets the project JSON, and
 event blocks compile to the same `ws.on(...)` API scripts use (newer blocks: `held` condition, `flash`, `confetti`
 and `teleport` actions; templates Apple Race, Meteor Shower and Treasure Hunt). Play builds a portable bundle in

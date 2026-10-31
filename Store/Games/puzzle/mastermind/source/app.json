@@ -17,7 +17,7 @@
     "fr": "Percez le code couleur secret en dix essais grâce aux fiches indices noires et blanches. Modes classique et difficile avec statistiques complètes.",
     "es": "Descifra el código secreto de colores en diez intentos con las clavijas de pista blancas y negras. Modos clásico y difícil con estadísticas completas."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

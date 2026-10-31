@@ -17,7 +17,7 @@
     "fr": "Le classique du tennis de table : le premier à 7 l’emporte, contre l’ordinateur en trois niveaux de difficulté ou à deux sur une seule console.",
     "es": "El clásico del tenis de mesa: gana el primero en llegar a 7, contra la CPU en tres niveles de dificultad o dos jugadores en una consola."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

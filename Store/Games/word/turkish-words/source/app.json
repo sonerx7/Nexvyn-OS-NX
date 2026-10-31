@@ -17,7 +17,7 @@
     "fr": "Devinez le mot turc de cinq lettres en six essais : un nouveau mot du jour pour tous, plus des parties illimitées.",
     "es": "Adivina la palabra turca de cinco letras en seis intentos: una palabra diaria nueva para todos y partidas ilimitadas."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

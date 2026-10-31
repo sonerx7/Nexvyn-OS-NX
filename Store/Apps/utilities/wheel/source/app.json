@@ -8,7 +8,7 @@
     "fr": "Vous n’arrivez pas à choisir ? Faites tourner une roue colorée avec vos propres options. Gardez plusieurs roues, comptez les gagnants et faites glisser la roue pour la lancer.",
     "es": "¿No te decides? Gira una ruleta de colores con tus propias opciones. Guarda varias ruletas, cuenta los ganadores y arrastra la ruleta para girarla."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

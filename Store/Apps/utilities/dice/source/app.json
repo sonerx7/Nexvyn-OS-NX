@@ -8,7 +8,7 @@
     "fr": "Lancez jusqu’à six dés de d4 à d20 ou jouez à pile ou face, avec animations de roulement, dés bloqués, historique et statistiques de lancers.",
     "es": "Lanza hasta seis dados de d4 a d20 o una moneda, con animaciones de rodar, dados retenidos, historial y estadísticas de tiradas."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

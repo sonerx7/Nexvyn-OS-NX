@@ -8,7 +8,7 @@
     "fr": "Organisez vos tâches en projets avec priorités et échéances ; les tâches en retard ressortent et la recherche trouve tout.",
     "es": "Organiza las tareas en proyectos con prioridades y fechas de vencimiento; las tareas atrasadas destacan y la búsqueda lo encuentra todo."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

@@ -8,7 +8,7 @@
     "fr": "Consultez l’heure dans 80 villes avec des mini-horloges analogiques et les règles d’heure d’été, voyagez dans le temps et trouvez la meilleure heure pour vous réunir.",
     "es": "Consulta la hora en 80 ciudades con minirrelojes analógicos y reglas de horario de verano, viaja en el tiempo y encuentra la mejor hora para reuniros."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

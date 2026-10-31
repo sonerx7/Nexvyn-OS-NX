@@ -17,7 +17,7 @@
     "fr": "Puzzle de blocs qui tombent : faites pivoter et lâchez les pièces, effacez les lignes complètes et montez de niveau. Avec réserve, aperçu et pièce fantôme.",
     "es": "Puzle de bloques que caen: gira y suelta las piezas, completa líneas y sube de nivel. Con reserva, vista previa y pieza fantasma."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

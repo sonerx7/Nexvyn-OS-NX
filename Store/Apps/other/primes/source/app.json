@@ -8,7 +8,7 @@
     "fr": "Explorez les nombres premiers : un crible d’Ératosthène animé, une spirale d’Ulam zoomable et un outil de factorisation jusqu’à 10^12 avec arbre des facteurs.",
     "es": "Explora los números primos: una criba de Eratóstenes animada, una espiral de Ulam con zoom y un factorizador para números de hasta 10^12 con árbol de factores."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "other",

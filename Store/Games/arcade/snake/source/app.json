@@ -17,7 +17,7 @@
     "fr": "Le snake classique : mangez des pommes, grandissez et accélérez. Jouez avec des murs ou traversez les bords.",
     "es": "La serpiente clásica: come manzanas, crece y ve más rápido. Juega con paredes o atraviesa los bordes."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

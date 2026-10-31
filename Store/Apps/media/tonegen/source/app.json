@@ -8,7 +8,7 @@
     "fr": "Jouez des sons de test de 20 Hz à 20 kHz en ondes sinusoïdales, carrées, en dents de scie ou triangulaires, calez-les sur les notes de musique et lancez des balayages de fréquence avec affichage de la forme d’onde en direct.",
     "es": "Reproduce tonos de prueba de 20 Hz a 20 kHz en ondas senoidales, cuadradas, de sierra o triangulares, ajústalos a notas musicales y haz barridos de frecuencia con la forma de onda en vivo."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "media",

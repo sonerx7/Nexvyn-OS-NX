@@ -8,7 +8,7 @@
     "fr": "Notez chaque jour comment vous vous sentez avec une humeur, des tags et une note, puis voyez votre mois sous forme de calendrier coloré avec tendances et statistiques.",
     "es": "Registra cada día cómo te sientes con un estado de ánimo, etiquetas y una nota, y mira tu mes como un calendario de colores con tendencias y estadísticas."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",
