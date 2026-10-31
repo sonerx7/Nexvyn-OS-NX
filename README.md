@@ -21,7 +21,8 @@ and an App Market, all in one <code>.nro</code> that you open from the Homebrew 
 <a href="SDK/Guides/USER_GUIDE.en.md">User guide</a> ·
 <a href="Store/README.md">App Market</a> ·
 <a href="SDK/README.md">SDK</a> ·
-<a href="CHANGELOG.md">Release notes</a>
+<a href="CHANGELOG.md">Release notes</a> ·
+<a href="ROADMAP.md">Roadmap</a>
 </p>
 
 <p align="center"><a href=".github/assets/nexvyn-os-demo.mp4"><img src=".github/assets/hero-desktop.jpg" width="100%" alt="The Nexvyn OS desktop with the Browser, YousTube, Photos and the Terminal open"></a></p>
@@ -335,6 +336,12 @@ and the camera, only work on a console.
 
 **How do I get updates?**
 System Settings > Software Update downloads the new release, keeps a backup of the old one and installs it.
+
+## Roadmap
+
+Where Nexvyn OS goes next, with measurable goals for 1.1, 1.2 and 2.0: faster starts, no lost work, a Screen Reader that
+covers every control, more languages, a better browser and a bigger App Market. Read the
+[roadmap](ROADMAP.md) and see [how you can help](ROADMAP.md#how-to-help): publish an app, report a bug or translate.
 
 ## License and credits
 

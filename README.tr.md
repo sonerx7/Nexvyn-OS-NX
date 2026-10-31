@@ -22,7 +22,8 @@ yok, SD kart bölümleme yok.</p>
 <a href="SDK/Guides/USER_GUIDE.tr.md">Kullanım rehberi</a> ·
 <a href="Store/README.tr.md">Uygulama Mağazası</a> ·
 <a href="SDK/README.tr.md">SDK</a> ·
-<a href="CHANGELOG.md">Sürüm notları</a>
+<a href="CHANGELOG.md">Sürüm notları</a> ·
+<a href="ROADMAP.tr.md">Yol haritası</a>
 </p>
 
 <p align="center"><a href=".github/assets/nexvyn-os-demo.mp4"><img src=".github/assets/hero-desktop.jpg" width="100%" alt="Tarayıcı, YousTube, Fotoğraflar ve Terminal açıkken Nexvyn OS masaüstü"></a></p>
@@ -346,6 +347,13 @@ yalnızca konsolda çalışır.
 
 **Güncellemeleri nasıl alırım?**
 Sistem Ayarları > Yazılım Güncelleme yeni sürümü indirir, eskisinin yedeğini alır ve kurar.
+
+## Yol haritası
+
+Nexvyn OS'un bundan sonra nereye gittiği, 1.1, 1.2 ve 2.0 için ölçülebilir hedeflerle: daha hızlı açılış, hiç kaybolmayan
+iş, her denetimi okuyan bir Ekran Okuyucu, daha çok dil, daha iyi bir tarayıcı ve daha büyük bir Uygulama Mağazası.
+[Yol haritasını](ROADMAP.tr.md) okuyun ve [nasıl yardım edebileceğinize](ROADMAP.tr.md#nasıl-yardım-edebilirsiniz) bakın:
+bir uygulama yayımlayın, hata bildirin ya da çeviri yapın.
 
 ## Lisans ve emeği geçenler
 

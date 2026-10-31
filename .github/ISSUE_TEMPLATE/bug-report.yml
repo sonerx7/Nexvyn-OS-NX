@@ -1,0 +1,67 @@
+name: Bug in Nexvyn OS / Nexvyn OS'ta hata
+description: Something in Nexvyn OS or a built-in app does not work as it should.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! English or Turkish is fine. / Teşekkürler! İngilizce ya da Türkçe yazabilirsiniz.
+        If an App Market item is the problem, use the report form instead. / Sorun bir Uygulama Mağazası öğesindeyse
+        bildirim formunu kullanın.
+  - type: input
+    id: version
+    attributes:
+      label: Nexvyn OS version / sürümü
+      description: System Settings > About / Sistem Ayarları > Hakkında
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: Where did it happen? / Nerede oldu?
+      options:
+        - Console, title mode / Konsol, başlık modu
+        - Console, applet mode (Album) / Konsol, applet modu (Albüm)
+        - Emulator / Emülatör
+    validations:
+      required: true
+  - type: dropdown
+    id: display
+    attributes:
+      label: Handheld or TV / El modu ya da TV
+      options:
+        - Handheld / El modu
+        - TV (docked) / TV (dock'ta)
+        - Both / İkisi de
+  - type: input
+    id: app
+    attributes:
+      label: App or part of the system / Uygulama ya da sistemin bölümü
+      placeholder: Files, Browser, Quick Search, Dock...
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Hatayı oluşturma adımları
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What happened, and what did you expect? / Ne oldu, ne bekliyordunuz?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Crash report or log / Çökme raporu ya da günlük
+      description: |
+        Optional. From sdmc:/NexvynOS/System/Logs/Crashes or System Settings > Developer > System logs. Remove anything
+        private first. / İsteğe bağlı. sdmc:/NexvynOS/System/Logs/Crashes ya da Sistem Ayarları > Geliştirici > Sistem
+        günlükleri. Önce özel bilgileri silin.
+      render: text

@@ -1,0 +1,38 @@
+name: Translation / Çeviri
+description: Offer a new interface language or fix a translation.
+title: "[Translation] "
+labels: ["translation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A new language can be tried on your console first: see "Adding a new language" in the
+        [user guide](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Guides/USER_GUIDE.en.md#adding-a-new-language).
+        / Yeni bir dil önce konsolunuzda denenebilir: [kullanım rehberinde](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Guides/USER_GUIDE.tr.md#yeni-dil-eklemek)
+        "Yeni dil eklemek" bölümü.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is it? / Ne?
+      options:
+        - A new language / Yeni bir dil
+        - A fix in an existing language / Var olan bir dilde düzeltme
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language / Dil
+      placeholder: Italiano (it)
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details / Ayrıntılar
+      description: |
+        For a fix: where it appears, the current text and the better text. For a new language: how much you can
+        translate and whether you can keep it up to date. / Düzeltme için: nerede göründüğü, şimdiki metin ve daha iyisi.
+        Yeni dil için: ne kadarını çevirebileceğiniz ve güncel tutup tutamayacağınız.
+    validations:
+      required: true

@@ -1,0 +1,26 @@
+name: Idea / Fikir
+description: Suggest a feature or an improvement for Nexvyn OS.
+title: "[Idea] "
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check the [roadmap](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/ROADMAP.md) first; it may already be
+        planned. / Önce [yol haritasına](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/ROADMAP.tr.md) bakın; belki
+        zaten planlanmıştır.
+  - type: input
+    id: area
+    attributes:
+      label: Part of the system / Sistemin bölümü
+      placeholder: Desktop, Files, Browser, Studio, Game Engine, App Market...
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do that you cannot do today? / Bugün yapamadığınız neyi yapmak istiyorsunuz?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How could it work on a Switch (controller, touch, handheld, TV)? / Switch'te nasıl çalışabilir (kumanda, dokunmatik, el modu, TV)?
