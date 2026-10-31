@@ -118,6 +118,27 @@ Bu programlar Nexvyn OS'un parçası değildir; kendi geliştiricilerinin ayrı 
 Uyarıları için [PC Oyunları](#pc-oyunları) bölümünü okuyun. Daha sonra **Sistem Ayarları > Homebrew** bölümünden
 kurabilir, güncelleyebilir veya kaldırabilirsiniz.
 
+### Tanıtım Turu
+
+Kurulumun sonunda **Başlayalım**'a bastığınızda masaüstünüzde **Tanıtım Turu** başlar: Nexvyn OS'in en iyi yanlarından
+geçen on kısa adım, toplam yaklaşık iki dakika. Her adım ekranın gerçek bir bölümünü vurgular (spotlight) ve yanında bir
+kart gösterir:
+
+- **Bana göster**: Nexvyn OS bunu sizin masaüstünüzde kendisi yapar. Üç uygulama açıp ekranın yarılarına ve dörtte
+  birine yerleştirir, Hızlı Arama'ya iki harf yazar, görev çubuğu düzenine geçip geri döner, Denetim Merkezi'nde karanlık
+  modu açar, Studio'da bir uygulama yapıp çalıştırır, Oyun Motoru'nun sihirbazıyla bir oyun yapıp oynatır ve arayüzü bir
+  an Japonca gösterir.
+- **Ben deneyeyim**: Ekran tamamen kullanılabilir kalır, kart ne yapacağınızı söyler. Siz yaptığınız anda adım biter.
+- **Atla** sonraki adıma geçer; **×** turu bitirir.
+
+Kumandayla: **A** = Bana göster, **X** = Ben deneyeyim, **B** = Atla, **+** = Turu bitir. Klavyeyle: Enter, T, Esc ve
+Q. Bir gösterinin değiştirdiği her şey (düzen, karanlık mod, vurgu rengi, dil, açtığı pencereler, yaptığı Studio projesi
+ve oyun) adımı bitince eski hâline döner. **Hareketi Azalt** açıksa vurgu ve gösterilerin imleci kaymaz.
+
+Tur kendiliğinden yalnızca bir kez başlar. Yeniden almak için (kaldığınız yerden devam eder): **İpuçları**, menü
+çubuğunda **Yardım > Tanıtım Turu** ya da **Sistem Ayarları > Hakkında > Tanıtım Turu**. Nexvyn OS'i Sil ve Ayarları
+Sıfırla, turu bir sonraki kurulumdan sonra yeniden başlatır.
+
 ---
 
 ## 3. İki masaüstü düzeni
@@ -361,10 +382,17 @@ Sürükleyerek taşıyın; sağ tık ile boyutunu değiştirin ya da kaldırın.
 
 ### Klasörler
 
-İlk kurulumda masaüstünde **Oyunlar**, **Araçlar**, **Ofis**, **Medya** ve **Modlama** klasörleri vardır; içlerinde
-ilgili uygulamaların kısayolları bulunur. Modlama klasörü eski bir kurulumda bir kez eklenir; silerseniz geri
-gelmez. Bu klasörlerin kendi simgeleri vardır. Klasörleri silebilir, yeniden adlandırabilir
+İlk kurulumda masaüstünde **Oyunlar**, **Araçlar**, **Ofis**, **Medya** ve **Switch Araçları** klasörleri vardır;
+içlerinde ilgili uygulamaların kısayolları bulunur. Switch Araçları klasörü eski bir kurulumda bir kez eklenir;
+silerseniz geri gelmez. Bu klasörlerin kendi simgeleri vardır. Klasörleri silebilir, yeniden adlandırabilir
 ya da yenilerini oluşturabilirsiniz.
+
+- **Uygulamalarınızla birlikte güncellenir.** Uygulama Mağazası'ndan bu klasörlerden birine ait bir uygulama aldığınızda (ya da
+  bir paket kurduğunuzda) kısayolu oraya eklenir; Switch araçları **Switch Araçları** klasörüne gider. Uygulamayı
+  kaldırınca kısayolu da gider. Bu klasörlerden sildiğiniz bir kısayol geri gelmez.
+- **Dili izler.** Arayüz dilini değiştirdiğinizde bu klasörler ve sistemin oluşturduğu kısayollar (masaüstünde ve
+  klasörlerde) yeni dildeki adlarını alır. Kendiniz yeniden adlandırdığınız bir klasör ya da kısayol sizin verdiğiniz
+  adla kalır. Ad dosyalarınızdan birinde kullanılıyorsa hiçbir şeyin üzerine yazılmaz.
 
 ### Kısayollar
 
@@ -404,6 +432,61 @@ ya da yenilerini oluşturabilirsiniz.
 - Bir dosyaya çift tıklayınca uygun uygulama açılır. **Birlikte Aç** ile başka bir uygulama seçilebilir.
 - `.nxvapp` dosyası yükleme sayfasını açar (bkz. [Uygulama Mağazası](#uygulama-mağazası-ve-uygulama-yükleme)).
 - `.exe` dosyası PC Oyunları ile açılır.
+- **Silme.** Sil, öğeleri Çöp Sepeti'ne taşır (Geri Al ile geri gelir). **Hemen Sil**, **Çöp Sepetini Boşalt** ve USB
+  bellekte silme (USB belleklerde Çöp Sepeti yoktur) her zaman önce sorar; kaç öğenin ve ne kadar verinin gideceğini
+  söyler.
+- **Aynı adlar.** Yapıştırılan ya da taşınan öğeler klasörde zaten varsa Dosyalar sorar: **Değiştir**, **İkisini de
+  Tut** (yenileri numara alır), **Atla** ya da **İptal**. Aynı adlı bir klasörün üstüne gelen klasör için ilk seçenek
+  **Birleştir**'dir: yeni içerik var olan klasöre eklenir; içeride aynı adlı dosyalar varsa tek bir soru hepsi için
+  karar verir. Klasörde **Değiştir**, var olan klasörü içindekilerle birlikte önce siler; Dosyalar bunu, boyutuyla
+  birlikte, başlamadan önce söyler.
+- Durum çubuğu açık klasörün ya da seçili öğenin gerçek yolunu gösterir, örneğin
+  `sdmc:/NexvynOS/Users/Soner/Documents/Odev.txt`.
+
+### Dosyalarım nerede?
+
+Nexvyn OS dosyalarınızı SD karttaki ev klasörünüzde tutar:
+
+| Nexvyn OS'ta | SD kartta |
+|---|---|
+| Ev | `sdmc:/NexvynOS/Users/<adınız>/` |
+| Belgeler | `sdmc:/NexvynOS/Users/<adınız>/Documents` |
+| Masaüstü, İndirilenler, Resimler, Müzik, Filmler | `Documents`'ın yanındaki `Desktop`, `Downloads`, `Pictures`, `Music`, `Movies` klasörleri |
+| Çöp Sepeti | `sdmc:/NexvynOS/Users/<adınız>/.Trash` (gizli klasör) |
+
+- Nexvyn OS bu klasörleri sizin dilinizde gösterir ("Belgeler"), ama kartta adları her zaman İngilizcedir. Bilgisayarda
+  ya da başka bir homebrew dosya yöneticisinde `NexvynOS/Users/<adınız>/Documents` klasörüne bakın.
+- Metin Düzenleyici, Writer, Sheets, Slides, Paint ve diğer uygulamalar, başka bir klasör seçmediğiniz sürece
+  Belgeler'e kaydeder. Kaydetme penceresi, dosyanın gideceği tam yolu ad alanının altında gösterir; listedeki bir
+  klasöre bir kez dokunmak onu kayıt yeri olarak seçer (çift dokunma klasörü açar).
+- Metin Düzenleyici'de **Dosya > Dosyalar’da Göster**, belgenin klasörünü dosya seçili olarak açar.
+- SD kartın tamamı Dosyalar'da **Bu Konsol > SD Kart** (`sdmc:/`) altındadır: her yerde açıp kaydedebilirsiniz.
+
+### SD karttaki dosya adları
+
+Konsolun kendi SD kart sürücüsü (FAT driver), A-Z dışındaki harfleri içeren bazı adları listeleyemez: `Kuş.txt`
+adlı bir dosya kaydedilebiliyor ve onu kaydeden uygulama tarafından yeniden açılabiliyordu, ama Dosyalar ve diğer
+homebrew uygulamaları (sphaira...) onu göstermiyor, bilgisayar ise gösteriyordu. Bu yüzden Nexvyn OS SD karttaki
+adları düz harflerle yazar: `ş ğ ı ö ü ç` harfleri `s g i o u c` olur (`İ Ş Ğ Ö Ü Ç` de aynı şekilde), `ß` `ss` olur,
+diğer aksanlar kalkar, başka alfabeler `_` olur ve `" * / : < > ? \ |` karakterleri değiştirilir. Bir ad
+değiştiğinde kaydetme penceresi ve Dosyalar bunu söyler. USB bellekler her harfi korur.
+
+Önceki bir sürümün bu tür adlarla kaydettiği dosyalar, Dosyalar ilk açıldığında (son kullanılan dosyalar ve Çöp
+Sepeti içinde) aranır ve Dosyalar yeniden görünmeleri için adlarını onarmayı önerir. **Dosya > Dosya Adlarını
+Onar...** aynı işi açık klasör için yapar.
+
+### Konsolun sistem dosyaları
+
+Dosyalar, Terminal, Metin Düzenleyici ve Code, konsolun özel yazılımına (custom firmware) ya da diğer homebrew
+uygulamalarına ait bir şeyi değiştirmeden önce uyarır: `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`,
+`sdmc:/emuMMC`, `sdmc:/switch`, `sdmc:/config` ve kartın kökündeki açılış dosyaları (`hbmenu.nro`, `boot.dat`,
+`boot.ini`, `payload.bin`, `exosphere.ini`). Bunları değiştirmek ya da silmek konsolun açılmamasına yol açabilir.
+Varsayılan düğme **İptal**'dir; **Anlıyorum, devam et** işlemi yapar, **Bu oturumda bir daha sorma** ise Nexvyn OS
+yeniden başlayana kadar soruyu kapatır. Silme, yeniden adlandırma, taşıma, üstüne yapıştırma ya da kaydetme, yeni
+dosya ve klasör ile Terminal'in `rm`, `mv`, `cp`, `touch`, `mkdir` komutları, indirmeler ve `>` sorar. Açmak, okumak
+ve bu klasörlerden dışarı kopyalamak hiç sormaz. Switch araçları (Mod Yöneticisi, Hileler, Sysmodule'ler,
+Overlay'ler, Türkçe Yama) bilerek oraya yazar ve kendi sorularını sorar; `sdmc:/NexvynOS/System` önceki gibi App Guard
+tarafından kilitli kalır.
 
 ### USB bellek
 
@@ -828,9 +911,14 @@ kâğıtları, sistem uygulamaları…) yerine kullanılır. Bir sistem değişi
 
 ### Ayarları sıfırlamak
 
-**Sistem Ayarları > Geliştirici > Tüm ayarları sıfırla.** Görünüm, Dock, widget'lar, duvar kâğıdı, sesler, giriş, PIN
-ve güncelleme seçenekleri varsayılana döner. Dosyalarınız, kullanıcı adınız ve diliniz korunur. Sıfırlamayı
-tamamlamak için Nexvyn OS'u yeniden başlatın.
+**Sistem Ayarları > Hakkında > Sıfırla > Ayarları Sıfırla** (**Geliştirici > Tüm ayarları sıfırla** ile aynı). Tüm sistem
+ayarları varsayılana döner ve yeniden başlattıktan sonra kurulum yardımcısı, adınız ve diliniz doldurulmuş olarak
+yeniden çalışır. Dosyalarınız, uygulamalarınız ve kullanıcılarınız korunur; adı değiştirseniz bile kurulum yardımcısı
+ev klasörünüzü korur.
+
+**Nexvyn OS'u Sil** (aynı yerde) `sdmc:/NexvynOS` klasörünün tamamını siler; Nexvyn OS yeni indirilmiş gibi olur ve
+kurulum yardımcısıyla yeniden başlar. Oyunlar, kayıt verileri, Atmosphère, diğer homebrew uygulamaları ve
+`NexvynOS.nro` dosyası etkilenmez.
 
 ### Masaüstü boştayken daha yavaş görünüyor
 

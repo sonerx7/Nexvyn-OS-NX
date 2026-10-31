@@ -119,6 +119,29 @@ These programs are not part of Nexvyn OS; they are separate projects of their ow
 starts them. Read the [PC Games](#pc-games) section for their warnings. Later you can install, update or remove them
 in **System Settings > Homebrew**.
 
+### The Welcome Tour
+
+When you press **Get Started** at the end of setup, the **Welcome Tour** starts on your desktop: ten short steps through
+the best parts of Nexvyn OS, about two minutes in all. Each step puts a highlight on the real part of the screen and
+shows a card beside it:
+
+- **Show me**: Nexvyn OS does it for you on your own desktop. It opens three apps and snaps them to halves and a quarter
+  of the screen, types two letters into Quick Search, switches to the taskbar layout and back, turns on dark mode in
+  Control Center, builds an app in Studio and runs it, makes a game with the Game Engine's wizard and plays it, and
+  shows the interface in Japanese for a moment.
+- **Let me try**: the screen stays fully usable and the card tells you what to do. The step finishes as soon as you
+  have done it.
+- **Skip** goes to the next step; **×** ends the tour.
+
+With a controller: **A** = Show me, **X** = Let me try, **B** = Skip, **+** = End tour. With a keyboard: Enter, T,
+Esc and Q. Everything a demonstration changed (layout, dark mode, accent color, language, the windows it opened, the
+Studio project and the game it made) is put back when its step ends. If you set **Reduce Motion**, the highlight and
+the pointer of the demonstrations do not move.
+
+The tour starts by itself only once. Take it again (it continues where you left it) from **Tips**, **Help > Take the
+Tour** in the menu bar or **System Settings > About > Welcome Tour**. Erase Nexvyn OS and Reset Settings start it again
+after the next setup.
+
 ---
 
 ## 3. Two desktop layouts
@@ -361,9 +384,16 @@ Move them by dragging; resize or remove them with a right click.
 
 ### Folders
 
-After the first setup the desktop has **Games**, **Tools**, **Office**, **Media** and **Modding** folders, containing
-shortcuts to the related apps. On an older installation the Modding folder is added once; if you delete it, it does
-not come back. These folders have their own icons. You can delete or rename them, or create new ones.
+After the first setup the desktop has **Games**, **Tools**, **Office**, **Media** and **Switch Tools** folders,
+containing shortcuts to the related apps. On an older installation the Switch Tools folder is added once; if you delete
+it, it does not come back. These folders have their own icons. You can delete or rename them, or create new ones.
+
+- **They keep up with your apps.** When you get an app from the App Market (or install a package) that belongs in one
+  of these folders, its shortcut appears there; Switch tools go to **Switch Tools**. When you remove the app, the
+  shortcut goes too. A shortcut you delete from such a folder does not come back.
+- **They follow the language.** When you change the interface language, these folders and the shortcuts the system
+  made (on the desktop and in the folders) take their names in the new language. A folder or shortcut you renamed
+  yourself keeps your name. If a name is already taken by one of your files, nothing is overwritten.
 
 ### Shortcuts
 
@@ -403,6 +433,58 @@ The **Files** app shows the SD card and your home folder:
 - Double-clicking a file opens the right app. **Open With** lets you choose another app.
 - A `.nxvapp` file opens the install sheet (see [App Market](#app-store-and-installing-apps)).
 - An `.exe` file opens with PC Games.
+- **Deleting.** Delete moves items to the Trash (Undo puts them back). **Delete Immediately**, **Empty Trash** and
+  deleting on a USB drive (USB drives have no Trash) always ask first and say how many items and how much data go.
+- **Same names.** When pasted or moved items are already in the folder, Files asks: **Replace**, **Keep Both** (the
+  new ones get a number), **Skip** or **Cancel**. For a folder going onto a folder with the same name, **Merge** comes
+  first: the new contents are added to the existing folder, and when files inside have the same names one more
+  question decides for all of them. **Replace** on a folder deletes the existing folder and everything in it first;
+  Files says so, with its size, before it starts.
+- The status bar shows the real path of the open folder or of the selected item, for example
+  `sdmc:/NexvynOS/Users/Soner/Documents/Odev.txt`.
+
+### Where are my files?
+
+Nexvyn OS keeps your files in your home folder on the SD card:
+
+| In Nexvyn OS | On the SD card |
+|---|---|
+| Home | `sdmc:/NexvynOS/Users/<your name>/` |
+| Documents | `sdmc:/NexvynOS/Users/<your name>/Documents` |
+| Desktop, Downloads, Pictures, Music, Movies | the folders with these English names next to `Documents` |
+| Trash | `sdmc:/NexvynOS/Users/<your name>/.Trash` (a hidden folder) |
+
+- Nexvyn OS shows these folders in your language ("Belgeler" in Turkish), but on the card they always have their
+  English names. On a computer or in another homebrew file manager, look for `NexvynOS/Users/<your name>/Documents`.
+- Text Editor, Writer, Sheets, Slides, Paint and the other apps save to Documents unless you pick another folder. The
+  save dialog shows the full path the file goes to under the name field; tapping a folder in its list once picks that
+  folder (double-tap opens it).
+- In Text Editor, **File > Show in Files** opens the document's folder with the file selected.
+- The whole SD card is in Files under **This Console > SD Card** (`sdmc:/`): you can open and save anywhere on it.
+
+### File names on the SD card
+
+The console's own SD card driver cannot list some names with letters outside A-Z: a file called `Kuş.txt` could be
+saved, and opened again by the app that saved it, yet Files and other homebrew (sphaira...) did not show it, while a
+computer did. Nexvyn OS therefore writes names on the SD card with plain letters: `ş ğ ı ö ü ç` become `s g i o u c`
+(`İ Ş Ğ Ö Ü Ç` likewise), `ß` becomes `ss`, other accents are dropped, other scripts become `_`, and the characters
+`" * / : < > ? \ |` are replaced. The save dialog and Files say so when a name changes. USB drives keep every letter.
+
+Files saved by an earlier version with such names are looked for the first time Files opens (among the recently used
+files and in the Trash), and Files offers to repair their names so they show up again. **File > Repair File Names...**
+does the same for the folder that is open.
+
+### The console's system files
+
+Files, Terminal, Text Editor and Code warn before they change anything that belongs to the console's custom firmware or
+to other homebrew: `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`, `sdmc:/emuMMC`, `sdmc:/switch`,
+`sdmc:/config` and the boot files in the root of the card (`hbmenu.nro`, `boot.dat`, `boot.ini`, `payload.bin`,
+`exosphere.ini`). Changing or deleting them can stop the console from booting. **Cancel** is the default; **I
+understand, continue** goes ahead, and **Don't ask again for this session** stops the question until Nexvyn OS starts
+again. Deleting, renaming, moving, pasting or saving over, new files and folders and Terminal's `rm`, `mv`, `cp`,
+`touch`, `mkdir`, downloads and `>` all ask. Opening, reading and copying out of these folders never ask. The Switch
+tools (Mod Manager, Cheats, Sysmodules, Overlays, Turkish Patches) write there by design and keep their own questions;
+`sdmc:/NexvynOS/System` stays locked by App Guard as before.
 
 ### USB drives
 
@@ -833,9 +915,13 @@ wallpapers, system apps…). If a system change causes problems:
 
 ### Resetting the settings
 
-**System Settings > Developer > Reset all settings.** Appearance, Dock, widgets, wallpaper, sounds, input, PIN and
-update options go back to their defaults. Your files, your user name and your language are kept. Restart Nexvyn OS to
-complete the reset.
+**System Settings > About > Reset > Reset Settings** (the same as **Developer > Reset all settings**). Every system
+setting goes back to its default and, after a restart, the setup assistant runs again with your name and language
+filled in. Your files, apps and users are kept; the setup assistant keeps your home folder even if you change the name.
+
+**Erase Nexvyn OS** (in the same place) deletes the whole `sdmc:/NexvynOS` folder, as if Nexvyn OS had just been
+downloaded, and Nexvyn OS restarts into the setup assistant. Games, save data, Atmosphère, other homebrew and the
+`NexvynOS.nro` file are not touched.
 
 ### The desktop looks slower when idle
 

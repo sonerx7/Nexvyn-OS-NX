@@ -75,6 +75,14 @@ birlikte götürmez.
 - **Kısayollar:** Hızlı Arama için Ctrl+Boşluk, Pencere Görünümü için F3, Başlatıcı için F4, uygulamalar arasında
   Alt+Tab, masaüstleri arasında Ctrl+Sol/Sağ. Kumandada + uygulamaları, ZR aramayı açar; L ve R pencere değiştirir.
 
+### Tanıtım Turu
+
+Kurulumdan hemen sonra canlı bir tur sistemi **gerçek masaüstünüzde** gösterir: yerine oturan pencereler, iki masaüstü
+düzeni, Quick Search, Studio'da 20 saniyede yazılıp çalıştırılan bir uygulama, üç dokunuşla yapılan bir oyun. Her adımda
+*Göster* ve *Ben deneyeyim* vardır. İstediğiniz zaman **Yardım > Tanıtım Turu** ile tekrar izleyebilirsiniz.
+
+<p align="center"><img src=".github/assets/welcome-tour.jpg" width="80%" alt="Tanıtım Turu"></p>
+
 ## Nexvyn OS Studio — uygulamaları konsolda geliştirin
 
 Doğrudan Switch üzerinde çalışan eksiksiz bir kod stüdyosu. Uygulamanızı yazın, **Çalıştır**'a basın; uygulama kodun
@@ -129,6 +137,13 @@ değişiklik hemen görünür. Bilgisayar yok, derleme adımı yok.
 - Ayrıca: **Kamera** (Joy-Con'un IR kamerası), **Hava Durumu**, **Haritalar**, **Haberler**, **Döviz** ve **Sözlük**.
 
 <p align="center"><img src=".github/assets/photos.jpg" width="80%" alt="Fotoğraflar"></p>
+
+### Oyun Kitaplığı
+
+Kurulu Switch oyunlarınız kapakları, oynama süreleri ve Albüm görüntüleriyle; tek dokunuşla başlatılır (title modu).
+Steam ve PC Kitaplığı ile PC oyunlarınız da burada. *(Emülatörde kurulu oyun olmadığı için burada demo modunda.)*
+
+<p align="center"><img src=".github/assets/game-library.jpg" width="80%" alt="Oyun Kitaplığı"></p>
 
 ## Verimlilik
 

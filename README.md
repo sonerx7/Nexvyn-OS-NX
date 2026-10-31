@@ -69,6 +69,14 @@ Virtual desktops switch with a 3D cube, and a crashing app never takes the syste
 - **Shortcuts:** Ctrl+Space for Quick Search, F3 for Window Overview, F4 for the Launcher, Alt+Tab to switch apps,
   Ctrl+Left/Right for desktops. With a controller, + opens the apps, ZR opens search, L and R switch windows.
 
+### Welcome Tour
+
+Right after setup, a live tour shows the system **on your real desktop**: windows snapping into place, both layouts,
+Quick Search, an app built and run in Studio in 20 seconds, a game made in three taps. Every step has *Show me* and
+*Let me try*. Replay it any time from **Help > Take the Tour**.
+
+<p align="center"><img src=".github/assets/welcome-tour.jpg" width="80%" alt="Welcome Tour"></p>
+
 ## Nexvyn OS Studio — build apps on the console
 
 A complete code studio that runs on the Switch itself. Write an app, press **Run** and it opens in its own window next to
@@ -122,6 +130,13 @@ no build step.
 - Also: **Camera** (the Joy-Con IR camera), **Weather**, **Maps**, **News**, **Currency** and **Dictionary**.
 
 <p align="center"><img src=".github/assets/photos.jpg" width="80%" alt="Photos"></p>
+
+### Game Library
+
+Your installed Switch games with covers, play time and Album captures, launched with one tap (title mode), plus your
+PC games through Steam and the PC Library. *(Shown here in demo mode, as the emulator has no installed titles.)*
+
+<p align="center"><img src=".github/assets/game-library.jpg" width="80%" alt="Game Library"></p>
 
 ## Productivity
 
