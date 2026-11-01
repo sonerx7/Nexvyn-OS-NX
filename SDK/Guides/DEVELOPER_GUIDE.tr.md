@@ -198,7 +198,7 @@ kayıt ve hata ayıklama katmanı içerir.
 ### Oyun Motoru projeleri
 
 **Oyun Motoru** (`gamemaker`) aynı motorun üstünde çalışan, kod yazmadan oyun yapan bir uygulamadır. Projeler
-`~/Documents/Oyunlarım/<ad>/project.json` dosyasıdır (`"format": "nexvyn-workshop"`): ayarlar, değişkenler, olay kuralları
+`~/Documents/Game Workshop/<ad>/project.json` dosyasıdır (`"format": "nexvyn-workshop"`): ayarlar, değişkenler, olay kuralları
 (`on` / `if` / `do`), bölümler (2D'de karo dizgeleri ve nesneler, 3D'de zemin ve nesneler), kendi çizimler, modeller,
 sesler ve katmanlar.
 

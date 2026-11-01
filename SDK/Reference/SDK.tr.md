@@ -378,7 +378,8 @@ cümlesini de). C: `sys_speak(text, lang)` (`lang` `NULL` olabilir), `sys_stopSp
 `"noise"` → kanal · `audio.play(nameOrPath[, volume[, loops]])` sistem sesleri `"click"`,`"pop"`,`"notify"`,
 `"alarm"`,`"trash"`,`"shutter"`,`"error"`,`"key"`,`"volume"`,`"startup"` ya da bir `.wav/.ogg/.mp3` dosyası
 (`loops = -1` tekrarlar) → kanal · `audio.stop(channel)` · `audio.music(path)` bir şarkıyı akışla çalar ·
-`audio.musicPause(true|false)` · `audio.musicStop()`.
+`audio.musicPause(true|false)` · `audio.musicStop()`. Her ses, nota ve şarkı onu başlatan uygulamanındır: penceresi
+kapanınca (ya da crash olunca) hepsi durur; `stop` / `musicPause` / `musicStop` yalnızca uygulamanın kendi seslerine dokunur.
 
 `timer.after(seconds, fn)` → id · `timer.every(seconds, fn)` → id · `timer.cancel(id)`.
 
@@ -494,7 +495,7 @@ ivme), `gx, gy, gz` (rad/s cinsinden açısal hız), `pitch, roll, yaw` (radyan 
 
 Voxel sandbox oyunları için native çalışan bir blok dünyası motoru: oyun mantığı JavaScript'te kalır; ağır iş
 (üretim, ışık, mesh'ler, dosya işlemleri) iki arka plan thread'inde yapılır ve dünya GPU yolunda bir texture atlas
-shader'ıyla çizilir. `"minSdk": "1.7"` yazın. *Blok Diyarı / BlockLands* oyunu bunun üzerine kuruludur. Tam API
+shader'ıyla çizilir. `"minSdk": "1.7"` yazın. *BlockCraft* oyunu bunun üzerine kuruludur. Tam API
 tablosu İngilizce belgededir (`sdk/SDK.en.md`, *Voxel worlds*); özet:
 
 - `g3d.voxels({atlas, tiles, height, generator, seed, sea, flatY, blocks, save, threads})` → world. `generator`:

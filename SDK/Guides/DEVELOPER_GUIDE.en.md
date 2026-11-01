@@ -201,7 +201,7 @@ Do not forget `"gamepad": true` and `"minSdk": "1.2"` in `app.json`.
 ### Game Engine projects
 
 **Game Engine** (`gamemaker`, formerly Game Workshop) is an app that runs on top of the same engine and makes games
-without writing code. Projects are `~/Documents/Oyunlarım/<name>/project.json` files (`"format": "nexvyn-workshop"`):
+without writing code. Projects are `~/Documents/Game Workshop/<name>/project.json` files (`"format": "nexvyn-workshop"`):
 settings, variables, event rules (`on` / `if` / `do`), levels (tile strings and objects in 2D, ground and objects in
 3D), your own drawings, models, sounds and layers.
 

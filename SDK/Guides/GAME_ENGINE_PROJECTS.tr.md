@@ -13,7 +13,7 @@ kimliği (`gamemaker`), proje biçimi ve `Oyunlarım` klasörü değişmedi; esk
 - **Ana ekran:** ilk kart **Oyun sihirbazı**, ardından "Yeni oyun yap" resim kartları (Platform, Orman Macerası,
   Labirent, Anahtar Bulmacası, Uzay, Elma Yarışı, Meteor Yağmuru, Hazine Avı, Yarış 3D, Koşucu 3D, Top Toplama 3D,
   Boş 2D, Boş 3D), "Oyunlarım" ve "Örnek oyunlar" (Kedi Macerası, Penguen Macerası, Yıldız Avcısı, Altın Ada, Robot
-  Koşusu). Örnekler salt okunurdur; ilk değişiklikte `Oyunlarım` klasörüne kopyalanır. Oyunlarım kartlarındaki yeşil
+  Koşusu). Örnekler salt okunurdur; ilk değişiklikte `Game Workshop` klasörüne kopyalanır. Oyunlarım kartlarındaki yeşil
   ▶ düğmesi oyunu tek dokunuşla açıp başlatır. Bir oyuna uzun basmak (ya da X / sağ tık) Aç, Adını değiştir,
   Kopyasını yap, Çöp kutusuna at menüsünü açar.
 - **Oyun sihirbazı:** üç adım. 1) Tür: Platform, Macera (üstten), Uzay savaşı, Bulmaca, Yarış 3D, Koşucu 3D. 2) Dünya
@@ -186,7 +186,7 @@ screen. **Advanced** mode adds a numeric inspector, layers, behaviour parameters
 (events → conditions → actions, variables, timers), Studio's pixel sprite and tilemap editors, sounds, generated
 Lua ("turn into code") and per-object Lua scripts.
 
-Projects live in `~/Documents/Oyunlarım/<name>/project.json` (format above). `<name>`, oyunun adının düz harflerle
+Projects live in `~/Documents/Game Workshop/<name>/project.json` (format above). `<name>`, oyunun adının düz harflerle
 yazılışıdır (`Yarış` → `Yaris`: konsolun FAT sürücüsü UTF-8 adların bir kısmını Shift-JIS olarak okur, bazı adları
 listeleyemez ya da açamaz); project.json'daki ad her harfiyle kalır, içteki dosyaların adları değişmez. Games are not code-generated: the
 `nexvyn.workshop` Lua runtime (on `nexvyn.game`; `nexvyn.workshop3d` for 3D on `g3d`) interprets the project JSON, and

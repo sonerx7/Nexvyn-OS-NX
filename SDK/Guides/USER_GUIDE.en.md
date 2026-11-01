@@ -810,7 +810,7 @@ Apps and in the Start menu, next to Studio.
 - **Make a new game:** or pick a picture card (Platformer, Forest Adventure, Maze, Key Puzzle, Space, Racing 3D,
   Runner 3D, Ball Collecting 3D, Empty 2D, Empty 3D and others). **Sample games** (Cat Adventure, Penguin Adventure,
   Star Hunter, Golden Island, Robot Run) can be opened and changed; on the first change they are copied to My Games.
-  Your games live in the `Documents/Oyunlarım` (My Games) folder; the green ▶ on their cards starts a game with one
+  Your games live in the `Documents/Game Workshop` folder (before 1.1.1: `Oyunlarım`); the green ▶ on their cards starts a game with one
   tap.
 - **Guided tour:** on the first start a short tour introduces the parts of the screen; watch it again with the **Help**
   button.

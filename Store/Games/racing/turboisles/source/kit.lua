@@ -148,7 +148,27 @@ local function updateMusic()
 end
 
 -- ---------------------------------------------------------------- sound effects
+-- Channels of recent effects are kept, so K.stopAll() can silence everything at once (quit, window close, HOME).
 local sfx, lastPlay = {}, {}
+local chans, chanN = {}, 0
+local function keep(ch)
+  if ch and ch >= 0 then
+    chanN = chanN % 40 + 1
+    chans[chanN] = ch
+  end
+  return ch
+end
+-- K.play(path, vol): a one-shot sound file whose channel is tracked
+function K.play(path, vol)
+  if A.muted or P.sfx <= 0 then return end
+  return keep(audio.play(path, min(1, vol or 1)))
+end
+function K.stopSounds()
+  for i, c in pairs(chans) do
+    audio.stop(c)
+    chans[i] = nil
+  end
+end
 function K.sound(name, files, vol, gap)
   sfx[name] = {files = type(files) == "table" and files or {files}, vol = vol or 1, gap = gap or 0.035}
 end
@@ -160,7 +180,7 @@ function K.sfx(name, vol)
   if now - (lastPlay[name] or -1) < s.gap then return end
   lastPlay[name] = now
   local n = #s.files
-  return audio.play(s.files[n == 1 and 1 or math.random(n)], min(1, s.vol * (vol or 1) * P.sfx))
+  return keep(audio.play(s.files[n == 1 and 1 or math.random(n)], min(1, s.vol * (vol or 1) * P.sfx)))
 end
 -- the engine's menu sounds ("select", "confirm") and effects go through K.sfx when the game defines them
 local enginePlay = A.play
@@ -512,7 +532,7 @@ function Pause:enter()
       K.go(game.config.title)
     end}
   end
-  items[#items + 1] = {label = TR("k_quit"), icon = "logout", action = function() K.stopAudio(); sys.exit() end}
+  items[#items + 1] = {label = TR("k_quit"), icon = "logout", action = function() K.quit() end}
   self.menu = K.menu{items = items, width = 230, itemHeight = 30, size = 13, onBack = function() game.resume() end}
 end
 function Pause:draw()
@@ -534,7 +554,18 @@ function K.go(scene, params, kind, sec)
   game.switch(scene, params, {transition = kind or "fade", fade = sec or 0.3, color = K.dark})
 end
 
-function K.stopAudio() stopMusic() end
+-- silence: the music, every tracked effect and any streamed song
+function K.stopAll()
+  stopMusic()
+  K.stopSounds()
+  if audio.musicStop then pcall(audio.musicStop) end
+end
+K.stopAudio = K.stopAll
+-- quit the game: stop all sound first, then close the window
+function K.quit()
+  K.stopAll()
+  sys.exit()
+end
 
 -- ---------------------------------------------------------------- run
 -- K.run(cfg): game.run plus the kit: cfg.accent, cfg.dark, cfg.settings (extra rows), cfg.difficulty = false,
@@ -569,13 +600,13 @@ function K.run(cfg)
     elseif t == "mousedown" and e.touch then K.device = "touch" end
     return event(e)
   end
-  function app.suspend() suspended = true; stopMusic(); store.save() end
+  function app.suspend() suspended = true; K.stopAll(); store.save() end
   function app.resume() suspended = false end
   function app.focus(f) if not f then stopMusic() end end
   function app.autosave() store.save() end
   function app.close()
     local r = close()
-    if r ~= false then stopMusic() end
+    if r ~= false then K.stopAll() end
     return r
   end
   return app

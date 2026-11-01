@@ -6,4 +6,4 @@
 |---|---|---|---|
 | <img src="maze3d/icon.png" width="32"> | [3D Maze](maze3d/) | 1.1.0 | Find the glowing exit of ten labyrinths |
 | <img src="racer/icon.png" width="32"> | [Racer](racer/) | 1.1.0 | Three-lap 3D races against AI rivals |
-| <img src="turboisles/icon.png" width="32"> | [Turbo Isles](turboisles/) | 1.0.0 | 3D island racing: drift, boost, win cups |
+| <img src="turboisles/icon.png" width="32"> | [Turbo Isles](turboisles/) | 1.1.0 | 3D island racing: drift, boost, win cups |

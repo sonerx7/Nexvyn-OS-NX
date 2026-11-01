@@ -813,7 +813,7 @@ menüsünde Studio'nun yanında, **Geliştirici** grubundadır.
 - **Yeni oyun yap:** ya da bir resim kartı seçin (Platform, Orman Macerası, Labirent, Anahtar Bulmacası, Uzay, Yarış
   3D, Koşucu 3D, Top Toplama 3D, Boş 2D, Boş 3D ve diğerleri). **Örnek oyunlar** (Kedi Macerası, Penguen Macerası,
   Yıldız Avcısı, Altın Ada, Robot Koşusu) açılıp değiştirilebilir; ilk değişiklikte Oyunlarım'a kopyalanır. Oyunlarınız
-  `Belgeler/Oyunlarım` klasöründe durur; kartlarındaki yeşil ▶ oyunu tek dokunuşla başlatır.
+  `Belgeler/Game Workshop` klasöründe durur; kartlarındaki yeşil ▶ oyunu tek dokunuşla başlatır.
 - **Rehberli tur:** ilk açılışta kısa bir tur ekranın parçalarını tanıtır; **Yardım** düğmesiyle yeniden izlenir.
 - **Geçmiş:** araç çubuğundaki Geçmiş düğmesi son değişiklikleri saatleriyle listeler; birine dokununca o andan beri
   yapılan her şey geri alınır. Oyun kendiliğinden kaydedilir (başlığın altında "Kaydedildi").

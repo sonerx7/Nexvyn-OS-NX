@@ -401,7 +401,8 @@ end)
 `"noise"` → channel · `audio.play(nameOrPath[, volume[, loops]])` system sounds `"click"`,`"pop"`,`"notify"`,
 `"alarm"`,`"trash"`,`"shutter"`,`"error"`,`"key"`,`"volume"`,`"startup"` or a `.wav/.ogg/.mp3` file
 (`loops = -1` repeats) → channel · `audio.stop(channel)` · `audio.music(path)` stream a song ·
-`audio.musicPause(true|false)` · `audio.musicStop()`.
+`audio.musicPause(true|false)` · `audio.musicStop()`. Every sound, note and song belongs to the app that started it:
+closing its window (or a crash) stops them all, and `stop` / `musicPause` / `musicStop` only touch the app's own.
 
 `timer.after(seconds, fn)` → id · `timer.every(seconds, fn)` → id · `timer.cancel(id)`.
 
@@ -515,7 +516,7 @@ Motion controls: `input.motion()` → `ax, ay, az` (acceleration in G), `gx, gy,
 
 A block world engine for voxel sandbox games, running natively: the app keeps the game logic in JavaScript, the
 heavy work (generation, light, meshes, file I/O) runs on two background threads, and the world is drawn by the GPU
-path with a texture atlas shader. Set `"minSdk": "1.7"`. The block game *Blok Diyarı / BlockLands* is built on it.
+path with a texture atlas shader. Set `"minSdk": "1.7"`. The block game *BlockCraft* is built on it.
 
 ```js
 const world = g3d.voxels({

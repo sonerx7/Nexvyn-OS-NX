@@ -8045,20 +8045,19 @@
         "zh": "以全 3D 驰骋三座海岛赛道：阳光明媚的棕榈湾、霓虹闪烁的霓虹港之夜，以及余烬山脊的峡谷飞跃。在弯道中保持漂移，直到火花变成蓝、橙、紫，再松开获得小加速。漂移会积累氮气，直道上有加速板，完美起步还能触发火箭起步。\n\n• 大奖赛：两个杯赛，各三场，对阵五名 AI 对手，含积分、奖杯与解锁内容\n• 快速比赛：自选赛道、圈数和对手数量，另有镜像模式\n• 计时赛：挑战你最快单圈的幽灵车\n• 三辆赛车，速度、加速和抓地力各不相同\n• 粒子特效、镜头震动、HD 震动和原创合成器配乐\n• 支持手柄、键盘、触控转向及陀螺仪体感转向",
         "ko": "풀 3D로 세 개의 섬 서킷을 질주하세요. 햇살 가득한 팜 베이, 네온이 빛나는 밤의 네온 하버, 협곡을 뛰어넘는 엠버 리지. 코너에서 드리프트를 유지하면 불꽃이 파랑, 주황, 보라로 바뀌고, 떼면 미니 터보가 터집니다. 드리프트로 니트로가 차고, 직선에는 부스트 패드, 완벽한 출발은 로켓 스타트.\n\n• 그랑프리: AI 라이벌 다섯 명과 세 레이스씩 겨루는 두 개의 컵, 포인트·트로피·해제 요소\n• 트랙, 랩 수, 라이벌 수를 고르는 빠른 레이스와 미러 모드\n• 최고 랩 고스트와 겨루는 타임 트라이얼\n• 속도, 가속, 접지력이 다른 세 대의 차량\n• 파티클, 카메라 흔들림, HD 진동, 오리지널 신스 사운드트랙\n• 컨트롤러, 키보드, 터치 조향, 자이로 기울기 조향 지원"
       },
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/turboisles.nxvapp",
-      "size": 955217,
-      "sha256": "73a14fbae210cad7e3fc1154992768086a2f835fcbfe1bc35ce3cdb4eb38f42d",
+      "size": 2290873,
+      "sha256": "08a03deed386ec8527a653d7f235ffb6078e2f7c713be4595261b8a82f5c02b3",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/screenshots/3.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/screenshots/4.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -8074,9 +8073,23 @@
         "zh": "3D 海岛赛车：漂移、加速、赢取奖杯",
         "ko": "3D 섬 레이싱: 드리프트와 컵"
       },
+      "changelog": {
+        "en": "1.1.0: Real textures everywhere: asphalt with lane markings, red and white kerbs, grass, sand, sea, rock, palms, buildings, a cloudy sky panorama and liveried cars with numbers. Arcade contacts: bumping a car or a wall now nudges you aside and costs a little speed, it no longer spins you round; stuck cars are put back on the road. Smarter rivals that overtake instead of piling up. Finer stick steering, a calmer camera, a clearer HUD, and the music and engine stop the moment you quit.",
+        "tr": "1.1.0: Her yerde gerçek dokular: şerit çizgili asfalt, kırmızı-beyaz bordürler, çim, kum, deniz, kaya, palmiyeler, binalar, bulutlu gökyüzü panoraması ve numaralı, desenli arabalar. Atari tarzı çarpışmalar: bir arabaya ya da duvara sürtünmek artık seni döndürmüyor, hafifçe yana itiyor ve biraz hız kaybettiriyor; sıkışan arabalar yola geri konuyor. Üst üste yığılmak yerine sollayan daha akıllı rakipler. Daha hassas analog direksiyon, daha sakin kamera, daha okunaklı gösterge ve oyundan çıkınca müzik ile motor sesi anında susuyor.",
+        "de": "1.1.0: Echte Texturen überall: Asphalt mit Fahrbahnmarkierungen, rot-weiße Randsteine, Gras, Sand, Meer, Fels, Palmen, Gebäude, ein Himmelspanorama mit Wolken und Wagen mit Lackierung und Startnummer. Arcade-Kontakte: Ein Rempler gegen ein Auto oder eine Wand schiebt dich nur leicht zur Seite und kostet etwas Tempo, statt dich zu drehen; festgefahrene Wagen kommen zurück auf die Strecke. Klügere Rivalen, die überholen statt aufzufahren. Feinere Sticklenkung, eine ruhigere Kamera, eine klarere Anzeige, und Musik und Motor verstummen sofort beim Beenden.",
+        "fr": "1.1.0 : De vraies textures partout : asphalte avec marquage au sol, vibreurs rouges et blancs, herbe, sable, mer, roche, palmiers, bâtiments, un panorama de ciel nuageux et des voitures décorées et numérotées. Contacts arcade : toucher une voiture ou un mur vous décale légèrement et coûte un peu de vitesse au lieu de vous faire tourner ; les voitures bloquées sont remises sur la piste. Des rivaux plus malins qui dépassent au lieu de s’empiler. Direction au stick plus fine, caméra plus calme, interface plus lisible, et la musique et le moteur s’arrêtent dès que vous quittez.",
+        "es": "1.1.0: Texturas reales en todas partes: asfalto con marcas viales, pianos rojos y blancos, césped, arena, mar, roca, palmeras, edificios, un panorama de cielo con nubes y coches decorados con número. Contactos arcade: rozar un coche o un muro ahora te aparta un poco y te quita algo de velocidad, ya no te hace trompear; los coches atascados vuelven a la pista. Rivales más listos que adelantan en vez de amontonarse. Dirección con el stick más fina, cámara más tranquila, interfaz más clara, y la música y el motor se detienen al salir.",
+        "ja": "1.1.0：すべてにリアルなテクスチャ。車線のあるアスファルト、赤白の縁石、芝生、砂浜、海、岩、ヤシの木、ビル、雲のある空のパノラマ、ゼッケン入りのカラーリングの車。アーケード風の接触：車や壁に当たってもスピンせず、少し横に押されて少し減速するだけ。動けなくなった車はコースに戻ります。団子にならずに追い抜く賢いライバル。より細かなスティック操作、落ち着いたカメラ、見やすい HUD。終了するとすぐに音楽とエンジン音が止まります。",
+        "zh": "1.1.0：处处都是真实纹理：带车道线的沥青、红白路肩、草地、沙滩、海水、岩石、棕榈树、建筑、带云的天空全景，以及带涂装和号码的赛车。街机式碰撞：撞到赛车或墙壁不再让你打转，只会把你轻轻推开并损失一点速度；卡住的赛车会被放回赛道。对手更聪明，会超车而不是挤成一团。摇杆转向更细腻，镜头更平稳，界面更清晰，退出时音乐和引擎声立即停止。",
+        "ko": "1.1.0: 모든 곳에 실제 텍스처: 차선이 그려진 아스팔트, 빨강·하양 연석, 잔디, 모래, 바다, 바위, 야자수, 건물, 구름 낀 하늘 파노라마, 번호와 도색이 들어간 차량. 아케이드식 접촉: 차나 벽에 부딪혀도 더 이상 스핀하지 않고 옆으로 살짝 밀리며 속도가 조금 줄어듭니다. 끼어 버린 차는 트랙으로 돌아옵니다. 뭉치지 않고 추월하는 더 똑똑한 라이벌. 더 섬세한 스틱 조향, 차분한 카메라, 읽기 쉬운 HUD, 게임을 끝내면 음악과 엔진 소리가 바로 멈춥니다."
+      },
       "added": "2026-11-01",
-      "updated": "2026-11-01",
+      "updated": "2026-11-02",
       "history": [
+        {
+          "version": "1.1.0",
+          "date": "2026-11-02"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-01"

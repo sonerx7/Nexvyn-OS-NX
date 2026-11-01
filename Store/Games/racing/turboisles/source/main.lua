@@ -31,8 +31,17 @@ K.sound("final", "bundle:/sfx/final.wav", 0.8)
 K.sound("finish", "bundle:/sfx/finish.wav", 0.9)
 K.sound("drift", "bundle:/sfx/drift.wav", 0.5, 0.2)
 
--- the engine: short overlapping notes from eight recorded pitches
+-- the engine: short overlapping notes from eight recorded pitches (K.play keeps the channels, so leaving the race
+-- or quitting stops them at once)
 local engineT, skidT = 0, 0
+local engCh, engN = {}, 0
+local function engPlay(path, vol)
+  local ch = K.play(path, vol)
+  if ch then engN = engN % 8 + 1; engCh[engN] = ch end
+end
+local function stopEngine()
+  for i, ch in pairs(engCh) do audio.stop(ch); engCh[i] = nil end
+end
 local function engineSound(car, dt, on)
   if not on or A.muted or K.P.sfx <= 0 then return end
   engineT = engineT - dt
@@ -40,12 +49,12 @@ local function engineSound(car, dt, on)
     engineT = 0.1
     local r = min(1, abs(car.v) / (C.TOP * 1.25) + car.boostK * 0.15)
     local k = 1 + floor(r * 7.99)
-    audio.play("bundle:/sfx/engine" .. k .. ".wav", (0.16 + 0.14 * r) * K.P.sfx)
+    engPlay("bundle:/sfx/engine" .. k .. ".wav", (0.16 + 0.14 * r) * K.P.sfx)
   end
   skidT = skidT - dt
   if (car.drift or (car.skid > 0.25 and abs(car.v) > 15)) and skidT <= 0 then
     skidT = 0.13
-    audio.play("bundle:/sfx/skid.wav", 0.18 * K.P.sfx)
+    engPlay("bundle:/sfx/skid.wav", 0.18 * K.P.sfx)
   end
 end
 
@@ -129,6 +138,7 @@ local TIERCOL = {[0] = "#FFFFFF", "#5CC8FF", "#FFB020", "#D46BFF"}
 -- ---------------------------------------------------------------- the 3D view
 local flame
 local function drawCar(car, alpha)
+  if car.recoverT and floor(car.recoverT * 12) % 2 == 0 then return end
   local m = car.meshes
   local tint = alpha and ("#FFFFFF" .. alpha) or nil
   g3d.draw(m.body, car.x, car.y, car.z, car.roll, -car.a, car.pitch, 1, 1, 1, tint)
@@ -149,11 +159,27 @@ local function drawWorld(tr, cam, cars, ghost)
   local th = tr.th
   g3d.begin(0, 0, W, H, cam.fov or 62, 0.4, th.fogFar + 120)
   g3d.camera(cam.x, cam.y, cam.z, cam.tx, cam.ty, cam.tz)
-  gfx.gradient(0, 0, W, H, th.sky1, th.sky2)
-  -- sun (or moon) and far islands, projected far away
   local fx, fz = cam.tx - cam.x, cam.tz - cam.z
   local fl = sqrt(fx * fx + fz * fz) + 1e-6
   fx, fz = fx / fl, fz / fl
+  local hx, hy = g3d.project(cam.x + fx * 3000, cam.y, cam.z + fz * 3000)
+  local horizon = hy and max(-10, min(H + 10, hy)) or H * 0.5
+  -- sky: a panorama of 90 degrees per image (clouds, stars and the far islands baked in), or a gradient
+  if tr.sky then
+    local img = tr.sky
+    local hf = 2 * atan(math.tan(math.rad(cam.fov or 62) / 2) * W / H)
+    local pw = W * (pi / 2) / hf
+    local ph = pw * img.height / img.width
+    local top = horizon - ph * 0.75
+    local x0 = (-atan(fz, fx) / (pi / 2) * pw) % pw - pw
+    if top > 0 then gfx.rect(0, 0, W, top + 1, 0, th.sky1) end
+    gfx.color("#FFFFFF")
+    for x = x0, W, pw do gfx.draw(img, x, top, pw + 1, ph) end
+    gfx.rect(0, top + ph - 1, W, H, 0, th.fog)
+  else
+    gfx.gradient(0, 0, W, H, th.sky1, th.sky2)
+  end
+  -- sun (or moon) and, without textures, far islands projected far away
   local sd = th.sun
   local sx, sy = g3d.project(cam.x + sd[1] * 3000, cam.y + sd[2] * 1300, cam.z + sd[3] * 3000)
   if sx and (sd[1] * fx + sd[3] * fz) > 0 then
@@ -164,8 +190,6 @@ local function drawWorld(tr, cam, cars, ghost)
     gfx.color(th.sunCol)
     gfx.circle(sx, sy, H * 0.045)
   end
-  local hx, hy = g3d.project(cam.x + fx * 3000, cam.y, cam.z + fz * 3000)
-  local horizon = hy and max(-10, min(H + 10, hy)) or H * 0.5
   for _, isle in ipairs(tr.isles) do
     local ca, sa = cos(isle.az), sin(isle.az)
     if ca * fx + sa * fz > 0.15 then
@@ -176,19 +200,29 @@ local function drawWorld(tr, cam, cars, ghost)
       if x1 and x2 and x3 then gfx.poly({x1, y1, x2, y2, x3, y3}, isle.col) end
     end
   end
-  gfx.color(th.fog)
-  gfx.rect(0, horizon, W, H - horizon + 4)
+  if not tr.sky then
+    gfx.color(th.fog)
+    gfx.rect(0, horizon, W, H - horizon + 4)
+  end
   g3d.light(sd[1], sd[2], sd[3], th.amb)
   g3d.fog(th.fog, th.fogNear, th.fogFar)
-  g3d.draw(tr.water, tr.cx, -3.6, tr.cz)
+  -- the sea follows the camera in steps of one texture repeat and drifts slowly
+  local WT = T.WATER
+  local drift = th.night ~= nil or tr.def.theme == "bay"
+  local wx = floor(cam.x / WT) * WT + (drift and (game.time * 0.9) % WT or 0)
+  local wz = floor(cam.z / WT) * WT + (drift and (game.time * 0.55) % WT or 0)
+  g3d.draw(tr.water, wx, -3.6, wz)
   local far = th.fogFar + 70
   local glows = {}
   local drawn = 0
   for _, ch in ipairs(tr.chunks) do
     local dx, dz = ch.x - cam.x, ch.z - cam.z
     local d2 = dx * dx + dz * dz
-    if d2 < far * far and (dx * fx + dz * fz > -60 or d2 < 3600) then
-      if ch.mesh then g3d.draw(ch.mesh) end
+    if d2 < far * far and (dx * fx + dz * fz > -70 or d2 < 4900) then
+      if ch.ground then g3d.draw(ch.ground) end
+      if ch.road then g3d.draw(ch.road) end
+      if ch.props then g3d.draw(ch.props) end
+      if ch.unlit then g3d.draw(ch.unlit, 0, 0, 0, 0, 0, 0, 1, 1, 1, nil, "unlit") end
       if ch.glow then glows[#glows + 1] = ch.glow end
       drawn = drawn + 1
     end
@@ -227,7 +261,7 @@ local function chase(cam, car, dt, mode, snap)
   cam.x, cam.y, cam.z = cam.x + (ex - cam.x) * k, cam.y + (ey - cam.y) * k, cam.z + (ez - cam.z) * k
   cam.tx, cam.ty, cam.tz = tx, ty, tz
   local sp = min(1, abs(car.v) / C.TOP)
-  local fov = 58 + 12 * sp + 10 * car.boostK
+  local fov = 60 + 9 * sp + 7 * car.boostK
   cam.fov = cam.fov + (fov - cam.fov) * min(1, dt * 4)
   if cam.shake > 0 then
     local s = cam.shake * K.shakeScale()
@@ -330,7 +364,7 @@ function Title:enter()
         {icon = "touch_app", text = TR("help_touch")}, {icon = "screen_rotation", text = TR("help_gyro")},
       }})
     end},
-    {label = TR("k_quit"), icon = "logout", action = function() K.stopAudio(); sys.exit() end},
+    {label = TR("k_quit"), icon = "logout", action = function() K.quit() end},
   }
   self.menu = K.menu{items = items, width = 200, itemHeight = 28, size = 12, accent = "#FF5A36"}
 end
@@ -508,6 +542,9 @@ end
 local POINTS = {10, 8, 6, 5, 4, 3}
 function Race:enter(p)
   self.p = p
+  -- building the track and uploading its textures can hold up the first frames; the engine would read that pause in
+  -- drawing as a lost focus and open the pause menu, so the race is not pausable until the lights go out
+  Race.pausable = false
   K.music("race")
   K.clearTips()
   P.n = 0
@@ -515,7 +552,7 @@ function Race:enter(p)
   self.tr = tr
   self.cars = {}
   local n = p.rivals
-  local diffK = K.pick(0.88, 0.95, 1.02) + (p.mirror and 0.03 or 0) + (GP and GP.cup == 2 and 0.02 or 0)
+  local diffK = K.pick(0.86, 0.95, 1.03) + (p.mirror and 0.03 or 0) + (GP and GP.cup == 2 and 0.02 or 0)
   for k = 0, n - 1 do
     local model = C.MODELS[k % 3 + 1]
     local car = C.new(tr, k, model, C.AI_COLORS[k % #C.AI_COLORS + 1],
@@ -566,12 +603,18 @@ function Race:pauseItems()
            right = function() camMode = camMode % 3 + 1; save:set("cam", camMode) end}}
 end
 function Race:leaveToMenu() GP = nil end
+-- leaving the race (menu, restart, results, quit): no engine or skid note may ring on
+function Race:leave()
+  stopEngine()
+  P.n = 0
+end
 
 function Race:readInput(dt)
   local inp = self.inp
   local lx = I.sticks()
   local s = 0
-  if abs(lx) > 0.1 then s = lx else s = I.axis("left", "right") end
+  -- a gentle response curve on the stick: fine corrections near the centre, full lock at the edge
+  if abs(lx) > 0.1 then s = (lx > 0 and 1 or -1) * ((abs(lx) - 0.1) / 0.9) ^ 1.35 else s = I.axis("left", "right") end
   local touching = I.touch.stick.active
   if touching then s = I.touch.stick.vx * 1.2 end
   if GYRO then
@@ -608,6 +651,10 @@ end
 
 function Race:update(dt)
   self.t = self.t + dt
+  if Race.pausable == false then
+    if not game.focused then game.focused = true end
+    if self.state == "race" and self.t > 0.5 then Race.pausable = nil end
+  end
   local tr, player = self.tr, self.player
   for i = 1, #self.ev do self.ev[i] = nil end
   if self.bannerT > 0 then self.bannerT = self.bannerT - dt end
@@ -675,6 +722,9 @@ function Race:update(dt)
         else K.sfx("lap") end
       end
     end
+  end
+  for _, e in ipairs(self.ev) do
+    if e[1] == "recover" and e[2] == player then self:banner2(TR("recovered"), 1.2, "#7FD8FF") end
   end
   handleEvents(self.ev, player, self.cam)
   -- ghost recording and playback (time trial)
@@ -883,7 +933,8 @@ function Race:drawHUD()
     K.prompts({{"confirm", TR("skip")}}, W / 2, H - 30, 10)
     return
   end
-  -- position and lap
+  -- position and lap over a soft panel
+  G.rect(8, 6, 150, #self.cars > 1 and 104 or 60, 12, "#0A0E1A80")
   if #self.cars > 1 then
     U.text(tostring(player.place), 18, 10, 40, "#FFFFFF", "left", nil, "bold")
     U.text(ordinal(player.place) .. " / " .. #self.cars, 18 + G.textWidth(tostring(player.place), 40, "bold") + 4, 32, 13, "#FFFFFFC0", "left", nil, "bold")

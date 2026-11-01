@@ -13,7 +13,7 @@ project format and the `Oyunlarım` (My Games) folder did not change; old projec
 - **Home screen:** the first card is the **Game wizard**, followed by the "Make a new game" picture cards (Platformer,
   Forest Adventure, Maze, Key Puzzle, Space, Apple Race, Meteor Shower, Treasure Hunt, Racing 3D, Runner 3D, Ball
   Collecting 3D, Empty 2D, Empty 3D), "My Games" and "Sample games" (Cat Adventure, Penguin Adventure, Star Hunter,
-  Golden Island, Robot Run). The samples are read-only; on the first change they are copied into the `Oyunlarım`
+  Golden Island, Robot Run). The samples are read-only; on the first change they are copied into the `Game Workshop`
   folder. The green ▶ button on My Games cards opens and starts a game with one tap. A long press on a game (or X /
   right click) opens a menu with Open, Rename, Duplicate, Move to Trash.
 - **Game wizard:** three steps. 1) Genre: Platformer, Adventure (top-down), Space battle, Puzzle, Racing 3D, Runner 3D.
@@ -188,7 +188,7 @@ screen. **Advanced** mode adds a numeric inspector, layers, behaviour parameters
 (events → conditions → actions, variables, timers), Studio's pixel sprite and tilemap editors, sounds, generated
 Lua ("turn into code") and per-object Lua scripts.
 
-Projects live in `~/Documents/Oyunlarım/<name>/project.json` (format above). `<name>` is the title in plain letters
+Projects live in `~/Documents/Game Workshop/<name>/project.json` (format above). `<name>` is the title in plain letters
 (`Yarış` → `Yaris`: the console's FAT driver reads parts of UTF-8 names as Shift-JIS and can not list or reach some of
 them); the title in project.json keeps every letter and the files inside keep their names exactly. Games are not code-generated: the
 `nexvyn.workshop` Lua runtime (on `nexvyn.game`; `nexvyn.workshop3d` for 3D on `g3d`) interprets the project JSON, and
