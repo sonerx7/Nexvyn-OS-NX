@@ -141,6 +141,8 @@ Instead of generating code, the project JSON is interpreted directly (`nexvyn.wo
 
 - `ws.run{project = "bundle:/project.json", test = true|false}` returns the `game.run` app table. `test = true` (Play
   in the editor) skips the title screen and shows the red Stop button.
+  The editor's play-test bundle wraps it in its `main.lua`: while the editor has the focus the game holds still (no
+  pause menu), and each new `step` number the editor writes to `control.json` advances it by one frame (Step).
 - 2D: the level becomes a `game.tilemap`; objects are a subclass of `game.Sprite` and join groups in `game.world`
   (`all`, `k:<kind>`, `player`, `enemy`, `item`, `goal`, `solid`, `body`). Behaviours add update functions and groups
   to the entity; collisions are set up with `world:collide` (event rules first, so a collected object also triggers

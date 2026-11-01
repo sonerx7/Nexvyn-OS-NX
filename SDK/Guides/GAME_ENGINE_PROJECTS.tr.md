@@ -139,6 +139,8 @@ Kod üretmek yerine proje JSON'u doğrudan yorumlanır (`nexvyn.workshop`):
 
 - `ws.run{project = "bundle:/project.json", test = true|false}` `game.run` uygulama tablosunu döndürür.
   `test = true` (editördeki Oyna) başlık ekranını atlar ve kırmızı Durdur düğmesini gösterir.
+  Editörün test bundle'ı bunu kendi `main.lua`'sında sarar: editör odaktayken oyun bekler (duraklatma menüsü
+  açılmaz), editörün `control.json` dosyasına yazdığı her yeni `step` sayısı oyunu bir kare ilerletir (Adım).
 - 2D: bölüm `game.tilemap` olur; nesneler `game.Sprite` alt sınıfıdır ve `game.world` içinde gruplara girer
   (`all`, `k:<kind>`, `player`, `enemy`, `item`, `goal`, `solid`, `body`). Davranışlar varlığa güncelleme
   fonksiyonları ve gruplar ekler; çarpışmalar `world:collide` ile kurulur (olay kuralları önce, böylece

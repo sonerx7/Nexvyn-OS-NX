@@ -167,6 +167,9 @@ Değişiklik hemen uygulanır.
 - Dock'ta uygulamalar büyütme efektiyle gösterilir; çalışan uygulamanın altında bir nokta vardır.
 - Bir uygulamaya sağ tıklayıp **Dock'ta Tut** ile sabitleyin.
 - **Sistem Ayarları > Masaüstü ve Dock**: Dock boyutu, büyütme, otomatik gizleme ve Dock'taki uygulamalar.
+  **Dock'u sıfırla** varsayılan uygulamaları, sıralarını, boyutu ve konumu geri getirir.
+- **Başlatıcı**, **Dosyalar** ve **Çöp Sepeti** Dock'ta hep kalır: Kaldır seçenekleri yoktur, Dock'tan sürükleyip
+  çıkarmak bir şey yapmaz (yerleri değişebilir).
 
 ### Görev çubuğu düzeni
 
@@ -554,7 +557,7 @@ ayarları adıyla bulur.
 
 | Ayar | Yeri | Açıklama |
 |---|---|---|
-| **Arayüz Boyutu** | Ekran | %100, %110, %125, %140 veya %150. Pencereleri, yazıları ve düğmeleri birlikte büyütür. El modunda dokunmatik için %125 veya %140 önerilir. Denetim Merkezi'nden de değiştirilebilir. |
+| **Arayüz Boyutu** | Ekran | %100, %110, %125, %140 veya %150. Pencereleri, yazıları ve düğmeleri birlikte büyütür. El modunda varsayılan %100'dür (720p piksel piksel; ekran çözünürlüğü değişmez, yalnızca arayüzün boyutu değişir); %125 veya %140 dokunmatikte daha rahattır. Denetim Merkezi'nden de değiştirilebilir. |
 | **Moda göre otomatik** | Ekran | El modu ve Dock modu (TV) için ayrı arayüz boyutu kullanır. Konsolu dock'a taktığınızda boyut kendiliğinden değişir. |
 | **Pencereleri tam boyutta aç**, **Oyunları tam ekranda aç** | Ekran | Bkz. [Açılış boyutu](#açılış-boyutu). |
 | **Gece Modu** | Ekran | Ekran renklerini sıcak tonlara kaydırır. "Şimdi aç" ya da "Zamanla" (başlangıç ve bitiş saati), renk sıcaklığı. Ekran görüntülerini etkilemez. |

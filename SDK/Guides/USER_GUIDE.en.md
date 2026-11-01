@@ -169,6 +169,9 @@ The change applies immediately.
 - The Dock shows apps with a magnification effect; a running app has a dot under it.
 - Right-click an app and pin it with **Keep in Dock**.
 - **System Settings > Desktop and Dock**: Dock size, magnification, automatic hiding and the apps in the Dock.
+  **Reset Dock** brings back the default apps, their order, the size and the position.
+- The **Launcher**, **Files** and **Trash** always stay in the Dock: they have no Remove and dragging them off the Dock
+  does nothing (they can still change places).
 
 ### Taskbar layout
 
@@ -552,7 +555,7 @@ Notable settings:
 
 | Setting | Where | Description |
 |---|---|---|
-| **Interface Size** | Display | 100%, 110%, 125%, 140% or 150%. Enlarges windows, text and buttons together. 125% or 140% is recommended for touch in handheld mode. Can also be changed from Control Center. |
+| **Interface Size** | Display | 100%, 110%, 125%, 140% or 150%. Enlarges windows, text and buttons together. Handheld mode starts at 100% (720p pixel for pixel; the screen resolution never changes, only the size of the interface); 125% or 140% is easier to touch. Can also be changed from Control Center. |
 | **Automatic by mode** | Display | Uses separate interface sizes for handheld mode and Dock mode (TV). The size changes by itself when you put the console in the dock. |
 | **Open windows at full size**, **Open games in full screen** | Display | See [Opening size](#opening-size). |
 | **Night Mode** | Display | Shifts the screen colors to warm tones. "Turn on now" or "Schedule" (start and end time), color temperature. Does not affect screenshots. |
