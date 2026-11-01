@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **153** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -134,7 +134,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **153** öğe. Konsoldaki 
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
 
-## Oyunlar (43)
+## Oyunlar (44)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -143,6 +143,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **153** öğe. Konsoldaki 
 | <img src="Games/racing/maze3d/icon.png" width="32"> | [3D Labirent](Games/racing/maze3d/) | On labirentte parlayan çıkışı bul |
 | <img src="Games/arcade/airhockey/icon.png" width="32"> | [Hava Hokeyi](Games/arcade/airhockey/) | Hızlı masa hokeyi, tek başına ya da ikili |
 | <img src="Games/strategy/aldmoor/icon.png" width="32"> | [Aldmoor Sancakları](Games/strategy/aldmoor/) | Sıra tabanlı taktik: sekiz savaşlık sefer |
+| <img src="Games/sandbox/blockcraft/icon.png" width="32"> | [BlockCraft](Games/sandbox/blockcraft/) | Blok dünyasında kaz, inşa et, hayatta kal |
 | <img src="Games/sports/bowling/icon.png" width="32"> | [Bowling](Games/sports/bowling/) | On pinli bowlingde on çerçeve |
 | <img src="Games/arcade/breakout/icon.png" width="32"> | [Tuğla Kır](Games/arcade/breakout/) | 15 bölüm, bombalar, lazer ve ateş topu |
 | <img src="Games/board/checkers/icon.png" width="32"> | [Dama](Games/board/checkers/) | Atla, taş al, damana kavuş |

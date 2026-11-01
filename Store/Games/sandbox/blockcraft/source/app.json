@@ -1,0 +1,42 @@
+{
+  "id": "com.sonerx7.blockcraft",
+  "name": {
+    "en": "BlockCraft",
+    "tr": "BlockCraft",
+    "de": "BlockCraft",
+    "fr": "BlockCraft",
+    "es": "BlockCraft",
+    "ja": "ブロッククラフト",
+    "zh": "BlockCraft",
+    "ko": "블록크래프트"
+  },
+  "description": {
+    "en": "An endless world of blocks: biomes, caves, villages, day and night, weather and animals. Mine, craft and build, and survive nights full of zombies, skeletons and glowing Puffcaps, or fly freely in Creative mode.",
+    "tr": "Bloklardan sonsuz bir dünya: biyomlar, mağaralar, köyler, gece ve gündüz, hava durumu ve hayvanlar. Kaz, üret, inşa et; zombiler, iskeletler ve parlayan Pufmantarlarla dolu gecelerden sağ çık ya da Yaratıcı modda özgürce uç.",
+    "de": "Eine endlose Welt aus Blöcken: Biome, Höhlen, Dörfer, Tag und Nacht, Wetter und Tiere. Baue ab, stelle her, baue und überlebe Nächte voller Zombies, Skelette und leuchtender Puffpilze oder flieg im Kreativmodus.",
+    "fr": "Un monde infini de blocs : biomes, grottes, villages, jour et nuit, météo et animaux. Minez, fabriquez, construisez et survivez à des nuits pleines de zombies, de squelettes et de Champoufs lumineux, ou volez librement en mode Créatif.",
+    "es": "Un mundo infinito de bloques: biomas, cuevas, aldeas, día y noche, clima y animales. Pica, fabrica, construye y sobrevive a noches llenas de zombis, esqueletos y Hongopufs brillantes, o vuela libre en modo Creativo.",
+    "ja": "ブロックでできた果てしない世界。バイオーム、洞窟、村、昼と夜、天気、動物たち。掘って作って建てて、ゾンビやスケルトン、光るパフキャップがうろつく夜を生き延びるか、クリエイティブモードで自由に飛び回ろう。",
+    "zh": "由方块构成的无尽世界：生物群系、洞穴、村庄、昼夜、天气和动物。挖掘、合成、建造，熬过满是僵尸、骷髅和发光喷孢菇的夜晚，或在创造模式中自由飞行。",
+    "ko": "블록으로 이루어진 끝없는 세계: 바이옴, 동굴, 마을, 낮과 밤, 날씨와 동물. 채굴하고 제작하고 건설하며 좀비, 스켈레톤, 빛나는 퍼프캡이 가득한 밤을 버티거나 크리에이티브 모드에서 자유롭게 날아 보세요."
+  },
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.js",
+  "runtime": "js",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "minWidth": 640,
+    "minHeight": 400,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "minSdk": "1.7",
+  "targetSdk": "1.7",
+  "permissions": []
+}

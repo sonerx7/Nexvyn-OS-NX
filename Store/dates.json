@@ -212,6 +212,17 @@
       }
     ]
   },
+  "com.sonerx7.blockcraft": {
+    "added": "2026-11-01",
+    "updated": "2026-11-01",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-01"
+      }
+    ]
+  },
   "com.sonerx7.blocks": {
     "added": "2026-10-29",
     "updated": "2026-11-01",

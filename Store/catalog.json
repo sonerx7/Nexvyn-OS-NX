@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 153,
+  "count": 154,
   "apps": [
     {
       "id": "aichat",
@@ -5739,6 +5739,67 @@
         "ja": "ターン制タクティクス全 8 戦",
         "zh": "回合制战术：八场战斗的战役",
         "ko": "턴제 전술: 여덟 전투 캠페인"
+      },
+      "added": "2026-11-01",
+      "updated": "2026-11-01",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-01"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.blockcraft",
+      "name": {
+        "en": "BlockCraft",
+        "tr": "BlockCraft",
+        "de": "BlockCraft",
+        "fr": "BlockCraft",
+        "es": "BlockCraft",
+        "ja": "ブロッククラフト",
+        "zh": "BlockCraft",
+        "ko": "블록크래프트"
+      },
+      "description": {
+        "en": "An endless world of blocks grown from a seed: plains, forests, deserts, taiga and snowy peaks, caves full of ore and villages with chests to loot. Chop your first tree, craft tools from wood to diamond, smelt ore in a furnace, farm wheat, raise animals and build anything you can imagine.\n\nWhen night falls, zombies and skeletons roam, and the Puffcap hops out of the dark: a glowing mushroom that swells up and puffs a cloud of spores that slows and weakens you. Light torches, sleep in a bed to skip the night, or fly freely in Creative mode with every block at hand.\n\n• Survival and Creative modes, normal worlds with villages or flat worlds\n• Smooth lighting, day and night, rain, snow and thunderstorms\n• Crafting table, furnace, chests, farming, breeding, beds, doors, ladders and TNT\n• Sulfur ore deep in the stone gives gunpowder\n• Flowing water and lava, spreading fire\n• First-person view and two third-person cameras, time of day for builders in Creative\n• Controller, keyboard and mouse or touch; worlds are saved on your console",
+        "tr": "Bir tohumdan doğan sonsuz bir blok dünyası: ovalar, ormanlar, çöller, tayga ve karlı zirveler, cevherle dolu mağaralar ve yağmalanacak sandıklarıyla köyler. İlk ağacını kes, tahtadan elmasa aletler üret, fırında cevher erit, buğday ek, hayvan yetiştir ve aklına gelen her şeyi inşa et.\n\nGece çökünce zombiler ve iskeletler dolaşır, karanlıktan da Pufmantar zıplayarak çıkar: şişip seni yavaşlatan ve zayıflatan bir spor bulutu üfleyen, parlayan bir mantar. Meşale yak, geceyi geçirmek için yatakta uyu ya da tüm bloklar elinin altındayken Yaratıcı modda özgürce uç.\n\n• Hayatta Kalma ve Yaratıcı mod, köylü normal dünyalar ya da düz dünyalar\n• Yumuşak ışık, gece ve gündüz, yağmur, kar ve fırtınalar\n• Üretim masası, fırın, sandıklar, tarım, hayvan yetiştirme, yataklar, kapılar, merdivenler ve TNT\n• Taşın derinlerindeki kükürt cevheri barut verir\n• Akan su ve lav, yayılan ateş\n• Birinci şahıs görünüm ve iki üçüncü şahıs kamerası, Yaratıcı modda inşaatçılar için günün saati\n• Kumanda, klavye ve fare ya da dokunmatik; dünyalar konsoluna kaydedilir",
+        "de": "Eine endlose Welt aus Blöcken, gewachsen aus einem Startwert: Ebenen, Wälder, Wüsten, Taiga und Schneegipfel, Höhlen voller Erz und Dörfer mit Truhen voller Beute. Fäll deinen ersten Baum, stelle Werkzeuge von Holz bis Diamant her, schmilz Erz im Ofen, baue Weizen an, züchte Tiere und baue alles, was du dir vorstellen kannst.\n\nWenn die Nacht kommt, ziehen Zombies und Skelette umher, und aus der Dunkelheit hüpft der Puffpilz: ein leuchtender Pilz, der sich aufbläht und eine Sporenwolke ausstößt, die dich verlangsamt und schwächt. Zünde Fackeln an, schlaf im Bett, um die Nacht zu überspringen, oder flieg im Kreativmodus frei mit allen Blöcken zur Hand.\n\n• Überlebens- und Kreativmodus, normale Welten mit Dörfern oder flache Welten\n• Weiches Licht, Tag und Nacht, Regen, Schnee und Gewitter\n• Werkbank, Ofen, Truhen, Ackerbau, Tierzucht, Betten, Türen, Leitern und TNT\n• Schwefelerz tief im Gestein liefert Schießpulver\n• Fließendes Wasser und Lava, sich ausbreitendes Feuer\n• Ego-Perspektive und zwei Kameras von außen, Tageszeit für Baumeister im Kreativmodus\n• Controller, Tastatur und Maus oder Touch; Welten werden auf der Konsole gespeichert",
+        "fr": "Un monde infini de blocs né d’une graine : plaines, forêts, déserts, taïga et pics enneigés, grottes pleines de minerais et villages aux coffres à piller. Abattez votre premier arbre, fabriquez des outils du bois au diamant, faites fondre du minerai au four, cultivez du blé, élevez des animaux et construisez tout ce que vous imaginez.\n\nLa nuit, zombies et squelettes rôdent, et le Champouf surgit de l’ombre en sautillant : un champignon lumineux qui gonfle puis souffle un nuage de spores qui vous ralentit et vous affaiblit. Allumez des torches, dormez dans un lit pour passer la nuit, ou volez librement en mode Créatif avec tous les blocs à portée de main.\n\n• Modes Survie et Créatif, mondes normaux avec villages ou mondes plats\n• Éclairage doux, jour et nuit, pluie, neige et orages\n• Établi, four, coffres, agriculture, élevage, lits, portes, échelles et TNT\n• Le minerai de soufre, au fond de la roche, donne de la poudre\n• Eau et lave qui coulent, feu qui se propage\n• Vue à la première personne et deux caméras extérieures, moment de la journée réglable en Créatif\n• Manette, clavier et souris ou écran tactile ; les mondes sont sauvegardés sur la console",
+        "es": "Un mundo infinito de bloques nacido de una semilla: llanuras, bosques, desiertos, taiga y picos nevados, cuevas llenas de minerales y aldeas con cofres que saquear. Tala tu primer árbol, fabrica herramientas de madera a diamante, funde minerales en el horno, cultiva trigo, cría animales y construye todo lo que imagines.\n\nAl caer la noche rondan zombis y esqueletos, y de la oscuridad sale dando saltos el Hongopuf: un hongo luminoso que se hincha y suelta una nube de esporas que te frena y te debilita. Enciende antorchas, duerme en una cama para saltarte la noche o vuela libre en modo Creativo con todos los bloques a mano.\n\n• Modos Supervivencia y Creativo, mundos normales con aldeas o mundos planos\n• Iluminación suave, día y noche, lluvia, nieve y tormentas\n• Mesa de trabajo, horno, cofres, cultivos, cría de animales, camas, puertas, escaleras y TNT\n• La mena de azufre, en lo hondo de la roca, da pólvora\n• Agua y lava que fluyen, fuego que se propaga\n• Vista en primera persona y dos cámaras en tercera persona, hora del día para constructores en Creativo\n• Mando, teclado y ratón o pantalla táctil; los mundos se guardan en la consola",
+        "ja": "シードから生まれる果てしないブロックの世界。平原、森、砂漠、タイガ、雪山、鉱石だらけの洞窟、チェストが眠る村。最初の木を切り、木からダイヤモンドまで道具を作り、かまどで鉱石を精錬し、小麦を育て、動物を飼い、思いつくものを何でも建てよう。\n\n夜になるとゾンビとスケルトンがうろつき、暗闇からパフキャップが跳ねてくる。ふくらんで胞子の雲を吹き出し、動きを鈍らせて体力を奪う光るキノコだ。たいまつを灯し、ベッドで眠って夜をスキップするか、クリエイティブモードですべてのブロックを手に自由に飛び回ろう。\n\n• サバイバルとクリエイティブ、村のあるノーマルワールドとフラットワールド\n• なめらかな光、昼と夜、雨、雪、雷雨\n• 作業台、かまど、チェスト、農業、繁殖、ベッド、ドア、はしご、TNT\n• 岩の奥にある硫黄鉱石から火薬がとれる\n• 流れる水と溶岩、燃え広がる火\n• 一人称視点と 2 つの三人称カメラ、クリエイティブでは時間帯を選べる\n• コントローラー、キーボードとマウス、タッチに対応。ワールドは本体に保存",
+        "zh": "由种子生成的无尽方块世界：平原、森林、沙漠、针叶林与雪峰，遍布矿石的洞穴，还有藏着宝箱的村庄。砍下第一棵树，从木制到钻石打造工具，用熔炉冶炼矿石，种植小麦，饲养动物，建造你想象中的一切。\n\n夜幕降临，僵尸和骷髅四处游荡，喷孢菇也会从黑暗中蹦出来：这种发光的蘑菇会鼓胀起来，喷出一团让你变慢、变虚弱的孢子云。点起火把，在床上睡觉跳过夜晚，或在创造模式中带着所有方块自由飞行。\n\n• 生存与创造模式，有村庄的普通世界或平坦世界\n• 平滑光照、昼夜交替、雨、雪和雷暴\n• 工作台、熔炉、箱子、种田、繁殖、床、门、梯子和 TNT\n• 石头深处的硫磺矿石可以挖出火药\n• 会流动的水和岩浆，会蔓延的火\n• 第一人称视角与两种第三人称视角，创造模式中可调整时间\n• 支持手柄、键盘鼠标和触屏；世界保存在主机上",
+        "ko": "시드에서 자라난 끝없는 블록 세계: 평원, 숲, 사막, 타이가, 눈 덮인 봉우리, 광석 가득한 동굴, 털어 갈 상자가 있는 마을. 첫 나무를 베고, 나무부터 다이아몬드까지 도구를 만들고, 화로에서 광석을 제련하고, 밀을 기르고, 동물을 키우며 상상하는 모든 것을 지어 보세요.\n\n밤이 오면 좀비와 스켈레톤이 돌아다니고, 어둠 속에서 퍼프캡이 통통 튀어나옵니다. 부풀어 올라 몸을 느리고 약하게 만드는 포자 구름을 뿜는 빛나는 버섯이죠. 횃불을 밝히고, 침대에서 자며 밤을 건너뛰거나, 크리에이티브 모드에서 모든 블록을 손에 들고 자유롭게 날아 보세요.\n\n• 서바이벌과 크리에이티브 모드, 마을이 있는 일반 월드 또는 평지 월드\n• 부드러운 조명, 낮과 밤, 비, 눈, 뇌우\n• 작업대, 화로, 상자, 농사, 번식, 침대, 문, 사다리, TNT\n• 돌 깊은 곳의 유황 광석에서 화약을 얻습니다\n• 흐르는 물과 용암, 번지는 불\n• 1인칭 시점과 두 가지 3인칭 카메라, 크리에이티브에서 시간대 선택\n• 컨트롤러, 키보드와 마우스, 터치 지원; 월드는 본체에 저장"
+      },
+      "version": "1.0.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/blockcraft.nxvapp",
+      "size": 1504731,
+      "sha256": "63d80fcf52bc4f297fb02bd25f719339c9da81f4ab47f2753e4f7c51e2c2cd39",
+      "minSdk": "1.7",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/screenshots/4.png"
+      ],
+      "featured": true,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/sandbox/blockcraft",
+      "runtime": "js",
+      "targetSdk": "1.7",
+      "subtitle": {
+        "en": "Mine, build and survive in a block world",
+        "tr": "Blok dünyasında kaz, inşa et, hayatta kal",
+        "de": "Abbauen, bauen, überleben in einer Blockwelt",
+        "fr": "Minez, bâtissez, survivez dans les blocs",
+        "es": "Pica, construye y sobrevive entre bloques",
+        "ja": "掘って建てて生き延びるブロックの世界",
+        "zh": "在方块世界中挖掘、建造与生存",
+        "ko": "블록 세계에서 캐고 짓고 살아남기"
       },
       "added": "2026-11-01",
       "updated": "2026-11-01",
