@@ -8,7 +8,7 @@
     "fr": "Résolvez un maximum de calculs en 60 secondes et menez votre voiture jusqu’à l’arrivée, avec multiplicateurs de série et meilleurs scores.",
     "es": "Resuelve tantas operaciones como puedas en 60 segundos y lleva tu coche a la meta, con multiplicadores de racha y mejores puntuaciones."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "other",

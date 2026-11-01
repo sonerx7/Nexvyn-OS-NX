@@ -8,7 +8,7 @@
     "fr": "Plongez dans l’ensemble de Mandelbrot et ses ensembles de Julia : déplacez-vous, pincez pour zoomer, choisissez des palettes, enregistrez vos lieux favoris et exportez des images PNG.",
     "es": "Sumérgete en el conjunto de Mandelbrot y sus conjuntos de Julia: desplázate, pellizca para ampliar, elige esquemas de color, guarda tus lugares favoritos y exporta imágenes PNG."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "media",

@@ -427,27 +427,14 @@ ya da yenilerini oluşturabilirsiniz.
 
 **Dosyalar** uygulaması SD kartı ve ev klasörünüzü gösterir:
 
-- Kenar çubuğu SD karttaki kendi alanınız **Nexvyn OS** ile başlar: Ev, Masaüstü, Belgeler, İndirilenler, Resimler,
-  Müzik, Filmler ve Uygulamalar (yüklü uygulamalar). Ardından Son Kullanılanlar, Hızlı erişim'e sabitledikleriniz, Bu
-  Konsol (sistem bölümü, USB bellekler, Konsol Albümü) ve Çöp Sepeti gelir. **SD Kart**'ın kendisi kenar çubuğunun en
-  altında, harici bir sürücü gibi ayrı bir birimdir. Liste ve ızgara görünümü.
-- **Nexvyn OS'un dışına çıkmak.** SD kartın kökünü ya da `sdmc:/NexvynOS` dışındaki bir klasörü açmadan önce
-  **Nexvyn OS'un dışına çıkıyorsunuz** uyarısı gelir: oradaki dosyalar Switch'inize ve diğer homebrew uygulamalarına
-  aittir, değiştirmek sisteminizi ya da diğer uygulamaları bozabilir. Varsayılan düğme **Vazgeç**'tir; **Devam Et**
-  klasörü açar (her Dosyalar penceresi bir kez sorar), **Bir daha gösterme** uyarıyı kapatır (Görünüm > **Nexvyn OS'un
-  Dışına Çıkarken Uyar** yeniden açar). Custom firmware klasörlerinde aynı soru bunu da söyler; arka arkaya iki kez
-  sorulmazsınız.
+- Kenar çubuğunda Sık Kullanılanlar ve Konumlar; liste ve ızgara görünümü.
 - Sürükle-bırak, kopyala/kes/yapıştır, zip ile sıkıştırma ve açma, Çöp Sepeti (geri koyma ile).
 - Bir dosyaya çift tıklayınca uygun uygulama açılır. **Birlikte Aç** ile başka bir uygulama seçilebilir.
 - `.nxvapp` dosyası yükleme sayfasını açar (bkz. [Uygulama Mağazası](#uygulama-mağazası-ve-uygulama-yükleme)).
 - `.exe` dosyası PC Oyunları ile açılır.
-- **Silme.** Sil, adlarıyla birlikte "3 öğe Çöp Sepeti'ne taşınsın mı?" diye sorar, sonra öğeleri Çöp Sepeti'ne taşır
-  (Geri Al ile geri gelir). **Hemen Sil**, **Çöp Sepetini Boşalt** ve USB bellekte silme (USB belleklerde Çöp Sepeti
-  yoktur) her zaman önce sorar; kaç öğenin ve ne kadar verinin gideceğini söyler.
-- **Taşıma.** Öğeleri başka bir klasöre taşımak (Kes ve Yapıştır, bir klasörün ya da kenar çubuğundaki bir yerin
-  üstüne sürüklemek, **Şuraya Taşı...**) önce sorar ve nereye gideceklerini gösterir, örneğin
-  `~/Desktop  ->  Belgeler`. Aynı klasör içinde sürüklemek hiçbir şey sormaz. Görünüm > **Silmeden veya Taşımadan Önce
-  Sor** (varsayılan olarak açık) silme ve taşıma sorularını kapatır.
+- **Silme.** Sil, öğeleri Çöp Sepeti'ne taşır (Geri Al ile geri gelir). **Hemen Sil**, **Çöp Sepetini Boşalt** ve USB
+  bellekte silme (USB belleklerde Çöp Sepeti yoktur) her zaman önce sorar; kaç öğenin ve ne kadar verinin gideceğini
+  söyler.
 - **Aynı adlar.** Yapıştırılan ya da taşınan öğeler klasörde zaten varsa Dosyalar sorar: **Değiştir**, **İkisini de
   Tut** (yenileri numara alır), **Atla** ya da **İptal**. Aynı adlı bir klasörün üstüne gelen klasör için ilk seçenek
   **Birleştir**'dir: yeni içerik var olan klasöre eklenir; içeride aynı adlı dosyalar varsa tek bir soru hepsi için
@@ -473,8 +460,7 @@ Nexvyn OS dosyalarınızı SD karttaki ev klasörünüzde tutar:
   Belgeler'e kaydeder. Kaydetme penceresi, dosyanın gideceği tam yolu ad alanının altında gösterir; listedeki bir
   klasöre bir kez dokunmak onu kayıt yeri olarak seçer (çift dokunma klasörü açar).
 - Metin Düzenleyici'de **Dosya > Dosyalar’da Göster**, belgenin klasörünü dosya seçili olarak açar.
-- SD kartın tamamı Dosyalar'da kenar çubuğunun en altındaki **SD Kart**'tadır (`sdmc:/`, Bu Konsol'da da var):
-  "Nexvyn OS'un dışına çıkıyorsunuz" uyarısından sonra her yerde açıp kaydedebilirsiniz.
+- SD kartın tamamı Dosyalar'da **Bu Konsol > SD Kart** (`sdmc:/`) altındadır: her yerde açıp kaydedebilirsiniz.
 
 ### SD karttaki dosya adları
 
@@ -483,15 +469,10 @@ adlı bir dosya kaydedilebiliyor ve onu kaydeden uygulama tarafından yeniden a�
 homebrew uygulamaları (sphaira...) onu göstermiyor, bilgisayar ise gösteriyordu. Bu yüzden Nexvyn OS SD karttaki
 adları düz harflerle yazar: `ş ğ ı ö ü ç` harfleri `s g i o u c` olur (`İ Ş Ğ Ö Ü Ç` de aynı şekilde), `ß` `ss` olur,
 diğer aksanlar kalkar, başka alfabeler `_` olur ve `" * / : < > ? \ |` karakterleri değiştirilir. Bir ad
-değiştiğinde bunu siz yazarken söylenir: kaydetme penceresi dosyanın alacağı adı ad alanının hemen altında gösterir
-("Kus.txt olarak kaydedilecek"), Dosyalar da yeniden adlandırırken adın altında aynısını yapar. USB bellekler her
-harfi korur. Nexvyn OS'un kendi verdiği adlar da aynı kurala uyar: ekran görüntüleri
-(`Ekran Goruntusu 2026-10-31 15.46.36.png`), Kamera fotoğrafları ve videoları, dışa aktarılan slaytlar, raporlar,
-indirmeler (FTP, GameBanana) ve kayıt yedekleri.
+değiştiğinde kaydetme penceresi ve Dosyalar bunu söyler. USB bellekler her harfi korur.
 
-Önceki bir sürümün bu tür adlarla kaydettiği dosyalar, Dosyalar ilk açıldığında arka planda (son kullanılan dosyalar
-ve Çöp Sepeti içinde) aranır. Bulunursa Dosyalar penceresindeki bir kart adlarını onarmayı önerir; yeniden adlandırma da
-arka planda, ilerleme ve **Vazgeç** ile çalışır. Her dosya yalnızca bir kez önerilir. **Dosya > Dosya Adlarını
+Önceki bir sürümün bu tür adlarla kaydettiği dosyalar, Dosyalar ilk açıldığında (son kullanılan dosyalar ve Çöp
+Sepeti içinde) aranır ve Dosyalar yeniden görünmeleri için adlarını onarmayı önerir. **Dosya > Dosya Adlarını
 Onar...** aynı işi açık klasör için yapar.
 
 ### Konsolun sistem dosyaları
@@ -614,7 +595,7 @@ Birden çok yapay zekâ sağlayıcısıyla çalışan sohbet uygulaması: Anthro
 | **Video Oynatıcı** | MP4, MKV, WebM, AVI, TS ve diğerleri; HTTPS ve HLS akışları; kaldığı yerden devam; tam ekran. |
 | **Tube** | YouTube'da arama ve izleme, Shorts, yorumlar, isteğe bağlı oturum açma. Aşağıya bakın. |
 | **Radyo** | Ülkelere ve türlere göre internet radyoları. Aşağıya bakın. |
-| **Canlı TV** | M3U oynatma listeleriyle IPTV; iptv-org hazır listeleri. İzlerken kanal listesi solda açılır (liste düğmesi, L, D-pad sol ya da görüntünün sol kenarından kaydırma); tam ekranda görüntünün üzerinde açılır ve kendiliğinden gizlenir. Kanallar ve yayınlar listeyi sağlayanlara aittir. |
+| **Canlı TV** | M3U oynatma listeleriyle IPTV; iptv-org hazır listeleri. Kanallar ve yayınlar listeyi sağlayanlara aittir. |
 | **Müzik** | Etiketler, kapak resimleri, çalma listeleri. m4a/aac, wma, ac3 de çalar. |
 | **Fotoğraflar** | Resimler ve konsolun Albüm'ündeki ekran görüntüleri ve video klipleri. |
 

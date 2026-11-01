@@ -176,70 +176,6 @@ veya DNS çağrısı yoktur (`net` kendi worker iş parçacıklarını kullanır
   `transition-*`, `animation-*` için `getComputedStyle`, gerçek `IntersectionObserver` (thresholds, `rootMargin`;
   her düzenden sonra, kaydırmada ve boyut değişiminde denetlenir).
 
-### 3.6 1.0.2: gerçek sitelerle uyumluluk
-
-Gerçek sitelerin ne kadar sık dayandığına göre sıralandı.
-
-| Alan | Önce (1.0.0) | Şimdi (1.0.2) |
-|---|---|---|
-| `position: absolute` | normal akışta yerleşirdi | akış dışında, en yakın konumlu ya da transform'lu atanın padding kutusuna göre: `top/right/bottom/left` (px, %, `calc`), `inset`, left ile right arasında germe, auto margin ile ortalama, `translate(-50%,-50%)`, ofsetler `auto` iken statik konum, iç içe kapsayan bloklar, `%` yükseklikler |
-| `position: fixed` | akışta | görünüm alanına göre: sayfa kayarken yerinde kalır (başlıklar, çerez çubukları, bildirimler, modallar); CSS'teki gibi transform'lu bir ata onu tutar |
-| Katman sırası | akıştaki grupların z-index'i | konumlu kutular akışın üstüne ağaç sırasıyla / z-index'e göre çizilir; `elementFromPoint` ve tıklamalar en üstteki katmana gider (tıklamayı alttaki içerik değil kaplama alır) |
-| `calc()` | iki terim, `100% - 20px` `100%` sayılırdı | tam ifade: `+ - * /`, parantez, iç içe `calc()`, yüzde artı uzunluk tam tutulur (`calc(100% - 2rem - 10px)`), `min()/max()/clamp()` cascade'de, `env()` yedeği |
-| Birimler | `vw/vh/vmin/vmax/rem/em` | aynı, artık her yerde `calc` içinde de |
-| `:hover` `:focus` `:focus-within` `:focus-visible` `:active` `:target` | hiç eşleşmezdi | eşleşir (işaretçi, form odağı, kumandayla bağlantı odağı `:focus-visible` olarak); değişiklik, ancak bir seçici o pseudo-class'ı durumu değişen öğeye koyuyorsa sayfayı yeniden stillendirir; `:has()` (torunlar / çocuklar), `:placeholder-shown` |
-| `overflow: auto / scroll` | en iyi ihtimalle `hidden` gibi | kaydırılan kutu: sürükleme, tekerlek ve sağ çubuk önce kutuyu kaydırır; eksen başına (`overflow-x`, `overflow-y`); içeriği artık sayfayı uzatmaz |
-| `text-overflow: ellipsis`, `line-clamp` | metin sarardı | tek satır "…" ile kesilir; `-webkit-line-clamp` / `line-clamp` satırları sınırlar, sonuncuyu "…" ile bitirir |
-| `object-fit`, `object-position` | gerilirdi | `fill / contain / cover / none / scale-down` ve konum (yuvarlak köşelerle de) |
-| `filter` | yok | `brightness / contrast / grayscale / sepia / invert / saturate / opacity` çizilen her şeye (resimlerde yalnızca parlaklık); `blur()` ve `drop-shadow()` çizilmez |
-| `backdrop-filter` | yok | bulanıklık çizilmez; arkasındaki yarı saydam arka plan metin okunsun diye neredeyse opak yapılır |
-| `width / height: fit-content` (max-/min-content) | `auto` | içeriğe göre daralır |
-| `<video>` / `<audio>` | gizliydi | sistem medya oynatıcısıyla sayfa içinde oynatma (FFmpeg: mp4/webm/mkv, mp3/aac/ogg, progressive http(s) ve HLS): poster, oynat düğmesi, denetim çubuğu (oynat/duraklat, süre, sarma, ses, "Video Oynatıcı'da aç"); aynı anda biri oynar, ilk oynatmadan önce hiçbir şey oluşturulmaz, gizlenen sekme kod çözücüsünü bırakır. `HTMLMediaElement`: `play()/pause()/load()/canPlayType()`, `currentTime`, `duration`, `paused`, `ended`, `volume`, `muted`, `loop`, `playbackRate`, `videoWidth/Height`, `readyState`, `error` ve `loadstart`, `loadedmetadata`, `canplay`, `play`, `playing`, `pause`, `timeupdate`, `ended`, `error`, `volumechange` olayları. MediaSource (YouTube'daki gibi `blob:` akışları) desteklenmez |
-| `<picture>` / `srcset` | srcset'i olan ilk `<source>`, ~600 px aday | `type`'ı burada çözülen ve `media`'sı tutan ilk `<source>`; `srcset` `sizes`'a ve resmin aldığı genişliğe göre (bellek için en çok 1280 px) |
-| `<dialog>` | yalnızca `open` özniteliği | `show()`, `showModal()` (karartılmış sayfanın ortasında, odak `[autofocus]`'a), `close(value)`, `returnValue`, `requestClose()`, `cancel` / `close` olayları, Escape, `<form method=dialog>` |
-| Formlar | text, password, checkbox, radio, select, düğmeler | ek olarak `range` (kaydırıcı), `color` (renk kutusu), `number` (dar alan), tarih / saat türleri (yazılacak biçimi gösteren alan), `<progress>`, `<meter>` (low / high / optimum renkleri) |
-| `ResizeObserver` | tek çağrı | her düzenden sonra denetlenir; boyut her değiştiğinde bir kayıt |
-| `matchMedia` | yalnızca `matches` | boyut / yakınlaştırma değişince `change` olayları (`addEventListener`, `addListener`, `onchange`) |
-| `structuredClone` | JSON kopyası | klonlama algoritması: döngüler, `Map`, `Set`, `Date`, `RegExp`, typed array'ler, hatalar; fonksiyon ve node'lar `DataCloneError` atar |
-| `getBoundingClientRect` | içeriğin birleşimi | bloğun kendi kenarlık kutusu, relative ofsetler / translate'lerle; sabit kutular görünümde kalır |
-
-Zaten vardı, testlerle denetlendi: `Response.json/text/blob/arrayBuffer/formData/clone` ile `fetch`, `URL` /
-`URLSearchParams`, `localStorage` / `sessionStorage`, Promise / async sırası, `MutationObserver`,
-`requestIdleCallback`, `history.pushState` / `popstate`, `CustomEvent`, `dataset`, `classList`, `closest` / `matches`,
-`TextEncoder` / `TextDecoder`, `crypto.getRandomValues` / `randomUUID`, `<details>`, `<template>.content`, satır içi
-`<svg>` ve `<img src=*.svg>`, canvas 2D.
-
-### 3.7 Bellek, boyut ve "ayrı bir uygulama mı?"
-
-**Tarayıcı penceresi yokken motorun hiçbir parçası çalışmaz.** Motor sayfalar arasında birkaç şey tutar: iki worker
-thread (her biri 1 MB stack), worker başına bir QuickJS derleme runtime'ı, derlenmiş prelude, bytecode önbelleği (en
-çok 12 MB), çerez kavanozları, Web Storage ve font ölçü önbelleği. 1.0.2'den önce bunlar Tarayıcı kapandıktan sonra
-bellekte kalıyordu. Artık pencere kapanınca (`~BrowserApp`) `web::releaseEngine()` çalışır: çerezleri ve Web
-Storage'ı kaydeder, hepsini serbest bırakır; worker'lar kuyruktaki işleri bitirir, QuickJS runtime'larını bırakıp
-çıkar (`web::stopWorkers()`; sonraki iş onları yeniden başlatır). Sayfalar, düzenler, resimler, canvas'lar ve medya
-oynatıcıları sekmeleriyle gider. Günlükte görünür: `engine released: heap A -> B MB`, `workers stopped (2)` ve 3 sn
-sonra `3 s after the Browser closed: heap X MB in use`; her sayfa için `page ready: ... (heap, MB above the Browser's
-start, JS KB)`.
-
-| Ölçüm | Değer |
-|---|---|
-| Motor + Tarayıcı kodu (`web_*.o`, `app_browser.o`, text) | önce 1,14 MB, şimdi 1,23 MB (+85 KB), 44 MB'lık NRO text'inin içinde; prelude romfs'te 163 KB |
-| Ryujinx, boş Tarayıcı penceresi + hata sayfası | açıldığı ana göre yaklaşık 5,5 MB heap |
-| Boşta, Tarayıcı penceresi yok | 0 thread, 0 QuickJS runtime, önbellekler boş (ölçüm: yukarıdaki günlük satırları; konsol sayıları bu tabloya girmeli) |
-
-**App Market'ten ayrı bir uygulama mı?** Native modüller (`.nxvmod`) 1.0.x'te kapalı: stickies, fontbook ve network
-modül belleğindeki bir kilitte `mutexLock` içinde çöktü (yazılabilir segment `svcControlCodeMemory` ile eşleniyor ve
-o bellekte çekirdek kilitlemesi başarısız oluyor). Tarayıcı tam olarak buna takılırdı: `web_jobs.cpp`,
-`web_layout.cpp` ve `app_browser.cpp` `static Mutex` / `CondVar` tutuyor, `web_js.cpp` ise yükleyicinin reddettiği
-(`PT_TLS`) bir `thread_local` derleme runtime'ı kullanıyor. Modül yapmak için (1) yükleyicinin yazılabilir segmenti
-sıradan bellek olarak eşlemesi (ya da modülün kilitlerinin heap'e taşınması), (2) TLS desteği ya da `thread_local`'ın
-kaldırılması, (3) modül testlerinin Ryujinx'te ve konsolda yeniden açılması gerekir. Kazanç 66 MB'lık NRO'da yaklaşık
-1,4 MB (kod + prelude) olur, RAM'de hiç olmaz: yerleşik bir uygulamanın kod sayfaları kapalıyken bir şey tutmaz ve
-motor artık heap'ini bırakıyor. Öneri: Tarayıcı yerleşik kalsın (diğer uygulamalar da bağlantıları onunla açıyor);
-sahibi listelerden kaldırılabilir olmasını isterse mevcut opsiyonel uygulama mekanizması (`"optional": true`, App
-Market'te "Al", Ayarlar > Uygulamalar) kodu taşımadan gizleyebilir, ama bu NRO boyutunu değil yalnızca listeleri
-değiştirir.
-
 ## 4. Test sayfaları ve sonuçlar
 
 `tests/web/` altındaki sayfalar (bilgisayarda `python -m http.server 8000`, konsoldan
@@ -252,8 +188,6 @@ değiştirir.
 | `layout.html` | 16 flexbox/grid düzeni, beklenen görünüm açıklamalı |
 | `canvas.html` | Çizimler, 7 piksel testi, `requestAnimationFrame` animasyonu |
 | `svg.html` | Satır içi SVG, `currentColor`, `<use>`, gradyan, data-URI SVG, WebP |
-| `compat.html` | Dört grupta 64 otomatik denetim (konumlandırma ve birimler, CSS, HTML5 öğeleri, JS API'leri), PASS/FAIL tablosu; başlıkta "Compat x/y", her sonuç günlüğe de yazılır (`webjs` satırları) |
-| `html5.html` | Görsel: `:hover` menülü yarı saydam sabit başlık, absolute rozetler ve ortalama, `object-fit`, ellipsis, line-clamp ve filtreli kart ızgarası, yatay ve dikey kaydırılan kutular, video / ses denetimleri, form denetimleri, `<details>`, modal `<dialog>` |
 
 **Önemli not:** Bu çalışma sırasında konsol ya da emülatör kullanılamadı (emülatör koordinatörde). Aşağıdaki
 "Beklenen" sütunu, kodun incelenmesine ve canvas bağlamının Node.js'te sahte (mock) yerel fonksiyonlarla
@@ -285,9 +219,9 @@ sayfa, `?n=` ile büyütülür; kurulum ve ilk kare süreleri başlıkta).
 
 ### Desteklenmeyenler (bilinçli)
 
-- 3D (perspektif, `rotateX/Y` düzleştirilir); resimler dışındaki içerikte yuvarlak kırpma (`overflow: hidden`
-  dikdörtgene kırpar); `filter: blur()` / `drop-shadow()` ve arka plan bulanıklığı; `clip-path` şekilleri; öğesi
-  düzenden çıkan özelliğin `transitionend`'i; `::before` / `::after` üretilen içerik.
+- `position: absolute/fixed` hâlâ normal akışta yerleşir (yalnızca ofsetleri animasyonlanır); 3D yok (perspektif,
+  `rotateX/Y` düzleştirilir); resimler dışındaki içerikte yuvarlak kırpma, `filter` / `backdrop-filter`,
+  `clip-path` şekilleri, `:hover` stilleri yok.
 - Geçiş, yeniden stil düzenlendikten sonra başlar (masaüstü tarayıcılardan bir düzen sonra); `auto` boyutlara ve
   kutusu olmayan saydam arka plana / arka plandan geçişler atlar. Element.animate'te `currentTime` ile konumlama,
   `playbackRate` ve composite modları yok.
@@ -295,5 +229,5 @@ sayfa, `?n=` ile büyütülür; kurulum ve ilk kare süreleri başlıkta).
 - Canvas: `clip()`, gradyanlar (ortalama renkle boyanır), desenler, gölgeler, `<img>` kaynaklı `drawImage`,
   `toDataURL`.
 - SVG içinde `<text>`, CSS sınıflarıyla boyama, filtreler.
-- Web yazı tipleri (`@font-face`), MediaSource video (`blob:` akışları), WebGL, Service Worker, WebSocket,
-  WebAssembly. Bunlara ihtiyaç duyan siteler için tam tarayıcı (WebKit) önerilir.
+- Web yazı tipleri (`@font-face`), `<video>/<audio>`, WebGL, Service Worker, WebSocket, WebAssembly.
+  Bunlara ihtiyaç duyan siteler için tam tarayıcı (WebKit) önerilir.

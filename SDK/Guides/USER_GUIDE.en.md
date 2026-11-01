@@ -428,25 +428,13 @@ it, it does not come back. These folders have their own icons. You can delete or
 
 The **Files** app shows the SD card and your home folder:
 
-- The sidebar starts with **Nexvyn OS**, your own area on the SD card: Home, Desktop, Documents, Downloads, Pictures,
-  Music, Movies and Applications (installed apps). Then Recents, your Quick access pins, This Console (the system
-  partition, USB drives, the console's Album) and the Trash. The **SD Card** itself is a separate volume at the bottom
-  of the sidebar, like an external drive. List and grid views.
-- **Leaving Nexvyn OS.** Opening the SD card's root or any folder outside `sdmc:/NexvynOS` first says **You are leaving
-  Nexvyn OS**: the files there belong to your Switch and other homebrew, and changing them can break your system or
-  other apps. **Cancel** is the default; **Continue** opens the folder (each Files window asks once) and **Don't show
-  again** turns the warning off (View > **Warn When Leaving Nexvyn OS** turns it back on). For the custom firmware's
-  folders the same question says so, so you are not asked twice in a row.
+- Favorites and Locations in the sidebar; list and grid views.
 - Drag and drop, copy/cut/paste, zip compression and extraction, the Recycle Bin (with put back).
 - Double-clicking a file opens the right app. **Open With** lets you choose another app.
 - A `.nxvapp` file opens the install sheet (see [App Market](#app-store-and-installing-apps)).
 - An `.exe` file opens with PC Games.
-- **Deleting.** Delete asks "Move 3 items to the Trash?" with their names, then moves them to the Trash (Undo puts
-  them back). **Delete Immediately**, **Empty Trash** and deleting on a USB drive (USB drives have no Trash) always ask
-  first and say how many items and how much data go.
-- **Moving.** Moving items to another folder (Cut and Paste, dragging onto a folder or a sidebar place, **Move To...**)
-  asks first and shows where they go, for example `~/Desktop  ->  Documents`. Dragging within the same folder asks
-  nothing. View > **Ask Before Deleting or Moving** (on by default) turns the delete and move questions off.
+- **Deleting.** Delete moves items to the Trash (Undo puts them back). **Delete Immediately**, **Empty Trash** and
+  deleting on a USB drive (USB drives have no Trash) always ask first and say how many items and how much data go.
 - **Same names.** When pasted or moved items are already in the folder, Files asks: **Replace**, **Keep Both** (the
   new ones get a number), **Skip** or **Cancel**. For a folder going onto a folder with the same name, **Merge** comes
   first: the new contents are added to the existing folder, and when files inside have the same names one more
@@ -472,8 +460,7 @@ Nexvyn OS keeps your files in your home folder on the SD card:
   save dialog shows the full path the file goes to under the name field; tapping a folder in its list once picks that
   folder (double-tap opens it).
 - In Text Editor, **File > Show in Files** opens the document's folder with the file selected.
-- The whole SD card is in Files under **SD Card** at the bottom of the sidebar (`sdmc:/`, also in This Console): after
-  the "leaving Nexvyn OS" warning you can open and save anywhere on it.
+- The whole SD card is in Files under **This Console > SD Card** (`sdmc:/`): you can open and save anywhere on it.
 
 ### File names on the SD card
 
@@ -481,16 +468,11 @@ The console's own SD card driver cannot list some names with letters outside A-Z
 saved, and opened again by the app that saved it, yet Files and other homebrew (sphaira...) did not show it, while a
 computer did. Nexvyn OS therefore writes names on the SD card with plain letters: `ş ğ ı ö ü ç` become `s g i o u c`
 (`İ Ş Ğ Ö Ü Ç` likewise), `ß` becomes `ss`, other accents are dropped, other scripts become `_`, and the characters
-`" * / : < > ? \ |` are replaced. While you type, the save dialog shows the name the file will get right under the
-name field ("Will be saved as “Kus.txt”"), and Files does the same under the name while you rename. USB drives keep
-every letter. The names Nexvyn OS makes up itself follow the same rule: screenshots (in Turkish
-`Ekran Goruntusu 2026-10-31 15.46.36.png`), Camera photos and videos, exported slides, reports, downloads (FTP,
-GameBanana) and save backups.
+`" * / : < > ? \ |` are replaced. The save dialog and Files say so when a name changes. USB drives keep every letter.
 
-Files saved by an earlier version with such names are looked for in the background when Files first opens (among the
-recently used files and in the Trash). When some are found, a card in the Files window offers to repair their names;
-the renames also run in the background, with progress and **Cancel**. Each file is offered only once.
-**File > Repair File Names...** does the same for the folder that is open.
+Files saved by an earlier version with such names are looked for the first time Files opens (among the recently used
+files and in the Trash), and Files offers to repair their names so they show up again. **File > Repair File Names...**
+does the same for the folder that is open.
 
 ### The console's system files
 
@@ -612,7 +594,7 @@ servers. Answers stream in; chats are saved; Markdown is rendered.
 | **Video Player** | MP4, MKV, WebM, AVI, TS and others; HTTPS and HLS streams; resume where you left off; full screen. |
 | **Tube** | Searching and watching YouTube, Shorts, comments, optional sign-in. See below. |
 | **Radio** | Internet radio by country and genre. See below. |
-| **Live TV** | IPTV with M3U playlists; ready-made iptv-org lists. While watching, the channel list opens at the left (list button, L, D-pad left, or a swipe from the left edge of the picture); in full screen it opens over the picture and hides itself. Channels and streams belong to whoever provides the list. |
+| **Live TV** | IPTV with M3U playlists; ready-made iptv-org lists. Channels and streams belong to whoever provides the list. |
 | **Music** | Tags, cover art, playlists. Also plays m4a/aac, wma, ac3. |
 | **Photos** | Pictures, plus the screenshots and video clips in the console's Album. |
 

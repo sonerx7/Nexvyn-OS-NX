@@ -17,7 +17,7 @@
     "fr": "Lâchez les blocs coulissants au bon moment pour bâtir la plus haute tour. Les débords sont coupés ; les lâchers parfaits forment des séries qui font regrandir votre bloc.",
     "es": "Suelta los bloques deslizantes en el momento justo para construir la torre más alta. Lo que sobresale se corta; las caídas perfectas forman rachas que hacen crecer de nuevo tu bloque."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

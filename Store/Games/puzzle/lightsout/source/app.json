@@ -17,7 +17,7 @@
     "fr": "Éteignez toutes les lumières d’un plateau 5×5 : chaque pression inverse une lumière et ses voisines. 60 niveaux avec étoiles, plus des puzzles aléatoires.",
     "es": "Apaga todas las luces de un tablero de 5×5: cada pulsación cambia una luz y sus vecinas. 60 niveles con estrellas y puzles aleatorios."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

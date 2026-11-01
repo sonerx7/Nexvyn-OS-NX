@@ -18,7 +18,7 @@
     "es": "Escenas 3D cada vez más exigentes miden la tasa de fotogramas y el tiempo por fotograma, calculan una puntuación y guardan un historial."
   },
   "category": "system",
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

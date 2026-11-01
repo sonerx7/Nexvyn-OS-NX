@@ -8,7 +8,7 @@
     "fr": "Du bowling à dix quilles vu de dessus : choisissez la position, la visée et l’effet, chargez le lancer et regardez les quilles voler. Un vrai décompte avec strikes, spares et lancers bonus au 10e carreau.",
     "es": "Bolos de diez pinos vistos desde arriba: elige posición, puntería y efecto, carga el lanzamiento y mira volar los pinos. Puntuación real con plenos, semiplenos y tiradas extra en el décimo turno."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

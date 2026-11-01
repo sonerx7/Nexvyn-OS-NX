@@ -8,7 +8,7 @@
     "fr": "Le jeu de la vie de Conway : dessinez des cellules, placez des motifs classiques comme le canon à planeurs, essayez d’autres règles et regardez la population évoluer.",
     "es": "El juego de la vida de Conway: dibuja células, coloca patrones clásicos como el cañón de planeadores, prueba otras reglas y observa cómo evoluciona la población."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "other",

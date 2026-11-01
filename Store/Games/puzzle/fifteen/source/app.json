@@ -17,7 +17,7 @@
     "fr": "Le puzzle à pièces coulissantes classique sur plateaux 3×3, 4×4 et 5×5 avec indices, annulation et meilleurs temps.",
     "es": "El clásico puzle de fichas deslizantes en tableros de 3×3, 4×4 y 5×5 con pistas, deshacer y mejores tiempos."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

@@ -8,7 +8,7 @@
     "fr": "Notez l’heure du coucher, du réveil et la qualité du sommeil d’un seul geste, puis suivez un graphique sur 7 nuits par rapport à votre objectif, les moyennes et la dette de sommeil.",
     "es": "Registra la hora de acostarte, de despertarte y la calidad del sueño con un toque, y sigue un gráfico de 7 noches frente a tu objetivo, promedios y déficit de sueño."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

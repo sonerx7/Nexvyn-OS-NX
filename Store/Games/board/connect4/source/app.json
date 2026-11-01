@@ -17,7 +17,7 @@
     "fr": "Lâchez des jetons et alignez-en quatre contre un adversaire informatique à trois niveaux ou un ami.",
     "es": "Suelta fichas y conecta cuatro en línea contra un rival por ordenador de tres niveles o un amigo."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

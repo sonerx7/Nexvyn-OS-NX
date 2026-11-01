@@ -8,7 +8,7 @@
     "fr": "Suivez la quantité d’eau que vous buvez chaque jour : des verres en un geste, un objectif quotidien, un graphique sur 7 jours et des rappels facultatifs.",
     "es": "Controla cuánta agua bebes cada día: vasos con un toque, un objetivo diario, un gráfico de 7 días y recordatorios opcionales."
   },
-  "version": "1.1.1",
+  "version": "1.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

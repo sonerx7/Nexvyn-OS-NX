@@ -8,7 +8,7 @@
     "fr": "Partagez équitablement une addition au restaurant : qui a partagé quel plat, qui a payé, pourboire et service, et le moins de virements possible pour solder les comptes.",
     "es": "Divide la cuenta de un restaurante de forma justa: quién compartió cada plato, quién pagó, propina y servicio, y el menor número de transferencias para saldar cuentas."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

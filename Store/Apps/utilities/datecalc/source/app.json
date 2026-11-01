@@ -8,7 +8,7 @@
     "fr": "Jours, semaines et jours ouvrés entre deux dates, ajout ou retrait d’une durée à une date, et jour de la semaine, semaine ISO et jour de l’année de n’importe quelle date.",
     "es": "Días, semanas y días laborables entre dos fechas, sumar o restar tiempo a una fecha, y el día de la semana, la semana ISO y el día del año de cualquier fecha."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

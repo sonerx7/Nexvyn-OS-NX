@@ -8,7 +8,7 @@
     "fr": "Cinq calculateurs de pourcentage avec résultat en direct et formule : X % de Y, quel pourcentage, variation de A à B, ajout de TVA ou d’une remise, et prix avant un pourcentage.",
     "es": "Cinco calculadoras de porcentajes con resultado al instante y la fórmula: X % de Y, qué porcentaje, cambio de A a B, añadir IVA o un descuento, y el precio antes de un porcentaje."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

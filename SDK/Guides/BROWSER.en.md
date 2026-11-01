@@ -179,69 +179,6 @@ main thread (`net` uses its worker threads).
   `opacity`, `z-index`, `transition-*`, `animation-*`, a real `IntersectionObserver` (thresholds, `rootMargin`,
   checked after each layout, on scroll and resize).
 
-### 3.6 1.0.2: real-world compatibility
-
-Prioritized by how often real sites depend on it.
-
-| Area | Before (1.0.0) | Now (1.0.2) |
-|---|---|---|
-| `position: absolute` | laid out in the normal flow | out of the flow, against the nearest positioned or transformed ancestor's padding box: `top/right/bottom/left` (px, %, `calc`), `inset`, stretching between left and right, centering with auto margins, `translate(-50%,-50%)`, static position when offsets are `auto`, nested containing blocks, `%` heights |
-| `position: fixed` | in the flow | against the view: stays in place while the page scrolls (headers, cookie bars, toasts, modals); a transformed ancestor holds it as in CSS |
-| Stacking | z-index of in-flow groups | positioned boxes paint above the flow in tree order / by z-index; `elementFromPoint` and clicks go to the topmost layer (overlays get the click, not the content below) |
-| `calc()` | two terms, `100% - 20px` read as `100%` | full expression: `+ - * /`, parentheses, nested `calc()`, percentage plus length kept exactly (`calc(100% - 2rem - 10px)`), `min()/max()/clamp()` in the cascade, `env()` fallback |
-| Units | `vw/vh/vmin/vmax/rem/em` | the same, now also inside `calc` everywhere |
-| `:hover` `:focus` `:focus-within` `:focus-visible` `:active` `:target` | never matched | matched (pointer, form focus, controller link focus as `:focus-visible`); a change restyles the page only when some selector puts that pseudo-class on the element whose state changed; `:has()` (descendants / children), `:placeholder-shown` |
-| `overflow: auto / scroll` | drawn as `hidden` at best | a scrolling box: drag, wheel and right stick scroll it before the page; per axis (`overflow-x`, `overflow-y`); its content no longer makes the page longer |
-| `text-overflow: ellipsis`, `line-clamp` | wrapped text | one line cut with "…"; `-webkit-line-clamp` / `line-clamp` limit the lines and end the last one with "…" |
-| `object-fit`, `object-position` | stretched | `fill / contain / cover / none / scale-down` with position (also with rounded corners) |
-| `filter` | none | `brightness / contrast / grayscale / sepia / invert / saturate / opacity` on everything drawn (pictures: brightness only); `blur()` and `drop-shadow()` are not drawn |
-| `backdrop-filter` | none | the blur is not drawn; a see-through background behind it is made almost opaque so the text stays readable |
-| `width / height: fit-content` (max-/min-content) | `auto` | shrink-to-fit |
-| `<video>` / `<audio>` | hidden | inline playback with the system media player (FFmpeg: mp4/webm/mkv, mp3/aac/ogg, progressive http(s) and HLS): poster, play button, controls bar (play/pause, time, seek, mute, "Open in Video Player"); one plays at a time, nothing is made before the first play, a hidden tab frees its decoder. `HTMLMediaElement`: `play()/pause()/load()/canPlayType()`, `currentTime`, `duration`, `paused`, `ended`, `volume`, `muted`, `loop`, `playbackRate`, `videoWidth/Height`, `readyState`, `error` and the events `loadstart`, `loadedmetadata`, `canplay`, `play`, `playing`, `pause`, `timeupdate`, `ended`, `error`, `volumechange`. MediaSource (`blob:` streams, as on YouTube) is not supported |
-| `<picture>` / `srcset` | first `<source>` with a srcset, ~600 px candidate | the first `<source>` whose `type` is decoded here and whose `media` holds; `srcset` by `sizes` and the width the picture gets (capped at 1280 px for memory) |
-| `<dialog>` | `open` attribute only | `show()`, `showModal()` (centered over a dimmed page, focus to `[autofocus]`), `close(value)`, `returnValue`, `requestClose()`, `cancel` / `close` events, Escape, `<form method=dialog>` |
-| Forms | text, password, checkbox, radio, select, buttons | plus `range` (slider), `color` (color well), `number` (narrow field), date / time types (field with the format to type), `<progress>`, `<meter>` (low / high / optimum colors) |
-| `ResizeObserver` | one callback | checked after every layout; an entry whenever the size changes |
-| `matchMedia` | `matches` only | `change` events (`addEventListener`, `addListener`, `onchange`) on resize / zoom |
-| `structuredClone` | JSON copy | the clone algorithm: cycles, `Map`, `Set`, `Date`, `RegExp`, typed arrays, errors; functions and nodes throw `DataCloneError` |
-| `getBoundingClientRect` | union of the content | a block's own border box, with relative offsets / translations; fixed boxes stay in the view |
-
-Already there and checked by the tests: `fetch` with `Response.json/text/blob/arrayBuffer/formData/clone`,
-`URL` / `URLSearchParams`, `localStorage` / `sessionStorage`, Promise / async order, `MutationObserver`,
-`requestIdleCallback`, `history.pushState` / `popstate`, `CustomEvent`, `dataset`, `classList`, `closest` / `matches`,
-`TextEncoder` / `TextDecoder`, `crypto.getRandomValues` / `randomUUID`, `<details>`, `<template>.content`, inline
-`<svg>` and `<img src=*.svg>`, canvas 2D.
-
-### 3.7 Memory, size and "a separate app?"
-
-**Nothing of the engine runs without a Browser window.** The engine keeps a few things between pages: two worker
-threads (1 MB stacks each), a QuickJS compile runtime per worker, the compiled prelude, a bytecode cache (up to
-12 MB), the cookie jars, Web Storage and a font metrics cache. Before 1.0.2 these stayed in memory after the Browser
-closed. Now `web::releaseEngine()` runs when the window closes (`~BrowserApp`): it saves cookies and Web Storage,
-frees all of them, and the workers finish their queued jobs, free their QuickJS runtimes and exit
-(`web::stopWorkers()`; the next job starts them again). Pages, layouts, images, canvases and media players go with
-their tabs. The log shows it: `engine released: heap A -> B MB`, `workers stopped (2)` and, 3 s later,
-`3 s after the Browser closed: heap X MB in use`; `page ready: ... (heap, MB above the Browser's start, JS KB)` for
-each page.
-
-| Measurement | Value |
-|---|---|
-| Engine + Browser code (`web_*.o`, `app_browser.o`, text) | 1.14 MB before, 1.23 MB now (+85 KB) of a 44 MB NRO text; the prelude is 163 KB in romfs |
-| Ryujinx, empty Browser window + error page | about 5.5 MB of heap above the moment it opened |
-| Idle, no Browser window | 0 threads, 0 QuickJS runtimes, caches freed (measured: see the log lines above; the console numbers belong in this table) |
-
-**A separate app from the App Market?** Native modules (`.nxvmod`) are switched off in 1.0.x: stickies, fontbook and
-network crashed in `mutexLock` on a lock that lives in module memory (the writable segment is mapped through
-`svcControlCodeMemory`, and kernel locking on that memory fails). The Browser would hit exactly that: `web_jobs.cpp`,
-`web_layout.cpp` and `app_browser.cpp` keep `static Mutex` / `CondVar` objects, and `web_js.cpp` uses a
-`thread_local` compile runtime, which the loader refuses (`PT_TLS`). Making it a module would need (1) the loader to
-map the writable segment as ordinary memory (or the module's locks moved to the heap), (2) TLS support or no
-`thread_local`, (3) the module tests re-enabled in Ryujinx and on a console. The gain would be about 1.4 MB (code +
-prelude) of a 66 MB NRO, and none in RAM, since the code pages of a built-in app cost nothing while it is closed and
-the engine now frees its heap. Recommendation: keep the Browser built in (it is also what other apps open links
-with); if the owner wants it removable from the lists, the existing optional-app mechanism (`"optional": true`, App
-Market "Get", Settings > Apps) can hide it without moving code, but that only changes the lists, not the NRO size.
-
 ## 4. Test pages and results
 
 The pages under `tests/web/` (on the computer `python -m http.server 8000`, from the console
@@ -257,8 +194,6 @@ The pages under `tests/web/` (on the computer `python -m http.server 8000`, from
 | `effects.html` | 15 automatic tests (transform / animation values, events, `Element.animate`, `IntersectionObserver`, 60 Hz frames) and visual sections |
 | `layout2.html` | Grid areas and rows, spans, `order`, `align-content`, `calc` / `clamp` / `min`, `place-content` |
 | `heavy.html` | A synthetic heavy page (2000 cards, `?n=` for more) with its build and first-frame times in the title |
-| `compat.html` | 64 automatic checks in four groups (positioning and units, CSS, HTML5 elements, JS APIs) with a PASS/FAIL table; the title shows "Compat x/y" and every result goes to the log (`webjs` lines) |
-| `html5.html` | Visual: fixed translucent header with a `:hover` menu, absolute badges and centering, card grid with `object-fit`, ellipsis, line-clamp and filters, horizontal and vertical scrolling boxes, video / audio controls, form controls, `<details>`, modal `<dialog>` |
 
 **Important note:** neither the console nor the emulator could be used during this work (the emulator was with the
 coordinator). The "Expected" column below is based on reviewing the code and running the canvas context in Node.js
@@ -285,9 +220,9 @@ should be entered in this table.
 
 ### Not supported (on purpose)
 
-- 3D (perspective, `rotateX/Y` are flattened); rounded clipping of content other than images (`overflow: hidden`
-  clips to the rectangle); `filter: blur()` / `drop-shadow()` and the backdrop blur; `clip-path` shapes; the
-  `transitionend` of a property whose element leaves the layout; `::before` / `::after` generated content.
+- `position: absolute/fixed` are still laid out in the normal flow (only their offsets animate); no 3D (perspective,
+  `rotateX/Y` are flattened), no rounded clipping of content other than images, `filter` / `backdrop-filter`,
+  `clip-path` shapes, `:hover` styles, the `transitionend` of a property whose element leaves the layout.
 - A transition starts after the restyle is laid out (one layout later than in desktop browsers); transitions to
   `auto` sizes and from / to a transparent background without a box jump. Element.animate has no `currentTime`
   seeking, `playbackRate` or composite modes.
@@ -295,5 +230,5 @@ should be entered in this table.
 - Canvas: `clip()`, gradients (painted with the average color), patterns, shadows, `drawImage` from an `<img>`,
   `toDataURL`.
 - `<text>` inside SVG, painting with CSS classes, filters.
-- Web fonts (`@font-face`), MediaSource video (`blob:` streams), WebGL, Service Worker, WebSocket, WebAssembly. The
-  full browser (WebKit) is suggested for sites that need these.
+- Web fonts (`@font-face`), `<video>/<audio>`, WebGL, Service Worker, WebSocket, WebAssembly. The full browser
+  (WebKit) is suggested for sites that need these.

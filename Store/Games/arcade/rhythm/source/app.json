@@ -8,7 +8,7 @@
     "fr": "Un jeu de rythme à quatre couloirs : frappez les notes qui tombent pour jouer vous-même la mélodie. Trois morceaux, partitions Facile et Difficile, mentions et meilleurs scores.",
     "es": "Un juego de ritmo de cuatro carriles: pulsa las notas que caen para tocar tú la melodía. Tres canciones, partituras Fácil y Difícil, calificaciones y mejores puntuaciones."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

@@ -17,7 +17,7 @@
     "fr": "Encerclez et retournez les pions de votre adversaire sur un plateau 8×8 contre un ordinateur à trois niveaux ou un ami.",
     "es": "Rodea y voltea las fichas de tu rival en un tablero de 8×8 contra un ordenador de tres niveles o un amigo."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

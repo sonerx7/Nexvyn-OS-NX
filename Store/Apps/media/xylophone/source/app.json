@@ -8,7 +8,7 @@
     "fr": "Un xylophone coloré à 8 ou 15 lames : tapotez ou utilisez le clavier, enregistrez et rejouez des mélodies, et apprenez des chansons grâce à la lame suivante qui s’allume.",
     "es": "Un colorido xilófono de 8 o 15 láminas: toca o usa el teclado, graba y reproduce melodías y aprende canciones mientras se ilumina la siguiente lámina."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "media",

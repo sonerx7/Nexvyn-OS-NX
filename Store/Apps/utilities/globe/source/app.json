@@ -18,7 +18,7 @@
     "es": "Una Tierra en 3D con día y noche en tiempo real, brillo atmosférico y marcadores de ciudades con su hora local."
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

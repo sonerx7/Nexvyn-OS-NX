@@ -45,46 +45,34 @@
   },
   "benchmark": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "breathe": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "budget": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -123,1006 +111,738 @@
   },
   "com.sonerx7.airhockey": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.asteroids": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.balloons": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.birthdays": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.blocks": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.bmi": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.bowling": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.breakout": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.capitals": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.checkers": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.colorconv": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.connect4": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.datecalc": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.dice": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.examcount": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.fifteen": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.fishing": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.flappy": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.froggy": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.fuel": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.g2048": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.hangman": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.hashtool": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.interval": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.invaders": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.jsonfmt": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.jumper": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.kelime": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.lavalamp": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.life": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.lightsout": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.loancalc": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.mandelbrot": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.mastermind": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.mathrace": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.maze3d": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.mazeeater": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.memory": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.meteor": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.minigolf": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.missile": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.mood": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.moon": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.multiply": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.noise": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.nonogram": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.palette": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.percent": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.pinball": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.pixelart": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.pong": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.primes": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.reading": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.reversi": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.rhythm": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.roman": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.shopping": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.sleep": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.snake": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.sokoban": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.spirograph": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.splitbill": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.stack": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.sudoku": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.tally": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.tanks": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.texttools": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1216,113 +936,85 @@
   },
   "com.sonerx7.tictactoe": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.tipcalc": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.todo": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.tonegen": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.towerdefense": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.turtle": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.water": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.1.1",
+    "updated": "2026-10-29",
+    "version": "1.1",
     "history": [
       {
         "version": "1.1",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.1.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.watersort": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.2",
+    "updated": "2026-10-30",
+    "version": "1.0.1",
     "history": [
       {
         "version": "1.0",
@@ -1331,70 +1023,50 @@
       {
         "version": "1.0.1",
         "date": "2026-10-30"
-      },
-      {
-        "version": "1.0.2",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.whack": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.wheel": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.worldclock": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "com.sonerx7.xylophone": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1411,16 +1083,12 @@
   },
   "countdown": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1459,16 +1127,12 @@
   },
   "drums": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1485,16 +1149,12 @@
   },
   "finance": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1511,16 +1171,12 @@
   },
   "flashcards": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1570,61 +1226,45 @@
   },
   "globe": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "graph": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "graph3d": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "habits": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1652,31 +1292,23 @@
   },
   "journal": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "kanban": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1726,31 +1358,23 @@
   },
   "metronome": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "minesweeper": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1789,16 +1413,12 @@
   },
   "morse": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1892,16 +1512,12 @@
   },
   "passgen": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1918,61 +1534,45 @@
   },
   "periodic": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "piano": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "pixelrun": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "pomodoro": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -1989,31 +1589,23 @@
   },
   "qrcode": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "racer": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -2109,16 +1701,12 @@
   },
   "sequencer": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -2146,16 +1734,12 @@
   },
   "solar": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -2172,16 +1756,12 @@
   },
   "spacearena": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
@@ -2264,46 +1844,34 @@
   },
   "typing": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "unitconv": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },
   "viewer3d": {
     "added": "2026-10-29",
-    "updated": "2026-11-01",
-    "version": "1.0.1",
+    "updated": "2026-10-29",
+    "version": "1.0",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
-      },
-      {
-        "version": "1.0.1",
-        "date": "2026-11-01"
       }
     ]
   },

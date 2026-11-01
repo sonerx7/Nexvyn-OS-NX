@@ -17,7 +17,7 @@
     "fr": "Retournez les cartes et trouvez toutes les paires. Trois tailles de plateau, meilleurs temps et un mode à deux joueurs.",
     "es": "Da la vuelta a las cartas y encuentra todas las parejas. Tres tamaños de tablero, mejores tiempos y un modo para dos jugadores."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

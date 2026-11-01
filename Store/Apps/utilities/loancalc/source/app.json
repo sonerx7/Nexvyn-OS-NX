@@ -8,7 +8,7 @@
     "fr": "Mensualité, coût total et intérêts d’un prêt avec un tableau d’amortissement complet par mois ou par an ; le taux peut être annuel ou mensuel.",
     "es": "Cuota mensual, coste total e intereses de un préstamo con una tabla de amortización completa por meses o por años; el tipo puede ser anual o mensual."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

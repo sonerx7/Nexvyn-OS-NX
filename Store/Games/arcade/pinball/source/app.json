@@ -8,7 +8,7 @@
     "fr": "Un flipper néon avec deux batteurs, un lanceur, des bumpers, des slingshots, des cibles tombantes et des couloirs rollover. Augmentez le multiplicateur et visez le meilleur score.",
     "es": "Una mesa de pinball de neón con dos flippers, lanzador, bumpers, slingshots, dianas abatibles y carriles rollover. Sube el multiplicador y persigue el récord."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

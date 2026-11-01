@@ -17,7 +17,7 @@
     "fr": "Pilotez un petit vaisseau dans un champ d’astéroïdes : pivotez, accélérez et pulvérisez les rochers en morceaux plus petits, esquivez les soucoupes volantes et survivez aux vagues.",
     "es": "Pilota una pequeña nave por un campo de asteroides: gira, acelera y destroza las rocas en trozos más pequeños, esquiva platillos volantes y sobrevive a las oleadas."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

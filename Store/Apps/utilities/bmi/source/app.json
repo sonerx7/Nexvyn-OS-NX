@@ -8,7 +8,7 @@
     "fr": "Indice de masse corporelle en unités métriques ou impériales avec la catégorie OMS, une jauge colorée, votre plage de poids santé et un graphique d’historique.",
     "es": "Índice de masa corporal en unidades métricas o imperiales con la categoría de la OMS, un indicador de colores, tu rango de peso saludable y un gráfico de historial."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

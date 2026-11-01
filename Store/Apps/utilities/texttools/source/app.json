@@ -8,7 +8,7 @@
     "fr": "Changez la casse en respectant les règles turques du İ/ı, nettoyez les espaces, triez les lignes, supprimez les doublons et comptez mots et caractères.",
     "es": "Cambia mayúsculas y minúsculas con las reglas turcas de İ/ı, limpia espacios, ordena líneas, elimina duplicados y cuenta palabras y caracteres."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

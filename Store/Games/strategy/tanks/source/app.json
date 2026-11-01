@@ -8,7 +8,7 @@
     "fr": "De l’artillerie au tour par tour sur un terrain destructible : réglez l’angle et la puissance, lisez le vent et pulvérisez l’autre tank. À deux sur une console ou contre l’ordinateur.",
     "es": "Artillería por turnos en un terreno destructible: ajusta el ángulo y la potencia, ten en cuenta el viento y revienta el otro tanque. Dos jugadores en una consola o contra la CPU."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

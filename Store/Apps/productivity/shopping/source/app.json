@@ -8,7 +8,7 @@
     "fr": "Des listes de courses classées par rayon : quantités et unités, articles cochés dans le panier et ajout rapide depuis l’historique.",
     "es": "Listas de la compra agrupadas por pasillo: cantidades y unidades, marcar al pasar al carrito y volver a añadir rápido desde el historial."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

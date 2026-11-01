@@ -18,7 +18,7 @@
     "es": "Un piano roll de dos octavas y 32 pasos con instrumentos, tempo, transposición, bucle y canciones guardadas."
   },
   "category": "media",
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

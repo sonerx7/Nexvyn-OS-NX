@@ -18,7 +18,7 @@
     "es": "Una caja de ritmos de 16 pasos con 8 pistas sintetizadas, BPM, swing, preajustes y patrones guardados."
   },
   "category": "media",
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

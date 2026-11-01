@@ -17,7 +17,7 @@
     "fr": "Poussez chaque caisse sur une cible dans 20 puzzles d’entrepôt vérifiés par un solveur, avec annulation illimitée et déplacement au toucher.",
     "es": "Empuja cada caja hasta un objetivo en 20 puzles de almacén verificados por un solucionador, con deshacer ilimitado y tocar para caminar."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

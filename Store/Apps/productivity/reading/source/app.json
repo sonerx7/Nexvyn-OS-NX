@@ -8,7 +8,7 @@
     "fr": "Suivez les livres que vous voulez lire, que vous lisez et que vous avez terminés : progression des pages, notes, commentaires et objectif de lecture annuel.",
     "es": "Lleva el control de los libros que quieres leer, estás leyendo y has terminado: progreso de páginas, valoraciones, notas y un objetivo anual de lectura."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

@@ -8,7 +8,7 @@
     "fr": "Comptez tout avec plusieurs compteurs nommés : gros boutons +/-, pas réglables, objectifs avec anneaux de progression, annulation et graphique d’historique.",
     "es": "Cuenta cualquier cosa con varios contadores con nombre: botones +/- grandes, tamaños de paso, objetivos con anillos de progreso, deshacer y un gráfico de historial."
   },
-  "version": "1.0.1",
+  "version": "1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",
