@@ -70,5 +70,9 @@
   "draws": "무승부",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "내가 먼저(빨강)",
-  "go_second": "컴퓨터가 먼저"
+  "go_second": "컴퓨터가 먼저",
+  "mode_expert": "전문가",
+  "review": "게임 복기",
+  "review_move": "{0} / {1}수",
+  "done": "완료"
 }

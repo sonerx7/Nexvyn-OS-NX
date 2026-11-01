@@ -32,5 +32,11 @@
   "octave_down": "Oktave tiefer",
   "octave_up": "Oktave höher",
   "menu_sound": "Ton",
-  "menu_songs": "Titel"
+  "menu_songs": "Titel",
+  "song_jingle": "Jingle Bells",
+  "song_scale": "C-Dur-Tonleiter",
+  "learn_song": "Lernen: {0}",
+  "learn_progress": "Lernmodus · {0}/{1} Noten · {2} % Genauigkeit",
+  "learn_done": "Lied geschafft! Genauigkeit {0} %",
+  "learn_shift": "Die nächste Note liegt außerhalb: Oktave wechseln"
 }

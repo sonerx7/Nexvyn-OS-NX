@@ -48,5 +48,11 @@
   "pause_menu": "一時停止",
   "new_game": "新しいゲーム",
   "reset_records": "記録をリセット",
-  "records_reset": "記録をリセットしました"
+  "records_reset": "記録をリセットしました",
+  "map_meadow": "マップ: 草原",
+  "map_canyon": "マップ: 峡谷",
+  "map_serpent": "マップ: 蛇行",
+  "endless_opt": "エンドレス: {0}",
+  "endless_best": "エンドレス最高: ウェーブ {0}",
+  "endless_go": "エンドレス！"
 }

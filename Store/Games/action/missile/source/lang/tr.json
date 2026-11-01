@@ -41,5 +41,19 @@
   "c_aim": "Çubuk / Yön tuşları / Oklar: nişan al",
   "c_fire": "A / Boşluk: en yakın bataryadan ateş",
   "c_base": "L, B, R: sol / orta / sağ batarya",
-  "c_touch": "Dokunmatik / fare: hedefe dokun ya da tıkla"
+  "c_touch": "Dokunmatik / fare: hedefe dokun ya da tıkla",
+  "records": "Rekorlar",
+  "no_records": "Henüz skor yok. Bir el oyna!",
+  "rounds": "Oyun",
+  "total_time": "Toplam süre",
+  "total_points": "Toplam puan",
+  "medal": "Madalya",
+  "medal_bronze": "Bronz",
+  "medal_silver": "Gümüş",
+  "medal_gold": "Altın",
+  "easy": "Kolay",
+  "normal": "Normal",
+  "hard": "Zor",
+  "close": "Kapat",
+  "rec_hint": "X: rekorlar  ·  L / R: zorluk"
 }

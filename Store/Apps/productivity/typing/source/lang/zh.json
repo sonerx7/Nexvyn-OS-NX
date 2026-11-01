@@ -43,5 +43,12 @@
   "clear_title": "清除所有成绩？",
   "clear_msg": "你的历史记录和最佳成绩将被删除。",
   "clear": "清除",
-  "cancel": "取消"
+  "cancel": "取消",
+  "les_words": "常用单词",
+  "les_words_d": "最常输入的单词",
+  "les_weak": "薄弱按键",
+  "les_weak_d": "用你最常出错的键生成练习",
+  "weak_keys": "练习：{0}",
+  "les_minute": "一分钟测试",
+  "les_minute_d": "60 秒内尽量多打单词"
 }

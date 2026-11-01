@@ -37,5 +37,19 @@
   "time_out": "시간 초과!",
   "fly_bonus": "파리 보너스 +200!",
   "c_move": "방향 버튼 / 스틱 / 화살표 / WASD: 점프",
-  "c_touch": "터치: 쓸어 넘기거나 개구리 옆을 탭"
+  "c_touch": "터치: 쓸어 넘기거나 개구리 옆을 탭",
+  "records": "기록",
+  "no_records": "아직 기록이 없어요. 한 판 해 보세요!",
+  "rounds": "판 수",
+  "total_time": "총 시간",
+  "total_points": "총 점수",
+  "medal": "메달",
+  "medal_bronze": "동메달",
+  "medal_silver": "은메달",
+  "medal_gold": "금메달",
+  "easy": "쉬움",
+  "normal": "보통",
+  "hard": "어려움",
+  "close": "닫기",
+  "rec_hint": "X: 기록  ·  L / R: 난이도"
 }

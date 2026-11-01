@@ -54,5 +54,8 @@
   "over_title": "无路可走",
   "over_sub": "棋盘已满。撤销上一步或再试一次。",
   "top_tile": "最大方块",
-  "best_size": "{0} 最佳"
+  "best_size": "{0} 最佳",
+  "classic": "经典",
+  "time_attack": "限时挑战",
+  "times_up": "时间到！"
 }

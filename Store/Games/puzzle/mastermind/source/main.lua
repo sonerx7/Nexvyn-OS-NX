@@ -1,4 +1,4 @@
--- Şifre Kır / Code Breaker for Nexvyn OS: Mastermind. Crack a secret colour code in 10 tries. Classic (4 pegs,
+-- Şifre Kır / Code Breaker for Nexvyn OS: a colour-code logic game. Crack a secret colour code in 10 tries. Classic (4 pegs,
 -- 6 colours) or hard (5 pegs, 8 colours), duplicates on/off, numbered pegs for colour-blind players, hints,
 -- undo of the current entry and full statistics with a guess distribution.
 local K = require("kit")

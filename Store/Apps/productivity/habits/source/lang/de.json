@@ -85,5 +85,18 @@
   "wdn3": "Mi",
   "wdn4": "Do",
   "wdn5": "Fr",
-  "wdn6": "Sa"
+  "wdn6": "Sa",
+  "rest_today": "Heute Ruhetag",
+  "rest_off": "Ruhetag entfernen",
+  "milestone": "{0}: {1} Tage in Folge!",
+  "export_csv": "CSV exportieren",
+  "exported": "Verlauf exportiert",
+  "backup": "Sichern",
+  "backup_done": "Sicherung gespeichert",
+  "restore": "Wiederherstellen",
+  "restore_confirm": "Alle Gewohnheiten durch die {0} dieser Sicherung ersetzen?",
+  "restore_done": "{0} Gewohnheiten wiederhergestellt",
+  "restore_bad": "Diese Datei ist keine Habits-Sicherung",
+  "done_today": "Heute erledigt",
+  "mark_today": "Für heute abhaken"
 }

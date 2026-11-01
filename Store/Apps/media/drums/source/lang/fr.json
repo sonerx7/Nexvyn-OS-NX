@@ -26,5 +26,13 @@
   "pre_rock": "Rock",
   "pre_hiphop": "Hip-hop",
   "pre_house": "House",
-  "pre_empty": "Vide"
+  "pre_empty": "Vide",
+  "pre_funk": "Funk",
+  "pre_disco": "Disco",
+  "pre_reggae": "Reggae",
+  "pre_break": "Breakbeat",
+  "pre_bossa": "Bossa nova",
+  "pre_trap": "Trap",
+  "generate": "Générer un groove",
+  "accent_mode": "Mode accent"
 }

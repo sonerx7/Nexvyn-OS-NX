@@ -171,7 +171,7 @@ local function shuffle(t)
   end
 end
 
-local function startStudy(d, practice)
+local function startStudy(d, practice, quiz)
   local t = today()
   local queue = {}
   for _, c in ipairs(d.cards) do
@@ -188,7 +188,8 @@ local function startStudy(d, practice)
   for _, c in ipairs(queue) do c._r = nil end
   while #queue > 20 do table.remove(queue) end
   S = {deck = d, queue = queue, pos = 1, total = #queue, right = 0, wrong = 0, practice = practice, flipped = false,
-       flipT = 0, outT = 0, outDir = 0, seen = {}, reverse = {}, startedAt = sys.time()}
+       flipT = 0, outT = 0, outDir = 0, seen = {}, reverse = {}, startedAt = sys.time(),
+       quiz = quiz and #d.cards >= 4, opts = {}}
   for i, c in ipairs(queue) do
     if d.dir == 2 then S.reverse[c.id] = true
     elseif d.dir == 3 then S.reverse[c.id] = math.random() < 0.5 end
@@ -237,13 +238,65 @@ local function answer(correct)
   end
 end
 
+-- study streak: consecutive days with at least one finished session
+local function bumpStreak()
+  local st = store.get("streak", {})
+  if type(st) ~= "table" then st = {} end
+  local t = today()
+  local last = tonumber(st.last) or -10
+  if last ~= t then
+    st.n = (t - last == 1) and (tonumber(st.n) or 0) + 1 or 1
+    st.best = max(tonumber(st.best) or 0, st.n)
+    st.last = t
+    store.set("streak", st)
+  end
+end
+local function streakNow()
+  local st = store.get("streak", {})
+  if type(st) ~= "table" or not st.last then return 0 end
+  return (today() - st.last <= 1) and (tonumber(st.n) or 0) or 0
+end
+
+-- multiple-choice options for the current card: the answer plus three answers of other cards in the deck
+local function optionsFor(c)
+  local o = S.opts[c.id]
+  if o then return o end
+  local rev = S.reverse[c.id]
+  local ans = rev and c.f or c.b
+  local pool, seen = {}, {[ans] = true}
+  for _, x in ipairs(S.deck.cards) do
+    local a = rev and x.f or x.b
+    if not seen[a] then seen[a] = true; pool[#pool + 1] = a end
+  end
+  shuffle(pool)
+  o = {ans}
+  for i = 1, min(3, #pool) do o[#o + 1] = pool[i] end
+  shuffle(o)
+  S.opts[c.id] = o
+  return o
+end
+
+local function choose(i)
+  if not S or not S.quiz or S.flipped or S.outDir ~= 0 then return end
+  local c = S.queue[S.pos]
+  local o = optionsFor(c)
+  if not o[i] then return end
+  local ans = S.reverse[c.id] and c.f or c.b
+  S.picked = i
+  flip()
+  local ok = o[i] == ans
+  timer.after(0.75, function() if S and S.queue[S.pos] == c then answer(ok) end end)
+end
+
 local function advance()
   S.pos = S.pos + 1
+  S.picked = nil
   S.flipped = false
   S.flipT = 0
   S.outDir = 0
   S.outT = 0
   if S.pos > #S.queue then
+    bumpStreak()
     go("summary")
     audio.play("notify")
   end
@@ -356,10 +409,56 @@ local function resetDeck(deck)
   end)
 end
 
+local function splitLine(line)
+  local sep = line:find("\t", 1, true) and "\t" or (line:find(";", 1, true) and ";" or ",")
+  local a, b = line:match("^(.-)" .. sep .. "(.*)$")
+  if not a then return nil end
+  local function clean(x) return trim((x:gsub('^%s*"(.*)"%s*$', "%1"):gsub('""', '"'))) end
+  a, b = clean(a), clean(b)
+  if a == "" or b == "" then return nil end
+  return a, b
+end
+
+-- cards from a text file: one card per line, front and back separated by a tab, ; or ,
+local function importCards()
+  ui.openFile(function(path)
+    if not path then return end
+    local text = fs.read(path)
+    if not text then audio.play("error") return end
+    local name = path:match("([^/\\]+)$") or TR("untitled")
+    name = name:gsub("%.%w+$", "")
+    local deck = {id = newId(), name = name, color = "green", dir = 1, cards = {}}
+    local t = today()
+    for line in (text .. "\n"):gmatch("([^\r\n]*)\r?\n") do
+      local f, b = splitLine(line)
+      if f and #deck.cards < 2000 then deck.cards[#deck.cards + 1] = {id = newId(), f = f, b = b, box = 1, due = t} end
+    end
+    if #deck.cards == 0 then
+      ui.alert(TR("import"), TR("import_none"), {TR("ok")}, function() end)
+      return
+    end
+    decks[#decks + 1] = deck
+    saveNow()
+    openDeck(deck)
+    ui.alert(TR("import"), TR("import_done", #deck.cards, name), {TR("ok")}, function() end)
+  end, {".csv", ".tsv", ".txt"}, TR("import"))
+end
+
+local function exportDeck(deck)
+  ui.saveFile(function(path)
+    if not path then return end
+    local out = {}
+    for _, c in ipairs(deck.cards) do out[#out + 1] = (c.f:gsub("[\t\r\n]", " ")) .. "\t" .. (c.b:gsub("[\t\r\n]", " ")) end
+    if fs.write(path, table.concat(out, "\n") .. "\n") then audio.play("pop") else audio.play("error") end
+  end, deck.name .. ".tsv", TR("export"))
+end
+
 local function deckMenu(deck)
   ui.contextMenu({
     {label = TR("study"), id = 1, icon = "school"},
     {label = TR("practice_all"), id = 2, icon = "replay"},
+    {label = TR("quiz"), id = 6, icon = "quiz"},
+    {label = TR("export") .. "…", id = 7, icon = "ios_share"},
     "-",
     {label = TR("rename"), id = 3, icon = "edit"},
     {label = TR("reset_progress"), id = 4, icon = "restart_alt"},
@@ -370,7 +469,9 @@ local function deckMenu(deck)
     elseif id == 2 then startStudy(deck, true)
     elseif id == 3 then openDeckSheet(deck)
     elseif id == 4 then resetDeck(deck)
-    elseif id == 5 then deleteDeck(deck) end
+    elseif id == 5 then deleteDeck(deck)
+    elseif id == 6 then startStudy(deck, dueCount(deck) == 0, true)
+    elseif id == 7 then exportDeck(deck) end
   end)
 end
 
@@ -694,7 +795,23 @@ local function drawStudy(w, h, interactive)
   end
   -- controls
   local by = cy + ch / 2 + 30
-  if interactive then
+  if interactive and S.quiz then
+    local o = optionsFor(c)
+    local ans = S.reverse[c.id] and c.f or c.b
+    local bw = min(250, (w - 60) / 2)
+    for i = 1, #o do
+      local col, row = (i - 1) % 2, (i - 1) // 2
+      local bx, byy = w / 2 - bw - 5 + col * (bw + 10), by - 10 + row * 46
+      local style = "default"
+      if S.picked then
+        if o[i] == ans then style = "primary" elseif i == S.picked then style = "destructive" end
+      end
+      local label = o[i]
+      if ui.button(i .. "  " .. label .. "##qz" .. i, bx, byy, bw, 40, style) and not S.picked then choose(i) end
+    end
+    gfx.color(theme.text3)
+    gfx.text(TR("hint_quiz"), 0, by + 88, 12, "sans", "center", w)
+  elseif interactive then
     if not S.flipped then
       if ui.button(TR("show_answer") .. "##show", w / 2 - 120, by, 240, 40, "primary", "flip") then flip() end
       gfx.color(theme.text3)
@@ -729,7 +846,8 @@ local function drawSummary(w, h, interactive)
   local mins = floor((sys.time() - S.startedAt) / 60)
   local secs = floor(sys.time() - S.startedAt) % 60
   gfx.color(theme.text3)
-  gfx.text(TR("summary_time", string.format("%d:%02d", mins, secs)), 0, cy + 144, 12.5, "sans", "center", w)
+  gfx.text(TR("summary_time", string.format("%d:%02d", mins, secs)) .. "   ·   " .. TR("streak_n", streakNow()), 0, cy + 144,
+    12.5, "sans", "center", w)
   if interactive then
     local dueN = dueCount(S.deck)
     if ui.button(TR("back_to_deck") .. "##sum", w / 2 - 250, cy + 186, 240, 38) then go("deck") end
@@ -848,7 +966,12 @@ function app.event(e)
     elseif e.key == "n" or e.key == "a" then openCardSheet(nil)
     elseif e.key == "s" or e.key == "enter" then
       if #curDeck.cards > 0 then startStudy(curDeck, dueCount(curDeck) == 0) end
+    elseif e.key == "q" then
+      if #curDeck.cards >= 4 then startStudy(curDeck, dueCount(curDeck) == 0, true) end
     end
+  elseif view == "study" and S.quiz and not S.flipped then
+    if e.key == "escape" then go("deck")
+    elseif e.key == "1" or e.key == "2" or e.key == "3" or e.key == "4" then choose(tonumber(e.key)) end
   elseif view == "study" then
     if e.key == "escape" then go("deck")
     elseif e.key == "space" or e.key == "enter" or e.key == "up" or e.key == "down" then
@@ -868,7 +991,10 @@ function app.menu()
     "-",
     {label = TR("study"), id = 3, enabled = inDeck},
     {label = TR("practice_all"), id = 4, enabled = inDeck},
+    {label = TR("quiz"), id = 6, enabled = inDeck and #curDeck.cards >= 4, shortcut = "Q"},
     "-",
+    {label = TR("import") .. "…", id = 7},
+    {label = TR("export") .. "…", id = 8, enabled = inDeck},
     {label = TR("add_starter"), id = 5},
   }}}
 end
@@ -878,10 +1004,34 @@ function app.onmenu(id)
   elseif id == 2 and curDeck then go("deck"); openCardSheet(nil)
   elseif id == 3 and curDeck then startStudy(curDeck, dueCount(curDeck) == 0)
   elseif id == 4 and curDeck then startStudy(curDeck, true)
+  elseif id == 6 and curDeck then startStudy(curDeck, dueCount(curDeck) == 0, true)
+  elseif id == 7 then importCards()
+  elseif id == 8 and curDeck then exportDeck(curDeck)
   elseif id == 5 then
     decks[#decks + 1] = makeStarter()
     saveNow()
   end
+end
+
+function app.search(query)
+  local q = lower(trim(query or ""))
+  if q == "" then return {} end
+  local out = {}
+  for _, d in ipairs(decks) do
+    for _, c in ipairs(d.cards) do
+      if lower(c.f):find(q, 1, true) or lower(c.b):find(q, 1, true) then
+        out[#out + 1] = {title = c.f .. " → " .. c.b, subtitle = d.name, icon = "style", arg = "deck:" .. d.id}
+        if #out >= 5 then return out end
+      end
+    end
+  end
+  return out
+end
+
+function app.open(arg)
+  local id = tostring(arg or ""):match("^deck:(.+)$")
+  local d = id and findDeck(id)
+  if d then openDeck(d) end
 end
 
 function app.close()

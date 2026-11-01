@@ -661,8 +661,193 @@ local function drawMain(w, h)
   end
 end
 
+-- ------------------------------------------------------------------ insights: mood over 30 days, moods, tags, on this day
+local insights = false
+local PROMPTS = {"prompt_1", "prompt_2", "prompt_3", "prompt_4", "prompt_5", "prompt_6", "prompt_7", "prompt_8",
+                 "prompt_9", "prompt_10"}
+
+local function addPrompt()
+  if selDay > todayNoon then return end
+  local en = entryFor(keyOf(selDay), true)
+  local text = TR(PROMPTS[math.random(#PROMPTS)])
+  if #en.lines == 1 and trim(en.lines[1]) == "" then en.lines[1] = text else en.lines[#en.lines + 1] = text end
+  touch(keyOf(selDay))
+  markDirty()
+  bump()
+  audio.play("pop")
+end
+
+local function drawInsights(w, h)
+  local x, cw = 20, w - 40
+  if ui.button(TR("back") .. "##ins", x, 14, 100, 32, "default", "arrow_back") then insights = false end
+  gfx.color(theme.text)
+  gfx.text(TR("insights"), x + 116, 18, 22, "bold")
+  gfx.color(theme.text2)
+  gfx.text(TR("stats_line", stats.streak, stats.count, stats.words), x + 116, 46, 12)
+  -- mood over the last 30 days
+  local y = 74
+  ui.group(x, y, cw, 150)
+  gfx.color(theme.text2)
+  gfx.text(TR("mood_30"), x + 14, y + 10, 12, "semibold")
+  local gx, gy, gw, gh = x + 40, y + 34, cw - 60, 96
+  for m = 1, 5 do
+    local yy = gy + gh - (m - 1) / 4 * gh
+    gfx.icon(MOODS[m].icon, x + 22, yy, 14, theme[MOODS[m].color])
+    gfx.rect(gx, yy, gw, 1, 0, theme.separator)
+  end
+  local px, py
+  local counts = {0, 0, 0, 0, 0}
+  for i = 0, 29 do
+    local day = todayNoon - (29 - i) * 86400
+    local en = entries[keyOf(day)]
+    local mood = en and en.mood or 0
+    local xx = gx + i / 29 * gw
+    if mood > 0 then
+      counts[mood] = counts[mood] + 1
+      local yy = gy + gh - (mood - 1) / 4 * gh
+      if px then
+        gfx.color(alpha(theme.accent, 0.5))
+        gfx.line(px, py, xx, yy, 2)
+      end
+      gfx.circle(xx, yy, 4.5, theme[MOODS[mood].color])
+      px, py = xx, yy
+    end
+  end
+  y = y + 162
+  -- mood split and top tags side by side
+  local half = floor((cw - 12) / 2)
+  ui.group(x, y, half, 176)
+  gfx.color(theme.text2)
+  gfx.text(TR("mood_split"), x + 14, y + 10, 12, "semibold")
+  local total = counts[1] + counts[2] + counts[3] + counts[4] + counts[5]
+  for m = 5, 1, -1 do
+    local yy = y + 34 + (5 - m) * 26
+    gfx.icon(MOODS[m].icon, x + 24, yy + 9, 16, theme[MOODS[m].color])
+    local bw = half - 100
+    gfx.rect(x + 40, yy + 4, bw, 10, 5, theme.hover)
+    if total > 0 then gfx.rect(x + 40, yy + 4, bw * counts[m] / total, 10, 5, theme[MOODS[m].color]) end
+    gfx.color(theme.text2)
+    gfx.text(tostring(counts[m]), x + 40, yy + 1, 12, "semibold", "right", half - 54)
+  end
+  local tx = x + half + 12
+  ui.group(tx, y, half, 176)
+  gfx.color(theme.text2)
+  gfx.text(TR("top_tags"), tx + 14, y + 10, 12, "semibold")
+  local tagCount = {}
+  for _, en in pairs(entries) do
+    for _, t in ipairs(tagsOf(en)) do local k = t:lower(); tagCount[k] = (tagCount[k] or 0) + 1 end
+  end
+  local tags = {}
+  for k, n in pairs(tagCount) do tags[#tags + 1] = {k, n} end
+  table.sort(tags, function(a, b) if a[2] ~= b[2] then return a[2] > b[2] end return a[1] < b[1] end)
+  if #tags == 0 then
+    gfx.color(theme.text3)
+    gfx.text(TR("no_tags"), tx + 14, y + 40, 12)
+  end
+  for i = 1, min(5, #tags) do
+    gfx.color(theme.text)
+    gfx.text("#" .. tags[i][1], tx + 14, y + 34 + (i - 1) * 26, 13, "medium")
+    gfx.color(theme.text2)
+    gfx.text(tostring(tags[i][2]), tx + 14, y + 34 + (i - 1) * 26, 13, "semibold", "right", half - 28)
+  end
+  y = y + 188
+  -- on this day in earlier years
+  gfx.color(theme.text2)
+  gfx.text(TR("on_this_day"), x, y, 12, "semibold")
+  y = y + 20
+  local md = keyOf(todayNoon):sub(5)
+  local found = 0
+  local keys = {}
+  for k, en in pairs(entries) do
+    if k:sub(5) == md and k ~= keyOf(todayNoon) and not isEmpty(en) then keys[#keys + 1] = k end
+  end
+  table.sort(keys, function(a, b) return a > b end)
+  for _, k in ipairs(keys) do
+    if y > h - 40 then break end
+    local en = entries[k]
+    local first = ""
+    for _, l in ipairs(en.lines) do if trim(l) ~= "" then first = l break end end
+    local hit = ui.row("otd" .. k, x, y, cw, 36, false)
+    gfx.color(theme.text)
+    gfx.text(k:sub(1, 4), x + 12, y + 9, 14, "bold")
+    if en.mood > 0 then gfx.icon(MOODS[en.mood].icon, x + 70, y + 18, 16, theme[MOODS[en.mood].color]) end
+    gfx.color(theme.text2)
+    gfx.text(ellipsize(first, 13, "sans", cw - 110), x + 90, y + 10, 13)
+    if hit then insights = false; selectDay(dayFromKey(k)) end
+    y = y + 40
+    found = found + 1
+  end
+  if found == 0 then
+    gfx.color(theme.text3)
+    gfx.text(TR("on_this_day_none"), x, y, 12)
+  end
+end
+
+local function backup()
+  ui.saveFile(function(path)
+    if not path then return end
+    if dirty then save() end
+    local txt = fs.read(FILE) or JSON.encode({version = 1, entries = {}}, true)
+    if fs.write(path, txt) then audio.play("pop") else audio.play("error") end
+  end, "journal-backup.json", TR("backup"))
+end
+
+local function restore()
+  ui.openFile(function(path)
+    if not path then return end
+    local txt = fs.read(path)
+    local d = txt and JSON.decode(txt)
+    if type(d) ~= "table" or type(d.entries) ~= "table" then
+      ui.alert(TR("restore"), TR("restore_bad"), {TR("ok")})
+      return
+    end
+    local n = 0
+    for _ in pairs(d.entries) do n = n + 1 end
+    ui.alert(TR("restore"), TR("restore_confirm", n), {TR("restore"), TR("cancel")}, function(b)
+      if b ~= 1 then return end
+      fs.write(FILE, txt)
+      load()
+      bump()
+      computeStats()
+      selectDay(todayNoon)
+    end)
+  end, {".json"}, TR("restore"))
+end
+
+function app.search(query)
+  local q = fold(trim(query or ""))
+  if q == "" then return {} end
+  local keys = {}
+  for k in pairs(entries) do keys[#keys + 1] = k end
+  table.sort(keys, function(a, b) return a > b end)
+  local out = {}
+  for _, k in ipairs(keys) do
+    local en = entries[k]
+    local hitLine = nil
+    for _, l in ipairs(en.lines) do if fold(l):find(q, 1, true) then hitLine = l break end end
+    if hitLine or fold(en.tags or ""):find(q, 1, true) then
+      out[#out + 1] = {title = k, subtitle = hitLine or en.tags, icon = "auto_stories", arg = "day:" .. k}
+      if #out >= 5 then break end
+    end
+  end
+  return out
+end
+
+function app.open(arg)
+  local k = tostring(arg or ""):match("^day:(%d+%-%d+%-%d+)$")
+  if k then
+    insights = false
+    local noon = dayFromKey(k)
+    if noon then selectDay(noon) end
+  end
+end
+
 function app.draw(w, h)
   gfx.clear(theme.bg)
+  if insights then
+    drawInsights(w, h)
+    return
+  end
   drawSidebar(w, h)
   drawMain(w, h)
   if pressAt then
@@ -685,6 +870,10 @@ function app.event(e)
     return
   end
   if e.type ~= "keydown" then return end
+  if insights then
+    if e.key == "escape" or e.key == "backspace" then insights = false end
+    return
+  end
   if e.key == "escape" then
     if editing then editing, editId = false, nil; return end
     if search ~= "" then search = "" end
@@ -704,6 +893,8 @@ function app.event(e)
   elseif e.key == "right" then if selDay < todayNoon then selectDay(selDay + 86400) end
   elseif e.key == "up" then selectDay(selDay - 7 * 86400)
   elseif e.key == "down" then selectDay(min(todayNoon, selDay + 7 * 86400))
+  elseif e.key == "i" then insights = true
+  elseif e.key == "p" then addPrompt()
   elseif e.key == "enter" and selDay <= todayNoon then
     local en = entries[keyOf(selDay)]
     focusField("line" .. (en and #en.lines or 1))
@@ -717,7 +908,12 @@ function app.menu()
       {label = TR("prev_day"), id = 2},
       {label = TR("next_day"), id = 3},
       "-",
+      {label = TR("insights"), id = 5, shortcut = "I"},
+      {label = TR("prompt_menu"), id = 6, shortcut = "P"},
+      "-",
       {label = TR("export"), id = 4},
+      {label = TR("backup") .. "…", id = 7},
+      {label = TR("restore") .. "…", id = 8},
     }},
   }
 end
@@ -726,6 +922,10 @@ function app.onmenu(id)
   if id == 1 then selectDay(todayNoon); stripEnd = todayNoon + 3 * 86400
   elseif id == 2 then selectDay(selDay - 86400)
   elseif id == 3 then if selDay < todayNoon then selectDay(selDay + 86400) end
+  elseif id == 5 then insights = not insights
+  elseif id == 6 then addPrompt()
+  elseif id == 7 then backup()
+  elseif id == 8 then restore()
   elseif id == 4 then
     local keys = {}
     for k in pairs(entries) do keys[#keys + 1] = k end

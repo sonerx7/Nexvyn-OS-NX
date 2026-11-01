@@ -67,5 +67,13 @@
   "reset_progress": "İlerlemeyi Sıfırla",
   "reset_title": "İlerleme sıfırlansın mı?",
   "reset_msg": "Tüm kartlar 1. kutuya döner ve bugün tekrar edilir.",
-  "reset": "Sıfırla"
+  "reset": "Sıfırla",
+  "quiz": "Test (çoktan seçmeli)",
+  "hint_quiz": "Doğru cevabı seç · klavyede 1–4",
+  "streak_n": "Seri: {0} gün",
+  "import": "Kart İçe Aktar",
+  "import_done": "“{1}” destesine {0} kart aktarıldı.",
+  "import_none": "Kart bulunamadı. Her satıra bir kart yaz: ön ve arka yüz sekme, ; ya da virgülle ayrılsın.",
+  "export": "Desteyi Dışa Aktar",
+  "ok": "Tamam"
 }

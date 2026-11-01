@@ -85,5 +85,18 @@
   "wdn3": "수",
   "wdn4": "목",
   "wdn5": "금",
-  "wdn6": "토"
+  "wdn6": "토",
+  "rest_today": "오늘은 쉬는 날",
+  "rest_off": "쉬는 날 해제",
+  "milestone": "{0}: {1}일 연속!",
+  "export_csv": "CSV 내보내기",
+  "exported": "기록을 내보냈습니다",
+  "backup": "백업",
+  "backup_done": "백업 저장됨",
+  "restore": "복원",
+  "restore_confirm": "모든 습관을 이 백업의 습관 {0}개로 바꿀까요?",
+  "restore_done": "습관 {0}개 복원됨",
+  "restore_bad": "Habits 백업 파일이 아닙니다",
+  "done_today": "오늘 완료",
+  "mark_today": "오늘 완료로 표시"
 }

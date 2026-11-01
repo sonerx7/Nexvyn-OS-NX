@@ -100,5 +100,19 @@
   "wdn3": "三",
   "wdn4": "四",
   "wdn5": "五",
-  "wdn6": "六"
+  "wdn6": "六",
+  "repeat_monthly": "每月重复",
+  "budgets": "预算",
+  "budgets_sub": "各类别每月上限 · {0} 支出",
+  "spent_of": "{0} / {1}",
+  "no_limit": "无上限",
+  "over_budget": "超出预算：{0}",
+  "done_btn": "完成",
+  "backup": "备份",
+  "backup_done": "备份已保存",
+  "save_failed": "无法保存文件",
+  "restore": "恢复",
+  "restore_confirm": "要用此备份中的 {0} 条记录替换所有记录吗？",
+  "restore_done": "已恢复 {0} 条记录",
+  "restore_bad": "该文件不是预算备份"
 }

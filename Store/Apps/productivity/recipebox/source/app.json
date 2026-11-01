@@ -1,0 +1,27 @@
+{
+  "id": "com.sonerx7.recipebox",
+  "name": {"en": "Recipe Box", "tr": "Tarif Kutusu", "de": "Rezeptbox", "fr": "Boîte à recettes", "es": "Recetario", "ja": "レシピボックス", "zh": "菜谱盒", "ko": "레시피 상자"},
+  "description": {
+    "en": "Your recipes with serving scaling, unit conversion, a hands-free cooking mode with timers and a shopping list.",
+    "tr": "Porsiyon ayarı, birim çevirme, zamanlayıcılı eller serbest pişirme kipi ve alışveriş listesiyle tariflerin.",
+    "de": "Deine Rezepte mit Portionsrechner, Einheitenumrechnung, freihändigem Kochmodus mit Timern und Einkaufsliste.",
+    "fr": "Vos recettes avec portions ajustables, conversion d’unités, mode cuisine mains libres avec minuteurs et liste de courses.",
+    "es": "Tus recetas con raciones ajustables, conversión de unidades, modo cocina manos libres con temporizadores y lista de compra.",
+    "ja": "分量の調整、単位の換算、タイマー付きのハンズフリー調理モード、買い物リストがそろったレシピ帳。",
+    "zh": "你的菜谱：份量缩放、单位换算、带计时器的免手动烹饪模式和购物清单。",
+    "ko": "인분 조절, 단위 변환, 타이머가 있는 핸즈프리 요리 모드, 장보기 목록을 갖춘 레시피 모음."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 420, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "shareTargets": ["text", ".md", ".txt"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

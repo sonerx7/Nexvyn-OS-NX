@@ -15,10 +15,13 @@
     "tr": "z = f(x, y, t) fonksiyonlarını döndürülebilir, yakınlaştırılabilir ve canlandırılabilir renkli 3D yüzey olarak çizer.",
     "de": "Zeichne z = f(x, y, t) als farbige 3D-Fläche, die du drehen, zoomen und animieren kannst.",
     "fr": "Tracez z = f(x, y, t) sous forme de surface 3D colorée que vous pouvez faire pivoter, zoomer et animer.",
-    "es": "Representa z = f(x, y, t) como una superficie 3D de colores que puedes rotar, ampliar y animar."
+    "es": "Representa z = f(x, y, t) como una superficie 3D de colores que puedes rotar, ampliar y animar.",
+    "ja": "z = f(x, y) を 3D サーフェスで描画",
+    "zh": "将 z = f(x, y) 绘制为 3D 曲面",
+    "ko": "z = f(x, y)를 3D 곡면으로 그리세요"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

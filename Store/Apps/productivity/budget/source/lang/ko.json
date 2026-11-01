@@ -100,5 +100,19 @@
   "wdn3": "수",
   "wdn4": "목",
   "wdn5": "금",
-  "wdn6": "토"
+  "wdn6": "토",
+  "repeat_monthly": "매월 반복",
+  "budgets": "예산",
+  "budgets_sub": "카테고리별 월 한도 · {0} 지출",
+  "spent_of": "{1} 중 {0}",
+  "no_limit": "한도 없음",
+  "over_budget": "예산 초과: {0}",
+  "done_btn": "완료",
+  "backup": "백업",
+  "backup_done": "백업 저장됨",
+  "save_failed": "파일을 저장할 수 없습니다",
+  "restore": "복원",
+  "restore_confirm": "모든 항목을 이 백업의 {0}개 항목으로 바꿀까요?",
+  "restore_done": "항목 {0}개 복원됨",
+  "restore_bad": "Budget 백업 파일이 아닙니다"
 }

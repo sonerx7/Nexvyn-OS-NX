@@ -11,7 +11,7 @@
     "ko": "습관"
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -23,11 +23,14 @@
   },
   "gamepad": false,
   "description": {
-    "en": "Track daily habits, streaks and progress",
-    "tr": "Günlük alışkanlıkları, serileri ve ilerlemeyi takip edin",
-    "de": "Verfolge tägliche Gewohnheiten, Serien und Fortschritte",
-    "fr": "Suivez vos habitudes quotidiennes, vos séries et vos progrès",
-    "es": "Sigue tus hábitos diarios, rachas y progreso"
+    "en": "Build daily habits with streaks, rest days, milestones, calendars, statistics, reminders, CSV export and backups.",
+    "tr": "Serilerle, dinlenme günleriyle, kilometre taşlarıyla, takvim, istatistik, hatırlatma, CSV ve yedeklemeyle alışkanlık edin.",
+    "de": "Gewohnheiten mit Serien, Ruhetagen, Meilensteinen, Kalender, Statistik, Erinnerungen, CSV-Export und Sicherung.",
+    "fr": "Des habitudes avec séries, jours de repos, paliers, calendriers, statistiques, rappels, export CSV et sauvegardes.",
+    "es": "Crea hábitos con rachas, días de descanso, hitos, calendarios, estadísticas, recordatorios, CSV y copias.",
+    "ja": "連続記録、休息日、節目のお祝い、カレンダー、統計、リマインダー、CSV、バックアップで習慣づくり。",
+    "zh": "用连续记录、休息日、里程碑、日历、统计、提醒、CSV 导出和备份养成习惯。",
+    "ko": "연속 기록, 쉬는 날, 기념 알림, 달력, 통계, 리마인더, CSV 내보내기, 백업으로 습관 만들기."
   },
   "permissions": [
     "notifications"

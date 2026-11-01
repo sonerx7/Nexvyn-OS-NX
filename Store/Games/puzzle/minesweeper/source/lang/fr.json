@@ -32,5 +32,18 @@
   "cancel": "Annuler",
   "menu_records": "Records",
   "best_line": "{0} : {1} s",
-  "wins_line": "{0} parties gagnées sur {1}"
+  "wins_line": "{0} parties gagnées sur {1}",
+  "custom": "Perso",
+  "custom_board": "Grille personnalisée",
+  "columns": "Colonnes",
+  "rows": "Lignes",
+  "mines": "Mines",
+  "start": "Jouer",
+  "statistics": "Statistiques",
+  "st_played": "Jouées",
+  "st_won": "Gagnées",
+  "st_best": "Record s",
+  "st_streak": "Série",
+  "close": "Fermer",
+  "question_marks": "Points d’interrogation (?)"
 }

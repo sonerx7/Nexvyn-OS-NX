@@ -69,5 +69,16 @@
   "wd_3": "Mié",
   "wd_4": "Jue",
   "wd_5": "Vie",
-  "wd_6": "Sáb"
+  "wd_6": "Sáb",
+  "checklist": "Lista de comprobación",
+  "step_hint": "Añadir un elemento…",
+  "add_step": "Añadir",
+  "filter": "Filtro",
+  "filter_hint": "Resalta las tarjetas que contienen este texto (déjalo vacío para ver todas).",
+  "export_md": "Exportar como Markdown",
+  "backup": "Copia de seguridad",
+  "restore": "Restaurar",
+  "restore_confirm": "¿Reemplazar todos tus tableros por los {0} de esta copia?",
+  "restore_bad": "Ese archivo no es una copia de Kanban.",
+  "ok": "Aceptar"
 }

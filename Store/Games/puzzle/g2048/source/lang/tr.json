@@ -54,5 +54,8 @@
   "over_title": "Hamle kalmadı",
   "over_sub": "Tahta doldu. Son hamlenizi geri alın ya da yeniden deneyin.",
   "top_tile": "En büyük karo",
-  "best_size": "{0} en iyi skor"
+  "best_size": "{0} en iyi skor",
+  "classic": "Klasik",
+  "time_attack": "Zamana Karşı",
+  "times_up": "Süre doldu!"
 }

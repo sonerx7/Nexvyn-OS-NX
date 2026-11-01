@@ -1,14 +1,22 @@
 -- Blok Düşür / Falling Blocks for Nexvyn OS: seven tetrominoes from a shuffled bag, rotation with wall kicks,
 -- hold, three-piece preview, ghost piece, lock delay, soft / hard drop, line clear animation, combos and levels.
+-- Four modes: Marathon (endless levels), Sprint (40 lines against the clock, time bonus), Ultra (two minutes) and
+-- Dig (start on garbage rows while new ones keep rising). Three difficulties, medals and records per mode.
 local K = require("arcade")
 local floor, min, max, abs, sin = math.floor, math.min, math.max, math.abs, math.sin
 local random = math.random
 
 local BW, BH, HID = 10, 22, 2         -- board width, height incl. hidden rows
-local G = {icon = "view_module", accent = "#BF5AF2", stickPress = true,
+local G = {icon = "view_module", accent = "#BF5AF2", stickPress = true, optionsHeight = 34, difficulty = true,
   rep = {left = true, right = true, down = true}, repDelay = 0.16, repRate = 0.045}
 
-local COLORS = {"#30D5FF", "#FFD60A", "#BF5AF2", "#32D74B", "#FF453A", "#0A84FF", "#FF9F0A"}
+local COLORS = {"#30D5FF", "#FFD60A", "#BF5AF2", "#32D74B", "#FF453A", "#0A84FF", "#FF9F0A", "#5E6378"}
+local GARBAGE = 8
+local mode = 1                        -- 1 marathon, 2 sprint, 3 ultra, 4 dig
+local MODES = {"marathon", "sprint", "ultra", "dig"}
+local MEDALS = {{4000, 12000, 30000}, {5000, 8000, 11000}, {3000, 7000, 12000}, {2000, 6000, 12000}}
+local SPRINT_LINES, ULTRA_TIME = 40, 120
+local ultraLeft, digT, dug = ULTRA_TIME, 0, 0
 local DEFS = {   -- size of the rotation box, cells of rotation 0
   {4, {0, 1, 1, 1, 2, 1, 3, 1}},     -- I
   {2, {0, 0, 1, 0, 0, 1, 1, 1}},     -- O
@@ -36,7 +44,7 @@ local bag, queue = {}, {}
 local cur = {k = 1, r = 1, x = 4, y = 1, vx = 4, vy = 1}
 local hold, holdUsed = 0, false
 local fallT, lockT, lockMoves = 0, 0, 0
-local level, lines, tetris, pieces = 1, 0, 0, 0
+local level, lines, quads, pieces = 1, 0, 0, 0
 local clearing, clearT = {}, 0
 local L = {cell = 24, x = 0, y = 0}
 local drag = nil
@@ -66,7 +74,39 @@ local function fits(k, r, x, y)
   return true
 end
 
-local function gravity() return max(0.04, 0.85 * 0.84 ^ (level - 1)) end
+local function gravity() return max(0.03, 0.85 * 0.84 ^ (level - 1) / K.dmul) end
+local function digInterval() return max(3.5, (11 - level * 0.6) / K.dmul) end
+
+local function overStats()
+  local st = {{TR("lines"), tostring(lines)}, {TR("level"), tostring(level)}, {TR("quads"), tostring(quads)},
+              {TR("pieces"), tostring(pieces)}}
+  if mode == 4 then st[#st + 1] = {TR("dug"), tostring(dug)} end
+  return st
+end
+
+local function setMode(m)
+  mode = m
+  G.medals = MEDALS[mode]
+  store.set("mode", mode)
+  K.loadBest()
+  G.reset()
+end
+function G.load()
+  mode = K.clamp(tonumber(store.get("mode", 1)) or 1, 1, 4)
+  G.medals = MEDALS[mode]
+end
+function G.bestKey() return ({"best", "best_sprint", "best_ultra", "best_dig"})[mode] end
+function G.modeName() return TR(MODES[mode]) end
+function G.options(x, y, w)
+  local m = ui.segmented("mode", {TR("marathon"), TR("sprint"), TR("ultra"), TR("dig")}, mode, x, y, w, 32)
+  if m ~= mode then setMode(m) end
+end
+function G.titlePress(act)
+  if act == "left" or act == "right" then
+    setMode((mode - 1 + (act == "right" and 1 or -1)) % 4 + 1)
+    K.sfx("click")
+  end
+end
 
 local function spawn(k)
   cur.k = k or table.remove(queue, 1)
@@ -82,8 +122,7 @@ local function spawn(k)
     if K.state == "play" then
       K.shake(12)
       K.sfx("boom")
-      K.over({stats = {{TR("lines"), tostring(lines)}, {TR("level"), tostring(level)},
-        {TR("tetrises"), tostring(tetris)}, {TR("pieces"), tostring(pieces)}}})
+      K.over({stats = overStats()})
     end
   end
 end
@@ -103,12 +142,45 @@ function G.reset()
   bag, queue = {}, {}
   for i = 1, 4 do queue[i] = nextFromBag() end
   hold, holdUsed = 0, false
-  level, lines, tetris, pieces = 1, 0, 0, 0
+  level, lines, quads, pieces = 1, 0, 0, 0
   clearing, clearT = {}, 0
   alive = true
   drag = nil
+  ultraLeft, digT, dug = ULTRA_TIME, 0, 0
+  if mode == 4 then
+    -- eight rows of garbage, each with one hole
+    for y = BH - 7, BH do
+      local hole = random(1, BW)
+      for x = 1, BW do grid[idx(x, y)] = x == hole and 0 or GARBAGE end
+    end
+  end
   spawn()
   pieces = 1
+end
+
+-- Dig: a garbage row pushes the stack up by one
+local function riseGarbage()
+  for x = 1, BW do
+    if grid[idx(x, 1)] ~= 0 then
+      alive = false
+      if K.state == "play" then K.shake(12); K.sfx("boom"); K.over({stats = overStats()}) end
+      return
+    end
+  end
+  for y = 1, BH - 1 do
+    for x = 1, BW do grid[idx(x, y)] = grid[idx(x, y + 1)] end
+  end
+  local hole = random(1, BW)
+  for x = 1, BW do grid[idx(x, BH)] = x == hole and 0 or GARBAGE end
+  if not fits(cur.k, cur.r, cur.x, cur.y) then
+    if fits(cur.k, cur.r, cur.x, cur.y - 1) then cur.y = cur.y - 1; cur.vy = cur.vy - 1
+    else
+      alive = false
+      if K.state == "play" then K.shake(12); K.sfx("boom"); K.over({stats = overStats()}) end
+      return
+    end
+  end
+  if K.state == "play" then K.sfx("drop", 0.5); K.shake(3) end
 end
 
 local function lockPiece()
@@ -125,7 +197,10 @@ local function lockPiece()
   for y = 1, BH do
     local full = true
     for x = 1, BW do if grid[idx(x, y)] == 0 then full = false break end end
-    if full then clearing[#clearing + 1] = y end
+    if full then
+      clearing[#clearing + 1] = y
+      for x = 1, BW do if grid[idx(x, y)] == GARBAGE then dug = dug + 1 break end end
+    end
   end
   local n = #clearing
   if n > 0 then
@@ -139,7 +214,7 @@ local function lockPiece()
       K.addScore(pts)
       K.popup(BW / 2, clearing[1] - HID - 1, "+" .. pts, "#FFFFFF")
       if n == 4 then
-        tetris = tetris + 1
+        quads = quads + 1
         K.callout(TR("four_lines"), "#30D5FF", 42, "clear", 1.4)
         K.sfx("best")
         K.shake(9)
@@ -176,6 +251,15 @@ local function finishClear()
   grid = ng
   lines = lines + n
   clearing = {}
+  if mode == 2 and lines >= SPRINT_LINES and K.state == "play" then
+    alive = false
+    local bonus = max(0, floor((240 - K.playTime) * 25))
+    K.addScore(bonus)
+    K.popup(BW / 2, (BH - HID) / 2, "+" .. bonus, "#64D2FF")
+    K.confetti(60)
+    K.over({title = TR("sprint_done"), win = true, stats = overStats()})
+    return
+  end
   local nl = 1 + floor(lines / 10)
   if nl > level then
     level = nl
@@ -318,6 +402,19 @@ local function tick(dt)
 end
 
 function G.update(dt)
+  if mode == 3 and alive then
+    local before = ultraLeft
+    ultraLeft = ultraLeft - dt
+    if ultraLeft <= 10 and floor(before) ~= floor(ultraLeft) then K.sfx("tick") end
+    if ultraLeft <= 0 then
+      ultraLeft, alive = 0, false
+      K.over({title = TR("times_up"), win = true, stats = overStats()})
+      return
+    end
+  elseif mode == 4 and alive and #clearing == 0 then
+    digT = digT + dt
+    if digT >= digInterval() then digT = 0; riseGarbage() end
+  end
   tick(dt)
   cur.vx = K.smooth(cur.vx, cur.x, 30, dt)
   cur.vy = K.smooth(cur.vy, cur.y, 26, dt)
@@ -453,8 +550,20 @@ function G.draw(w, h)
   gfx.text(tostring(lines), lx + 12, sy2 + 70, 22, "bold", "right", pw - 24)
   K.color("#FF9F0A")
   gfx.text(tostring(max(K.best, K.score)), lx + 12, sy2 + 110, 22, "bold", "right", pw - 24)
-  -- score above the next box
-  K.scorePill(12, 10)
+  -- score and mode clock above the board
+  local px = 12 + K.scorePill(12, 10) + 8
+  if mode == 2 then
+    px = px + K.pill(px, 10, "flag", TR("lines_left_n", max(0, SPRINT_LINES - lines)), "#30D5FF") + 8
+    K.pill(px, 10, "timer", K.fmtTime(K.playTime), "#64D2FF")
+  elseif mode == 3 then
+    K.pill(px, 10, "timer", K.fmtTime(math.ceil(ultraLeft)), ultraLeft <= 10 and "#FF453A" or "#64D2FF", nil,
+      ultraLeft <= 10 and (0.5 + 0.5 * sin(t * 8)) or 0)
+  elseif mode == 4 then
+    local f = digT / digInterval()
+    K.pill(px, 10, "vertical_align_top", TR("dug_n", dug), "#8E93A8", nil, f > 0.8 and (f - 0.8) * 5 or 0)
+    K.color("#FF9F0A", 0.8)
+    gfx.rect(bx, by + bh + 4, bw * f, 4, 2)
+  end
   K.color("#FFFFFF", 0.5)
   gfx.rect(rx, by + c * 9.6 + 42, pw * min(1, (lines % 10) / 10), 6, 3)
   K.color("#FFFFFF", 0.12)

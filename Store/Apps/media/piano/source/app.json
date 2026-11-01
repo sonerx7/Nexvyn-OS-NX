@@ -11,7 +11,7 @@
     "ko": "피아노"
   },
   "category": "media",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -23,11 +23,14 @@
   },
   "gamepad": true,
   "description": {
-    "en": "Playable piano with waveforms, recording and demo songs",
-    "tr": "Dalga biçimleri, kayıt ve örnek şarkılarla çalınabilir piyano",
-    "de": "Spielbares Klavier mit Wellenformen, Aufnahme und Demo-Songs",
-    "fr": "Piano jouable avec formes d’onde, enregistrement et morceaux de démo",
-    "es": "Piano para tocar con formas de onda, grabación y canciones de demostración"
+    "en": "A three-octave piano with four waveforms, recording, six demo songs and a Learn mode that guides you key by key.",
+    "tr": "Dört dalga biçimli, kayıtlı, altı örnek şarkılı ve tuş tuş yol gösteren Öğrenme moduyla üç oktavlık piyano.",
+    "de": "Ein Klavier mit drei Oktaven, vier Wellenformen, Aufnahme, sechs Demoliedern und einem Lernmodus Taste für Taste.",
+    "fr": "Un piano de trois octaves avec quatre formes d’onde, enregistrement, six morceaux et un mode apprentissage touche par touche.",
+    "es": "Un piano de tres octavas con cuatro formas de onda, grabación, seis canciones y un modo aprender tecla a tecla.",
+    "ja": "3オクターブのピアノ。4つの波形、録音、6曲のデモ、鍵盤をひとつずつ教える練習モード。",
+    "zh": "三个八度的钢琴：四种波形、录音、六首示范曲，以及逐键引导的学习模式。",
+    "ko": "세 옥타브 피아노. 네 가지 파형, 녹음, 데모곡 여섯 곡, 건반을 하나씩 알려 주는 배우기 모드."
   },
   "permissions": []
 }

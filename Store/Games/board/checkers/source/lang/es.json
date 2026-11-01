@@ -72,5 +72,9 @@
   "play_red": "Jugar con rojas (primero)",
   "play_black": "Jugar con negras",
   "rules": "Reglas",
-  "rules_text": "Las fichas avanzan una casilla en diagonal. Salta sobre una ficha rival para capturarla; capturar es obligatorio y una ficha que salta sigue saltando mientras pueda. Una ficha que llega a la última fila se convierte en dama y puede moverse y capturar hacia atrás. Ganas cuando tu rival no puede moverse."
+  "rules_text": "Las fichas avanzan una casilla en diagonal. Salta sobre una ficha rival para capturarla; capturar es obligatorio y una ficha que salta sigue saltando mientras pueda. Una ficha que llega a la última fila se convierte en dama y puede moverse y capturar hacia atrás. Ganas cuando tu rival no puede moverse.",
+  "mode_expert": "Experto",
+  "review": "Revisar partida",
+  "review_move": "Jugada {0} / {1}",
+  "done": "Listo"
 }

@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "Jouer les noirs (en premier)",
   "play_white": "Jouer les blancs",
-  "show_moves": "Afficher les coups légaux"
+  "show_moves": "Afficher les coups légaux",
+  "mode_expert": "Expert",
+  "review": "Revoir la partie",
+  "review_move": "Coup {0} / {1}",
+  "done": "Terminé"
 }

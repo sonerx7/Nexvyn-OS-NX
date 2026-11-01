@@ -1,28 +1,43 @@
 {
   "subtitle": {
-    "en": "Remember more with spaced repetition",
-    "tr": "Aralıklı tekrarla daha kalıcı öğren",
-    "de": "Mehr behalten mit verteilter Wiederholung",
-    "fr": "Mémorisez mieux grâce à la répétition",
-    "es": "Recuerda más con repetición espaciada",
-    "ja": "間隔反復でもっと覚えられる",
-    "zh": "用间隔重复记得更牢",
-    "ko": "간격 반복으로 더 많이 기억하세요"
+    "en": "Spaced repetition, quizzes and imports",
+    "tr": "Aralıklı tekrar, testler, içe aktarma",
+    "de": "Wiederholung, Quiz und Import",
+    "fr": "Répétition espacée, quiz, import",
+    "es": "Repetición espaciada, tests, importar",
+    "ja": "間隔反復、クイズ、読み込み",
+    "zh": "间隔重复、测验和导入",
+    "ko": "간격 반복, 퀴즈, 가져오기"
   },
   "description": {
-    "en": "Flashcards helps you learn words, facts and definitions and actually keep them. Create decks, add cards with a front and a back, and study the ones that are due today. Every card you know moves up one of five boxes and comes back after 1, 2, 4, 7 and then 14 days, while a missed card drops back to box 1 and comes up again before the session ends. A ready-made deck of common English and Turkish words lets you start right away.\n\n• Spaced repetition with five boxes (Leitner system)\n• Study due cards or practise all cards without changing the schedule\n• Ask front → back, back → front or mixed\n• Search, edit and add cards quickly with Save & Add Next\n• Per-deck stats: cards, due today and mastered\n• Keyboard: Space flips, left/right for didn’t know/knew it",
-    "tr": "Kelime Kartları, kelimeleri, bilgileri ve tanımları öğrenmene ve gerçekten aklında tutmana yardım eder. Desteler oluştur, ön ve arka yüzü olan kartlar ekle, bugün sırası gelenleri çalış. Bildiğin her kart beş kutudan bir üstüne çıkar ve 1, 2, 4, 7, ardından 14 gün sonra yeniden karşına gelir; bilemediğin kart ise ilk kutuya döner ve aynı oturumda yeniden sorulur. Hazır gelen Türkçe-İngilizce temel kelimeler destesiyle hemen başlayabilirsin.\n\n• Beş kutulu aralıklı tekrar (Leitner sistemi)\n• Sırası gelenleri çalış ya da takvimi bozmadan tüm kartlarla pratik yap\n• Ön → Arka, Arka → Ön ya da karışık sorma\n• Kart arama, düzenleme ve \"Kaydet ve Yeni\" ile hızlı ekleme\n• Deste istatistikleri: kart, bugün sırası gelen, ezberlenen\n• Klavye: Boşluk kartı çevirir, sol/sağ bilemedim/bildim",
-    "de": "Mit Karteikarten lernst du Wörter, Fakten und Definitionen – und behältst sie auch. Lege Stapel an, füge Karten mit Vorder- und Rückseite hinzu und lerne die, die heute fällig sind. Jede gewusste Karte rückt in eines von fünf Fächern auf und kommt nach 1, 2, 4, 7 und dann 14 Tagen wieder, eine nicht gewusste Karte fällt zurück in Fach 1 und kommt noch in derselben Runde wieder. Ein fertiger Stapel mit häufigen englischen und türkischen Wörtern ist zum sofortigen Start dabei.\n\n• Verteilte Wiederholung mit fünf Fächern (Leitner-System)\n• Fällige Karten lernen oder alle üben, ohne den Plan zu ändern\n• Abfrage Vorderseite → Rückseite, umgekehrt oder gemischt\n• Karten suchen, bearbeiten und schnell mit „Speichern & nächste hinzufügen“ anlegen\n• Statistik pro Stapel: Karten, heute fällig, gemeistert\n• Tastatur: Leertaste dreht um, links/rechts für nicht gewusst/gewusst",
-    "fr": "Cartes mémoire vous aide à apprendre des mots, des faits et des définitions, et surtout à les retenir. Créez des paquets, ajoutez des cartes avec un recto et un verso, et révisez celles prévues aujourd’hui. Chaque carte connue monte dans l’une des cinq boîtes et revient après 1, 2, 4, 7 puis 14 jours, tandis qu’une carte ratée retourne dans la boîte 1 et revient avant la fin de la séance. Un paquet de mots courants anglais-turc est fourni pour commencer tout de suite.\n\n• Répétition espacée en cinq boîtes (système de Leitner)\n• Révisez les cartes du jour ou entraînez-vous sur tout sans changer le planning\n• Questions recto → verso, verso → recto ou mélangées\n• Recherche, modification et ajout rapide avec « Enregistrer et ajouter la suivante »\n• Statistiques par paquet : cartes, à revoir aujourd’hui, maîtrisées\n• Clavier : Espace retourne la carte, gauche/droite pour je ne savais pas/je savais",
-    "es": "Tarjetas te ayuda a aprender palabras, datos y definiciones, y a no olvidarlos. Crea mazos, añade tarjetas con anverso y reverso y estudia las que tocan hoy. Cada tarjeta que sabes sube a una de cinco cajas y vuelve tras 1, 2, 4, 7 y luego 14 días, mientras que una tarjeta fallada vuelve a la caja 1 y reaparece antes de terminar la sesión. Incluye un mazo de palabras comunes en inglés y turco para empezar enseguida.\n\n• Repetición espaciada con cinco cajas (sistema Leitner)\n• Estudia las tarjetas pendientes o practica todas sin alterar el plan\n• Pregunta anverso → reverso, al revés o mixto\n• Busca, edita y añade tarjetas rápido con «Guardar y añadir otra»\n• Estadísticas por mazo: tarjetas, pendientes hoy y dominadas\n• Teclado: Espacio da la vuelta, izquierda/derecha para no la sabía/la sabía",
-    "ja": "単語カードは、単語、事実、定義を覚え、しっかり定着させる手助けをします。デッキを作り、表と裏のあるカードを追加し、今日復習するカードを学習しましょう。わかったカードは 5 つのボックスを 1 つずつ上がり、1、2、4、7、そして 14 日後に再び出題されます。わからなかったカードはボックス 1 に戻り、セッションが終わる前にもう一度出題されます。英語とトルコ語のよく使う単語の既製デッキで、すぐに始められます。\n\n• 5 つのボックスによる間隔反復 (ライトナー方式)\n• 復習予定のカードを学習、またはスケジュールを変えずにすべてのカードを練習\n• 表 → 裏、裏 → 表、ミックスで出題\n• 検索、編集、「保存して次を追加」ですばやくカードを追加\n• デッキごとの統計: カード数、今日の復習、習得済み\n• キーボード: Space で裏返し、左右で「わからなかった」/「わかった」",
-    "zh": "抽认卡帮助你学习单词、知识点和定义，并真正记住它们。创建卡组，添加带正面和背面的卡片，然后学习今天到期的卡片。每张你认识的卡片会升入五个盒子中的下一个，并在 1、2、4、7 天和之后的 14 天后再次出现；不认识的卡片会退回第 1 盒，并在本次学习结束前再次出现。一个现成的英语和土耳其语常用词卡组让你可以立即开始。\n\n• 五个盒子的间隔重复（莱特纳系统）\n• 学习到期的卡片，或练习所有卡片而不改变复习计划\n• 正面 → 背面、背面 → 正面或混合提问\n• 搜索、编辑卡片，并用“保存并添加下一张”快速添加\n• 每个卡组的统计：卡片数、今日待复习和已掌握\n• 键盘：空格翻面，左/右表示不认识/认识",
-    "ko": "플래시카드는 단어, 사실, 정의를 배우고 실제로 기억하도록 도와줍니다. 덱을 만들고, 앞면과 뒷면이 있는 카드를 추가하고, 오늘 복습할 카드를 학습하세요. 아는 카드는 다섯 상자 중 한 단계 올라가 1, 2, 4, 7, 14일 후에 다시 나오며, 모르는 카드는 1번 상자로 돌아가 세션이 끝나기 전에 다시 나옵니다. 영어와 터키어 기본 단어가 담긴 준비된 덱으로 바로 시작할 수 있습니다.\n\n• 상자 다섯 개를 쓰는 간격 반복(라이트너 시스템)\n• 복습할 카드 학습 또는 일정을 바꾸지 않고 모든 카드 연습\n• 앞면 → 뒷면, 뒷면 → 앞면 또는 섞어서 질문\n• 저장 후 다음 추가로 빠르게 검색, 편집, 카드 추가\n• 덱별 통계: 카드, 오늘 복습, 완전히 익힘\n• 키보드: Space 뒤집기, 왼쪽/오른쪽 몰랐어요/알았어요"
+    "en": "Flashcards helps you learn words, facts and definitions and actually keep them. Create decks, add cards with a front and a back, and study the ones that are due today. Every card you know moves up one of five boxes and comes back after 1, 2, 4, 7 and then 14 days, while a missed card drops back to box 1.\n\nFor a change of pace, the Quiz asks each card as a multiple-choice question with four answers from the same deck. Bring in vocabulary lists from anywhere: import a CSV, TSV or text file with one card per line, and export any deck the same way. A study streak counts the days in a row you finished a session, and Quick Search finds any card.\n\n• Spaced repetition with five boxes, or practise all cards\n• Multiple-choice Quiz mode (keys 1–4)\n• Import and export decks as CSV / TSV / TXT\n• Ask front → back, back → front or mixed\n• Study streak, per-deck stats and Quick Search\n• A ready-made English–Turkish starter deck",
+    "tr": "Kartlar, kelimeleri, bilgileri ve tanımları öğrenip gerçekten akılda tutmana yardım eder. Desteler oluştur, ön ve arka yüzü olan kartlar ekle ve bugün sırası gelenleri çalış. Bildiğin her kart beş kutudan birinde bir üste çıkar ve 1, 2, 4, 7, sonra 14 gün sonra geri gelir; bilemediğin kart 1. kutuya döner.\n\nTempo değişikliği için Test, her kartı aynı desteden dört cevaplı çoktan seçmeli bir soru olarak sorar. Kelime listelerini her yerden getir: her satırda bir kart olan CSV, TSV ya da metin dosyasını içe aktar, her desteyi aynı biçimde dışa aktar. Çalışma serisi, art arda oturum bitirdiğin günleri sayar; Hızlı Arama herhangi bir kartı bulur.\n\n• Beş kutulu aralıklı tekrar ya da tüm kartlarla alıştırma\n• Çoktan seçmeli Test modu (1–4 tuşları)\n• Desteleri CSV / TSV / TXT olarak içe ve dışa aktarma\n• Ön → arka, arka → ön ya da karışık sorma\n• Çalışma serisi, deste istatistikleri ve Hızlı Arama\n• Hazır İngilizce–Türkçe başlangıç destesi",
+    "de": "Flashcards hilft dir, Wörter, Fakten und Definitionen zu lernen und wirklich zu behalten. Erstelle Stapel, füge Karten mit Vorder- und Rückseite hinzu und lerne die heute fälligen. Jede gewusste Karte steigt in eine von fünf Boxen auf und kommt nach 1, 2, 4, 7 und dann 14 Tagen wieder; eine verpasste fällt in Box 1 zurück.\n\nZur Abwechslung fragt das Quiz jede Karte als Multiple-Choice-Frage mit vier Antworten aus demselben Stapel. Hol dir Vokabellisten von überall: Importiere eine CSV-, TSV- oder Textdatei mit einer Karte pro Zeile und exportiere jeden Stapel genauso. Eine Lernserie zählt die Tage in Folge mit abgeschlossener Sitzung, und die Schnellsuche findet jede Karte.\n\n• Verteilte Wiederholung mit fünf Boxen oder alle Karten üben\n• Multiple-Choice-Quiz (Tasten 1–4)\n• Stapel als CSV / TSV / TXT importieren und exportieren\n• Vorne → hinten, hinten → vorne oder gemischt\n• Lernserie, Stapelstatistik und Schnellsuche\n• Fertiger Englisch–Türkisch-Startstapel",
+    "fr": "Flashcards vous aide à apprendre mots, faits et définitions, et à les retenir. Créez des paquets, ajoutez des cartes recto verso et révisez celles du jour. Chaque carte sue monte d’une des cinq boîtes et revient après 1, 2, 4, 7 puis 14 jours ; une carte ratée retourne en boîte 1.\n\nPour changer, le Quiz pose chaque carte sous forme de QCM à quatre réponses tirées du même paquet. Importez des listes de vocabulaire de partout : un fichier CSV, TSV ou texte avec une carte par ligne, et exportez n’importe quel paquet de la même façon. Une série compte les jours consécutifs avec une session terminée, et la Recherche rapide retrouve n’importe quelle carte.\n\n• Répétition espacée à cinq boîtes, ou entraînement sur toutes les cartes\n• Mode Quiz à choix multiples (touches 1 à 4)\n• Import et export des paquets en CSV / TSV / TXT\n• Recto → verso, verso → recto ou mélangé\n• Série d’étude, statistiques par paquet et Recherche rapide\n• Un paquet de départ anglais–turc prêt à l’emploi",
+    "es": "Flashcards te ayuda a aprender palabras, datos y definiciones y a recordarlos de verdad. Crea mazos, añade tarjetas con anverso y reverso y estudia las que tocan hoy. Cada tarjeta que sabes sube a una de cinco cajas y vuelve tras 1, 2, 4, 7 y luego 14 días; una fallada vuelve a la caja 1.\n\nPara variar, el Test pregunta cada tarjeta como opción múltiple con cuatro respuestas del mismo mazo. Trae listas de vocabulario de cualquier sitio: importa un archivo CSV, TSV o de texto con una tarjeta por línea y exporta cualquier mazo igual. Una racha cuenta los días seguidos con una sesión terminada, y la Búsqueda rápida encuentra cualquier tarjeta.\n\n• Repetición espaciada con cinco cajas, o practicar todas\n• Modo Test de opción múltiple (teclas 1–4)\n• Importar y exportar mazos en CSV / TSV / TXT\n• Pregunta anverso → reverso, reverso → anverso o mezclado\n• Racha de estudio, estadísticas por mazo y Búsqueda rápida\n• Mazo inicial inglés–turco listo para usar",
+    "ja": "Flashcards は、単語や事実、定義を覚えて忘れないための学習アプリです。デッキを作り、表と裏のあるカードを追加して、今日復習するカードを学習。覚えたカードは5つの箱を1つずつ上がり、1、2、4、7、14日後に再び出題、まちがえたカードは箱1に戻ります。\n\n気分を変えたいときは、同じデッキから4つの答えを出す4択クイズ。単語リストはどこからでも取り込めます。1行に1枚のカードを書いた CSV、TSV、テキストファイルを読み込み、デッキも同じ形式で書き出せます。連続学習日数を記録し、クイック検索でカードをすぐに探せます。\n\n• 5つの箱の間隔反復、または全カード練習\n• 4択クイズモード（1〜4キー）\n• デッキを CSV / TSV / TXT で読み込み・書き出し\n• 表 → 裏、裏 → 表、ミックス\n• 連続学習日数、デッキ別統計、クイック検索\n• すぐに使える英語–トルコ語のスターターデッキ",
+    "zh": "Flashcards 帮你学习单词、知识点和定义，并真正记住它们。创建卡组，添加有正反面的卡片，学习今天到期的卡片。答对的卡片会在五个盒子中上升一格，分别在 1、2、4、7、14 天后再次出现；答错的卡片会回到第 1 盒。\n\n想换换口味时，测验会把每张卡片变成从同一卡组中选出四个答案的选择题。词汇表可以从任何地方导入：每行一张卡片的 CSV、TSV 或文本文件，任何卡组也能以同样格式导出。学习连续天数会记录你连续完成学习的天数，快速搜索可以找到任何卡片。\n\n• 五盒间隔重复，或练习全部卡片\n• 选择题测验模式（按键 1–4）\n• 以 CSV / TSV / TXT 导入和导出卡组\n• 正面 → 背面、背面 → 正面或混合\n• 学习连续天数、卡组统计和快速搜索\n• 现成的英语–土耳其语入门卡组",
+    "ko": "Flashcards는 단어, 사실, 정의를 배우고 실제로 기억하도록 도와줍니다. 덱을 만들고 앞뒷면이 있는 카드를 추가해 오늘 복습할 카드를 공부하세요. 아는 카드는 다섯 상자 중 한 칸 올라가 1, 2, 4, 7, 14일 뒤에 다시 나오고, 틀린 카드는 1번 상자로 돌아갑니다.\n\n분위기를 바꾸고 싶다면 퀴즈가 같은 덱의 답 네 개로 각 카드를 객관식 문제로 냅니다. 단어 목록은 어디서든 가져올 수 있습니다. 한 줄에 카드 하나씩 적힌 CSV, TSV, 텍스트 파일을 가져오고, 어떤 덱이든 같은 방식으로 내보내세요. 연속 학습 일수를 기록하고, 빠른 검색으로 카드를 찾을 수 있습니다.\n\n• 다섯 상자 간격 반복 또는 전체 카드 연습\n• 객관식 퀴즈 모드(1–4 키)\n• CSV / TSV / TXT로 덱 가져오기·내보내기\n• 앞 → 뒤, 뒤 → 앞, 섞어서\n• 연속 학습, 덱별 통계, 빠른 검색\n• 바로 쓰는 영어–터키어 기본 덱"
   },
   "shots": [
-    ["wait 3"],
-    ["wclick 0.4 0.29", "wait 1.5"],
-    ["key s", "wait 1.5", "key space", "wait 1.5"],
-    ["key right", "wait 1", "dark 1", "wait 1.5"]
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.4 0.29",
+      "wait 1.5"
+    ],
+    [
+      "key s",
+      "wait 1.5",
+      "key space",
+      "wait 1.5"
+    ],
+    [
+      "key right",
+      "wait 1",
+      "dark 1",
+      "wait 1.5"
+    ]
   ]
 }

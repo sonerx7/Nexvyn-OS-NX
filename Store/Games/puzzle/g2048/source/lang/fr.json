@@ -54,5 +54,8 @@
   "over_title": "Plus aucun coup possible",
   "over_sub": "Le plateau est plein. Annulez votre dernier coup ou réessayez.",
   "top_tile": "Tuile la plus haute",
-  "best_size": "Record sur {0}"
+  "best_size": "Record sur {0}",
+  "classic": "Classique",
+  "time_attack": "Contre-la-montre",
+  "times_up": "Temps écoulé !"
 }

@@ -70,5 +70,9 @@
   "draws": "引き分け",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "自分が先手 (赤)",
-  "go_second": "コンピューターが先手"
+  "go_second": "コンピューターが先手",
+  "mode_expert": "達人",
+  "review": "対局をふり返る",
+  "review_move": "{0} / {1} 手",
+  "done": "終了"
 }

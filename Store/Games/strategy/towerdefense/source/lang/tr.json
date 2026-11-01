@@ -48,5 +48,11 @@
   "pause_menu": "Duraklat",
   "new_game": "Yeni Oyun",
   "reset_records": "Rekorları Sıfırla",
-  "records_reset": "Rekorlar sıfırlandı"
+  "records_reset": "Rekorlar sıfırlandı",
+  "map_meadow": "Harita: Çayır",
+  "map_canyon": "Harita: Kanyon",
+  "map_serpent": "Harita: Yılankavi",
+  "endless_opt": "Sonsuz: {0}",
+  "endless_best": "Sonsuz rekor: {0}. dalga",
+  "endless_go": "Sonsuz!"
 }

@@ -1,0 +1,42 @@
+{
+  "subtitle": {
+    "en": "A hex editor for any file",
+    "tr": "Her dosya için onaltılık düzenleyici",
+    "de": "Ein Hex-Editor für jede Datei",
+    "fr": "Un éditeur hexadécimal pour tout fichier",
+    "es": "Un editor hexadecimal para cualquier archivo",
+    "ja": "あらゆるファイルの 16 進エディタ",
+    "zh": "适用于任何文件的十六进制编辑器",
+    "ko": "모든 파일을 위한 16진수 편집기"
+  },
+  "description": {
+    "en": "Hexpad opens any file from the SD card and shows its bytes in hex and as text side by side. Edit in place or insert, find byte patterns with wildcards, and read values at the cursor with the data inspector.\n\n• Overwrite and insert modes with unlimited undo and redo\n• Find hex (DE AD ?? EF) or text, go to offset, bookmarks per file\n• Inspector for integers, floats, Unix time and UTF-8, little or big endian, editable\n• Selection, copy as hex, text or a C array, paste bytes, fill\n• Hex keypad for touch and controller; files up to 16 MB",
+    "tr": "Hexpad SD karttaki her dosyayı açar ve baytlarını onaltılık ve metin olarak yan yana gösterir. Yerinde düzenle ya da ekle, joker karakterlerle bayt dizileri ara ve imleçteki değerleri veri denetçisiyle oku.\n\n• Sınırsız geri al/yinele ile üzerine yazma ve ekleme kipleri\n• Onaltılık (DE AD ?? EF) ya da metin arama, konuma git, dosya başına yer imleri\n• Tamsayı, ondalık, Unix zamanı ve UTF-8 için düzenlenebilir denetçi, little ya da big endian\n• Seçim; onaltılık, metin ya da C dizisi olarak kopyalama; bayt yapıştırma, doldurma\n• Dokunmatik ve kontrolcü için onaltılık tuş takımı; 16 MB'a kadar dosyalar",
+    "de": "Hexpad öffnet jede Datei der SD-Karte und zeigt ihre Bytes hexadezimal und als Text nebeneinander. Bearbeite direkt oder füge ein, suche Bytefolgen mit Platzhaltern und lies Werte am Cursor im Daten-Inspektor.\n\n• Überschreib- und Einfügemodus mit unbegrenztem Rückgängig\n• Hex- (DE AD ?? EF) oder Textsuche, Gehe zu, Lesezeichen pro Datei\n• Inspektor für Ganzzahlen, Gleitkomma, Unix-Zeit und UTF-8, Little/Big Endian, editierbar\n• Auswahl, Kopieren als Hex, Text oder C-Array, Bytes einsetzen, Füllen\n• Hex-Tastenfeld für Touch und Controller; Dateien bis 16 MB",
+    "fr": "Hexpad ouvre n’importe quel fichier de la carte SD et affiche ses octets en hexadécimal et en texte côte à côte. Modifiez sur place ou insérez, cherchez des suites d’octets avec jokers et lisez les valeurs au curseur dans l’inspecteur.\n\n• Modes remplacement et insertion, annulations illimitées\n• Recherche hexa (DE AD ?? EF) ou texte, aller à, signets par fichier\n• Inspecteur d’entiers, flottants, heure Unix et UTF-8, little ou big endian, modifiable\n• Sélection, copie en hexa, texte ou tableau C, collage d’octets, remplissage\n• Pavé hexadécimal pour le tactile et la manette ; fichiers jusqu’à 16 Mo",
+    "es": "Hexpad abre cualquier archivo de la tarjeta SD y muestra sus bytes en hexadecimal y como texto, lado a lado. Edita en el sitio o inserta, busca secuencias con comodines y lee valores en el cursor con el inspector.\n\n• Modos sobrescribir e insertar con deshacer ilimitado\n• Búsqueda hex (DE AD ?? EF) o de texto, ir a posición, marcadores por archivo\n• Inspector de enteros, decimales, hora Unix y UTF-8, little o big endian, editable\n• Selección, copia como hex, texto o matriz C, pegar bytes, rellenar\n• Teclado hexadecimal para táctil y mando; archivos de hasta 16 MB",
+    "ja": "Hexpad は SD カードのどんなファイルも開き、バイトを 16 進とテキストで並べて表示します。上書きや挿入で編集し、ワイルドカード付きでバイト列を検索し、カーソル位置の値をデータインスペクタで読めます。\n\n• 上書きモードと挿入モード、無制限の取り消し\n• 16 進 (DE AD ?? EF) やテキストの検索、位置へ移動、ファイルごとのブックマーク\n• 整数、浮動小数点、Unix 時刻、UTF-8 を編集できるインスペクタ（リトル/ビッグエンディアン）\n• 選択、16 進・テキスト・C 配列としてコピー、貼り付け、塗りつぶし\n• タッチとコントローラー用の 16 進キーパッド、16 MB までのファイル",
+    "zh": "Hexpad 可以打开 SD 卡上的任何文件，并以十六进制和文本并排显示字节。原地编辑或插入，用通配符查找字节序列，并用数据检查器读取光标处的数值。\n\n• 覆盖和插入模式，无限撤销/重做\n• 十六进制 (DE AD ?? EF) 或文本查找、转到偏移、按文件保存书签\n• 可编辑的检查器：整数、浮点、Unix 时间和 UTF-8，小端或大端\n• 选择，复制为十六进制、文本或 C 数组，粘贴字节，填充\n• 适合触屏和手柄的十六进制键盘；最大 16 MB 的文件",
+    "ko": "Hexpad는 SD 카드의 어떤 파일이든 열어 바이트를 16진수와 텍스트로 나란히 보여 줍니다. 그 자리에서 고치거나 삽입하고, 와일드카드로 바이트를 찾고, 데이터 검사기로 커서 위치의 값을 읽으세요.\n\n• 덮어쓰기와 삽입 모드, 무제한 실행 취소\n• 16진수(DE AD ?? EF)나 텍스트 찾기, 위치로 이동, 파일별 북마크\n• 정수, 부동소수점, Unix 시간, UTF-8 검사기(리틀/빅 엔디언, 편집 가능)\n• 선택, 16진수·텍스트·C 배열로 복사, 바이트 붙여넣기, 채우기\n• 터치와 컨트롤러용 16진수 키패드, 16MB까지의 파일"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.33 0.043",
+      "text Player",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wclick 0.892 0.043",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

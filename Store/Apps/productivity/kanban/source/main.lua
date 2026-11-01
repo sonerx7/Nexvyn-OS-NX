@@ -69,6 +69,9 @@ local boards = {}
 local cur = 1
 local nextId = 1
 local frameDt = 1 / 60
+local filterText = ""       -- cards that do not match are dimmed
+local stepNew = ""
+
 
 local function B() return boards[cur] end
 
@@ -110,9 +113,16 @@ local function sanitize(raw)
               for _, c in ipairs(col.cards) do
                 if type(c) == "table" then
                   local id = math.tointeger(c.id) or 0
+                  local steps = {}
+                  if type(c.steps) == "table" then
+                    for _, st in ipairs(c.steps) do
+                      if type(st) == "table" then steps[#steps + 1] = {text = tostring(st.text or ""), done = st.done == true} end
+                    end
+                  end
                   nc.cards[#nc.cards + 1] = {id = id, title = tostring(c.title or ""), desc = tostring(c.desc or ""),
                                              color = clamp(math.tointeger(c.color) or 0, 0, #LABELS),
-                                             due = math.tointeger(c.due) or 0, created = math.tointeger(c.created) or 0}
+                                             due = math.tointeger(c.due) or 0, created = math.tointeger(c.created) or 0,
+                                             steps = steps}
                   if id >= nextId then nextId = id + 1 end
                 end
               end
@@ -261,7 +271,7 @@ local function cardHeight(c, w)
   local h = CARD_PAD + th
   if c.color > 0 then h = h + 9 end
   if c.desc ~= "" then h = h + 4 + min(gfx.measureWrap(c.desc, tw, 12), 32) end
-  if c.due ~= 0 then h = h + 28 end
+  if c.due ~= 0 or (c.steps and #c.steps > 0) then h = h + 28 end
   return floor(h + CARD_PAD)
 end
 
@@ -280,7 +290,15 @@ local function dueText(due)
   return TR("due_fmt", d.day, TR(k))
 end
 
+local function matches(c)
+  if filterText == "" then return true end
+  local q = filterText:lower()
+  return c.title:lower():find(q, 1, true) ~= nil or c.desc:lower():find(q, 1, true) ~= nil
+end
+
 local function drawCardBody(c, x, y, w, h, lifted, highlight)
+  local dim = not matches(c)
+  if dim then gfx.alpha(0.25) end
   if lifted then gfx.shadow(x, y, w, h, 10, 18, 8) else gfx.shadow(x, y, w, h, 10, 4, 1) end
   gfx.rect(x, y, w, h, 10, theme.dark and "#3A3A3C" or "#FFFFFF")
   gfx.color(highlight and theme.accent or theme.separator)
@@ -316,6 +334,26 @@ local function drawCardBody(c, x, y, w, h, lifted, highlight)
     gfx.color(col)
     gfx.text(txt, x + CARD_PAD + 21, cy + 3, 11, "semibold")
   end
+  local steps = c.steps
+  if steps and #steps > 0 then
+    local nd = 0
+    for _, st in ipairs(steps) do if st.done then nd = nd + 1 end end
+    local txt = nd .. "/" .. #steps
+    local col = nd == #steps and theme.green or theme.text2
+    local sx = x + CARD_PAD
+    if c.due ~= 0 then
+      local dc, dl = dueStyle(c.due)
+      sx = sx + gfx.textWidth(dueText(c.due) .. (dl and ("  ·  " .. dl) or ""), 11, "semibold") + 36
+    end
+    local cw2 = gfx.textWidth(txt, 11, "semibold") + 30
+    if sx + cw2 <= x + w - 4 then
+      gfx.rect(sx, yy + 6, cw2, 20, 6, alpha(col, 0.14))
+      gfx.icon("checklist", sx + 11, yy + 16, 13, col)
+      gfx.color(col)
+      gfx.text(txt, sx + 21, yy + 9, 11, "semibold")
+    end
+  end
+  if dim then gfx.unalpha() end
 end
 
 -- ------------------------------------------------------------------ sheet (card details)
@@ -325,7 +363,8 @@ local function drawSheet(w, h)
   local e = 1 - (1 - sheetT) ^ 3
   gfx.rect(0, 0, w, h, 0, {0, 0, 0, floor(100 * e)})
   local bgHit = ui.hit("sheet_bg", 0, 0, w, h)
-  local sw, sh = 560, 420
+  if type(c.steps) ~= "table" then c.steps = {} end
+  local sw, sh = 560, min(h - 16, 436 + #c.steps * 36)
   local sx, sy = (w - sw) / 2, (h - sh) / 2 + (1 - e) * 40
   if bgHit.clicked then
     local mx, my = ui.mouse()
@@ -410,6 +449,44 @@ local function drawSheet(w, h)
   if dbtn("+1", "dp1", 44) then c.due = noonOf((c.due ~= 0 and c.due or todayNoon) + 86400); save() end
   if dbtn(TR("clear"), "dcl", 80) then c.due = 0; save() end
 
+  -- checklist
+  local steps = c.steps
+  local nd = 0
+  for _, st in ipairs(steps) do if st.done then nd = nd + 1 end end
+  local ly = by + 42
+  gfx.color(theme.text3)
+  gfx.text(TR("checklist") .. (#steps > 0 and ("  " .. nd .. "/" .. #steps) or ""), x0, ly, 11, "semibold")
+  if #steps > 0 then ui.progress(nd / #steps, x0 + 130, ly + 4, iw - 130, 5) end
+  ly = ly + 18
+  local fy0 = sy + sh - 54 - 46
+  local removeAt = nil
+  for i, st in ipairs(steps) do
+    if ly > fy0 then break end
+    local hit = ui.hit("ks" .. i, x0, ly, 30, 32)
+    if st.done then
+      gfx.circle(x0 + 14, ly + 16, 10, theme.green)
+      gfx.icon("check", x0 + 14, ly + 16, 14, "#FFFFFF")
+    else
+      gfx.color(theme.text3)
+      gfx.circleLine(x0 + 14, ly + 16, 10, hit.hovered and 2.5 or 1.5)
+    end
+    if hit.clicked then st.done = not st.done; save(); audio.play("click", 0.4) end
+    local t2 = field("kst" .. i, st.text, x0 + 34, ly, iw - 76, 32)
+    if t2 ~= st.text then st.text = t2; save() end
+    if ui.iconButton("close", x0 + iw - 36, ly + 1, 34, 30, theme.text3, false, "ksd" .. i) then removeAt = i end
+    ly = ly + 36
+  end
+  if removeAt then table.remove(steps, removeAt); save() end
+  local ns, sub = field("k_step", stepNew, x0 + 34, ly, iw - 130, 32, TR("step_hint"))
+  stepNew = ns
+  local add = ui.button(TR("add_step") .. "##ks", x0 + iw - 90, ly, 90, 32, "default", "add")
+  if (add or sub) and trim(stepNew) ~= "" then
+    steps[#steps + 1] = {text = trim(stepNew), done = false}
+    stepNew = ""
+    save()
+    focusNow("k_step")
+  end
+
   -- footer
   local fy = sy + sh - 54
   ui.separator(sx, fy - 10, sx + sw)
@@ -458,6 +535,10 @@ local function drawToolbar(w)
   if nn ~= B().name then B().name = nn; save() end
   if ui.iconButton("delete_outline", 308 + lw + 228, 11, 32, 30, theme.text2, false, "db") then deleteBoard() end
   if ui.button(TR("add_column"), w - 290, 11, 130, 30, "default", "view_week") then addColumn() end
+  if ui.iconButton(filterText ~= "" and "filter_alt" or "search", w - 330, 11, 34, 30,
+                   filterText ~= "" and theme.accent or theme.text2, filterText ~= "", "flt") then
+    ui.prompt(TR("filter"), TR("filter_hint"), filterText, function(t) if t then filterText = trim(t) end end)
+  end
   if ui.button(TR("add_card"), w - 150, 11, 134, 30, "primary", "add") then addCard(1) end
 end
 
@@ -467,6 +548,18 @@ function app.draw(w, h)
   local b = B()
   local n = #b.columns
   local top, bottom = 64, h - 12
+  if filterText ~= "" then
+    -- filter chip: tap to clear
+    local label = TR("filter") .. ": " .. filterText
+    local cw = gfx.textWidth(label, 12, "semibold") + 44
+    local hit = ui.hit("fltchip", 16, 60, cw, 26)
+    gfx.rect(16, 60, cw, 26, 13, alpha(theme.accent, hit.hovered and 0.28 or 0.18))
+    gfx.color(theme.accent)
+    gfx.text(label, 28, 65, 12, "semibold")
+    gfx.icon("close", 16 + cw - 16, 73, 14, theme.accent)
+    if hit.clicked then filterText = "" end
+    top = 94
+  end
   local gap = 12
   local avail = w - 32
   local colW = max(236, (avail - (n - 1) * gap) / n)
@@ -769,11 +862,94 @@ function app.event(e)
   elseif e.key == "n" then addCard(ci) end
 end
 
+local function exportMarkdown()
+  local b = B()
+  ui.saveFile(function(path)
+    if not path then return end
+    local out = {"# " .. (b.name ~= "" and b.name or TR("untitled_board")), ""}
+    for _, col in ipairs(b.columns) do
+      out[#out + 1] = "## " .. (col.title ~= "" and col.title or TR("untitled_col"))
+      for _, c in ipairs(col.cards) do
+        local line = "- " .. (c.title ~= "" and c.title or TR("untitled"))
+        if c.due ~= 0 then line = line .. "  (" .. dueText(c.due) .. ")" end
+        out[#out + 1] = line
+        if c.desc ~= "" then out[#out + 1] = "  " .. c.desc end
+        for _, st in ipairs(c.steps or {}) do out[#out + 1] = "  - [" .. (st.done and "x" or " ") .. "] " .. st.text end
+      end
+      out[#out + 1] = ""
+    end
+    if fs.write(path, table.concat(out, "\n")) then audio.play("pop") else audio.play("error") end
+  end, (b.name ~= "" and b.name or "board") .. ".md", TR("export_md"))
+end
+
+local function backup()
+  ui.saveFile(function(path)
+    if not path then return end
+    if fs.write(path, json.encode({app = "kanban", version = 2, boards = boards, nextId = nextId}, true)) then
+      audio.play("pop")
+    else
+      audio.play("error")
+    end
+  end, "kanban-backup.json", TR("backup"))
+end
+
+local function restore()
+  ui.openFile(function(path)
+    if not path then return end
+    local d = json.decode(fs.read(path) or "")
+    if type(d) ~= "table" or d.app ~= "kanban" or type(d.boards) ~= "table" then
+      ui.alert(TR("restore"), TR("restore_bad"), {TR("ok")}, function() end)
+      return
+    end
+    ui.alert(TR("restore"), TR("restore_confirm", #d.boards), {TR("restore"), TR("cancel")}, function(bt)
+      if bt ~= 1 then return end
+      local nb = sanitize(d.boards)
+      if #nb == 0 then return end
+      boards, cur, sheet, selId = nb, 1, nil, nil
+      boardX, colScroll = 0, {}
+      save()
+    end)
+  end, {".json"}, TR("restore"))
+end
+
+function app.search(query)
+  local q = (query or ""):lower()
+  if q == "" then return {} end
+  local out = {}
+  for bi, b in ipairs(boards) do
+    for _, col in ipairs(b.columns) do
+      for _, c in ipairs(col.cards) do
+        if c.title:lower():find(q, 1, true) or c.desc:lower():find(q, 1, true) then
+          out[#out + 1] = {title = c.title ~= "" and c.title or TR("untitled"), subtitle = b.name .. " · " .. col.title,
+                           icon = "view_kanban", arg = "card:" .. bi .. ":" .. c.id}
+          if #out >= 5 then return out end
+        end
+      end
+    end
+  end
+  return out
+end
+
+function app.open(arg)
+  local bi, id = tostring(arg or ""):match("^card:(%d+):(%d+)$")
+  bi, id = tonumber(bi), tonumber(id)
+  if bi and boards[bi] then
+    cur = bi
+    boardX, colScroll = 0, {}
+    if findCard(id) then selId = id; openSheet(id, false) end
+  end
+end
+
 function app.menu()
   return {
     {title = TR("menu_board"), items = {
       {label = TR("add_card"), id = 1, shortcut = "N"},
       {label = TR("add_column"), id = 2},
+      {label = TR("filter") .. "…", id = 5},
+      "-",
+      {label = TR("export_md") .. "…", id = 6},
+      {label = TR("backup") .. "…", id = 7},
+      {label = TR("restore") .. "…", id = 8},
       "-",
       {label = TR("new_board"), id = 3},
       {label = TR("delete_board_title"), id = 4},
@@ -785,7 +961,11 @@ function app.onmenu(id)
   if id == 1 then addCard(1)
   elseif id == 2 then addColumn()
   elseif id == 3 then newBoard()
-  elseif id == 4 then deleteBoard() end
+  elseif id == 4 then deleteBoard()
+  elseif id == 5 then ui.prompt(TR("filter"), TR("filter_hint"), filterText, function(t) if t then filterText = trim(t) end end)
+  elseif id == 6 then exportMarkdown()
+  elseif id == 7 then backup()
+  elseif id == 8 then restore() end
 end
 
 function app.close()

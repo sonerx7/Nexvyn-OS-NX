@@ -1,20 +1,38 @@
 {
   "id": "com.sonerx7.multiply",
-  "name": {"en": "Times Tables", "tr": "Çarpım Tablosu", "de": "Einmaleins", "fr": "Tables de multiplication", "es": "Tablas de multiplicar", "ja": "九九", "zh": "乘法表", "ko": "구구단"},
+  "name": {
+    "en": "Times Tables",
+    "tr": "Çarpım Tablosu",
+    "de": "Einmaleins",
+    "fr": "Tables de multiplication",
+    "es": "Tablas de multiplicar",
+    "ja": "九九",
+    "zh": "乘法表",
+    "ko": "구구단"
+  },
   "description": {
     "en": "Learn the times tables from 1 to 10 and earn stars in timed quizzes with big buttons, multiple choice or a number pad.",
     "tr": "1'den 10'a çarpım tablosunu öğren, büyük düğmeli süreli testlerde çoktan seçmeli ya da tuş takımıyla yıldız topla.",
     "de": "Lerne das Einmaleins von 1 bis 10 und sammle Sterne in Quizrunden auf Zeit mit großen Tasten, Multiple Choice oder Ziffernblock.",
     "fr": "Apprenez les tables de multiplication de 1 à 10 et gagnez des étoiles dans des quiz chronométrés, avec de gros boutons, des choix multiples ou un pavé numérique.",
-    "es": "Aprende las tablas de multiplicar del 1 al 10 y gana estrellas en pruebas cronometradas con botones grandes, opción múltiple o teclado numérico."
+    "es": "Aprende las tablas de multiplicar del 1 al 10 y gana estrellas en pruebas cronometradas con botones grandes, opción múltiple o teclado numérico.",
+    "ja": "九九を覚えて星を集めよう",
+    "zh": "学习乘法表并赢取星星",
+    "ko": "구구단을 배우고 별을 모으세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "other",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 640, "height": 500, "minWidth": 520, "minHeight": 440, "resizable": true},
+  "window": {
+    "width": 640,
+    "height": 500,
+    "minWidth": 520,
+    "minHeight": 440,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
   "minSdk": "1.0",

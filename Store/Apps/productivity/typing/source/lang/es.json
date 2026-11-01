@@ -43,5 +43,12 @@
   "clear_title": "¿Borrar todos los resultados?",
   "clear_msg": "Se eliminarán tu historial y tus mejores puntuaciones.",
   "clear": "Borrar",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "les_words": "Palabras comunes",
+  "les_words_d": "Las palabras que más escribes",
+  "les_weak": "Teclas débiles",
+  "les_weak_d": "Un ejercicio con las teclas que más fallas",
+  "weak_keys": "Practica: {0}",
+  "les_minute": "Prueba de un minuto",
+  "les_minute_d": "Escribe todas las palabras que puedas en 60 segundos"
 }

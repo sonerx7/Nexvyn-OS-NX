@@ -26,5 +26,13 @@
   "pre_rock": "摇滚",
   "pre_hiphop": "嘻哈",
   "pre_house": "浩室",
-  "pre_empty": "空"
+  "pre_empty": "空",
+  "pre_funk": "放克",
+  "pre_disco": "迪斯科",
+  "pre_reggae": "雷鬼",
+  "pre_break": "碎拍",
+  "pre_bossa": "波萨诺瓦",
+  "pre_trap": "陷阱说唱",
+  "generate": "生成节奏",
+  "accent_mode": "重音模式"
 }

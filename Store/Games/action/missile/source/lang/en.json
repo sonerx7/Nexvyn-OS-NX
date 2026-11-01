@@ -41,5 +41,19 @@
   "c_aim": "Stick / D-pad / Arrows: aim",
   "c_fire": "A / Space: fire from the nearest battery",
   "c_base": "L, B, R: left / center / right battery",
-  "c_touch": "Touch / mouse: tap or click the target"
+  "c_touch": "Touch / mouse: tap or click the target",
+  "records": "Records",
+  "no_records": "No scores yet. Play a round!",
+  "rounds": "Rounds",
+  "total_time": "Total time",
+  "total_points": "Total points",
+  "medal": "Medal",
+  "medal_bronze": "Bronze",
+  "medal_silver": "Silver",
+  "medal_gold": "Gold",
+  "easy": "Easy",
+  "normal": "Normal",
+  "hard": "Hard",
+  "close": "Close",
+  "rec_hint": "X: records  ·  L / R: difficulty"
 }

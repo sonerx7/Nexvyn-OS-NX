@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "Play black (first)",
   "play_white": "Play white",
-  "show_moves": "Show legal moves"
+  "show_moves": "Show legal moves",
+  "mode_expert": "Expert",
+  "review": "Review game",
+  "review_move": "Move {0} / {1}",
+  "done": "Done"
 }

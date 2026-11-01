@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "Jugar con negras (primero)",
   "play_white": "Jugar con blancas",
-  "show_moves": "Mostrar movimientos legales"
+  "show_moves": "Mostrar movimientos legales",
+  "mode_expert": "Experto",
+  "review": "Revisar partida",
+  "review_move": "Jugada {0} / {1}",
+  "done": "Listo"
 }

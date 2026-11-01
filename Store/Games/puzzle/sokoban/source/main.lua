@@ -1,4 +1,4 @@
--- Sokoban for Nexvyn OS: push every crate onto a goal. 20 solver-verified levels, unlimited undo, restart, level
+-- Kutu İtme / Crate Pusher for Nexvyn OS: push every crate onto a goal. 40 solver-verified levels, unlimited undo, restart, level
 -- select with records, smooth movement, hold-to-repeat, tap-to-walk path finding and swipes.
 local K = require("kit")
 local F = require("frame")
@@ -241,7 +241,7 @@ function app.update(dt)
     if d then walkQueue = {}; move(d) end
   elseif F.scene == "levels" then
     local d = F.stick(dt)
-    if d then F.moveCursor(pick, F.DIRV[d][1], F.DIRV[d][2], 5, 4, true) end
+    if d then F.moveCursor(pick, F.DIRV[d][1], F.DIRV[d][2], 8, 5, true) end
   else
     F.stick(dt)
   end
@@ -339,8 +339,8 @@ end
 
 local function drawLevels(w, h)
   K.dim(w, h, 1)
-  local cols, rows = 5, 4
-  local cell = floor(min(84, (w - 70) / cols, (h - 160) / rows))
+  local cols, rows = 8, 5
+  local cell = floor(min(84, (w - 70) / cols, (h - 150) / rows))
   local gw, gh = cell * cols, cell * rows
   local x0, y0 = floor((w - gw) / 2), floor((h - gh) / 2) + 6
   K.card(x0 - 16, y0 - 52, gw + 32, gh + 108, 16)
@@ -408,7 +408,7 @@ local function drawTitle(w, h)
     buttons = {{moves > 0 and not solved and TR("continue") or TR("play"), function()
                   if solved then loadLevel(min(#LEVELS, level + 1)) else F.play() end
                 end, "primary", "play_arrow"},
-               {TR("levels"), function() pick.x, pick.y = (level - 1) % 5 + 1, (level - 1) // 5 + 1; F.open("levels") end, "default", "grid_view"},
+               {TR("levels"), function() pick.x, pick.y = (level - 1) % 8 + 1, (level - 1) // 8 + 1; F.open("levels") end, "default", "grid_view"},
                {TR("stats_title"), function() F.open("stats") end, "default", "bar_chart"}},
     footer = TR("levels_done", cnt, #LEVELS)})
 end
@@ -428,7 +428,7 @@ function app.draw(w, h)
                          {"undo", "undo"}}, w - 16, 14)
   if hit == "sound" then K.setMuted(not K.muted)
   elseif hit == "pause" then F.open("pause")
-  elseif hit == "levels" then pick.x, pick.y = (level - 1) % 5 + 1, (level - 1) // 5 + 1; F.open("levels")
+  elseif hit == "levels" then pick.x, pick.y = (level - 1) % 8 + 1, (level - 1) // 8 + 1; F.open("levels")
   elseif hit == "restart" then restart()
   elseif hit == "undo" then undo() end
   local top, bottom = 64, h - 36
@@ -447,9 +447,9 @@ local function levelsEvent(e)
   local k = t == "paddown" and e.pad or (t == "keydown" and e.key) or nil
   if not k then return end
   local d = F.DIRV[k]
-  if d then F.moveCursor(pick, d[1], d[2], 5, 4, true)
+  if d then F.moveCursor(pick, d[1], d[2], 8, 5, true)
   elseif (t == "paddown" and k == "a") or (t == "keydown" and (k == "enter" or k == "space")) then
-    local n = (pick.y - 1) * 5 + pick.x
+    local n = (pick.y - 1) * 8 + pick.x
     if LEVELS[n] then loadLevel(n); K.play("pop", 0.5) end
   elseif (t == "paddown" and (k == "b" or k == "minus")) or (t == "keydown" and k == "escape") then F.close() end
 end
@@ -473,7 +473,7 @@ function app.event(e)
     elseif p == "x" then restart()
     elseif p == "l" and level > 1 then loadLevel(level - 1)
     elseif p == "r" and level < #LEVELS then loadLevel(level + 1)
-    elseif p == "minus" then pick.x, pick.y = (level - 1) % 5 + 1, (level - 1) // 5 + 1; F.open("levels")
+    elseif p == "minus" then pick.x, pick.y = (level - 1) % 8 + 1, (level - 1) // 8 + 1; F.open("levels")
     elseif p == "plus" then F.open("pause") end
   elseif t == "padup" then
     if e.pad == held then held = nil end

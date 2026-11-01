@@ -49,5 +49,14 @@
   "tab_stats": "Statistics",
   "tab_settings": "Settings",
   "menu_timer": "Timer",
-  "menu_view": "View"
+  "menu_view": "View",
+  "add_task": "What are you working on?",
+  "task_title": "Focus task",
+  "task_msg": "Name the task for your focus sessions. Its minutes are counted in the statistics.",
+  "top_tasks": "Top tasks (7 days)",
+  "no_tasks": "Name a task on the timer to see where your time goes.",
+  "set_goal": "Daily goal (sessions)",
+  "today_goal": "Today: {0}/{1} sessions · {2}",
+  "goal_reached": "Daily goal reached!",
+  "goal_body": "{0} focus sessions today. Nice work."
 }

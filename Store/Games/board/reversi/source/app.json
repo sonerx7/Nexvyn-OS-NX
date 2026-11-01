@@ -11,13 +11,16 @@
     "ko": "리버시"
   },
   "description": {
-    "en": "Outflank and flip your opponent's discs on an 8×8 board against a three-level computer or a friend.",
-    "tr": "8×8 tahtada rakibin taşlarını kuşatıp çevirin; üç seviyeli bilgisayara ya da bir arkadaşınıza karşı oynayın.",
-    "de": "Umzingle die Steine deines Gegners und dreh sie um, auf einem 8×8-Brett gegen einen Computer mit drei Stufen oder einen Freund.",
-    "fr": "Encerclez et retournez les pions de votre adversaire sur un plateau 8×8 contre un ordinateur à trois niveaux ou un ami.",
-    "es": "Rodea y voltea las fichas de tu rival en un tablero de 8×8 contra un ordenador de tres niveles o un amigo."
+    "en": "Reversi on a classic 8×8 board against four computer levels or a friend, with hints, undo and game review.",
+    "tr": "Klasik 8×8 tahtada Reversi: dört bilgisayar seviyesine ya da bir arkadaşa karşı; ipucu, geri alma ve oyun incelemesi.",
+    "de": "Reversi auf dem klassischen 8×8-Brett gegen vier Computerstufen oder einen Freund, mit Tipps, Rückgängig und Partieansicht.",
+    "fr": "Reversi sur un plateau 8×8 classique contre quatre niveaux d’ordinateur ou un ami, avec indices, annulation et relecture.",
+    "es": "Reversi en un tablero clásico de 8×8 contra cuatro niveles de ordenador o un amigo, con pistas, deshacer y revisión.",
+    "ja": "定番の8×8盤でリバーシ。4段階のコンピューターか友だちと対戦。ヒント、待った、対局のふり返り。",
+    "zh": "在经典 8×8 棋盘上下黑白棋，对战四档电脑或朋友，支持提示、悔棋和复盘。",
+    "ko": "클래식 8×8 보드의 리버시. 네 단계 컴퓨터나 친구와 대결하고 힌트, 무르기, 게임 복기를 사용하세요."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

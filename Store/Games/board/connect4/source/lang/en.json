@@ -44,7 +44,7 @@
   "h_pause": "Pause",
   "win_rate": "Win rate",
   "avg": "Average",
-  "title": "Connect Four",
+  "title": "Four in a Row",
   "tagline": "Line up four discs to win",
   "draw": "It's a draw",
   "you_win": "You win!",
@@ -70,5 +70,9 @@
   "draws": "Draws",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "I start (red)",
-  "go_second": "Computer starts"
+  "go_second": "Computer starts",
+  "mode_expert": "Expert",
+  "review": "Review game",
+  "review_move": "Move {0} / {1}",
+  "done": "Done"
 }

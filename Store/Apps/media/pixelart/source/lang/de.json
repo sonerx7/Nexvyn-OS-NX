@@ -36,5 +36,13 @@
   "grid": "Raster anzeigen",
   "mirror": "Gespiegelt zeichnen",
   "flip_h": "Horizontal spiegeln",
-  "clear": "Leinwand leeren"
+  "clear": "Leinwand leeren",
+  "t_replace": "Farbe ersetzen",
+  "mirror4": "Vierfach-Spiegel",
+  "flip_v": "Vertikal spiegeln",
+  "rotate": "Um 90° drehen",
+  "shift_l": "Nach links verschieben",
+  "shift_r": "Nach rechts verschieben",
+  "shift_u": "Nach oben verschieben",
+  "shift_d": "Nach unten verschieben"
 }

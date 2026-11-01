@@ -15,10 +15,13 @@
     "tr": "Giderek ağırlaşan 3D sahnelerle kare hızını ve kare süresini ölçer, puan verir ve geçmişi saklar.",
     "de": "Immer anspruchsvollere 3D-Szenen messen Bildrate und Frame-Zeit, berechnen eine Punktzahl und führen einen Verlauf.",
     "fr": "Des scènes 3D de plus en plus lourdes mesurent la fréquence d’images et le temps par image, calculent un score et conservent un historique.",
-    "es": "Escenas 3D cada vez más exigentes miden la tasa de fotogramas y el tiempo por fotograma, calculan una puntuación y guardan un historial."
+    "es": "Escenas 3D cada vez más exigentes miden la tasa de fotogramas y el tiempo por fotograma, calculan una puntuación y guardan un historial.",
+    "ja": "本体の 3D 性能をテスト",
+    "zh": "检验主机的 3D 性能",
+    "ko": "콘솔의 3D 성능을 시험해 보세요"
   },
   "category": "system",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

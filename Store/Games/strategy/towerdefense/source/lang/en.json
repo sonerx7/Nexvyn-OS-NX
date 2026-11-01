@@ -48,5 +48,11 @@
   "pause_menu": "Pause",
   "new_game": "New Game",
   "reset_records": "Reset Records",
-  "records_reset": "Records reset"
+  "records_reset": "Records reset",
+  "map_meadow": "Map: Meadow",
+  "map_canyon": "Map: Canyon",
+  "map_serpent": "Map: Serpent",
+  "endless_opt": "Endless: {0}",
+  "endless_best": "Endless best: wave {0}",
+  "endless_go": "Endless!"
 }

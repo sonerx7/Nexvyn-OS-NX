@@ -26,5 +26,13 @@
   "pre_rock": "록",
   "pre_hiphop": "힙합",
   "pre_house": "하우스",
-  "pre_empty": "비어 있음"
+  "pre_empty": "비어 있음",
+  "pre_funk": "펑크",
+  "pre_disco": "디스코",
+  "pre_reggae": "레게",
+  "pre_break": "브레이크비트",
+  "pre_bossa": "보사노바",
+  "pre_trap": "트랩",
+  "generate": "그루브 생성",
+  "accent_mode": "악센트 모드"
 }

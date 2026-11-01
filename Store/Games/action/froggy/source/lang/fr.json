@@ -37,5 +37,19 @@
   "time_out": "Temps écoulé !",
   "fly_bonus": "Bonus mouche +200 !",
   "c_move": "Croix / stick / flèches / WASD : sauter",
-  "c_touch": "Tactile : balayez, ou touchez à côté de la grenouille"
+  "c_touch": "Tactile : balayez, ou touchez à côté de la grenouille",
+  "records": "Records",
+  "no_records": "Aucun score pour l’instant. Jouez une partie !",
+  "rounds": "Parties",
+  "total_time": "Temps total",
+  "total_points": "Points totaux",
+  "medal": "Médaille",
+  "medal_bronze": "Bronze",
+  "medal_silver": "Argent",
+  "medal_gold": "Or",
+  "easy": "Facile",
+  "normal": "Normal",
+  "hard": "Difficile",
+  "close": "Fermer",
+  "rec_hint": "X : records  ·  L / R : difficulté"
 }

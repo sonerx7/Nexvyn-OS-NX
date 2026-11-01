@@ -1,0 +1,28 @@
+{
+  "id": "com.sonerx7.linkwise",
+  "name": {"en": "Linkwise", "tr": "Linkwise", "de": "Linkwise", "fr": "Linkwise", "es": "Linkwise", "ja": "Linkwise", "zh": "Linkwise", "ko": "Linkwise"},
+  "description": {
+    "en": "A Markdown knowledge base: linked notes, backlinks, a graph of everything, tags and search.",
+    "tr": "Markdown bilgi bankası: bağlantılı notlar, geri bağlantılar, her şeyin grafiği, etiketler ve arama.",
+    "de": "Eine Markdown-Wissensdatenbank: verknüpfte Notizen, Rückverweise, ein Graph von allem, Tags und Suche.",
+    "fr": "Une base de connaissances Markdown : notes liées, rétroliens, un graphe de tout, étiquettes et recherche.",
+    "es": "Una base de conocimiento en Markdown: notas enlazadas, retroenlaces, un grafo de todo, etiquetas y búsqueda.",
+    "ja": "Markdown のナレッジベース。リンクされたノート、バックリンク、全体のグラフ、タグ、検索。",
+    "zh": "Markdown 知识库：互相链接的笔记、反向链接、全局关系图、标签和搜索。",
+    "ko": "Markdown 지식 베이스: 연결된 노트, 백링크, 전체 그래프, 태그와 검색."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 420, "minHeight": 380, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "fileTypes": [".md", ".markdown"],
+  "shareTargets": ["text", ".md", ".txt"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

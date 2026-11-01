@@ -1,20 +1,38 @@
 {
   "id": "com.sonerx7.todo",
-  "name": {"en": "To-Do", "tr": "Yapılacaklar", "de": "To-do", "fr": "À faire", "es": "Tareas", "ja": "ToDo", "zh": "待办事项", "ko": "할 일"},
-  "description": {
-    "en": "Organise tasks into projects with priorities and due dates; overdue tasks stand out and search finds anything.",
-    "tr": "Görevlerini projelere ayır, öncelik ve son tarih ver; geciken görevler öne çıkar, arama her şeyi bulur.",
-    "de": "Ordne Aufgaben in Projekten mit Prioritäten und Fälligkeitsdaten; überfällige Aufgaben fallen auf und die Suche findet alles.",
-    "fr": "Organisez vos tâches en projets avec priorités et échéances ; les tâches en retard ressortent et la recherche trouve tout.",
-    "es": "Organiza las tareas en proyectos con prioridades y fechas de vencimiento; las tareas atrasadas destacan y la búsqueda lo encuentra todo."
+  "name": {
+    "en": "To-Do",
+    "tr": "Yapılacaklar",
+    "de": "To-do",
+    "fr": "À faire",
+    "es": "Tareas",
+    "ja": "ToDo",
+    "zh": "待办事项",
+    "ko": "할 일"
   },
-  "version": "1.0.1",
+  "description": {
+    "en": "Tasks in projects with priorities, due dates, checklist steps, repeating tasks, search, backup and Quick Search.",
+    "tr": "Projelerde görevler: öncelik, son tarih, kontrol listesi adımları, tekrarlanan görevler, arama, yedekleme ve Hızlı Arama.",
+    "de": "Aufgaben in Projekten mit Priorität, Fälligkeit, Checklisten-Schritten, Wiederholung, Suche, Sicherung und Schnellsuche.",
+    "fr": "Des tâches par projet avec priorités, échéances, étapes, tâches répétées, recherche, sauvegarde et Recherche rapide.",
+    "es": "Tareas por proyecto con prioridades, fechas, pasos de lista, tareas repetidas, búsqueda, copia de seguridad y Búsqueda rápida.",
+    "ja": "プロジェクトごとのタスク：優先度、期日、チェックリスト、繰り返し、検索、バックアップ、クイック検索。",
+    "zh": "按项目管理任务：优先级、截止日期、清单步骤、重复任务、搜索、备份和快速搜索。",
+    "ko": "프로젝트별 작업: 우선순위, 마감일, 체크리스트 단계, 반복 작업, 검색, 백업, 빠른 검색."
+  },
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 860, "height": 560, "minWidth": 520, "minHeight": 420, "resizable": true},
+  "window": {
+    "width": 860,
+    "height": 560,
+    "minWidth": 520,
+    "minHeight": 420,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
   "minSdk": "1.0",

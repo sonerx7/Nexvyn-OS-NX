@@ -38,5 +38,21 @@
   "power": "¡Potenciado!",
   "clear": "¡Laberinto superado!",
   "c_move": "Cruceta / stick / flechas / WASD: dirigir",
-  "c_touch": "Táctil: desliza o toca una dirección"
+  "c_touch": "Táctil: desliza o toca una dirección",
+  "records": "Récords",
+  "no_records": "Aún no hay puntuaciones. ¡Juega una partida!",
+  "rounds": "Partidas",
+  "total_time": "Tiempo total",
+  "total_points": "Puntos totales",
+  "medal": "Medalla",
+  "medal_bronze": "Bronce",
+  "medal_silver": "Plata",
+  "medal_gold": "Oro",
+  "easy": "Fácil",
+  "normal": "Normal",
+  "hard": "Difícil",
+  "close": "Cerrar",
+  "rec_hint": "X: récords  ·  L / R: dificultad",
+  "new_maze": "¡Nuevo laberinto!",
+  "maze_n_label": "Laberinto"
 }

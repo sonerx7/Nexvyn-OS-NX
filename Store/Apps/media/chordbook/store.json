@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "Chords, scales and progressions",
+    "tr": "Akorlar, diziler ve akor dizileri",
+    "de": "Akkorde, Tonleitern und Akkordfolgen",
+    "fr": "Accords, gammes et grilles",
+    "es": "Acordes, escalas y progresiones",
+    "ja": "コード、スケール、コード進行",
+    "zh": "和弦、音阶与和弦进行",
+    "ko": "코드, 스케일, 코드 진행"
+  },
+  "description": {
+    "en": "Chordbook is a music theory companion for guitar, ukulele, bass and piano. Every chord shape is worked out for you, scales are drawn across the whole neck, and everything can be heard.\n\n• 16 chord types in all 12 keys with several playable shapes each\n• 13 scales and modes with note names or degrees on the fretboard\n• An interactive circle of fifths with the chords of every key\n• A progression player with tempo, presets like I–V–vi–IV and 12-bar blues\n• Letter names or Do Re Mi, sharps or flats; undo/redo and text export",
+    "tr": "Akor Defteri gitar, ukulele, bas ve piyano için bir müzik teorisi yardımcısıdır. Her akor şekli senin için hesaplanır, diziler sapın tamamına çizilir ve hepsi dinlenebilir.\n\n• 12 tonun hepsinde 16 akor türü, her biri için birkaç çalınabilir şekil\n• Sapta nota adları ya da derecelerle 13 dizi ve mod\n• Her tonun akorlarıyla etkileşimli beşliler çemberi\n• Tempolu akor dizisi çalar; I–V–vi–IV ve 12 ölçülük blues gibi hazırlar\n• C D E ya da Do Re Mi, diyez ya da bemol; geri al/yinele ve metin aktarma",
+    "de": "Akkordbuch ist ein Musiktheorie-Begleiter für Gitarre, Ukulele, Bass und Klavier. Jeder Griff wird für dich berechnet, Tonleitern über das ganze Griffbrett gezeichnet, und alles lässt sich anhören.\n\n• 16 Akkordtypen in allen 12 Tonarten mit mehreren spielbaren Griffen\n• 13 Tonleitern und Modi mit Tonnamen oder Stufen auf dem Griffbrett\n• Interaktiver Quintenzirkel mit den Akkorden jeder Tonart\n• Akkordfolgen-Player mit Tempo und Vorlagen wie I–V–vi–IV und 12-Takt-Blues\n• C D E oder Do Re Mi, Kreuze oder Bs; Rückgängig und Textexport",
+    "fr": "Carnet d’accords est un compagnon de théorie musicale pour guitare, ukulélé, basse et piano. Chaque position est calculée pour vous, les gammes sont tracées sur tout le manche, et tout s’écoute.\n\n• 16 types d’accords dans les 12 tonalités, avec plusieurs positions jouables\n• 13 gammes et modes, avec noms des notes ou degrés sur le manche\n• Cycle des quintes interactif avec les accords de chaque tonalité\n• Lecteur de grilles avec tempo et modèles comme I–V–vi–IV et le blues 12 mesures\n• C D E ou Do Ré Mi, dièses ou bémols ; annulation et export texte",
+    "es": "Cancionero de acordes es un compañero de teoría musical para guitarra, ukelele, bajo y piano. Cada posición se calcula por ti, las escalas se dibujan en todo el mástil y todo se puede escuchar.\n\n• 16 tipos de acordes en las 12 tonalidades con varias posiciones tocables\n• 13 escalas y modos con nombres de notas o grados en el mástil\n• Círculo de quintas interactivo con los acordes de cada tonalidad\n• Reproductor de progresiones con tempo y modelos como I–V–vi–IV y blues de 12 compases\n• C D E o Do Re Mi, sostenidos o bemoles; deshacer y exportar texto",
+    "ja": "コードブックは、ギター、ウクレレ、ベース、ピアノのための音楽理論ツールです。コードの押さえ方はその場で計算され、スケールはネック全体に描かれ、どれも音で確かめられます。\n\n• 12 キーすべてで 16 種類のコード、それぞれ複数のフォーム\n• 13 のスケールとモードを音名か度数で指板に表示\n• 各キーのコードがわかるインタラクティブな五度圏\n• テンポ付きのコード進行プレーヤー、I–V–vi–IV や 12 小節ブルースのプリセット\n• CDE とドレミ、シャープとフラットの切り替え、取り消しとテキスト書き出し",
+    "zh": "和弦手册是吉他、尤克里里、贝斯和钢琴的乐理助手。每个和弦指法都由程序计算，音阶画满整个指板，而且都能听到声音。\n\n• 12 个调中的 16 种和弦，每种都有多个可弹指法\n• 13 种音阶和调式，可在指板上显示音名或级数\n• 交互式五度圈，显示每个调的和弦\n• 带速度的和弦进行播放器，预设 I–V–vi–IV 和 12 小节布鲁斯等\n• C D E 或 Do Re Mi，升号或降号；撤销和文本导出",
+    "ko": "코드북은 기타, 우쿨렐레, 베이스, 피아노를 위한 음악 이론 도우미입니다. 모든 코드 폼을 계산해 주고, 스케일을 지판 전체에 그려 주며, 무엇이든 소리로 들을 수 있습니다.\n\n• 12개 조 모두에서 16가지 코드, 코드마다 여러 폼\n• 13가지 스케일과 모드를 지판에 음이름이나 도수로 표시\n• 조마다 코드를 보여 주는 대화형 5도권\n• 템포가 있는 진행 플레이어와 I–V–vi–IV, 12마디 블루스 같은 프리셋\n• C D E 또는 도레미, 샵 또는 플랫; 실행 취소와 텍스트 내보내기"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key 3",
+      "wait 1"
+    ],
+    [
+      "key 2",
+      "wait 1"
+    ],
+    [
+      "key 4",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

@@ -32,5 +32,18 @@
   "cancel": "Vazgeç",
   "menu_records": "Rekorlar",
   "best_line": "{0}: {1} sn",
-  "wins_line": "{1} oyunun {0} tanesi kazanıldı"
+  "wins_line": "{1} oyunun {0} tanesi kazanıldı",
+  "custom": "Özel",
+  "custom_board": "Özel tahta",
+  "columns": "Sütun",
+  "rows": "Satır",
+  "mines": "Mayın",
+  "start": "Başla",
+  "statistics": "İstatistikler",
+  "st_played": "Oyun",
+  "st_won": "Kazanılan",
+  "st_best": "En iyi sn",
+  "st_streak": "Seri",
+  "close": "Kapat",
+  "question_marks": "Soru işaretleri (?)"
 }

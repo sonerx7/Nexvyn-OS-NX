@@ -11,7 +11,7 @@
     "ko": "카운트다운"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -27,7 +27,10 @@
     "tr": "Heyecanla beklediğiniz anlara geri sayın",
     "de": "Zähle die Zeit bis zu Ereignissen herunter, auf die du dich freust",
     "fr": "Comptez le temps qui vous sépare des événements que vous attendez",
-    "es": "Cuenta atrás para los eventos que esperas con ganas"
+    "es": "Cuenta atrás para los eventos que esperas con ganas",
+    "ja": "大切な日までを大きく刻むカウントダウン",
+    "zh": "为重要的日子显示醒目的倒计时",
+    "ko": "중요한 날까지 째깍째깍 크게 세어 보세요"
   },
   "permissions": [
     "notifications"

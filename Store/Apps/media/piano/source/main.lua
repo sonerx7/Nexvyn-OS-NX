@@ -59,7 +59,20 @@ local SONGS = {
     {64, 1}, {65, 1}, {67, 2}, {64, 1}, {65, 1}, {67, 2},
     {67, 0.5}, {69, 0.5}, {67, 0.5}, {65, 0.5}, {64, 1}, {60, 1}, {67, 0.5}, {69, 0.5}, {67, 0.5}, {65, 0.5}, {64, 1}, {60, 1},
     {60, 1}, {55, 1}, {60, 2}, {60, 1}, {55, 1}, {60, 2}}},
+  {key = "song_jingle", bpm = 150, notes = {
+    {64, 1}, {64, 1}, {64, 2}, {64, 1}, {64, 1}, {64, 2}, {64, 1}, {67, 1}, {60, 1.5}, {62, 0.5}, {64, 4},
+    {65, 1}, {65, 1}, {65, 1.5}, {65, 0.5}, {65, 1}, {64, 1}, {64, 1}, {64, 0.5}, {64, 0.5}, {64, 1}, {62, 1}, {62, 1},
+    {64, 1}, {62, 2}, {67, 2},
+    {64, 1}, {64, 1}, {64, 2}, {64, 1}, {64, 1}, {64, 2}, {64, 1}, {67, 1}, {60, 1.5}, {62, 0.5}, {64, 4},
+    {65, 1}, {65, 1}, {65, 1.5}, {65, 0.5}, {65, 1}, {64, 1}, {64, 1}, {64, 0.5}, {64, 0.5}, {67, 1}, {67, 1}, {65, 1},
+    {62, 1}, {60, 4}}},
+  {key = "song_scale", bpm = 100, notes = {
+    {60, 1}, {62, 1}, {64, 1}, {65, 1}, {67, 1}, {69, 1}, {71, 1}, {72, 2},
+    {72, 1}, {71, 1}, {69, 1}, {67, 1}, {65, 1}, {64, 1}, {62, 1}, {60, 2}}},
 }
+
+-- learn mode: play the song yourself, one highlighted key at a time
+local learn = nil              -- {song, idx, ok, miss, done, flashT, flashM}
 
 -- ------------------------------------------------------------------ state
 local wave = 4
@@ -132,6 +145,27 @@ local function press(m, src)
     held[m] = h
   end
   if h[src] then return end
+  if learn and not learn.done and src:sub(1, 4) ~= "auto" then
+    local target = SONGS[learn.song].notes[learn.idx][1]
+    if m == target then
+      learn.ok = learn.ok + 1
+      learn.idx = learn.idx + 1
+      while SONGS[learn.song].notes[learn.idx] and SONGS[learn.song].notes[learn.idx][1] <= 0 do learn.idx = learn.idx + 1 end
+      if learn.idx > #SONGS[learn.song].notes then
+        learn.done = true
+        local pct = floor(learn.ok / max(1, learn.ok + learn.miss) * 100 + 0.5)
+        local best = store.get("learnBest", {})
+        if type(best) ~= "table" then best = {} end
+        local k = SONGS[learn.song].key
+        if pct > (tonumber(best[k]) or -1) then best[k] = pct; store.set("learnBest", best) end
+        learn.pct = pct
+        timer.after(0.3, function() audio.play("notify") end)
+      end
+    else
+      learn.miss = learn.miss + 1
+      learn.flashT, learn.flashM = sys.time(), m
+    end
+  end
   local first = next(h) == nil
   h[src] = true
   if first then
@@ -238,6 +272,12 @@ local function playSong(i)
   if player then player.song = i end
 end
 
+local function learnTarget()
+  if not learn or learn.done then return nil end
+  local n = SONGS[learn.song].notes[learn.idx]
+  return n and n[1]
+end
+
 local function shiftOctave(d)
   local nb = max(1, min(5, base + d))
   if nb == base then audio.play("error"); return end
@@ -246,6 +286,21 @@ local function shiftOctave(d)
   base = nb
   selected = max(lowNote(), min(highNote(), selected + d * 12))
   save()
+end
+
+local function startLearn(i)
+  if recording then toggleRecord() end
+  stopPlayer()
+  learn = {song = i, idx = 1, ok = 0, miss = 0, done = false, flashT = -10}
+  song = i
+  local t = learnTarget()
+  -- keep the whole song on screen: pick the octave range that holds its lowest note
+  local lo = 127
+  for _, n in ipairs(SONGS[i].notes) do if n[1] > 0 and n[1] < lo then lo = n[1] end end
+  base = max(1, min(5, floor(lo / 12) - 1))
+  selected = t or selected
+  save()
+  audio.play("pop")
 end
 
 function app.load()
@@ -580,13 +635,19 @@ function app.draw(w, h)
   x = x + 70 + max(70, gfx.textWidth(recText, 12, "medium")) + 12
 
   -- demo songs
-  local ddW = max(120, w - x - 16 - 40)
+  local ddW = max(120, w - x - 16 - 76)
   local ns = ui.dropdown("song", songLabels, song, x, 13, ddW, 28)
   if ns ~= song then song = ns end
   local playingSong = player and player.kind == "song"
   if ui.iconButton(playingSong and "stop" or "queue_music", x + ddW + 6, 12, 32, 30, playingSong and theme.accent or nil,
       playingSong, "song") then
+    learn = nil
     playSong(song); lastInput = "touch"
+  end
+  if ui.iconButton(learn and "close" or "school", x + ddW + 42, 12, 32, 30, learn and theme.accent or nil, learn ~= nil,
+      "learn") then
+    if learn then learn = nil else startLearn(song) end
+    lastInput = "touch"
   end
 
   -- keyboard geometry
@@ -601,6 +662,42 @@ function app.draw(w, h)
   gfx.text(TR("sustain"), 0, 62, 12, "medium", "right", w - 82)
   local ns2 = ui.toggle("sustain", sustain, w - 72, 60)
   if ns2 ~= sustain then sustain = ns2; save() end
+
+  -- learn mode overlay: the next key pulses, progress and accuracy above the keyboard
+  if learn then
+    local total = 0
+    for _, n in ipairs(SONGS[learn.song].notes) do if n[1] > 0 then total = total + 1 end end
+    local pct = floor(learn.ok / max(1, learn.ok + learn.miss) * 100 + 0.5)
+    local bx, by, bw = 24, 58, w - 48
+    gfx.rect(bx, by, bw, 34, 10, alpha(theme.window, 0.92))
+    gfx.icon("school", bx + 18, by + 17, 18, theme.accent)
+    gfx.color(theme.text)
+    gfx.text(learn.done and TR("learn_done", learn.pct) or TR("learn_progress", learn.ok, total, pct), bx + 34, by + 9, 13,
+      "semibold")
+    ui.progress(learn.ok / max(1, total), bx + bw - 170, by + 15, 150, 5)
+    local t = learnTarget()
+    if t and t >= lowNote() and t <= highNote() then
+      local cx, kw = keyCenter(t)
+      if cx then
+        local pulse = 0.5 + 0.5 * sin(now * 6)
+        gfx.color(alpha(theme.accent, 0.5 + 0.5 * pulse))
+        gfx.circle(cx, layout.y - 14, 7 + 2 * pulse)
+        gfx.icon("arrow_downward", cx, layout.y - 30, 16, theme.accent)
+        gfx.color(theme.text2)
+        gfx.text(noteName(t), cx - 30, layout.y - 56, 12, "semibold", "center", 60)
+      end
+    elseif t then
+      gfx.color(theme.orange)
+      gfx.text(TR("learn_shift"), bx, by + 40, 12, "semibold", "center", bw)
+    end
+    if learn.flashM and now - learn.flashT < 0.4 then
+      local cx = keyCenter(learn.flashM)
+      if cx then
+        gfx.color(alpha(theme.red, 1 - (now - learn.flashT) / 0.4))
+        gfx.circle(cx, layout.y - 14, 9)
+      end
+    end
+  end
 
   drawHints(w, h - 24)
 end
@@ -692,6 +789,8 @@ function app.menu()
   local songs = {}
   for i, s in ipairs(SONGS) do local k = s.key; songs[#songs + 1] = {label = TR(k), id = 30 + i} end
   songs[#songs + 1] = "-"
+  for i, s in ipairs(SONGS) do local k = s.key; songs[#songs + 1] = {label = TR("learn_song", TR(k)), id = 50 + i} end
+  songs[#songs + 1] = "-"
   songs[#songs + 1] = {label = TR("stop"), id = 40, shortcut = "Esc"}
   return {
     {title = TR("menu_piano"), items = {
@@ -716,7 +815,8 @@ function app.onmenu(id)
   elseif id > 10 and id <= 14 then wave = id - 10; save()
   elseif id == 20 then sustain = not sustain; save()
   elseif id > 30 and id <= 30 + #SONGS then playSong(id - 30)
-  elseif id == 40 then stopPlayer()
+  elseif id == 40 then stopPlayer(); learn = nil
+  elseif id > 50 and id <= 50 + #SONGS then startLearn(id - 50)
   end
 end
 

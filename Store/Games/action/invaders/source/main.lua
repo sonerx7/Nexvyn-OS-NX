@@ -1,6 +1,7 @@
--- Uzay İstilası / Space Invaders-style shooter for Nexvyn OS: a marching formation of three invader types,
--- destructible shields, a mystery saucer, waves that start lower and shoot faster, hit streaks and a demo
--- cannon behind the title.
+-- Yıldız Kuşatması / Star Siege for Nexvyn OS: a fixed-shooter with a marching formation of three invader types,
+-- destructible shields, a mystery saucer, waves that start lower and shoot faster, hit streaks and a demo cannon
+-- behind the title. Power-up capsules (rapid fire, spread shot, bubble shield, shield repair) drop from the saucer
+-- and now and then from invaders; three difficulties, medals and records.
 local K = require("arcade")
 local floor, min, max, abs, sin, cos, pi = math.floor, math.min, math.max, math.abs, math.sin, math.cos, math.pi
 local random = math.random
@@ -9,7 +10,13 @@ local W, H = 800, 600
 local COLS, ROWS = 11, 5
 local CW, CH = 50, 40
 local PY = 550
-local G = {icon = "pest_control", accent = "#32D74B", overIcon = "pest_control"}
+local G = {icon = "pest_control", accent = "#32D74B", overIcon = "pest_control", difficulty = true,
+  medals = {3000, 9000, 20000}}
+local POW = {rapid = {"bolt", "#FFD60A", "p_rapid"}, spread = {"call_split", "#64D2FF", "p_spread"},
+  bubble = {"shield", "#BF5AF2", "p_bubble"}, repair = {"construction", "#32D74B", "p_repair"}}
+local POWKEYS = {"rapid", "spread", "bubble", "repair", "rapid", "spread"}
+local drops = {}
+local rapidT, spreadT, powers = 0, 0, 0
 
 local TYPES = {   -- row type: color, points
   {"#FF6BD6", 30}, {"#64D2FF", 20}, {"#64D2FF", 20}, {"#7CFF6B", 10}, {"#7CFF6B", 10},
@@ -20,7 +27,7 @@ local fx, fy, fdir, fdrop = 0, 0, 1, 0
 local stepT, legs = 0, 0
 local cannon = {x = W / 2, vx = 0, alive = true, respawn = 0, inv = 0}
 local PB, EB = {}, {}
-for i = 1, 3 do PB[i] = {x = 0, y = 0, on = false} end
+for i = 1, 8 do PB[i] = {x = 0, y = 0, vx = 0, on = false} end
 for i = 1, 6 do EB[i] = {x = 0, y = 0, on = false, k = 0} end
 local ufo = {on = false, x = 0, dir = 1, t = 18}
 local SH = {}                  -- shields: 4 x (12 x 8) cells
@@ -69,7 +76,8 @@ end
 function G.reset()
   wave, lives = 1, 3
   shots, hits, killed, ufos = 0, 0, 0, 0
-  cannon.x, cannon.vx, cannon.alive, cannon.inv = W / 2, 0, true, 0
+  cannon.x, cannon.vx, cannon.alive, cannon.inv, cannon.bubble = W / 2, 0, true, 0, false
+  drops, rapidT, spreadT, powers = {}, 0, 0, 0
   for i = 1, #PB do PB[i].on = false end
   ufo.on, ufo.t = false, 18
   pointerX = nil
@@ -86,19 +94,38 @@ local function shoot()
   if not cannon.alive or fireCd > 0 then return end
   local n = 0
   for i = 1, #PB do if PB[i].on then n = n + 1 end end
-  if n >= 2 then return end
+  local cap = spreadT > 0 and 6 or (rapidT > 0 and 4 or 2)
+  local vxs = spreadT > 0 and {-170, 0, 170} or {0}
+  if n + #vxs > cap then return end
+  local k = 1
   for i = 1, #PB do
     local b = PB[i]
-    if not b.on then
-      b.on, b.x, b.y = true, cannon.x, PY - 18
-      fireCd = 0.28
-      if K.state == "play" then
-        shots = shots + 1
-        K.sfx("shoot", 0.6)
-      end
-      return
+    if not b.on and k <= #vxs then
+      b.on, b.x, b.y, b.vx = true, cannon.x, PY - 18, vxs[k]
+      k = k + 1
     end
   end
+  fireCd = rapidT > 0 and 0.11 or 0.28
+  if K.state == "play" then
+    shots = shots + 1
+    K.sfx("shoot", 0.6)
+  end
+end
+
+local function dropPower(x, y)
+  drops[#drops + 1] = {x = x, y = y, kind = POWKEYS[random(#POWKEYS)], t = 0}
+end
+
+local function applyPower(kind)
+  powers = powers + 1
+  if kind == "rapid" then rapidT = 10
+  elseif kind == "spread" then spreadT = 10
+  elseif kind == "bubble" then cannon.bubble = true
+  else buildShields() end
+  K.callout(TR(POW[kind][3]), POW[kind][2], 30, "pow")
+  K.burst(cannon.x, PY, 24, POW[kind][2], 200, 0.6, 3, 0, -pi / 2, 2.2)
+  K.sfx("power")
+  K.vibrate(0.4, 70)
 end
 
 function G.press(act)
@@ -142,6 +169,14 @@ local function shieldHit(x, y, radius)
 end
 
 local function killCannon()
+  if cannon.bubble then
+    cannon.bubble, cannon.inv = false, 1
+    K.burst(cannon.x, PY - 6, 30, "#BF5AF2", 200, 0.6, 2.6)
+    K.sfx("hit")
+    K.shake(5)
+    return
+  end
+  rapidT, spreadT = 0, 0
   cannon.alive, cannon.respawn = false, 1.6
   K.burst(cannon.x, PY, 50, "#32D74B", 220, 1.0, 3.2)
   K.burst(cannon.x, PY, 20, "#FFFFFF", 140, 0.6, 2)
@@ -156,7 +191,7 @@ end
 local function gameOver()
   local acc = shots > 0 and floor(hits / shots * 100 + 0.5) or 0
   K.over({stats = {{TR("wave"), tostring(wave)}, {TR("killed"), tostring(killed)},
-    {TR("accuracy"), acc .. "%"}, {TR("ufos"), tostring(ufos)}}})
+    {TR("accuracy"), acc .. "%"}, {TR("ufos"), tostring(ufos)}, {TR("powerups"), tostring(powers)}}})
 end
 
 local function simulate(dt, demo)
@@ -192,8 +227,23 @@ local function simulate(dt, demo)
     end
   end
   if fireCd > 0 then fireCd = fireCd - dt end
+  if rapidT > 0 then rapidT = rapidT - dt end
+  if spreadT > 0 then spreadT = spreadT - dt end
+  local di = 1
+  while di <= #drops do
+    local d = drops[di]
+    d.y, d.t = d.y + 120 * dt, d.t + dt
+    if cannon.alive and d.y > PY - 24 and d.y < PY + 16 and abs(d.x - cannon.x) < 32 then
+      if playing then applyPower(d.kind) end
+      table.remove(drops, di)
+    elseif d.y > H + 20 then
+      table.remove(drops, di)
+    else
+      di = di + 1
+    end
+  end
   -- formation: speed grows as invaders fall
-  local speed = (18 + (COLS * ROWS - alive) * 2.2 + wave * 4) * (alive <= 1 and 2.2 or 1)
+  local speed = (18 + (COLS * ROWS - alive) * 2.2 + wave * 4) * (alive <= 1 and 2.2 or 1) * K.dmul
   local minx, maxx, maxy = 1e9, -1e9, -1e9
   for i = 1, COLS * ROWS do
     local v = inv[i]
@@ -239,7 +289,7 @@ local function simulate(dt, demo)
     return
   end
   -- enemy fire from the lowest invader of a random column
-  local rate = 0.6 + wave * 0.15
+  local rate = (0.6 + wave * 0.15) * K.dmul
   if random() < rate * dt * 2 and alive > 0 then
     local col = random(0, COLS - 1)
     for r = ROWS, 1, -1 do
@@ -262,7 +312,8 @@ local function simulate(dt, demo)
     local b = PB[k]
     if b.on then
       b.y = b.y - 640 * dt
-      if b.y < 30 then
+      b.x = b.x + (b.vx or 0) * dt
+      if b.y < 30 or b.x < 0 or b.x > W then
         b.on = false
         if playing then K.comboBreak() end
       elseif shieldHit(b.x, b.y, 2) then
@@ -285,6 +336,7 @@ local function simulate(dt, demo)
                 local p = pts + (c > 1 and min(c, 10) * 5 or 0)
                 K.addScore(p)
                 K.popup(x + 17, y, "+" .. p, col)
+                if random() < 0.035 then dropPower(x + 17, y + 13) end
                 K.sfx("small", 0.8)
                 K.tone(300 + row * 80, 0.05, 0.08, "square")
                 K.shake(2.5)
@@ -303,6 +355,7 @@ local function simulate(dt, demo)
             K.addScore(p)
             K.popup(ufo.x, 40, "+" .. p, "#FF453A")
             K.callout(TR("mystery"), "#FF453A", 30, "ufo")
+            dropPower(ufo.x, 60)
             K.sfx("boom", 0.8)
             K.shake(7)
           end
@@ -311,7 +364,7 @@ local function simulate(dt, demo)
     end
   end
   -- enemy bullets
-  local ebs = 210 + wave * 18
+  local ebs = (210 + wave * 18) * K.dmul
   for k = 1, #EB do
     local b = EB[k]
     if b.on then
@@ -455,6 +508,22 @@ function G.draw(w, h)
     gfx.rect(X - 3 * S, Y - 16 * S, 6 * S, 10 * S, 2 * S)
     K.color("#FFFFFF", 0.4)
     gfx.rect(X - 18 * S, Y + 1 * S, 36 * S, 3 * S, 1.5 * S)
+    if cannon.bubble then
+      K.color("#BF5AF2", 0.18 + 0.08 * sin(t * 6))
+      gfx.circle(X, Y + 2 * S, 34 * S)
+      K.color("#D9A6FF", 0.7)
+      gfx.circleLine(X, Y + 2 * S, 34 * S, 2)
+    end
+  end
+  -- power-up capsules
+  for _, d in ipairs(drops) do
+    local p = POW[d.kind]
+    local wob = sin(d.t * 8) * 3
+    K.color(p[2], 0.3)
+    gfx.rect(ox + (d.x - 20 + wob) * S, oy + (d.y - 14) * S, 40 * S, 28 * S, 14 * S)
+    K.color(p[2])
+    gfx.rect(ox + (d.x - 16 + wob) * S, oy + (d.y - 11) * S, 32 * S, 22 * S, 11 * S)
+    gfx.icon(p[1], ox + (d.x + wob) * S, oy + d.y * S, 17 * S, "#101018")
   end
   K.drawParticles(S, ox, oy)
   K.drawPopups(S, ox, oy, 16)
@@ -462,7 +531,9 @@ function G.draw(w, h)
   local x = 12
   x = x + K.scorePill(x, 8) + 8
   x = x + K.pill(x, 8, "flag", TR("wave_n", wave), "#32D74B") + 8
-  K.pill(x, 8, "favorite", tostring(max(0, lives)), "#FF375F")
+  x = x + K.pill(x, 8, "favorite", tostring(max(0, lives)), "#FF375F") + 8
+  if rapidT > 0 then x = x + K.pill(x, 8, POW.rapid[1], tostring(math.ceil(rapidT)), POW.rapid[2]) + 6 end
+  if spreadT > 0 then K.pill(x, 8, POW.spread[1], tostring(math.ceil(spreadT)), POW.spread[2]) end
   K.bestPill(w - 60, 8)
 end
 

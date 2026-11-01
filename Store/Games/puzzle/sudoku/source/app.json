@@ -11,13 +11,16 @@
     "ko": "스도쿠"
   },
   "description": {
-    "en": "Freshly generated Sudoku puzzles with a unique solution in three difficulties, with notes, hints and best times.",
-    "tr": "Üç zorlukta, tek çözümlü ve her seferinde yeniden üretilen Sudoku bulmacaları; not alma, ipucu ve en iyi süreler.",
-    "de": "Frisch erzeugte Sudoku-Rätsel mit eindeutiger Lösung in drei Schwierigkeitsstufen, mit Notizen, Tipps und Bestzeiten.",
-    "fr": "Des grilles de sudoku fraîchement générées à solution unique, en trois difficultés, avec notes, indices et meilleurs temps.",
-    "es": "Sudokus recién generados con solución única en tres dificultades, con notas, pistas y mejores tiempos."
+    "en": "Fresh Sudoku puzzles in four difficulties plus a daily puzzle with streaks, notes, auto-notes, hints and undo.",
+    "tr": "Dört zorlukta yeni Sudoku bulmacaları ve serili günlük bulmaca; notlar, otomatik notlar, ipucu ve geri alma.",
+    "de": "Neue Sudokus in vier Stufen plus ein Tagesrätsel mit Serien, Notizen, Auto-Notizen, Tipps und Rückgängig.",
+    "fr": "Des grilles de sudoku neuves en quatre difficultés et une grille du jour avec séries, notes, notes auto, indices et annulation.",
+    "es": "Sudokus nuevos en cuatro dificultades y un sudoku diario con rachas, notas, notas automáticas, pistas y deshacer.",
+    "ja": "4段階の難易度で毎回新しい数独。連続記録つきの今日のパズル、メモ、自動メモ、ヒント、元に戻す。",
+    "zh": "四种难度的全新数独，外加可累计连续天数的每日谜题；笔记、自动笔记、提示和撤销。",
+    "ko": "네 가지 난이도의 새로운 스도쿠와 연속 기록이 있는 오늘의 퍼즐. 메모, 자동 메모, 힌트, 실행 취소."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

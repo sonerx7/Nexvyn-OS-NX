@@ -15,9 +15,12 @@
     "tr": "Altı şehri düşen füzelerden koru. Nişan al, üç bataryadan karşı füze ateşle ve tek patlamayla zincirleme birçok füze düşür.",
     "de": "Verteidige sechs Städte gegen herabstürzende Sprengköpfe. Ziele, feuere Abfangraketen aus drei Batterien ab und erwische mehrere Raketen mit einer Kettenexplosion.",
     "fr": "Défendez six villes contre les ogives qui tombent. Visez, tirez des contre-missiles depuis trois batteries et détruisez plusieurs missiles en une seule réaction en chaîne.",
-    "es": "Defiende seis ciudades de las ojivas que caen. Apunta, dispara contramisiles desde tres baterías y alcanza varios misiles con una sola explosión en cadena."
+    "es": "Defiende seis ciudades de las ojivas que caen. Apunta, dispara contramisiles desde tres baterías y alcanza varios misiles con una sola explosión en cadena.",
+    "ja": "6 つの都市、3 つの砲台: 空を守れ",
+    "zh": "六座城市，三座炮台：守住天空",
+    "ko": "도시 여섯 개, 포대 세 개: 하늘을 지키세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

@@ -100,5 +100,19 @@
   "wdn3": "水",
   "wdn4": "木",
   "wdn5": "金",
-  "wdn6": "土"
+  "wdn6": "土",
+  "repeat_monthly": "毎月くり返す",
+  "budgets": "予算",
+  "budgets_sub": "カテゴリ別の月間上限 · {0} の支出",
+  "spent_of": "{1} 中 {0}",
+  "no_limit": "上限なし",
+  "over_budget": "予算オーバー: {0}",
+  "done_btn": "完了",
+  "backup": "バックアップ",
+  "backup_done": "バックアップを保存しました",
+  "save_failed": "ファイルを保存できませんでした",
+  "restore": "復元",
+  "restore_confirm": "すべての記録を、このバックアップの {0} 件で置き換えますか？",
+  "restore_done": "{0} 件を復元しました",
+  "restore_bad": "このファイルは Budget のバックアップではありません"
 }

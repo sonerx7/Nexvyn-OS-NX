@@ -15,10 +15,13 @@
     "tr": "118 elementin tamamı: ayrıntı kartları, arama, kategori ve hâl görünümleri, sıcaklık kaydırıcısı.",
     "de": "Alle 118 Elemente mit Detailkarten, Suche, Ansichten nach Kategorie und Aggregatzustand und einem Temperaturregler.",
     "fr": "Les 118 éléments avec fiches détaillées, recherche, vues par catégorie et par état, et un curseur de température.",
-    "es": "Los 118 elementos con fichas detalladas, búsqueda, vistas por categoría y estado y un control de temperatura."
+    "es": "Los 118 elementos con fichas detalladas, búsqueda, vistas por categoría y estado y un control de temperatura.",
+    "ja": "118 の元素すべてにワンタップで",
+    "zh": "全部 118 种元素，一触即达",
+    "ko": "118개 원소 전부를 한 번의 탭으로"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

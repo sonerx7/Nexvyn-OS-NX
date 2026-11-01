@@ -1,5 +1,6 @@
--- Minesweeper for Nexvyn OS: beginner / intermediate / expert, safe first click, flood reveal, flags, chords,
--- best times and full controller / keyboard / touch support.
+-- Mayın Tarlası / Mine Field for Nexvyn OS: beginner / intermediate / expert and a custom board, safe first click,
+-- flood reveal, flags, optional ? marks, chords, best times, per-level statistics with win streaks, and full
+-- controller / keyboard / touch support.
 local app = {}
 
 local floor, min, max, abs, sin, cos, pi, sqrt = math.floor, math.min, math.max, math.abs, math.sin, math.cos, math.pi, math.sqrt
@@ -26,7 +27,14 @@ local DIFFS = {
   {cols = 9, rows = 9, mines = 10, key = "beginner"},
   {cols = 16, rows = 16, mines = 40, key = "intermediate"},
   {cols = 30, rows = 16, mines = 99, key = "expert"},
+  {cols = 20, rows = 12, mines = 40, key = "custom"},
 }
+local KEYS = {"beginner", "intermediate", "expert", "custom"}
+local marks = false            -- right click / X cycles flag -> ? -> nothing
+local dstats = {}              -- dstats[key] = {p = played, w = won, s = streak, b = best streak}
+local dlg = nil                -- nil | "custom" | "stats"
+local dsel = 1                 -- focused row in the custom dialog
+local cdraft = {c = 20, r = 12, m = 40}
 
 local diff = 1
 local cols, rows, mines = 9, 9, 10
@@ -53,8 +61,16 @@ local stickAt = 0
 local function idx(x, y) return (y - 1) * cols + x end
 local function inside(x, y) return x >= 1 and y >= 1 and x <= cols and y <= rows end
 
+local function maxMines(c, r) return floor(c * r * 0.3) end
+local function dst(key)
+  local t = dstats[key]
+  if type(t) ~= "table" then t = {p = 0, w = 0, s = 0, b = 0}; dstats[key] = t end
+  return t
+end
+
 local function newGame(d)
   if d then diff = d end
+  dlg = nil
   local D = DIFFS[diff]
   cols, rows, mines = D.cols, D.rows, D.mines
   cells = {}
@@ -70,6 +86,7 @@ local function newGame(d)
   newRecord = false
   confetti = {}
   store.set("diff", diff)
+  for i = 1, cols * rows do cells[i].q = false end
 end
 
 local function placeMines(sx, sy)
@@ -106,6 +123,9 @@ local function placeMines(sx, sy)
 end
 
 local function saveStats()
+  store.set("dstats", dstats)
+  store.set("marks", marks)
+  store.set("custom", {c = DIFFS[4].cols, r = DIFFS[4].rows, m = DIFFS[4].mines})
   store.set("best", best)
   store.set("wins", wins)
   store.set("played", played)
@@ -122,6 +142,9 @@ local function win()
   flags = mines
   wins = wins + 1
   local key = DIFFS[diff].key
+  local ds = dst(key)
+  ds.w, ds.s = ds.w + 1, ds.s + 1
+  ds.b = max(ds.b, ds.s)
   local t = floor(elapsed * 10 + 0.5) / 10
   if not best[key] or t < best[key] then
     best[key] = t
@@ -152,12 +175,13 @@ local function lose(bx, by)
     for x = 1, cols do
       local c = cells[idx(x, y)]
       if c.mine and not c.open and not c.flag then
-        c.open = true
+        c.open, c.q = true, false
         local d = sqrt((x - bx) ^ 2 + (y - by) ^ 2)
         c.openAt = endAt + 0.15 + d * 0.05 + random() * 0.05
       end
     end
   end
+  dst(DIFFS[diff].key).s = 0
   saveStats()
   shake = 1
   audio.tone(70, 0.5, 0.6, "noise")
@@ -173,12 +197,15 @@ local function reveal(x0, y0)
   if state == "won" or state == "lost" or paused then return end
   local c = cells[idx(x0, y0)]
   if c.open or c.flag then return end
+  c.q = false
   local now = sys.time()
   if state == "ready" then
     placeMines(x0, y0)
     state = "playing"
     startTime = now
     played = played + 1
+    local ds = dst(DIFFS[diff].key)
+    ds.p = ds.p + 1
     saveStats()
   end
   if c.mine then lose(x0, y0); return end
@@ -220,7 +247,15 @@ local function toggleFlag(x, y)
   if state == "won" or state == "lost" or paused then return end
   local c = cells[idx(x, y)]
   if c.open then return end
-  c.flag = not c.flag
+  if marks and c.flag then
+    c.flag, c.q = false, true            -- flag -> ?
+  elseif marks and c.q then
+    c.q = false                          -- ? -> nothing
+    audio.tone(520, 0.04, 0.2, "triangle")
+    return
+  else
+    c.flag = not c.flag
+  end
   c.flagAt = sys.time()
   flags = flags + (c.flag and 1 or -1)
   audio.tone(c.flag and 988 or 659, 0.05, 0.25, "square")
@@ -270,7 +305,16 @@ local function setPaused(p)
 end
 
 function app.load()
-  diff = max(1, min(3, floor(tonumber(store.get("diff", 1)) or 1)))
+  diff = max(1, min(4, floor(tonumber(store.get("diff", 1)) or 1)))
+  local ds = store.get("dstats", {})
+  dstats = type(ds) == "table" and ds or {}
+  marks = store.get("marks", false) == true
+  local cu = store.get("custom", nil)
+  if type(cu) == "table" then
+    local c, r = max(8, min(40, floor(tonumber(cu.c) or 20))), max(8, min(24, floor(tonumber(cu.r) or 12)))
+    DIFFS[4].cols, DIFFS[4].rows = c, r
+    DIFFS[4].mines = max(5, min(maxMines(c, r), floor(tonumber(cu.m) or 40)))
+  end
   best = store.get("best", {}) or {}
   wins = tonumber(store.get("wins", 0)) or 0
   played = tonumber(store.get("played", 0)) or 0
@@ -474,6 +518,10 @@ local function drawBoard(now)
         gfx.gradient(px, py, s, s, closedTop, closedBot, false, rad)
         gfx.color(255, 255, 255, theme.dark and 18 or 120)
         gfx.rect(px + 1, py + 1, s - 2, max(1, s * 0.12), rad * 0.5)
+        if c.q and not c.flag then
+          gfx.color(theme.text2)
+          gfx.text("?", px, py + s * 0.18, s * 0.6, "bold", "center", s)
+        end
         if c.flag then
           local a = min(1, (now - c.flagAt) / 0.15)
           if a > 0 then
@@ -496,6 +544,75 @@ local function drawBoard(now)
     local pulse = 0.6 + 0.4 * sin(now * 6)
     gfx.color(alpha(theme.accent, pulse))
     gfx.rectLine(px - 2, py - 2, cs - gap + 4, cs - gap + 4, rad + 2, 3)
+  end
+end
+
+local function card(w, h, cw, ch)
+  local x, y = floor((w - cw) / 2), floor((h - ch) / 2)
+  gfx.color(0, 0, 0, 110)
+  gfx.rect(0, 0, w, h)
+  gfx.shadow(x, y, cw, ch, 16, 24, 6)
+  gfx.color(theme.window)
+  gfx.rect(x, y, cw, ch, 16)
+  gfx.color(theme.separator)
+  gfx.rectLine(x, y, cw, ch, 16, 1)
+  return x, y
+end
+
+local function startCustom()
+  DIFFS[4].cols, DIFFS[4].rows = cdraft.c, cdraft.r
+  DIFFS[4].mines = max(5, min(maxMines(cdraft.c, cdraft.r), cdraft.m))
+  saveStats()
+  newGame(4)
+  audio.play("pop", 0.6)
+end
+
+local CROWS = {{"c", 8, 40, "columns"}, {"r", 8, 24, "rows"}, {"m", 5, 0, "mines"}}
+local function drawDialog(w, h)
+  if dlg == "custom" then
+    local x, y = card(w, h, 380, 300)
+    gfx.color(theme.text)
+    gfx.text(TR("custom_board"), x, y + 18, 20, "bold", "center", 380)
+    for i, rw in ipairs(CROWS) do
+      local ry = y + 60 + (i - 1) * 58
+      local hi = rw[3] > 0 and rw[3] or maxMines(cdraft.c, cdraft.r)
+      cdraft.m = min(cdraft.m, maxMines(cdraft.c, cdraft.r))
+      if dsel == i and lastInput ~= "touch" then
+        gfx.color(alpha(theme.accent, 0.6 + 0.4 * sin(sys.time() * 6)))
+        gfx.rectLine(x + 14, ry - 4, 352, 54, 10, 2)
+      end
+      gfx.color(theme.text2)
+      gfx.text(TR(rw[4]), x + 26, ry, 13, "medium")
+      gfx.color(theme.text)
+      gfx.text(tostring(cdraft[rw[1]]), x + 26, ry, 14, "monobold", "right", 328)
+      local v = ui.slider("cs" .. i, cdraft[rw[1]], rw[2], hi, x + 26, ry + 22, 328, 1)
+      v = floor(v + 0.5)
+      if v ~= cdraft[rw[1]] then cdraft[rw[1]] = v; dsel = i end
+    end
+    if ui.button(TR("start") .. "##cst", x + 24, y + 244, 160, 38, "primary", "play_arrow") then startCustom() end
+    if ui.button(TR("cancel") .. "##ccl", x + 196, y + 244, 160, 38) then dlg = nil end
+  elseif dlg == "stats" then
+    local x, y = card(w, h, 460, 290)
+    gfx.color(theme.text)
+    gfx.text(TR("statistics"), x, y + 18, 20, "bold", "center", 460)
+    local hx = {x + 24, x + 170, x + 230, x + 290, x + 350, x + 410}
+    gfx.color(theme.text3)
+    local heads = {"", TR("st_played"), TR("st_won"), "%", TR("st_best"), TR("st_streak")}
+    for i = 2, 6 do gfx.text(heads[i], hx[i] - 30, y + 56, 12, "semibold", "center", 60) end
+    for i, key in ipairs(KEYS) do
+      local ry = y + 80 + (i - 1) * 34
+      local d = dst(key)
+      gfx.color(i % 2 == 0 and theme.hover or alpha(theme.text, 0))
+      gfx.rect(x + 14, ry - 6, 432, 30, 8)
+      gfx.color(theme.text)
+      gfx.text(TR(key), hx[1], ry, 14, "semibold")
+      gfx.color(theme.text2)
+      local pct = d.p > 0 and floor(d.w / d.p * 100 + 0.5) or 0
+      local cells6 = {nil, tostring(d.p), tostring(d.w), pct .. "%",
+        best[key] and string.format("%.1f", best[key]) or "—", d.s .. " / " .. d.b}
+      for k = 2, 6 do gfx.text(cells6[k], hx[k] - 30, ry, 13, "medium", "center", 60) end
+    end
+    if ui.button(TR("close") .. "##scl", x + 130, y + 232, 200, 38, "primary") then dlg = nil end
   end
 end
 
@@ -554,9 +671,18 @@ function app.draw(w, h)
   gfx.clear(theme.bg)
 
   -- header
-  local labels = {TR("beginner"), TR("intermediate"), TR("expert")}
-  local nd = ui.segmented("diff", labels, diff, 16, 14, 300, 32)
-  if nd ~= diff then newGame(nd); lastInput = "touch"; audio.play("pop", 0.5) end
+  local labels = {TR("beginner"), TR("intermediate"), TR("expert"), TR("custom")}
+  local segW = floor(min(420, w * 0.5))
+  local nd = ui.segmented("diff", labels, diff, 16, 14, segW, 32)
+  if nd ~= diff and not dlg then
+    lastInput = "touch"
+    if nd == 4 then
+      cdraft.c, cdraft.r, cdraft.m = DIFFS[4].cols, DIFFS[4].rows, DIFFS[4].mines
+      dlg, dsel = "custom", 1
+    else
+      newGame(nd); audio.play("pop", 0.5)
+    end
+  end
 
   local rx = w - 16
   local tw = gfx.textWidth("000", 18, "monobold") + 44
@@ -578,7 +704,8 @@ function app.draw(w, h)
   if state == "lost" then face = "sentiment_very_dissatisfied"
   elseif state == "won" then face = "emoji_events"
   elseif press and not press.long then face = "sentiment_neutral" end
-  local fx = floor((316 + fmx) / 2)
+  if ui.iconButton("bar_chart", fmx - 44, 13, 36, 34, nil, false, "stats") then dlg = "stats" end
+  local fx = floor((segW + 16 + fmx - 44) / 2)
   local fh = ui.hit("face", fx - 20, 11, 40, 40)
   gfx.shadow(fx - 18, 13, 36, 36, 18, 8, 2)
   gfx.color(fh.held and theme.hover or theme.control)
@@ -619,6 +746,7 @@ function app.draw(w, h)
 
   drawOverlay(w, h, now)
   drawHints(w, h - 28)
+  drawDialog(w, h)
 end
 
 -- ------------------------------------------------------------------ input
@@ -628,8 +756,32 @@ local function cellAt(x, y)
   return floor((x - b.x) / b.cell) + 1, floor((y - b.y) / b.cell) + 1
 end
 
+local function dialogKey(k)
+  if dlg == "stats" then
+    if k == "a" or k == "b" then dlg = nil end
+    return
+  end
+  local rw = CROWS[dsel]
+  local hi = rw[3] > 0 and rw[3] or maxMines(cdraft.c, cdraft.r)
+  if k == "up" then dsel = (dsel - 2) % 3 + 1
+  elseif k == "down" then dsel = dsel % 3 + 1
+  elseif k == "left" then cdraft[rw[1]] = max(rw[2], cdraft[rw[1]] - 1)
+  elseif k == "right" then cdraft[rw[1]] = min(hi, cdraft[rw[1]] + 1)
+  elseif k == "a" then startCustom()
+  elseif k == "b" then dlg = nil end
+  audio.tone(1000, 0.02, 0.08, "sine")
+end
+local PADK = {up = "up", down = "down", left = "left", right = "right", a = "a", b = "b", plus = "b"}
+local KEYK = {up = "up", down = "down", left = "left", right = "right", enter = "a", space = "a", escape = "b"}
+
 function app.event(e)
   local t = e.type
+  if dlg then
+    if t == "paddown" and PADK[e.pad] then lastInput = "pad"; dialogKey(PADK[e.pad])
+    elseif t == "keydown" and KEYK[e.key] then lastInput = "key"; dialogKey(KEYK[e.key])
+    elseif t == "mousedown" then lastInput = "touch" end
+    return
+  end
   if t == "mousedown" then
     lastInput = "touch"
     if paused or state == "won" or state == "lost" then return end
@@ -678,8 +830,9 @@ function app.event(e)
     elseif p == "plus" or p == "b" then
       if state == "playing" then setPaused(not paused) end
     elseif p == "minus" then newGame(); audio.play("pop", 0.6)
-    elseif p == "zl" then newGame((diff + 1) % 3 + 1)
-    elseif p == "zr" then newGame(diff % 3 + 1)
+    elseif p == "zl" then newGame((diff + 2) % 4 + 1)
+    elseif p == "zr" then newGame(diff % 4 + 1)
+    elseif p == "r" then dlg = "stats"
     end
   elseif t == "padup" then
     held[e.pad] = nil
@@ -696,7 +849,11 @@ function app.event(e)
     elseif k == "n" or k == "f2" then newGame(); audio.play("pop", 0.6)
     elseif k == "escape" or k == "p" then
       if state == "playing" then setPaused(not paused) end
-    elseif k == "1" or k == "2" or k == "3" then newGame(tonumber(k))
+    elseif k == "1" or k == "2" or k == "3" or k == "4" then newGame(tonumber(k))
+    elseif k == "s" then dlg = "stats"
+    elseif k == "c" then
+      cdraft.c, cdraft.r, cdraft.m = DIFFS[4].cols, DIFFS[4].rows, DIFFS[4].mines
+      dlg, dsel = "custom", 1
     elseif k == "m" then
       flagMode = not flagMode
       store.set("flagMode", flagMode)
@@ -714,7 +871,12 @@ function app.menu()
       {label = TR("beginner") .. "  (9×9, 10)", id = 11, checked = diff == 1, shortcut = "1"},
       {label = TR("intermediate") .. "  (16×16, 40)", id = 12, checked = diff == 2, shortcut = "2"},
       {label = TR("expert") .. "  (30×16, 99)", id = 13, checked = diff == 3, shortcut = "3"},
+      {label = TR("custom") .. string.format("  (%d×%d, %d)", DIFFS[4].cols, DIFFS[4].rows, DIFFS[4].mines), id = 14,
+        checked = diff == 4, shortcut = "4"},
+      {label = TR("custom_board") .. "…", id = 15, shortcut = "C"},
       "-",
+      {label = TR("question_marks"), id = 5, checked = marks},
+      {label = TR("statistics"), id = 6, shortcut = "S"},
       {label = TR("reset_stats"), id = 4},
     }},
     {title = TR("menu_records"), items = {
@@ -731,11 +893,16 @@ function app.onmenu(id)
   if id == 1 then newGame()
   elseif id == 2 then setPaused(not paused)
   elseif id == 3 then flagMode = not flagMode; store.set("flagMode", flagMode)
-  elseif id >= 11 and id <= 13 then newGame(id - 10)
+  elseif id >= 11 and id <= 14 then newGame(id - 10)
+  elseif id == 15 then
+    cdraft.c, cdraft.r, cdraft.m = DIFFS[4].cols, DIFFS[4].rows, DIFFS[4].mines
+    dlg, dsel = "custom", 1
+  elseif id == 5 then marks = not marks; saveStats()
+  elseif id == 6 then dlg = "stats"
   elseif id == 4 then
     ui.alert(TR("reset_stats"), TR("reset_stats_msg"), {TR("reset"), TR("cancel")}, function(b)
       if b == 1 then
-        best, wins, played = {}, 0, 0
+        best, wins, played, dstats = {}, 0, 0, {}
         saveStats()
       end
     end)
@@ -746,5 +913,9 @@ function app.close()
   saveStats()
   return true
 end
+
+-- leaving the app (HOME menu, sleep, another window) pauses the clock
+function app.suspend() setPaused(true) end
+function app.focus(f) if f == false then setPaused(true) end end
 
 return app

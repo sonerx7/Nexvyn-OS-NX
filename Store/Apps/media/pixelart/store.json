@@ -1,28 +1,61 @@
 {
   "subtitle": {
-    "en": "Draw retro sprites and export real PNGs",
-    "tr": "Retro karakterler çiz, PNG olarak kaydet",
-    "de": "Retro-Sprites zeichnen, als PNG sichern",
-    "fr": "Dessinez des sprites rétro en PNG",
-    "es": "Dibuja sprites retro y exporta en PNG",
-    "ja": "レトロなスプライトを描いて本物の PNG に",
-    "zh": "绘制复古精灵图并导出真正的 PNG",
-    "ko": "레트로 스프라이트를 그려 PNG로 저장"
+    "en": "Sprites up to 64×64, exported as PNG",
+    "tr": "64×64'e kadar sprite, PNG dışa aktarma",
+    "de": "Sprites bis 64×64, Export als PNG",
+    "fr": "Sprites jusqu’à 64×64, export PNG",
+    "es": "Sprites hasta 64×64, exporta a PNG",
+    "ja": "64×64までのスプライト、PNG 書き出し",
+    "zh": "最高 64×64 像素图，导出 PNG",
+    "ko": "64×64까지 스프라이트, PNG 내보내기"
   },
   "description": {
-    "en": "Pixel Art is a small, friendly editor for 8×8, 16×16 and 32×32 sprites. Draw with the pencil, flood areas with the fill bucket, drag out lines and rectangles with a live preview, and pick up any colour with the eyedropper. Turn on mirror drawing to paint both halves at once. Save your work to the gallery and export it as a real PNG file with a transparent background, scaled up to ×16.\n\n• Pencil, eraser, fill, line, rectangle and eyedropper\n• PICO-8 style 16-colour palette plus 8 colours of your own\n• Mirror drawing, grid, flip and up to 60 undo steps\n• Gallery with thumbnails; your last drawing is kept automatically\n• Shortcuts: P, E, F, L, R, I pick tools, G grid, M mirror",
-    "tr": "Piksel Sanatı, 8×8, 16×16 ve 32×32 boyutlarında karakter ve simge çizmek için küçük, kullanışlı bir editördür. Kalemle çiz, kovayla alanları doldur, çizgi ve dikdörtgenleri canlı önizlemeyle sürükle, renk seçiciyle istediğin rengi al. Ayna çizimi açıp iki yarıyı aynı anda boya. Çalışmalarını galeriye kaydet ve saydam arka planlı gerçek bir PNG olarak, ×16'ya kadar büyüterek dışa aktar.\n\n• Kalem, silgi, doldurma, çizgi, dikdörtgen ve renk seçici\n• PICO-8 tarzı 16 renkli palet ve 8 özel renk\n• Ayna çizim, ızgara, çevirme ve 60 adıma kadar geri alma\n• Küçük resimli galeri; son çizimin kendiliğinden saklanır\n• Kısayollar: P, E, F, L, R, I araç seçer, G ızgara, M ayna",
-    "de": "Pixel-Art ist ein kleiner, freundlicher Editor für Sprites in 8×8, 16×16 und 32×32. Zeichne mit dem Stift, fülle Flächen mit dem Farbeimer, zieh Linien und Rechtecke mit Live-Vorschau auf und nimm jede Farbe mit der Pipette auf. Mit gespiegeltem Zeichnen malst du beide Hälften gleichzeitig. Speichere deine Werke in der Galerie und exportiere sie als echte PNG-Datei mit transparentem Hintergrund, bis zu ×16 vergrößert.\n\n• Stift, Radierer, Füllen, Linie, Rechteck und Pipette\n• 16-Farben-Palette im PICO-8-Stil plus 8 eigene Farben\n• Spiegeln, Raster, Umdrehen und bis zu 60 Rückgängig-Schritte\n• Galerie mit Vorschaubildern; die letzte Zeichnung bleibt erhalten\n• Kürzel: P, E, F, L, R, I wählen Werkzeuge, G Raster, M Spiegeln",
-    "fr": "Pixel Art est un petit éditeur convivial pour des sprites de 8×8, 16×16 et 32×32. Dessinez au crayon, remplissez des zones avec le pot de peinture, tracez lignes et rectangles avec un aperçu en direct, et prélevez n’importe quelle couleur à la pipette. Avec le dessin en miroir, les deux moitiés se peignent en même temps. Rangez vos créations dans la galerie et exportez-les en vrai fichier PNG à fond transparent, agrandi jusqu’à ×16.\n\n• Crayon, gomme, remplissage, ligne, rectangle et pipette\n• Palette de 16 couleurs façon PICO-8 et 8 couleurs perso\n• Miroir, grille, retournement et jusqu’à 60 annulations\n• Galerie avec vignettes ; le dernier dessin est conservé\n• Raccourcis : P, E, F, L, R, I pour les outils, G grille, M miroir",
-    "es": "Pixel Art es un editor pequeño y sencillo para sprites de 8×8, 16×16 y 32×32. Dibuja con el lápiz, rellena zonas con el cubo, traza líneas y rectángulos con vista previa en directo y toma cualquier color con el cuentagotas. Activa el dibujo en espejo para pintar las dos mitades a la vez. Guarda tus obras en la galería y expórtalas como un archivo PNG real con fondo transparente, ampliado hasta ×16.\n\n• Lápiz, borrador, relleno, línea, rectángulo y cuentagotas\n• Paleta de 16 colores estilo PICO-8 y 8 colores propios\n• Espejo, cuadrícula, volteo y hasta 60 pasos de deshacer\n• Galería con miniaturas; tu último dibujo se guarda solo\n• Atajos: P, E, F, L, R, I eligen herramienta, G cuadrícula, M espejo",
-    "ja": "ピクセルアートは、8×8、16×16、32×32 のスプライト向けの、小さくて使いやすいエディタです。鉛筆で描き、塗りつぶしで範囲を埋め、ライブプレビュー付きで直線や長方形を引き、スポイトで任意の色を取得できます。左右対称に描くをオンにすると、左右両方を同時に描けます。作品をギャラリーに保存し、透明な背景の本物の PNG ファイルとして最大 ×16 に拡大して書き出せます。\n\n• 鉛筆、消しゴム、塗りつぶし、直線、長方形、スポイト\n• PICO-8 風の 16 色パレットと自分の 8 色\n• 左右対称描画、グリッド、反転、最大 60 回の取り消し\n• サムネイル付きのギャラリー、最後の絵は自動で保存\n• ショートカット: P、E、F、L、R、I でツールを選択、G でグリッド、M で左右対称",
-    "zh": "像素画是一款小巧友好的编辑器，用于绘制 8×8、16×16 和 32×32 的精灵图。用铅笔绘画，用油漆桶填充区域，拖出带实时预览的直线和矩形，并用吸管拾取任意颜色。开启镜像绘画即可同时绘制两半。将作品保存到图库，并导出为背景透明、最大放大 ×16 的真正 PNG 文件。\n\n• 铅笔、橡皮擦、填充、直线、矩形和吸管\n• PICO-8 风格的 16 色调色板，外加 8 种自定义颜色\n• 镜像绘画、网格、翻转和最多 60 步撤销\n• 带缩略图的图库；最后一幅绘画会自动保留\n• 快捷键：P、E、F、L、R、I 选择工具，G 网格，M 镜像",
-    "ko": "픽셀 아트는 8×8, 16×16, 32×32 스프라이트를 위한 작고 친근한 편집기입니다. 연필로 그리고, 채우기 통으로 영역을 채우고, 실시간 미리 보기로 선과 사각형을 그리고, 스포이트로 아무 색이나 집으세요. 대칭 그리기를 켜면 양쪽 절반을 동시에 칠합니다. 작품을 갤러리에 저장하고, 투명 배경의 진짜 PNG 파일로 최대 ×16 확대하여 내보내세요.\n\n• 연필, 지우개, 채우기, 선, 사각형, 스포이트\n• PICO-8 스타일 16색 팔레트와 나만의 색 8개\n• 대칭 그리기, 격자, 뒤집기, 최대 60단계 실행 취소\n• 썸네일이 있는 갤러리, 마지막 그림은 자동으로 보관\n• 단축키: P, E, F, L, R, I 도구 선택, G 격자, M 대칭"
+    "en": "Pixel Art is a small, friendly editor for retro sprites from 8×8 up to 64×64. Draw with the pencil, flood areas with the fill bucket, drag out lines and rectangles with a live preview, swap every pixel of one colour for another with Replace colour, and pick up any colour with the eyedropper.\n\nMirror drawing paints both halves at once, and four-way mirroring paints all four quarters, perfect for symmetrical icons. Rotate the drawing by 90°, flip it either way or shift it a pixel at a time. Save your work to the gallery and export it as a real PNG file with a transparent background, scaled up to ×16.\n\n• 8×8, 16×16, 32×32 and 64×64 canvases\n• Pencil, eraser, fill, line, rectangle, replace colour and eyedropper\n• A 16-colour retro palette plus 8 colours of your own\n• Two-way and four-way mirroring; rotate, flip and shift\n• Grid, up to 60 undo steps, gallery with thumbnails\n• PNG export at ×1, ×8 or ×16",
+    "tr": "Piksel Sanatı, 8×8'den 64×64'e retro sprite'lar için küçük ve kullanışlı bir düzenleyicidir. Kalemle çiz, kovayla alanları doldur, canlı önizlemeyle çizgi ve dikdörtgen çek, Rengi değiştir ile bir rengin tüm piksellerini başka bir renge çevir, damlalıkla herhangi bir rengi al.\n\nAyna çizim iki yarıyı birden boyar; dört yönlü ayna dört çeyreği birden boyar, simetrik simgeler için idealdir. Çizimi 90° döndür, iki yönde de çevir ya da birer piksel kaydır. Çalışmanı galeriye kaydet, ×16'ya kadar büyütülmüş, saydam arka planlı gerçek bir PNG dosyası olarak dışa aktar.\n\n• 8×8, 16×16, 32×32 ve 64×64 tuval\n• Kalem, silgi, doldurma, çizgi, dikdörtgen, renk değiştirme ve damlalık\n• 16 renkli retro palet ve kendi 8 rengin\n• İki ve dört yönlü ayna; döndürme, çevirme, kaydırma\n• Izgara, 60 adıma kadar geri alma, küçük resimli galeri\n• ×1, ×8 ya da ×16 PNG dışa aktarma",
+    "de": "Pixel Art ist ein kleiner, freundlicher Editor für Retro-Sprites von 8×8 bis 64×64. Zeichne mit dem Stift, fülle Flächen mit dem Eimer, zieh Linien und Rechtecke mit Live-Vorschau, ersetze mit „Farbe ersetzen“ alle Pixel einer Farbe und nimm Farben mit der Pipette auf.\n\nDer Spiegel malt beide Hälften gleichzeitig, der Vierfach-Spiegel alle vier Viertel, ideal für symmetrische Symbole. Dreh die Zeichnung um 90°, spiegle sie in beide Richtungen oder verschieb sie pixelweise. Speichere in der Galerie und exportiere eine echte PNG-Datei mit transparentem Hintergrund, bis ×16 vergrößert.\n\n• Leinwände 8×8, 16×16, 32×32 und 64×64\n• Stift, Radierer, Füllen, Linie, Rechteck, Farbe ersetzen und Pipette\n• Retro-Palette mit 16 Farben plus 8 eigene Farben\n• Zweifach- und Vierfach-Spiegel; drehen, spiegeln, verschieben\n• Raster, bis zu 60 Rückgängig-Schritte, Galerie mit Vorschaubildern\n• PNG-Export in ×1, ×8 oder ×16",
+    "fr": "Pixel Art est un petit éditeur convivial de sprites rétro de 8×8 à 64×64. Dessinez au crayon, remplissez avec le pot de peinture, tracez lignes et rectangles avec aperçu, remplacez tous les pixels d’une couleur par une autre et prélevez une couleur à la pipette.\n\nLe miroir peint les deux moitiés à la fois, le miroir à quatre axes les quatre quarts, idéal pour des icônes symétriques. Pivotez le dessin de 90°, retournez-le dans les deux sens ou décalez-le pixel par pixel. Enregistrez dans la galerie et exportez un vrai PNG à fond transparent, agrandi jusqu’à ×16.\n\n• Toiles 8×8, 16×16, 32×32 et 64×64\n• Crayon, gomme, remplissage, ligne, rectangle, remplacement de couleur et pipette\n• Palette rétro de 16 couleurs plus 8 couleurs à vous\n• Miroir à deux et quatre axes ; rotation, retournement, décalage\n• Grille, jusqu’à 60 annulations, galerie avec vignettes\n• Export PNG en ×1, ×8 ou ×16",
+    "es": "Pixel Art es un editor pequeño y sencillo de sprites retro de 8×8 a 64×64. Dibuja con el lápiz, rellena zonas con el bote, traza líneas y rectángulos con vista previa, cambia todos los píxeles de un color por otro con Reemplazar color y toma cualquier color con el cuentagotas.\n\nEl espejo pinta las dos mitades a la vez y el espejo en cuatro pinta los cuatro cuartos, ideal para iconos simétricos. Gira el dibujo 90°, voltéalo en ambos sentidos o desplázalo píxel a píxel. Guarda en la galería y exporta un PNG real con fondo transparente, ampliado hasta ×16.\n\n• Lienzos de 8×8, 16×16, 32×32 y 64×64\n• Lápiz, goma, relleno, línea, rectángulo, reemplazar color y cuentagotas\n• Paleta retro de 16 colores más 8 colores propios\n• Espejo doble y en cuatro; girar, voltear y desplazar\n• Cuadrícula, hasta 60 pasos de deshacer, galería con miniaturas\n• Exportación PNG a ×1, ×8 o ×16",
+    "ja": "Pixel Art は、8×8〜64×64のレトロなスプライトを描く、小さくて使いやすいエディターです。ペンで描き、塗りつぶしで範囲を塗り、プレビューつきで線や四角を引き、「色を置き換え」である色のピクセルをまとめて別の色に変え、スポイトで色を拾えます。\n\nミラーは左右を同時に、4方向ミラーは4つの区画を同時に描くので、対称なアイコンにぴったり。90°回転、上下左右の反転、1ピクセルずつの移動もできます。ギャラリーに保存し、背景が透明な本物の PNG ファイルとして最大16倍で書き出せます。\n\n• 8×8、16×16、32×32、64×64のキャンバス\n• ペン、消しゴム、塗りつぶし、線、四角、色の置き換え、スポイト\n• 16色のレトロパレットと自分の8色\n• 2方向・4方向ミラー、回転、反転、移動\n• グリッド、最大60回の元に戻す、サムネイルつきギャラリー\n• ×1、×8、×16の PNG 書き出し",
+    "zh": "Pixel Art 是一款小巧好用的复古像素图编辑器，画布从 8×8 到 64×64。用铅笔绘制，用油漆桶填充，带实时预览地拉出直线和矩形，用“替换颜色”把某种颜色的所有像素换成另一种，用吸管拾取任意颜色。\n\n镜像绘制会同时画出两半，四向镜像会同时画出四个象限，非常适合对称图标。可以把画面旋转 90°、水平或垂直翻转，或逐像素平移。作品可保存到图库，并导出为透明背景、最高放大 16 倍的真正 PNG 文件。\n\n• 8×8、16×16、32×32 和 64×64 画布\n• 铅笔、橡皮、填充、直线、矩形、替换颜色和吸管\n• 16 色复古调色板，外加 8 个自定义颜色\n• 双向和四向镜像；旋转、翻转和平移\n• 网格、最多 60 步撤销、带缩略图的图库\n• 以 ×1、×8 或 ×16 导出 PNG",
+    "ko": "Pixel Art는 8×8부터 64×64까지 레트로 스프라이트를 그리는 작고 친근한 편집기입니다. 연필로 그리고, 페인트 통으로 채우고, 실시간 미리보기로 선과 사각형을 그리고, '색 바꾸기'로 한 색의 모든 픽셀을 다른 색으로 바꾸고, 스포이트로 색을 고르세요.\n\n대칭 그리기는 양쪽을 동시에, 4방향 대칭은 네 구역을 동시에 그려 대칭 아이콘에 딱 맞습니다. 그림을 90° 회전하고, 양방향으로 뒤집고, 한 픽셀씩 이동할 수 있습니다. 갤러리에 저장하고 배경이 투명한 실제 PNG 파일로 최대 16배까지 내보내세요.\n\n• 8×8, 16×16, 32×32, 64×64 캔버스\n• 연필, 지우개, 채우기, 선, 사각형, 색 바꾸기, 스포이트\n• 16색 레트로 팔레트와 나만의 8색\n• 2방향·4방향 대칭, 회전, 뒤집기, 이동\n• 격자, 최대 60단계 실행 취소, 썸네일 갤러리\n• ×1, ×8, ×16 PNG 내보내기"
   },
   "shots": [
-    ["wait 3"],
-    ["wclick 0.042 0.282", "wait 0.25", "wclick 0.798 0.395", "wait 0.25", "wclick 0.134 0.125", "wait 0.25", "wclick 0.042 0.133", "wait 0.25", "wclick 0.905 0.318", "wait 0.25", "wclick 0.2115 0.182", "wait 0.25", "wclick 0.63 0.237", "wait 0.25", "wclick 0.592 0.837", "wait 0.25", "wclick 0.2115 0.837", "wait 1.5"],
-    ["wclick 0.73 0.047", "wait 1.5", "wclick 0.9 0.047", "wait 1", "key enter", "wait 1.5"],
-    ["key escape", "wait 0.5", "dark 1", "wait 1.5"]
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.042 0.282",
+      "wait 0.25",
+      "wclick 0.798 0.395",
+      "wait 0.25",
+      "wclick 0.134 0.125",
+      "wait 0.25",
+      "wclick 0.042 0.133",
+      "wait 0.25",
+      "wclick 0.905 0.318",
+      "wait 0.25",
+      "wclick 0.2115 0.182",
+      "wait 0.25",
+      "wclick 0.63 0.237",
+      "wait 0.25",
+      "wclick 0.592 0.837",
+      "wait 0.25",
+      "wclick 0.2115 0.837",
+      "wait 1.5"
+    ],
+    [
+      "wclick 0.73 0.047",
+      "wait 1.5",
+      "wclick 0.9 0.047",
+      "wait 1",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.5",
+      "dark 1",
+      "wait 1.5"
+    ]
   ]
 }

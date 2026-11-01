@@ -64,5 +64,18 @@
   "mistakes_n": "{0} 个错误",
   "generating": "正在生成具有唯一解的谜题…",
   "notes_mode": "笔记模式",
-  "show_mistakes": "高亮显示错误"
+  "show_mistakes": "高亮显示错误",
+  "expert": "专家",
+  "daily": "每日",
+  "daily_play": "每日谜题",
+  "daily_done": "今日已完成 · 连续 {0} 天",
+  "daily_streak": "连续天数",
+  "streak_fmt": "{0} 天 · 最佳 {1}",
+  "auto_notes": "自动笔记",
+  "notes_filled": "已填入候选数",
+  "strict_mode": "三次失误模式",
+  "mistakes_left_n": "还可失误 {0} 次",
+  "out_of_mistakes": "失误次数用完",
+  "out_of_mistakes_sub": "在三次失误模式中，填错三个数字游戏即结束。",
+  "keep_going": "继续（关闭模式）"
 }

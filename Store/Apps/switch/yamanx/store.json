@@ -32,7 +32,7 @@
     [
       "wclick 0.79 0.048",
       "wait 0.5",
-      "text mario",
+      "text kart",
       "wait 3"
     ],
     [

@@ -49,5 +49,14 @@
   "tab_stats": "统计",
   "tab_settings": "设置",
   "menu_timer": "计时器",
-  "menu_view": "显示"
+  "menu_view": "显示",
+  "add_task": "你在做什么？",
+  "task_title": "专注任务",
+  "task_msg": "为专注时段命名任务，其分钟数会计入统计。",
+  "top_tasks": "主要任务（7 天）",
+  "no_tasks": "在计时器上为任务命名，看看时间花在哪里。",
+  "set_goal": "每日目标（次）",
+  "today_goal": "今天：{0}/{1} 次 · {2}",
+  "goal_reached": "达成每日目标！",
+  "goal_body": "今天完成 {0} 次专注。干得好。"
 }

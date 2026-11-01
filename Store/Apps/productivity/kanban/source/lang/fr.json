@@ -69,5 +69,16 @@
   "wd_3": "mer.",
   "wd_4": "jeu.",
   "wd_5": "ven.",
-  "wd_6": "sam."
+  "wd_6": "sam.",
+  "checklist": "Liste de contrôle",
+  "step_hint": "Ajouter un élément…",
+  "add_step": "Ajouter",
+  "filter": "Filtre",
+  "filter_hint": "Mettre en avant les cartes contenant ce texte (laisser vide pour tout afficher).",
+  "export_md": "Exporter en Markdown",
+  "backup": "Sauvegarder",
+  "restore": "Restaurer",
+  "restore_confirm": "Remplacer tous vos tableaux par les {0} de cette sauvegarde ?",
+  "restore_bad": "Ce fichier n’est pas une sauvegarde Kanban.",
+  "ok": "OK"
 }

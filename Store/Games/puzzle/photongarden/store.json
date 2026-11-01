@@ -1,0 +1,42 @@
+{
+  "subtitle": {
+    "en": "120 light-bending puzzles and a level editor",
+    "tr": "120 ışık bükme bulmacası ve bölüm düzenleyici",
+    "de": "120 Licht-Rätsel und ein Level-Editor",
+    "fr": "120 énigmes de lumière et un éditeur",
+    "es": "120 puzles de luz y un editor de niveles",
+    "ja": "光のパズル 120 問とエディター",
+    "zh": "120 个光线谜题与关卡编辑器",
+    "ko": "빛을 꺾는 퍼즐 120개와 레벨 에디터"
+  },
+  "description": {
+    "en": "Wake a sleeping garden with light. Place mirrors, turn splitters, colour beams through glass and send them through moon portals until every crystal bud blooms in exactly its own colour — and never let a single ray touch the nightshade.\n\n• 120 levels in six gardens, each introducing a new idea: mirrors, thorns, splitters, colour mixing, filters and portals\n• Gentle onboarding: every new piece is explained the first time you meet it\n• Three stars per level for solving within par, unlimited undo and a hint when you are stuck\n• Level editor: build your own gardens, test them, save 24 of them and share them as codes\n• A calm original soundtrack, glowing beams and blooming flowers\n• Controller, keyboard and touch: tap to place, hold to pick up",
+    "tr": "Uyuyan bir bahçeyi ışıkla uyandır. Ayna yerleştir, ayırıcıları döndür, ışığı camdan geçirerek renklendir ve ay geçitlerinden gönder; her kristal tomurcuk tam kendi renginde açsın — ama tek bir ışın bile ölüm otuna değmesin.\n\n• Altı bahçede 120 bölüm; her bahçe yeni bir fikir getirir: aynalar, dikenler, ayırıcılar, renk karışımı, filtreler ve geçitler\n• Yumuşak öğretim: her yeni parça ilk karşılaştığında anlatılır\n• Hedef hamlede çözerek bölüm başına üç yıldız, sınırsız geri alma ve takıldığında ipucu\n• Bölüm düzenleyici: kendi bahçelerini kur, dene, 24 tanesini kaydet ve kodla paylaş\n• Sakin, özgün müzik, parlayan ışınlar ve açan çiçekler\n• Kumanda, klavye ve dokunmatik: yerleştirmek için dokun, geri almak için basılı tut",
+    "de": "Wecke einen schlafenden Garten mit Licht. Setze Spiegel, drehe Teiler, färbe Strahlen durch Glas und schicke sie durch Mondportale, bis jede Kristallknospe in genau ihrer Farbe blüht – und lass keinen einzigen Strahl den Nachtschatten berühren.\n\n• 120 Level in sechs Gärten, jeder mit einer neuen Idee: Spiegel, Dornen, Teiler, Farbmischung, Filter und Portale\n• Sanfter Einstieg: Jedes neue Teil wird beim ersten Auftauchen erklärt\n• Drei Sterne pro Level fürs Lösen innerhalb des Pars, unbegrenztes Rückgängig und Tipps\n• Level-Editor: Baue eigene Gärten, teste sie, speichere 24 davon und teile sie als Code\n• Ruhiger eigener Soundtrack, leuchtende Strahlen und erblühende Blumen\n• Controller, Tastatur und Touch: tippen zum Setzen, halten zum Aufnehmen",
+    "fr": "Réveillez un jardin endormi avec la lumière. Posez des miroirs, tournez des séparateurs, colorez les faisceaux à travers le verre et faites-les passer par des portails lunaires jusqu’à ce que chaque bourgeon fleurisse dans sa couleur exacte — sans qu’aucun rayon ne touche la belladone.\n\n• 120 niveaux dans six jardins, chacun avec une nouvelle idée : miroirs, épines, séparateurs, mélange des couleurs, filtres et portails\n• Prise en main douce : chaque nouvelle pièce est expliquée à sa première apparition\n• Trois étoiles par niveau sous le par, annulation illimitée et indice en cas de blocage\n• Éditeur de niveaux : créez vos jardins, testez-les, gardez-en 24 et partagez-les par code\n• Bande-son originale apaisante, faisceaux lumineux et fleurs qui éclosent\n• Manette, clavier et tactile : touchez pour poser, maintenez pour reprendre",
+    "es": "Despierta un jardín dormido con luz. Coloca espejos, gira divisores, tiñe los rayos a través del cristal y envíalos por portales lunares hasta que cada brote de cristal florezca con su color exacto, sin que un solo rayo toque la belladona.\n\n• 120 niveles en seis jardines, cada uno con una idea nueva: espejos, espinas, divisores, mezcla de colores, filtros y portales\n• Aprendizaje suave: cada pieza nueva se explica la primera vez que aparece\n• Tres estrellas por nivel al resolverlo dentro del par, deshacer ilimitado y pistas\n• Editor de niveles: crea tus jardines, pruébalos, guarda 24 y compártelos con un código\n• Banda sonora original y relajante, rayos brillantes y flores que se abren\n• Mando, teclado y pantalla táctil: toca para colocar, mantén para recoger",
+    "ja": "眠っている庭を光で目覚めさせよう。鏡を置き、スプリッターを回し、ガラスで光に色をつけ、月のポータルへ送り込んで、すべての水晶のつぼみをぴったりの色で咲かせよう。ただし毒草には一筋の光も当ててはいけない。\n\n• 6 つのガーデンに 120 ステージ。鏡、トゲ、スプリッター、混色、フィルター、ポータルと新しいアイデアが次々登場\n• やさしいチュートリアル：新しいピースは初登場時に説明\n• 目標手数以内でスター 3 つ、無制限のアンドゥ、詰まったときのヒント\n• ステージエディター：自分の庭を作ってテストし、24 個まで保存、コードで共有\n• 穏やかなオリジナル BGM、輝く光線、咲き誇る花\n• コントローラー、キーボード、タッチ対応：タップで置き、長押しで回収",
+    "zh": "用光唤醒沉睡的花园。放置镜子、旋转分光镜、让光束穿过彩色玻璃染色，再送入月之传送门，直到每朵水晶花苞都以恰好的颜色绽放——但绝不能让任何一束光碰到夜影草。\n\n• 六座花园共 120 关，每座都带来新玩法：镜子、荆棘、分光镜、混色、滤光片和传送门\n• 循序渐进：每个新部件首次出现时都有讲解\n• 在标准步数内过关可得三星，无限撤销，卡关时可看提示\n• 关卡编辑器：创作自己的花园并试玩，最多保存 24 个，用分享码分享\n• 舒缓的原创配乐、发光的光束与绽放的花朵\n• 支持手柄、键盘和触控：轻点放置，长按收回",
+    "ko": "잠든 정원을 빛으로 깨우세요. 거울을 놓고, 분광기를 돌리고, 유리로 빛에 색을 입히고, 달의 포털로 보내 모든 수정 봉오리가 정확히 제 색으로 피어나게 하세요. 단, 독초에는 빛 한 줄기도 닿으면 안 됩니다.\n\n• 6개 정원, 120개 레벨: 거울, 가시, 분광기, 색 혼합, 필터, 포털까지 정원마다 새로운 아이디어\n• 친절한 튜토리얼: 새 조각은 처음 나올 때 설명\n• 기준 횟수 안에 풀면 별 3개, 무제한 되돌리기, 막히면 힌트\n• 레벨 에디터: 나만의 정원을 만들고 테스트하고 24개까지 저장해 코드로 공유\n• 잔잔한 오리지널 음악, 빛나는 광선, 피어나는 꽃\n• 컨트롤러, 키보드, 터치 지원: 탭하여 놓기, 길게 눌러 회수"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "key right",
+      "key enter",
+      "key down",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 1"
+    ]
+  ]
+}

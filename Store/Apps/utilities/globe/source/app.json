@@ -15,10 +15,13 @@
     "tr": "Gerçek zamanlı gece-gündüz, atmosfer parıltısı ve yerel saatli şehir işaretleriyle 3D Dünya.",
     "de": "Eine 3D-Erde mit Tag und Nacht in Echtzeit, leuchtender Atmosphäre und Stadtmarkierungen mit Ortszeiten.",
     "fr": "Une Terre en 3D avec le jour et la nuit en temps réel, une lueur atmosphérique et des repères de villes avec l’heure locale.",
-    "es": "Una Tierra en 3D con día y noche en tiempo real, brillo atmosférico y marcadores de ciudades con su hora local."
+    "es": "Una Tierra en 3D con día y noche en tiempo real, brillo atmosférico y marcadores de ciudades con su hora local.",
+    "ja": "昼と夜がリアルタイムに変わる 3D の地球",
+    "zh": "实时显示昼夜的 3D 地球",
+    "ko": "실시간 낮과 밤이 보이는 3D 지구"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

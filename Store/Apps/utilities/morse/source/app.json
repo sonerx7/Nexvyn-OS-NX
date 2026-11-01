@@ -11,7 +11,7 @@
     "ko": "모스 부호"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -27,7 +27,10 @@
     "tr": "Mors kodunu çevirin, dinleyin ve alıştırma yapın",
     "de": "Morsecode übersetzen, abspielen und üben",
     "fr": "Traduisez, écoutez et pratiquez le code Morse",
-    "es": "Traduce, reproduce y practica código Morse"
+    "es": "Traduce, reproduce y practica código Morse",
+    "ja": "モールス符号を変換、再生、練習",
+    "zh": "翻译、播放和练习摩尔斯电码",
+    "ko": "모스 부호를 번역하고, 재생하고, 연습하세요"
   },
   "permissions": []
 }

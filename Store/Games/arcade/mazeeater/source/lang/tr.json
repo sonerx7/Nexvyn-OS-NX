@@ -38,5 +38,21 @@
   "power": "Güç!",
   "clear": "Labirent temizlendi!",
   "c_move": "Yön tuşları / Çubuk / Oklar / WASD: yönlendir",
-  "c_touch": "Dokunmatik: kaydır ya da yöne dokun"
+  "c_touch": "Dokunmatik: kaydır ya da yöne dokun",
+  "records": "Rekorlar",
+  "no_records": "Henüz skor yok. Bir el oyna!",
+  "rounds": "Oyun",
+  "total_time": "Toplam süre",
+  "total_points": "Toplam puan",
+  "medal": "Madalya",
+  "medal_bronze": "Bronz",
+  "medal_silver": "Gümüş",
+  "medal_gold": "Altın",
+  "easy": "Kolay",
+  "normal": "Normal",
+  "hard": "Zor",
+  "close": "Kapat",
+  "rec_hint": "X: rekorlar  ·  L / R: zorluk",
+  "new_maze": "Yeni labirent!",
+  "maze_n_label": "Labirent"
 }

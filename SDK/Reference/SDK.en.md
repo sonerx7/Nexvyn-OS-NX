@@ -104,7 +104,7 @@ comes from another key. The full package format, signing, the permission rules a
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.6"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.7"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -115,6 +115,7 @@ comes from another key. The full package format, signing, the permission rules a
 | 1.4 | every permission enforced; `sys.share`, `sys.schedule` / `unschedule` / `scheduled`, `sys.hasPermission` / `requestPermission`, `sys.memory`, `sys.appUrl`, `nxv://` links in `sys.open`; callbacks `app.search`, `app.suspend`, `app.resume`, `app.focus`, `app.autosave`, `app.unsaved`; app.json `shareTargets`; signed packages; 64 MB limit for Lua apps too |
 | 1.5 | Squirrel (section 13), C compiled on the console (section 14) and Java (section 15) runtimes on one shared implementation; app.json `"runtime"` values `"squirrel"`, `"c"`, `"java"` and `"mainClass"`; Python system library (`itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys`) |
 | 1.6 | `fs.unzip` (unpacks a zip in the background with progress) and `sys.games` (installed games) with the new `"games"` permission, in Lua, JavaScript, Python and Squirrel; `sys.speak` / `sys.stopSpeaking` (text to speech, no permission) in every runtime; the `"python3"` runtime (CPython 3.12, section 12) |
+| 1.7 | `g3d.voxels` voxel worlds in JavaScript (section 8b, *Voxel worlds*): chunk streaming, built-in terrain generator, light, smooth-lit meshes built on background threads, texture atlas shader, saving, ray casts, box physics; `mesh:setTexture(path, pixelated)` in Lua and JavaScript |
 
 ### Compatibility: targetSdk and deprecation
 
@@ -372,7 +373,7 @@ Check `sys.online()` first and show a friendly message when offline.
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])`
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.6"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.7"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -509,6 +510,75 @@ another one (cheap instancing: hundreds of objects, one draw), `DrawOpts::additi
 
 Motion controls: `input.motion()` → `ax, ay, az` (acceleration in G), `gx, gy, gz` (angular velocity in rad/s),
 `pitch, roll, yaw` (accumulated rotation in radians) from the Joy-Con / Pro Controller / handheld gyroscope.
+
+### Voxel worlds — `g3d.voxels` (SDK 1.7, JavaScript)
+
+A block world engine for voxel sandbox games, running natively: the app keeps the game logic in JavaScript, the
+heavy work (generation, light, meshes, file I/O) runs on two background threads, and the world is drawn by the GPU
+path with a texture atlas shader. Set `"minSdk": "1.7"`. The block game *Blok Diyarı / BlockLands* is built on it.
+
+```js
+const world = g3d.voxels({
+  atlas: "bundle:/textures/atlas.png", tiles: 16,  // square atlas of tiles x tiles cells (power-of-two cell size)
+  height: 128, seed: 1234, generator: "terrain",   // "terrain" | "flat" | "none" (empty chunks the app fills)
+  sea: 62, flatY: 3,
+  blocks: { stone: 1, grass: 2, dirt: 3, water: 28 /* ... */ },  // ids the terrain generator places
+  save: "worlds/w1/chunks",                        // modified chunks are written here (optional)
+});
+world.define(1, { model: "cube", tex: 0 });                                  // tile 0 on every face
+world.define(2, { model: "cube", tex: { top: 1, bottom: 3, side: 2 } });
+world.define(11, { model: "cutout", tex: 11, leaves: true, opacity: 1 });   // see-through pixels, waves
+world.define(28, { model: "liquid", tex: 28, liquid: "water" });            // translucent pass
+world.define(27, { model: "torch", tex: 27, light: 14 });
+
+app.update = (dt) => {
+  world.view(player.x, player.z, 6);       // keep 6 chunks around the player
+  for (const [cx, cz] of pairs(world.update())) decorate(cx, cz);   // freshly generated chunks
+};
+app.draw = (w, h) => {
+  g3d.begin(0, 0, w, h, 70, 0.06, 150);
+  g3d.camera(eyeX, eyeY, eyeZ, eyeX + fx, eyeY + fy, eyeZ + fz);
+  g3d.fog("#B8D0FF", 50, 90);
+  world.environment({ daylight: 1, time: sys.time() });
+  world.draw();
+  g3d.finish();
+};
+```
+
+Chunks are 16 x 16 x `height` blocks with one byte per block (ids 0..255, 0 = air); inside a chunk the index is
+`x + z * 16 + y * 256`. `world.view` loads (generates or reads from `save`) the chunks within the radius plus one,
+meshes those within the radius whose eight neighbours are there, and unloads (after saving modified ones) chunks
+further than the radius plus two. Block changes remesh the chunk and the neighbours that see it, edited chunks first.
+
+| Function | Description |
+|---|---|
+| `g3d.voxels(options)` → world | options: `atlas` (required), `tiles` (16), `height` (128, multiple of 16), `generator` (`"terrain"`), `seed`, `sea` (62), `flatY` (3), `blocks` (generator ids: `stone grass dirt sand sandstone gravel bedrock water lava ice snow snowyGrass coalOre ironOre goldOre diamondOre oakLog oakLeaves birchLog birchLeaves spruceLog spruceLeaves cactus tallGrass dandelion poppy deadBush`), `save` (folder; app data paths), `threads` (2) |
+| `world.define(id, def)` | block 1..255. `model`: `"none"`, `"cube"`, `"cutout"`, `"cross"`, `"liquid"`, `"torch"`, `"box"`, `"fence"`, `"crop"`, `"fire"`, `"cactus"`. `tex`: a tile, `[west, east, bottom, top, north, south]` or `{top, bottom, side, north, south, east, west}` (255 = no face). `solid` (default for cubes: hides neighbour faces, casts ambient occlusion), `opacity` 0..15, `light` 0..15, `collide`, `select`, `leaves`, `wave`, `glow`, `emissive`, `cullSame` (glass), `liquid` (`"water"`/`"lava"`), `level` 1..8, `attach` / `facing` 0..3 (0 +z, 1 -x, 2 -z, 3 +x), `frontGlow`, `rotate` (top texture, quarter turns), `box`, `collision`, `selection` (`[x0, y0, z0, x1, y1, z1]` in blocks). Faces whose tile has transparent pixels are drawn in the cutout pass. Define blocks before the first `view` |
+| `world.view(x, z, radius)` | centre and radius (chunks, 1..32) of the loaded area |
+| `world.update()` → `[cx, cz, ...]` | call once per frame: integrates finished background jobs, starts new ones; returns the chunks generated since the last call (not those loaded from disk). Change their blocks with `set` now (villages, ruins): edits in this window do not mark the chunk as modified, and the chunk is meshed afterwards |
+| `world.draw()` | between `g3d.begin` and `g3d.finish`; visible chunks only (frustum culled), solid and cutout front to back, water back to front |
+| `world.environment({...})` | `daylight` 0..1 (sky light strength), `skyTint`, `blockLight` (torch colour), `minLight`, `time` (seconds: waving leaves and water), `wave`, `sun` `[x, y, z]`, `skyTop`, `skyHorizon` (water reflections), `waterAlpha`. The fog is `g3d.fog` |
+| `world.get(x, y, z)` → id | -1 when the chunk is not loaded |
+| `world.set(x, y, z, id)` → ok | false when the chunk is not loaded |
+| `world.light(x, y, z)` → `[sky, block]` or `null` | light levels 0..15 from the last mesh of that chunk |
+| `world.top(x, z)` → y, `world.biome(x, z)` → n | highest non-air block / generator biome of a loaded column (-1 unknown). Biomes: 0 ocean, 1 beach, 2 plains, 3 forest, 4 desert, 5 taiga, 6 snowy peaks |
+| `world.terrain(x, z)` → `[height, biome]` | what the generator makes there, loaded or not (spawn points, structure planning) |
+| `world.chunk(cx, cz)` → `Uint8Array` or `null`, `world.setChunk(cx, cz, bytes)` → ok, `world.loaded(cx, cz)` | whole chunks |
+| `world.raycast(ox, oy, oz, dx, dy, dz[, max])` → hit or `null` | `{x, y, z, nx, ny, nz, id, dist, px, py, pz}`: the first selectable block (selection boxes), `n` = the face hit |
+| `world.move(x, y, z, hw, h, dx, dy, dz[, step])` → `[x, y, z, flags]` | moves a box (feet centre, half width, height) sliding along blocks and stepping up ledges up to `step`; flags 1 on ground, 2 hit the ceiling, 4 blocked along x, 8 along z. Unloaded chunks are solid |
+| `world.blocked(x, y, z, hw, h)` → bool | does the box overlap a collision box |
+| `world.clearArea(x0, z0, x1, z1)` | no trees or plants in this rectangle for chunks generated later |
+| `world.save()` → count | writes every modified chunk now (also done when chunks unload) |
+| `world.stats()` | `{chunks, meshed, visible, pending, quads, drawCalls, genMs, meshMs}` |
+| `world.close()` | stops the threads and frees the world now (the garbage collector does it otherwise) |
+
+Lighting: sky light falls down every column and spreads under overhangs, block light spreads from blocks with
+`light`; each face corner averages the light of the cells in front of it (smooth lighting) and darkens next to solid
+blocks (ambient occlusion). The shader shows the brighter of `daylight` x sky light and block light. Textures are
+sampled sharp up close and mipmapped cell by cell further away. Needs the GPU path (`g3d.gpu()`).
+
+Pixel art on meshes: `mesh.setTexture(path, true)` (SDK 1.7, Lua `mesh:setTexture(path, true)`) magnifies the image
+without smoothing.
 
 ## 8c. 2D oyun motoru (nexvyn.game)
 

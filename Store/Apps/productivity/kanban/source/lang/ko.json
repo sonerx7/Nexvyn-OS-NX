@@ -69,5 +69,16 @@
   "wd_3": "수",
   "wd_4": "목",
   "wd_5": "금",
-  "wd_6": "토"
+  "wd_6": "토",
+  "checklist": "체크리스트",
+  "step_hint": "항목 추가…",
+  "add_step": "추가",
+  "filter": "필터",
+  "filter_hint": "이 텍스트가 들어간 카드를 강조합니다(비우면 모두 표시).",
+  "export_md": "Markdown으로 내보내기",
+  "backup": "백업",
+  "restore": "복원",
+  "restore_confirm": "모든 보드를 이 백업의 보드 {0}개로 바꿀까요?",
+  "restore_bad": "Kanban 백업 파일이 아닙니다.",
+  "ok": "확인"
 }

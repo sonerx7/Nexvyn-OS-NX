@@ -1,17 +1,17 @@
 {
   "id": "minesweeper",
   "name": {
-    "en": "Minesweeper",
+    "en": "Mine Field",
     "tr": "Mayın Tarlası",
-    "de": "Minesweeper",
+    "de": "Minenfeld",
     "fr": "Démineur",
     "es": "Buscaminas",
-    "ja": "マインスイーパー",
+    "ja": "地雷原",
     "zh": "扫雷",
     "ko": "지뢰 찾기"
   },
   "category": "games",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -19,15 +19,20 @@
   "window": {
     "width": 760,
     "height": 580,
-    "resizable": false
+    "resizable": true,
+    "minWidth": 640,
+    "minHeight": 480
   },
   "gamepad": true,
   "description": {
-    "en": "Classic mine-clearing puzzle with three difficulties",
-    "tr": "Üç zorluk seviyeli klasik mayın temizleme bulmacası",
-    "de": "Klassisches Minenräumer-Puzzle mit drei Schwierigkeitsstufen",
-    "fr": "Le puzzle de déminage classique avec trois niveaux de difficulté",
-    "es": "El clásico puzle de buscar minas con tres dificultades"
+    "en": "Clear the field and flag every mine: three classic sizes or your own custom board, with stats and win streaks.",
+    "tr": "Tarlayı temizle, her mayını işaretle: üç klasik boyut ya da kendi özel tahtan; istatistikler ve galibiyet serileri.",
+    "de": "Räum das Feld und markier jede Mine: drei klassische Größen oder ein eigenes Feld, mit Statistik und Siegesserien.",
+    "fr": "Déminez le champ et marquez chaque mine : trois tailles classiques ou votre propre grille, avec statistiques et séries.",
+    "es": "Despeja el campo y marca cada mina: tres tamaños clásicos o tu propio tablero, con estadísticas y rachas.",
+    "ja": "地雷をすべて旗で示してフィールドをクリア。定番の3サイズか自分で決めた盤面、統計と連勝記録つき。",
+    "zh": "清空雷区并标出每颗地雷：三种经典尺寸或自定义棋盘，附带统计和连胜记录。",
+    "ko": "모든 지뢰에 깃발을 꽂고 필드를 정리하세요. 클래식 세 가지 크기나 직접 만든 보드, 통계와 연승 기록."
   },
   "permissions": []
 }

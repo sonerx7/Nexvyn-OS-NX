@@ -11,13 +11,16 @@
     "ko": "블록 떨어뜨리기"
   },
   "description": {
-    "en": "Falling blocks puzzle: rotate and drop the pieces, clear full lines and climb the levels. With hold, preview and ghost piece.",
-    "tr": "Düşen blok bulmacası: parçaları döndür ve bırak, dolu satırları temizle, seviye atla. Saklama, sıradaki parça ve gölge parça desteğiyle.",
-    "de": "Puzzle mit fallenden Blöcken: Drehe die Teile, lass sie fallen, räume volle Reihen ab und steig in den Levels auf. Mit Halten, Vorschau und Geisterteil.",
-    "fr": "Puzzle de blocs qui tombent : faites pivoter et lâchez les pièces, effacez les lignes complètes et montez de niveau. Avec réserve, aperçu et pièce fantôme.",
-    "es": "Puzle de bloques que caen: gira y suelta las piezas, completa líneas y sube de nivel. Con reserva, vista previa y pieza fantasma."
+    "en": "Rotate, drop and clear lines in four modes: Marathon, Sprint, Ultra and Dig. Hold, ghost piece, medals and records.",
+    "tr": "Dört modda döndür, bırak, satırları temizle: Maraton, Sprint, Ultra ve Kazı. Tutma, gölge parça, madalyalar ve rekorlar.",
+    "de": "Drehen, fallen lassen, Reihen räumen in vier Modi: Marathon, Sprint, Ultra und Graben. Halten, Geisterstein, Medaillen, Rekorde.",
+    "fr": "Tournez, lâchez et effacez des lignes en quatre modes : Marathon, Sprint, Ultra et Creuser. Réserve, pièce fantôme, médailles, records.",
+    "es": "Gira, suelta y limpia líneas en cuatro modos: Maratón, Sprint, Ultra y Excavar. Reserva, pieza fantasma, medallas y récords.",
+    "ja": "4つのモードで回して落としてラインを消そう：マラソン、スプリント、ウルトラ、ディグ。ホールド、ゴースト、メダル、記録。",
+    "zh": "在四种模式中旋转、下落并消除行：马拉松、冲刺、极限和挖掘。暂存、幽灵方块、奖牌和纪录。",
+    "ko": "네 가지 모드에서 돌리고 떨어뜨려 줄을 지우세요: 마라톤, 스프린트, 울트라, 파내기. 홀드, 고스트, 메달, 기록."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

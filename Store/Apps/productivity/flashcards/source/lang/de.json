@@ -67,5 +67,13 @@
   "reset_progress": "Fortschritt zurücksetzen",
   "reset_title": "Fortschritt zurücksetzen?",
   "reset_msg": "Alle Karten kommen zurück in Fach 1 und sind heute fällig.",
-  "reset": "Zurücksetzen"
+  "reset": "Zurücksetzen",
+  "quiz": "Quiz (Multiple Choice)",
+  "hint_quiz": "Wähle die richtige Antwort · Tasten 1–4",
+  "streak_n": "Serie: {0} Tage",
+  "import": "Karten importieren",
+  "import_done": "{0} Karten in „{1}“ importiert.",
+  "import_none": "Keine Karten gefunden. Eine Karte pro Zeile: Vorder- und Rückseite durch Tab, ; oder Komma getrennt.",
+  "export": "Stapel exportieren",
+  "ok": "OK"
 }

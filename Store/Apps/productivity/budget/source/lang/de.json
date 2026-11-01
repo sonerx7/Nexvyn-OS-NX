@@ -100,5 +100,19 @@
   "wdn3": "Mi",
   "wdn4": "Do",
   "wdn5": "Fr",
-  "wdn6": "Sa"
+  "wdn6": "Sa",
+  "repeat_monthly": "Jeden Monat wiederholen",
+  "budgets": "Budgets",
+  "budgets_sub": "Monatliche Grenzen je Kategorie · Ausgaben im {0}",
+  "spent_of": "{0} von {1}",
+  "no_limit": "Keine Grenze",
+  "over_budget": "Budget überschritten: {0}",
+  "done_btn": "Fertig",
+  "backup": "Sichern",
+  "backup_done": "Sicherung gespeichert",
+  "save_failed": "Datei konnte nicht gespeichert werden",
+  "restore": "Wiederherstellen",
+  "restore_confirm": "Alle Einträge durch die {0} Einträge dieser Sicherung ersetzen?",
+  "restore_done": "{0} Einträge wiederhergestellt",
+  "restore_bad": "Diese Datei ist keine Budget-Sicherung"
 }

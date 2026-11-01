@@ -85,5 +85,18 @@
   "wdn3": "周三",
   "wdn4": "周四",
   "wdn5": "周五",
-  "wdn6": "周六"
+  "wdn6": "周六",
+  "rest_today": "今天休息",
+  "rest_off": "取消休息日",
+  "milestone": "{0}：连续 {1} 天！",
+  "export_csv": "导出 CSV",
+  "exported": "记录已导出",
+  "backup": "备份",
+  "backup_done": "备份已保存",
+  "restore": "恢复",
+  "restore_confirm": "要用此备份中的 {0} 个习惯替换所有习惯吗？",
+  "restore_done": "已恢复 {0} 个习惯",
+  "restore_bad": "该文件不是习惯备份",
+  "done_today": "今天已完成",
+  "mark_today": "标记今天已完成"
 }

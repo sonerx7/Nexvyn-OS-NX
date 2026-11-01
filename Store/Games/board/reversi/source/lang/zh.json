@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "执黑（先手）",
   "play_white": "执白",
-  "show_moves": "显示可落子位置"
+  "show_moves": "显示可落子位置",
+  "mode_expert": "专家",
+  "review": "复盘",
+  "review_move": "第 {0} / {1} 步",
+  "done": "完成"
 }

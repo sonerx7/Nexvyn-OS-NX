@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Tournaments for game nights",
+    "tr": "Oyun geceleri için turnuvalar",
+    "de": "Turniere für Spieleabende",
+    "fr": "Des tournois entre amis",
+    "es": "Torneos para noches de juego",
+    "ja": "ゲーム大会のトーナメント表",
+    "zh": "游戏之夜的比赛对阵",
+    "ko": "게임 대회를 위한 대진표"
+  },
+  "description": {
+    "en": "Bracket runs tournaments for game nights, clubs and classrooms. Add the players, pick a format and enter the scores: the bracket advances, the standings update and the champion gets a moment.\n\n• Knockout brackets with seeding and automatic byes\n• Round robin with a full schedule, and Swiss rounds paired by score\n• Standings with wins, draws, losses, score difference and Buchholz\n• Scores by touch, controller or keyboard; undo/redo\n• Paste a list of names, shuffle, copy or save the results, back up everything",
+    "tr": "Turnuva; oyun geceleri, kulüpler ve sınıflar için turnuva düzenler. Oyuncuları ekle, bir biçim seç ve skorları gir: ağaç ilerler, puan durumu güncellenir ve şampiyon anını yaşar.\n\n• Sıralamalı ve otomatik baylı eleme ağaçları\n• Tam fikstürlü lig usulü ve puana göre eşleşen İsviçre turları\n• Galibiyet, beraberlik, mağlubiyet, averaj ve Buchholz'lu puan durumu\n• Dokunmatik, kontrolcü ya da klavyeyle skor; geri al/yinele\n• Ad listesi yapıştır, karıştır, sonuçları kopyala ya da kaydet, hepsini yedekle",
+    "de": "Turnierplan organisiert Turniere für Spieleabende, Vereine und Klassen. Füge die Spieler hinzu, wähle einen Modus und trage die Ergebnisse ein: Der Plan rückt vor, die Tabelle aktualisiert sich und der Sieger bekommt seinen Moment.\n\n• K.-o.-Pläne mit Setzliste und automatischen Freilosen\n• Jeder gegen jeden mit vollem Spielplan und Schweizer System nach Punkten\n• Tabelle mit Siegen, Remis, Niederlagen, Differenz und Buchholz\n• Ergebnisse per Touch, Controller oder Tastatur; Rückgängig\n• Namenslisten einsetzen, mischen, Ergebnisse kopieren oder sichern",
+    "fr": "Tournoi organise des compétitions entre amis, en club ou en classe. Ajoutez les joueurs, choisissez un format et saisissez les scores : le tableau avance, le classement se met à jour et le vainqueur a son moment.\n\n• Tableaux à élimination directe avec têtes de série et exemptions automatiques\n• Toutes rondes avec calendrier complet, et système suisse par points\n• Classement avec victoires, nuls, défaites, différence et Buchholz\n• Scores au tactile, à la manette ou au clavier ; annuler/rétablir\n• Collez une liste de noms, mélangez, copiez ou enregistrez les résultats",
+    "es": "Torneo organiza competiciones para noches de juego, clubes y clases. Añade a los jugadores, elige un formato e introduce los marcadores: el cuadro avanza, la clasificación se actualiza y el campeón tiene su momento.\n\n• Eliminatorias con cabezas de serie y descansos automáticos\n• Todos contra todos con calendario completo y sistema suizo por puntos\n• Clasificación con victorias, empates, derrotas, diferencia y Buchholz\n• Marcadores con pantalla táctil, mando o teclado; deshacer/rehacer\n• Pega listas de nombres, mezcla, copia o guarda los resultados",
+    "ja": "トーナメント表は、ゲームの集まりやクラブ、教室の大会を運営します。選手を追加して形式を選び、スコアを入れるだけで、対戦表が進み、順位表が更新され、優勝者をお祝いします。\n\n• シードと自動不戦勝付きの勝ち抜き表\n• 日程を自動で組む総当たり戦と、点数で組むスイス式\n• 勝ち、引き分け、負け、得失点差、ブッフホルツの順位表\n• タッチ、コントローラー、キーボードでスコア入力、取り消し\n• 名前の一覧を貼り付け、シャッフル、結果のコピーと保存",
+    "zh": "赛程表帮你为游戏之夜、俱乐部和班级组织比赛。添加选手、选择赛制、输入比分：对阵自动推进，积分榜随之更新，冠军也会得到庆祝。\n\n• 带种子和自动轮空的淘汰赛对阵\n• 自动排出完整赛程的循环赛，以及按积分配对的瑞士制\n• 积分榜含胜、平、负、净胜分和布赫霍尔茨分\n• 用触屏、手柄或键盘输入比分；撤销/重做\n• 粘贴名单、随机排序、复制或保存结果、备份全部",
+    "ko": "대진표는 게임 모임, 동호회, 교실의 대회를 운영합니다. 선수를 추가하고 방식을 고른 뒤 점수를 입력하면 대진이 진행되고 순위표가 갱신되며 우승자를 축하합니다.\n\n• 시드와 자동 부전승이 있는 토너먼트\n• 전체 일정을 짜 주는 리그전과 점수로 짝짓는 스위스 방식\n• 승, 무, 패, 득실차, 부흐홀츠를 반영한 순위표\n• 터치, 컨트롤러, 키보드로 점수 입력, 실행 취소\n• 이름 목록 붙여넣기, 섞기, 결과 복사와 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key enter",
+      "wait 1"
+    ],
+    [
+      "key escape",
+      "key escape",
+      "wait 0.6",
+      "wclick 0.5 0.228",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ]
+}

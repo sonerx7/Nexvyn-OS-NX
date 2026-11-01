@@ -11,7 +11,7 @@
     "ko": "오빗 아레나"
   },
   "category": "games",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -29,7 +29,10 @@
     "tr": "Yukarıdan bakışlı arena nişancı: dalgalara dayan, rekorunu kır",
     "de": "Arena-Shooter von oben: Überlebe die Wellen und schlage deinen Highscore",
     "fr": "Jeu de tir en arène vu de dessus : survivez aux vagues et battez votre meilleur score",
-    "es": "Shooter de arena cenital: sobrevive a las oleadas y supera tu récord"
+    "es": "Shooter de arena cenital: sobrevive a las oleadas y supera tu récord",
+    "ja": "ネオンの闘技場で無限ウェーブを生き抜け",
+    "zh": "在霓虹竞技场中抵御无尽的敌潮",
+    "ko": "네온 아레나에서 끝없는 웨이브를 버텨 내세요"
   },
   "permissions": []
 }

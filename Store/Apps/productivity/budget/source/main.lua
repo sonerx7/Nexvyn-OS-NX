@@ -122,11 +122,15 @@ local dirty = true
 local cache = {}
 local anim = {pie = 0, bars = 0}
 local toast, toastT = "", -10
+local limits = {}           -- monthly spending limit per expense category, in cents
+local limitsOpen = false
+local limitText = {}        -- text in the limit fields while the Budgets sheet is open
 
 local function saveNow()
   store.set("entries", entries)
   store.set("nextId", nextId)
   store.set("currency", currencyIdx)
+  store.set("limits", limits)
   store.save()
   dirty = true
 end
@@ -260,7 +264,8 @@ local function rebuild()
       if e.kind == "in" then months[i].inc = months[i].inc + e.cents else months[i].out = months[i].out + e.cents end
     end
   end
-  cache = {inc = inc, out = out, rows = rows, list = list, slices = slices, months = months, total = totalBalance}
+  cache = {inc = inc, out = out, rows = rows, list = list, slices = slices, months = months, total = totalBalance,
+           byCat = byCat}
   if selIndex > #list then selIndex = #list end
 end
 
@@ -302,11 +307,55 @@ local function exportCSV(all)
 end
 
 -- ------------------------------------------------------------------ editor sheet
+local function applyRecurring()
+  local d = sys.date()
+  local nowKey = monthKey(d.year, d.month)
+  local added = 0
+  local n = #entries
+  for i = 1, n do
+    local e = entries[i]
+    if e.rep then
+      local y, m, day = parseKey(e.date)
+      local ly, lm = y, m
+      if type(e.last) == "string" and e.last:match("^%d%d%d%d%-%d%d$") then
+        ly, lm = tonumber(e.last:sub(1, 4)), tonumber(e.last:sub(6, 7))
+      end
+      local guard = 0
+      while guard < 120 do
+        guard = guard + 1
+        lm = lm + 1
+        if lm > 12 then ly, lm = ly + 1, 1 end
+        if monthKey(ly, lm) > nowKey then break end
+        local dd = min(day, daysIn(ly, lm))
+        if ly == d.year and lm == d.month and dd > d.day then break end
+        entries[#entries + 1] = {id = nextId, kind = e.kind, cents = e.cents, cat = e.cat,
+                                 date = dateKey(ly, lm, dd), note = e.note, from = e.id}
+        nextId = nextId + 1
+        e.last = monthKey(ly, lm)
+        added = added + 1
+      end
+    end
+  end
+  return added
+end
+
+local function overLimit(cat)
+  local lim = limits[cat]
+  if not lim or lim <= 0 then return false end
+  local d = sys.date()
+  local mk = monthKey(d.year, d.month)
+  local spent = 0
+  for _, e in ipairs(entries) do
+    if e.kind == "out" and e.cat == cat and e.date:sub(1, 7) == mk then spent = spent + e.cents end
+  end
+  return spent > lim
+end
+
 local function openEditor(e, kind)
   local d = sys.date()
   local s = {isNew = e == nil, id = e and e.id}
   if e then
-    s.kind, s.amount, s.cat, s.note = e.kind, centsToInput(e.cents), e.cat, e.note
+    s.kind, s.amount, s.cat, s.note, s.rep = e.kind, centsToInput(e.cents), e.cat, e.note, e.rep == true
     s.y, s.m, s.d = parseKey(e.date)
   else
     s.kind = kind or "out"
@@ -352,6 +401,11 @@ local function commitEditor()
   e.kind, e.cents, e.cat = s.kind, cents, s.cat
   e.date = dateKey(s.y, s.m, s.d)
   e.note = (s.note or ""):gsub("^%s+", ""):gsub("%s+$", "")
+  if s.rep and not e.rep then e.last = e.date:sub(1, 7) end
+  e.rep = s.rep or nil
+  if e.kind == "out" and overLimit(e.cat) then
+    timer.after(0.3, function() showToast(TR("over_budget", catName(e.cat))) end)
+  end
   -- jump to the month of the entry so it is visible
   viewY, viewM = s.y, s.m
   closeEditor()
@@ -409,13 +463,20 @@ function app.load()
       if type(e) == "table" and tonumber(e.cents) and type(e.date) == "string" and parseKey(e.date) then
         local o = {id = tonumber(e.id) or nextId, kind = e.kind == "in" and "in" or "out", cents = floor(tonumber(e.cents)),
                    cat = type(e.cat) == "string" and e.cat or "other_out", date = e.date,
-                   note = type(e.note) == "string" and e.note or ""}
+                   note = type(e.note) == "string" and e.note or "", rep = e.rep == true or nil,
+                   last = type(e.last) == "string" and e.last or nil, from = tonumber(e.from)}
         if not CAT_BY_ID[o.cat] then o.cat = o.kind == "in" and "other_in" or "other_out" end
         if o.id >= nextId then nextId = o.id + 1 end
         entries[#entries + 1] = o
       end
     end
   end
+  local lim = store.get("limits", {})
+  limits = {}
+  if type(lim) == "table" then
+    for k, v in pairs(lim) do if CAT_BY_ID[k] and tonumber(v) then limits[k] = floor(tonumber(v)) end end
+  end
+  if applyRecurring() > 0 then saveNow() end
   local cur = store.get("currency", nil)
   if type(cur) == "number" and CURRENCIES[cur] then currencyIdx = floor(cur)
   else currencyIdx = isTR and 1 or 2 end
@@ -755,9 +816,58 @@ local function drawSheet(w, h)
   if not s.isNew then
     if ui.button(TR("delete") .. "##sheet", sx + 20, fy, 96, 32, "destructive") then deleteEntry(s.id) end
   end
+  local rx0 = s.isNew and sx + 20 or sx + 128
+  local nr = ui.checkbox(TR("repeat_monthly"), s.rep == true, rx0, fy + 6)
+  if nr ~= (s.rep == true) then s.rep = nr; audio.play("click") end
   if ui.button(TR("cancel") .. "##sheet", sx + sw - 232, fy, 100, 32) then closeEditor(); audio.play("click") end
   if ui.button(TR("save") .. "##sheet", sx + sw - 120, fy, 100, 32, "primary") then commitEditor() end
   gfx.unalpha()
+end
+
+local function drawLimits(w, h)
+  local list = CATS.out
+  local sw = min(560, w - 40)
+  local sh = 64 + #list * 40 + 56
+  local sx, sy = floor((w - sw) / 2), floor((h - sh) / 2)
+  gfx.rect(0, 0, w, h, 0, {0, 0, 0, 110})
+  gfx.shadow(sx, sy, sw, sh, 14, 30, 10)
+  gfx.rect(sx, sy, sw, sh, 14, theme.dark and "#2C2C2E" or "#F6F6F6")
+  gfx.color(theme.separator)
+  gfx.rectLine(sx, sy, sw, sh, 14, 1)
+  gfx.color(theme.text)
+  gfx.text(TR("budgets"), sx + 20, sy + 16, 17, "bold")
+  gfx.color(theme.text2)
+  gfx.text(TR("budgets_sub", TR(MONTH_KEYS[viewM])), sx + 20, sy + 40, 12)
+  local byCat = cache.byCat or {}
+  local y = sy + 64
+  for i, c in ipairs(list) do
+    local cc = colorOf(c.color)
+    gfx.circle(sx + 34, y + 16, 13, fade(cc, 0.18))
+    gfx.icon(c.icon, sx + 34, y + 16, 15, cc)
+    gfx.color(theme.text)
+    gfx.text(catName(c.id), sx + 56, y + 2, 13, "semibold")
+    local spent = byCat[c.id] or 0
+    local lim = limits[c.id] or 0
+    local over = lim > 0 and spent > lim
+    gfx.color(over and theme.red or theme.text2)
+    gfx.text(lim > 0 and TR("spent_of", fmtMoney(spent), fmtMoney(lim)) or fmtMoney(spent), sx + 56, y + 18, 11)
+    if lim > 0 then
+      gfx.rect(sx + 56, y + 33, sw - 240, 4, 2, theme.hover)
+      gfx.rect(sx + 56, y + 33, (sw - 240) * min(1, spent / lim), 4, 2, over and theme.red or cc)
+    end
+    local txt = limitText[c.id] or (lim > 0 and centsToInput(lim) or "")
+    local nt = field("lim" .. i, txt, sx + sw - 170, y + 2, 150, 30, TR("no_limit"), "numeric")
+    if nt ~= txt then
+      limitText[c.id] = nt
+      local v = parseAmount(nt)
+      limits[c.id] = (v and v > 0) and v or nil
+    end
+    y = y + 40
+  end
+  if ui.button(TR("done_btn") .. "##lim", sx + sw - 120, sy + sh - 46, 100, 32, "primary") then
+    limitsOpen, limitText = false, {}
+    saveNow()
+  end
 end
 
 local function drawToast(w, h)
@@ -779,7 +889,7 @@ function app.draw(w, h)
   nFields = 0
   if dirty then rebuild() end
   gfx.clear(theme.bg)
-  local interactive = sheet == nil
+  local interactive = sheet == nil and not limitsOpen
   -- toolbar
   gfx.color(theme.text)
   gfx.text(TR("title"), 20, 18, 22, "bold")
@@ -802,6 +912,7 @@ function app.draw(w, h)
       end)
     end
     if ui.button(TR("new_entry") .. "##top", w - 170, 16, 150, 30, "primary", "add") then openEditor(nil) end
+    if ui.iconButton("savings", w - 330, 16, 36, 30, theme.text2, false, "limits") then limitsOpen = true end
   end
   -- summary
   local sy = 62
@@ -820,7 +931,19 @@ function app.draw(w, h)
   local pieH = 214
   drawPie(rx, top, rw, pieH, interactive)
   drawBars(rx, top + pieH + 12, rw, h - top - pieH - 12 - 16)
+  -- over-budget badges under the summary
+  local warn = {}
+  for cat, lim in pairs(limits) do
+    if lim > 0 and ((cache.byCat or {})[cat] or 0) > lim then warn[#warn + 1] = catName(cat) end
+  end
+  if #warn > 0 then
+    table.sort(warn)
+    gfx.icon("warning", 28, sy + 86 + 9, 14, theme.red)
+    gfx.color(theme.red)
+    gfx.text(TR("over_budget", table.concat(warn, ", ")), 40, sy + 86 + 2, 12, "semibold")
+  end
   if sheet then drawSheet(w, h) end
+  if limitsOpen then drawLimits(w, h) end
   drawToast(w, h)
 end
 
@@ -835,6 +958,10 @@ function app.event(e)
     if e.key == "escape" then editing = false end
     return
   end
+  if limitsOpen then
+    if e.key == "escape" or e.key == "enter" then limitsOpen, limitText = false, {}; saveNow() end
+    return
+  end
   if sheet then
     if e.key == "escape" then closeEditor()
     elseif e.key == "enter" then commitEditor() end
@@ -845,6 +972,7 @@ function app.event(e)
   elseif e.key == "right" then changeMonth(1)
   elseif e.key == "n" then openEditor(nil)
   elseif e.key == "i" then openEditor(nil, "in")
+  elseif e.key == "b" then limitsOpen = true
   elseif e.key == "down" then if n > 0 then selIndex = min(n, selIndex + 1) end
   elseif e.key == "up" then if n > 0 then selIndex = max(1, selIndex - 1) end
   elseif e.key == "enter" or e.key == "space" then
@@ -859,13 +987,74 @@ function app.event(e)
   end
 end
 
+local function backup()
+  ui.saveFile(function(path)
+    if not path then return end
+    local ok = fs.write(path, json.encode({app = "budget", version = 2, entries = entries, nextId = nextId,
+                                           currency = currencyIdx, limits = limits}, true))
+    showToast(ok and TR("backup_done") or TR("save_failed"))
+  end, "budget-backup.json", TR("backup"))
+end
+
+local function restore()
+  ui.openFile(function(path)
+    if not path then return end
+    local d = json.decode(fs.read(path) or "")
+    if type(d) ~= "table" or d.app ~= "budget" or type(d.entries) ~= "table" then
+      showToast(TR("restore_bad"))
+      audio.play("error")
+      return
+    end
+    ui.alert(TR("restore"), TR("restore_confirm", #d.entries), {TR("restore"), TR("cancel")}, function(b)
+      if b ~= 1 then return end
+      store.set("entries", d.entries)
+      store.set("nextId", tonumber(d.nextId) or 1)
+      store.set("limits", type(d.limits) == "table" and d.limits or {})
+      if tonumber(d.currency) then store.set("currency", floor(tonumber(d.currency))) end
+      app.load()
+      saveNow()
+      showToast(TR("restore_done", #entries))
+    end)
+  end, {".json"}, TR("restore"))
+end
+
+function app.search(query)
+  local q = (query or ""):lower()
+  if q == "" then return {} end
+  local out = {}
+  for i = #entries, 1, -1 do
+    local e = entries[i]
+    if (e.note or ""):lower():find(q, 1, true) or catName(e.cat):lower():find(q, 1, true) then
+      out[#out + 1] = {title = (e.note ~= "" and e.note or catName(e.cat)) .. "  " .. fmtMoney(e.kind == "in" and e.cents or -e.cents),
+                       subtitle = e.date, icon = catIcon(e.cat), arg = "entry:" .. e.id}
+      if #out >= 5 then break end
+    end
+  end
+  return out
+end
+
+function app.open(arg)
+  local id = tonumber(tostring(arg or ""):match("^entry:(%d+)$") or "")
+  for _, e in ipairs(entries) do
+    if e.id == id then
+      viewY, viewM = parseKey(e.date)
+      dirty = true
+      openEditor(e)
+      return
+    end
+  end
+end
+
 function app.menu()
   return {{title = TR("menu_budget"), items = {
     {label = TR("new_expense"), id = 1, shortcut = "N"},
     {label = TR("new_income"), id = 2, shortcut = "I"},
+    {label = TR("budgets"), id = 8, shortcut = "B"},
     "-",
     {label = TR("export_month"), id = 3},
     {label = TR("export_all"), id = 4},
+    {label = TR("backup") .. "…", id = 9},
+    {label = TR("restore") .. "…", id = 10},
   }}, {title = TR("menu_view"), items = {
     {label = TR("prev_month"), id = 5, shortcut = "←"},
     {label = TR("next_month"), id = 6, shortcut = "→"},
@@ -878,6 +1067,9 @@ function app.onmenu(id)
   elseif id == 2 then openEditor(nil, "in")
   elseif id == 3 then exportCSV(false)
   elseif id == 4 then exportCSV(true)
+  elseif id == 8 then limitsOpen = true
+  elseif id == 9 then backup()
+  elseif id == 10 then restore()
   elseif id == 5 then changeMonth(-1)
   elseif id == 6 then changeMonth(1)
   elseif id == 7 then

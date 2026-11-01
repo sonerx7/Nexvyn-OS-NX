@@ -54,5 +54,8 @@
   "over_title": "더 이상 이동할 수 없습니다",
   "over_sub": "보드가 가득 찼습니다. 마지막 이동을 취소하거나 다시 시도하세요.",
   "top_tile": "가장 큰 타일",
-  "best_size": "{0} 최고"
+  "best_size": "{0} 최고",
+  "classic": "클래식",
+  "time_attack": "타임 어택",
+  "times_up": "시간 종료!"
 }

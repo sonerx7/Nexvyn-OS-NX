@@ -15,10 +15,13 @@
     "tr": "Yokuşlu pistte üç turluk 3D yarış: yapay zekâ rakipler, dokunmatik pedallar ve eğerek direksiyon.",
     "de": "Ein 3D-Rundstreckenrennen über drei Runden mit Hügeln, KI-Gegnern, Touch-Pedalen und Neigungslenkung.",
     "fr": "Une course 3D sur circuit en trois tours avec collines, rivaux IA, pédales tactiles et direction par inclinaison.",
-    "es": "Una carrera 3D de tres vueltas en circuito con colinas, rivales de IA, pedales táctiles y dirección por inclinación."
+    "es": "Una carrera 3D de tres vueltas en circuito con colinas, rivales de IA, pedales táctiles y dirección por inclinación.",
+    "ja": "AI のライバルと 3 周の 3D レース",
+    "zh": "与 AI 对手进行三圈 3D 赛车",
+    "ko": "AI 라이벌과 3랩 3D 레이스"
   },
   "category": "games",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

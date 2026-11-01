@@ -54,5 +54,8 @@
   "over_title": "No more moves",
   "over_sub": "The board is full. Undo your last move or try again.",
   "top_tile": "Highest tile",
-  "best_size": "Best on {0}"
+  "best_size": "Best on {0}",
+  "classic": "Classic",
+  "time_attack": "Time Attack",
+  "times_up": "Time's up!"
 }

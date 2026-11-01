@@ -48,5 +48,11 @@
   "pause_menu": "Pause",
   "new_game": "Neue Partie",
   "reset_records": "Rekorde zurücksetzen",
-  "records_reset": "Rekorde zurückgesetzt"
+  "records_reset": "Rekorde zurückgesetzt",
+  "map_meadow": "Karte: Wiese",
+  "map_canyon": "Karte: Schlucht",
+  "map_serpent": "Karte: Serpentine",
+  "endless_opt": "Endlos: {0}",
+  "endless_best": "Endlos-Rekord: Welle {0}",
+  "endless_go": "Endlos!"
 }

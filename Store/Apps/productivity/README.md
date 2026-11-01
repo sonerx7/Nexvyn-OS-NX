@@ -5,25 +5,24 @@
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="aichat/icon.png" width="32"> | [AI Chat](aichat/) · ships with Nexvyn OS | 1.0 | Claude, Gemini and GPT on your Switch |
-| <img src="birthdays/icon.png" width="32"> | [Birthdays](birthdays/) | 1.0.1 | Never miss a birthday again |
-| <img src="breathe/icon.png" width="32"> | [Breathe](breathe/) | 1.0.1 | Calm down with guided breathing |
-| <img src="budget/icon.png" width="32"> | [Budget](budget/) | 1.0.1 | See where your money goes each month |
+| <img src="breathe/icon.png" width="32"> | [Breathe](breathe/) | 1.1.0 | Calm down with guided breathing |
+| <img src="budget/icon.png" width="32"> | [Budget](budget/) | 1.1.0 | Budgets, repeats and monthly charts |
 | <img src="contacts/icon.png" width="32"> | [Contacts](contacts/) · ships with Nexvyn OS | 1.0 | Your address book, with vCard import |
-| <img src="examcount/icon.png" width="32"> | [Exam Countdown](examcount/) | 1.0.1 | Count down to exams and study every day |
-| <img src="flashcards/icon.png" width="32"> | [Flashcards](flashcards/) | 1.0.1 | Remember more with spaced repetition |
-| <img src="habits/icon.png" width="32"> | [Habits](habits/) | 1.0.1 | Build good habits one day at a time |
-| <img src="interval/icon.png" width="32"> | [Interval Timer](interval/) | 1.0.1 | HIIT and Tabata timer for every workout |
-| <img src="journal/icon.png" width="32"> | [Journal](journal/) | 1.0.1 | A few lines a day, a mood, a memory |
-| <img src="kanban/icon.png" width="32"> | [Kanban](kanban/) | 1.0.1 | Organize tasks on drag-and-drop boards |
-| <img src="mood/icon.png" width="32"> | [Mood Journal](mood/) | 1.0.1 | See how you feel, day by day |
-| <img src="pomodoro/icon.png" width="32"> | [Pomodoro](pomodoro/) | 1.0.1 | Focus in sprints, rest in between |
+| <img src="flashcards/icon.png" width="32"> | [Flashcards](flashcards/) | 1.1.0 | Spaced repetition, quizzes and imports |
+| <img src="flowmap/icon.png" width="32"> | [Flowmap](flowmap/) | 1.0 | Flowcharts and mind maps |
+| <img src="habits/icon.png" width="32"> | [Habits](habits/) | 1.1.0 | Streaks, rest days and milestones |
+| <img src="interval/icon.png" width="32"> | [Interval Timer](interval/) | 1.1.0 | HIIT and Tabata timer for every workout |
+| <img src="journal/icon.png" width="32"> | [Journal](journal/) | 1.1.0 | Daily lines, moods, insights, memories |
+| <img src="kanban/icon.png" width="32"> | [Kanban](kanban/) | 1.1.0 | Boards, checklists and drag-and-drop |
+| <img src="linkwise/icon.png" width="32"> | [Linkwise](linkwise/) | 1.0 | Linked notes, backlinks and a graph |
+| <img src="pomodoro/icon.png" width="32"> | [Pomodoro](pomodoro/) | 1.1.0 | Focus sprints, tasks and a daily goal |
 | <img src="slides/icon.png" width="32"> | [Presenter](slides/) · ships with Nexvyn OS | 1.0 | Beautiful slide decks, ready to present |
-| <img src="reading/icon.png" width="32"> | [Reading List](reading/) | 1.0.1 | Track your books, pages and reading goal |
-| <img src="shopping/icon.png" width="32"> | [Shopping List](shopping/) | 1.0.1 | Lists sorted by aisle, quick to refill |
-| <img src="sleep/icon.png" width="32"> | [Sleep Tracker](sleep/) | 1.0.1 | Log your nights and reach your sleep goal |
+| <img src="reading/icon.png" width="32"> | [Reading List](reading/) | 1.1.0 | Track your books, pages and reading goal |
+| <img src="recipebox/icon.png" width="32"> | [Recipe Box](recipebox/) | 1.0 | Recipes, cooking mode and shopping |
+| <img src="shopping/icon.png" width="32"> | [Shopping List](shopping/) | 1.1.0 | Lists sorted by aisle, quick to refill |
+| <img src="sleep/icon.png" width="32"> | [Sleep Tracker](sleep/) | 1.1.0 | Log your nights and reach your sleep goal |
 | <img src="sheets/icon.png" width="32"> | [Spreadsheet](sheets/) · ships with Nexvyn OS | 1.0 | Formulas, charts and Excel files |
 | <img src="stickies/icon.png" width="32"> | [Sticky Notes](stickies/) · ships with Nexvyn OS | 1.0 | Colourful notes that stay on your desktop |
-| <img src="todo/icon.png" width="32"> | [To-Do](todo/) | 1.0.1 | Tasks, projects and due dates in one place |
-| <img src="typing/icon.png" width="32"> | [Typing Tutor](typing/) | 1.0.1 | Learn touch typing, row by row |
-| <img src="water/icon.png" width="32"> | [Water](water/) | 1.1.1 | Track water, hit your daily goal |
+| <img src="todo/icon.png" width="32"> | [To-Do](todo/) | 1.1.0 | Projects, steps, repeats and due dates |
+| <img src="typing/icon.png" width="32"> | [Typing Tutor](typing/) | 1.1.0 | Touch typing, weak keys and speed tests |
 | <img src="writer/icon.png" width="32"> | [Writer](writer/) · ships with Nexvyn OS | 1.0 | A word processor with Word file support |

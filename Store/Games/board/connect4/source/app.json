@@ -1,23 +1,26 @@
 {
   "id": "com.sonerx7.connect4",
   "name": {
-    "en": "Connect Four",
+    "en": "Four in a Row",
     "tr": "Dört Bağla",
-    "de": "Vier gewinnt",
-    "fr": "Puissance 4",
-    "es": "Conecta cuatro",
+    "de": "Vier in einer Reihe",
+    "fr": "Quatre alignés",
+    "es": "Cuatro en raya",
     "ja": "四目並べ",
     "zh": "四子棋",
     "ko": "사목"
   },
   "description": {
-    "en": "Drop discs and connect four in a row against a three-level computer opponent or a friend.",
-    "tr": "Diskleri bırakıp dördünü yan yana getirin; üç seviyeli bilgisayara ya da bir arkadaşınıza karşı oynayın.",
-    "de": "Wirf Scheiben ein und bilde eine Viererreihe gegen einen Computergegner mit drei Stufen oder einen Freund.",
-    "fr": "Lâchez des jetons et alignez-en quatre contre un adversaire informatique à trois niveaux ou un ami.",
-    "es": "Suelta fichas y conecta cuatro en línea contra un rival por ordenador de tres niveles o un amigo."
+    "en": "Drop discs and line up four in a row against four computer levels or a friend, with hints, undo and game review.",
+    "tr": "Diskleri bırak, dördünü yan yana getir: dört bilgisayar seviyesi ya da bir arkadaş; ipucu, geri alma ve oyun incelemesi.",
+    "de": "Lass Scheiben fallen und bilde eine Viererreihe gegen vier Computerstufen oder einen Freund, mit Tipps, Rückgängig und Partieansicht.",
+    "fr": "Lâchez des pions et alignez-en quatre contre quatre niveaux d’ordinateur ou un ami, avec indices, annulation et relecture.",
+    "es": "Suelta fichas y alinea cuatro contra cuatro niveles de ordenador o un amigo, con pistas, deshacer y revisión de partidas.",
+    "ja": "コマを落として4つ並べよう。4段階のコンピューターか友だちと対戦、ヒント、待った、対局のふり返り。",
+    "zh": "投下棋子连成四子，对战四档电脑或朋友，支持提示、悔棋和复盘。",
+    "ko": "말을 떨어뜨려 네 개를 한 줄로! 네 단계 컴퓨터나 친구와 대결, 힌트, 무르기, 게임 복기."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

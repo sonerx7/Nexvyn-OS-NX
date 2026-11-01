@@ -69,5 +69,16 @@
   "wd_3": "周三",
   "wd_4": "周四",
   "wd_5": "周五",
-  "wd_6": "周六"
+  "wd_6": "周六",
+  "checklist": "清单",
+  "step_hint": "添加项目…",
+  "add_step": "添加",
+  "filter": "筛选",
+  "filter_hint": "突出显示包含此文字的卡片（留空则显示全部）。",
+  "export_md": "导出为 Markdown",
+  "backup": "备份",
+  "restore": "恢复",
+  "restore_confirm": "要用此备份中的 {0} 个看板替换所有看板吗？",
+  "restore_bad": "该文件不是看板备份。",
+  "ok": "确定"
 }

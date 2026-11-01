@@ -104,5 +104,21 @@
   "deleted": "Aufgabe gelöscht.",
   "deleted_named": "„{0}“ gelöscht",
   "undo": "Widerrufen",
-  "undo_delete": "Löschen widerrufen"
+  "undo_delete": "Löschen widerrufen",
+  "repeat": "Wiederholen",
+  "rep_none": "Nie",
+  "rep_daily": "Täglich",
+  "rep_weekly": "Wöchentlich",
+  "rep_monthly": "Monatlich",
+  "repeat_next": "Nächstes Mal: {0}",
+  "steps": "Schritte",
+  "step_ph": "Schritt hinzufügen…",
+  "add_step": "Hinzufügen",
+  "backup": "Sichern",
+  "backup_done": "Sicherung gespeichert",
+  "restore": "Wiederherstellen",
+  "restore_confirm": "Alle Listen durch die {0} Aufgaben dieser Sicherung ersetzen?",
+  "restore_done": "{0} Aufgaben wiederhergestellt",
+  "restore_bad": "Diese Datei ist keine To-Do-Sicherung",
+  "cancel": "Abbrechen"
 }

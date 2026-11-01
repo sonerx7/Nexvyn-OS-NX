@@ -41,5 +41,19 @@
   "c_aim": "스틱 / 방향 버튼 / 화살표: 조준",
   "c_fire": "A / Space: 가장 가까운 포대에서 발사",
   "c_base": "L, B, R: 왼쪽 / 가운데 / 오른쪽 포대",
-  "c_touch": "터치 / 마우스: 목표를 탭하거나 클릭"
+  "c_touch": "터치 / 마우스: 목표를 탭하거나 클릭",
+  "records": "기록",
+  "no_records": "아직 기록이 없어요. 한 판 해 보세요!",
+  "rounds": "판 수",
+  "total_time": "총 시간",
+  "total_points": "총 점수",
+  "medal": "메달",
+  "medal_bronze": "동메달",
+  "medal_silver": "은메달",
+  "medal_gold": "금메달",
+  "easy": "쉬움",
+  "normal": "보통",
+  "hard": "어려움",
+  "close": "닫기",
+  "rec_hint": "X: 기록  ·  L / R: 난이도"
 }

@@ -1,0 +1,45 @@
+{
+  "subtitle": {
+    "en": "Linked notes, backlinks and a graph",
+    "tr": "Bağlantılı notlar, geri bağlantılar ve grafik",
+    "de": "Verknüpfte Notizen, Rückverweise, Graph",
+    "fr": "Notes liées, rétroliens et graphe",
+    "es": "Notas enlazadas, retroenlaces y grafo",
+    "ja": "リンクするノート、バックリンク、グラフ",
+    "zh": "互相链接的笔记、反向链接和关系图",
+    "ko": "연결된 노트, 백링크, 그래프"
+  },
+  "description": {
+    "en": "Linkwise is a Markdown knowledge base. Put a title in double square brackets to link two notes; every note lists the notes that link to it, and a live graph shows how your ideas connect.\n\n• Headings, lists, tasks, quotes, code and tags rendered as you write\n• Backlinks, unlinked mentions and an outline beside each note\n• Force-directed graph of all notes or just the neighbourhood\n• Full-text search, tag filters, pinned notes and daily notes\n• Undo/redo, Markdown import/export, JSON backup, Quick Search",
+    "tr": "Linkwise bir Markdown bilgi bankasıdır. İki notu bağlamak için bir başlığı çift köşeli parantez içine yaz; her not ona bağlanan notları listeler, canlı bir grafik de fikirlerinin nasıl bağlandığını gösterir.\n\n• Başlıklar, listeler, görevler, alıntılar, kod ve etiketler yazarken biçimlenir\n• Her notun yanında geri bağlantılar, bağlantısız anılmalar ve ana hat\n• Tüm notların ya da yalnızca çevrenin kuvvet yönlü grafiği\n• Tam metin arama, etiket süzgeçleri, sabitlenen notlar ve günlük notlar\n• Geri al/yinele, Markdown içe/dışa aktarma, JSON yedek, Hızlı Arama",
+    "de": "Linkwise ist eine Markdown-Wissensdatenbank. Setze einen Titel in doppelte eckige Klammern, um zwei Notizen zu verknüpfen; jede Notiz zeigt, wer auf sie verweist, und ein Live-Graph zeigt, wie deine Ideen zusammenhängen.\n\n• Überschriften, Listen, Aufgaben, Zitate, Code und Tags beim Schreiben formatiert\n• Rückverweise, unverknüpfte Erwähnungen und Gliederung neben jeder Notiz\n• Kräftebasierter Graph aller Notizen oder nur der Umgebung\n• Volltextsuche, Tag-Filter, angeheftete Notizen und Tagesnotizen\n• Rückgängig/Wiederholen, Markdown-Import/-Export, JSON-Sicherung",
+    "fr": "Linkwise est une base de connaissances Markdown. Mettez un titre entre doubles crochets pour relier deux notes ; chaque note liste ses rétroliens et un graphe en direct montre comment vos idées se relient.\n\n• Titres, listes, tâches, citations, code et étiquettes mis en forme en direct\n• Rétroliens, mentions sans lien et plan à côté de chaque note\n• Graphe dynamique de toutes les notes ou du voisinage\n• Recherche plein texte, filtres d’étiquettes, notes épinglées et notes du jour\n• Annuler/rétablir, import/export Markdown, sauvegarde JSON",
+    "es": "Linkwise es una base de conocimiento en Markdown. Pon un título entre dobles corchetes para enlazar dos notas; cada nota muestra quién la enlaza y un grafo en vivo enseña cómo se conectan tus ideas.\n\n• Títulos, listas, tareas, citas, código y etiquetas con formato al escribir\n• Retroenlaces, menciones sin enlace y esquema junto a cada nota\n• Grafo dinámico de todas las notas o solo del entorno\n• Búsqueda de texto, filtros por etiqueta, notas fijadas y notas del día\n• Deshacer/rehacer, importación/exportación Markdown y copia JSON",
+    "ja": "Linkwise は Markdown のナレッジベースです。タイトルを二重の角かっこで囲むとノート同士がつながり、各ノートにはバックリンクが表示され、ライブグラフでアイデアのつながりが見えます。\n\n• 見出し、リスト、タスク、引用、コード、タグを書きながら整形\n• 各ノートの横にバックリンク、未リンクの言及、アウトライン\n• 全ノートまたは周辺だけの力学グラフ\n• 全文検索、タグ絞り込み、ピン留め、今日のノート\n• 取り消し/やり直し、Markdown の読み込みと書き出し、JSON バックアップ",
+    "zh": "Linkwise 是一个 Markdown 知识库。把标题放进双层方括号即可链接两条笔记；每条笔记都会列出反向链接，实时关系图展示你的想法如何相连。\n\n• 标题、列表、任务、引用、代码和标签边写边渲染\n• 每条笔记旁有反向链接、未链接的提及和大纲\n• 全部笔记或局部范围的力导向关系图\n• 全文搜索、标签筛选、置顶笔记和每日笔记\n• 撤销/重做、Markdown 导入导出、JSON 备份",
+    "ko": "Linkwise는 Markdown 지식 베이스입니다. 제목을 이중 대괄호로 감싸면 두 노트가 연결되고, 각 노트에는 백링크가 표시되며 실시간 그래프가 생각의 연결을 보여 줍니다.\n\n• 제목, 목록, 할 일, 인용, 코드, 태그를 쓰는 동안 바로 표시\n• 노트마다 백링크, 링크되지 않은 언급, 개요\n• 전체 또는 주변 노트의 역학 그래프\n• 전체 텍스트 검색, 태그 필터, 고정 노트, 오늘의 노트\n• 실행 취소/다시 실행, Markdown 가져오기/내보내기, JSON 백업"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key g",
+      "wait 3"
+    ],
+    [
+      "key escape",
+      "key right",
+      "key right",
+      "key right",
+      "key right",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "key left",
+      "key left",
+      "wait 1.5"
+    ]
+  ]
+}

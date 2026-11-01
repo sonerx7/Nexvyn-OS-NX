@@ -1,4 +1,4 @@
--- Yolu Geç / Road Crosser for Nexvyn OS: a Frogger-style game. Hop across five lanes of traffic, ride logs and
+-- Yolu Geç / Road Crosser for Nexvyn OS: a road-and-river hopping game. Hop across five lanes of traffic, ride logs and
 -- diving turtles over the river and fill all five lily-pad homes before the timer runs out.
 local K = require("arcade")
 local floor, min, max, abs, sin, cos, pi = math.floor, math.min, math.max, math.abs, math.sin, math.cos, math.pi
@@ -8,7 +8,8 @@ local COLS, ROWS = 13, 13
 local PERIOD = COLS + 4
 local HOMES = {1, 4, 6, 8, 11}
 local LIFE_TIME = 30
-local G = {icon = "traffic", accent = "#32D74B", stickPress = true, overIcon = "water",
+local G = {icon = "traffic", accent = "#32D74B", stickPress = true, overIcon = "water", difficulty = true,
+  medals = {1500, 4000, 9000},
   rep = {up = true, down = true, left = true, right = true}, repDelay = 0.28, repRate = 0.16}
 
 -- lanes: row -> kind, speed (cells/s, sign = direction), object length, start positions
@@ -45,7 +46,7 @@ function G.layout(w, h)
   L.y = floor(top + (h - top - 34 - L.cell * ROWS) / 2)
 end
 
-local function speedOf(row) return LANES[row].speed * (1 + (level - 1) * 0.15) end
+local function speedOf(row) return LANES[row].speed * (1 + (level - 1) * 0.15) * K.dmul end
 
 local function resetFrog()
   frog.x, frog.y, frog.fx, frog.fy, frog.hop, frog.face, frog.dead = 6, 12, 6, 12, 1, 0, false

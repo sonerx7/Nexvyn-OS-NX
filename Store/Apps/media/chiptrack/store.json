@@ -1,0 +1,42 @@
+{
+  "subtitle": {
+    "en": "Make chiptune music, export WAV",
+    "tr": "Chiptune müzik yap, WAV aktar",
+    "de": "Chiptune-Musik machen, WAV exportieren",
+    "fr": "Composez du chiptune, exportez en WAV",
+    "es": "Crea música chiptune y exporta WAV",
+    "ja": "チップチューンを作って WAV 書き出し",
+    "zh": "制作芯片音乐并导出 WAV",
+    "ko": "칩튠 음악을 만들고 WAV로 내보내기"
+  },
+  "description": {
+    "en": "Chiptrack is a four-channel tracker for retro game music. Write notes in patterns with the keyboard, the touch piano or the controller, shape instruments with waveforms and envelopes, chain patterns into a song and export a real WAV file.\n\n• Square, pulse, triangle, saw, sine and noise, plus kick, snare and hi-hat\n• Effects: arpeggio, slides, vibrato, note cut and tempo changes\n• Live playback while you edit, and the exact mix rendered for listening\n• Song order, copy/paste blocks, transpose, mute and solo, undo/redo\n• Includes a demo song; songs save as .chiptrack files",
+    "tr": "Chiptrack retro oyun müziği için dört kanallı bir tracker'dır. Desenlere klavye, dokunmatik piyano ya da kontrolcüyle nota yaz, enstrümanları dalga biçimi ve zarfla şekillendir, desenleri şarkıya diz ve gerçek bir WAV dosyası aktar.\n\n• Kare, darbe, üçgen, testere, sinüs ve gürültü; kick, trampet ve hi-hat\n• Efektler: arpej, kaydırma, vibrato, nota kesme ve tempo değişimi\n• Düzenlerken canlı çalma ve dinlemek için hazırlanan tam karışım\n• Şarkı sırası, blok kopyala/yapıştır, aktarma, susturma ve solo, geri al/yinele\n• Örnek şarkıyla gelir; şarkılar .chiptrack dosyası olarak kaydedilir",
+    "de": "Chiptrack ist ein Vierkanal-Tracker für Retro-Spielmusik. Schreibe Noten in Patterns mit Tastatur, Touch-Klavier oder Controller, forme Instrumente mit Wellenform und Hüllkurve, reihe Patterns zum Song und exportiere eine echte WAV-Datei.\n\n• Rechteck, Puls, Dreieck, Sägezahn, Sinus und Rauschen, dazu Kick, Snare und Hi-Hat\n• Effekte: Arpeggio, Slides, Vibrato, Note-Cut und Tempowechsel\n• Live-Wiedergabe beim Bearbeiten und der exakte Mix zum Anhören\n• Song-Reihenfolge, Blöcke kopieren, transponieren, Mute/Solo, Rückgängig\n• Mit Demo-Song; Songs als .chiptrack-Dateien",
+    "fr": "Chiptrack est un tracker quatre canaux pour la musique de jeux rétro. Écrivez les notes au clavier, au piano tactile ou à la manette, façonnez les instruments avec ondes et enveloppes, enchaînez les motifs et exportez un vrai fichier WAV.\n\n• Carrée, impulsion, triangle, dent de scie, sinus et bruit, plus grosse caisse, caisse claire et charleston\n• Effets : arpège, glissés, vibrato, coupure de note et tempo\n• Lecture en direct pendant l’édition et mixage exact à l’écoute\n• Ordre du morceau, copier-coller de blocs, transposition, muet/solo, annulation\n• Morceau de démo inclus ; fichiers .chiptrack",
+    "es": "Chiptrack es un tracker de cuatro canales para música de videojuegos retro. Escribe notas con el teclado, el piano táctil o el mando, da forma a los instrumentos con ondas y envolventes, encadena patrones y exporta un archivo WAV real.\n\n• Cuadrada, pulso, triangular, sierra, senoidal y ruido, más bombo, caja y charles\n• Efectos: arpegio, deslizamientos, vibrato, corte de nota y tempo\n• Reproducción en vivo al editar y la mezcla exacta para escuchar\n• Orden de canción, copiar bloques, transportar, silencio/solo, deshacer\n• Incluye una canción de ejemplo; archivos .chiptrack",
+    "ja": "Chiptrack はレトロゲーム音楽のための 4 チャンネル・トラッカーです。キーボード、タッチピアノ、コントローラーでパターンに音符を書き、波形とエンベロープで音色を作り、パターンをつないで曲にし、本物の WAV ファイルを書き出せます。\n\n• 矩形波、パルス、三角波、ノコギリ波、サイン波、ノイズ、キック、スネア、ハイハット\n• エフェクト: アルペジオ、スライド、ビブラート、ノートカット、テンポ\n• 編集中のライブ再生と、聴くための正確なミックス\n• 曲の順番、ブロックのコピー、移調、ミュートとソロ、取り消し\n• デモ曲付き。曲は .chiptrack ファイルで保存",
+    "zh": "Chiptrack 是一款用于复古游戏音乐的四声道 Tracker。用键盘、触屏钢琴或手柄在乐段中写音符，用波形和包络塑造音色，把乐段串成歌曲，并导出真正的 WAV 文件。\n\n• 方波、脉冲、三角波、锯齿波、正弦波和噪声，还有底鼓、军鼓和踩镲\n• 效果：琶音、滑音、颤音、切音和变速\n• 编辑时实时播放，并可生成精确混音试听\n• 歌曲顺序、块复制粘贴、移调、静音和独奏、撤销/重做\n• 附带示例歌曲；以 .chiptrack 文件保存",
+    "ko": "Chiptrack은 레트로 게임 음악을 위한 4채널 트래커입니다. 키보드, 터치 피아노, 컨트롤러로 패턴에 음표를 쓰고, 파형과 엔벨로프로 악기를 만들고, 패턴을 이어 곡을 완성해 진짜 WAV 파일로 내보내세요.\n\n• 사각파, 펄스, 삼각파, 톱니파, 사인파, 노이즈와 킥, 스네어, 하이햇\n• 효과: 아르페지오, 슬라이드, 비브라토, 노트 끊기, 템포\n• 편집 중 실시간 재생과 감상용 정확한 믹스\n• 곡 순서, 블록 복사, 조옮김, 음소거/솔로, 실행 취소\n• 데모 곡 포함, .chiptrack 파일로 저장"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key space",
+      "wait 2.5"
+    ],
+    [
+      "key space",
+      "wclick 0.92 0.133",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "key down",
+      "key down",
+      "wait 1.5"
+    ]
+  ]
+}

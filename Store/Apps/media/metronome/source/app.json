@@ -11,7 +11,7 @@
     "ko": "메트로놈"
   },
   "category": "media",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -27,7 +27,10 @@
     "tr": "Tempo tıklama, ölçü seçenekleri ve sallanan sarkaçlı metronom",
     "de": "Metronom mit Tap-Tempo, Taktarten und schwingendem Pendel",
     "fr": "Métronome avec tempo par tapotement, signatures rythmiques et balancier oscillant",
-    "es": "Metrónomo con tempo por pulsación, compases y un péndulo oscilante"
+    "es": "Metrónomo con tempo por pulsación, compases y un péndulo oscilante",
+    "ja": "揺れる振り子で正確なテンポを刻む",
+    "zh": "摆锤摇动，节拍精准",
+    "ko": "흔들리는 추로 정확한 박자를 맞추세요"
   },
   "permissions": []
 }

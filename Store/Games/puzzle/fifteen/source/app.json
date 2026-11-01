@@ -15,9 +15,12 @@
     "tr": "3×3, 4×4 ve 5×5 tahtalarda klasik kaydırmalı karo bulmacası; ipucu, geri alma ve en iyi süreler.",
     "de": "Das klassische Schiebepuzzle auf 3×3-, 4×4- und 5×5-Feldern mit Tipps, Rückgängig und Bestzeiten.",
     "fr": "Le puzzle à pièces coulissantes classique sur plateaux 3×3, 4×4 et 5×5 avec indices, annulation et meilleurs temps.",
-    "es": "El clásico puzle de fichas deslizantes en tableros de 3×3, 4×4 y 5×5 con pistas, deshacer y mejores tiempos."
+    "es": "El clásico puzle de fichas deslizantes en tableros de 3×3, 4×4 y 5×5 con pistas, deshacer y mejores tiempos.",
+    "ja": "タイルをスライドして元の順番に戻そう",
+    "zh": "把方块滑回正确的顺序",
+    "ko": "타일을 밀어 순서대로 맞추세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

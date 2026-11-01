@@ -1,0 +1,47 @@
+{
+  "subtitle": {
+    "en": "Flowcharts and mind maps",
+    "tr": "Akış şemaları ve zihin haritaları",
+    "de": "Flussdiagramme und Mindmaps",
+    "fr": "Organigrammes et cartes mentales",
+    "es": "Diagramas de flujo y mapas mentales",
+    "ja": "フローチャートとマインドマップ",
+    "zh": "流程图和思维导图",
+    "ko": "순서도와 마인드맵"
+  },
+  "description": {
+    "en": "Flowmap draws flowcharts and mind maps. Tap the + beside a shape to grow the chart, drag a + onto another shape to connect them, and let mind maps lay themselves out while you type.\n\n• Nine shapes, connectors with arrows, labels and elbow routing\n• Colours, text sizes, snapping, align and distribute\n• Mind maps: Tab adds a child, Enter a sibling, branches collapse\n• Pinch and pan, undo/redo, copy and paste, a document gallery\n• Export to SVG, copy as Mermaid text, save and open .flowmap files",
+    "tr": "Flowmap akış şemaları ve zihin haritaları çizer. Şemayı büyütmek için bir şeklin yanındaki +'ya dokun, bağlamak için +'yı başka bir şeklin üstüne sürükle; zihin haritaları sen yazarken kendini düzenler.\n\n• Dokuz şekil, oklu bağlayıcılar, etiketler ve dirsekli yönlendirme\n• Renkler, yazı boyutları, ızgaraya yaslama, hizalama ve eşit dağıtma\n• Zihin haritası: Tab alt konu, Enter eş konu ekler, dallar daraltılır\n• Kıstırarak yakınlaştırma, geri al/yinele, kopyala/yapıştır, belge galerisi\n• SVG dışa aktarma, Mermaid metni olarak kopyalama, .flowmap dosyaları",
+    "de": "Flowmap zeichnet Flussdiagramme und Mindmaps. Tippe auf das + neben einer Form, um das Diagramm zu erweitern, zieh ein + auf eine andere Form zum Verbinden, und Mindmaps ordnen sich beim Tippen selbst an.\n\n• Neun Formen, Verbinder mit Pfeilen, Beschriftungen und gewinkelte Linien\n• Farben, Textgrößen, Raster, Ausrichten und Verteilen\n• Mindmaps: Tab fügt ein Unterthema hinzu, Enter ein Nachbarthema\n• Zoomen mit zwei Fingern, Rückgängig, Kopieren und Einsetzen\n• SVG-Export, Mermaid-Text kopieren, .flowmap-Dateien",
+    "fr": "Flowmap dessine des organigrammes et des cartes mentales. Touchez le + près d’une forme pour agrandir le schéma, glissez un + sur une autre forme pour les relier ; les cartes mentales s’organisent seules pendant la saisie.\n\n• Neuf formes, connecteurs fléchés, étiquettes et tracés coudés\n• Couleurs, tailles de texte, grille, alignement et répartition\n• Cartes mentales : Tab ajoute un sous-sujet, Entrée un sujet voisin\n• Zoom au pincement, annuler/rétablir, copier-coller, galerie\n• Export SVG, copie en texte Mermaid, fichiers .flowmap",
+    "es": "Flowmap dibuja diagramas de flujo y mapas mentales. Toca el + junto a una forma para ampliar el diagrama, arrastra un + sobre otra forma para conectarlas, y los mapas mentales se ordenan solos mientras escribes.\n\n• Nueve formas, conectores con flechas, etiquetas y trazado en codo\n• Colores, tamaños de texto, cuadrícula, alinear y repartir\n• Mapas mentales: Tab añade un subtema, Intro un tema hermano\n• Zoom con dos dedos, deshacer/rehacer, copiar y pegar, galería\n• Exportación SVG, texto Mermaid y archivos .flowmap",
+    "ja": "Flowmap はフローチャートとマインドマップを描きます。図形の横の + をタップすれば図が広がり、+ を別の図形へドラッグすればつながります。マインドマップは入力するだけで自動で並びます。\n\n• 9 種類の図形、矢印付きコネクタ、ラベル、カギ線\n• 色、文字サイズ、グリッド吸着、整列と等間隔配置\n• マインドマップ: Tab で子、Enter で兄弟、枝の折りたたみ\n• ピンチズーム、取り消し/やり直し、コピー&ペースト、ギャラリー\n• SVG 書き出し、Mermaid テキストのコピー、.flowmap ファイル",
+    "zh": "Flowmap 用来绘制流程图和思维导图。点按形状旁的 + 扩展图表，把 + 拖到另一个形状上即可连接；思维导图在你输入时自动排布。\n\n• 九种形状、带箭头的连接线、标签和折线走线\n• 颜色、文字大小、网格对齐、对齐与均匀分布\n• 思维导图：Tab 添加子主题，Enter 添加同级主题，分支可折叠\n• 双指缩放、撤销/重做、复制粘贴和文档库\n• 导出 SVG、复制为 Mermaid 文本、.flowmap 文件",
+    "ko": "Flowmap은 순서도와 마인드맵을 그립니다. 도형 옆의 +를 탭해 차트를 넓히고, +를 다른 도형으로 끌면 연결됩니다. 마인드맵은 입력하는 대로 자동 배치됩니다.\n\n• 아홉 가지 도형, 화살표 연결선, 라벨, 꺾은선\n• 색상, 글자 크기, 격자 맞춤, 정렬과 고르게 배치\n• 마인드맵: Tab으로 하위 주제, Enter로 같은 수준 주제, 가지 접기\n• 핀치 확대, 실행 취소/다시 실행, 복사·붙여넣기, 문서 갤러리\n• SVG 내보내기, Mermaid 텍스트 복사, .flowmap 파일"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 1.5",
+      "wclick 0.527 0.53",
+      "wait 1"
+    ],
+    [
+      "key escape",
+      "key escape",
+      "wait 0.6",
+      "wclick 0.379 0.29",
+      "wait 1.5",
+      "key f",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "key right",
+      "wait 1.5"
+    ]
+  ]
+}

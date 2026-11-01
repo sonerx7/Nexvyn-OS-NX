@@ -85,5 +85,18 @@
   "wdn3": "mer.",
   "wdn4": "jeu.",
   "wdn5": "ven.",
-  "wdn6": "sam."
+  "wdn6": "sam.",
+  "rest_today": "Jour de repos aujourd’hui",
+  "rest_off": "Retirer le jour de repos",
+  "milestone": "{0} : série de {1} jours !",
+  "export_csv": "Exporter en CSV",
+  "exported": "Historique exporté",
+  "backup": "Sauvegarder",
+  "backup_done": "Sauvegarde enregistrée",
+  "restore": "Restaurer",
+  "restore_confirm": "Remplacer toutes vos habitudes par les {0} de cette sauvegarde ?",
+  "restore_done": "{0} habitudes restaurées",
+  "restore_bad": "Ce fichier n’est pas une sauvegarde de Habits",
+  "done_today": "Fait aujourd’hui",
+  "mark_today": "Marquer comme fait aujourd’hui"
 }

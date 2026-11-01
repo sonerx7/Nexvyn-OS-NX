@@ -32,5 +32,11 @@
   "octave_down": "オクターブ下げる",
   "octave_up": "オクターブ上げる",
   "menu_sound": "サウンド",
-  "menu_songs": "曲"
+  "menu_songs": "曲",
+  "song_jingle": "ジングルベル",
+  "song_scale": "ハ長調の音階",
+  "learn_song": "練習: {0}",
+  "learn_progress": "練習モード · {0}/{1} 音 · 正確さ {2}%",
+  "learn_done": "1曲クリア！正確さ {0}%",
+  "learn_shift": "次の音は鍵盤の外です。オクターブを変えてください"
 }

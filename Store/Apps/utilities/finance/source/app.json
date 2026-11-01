@@ -15,10 +15,13 @@
     "tr": "Ödeme tablolu kredi ve konut kredisi, büyüme grafikli bileşik faiz, yüzde ve KDV hesapları.",
     "de": "Kredit und Hypothek mit Tilgungsplan, Zinseszins mit Wachstumsdiagramm, Prozente und Mehrwertsteuer.",
     "fr": "Prêt et crédit immobilier avec tableau d’amortissement, intérêts composés avec graphique de croissance, pourcentages et TVA.",
-    "es": "Préstamos e hipotecas con tabla de amortización, interés compuesto con gráfico de crecimiento, porcentajes e IVA."
+    "es": "Préstamos e hipotecas con tabla de amortización, interés compuesto con gráfico de crecimiento, porcentajes e IVA.",
+    "ja": "ローン、貯蓄、パーセント、消費税",
+    "zh": "贷款、储蓄、百分比和增值税",
+    "ko": "대출, 저축, 퍼센트, 부가세"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

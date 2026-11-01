@@ -44,7 +44,7 @@
   "h_pause": "Pausa",
   "win_rate": "Porcentaje de victorias",
   "avg": "Media",
-  "title": "Conecta cuatro",
+  "title": "Cuatro en raya",
   "tagline": "Alinea cuatro fichas para ganar",
   "draw": "Empate",
   "you_win": "¡Has ganado!",
@@ -70,5 +70,9 @@
   "draws": "Empates",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "Empiezo yo (rojo)",
-  "go_second": "Empieza el ordenador"
+  "go_second": "Empieza el ordenador",
+  "mode_expert": "Experto",
+  "review": "Revisar partida",
+  "review_move": "Jugada {0} / {1}",
+  "done": "Listo"
 }

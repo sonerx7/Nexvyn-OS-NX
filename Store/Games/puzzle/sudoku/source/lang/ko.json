@@ -64,5 +64,18 @@
   "mistakes_n": "실수 {0}개",
   "generating": "해답이 하나뿐인 퍼즐을 만드는 중…",
   "notes_mode": "메모 모드",
-  "show_mistakes": "실수 강조 표시"
+  "show_mistakes": "실수 강조 표시",
+  "expert": "전문가",
+  "daily": "데일리",
+  "daily_play": "오늘의 퍼즐",
+  "daily_done": "오늘 완료 · 연속 {0}",
+  "daily_streak": "연속 기록",
+  "streak_fmt": "{0}일 · 최고 {1}",
+  "auto_notes": "메모 채우기",
+  "notes_filled": "후보 숫자를 채웠어요",
+  "strict_mode": "3회 실수 모드",
+  "mistakes_left_n": "남은 실수 {0}",
+  "out_of_mistakes": "실수 기회 소진",
+  "out_of_mistakes_sub": "3회 실수 모드에서는 숫자를 세 번 틀리면 게임이 끝납니다.",
+  "keep_going": "계속하기(모드 끄기)"
 }

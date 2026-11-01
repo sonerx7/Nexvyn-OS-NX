@@ -2,7 +2,8 @@
 -- A fixed path across a grid, three tower types (rapid gun, splash cannon, slowing frost) with two upgrades each,
 -- selling, money and lives, 15 waves (normal, fast, armoured enemies and a boss on the last wave), a 2x speed
 -- switch and a saved best result. Enemies, shells, rings and popups live in pre-allocated pools, so a wave does
--- not create garbage and the game keeps 60 fps.
+-- not create garbage and the game keeps 60 fps. Three maps (Meadow, Canyon, Serpent) with their own records, and an
+-- Endless mode that keeps sending ever tougher generated waves after the last one.
 
 local game = require("nexvyn.game")
 
@@ -65,42 +66,75 @@ local WAVES = {
 }
 
 -- ---------------------------------------------------------------- map
--- path through the grid as cell waypoints (column, row); the first and last lie just outside the grid
-local PATH_WP = {{-1, 2}, {4, 2}, {4, 8}, {9, 8}, {9, 3}, {14, 3}, {14, 9}, {20, 9}}
+-- each map is a path through the grid as cell waypoints (column, row); the first and last lie just outside it
+local MAPS = {
+  {key = "map_meadow", wp = {{-1, 2}, {4, 2}, {4, 8}, {9, 8}, {9, 3}, {14, 3}, {14, 9}, {20, 9}}},
+  {key = "map_canyon", wp = {{-1, 9}, {3, 9}, {3, 2}, {7, 2}, {7, 9}, {11, 9}, {11, 2}, {15, 2}, {15, 9}, {17, 9},
+                             {17, 5}, {20, 5}}},
+  {key = "map_serpent", wp = {{-1, 1}, {18, 1}, {18, 4}, {1, 4}, {1, 7}, {18, 7}, {18, 10}, {-1, 10}}},
+}
+local mapNo = 1
+local endless = false
 local wpx, wpy = {}, {}
 local cellPath = {}    -- [c + r * COLS + 1] = true for path cells
 local pathCells = {}   -- flat {x, y, ...} of path cell origins for drawing
-
-for i, p in ipairs(PATH_WP) do
-  wpx[i], wpy[i] = GX + (p[1] + 0.5) * CELL, GY + (p[2] + 0.5) * CELL
-end
-wpx[1], wpx[#wpx] = GX - 10, GX + GW + 10
-for i = 1, #PATH_WP - 1 do
-  local a, b = PATH_WP[i], PATH_WP[i + 1]
-  local dc = b[1] > a[1] and 1 or (b[1] < a[1] and -1 or 0)
-  local dr = b[2] > a[2] and 1 or (b[2] < a[2] and -1 or 0)
-  local c, r = a[1], a[2]
-  while true do
-    if c >= 0 and c < COLS and r >= 0 and r < ROWS and not cellPath[c + r * COLS + 1] then
-      cellPath[c + r * COLS + 1] = true
-      pathCells[#pathCells + 1] = GX + c * CELL
-      pathCells[#pathCells + 1] = GY + r * CELL
-    end
-    if c == b[1] and r == b[2] then break end
-    c, r = c + dc, r + dr
-  end
-end
+local deco = {}        -- decorative grass tufts and stones
 
 local function isPath(c, r) return cellPath[c + r * COLS + 1] == true end
 
--- decorative grass tufts and stones (precomputed once)
-local deco = {}
-for i = 1, 26 do
-  local c, r = random(0, COLS - 1), random(0, ROWS - 1)
-  if not isPath(c, r) then
-    deco[#deco + 1] = {x = GX + c * CELL + 4 + random() * 11, y = GY + r * CELL + 4 + random() * 11,
-                       stone = random() < 0.4}
+-- rebuilds the path tables in place (the simulations keep references to them)
+local function buildMap(n)
+  mapNo = n
+  local wp = MAPS[n].wp
+  for k in pairs(wpx) do wpx[k] = nil end
+  for k in pairs(wpy) do wpy[k] = nil end
+  for k in pairs(cellPath) do cellPath[k] = nil end
+  for k in pairs(pathCells) do pathCells[k] = nil end
+  for k in pairs(deco) do deco[k] = nil end
+  for i, p in ipairs(wp) do
+    wpx[i], wpy[i] = GX + (p[1] + 0.5) * CELL, GY + (p[2] + 0.5) * CELL
   end
+  local last = wp[#wp]
+  if wp[1][1] < 0 then wpx[1] = GX - 10 end
+  if last[1] >= COLS then wpx[#wpx] = GX + GW + 10 end
+  if last[1] < 0 then wpx[#wpx] = GX - 10 end
+  if last[2] >= ROWS then wpy[#wpy] = GY + GH + 10 end
+  for i = 1, #wp - 1 do
+    local a, b = wp[i], wp[i + 1]
+    local dc = b[1] > a[1] and 1 or (b[1] < a[1] and -1 or 0)
+    local dr = b[2] > a[2] and 1 or (b[2] < a[2] and -1 or 0)
+    local c, r = a[1], a[2]
+    while true do
+      if c >= 0 and c < COLS and r >= 0 and r < ROWS and not cellPath[c + r * COLS + 1] then
+        cellPath[c + r * COLS + 1] = true
+        pathCells[#pathCells + 1] = GX + c * CELL
+        pathCells[#pathCells + 1] = GY + r * CELL
+      end
+      if c == b[1] and r == b[2] then break end
+      c, r = c + dc, r + dr
+    end
+  end
+  for _ = 1, 26 do
+    local c, r = random(0, COLS - 1), random(0, ROWS - 1)
+    if not isPath(c, r) then
+      deco[#deco + 1] = {x = GX + c * CELL + 4 + random() * 11, y = GY + r * CELL + 4 + random() * 11,
+                         stone = random() < 0.4}
+    end
+  end
+end
+buildMap(1)
+
+-- record keys: the first map keeps the original ones
+local function rkey(base) return base .. (mapNo > 1 and ("_m" .. mapNo) or "") end
+
+-- endless waves after the last designed one: more of everything, a boss every fifth wave
+local function wavesFor(n)
+  if n <= LAST_WAVE then return WAVES[n] end
+  local k = n - LAST_WAVE
+  local g = {{"armored", 8 + 2 * k, max(0.4, 0.8 - k * 0.02)}, {"fast", 12 + 3 * k, 0.3},
+             {"normal", 14 + 2 * k, max(0.25, 0.4 - k * 0.01)}}
+  if k % 5 == 0 then g[#g + 1] = {"boss", 1 + k // 10, 2.5} end
+  return g
 end
 
 local function drawMap(t)
@@ -534,21 +568,42 @@ local titleSim, playSim
 -- the demo board on the title screen: a few towers and an endless trickle of enemies
 function Title:enter()
   self.t = 0
+  local wantMap = math.floor(tonumber(save:get("map", 1)) or 1)
+  if wantMap ~= mapNo and MAPS[wantMap] then buildMap(wantMap) end
+  endless = save:get("endless", false) == true
   if not titleSim then titleSim = newSim(true) end
   titleSim:reset()
   local spots = {{2, 4, 1}, {6, 6, 2}, {11, 5, 3}, {12, 1, 1}, {16, 7, 2}, {7, 10, 1}}
   for _, sp in ipairs(spots) do
-    local t = titleSim:build(sp[1], sp[2], sp[3])
-    t.lvl = random(1, 3)
+    if not isPath(sp[1], sp[2]) then
+      local t = titleSim:build(sp[1], sp[2], sp[3])
+      t.lvl = random(1, 3)
+    end
   end
   self.spawnT = 0
   self.logo = {y = -50, s = 0.6}
   game.tween.to(self.logo, 0.9, {y = 34}, "outBounce")
   game.tween.to(self.logo, 0.9, {s = 1}, "outBack")
   self.menuY = {y = H + 20}
-  game.tween.to(self.menuY, 0.6, {y = 92}, {ease = "outCubic", delay = 0.25})
+  game.tween.to(self.menuY, 0.6, {y = 78}, {ease = "outCubic", delay = 0.25})
+  local function setMap(n)
+    buildMap((n - 1) % #MAPS + 1)
+    save:set("map", mapNo)
+    titleSim:reset()
+    for _, sp in ipairs(spots) do
+      if not isPath(sp[1], sp[2]) then
+        local t = titleSim:build(sp[1], sp[2], sp[3])
+        t.lvl = random(1, 3)
+      end
+    end
+    A.play("select")
+  end
   self.menu = U.menu{width = 200, itemHeight = 28, size = 13, items = {
     {label = function() return TR("start") end, action = function() game.switch(Play) end},
+    {label = function() return "< " .. TR(MAPS[mapNo].key) .. " >" end, action = function() setMap(mapNo + 1) end,
+     left = function() setMap(mapNo - 1) end, right = function() setMap(mapNo + 1) end},
+    {label = function() return TR("endless_opt", endless and TR("on") or TR("off")) end,
+     action = function() endless = not endless; save:set("endless", endless) end},
     {label = function() return TR("sound", A.muted and TR("off") or TR("on")) end,
      action = function() A.setMuted(not A.muted); game.save.open("settings"):set("muted", A.muted) end},
   }}
@@ -580,11 +635,12 @@ function Title:ui()
   U.text(TR("logo"), 0, lg.y + (30 - size) / 2, size, "#FFE066", "center", W, "bold", "#3A2A00")
   local y = self.menuY.y
   self.menu:draw(W / 2, y)
-  local best = save:get("best_wave", 0)
-  local wins = save:get("wins", 0)
+  local best = save:get(rkey("best_wave"), 0)
+  local wins = save:get(rkey("wins"), 0)
   local line = TR("best_line", best, LAST_WAVE) .. "   ·   " .. TR("wins_line", wins)
-  U.panel(W / 2 - 150, y + 66, 300, 18, 9, "#00000080")
-  U.text(line, 0, y + 69, 9, "#FFFFFF", "center", W, "semibold")
+  if endless then line = TR("endless_best", save:get(rkey("best_endless"), 0)) .. "   ·   " .. line end
+  U.panel(W / 2 - 160, y + 122, 320, 18, 9, "#00000080")
+  U.text(line, 0, y + 125, 9, "#FFFFFF", "center", W, "semibold")
   local cs = TR("controls")
   local csz = min(8, 8 * (W - 16) / max(1, G.textWidth(cs, 8, "semibold")))
   U.panel(0, H - 20, W, 20, 0, "#00000090")
@@ -660,10 +716,10 @@ function Play:onLeak(e)
 end
 
 function Play:startWave()
-  if self.state ~= "build" or self.wave >= LAST_WAVE then return end
+  if self.state ~= "build" or (self.wave >= LAST_WAVE and not endless) then return end
   self.wave = self.wave + 1
   local n = 0
-  for _, grp in ipairs(WAVES[self.wave]) do
+  for _, grp in ipairs(wavesFor(self.wave)) do
     for _ = 1, grp[2] do
       n = n + 1
       qKind[n], qGap[n] = grp[1], grp[3]
@@ -671,7 +727,7 @@ function Play:startWave()
   end
   self.qN, self.qI, self.spawnT = n, 1, 0.3
   self.state = "wave"
-  self:showBanner(self.wave == LAST_WAVE and TR("final_wave") or TR("wave_n", self.wave))
+  self:showBanner((self.wave == LAST_WAVE and not endless) and TR("final_wave") or TR("wave_n", self.wave))
   A.play("power")
   chord(CH_WAVE, 0.4, 0.05)
 end
@@ -680,11 +736,12 @@ function Play:finish(won)
   if self.state == "done" then return end
   self.state = "done"
   local cleared = won and LAST_WAVE or max(0, self.wave - 1)
-  local newBest = save:best("best_wave", cleared) and cleared > 0
+  local newBest = save:best(rkey("best_wave"), min(cleared, LAST_WAVE)) and cleared > 0
   if won then
-    save:inc("wins")
-    if save:best("best_lives", self.lives) then newBest = true end
+    save:inc(rkey("wins"))
+    if save:best(rkey("best_lives"), self.lives) then newBest = true end
   end
+  if endless and save:best(rkey("best_endless"), cleared) and cleared > LAST_WAVE then newBest = true end
   local stats = {won = won, wave = self.wave, cleared = cleared, kills = self.kills, built = self.built,
                  earned = self.earned, lives = self.lives, newBest = newBest}
   game.tween.after(won and 1.0 or 1.2, function() game.push(Over, stats) end)
@@ -795,9 +852,10 @@ function Play:update(dt)
         end
       elseif self.sim.alive <= 0 then
         -- wave cleared
-        if self.wave >= LAST_WAVE then
+        if self.wave >= LAST_WAVE and not endless then
           self:finish(true)
         else
+          if self.wave == LAST_WAVE then save:inc(rkey("wins")); self.sim:popup(GX + GW / 2, GY + GH / 2, TR("endless_go"), "#7CFFB2") end
           self.state = "build"
           local bonus = 20 + self.wave * 5
           self:addMoney(bonus)
@@ -875,7 +933,8 @@ function Play:ui()
   U.text(tostring(self.lives), 24, 6, 11 * min(1.2, h.lives), self.lives <= 5 and "#FF8A8A" or "#FFFFFF", "left", 40)
   G.icon("monetization_on", 70, 12.5, 13 * h.money, "#FFD84D")
   U.text(tostring(self.money), 80, 6, 11 * min(1.2, h.money), "#FFE9A0", "left", 60)
-  U.text(TR("wave_of", self.wave, LAST_WAVE), 0, 6, 11, "#FFFFFF", "center", W, "bold")
+  U.text(self.wave > LAST_WAVE and TR("wave_n", self.wave) or TR("wave_of", self.wave, LAST_WAVE), 0, 6, 11, "#FFFFFF",
+    "center", W, "bold")
   if self.state == "wave" then
     local left = self.qN - self.qI + 1 + self.sim.alive
     U.text(TR("enemies_left", max(0, left)), 280, 8, 8, "#FFFFFFA0", "left", 100, "semibold")
@@ -933,7 +992,7 @@ function Play:ui()
   if panelButton(sellLabel, x + 6 + bw, uy, bw, 23, "#A8483A", active and t ~= nil, "sell") then self.req = "sell" end
   -- next wave
   local ny = GY + GH - 30
-  local canWave = active and self.state == "build" and self.wave < LAST_WAVE
+  local canWave = active and self.state == "build" and (self.wave < LAST_WAVE or endless)
   local waveLabel = canWave and TR("next_wave", self.wave + 1) or TR("wave_running")
   local col = canWave and (sin(self.sim.time * 5) > 0 and "#3A86FF" or "#2F6FD6") or "#3A4A5A"
   if panelButton(waveLabel, x + 3, ny, w - 6, 26, col, canWave, "play_arrow") then self.req = "wave" end
@@ -1002,7 +1061,8 @@ function Over:ui()
   U.text(p.won and TR("victory_sub", p.lives) or TR("defeat_sub", p.wave), x, y + 34, 9, "#FFFFFFC0", "center", w,
          "semibold")
   local rows = {
-    {TR("st_cleared"), p.cleared .. " / " .. LAST_WAVE}, {TR("st_kills"), tostring(p.kills)},
+    {TR("st_cleared"), p.cleared > LAST_WAVE and tostring(p.cleared) or (p.cleared .. " / " .. LAST_WAVE)},
+    {TR("st_kills"), tostring(p.kills)},
     {TR("st_built"), tostring(p.built)}, {TR("st_earned"), "$" .. p.earned},
   }
   for r = 1, #rows do
@@ -1015,7 +1075,7 @@ function Over:ui()
     U.text(TR("new_best"), x, y + 102, 11, "#FFE066", "center", w, "bold")
     G.unalpha()
   else
-    U.text(TR("best_line", save:get("best_wave", 0), LAST_WAVE), x, y + 104, 8.5, "#FFFFFF90", "center", w, "semibold")
+    U.text(TR("best_line", save:get(rkey("best_wave"), 0), LAST_WAVE), x, y + 104, 8.5, "#FFFFFF90", "center", w, "semibold")
   end
   self.menu:draw(W / 2, y + h - 66)
 end

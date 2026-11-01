@@ -49,5 +49,14 @@
   "tab_stats": "Statistik",
   "tab_settings": "Einstellungen",
   "menu_timer": "Timer",
-  "menu_view": "Ansicht"
+  "menu_view": "Ansicht",
+  "add_task": "Woran arbeitest du?",
+  "task_title": "Fokusaufgabe",
+  "task_msg": "Benenne die Aufgabe deiner Fokusphasen. Ihre Minuten erscheinen in der Statistik.",
+  "top_tasks": "Top-Aufgaben (7 Tage)",
+  "no_tasks": "Benenne eine Aufgabe am Timer, um zu sehen, wohin deine Zeit geht.",
+  "set_goal": "Tagesziel (Einheiten)",
+  "today_goal": "Heute: {0}/{1} Einheiten · {2}",
+  "goal_reached": "Tagesziel erreicht!",
+  "goal_body": "{0} Fokuseinheiten heute. Gute Arbeit."
 }

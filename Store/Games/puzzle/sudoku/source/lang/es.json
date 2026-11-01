@@ -64,5 +64,18 @@
   "mistakes_n": "{0} errores",
   "generating": "Creando un sudoku con solución única…",
   "notes_mode": "Modo notas",
-  "show_mistakes": "Resaltar errores"
+  "show_mistakes": "Resaltar errores",
+  "expert": "Experto",
+  "daily": "Diario",
+  "daily_play": "Sudoku del día",
+  "daily_done": "Diario resuelto · racha {0}",
+  "daily_streak": "Racha diaria",
+  "streak_fmt": "{0} días · mejor {1}",
+  "auto_notes": "Rellenar notas",
+  "notes_filled": "Candidatos añadidos",
+  "strict_mode": "Modo tres fallos",
+  "mistakes_left_n": "quedan {0} fallos",
+  "out_of_mistakes": "Sin fallos restantes",
+  "out_of_mistakes_sub": "En el modo tres fallos, tres números erróneos terminan la partida.",
+  "keep_going": "Seguir (modo desactivado)"
 }

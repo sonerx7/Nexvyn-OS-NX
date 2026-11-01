@@ -11,7 +11,7 @@
     "ko": "그래프 그리기"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -27,7 +27,10 @@
     "tr": "Fonksiyon grafikleri çizin, eğrileri izleyin, kökleri bulun",
     "de": "Funktionen zeichnen, Kurven verfolgen und Nullstellen finden",
     "fr": "Tracez des fonctions, suivez les courbes et trouvez les racines",
-    "es": "Representa funciones, recorre curvas y encuentra raíces"
+    "es": "Representa funciones, recorre curvas y encuentra raíces",
+    "ja": "関数を描画し、根と交点を求める",
+    "zh": "绘制函数图像，求根与交点",
+    "ko": "함수를 그리고 근과 교점을 찾으세요"
   },
   "permissions": []
 }

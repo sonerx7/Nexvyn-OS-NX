@@ -121,9 +121,10 @@ local function emptySteps()
   end
   return s
 end
-local function fromList(list)
+local function fromList(list, accents)
   local s = emptySteps()
   for t, steps in pairs(list) do for _, i in ipairs(steps) do s[t][i] = 1 end end
+  for t, steps in pairs(accents or {}) do for _, i in ipairs(steps) do s[t][i] = 2 end end
   return s
 end
 
@@ -134,8 +135,25 @@ local PRESETS = {
     [1] = {1, 8, 11, 12}, [2] = {5, 13}, [3] = {1, 3, 5, 7, 9, 11, 13, 14, 15}, [4] = {16}, [5] = {13}, [8] = {7}})},
   {key = "pre_house", bpm = 124, swing = 10, steps = fromList({
     [1] = {1, 5, 9, 13}, [3] = {2, 4, 6, 8, 10, 12, 14, 16}, [4] = {3, 7, 11, 15}, [5] = {5, 13}, [8] = {12}})},
+  {key = "pre_funk", bpm = 100, swing = 20, steps = fromList({
+    [1] = {1, 4, 11, 14}, [2] = {5, 8, 13, 16}, [3] = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15}, [4] = {8},
+    [8] = {10}}, {[2] = {5, 13}})},
+  {key = "pre_disco", bpm = 118, swing = 0, steps = fromList({
+    [1] = {1, 5, 9, 13}, [2] = {5, 13}, [3] = {1, 5, 9, 13}, [4] = {3, 7, 11, 15}, [5] = {5, 13}})},
+  {key = "pre_reggae", bpm = 76, swing = 30, steps = fromList({
+    [1] = {9}, [2] = {9}, [3] = {3, 7, 11, 15}, [8] = {5, 13}, [6] = {16}}, {[1] = {9}})},
+  {key = "pre_break", bpm = 96, swing = 25, steps = fromList({
+    [1] = {1, 3, 11}, [2] = {5, 8, 13, 15}, [3] = {1, 3, 5, 7, 9, 11, 13, 15}, [4] = {16}, [7] = {12}},
+    {[2] = {5, 13}})},
+  {key = "pre_bossa", bpm = 120, swing = 0, steps = fromList({
+    [1] = {1, 4, 5, 8, 9, 12, 13, 16}, [3] = {1, 3, 5, 7, 9, 11, 13, 15}, [8] = {1, 4, 7, 11, 14}})},
+  {key = "pre_trap", bpm = 140, swing = 0, steps = fromList({
+    [1] = {1, 8, 11}, [2] = {9}, [3] = {1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}, [4] = {7}, [5] = {9},
+    [6] = {15, 16}}, {[2] = {9}, [5] = {9}})},
   {key = "pre_empty", bpm = 100, swing = 0, steps = emptySteps()},
 }
+local OLD_PRESETS = 4          -- presets before 1.1: saved patterns came right after them in the list
+local accentMode = false
 
 local pat = {bpm = 110, swing = 0, steps = emptySteps(), vol = {}, mute = {}}
 for t = 1, NT do pat.vol[t] = 0.8; pat.mute[t] = false end
@@ -145,7 +163,12 @@ local saveName = ""
 
 local function copySteps(s)
   local o = emptySteps()
-  for t = 1, NT do for i = 1, NS do o[t][i] = (s[t] and s[t][i] == 1) and 1 or 0 end end
+  for t = 1, NT do
+    for i = 1, NS do
+      local v = s[t] and tonumber(s[t][i]) or 0
+      o[t][i] = v >= 2 and 2 or (v >= 1 and 1 or 0)
+    end
+  end
   return o
 end
 
@@ -221,8 +244,9 @@ end
 
 local function playStep(s)
   for t = 1, NT do
-    if pat.steps[t][s] == 1 and not pat.mute[t] then
-      trigger(t)
+    local v = pat.steps[t][s]
+    if v >= 1 and not pat.mute[t] then
+      trigger(t, v == 2 and min(1, pat.vol[t] * 1.35 + 0.1) or nil)
       padPop[t * 100 + s] = 1
     end
   end
@@ -250,7 +274,12 @@ function app.load()
   end
   master = clamp(tonumber(store.get("master", 0.85)) or 0.85, 0, 1)
   local cur = store.get("current", nil)
-  patSel = clamp(math.tointeger(store.get("patSel", 1)) or 1, 1, #PRESETS + #saved)
+  local ps = math.tointeger(store.get("patSel", 1)) or 1
+  if (math.tointeger(store.get("npre", OLD_PRESETS)) or OLD_PRESETS) ~= #PRESETS and ps > OLD_PRESETS then
+    ps = ps + #PRESETS - OLD_PRESETS
+  end
+  patSel = clamp(ps, 1, #PRESETS + #saved)
+  store.set("npre", #PRESETS)
   if type(cur) == "table" then loadPattern(cur, false) else loadPattern(PRESETS[1], false) end
   if patSel > #PRESETS then saveName = saved[patSel - #PRESETS].name end
 end
@@ -365,8 +394,15 @@ function app.draw(w, h)
   if hit.pressed then
     local t, s = padAt(mx, my)
     if t then
-      painting = pat.steps[t][s] == 1 and 0 or 1
-      pat.steps[t][s] = painting
+      painting = pat.steps[t][s] >= 1 and 0 or 1
+      if accentMode then
+        -- accent mode: a tap switches a step between accented and normal (an empty step becomes accented)
+        painting = pat.steps[t][s] == 2 and 1 or 2
+        pat.steps[t][s] = painting
+        painting = nil
+      else
+        pat.steps[t][s] = painting
+      end
       if painting == 1 and not playing then trigger(t) end
       padPop[t * 100 + s] = 1
       cursor = {t = t, s = s}
@@ -388,7 +424,8 @@ function app.draw(w, h)
     local y = gy + (t - 1) * rowH
     for s = 1, NS do
       local x = gx + (s - 1) * pitch
-      local on = pat.steps[t][s] == 1
+      local on = pat.steps[t][s] >= 1
+      local accent = pat.steps[t][s] == 2
       local pop = padPop[t * 100 + s] or 0
       local g = pop * 2
       local beat = floor((s - 1) / 4) % 2 == 0
@@ -397,6 +434,11 @@ function app.draw(w, h)
         if playing and s == step and not pat.mute[t] then c = mix(col, "#FFFFFF", 0.35) end
         gfx.rect(x - g, y - g, padW + g * 2, padH + g * 2, 7, c)
         gfx.rect(x + 3 - g, y + 3 - g, padW - 6 + g * 2, (padH - 6) / 2, 5, alpha("#FFFFFF", 0.16))
+        if accent then
+          gfx.color(alpha("#FFFFFF", 0.9))
+          gfx.rectLine(x + 2 - g, y + 2 - g, padW - 4 + g * 2, padH - 4 + g * 2, 6, 2)
+          gfx.circle(x + padW / 2, y + padH - 7, 2.5, "#FFFFFF")
+        end
       else
         gfx.rect(x, y, padW, padH, 7, alpha(theme.text, beat and 0.08 or 0.05))
         if playing and s == step then gfx.rect(x, y, padW, padH, 7, alpha(col, 0.12)) end
@@ -463,15 +505,44 @@ function app.event(e)
   elseif e.key == "enter" then
     showCursor = true
     local t, s = cursor.t, cursor.s
-    pat.steps[t][s] = pat.steps[t][s] == 1 and 0 or 1
+    pat.steps[t][s] = pat.steps[t][s] >= 1 and 0 or 1
     if pat.steps[t][s] == 1 and not playing then trigger(t) end
     padPop[t * 100 + s] = 1
     saveCurrent()
   elseif e.key == "m" then pat.mute[cursor.t] = not pat.mute[cursor.t]; saveCurrent()
+  elseif e.key == "x" then
+    showCursor = true
+    local t, s = cursor.t, cursor.s
+    pat.steps[t][s] = pat.steps[t][s] == 2 and 1 or 2
+    padPop[t * 100 + s] = 1
+    saveCurrent()
+  elseif e.key == "a" then accentMode = not accentMode
+  elseif e.key == "g" then app.onmenu(4)
   else
     local n = tonumber(e.key)
     if n and n >= 1 and n <= NT then trigger(n) end
   end
+end
+
+-- a fresh groove that still sounds like one: kick on the one, backbeat snare, steady hats, a few extras
+local function generate()
+  local st = emptySteps()
+  local r = math.random
+  st[1][1] = 2
+  for _, i in ipairs({4, 7, 9, 11, 12, 15}) do if r() < 0.35 then st[1][i] = 1 end end
+  st[2][5], st[2][13] = 2, 2
+  for _, i in ipairs({8, 10, 15, 16}) do if r() < 0.2 then st[2][i] = 1 end end
+  local hatStep = r() < 0.5 and 2 or 1
+  for i = 1, NS, hatStep do st[3][i] = (i % 4 == 1) and 2 or 1 end
+  if r() < 0.6 then for _, i in ipairs({3, 7, 11, 15}) do if r() < 0.5 then st[3][i] = 0; st[4][i] = 1 end end end
+  if r() < 0.5 then st[5][13] = 1 end
+  for t = 6, 8 do for i = 1, NS do if r() < 0.06 then st[t][i] = 1 end end end
+  if r() < 0.5 then st[6][15], st[7][16] = 1, 1 end
+  pat.steps = st
+  pat.swing = ({0, 0, 15, 25, 40})[r(5)]
+  saveName = ""
+  saveCurrent()
+  audio.play("pop", 0.5)
 end
 
 function app.menu()
@@ -483,6 +554,8 @@ function app.menu()
       "-",
       {label = TR("clear"), id = 2},
       {label = TR("save"), id = 3},
+      {label = TR("generate"), id = 4, shortcut = "G"},
+      {label = TR("accent_mode"), id = 5, shortcut = "A", checked = accentMode},
     }},
     {title = TR("menu_presets"), items = presets},
   }
@@ -492,6 +565,8 @@ function app.onmenu(id)
   if id == 1 then togglePlay()
   elseif id == 2 then pat.steps = emptySteps(); saveCurrent()
   elseif id == 3 then savePattern()
+  elseif id == 4 then generate()
+  elseif id == 5 then accentMode = not accentMode
   elseif id > 10 and id <= 10 + #PRESETS then selectPattern(id - 10) end
 end
 

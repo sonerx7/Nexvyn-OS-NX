@@ -3,6 +3,26 @@
 Görevlerini projelere ayıran, öncelik ve son tarih veren, gecikenleri öne çıkaran yapılacaklar listesi.
 A to-do list with projects, priorities and due dates that highlights overdue tasks.
 
+## Yenilikler 1.1 / What's new in 1.1
+
+**Türkçe:** Projeler, adımlar, tekrarlar, tarihler.
+
+- Renkli projeler ve Tümü, Bugün, Yaklaşan, Geciken, Tamamlanan listeleri
+- İlerlemesi görünen kontrol listesi adımları; günlük, haftalık ya da aylık tekrar
+- Dört öncelik düzeyi ve hızlı kısayollu son tarihler
+- Hızlı ekleme, anında arama, beş sıralama ve silmeyi geri alma
+- Markdown dışa aktarma, JSON yedekleme ve geri yükleme, Hızlı Arama sonuçları
+- 7 günlük tamamlama grafiği; açık ve koyu mod
+
+**English:** Projects, steps, repeats and due dates.
+
+- Colour-coded projects plus All, Today, Upcoming, Overdue and Completed
+- Checklist steps with progress, and daily, weekly or monthly repeats
+- Four priority levels and due dates with quick shortcuts
+- Quick add, instant search, five sort orders and undo for deletions
+- Markdown export, JSON backup and restore, Quick Search results
+- 7-day completion chart; light and dark mode
+
 ## Özellikler
 
 - Projeler (renkli, yeniden adlandırılabilir), akıllı listeler: Tümü, Bugün, Yaklaşanlar, Gecikenler, Tamamlananlar.

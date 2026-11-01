@@ -15,9 +15,12 @@
     "tr": "Siyah ve beyaz ipucu pimlerini kullanarak gizli renk şifresini on denemede kırın. Klasik ve zor mod, ayrıntılı istatistikler.",
     "de": "Knacke den geheimen Farbcode in zehn Versuchen mit den schwarzen und weißen Hinweisstiften. Klassischer und schwerer Modus mit vollständiger Statistik.",
     "fr": "Percez le code couleur secret en dix essais grâce aux fiches indices noires et blanches. Modes classique et difficile avec statistiques complètes.",
-    "es": "Descifra el código secreto de colores en diez intentos con las clavijas de pista blancas y negras. Modos clásico y difícil con estadísticas completas."
+    "es": "Descifra el código secreto de colores en diez intentos con las clavijas de pista blancas y negras. Modos clásico y difícil con estadísticas completas.",
+    "ja": "10 回以内に秘密の色のコードを解読しよう",
+    "zh": "在 10 次之内破解秘密颜色密码",
+    "ko": "10번 안에 비밀 색상 암호를 푸세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

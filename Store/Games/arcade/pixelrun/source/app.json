@@ -11,7 +11,7 @@
     "ko": "픽셀 런"
   },
   "category": "games",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -29,7 +29,10 @@
     "tr": "Piksel sanatlı platform oyunu: üç bölümde koş, zıpla, düşmanları ez, altın topla",
     "de": "Ein Pixel-Art-Plattformer: Renne, springe, stampfe und sammle Münzen in drei Levels",
     "fr": "Un jeu de plateforme en pixel art : courez, sautez, écrasez et ramassez des pièces sur trois niveaux",
-    "es": "Un juego de plataformas en pixel art: corre, salta, aplasta y recoge monedas en tres niveles"
+    "es": "Un juego de plataformas en pixel art: corre, salta, aplasta y recoge monedas en tres niveles",
+    "ja": "3 つの世界を走って、跳んで、踏みつけよう",
+    "zh": "在三个世界中奔跑、跳跃和踩踏",
+    "ko": "세 개의 세계를 달리고, 점프하고, 밟으세요"
   },
   "permissions": []
 }

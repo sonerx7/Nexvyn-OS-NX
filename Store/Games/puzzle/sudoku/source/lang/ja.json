@@ -64,5 +64,18 @@
   "mistakes_n": "ミス {0} 回",
   "generating": "解が 1 つだけのパズルを作成中…",
   "notes_mode": "メモモード",
-  "show_mistakes": "ミスを強調表示"
+  "show_mistakes": "ミスを強調表示",
+  "expert": "エキスパート",
+  "daily": "デイリー",
+  "daily_play": "今日のパズル",
+  "daily_done": "今日のパズル完了 · 連続 {0}",
+  "daily_streak": "連続日数",
+  "streak_fmt": "{0} 日 · 最高 {1}",
+  "auto_notes": "メモを自動入力",
+  "notes_filled": "候補を入力しました",
+  "strict_mode": "3ミスでゲームオーバー",
+  "mistakes_left_n": "残りミス {0}",
+  "out_of_mistakes": "ミスの上限です",
+  "out_of_mistakes_sub": "3ミスモードでは、3回まちがえるとゲーム終了です。",
+  "keep_going": "続ける（モードをオフ）"
 }

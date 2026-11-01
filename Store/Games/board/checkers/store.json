@@ -10,19 +10,51 @@
     "ko": "뛰어넘고, 잡고, 왕을 만드세요"
   },
   "description": {
-    "en": "Classic English draughts on an 8×8 board. Pieces move diagonally, captures are compulsory and a piece keeps jumping for as long as it can; reach the far row and it is crowned a king that moves both ways. Play the computer on easy, medium or hard, or a friend on the same console. Hints, undo and a saved game make it easy to pick up a match whenever you like.\n\n• Forced captures, multi-jumps and kings\n• Three computer levels or two players\n• Play as red or black\n• Hints, undo and statistics\n• Touch, drag, controller or keyboard, with your game saved",
-    "tr": "8×8 tahtada klasik İngiliz daması. Taşlar çapraz ilerler, taş almak zorunludur ve bir taş alabildiği sürece atlamaya devam eder; karşı sıraya ulaşan taş iki yöne de gidebilen dama olur. Bilgisayara karşı kolay, orta ya da zor seviyede oyna ya da aynı konsolda bir arkadaşınla. İpucu, geri alma ve kayıtlı oyun sayesinde maça istediğin an kaldığın yerden devam edersin.\n\n• Zorunlu taş alma, çoklu atlama ve dama\n• Üç bilgisayar seviyesi ya da iki oyuncu\n• Kırmızı ya da siyahla oyna\n• İpucu, geri alma ve istatistikler\n• Dokunmatik, sürükleme, kumanda ya da klavye; oyunun kaydedilir",
-    "de": "Klassische englische Dame auf einem 8×8-Brett. Steine ziehen diagonal, Schlagen ist Pflicht, und ein Stein springt weiter, solange er kann; erreicht er die gegnerische Grundreihe, wird er zur Dame, die in beide Richtungen zieht. Spiel gegen den Computer auf Leicht, Mittel oder Schwer oder gegen einen Freund an derselben Konsole. Tipps, Rückgängig und ein gespeichertes Spiel machen den Wiedereinstieg leicht.\n\n• Schlagpflicht, Mehrfachsprünge und Damen\n• Drei Computerstufen oder zwei Spieler\n• Spiel mit Rot oder Schwarz\n• Tipps, Rückgängig und Statistik\n• Touch, Ziehen, Controller oder Tastatur, Spielstand wird gespeichert",
-    "fr": "Les dames anglaises classiques sur un plateau 8×8. Les pions avancent en diagonale, la prise est obligatoire et un pion continue de sauter tant qu’il le peut ; arrivé sur la dernière rangée, il devient une dame qui se déplace dans les deux sens. Affrontez l’ordinateur en facile, moyen ou difficile, ou un ami sur la même console. Indices, annulation et partie sauvegardée vous permettent de reprendre quand vous voulez.\n\n• Prise obligatoire, rafles et dames\n• Trois niveaux d’ordinateur ou deux joueurs\n• Jouez les rouges ou les noirs\n• Indices, annulation et statistiques\n• Tactile, glisser, manette ou clavier, partie sauvegardée",
-    "es": "Las damas inglesas clásicas en un tablero de 8×8. Las fichas avanzan en diagonal, capturar es obligatorio y una ficha sigue saltando mientras pueda; si llega a la última fila, se corona como dama y puede moverse en ambos sentidos. Juega contra la computadora en fácil, medio o difícil, o contra un amigo en la misma consola. Pistas, deshacer y la partida guardada te permiten retomarla cuando quieras.\n\n• Capturas obligatorias, saltos múltiples y damas\n• Tres niveles de dificultad o dos jugadores\n• Juega con rojas o negras\n• Pistas, deshacer y estadísticas\n• Táctil, arrastrar, mando o teclado, con la partida guardada",
-    "ja": "8×8 の盤で遊ぶ定番のチェッカー (イングリッシュドラフツ)。駒は斜めに動き、取ることは義務で、取れる限り続けて跳び、いちばん奥の列に着くと前後に動けるキングになります。かんたん、ふつう、むずかしいのコンピューター、または同じ本体で友だちと対戦できます。ヒント、取り消し、ゲームの保存があるので、いつでも気軽に続きから遊べます。\n\n• 強制取り、連続ジャンプ、キング\n• 3 段階のコンピューター、または 2 人対戦\n• 赤または黒でプレイ\n• ヒント、取り消し、統計\n• タッチ、ドラッグ、コントローラー、キーボード、ゲームは保存されます",
-    "zh": "在 8×8 棋盘上进行的经典英式跳棋。棋子沿斜线移动，吃子是强制的，棋子只要还能跳就要继续跳；到达对方底线就会升为可以前后移动的王。与简单、中等或困难难度的电脑对战，或在同一台主机上与朋友对弈。提示、撤销和存档让你随时都能继续一局对弈。\n\n• 强制吃子、连跳和王\n• 三种电脑难度或双人对战\n• 执红或执黑\n• 提示、撤销和统计\n• 触控、拖移、手柄或键盘，并会保存你的对局",
-    "ko": "8×8 보드에서 즐기는 클래식 영국식 체커입니다. 말은 대각선으로 움직이고, 잡기는 의무이며, 말은 가능한 한 계속 뛰어넘습니다. 맞은편 끝 줄에 도달하면 양방향으로 움직이는 왕이 됩니다. 쉬움, 보통, 어려움 컴퓨터와 대결하거나 같은 콘솔에서 친구와 대결하세요. 힌트, 무르기, 저장된 게임 덕분에 언제든 경기를 이어 갈 수 있습니다.\n\n• 강제 잡기, 연속 뛰어넘기, 왕\n• 컴퓨터 3단계 또는 2인 플레이\n• 빨강 또는 검정으로 플레이\n• 힌트, 무르기, 통계\n• 터치, 드래그, 컨트롤러, 키보드, 게임 자동 저장"
+    "en": "Classic English draughts on an 8×8 board. Pieces move diagonally, captures are compulsory and a piece keeps jumping for as long as it can; reach the far row and it is crowned a king that moves both ways.\n\nPlay the computer on Easy, Medium, Hard or the new Expert level, which looks far deeper ahead, or a friend on the same console. When the game is over, Review game replays it move by move. Hints, undo and a saved game make it easy to pick up a match whenever you like.\n\n• Forced captures, multi-jumps and kings\n• Four computer levels (new: Expert) or two players\n• Review finished games move by move\n• Play as red or black; hints, undo and statistics per level\n• Touch, drag, controller or keyboard, with your game saved",
+    "tr": "8×8 tahtada klasik İngiliz daması. Taşlar çapraz gider, almak zorunludur ve bir taş alabildiği sürece atlamaya devam eder; karşı sıraya ulaşan taş iki yöne de gidebilen dama olur.\n\nBilgisayara karşı Kolay, Orta, Zor ya da çok daha ileriyi gören yeni Uzman seviyesinde oyna veya aynı konsolda bir arkadaşınla. Oyun bitince Oyunu incele onu hamle hamle yeniden oynatır. İpucu, geri alma ve kayıtlı oyun sayesinde maça istediğin zaman devam edersin.\n\n• Zorunlu alma, çoklu atlama ve damalar\n• Dört bilgisayar seviyesi (yeni: Uzman) ya da iki oyuncu\n• Biten oyunları hamle hamle incele\n• Kırmızı ya da siyah oyna; ipucu, geri alma ve seviye başına istatistik\n• Dokunmatik, sürükleme, kumanda ya da klavye; oyunun kaydedilir",
+    "de": "Klassisches englisches Damespiel auf 8×8. Steine ziehen diagonal, Schlagen ist Pflicht und ein Stein springt weiter, solange er kann; erreicht er die letzte Reihe, wird er zur Dame, die in beide Richtungen zieht.\n\nSpiel gegen den Computer auf Leicht, Mittel, Schwer oder der neuen Stufe Experte, die viel weiter vorausrechnet, oder gegen einen Freund an derselben Konsole. Nach der Partie zeigt „Partie ansehen“ sie Zug für Zug. Tipps, Rückgängig und ein gespeichertes Spiel machen es leicht, jederzeit weiterzuspielen.\n\n• Schlagzwang, Mehrfachsprünge und Damen\n• Vier Computerstufen (neu: Experte) oder zwei Spieler\n• Beendete Partien Zug für Zug ansehen\n• Als Rot oder Schwarz spielen; Tipps, Rückgängig und Statistik je Stufe\n• Touch, Ziehen, Controller oder Tastatur, Spielstand wird gespeichert",
+    "fr": "Les dames anglaises classiques sur un plateau 8×8. Les pions avancent en diagonale, la prise est obligatoire et un pion continue de sauter tant qu’il le peut ; arrivé à la dernière rangée, il devient une dame qui se déplace dans les deux sens.\n\nAffrontez l’ordinateur en Facile, Moyen, Difficile ou au nouveau niveau Expert, qui voit bien plus loin, ou un ami sur la même console. La partie finie, « Revoir la partie » la rejoue coup par coup. Indices, annulation et sauvegarde permettent de reprendre un match quand vous voulez.\n\n• Prise obligatoire, rafles et dames\n• Quatre niveaux d’ordinateur (nouveau : Expert) ou deux joueurs\n• Relecture coup par coup des parties terminées\n• Rouges ou noirs ; indices, annulation et statistiques par niveau\n• Tactile, glisser, manette ou clavier, partie sauvegardée",
+    "es": "Damas inglesas clásicas en un tablero de 8×8. Las piezas avanzan en diagonal, capturar es obligatorio y una pieza sigue saltando mientras pueda; al llegar a la última fila se corona como dama y se mueve en ambos sentidos.\n\nJuega contra el ordenador en Fácil, Medio, Difícil o el nuevo nivel Experto, que calcula mucho más lejos, o contra un amigo en la misma consola. Al terminar, «Revisar partida» la reproduce jugada a jugada. Pistas, deshacer y partida guardada para retomar cuando quieras.\n\n• Captura obligatoria, saltos múltiples y damas\n• Cuatro niveles de ordenador (nuevo: Experto) o dos jugadores\n• Revisa partidas terminadas jugada a jugada\n• Juega con rojas o negras; pistas, deshacer y estadísticas por nivel\n• Táctil, arrastrar, mando o teclado, con la partida guardada",
+    "ja": "8×8の盤で遊ぶ定番のイングリッシュ・ドラフツ。駒は斜めに進み、取れるときは必ず取り、続けて取れる限り跳び続けます。最奥の列に着くと前後に動けるキングに成ります。\n\nコンピューターは「かんたん」「ふつう」「むずかしい」と、ずっと先まで読む新しい「達人」の4段階。同じ本体で友だちとも対戦できます。対局が終わったら「対局をふり返る」で一手ずつ再生。ヒント、待った、自動保存でいつでも続きから。\n\n• 強制取り、連続ジャンプ、キング\n• コンピューター4段階（新：達人）または2人対戦\n• 終わった対局を一手ずつふり返り\n• 赤でも黒でもプレイ可。ヒント、待った、レベル別の統計\n• タッチ、ドラッグ、コントローラー、キーボード。ゲームは保存",
+    "zh": "在 8×8 棋盘上进行的经典英式跳棋。棋子斜向移动，能吃子时必须吃，一枚棋子只要还能跳就会连续跳吃；到达对方底线即升为可前后移动的王。\n\n与电脑对战可选简单、中等、困难，以及看得更远的全新专家级，也可以在同一台主机上与朋友对战。对局结束后，“复盘”可逐步回放。提示、悔棋和自动存档让你随时继续比赛。\n\n• 强制吃子、连跳和升王\n• 四档电脑难度（新增：专家）或双人对战\n• 逐步复盘已结束的对局\n• 可执红或执黑；提示、悔棋和各难度统计\n• 触屏、拖动、手柄或键盘，对局自动保存",
+    "ko": "8×8 보드의 클래식 영국식 체커입니다. 말은 대각선으로 움직이고, 잡을 수 있으면 반드시 잡아야 하며, 잡을 수 있는 한 계속 뛰어넘습니다. 맨 끝 줄에 도착하면 앞뒤로 움직이는 킹이 됩니다.\n\n컴퓨터와 쉬움, 보통, 어려움, 그리고 훨씬 멀리 내다보는 새 전문가 단계로 대결하거나 같은 본체에서 친구와 대결하세요. 게임이 끝나면 '게임 복기'로 한 수씩 다시 봅니다. 힌트, 무르기, 저장된 게임으로 언제든 이어서 할 수 있습니다.\n\n• 강제 잡기, 연속 점프, 킹\n• 컴퓨터 네 단계(새: 전문가) 또는 2인 대전\n• 끝난 게임을 한 수씩 복기\n• 빨강이나 검정으로 플레이, 힌트, 무르기, 단계별 통계\n• 터치, 드래그, 컨트롤러, 키보드, 게임 저장"
   },
   "shots": [
-    ["wait 2.5"],
-    ["key enter", "wait 1.2", "key enter", "wait 0.6", "key up", "key right", "key enter", "wait 2.5", "key h", "wait 2"],
-    ["key escape", "wait 0.6", "key down", "key down", "key down", "key enter", "wait 1", "key down", "key down", "key enter", "wait 1.5"],
-    ["key escape", "wait 0.8", "key enter", "wait 1.2", "dark 1", "wait 1.5"]
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.2",
+      "key enter",
+      "wait 0.6",
+      "key up",
+      "key right",
+      "key enter",
+      "wait 2.5",
+      "key h",
+      "wait 2"
+    ],
+    [
+      "key escape",
+      "wait 0.6",
+      "key down",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.8",
+      "key enter",
+      "wait 1.2",
+      "dark 1",
+      "wait 1.5"
+    ]
   ]
 }

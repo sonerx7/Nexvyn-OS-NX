@@ -1,20 +1,38 @@
 {
   "id": "com.sonerx7.g2048",
-  "name": {"en": "2048", "tr": "2048", "de": "2048", "fr": "2048", "es": "2048", "ja": "2048", "zh": "2048", "ko": "2048"},
-  "description": {
-    "en": "Slide and merge numbered tiles to reach 2048. Four board sizes, undo and best scores.",
-    "tr": "Sayılı karoları kaydırıp birleştirerek 2048'e ulaşın. Dört tahta boyutu, geri alma ve en iyi skorlar.",
-    "de": "Schiebe und verbinde nummerierte Kacheln, um 2048 zu erreichen. Vier Feldgrößen, Rückgängig und Bestwerte.",
-    "fr": "Faites glisser et fusionnez les tuiles numérotées pour atteindre 2048. Quatre tailles de plateau, annulation et meilleurs scores.",
-    "es": "Desliza y combina fichas numeradas hasta llegar a 2048. Cuatro tamaños de tablero, deshacer y mejores puntuaciones."
+  "name": {
+    "en": "2048",
+    "tr": "2048",
+    "de": "2048",
+    "fr": "2048",
+    "es": "2048",
+    "ja": "2048",
+    "zh": "2048",
+    "ko": "2048"
   },
-  "version": "1.0.1",
+  "description": {
+    "en": "Slide and merge tiles to 2048 on 3×3 to 6×6 boards, in Classic or a three-minute Time Attack, with undo and a smart hint.",
+    "tr": "3×3'ten 6×6'ya tahtalarda kaydır, birleştir, 2048'e ulaş; Klasik ya da üç dakikalık Zamana Karşı modu, geri alma ve akıllı ipucu.",
+    "de": "Schieb und verschmelz Kacheln bis 2048 auf 3×3 bis 6×6, klassisch oder als dreiminütige Zeitjagd, mit Rückgängig und klugem Tipp.",
+    "fr": "Faites glisser et fusionnez les tuiles jusqu’à 2048 sur des grilles de 3×3 à 6×6, en Classique ou en Contre-la-montre de trois minutes, avec annulation et indice malin.",
+    "es": "Desliza y une fichas hasta 2048 en tableros de 3×3 a 6×6, en Clásico o Contrarreloj de tres minutos, con deshacer y pista inteligente.",
+    "ja": "3×3〜6×6の盤でタイルをスライドして合体、2048を目指そう。クラシックと3分間のタイムアタック、元に戻す、賢いヒントつき。",
+    "zh": "在 3×3 到 6×6 的棋盘上滑动合并方块冲击 2048。经典模式或三分钟限时挑战，支持撤销和智能提示。",
+    "ko": "3×3부터 6×6 보드에서 타일을 밀고 합쳐 2048을 만드세요. 클래식과 3분 타임 어택, 실행 취소와 똑똑한 힌트."
+  },
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 500, "height": 640, "minWidth": 400, "minHeight": 520, "resizable": true},
+  "window": {
+    "width": 500,
+    "height": 640,
+    "minWidth": 400,
+    "minHeight": 520,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": true,
   "minSdk": "1.0",

@@ -1,0 +1,39 @@
+{
+  "subtitle": {
+    "en": "Twin-stick roguelite with relics and bosses",
+    "tr": "Kalıntılı, bosslu çift çubuklu roguelite",
+    "de": "Twin-Stick-Roguelite: Relikte und Bosse",
+    "fr": "Roguelite twin-stick : reliques et boss",
+    "es": "Roguelite de doble stick: reliquias y jefes",
+    "ja": "レリックとボスのローグライト",
+    "zh": "双摇杆肉鸽：遗物、首领与无限流派",
+    "ko": "유물과 보스의 로그라이트"
+  },
+  "description": {
+    "en": "Dive into the Void with a ship that grows stranger every room. Each run builds three new floors of rooms, shops and treasure vaults; clear a room to open its doors, pick relics that stack into wild weapons, and face a boss at the bottom of every floor. When you fall, the void essence you carried back buys permanent upgrades in the Sanctum.\n\n• Procedural floors with ten room shapes, treasure rooms, shops and elite fights\n• 22 relics that stack: ricochet, piercing, homing, chain lightning, drones, shrapnel and more\n• Nine enemy types and three bosses with their own attack patterns\n• Dash through bullets, clear the screen with nova bombs\n• Permanent upgrades, best score, depth and run statistics\n• Twin-stick controls, keyboard (WASD + arrows) and touch with auto-aim; HD rumble and screen shake",
+    "tr": "Her odada biraz daha tuhaflaşan bir gemiyle Boşluğa dal. Her koşu odalar, dükkânlar ve hazine odalarından oluşan üç yeni kat kurar; kapıları açmak için odayı temizle, birikerek çılgın silahlara dönüşen kalıntılar seç ve her katın dibinde bir bossla yüzleş. Düştüğünde, geri getirdiğin boşluk özü Mabet'te kalıcı geliştirmeler satın alır.\n\n• On oda biçimi, hazine odaları, dükkânlar ve seçkin dövüşlerle yordamsal katlar\n• Birikebilen 22 kalıntı: sekme, delme, güdümlü mermi, zincir şimşek, dronlar, şarapnel ve dahası\n• Dokuz düşman türü ve kendi saldırı düzenleri olan üç boss\n• Mermilerin içinden atıl, nova bombalarıyla ekranı temizle\n• Kalıcı geliştirmeler, en iyi puan, derinlik ve koşu istatistikleri\n• Çift çubuk, klavye (WASD + oklar) ve otomatik nişanlı dokunmatik; HD titreşim ve ekran sarsıntısı",
+    "de": "Tauche mit einem Schiff in die Leere, das mit jedem Raum seltsamer wird. Jeder Lauf baut drei neue Ebenen aus Räumen, Läden und Schatzkammern; säubere einen Raum, um seine Türen zu öffnen, wähle Relikte, die sich zu wilden Waffen stapeln, und stelle dich am Grund jeder Ebene einem Boss. Wenn du fällst, kauft die mitgebrachte Leere-Essenz dauerhafte Upgrades im Heiligtum.\n\n• Prozedurale Ebenen mit zehn Raumformen, Schatzkammern, Läden und Elitekämpfen\n• 22 stapelbare Relikte: Abpraller, Durchschlag, Zielsuche, Kettenblitz, Drohnen, Schrapnell und mehr\n• Neun Gegnertypen und drei Bosse mit eigenen Angriffsmustern\n• Sprinte durch Geschosse, räume den Bildschirm mit Nova-Bomben\n• Dauerhafte Upgrades, Bestwert, Tiefe und Laufstatistiken\n• Twin-Stick-Steuerung, Tastatur (WASD + Pfeile) und Touch mit Zielhilfe; HD-Vibration und Bildschirmwackeln",
+    "fr": "Plongez dans le Vide à bord d’un vaisseau qui devient plus étrange à chaque salle. Chaque partie crée trois nouveaux étages de salles, de boutiques et de trésors ; nettoyez une salle pour ouvrir ses portes, choisissez des reliques qui se cumulent en armes folles et affrontez un boss au fond de chaque étage. Quand vous tombez, l’essence du vide rapportée achète des améliorations permanentes au Sanctuaire.\n\n• Étages procéduraux avec dix formes de salles, salles au trésor, boutiques et combats d’élite\n• 22 reliques cumulables : ricochet, perforation, tirs à tête chercheuse, éclair en chaîne, drones, shrapnel et plus\n• Neuf types d’ennemis et trois boss avec leurs propres attaques\n• Ruée à travers les tirs, bombes nova pour nettoyer l’écran\n• Améliorations permanentes, meilleur score, profondeur et statistiques\n• Commandes twin-stick, clavier (WASD + flèches) et tactile avec visée auto ; vibrations HD et tremblements",
+    "es": "Sumérgete en el Vacío con una nave que se vuelve más extraña en cada sala. Cada partida crea tres pisos nuevos de salas, tiendas y cámaras del tesoro; limpia una sala para abrir sus puertas, elige reliquias que se acumulan en armas locas y enfréntate a un jefe al fondo de cada piso. Al caer, la esencia del vacío que traes compra mejoras permanentes en el Santuario.\n\n• Pisos procedurales con diez formas de sala, salas del tesoro, tiendas y combates de élite\n• 22 reliquias acumulables: rebote, perforación, disparos teledirigidos, rayo en cadena, drones, metralla y más\n• Nueve tipos de enemigos y tres jefes con sus propios patrones\n• Esquiva a través de las balas y limpia la pantalla con bombas nova\n• Mejoras permanentes, mejor puntuación, profundidad y estadísticas\n• Doble stick, teclado (WASD + flechas) y táctil con apuntado automático; vibración HD y temblor de pantalla",
+    "ja": "部屋を進むほど奇妙に変化していく船で虚空へ潜れ。ランごとに部屋・ショップ・宝物庫からなる 3 つの新フロアが生成される。部屋の敵を倒して扉を開き、重ねるほど強力になるレリックで武器を組み上げ、各フロアの底でボスと戦おう。倒れても、持ち帰った虚空エッセンスで聖域の永続強化を購入できる。\n\n• 10 種類の部屋形状、宝物庫、ショップ、エリート戦を含む自動生成フロア\n• 重ねられる 22 種のレリック：跳弾、貫通、追尾、連鎖電撃、ドローン、破片ほか\n• 9 種の敵と、それぞれ独自の攻撃パターンを持つ 3 体のボス\n• ダッシュで弾をすり抜け、ノヴァボムで画面を一掃\n• 永続強化、ベストスコア、到達深度、ランの統計\n• ツインスティック、キーボード（WASD＋矢印）、オートエイム付きタッチ操作。HD 振動と画面の揺れ",
+    "zh": "驾驶一艘每过一个房间就变得更奇特的飞船潜入虚空。每局都会生成三层全新的房间、商店和宝库；清空房间打开房门，挑选能叠加成疯狂武器的遗物，并在每层底部迎战首领。倒下之后，带回的虚空精华可在圣所购买永久升级。\n\n• 随机生成楼层：十种房间布局、宝库、商店与精英战\n• 22 种可叠加遗物：跳弹、穿透、追踪、连锁闪电、无人机、弹片等\n• 九种敌人和三位拥有独特攻击模式的首领\n• 冲刺穿越弹幕，用新星炸弹清屏\n• 永久升级、最高分、最深层数与对局统计\n• 双摇杆、键盘（WASD + 方向键）和带自动瞄准的触控；HD 震动与屏幕震动",
+    "ko": "방을 지날수록 기묘해지는 함선으로 공허에 뛰어드세요. 매 런마다 방, 상점, 보물 방으로 이루어진 새로운 세 층이 생성됩니다. 방을 정리해 문을 열고, 겹칠수록 기상천외해지는 유물로 무기를 만들고, 각 층의 끝에서 보스와 맞서세요. 쓰러져도 가져온 공허의 정수로 성소에서 영구 강화를 살 수 있습니다.\n\n• 열 가지 방 구조, 보물 방, 상점, 엘리트 전투가 있는 절차 생성 층\n• 중첩되는 22가지 유물: 도탄, 관통, 유도, 연쇄 번개, 드론, 파편 등\n• 아홉 종류의 적과 고유 공격 패턴을 가진 세 보스\n• 대시로 탄막을 뚫고 노바 폭탄으로 화면 정리\n• 영구 강화, 최고 점수, 도달 깊이, 런 통계\n• 트윈 스틱, 키보드(WASD + 화살표), 자동 조준 터치; HD 진동과 화면 흔들림"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 4.5"
+    ],
+    [
+      "hold j 1.2",
+      "wait 0.2"
+    ],
+    [
+      "key escape",
+      "wait 1"
+    ]
+  ]
+}

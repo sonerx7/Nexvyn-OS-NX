@@ -1,5 +1,6 @@
--- Pixel Art: draw 8×8, 16×16 or 32×32 sprites with pencil, eraser, fill, line, rectangle and eyedropper tools,
--- a PICO-8 style palette plus your own colours, mirror drawing, undo/redo, a gallery and real PNG export.
+-- Pixel Art: draw 8×8 to 64×64 sprites with pencil, eraser, fill, line, rectangle, colour replace and eyedropper
+-- tools, a 16-colour retro palette plus your own colours, two-way and four-way mirror drawing, rotate / flip / shift,
+-- undo/redo, a gallery and real PNG export.
 local png = require("png")
 local app = {}
 
@@ -11,9 +12,11 @@ local TOOLS = {
   {id = "fill", icon = "format_color_fill", key = "t_fill", hot = "f"},
   {id = "line", icon = "horizontal_rule", key = "t_line", hot = "l"},
   {id = "rect", icon = "check_box_outline_blank", key = "t_rect", hot = "r"},
+  {id = "replace", icon = "find_replace", key = "t_replace", hot = "s"},
   {id = "picker", icon = "colorize", key = "t_picker", hot = "i"},
 }
-local SIZES = {8, 16, 32}
+local SIZES = {8, 16, 32, 64}
+local mirrorV = false          -- with mirror: four-way symmetry
 
 local N = 16
 local px = {}                 -- N*N colours ("" = transparent)
@@ -80,7 +83,36 @@ local function set(x, y, c)
   if x < 0 or y < 0 or x >= N or y >= N then return end
   px[y * N + x + 1] = c
   if mirror then px[y * N + (N - 1 - x) + 1] = c end
+  if mirrorV then
+    px[(N - 1 - y) * N + x + 1] = c
+    if mirror then px[(N - 1 - y) * N + (N - 1 - x) + 1] = c end
+  end
   runsDirty = true
+end
+
+-- mirror button and M key: off -> left/right -> four-way -> off
+local function cycleMirror()
+  if not mirror and not mirrorV then mirror = true
+  elseif mirror and not mirrorV then mirrorV = true
+  else mirror, mirrorV = false, false end
+end
+
+-- whole-canvas transforms (undoable)
+local function transform(kind)
+  local f = {}
+  for y = 0, N - 1 do
+    for x = 0, N - 1 do
+      local sx, sy = x, y
+      if kind == "rot" then sx, sy = y, N - 1 - x
+      elseif kind == "flipv" then sy = N - 1 - y
+      elseif kind == "left" then sx = (x + 1) % N
+      elseif kind == "right" then sx = (x - 1) % N
+      elseif kind == "up" then sy = (y + 1) % N
+      elseif kind == "down" then sy = (y - 1) % N end
+      f[y * N + x + 1] = px[sy * N + sx + 1]
+    end
+  end
+  return f
 end
 
 local function floodFill(x, y, c)
@@ -186,7 +218,8 @@ end
 -- ------------------------------------------------------------------ callbacks
 function app.load()
   local c = store.get("current", nil)
-  if type(c) == "table" and type(c.px) == "table" and (c.n == 8 or c.n == 16 or c.n == 32) and #c.px == c.n * c.n then
+  if type(c) == "table" and type(c.px) == "table" and (c.n == 8 or c.n == 16 or c.n == 32 or c.n == 64)
+     and #c.px == c.n * c.n then
     N, px = c.n, c.px
   else
     N, px = 16, blank(16)
@@ -290,16 +323,18 @@ end
 
 local function drawEditor(w, h)
   -- top bar
-  local ns = ui.segmented("size", {"8×8", "16×16", "32×32"}, N == 8 and 1 or N == 16 and 2 or 3, 16, 12, 210, 32)
+  local ns = ui.segmented("size", {"8", "16", "32", "64"}, N == 8 and 1 or N == 16 and 2 or N == 32 and 3 or 4, 16, 12, 248, 32)
   if SIZES[ns] ~= N then
     local n = SIZES[ns]
     ui.alert(TR("new_size"), TR("new_size_msg", n), {TR("create"), TR("common.cancel")}, function(b) if b == 1 then newCanvas(n) end end)
   end
-  local bx = 238
+  local bx = 276
   if ui.iconButton("undo", bx, 12, 34, 32, nil, false, "u") and #undo > 0 then doUndo() end
   if ui.iconButton("redo", bx + 38, 12, 34, 32, nil, false, "r") and #redo > 0 then doRedo() end
   if ui.iconButton(grid and "grid_on" or "grid_off", bx + 84, 12, 34, 32, nil, grid, "g") then grid = not grid; store.set("grid", grid) end
-  if ui.iconButton("flip", bx + 122, 12, 34, 32, nil, mirror, "m") then mirror = not mirror end
+  if ui.iconButton(mirrorV and "filter_center_focus" or "flip", bx + 122, 12, 34, 32, nil, mirror or mirrorV, "m") then
+    cycleMirror()
+  end
   if ui.button(TR("gallery"), w - 300, 12, 136, 32, "default", "photo_library") then screen = "gallery" end
   if ui.button(TR("export_short"), w - 156, 12, 140, 32, "primary", "ios_share") then exportPNG() end
 
@@ -489,6 +524,13 @@ local function apply(cx, cy)
   elseif tool == "picker" then
     local c = get(cx, cy)
     if c and c ~= "" then color = c; store.set("color", c); tool = "pencil" end
+  elseif tool == "replace" then
+    -- every pixel of the tapped colour takes the current colour
+    local target = get(cx, cy)
+    if target and target ~= color then
+      for i = 1, N * N do if px[i] == target then px[i] = color end end
+      runsDirty = true
+    end
   end
 end
 
@@ -521,7 +563,7 @@ function app.event(e)
     if e.ctrl and k == "z" then doUndo()
     elseif e.ctrl and k == "y" then doRedo()
     elseif k == "g" then grid = not grid; store.set("grid", grid)
-    elseif k == "m" then mirror = not mirror
+    elseif k == "m" then cycleMirror()
     else
       for _, t in ipairs(TOOLS) do if k == t.hot then tool = t.id end end
     end
@@ -543,8 +585,15 @@ function app.menu()
       {label = TR("redo"), id = 6, shortcut = "Ctrl+Y"},
       "-",
       {label = TR("grid"), id = 7, shortcut = "G"},
-      {label = TR("mirror"), id = 8, shortcut = "M"},
+      {label = TR("mirror"), id = 8, shortcut = "M", checked = mirror and not mirrorV},
+      {label = TR("mirror4"), id = 12, checked = mirrorV},
+      "-",
       {label = TR("flip_h"), id = 9},
+      {label = TR("flip_v"), id = 13},
+      {label = TR("rotate"), id = 14},
+      {label = TR("shift_l"), id = 15}, {label = TR("shift_r"), id = 16},
+      {label = TR("shift_u"), id = 17}, {label = TR("shift_d"), id = 19},
+      "-",
       {label = TR("clear"), id = 10},
     }},
   }
@@ -562,7 +611,14 @@ function app.onmenu(id)
   elseif id == 5 then doUndo()
   elseif id == 6 then doRedo()
   elseif id == 7 then grid = not grid; store.set("grid", grid)
-  elseif id == 8 then mirror = not mirror
+  elseif id == 8 then mirror, mirrorV = not (mirror and not mirrorV), false
+  elseif id == 12 then
+    if mirrorV then mirror, mirrorV = false, false else mirror, mirrorV = true, true end
+  elseif id >= 13 and id <= 19 and id ~= 18 then
+    pushUndo()
+    px = transform(({[13] = "flipv", [14] = "rot", [15] = "left", [16] = "right", [17] = "up", [19] = "down"})[id])
+    runsDirty = true
+    saveCurrent()
   elseif id == 9 then
     pushUndo()
     local f = {}

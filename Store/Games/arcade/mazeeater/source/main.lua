@@ -1,25 +1,47 @@
--- Labirent Yiyici / Maze Eater for Nexvyn OS: a Pac-Man-like maze game with dots, power pellets, fruit,
--- a side tunnel and three ghosts that scatter, chase (each with its own targeting), flee and return as eyes.
+-- Labirent Yiyici / Maze Eater for Nexvyn OS: a maze chase with dots, power pellets, fruit, a side tunnel and three
+-- ghosts that scatter, chase (each with its own targeting), flee and return as eyes. Four mazes, each with its own
+-- colours, take turns every two levels; three difficulties, medals and records.
 local K = require("arcade")
 local floor, min, max, abs, sin, cos, pi = math.floor, math.min, math.max, math.abs, math.sin, math.cos, math.pi
 local random = math.random
 
 -- left half of the maze (the right half is mirrored). # wall, . dot, o power pellet, - ghost door, space empty
-local HALF = {
-  "##########", "#........#", "#o##.###.#", "#.........", "#.##.#.###", "#....#...#", "####.### #",
-  "####.#    ", "####.# ##-", "    .  #  ", "####.# ###", "####.#    ", "####.# ###", "#........#",
-  "#.##.###.#", "#o.#....  ", "##.#.#.###", "#....#...#", "#.######.#", "#.........", "##########",
-}
-local COLS, ROWS = 19, #HALF
-local MAP = {}
-for y = 1, ROWS do
-  local left = HALF[y]
-  MAP[y] = left .. left:sub(1, 9):reverse()
+-- every maze shares the ghost house rows in the middle (checked offline: no dead ends, every dot reachable)
+local MID = {"####.### #", "####.#    ", "####.# ##-", "    .  #  ", "####.# ###", "####.#    ", "####.# ###"}
+local function maze(top, bottom)
+  local t = {}
+  for _, r in ipairs(top) do t[#t + 1] = r end
+  for _, r in ipairs(MID) do t[#t + 1] = r end
+  for _, r in ipairs(bottom) do t[#t + 1] = r end
+  return t
 end
+local MAZES = {
+  maze({"##########", "#........#", "#o##.###.#", "#.........", "#.##.#.###", "#....#...#"},
+       {"#........#", "#.##.###.#", "#o.#....  ", "##.#.#.###", "#....#...#", "#.######.#", "#.........", "##########"}),
+  maze({"##########", "#.........", "#o##.##.#.", "#.........", "#.##.#.##.", "#....#...."},
+       {"#....#...#", "#.##.#.#.#", "#o........", "##.#.##.##", "#.........", "#.##.##.##", "#.........", "##########"}),
+  maze({"##########", "#...#.....", "#o#...##.#", "#.#.#.....", "#...#.##.#", "##.......#"},
+       {"#.........", "#.##.#.##.", "#o.#......", "##...##.##", "#..#....##", "#.##.#.###", "#.........", "##########"}),
+  maze({"##########", "#.........", "#.#.##.#.#", "#o#.......", "#.#.###.#.", "#........."},
+       {"#....#...#", "#.##.#.#.#", "#o........", "#.#.##.#.#", "#.#.......", "#...##.#.#", "#.........", "##########"}),
+}
+local WALLC = {{"#1D2E9E", "#3D6BFF"}, {"#6A1D9E", "#C56BFF"}, {"#11705A", "#3DFFB0"}, {"#8E3E14", "#FF9A3D"}}
+local COLS, ROWS = 19, #MAZES[1]
+local MAP = {}
+local mazeNo = 1
+local function setMaze(i)
+  mazeNo = i
+  for y = 1, ROWS do
+    local left = MAZES[i][y]
+    MAP[y] = left .. left:sub(1, 9):reverse()
+  end
+end
+setMaze(1)
 local PSTART_X, PSTART_Y = 9, 15
 local DOOR_X, DOOR_Y = 9, 7          -- tile above the door (outside the house)
 local HOUSE_Y = 9
-local G = {icon = "catching_pokemon", accent = "#FFD60A", stickPress = true, overIcon = "sentiment_dissatisfied"}
+local G = {icon = "sentiment_very_satisfied", accent = "#FFD60A", stickPress = true, overIcon = "sentiment_dissatisfied",
+  difficulty = true, medals = {5000, 15000, 35000}}
 
 local GCOL = {"#FF453A", "#FF8AD8", "#30D5FF"}
 local cells, dotsLeft, dotsTotal = {}, 0, 0
@@ -47,6 +69,7 @@ local function open(x, y, ghost)
 end
 
 local function buildMaze()
+  setMaze(floor((level - 1) / 2) % #MAZES + 1)
   cells, runs = {}, {}
   dotsLeft = 0
   for y = 0, ROWS - 1 do
@@ -169,7 +192,7 @@ end
 local function ghostSpeed(g)
   if g.state == "eyes" then return 14 end
   if g.state == "fright" then return 4.2 end
-  local s = 6.6 + min(level - 1, 6) * 0.35
+  local s = (6.6 + min(level - 1, 6) * 0.35) * K.dmul
   if g.ty == 9 and (g.tx < 4 or g.tx > COLS - 5) then s = s * 0.55 end   -- tunnel
   return s
 end
@@ -228,7 +251,7 @@ local function eatAt(x, y, playing)
       K.tone(c == "o" and 300 or (eatenDots % 2 == 0 and 520 or 440), 0.04, 0.07, "triangle")
     end
     if c == "o" then
-      frightT = max(2.5, 7 - level * 0.6)
+      frightT = max(2.5, 7 - level * 0.6) / K.dmul
       chain = 0
       for _, g in ipairs(ghosts) do
         if g.state == "out" then
@@ -308,7 +331,10 @@ local function simulate(dt, demo)
       placeActors()
       fruit.on = false
       eatenDots = 0
-      if playing then K.callout(TR("level_n", level), "#FFD60A", 40, "level", 1.5) end
+      if playing then
+        K.callout(TR("level_n", level), "#FFD60A", 40, "level", 1.5)
+        if (level - 1) % 2 == 0 then K.callout(TR("new_maze"), WALLC[mazeNo][2], 28, "maze", 1.5) end
+      end
     end
     return
   end
@@ -318,7 +344,7 @@ local function simulate(dt, demo)
       lives = lives - 1
       if lives <= 0 and playing then
         K.over({stats = {{TR("level"), tostring(level)}, {TR("dots"), tostring(eatenDots)},
-          {TR("ghosts"), tostring(eatenGhosts)}, {TR("fruits"), tostring(fruits)}}})
+          {TR("ghosts"), tostring(eatenGhosts)}, {TR("fruits"), tostring(fruits)}, {TR("maze_n_label"), tostring(mazeNo)}}})
         return
       end
       placeActors()
@@ -450,10 +476,10 @@ function G.draw(w, h)
   local flash = clearT > 0 and floor(clearT * 6) % 2 == 0
   for i = 1, #runs do
     local r = runs[i]
-    K.color(flash and "#FFFFFF" or "#1D2E9E")
+    K.color(flash and "#FFFFFF" or WALLC[mazeNo][1])
     gfx.rect(ox + r[1] * c, oy + r[3] * c, (r[2] - r[1] + 1) * c, c)
   end
-  K.color(flash and "#FFFFFF" or "#3D6BFF", 0.55)
+  K.color(flash and "#FFFFFF" or WALLC[mazeNo][2], 0.55)
   for i = 1, #runs do
     local r = runs[i]
     gfx.rect(ox + r[1] * c + c * 0.3, oy + r[3] * c + c * 0.38, (r[2] - r[1] + 1) * c - c * 0.6, c * 0.24, c * 0.12)

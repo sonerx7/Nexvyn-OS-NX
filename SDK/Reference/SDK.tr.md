@@ -103,7 +103,7 @@ kullanıcıyı uyarır. Package biçiminin tamamı, imzalama, izin kuralları ve
 
 ### SDK sürümleri
 
-`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.6"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
+`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.7"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
 yükseltin.
 
 | SDK | Nexvyn OS'un ekledikleri |
@@ -115,6 +115,7 @@ yükseltin.
 | 1.4 | her izin zorunlu; `sys.share`, `sys.schedule` / `unschedule` / `scheduled`, `sys.hasPermission` / `requestPermission`, `sys.memory`, `sys.appUrl`, `sys.open` içinde `nxv://` bağlantıları; `app.search`, `app.suspend`, `app.resume`, `app.focus`, `app.autosave`, `app.unsaved` callback'leri; app.json `shareTargets`; imzalı package'lar; Lua uygulamaları için de 64 MB sınırı |
 | 1.5 | Tek ortak uygulama üzerinde Squirrel (bölüm 13), konsolda derlenen C (bölüm 14) ve Java (bölüm 15) runtime'lar; app.json `"runtime"` değerleri `"squirrel"`, `"c"`, `"java"` ve `"mainClass"`; Python sistem kütüphanesi (`itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys`) |
 | 1.6 | `fs.unzip` (bir zip'i arka planda ilerlemeyle açar) ve yeni `"games"` izniyle `sys.games` (yüklü oyunlar), Lua, JavaScript, Python ve Squirrel'da; her runtime'da `sys.speak` / `sys.stopSpeaking` (metin okuma, izin gerekmez); `"python3"` runtime'ı (CPython 3.12, bölüm 12) |
+| 1.7 | JavaScript'te `g3d.voxels` voksel dünyaları (bölüm 8b, *Voksel dünyalar*): chunk akışı, yerleşik arazi üreteci, ışık, arka plan thread'lerinde üretilen yumuşak ışıklı mesh'ler, texture atlas shader'ı, kayıt, ışın testi, kutu fiziği; Lua ve JavaScript'te `mesh:setTexture(path, pixelated)` |
 
 ### Uyumluluk: targetSdk ve deprecation
 
@@ -363,7 +364,7 @@ saatinde `{year, month, day, hour, min, sec, wday (0=Pazar), yday, epoch}` · `s
 `sys.notify(title, body)` (bildirim şeridi) · `sys.open(path)` (doğru uygulamayla açar) · `sys.launch(appId[, arg])` ·
 `sys.clipboard([text])` al/ayarla · `sys.log(...)` / `print(...)` · `sys.title(text)` pencere başlığı · `sys.exit()`
 pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim) · `sys.appid()` ·
-`sys.sdkVersion()` → `"1.6"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
+`sys.sdkVersion()` → `"1.7"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
 `sys.games` ve `nxv://` bağlantıları kendi izinlerini gerektirir (bölüm 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, izin gerekmez) metni yerleşik sesle okur; o an söylenenin ardından sıraya girer ve
@@ -488,6 +489,33 @@ bayrağı) ve `g3d::lastTriangles()` yanında `g3d::lastDrawCalls()` alır.
 
 Hareket kontrolleri: `input.motion()` → Joy-Con / Pro Controller / el modu jiroskopundan `ax, ay, az` (G cinsinden
 ivme), `gx, gy, gz` (rad/s cinsinden açısal hız), `pitch, roll, yaw` (radyan cinsinden birikmiş dönüş).
+
+### Voksel dünyalar — `g3d.voxels` (SDK 1.7, JavaScript)
+
+Voxel sandbox oyunları için native çalışan bir blok dünyası motoru: oyun mantığı JavaScript'te kalır; ağır iş
+(üretim, ışık, mesh'ler, dosya işlemleri) iki arka plan thread'inde yapılır ve dünya GPU yolunda bir texture atlas
+shader'ıyla çizilir. `"minSdk": "1.7"` yazın. *Blok Diyarı / BlockLands* oyunu bunun üzerine kuruludur. Tam API
+tablosu İngilizce belgededir (`sdk/SDK.en.md`, *Voxel worlds*); özet:
+
+- `g3d.voxels({atlas, tiles, height, generator, seed, sea, flatY, blocks, save, threads})` → world. `generator`:
+  `"terrain"` (biyomlar, mağaralar, cevherler, ağaçlar), `"flat"` veya `"none"`. `blocks` üretecin kullandığı id'leri
+  verir; `save` değişen chunk'ların yazılacağı klasördür.
+- `world.define(id, def)`: model (`"cube"`, `"cutout"`, `"cross"`, `"liquid"`, `"torch"`, `"box"`, `"fence"`,
+  `"crop"`, `"fire"`, `"cactus"`), `tex` (tile, 6'lı dizi veya `{top, bottom, side, ...}`), `solid`, `opacity`,
+  `light`, `collide`, `select`, `leaves`, `wave`, `glow`, `emissive`, `cullSame`, `liquid`, `level`, `attach`,
+  `facing`, `box`, `collision`, `selection`.
+- Her karede `world.view(x, z, yarıçap)` ve `world.update()` (yeni üretilen chunk'ları `[cx, cz, ...]` olarak verir;
+  bu karede yapılan `set` değişiklikleri chunk'ı "değişti" saymaz: köy gibi yapılar için), `g3d.begin` ile
+  `g3d.finish` arasında `world.draw()`, ışık için `world.environment({daylight, skyTint, time, ...})`.
+- Sorgular: `get`, `set`, `light`, `top`, `biome`, `terrain`, `chunk`, `setChunk`, `loaded`, `raycast`, `move`
+  (kutu fiziği, basamak çıkma), `blocked`, `clearArea`, `save`, `stats`, `close`.
+
+Chunk'lar 16 x 16 x `height` bloktur, blok başına bir bayt (0 = hava); chunk içinde indeks `x + z * 16 + y * 256`.
+Işık: gök ışığı sütunlardan aşağı iner, blok ışığı yayılır; köşeler komşu hücrelerin ortalamasını alır (smooth
+lighting) ve katı blokların yanında kararır (ambient occlusion). GPU yolu gerekir (`g3d.gpu()`).
+
+Mesh'lerde piksel sanatı: `mesh.setTexture(path, true)` (SDK 1.7; Lua'da `mesh:setTexture(path, true)`) görseli
+yumuşatmadan büyütür.
 
 ## 8c. 2D oyun motoru (nexvyn.game)
 

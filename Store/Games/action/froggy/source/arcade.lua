@@ -18,7 +18,12 @@
 --   key(name)                 keyboard keys without a normalized action (digits, letters) while playing
 --   options(x, y, w), optionsHeight   extra widgets on the title card
 --   bestKey()                 store key for the best score (per mode)
+--   modeName()                label of the current mode (records card)
+--   difficulty = true         Easy / Normal / Hard picker on the title card; the game scales its speed by K.dmul
+--   medals = {b, s, g}        score needed for a bronze, silver and gold medal (Normal; scaled for other levels)
 --   stickPress, rep = {left = true}, repDelay, repRate   d-pad style stick and auto repeat
+-- Every score also goes into a top-10 table per mode and difficulty (the Records card, X / Y on the title card),
+-- and lifetime totals (rounds, time, points) are kept. The game pauses itself when the console leaves the app.
 local K = {}
 
 local floor, min, max, abs, sin, cos, sqrt, exp, random, pi = math.floor, math.min, math.max, math.abs, math.sin,
@@ -38,6 +43,11 @@ K.stateAt, K.pauseAt, K.overAt = 0, 0, 0
 K.playTime = 0
 K.comboN, K.comboT, K.maxCombo = 0, 0, 0
 K.lastInput = "pad"
+K.diff = 2            -- 1 = easy, 2 = normal, 3 = hard
+K.DMUL = {0.8, 1, 1.25}
+K.dmul = 1            -- speed multiplier of the chosen difficulty
+K.rank = nil          -- place of the last round in the top-10 table
+K.medal = 0           -- medal of the last round: 0 none, 1 bronze, 2 silver, 3 gold
 
 local G = {}
 local bestKeyStr = "best"
@@ -357,9 +367,58 @@ end
 function K.held(act) return K.down[act] == true or stickDir == act end
 
 -- ------------------------------------------------------------------ flow
+local DSUF = {"_easy", "", "_hard"}
 function K.loadBest()
-  bestKeyStr = G.bestKey and G.bestKey() or "best"
+  bestKeyStr = (G.bestKey and G.bestKey() or "best") .. (G.difficulty and DSUF[K.diff] or "")
   K.best = store.get(bestKeyStr, 0)
+end
+function K.setDiff(d)
+  K.diff = K.clamp(d, 1, 3)
+  K.dmul = K.DMUL[K.diff]
+  store.set("difficulty", K.diff)
+  K.loadBest()
+end
+local MEDALC = {"#CD7F32", "#C0C8D4", "#FFD60A"}
+K.MEDALC = MEDALC
+-- score needed for medal m (1..3) at the current difficulty
+function K.medalAt(m)
+  if not G.medals then return nil end
+  local f = G.difficulty and ({0.6, 1, 1.5})[K.diff] or 1
+  return floor(G.medals[m] * f + 0.5)
+end
+function K.top()
+  local t = store.get(bestKeyStr .. "_top", nil)
+  return type(t) == "table" and t or {}
+end
+function K.bestMedal() return tonumber(store.get(bestKeyStr .. "_medal", 0)) or 0 end
+function K.life()
+  local t = store.get("life", nil)
+  return type(t) == "table" and t or {}
+end
+local function record(score, tm)
+  local top = K.top()
+  local pos = #top + 1
+  for i = 1, #top do
+    if score > (top[i].s or 0) then pos = i break end
+  end
+  if pos <= 10 and score > 0 then
+    table.insert(top, pos, {s = score, d = sys.epoch(), t = floor(tm)})
+    while #top > 10 do table.remove(top) end
+    store.set(bestKeyStr .. "_top", top)
+    K.rank = pos
+  else
+    K.rank = nil
+  end
+  local L = K.life()
+  L.g, L.t, L.s = (L.g or 0) + 1, (L.t or 0) + floor(tm), (L.s or 0) + score
+  L.c = max(L.c or 0, K.maxCombo)
+  store.set("life", L)
+  K.medal = 0
+  for m = 3, 1, -1 do
+    local need = K.medalAt(m)
+    if need and score >= need then K.medal = m break end
+  end
+  if K.medal > K.bestMedal() then store.set(bestKeyStr .. "_medal", K.medal) end
 end
 function K.addScore(n)
   K.score = K.score + n
@@ -390,6 +449,11 @@ function K.toTitle()
   K.stateAt = K.now
   fadeT = 0.6
 end
+function K.showRecords()
+  K.state = "records"
+  K.recAt = K.now
+  K.sfx("click")
+end
 function K.setPaused(p)
   if K.state ~= "play" or K.paused == p then return end
   K.paused = p
@@ -406,6 +470,14 @@ function K.over(opts)
   for i, s in ipairs(opts.stats or EMPTY) do stats[i] = s end
   stats[#stats + 1] = {TR("time_played"), K.fmtTime(K.playTime)}
   if K.maxCombo >= 2 then stats[#stats + 1] = {TR("max_combo"), "x" .. K.maxCombo} end
+  K.medal, K.rank = 0, nil
+  if not K.noBest then
+    record(K.score, K.playTime)
+    if K.medal > 0 then
+      stats[#stats + 1] = {TR("medal"), TR(({"medal_bronze", "medal_silver", "medal_gold"})[K.medal]), MEDALC[K.medal]}
+    end
+    if K.rank then stats[#stats + 1] = {TR("records"), "#" .. K.rank} end
+  end
   K.overStats = stats
   if not K.noBest and K.score > K.best then
     K.best = K.score
@@ -425,9 +497,16 @@ end
 
 function K.press(act, e)
   if act == "mute" then K.setMuted(not K.muted) return end
-  if K.state == "title" then
+  if K.state == "records" then
+    if act == "a" or act == "b" or act == "pause" or act == "x" or act == "y" then K.state = "title"; K.sfx("click") end
+  elseif K.state == "title" then
     if K.now - K.stateAt < 0.25 then return end
     if act == "a" or act == "pause" then K.start()
+    elseif act == "x" or act == "y" then K.showRecords()
+    elseif G.difficulty and (act == "l" or act == "r" or act == "zl" or act == "zr") then
+      K.setDiff(K.diff + ((act == "l" or act == "zl") and -1 or 1))
+      G.reset()
+      K.sfx("click")
     elseif G.titlePress then G.titlePress(act) end
   elseif K.state == "over" then
     if K.now - K.overAt < 0.8 then return end
@@ -545,6 +624,7 @@ local function drawTitle(w, h)
   local nctl = #(K.controls or EMPTY)
   local optH = G.optionsHeight or 0
   local cw = min(520, w - 24)
+  if G.difficulty then optH = optH + (optH > 0 and 40 or 32) end
   local base = 18 + 96 + 40 + 26 + (optH > 0 and optH + 14 or 0) + 26 + 58 + 40 + 24 + 22
   if base + (nctl + 1) * 20 > h - 12 then nctl = max(0, floor((h - 12 - base) / 20) - 1) end
   local ch = base + (nctl + 1) * 20
@@ -559,7 +639,11 @@ local function drawTitle(w, h)
   gfx.text(TR("tagline"), x + 16, cy, 14, "sans", "center", cw - 32)
   cy = cy + 26
   if optH > 0 then
-    G.options(x + 28, cy, cw - 56)
+    if G.options then G.options(x + 28, cy, cw - 56) end
+    if G.difficulty then
+      local d = ui.segmented("diff", {TR("easy"), TR("normal"), TR("hard")}, K.diff, x + 28, cy + optH - 32, cw - 56, 32)
+      if d ~= K.diff then K.setDiff(d); G.reset(); K.sfx("click") end
+    end
     cy = cy + optH + 14
   end
   if not K.noBest then
@@ -570,13 +654,95 @@ local function drawTitle(w, h)
   local glow = 0.5 + 0.5 * sin(t * 4)
   K.color(G.accent or theme.accent, 0.12 + 0.18 * glow)
   gfx.rect(x + 44, cy - 4, cw - 88, 52, 14)
-  if ui.button(TR("start"), x + 50, cy, cw - 100, 44, "primary", "play_arrow") and t - K.stateAt > 0.25 then K.start() end
+  if ui.button(TR("start"), x + 50, cy, cw - 156, 44, "primary", "play_arrow") and t - K.stateAt > 0.25 then K.start() end
+  if ui.iconButton("leaderboard", x + cw - 98, cy, 48, 44, G.accent or theme.accent, false, "rec") and t - K.stateAt > 0.25 then
+    K.showRecords()
+  end
   cy = cy + 58
   settingsRow(x + 24, cy, cw - 48)
   cy = cy + 40
   cy = controlLines(x, cy, cw, nctl)
   K.color(theme.text3)
-  gfx.text(TR("title_hint"), x, cy + 4, 12, "sans", "center", cw)
+  gfx.text(TR("title_hint") .. "  ·  " .. TR("rec_hint"), x, cy + 4, 12, "sans", "center", cw)
+  gfx.unalpha()
+end
+
+local function fmtDate(ep)
+  local d = sys.date(ep or 0)
+  if type(d) ~= "table" or not d.year then return "" end
+  return string.format("%04d-%02d-%02d", d.year, d.month, d.day)
+end
+
+local function drawRecords(w, h)
+  local t = K.now
+  local a = K.easeOut((t - (K.recAt or 0)) / 0.3)
+  K.color("#000000", 0.55 * a)
+  gfx.rect(0, 0, w, h)
+  local top = K.top()
+  local cw = min(500, w - 24)
+  local fixed = 18 + 34 + 22 + (G.medals and 74 or 0) + 12 + 58 + 54 + 26
+  local rows = K.clamp(floor((h - 12 - fixed) / 26), 3, 10)
+  local ch = fixed + rows * 26
+  gfx.alpha(a)
+  local x, y = card(w, h, cw, ch, (t - (K.recAt or 0)) / 0.45)
+  local cy = y + 18
+  K.color(theme.text)
+  gfx.text(TR("records"), x, cy, 24, "bold", "center", cw)
+  cy = cy + 34
+  local sub = {}
+  if G.modeName then sub[#sub + 1] = G.modeName() end
+  if G.difficulty then sub[#sub + 1] = TR(({"easy", "normal", "hard"})[K.diff]) end
+  K.color(theme.text2)
+  gfx.text(table.concat(sub, "  ·  "), x, cy, 13, "medium", "center", cw)
+  cy = cy + 22
+  if G.medals then
+    local got = K.bestMedal()
+    local mw = floor((cw - 48) / 3)
+    for m = 1, 3 do
+      local mx = x + 24 + (m - 1) * mw
+      local on = got >= m
+      K.color(on and MEDALC[m] or theme.text3, on and 0.18 or 0.08)
+      gfx.rect(mx + 4, cy, mw - 8, 64, 12)
+      gfx.icon("military_tech", mx + mw / 2, cy + 22, 28, on and MEDALC[m] or theme.text3)
+      K.color(on and theme.text or theme.text3)
+      gfx.text(tostring(K.medalAt(m)), mx, cy + 40, 13, "semibold", "center", mw)
+    end
+    cy = cy + 74
+  end
+  K.color(theme.hover)
+  gfx.rect(x + 20, cy, cw - 40, rows * 26 + 8, 10)
+  cy = cy + 4
+  if #top == 0 then
+    K.color(theme.text3)
+    gfx.text(TR("no_records"), x, cy + rows * 13 - 10, 14, "medium", "center", cw)
+  end
+  for i = 1, min(rows, #top) do
+    local r = top[i]
+    local ry = cy + (i - 1) * 26
+    if i <= 3 then K.color(MEDALC[4 - i]) else K.color(theme.text2) end
+    gfx.text("#" .. i, x + 32, ry + 4, 14, "bold")
+    K.color(K.rank == i and (G.accent or theme.accent) or theme.text)
+    gfx.text(tostring(r.s or 0), x + 80, ry + 4, 15, "bold")
+    K.color(theme.text2)
+    gfx.text(K.fmtTime(r.t or 0), x + floor(cw * 0.42), ry + 5, 13, "medium")
+    gfx.text(fmtDate(r.d), x + 20, ry + 5, 13, "medium", "right", cw - 52)
+  end
+  cy = cy + rows * 26 + 16
+  local L = K.life()
+  local sw = floor((cw - 40 - 16) / 3)
+  local cells = {{TR("rounds"), tostring(L.g or 0)}, {TR("total_time"), K.fmtTime(L.t or 0)},
+                 {TR("total_points"), tostring(L.s or 0)}}
+  for i = 1, 3 do
+    local sx = x + 20 + (i - 1) * (sw + 8)
+    K.color(theme.hover)
+    gfx.rect(sx, cy, sw, 46, 10)
+    K.color(theme.text2)
+    gfx.text(cells[i][1], sx, cy + 5, 12, "medium", "center", sw)
+    K.color(theme.text)
+    gfx.text(cells[i][2], sx, cy + 21, 16, "bold", "center", sw)
+  end
+  cy = cy + 58
+  if ui.button(TR("close"), x + 60, cy, cw - 120, 40, "primary", "close") then K.state = "title" end
   gfx.unalpha()
 end
 
@@ -657,8 +823,12 @@ local function drawOver(w, h)
   local cy = y + 18
   local good = K.newBest or K.overWin
   if not compact then
-    badge(x + cw / 2, cy + 44, good and "emoji_events" or (G.overIcon or "sentiment_dissatisfied"),
-      good and "#FF9F0A" or (G.accent or theme.accent), t)
+    if K.medal > 0 then
+      badge(x + cw / 2, cy + 44, "military_tech", MEDALC[K.medal], t)
+    else
+      badge(x + cw / 2, cy + 44, good and "emoji_events" or (G.overIcon or "sentiment_dissatisfied"),
+        good and "#FF9F0A" or (G.accent or theme.accent), t)
+    end
     cy = cy + 96
   else
     cy = cy + 12
@@ -696,7 +866,7 @@ local function drawOver(w, h)
     gfx.rect(sx, sy, colw, 36, 10)
     K.color(theme.text2, st)
     gfx.text(stats[i][1], sx + 12, sy + 10, 13, "medium")
-    K.color(theme.text, st)
+    K.color(stats[i][3] or theme.text, st)
     gfx.text(stats[i][2], sx + 12, sy + 8, 16, "bold", "right", colw - 24)
   end
   cy = cy + rows * 42 + 10
@@ -757,6 +927,10 @@ function K.run(game)
   function app.load()
     K.muted = store.get("muted", false) == true
     K.rumble = store.get("rumble", true) ~= false
+    if G.difficulty then
+      K.diff = K.clamp(tonumber(store.get("difficulty", 2)) or 2, 1, 3)
+      K.dmul = K.DMUL[K.diff]
+    end
     local w, h = gfx.size()
     if w and w > 0 and h and h > 0 then K.w, K.h = w, h end
     K.now = sys.time()
@@ -850,6 +1024,8 @@ function K.run(game)
       end
     elseif K.state == "title" then
       drawTitle(w, h)
+    elseif K.state == "records" then
+      drawRecords(w, h)
     else
       drawOver(w, h)
     end
@@ -905,8 +1081,16 @@ function K.run(game)
       {label = TR("sound"), id = 3, checked = not K.muted, shortcut = "M"},
       {label = TR("vibration"), id = 5, checked = K.rumble},
       "-",
+      {label = TR("records"), id = 6, enabled = K.state == "title"},
       {label = TR("reset_best"), id = 4},
     }
+    if G.difficulty then
+      table.insert(items, 4, "-")
+      for d = 1, 3 do
+        table.insert(items, 4 + d, {label = TR(({"easy", "normal", "hard"})[d]), id = 6 + d, checked = K.diff == d,
+          enabled = K.state ~= "play"})
+      end
+    end
     if G.menu then G.menu(items) end
     return {{title = TR("menu_game"), items = items}}
   end
@@ -916,10 +1100,15 @@ function K.run(game)
     elseif id == 2 then K.setPaused(not K.paused)
     elseif id == 3 then K.setMuted(not K.muted)
     elseif id == 5 then K.rumble = not K.rumble; store.set("rumble", K.rumble)
+    elseif id == 6 then if K.state == "title" then K.showRecords() end
+    elseif id >= 7 and id <= 9 then
+      if K.state ~= "play" then K.setDiff(id - 6); G.reset() end
     elseif id == 4 then
       ui.alert(TR("reset_best"), TR("reset_best_msg"), {TR("reset"), TR("cancel")}, function(b)
         if b == 1 then
           if G.resetBest then G.resetBest() else store.set(bestKeyStr, 0) end
+          store.set(bestKeyStr .. "_top", {})
+          store.set(bestKeyStr .. "_medal", 0)
           K.loadBest()
         end
       end)
@@ -929,6 +1118,10 @@ function K.run(game)
   function app.close()
     return true
   end
+
+  -- the console went to the HOME menu / sleep, or the window lost focus: never lose a run to that
+  function app.suspend() K.setPaused(true) end
+  function app.focus(f) if f == false then K.setPaused(true) end end
 
   return app
 end

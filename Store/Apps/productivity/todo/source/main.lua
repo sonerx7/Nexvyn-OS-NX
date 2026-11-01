@@ -1,4 +1,5 @@
--- To-Do: tasks in projects with priorities, due dates, overdue highlighting, search, sorting, undo and export
+-- To-Do: tasks in projects with priorities, due dates, overdue highlighting, search, sorting, undo and export,
+-- checklist steps, repeating tasks (daily / weekly / monthly), JSON backup and restore, and Quick Search results
 -- (Nexvyn OS Lua SDK).
 local app = {}
 
@@ -37,6 +38,9 @@ local frameDt = 1 / 60
 
 local COLORS = {"#0A84FF", "#FF9F0A", "#30D158", "#BF5AF2", "#FF375F", "#64D2FF", "#FFD60A", "#AC8E68"}
 local ROW_H = 50
+local REPEAT_LABELS = {}
+local stepNew = ""
+local edH = 600          -- editor content height (last frame), for the scroll area
 
 -- ------------------------------------------------------------------ dates (pure arithmetic, days since 1970-01-01)
 local function daysFromCivil(y, m, d)
@@ -217,9 +221,33 @@ local function addTask(title)
   return t
 end
 
+local function nextDue(t)
+  local base = t.due or today
+  if t.rep == 1 then return base + 1 end
+  if t.rep == 2 then return base + 7 end
+  local y, m, d = civilFromDays(base)
+  m = m + 1
+  if m > 12 then y, m = y + 1, 1 end
+  return daysFromCivil(y, m, math.min(d, daysInMonth(y, m)))
+end
+
 local function toggleDone(t)
   t.done = not t.done
   t.doneAt = t.done and sys.epoch() or nil
+  if t.done and (t.rep or 0) > 0 and not t.spawned then
+    -- the next occurrence starts fresh: same title, note, project, priority and steps (unticked)
+    t.spawned = true
+    local steps = {}
+    for i, st in ipairs(t.steps or {}) do steps[i] = {text = st.text, done = false} end
+    local n = {id = nextId, title = t.title, note = t.note, project = t.project, prio = t.prio, rep = t.rep,
+               due = nextDue(t), steps = steps, done = false, created = sys.epoch()}
+    nextId = nextId + 1
+    tasks[#tasks + 1] = n
+    appear[n.id] = 0
+    flash(TR("repeat_next", dueLabel(n.due)))
+  elseif not t.done then
+    t.spawned = nil
+  end
   if t.done then
     pop[t.id] = 1
     leaving[t.id] = 0.9
@@ -258,6 +286,8 @@ local function undoDelete()
 end
 
 local function openEditor(t, new)
+  stepNew = ""
+  if type(t.steps) ~= "table" then t.steps = {} end
   editing, isNew = t, new or false
   edTitle, edNote = t.title, t.note or ""
   edDue = t.due and isoDate(t.due) or ""
@@ -361,14 +391,47 @@ local function exportList()
   end, "todo.md", TR("export"))
 end
 
+-- full backup of every project and task as JSON, and restoring one
+local function backup()
+  ui.saveFile(function(path)
+    if not path then return end
+    local data = json.encode({app = "todo", version = 2, projects = projects, tasks = tasks, nextId = nextId}, true)
+    if fs.write(path, data) then flash(TR("backup_done")) else flash(TR("export_fail")) end
+  end, "todo-backup.json", TR("backup"))
+end
+
+local function restore()
+  ui.openFile(function(path)
+    if not path then return end
+    local d = json.decode(fs.read(path) or "")
+    if type(d) ~= "table" or d.app ~= "todo" or type(d.tasks) ~= "table" or type(d.projects) ~= "table"
+       or #d.projects == 0 then
+      flash(TR("restore_bad"))
+      audio.play("error")
+      return
+    end
+    ui.alert(TR("restore"), TR("restore_confirm", #d.tasks), {TR("restore"), TR("cancel")}, function(b)
+      if b ~= 1 then return end
+      projects, tasks = d.projects, d.tasks
+      nextId = tonumber(d.nextId) or 1
+      for _, t in ipairs(tasks) do if (tonumber(t.id) or 0) >= nextId then nextId = t.id + 1 end end
+      editing, selIdx, view = nil, 0, "all"
+      ids, appear, pop, leaving, rowY = {}, {}, {}, {}, {}
+      save()
+      flash(TR("restore_done", #tasks))
+    end)
+  end, {".json"}, TR("restore"))
+end
+
 -- ------------------------------------------------------------------ lifecycle
-function app.load()
+function app.load(arg)
   MONTHS = {TR("jan"), TR("feb"), TR("mar"), TR("apr"), TR("may"), TR("jun"), TR("jul"), TR("aug"), TR("sep"),
             TR("oct"), TR("nov"), TR("dec")}
   WDAYS = {TR("sun"), TR("mon"), TR("tue"), TR("wed"), TR("thu"), TR("fri"), TR("sat")}
   WSHORT = {TR("sun_s"), TR("mon_s"), TR("tue_s"), TR("wed_s"), TR("thu_s"), TR("fri_s"), TR("sat_s")}
   PRIO_LABELS = {TR("prio_none"), TR("prio_low"), TR("prio_med"), TR("prio_high")}
   SORT_LABELS = {TR("sort_smart"), TR("sort_due"), TR("sort_prio"), TR("sort_name"), TR("sort_new")}
+  REPEAT_LABELS = {TR("rep_none"), TR("rep_daily"), TR("rep_weekly"), TR("rep_monthly")}
   projects = store.get("projects", nil)
   if type(projects) ~= "table" or #projects == 0 then
     projects = {{id = 1, name = TR("inbox"), color = COLORS[1]}}
@@ -390,6 +453,7 @@ function app.load()
   local d = sys.date()
   today = daysFromCivil(d.year, d.month, d.day)
   localOff = today * 86400 + d.hour * 3600 + d.min * 60 + d.sec - sys.epoch()
+  if type(arg) == "string" and arg ~= "" then app.open(arg) end
 end
 
 function app.update(dt)
@@ -546,6 +610,19 @@ local function drawTaskRow(t, x, y, w, i)
     local label = overdue and TR("due_overdue", dueLabel(t.due), today - t.due) or dueLabel(t.due)
     mx = mx + 30 + gfx.text(label, mx + 17, y + 26, 12, overdue and "semibold" or "sans")
   end
+  if (t.rep or 0) > 0 then
+    gfx.icon("repeat", mx + 7, y + 33, 14, theme.text2)
+    mx = mx + 20
+  end
+  local steps = t.steps
+  if type(steps) == "table" and #steps > 0 then
+    local nd = 0
+    for _, st in ipairs(steps) do if st.done then nd = nd + 1 end end
+    local col = nd == #steps and theme.green or theme.text2
+    gfx.icon("checklist", mx + 7, y + 33, 14, col)
+    gfx.color(col)
+    mx = mx + 24 + gfx.text(nd .. "/" .. #steps, mx + 17, y + 26, 12, "semibold")
+  end
   if t.note and t.note ~= "" then
     gfx.color(theme.text3)
     gfx.text(t.note, mx, y + 26, 12)
@@ -688,13 +765,15 @@ local function drawEditor(w, h)
   local cw = math.min(640, w - 40)
   local x = (w - cw) / 2
   local y = 14
-  if ui.button(TR("done_btn"), x, y, 110, 32, "primary", "arrow_back") then closeEditor(); return end
+  ui.beginScroll("edscroll", 0, 0, w, h, edH)
+  if ui.button(TR("done_btn"), x, y, 110, 32, "primary", "arrow_back") then closeEditor(); ui.endScroll(); return end
   local bw2 = math.min(210, (cw - 250))
   if ui.button(t.done and TR("mark_open") or TR("mark_done"), x + cw - 130 - bw2, y, bw2, 32, "default",
                t.done and "radio_button_unchecked" or "check_circle") then toggleDone(t) end
   if ui.button(TR("delete"), x + cw - 120, y, 120, 32, "destructive", "delete") then
     deleteTask(t)
     flash(TR("deleted"))
+    ui.endScroll()
     return
   end
   y = y + 52
@@ -762,8 +841,56 @@ local function drawEditor(w, h)
   if ui.button("+1##dp", bx + (bw + 6) * 4, y + 18, bw, 32, "default", nil, t.due ~= nil) then setDue((t.due or today) + 1) end
   if ui.button(TR("clear"), bx + (bw + 6) * 5, y + 18, bw, 32, "plain", nil, t.due ~= nil) then setDue(nil) end
   y = y + 76
+  -- repeat
+  gfx.color(theme.text2)
+  gfx.text(TR("repeat"), x, y, 12, "semibold")
+  local nr = ui.segmented("e_rep", REPEAT_LABELS, (t.rep or 0) + 1, x, y + 18, math.min(cw, 420), 32)
+  if nr - 1 ~= (t.rep or 0) then
+    t.rep = nr - 1
+    if t.rep > 0 and not t.due then t.due = today; edDue = isoDate(today) end
+    save()
+  end
+  y = y + 66
+  -- checklist steps
+  local steps = t.steps
+  local nd = 0
+  for _, st in ipairs(steps) do if st.done then nd = nd + 1 end end
+  gfx.color(theme.text2)
+  gfx.text(TR("steps") .. (#steps > 0 and ("  " .. nd .. "/" .. #steps) or ""), x, y, 12, "semibold")
+  if #steps > 0 then ui.progress(nd / #steps, x + 140, y + 4, cw - 140, 6) end
+  y = y + 20
+  local removeAt = nil
+  for i, st in ipairs(steps) do
+    local hit = ui.hit("stc" .. i, x, y, 34, 34)
+    if st.done then
+      gfx.circle(x + 16, y + 17, 10, theme.green)
+      gfx.icon("check", x + 16, y + 17, 14, "#FFFFFF")
+    else
+      gfx.color(theme.text3)
+      gfx.circleLine(x + 16, y + 17, 10, hit.hovered and 2.5 or 1.6)
+    end
+    if hit.clicked then st.done = not st.done; save(); audio.tone(st.done and 880 or 520, 0.05, 0.2, "sine") end
+    local nt2 = ui.textfield("stt" .. i, st.text, x + 40, y + 1, cw - 84, 32)
+    if nt2 ~= st.text then st.text = nt2; save() end
+    if ui.iconButton("close", x + cw - 38, y + 1, 36, 32, theme.text3, false, "std" .. i) then removeAt = i end
+    y = y + 38
+  end
+  if removeAt then table.remove(steps, removeAt); save(); audio.play("trash") end
+  local ns2, sub = ui.textfield("e_step", stepNew, x + 40, y + 1, cw - 132, 32, TR("step_ph"))
+  stepNew = ns2
+  local add = ui.button(TR("add_step"), x + cw - 86, y + 1, 86, 32, "default", "add")
+  if (sub or add) and trim(stepNew) ~= "" then
+    steps[#steps + 1] = {text = trim(stepNew), done = false}
+    stepNew = ""
+    save()
+    audio.tone(990, 0.05, 0.2, "sine")
+    ui.focus("e_step")
+  end
+  y = y + 52
   gfx.color(theme.text3)
-  gfx.text(TR("created_on", isoDate(localDay(t.created or sys.epoch()))), x, math.min(y, h - 26), 12)
+  gfx.text(TR("created_on", isoDate(localDay(t.created or sys.epoch()))), x, y, 12)
+  edH = y + 30
+  ui.endScroll()
 end
 
 -- ------------------------------------------------------------------ app
@@ -836,6 +963,8 @@ function app.menu()
       {label = TR("clear_done"), id = 5},
       "-",
       {label = TR("export"), id = 7},
+      {label = TR("backup") .. "…", id = 8},
+      {label = TR("restore") .. "…", id = 9},
     }},
     {title = TR("menu_view"), items = {
       {label = TR("all_tasks"), id = 10}, {label = TR("today"), id = 11}, {label = TR("upcoming"), id = 12},
@@ -856,8 +985,38 @@ function app.onmenu(id)
   elseif id == 5 then clearCompleted()
   elseif id == 6 then undoDelete()
   elseif id == 7 then exportList()
+  elseif id == 8 then backup()
+  elseif id == 9 then restore()
   elseif id >= 10 and id <= 14 then if editing then closeEditor() end; setView(VIEWS[id - 9])
   elseif id == 15 then showDone = not showDone; store.set("showDone", showDone); dirty = true end
+end
+
+-- Quick Search: open tasks whose title or note matches
+function app.search(query)
+  local q = fold(trim(query or ""))
+  if q == "" then return {} end
+  local out = {}
+  for _, t in ipairs(tasks) do
+    if not t.done and (fold(t.title):find(q, 1, true) or fold(t.note or ""):find(q, 1, true)) then
+      local p = projectById(t.project)
+      out[#out + 1] = {title = t.title, subtitle = (p and p.name or "") .. (t.due and ("  ·  " .. dueLabel(t.due)) or ""),
+                       icon = "check_circle", arg = "task:" .. t.id}
+      if #out >= 5 then break end
+    end
+  end
+  return out
+end
+
+function app.open(arg)
+  local id = tonumber(tostring(arg or ""):match("^task:(%d+)$") or "")
+  if not id then return end
+  for _, t in ipairs(tasks) do
+    if t.id == id then
+      if editing then closeEditor() end
+      openEditor(t, false)
+      return
+    end
+  end
 end
 
 function app.close()

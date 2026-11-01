@@ -72,5 +72,9 @@
   "play_red": "Jouer les rouges (en premier)",
   "play_black": "Jouer les noirs",
   "rules": "Règles",
-  "rules_text": "Les pions avancent d’une case en diagonale. Sautez par-dessus un pion adverse pour le prendre ; la prise est obligatoire et un pion qui saute continue tant qu’il le peut. Un pion qui atteint la dernière rangée devient une dame et peut se déplacer et prendre en arrière. Vous gagnez quand votre adversaire ne peut plus jouer."
+  "rules_text": "Les pions avancent d’une case en diagonale. Sautez par-dessus un pion adverse pour le prendre ; la prise est obligatoire et un pion qui saute continue tant qu’il le peut. Un pion qui atteint la dernière rangée devient une dame et peut se déplacer et prendre en arrière. Vous gagnez quand votre adversaire ne peut plus jouer.",
+  "mode_expert": "Expert",
+  "review": "Revoir la partie",
+  "review_move": "Coup {0} / {1}",
+  "done": "Terminé"
 }

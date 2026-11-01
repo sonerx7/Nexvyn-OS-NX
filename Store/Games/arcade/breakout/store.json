@@ -1,27 +1,52 @@
 {
   "subtitle": {
-    "en": "Smash bricks and catch the power-ups",
-    "tr": "Tuğlaları kır, güçlendirmeleri yakala",
-    "de": "Zertrümmere Steine, fang die Power-ups",
-    "fr": "Cassez les briques, attrapez les bonus",
-    "es": "Rompe ladrillos y atrapa los potenciadores",
-    "ja": "ブロックを壊してパワーアップを取ろう",
-    "zh": "击碎砖块，接住道具",
-    "ko": "벽돌을 깨고 파워업을 잡으세요"
+    "en": "15 stages, bombs, lasers and fireballs",
+    "tr": "15 bölüm, bombalar, lazer ve ateş topu",
+    "de": "15 Stufen, Bomben, Laser, Feuerbälle",
+    "fr": "15 niveaux, bombes, lasers et feu",
+    "es": "15 fases, bombas, láseres y fuego",
+    "ja": "15ステージ、爆弾、レーザー、火の玉",
+    "zh": "15 关、炸弹、激光和火球",
+    "ko": "15스테이지, 폭탄, 레이저, 불덩이"
   },
   "description": {
-    "en": "The classic brick breaker with a modern touch. Launch the ball, keep it in play with your paddle and clear every brick on the board. Tough bricks need several hits, while falling power-ups bring a wider paddle, multi-ball, a slower ball or an extra life. The levels are generated endlessly, so there is always one more to clear.\n\n• Endless generated levels\n• Wide paddle, multi-ball, slow ball and extra-life power-ups\n• Tough bricks and brick combos\n• Stick, D-pad, keyboard or drag the paddle with your finger\n• An AI demo plays behind the title screen",
-    "tr": "Klasik tuğla kırma oyunu, modern dokunuşlarla. Topu fırlat, raketinle oyunda tut ve tahtadaki bütün tuğlaları temizle. Sağlam tuğlalar birkaç vuruş ister; düşen güçlendirmeler geniş raket, çoklu top, yavaş top ya da ekstra can getirir. Bölümler sonsuza kadar yeniden üretilir, yani her zaman kırılacak bir tuğla daha vardır.\n\n• Sonsuz, yeniden üretilen bölümler\n• Geniş raket, çoklu top, yavaş top ve ekstra can\n• Sağlam tuğlalar ve tuğla kombolar\n• Çubuk, yön tuşları, klavye ya da raketi parmakla sürükleme\n• Başlık ekranının arkasında yapay zekâ demosu",
-    "de": "Der Klassiker unter den Steinbrechern, modern aufpoliert. Schieß den Ball ab, halte ihn mit deinem Schläger im Spiel und räum alle Steine ab. Harte Steine brauchen mehrere Treffer, und herabfallende Power-ups bringen einen breiteren Schläger, Multiball, einen langsameren Ball oder ein Extraleben. Die Level werden endlos erzeugt, es gibt also immer noch eins mehr.\n\n• Endlos generierte Level\n• Power-ups: breiter Schläger, Multiball, langsamer Ball, Extraleben\n• Harte Steine und Stein-Combos\n• Stick, Steuerkreuz, Tastatur oder Schläger mit dem Finger ziehen\n• Hinter dem Titelbildschirm spielt eine KI-Demo",
-    "fr": "Le casse-briques classique, avec une touche moderne. Lancez la balle, gardez-la en jeu avec votre raquette et videz le tableau de toutes ses briques. Les briques solides demandent plusieurs coups, tandis que les bonus qui tombent apportent une raquette plus large, le multi-balle, une balle ralentie ou une vie en plus. Les niveaux sont générés sans fin : il y en a toujours un autre à casser.\n\n• Des niveaux générés à l’infini\n• Bonus raquette large, multi-balle, balle lente et vie en plus\n• Briques solides et combos de briques\n• Stick, croix, clavier ou raquette glissée du doigt\n• Une démo jouée par l’IA derrière l’écran titre",
-    "es": "El clásico rompeladrillos con un toque moderno. Lanza la pelota, mantenla en juego con tu pala y limpia todos los ladrillos del tablero. Los ladrillos duros necesitan varios golpes, y los potenciadores que caen traen una pala más ancha, multibola, una pelota más lenta o una vida extra. Los niveles se generan sin fin, así que siempre queda uno más.\n\n• Niveles generados sin fin\n• Pala ancha, multibola, pelota lenta y vida extra\n• Ladrillos duros y combos de ladrillos\n• Stick, cruceta, teclado o arrastra la pala con el dedo\n• Una demo de la IA juega tras la pantalla de título",
-    "ja": "モダンなアレンジを加えた定番のブロック崩し。ボールを発射し、パドルで打ち返し続けて、盤面のブロックをすべて壊しましょう。硬いブロックは何度も当てる必要があり、落ちてくるパワーアップでワイドパドル、マルチボール、スローボール、エクストラライフが手に入ります。レベルは無限に生成されるので、いつでも次の 1 面が待っています。\n\n• 無限に生成されるレベル\n• ワイドパドル、マルチボール、スローボール、エクストラライフのパワーアップ\n• 硬いブロックとブロックのコンボ\n• スティック、十字ボタン、キーボード、または指でパドルをドラッグ\n• タイトル画面の後ろで AI がデモプレイ",
-    "zh": "经典的打砖块，带有现代感。发球，用挡板接住球，清除棋盘上的每一块砖。坚固的砖块需要多次击打，而落下的道具会带来加宽挡板、多球、慢速球或额外生命。关卡会无尽生成，因此总有下一关等着你。\n\n• 无尽生成的关卡\n• 加宽挡板、多球、慢速球和额外生命道具\n• 坚固砖块和砖块连击\n• 摇杆、十字键、键盘或用手指拖动挡板\n• 标题画面背后有 AI 演示",
-    "ko": "현대적인 감각을 더한 클래식 벽돌 깨기입니다. 공을 발사하고, 패들로 공을 받아 내며, 보드의 모든 벽돌을 깨세요. 단단한 벽돌은 여러 번 맞혀야 하며, 떨어지는 파워업은 넓은 패들, 멀티 볼, 느린 공, 추가 생명을 줍니다. 레벨이 끝없이 생성되므로 항상 하나 더 깰 레벨이 있습니다.\n\n• 끝없이 생성되는 레벨\n• 넓은 패들, 멀티 볼, 느린 공, 추가 생명 파워업\n• 단단한 벽돌과 벽돌 콤보\n• 스틱, 방향 버튼, 키보드 또는 손가락으로 패들 드래그\n• 타이틀 화면 뒤에서 AI 데모 플레이"
+    "en": "Bounce the ball off your paddle and smash every brick. Campaign mode takes you through 15 hand-made stages with unbreakable steel bricks that shape the path and bomb bricks that blow up everything around them; after stage 15 the stages come back tougher. Endless mode keeps generating new layouts for as long as you last.\n\nCatch the falling capsules for eight power-ups: a wide paddle, multi-ball, a slower ball, an extra life, twin lasers, a fireball that burns straight through, a sticky paddle that catches the ball, and the shrink capsule you'd rather dodge.\n\n• Campaign (15 stages) and Endless modes\n• Steel and bomb bricks, tough bricks with up to three hits\n• Eight power-ups with on-screen timers\n• Easy, Normal and Hard, medals and a top-10 table per mode\n• Stick, D-pad, keyboard or drag with your finger; an AI plays behind the title screen",
+    "tr": "Topu raketinle sektir ve her tuğlayı kır. Bölümler modu seni yolu biçimlendiren kırılmaz çelik tuğlalar ve çevresindeki her şeyi patlatan bomba tuğlalarla dolu 15 elle tasarlanmış bölümden geçirir; 15. bölümden sonra bölümler daha zorlu olarak geri gelir. Sonsuz mod dayandığın sürece yeni düzenler üretir.\n\nDüşen kapsülleri yakalayarak sekiz güçlendirme kazan: geniş raket, çoklu top, yavaş top, ekstra can, ikiz lazer, tuğlaların içinden geçen ateş topu, topu yakalayan yapışkan raket ve kaçmak isteyeceğin küçültme kapsülü.\n\n• Bölümler (15 bölüm) ve Sonsuz mod\n• Çelik ve bomba tuğlalar, üç vuruşa kadar dayanan sağlam tuğlalar\n• Ekranda süresi görünen sekiz güçlendirme\n• Kolay, Normal ve Zor; her mod için madalyalar ve ilk 10 tablosu\n• Çubuk, yön tuşları, klavye ya da parmakla sürükleme; başlık ekranında yapay zekâ oynar",
+    "de": "Lass den Ball vom Schläger abprallen und zerschlag jeden Stein. Die Kampagne führt durch 15 handgemachte Stufen mit unzerstörbaren Stahlsteinen, die den Weg formen, und Bombensteinen, die alles um sich herum sprengen; nach Stufe 15 kehren die Stufen schwerer zurück. Endlos erzeugt immer neue Layouts, solange du durchhältst.\n\nFang die fallenden Kapseln für acht Extras: breiter Schläger, Multiball, langsamer Ball, Extraleben, Zwillingslaser, ein Feuerball, der durch alles brennt, ein klebriger Schläger, der den Ball fängt, und die Schrumpfkapsel, der du lieber ausweichst.\n\n• Kampagne (15 Stufen) und Endlos\n• Stahl- und Bombensteine, harte Steine mit bis zu drei Treffern\n• Acht Extras mit Timern auf dem Bildschirm\n• Leicht, Normal und Schwer, Medaillen und Top 10 je Modus\n• Stick, Steuerkreuz, Tastatur oder Ziehen mit dem Finger; eine KI spielt hinter dem Titelbild",
+    "fr": "Renvoyez la balle avec votre raquette et cassez toutes les briques. La campagne vous fait traverser 15 niveaux conçus à la main, avec des briques d’acier incassables qui dessinent le chemin et des briques bombes qui font exploser tout autour ; après le niveau 15, les niveaux reviennent plus durs. Le mode Infini génère de nouveaux tableaux tant que vous tenez.\n\nAttrapez les capsules pour huit bonus : raquette large, multi-balle, balle ralentie, vie supplémentaire, lasers jumeaux, boule de feu qui traverse tout, raquette collante qui attrape la balle, et la capsule de rétrécissement qu’il vaut mieux éviter.\n\n• Campagne (15 niveaux) et Infini\n• Briques d’acier et bombes, briques solides jusqu’à trois coups\n• Huit bonus avec minuteurs à l’écran\n• Facile, Normal et Difficile, médailles et top 10 par mode\n• Stick, croix, clavier ou glisser du doigt ; une IA joue derrière l’écran titre",
+    "es": "Haz rebotar la bola en tu pala y rompe todos los ladrillos. La campaña te lleva por 15 fases hechas a mano con ladrillos de acero irrompibles que dan forma al camino y ladrillos bomba que hacen estallar todo a su alrededor; tras la fase 15 vuelven más difíciles. El modo Infinito genera diseños nuevos mientras aguantes.\n\nAtrapa las cápsulas para ocho potenciadores: pala ancha, multibola, bola lenta, vida extra, láseres dobles, una bola de fuego que lo atraviesa todo, una pala pegajosa que atrapa la bola y la cápsula que encoge, mejor esquivarla.\n\n• Campaña (15 fases) e Infinito\n• Ladrillos de acero y bomba, ladrillos duros de hasta tres golpes\n• Ocho potenciadores con temporizador en pantalla\n• Fácil, Normal y Difícil, medallas y top 10 por modo\n• Stick, cruceta, teclado o arrastrar con el dedo; una IA juega tras la pantalla de título",
+    "ja": "パドルでボールを打ち返して、ブロックをすべて崩しましょう。キャンペーンでは、道を形づくる壊れない鋼鉄ブロックや、周りをまとめて吹き飛ばす爆弾ブロックが登場する15の手作りステージに挑戦。15ステージを越えると、より手ごわくなって戻ってきます。エンドレスでは粘る限り新しい配置が生まれ続けます。\n\n落ちてくるカプセルを取れば8種類のパワーアップ：ワイドパドル、マルチボール、スロー、1UP、ツインレーザー、ブロックを貫く火の玉、ボールをくっつけるキャッチ、そして避けたい縮小カプセル。\n\n• キャンペーン（15ステージ）とエンドレス\n• 鋼鉄ブロックと爆弾ブロック、最大3回当てる硬いブロック\n• 残り時間が表示される8種類のパワーアップ\n• かんたん・ふつう・むずかしい、モードごとのメダルとトップ10\n• スティック、十字ボタン、キーボード、指でドラッグ。タイトル画面では AI がプレイ",
+    "zh": "用球拍把球弹回去，打碎所有砖块。闯关模式带你通过 15 个手工设计的关卡，坚不可摧的钢砖塑造路线，炸弹砖会炸毁周围的一切；第 15 关之后关卡会变得更难再次出现。无尽模式会不断生成新布局，直到你坚持不住。\n\n接住下落的胶囊获得八种道具：加宽球拍、多球、减速球、额外生命、双激光、穿透一切的火球、能接住球的粘性球拍，以及最好躲开的缩小胶囊。\n\n• 闯关（15 关）和无尽模式\n• 钢砖和炸弹砖，最多需要三次击打的坚固砖块\n• 八种道具，屏幕上显示剩余时间\n• 简单、普通和困难，每种模式的奖牌和前十名\n• 摇杆、十字键、键盘或手指拖动；标题画面有 AI 在玩",
+    "ko": "패들로 공을 튕겨 모든 벽돌을 깨세요. 캠페인에서는 길을 만드는 부서지지 않는 강철 벽돌과 주변을 모두 날려 버리는 폭탄 벽돌이 있는 15개의 손으로 만든 스테이지를 지나갑니다. 15스테이지 이후에는 더 어렵게 다시 돌아옵니다. 무한 모드는 버티는 동안 새로운 배치를 계속 만들어 냅니다.\n\n떨어지는 캡슐을 잡아 여덟 가지 파워업을 얻으세요: 넓은 패들, 멀티볼, 느린 공, 추가 생명, 쌍둥이 레이저, 모든 것을 뚫는 불덩이, 공을 붙잡는 끈끈한 패들, 그리고 피하고 싶은 축소 캡슐.\n\n• 캠페인(15스테이지)과 무한 모드\n• 강철 벽돌과 폭탄 벽돌, 최대 세 번 맞아야 깨지는 단단한 벽돌\n• 화면에 타이머가 보이는 여덟 가지 파워업\n• 쉬움·보통·어려움, 모드별 메달과 상위 10위\n• 스틱, 방향 버튼, 키보드, 손가락 드래그. 타이틀 화면에서 AI가 플레이"
   },
   "shots": [
-    ["wait 3"],
-    ["key enter", "wait 1", "wmove 0.5 0.9", "key up", "wait 3"],
-    ["wmove 0.03 0.9", "wait 4", "key up", "wmove 0.97 0.9", "wait 5", "key up", "wmove 0.03 0.9", "wait 5", "key up", "wmove 0.97 0.9", "wait 5", "key up", "wmove 0.03 0.9", "wait 5", "dark 1", "wait 2"]
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "wmove 0.5 0.9",
+      "key up",
+      "wait 3"
+    ],
+    [
+      "wmove 0.03 0.9",
+      "wait 4",
+      "key up",
+      "wmove 0.97 0.9",
+      "wait 5",
+      "key up",
+      "wmove 0.03 0.9",
+      "wait 5",
+      "key up",
+      "wmove 0.97 0.9",
+      "wait 5",
+      "key up",
+      "wmove 0.03 0.9",
+      "wait 5",
+      "dark 1",
+      "wait 2"
+    ]
   ]
 }

@@ -104,5 +104,21 @@
   "deleted": "Tarea eliminada.",
   "deleted_named": "Se ha eliminado “{0}”",
   "undo": "Deshacer",
-  "undo_delete": "Deshacer eliminación"
+  "undo_delete": "Deshacer eliminación",
+  "repeat": "Repetir",
+  "rep_none": "Nunca",
+  "rep_daily": "Diario",
+  "rep_weekly": "Semanal",
+  "rep_monthly": "Mensual",
+  "repeat_next": "Siguiente: {0}",
+  "steps": "Pasos",
+  "step_ph": "Añadir un paso…",
+  "add_step": "Añadir",
+  "backup": "Copia de seguridad",
+  "backup_done": "Copia guardada",
+  "restore": "Restaurar",
+  "restore_confirm": "¿Reemplazar todas tus listas por las {0} tareas de esta copia?",
+  "restore_done": "{0} tareas restauradas",
+  "restore_bad": "Ese archivo no es una copia de To-Do",
+  "cancel": "Cancelar"
 }

@@ -1,13 +1,21 @@
--- Yılan / Snake for Nexvyn OS: classic snake with smooth gliding movement, speeds up as it grows, walls or
--- wrap-around mode, apple combos, bonus stars, an AI demo behind the title screen and a best score per mode.
+-- Yılan / Snake for Nexvyn OS: classic snake with smooth gliding movement, speeds up as it grows. Four modes:
+-- walls, wrap-around, Maze (six stages of obstacle layouts on an open board) and Time Attack (60 seconds, apples
+-- and stars add time). Apple combos, bonus stars, three difficulties, medals, a top-10 table per mode and an AI demo
+-- behind the title screen.
 local K = require("arcade")
 local floor, min, max, abs, sin = math.floor, math.min, math.max, math.abs, math.sin
 local random = math.random
 
 local COLS, ROWS = 28, 18
-local G = {icon = "timeline", accent = "#34C759", stickPress = true, optionsHeight = 34}
+local G = {icon = "timeline", accent = "#34C759", stickPress = true, optionsHeight = 34, difficulty = true,
+  medals = {150, 400, 800}}
 
-local mode = 1                       -- 1 = walls, 2 = wrap-around
+local mode = 1                       -- 1 = walls, 2 = wrap-around, 3 = maze, 4 = time attack
+local MODES = {"walls", "wrap", "maze", "timeattack"}
+local wall = {}                      -- maze obstacles: wall[id] = true
+local stage, stageAt = 1, -10
+local timeLeft = 60
+local APPLES_PER_STAGE = 8
 local snake, occ = {}, {}
 local dx, dy = 1, 0
 local qx, qy, qn = {0, 0}, {0, 0}, 0 -- up to two queued turns
@@ -21,22 +29,66 @@ local swipe = nil
 local dead, deadAt = false, 0
 
 local function id(x, y) return y * COLS + x end
+local function wraps() return mode == 2 or mode == 3 end
 
 local function freeCell()
   for _ = 1, 300 do
     local x, y = random(0, COLS - 1), random(0, ROWS - 1)
-    if not occ[id(x, y)] and not (x == food.x and y == food.y) then return x, y end
+    local k = id(x, y)
+    if not occ[k] and not wall[k] and not (x == food.x and y == food.y) then return x, y end
   end
   for y = 0, ROWS - 1 do
     for x = 0, COLS - 1 do
-      if not occ[id(x, y)] then return x, y end
+      if not occ[id(x, y)] and not wall[id(x, y)] then return x, y end
     end
   end
   return 0, 0
 end
 
-function G.load() mode = store.get("mode", 1) end
-function G.bestKey() return mode == 2 and "best_wrap" or "best_walls" end
+-- ------------------------------------------------------------------ maze layouts (28 x 18 board, open edges)
+local function hline(x0, x1, y) for x = x0, x1 do wall[id(x, y)] = true end end
+local function vline(x, y0, y1) for y = y0, y1 do wall[id(x, y)] = true end end
+local LAYOUTS = {
+  function() -- corner brackets
+    hline(3, 8, 2); vline(3, 2, 5); hline(19, 24, 2); vline(24, 2, 5)
+    hline(3, 8, 15); vline(3, 12, 15); hline(19, 24, 15); vline(24, 12, 15)
+  end,
+  function() -- two long bars with a gap in the middle
+    hline(4, 11, 5); hline(16, 23, 5); hline(4, 11, 12); hline(16, 23, 12)
+  end,
+  function() -- a cross with open arms
+    vline(13, 1, 6); vline(14, 1, 6); vline(13, 11, 16); vline(14, 11, 16)
+    hline(2, 8, 8); hline(19, 25, 8)
+  end,
+  function() -- ring with four gates
+    hline(5, 11, 3); hline(16, 22, 3); hline(5, 11, 14); hline(16, 22, 14)
+    vline(5, 3, 6); vline(5, 11, 14); vline(22, 3, 6); vline(22, 11, 14)
+  end,
+  function() -- zig-zag columns
+    vline(5, 0, 10); vline(11, 7, 17); vline(16, 0, 10); vline(22, 7, 17)
+  end,
+  function() -- pillars
+    for y = 2, 15, 4 do for x = 3, 24, 5 do wall[id(x, y)] = true; wall[id(x + 1, y)] = true end end
+  end,
+}
+
+local function buildMaze()
+  wall = {}
+  if mode ~= 3 then return end
+  LAYOUTS[(stage - 1) % #LAYOUTS + 1]()
+  -- never trap the snake: clear its body and the cells right ahead of the head
+  for i = 1, #snake do wall[id(snake[i].x, snake[i].y)] = nil end
+  if snake[1] then
+    for k = 1, 5 do wall[id((snake[1].x + dx * k) % COLS, (snake[1].y + dy * k) % ROWS)] = nil end
+  end
+  if wall[id(food.x, food.y)] then food.x, food.y = freeCell() end
+end
+
+function G.load()
+  mode = K.clamp(tonumber(store.get("mode", 1)) or 1, 1, 4)
+end
+function G.bestKey() return ({"best_walls", "best_wrap", "best_maze", "best_time"})[mode] end
+function G.modeName() return TR(MODES[mode]) end
 function G.controls() return {TR("c_move"), TR("c_touch")} end
 
 function G.layout(w, h)
@@ -56,11 +108,13 @@ function G.reset()
   end
   tailFrom.x, tailFrom.y = cx - 4, cy
   dx, dy, qn = 1, 0, 0
-  eaten, stars, clock, interval = 0, 0, 0, 0.14
+  eaten, stars, clock, interval = 0, 0, 0, 0.14 / K.dmul
   lastEat, eatAt = -10, -10
   star.t = 0
   dead = false
+  stage, stageAt, timeLeft = 1, -10, 60
   food.x, food.y = -1, -1
+  buildMaze()
   food.x, food.y = freeCell()
   food.born = K.now
 end
@@ -92,14 +146,21 @@ end
 
 function G.titlePress(act)
   if act == "left" or act == "right" then
-    setMode(3 - mode)
+    setMode((mode - 1 + (act == "right" and 1 or -1)) % 4 + 1)
     K.sfx("click")
   end
 end
 
 function G.options(x, y, w)
-  local m = ui.segmented("mode", {TR("walls"), TR("wrap")}, mode, x, y, w, 32)
+  local m = ui.segmented("mode", {TR("walls"), TR("wrap"), TR("maze"), TR("timeattack")}, mode, x, y, w, 32)
   if m ~= mode then setMode(m) end
+end
+
+local function finish(title)
+  local st = {{TR("length"), tostring(#snake)}, {TR("apples"), tostring(eaten)}, {TR("stars"), tostring(stars)}}
+  if mode == 3 then st[#st + 1] = {TR("stage"), tostring(stage)}
+  else st[#st + 1] = {TR("speed"), tostring(1 + floor(eaten / 5))} end
+  K.over({title = title, stats = st, win = title ~= nil})
 end
 
 local function die()
@@ -114,13 +175,13 @@ local function die()
   K.flash("#FF3B3060", 0.3)
   K.sfx("boom")
   K.vibrate(1, 250)
-  K.over({stats = {{TR("length"), tostring(#snake)}, {TR("apples"), tostring(eaten)}, {TR("stars"), tostring(stars)},
-    {TR("speed"), tostring(1 + floor(eaten / 5))}}})
+  finish(nil)
 end
 
 local function blocked(nx, ny)
-  if mode == 2 then nx, ny = nx % COLS, ny % ROWS
+  if wraps() then nx, ny = nx % COLS, ny % ROWS
   elseif nx < 0 or ny < 0 or nx >= COLS or ny >= ROWS then return true end
+  if wall[id(nx, ny)] then return true end
   local tail = snake[#snake]
   return occ[id(nx, ny)] and not (tail.x == nx and tail.y == ny)
 end
@@ -150,11 +211,12 @@ local function step()
   local h = snake[1]
   local nx, ny = h.x + dx, h.y + dy
   local hitWall = false
-  if mode == 2 then
+  if wraps() then
     nx, ny = nx % COLS, ny % ROWS
   elseif nx < 0 or ny < 0 or nx >= COLS or ny >= ROWS then
     hitWall = true
   end
+  if wall[id(nx, ny)] then hitWall = true end
   local grow = nx == food.x and ny == food.y
   local tail = snake[#snake]
   if hitWall or (occ[id(nx, ny)] and (grow or tail.x ~= nx or tail.y ~= ny)) then
@@ -187,9 +249,25 @@ local function step()
     end
     K.burst(nx + 0.5, ny + 0.5, 16, "#FF453A", 6, 0.55, 0.18)
     K.burst(nx + 0.5, ny + 0.5, 8, "#8CFF6E", 4, 0.5, 0.14)
-    interval = max(0.055, 0.14 - eaten * 0.0025)
+    interval = max(0.055, 0.14 - eaten * 0.0025) / K.dmul
+    if mode == 4 then
+      interval = 0.11 / K.dmul
+      timeLeft = timeLeft + 1.5
+      if playing then K.popup(nx + 0.5, ny + 1.2, "+1.5s", "#64D2FF") end
+    end
     food.x, food.y = freeCell()
     food.born = K.now
+    if mode == 3 and playing and eaten % APPLES_PER_STAGE == 0 then
+      stage = stage + 1
+      stageAt = K.now
+      local bonus = 100 * (stage - 1)
+      K.addScore(bonus)
+      K.callout(TR("stage_n", stage), "#FFD60A", 38, "stage", 1.4)
+      K.popup(nx + 0.5, ny - 1, "+" .. bonus, "#FFD60A")
+      K.flash("#FFD60A30", 0.3)
+      buildMaze()
+      K.sfx("power")
+    end
     if eaten % 5 == 0 then
       star.x, star.y = freeCell()
       star.t, star.born = 7, K.now
@@ -205,6 +283,7 @@ local function step()
     stars = stars + 1
     if playing then
       K.addScore(50)
+      if mode == 4 then timeLeft = timeLeft + 5; K.callout("+5s", "#64D2FF", 30, "time", 0.8) end
       K.popup(nx + 0.5, ny, "+50", "#FFD60A")
       K.sfx("coin")
       K.vibrate(0.4, 60)
@@ -225,7 +304,21 @@ local function advance(dt)
   end
 end
 
-function G.update(dt) advance(dt) end
+function G.update(dt)
+  if mode == 4 and not dead then
+    local before = timeLeft
+    timeLeft = timeLeft - dt
+    if timeLeft <= 10 and floor(before) ~= floor(timeLeft) then K.sfx("tick") end
+    if timeLeft <= 0 then
+      timeLeft = 0
+      dead, deadAt = true, K.now
+      K.sfx("level")
+      finish(TR("times_up"))
+      return
+    end
+  end
+  advance(dt)
+end
 function G.idle(dt) if K.state == "title" then advance(dt) end end
 
 function G.pointer(e)
@@ -267,13 +360,27 @@ function G.draw(w, h)
   -- board
   K.color("#000000", 0.35)
   gfx.rect(L.x - 6, L.y - 6, c * COLS + 12, c * ROWS + 12, 10)
-  K.color(mode == 1 and "#3E7A4A" or "#2B4D33")
-  gfx.rectLine(L.x - 6, L.y - 6, c * COLS + 12, c * ROWS + 12, 10, mode == 1 and 3 or 1)
+  K.color(wraps() and "#2B4D33" or "#3E7A4A")
+  gfx.rectLine(L.x - 6, L.y - 6, c * COLS + 12, c * ROWS + 12, 10, wraps() and 1 or 3)
   K.color("#1A2D20")
   gfx.rect(L.x, L.y, c * COLS, c * ROWS)
   K.color("#1E3324")
   for y = 0, ROWS - 1 do
     for x = y % 2, COLS - 1, 2 do gfx.rect(L.x + x * c, L.y + y * c, c, c) end
+  end
+  -- maze walls: stone blocks that drop in when a stage starts
+  if mode == 3 then
+    local drop = K.easeOutBack((t - stageAt) / 0.5)
+    for k in pairs(wall) do
+      local wx, wy = k % COLS, floor(k / COLS)
+      local X, Y = L.x + wx * c, L.y + wy * c - (1 - drop) * c * 2
+      K.color("#0A140D", drop)
+      gfx.rect(X + 1, Y + 3, c - 2, c - 2, 3)
+      K.color("#5B6B5E", drop)
+      gfx.rect(X + 1, Y + 1, c - 2, c - 2, 3)
+      K.color("#7D8F80", drop)
+      gfx.rect(X + 3, Y + 2, c - 6, c * 0.3, 2)
+    end
   end
   -- food (pops in with an overshoot, then pulses)
   local grow = K.easeOutBack((t - food.born) / 0.35)
@@ -333,7 +440,14 @@ function G.draw(w, h)
   local x = 12
   x = x + K.scorePill(x, 10) + 8
   x = x + K.pill(x, 10, "timeline", TR("length_n", n), "#8CFF6E") + 8
-  K.pill(x, 10, "speed", TR("speed_n", 1 + floor(eaten / 5)), "#64D2FF")
+  if mode == 4 then
+    K.pill(x, 10, "timer", string.format("%d", math.ceil(timeLeft)), timeLeft <= 10 and "#FF453A" or "#64D2FF", nil,
+      timeLeft <= 10 and (0.5 + 0.5 * sin(t * 8)) or 0)
+  elseif mode == 3 then
+    K.pill(x, 10, "flag", TR("stage_n", stage) .. "  " .. (eaten % APPLES_PER_STAGE) .. "/" .. APPLES_PER_STAGE, "#FFD60A")
+  else
+    K.pill(x, 10, "speed", TR("speed_n", 1 + floor(eaten / 5)), "#64D2FF")
+  end
   K.bestPill(w - 60, 10)
 end
 

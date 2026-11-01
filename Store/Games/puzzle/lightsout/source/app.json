@@ -15,9 +15,12 @@
     "tr": "5×5 tahtadaki tüm ışıkları söndürün: her dokunuş bir ışığı ve komşularını değiştirir. Yıldızlı 60 seviye ve rastgele bulmacalar.",
     "de": "Schalte jedes Licht auf einem 5×5-Feld aus: Jeder Druck schaltet ein Licht und seine Nachbarn um. 60 Level mit Sternen und dazu Zufallsrätsel.",
     "fr": "Éteignez toutes les lumières d’un plateau 5×5 : chaque pression inverse une lumière et ses voisines. 60 niveaux avec étoiles, plus des puzzles aléatoires.",
-    "es": "Apaga todas las luces de un tablero de 5×5: cada pulsación cambia una luz y sus vecinas. 60 niveles con estrellas y puzles aleatorios."
+    "es": "Apaga todas las luces de un tablero de 5×5: cada pulsación cambia una luz y sus vecinas. 60 niveles con estrellas y puzles aleatorios.",
+    "ja": "最少手数ですべてのライトを消そう",
+    "zh": "用最少的步数关掉所有灯",
+    "ko": "최소한의 이동으로 모든 불을 끄세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

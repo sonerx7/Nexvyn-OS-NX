@@ -1,6 +1,8 @@
--- Tuğla Kır / Breakout for Nexvyn OS: paddle and ball, tough bricks, power-ups (wide paddle, multi-ball,
+-- Tuğla Kır / Brick Smash for Nexvyn OS: paddle and ball, tough bricks, power-ups (wide paddle, multi-ball,
 -- slow ball, extra life), endless generated levels, brick combos, an AI demo behind the title screen and
--- stick / d-pad / touch-drag / keyboard controls.
+-- stick / d-pad / touch-drag / keyboard controls. Campaign mode plays 15 designed stages with steel bricks that never
+-- break and bomb bricks that blow up their neighbours; Endless keeps generating levels. Eight power-ups (wide, multi-ball,
+-- slow, extra life, laser, fireball, catch and the dreaded shrink), three difficulties, medals and records.
 local K = require("arcade")
 local floor, min, max, abs, sqrt, sin, cos, pi = math.floor, math.min, math.max, math.abs, math.sqrt, math.sin,
   math.cos, math.pi
@@ -10,7 +12,27 @@ local W, H = 640, 480
 local COLS, ROWS = 10, 7
 local BW, BH, BX0, BY0 = 58, 20, 25, 64
 local PADY = 440
-local G = {icon = "grid_view", accent = "#FF9F0A"}
+local G = {icon = "grid_view", accent = "#FF9F0A", optionsHeight = 34, difficulty = true,
+  medals = {6000, 18000, 40000}}
+local mode = 1                  -- 1 campaign (designed stages), 2 endless (generated)
+-- campaign stages, 7 rows x 10 columns: . empty, 1-3 hit points, S steel (unbreakable), B bomb
+local STAGES = {
+  {"..........", "1111111111", "1111111111", "2222222222", "1111111111", "1111111111", ".........."},
+  {"2.2.2.2.2.", ".1.1.1.1.1", "2.2.2.2.2.", ".1.1.1.1.1", "2.2.2.2.2.", ".1.1.1.1.1", ".........."},
+  {"....33....", "...2222...", "..111111..", ".11B11B11.", "..111111..", "...2222...", "....11...."},
+  {"SS......SS", "1111111111", "2222BB2222", "1111111111", "..........", "1111111111", "SSS....SSS"},
+  {"3........3", "23......32", "123....321", "1B12..21B1", "123....321", "23......32", "3........3"},
+  {"1111111111", "1SSSSSSSS1", "1222BB2221", "1222222221", "1SSS..SSS1", "1111111111", ".........."},
+  {"B1B1B1B1B1", "1111111111", "2222222222", "..........", "3333333333", "1111111111", "B1B1B1B1B1"},
+  {"....SS....", "...1221...", "..122221..", ".1223B221.", "..122221..", "...1221...", "....11...."},
+  {"1.1.1.1.1.", "2S2S2S2S2S", "3333333333", "S2S2S2S2S2", ".1.1.1.1.1", "BBBBBBBBBB", ".........."},
+  {"2222222222", "S11111111S", "S1B1111B1S", "S11111111S", "S11111111S", "SSSS..SSSS", ".........."},
+  {"3.3.3.3.3.", ".3.3.3.3.3", "2B2B2B2B2B", "1111111111", "1111111111", "..S....S..", ".........."},
+  {"1234554321", "1234554321", "SSS1BB1SSS", "..........", "3322112233", "3322112233", ".........."},
+  {"S3S3S3S3S3", "3333333333", "2222BB2222", "2222222222", "S1S1S1S1S1", "1111111111", "1111111111"},
+  {"BBB....BBB", "B3B....B3B", "BBB....BBB", "..222222..", "..2SSSS2..", "..222222..", ".........."},
+  {"3333333333", "S3333333S3", "3B33SS33B3", "3333333333", "2222222222", "S1S1S1S1S1", "1111111111"},
+}
 
 local S, OX, OY = 1, 0, 0
 local bricks = {}               -- {x, y, hp, max, col, hitT, delay}
@@ -23,8 +45,30 @@ local broken, powers = 0, 0
 local pointerX = nil
 local ROWCOL = {"#FF453A", "#FF9F0A", "#FFD60A", "#32D74B", "#64D2FF", "#0A84FF", "#BF5AF2"}
 local POW = {wide = {"open_in_full", "#32D74B"}, multi = {"scatter_plot", "#64D2FF"},
-  slow = {"speed", "#FFD60A"}, life = {"favorite", "#FF375F"}}
-local POWKEYS = {"wide", "multi", "multi", "slow", "wide", "life"}
+  slow = {"speed", "#FFD60A"}, life = {"favorite", "#FF375F"}, laser = {"flash_on", "#FF453A"},
+  fire = {"local_fire_department", "#FF6A00"}, catch = {"pan_tool", "#30D5FF"}, shrink = {"close_fullscreen", "#8E8E93"}}
+local POWKEYS = {"wide", "multi", "multi", "slow", "wide", "life", "laser", "laser", "fire", "catch", "catch", "shrink"}
+local laserT, fireT, catchT, shrinkT, laserCd = 0, 0, 0, 0, 0
+local shots = {}                -- laser beams {x, y}
+local stageClears = 0
+
+function G.load()
+  mode = K.clamp(tonumber(store.get("mode", 1)) or 1, 1, 2)
+end
+function G.bestKey() return mode == 1 and "best" or "best_endless" end
+function G.modeName() return TR(mode == 1 and "campaign" or "endless") end
+function G.options(x, y, w)
+  local m = ui.segmented("mode", {TR("campaign"), TR("endless")}, mode, x, y, w, 32)
+  if m ~= mode then
+    mode = m
+    store.set("mode", mode)
+    K.loadBest()
+    G.reset()
+  end
+end
+function G.titlePress(act)
+  if act == "left" or act == "right" then mode = 3 - mode; store.set("mode", mode); K.loadBest(); G.reset(); K.sfx("click") end
+end
 
 function G.controls() return {TR("c_move"), TR("c_launch"), TR("c_touch")} end
 
@@ -46,15 +90,27 @@ local function buildLevel()
   bricks = {}
   left = 0
   levelAt = K.now
+  local st = mode == 1 and STAGES[(level - 1) % #STAGES + 1] or nil
+  local extra = mode == 1 and floor((level - 1) / #STAGES) or 0   -- later loops are tougher
   for r = 0, ROWS - 1 do
     for c = 0, COLS - 1 do
-      if pattern(level, c, r) then
-        local hp = 1
+      local hp, steel, bomb = 0, false, false
+      if st then
+        local ch = st[r + 1]:sub(c + 1, c + 1)
+        if ch == "S" then steel, hp = true, 1
+        elseif ch == "B" then bomb, hp = true, 1
+        elseif ch ~= "." then hp = min(3, (tonumber(ch) or 1) + extra) end
+      elseif pattern(level, c, r) then
+        hp = 1
         if level >= 2 and r < 2 then hp = 2 end
         if level >= 4 and r == 0 then hp = 3 end
+        if level >= 3 and (c * 7 + r * 3 + level) % 23 == 0 then bomb, hp = true, 1 end
+        if level >= 5 and r == ROWS - 1 and (c == 0 or c == COLS - 1) then steel = true end
+      end
+      if hp > 0 then
         bricks[#bricks + 1] = {x = BX0 + c * BW, y = BY0 + r * BH, hp = hp, max = hp, col = ROWCOL[r + 1], hitT = 0,
-          delay = (ROWS - r) * 0.05 + c * 0.02}
-        left = left + 1
+          delay = (ROWS - r) * 0.05 + c * 0.02, steel = steel, bomb = bomb, c = c, r = r}
+        if not steel then left = left + 1 end
       end
     end
   end
@@ -73,8 +129,13 @@ local function serve()
   newBall(pad.x, PADY - 10, 0, 0, true)
 end
 
+local function baseSpeed() return min(470, 330 + (level - 1) * 22) * K.dmul end
+
 function G.reset()
-  level, lives, speed = 1, 3, 330
+  level, lives = 1, 3
+  speed = baseSpeed()
+  laserT, fireT, catchT, shrinkT, laserCd, stageClears = 0, 0, 0, 0, 0, 0
+  shots = {}
   pad.x, pad.w, pad.wideT = W / 2, 96, 0
   slowT, broken, powers = 0, 0, 0
   pointerX = nil
@@ -86,6 +147,7 @@ local function launch()
   for _, b in ipairs(balls) do
     if b.stuck then
       b.stuck = false
+      b.off = nil
       local a = -pi / 2 + (random() - 0.5) * 0.6
       b.vx, b.vy = cos(a) * speed, sin(a) * speed
       if K.state == "play" then K.sfx("high") end
@@ -106,8 +168,28 @@ function G.pointer(e)
   end
 end
 
-local function hitBrick(br)
+local hitBrick
+local function explode(br)
+  K.burst(br.x + BW / 2, br.y + BH / 2, 30, "#FF6A00", 260, 0.7, 4, 200)
+  K.burst(br.x + BW / 2, br.y + BH / 2, 12, "#FFD60A", 160, 0.5, 3)
+  K.shake(9)
+  if K.state == "play" then K.sfx("boom", 0.7); K.vibrate(0.6, 90) end
+  for _, o in ipairs(bricks) do
+    if o.hp > 0 and not o.steel and o ~= br and abs(o.c - br.c) <= 1 and abs(o.r - br.r) <= 1 then
+      o.hp = 1
+      hitBrick(o)
+    end
+  end
+end
+
+hitBrick = function(br)
   local playing = K.state == "play"
+  if br.steel then
+    br.hitT = 0.12
+    if playing then K.sfx("bounce", 0.6) end
+    K.burst(br.x + BW / 2, br.y + BH / 2, 4, "#D0D4DC", 80, 0.25, 1.8)
+    return
+  end
   br.hp = br.hp - 1
   br.hitT = 0.18
   if br.hp <= 0 then
@@ -127,6 +209,7 @@ local function hitBrick(br)
     if random() < 0.13 then
       drops[#drops + 1] = {x = br.x + BW / 2, y = br.y + BH / 2, kind = POWKEYS[random(#POWKEYS)], t = 0}
     end
+    if br.bomb then explode(br) end
   else
     if playing then K.addScore(5); K.sfx("hit", 0.7) end
     K.burst(br.x + BW / 2, br.y + BH / 2, 5, "#FFFFFF", 90, 0.25, 2)
@@ -144,7 +227,12 @@ local function collideBricks(b)
       if ddx * ddx + ddy * ddy < 49 then
         local ox = min(b.x + 7 - br.x, br.x + BW - 2 - (b.x - 7))
         local oy = min(b.y + 7 - br.y, br.y + BH - 2 - (b.y - 7))
-        if ox < oy then
+        if fireT > 0 and not br.steel then
+          -- a fireball burns straight through
+          br.hp = 1
+          hitBrick(br)
+          return
+        elseif ox < oy then
           b.vx = (b.x < br.x + BW / 2) and -abs(b.vx) or abs(b.vx)
         else
           b.vy = (b.y < br.y + BH / 2) and -abs(b.vy) or abs(b.vy)
@@ -176,6 +264,18 @@ local function applyPower(kind)
   elseif kind == "slow" then
     slowT = 8
     K.callout(TR("p_slow"), p[2], 30, "pow")
+  elseif kind == "laser" then
+    laserT = 10
+    K.callout(TR("p_laser"), p[2], 30, "pow")
+  elseif kind == "fire" then
+    fireT = 7
+    K.callout(TR("p_fire"), p[2], 30, "pow")
+  elseif kind == "catch" then
+    catchT = 12
+    K.callout(TR("p_catch"), p[2], 30, "pow")
+  elseif kind == "shrink" then
+    shrinkT, pad.wideT = 9, 0
+    K.callout(TR("p_shrink"), p[2], 30, "pow")
   else
     lives = min(6, lives + 1)
     K.callout(TR("p_life"), p[2], 30, "pow")
@@ -207,7 +307,36 @@ local function simulate(dt, demo)
   end
   if pad.wideT > 0 then pad.wideT = pad.wideT - dt end
   if slowT > 0 then slowT = slowT - dt end
-  pad.w = K.smooth(pad.w, pad.wideT > 0 and 150 or 96, 10, dt)
+  if fireT > 0 then fireT = fireT - dt end
+  if catchT > 0 then catchT = catchT - dt end
+  if shrinkT > 0 then shrinkT = shrinkT - dt end
+  if laserT > 0 then
+    laserT = laserT - dt
+    laserCd = laserCd - dt
+    if laserCd <= 0 and not (balls[1] and balls[1].stuck) then
+      laserCd = 0.42
+      shots[#shots + 1] = {x = pad.x - pad.w / 2 + 8, y = PADY - 4}
+      shots[#shots + 1] = {x = pad.x + pad.w / 2 - 8, y = PADY - 4}
+      if not demo then K.tone(1400, 0.04, 0.05, "saw") end
+    end
+  end
+  local si = 1
+  while si <= #shots do
+    local sh = shots[si]
+    sh.y = sh.y - 620 * dt
+    local gone = sh.y < 44
+    if not gone then
+      for _, br in ipairs(bricks) do
+        if br.hp > 0 and sh.x >= br.x and sh.x <= br.x + BW - 2 and sh.y >= br.y and sh.y <= br.y + BH - 2 then
+          hitBrick(br)
+          gone = true
+          break
+        end
+      end
+    end
+    if gone then table.remove(shots, si) else si = si + 1 end
+  end
+  pad.w = K.smooth(pad.w, pad.wideT > 0 and 150 or (shrinkT > 0 and 62 or 96), 10, dt)
   pad.x = K.clamp(pad.x, pad.w / 2 + 4, W - pad.w / 2 - 4)
   pad.squash = max(0, pad.squash - dt * 5)
   for i = 1, #bricks do
@@ -220,7 +349,7 @@ local function simulate(dt, demo)
     local b = balls[i]
     local lost = false
     if b.stuck then
-      b.x, b.y = pad.x, PADY - 10
+      b.x, b.y = pad.x + (b.off or 0), PADY - 10
     else
       local sp = sqrt(b.vx * b.vx + b.vy * b.vy) * factor
       local steps = max(1, floor(sp * dt / 4) + 1)
@@ -242,6 +371,10 @@ local function simulate(dt, demo)
           b.vx, b.vy = cos(a) * sp2, sin(a) * sp2
           b.y = PADY - 7
           pad.squash = 1
+          if catchT > 0 and not demo then
+            b.stuck, b.off = true, b.x - pad.x
+            speed = max(speed, sp2)
+          end
           if not demo then
             K.sfx("bounce", 0.8)
             K.comboBreak()
@@ -265,13 +398,14 @@ local function simulate(dt, demo)
     K.flash("#FF453A50", 0.3)
     K.vibrate(0.8, 160)
     if lives <= 0 then
-      K.over({stats = {{TR("level"), tostring(level)}, {TR("bricks"), tostring(broken)},
-        {TR("powerups"), tostring(powers)}}})
+      K.over({stats = {{TR(mode == 1 and "stage" or "level"), tostring(level)}, {TR("bricks"), tostring(broken)},
+        {TR("powerups"), tostring(powers)}, {TR("cleared"), tostring(stageClears)}}})
       return
     end
     K.sfx("lose", 0.7)
     K.callout(TR("ball_lost"), "#FF453A", 30, "lost")
-    pad.wideT, slowT = 0, 0
+    pad.wideT, slowT, laserT, fireT, catchT, shrinkT = 0, 0, 0, 0, 0, 0
+    shots = {}
     serve()
   end
   i = 1
@@ -290,12 +424,16 @@ local function simulate(dt, demo)
   if left <= 0 then
     level = level + 1
     if not demo then
-      K.addScore(100 * (level - 1))
-      K.callout(TR("level_n", level), "#FFD60A", 40, "level", 1.6)
+      stageClears = stageClears + 1
+      local bonus = 100 * (level - 1) + (mode == 1 and 250 * lives or 0)
+      K.addScore(bonus)
+      K.callout(TR(mode == 1 and "stage_n" or "level_n", level), "#FFD60A", 40, "level", 1.6)
       K.sfx("level")
       K.confetti(40)
     end
-    speed = min(470, 330 + (level - 1) * 22)
+    speed = baseSpeed()
+    laserT, fireT, catchT, shrinkT = 0, 0, 0, 0
+    shots = {}
     buildLevel()
     serve()
   end
@@ -328,11 +466,25 @@ function G.draw(w, h)
       if e > 0 then
         local x, y, bw, bh = ox + br.x * S, oy + (br.y - (1 - e) * 120) * S, (BW - 4) * S, (BH - 4) * S
         local a = 0.55 + 0.45 * br.hp / br.max
-        if br.hitT > 0 then K.color("#FFFFFF") else K.color(br.col, a * K.clamp(e, 0, 1)) end
-        gfx.rect(x, y, bw, bh, 4 * S)
-        K.color("#FFFFFF", 0.28)
-        gfx.rect(x + 3 * S, y + 2 * S, bw - 6 * S, 4 * S, 2 * S)
-        if br.max > 1 then
+        if br.steel then
+          if br.hitT > 0 then K.color("#FFFFFF") else gfx.gradient(x, y, bw, bh, "#C9CED8", "#6B7280", false, 4 * S) end
+          if br.hitT > 0 then gfx.rect(x, y, bw, bh, 4 * S) end
+          K.color("#000000", 0.3)
+          gfx.circle(x + 5 * S, y + bh / 2, 1.6 * S)
+          gfx.circle(x + bw - 5 * S, y + bh / 2, 1.6 * S)
+        elseif br.bomb then
+          K.color(br.hitT > 0 and "#FFFFFF" or "#3A1D12", K.clamp(e, 0, 1))
+          gfx.rect(x, y, bw, bh, 4 * S)
+          K.color("#FF6A00", 0.55 + 0.45 * sin(t * 6 + br.c))
+          gfx.rectLine(x, y, bw, bh, 4 * S, 2)
+          gfx.icon("brightness_high", x + bw / 2, y + bh / 2, 14 * S, "#FFB020")
+        else
+          if br.hitT > 0 then K.color("#FFFFFF") else K.color(br.col, a * K.clamp(e, 0, 1)) end
+          gfx.rect(x, y, bw, bh, 4 * S)
+          K.color("#FFFFFF", 0.28)
+          gfx.rect(x + 3 * S, y + 2 * S, bw - 6 * S, 4 * S, 2 * S)
+        end
+        if br.max > 1 and not br.steel then
           K.color("#000000", 0.35)
           for k = 1, br.hp do gfx.circle(x + bw / 2 + (k - (br.hp + 1) / 2) * 9 * S, y + bh * 0.62, 2.2 * S) end
         end
@@ -353,21 +505,32 @@ function G.draw(w, h)
   local sq = pad.squash
   local pw, ph = pad.w + sq * 10, 12 - sq * 4
   local px = ox + (pad.x - pw / 2) * S
-  local pc = pad.wideT > 0 and "#32D74B" or "#7D5BFF"
+  local pc = pad.wideT > 0 and "#32D74B" or (shrinkT > 0 and "#8E8E93" or (catchT > 0 and "#30D5FF" or "#7D5BFF"))
   K.color(pc, 0.25 + 0.15 * sin(t * 5))
   gfx.rect(px - 5 * S, oy + (PADY - 5 + sq * 2) * S, (pw + 10) * S, (ph + 10) * S, 10 * S)
   gfx.gradient(px, oy + (PADY + sq * 2) * S, pw * S, ph * S, "#E5DEFF", pc, false, 6 * S)
+  if laserT > 0 then
+    K.color("#FF453A")
+    gfx.rect(px + 4 * S, oy + (PADY - 6) * S, 6 * S, 8 * S, 2 * S)
+    gfx.rect(px + (pw - 10) * S, oy + (PADY - 6) * S, 6 * S, 8 * S, 2 * S)
+  end
+  for _, sh in ipairs(shots) do
+    K.color("#FF453A", 0.35)
+    gfx.rect(ox + (sh.x - 3) * S, oy + (sh.y - 4) * S, 6 * S, 18 * S, 3 * S)
+    K.color("#FFD0D0")
+    gfx.rect(ox + (sh.x - 1) * S, oy + (sh.y - 2) * S, 2 * S, 14 * S, 1 * S)
+  end
   -- balls with trails
   for _, b in ipairs(balls) do
     local tr = b.trail
     for k = 1, 6 do
       local j = (b.ti + (k - 1) * 2) % 12 + 1
-      K.color(slowT > 0 and "#FFD60A" or "#B9A8FF", k / 14)
+      K.color(fireT > 0 and "#FF6A00" or (slowT > 0 and "#FFD60A" or "#B9A8FF"), k / 14)
       gfx.circle(ox + tr[j] * S, oy + tr[j + 1] * S, (3 + k * 0.6) * S)
     end
-    K.color("#FFFFFF", 0.25)
-    gfx.circle(ox + b.x * S, oy + b.y * S, 11 * S)
-    K.color("#FFFFFF")
+    K.color(fireT > 0 and "#FF6A00" or "#FFFFFF", 0.25)
+    gfx.circle(ox + b.x * S, oy + b.y * S, (fireT > 0 and 13 or 11) * S)
+    K.color(fireT > 0 and "#FFD08A" or "#FFFFFF")
     gfx.circle(ox + b.x * S, oy + b.y * S, 7 * S)
   end
   K.drawParticles(S, ox, oy)
@@ -375,8 +538,15 @@ function G.draw(w, h)
   -- HUD
   local x = 12
   x = x + K.scorePill(x, 8) + 8
-  x = x + K.pill(x, 8, "flag", TR("level_n", level), "#64D2FF") + 8
-  K.pill(x, 8, "favorite", tostring(lives), "#FF375F")
+  x = x + K.pill(x, 8, "flag", TR(mode == 1 and "stage_n" or "level_n", level), "#64D2FF") + 8
+  x = x + K.pill(x, 8, "favorite", tostring(lives), "#FF375F") + 8
+  -- active power-up timers
+  local act = {{laserT, "laser"}, {fireT, "fire"}, {catchT, "catch"}, {shrinkT, "shrink"}, {slowT, "slow"}}
+  for _, a in ipairs(act) do
+    if a[1] > 0 and x < w - 140 then
+      x = x + K.pill(x, 8, POW[a[2]][1], tostring(math.ceil(a[1])), POW[a[2]][2]) + 6
+    end
+  end
   K.bestPill(w - 60, 8)
   if K.state == "play" and balls[1] and balls[1].stuck then
     K.banner(TR("launch_hint"), ox, oy + 340 * S, W * S, 18, "#FFFFFF", 0.6 + 0.4 * sin(t * 4))

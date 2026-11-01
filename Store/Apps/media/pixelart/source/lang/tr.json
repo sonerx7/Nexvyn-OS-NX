@@ -36,5 +36,13 @@
   "grid": "Izgarayı Göster",
   "mirror": "Ayna Çizim",
   "flip_h": "Yatay Çevir",
-  "clear": "Tuvali Temizle"
+  "clear": "Tuvali Temizle",
+  "t_replace": "Rengi değiştir",
+  "mirror4": "Dört Yönlü Ayna",
+  "flip_v": "Dikey Çevir",
+  "rotate": "90° Döndür",
+  "shift_l": "Sola Kaydır",
+  "shift_r": "Sağa Kaydır",
+  "shift_u": "Yukarı Kaydır",
+  "shift_d": "Aşağı Kaydır"
 }

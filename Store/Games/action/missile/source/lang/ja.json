@@ -41,5 +41,19 @@
   "c_aim": "スティック / 十字ボタン / 矢印キー: 照準",
   "c_fire": "A / Space: 最も近い砲台から発射",
   "c_base": "L、B、R: 左 / 中央 / 右の砲台",
-  "c_touch": "タッチ / マウス: 目標をタップまたはクリック"
+  "c_touch": "タッチ / マウス: 目標をタップまたはクリック",
+  "records": "記録",
+  "no_records": "まだ記録がありません。遊んでみよう！",
+  "rounds": "プレイ回数",
+  "total_time": "合計時間",
+  "total_points": "合計スコア",
+  "medal": "メダル",
+  "medal_bronze": "銅",
+  "medal_silver": "銀",
+  "medal_gold": "金",
+  "easy": "かんたん",
+  "normal": "ふつう",
+  "hard": "むずかしい",
+  "close": "閉じる",
+  "rec_hint": "X: 記録  ·  L / R: 難易度"
 }

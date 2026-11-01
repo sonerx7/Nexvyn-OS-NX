@@ -44,7 +44,7 @@
   "h_pause": "Pause",
   "win_rate": "Win rate",
   "avg": "Average",
-  "title": "Sokoban",
+  "title": "Crate Pusher",
   "tagline": "Push every crate onto a goal",
   "h_tap_walk": "Tap to walk, tap a crate next to you to push it, or swipe",
   "levels_done": "{0} / {1} levels solved",

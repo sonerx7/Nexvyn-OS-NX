@@ -36,5 +36,13 @@
   "grid": "Afficher la grille",
   "mirror": "Dessin en miroir",
   "flip_h": "Retourner horizontalement",
-  "clear": "Effacer la toile"
+  "clear": "Effacer la toile",
+  "t_replace": "Remplacer la couleur",
+  "mirror4": "Miroir à quatre axes",
+  "flip_v": "Retourner verticalement",
+  "rotate": "Pivoter de 90°",
+  "shift_l": "Décaler à gauche",
+  "shift_r": "Décaler à droite",
+  "shift_u": "Décaler vers le haut",
+  "shift_d": "Décaler vers le bas"
 }

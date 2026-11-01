@@ -67,5 +67,13 @@
   "reset_progress": "Reset Progress",
   "reset_title": "Reset progress?",
   "reset_msg": "All cards go back to box 1 and become due today.",
-  "reset": "Reset"
+  "reset": "Reset",
+  "quiz": "Quiz (multiple choice)",
+  "hint_quiz": "Pick the right answer · 1–4 on the keyboard",
+  "streak_n": "Streak: {0} days",
+  "import": "Import Cards",
+  "import_done": "{0} cards imported into “{1}”.",
+  "import_none": "No cards found. Put one card per line: front and back separated by a tab, ; or comma.",
+  "export": "Export Deck",
+  "ok": "OK"
 }

@@ -1,23 +1,26 @@
 {
   "id": "com.sonerx7.asteroids",
   "name": {
-    "en": "Asteroids",
-    "tr": "Asteroitler",
-    "de": "Asteroids",
-    "fr": "Astéroïdes",
-    "es": "Asteroides",
-    "ja": "アステロイド",
-    "zh": "小行星",
-    "ko": "소행성"
+    "en": "Rock Blaster",
+    "tr": "Kaya Avcısı",
+    "de": "Felsbrecher",
+    "fr": "Pulvérisateur",
+    "es": "Revientarrocas",
+    "ja": "ロックブラスター",
+    "zh": "陨石爆破",
+    "ko": "록 블래스터"
   },
   "description": {
-    "en": "Pilot a tiny ship through an asteroid field: rotate, thrust and blast the rocks into smaller pieces, dodge flying saucers and survive the waves.",
-    "tr": "Küçük bir gemiyle asteroit kuşağında uç: dön, hızlan ve kayaları küçük parçalara ayır, uçan dairelerden kaç, dalgalara dayan.",
-    "de": "Steuere ein winziges Schiff durch ein Asteroidenfeld: Drehe, gib Schub, sprenge die Felsen in kleinere Stücke, weiche fliegenden Untertassen aus und überlebe die Wellen.",
-    "fr": "Pilotez un petit vaisseau dans un champ d’astéroïdes : pivotez, accélérez et pulvérisez les rochers en morceaux plus petits, esquivez les soucoupes volantes et survivez aux vagues.",
-    "es": "Pilota una pequeña nave por un campo de asteroides: gira, acelera y destroza las rocas en trozos más pequeños, esquiva platillos volantes y sobrevive a las oleadas."
+    "en": "Rotate, thrust and blast splitting rocks and saucers in a wrap-around field, with power crystals and three difficulties.",
+    "tr": "Kenarları birleşik bir alanda dön, itki ver; bölünen kayaları ve uçan daireleri vur. Güç kristalleri ve üç zorluk.",
+    "de": "Drehen, Schub geben und zerfallende Felsen und Ufos abschießen, mit Kraftkristallen und drei Schwierigkeitsgraden.",
+    "fr": "Pivotez, accélérez et pulvérisez rochers et soucoupes dans un champ sans bords, avec cristaux bonus et trois difficultés.",
+    "es": "Gira, acelera y revienta rocas y platillos en un campo sin bordes, con cristales de poder y tres dificultades.",
+    "ja": "回転と噴射で、端がつながった宇宙で分裂する岩と円盤を撃ち落とそう。パワークリスタルと3段階の難易度。",
+    "zh": "在首尾相连的太空中旋转、推进，击碎会分裂的陨石和飞碟。能量水晶和三种难度。",
+    "ko": "가장자리가 이어진 우주에서 회전하고 추진하며 쪼개지는 바위와 비행접시를 부수세요. 파워 크리스털과 세 가지 난이도."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

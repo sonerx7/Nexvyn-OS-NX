@@ -1,4 +1,5 @@
--- Pomodoro for Nexvyn OS: focus / short break / long break cycle with statistics.
+-- Pomodoro for Nexvyn OS: focus / short break / long break cycle with statistics, a task label per session with
+-- minutes per task, a daily session goal, and a scheduled notification when the app is closed or in the background.
 local app = {}
 
 local floor, min, max, abs, sin, cos, pi = math.floor, math.min, math.max, math.abs, math.sin, math.cos, math.pi
@@ -25,7 +26,10 @@ local function mix(c1, c2, k)
 end
 
 -- ------------------------------------------------------------------ settings & state
-local cfg = {focus = 25, short = 5, long = 15, rounds = 4, autoBreak = true, autoFocus = false, sound = true, ticks = true}
+local cfg = {focus = 25, short = 5, long = 15, rounds = 4, autoBreak = true, autoFocus = false, sound = true, ticks = true,
+             goal = 8}
+local task = ""                -- what the current focus session is for
+local schedId = nil            -- notification scheduled while the app is away
 
 local PHASES = {
   focus = {key = "phase_focus", icon = "work", color = "red"},
@@ -75,6 +79,7 @@ local function saveState()
   store.set("cfg", cfg)
   store.set("days", days)
   store.set("total", total)
+  store.set("task", task)
   store.set("timer", {phase = phase, cycle = cycle, remaining = remaining, running = running,
                       endEpoch = running and (sys.epoch() + remaining) or 0})
 end
@@ -95,6 +100,11 @@ local function nextPhase(silent)
     d.s = d.s + 1
     d.m = d.m + cfg.focus
     total = total + 1
+    if task ~= "" then
+      d.t = type(d.t) == "table" and d.t or {}
+      d.t[task] = (d.t[task] or 0) + cfg.focus
+    end
+    if d.s == cfg.goal then timer.after(1.2, function() sys.notify(TR("goal_reached"), TR("goal_body", cfg.goal)) end) end
     if cycle >= cfg.rounds then phase = "long" else phase = "short" end
   else
     if phase == "long" then cycle = 1 else cycle = cycle + 1 end
@@ -164,8 +174,11 @@ function app.load()
   local c = store.get("cfg", nil)
   if type(c) == "table" then for k, v in pairs(c) do if cfg[k] ~= nil and type(v) == type(cfg[k]) then cfg[k] = v end end end
   days = store.get("days", {}) or {}
+  task = type(store.get("task", "")) == "string" and store.get("task", "") or ""
   total = store.get("total", 0) or 0
   pruneDays()
+  local old = store.get("schedId", nil)
+  if old then sys.unschedule(old); store.set("schedId", nil) end
   local t = store.get("timer", nil)
   if type(t) == "table" and PHASES[t.phase] then
     phase = t.phase
@@ -263,9 +276,26 @@ local function drawTimer(w, h, now)
   gfx.color(col)
   gfx.text(label, px + 32, py + 6, 14, "semibold")
 
+  -- task chip: tap to name the focus session
+  local tl = task ~= "" and task or TR("add_task")
+  local tw2 = min(w - 60, gfx.textWidth(tl, 13, "medium") + 44)
+  local tx = (w - tw2) / 2
+  local th2 = ui.hit("taskchip", tx, 98, tw2, 26)
+  gfx.rect(tx, 98, tw2, 26, 13, th2.hovered and theme.hover or alpha(theme.text3, 0.12))
+  gfx.icon(task ~= "" and "label" or "add", tx + 16, 111, 15, task ~= "" and col or theme.text3)
+  gfx.clip(tx + 28, 98, tw2 - 36, 26)
+  gfx.color(task ~= "" and theme.text or theme.text3)
+  gfx.text(tl, tx + 30, 103, 13, "medium")
+  gfx.unclip()
+  if th2.clicked then
+    ui.prompt(TR("task_title"), TR("task_msg"), task, function(t)
+      if t then task = (t:gsub("^%s+", ""):gsub("%s+$", "")):sub(1, 60); saveState() end
+    end)
+  end
+
   -- ring
-  local cx, cy = w / 2, 106 + min(126, (h - 290) / 2)
-  local R = min(124, (h - 300) / 2 + 20, w / 2 - 50)
+  local cx, cy = w / 2, 130 + min(126, (h - 330) / 2)
+  local R = min(124, (h - 340) / 2 + 20, w / 2 - 50)
   local th = 14
   -- tick marks
   for i = 0, 59 do
@@ -337,7 +367,7 @@ local function drawTimer(w, h, now)
   local y = h - 34
   gfx.color(theme.separator)
   gfx.rect(24, y - 12, w - 48, 1)
-  local txt = TR("today_summary", d.s, fmtMinutes(d.m))
+  local txt = TR("today_goal", d.s, cfg.goal, fmtMinutes(d.m))
   local tw = gfx.textWidth(txt, 13) + 24
   gfx.icon("local_fire_department", (w - tw) / 2 + 8, y + 9, 17, theme.orange)
   gfx.color(theme.text2)
@@ -380,7 +410,7 @@ local function drawStats(w, h)
 
   -- last 7 days chart
   local gy = 204
-  local gh = h - gy - 64
+  local gh = h - gy - 64 - 108
   ui.group(x0, gy, cw, gh)
   gfx.color(theme.text)
   gfx.text(TR("last_7_days"), x0 + 14, gy + 12, 14, "semibold")
@@ -416,6 +446,33 @@ local function drawStats(w, h)
     gfx.text(TR(wk), bx, chartBottom + 8, 12, b.today and "semibold" or "sans", "center", bw)
   end
 
+  -- minutes per task over the last 7 days
+  local ty = gy + gh + 10
+  ui.group(x0, ty, cw, 94)
+  gfx.color(theme.text)
+  gfx.text(TR("top_tasks"), x0 + 14, ty + 10, 13, "semibold")
+  local per = {}
+  for i = 0, 6 do
+    local dd = days[dayKey(now - i * 86400)]
+    if dd and type(dd.t) == "table" then for k, v in pairs(dd.t) do per[k] = (per[k] or 0) + v end end
+  end
+  local list = {}
+  for k, v in pairs(per) do list[#list + 1] = {k, v} end
+  table.sort(list, function(a, b) if a[2] ~= b[2] then return a[2] > b[2] end return a[1] < b[1] end)
+  if #list == 0 then
+    gfx.color(theme.text3)
+    gfx.text(TR("no_tasks"), x0 + 14, ty + 36, 12)
+  end
+  for i = 1, min(3, #list) do
+    local yy = ty + 32 + (i - 1) * 20
+    gfx.color(theme.text2)
+    gfx.clip(x0 + 14, yy, cw - 100, 18)
+    gfx.text(list[i][1], x0 + 14, yy, 13)
+    gfx.unclip()
+    gfx.color(theme.text)
+    gfx.text(fmtMinutes(list[i][2]), x0, yy, 13, "semibold", "right", cw - 14)
+  end
+
   if ui.button(TR("reset_stats"), w / 2 - 90, h - 50, 180, 32, "default", "delete") then
     ui.alert(TR("reset_stats_title"), TR("reset_stats_msg"), {TR("reset_stats_confirm"), TR("cancel")}, function(b)
       if b == 1 then
@@ -447,7 +504,7 @@ end
 local function drawSettings(w, h)
   local x0, cw = 20, w - 40
   local y = 58
-  ui.group(x0, y, cw, 4 * 64)
+  ui.group(x0, y, cw, 5 * 64)
   local old = {cfg.focus, cfg.short, cfg.long, cfg.rounds}
   cfg.focus = sliderRow("s_focus", TR("set_focus"), cfg.focus, 5, 90, x0, y, cw, "minutes_short")
   ui.separator(x0 + 14, y + 64, x0 + cw - 14)
@@ -456,6 +513,9 @@ local function drawSettings(w, h)
   cfg.long = sliderRow("s_long", TR("set_long"), cfg.long, 5, 60, x0, y + 128, cw, "minutes_short")
   ui.separator(x0 + 14, y + 192, x0 + cw - 14)
   cfg.rounds = sliderRow("s_rounds", TR("set_rounds"), cfg.rounds, 2, 8, x0, y + 192, cw, nil)
+  ui.separator(x0 + 14, y + 256, x0 + cw - 14)
+  local ng = sliderRow("s_goal", TR("set_goal"), cfg.goal, 1, 16, x0, y + 256, cw, nil)
+  if ng ~= cfg.goal then cfg.goal = ng; saveState() end
   local changed = old[1] ~= cfg.focus or old[2] ~= cfg.short or old[3] ~= cfg.long or old[4] ~= cfg.rounds
   if changed then
     if not running then remaining = phaseLen(phase) end
@@ -463,7 +523,7 @@ local function drawSettings(w, h)
     saveState()
   end
 
-  y = y + 4 * 64 + 14
+  y = y + 5 * 64 + 14
   ui.group(x0, y, cw, 4 * 40)
   local o = {cfg.autoBreak, cfg.autoFocus, cfg.sound, cfg.ticks}
   cfg.autoBreak = toggleRow("t_ab", TR("set_auto_break"), cfg.autoBreak, x0, y, cw)
@@ -479,7 +539,7 @@ local function drawSettings(w, h)
   end
 
   if ui.button(TR("restore_defaults"), w / 2 - 90, min(h - 46, y + 176), 180, 30, "link") then
-    cfg.focus, cfg.short, cfg.long, cfg.rounds = 25, 5, 15, 4
+    cfg.focus, cfg.short, cfg.long, cfg.rounds, cfg.goal = 25, 5, 15, 4, 8
     if not running then remaining = phaseLen(phase) end
     if cycle > cfg.rounds then cycle = cfg.rounds end
     saveState()
@@ -544,7 +604,24 @@ function app.onmenu(id)
   end
 end
 
+-- while the app is away, the system posts the end of the phase as a scheduled notification
+local function scheduleEnd()
+  if schedId then sys.unschedule(schedId); schedId = nil end
+  if running then
+    local left = max(1, floor(endAt - sys.time()))
+    local title = phase == "focus" and TR("notify_focus_title") or TR("notify_break_title")
+    local body = phase == "focus" and TR("notify_focus_short", cfg.short) or TR("notify_break_body", cfg.focus)
+    schedId = sys.schedule(sys.epoch() + left, title, body)
+    store.set("schedId", schedId)
+  end
+end
+function app.suspend() saveState(); scheduleEnd() end
+function app.resume()
+  if schedId then sys.unschedule(schedId); schedId = nil; store.set("schedId", nil) end
+end
+
 function app.close()
+  scheduleEnd()
   if running then remaining = max(0, endAt - sys.time()) end
   saveState()
   store.save()

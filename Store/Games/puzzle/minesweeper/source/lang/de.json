@@ -32,5 +32,18 @@
   "cancel": "Abbrechen",
   "menu_records": "Rekorde",
   "best_line": "{0}: {1} s",
-  "wins_line": "{0} von {1} Spielen gewonnen"
+  "wins_line": "{0} von {1} Spielen gewonnen",
+  "custom": "Eigenes",
+  "custom_board": "Eigenes Feld",
+  "columns": "Spalten",
+  "rows": "Zeilen",
+  "mines": "Minen",
+  "start": "Starten",
+  "statistics": "Statistik",
+  "st_played": "Gespielt",
+  "st_won": "Gewonnen",
+  "st_best": "Beste s",
+  "st_streak": "Serie",
+  "close": "Schließen",
+  "question_marks": "Fragezeichen (?)"
 }

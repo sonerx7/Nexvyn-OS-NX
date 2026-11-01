@@ -41,5 +41,19 @@
   "c_aim": "Stick / croix / flèches : viser",
   "c_fire": "A / Espace : tirer depuis la batterie la plus proche",
   "c_base": "L, B, R : batterie gauche / centre / droite",
-  "c_touch": "Tactile / souris : touchez ou cliquez sur la cible"
+  "c_touch": "Tactile / souris : touchez ou cliquez sur la cible",
+  "records": "Records",
+  "no_records": "Aucun score pour l’instant. Jouez une partie !",
+  "rounds": "Parties",
+  "total_time": "Temps total",
+  "total_points": "Points totaux",
+  "medal": "Médaille",
+  "medal_bronze": "Bronze",
+  "medal_silver": "Argent",
+  "medal_gold": "Or",
+  "easy": "Facile",
+  "normal": "Normal",
+  "hard": "Difficile",
+  "close": "Fermer",
+  "rec_hint": "X : records  ·  L / R : difficulté"
 }

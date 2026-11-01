@@ -36,5 +36,13 @@
   "grid": "Show Grid",
   "mirror": "Mirror Drawing",
   "flip_h": "Flip Horizontally",
-  "clear": "Clear Canvas"
+  "clear": "Clear Canvas",
+  "t_replace": "Replace colour",
+  "mirror4": "Four-Way Mirror",
+  "flip_v": "Flip Vertically",
+  "rotate": "Rotate 90°",
+  "shift_l": "Shift Left",
+  "shift_r": "Shift Right",
+  "shift_u": "Shift Up",
+  "shift_d": "Shift Down"
 }

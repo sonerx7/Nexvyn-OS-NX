@@ -1,0 +1,27 @@
+{
+  "id": "com.sonerx7.chiptrack",
+  "name": {"en": "Chiptrack", "tr": "Chiptrack", "de": "Chiptrack", "fr": "Chiptrack", "es": "Chiptrack", "ja": "Chiptrack", "zh": "Chiptrack", "ko": "Chiptrack"},
+  "description": {
+    "en": "A four-channel chiptune tracker: patterns, instruments, effects, live playback and WAV export.",
+    "tr": "Dört kanallı chiptune tracker: desenler, enstrümanlar, efektler, canlı çalma ve WAV dışa aktarma.",
+    "de": "Ein Vierkanal-Chiptune-Tracker: Patterns, Instrumente, Effekte, Live-Wiedergabe und WAV-Export.",
+    "fr": "Un tracker chiptune à quatre canaux : motifs, instruments, effets, lecture en direct et export WAV.",
+    "es": "Un tracker chiptune de cuatro canales: patrones, instrumentos, efectos, reproducción en vivo y exportación WAV.",
+    "ja": "4 チャンネルのチップチューン・トラッカー。パターン、音色、エフェクト、ライブ再生、WAV 書き出し。",
+    "zh": "四声道芯片音乐 Tracker：乐段、音色、效果、实时播放和 WAV 导出。",
+    "ko": "4채널 칩튠 트래커: 패턴, 악기, 효과, 실시간 재생과 WAV 내보내기."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 520, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "fileTypes": [".chiptrack"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

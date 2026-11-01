@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "흑으로 플레이(선공)",
   "play_white": "백으로 플레이",
-  "show_moves": "둘 수 있는 수 표시"
+  "show_moves": "둘 수 있는 수 표시",
+  "mode_expert": "전문가",
+  "review": "게임 복기",
+  "review_move": "{0} / {1}수",
+  "done": "완료"
 }

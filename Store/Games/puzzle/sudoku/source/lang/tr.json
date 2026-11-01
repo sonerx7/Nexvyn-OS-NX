@@ -64,5 +64,18 @@
   "mistakes_n": "{0} hata",
   "generating": "Tek çözümlü bir bulmaca hazırlanıyor…",
   "notes_mode": "Not modu",
-  "show_mistakes": "Hataları vurgula"
+  "show_mistakes": "Hataları vurgula",
+  "expert": "Uzman",
+  "daily": "Günlük",
+  "daily_play": "Günün bulmacası",
+  "daily_done": "Günlük çözüldü · seri {0}",
+  "daily_streak": "Günlük seri",
+  "streak_fmt": "{0} gün · en iyi {1}",
+  "auto_notes": "Notları doldur",
+  "notes_filled": "Adaylar dolduruldu",
+  "strict_mode": "Üç hata modu",
+  "mistakes_left_n": "{0} hata hakkı",
+  "out_of_mistakes": "Hata hakkın bitti",
+  "out_of_mistakes_sub": "Üç hata modunda üç yanlış rakam oyunu bitirir.",
+  "keep_going": "Devam et (mod kapalı)"
 }

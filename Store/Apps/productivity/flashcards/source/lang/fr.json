@@ -67,5 +67,13 @@
   "reset_progress": "Réinitialiser la progression",
   "reset_title": "Réinitialiser la progression ?",
   "reset_msg": "Toutes les cartes retournent dans la boîte 1 et sont à réviser aujourd’hui.",
-  "reset": "Réinitialiser"
+  "reset": "Réinitialiser",
+  "quiz": "Quiz (QCM)",
+  "hint_quiz": "Choisissez la bonne réponse · touches 1 à 4",
+  "streak_n": "Série : {0} jours",
+  "import": "Importer des cartes",
+  "import_done": "{0} cartes importées dans « {1} ».",
+  "import_none": "Aucune carte trouvée. Une carte par ligne : recto et verso séparés par une tabulation, ; ou une virgule.",
+  "export": "Exporter le paquet",
+  "ok": "OK"
 }

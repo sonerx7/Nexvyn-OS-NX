@@ -11,7 +11,7 @@
     "ko": "3D 뷰어"
   },
   "category": "media",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -31,7 +31,10 @@
     "tr": "3D modelleri (.obj, .stl) ve hazır örnekleri görüntüle",
     "de": "Zeige 3D-Modelle (.obj, .stl) und integrierte Beispiele an",
     "fr": "Affichez des modèles 3D (.obj, .stl) et des exemples intégrés",
-    "es": "Visualiza modelos 3D (.obj, .stl) y ejemplos integrados"
+    "es": "Visualiza modelos 3D (.obj, .stl) y ejemplos integrados",
+    "ja": "OBJ と STL のモデルを回転、ズーム、確認",
+    "zh": "旋转、缩放和查看 OBJ 与 STL 模型",
+    "ko": "OBJ·STL 모델을 돌려 보고 확대하세요"
   },
   "permissions": []
 }

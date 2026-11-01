@@ -11,7 +11,7 @@
     "ko": "가계부"
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -23,11 +23,14 @@
   },
   "gamepad": false,
   "description": {
-    "en": "Track income and expenses with charts and CSV export",
-    "tr": "Gelir ve giderlerinizi grafiklerle izleyin, CSV olarak dışa aktarın",
-    "de": "Erfasse Einnahmen und Ausgaben mit Diagrammen und CSV-Export",
-    "fr": "Suivez vos revenus et dépenses avec des graphiques et l’export CSV",
-    "es": "Controla ingresos y gastos con gráficos y exportación CSV"
+    "en": "Track income and expenses by month with category budgets, repeating entries, charts, CSV export and backups.",
+    "tr": "Gelir ve giderleri ay ay izle: kategori bütçeleri, tekrarlanan kayıtlar, grafikler, CSV dışa aktarma ve yedekler.",
+    "de": "Einnahmen und Ausgaben pro Monat mit Kategoriebudgets, wiederkehrenden Einträgen, Diagrammen, CSV-Export und Sicherung.",
+    "fr": "Suivez revenus et dépenses par mois avec budgets par catégorie, opérations récurrentes, graphiques, export CSV et sauvegardes.",
+    "es": "Controla ingresos y gastos por mes con presupuestos por categoría, movimientos que se repiten, gráficos, CSV y copias.",
+    "ja": "月ごとの収入と支出を記録。カテゴリ別予算、毎月の自動記録、グラフ、CSV 書き出し、バックアップ。",
+    "zh": "按月记录收入和支出：分类预算、每月重复记录、图表、CSV 导出和备份。",
+    "ko": "월별 수입과 지출 기록: 카테고리 예산, 매월 반복 항목, 차트, CSV 내보내기, 백업."
   },
   "permissions": [
     "notifications"

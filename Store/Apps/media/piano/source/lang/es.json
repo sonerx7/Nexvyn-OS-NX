@@ -32,5 +32,11 @@
   "octave_down": "Bajar octava",
   "octave_up": "Subir octava",
   "menu_sound": "Sonido",
-  "menu_songs": "Canciones"
+  "menu_songs": "Canciones",
+  "song_jingle": "Navidad, Navidad",
+  "song_scale": "Escala de do mayor",
+  "learn_song": "Aprender: {0}",
+  "learn_progress": "Modo aprender · {0}/{1} notas · {2} % de acierto",
+  "learn_done": "¡Canción completa! Acierto {0} %",
+  "learn_shift": "La siguiente nota está fuera del teclado: cambia de octava"
 }

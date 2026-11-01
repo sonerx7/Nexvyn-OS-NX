@@ -48,5 +48,11 @@
   "pause_menu": "Pausa",
   "new_game": "Nueva partida",
   "reset_records": "Restablecer récords",
-  "records_reset": "Récords restablecidos"
+  "records_reset": "Récords restablecidos",
+  "map_meadow": "Mapa: Pradera",
+  "map_canyon": "Mapa: Cañón",
+  "map_serpent": "Mapa: Serpiente",
+  "endless_opt": "Infinito: {0}",
+  "endless_best": "Récord infinito: oleada {0}",
+  "endless_go": "¡Infinito!"
 }

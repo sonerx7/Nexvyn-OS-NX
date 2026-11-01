@@ -1,4 +1,4 @@
--- ai.lua: Connect Four engine. Board = {cells = [1..42] (0 empty, 1, 2), h = [1..7] column heights}.
+-- ai.lua: four-in-a-row engine. Board = {cells = [1..42] (0 empty, 1, 2), h = [1..7] column heights}.
 -- Cell index = (row - 1) * 7 + col, row 1 is the bottom. Negamax alpha-beta with iterative deepening that runs inside a
 -- coroutine and yields when the per-frame time slice (A.sliceEnd, os.clock) is used up.
 local A = {COLS = 7, ROWS = 6}

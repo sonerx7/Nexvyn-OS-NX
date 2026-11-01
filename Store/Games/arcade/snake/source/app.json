@@ -11,13 +11,16 @@
     "ko": "스네이크"
   },
   "description": {
-    "en": "Classic snake: eat apples, grow longer and go faster. Play with walls or wrap around the edges.",
-    "tr": "Klasik yılan: elmaları ye, uza ve hızlan. Duvarlı ya da kenarlardan geçişli modda oyna.",
-    "de": "Klassisches Snake: Friss Äpfel, werde länger und schneller. Spiel mit Wänden oder lauf über die Ränder hinweg.",
-    "fr": "Le snake classique : mangez des pommes, grandissez et accélérez. Jouez avec des murs ou traversez les bords.",
-    "es": "La serpiente clásica: come manzanas, crece y ve más rápido. Juega con paredes o atraviesa los bordes."
+    "en": "Classic snake in four modes: walls, wrap-around, Maze stages and Time Attack. Three difficulties, medals and records.",
+    "tr": "Dört modda klasik yılan: duvarlı, kenarlardan geçişli, Labirent bölümleri ve Zamana Karşı. Üç zorluk, madalyalar ve rekorlar.",
+    "de": "Klassisches Snake in vier Modi: Wände, offene Ränder, Labyrinth-Stufen und Zeitjagd. Drei Schwierigkeitsgrade, Medaillen und Rekorde.",
+    "fr": "Le snake classique en quatre modes : murs, sans bords, niveaux Labyrinthe et Contre-la-montre. Trois difficultés, médailles et records.",
+    "es": "La serpiente clásica en cuatro modos: paredes, sin bordes, fases de Laberinto y Contrarreloj. Tres dificultades, medallas y récords.",
+    "ja": "4つのモードで遊べる定番スネーク：壁あり、ループ、迷路ステージ、タイムアタック。3段階の難易度、メダル、記録つき。",
+    "zh": "四种模式的经典贪吃蛇：墙壁、穿墙、迷宫关卡和限时挑战。三种难度、奖牌和纪录。",
+    "ko": "네 가지 모드의 클래식 스네이크: 벽, 통과, 미로 스테이지, 타임 어택. 세 가지 난이도, 메달, 기록."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

@@ -1,0 +1,41 @@
+{
+  "subtitle": {
+    "en": "Test regular expressions live",
+    "tr": "Düzenli ifadeleri canlı dene",
+    "de": "Reguläre Ausdrücke live testen",
+    "fr": "Testez les expressions régulières",
+    "es": "Prueba expresiones regulares en vivo",
+    "ja": "正規表現をライブで試す",
+    "zh": "实时测试正则表达式",
+    "ko": "정규 표현식을 실시간으로 테스트"
+  },
+  "description": {
+    "en": "Regex Lab shows what a regular expression does while you type it. Matches and capture groups light up in your test text, and every match is listed with its position and groups.\n\n• Flags g, i, m, s, u and y; named groups and look-around\n• Replace preview with $1 and $<name>, and split into parts\n• A plain-language explanation of the pattern, piece by piece\n• A tappable reference and ten ready-made patterns; save your own\n• Copy as JavaScript or Python, undo/redo, open text files",
+    "tr": "Regex Lab, bir düzenli ifadenin ne yaptığını sen yazarken gösterir. Eşleşmeler ve yakalama grupları deneme metninde renklenir, her eşleşme konumu ve gruplarıyla listelenir.\n\n• g, i, m, s, u ve y bayrakları; adlı gruplar ve çevreye bakma\n• $1 ve $<ad> ile değiştirme önizlemesi ve parçalara bölme\n• Desenin parça parça, sade dille açıklaması\n• Dokunarak eklenen başvuru listesi ve on hazır desen; kendi desenlerini kaydet\n• JavaScript ya da Python olarak kopyala, geri al/yinele, metin dosyası aç",
+    "de": "Regex Lab zeigt beim Tippen, was ein regulärer Ausdruck tut. Treffer und Gruppen leuchten im Testtext auf, und jeder Treffer wird mit Position und Gruppen aufgelistet.\n\n• Flags g, i, m, s, u und y; benannte Gruppen und Umschau\n• Ersetzen-Vorschau mit $1 und $<name> und Teilen in Stücke\n• Eine verständliche Erklärung des Musters, Stück für Stück\n• Antippbare Referenz und zehn fertige Muster; eigene sichern\n• Als JavaScript oder Python kopieren, Rückgängig, Textdateien öffnen",
+    "fr": "Regex Lab montre ce que fait une expression régulière pendant que vous la tapez. Correspondances et groupes s’illuminent dans le texte, et chaque correspondance est listée avec sa position et ses groupes.\n\n• Options g, i, m, s, u et y ; groupes nommés et assertions\n• Aperçu de remplacement avec $1 et $<nom>, découpage en parties\n• Une explication en langage clair, élément par élément\n• Référence à toucher et dix motifs prêts à l’emploi ; enregistrez les vôtres\n• Copie en JavaScript ou Python, annuler/rétablir, fichiers texte",
+    "es": "Regex Lab muestra lo que hace una expresión regular mientras la escribes. Las coincidencias y los grupos se iluminan en el texto y cada coincidencia aparece con su posición y sus grupos.\n\n• Opciones g, i, m, s, u e y; grupos con nombre y aserciones\n• Vista previa de reemplazo con $1 y $<nombre>, y división en partes\n• Una explicación del patrón en lenguaje sencillo, pieza por pieza\n• Referencia táctil y diez patrones listos; guarda los tuyos\n• Copia como JavaScript o Python, deshacer/rehacer, archivos de texto",
+    "ja": "Regex Lab は、正規表現が何をするかを入力しながら見せてくれます。一致とキャプチャグループがテキスト上で光り、各一致は位置とグループ付きで一覧表示されます。\n\n• g、i、m、s、u、y フラグ、名前付きグループ、先読み・後読み\n• $1 や $<name> を使った置換プレビューと分割\n• パターンを一つずつわかりやすく解説\n• タップで挿入できる早見表と 10 個の例。自分のパターンも保存\n• JavaScript や Python としてコピー、取り消し、テキストファイルを開く",
+    "zh": "Regex Lab 会在你输入时展示正则表达式的作用。匹配和捕获组在测试文本中高亮，每处匹配都列出位置和分组。\n\n• g、i、m、s、u、y 标志，命名分组和环视\n• 使用 $1 和 $<name> 的替换预览，以及拆分\n• 逐项用通俗语言解释模式\n• 可点按插入的速查表和十个现成模式，也能保存自己的模式\n• 复制为 JavaScript 或 Python，撤销/重做，打开文本文件",
+    "ko": "Regex Lab은 정규 표현식이 무엇을 하는지 입력하는 동안 보여 줍니다. 일치 항목과 캡처 그룹이 테스트 텍스트에서 강조되고, 각 일치는 위치와 그룹과 함께 나열됩니다.\n\n• g, i, m, s, u, y 플래그, 이름 있는 그룹, 전후방 탐색\n• $1과 $<name>을 쓰는 바꾸기 미리 보기와 나누기\n• 패턴을 하나씩 쉬운 말로 설명\n• 탭해서 넣는 참고표와 준비된 패턴 10개, 내 패턴 저장\n• JavaScript나 Python으로 복사, 실행 취소, 텍스트 파일 열기"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key 4",
+      "wait 1"
+    ],
+    [
+      "key l",
+      "wait 1.2"
+    ],
+    [
+      "key escape",
+      "dark 1",
+      "key 2",
+      "wait 1.5"
+    ]
+  ]
+}

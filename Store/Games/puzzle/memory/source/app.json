@@ -15,9 +15,12 @@
     "tr": "Kartları çevirip tüm eşleri bulun. Üç tahta boyutu, en iyi süreler ve iki oyunculu mod.",
     "de": "Decke die Karten auf und finde alle Paare. Drei Feldgrößen, Bestzeiten und ein Modus für zwei Spieler.",
     "fr": "Retournez les cartes et trouvez toutes les paires. Trois tailles de plateau, meilleurs temps et un mode à deux joueurs.",
-    "es": "Da la vuelta a las cartas y encuentra todas las parejas. Tres tamaños de tablero, mejores tiempos y un modo para dos jugadores."
+    "es": "Da la vuelta a las cartas y encuentra todas las parejas. Tres tamaños de tablero, mejores tiempos y un modo para dos jugadores.",
+    "ja": "カードをめくってペアをすべて見つけよう",
+    "zh": "翻开卡牌，找出所有配对",
+    "ko": "카드를 뒤집어 모든 짝을 찾으세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

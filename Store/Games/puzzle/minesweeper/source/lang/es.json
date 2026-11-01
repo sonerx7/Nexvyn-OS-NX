@@ -32,5 +32,18 @@
   "cancel": "Cancelar",
   "menu_records": "Récords",
   "best_line": "{0}: {1} s",
-  "wins_line": "Has ganado {0} de {1} partidas"
+  "wins_line": "Has ganado {0} de {1} partidas",
+  "custom": "Personal",
+  "custom_board": "Tablero personalizado",
+  "columns": "Columnas",
+  "rows": "Filas",
+  "mines": "Minas",
+  "start": "Empezar",
+  "statistics": "Estadísticas",
+  "st_played": "Jugadas",
+  "st_won": "Ganadas",
+  "st_best": "Mejor s",
+  "st_streak": "Racha",
+  "close": "Cerrar",
+  "question_marks": "Signos de interrogación (?)"
 }

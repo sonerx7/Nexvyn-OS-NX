@@ -11,13 +11,16 @@
     "ko": "체커"
   },
   "description": {
-    "en": "Classic checkers with forced captures, multi-jumps and kings against a three-level computer or a friend.",
-    "tr": "Zorunlu alma, çoklu atlama ve damalarla klasik dama; üç seviyeli bilgisayara ya da bir arkadaşınıza karşı.",
-    "de": "Klassisches Dame mit Schlagzwang, Mehrfachsprüngen und Damen gegen einen Computer mit drei Stufen oder einen Freund.",
-    "fr": "Le jeu de dames classique avec prises obligatoires, rafles et dames, contre un ordinateur à trois niveaux ou un ami.",
-    "es": "Damas clásicas con capturas obligatorias, saltos múltiples y damas contra un ordenador de tres niveles o un amigo."
+    "en": "Classic 8×8 draughts with forced captures and kings, four computer levels or a friend, hints, undo and game review.",
+    "tr": "Zorunlu almalı ve damalı klasik 8×8 dama: dört bilgisayar seviyesi ya da bir arkadaş; ipucu, geri alma ve oyun incelemesi.",
+    "de": "Klassisches Dame auf 8×8 mit Schlagzwang und Damen, vier Computerstufen oder ein Freund, Tipps, Rückgängig und Partieansicht.",
+    "fr": "Les dames anglaises sur 8×8 avec prise obligatoire et dames, quatre niveaux d’ordinateur ou un ami, indices, annulation et relecture.",
+    "es": "Damas clásicas de 8×8 con captura obligatoria y damas, cuatro niveles de ordenador o un amigo, pistas, deshacer y revisión.",
+    "ja": "強制取りとキングのある定番8×8チェッカー。4段階のコンピューターか友だちと対戦、ヒント、待った、ふり返り。",
+    "zh": "经典 8×8 跳棋，强制吃子和升王；对战四档电脑或朋友，支持提示、悔棋和复盘。",
+    "ko": "강제 잡기와 킹이 있는 클래식 8×8 체커. 네 단계 컴퓨터나 친구와 대결, 힌트, 무르기, 게임 복기."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

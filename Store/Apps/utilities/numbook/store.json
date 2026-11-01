@@ -1,0 +1,40 @@
+{
+  "subtitle": {
+    "en": "A notepad that calculates",
+    "tr": "Hesap yapan not defteri",
+    "de": "Ein Notizblock, der rechnet",
+    "fr": "Un bloc-notes qui calcule",
+    "es": "Un bloc de notas que calcula",
+    "ja": "計算するメモ帳",
+    "zh": "会计算的记事本",
+    "ko": "계산하는 메모장"
+  },
+  "description": {
+    "en": "Numbook is a notepad that does the maths. Write lines like “Rent: 1200”, “20% of 350” or “5 km in mi” and the answer appears beside each one; totals and variables keep the whole sheet in sync.\n\n• Variables, sum of the lines above, percentages and the previous answer\n• Units for length, mass, time, data, volume, speed, area and temperature\n• Functions such as sqrt, round, min, max and avg\n• Several sheets, number formats for your language, a calculator keypad\n• Tap a result to copy it; undo/redo, text import and export",
+    "tr": "Hesap Defteri hesabı kendisi yapan bir not defteridir. “Kira: 1200”, “20% of 350” ya da “5 km in mi” gibi satırlar yaz, cevap her satırın yanında görünsün; toplamlar ve değişkenler tüm sayfayı güncel tutar.\n\n• Değişkenler, üstteki satırların toplamı, yüzdeler ve bir önceki cevap\n• Uzunluk, kütle, süre, veri, hacim, hız, alan ve sıcaklık birimleri\n• sqrt, round, min, max ve avg gibi fonksiyonlar\n• Birden çok sayfa, diline göre sayı biçimi, hesap makinesi tuş takımı\n• Kopyalamak için sonuca dokun; geri al/yinele, metin içe/dışa aktarma",
+    "de": "Das Rechenheft ist ein Notizblock, der mitrechnet. Schreib Zeilen wie „Miete: 1200“, „20% of 350“ oder „5 km in mi“ und das Ergebnis erscheint daneben; Summen und Variablen halten das ganze Blatt aktuell.\n\n• Variablen, Summe der Zeilen darüber, Prozente und das vorige Ergebnis\n• Einheiten für Länge, Masse, Zeit, Daten, Volumen, Tempo, Fläche und Temperatur\n• Funktionen wie sqrt, round, min, max und avg\n• Mehrere Blätter, Zahlenformat deiner Sprache, Rechner-Tastenfeld\n• Ergebnis antippen zum Kopieren; Rückgängig, Textimport und -export",
+    "fr": "Carnet de calcul est un bloc-notes qui fait les comptes. Écrivez des lignes comme « Loyer : 1200 », « 20% of 350 » ou « 5 km in mi » et le résultat s’affiche à côté ; totaux et variables gardent la feuille à jour.\n\n• Variables, somme des lignes au-dessus, pourcentages et résultat précédent\n• Unités de longueur, masse, durée, données, volume, vitesse, surface et température\n• Fonctions comme sqrt, round, min, max et avg\n• Plusieurs feuilles, format des nombres de votre langue, pavé de calcul\n• Touchez un résultat pour le copier ; annuler, import et export texte",
+    "es": "Libreta de cálculo es un bloc de notas que hace las cuentas. Escribe líneas como «Alquiler: 1200», «20% of 350» o «5 km in mi» y el resultado aparece al lado; los totales y las variables mantienen la hoja al día.\n\n• Variables, suma de las líneas de arriba, porcentajes y el resultado anterior\n• Unidades de longitud, masa, tiempo, datos, volumen, velocidad, área y temperatura\n• Funciones como sqrt, round, min, max y avg\n• Varias hojas, formato numérico de tu idioma, teclado de calculadora\n• Toca un resultado para copiarlo; deshacer, importar y exportar texto",
+    "ja": "計算ノートは、計算してくれるメモ帳です。「家賃: 1200」「20% of 350」「5 km in mi」のように書くと、各行の横に答えが出ます。合計と変数でシート全体がいつも最新です。\n\n• 変数、上の行の合計、パーセント、直前の答え\n• 長さ、重さ、時間、データ量、体積、速さ、面積、温度の単位\n• sqrt、round、min、max、avg などの関数\n• 複数のシート、言語に合わせた数値の書式、電卓キーパッド\n• 答えをタップしてコピー、取り消し、テキストの読み込みと書き出し",
+    "zh": "计算本是会自己算的记事本。写下“房租: 1200”“20% of 350”或“5 km in mi”这样的行，答案就出现在旁边；合计和变量让整页始终保持最新。\n\n• 变量、上方各行合计、百分比和上一个答案\n• 长度、质量、时间、数据、体积、速度、面积和温度单位\n• sqrt、round、min、max、avg 等函数\n• 多个页面、按语言显示数字格式、计算器键盘\n• 点按结果即可复制；撤销/重做、文本导入导出",
+    "ko": "계산 노트는 계산을 해 주는 메모장입니다. “월세: 1200”, “20% of 350”, “5 km in mi” 같은 줄을 쓰면 줄마다 옆에 답이 나오고, 합계와 변수가 시트 전체를 최신으로 유지합니다.\n\n• 변수, 위 줄들의 합계, 백분율, 직전 답\n• 길이, 무게, 시간, 데이터, 부피, 속도, 넓이, 온도 단위\n• sqrt, round, min, max, avg 같은 함수\n• 여러 시트, 언어에 맞는 숫자 형식, 계산기 키패드\n• 결과를 탭해 복사, 실행 취소, 텍스트 가져오기와 내보내기"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key right",
+      "wait 1"
+    ],
+    [
+      "wclick 0.931 0.043",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "key right",
+      "wait 1.5"
+    ]
+  ]
+}

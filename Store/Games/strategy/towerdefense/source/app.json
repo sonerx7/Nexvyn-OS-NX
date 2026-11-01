@@ -1,20 +1,38 @@
 {
   "id": "com.sonerx7.towerdefense",
-  "name": {"en": "Tower Defense", "tr": "Kule Savunması", "de": "Tower Defense", "fr": "Tower Defense", "es": "Defensa de torres", "ja": "タワーディフェンス", "zh": "塔防", "ko": "타워 디펜스"},
-  "description": {
-    "en": "Build guns, cannons and frost towers along the road, upgrade them and hold back 15 waves of enemies, including a boss.",
-    "tr": "Yol boyunca makineli, top ve buz kuleleri kur, onları geliştir ve patronun da geldiği 15 düşman dalgasını durdur.",
-    "de": "Baue Geschütze, Kanonen und Frosttürme entlang der Straße, verbessere sie und halte 15 Gegnerwellen auf, darunter einen Boss.",
-    "fr": "Construisez des mitrailleuses, des canons et des tours de givre le long de la route, améliorez-les et repoussez 15 vagues d’ennemis, dont un boss.",
-    "es": "Construye ametralladoras, cañones y torres de hielo a lo largo del camino, mejóralas y contén 15 oleadas de enemigos, incluido un jefe."
+  "name": {
+    "en": "Tower Defense",
+    "tr": "Kule Savunması",
+    "de": "Tower Defense",
+    "fr": "Tower Defense",
+    "es": "Defensa de torres",
+    "ja": "タワーディフェンス",
+    "zh": "塔防",
+    "ko": "타워 디펜스"
   },
-  "version": "1.0.1",
+  "description": {
+    "en": "Build, upgrade and hold out on three maps for 15 waves, then keep going in Endless mode.",
+    "tr": "Üç haritada kule kur, geliştir ve 15 dalga boyunca dayan; sonra Sonsuz modda devam et.",
+    "de": "Baue, verbessere und halte auf drei Karten 15 Wellen stand, dann geht es im Endlosmodus weiter.",
+    "fr": "Construisez, améliorez et tenez 15 vagues sur trois cartes, puis continuez en mode Infini.",
+    "es": "Construye, mejora y resiste 15 oleadas en tres mapas, y luego sigue en el modo Infinito.",
+    "ja": "3つのマップでタワーを建てて強化し、15ウェーブを守り抜こう。その先はエンドレスモードへ。",
+    "zh": "在三张地图上建造、升级防御塔，坚守 15 波，然后在无尽模式中继续。",
+    "ko": "세 개의 맵에서 타워를 짓고 강화해 15웨이브를 버티고, 그다음 무한 모드로 계속하세요."
+  },
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 960, "height": 540, "minWidth": 720, "minHeight": 405, "resizable": true},
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 720,
+    "minHeight": 405,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": true,
   "minSdk": "1.2",

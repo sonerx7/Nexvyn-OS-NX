@@ -15,9 +15,12 @@
     "tr": "Kalabalık yolu ve hızlı nehri zıplayarak geç: arabalardan kaç, kütüklere ve dalan kaplumbağalara bin, süre bitmeden beş nilüfer yuvasını doldur.",
     "de": "Hüpfe über eine belebte Straße und einen reißenden Fluss: Weiche dem Verkehr aus, reite auf Baumstämmen und tauchenden Schildkröten und besetze alle fünf Seerosenplätze, bevor die Zeit abläuft.",
     "fr": "Traversez une route animée et une rivière rapide : esquivez la circulation, montez sur les rondins et les tortues plongeuses et remplissez les cinq nénuphars avant la fin du temps.",
-    "es": "Salta por una carretera llena de tráfico y un río rápido: esquiva los coches, súbete a troncos y tortugas que se sumergen y llena los cinco nenúfares antes de que se acabe el tiempo."
+    "es": "Salta por una carretera llena de tráfico y un río rápido: esquiva los coches, súbete a troncos y tortugas que se sumergen y llena los cinco nenúfares antes de que se acabe el tiempo.",
+    "ja": "道路を渡り、川を越え、おうちに帰ろう",
+    "zh": "穿过马路，乘着河流，回到家",
+    "ko": "길을 건너고, 강을 타고, 집으로 가세요"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

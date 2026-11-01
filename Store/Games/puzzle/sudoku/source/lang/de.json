@@ -64,5 +64,18 @@
   "mistakes_n": "{0} Fehler",
   "generating": "Rätsel mit eindeutiger Lösung wird erstellt …",
   "notes_mode": "Notizmodus",
-  "show_mistakes": "Fehler hervorheben"
+  "show_mistakes": "Fehler hervorheben",
+  "expert": "Experte",
+  "daily": "Täglich",
+  "daily_play": "Rätsel des Tages",
+  "daily_done": "Tagesrätsel gelöst · Serie {0}",
+  "daily_streak": "Tagesserie",
+  "streak_fmt": "{0} Tage · Bestwert {1}",
+  "auto_notes": "Notizen füllen",
+  "notes_filled": "Kandidaten eingetragen",
+  "strict_mode": "Drei-Fehler-Modus",
+  "mistakes_left_n": "noch {0} Fehler",
+  "out_of_mistakes": "Keine Fehler mehr übrig",
+  "out_of_mistakes_sub": "Im Drei-Fehler-Modus beenden drei falsche Ziffern das Spiel.",
+  "keep_going": "Weiterspielen (Modus aus)"
 }

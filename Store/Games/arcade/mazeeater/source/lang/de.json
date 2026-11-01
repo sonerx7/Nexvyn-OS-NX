@@ -38,5 +38,21 @@
   "power": "Power-up!",
   "clear": "Labyrinth geschafft!",
   "c_move": "Steuerkreuz / Stick / Pfeile / WASD: steuern",
-  "c_touch": "Touch: wischen oder auf eine Richtung tippen"
+  "c_touch": "Touch: wischen oder auf eine Richtung tippen",
+  "records": "Rekorde",
+  "no_records": "Noch keine Punkte. Spiel eine Runde!",
+  "rounds": "Runden",
+  "total_time": "Gesamtzeit",
+  "total_points": "Gesamtpunkte",
+  "medal": "Medaille",
+  "medal_bronze": "Bronze",
+  "medal_silver": "Silber",
+  "medal_gold": "Gold",
+  "easy": "Leicht",
+  "normal": "Normal",
+  "hard": "Schwer",
+  "close": "Schließen",
+  "rec_hint": "X: Rekorde  ·  L / R: Schwierigkeit",
+  "new_maze": "Neues Labyrinth!",
+  "maze_n_label": "Labyrinth"
 }

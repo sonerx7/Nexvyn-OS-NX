@@ -69,5 +69,16 @@
   "wd_3": "Mi",
   "wd_4": "Do",
   "wd_5": "Fr",
-  "wd_6": "Sa"
+  "wd_6": "Sa",
+  "checklist": "Checkliste",
+  "step_hint": "Punkt hinzufügen…",
+  "add_step": "Hinzufügen",
+  "filter": "Filter",
+  "filter_hint": "Karten mit diesem Text hervorheben (leer lassen, um alle zu zeigen).",
+  "export_md": "Als Markdown exportieren",
+  "backup": "Sichern",
+  "restore": "Wiederherstellen",
+  "restore_confirm": "Alle Boards durch die {0} Boards dieser Sicherung ersetzen?",
+  "restore_bad": "Diese Datei ist keine Kanban-Sicherung.",
+  "ok": "OK"
 }

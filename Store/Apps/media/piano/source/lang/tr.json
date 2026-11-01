@@ -32,5 +32,11 @@
   "octave_down": "Oktav Aşağı",
   "octave_up": "Oktav Yukarı",
   "menu_sound": "Ses",
-  "menu_songs": "Şarkılar"
+  "menu_songs": "Şarkılar",
+  "song_jingle": "Jingle Bells",
+  "song_scale": "Do Majör Gam",
+  "learn_song": "Öğren: {0}",
+  "learn_progress": "Öğrenme modu · {0}/{1} nota · %{2} doğruluk",
+  "learn_done": "Şarkı tamam! Doğruluk %{0}",
+  "learn_shift": "Sıradaki nota klavyenin dışında: oktavı değiştir"
 }

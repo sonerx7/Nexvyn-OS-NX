@@ -104,5 +104,21 @@
   "deleted": "任务已删除。",
   "deleted_named": "已删除“{0}”",
   "undo": "撤销",
-  "undo_delete": "撤销删除"
+  "undo_delete": "撤销删除",
+  "repeat": "重复",
+  "rep_none": "不重复",
+  "rep_daily": "每天",
+  "rep_weekly": "每周",
+  "rep_monthly": "每月",
+  "repeat_next": "下一次：{0}",
+  "steps": "步骤",
+  "step_ph": "添加步骤…",
+  "add_step": "添加",
+  "backup": "备份",
+  "backup_done": "备份已保存",
+  "restore": "恢复",
+  "restore_confirm": "要用此备份中的 {0} 个任务替换你所有的列表吗？",
+  "restore_done": "已恢复 {0} 个任务",
+  "restore_bad": "该文件不是待办事项备份",
+  "cancel": "取消"
 }

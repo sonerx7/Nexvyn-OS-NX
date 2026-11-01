@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Lantern-lit platformer: 3 worlds, 3 bosses",
+    "tr": "Fener ışığında platform: 3 dünya, 3 boss",
+    "de": "Laternen-Plattformer: 3 Welten, 3 Bosse",
+    "fr": "Plateforme à la lanterne : 3 mondes, 3 boss",
+    "es": "Plataformas con farol: 3 mundos, 3 jefes",
+    "ja": "灯りの冒険：3 つの世界と 3 体のボス",
+    "zh": "灯笼照亮的平台冒险：三个世界、首领与新能力",
+    "ko": "랜턴 플랫포머: 세 세계, 세 보스"
+  },
+  "description": {
+    "en": "Carry the last lantern home through the Mossy Hollow, the dark Crystal Caverns where your lantern is the only light, and the windswept Sky Ruins. Old altars teach you the double jump, the lantern dash and the wall jump, and every new move opens new paths through the levels that follow. Light shrines to save, hunt for three star shards in every level and face a guardian at the end of each world.\n\n• Twelve levels in three worlds, with three boss fights: the Bramble King, the Prism Golem and the Storm Owl\n• Three abilities learned along the way, each introduced with a short tip\n• Shrines as save points, three save files, best times and star-shard collecting\n• Springs, crumbling bridges, spikes, flying and shooting enemies\n• Real-time lighting in the caverns, parallax backgrounds, particles and screen shake\n• Original soundtrack with a theme for every world; controller, keyboard and touch",
+    "tr": "Son feneri Yosunlu Koru'dan, fenerinin tek ışık olduğu karanlık Kristal Mağaralar'dan ve rüzgârlı Gök Harabeleri'nden geçirerek evine taşı. Eski sunaklar sana çift zıplamayı, fener atılışını ve duvar zıplamasını öğretir; her yeni hareket sonraki bölümlerde yeni yollar açar. İlerlemeni kaydetmek için mabetleri yak, her bölümde üç yıldız parçası ara ve her dünyanın sonunda bir muhafızla yüzleş.\n\n• Üç dünyada on iki bölüm ve üç boss savaşı: Diken Kral, Prizma Golem ve Fırtına Baykuşu\n• Yol boyunca öğrenilen üç yetenek, her biri kısa bir ipucuyla tanıtılır\n• Kayıt noktası olarak mabetler, üç kayıt dosyası, en iyi süreler ve yıldız parçası toplama\n• Yaylar, çöken köprüler, dikenler, uçan ve ateş eden düşmanlar\n• Mağaralarda gerçek zamanlı ışık, paralaks arka planlar, parçacıklar ve ekran sarsıntısı\n• Her dünya için ayrı tema içeren özgün müzikler; kumanda, klavye ve dokunmatik",
+    "de": "Trage die letzte Laterne heim: durch die Moosmulde, die dunklen Kristallhöhlen, in denen deine Laterne das einzige Licht ist, und die windigen Himmelsruinen. Alte Altäre lehren dich Doppelsprung, Laternensprint und Wandsprung, und jede neue Fähigkeit öffnet neue Wege in den folgenden Levels. Entzünde Schreine zum Speichern, suche drei Sternsplitter in jedem Level und stelle dich am Ende jeder Welt einem Wächter.\n\n• Zwölf Level in drei Welten mit drei Bosskämpfen: Dornenkönig, Prismengolem und Sturmeule\n• Drei Fähigkeiten, jede mit einem kurzen Tipp eingeführt\n• Schreine als Speicherpunkte, drei Spielstände, Bestzeiten und Sternsplitter\n• Federn, zerbröckelnde Brücken, Stacheln, fliegende und schießende Gegner\n• Echtzeit-Licht in den Höhlen, Parallax-Hintergründe, Partikel und Bildschirmwackeln\n• Eigener Soundtrack mit einem Thema für jede Welt; Controller, Tastatur und Touch",
+    "fr": "Ramenez la dernière lanterne à travers le Creux moussu, les sombres Grottes de cristal où votre lanterne est la seule lumière, et les Ruines célestes balayées par le vent. D’anciens autels vous enseignent le double saut, la ruée lanterne et le saut mural, et chaque capacité ouvre de nouveaux chemins. Allumez les autels pour sauvegarder, cherchez trois éclats d’étoile par niveau et affrontez un gardien au bout de chaque monde.\n\n• Douze niveaux dans trois mondes, avec trois boss : le Roi des ronces, le Golem prisme et le Hibou des tempêtes\n• Trois capacités apprises en chemin, chacune présentée par une courte astuce\n• Autels de sauvegarde, trois fichiers, meilleurs temps et éclats d’étoile à collectionner\n• Ressorts, ponts qui s’effondrent, piques, ennemis volants et tireurs\n• Éclairage en temps réel dans les grottes, décors en parallaxe, particules et tremblements\n• Bande-son originale avec un thème par monde ; manette, clavier et tactile",
+    "es": "Lleva el último farol a casa a través de la Hondonada musgosa, las oscuras Cuevas de cristal donde tu farol es la única luz y las ventosas Ruinas celestes. Antiguos altares te enseñan el doble salto, el impulso farol y el salto de pared, y cada habilidad abre caminos nuevos. Enciende santuarios para guardar, busca tres fragmentos de estrella en cada nivel y enfréntate a un guardián al final de cada mundo.\n\n• Doce niveles en tres mundos, con tres jefes: el Rey Zarza, el Gólem prisma y el Búho de la tormenta\n• Tres habilidades que aprendes por el camino, cada una con un consejo breve\n• Santuarios como puntos de guardado, tres partidas, mejores tiempos y fragmentos de estrella\n• Muelles, puentes que se derrumban, pinchos, enemigos voladores y tiradores\n• Iluminación en tiempo real en las cuevas, fondos con paralaje, partículas y temblor de pantalla\n• Banda sonora original con un tema por mundo; mando, teclado y pantalla táctil",
+    "ja": "苔むす谷、ランタンだけが光となる暗いクリスタル洞窟、風吹きすさぶ天空遺跡を越え、最後の灯を故郷へ届けよう。古い祭壇で二段ジャンプ、ランタンダッシュ、壁ジャンプを覚え、新しい技が次のステージに新たな道を開く。祠に火を灯してセーブし、各ステージの星のかけら 3 つを探し、各世界の最後で守護者に挑もう。\n\n• 3 つの世界に 12 ステージ。イバラの王、プリズムゴーレム、嵐のフクロウとのボス戦\n• 道中で覚える 3 つの技。それぞれ短いヒントで紹介\n• セーブポイントの祠、3 つのセーブデータ、ベストタイム、星のかけら集め\n• バネ、崩れる橋、トゲ、飛ぶ敵や撃ってくる敵\n• 洞窟のリアルタイムライティング、多重スクロール背景、パーティクル、画面の揺れ\n• 世界ごとのテーマ曲を収めたオリジナル BGM。コントローラー、キーボード、タッチ対応",
+    "zh": "带着最后一盏灯笼穿越苔藓谷、只有灯笼照明的黑暗水晶洞窟，以及狂风呼啸的天空遗迹回到家乡。古老的祭坛会教你二段跳、灯笼冲刺和蹬墙跳，每个新能力都会在之后的关卡中开辟新路线。点亮神龛存档，在每关寻找三颗星之碎片，并在每个世界的尽头迎战守护者。\n\n• 三个世界共十二关，三场首领战：荆棘之王、棱镜魔像和风暴之鸮\n• 沿途学会三种能力，每种都有简短提示\n• 神龛存档点、三个存档、最佳时间与星之碎片收集\n• 弹簧、崩塌的桥、尖刺、飞行与射击的敌人\n• 洞窟实时光照、视差背景、粒子特效与屏幕震动\n• 每个世界都有专属主题的原创配乐；支持手柄、键盘和触控",
+    "ko": "이끼 골짜기, 랜턴만이 유일한 빛인 어두운 수정 동굴, 바람 부는 하늘 유적을 지나 마지막 랜턴을 집으로 옮기세요. 오래된 제단에서 2단 점프, 랜턴 대시, 벽 점프를 배우고, 새 기술은 다음 레벨들에서 새 길을 엽니다. 사당에 불을 밝혀 저장하고, 레벨마다 별 조각 세 개를 찾고, 각 세계의 끝에서 수호자와 맞서세요.\n\n• 세 세계 12개 레벨, 세 보스전: 가시덤불 왕, 프리즘 골렘, 폭풍 올빼미\n• 여정 중 배우는 세 가지 기술, 각각 짧은 팁으로 소개\n• 저장 지점인 사당, 세 개의 저장 파일, 최고 기록, 별 조각 수집\n• 스프링, 무너지는 다리, 가시, 날아다니고 쏘는 적\n• 동굴의 실시간 조명, 패럴랙스 배경, 파티클, 화면 흔들림\n• 세계마다 테마곡이 있는 오리지널 음악; 컨트롤러, 키보드, 터치 지원"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key enter",
+      "wait 3.5",
+      "hold right 1.2"
+    ],
+    [
+      "hold right 1.0",
+      "key space",
+      "hold right 0.8"
+    ],
+    [
+      "key escape",
+      "wait 1"
+    ]
+  ]
+}

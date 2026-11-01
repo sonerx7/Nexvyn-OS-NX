@@ -1,0 +1,26 @@
+{
+  "id": "com.sonerx7.chordbook",
+  "name": {"en": "Chordbook", "tr": "Akor Defteri", "de": "Akkordbuch", "fr": "Carnet d’accords", "es": "Cancionero de acordes", "ja": "コードブック", "zh": "和弦手册", "ko": "코드북"},
+  "description": {
+    "en": "Chords, scales, the circle of fifths and progressions for guitar, ukulele, bass and piano, with sound.",
+    "tr": "Gitar, ukulele, bas ve piyano için akorlar, diziler, beşliler çemberi ve akor dizileri, sesli.",
+    "de": "Akkorde, Tonleitern, Quintenzirkel und Akkordfolgen für Gitarre, Ukulele, Bass und Klavier, mit Klang.",
+    "fr": "Accords, gammes, cycle des quintes et grilles pour guitare, ukulélé, basse et piano, avec le son.",
+    "es": "Acordes, escalas, círculo de quintas y progresiones para guitarra, ukelele, bajo y piano, con sonido.",
+    "ja": "ギター、ウクレレ、ベース、ピアノのためのコード、スケール、五度圏、コード進行。音も鳴ります。",
+    "zh": "适用于吉他、尤克里里、贝斯和钢琴的和弦、音阶、五度圈与和弦进行，带声音。",
+    "ko": "기타, 우쿨렐레, 베이스, 피아노를 위한 코드, 스케일, 5도권, 코드 진행. 소리도 들을 수 있습니다."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "media",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 460, "minHeight": 420, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

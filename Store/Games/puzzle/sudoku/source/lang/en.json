@@ -64,5 +64,18 @@
   "mistakes_n": "{0} mistakes",
   "generating": "Creating a puzzle with a unique solution…",
   "notes_mode": "Notes mode",
-  "show_mistakes": "Highlight mistakes"
+  "show_mistakes": "Highlight mistakes",
+  "expert": "Expert",
+  "daily": "Daily",
+  "daily_play": "Daily puzzle",
+  "daily_done": "Daily solved · streak {0}",
+  "daily_streak": "Daily streak",
+  "streak_fmt": "{0} days · best {1}",
+  "auto_notes": "Fill notes",
+  "notes_filled": "Candidates filled in",
+  "strict_mode": "Three-strike mode",
+  "mistakes_left_n": "{0} mistakes left",
+  "out_of_mistakes": "Out of mistakes",
+  "out_of_mistakes_sub": "Three wrong digits end the game in three-strike mode.",
+  "keep_going": "Keep going (mode off)"
 }

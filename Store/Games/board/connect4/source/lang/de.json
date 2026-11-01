@@ -44,7 +44,7 @@
   "h_pause": "Pause",
   "win_rate": "Siegquote",
   "avg": "Durchschnitt",
-  "title": "Vier gewinnt",
+  "title": "Vier in einer Reihe",
   "tagline": "Bilde eine Reihe aus vier Steinen, um zu gewinnen",
   "draw": "Unentschieden",
   "you_win": "Du hast gewonnen!",
@@ -70,5 +70,9 @@
   "draws": "Unentschieden",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "Ich fange an (Rot)",
-  "go_second": "Computer fängt an"
+  "go_second": "Computer fängt an",
+  "mode_expert": "Experte",
+  "review": "Partie ansehen",
+  "review_move": "Zug {0} / {1}",
+  "done": "Fertig"
 }

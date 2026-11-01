@@ -32,5 +32,11 @@
   "octave_down": "Octave Down",
   "octave_up": "Octave Up",
   "menu_sound": "Sound",
-  "menu_songs": "Songs"
+  "menu_songs": "Songs",
+  "song_jingle": "Jingle Bells",
+  "song_scale": "C Major Scale",
+  "learn_song": "Learn: {0}",
+  "learn_progress": "Learn mode · {0}/{1} notes · {2}% accuracy",
+  "learn_done": "Song complete! Accuracy {0}%",
+  "learn_shift": "The next note is outside the keyboard: change the octave"
 }

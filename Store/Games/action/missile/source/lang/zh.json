@@ -41,5 +41,19 @@
   "c_aim": "摇杆 / 十字键 / 方向键：瞄准",
   "c_fire": "A / 空格：从最近的炮台开火",
   "c_base": "L、B、R：左 / 中 / 右炮台",
-  "c_touch": "触控 / 鼠标：轻点或点按目标"
+  "c_touch": "触控 / 鼠标：轻点或点按目标",
+  "records": "纪录",
+  "no_records": "还没有成绩。来玩一局吧！",
+  "rounds": "局数",
+  "total_time": "总时长",
+  "total_points": "总得分",
+  "medal": "奖牌",
+  "medal_bronze": "铜牌",
+  "medal_silver": "银牌",
+  "medal_gold": "金牌",
+  "easy": "简单",
+  "normal": "普通",
+  "hard": "困难",
+  "close": "关闭",
+  "rec_hint": "X：纪录  ·  L / R：难度"
 }

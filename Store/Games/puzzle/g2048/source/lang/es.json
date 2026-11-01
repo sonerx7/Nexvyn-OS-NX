@@ -54,5 +54,8 @@
   "over_title": "No hay más movimientos",
   "over_sub": "El tablero está lleno. Deshaz tu último movimiento o inténtalo de nuevo.",
   "top_tile": "Ficha más alta",
-  "best_size": "Mejor en {0}"
+  "best_size": "Mejor en {0}",
+  "classic": "Clásico",
+  "time_attack": "Contrarreloj",
+  "times_up": "¡Se acabó el tiempo!"
 }

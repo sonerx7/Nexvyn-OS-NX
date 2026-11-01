@@ -11,14 +11,17 @@
     "ko": "드럼 머신"
   },
   "description": {
-    "en": "A 16-step drum machine with 8 synthesized tracks, BPM, swing, presets and saved patterns.",
-    "tr": "8 sentezlenmiş kanallı 16 adımlı ritim makinesi: BPM, swing, hazır ritimler ve kayıtlı desenler.",
-    "de": "Ein Drumcomputer mit 16 Schritten, 8 synthetisierten Spuren, BPM, Swing, Presets und gespeicherten Patterns.",
-    "fr": "Une boîte à rythmes à 16 pas avec 8 pistes synthétisées, BPM, swing, préréglages et motifs enregistrés.",
-    "es": "Una caja de ritmos de 16 pasos con 8 pistas sintetizadas, BPM, swing, preajustes y patrones guardados."
+    "en": "A 16-step drum machine with eight synthesized drums, accents, nine style presets and a groove generator.",
+    "tr": "Sekiz sentez davullu, vurgulu, dokuz tarz hazır ayarlı ve ritim üreticili 16 adımlı davul makinesi.",
+    "de": "Ein 16-Schritt-Drumcomputer mit acht Synth-Drums, Akzenten, neun Stil-Presets und Groove-Generator.",
+    "fr": "Une boîte à rythmes 16 pas avec huit percussions synthétisées, accents, neuf styles prédéfinis et générateur de groove.",
+    "es": "Una caja de ritmos de 16 pasos con ocho percusiones sintetizadas, acentos, nueve estilos y generador de ritmos.",
+    "ja": "8種類の合成ドラム、アクセント、9つのスタイルプリセット、グルーヴ生成つきの16ステップドラムマシン。",
+    "zh": "16 步鼓机：八种合成鼓声、重音、九种风格预设和节奏生成器。",
+    "ko": "합성 드럼 여덟 가지, 악센트, 아홉 가지 스타일 프리셋, 그루브 생성기가 있는 16스텝 드럼 머신."
   },
   "category": "media",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

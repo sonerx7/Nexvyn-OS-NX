@@ -1,0 +1,28 @@
+{
+  "id": "com.sonerx7.regexlab",
+  "name": {"en": "Regex Lab", "tr": "Regex Lab", "de": "Regex Lab", "fr": "Regex Lab", "es": "Regex Lab", "ja": "Regex Lab", "zh": "Regex Lab", "ko": "Regex Lab"},
+  "description": {
+    "en": "Test regular expressions live: highlighted matches and groups, replace, split, explanations and a pattern library.",
+    "tr": "Düzenli ifadeleri canlı dene: renkli eşleşmeler ve gruplar, değiştir, böl, açıklamalar ve desen kitaplığı.",
+    "de": "Reguläre Ausdrücke live testen: markierte Treffer und Gruppen, Ersetzen, Teilen, Erklärungen und eine Bibliothek.",
+    "fr": "Testez les expressions régulières en direct : correspondances et groupes surlignés, remplacer, découper, explications et bibliothèque.",
+    "es": "Prueba expresiones regulares en vivo: coincidencias y grupos resaltados, reemplazar, dividir, explicaciones y biblioteca.",
+    "ja": "正規表現をライブで試せます。一致とグループの強調表示、置換、分割、解説、パターンライブラリ。",
+    "zh": "实时测试正则表达式：高亮匹配和分组、替换、拆分、逐项解释和模式库。",
+    "ko": "정규 표현식을 실시간으로 테스트: 일치와 그룹 강조, 바꾸기, 나누기, 설명, 패턴 라이브러리."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.js",
+  "runtime": "js",
+  "window": {"width": 980, "height": 580, "minWidth": 460, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "shareTargets": ["text", ".txt", ".log"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

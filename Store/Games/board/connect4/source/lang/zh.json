@@ -70,5 +70,9 @@
   "draws": "平局",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "我先手（红方）",
-  "go_second": "电脑先手"
+  "go_second": "电脑先手",
+  "mode_expert": "专家",
+  "review": "复盘",
+  "review_move": "第 {0} / {1} 步",
+  "done": "完成"
 }

@@ -1,0 +1,41 @@
+{
+  "id": "com.sonerx7.photongarden",
+  "name": {
+    "en": "Photon Garden",
+    "tr": "Foton Bahçesi",
+    "de": "Photonengarten",
+    "fr": "Jardin de photons",
+    "es": "Jardín de fotones",
+    "ja": "フォトンガーデン",
+    "zh": "光子花园",
+    "ko": "포톤 가든"
+  },
+  "description": {
+    "en": "Guide beams of light with mirrors, splitters, filters and portals until every crystal bud blooms. 120 levels and a level editor.",
+    "tr": "Aynalar, ayırıcılar, filtreler ve geçitlerle ışık hüzmelerini yönlendir, her kristal tomurcuğu çiçek açtır. 120 bölüm ve bölüm düzenleyici.",
+    "de": "Lenke Lichtstrahlen mit Spiegeln, Teilern, Filtern und Portalen, bis jede Kristallknospe blüht. 120 Level und ein Level-Editor.",
+    "fr": "Guidez des faisceaux de lumière avec miroirs, séparateurs, filtres et portails jusqu’à faire fleurir chaque bourgeon de cristal. 120 niveaux et un éditeur.",
+    "es": "Guía rayos de luz con espejos, divisores, filtros y portales hasta que florezca cada brote de cristal. 120 niveles y un editor.",
+    "ja": "鏡、スプリッター、フィルター、ポータルで光を導き、すべての水晶のつぼみを咲かせよう。120 ステージとステージエディター付き。",
+    "zh": "用镜子、分光镜、滤光片和传送门引导光束，让每一朵水晶花苞绽放。120 个关卡和关卡编辑器。",
+    "ko": "거울, 분광기, 필터, 포털로 빛줄기를 이끌어 모든 수정 꽃봉오리를 피우세요. 120개 레벨과 레벨 에디터."
+  },
+  "category": "games",
+  "genre": "puzzle",
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": true,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

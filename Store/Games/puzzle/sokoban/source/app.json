@@ -1,23 +1,26 @@
 {
   "id": "com.sonerx7.sokoban",
   "name": {
-    "en": "Sokoban",
-    "tr": "Sokoban",
-    "de": "Sokoban",
-    "fr": "Sokoban",
-    "es": "Sokoban",
-    "ja": "倉庫番",
+    "en": "Crate Pusher",
+    "tr": "Kutu İtme",
+    "de": "Kistenschieber",
+    "fr": "Pousse-caisses",
+    "es": "Empuja cajas",
+    "ja": "箱押し",
     "zh": "推箱子",
-    "ko": "소코반"
+    "ko": "상자 밀기"
   },
   "description": {
-    "en": "Push every crate onto a goal in 20 solver-verified warehouse puzzles, with unlimited undo and tap-to-walk.",
-    "tr": "Çözücüyle doğrulanmış 20 depo bulmacasında tüm kasaları hedeflere itin; sınırsız geri alma ve dokunarak yürüme.",
-    "de": "Schiebe jede Kiste auf ein Ziel in 20 vom Löser geprüften Lagerhaus-Rätseln, mit unbegrenztem Rückgängig und Tippen zum Laufen.",
-    "fr": "Poussez chaque caisse sur une cible dans 20 puzzles d’entrepôt vérifiés par un solveur, avec annulation illimitée et déplacement au toucher.",
-    "es": "Empuja cada caja hasta un objetivo en 20 puzles de almacén verificados por un solucionador, con deshacer ilimitado y tocar para caminar."
+    "en": "Push every crate onto a goal across 40 solver-verified levels, with unlimited undo and par scores.",
+    "tr": "40 çözücüyle doğrulanmış bölümde her kutuyu hedefine it; sınırsız geri alma ve par puanları.",
+    "de": "Schieb jede Kiste auf ein Ziel, in 40 per Löser geprüften Levels, mit unbegrenztem Rückgängig und Par-Werten.",
+    "fr": "Poussez chaque caisse sur une cible dans 40 niveaux vérifiés par un solveur, avec annulation illimitée et par.",
+    "es": "Empuja cada caja a su meta en 40 niveles verificados por un solucionador, con deshacer ilimitado y par.",
+    "ja": "ソルバーで検証済みの40ステージで、すべての箱をゴールへ押そう。無制限の元に戻す、パー記録つき。",
+    "zh": "在 40 个经求解器验证的关卡中把每个箱子推到目标点，支持无限撤销和标准步数。",
+    "ko": "솔버로 검증된 40개 레벨에서 모든 상자를 목표 지점으로 미세요. 무제한 실행 취소와 기준 기록."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

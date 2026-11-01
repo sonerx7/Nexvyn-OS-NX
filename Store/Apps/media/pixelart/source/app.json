@@ -1,20 +1,38 @@
 {
   "id": "com.sonerx7.pixelart",
-  "name": {"en": "Pixel Art", "tr": "Piksel Sanatı", "de": "Pixel-Art", "fr": "Pixel Art", "es": "Pixel Art", "ja": "ピクセルアート", "zh": "像素画", "ko": "픽셀 아트"},
-  "description": {
-    "en": "Draw 8×8, 16×16 or 32×32 pixel art with pencil, fill, line and mirror tools, keep a gallery and export real PNG files.",
-    "tr": "Kalem, doldurma, çizgi ve ayna araçlarıyla 8×8, 16×16 ya da 32×32 piksel çizimler yap, galeride sakla ve gerçek PNG olarak dışa aktar.",
-    "de": "Zeichne Pixel-Art in 8×8, 16×16 oder 32×32 mit Stift, Füllen, Linie und Spiegeln, führe eine Galerie und exportiere echte PNG-Dateien.",
-    "fr": "Dessinez du pixel art en 8×8, 16×16 ou 32×32 avec crayon, remplissage, ligne et miroir, gardez une galerie et exportez de vrais fichiers PNG.",
-    "es": "Dibuja pixel art de 8×8, 16×16 o 32×32 con lápiz, relleno, línea y espejo, guarda una galería y exporta archivos PNG reales."
+  "name": {
+    "en": "Pixel Art",
+    "tr": "Piksel Sanatı",
+    "de": "Pixel-Art",
+    "fr": "Pixel Art",
+    "es": "Pixel Art",
+    "ja": "ピクセルアート",
+    "zh": "像素画",
+    "ko": "픽셀 아트"
   },
-  "version": "1.0.1",
+  "description": {
+    "en": "Draw 8×8 to 64×64 sprites with seven tools, four-way mirroring, rotate, flip and shift, and export real PNGs.",
+    "tr": "Yedi araç, dört yönlü ayna, döndürme, çevirme ve kaydırmayla 8×8'den 64×64'e sprite çiz, gerçek PNG olarak dışa aktar.",
+    "de": "Zeichne Sprites von 8×8 bis 64×64 mit sieben Werkzeugen, Vierfach-Spiegel, Drehen, Spiegeln, Verschieben und PNG-Export.",
+    "fr": "Dessinez des sprites de 8×8 à 64×64 avec sept outils, miroir à quatre axes, rotation, retournement, décalage et export PNG.",
+    "es": "Dibuja sprites de 8×8 a 64×64 con siete herramientas, espejo en cuatro, girar, voltear, desplazar y exportar a PNG.",
+    "ja": "7つのツール、4方向ミラー、回転・反転・移動で8×8〜64×64のスプライトを描き、本物の PNG で書き出し。",
+    "zh": "用七种工具、四向镜像、旋转、翻转和平移绘制 8×8 到 64×64 的像素图，并导出真正的 PNG。",
+    "ko": "도구 일곱 개, 4방향 대칭, 회전·뒤집기·이동으로 8×8부터 64×64 스프라이트를 그리고 PNG로 내보내세요."
+  },
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "media",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 860, "height": 600, "minWidth": 760, "minHeight": 540, "resizable": true},
+  "window": {
+    "width": 860,
+    "height": 600,
+    "minWidth": 760,
+    "minHeight": 540,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
   "minSdk": "1.0",

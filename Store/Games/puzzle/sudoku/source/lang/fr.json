@@ -64,5 +64,18 @@
   "mistakes_n": "{0} erreurs",
   "generating": "Création d’une grille à solution unique…",
   "notes_mode": "Mode notes",
-  "show_mistakes": "Surligner les erreurs"
+  "show_mistakes": "Surligner les erreurs",
+  "expert": "Expert",
+  "daily": "Du jour",
+  "daily_play": "Grille du jour",
+  "daily_done": "Grille du jour résolue · série {0}",
+  "daily_streak": "Série quotidienne",
+  "streak_fmt": "{0} jours · record {1}",
+  "auto_notes": "Remplir les notes",
+  "notes_filled": "Candidats ajoutés",
+  "strict_mode": "Mode trois erreurs",
+  "mistakes_left_n": "{0} erreurs restantes",
+  "out_of_mistakes": "Plus d’erreurs permises",
+  "out_of_mistakes_sub": "En mode trois erreurs, trois mauvais chiffres terminent la partie.",
+  "keep_going": "Continuer (mode désactivé)"
 }

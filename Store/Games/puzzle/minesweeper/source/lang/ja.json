@@ -32,5 +32,18 @@
   "cancel": "キャンセル",
   "menu_records": "記録",
   "best_line": "{0}: {1} 秒",
-  "wins_line": "{1} 戦 {0} 勝"
+  "wins_line": "{1} 戦 {0} 勝",
+  "custom": "カスタム",
+  "custom_board": "カスタム盤面",
+  "columns": "列",
+  "rows": "行",
+  "mines": "地雷",
+  "start": "スタート",
+  "statistics": "統計",
+  "st_played": "プレイ",
+  "st_won": "勝利",
+  "st_best": "最速 秒",
+  "st_streak": "連勝",
+  "close": "閉じる",
+  "question_marks": "はてなマーク (?)"
 }

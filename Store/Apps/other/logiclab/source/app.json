@@ -1,0 +1,27 @@
+{
+  "id": "com.sonerx7.logiclab",
+  "name": {"en": "Logic Lab", "tr": "Mantık Laboratuvarı", "de": "Logiklabor", "fr": "Labo logique", "es": "Laboratorio lógico", "ja": "ロジックラボ", "zh": "逻辑实验室", "ko": "논리 실험실"},
+  "description": {
+    "en": "Build digital circuits with gates, flip-flops, switches, clocks, LEDs and displays, and see their truth tables.",
+    "tr": "Kapılar, flip-floplar, anahtarlar, saatler, LED'ler ve göstergelerle dijital devreler kur, doğruluk tablolarını gör.",
+    "de": "Baue Digitalschaltungen aus Gattern, Flipflops, Schaltern, Takten, LEDs und Anzeigen und sieh ihre Wahrheitstabellen.",
+    "fr": "Construisez des circuits numériques avec portes, bascules, interrupteurs, horloges, LED et afficheurs, et voyez leurs tables de vérité.",
+    "es": "Construye circuitos digitales con puertas, biestables, interruptores, relojes, LED y pantallas, y mira sus tablas de verdad.",
+    "ja": "ゲート、フリップフロップ、スイッチ、クロック、LED、表示器でデジタル回路を作り、真理値表を確かめよう。",
+    "zh": "用逻辑门、触发器、开关、时钟、LED 和显示器搭建数字电路，并查看真值表。",
+    "ko": "게이트, 플립플롭, 스위치, 클록, LED, 표시기로 디지털 회로를 만들고 진리표를 확인하세요."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "other",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 480, "minHeight": 380, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "fileTypes": [".logic"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

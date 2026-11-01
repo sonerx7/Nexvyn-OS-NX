@@ -1,0 +1,28 @@
+{
+  "id": "com.sonerx7.numbook",
+  "name": {"en": "Numbook", "tr": "Hesap Defteri", "de": "Rechenheft", "fr": "Carnet de calcul", "es": "Libreta de cálculo", "ja": "計算ノート", "zh": "计算本", "ko": "계산 노트"},
+  "description": {
+    "en": "A notepad that calculates: totals, variables, percentages, units and temperatures, line by line.",
+    "tr": "Hesap yapan not defteri: toplamlar, değişkenler, yüzdeler, birimler ve sıcaklıklar, satır satır.",
+    "de": "Ein Notizblock, der rechnet: Summen, Variablen, Prozente, Einheiten und Temperaturen, Zeile für Zeile.",
+    "fr": "Un bloc-notes qui calcule : totaux, variables, pourcentages, unités et températures, ligne par ligne.",
+    "es": "Un bloc de notas que calcula: totales, variables, porcentajes, unidades y temperaturas, línea a línea.",
+    "ja": "計算するメモ帳。合計、変数、パーセント、単位、温度を 1 行ずつ。",
+    "zh": "会计算的记事本：逐行计算合计、变量、百分比、单位和温度。",
+    "ko": "계산하는 메모장: 합계, 변수, 백분율, 단위, 온도를 한 줄씩."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.js",
+  "runtime": "js",
+  "window": {"width": 980, "height": 580, "minWidth": 420, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "shareTargets": ["text", ".txt"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

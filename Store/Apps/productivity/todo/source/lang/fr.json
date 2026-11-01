@@ -104,5 +104,21 @@
   "deleted": "Tâche supprimée.",
   "deleted_named": "« {0} » supprimé",
   "undo": "Annuler",
-  "undo_delete": "Annuler la suppression"
+  "undo_delete": "Annuler la suppression",
+  "repeat": "Répéter",
+  "rep_none": "Jamais",
+  "rep_daily": "Chaque jour",
+  "rep_weekly": "Chaque semaine",
+  "rep_monthly": "Chaque mois",
+  "repeat_next": "Prochaine : {0}",
+  "steps": "Étapes",
+  "step_ph": "Ajouter une étape…",
+  "add_step": "Ajouter",
+  "backup": "Sauvegarder",
+  "backup_done": "Sauvegarde enregistrée",
+  "restore": "Restaurer",
+  "restore_confirm": "Remplacer toutes vos listes par les {0} tâches de cette sauvegarde ?",
+  "restore_done": "{0} tâches restaurées",
+  "restore_bad": "Ce fichier n’est pas une sauvegarde de To-Do",
+  "cancel": "Annuler"
 }

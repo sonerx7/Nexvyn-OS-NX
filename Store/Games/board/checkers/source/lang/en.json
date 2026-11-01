@@ -72,5 +72,9 @@
   "play_red": "Play red (first)",
   "play_black": "Play black",
   "rules": "Rules",
-  "rules_text": "Pieces move one square diagonally forward. Jump over an opponent's piece to capture it; capturing is compulsory and a jumping piece keeps jumping while it can. A piece that reaches the far row becomes a king and may move and capture backwards. You win when your opponent cannot move."
+  "rules_text": "Pieces move one square diagonally forward. Jump over an opponent's piece to capture it; capturing is compulsory and a jumping piece keeps jumping while it can. A piece that reaches the far row becomes a king and may move and capture backwards. You win when your opponent cannot move.",
+  "mode_expert": "Expert",
+  "review": "Review game",
+  "review_move": "Move {0} / {1}",
+  "done": "Done"
 }

@@ -100,5 +100,19 @@
   "wdn3": "Me",
   "wdn4": "Je",
   "wdn5": "Ve",
-  "wdn6": "Sa"
+  "wdn6": "Sa",
+  "repeat_monthly": "Répéter chaque mois",
+  "budgets": "Budgets",
+  "budgets_sub": "Plafonds mensuels par catégorie · dépenses de {0}",
+  "spent_of": "{0} sur {1}",
+  "no_limit": "Sans plafond",
+  "over_budget": "Budget dépassé : {0}",
+  "done_btn": "Terminé",
+  "backup": "Sauvegarder",
+  "backup_done": "Sauvegarde enregistrée",
+  "save_failed": "Impossible d’enregistrer le fichier",
+  "restore": "Restaurer",
+  "restore_confirm": "Remplacer toutes vos opérations par les {0} de cette sauvegarde ?",
+  "restore_done": "{0} opérations restaurées",
+  "restore_bad": "Ce fichier n’est pas une sauvegarde de Budget"
 }

@@ -1,0 +1,45 @@
+{
+  "subtitle": {
+    "en": "3D island racing: drift, boost, win cups",
+    "tr": "3B ada yarışı: drift, turbo, kupalar",
+    "de": "3D-Inselrennen: Driften, Boosten, Pokale",
+    "fr": "Course 3D insulaire : drift, boost et coupes",
+    "es": "Carreras 3D en islas: derrapes y copas",
+    "ja": "島の 3D レース：ドリフトとカップ",
+    "zh": "3D 海岛赛车：漂移、加速、赢取奖杯",
+    "ko": "3D 섬 레이싱: 드리프트와 컵"
+  },
+  "description": {
+    "en": "Race across three island circuits in full 3D: sunny Palm Bay, the neon-lit night of Neon Harbor and the canyon jumps of Ember Ridge. Hold drift through the corners until the sparks turn blue, orange and purple, then let go for a mini-turbo. Drifting fills your nitro, boost pads line the straights and a perfect launch gives a rocket start.\n\n• Grand Prix: two cups of three races against five AI rivals, with points, trophies and unlocks\n• Quick race with your choice of track, laps and rivals, and a mirror mode\n• Time trial against the ghost of your best lap\n• Three cars with their own speed, acceleration and grip\n• Particles, camera shake, HD rumble and an original synth soundtrack\n• Controller, keyboard, touch steering or tilt steering with the gyroscope",
+    "tr": "Tam 3B üç ada pistinde yarış: güneşli Palmiye Koyu, neon ışıklı Neon Liman gecesi ve Kor Sırtı'nın kanyon atlayışları. Virajlarda kıvılcımlar maviye, turuncuya ve mora dönene kadar drift yap, sonra bırak ve mini turboyu al. Drift nitroyu doldurur, düzlüklerde hız rampaları var ve kusursuz bir kalkış roket başlangıç kazandırır.\n\n• Grand Prix: beş yapay zekâ rakibe karşı üçer yarışlık iki kupa; puanlar, kupalar ve açılan içerikler\n• Pist, tur ve rakip sayısını seçtiğin hızlı yarış ve ayna modu\n• En iyi turunun hayaletine karşı zamana karşı yarış\n• Hızı, ivmesi ve yol tutuşu farklı üç araba\n• Parçacıklar, kamera sarsıntısı, HD titreşim ve özgün synth müzikleri\n• Kumanda, klavye, dokunmatik ya da jiroskopla eğerek sürüş",
+    "de": "Rase in vollem 3D über drei Inselkurse: die sonnige Palmenbucht, die Neonnacht des Neonhafens und die Canyonsprünge des Glutgrats. Halte den Drift durch die Kurven, bis die Funken blau, orange und lila werden, und lass dann für einen Mini-Turbo los. Drifts füllen dein Nitro, Boost-Felder säumen die Geraden und ein perfekter Start zündet einen Raketenstart.\n\n• Grand Prix: zwei Pokale mit je drei Rennen gegen fünf KI-Rivalen, mit Punkten, Trophäen und Freischaltungen\n• Schnelles Rennen mit freier Wahl von Strecke, Runden und Rivalen, dazu ein Spiegelmodus\n• Zeitfahren gegen den Geist deiner besten Runde\n• Drei Wagen mit eigenem Tempo, eigener Beschleunigung und eigenem Grip\n• Partikel, Kamerawackeln, HD-Vibration und ein eigener Synth-Soundtrack\n• Controller, Tastatur, Touch-Lenkung oder Neigungslenkung per Gyroskop",
+    "fr": "Foncez sur trois circuits insulaires en 3D : la Baie des Palmiers ensoleillée, la nuit néon du Port Néon et les sauts du canyon de la Crête de Braise. Maintenez le drift dans les virages jusqu’à ce que les étincelles passent au bleu, à l’orange puis au violet, et relâchez pour un mini-turbo. Les drifts remplissent la nitro, des plaques de boost bordent les lignes droites et un départ parfait déclenche un départ fusée.\n\n• Grand Prix : deux coupes de trois courses contre cinq rivaux IA, avec points, trophées et déblocages\n• Course rapide avec choix du circuit, des tours et des rivaux, plus un mode miroir\n• Contre-la-montre face au fantôme de votre meilleur tour\n• Trois voitures avec leur vitesse, leur accélération et leur adhérence\n• Particules, tremblements de caméra, vibrations HD et bande-son synthé originale\n• Manette, clavier, direction tactile ou par inclinaison avec le gyroscope",
+    "es": "Corre en tres circuitos isleños en 3D: la soleada Bahía Palmera, la noche de neón de Puerto Neón y los saltos del cañón de Cresta Ascua. Mantén el derrape en las curvas hasta que las chispas se vuelvan azules, naranjas y moradas, y suelta para un mini turbo. Los derrapes llenan el nitro, hay placas de impulso en las rectas y una salida perfecta da una salida cohete.\n\n• Gran Premio: dos copas de tres carreras contra cinco rivales de IA, con puntos, trofeos y desbloqueos\n• Carrera rápida eligiendo circuito, vueltas y rivales, y modo espejo\n• Contrarreloj contra el fantasma de tu mejor vuelta\n• Tres coches con su propia velocidad, aceleración y agarre\n• Partículas, vibración de cámara, vibración HD y banda sonora synth original\n• Mando, teclado, dirección táctil o por inclinación con el giroscopio",
+    "ja": "フル 3D で 3 つの島サーキットを駆け抜けよう。陽光のパームベイ、ネオン輝く夜のネオンハーバー、峡谷をジャンプするエンバーリッジ。カーブでドリフトを続けると火花が青・橙・紫に変わり、離すとミニターボ。ドリフトでニトロが溜まり、直線にはブーストパッド、完璧な発進でロケットスタート。\n\n• グランプリ：5 台の AI ライバルと 3 レースずつ戦う 2 つのカップ。ポイント、トロフィー、解放要素あり\n• コース・周回数・ライバル数を選べるクイックレースとミラーモード\n• ベストラップのゴーストと競うタイムアタック\n• スピード・加速・グリップが異なる 3 台のマシン\n• パーティクル、カメラシェイク、HD 振動、オリジナルのシンセ BGM\n• コントローラー、キーボード、タッチ操作、ジャイロによる傾きハンドルに対応",
+    "zh": "以全 3D 驰骋三座海岛赛道：阳光明媚的棕榈湾、霓虹闪烁的霓虹港之夜，以及余烬山脊的峡谷飞跃。在弯道中保持漂移，直到火花变成蓝、橙、紫，再松开获得小加速。漂移会积累氮气，直道上有加速板，完美起步还能触发火箭起步。\n\n• 大奖赛：两个杯赛，各三场，对阵五名 AI 对手，含积分、奖杯与解锁内容\n• 快速比赛：自选赛道、圈数和对手数量，另有镜像模式\n• 计时赛：挑战你最快单圈的幽灵车\n• 三辆赛车，速度、加速和抓地力各不相同\n• 粒子特效、镜头震动、HD 震动和原创合成器配乐\n• 支持手柄、键盘、触控转向及陀螺仪体感转向",
+    "ko": "풀 3D로 세 개의 섬 서킷을 질주하세요. 햇살 가득한 팜 베이, 네온이 빛나는 밤의 네온 하버, 협곡을 뛰어넘는 엠버 리지. 코너에서 드리프트를 유지하면 불꽃이 파랑, 주황, 보라로 바뀌고, 떼면 미니 터보가 터집니다. 드리프트로 니트로가 차고, 직선에는 부스트 패드, 완벽한 출발은 로켓 스타트.\n\n• 그랑프리: AI 라이벌 다섯 명과 세 레이스씩 겨루는 두 개의 컵, 포인트·트로피·해제 요소\n• 트랙, 랩 수, 라이벌 수를 고르는 빠른 레이스와 미러 모드\n• 최고 랩 고스트와 겨루는 타임 트라이얼\n• 속도, 가속, 접지력이 다른 세 대의 차량\n• 파티클, 카메라 흔들림, HD 진동, 오리지널 신스 사운드트랙\n• 컨트롤러, 키보드, 터치 조향, 자이로 기울기 조향 지원"
+  },
+  "shots": [
+    [
+      "wait 4"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key down",
+      "wait 0.4",
+      "key down",
+      "wait 0.4",
+      "key enter",
+      "wait 6.5",
+      "hold up 3"
+    ],
+    [
+      "hold up 1.2",
+      "hold right 0.5",
+      "hold up 1"
+    ]
+  ]
+}

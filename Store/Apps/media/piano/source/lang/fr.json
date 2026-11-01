@@ -32,5 +32,11 @@
   "octave_down": "Octave inférieure",
   "octave_up": "Octave supérieure",
   "menu_sound": "Son",
-  "menu_songs": "Morceaux"
+  "menu_songs": "Morceaux",
+  "song_jingle": "Vive le vent",
+  "song_scale": "Gamme de do majeur",
+  "learn_song": "Apprendre : {0}",
+  "learn_progress": "Mode apprentissage · {0}/{1} notes · {2} % de justesse",
+  "learn_done": "Morceau terminé ! Justesse {0} %",
+  "learn_shift": "La note suivante est hors du clavier : changez d’octave"
 }

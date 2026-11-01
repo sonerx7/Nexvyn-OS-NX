@@ -11,23 +11,26 @@
     "ko": "뽀모도로"
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
   "main": "main.lua",
   "window": {
     "width": 440,
-    "height": 560,
+    "height": 620,
     "resizable": false
   },
   "gamepad": false,
   "description": {
-    "en": "Focus timer with breaks and daily statistics",
-    "tr": "Molalı odaklanma zamanlayıcısı ve günlük istatistikler",
-    "de": "Fokus-Timer mit Pausen und Tagesstatistiken",
-    "fr": "Minuteur de concentration avec pauses et statistiques quotidiennes",
-    "es": "Temporizador de concentración con descansos y estadísticas diarias"
+    "en": "Focus in sprints with task labels, a daily goal, statistics per task and notifications even while the app is away.",
+    "tr": "Görev etiketleri, günlük hedef, görev başına istatistik ve uygulama arka plandayken bile bildirimle odaklan.",
+    "de": "Fokussiere in Etappen mit Aufgabennamen, Tagesziel, Statistik je Aufgabe und Benachrichtigungen auch im Hintergrund.",
+    "fr": "Concentrez-vous par sprints avec tâches nommées, objectif du jour, statistiques par tâche et notifications même en arrière-plan.",
+    "es": "Concéntrate por bloques con tareas, meta diaria, estadísticas por tarea y avisos incluso con la app en segundo plano.",
+    "ja": "タスク名、1日の目標、タスク別の統計、アプリを離れていても届く通知で、集中と休憩をくり返そう。",
+    "zh": "以任务标签、每日目标、按任务统计以及在后台也能收到的通知，分段专注。",
+    "ko": "작업 이름, 일일 목표, 작업별 통계, 앱을 떠나 있어도 오는 알림으로 집중하세요."
   },
   "permissions": [
     "notifications"

@@ -1,0 +1,42 @@
+{
+  "subtitle": {
+    "en": "Turn-based tactics: an eight-battle campaign",
+    "tr": "Sıra tabanlı taktik: sekiz savaşlık sefer",
+    "de": "Rundentaktik: Kampagne in acht Schlachten",
+    "fr": "Tactique au tour par tour : huit batailles",
+    "es": "Táctica por turnos: ocho batallas",
+    "ja": "ターン制タクティクス全 8 戦",
+    "zh": "回合制战术：八场战斗的战役",
+    "ko": "턴제 전술: 여덟 전투 캠페인"
+  },
+  "description": {
+    "en": "Lead Ser Maren's company across the vale to take back Aldmoor. Every battle is played on a grid of grass, roads, forests, hills, rivers, villages and castles: forests and hills shield whoever holds them, archers shoot further from high ground, spearmen break riders and every unit strikes back when it can reach its attacker. Six heroes join along the way and keep their levels from battle to battle.\n\n• Eight handmade battles with different goals: rout the enemy, seize a keep, survive an ambush, defeat a warlord\n• Six classes for your company — commander, spearman, archer, cleric, rider and mage — against knights, brutes and warlords\n• A combat forecast before every attack, a danger view of the enemy's reach and an undo for moves\n• Experience and level ups that carry through the campaign, and replays of every battle you have won\n• Enemy commanders that weigh damage, counter-attacks and terrain before they move\n• Original orchestral-style soundtrack; controller, keyboard and touch",
+    "tr": "Aldmoor'u geri almak için Sir Maren'in bölüğünü vadi boyunca yönet. Her savaş çayır, yol, orman, tepe, nehir, köy ve kalelerden oluşan bir ızgarada oynanır: orman ve tepeler tutanı korur, okçular yüksekten daha uzağa atar, mızrakçılar atlıları kırar ve her birlik saldırana ulaşabiliyorsa karşılık verir. Yol boyunca katılan altı kahraman seviyelerini savaştan savaşa taşır.\n\n• Farklı hedefli sekiz el yapımı savaş: düşmanı dağıt, bir kaleyi ele geçir, pusuda hayatta kal, bir savaş beyini yen\n• Bölüğün için altı sınıf — komutan, mızrakçı, okçu, rahip, atlı ve büyücü — şövalyelere, zorbalara ve savaş beylerine karşı\n• Her saldırıdan önce çatışma tahmini, düşman menzilini gösteren tehlike görünümü ve hamleleri geri alma\n• Sefer boyunca taşınan deneyim ve seviyeler, kazanılan her savaşı yeniden oynama\n• Hareket etmeden önce hasarı, karşı saldırıyı ve araziyi tartan düşman komutanlar\n• Orkestral tarzda özgün müzikler; kumanda, klavye ve dokunmatik",
+    "de": "Führe Ser Marens Truppe durch das Tal, um Aldmoor zurückzuerobern. Jede Schlacht spielt auf einem Raster aus Wiesen, Straßen, Wäldern, Hügeln, Flüssen, Dörfern und Burgen: Wälder und Hügel schützen, Bogenschützen schießen von Anhöhen weiter, Speerträger brechen Reiter, und jede Einheit kontert, wenn sie den Angreifer erreicht. Sechs Helden schließen sich an und behalten ihre Stufen von Schlacht zu Schlacht.\n\n• Acht handgemachte Schlachten mit verschiedenen Zielen: Feinde vernichten, eine Burg einnehmen, einen Hinterhalt überleben, einen Kriegsherrn besiegen\n• Sechs Klassen — Kommandantin, Speerträger, Bogenschützin, Klerikerin, Reiter und Magierin — gegen Ritter, Schläger und Kriegsherren\n• Kampfvorschau vor jedem Angriff, Gefahrenansicht der feindlichen Reichweite und Zug-Rücknahme\n• Erfahrung und Stufen, die durch die Kampagne getragen werden, und Wiederholung gewonnener Schlachten\n• Feindliche Anführer, die Schaden, Konter und Gelände abwägen\n• Eigener orchestraler Soundtrack; Controller, Tastatur und Touch",
+    "fr": "Menez la compagnie de Dame Maren à travers la vallée pour reprendre Aldmoor. Chaque bataille se joue sur une grille de prairies, routes, forêts, collines, rivières, villages et châteaux : forêts et collines protègent, les archers tirent plus loin depuis les hauteurs, les lanciers brisent les cavaliers et chaque unité riposte si elle atteint son assaillant. Six héros rejoignent la compagnie et gardent leurs niveaux d’une bataille à l’autre.\n\n• Huit batailles conçues à la main aux objectifs variés : écraser l’ennemi, prendre un donjon, survivre à une embuscade, vaincre un seigneur de guerre\n• Six classes — commandante, lancier, archère, clerc, cavalier et mage — face à des chevaliers, des brutes et des seigneurs de guerre\n• Prévision de combat avant chaque attaque, vue des menaces ennemies et annulation des déplacements\n• Expérience et niveaux conservés tout au long de la campagne, et rejouabilité des batailles gagnées\n• Des commandants ennemis qui pèsent dégâts, ripostes et terrain avant d’agir\n• Bande-son originale de style orchestral ; manette, clavier et tactile",
+    "es": "Guía a la compañía de Ser Maren por el valle para recuperar Aldmoor. Cada batalla se juega en una cuadrícula de praderas, caminos, bosques, colinas, ríos, aldeas y castillos: bosques y colinas protegen, los arqueros disparan más lejos desde lo alto, los lanceros frenan a los jinetes y cada unidad contraataca si alcanza al atacante. Seis héroes se unen por el camino y conservan su nivel de batalla en batalla.\n\n• Ocho batallas hechas a mano con objetivos distintos: derrotar al enemigo, tomar una torre, sobrevivir a una emboscada, vencer a un señor de la guerra\n• Seis clases — comandante, lancero, arquera, clériga, jinete y maga — contra caballeros, brutos y señores de la guerra\n• Pronóstico de combate antes de cada ataque, vista de peligro del alcance enemigo y deshacer movimientos\n• Experiencia y niveles que se mantienen en la campaña, y repetición de cada batalla ganada\n• Comandantes enemigos que sopesan daño, contraataques y terreno antes de mover\n• Banda sonora original de estilo orquestal; mando, teclado y pantalla táctil",
+    "ja": "マレン卿の部隊を率いて谷を進み、オルドムーアを取り戻そう。戦場は草原・道・森・丘・川・村・城のマス目。森や丘は守りを固め、丘の弓兵は射程が伸び、槍兵は騎兵に強く、攻撃者が射程内なら必ず反撃が来る。道中で 6 人の英雄が加わり、レベルは戦いをまたいで引き継がれる。\n\n• 目標の異なる 8 つの手作りの戦い：敵の全滅、砦の制圧、待ち伏せからの生還、将軍の撃破\n• 指揮官・槍兵・弓兵・僧侶・騎兵・魔道士の 6 クラスで、騎士・荒くれ・将軍に挑む\n• 攻撃前の戦闘予測、敵の攻撃範囲表示、移動のやり直し\n• キャンペーンを通して引き継がれる経験値とレベル、勝った戦いの再挑戦\n• ダメージ・反撃・地形を考えて動く敵指揮官\n• オーケストラ風のオリジナル BGM。コントローラー、キーボード、タッチ対応",
+    "zh": "率领马伦爵士的小队穿越山谷，夺回奥德摩尔。每场战斗都在由草地、道路、森林、山丘、河流、村庄和城堡组成的网格上进行：森林和山丘提供防护，弓手居高射程更远，长枪兵克制骑兵，只要够得着，每个单位都会反击。六位英雄陆续加入，等级会在战斗之间继承。\n\n• 八场手工设计的战斗，目标各异：歼灭敌军、占领城楼、在伏击中幸存、击败军阀\n• 六种职业——指挥官、长枪兵、弓手、牧师、骑兵和法师——对抗骑士、蛮兵和军阀\n• 每次攻击前显示战斗预测，可查看敌人威胁范围，并可撤回移动\n• 经验与等级贯穿整个战役，已获胜的战斗可随时重玩\n• 会权衡伤害、反击与地形再行动的敌方指挥官\n• 原创管弦风格配乐；支持手柄、键盘和触控",
+    "ko": "마렌 경의 부대를 이끌고 계곡을 지나 올드무어를 되찾으세요. 모든 전투는 초원, 길, 숲, 언덕, 강, 마을, 성으로 이루어진 격자에서 펼쳐집니다. 숲과 언덕은 방어에 유리하고, 언덕 위 궁수는 더 멀리 쏘며, 창병은 기병에 강하고, 공격자가 사거리 안이면 모든 유닛이 반격합니다. 여정 중 여섯 영웅이 합류하고 레벨은 전투마다 이어집니다.\n\n• 목표가 다른 여덟 개의 수작업 전투: 적 섬멸, 성채 점령, 매복에서 생존, 군벌 격파\n• 지휘관, 창병, 궁수, 성직자, 기병, 마법사 여섯 클래스로 기사, 폭도, 군벌에 맞서기\n• 공격 전 전투 예측, 적 사거리 위험 표시, 이동 되돌리기\n• 캠페인 내내 이어지는 경험치와 레벨, 이긴 전투 다시 하기\n• 피해, 반격, 지형을 따져 움직이는 적 지휘관\n• 오케스트라 풍 오리지널 음악; 컨트롤러, 키보드, 터치 지원"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "key escape",
+      "wait 3.2"
+    ],
+    [
+      "key enter",
+      "wait 0.4",
+      "key right",
+      "key right",
+      "wait 0.8"
+    ]
+  ]
+}

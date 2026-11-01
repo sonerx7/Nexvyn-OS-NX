@@ -43,5 +43,12 @@
   "clear_title": "すべての結果を消去しますか？",
   "clear_msg": "履歴とベストスコアが削除されます。",
   "clear": "消去",
-  "cancel": "キャンセル"
+  "cancel": "キャンセル",
+  "les_words": "よく使う単語",
+  "les_words_d": "いちばんよく打つ単語",
+  "les_weak": "苦手なキー",
+  "les_weak_d": "ミスの多いキーで作る練習",
+  "weak_keys": "練習するキー: {0}",
+  "les_minute": "1分間テスト",
+  "les_minute_d": "60秒でできるだけ多く入力"
 }

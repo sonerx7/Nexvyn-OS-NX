@@ -1,0 +1,44 @@
+{
+  "subtitle": {
+    "en": "Build and run digital circuits",
+    "tr": "Dijital devreler kur ve çalıştır",
+    "de": "Digitalschaltungen bauen und testen",
+    "fr": "Construisez des circuits numériques",
+    "es": "Construye y prueba circuitos digitales",
+    "ja": "デジタル回路を作って動かす",
+    "zh": "搭建并运行数字电路",
+    "ko": "디지털 회로를 만들고 실행하기"
+  },
+  "description": {
+    "en": "Logic Lab is a digital circuit simulator for learning and tinkering. Place switches, gates and flip-flops, drag wires from pin to pin, and watch the signals light up as the circuit runs.\n\n• AND, OR, NOT, NAND, NOR, XOR and XNOR gates, D flip-flops\n• Switches, push buttons, an adjustable clock, LEDs and a hex display\n• Truth tables generated for any circuit with switches and LEDs\n• Samples: half adder, full adder, SR latch and a 3-bit counter\n• Undo/redo, labels, pinch and pan, .logic files",
+    "tr": "Mantık Laboratuvarı öğrenmek ve denemek için bir dijital devre benzeticisidir. Anahtar, kapı ve flip-flop yerleştir, pimden pime kablo çek ve devre çalışırken sinyallerin yandığını izle.\n\n• VE, VEYA, DEĞİL, VE-DEĞİL, VEYA-DEĞİL, ÖZEL VEYA kapıları ve D flip-flop\n• Anahtarlar, basmalı düğmeler, ayarlanabilir saat, LED'ler ve onaltılık gösterge\n• Anahtarlı ve LED'li her devre için doğruluk tablosu\n• Örnekler: yarım toplayıcı, tam toplayıcı, SR mandal ve 3 bitlik sayaç\n• Geri al/yinele, etiketler, kıstırarak yakınlaştırma, .logic dosyaları",
+    "de": "Logiklabor ist ein Simulator für Digitalschaltungen zum Lernen und Basteln. Setze Schalter, Gatter und Flipflops, zieh Drähte von Anschluss zu Anschluss und sieh zu, wie die Signale aufleuchten.\n\n• UND, ODER, NICHT, NAND, NOR, XOR und XNOR, D-Flipflops\n• Schalter, Taster, einstellbarer Takt, LEDs und Hex-Anzeige\n• Wahrheitstabellen für jede Schaltung mit Schaltern und LEDs\n• Beispiele: Halbaddierer, Volladdierer, SR-Latch und 3-Bit-Zähler\n• Rückgängig, Beschriftungen, Zoomen mit zwei Fingern, .logic-Dateien",
+    "fr": "Labo logique est un simulateur de circuits numériques pour apprendre et bricoler. Placez interrupteurs, portes et bascules, tirez des fils de broche à broche et regardez les signaux s’allumer.\n\n• Portes ET, OU, NON, NON-ET, NON-OU, OU exclusif, bascules D\n• Interrupteurs, boutons, horloge réglable, LED et afficheur hexadécimal\n• Tables de vérité pour tout circuit avec interrupteurs et LED\n• Exemples : demi-additionneur, additionneur complet, bascule SR, compteur 3 bits\n• Annuler/rétablir, libellés, zoom au pincement, fichiers .logic",
+    "es": "Laboratorio lógico es un simulador de circuitos digitales para aprender y experimentar. Coloca interruptores, puertas y biestables, tira cables de pin a pin y mira cómo se encienden las señales.\n\n• Puertas Y, O, NO, NO-Y, NO-O, O exclusiva y biestables D\n• Interruptores, pulsadores, reloj ajustable, LED y pantalla hexadecimal\n• Tablas de verdad para cualquier circuito con interruptores y LED\n• Ejemplos: semisumador, sumador completo, biestable SR y contador de 3 bits\n• Deshacer/rehacer, etiquetas, zoom con dos dedos, archivos .logic",
+    "ja": "ロジックラボは、学んで遊べるデジタル回路シミュレーターです。スイッチ、ゲート、フリップフロップを置き、ピンからピンへ配線すれば、回路が動くと信号が光ります。\n\n• AND、OR、NOT、NAND、NOR、XOR、XNOR ゲート、D フリップフロップ\n• スイッチ、押しボタン、速さを変えられるクロック、LED、16 進表示器\n• スイッチと LED のある回路の真理値表を自動作成\n• サンプル: 半加算器、全加算器、SR ラッチ、3 ビットカウンタ\n• 取り消し/やり直し、ラベル、ピンチズーム、.logic ファイル",
+    "zh": "逻辑实验室是用于学习和动手实践的数字电路仿真器。放置开关、逻辑门和触发器，从引脚拖出导线，电路运行时信号会亮起。\n\n• 与、或、非、与非、或非、异或、同或门，D 触发器\n• 开关、按钮、可调时钟、LED 和十六进制数码管\n• 为带开关和 LED 的电路自动生成真值表\n• 示例：半加器、全加器、SR 锁存器和 3 位计数器\n• 撤销/重做、标签、双指缩放、.logic 文件",
+    "ko": "논리 실험실은 배우고 실험하기 위한 디지털 회로 시뮬레이터입니다. 스위치, 게이트, 플립플롭을 놓고 핀에서 핀으로 배선하면 회로가 동작하며 신호가 켜집니다.\n\n• AND, OR, NOT, NAND, NOR, XOR, XNOR 게이트와 D 플립플롭\n• 스위치, 푸시 버튼, 속도 조절 클록, LED, 16진수 표시기\n• 스위치와 LED가 있는 회로의 진리표 자동 생성\n• 예제: 반가산기, 전가산기, SR 래치, 3비트 카운터\n• 실행 취소/다시 실행, 라벨, 핀치 확대, .logic 파일"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key t",
+      "wait 1"
+    ],
+    [
+      "key escape",
+      "key l",
+      "wait 0.6",
+      "wclick 0.42 0.512",
+      "wait 2.5",
+      "key f",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "wait 2"
+    ]
+  ]
+}

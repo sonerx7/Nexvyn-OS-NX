@@ -1,0 +1,27 @@
+{
+  "id": "com.sonerx7.flowmap",
+  "name": {"en": "Flowmap", "tr": "Flowmap", "de": "Flowmap", "fr": "Flowmap", "es": "Flowmap", "ja": "Flowmap", "zh": "Flowmap", "ko": "Flowmap"},
+  "description": {
+    "en": "Flowcharts and mind maps: shapes, connectors, auto-layout mind maps, undo, SVG and Mermaid export.",
+    "tr": "Akış şemaları ve zihin haritaları: şekiller, bağlayıcılar, kendini düzenleyen haritalar, geri alma, SVG ve Mermaid dışa aktarma.",
+    "de": "Flussdiagramme und Mindmaps: Formen, Verbinder, automatisch angeordnete Mindmaps, Rückgängig, SVG- und Mermaid-Export.",
+    "fr": "Organigrammes et cartes mentales : formes, connecteurs, cartes auto-disposées, annulation, export SVG et Mermaid.",
+    "es": "Diagramas de flujo y mapas mentales: formas, conectores, mapas que se ordenan solos, deshacer, exportación SVG y Mermaid.",
+    "ja": "フローチャートとマインドマップ。図形、コネクタ、自動レイアウト、取り消し、SVG と Mermaid の書き出し。",
+    "zh": "流程图和思维导图：形状、连接线、自动排布的导图、撤销，以及 SVG 和 Mermaid 导出。",
+    "ko": "순서도와 마인드맵: 도형, 연결선, 자동 배치 마인드맵, 실행 취소, SVG와 Mermaid 내보내기."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "productivity",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 460, "minHeight": 380, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "fileTypes": [".flowmap"],
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

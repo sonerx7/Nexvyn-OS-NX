@@ -36,5 +36,13 @@
   "grid": "显示网格",
   "mirror": "镜像绘画",
   "flip_h": "水平翻转",
-  "clear": "清除画布"
+  "clear": "清除画布",
+  "t_replace": "替换颜色",
+  "mirror4": "四向镜像",
+  "flip_v": "垂直翻转",
+  "rotate": "旋转 90°",
+  "shift_l": "左移",
+  "shift_r": "右移",
+  "shift_u": "上移",
+  "shift_d": "下移"
 }

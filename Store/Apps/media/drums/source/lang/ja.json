@@ -26,5 +26,13 @@
   "pre_rock": "ロック",
   "pre_hiphop": "ヒップホップ",
   "pre_house": "ハウス",
-  "pre_empty": "空"
+  "pre_empty": "空",
+  "pre_funk": "ファンク",
+  "pre_disco": "ディスコ",
+  "pre_reggae": "レゲエ",
+  "pre_break": "ブレイクビーツ",
+  "pre_bossa": "ボサノバ",
+  "pre_trap": "トラップ",
+  "generate": "グルーヴを生成",
+  "accent_mode": "アクセントモード"
 }

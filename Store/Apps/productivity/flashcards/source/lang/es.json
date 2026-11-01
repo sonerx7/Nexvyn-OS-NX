@@ -67,5 +67,13 @@
   "reset_progress": "Restablecer progreso",
   "reset_title": "¿Restablecer el progreso?",
   "reset_msg": "Todas las tarjetas vuelven a la caja 1 y pasan a estar pendientes hoy.",
-  "reset": "Restablecer"
+  "reset": "Restablecer",
+  "quiz": "Test (opción múltiple)",
+  "hint_quiz": "Elige la respuesta correcta · teclas 1–4",
+  "streak_n": "Racha: {0} días",
+  "import": "Importar tarjetas",
+  "import_done": "{0} tarjetas importadas en «{1}».",
+  "import_none": "No se encontraron tarjetas. Una por línea: anverso y reverso separados por tabulación, ; o coma.",
+  "export": "Exportar mazo",
+  "ok": "Aceptar"
 }

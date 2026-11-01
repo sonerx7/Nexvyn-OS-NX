@@ -32,5 +32,18 @@
   "cancel": "Cancel",
   "menu_records": "Records",
   "best_line": "{0}: {1} s",
-  "wins_line": "Won {0} of {1} games"
+  "wins_line": "Won {0} of {1} games",
+  "custom": "Custom",
+  "custom_board": "Custom board",
+  "columns": "Columns",
+  "rows": "Rows",
+  "mines": "Mines",
+  "start": "Start",
+  "statistics": "Statistics",
+  "st_played": "Played",
+  "st_won": "Won",
+  "st_best": "Best s",
+  "st_streak": "Streak",
+  "close": "Close",
+  "question_marks": "Question marks (?)"
 }

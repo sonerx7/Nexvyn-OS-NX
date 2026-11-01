@@ -48,5 +48,11 @@
   "pause_menu": "일시 정지",
   "new_game": "새 게임",
   "reset_records": "기록 재설정",
-  "records_reset": "기록을 재설정했습니다"
+  "records_reset": "기록을 재설정했습니다",
+  "map_meadow": "맵: 초원",
+  "map_canyon": "맵: 협곡",
+  "map_serpent": "맵: 굽잇길",
+  "endless_opt": "무한: {0}",
+  "endless_best": "무한 최고: 웨이브 {0}",
+  "endless_go": "무한!"
 }

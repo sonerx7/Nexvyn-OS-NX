@@ -11,7 +11,7 @@
     "ko": "플래시카드"
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -23,11 +23,14 @@
   },
   "gamepad": false,
   "description": {
-    "en": "Learn with flashcards and spaced repetition",
-    "tr": "Kelime kartları ve aralıklı tekrar ile öğrenin",
-    "de": "Lerne mit Karteikarten und verteilter Wiederholung",
-    "fr": "Apprenez avec des cartes mémoire et la répétition espacée",
-    "es": "Aprende con tarjetas y repetición espaciada"
+    "en": "Learn with spaced repetition and multiple-choice quizzes; import and export decks as CSV or TSV files.",
+    "tr": "Aralıklı tekrar ve çoktan seçmeli testlerle öğren; desteleri CSV ya da TSV dosyası olarak içe ve dışa aktar.",
+    "de": "Lernen mit verteilter Wiederholung und Multiple-Choice-Quiz; Stapel als CSV oder TSV importieren und exportieren.",
+    "fr": "Apprenez par répétition espacée et QCM ; importez et exportez vos paquets en CSV ou TSV.",
+    "es": "Aprende con repetición espaciada y tests de opción múltiple; importa y exporta mazos en CSV o TSV.",
+    "ja": "間隔反復と4択クイズで学習。デッキは CSV や TSV ファイルで読み込み・書き出しできます。",
+    "zh": "用间隔重复和选择题测验来学习；卡组可导入导出为 CSV 或 TSV 文件。",
+    "ko": "간격 반복과 객관식 퀴즈로 학습하고, 덱을 CSV나 TSV 파일로 가져오고 내보내세요."
   },
   "permissions": []
 }

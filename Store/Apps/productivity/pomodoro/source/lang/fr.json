@@ -49,5 +49,14 @@
   "tab_stats": "Statistiques",
   "tab_settings": "Réglages",
   "menu_timer": "Minuteur",
-  "menu_view": "Présentation"
+  "menu_view": "Présentation",
+  "add_task": "Sur quoi travaillez-vous ?",
+  "task_title": "Tâche de concentration",
+  "task_msg": "Nommez la tâche de vos sessions. Ses minutes sont comptées dans les statistiques.",
+  "top_tasks": "Tâches principales (7 jours)",
+  "no_tasks": "Nommez une tâche sur le minuteur pour voir où va votre temps.",
+  "set_goal": "Objectif du jour (sessions)",
+  "today_goal": "Aujourd’hui : {0}/{1} sessions · {2}",
+  "goal_reached": "Objectif du jour atteint !",
+  "goal_body": "{0} sessions de concentration aujourd’hui. Bravo."
 }

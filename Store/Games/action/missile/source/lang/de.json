@@ -41,5 +41,19 @@
   "c_aim": "Stick / Steuerkreuz / Pfeile: zielen",
   "c_fire": "A / Leertaste: von der nächsten Batterie feuern",
   "c_base": "L, B, R: linke / mittlere / rechte Batterie",
-  "c_touch": "Touch / Maus: auf das Ziel tippen oder klicken"
+  "c_touch": "Touch / Maus: auf das Ziel tippen oder klicken",
+  "records": "Rekorde",
+  "no_records": "Noch keine Punkte. Spiel eine Runde!",
+  "rounds": "Runden",
+  "total_time": "Gesamtzeit",
+  "total_points": "Gesamtpunkte",
+  "medal": "Medaille",
+  "medal_bronze": "Bronze",
+  "medal_silver": "Silber",
+  "medal_gold": "Gold",
+  "easy": "Leicht",
+  "normal": "Normal",
+  "hard": "Schwer",
+  "close": "Schließen",
+  "rec_hint": "X: Rekorde  ·  L / R: Schwierigkeit"
 }

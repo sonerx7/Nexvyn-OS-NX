@@ -1,4 +1,4 @@
--- ai.lua: Reversi (Othello) rules and engine. Board = array [1..64] of 0 / 1 (black) / 2 (white); index = row*8+col+1
+-- ai.lua: Reversi rules and engine. Board = array [1..64] of 0 / 1 (black) / 2 (white); index = row*8+col+1
 -- with row, col in 0..7. Negamax alpha-beta with iterative deepening, positional weights + mobility, run inside a
 -- coroutine that yields when the per-frame slice (R.sliceEnd, os.clock) is used up.
 local R = {}

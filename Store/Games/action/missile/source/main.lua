@@ -1,4 +1,4 @@
--- Füze Savunması / Missile Defense for Nexvyn OS: a Missile Command-style game. Aim with the stick, d-pad,
+-- Füze Savunması / Missile Defense for Nexvyn OS: a city defence game. Aim with the stick, d-pad,
 -- mouse or touch and fire counter-missiles from three batteries; their blasts chain through the incoming
 -- warheads. Splitting missiles, wave bonuses, rebuilt cities and an AI defender behind the title.
 local K = require("arcade")
@@ -8,7 +8,8 @@ local random = math.random
 
 local W, H = 800, 600
 local GROUND = 560
-local G = {icon = "crisis_alert", accent = "#FF6A3D", overIcon = "location_city"}
+local G = {icon = "crisis_alert", accent = "#FF6A3D", overIcon = "location_city", difficulty = true,
+  medals = {5000, 15000, 35000}}
 
 local S, OX, OY = 1, 0, 0
 local BASES = {{x = 60}, {x = 400}, {x = 740}}
@@ -66,7 +67,7 @@ local function targets()
 end
 
 local function launchEnemy(sx, sy, tx)
-  local speed = 34 + wave * 7 + random() * 10
+  local speed = (34 + wave * 7 + random() * 10) * K.dmul
   local dx, dy = tx - sx, GROUND - sy
   local d = sqrt(dx * dx + dy * dy)
   enemies[#enemies + 1] = {sx = sx, sy = sy, x = sx, y = sy, vx = dx / d * speed, vy = dy / d * speed,

@@ -104,5 +104,21 @@
   "deleted": "Task deleted.",
   "deleted_named": "Deleted “{0}”",
   "undo": "Undo",
-  "undo_delete": "Undo Delete"
+  "undo_delete": "Undo Delete",
+  "repeat": "Repeat",
+  "rep_none": "Never",
+  "rep_daily": "Daily",
+  "rep_weekly": "Weekly",
+  "rep_monthly": "Monthly",
+  "repeat_next": "Next one: {0}",
+  "steps": "Steps",
+  "step_ph": "Add a step…",
+  "add_step": "Add",
+  "backup": "Back Up",
+  "backup_done": "Backup saved",
+  "restore": "Restore",
+  "restore_confirm": "Replace all your lists with the {0} tasks in this backup?",
+  "restore_done": "Restored {0} tasks",
+  "restore_bad": "That file is not a To-Do backup",
+  "cancel": "Cancel"
 }

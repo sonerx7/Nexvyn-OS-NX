@@ -32,5 +32,11 @@
   "octave_down": "降低八度",
   "octave_up": "升高八度",
   "menu_sound": "声音",
-  "menu_songs": "乐曲"
+  "menu_songs": "乐曲",
+  "song_jingle": "铃儿响叮当",
+  "song_scale": "C 大调音阶",
+  "learn_song": "学习：{0}",
+  "learn_progress": "学习模式 · {0}/{1} 个音 · 准确率 {2}%",
+  "learn_done": "曲子完成！准确率 {0}%",
+  "learn_shift": "下一个音不在键盘范围内：请切换八度"
 }

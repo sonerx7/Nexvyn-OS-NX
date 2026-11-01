@@ -36,5 +36,13 @@
   "grid": "Mostrar cuadrícula",
   "mirror": "Dibujo en espejo",
   "flip_h": "Voltear horizontalmente",
-  "clear": "Borrar lienzo"
+  "clear": "Borrar lienzo",
+  "t_replace": "Reemplazar color",
+  "mirror4": "Espejo en cuatro",
+  "flip_v": "Voltear verticalmente",
+  "rotate": "Girar 90°",
+  "shift_l": "Desplazar a la izquierda",
+  "shift_r": "Desplazar a la derecha",
+  "shift_u": "Desplazar arriba",
+  "shift_d": "Desplazar abajo"
 }

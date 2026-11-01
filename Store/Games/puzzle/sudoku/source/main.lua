@@ -7,7 +7,13 @@ local app = {}
 
 local floor, max, min, sin = math.floor, math.max, math.min, math.sin
 
-local DIFFS = {{key = "easy", givens = 38}, {key = "medium", givens = 30}, {key = "hard", givens = 25}}
+local DIFFS = {{key = "easy", givens = 38}, {key = "medium", givens = 30}, {key = "hard", givens = 25},
+               {key = "expert", givens = 22, tries = 8}, {key = "daily", givens = 28}}
+local NDIFF = 4                -- selectable levels; 5 is the daily puzzle
+local DAILY = 5
+local strict = false           -- three mistakes and the game is lost
+local dailyKey = nil           -- "2026-11-01" while the daily puzzle is being played
+local daily = {}               -- {last = key, streak = n, best = n, done = {key = seconds}}
 
 local diff = 1
 local grid, given, sol, notes = {}, {}, {}, {}
@@ -36,12 +42,33 @@ local function st(key)
   return s
 end
 
--- ------------------------------------------------------------------ persistence
+-- ------------------------------------------------------------------ persistence (the daily puzzle keeps a streak of consecutive days)
 local function saveStats()
   store.set("best", best)
   store.set("stats", stats)
   store.set("diff", diff)
   store.set("mistakes", showMistakes)
+  store.set("strict", strict)
+  store.set("daily", daily)
+end
+
+local function todayKey()
+  local d = sys.date()
+  return string.format("%04d-%02d-%02d", d.year, d.month, d.day)
+end
+local function dayNumber(key)
+  local y, m, d = key:match("(%d+)-(%d+)-(%d+)")
+  y, m, d = tonumber(y), tonumber(m), tonumber(d)
+  if m <= 2 then y, m = y - 1, m + 12 end
+  return 365 * y + y // 4 - y // 100 + y // 400 + (153 * (m - 3) + 2) // 5 + d
+end
+-- small deterministic generator (same puzzle for everyone on the same day)
+local function seeded(seed)
+  local x = seed % 2147483646 + 1
+  return function(n)
+    x = (x * 48271) % 2147483647
+    return x % n + 1
+  end
 end
 
 local function saveGame()
@@ -49,7 +76,7 @@ local function saveGame()
   local gv = {}
   for i = 1, 81 do gv[i] = given[i] and 1 or 0 end
   store.set("game", {grid = grid, given = gv, sol = sol, notes = notes, time = elapsed, diff = diff,
-                     mistakes = mistakes, hints = hints, state = state})
+                     mistakes = mistakes, hints = hints, state = state, daily = dailyKey})
 end
 
 local function loadGame()
@@ -65,7 +92,9 @@ local function loadGame()
     notes[i] = floor(tonumber(g.notes[i]) or 0)
     if sol[i] < 1 or sol[i] > 9 or grid[i] < 0 or grid[i] > 9 then return false end
   end
-  diff = K.clamp(floor(tonumber(g.diff) or 1), 1, 3)
+  diff = K.clamp(floor(tonumber(g.diff) or 1), 1, DAILY)
+  dailyKey = type(g.daily) == "string" and g.daily or nil
+  if diff == DAILY and not dailyKey then diff = 2 end
   elapsed = tonumber(g.time) or 0
   mistakes, hints = tonumber(g.mistakes) or 0, tonumber(g.hints) or 0
   state = "play"
@@ -76,9 +105,20 @@ end
 -- ------------------------------------------------------------------ game
 local function newGame(d)
   if d then diff = d end
+  if diff == DAILY then diff = 2 end
+  dailyKey = nil
+  S.rand = math.random
   saveStats()
   state = "gen"
-  genCo = coroutine.create(function() return S.generate(DIFFS[diff].givens) end)
+  genCo = coroutine.create(function() return S.generate(DIFFS[diff].givens, DIFFS[diff].tries) end)
+  F.play()
+end
+
+local function startDaily()
+  diff, dailyKey = DAILY, todayKey()
+  S.rand = seeded(dayNumber(dailyKey) * 7919)
+  state = "gen"
+  genCo = coroutine.create(function() return S.generate(DIFFS[DAILY].givens) end)
   F.play()
 end
 
@@ -112,6 +152,16 @@ local function onWin()
   s.solved = s.solved + 1
   newRecord = not best[key] or elapsed < best[key]
   if newRecord then best[key] = elapsed end
+  if dailyKey then
+    daily.done = type(daily.done) == "table" and daily.done or {}
+    if not daily.done[dailyKey] then
+      local prev = daily.last and dayNumber(daily.last) or -10
+      daily.streak = (dayNumber(dailyKey) - prev == 1) and (tonumber(daily.streak) or 0) + 1 or 1
+      daily.best = max(tonumber(daily.best) or 0, daily.streak)
+      daily.last = dailyKey
+      daily.done[dailyKey] = floor(elapsed)
+    end
+  end
   saveStats()
   store.set("game", {state = "done"})
   F.winSound()
@@ -161,7 +211,14 @@ local function setValue(i, d)
     for _, p in ipairs(S.PEERS[i]) do notes[p] = notes[p] & ~bit end
     if d ~= sol[i] then
       mistakes = mistakes + 1
-      if showMistakes then K.tone(170, 0.12, 0.2, "square"); K.rumble(0.3, 40) end
+      if showMistakes or strict then K.tone(170, 0.12, 0.2, "square"); K.rumble(0.3, 40) end
+      if strict and mistakes >= 3 then
+        state = "lost"
+        store.set("game", {state = "done"})
+        F.loseSound()
+        timer.after(0.6, function() if state == "lost" then F.open("lost") end end)
+        return
+      end
     else
       K.tone(500 + d * 40, 0.05, 0.18, "triangle")
       local done = digitDone(d)
@@ -211,6 +268,22 @@ local function hint()
   notesMode = was
 end
 
+-- fills every empty cell's notes with the digits its row, column and box still allow
+local function autoNotes()
+  if state ~= "play" or F.modal() then return end
+  pushUndo(sel())
+  for i = 1, 81 do
+    if grid[i] == 0 then
+      local m = 0
+      for _, p in ipairs(S.PEERS[i]) do if grid[p] ~= 0 then m = m | (1 << grid[p]) end end
+      notes[i] = 0x3FE & ~m
+    end
+  end
+  F.chord({523, 659, 784}, 0.2, 0.15, "sine")
+  K.toast(TR("notes_filled"))
+  saveGame()
+end
+
 local function askNew(d)
   if state == "play" and #history > 0 then
     F.open("confirm")
@@ -227,8 +300,11 @@ function app.load()
   best = type(b) == "table" and b or {}
   local s = store.get("stats", {})
   stats = type(s) == "table" and s or {}
-  diff = K.clamp(floor(tonumber(store.get("diff", 1)) or 1), 1, 3)
+  diff = K.clamp(floor(tonumber(store.get("diff", 1)) or 1), 1, NDIFF)
   showMistakes = store.get("mistakes", true) ~= false
+  strict = store.get("strict", false) == true
+  local dd = store.get("daily", {})
+  daily = type(dd) == "table" and dd or {}
   if not loadGame() then state = "none" end
   F.open("title")
 end
@@ -359,14 +435,20 @@ local function drawPad(now)
   end
 end
 
-local function diffName(d) return ({TR("easy"), TR("medium"), TR("hard")})[d] end
+local function diffName(d) return ({TR("easy"), TR("medium"), TR("hard"), TR("expert"), TR("daily")})[d] end
+local function dailyDone() return type(daily.done) == "table" and daily.done[todayKey()] ~= nil end
+local function streakNow()
+  if not daily.last then return 0 end
+  local gap = dayNumber(todayKey()) - dayNumber(daily.last)
+  return gap <= 1 and (tonumber(daily.streak) or 0) or 0
+end
 
 local function drawHints(w, y)
   if K.lastInput == "pad" then
     K.hints({{"dpad", TR("h_move")}, {"A", TR("h_place", digit)}, {{"L", "R"}, TR("h_digit")}, {"X", TR("h_erase")},
-             {"Y", TR("h_notes")}, {"B", TR("h_undo")}, {"-", TR("h_hint")}, {"+", TR("h_pause")}}, 0, y, w)
+             {"Y", TR("h_notes")}, {"ZL", TR("auto_notes")}, {"B", TR("h_undo")}, {"-", TR("h_hint")}, {"+", TR("h_pause")}}, 0, y, w)
   elseif K.lastInput == "key" then
-    K.hints({{"1-9", TR("h_digit")}, {"0", TR("h_erase")}, {"N", TR("h_notes")}, {"Z", TR("h_undo")}, {"H", TR("h_hint")},
+    K.hints({{"1-9", TR("h_digit")}, {"0", TR("h_erase")}, {"N", TR("h_notes")}, {"A", TR("auto_notes")}, {"Z", TR("h_undo")}, {"H", TR("h_hint")},
              {"Esc", TR("h_pause")}}, 0, y, w)
   else
     K.hints({{"touch", TR("h_tap_cell")}}, 0, y, w)
@@ -380,23 +462,37 @@ local function drawDialogs(w, h)
   if s == "pause" then
     F.pauseDialog(w, h, {onRestart = function() newGame() end, onMenu = function() F.open("title") end})
   elseif s == "won" then
+    local lines = {{TR("time"), K.fmtTime(elapsed)}, {TR("best_time"), fmtBest(DIFFS[diff].key)},
+                   {TR("mistakes"), tostring(mistakes)}, {TR("hints_used"), tostring(hints)}}
+    if dailyKey then lines[#lines + 1] = {TR("daily_streak"), tostring(streakNow())} end
     K.dialog(F.dlg, w, h, {icon = "emoji_events", iconColor = theme.yellow, title = TR("solved"),
-      subtitle = newRecord and TR("new_record") or diffName(diff),
-      lines = {{TR("time"), K.fmtTime(elapsed)}, {TR("best_time"), fmtBest(DIFFS[diff].key)},
-               {TR("mistakes"), tostring(mistakes)}, {TR("hints_used"), tostring(hints)}},
+      subtitle = newRecord and TR("new_record") or diffName(diff), lines = lines,
       buttons = {{TR("new_game"), function() newGame() end, "primary", "refresh"}, {TR("close"), F.close}}})
+  elseif s == "lost" then
+    K.dialog(F.dlg, w, h, {icon = "heart_broken", iconColor = theme.red, title = TR("out_of_mistakes"),
+      subtitle = TR("out_of_mistakes_sub"),
+      lines = {{TR("time"), K.fmtTime(elapsed)}},
+      buttons = {{TR("new_game"), function() newGame() end, "primary", "refresh"},
+                 {TR("keep_going"), function()
+                    strict = false
+                    state = "play"
+                    saveStats()
+                    saveGame()
+                    F.close()
+                  end, "default", "play_arrow"}}})
   else
     F.commonDialogs(w, h, {
       stats = function()
         local lines = {}
-        for d = 1, 3 do
+        for d = 1, DAILY do
           local k = DIFFS[d].key
           local ss = st(k)
           lines[#lines + 1] = {diffName(d), TR("stat_fmt", ss.solved, ss.played, fmtBest(k))}
         end
+        lines[#lines + 1] = {TR("daily_streak"), TR("streak_fmt", streakNow(), tonumber(daily.best) or 0)}
         return lines
       end,
-      onReset = function() best = {}; stats = {}; saveStats() end,
+      onReset = function() best = {}; stats = {}; daily = {}; saveStats() end,
       onNew = function() newGame(F.pendingDiff) end,
     })
   end
@@ -404,17 +500,24 @@ end
 
 local function drawTitle(w, h)
   F.titleScreen(w, h, {icon = "grid_on", c1 = "#5AC8FA", c2 = "#2F6FDE", title = TR("title"), subtitle = TR("tagline"),
-    extraH = 46,
+    extraH = 84,
     extra = function(x, y, bw)
-      local nd = ui.segmented("tdiff", {TR("easy"), TR("medium"), TR("hard")}, diff, x, y, bw, 32)
-      if nd ~= diff and F.scene == "title" then diff = nd; saveStats() end
+      local cur4 = min(diff, NDIFF)
+      local nd = ui.segmented("tdiff", {TR("easy"), TR("medium"), TR("hard"), TR("expert")}, cur4, x, y, bw, 32)
+      if nd ~= cur4 and F.scene == "title" then diff = nd; saveStats() end
+      gfx.color(theme.text2)
+      gfx.text(TR("strict_mode"), x + 4, y + 44, 14, "medium")
+      local ns = ui.toggle("strict", strict, x + bw - 50, y + 40, 46, 26)
+      if ns ~= strict and F.scene == "title" then strict = ns; saveStats() end
     end,
     buttons = {{state == "play" and TR("continue") or TR("new_game"), function()
                   if state == "play" then F.play() else newGame() end
                 end, "primary", "play_arrow"},
-               {TR("new_puzzle_diff", diffName(diff)), function() newGame() end, "default", "refresh"},
+               {TR("new_puzzle_diff", diffName(min(diff, NDIFF))), function() newGame(min(diff, NDIFF)) end, "default", "refresh"},
+               {dailyDone() and TR("daily_done", streakNow()) or TR("daily_play"), function() startDaily() end,
+                "default", "today"},
                {TR("stats_title"), function() F.open("stats") end, "default", "bar_chart"}},
-    footer = TR("best_time") .. " (" .. diffName(diff) .. "): " .. fmtBest(DIFFS[diff].key)})
+    footer = TR("best_time") .. " (" .. diffName(min(diff, NDIFF)) .. "): " .. fmtBest(DIFFS[min(diff, NDIFF)].key)})
 end
 
 function app.draw(w, h)
@@ -425,10 +528,13 @@ function app.draw(w, h)
     if F.scene ~= "title" then drawDialogs(w, h) end
     return
   end
-  F.title(TR("title"), diffName(diff) .. " · " .. TR("mistakes_n", mistakes), 16, 10)
+  local sub = (dailyKey and (TR("daily") .. " " .. dailyKey) or diffName(diff)) .. " · " ..
+    (strict and TR("mistakes_left_n", max(0, 3 - mistakes)) or TR("mistakes_n", mistakes))
+  F.title(TR("title"), sub, 16, 10)
   local hit = F.toolbar({{"pause", "pause"}, F.soundItem(),
                          {"error_outline", "mist", showMistakes and theme.red or nil, showMistakes},
-                         {"refresh", "new"}, {"undo", "undo"}}, w - 16, 14)
+                         {"refresh", "new"}, {"auto_fix_high", "auto"}, {"undo", "undo"}}, w - 16, 14)
+  if hit == "auto" then autoNotes() end
   if hit == "sound" then K.setMuted(not K.muted)
   elseif hit == "pause" then F.open("pause")
   elseif hit == "mist" then showMistakes = not showMistakes; saveStats()
@@ -468,6 +574,7 @@ function app.draw(w, h)
   end
   drawHints(w, h - 28)
   drawDialogs(w, h)
+  K.drawToast(w, h - 76)
 end
 
 -- ------------------------------------------------------------------ input
@@ -477,6 +584,7 @@ function app.event(e)
   if F.modal() then F.dialogEvent(e); return end
   if state ~= "play" then
     if state == "won" and ((t == "paddown" and e.pad == "a") or (t == "keydown" and e.key == "enter")) then F.open("won") end
+    if state == "lost" and ((t == "paddown" and e.pad == "a") or (t == "keydown" and e.key == "enter")) then F.open("lost") end
     if (t == "paddown" and e.pad == "plus") or (t == "keydown" and e.key == "escape") then F.open("pause") end
     return
   end
@@ -491,6 +599,7 @@ function app.event(e)
     elseif p == "y" then notesMode = not notesMode; K.tone(notesMode and 880 or 660, 0.04, 0.15, "triangle")
     elseif p == "b" then undo()
     elseif p == "minus" or p == "zr" then hint()
+    elseif p == "zl" then autoNotes()
     elseif p == "plus" then F.open("pause") end
   elseif t == "keydown" then
     local k = e.key
@@ -502,6 +611,7 @@ function app.event(e)
     elseif k == "n" then notesMode = not notesMode
     elseif k == "z" then undo()
     elseif k == "h" then hint()
+    elseif k == "a" then autoNotes()
     elseif k == "escape" or k == "p" then F.open("pause") end
   elseif t == "mousedown" then
     local c, r = floor((e.x - B.x) / B.cs), floor((e.y - B.y) / B.cs)
@@ -517,7 +627,11 @@ function app.menu()
     {label = TR("new_puzzle_diff", TR("easy")), id = 11},
     {label = TR("new_puzzle_diff", TR("medium")), id = 12},
     {label = TR("new_puzzle_diff", TR("hard")), id = 13},
+    {label = TR("new_puzzle_diff", TR("expert")), id = 14},
+    {label = TR("daily_play"), id = 15},
     "-",
+    {label = TR("auto_notes"), id = 7, shortcut = "A"},
+    {label = TR("strict_mode"), id = 8, checked = strict},
     {label = TR("undo"), id = 1, shortcut = "Z", enabled = #history > 0},
     {label = TR("hint"), id = 2, shortcut = "H"},
     {label = TR("notes_mode"), id = 3, shortcut = "N", checked = notesMode},
@@ -529,7 +643,10 @@ function app.menu()
 end
 
 function app.onmenu(id)
-  if id >= 11 and id <= 13 then askNew(id - 10)
+  if id >= 11 and id <= 14 then askNew(id - 10)
+  elseif id == 15 then startDaily()
+  elseif id == 7 then autoNotes()
+  elseif id == 8 then strict = not strict; saveStats()
   elseif id == 1 then undo()
   elseif id == 2 then hint()
   elseif id == 3 then notesMode = not notesMode

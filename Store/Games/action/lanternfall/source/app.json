@@ -1,0 +1,41 @@
+{
+  "id": "com.sonerx7.lanternfall",
+  "name": {
+    "en": "Lanternfall",
+    "tr": "Fener Düşüşü",
+    "de": "Lanternfall",
+    "fr": "Lanternfall",
+    "es": "Lanternfall",
+    "ja": "ランタンフォール",
+    "zh": "提灯坠落",
+    "ko": "랜턴폴"
+  },
+  "description": {
+    "en": "A 2D action platformer across three worlds: learn new moves, light shrines, find star shards and defeat guardians.",
+    "tr": "Üç dünyada 2B aksiyon platform oyunu: yeni hareketler öğren, mabetleri yak, yıldız parçaları bul ve muhafızları yen.",
+    "de": "Ein 2D-Action-Plattformer in drei Welten: neue Fähigkeiten, Schreine, Sternsplitter und Wächter-Bosse.",
+    "fr": "Un jeu de plateforme d’action 2D en trois mondes : nouvelles capacités, autels, éclats d’étoile et gardiens.",
+    "es": "Plataformas de acción 2D en tres mundos: nuevas habilidades, santuarios, fragmentos de estrella y guardianes.",
+    "ja": "3 つの世界を巡る 2D アクション。新しい技、祠でのセーブ、星のかけら、守護者とのボス戦。",
+    "zh": "横跨三个世界的 2D 动作平台游戏：学习新能力、点亮神龛、收集星之碎片、击败守护者。",
+    "ko": "세 세계를 누비는 2D 액션 플랫포머: 새 기술, 사당 저장, 별 조각, 수호자 보스."
+  },
+  "category": "games",
+  "genre": "platformer",
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": true,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

@@ -43,5 +43,12 @@
   "clear_title": "Alle Ergebnisse löschen?",
   "clear_msg": "Dein Verlauf und deine Bestwerte werden gelöscht.",
   "clear": "Leeren",
-  "cancel": "Abbrechen"
+  "cancel": "Abbrechen",
+  "les_words": "Häufige Wörter",
+  "les_words_d": "Die Wörter, die du am häufigsten tippst",
+  "les_weak": "Schwache Tasten",
+  "les_weak_d": "Eine Übung aus deinen häufigsten Fehltasten",
+  "weak_keys": "Üben: {0}",
+  "les_minute": "Ein-Minuten-Test",
+  "les_minute_d": "So viele Wörter wie möglich in 60 Sekunden"
 }

@@ -32,5 +32,11 @@
   "octave_down": "옥타브 내리기",
   "octave_up": "옥타브 올리기",
   "menu_sound": "사운드",
-  "menu_songs": "곡"
+  "menu_songs": "곡",
+  "song_jingle": "징글벨",
+  "song_scale": "다장조 음계",
+  "learn_song": "배우기: {0}",
+  "learn_progress": "배우기 모드 · {0}/{1}음 · 정확도 {2}%",
+  "learn_done": "곡 완료! 정확도 {0}%",
+  "learn_shift": "다음 음이 건반 밖에 있어요: 옥타브를 바꾸세요"
 }

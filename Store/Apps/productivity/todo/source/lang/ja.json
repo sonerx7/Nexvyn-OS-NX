@@ -104,5 +104,21 @@
   "deleted": "タスクを削除しました。",
   "deleted_named": "「{0}」を削除しました",
   "undo": "取り消す",
-  "undo_delete": "削除を取り消す"
+  "undo_delete": "削除を取り消す",
+  "repeat": "繰り返し",
+  "rep_none": "なし",
+  "rep_daily": "毎日",
+  "rep_weekly": "毎週",
+  "rep_monthly": "毎月",
+  "repeat_next": "次回: {0}",
+  "steps": "ステップ",
+  "step_ph": "ステップを追加…",
+  "add_step": "追加",
+  "backup": "バックアップ",
+  "backup_done": "バックアップを保存しました",
+  "restore": "復元",
+  "restore_confirm": "すべてのリストを、このバックアップの {0} 件のタスクで置き換えますか？",
+  "restore_done": "{0} 件のタスクを復元しました",
+  "restore_bad": "このファイルは To-Do のバックアップではありません",
+  "cancel": "キャンセル"
 }

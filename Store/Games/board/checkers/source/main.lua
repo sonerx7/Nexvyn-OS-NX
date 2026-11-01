@@ -7,8 +7,8 @@ local app = {}
 
 local floor, max, min, abs, sin, pi = math.floor, math.max, math.min, math.abs, math.sin, math.pi
 
-local LEVELS = {{depth = 2, time = 0.6, noise = 40}, {depth = 4, time = 1.2}, {depth = 9, time = 2.2}}
-local MODE_KEYS = {"easy", "medium", "hard", "pvp"}
+local LEVELS = {{depth = 2, time = 0.6, noise = 40}, {depth = 4, time = 1.2}, {depth = 9, time = 2.2}, {depth = 14, time = 3.5}}
+local MODE_KEYS = {"easy", "medium", "hard", "expert", "pvp"}
 local STEP = 0.17
 local DRAW_PLIES = 80
 
@@ -31,7 +31,7 @@ local fx = K.particles()
 local B = {x = 0, y = 0, cs = 0}
 local press = nil
 
-local function vsAI() return mode <= 3 end
+local function vsAI() return mode <= 4 end
 local function isAiTurn() return vsAI() and not result and turn ~= humanSide end
 local function statOf(m)
   local s = stats[MODE_KEYS[m]]
@@ -55,7 +55,8 @@ local function saveAll()
   store.set("human", humanSide)
   local list = {}
   for k, h in ipairs(history) do list[k] = {h.m.from, h.m.path} end
-  store.set("game", {moves = list, mode = mode, human = humanSide, over = result ~= nil})
+  store.set("modever", 2)
+  store.set("game", {v2 = true, moves = list, mode = mode, human = humanSide, over = result ~= nil})
 end
 
 local function refresh()
@@ -149,6 +150,31 @@ local function rebuild(list)
   end
 end
 
+local review = nil          -- {list, k, result} while stepping through a finished game
+local function reviewTo(k)
+  review.k = K.clamp(k, 0, #review.list)
+  local sub = {}
+  for i = 1, review.k do sub[i] = review.list[i] end
+  rebuild(sub)
+  result, aiCo, aiAt = nil, nil, nil
+  K.tone(900, 0.02, 0.08, "sine")
+end
+local function startReview()
+  if not result then return end
+  local list = {}
+  for i, mv in ipairs(history) do list[i] = mv end
+  review = {list = list, k = #list, result = result}
+  F.play()
+  reviewTo(0)
+end
+local function endReview()
+  if not review then return end
+  local full, res = review.list, review.result
+  review = nil
+  rebuild(full)
+  result, aiCo, aiAt = res, nil, nil
+end
+
 local function undo()
   if F.modal() or busy() then return end
   if #history == 0 then K.tone(160, 0.05, 0.12, "square"); return end
@@ -182,7 +208,7 @@ local function hint()
 end
 
 local function setMode(m)
-  m = K.clamp(m, 1, 4)
+  m = K.clamp(m, 1, 5)
   if m == mode then return end
   mode = m
   newGame()
@@ -259,11 +285,13 @@ function app.load()
   K.loadPrefs()
   local s = store.get("stats", {})
   stats = type(s) == "table" and s or {}
-  mode = K.clamp(floor(tonumber(store.get("mode", 2)) or 2), 1, 4)
+  mode = K.clamp(floor(tonumber(store.get("mode", 2)) or 2), 1, 5)
+  if (tonumber(store.get("modever", 1)) or 1) < 2 and mode == 4 then mode = 5 end
   humanSide = store.get("human", 1) == 2 and 2 or 1
   local g = store.get("game")
   if type(g) == "table" and type(g.moves) == "table" and not g.over and #g.moves > 0 then
-    mode = K.clamp(floor(tonumber(g.mode) or mode), 1, 4)
+    mode = K.clamp(floor(tonumber(g.mode) or mode), 1, 5)
+    if not g.v2 and mode == 4 then mode = 5 end
     humanSide = g.human == 2 and 2 or 1
     local list = {}
     for k, mv in ipairs(g.moves) do
@@ -442,7 +470,7 @@ local function drawBoard(now)
 end
 
 local function modeName(m)
-  return ({TR("mode_easy"), TR("mode_medium"), TR("mode_hard"), TR("mode_pvp")})[m]
+  return ({TR("mode_easy"), TR("mode_medium"), TR("mode_hard"), TR("mode_expert"), TR("mode_pvp")})[m]
 end
 local function sideName(p) return p == 1 and TR("red") or TR("black") end
 
@@ -504,12 +532,13 @@ local function drawDialogs(w, h)
     K.dialog(F.dlg, w, h, {icon = icon, iconColor = ic, title = statusText(), subtitle = sub,
       lines = {{vsAI() and TR("you") or TR("red"), tostring(st.a)}, {TR("draws"), tostring(st.d)},
                {vsAI() and TR("cpu") or TR("black"), tostring(st.b)}},
-      buttons = {{TR("play_again"), newGame, "primary", "replay"}, {TR("close"), F.close}}})
+      buttons = {{TR("play_again"), newGame, "primary", "replay"}, {TR("review"), startReview, "default", "history"},
+                 {TR("close"), F.close}}})
   else
     F.commonDialogs(w, h, {
       stats = function()
         local lines = {}
-        for m = 1, 4 do
+        for m = 1, 5 do
           local st = statOf(m)
           local total = st.a + st.b + st.d
           lines[#lines + 1] = {modeName(m), TR("stat_fmt", st.a, st.d, st.b) ..
@@ -527,7 +556,7 @@ local function drawTitle(w, h)
   F.titleScreen(w, h, {icon = "workspaces", c1 = "#FF7A59", c2 = "#9C2A10", title = TR("title"), subtitle = TR("tagline"),
     extraH = 88,
     extra = function(x, y, bw)
-      local nm = ui.segmented("tmode", {TR("mode_easy"), TR("mode_medium"), TR("mode_hard"), TR("mode_pvp")}, mode, x, y, bw, 32)
+      local nm = ui.segmented("tmode", {TR("mode_easy"), TR("mode_medium"), TR("mode_hard"), TR("mode_expert"), TR("mode_pvp")}, mode, x, y, bw, 32)
       if nm ~= mode and F.scene == "title" then setMode(nm); F.open("title") end
       if vsAI() then
         local ns = ui.segmented("tside", {TR("play_red"), TR("play_black")}, humanSide, x, y + 42, bw, 32)
@@ -546,7 +575,7 @@ local function drawTitle(w, h)
   end
 end
 
-function app.draw(w, h)
+local function drawMain(w, h)
   local now = sys.time()
   gfx.clear(theme.bg)
   if F.scene == "title" or F.scene == "rules" or (F.scene ~= "play" and F.returnTo == "title") then
@@ -557,6 +586,7 @@ function app.draw(w, h)
   F.title(TR("title"), modeName(mode) .. " · " .. statusText(), 16, 10)
   local hit = F.toolbar({{"pause", "pause"}, F.soundItem(), {"refresh", "new"}, {"lightbulb", "hint"},
                          {"undo", "undo"}}, w - 16, 14)
+  if review then hit = nil end
   if hit == "sound" then K.setMuted(not K.muted)
   elseif hit == "pause" then F.open("pause")
   elseif hit == "new" then askNew()
@@ -589,9 +619,40 @@ local function cursorSquare()
   return r * 8 + c + 1
 end
 
+function app.draw(w, h)
+  drawMain(w, h)
+  if not review then return end
+  -- review bar: first / back / forward / last and done
+  local bh = 52
+  local y = h - bh - 6
+  local bw = math.min(520, w - 24)
+  local x = floor((w - bw) / 2)
+  gfx.shadow(x, y, bw, bh, 14, 16, 4)
+  gfx.rect(x, y, bw, bh, 14, theme.window)
+  gfx.color(theme.separator)
+  gfx.rectLine(x, y, bw, bh, 14, 1)
+  local icons = {{"first_page", 0}, {"chevron_left", review.k - 1}, {"chevron_right", review.k + 1},
+                 {"last_page", #review.list}}
+  for i, ic in ipairs(icons) do
+    if ui.iconButton(ic[1], x + 8 + (i - 1) * 46, y + 8, 40, 36, nil, false, "rv" .. i) then reviewTo(ic[2]) end
+  end
+  gfx.color(theme.text)
+  gfx.text(TR("review_move", review.k, #review.list), x + 196, y + 16, 14, "semibold")
+  if ui.button(TR("done") .. "##rv", x + bw - 108, y + 8, 100, 36, "primary") then endReview() end
+end
+
 function app.event(e)
   K.track(e)
   local t = e.type
+  if review then
+    local k = (t == "paddown" and e.pad) or (t == "keydown" and e.key) or nil
+    if k == "left" or k == "l" then reviewTo(review.k - 1)
+    elseif k == "right" or k == "r" then reviewTo(review.k + 1)
+    elseif k == "up" or k == "home" or k == "zl" then reviewTo(0)
+    elseif k == "down" or k == "end" or k == "zr" then reviewTo(#review.list)
+    elseif k == "b" or k == "escape" or k == "a" or k == "enter" or k == "plus" then endReview() end
+    return
+  end
   if F.scene == "rules" then
     if (t == "paddown" and (e.pad == "a" or e.pad == "b")) or (t == "keydown" and (e.key == "enter" or e.key == "escape")) then
       F.open("title")
@@ -609,8 +670,8 @@ function app.event(e)
     elseif p == "y" then hint()
     elseif p == "x" then askNew()
     elseif p == "minus" then undo()
-    elseif p == "l" then setMode((mode - 2) % 4 + 1)
-    elseif p == "r" then setMode(mode % 4 + 1)
+    elseif p == "l" then setMode((mode - 2) % 5 + 1)
+    elseif p == "r" then setMode(mode % 5 + 1)
     elseif p == "plus" then F.open("pause") end
   elseif t == "keydown" then
     local k = e.key
@@ -651,7 +712,7 @@ function app.menu()
   local items = {{label = TR("new_game"), id = 1, shortcut = "N"},
                  {label = TR("undo"), id = 2, shortcut = "Z", enabled = #history > 0},
                  {label = TR("hint"), id = 3, shortcut = "H"}, "-"}
-  for m = 1, 4 do items[#items + 1] = {label = modeName(m), id = 10 + m, checked = mode == m} end
+  for m = 1, 5 do items[#items + 1] = {label = modeName(m), id = 10 + m, checked = mode == m} end
   items[#items + 1] = "-"
   items[#items + 1] = {label = TR("play_red"), id = 21, checked = humanSide == 1, enabled = vsAI()}
   items[#items + 1] = {label = TR("play_black"), id = 22, checked = humanSide == 2, enabled = vsAI()}
@@ -667,7 +728,7 @@ function app.onmenu(id)
   elseif id == 3 then hint()
   elseif id == 4 then K.setMuted(not K.muted)
   elseif id == 5 then F.open("stats")
-  elseif id > 10 and id <= 14 then setMode(id - 10)
+  elseif id > 10 and id <= 15 then setMode(id - 10)
   elseif id == 21 or id == 22 then setHuman(id - 20) end
 end
 

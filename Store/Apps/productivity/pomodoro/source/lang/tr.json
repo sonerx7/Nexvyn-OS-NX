@@ -49,5 +49,14 @@
   "tab_stats": "İstatistikler",
   "tab_settings": "Ayarlar",
   "menu_timer": "Zamanlayıcı",
-  "menu_view": "Görünüm"
+  "menu_view": "Görünüm",
+  "add_task": "Ne üzerinde çalışıyorsun?",
+  "task_title": "Odak görevi",
+  "task_msg": "Odak oturumların için görevi adlandır. Dakikaları istatistiklerde sayılır.",
+  "top_tasks": "Öne çıkan görevler (7 gün)",
+  "no_tasks": "Zamanının nereye gittiğini görmek için zamanlayıcıda bir görev adlandır.",
+  "set_goal": "Günlük hedef (oturum)",
+  "today_goal": "Bugün: {0}/{1} oturum · {2}",
+  "goal_reached": "Günlük hedefe ulaşıldı!",
+  "goal_body": "Bugün {0} odak oturumu. Harika iş."
 }

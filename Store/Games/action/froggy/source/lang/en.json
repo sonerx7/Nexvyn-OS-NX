@@ -37,5 +37,19 @@
   "time_out": "Out of time!",
   "fly_bonus": "Fly bonus +200!",
   "c_move": "D-pad / Stick / Arrows / WASD: hop",
-  "c_touch": "Touch: swipe, or tap beside the frog"
+  "c_touch": "Touch: swipe, or tap beside the frog",
+  "records": "Records",
+  "no_records": "No scores yet. Play a round!",
+  "rounds": "Rounds",
+  "total_time": "Total time",
+  "total_points": "Total points",
+  "medal": "Medal",
+  "medal_bronze": "Bronze",
+  "medal_silver": "Silver",
+  "medal_gold": "Gold",
+  "easy": "Easy",
+  "normal": "Normal",
+  "hard": "Hard",
+  "close": "Close",
+  "rec_hint": "X: records  ·  L / R: difficulty"
 }

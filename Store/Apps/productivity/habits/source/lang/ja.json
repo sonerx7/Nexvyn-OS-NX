@@ -85,5 +85,18 @@
   "wdn3": "水",
   "wdn4": "木",
   "wdn5": "金",
-  "wdn6": "土"
+  "wdn6": "土",
+  "rest_today": "今日は休息日",
+  "rest_off": "休息日を解除",
+  "milestone": "{0}: {1} 日連続！",
+  "export_csv": "CSV を書き出す",
+  "exported": "履歴を書き出しました",
+  "backup": "バックアップ",
+  "backup_done": "バックアップを保存しました",
+  "restore": "復元",
+  "restore_confirm": "すべての習慣を、このバックアップの {0} 件で置き換えますか？",
+  "restore_done": "{0} 件の習慣を復元しました",
+  "restore_bad": "このファイルは Habits のバックアップではありません",
+  "done_today": "今日は達成",
+  "mark_today": "今日の達成にする"
 }

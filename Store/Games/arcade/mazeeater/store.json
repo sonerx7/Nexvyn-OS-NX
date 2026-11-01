@@ -1,27 +1,40 @@
 {
   "subtitle": {
-    "en": "Eat the dots and outsmart the ghosts",
-    "tr": "Yemleri ye, hayaletleri atlat",
-    "de": "Friss die Punkte, trickse die Geister aus",
-    "fr": "Mangez les pastilles, semez les fantômes",
-    "es": "Cómete los puntos y burla a los fantasmas",
-    "ja": "ドットを食べてオバケを出し抜こう",
-    "zh": "吃掉豆子，智胜幽灵",
-    "ko": "점을 먹고 유령을 따돌리세요"
+    "en": "Four mazes, three ghosts, one appetite",
+    "tr": "Dört labirent, üç hayalet, tek iştah",
+    "de": "Vier Labyrinthe, drei Geister",
+    "fr": "Quatre labyrinthes, trois fantômes",
+    "es": "Cuatro laberintos, tres fantasmas",
+    "ja": "4つの迷路と3匹のおばけ",
+    "zh": "四个迷宫，三个幽灵",
+    "ko": "네 개의 미로, 세 유령"
   },
   "description": {
-    "en": "Guide your hungry hero through the maze and eat every dot. Three ghosts roam the corridors, each with its own way of hunting you down. Grab a power pellet and the tables turn: the ghosts flee and you can eat them for big points. Fruit appears for a bonus, the side tunnel helps you escape, and every cleared maze takes you to the next level.\n\n• Classic maze chase with dots, power pellets and fruit\n• Three ghosts that scatter, chase, flee and return as eyes\n• A side tunnel and level after level\n• Swipe, tap, stick, D-pad or keyboard\n• Your best score is saved",
-    "tr": "Aç kahramanını labirentte gezdir ve bütün yemleri ye. Koridorlarda her biri seni kendi yöntemiyle kovalayan üç hayalet dolaşıyor. Bir güç hapı al, işler tersine dönsün: hayaletler kaçar, sen de onları yiyip bol puan kaparsın. Bonus için meyveler çıkar, yan tünel kaçmana yardım eder, temizlenen her labirent seni bir sonraki bölüme taşır.\n\n• Yem, güç hapı ve meyveli klasik labirent kovalamacası\n• Dağılan, kovalayan, kaçan ve göz olarak dönen üç hayalet\n• Yan tünel ve bölüm bölüm ilerleyiş\n• Kaydırma, dokunma, çubuk, yön tuşları ya da klavye\n• En iyi skorun kaydedilir",
-    "de": "Lotse deinen hungrigen Helden durchs Labyrinth und friss jeden Punkt. Drei Geister streifen durch die Gänge, und jeder jagt dich auf seine eigene Art. Schnapp dir eine Kraftpille, und das Blatt wendet sich: Die Geister fliehen, und du kannst sie für viele Punkte fressen. Früchte bringen Bonuspunkte, der Seitentunnel hilft bei der Flucht, und jedes geleerte Labyrinth führt zum nächsten Level.\n\n• Klassische Labyrinthjagd mit Punkten, Kraftpillen und Früchten\n• Drei Geister, die streuen, jagen, fliehen und als Augen zurückkehren\n• Seitentunnel und Level um Level\n• Wischen, Tippen, Stick, Steuerkreuz oder Tastatur\n• Dein Highscore wird gespeichert",
-    "fr": "Guidez votre héros affamé dans le labyrinthe et mangez toutes les pastilles. Trois fantômes rôdent dans les couloirs, chacun avec sa propre façon de vous traquer. Avalez une super-pastille et la situation s’inverse : les fantômes fuient et vous pouvez les dévorer pour de gros points. Des fruits apparaissent en bonus, le tunnel latéral vous aide à fuir, et chaque labyrinthe vidé vous mène au niveau suivant.\n\n• La course-poursuite classique avec pastilles, super-pastilles et fruits\n• Trois fantômes qui se dispersent, chassent, fuient et reviennent en yeux\n• Un tunnel latéral et des niveaux qui s’enchaînent\n• Glisser, toucher, stick, croix ou clavier\n• Votre meilleur score est enregistré",
-    "es": "Guía a tu hambriento héroe por el laberinto y cómete todos los puntos. Tres fantasmas recorren los pasillos, cada uno con su propia forma de cazarte. Cómete una píldora de poder y se dan la vuelta las tornas: los fantasmas huyen y puedes comértelos por muchos puntos. Aparecen frutas de bonificación, el túnel lateral te ayuda a escapar y cada laberinto despejado te lleva al siguiente nivel.\n\n• Persecución clásica con puntos, píldoras de poder y frutas\n• Tres fantasmas que se dispersan, persiguen, huyen y vuelven como ojos\n• Túnel lateral y nivel tras nivel\n• Desliza, toca, stick, cruceta o teclado\n• Se guarda tu mejor puntuación",
-    "ja": "腹ペコのヒーローを迷路の中で導き、ドットをすべて食べましょう。3 匹のオバケが通路をうろつき、それぞれ独自の方法であなたを追い詰めます。パワーエサを取れば形勢逆転: オバケは逃げ出し、食べると高得点です。ボーナスのフルーツが現れ、横のトンネルで逃げることもでき、迷路をクリアするたびに次のレベルへ進みます。\n\n• ドット、パワーエサ、フルーツのある定番の迷路追いかけゲーム\n• 散らばり、追いかけ、逃げ、目玉になって戻る 3 匹のオバケ\n• 横のトンネルと次々に続くレベル\n• スワイプ、タップ、スティック、十字ボタン、キーボード\n• ベストスコアを保存",
-    "zh": "引导你饥饿的主角穿过迷宫，吃掉每一颗豆子。三只幽灵在走廊里游荡，各有各的追捕方式。吃下能量豆就能扭转局势：幽灵会逃跑，你可以吃掉它们赢得高分。水果出现时可获得奖励，侧边隧道帮你逃脱，每清空一个迷宫就进入下一关。\n\n• 经典迷宫追逐，有豆子、能量豆和水果\n• 三只会分散、追击、逃跑并化作眼睛返回的幽灵\n• 侧边隧道和一关又一关\n• 轻扫、轻点、摇杆、十字键或键盘\n• 保存你的最高分",
-    "ko": "배고픈 주인공을 미로로 이끌어 모든 점을 먹으세요. 유령 셋이 복도를 돌아다니며 저마다의 방식으로 당신을 쫓습니다. 파워 알약을 먹으면 상황이 역전되어 유령이 도망치고, 유령을 먹어 큰 점수를 얻을 수 있습니다. 과일이 나타나면 보너스를 얻고, 옆 터널로 탈출할 수 있으며, 미로를 클리어할 때마다 다음 레벨로 넘어갑니다.\n\n• 점, 파워 알약, 과일이 있는 클래식 미로 추격전\n• 흩어지고, 쫓고, 도망치고, 눈만 남아 돌아오는 유령 셋\n• 옆 터널과 끝없는 레벨\n• 쓸어 넘기기, 탭, 스틱, 방향 버튼, 키보드\n• 최고 점수 저장"
+    "en": "Eat every dot in the maze while three ghosts hunt you, each with its own way of chasing. Grab a power pellet to turn the tables and chain ghost bites for bigger points, snack on the bonus fruit and slip through the side tunnel to shake them off.\n\nFour mazes, each with its own colours, take turns every two levels, and the ghosts get quicker as you go. Choose Easy, Normal or Hard: the ghosts' speed and how long they stay frightened change with it.\n\n• Four mazes with different layouts\n• Three ghosts that scatter, chase, flee and return as eyes\n• Power pellets, ghost chains and bonus fruit\n• Easy, Normal and Hard, medals and a top-10 table for each\n• D-pad, stick, keyboard or swipe; a demo plays behind the title screen",
+    "tr": "Üç hayalet, her biri kendi kovalama yöntemiyle peşindeyken labirentteki her noktayı ye. Güç hapını al, durumu tersine çevir ve hayaletleri art arda yiyerek daha çok puan topla; bonus meyveyi kap, yan tünelden geçerek onlardan kurtul.\n\nHer birinin kendi renkleri olan dört labirent iki seviyede bir sırayla gelir ve hayaletler ilerledikçe hızlanır. Kolay, Normal ya da Zor seç: hayaletlerin hızı ve ne kadar korkmuş kalacakları buna göre değişir.\n\n• Farklı düzenlerde dört labirent\n• Dağılan, kovalayan, kaçan ve göz olarak dönen üç hayalet\n• Güç hapları, hayalet zincirleri ve bonus meyve\n• Kolay, Normal ve Zor; her biri için madalyalar ve ilk 10 tablosu\n• Yön tuşları, çubuk, klavye ya da kaydırma; başlık ekranında demo oynar",
+    "de": "Friss jeden Punkt im Labyrinth, während dich drei Geister jagen, jeder auf seine eigene Art. Schnapp dir eine Kraftpille, dreh den Spieß um und verkette Geister für mehr Punkte, nasch das Bonusobst und entkomm durch den Seitentunnel.\n\nVier Labyrinthe mit eigenen Farben wechseln sich alle zwei Level ab, und die Geister werden immer schneller. Wähle Leicht, Normal oder Schwer: Davon hängen das Tempo der Geister und ihre Angstzeit ab.\n\n• Vier Labyrinthe mit unterschiedlichem Aufbau\n• Drei Geister, die sich zerstreuen, jagen, fliehen und als Augen zurückkehren\n• Kraftpillen, Geisterketten und Bonusobst\n• Leicht, Normal und Schwer, Medaillen und Top 10 für jede Stufe\n• Steuerkreuz, Stick, Tastatur oder Wischen; hinter dem Titelbild läuft eine Demo",
+    "fr": "Mangez tous les points du labyrinthe pendant que trois fantômes vous traquent, chacun à sa façon. Avalez une super-pastille pour renverser la situation, enchaînez les fantômes pour plus de points, croquez le fruit bonus et filez par le tunnel latéral.\n\nQuatre labyrinthes, chacun avec ses couleurs, alternent tous les deux niveaux, et les fantômes accélèrent au fil du jeu. Choisissez Facile, Normal ou Difficile : la vitesse des fantômes et la durée de leur peur en dépendent.\n\n• Quatre labyrinthes aux tracés différents\n• Trois fantômes qui se dispersent, chassent, fuient et reviennent en yeux\n• Super-pastilles, chaînes de fantômes et fruits bonus\n• Facile, Normal et Difficile, médailles et top 10 pour chacun\n• Croix, stick, clavier ou glissement ; une démo tourne derrière l’écran titre",
+    "es": "Come todos los puntos del laberinto mientras tres fantasmas te persiguen, cada uno a su manera. Toma una píldora de poder para darles la vuelta, encadena fantasmas para sumar más puntos, cómete la fruta extra y escápate por el túnel lateral.\n\nCuatro laberintos, cada uno con sus colores, se turnan cada dos niveles, y los fantasmas aceleran a medida que avanzas. Elige Fácil, Normal o Difícil: de ello dependen la velocidad de los fantasmas y cuánto tiempo siguen asustados.\n\n• Cuatro laberintos con diseños distintos\n• Tres fantasmas que se dispersan, persiguen, huyen y vuelven como ojos\n• Píldoras de poder, cadenas de fantasmas y fruta extra\n• Fácil, Normal y Difícil, medallas y top 10 para cada una\n• Cruceta, stick, teclado o deslizar; una demo se juega tras la pantalla de título",
+    "ja": "それぞれ違うやり方で追ってくる3匹のおばけをかわしながら、迷路のドットをすべて食べましょう。パワーエサで形勢逆転、おばけを続けて食べれば高得点。ボーナスフルーツを取り、横のトンネルで振り切ろう。\n\n色の違う4つの迷路が2レベルごとに入れ替わり、進むほどおばけは速くなります。「かんたん」「ふつう」「むずかしい」で、おばけの速さとイジケている時間が変わります。\n\n• 配置の違う4つの迷路\n• 散らばり、追いかけ、逃げ、目玉になって戻る3匹のおばけ\n• パワーエサ、連続ボーナス、ボーナスフルーツ\n• 3段階の難易度、それぞれのメダルとトップ10\n• 十字ボタン、スティック、キーボード、スワイプ。タイトル画面ではデモが流れます",
+    "zh": "三个幽灵各有各的追法，躲开它们并吃掉迷宫里的每一颗豆子。吃下能量豆反过来追击，连续吃掉幽灵得分更高，吃奖励水果，再从侧边隧道甩掉追兵。\n\n四个配色各异的迷宫每两关轮换一次，幽灵也会越来越快。选择简单、普通或困难：幽灵的速度和受惊时长会随之改变。\n\n• 布局各不相同的四个迷宫\n• 会分散、追击、逃跑并化作眼睛返回的三个幽灵\n• 能量豆、连吃幽灵和奖励水果\n• 简单、普通和困难，各有奖牌和前十名\n• 十字键、摇杆、键盘或轻扫；标题画面背后播放演示",
+    "ko": "각자 다른 방식으로 쫓아오는 유령 셋을 피하며 미로의 점을 모두 먹으세요. 파워 알약으로 상황을 뒤집고 유령을 연달아 먹어 더 많은 점수를 얻고, 보너스 과일을 먹고, 옆 터널로 빠져나가세요.\n\n색이 다른 네 개의 미로가 두 레벨마다 바뀌고, 갈수록 유령이 빨라집니다. 쉬움, 보통, 어려움에 따라 유령의 속도와 겁먹는 시간이 달라집니다.\n\n• 배치가 다른 네 개의 미로\n• 흩어지고, 쫓고, 도망치고, 눈이 되어 돌아가는 유령 셋\n• 파워 알약, 유령 연속 먹기, 보너스 과일\n• 쉬움·보통·어려움, 각각의 메달과 상위 10위\n• 방향 버튼, 스틱, 키보드, 쓸어 넘기기. 타이틀 화면 뒤에서 데모가 재생"
   },
   "shots": [
-    ["wait 3"],
-    ["key enter", "wait 2.5", "key left", "wait 1.5", "key up", "wait 1.5"],
-    ["wait 45", "dark 1", "wait 2"]
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2.5",
+      "key left",
+      "wait 1.5",
+      "key up",
+      "wait 1.5"
+    ],
+    [
+      "wait 45",
+      "dark 1",
+      "wait 2"
+    ]
   ]
 }

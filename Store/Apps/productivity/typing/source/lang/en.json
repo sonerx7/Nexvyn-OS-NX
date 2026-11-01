@@ -43,5 +43,12 @@
   "clear_title": "Clear all results?",
   "clear_msg": "Your history and best scores will be deleted.",
   "clear": "Clear",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "les_words": "Common words",
+  "les_words_d": "The words you type most often",
+  "les_weak": "Weak keys",
+  "les_weak_d": "A drill built from the keys you miss most",
+  "weak_keys": "Practise: {0}",
+  "les_minute": "One-minute test",
+  "les_minute_d": "Type as many words as you can in 60 seconds"
 }

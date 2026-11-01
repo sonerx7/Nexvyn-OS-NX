@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "黒でプレイ (先手)",
   "play_white": "白でプレイ",
-  "show_moves": "打てる場所を表示"
+  "show_moves": "打てる場所を表示",
+  "mode_expert": "達人",
+  "review": "対局をふり返る",
+  "review_move": "{0} / {1} 手",
+  "done": "終了"
 }

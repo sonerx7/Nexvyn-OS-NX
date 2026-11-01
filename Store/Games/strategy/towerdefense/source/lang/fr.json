@@ -48,5 +48,11 @@
   "pause_menu": "Pause",
   "new_game": "Nouvelle partie",
   "reset_records": "Réinitialiser les records",
-  "records_reset": "Records réinitialisés"
+  "records_reset": "Records réinitialisés",
+  "map_meadow": "Carte : Prairie",
+  "map_canyon": "Carte : Canyon",
+  "map_serpent": "Carte : Serpentin",
+  "endless_opt": "Infini : {0}",
+  "endless_best": "Record infini : vague {0}",
+  "endless_go": "Infini !"
 }

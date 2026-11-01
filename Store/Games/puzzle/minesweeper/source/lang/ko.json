@@ -32,5 +32,18 @@
   "cancel": "취소",
   "menu_records": "기록",
   "best_line": "{0}: {1}초",
-  "wins_line": "{1}판 중 {0}승"
+  "wins_line": "{1}판 중 {0}승",
+  "custom": "사용자",
+  "custom_board": "사용자 지정 보드",
+  "columns": "열",
+  "rows": "행",
+  "mines": "지뢰",
+  "start": "시작",
+  "statistics": "통계",
+  "st_played": "판수",
+  "st_won": "승리",
+  "st_best": "최고 초",
+  "st_streak": "연승",
+  "close": "닫기",
+  "question_marks": "물음표 표시 (?)"
 }

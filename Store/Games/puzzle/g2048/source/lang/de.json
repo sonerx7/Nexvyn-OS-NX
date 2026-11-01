@@ -54,5 +54,8 @@
   "over_title": "Keine Züge mehr",
   "over_sub": "Das Brett ist voll. Widerrufe deinen letzten Zug oder versuche es erneut.",
   "top_tile": "Höchste Kachel",
-  "best_size": "Bestwert auf {0}"
+  "best_size": "Bestwert auf {0}",
+  "classic": "Klassisch",
+  "time_attack": "Zeitjagd",
+  "times_up": "Zeit abgelaufen!"
 }

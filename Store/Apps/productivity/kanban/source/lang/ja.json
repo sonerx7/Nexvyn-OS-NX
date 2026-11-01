@@ -69,5 +69,16 @@
   "wd_3": "水",
   "wd_4": "木",
   "wd_5": "金",
-  "wd_6": "土"
+  "wd_6": "土",
+  "checklist": "チェックリスト",
+  "step_hint": "項目を追加…",
+  "add_step": "追加",
+  "filter": "絞り込み",
+  "filter_hint": "この文字を含むカードを強調します（空欄ですべて表示）。",
+  "export_md": "Markdown で書き出す",
+  "backup": "バックアップ",
+  "restore": "復元",
+  "restore_confirm": "すべてのボードを、このバックアップの {0} 個で置き換えますか？",
+  "restore_bad": "このファイルは Kanban のバックアップではありません。",
+  "ok": "OK"
 }

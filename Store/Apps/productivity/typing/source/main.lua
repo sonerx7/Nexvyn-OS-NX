@@ -49,7 +49,24 @@ local LESSONS = {
   {id = "turkish", name = "les_turkish", desc = "les_turkish_d", icon = "translate", color = "red"},
   {id = "sent_tr", name = "les_sent_tr", desc = "les_sent_tr_d", icon = "notes", color = "green"},
   {id = "sent_en", name = "les_sent_en", desc = "les_sent_en_d", icon = "short_text", color = "yellow"},
+  {id = "words", name = "les_words", desc = "les_words_d", icon = "spellcheck", color = "purple"},
+  {id = "weak", name = "les_weak", desc = "les_weak_d", icon = "gps_fixed", color = "red"},
+  {id = "minute", name = "les_minute", desc = "les_minute_d", icon = "timer", color = "orange"},
 }
+local misses = {}            -- character -> how often it was missed (for the Weak keys lesson)
+local MINUTE = 60
+
+-- the characters you miss most often, letters and digits only
+local function weakKeys(n)
+  local list = {}
+  for ch, c in pairs(misses) do
+    if ch:match("^[%w]$") or (#ch > 1 and ch ~= " ") then list[#list + 1] = {ch, c} end
+  end
+  table.sort(list, function(a, b) if a[2] ~= b[2] then return a[2] > b[2] end return a[1] < b[1] end)
+  local out = {}
+  for i = 1, min(n, #list) do out[i] = list[i][1] end
+  return out
+end
 
 local function drill(letters, groups, lo, hi)
   local set = chars(letters)
@@ -81,6 +98,16 @@ local function lessonText(id)
   elseif id == "numbers" then return drill(rows.numbers, 12, 2, 4)
   elseif id == "turkish" then return table.concat(pick(LES.turkishWords, 10), " ")
   elseif id == "sent_tr" then return table.concat(pick(LES.sentences.tr, 2), " ")
+  elseif id == "words" then return table.concat(pick(lang == "tr" and LES.turkishWords or LES.commonWords, 14), " ")
+  elseif id == "weak" then
+    local weak = weakKeys(6)
+    local letters = table.concat(weak) .. (#weak < 4 and rows.home or "")
+    return drill(letters, 14, 3, 5)
+  elseif id == "minute" then
+    local list = lang == "tr" and LES.turkishWords or LES.commonWords
+    local words = {}
+    for i = 1, 120 do words[i] = list[math.random(#list)] end
+    return table.concat(words, " ")
   else return table.concat(pick(LES.sentences.en, 2), " ") end
 end
 
@@ -99,6 +126,7 @@ local homeSel = 0
 local function saveAll()
   store.set("history", history)
   store.set("best", best)
+  store.set("misses", misses)
   store.save()
 end
 
@@ -109,7 +137,7 @@ end
 local function startLesson(id)
   local text = lessonText(id)
   run = {id = id, chars = chars(text), typed = {}, errAt = {}, keys = 0, errors = 0, startT = nil, endT = nil,
-         done = false, caretX = 0, caretY = 0, shake = 0, newBest = false}
+         done = false, caretX = 0, caretY = 0, shake = 0, newBest = false, limit = id == "minute" and MINUTE or nil}
   view = "run"
   viewT = 0
   audio.play("pop")
@@ -117,7 +145,9 @@ end
 
 local function elapsed()
   if not run or not run.startT then return 0 end
-  return (run.endT or sys.time()) - run.startT
+  local t = (run.endT or sys.time()) - run.startT
+  if run.limit then t = min(t, run.limit) end
+  return t
 end
 
 local function correctCount()
@@ -161,6 +191,7 @@ local function typeChar(ch)
   if not run.startT then run.startT = sys.time() end
   run.keys = run.keys + 1
   if ch ~= target then
+    misses[target] = (misses[target] or 0) + 1
     run.errors = run.errors + 1
     run.errAt[pos] = true
     run.shake = 1
@@ -194,6 +225,9 @@ function app.load()
       if type(e) == "table" and tonumber(e.wpm) and type(e.lesson) == "string" then history[#history + 1] = e end
     end
   end
+  local ms = store.get("misses", {})
+  misses = {}
+  if type(ms) == "table" then for k, v in pairs(ms) do if tonumber(v) then misses[tostring(k)] = tonumber(v) end end end
   local b = store.get("best", {})
   best = {}
   if type(b) == "table" then
@@ -203,6 +237,10 @@ end
 
 function app.update(dt)
   viewT = approach(viewT, 1, 10, dt)
+  -- the one-minute test ends on the clock
+  if run and run.limit and run.startT and not run.done and sys.time() - run.startT >= run.limit then
+    finish()
+  end
   if run then run.shake = max(0, run.shake - dt * 5) end
 end
 
@@ -241,7 +279,12 @@ local function drawLessons(w, h)
     gfx.text(TR(l.name), x + 74, y + 16, 15, "semibold")
     gfx.color(theme.text2)
     gfx.clip(x + 74, y + 36, cw - 90, 20)
-    gfx.text(TR(l.desc), x + 74, y + 38, 12)
+    local desc = TR(l.desc)
+    if l.id == "weak" then
+      local wk = weakKeys(6)
+      if #wk > 0 then desc = TR("weak_keys", table.concat(wk, " ")) end
+    end
+    gfx.text(desc, x + 74, y + 38, 12)
     gfx.unclip()
     local b = best[l.id]
     if b then

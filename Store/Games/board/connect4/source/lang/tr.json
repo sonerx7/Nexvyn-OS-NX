@@ -70,5 +70,9 @@
   "draws": "Berabere",
   "stat_fmt": "{0} – {1} – {2}",
   "go_first": "Ben başlarım (kırmızı)",
-  "go_second": "Bilgisayar başlasın"
+  "go_second": "Bilgisayar başlasın",
+  "mode_expert": "Uzman",
+  "review": "Oyunu incele",
+  "review_move": "Hamle {0} / {1}",
+  "done": "Bitti"
 }

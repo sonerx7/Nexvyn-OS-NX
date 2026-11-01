@@ -1,0 +1,27 @@
+# Turbo Adaları / Turbo Isles
+
+**3D island racing: drift, boost, win cups**
+
+Race across three island circuits in full 3D: sunny Palm Bay, the neon-lit night of Neon Harbor and the canyon jumps of Ember Ridge. Hold drift through the corners until the sparks turn blue, orange and purple, then let go for a mini-turbo. Drifting fills your nitro, boost pads line the straights and a perfect launch gives a rocket start.
+
+• Grand Prix: two cups of three races against five AI rivals, with points, trophies and unlocks
+• Quick race with your choice of track, laps and rivals, and a mirror mode
+• Time trial against the ghost of your best lap
+• Three cars with their own speed, acceleration and grip
+• Particles, camera shake, HD rumble and an original synth soundtrack
+• Controller, keyboard, touch steering or tilt steering with the gyroscope
+
+## Türkçe
+
+**3B ada yarışı: drift, turbo, kupalar**
+
+Tam 3B üç ada pistinde yarış: güneşli Palmiye Koyu, neon ışıklı Neon Liman gecesi ve Kor Sırtı'nın kanyon atlayışları. Virajlarda kıvılcımlar maviye, turuncuya ve mora dönene kadar drift yap, sonra bırak ve mini turboyu al. Drift nitroyu doldurur, düzlüklerde hız rampaları var ve kusursuz bir kalkış roket başlangıç kazandırır.
+
+• Grand Prix: beş yapay zekâ rakibe karşı üçer yarışlık iki kupa; puanlar, kupalar ve açılan içerikler
+• Pist, tur ve rakip sayısını seçtiğin hızlı yarış ve ayna modu
+• En iyi turunun hayaletine karşı zamana karşı yarış
+• Hızı, ivmesi ve yol tutuşu farklı üç araba
+• Parçacıklar, kamera sarsıntısı, HD titreşim ve özgün synth müzikleri
+• Kumanda, klavye, dokunmatik ya da jiroskopla eğerek sürüş
+
+Needs Nexvyn OS SDK 1.6 or newer (Lua, `nexvyn.game`). Music and sound effects are original and synthesized for this game.

@@ -1,0 +1,41 @@
+{
+  "id": "com.sonerx7.aldmoor",
+  "name": {
+    "en": "Banners of Aldmoor",
+    "tr": "Aldmoor Sancakları",
+    "de": "Banner von Aldmoor",
+    "fr": "Bannières d’Aldmoor",
+    "es": "Estandartes de Aldmoor",
+    "ja": "オルドムーアの旗",
+    "zh": "奥德摩尔战旗",
+    "ko": "올드무어의 깃발"
+  },
+  "description": {
+    "en": "A turn-based tactics campaign: eight battles, terrain, counter-attacks and a company that grows with every victory.",
+    "tr": "Sıra tabanlı taktik seferi: sekiz savaş, arazi, karşı saldırılar ve her zaferle güçlenen bir bölük.",
+    "de": "Eine rundenbasierte Taktik-Kampagne: acht Schlachten, Gelände, Konter und eine Truppe, die mit jedem Sieg wächst.",
+    "fr": "Une campagne tactique au tour par tour : huit batailles, terrain, contre-attaques et une compagnie qui grandit à chaque victoire.",
+    "es": "Una campaña táctica por turnos: ocho batallas, terreno, contraataques y una compañía que crece con cada victoria.",
+    "ja": "ターン制タクティクスのキャンペーン。8 つの戦い、地形、反撃、勝利ごとに成長する部隊。",
+    "zh": "回合制战术战役：八场战斗、地形、反击，以及随胜利成长的小队。",
+    "ko": "턴제 전술 캠페인: 여덟 번의 전투, 지형, 반격, 승리마다 성장하는 부대."
+  },
+  "category": "games",
+  "genre": "strategy",
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": true,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

@@ -11,7 +11,7 @@
     "ko": "암호 생성기"
   },
   "category": "utilities",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -27,7 +27,10 @@
     "tr": "Entropi ölçerli güçlü şifreler ve parola cümleleri",
     "de": "Starke Passwörter und Passphrasen mit Entropieanzeige",
     "fr": "Mots de passe et phrases de passe robustes avec indicateur d’entropie",
-    "es": "Contraseñas y frases de contraseña seguras con medidor de entropía"
+    "es": "Contraseñas y frases de contraseña seguras con medidor de entropía",
+    "ja": "強力なパスワードと覚えやすいパスフレーズ",
+    "zh": "强密码和易记的密码短语",
+    "ko": "강력한 암호와 기억하기 쉬운 암호 문구"
   },
   "permissions": []
 }

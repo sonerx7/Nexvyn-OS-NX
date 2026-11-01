@@ -1,0 +1,26 @@
+{
+  "id": "com.sonerx7.bracket",
+  "name": {"en": "Bracket", "tr": "Turnuva", "de": "Turnierplan", "fr": "Tournoi", "es": "Torneo", "ja": "トーナメント表", "zh": "赛程表", "ko": "대진표"},
+  "description": {
+    "en": "Run game-night tournaments: knockout brackets, round robin and Swiss, with scores, standings and champions.",
+    "tr": "Oyun gecesi turnuvaları düzenle: eleme ağacı, lig usulü ve İsviçre sistemi; skorlar, puan durumu ve şampiyon.",
+    "de": "Turniere für Spieleabende: K.-o.-System, Jeder gegen jeden und Schweizer System, mit Ergebnissen, Tabelle und Sieger.",
+    "fr": "Organisez des tournois entre amis : élimination directe, toutes rondes et système suisse, avec scores, classement et vainqueur.",
+    "es": "Organiza torneos para tus noches de juego: eliminatoria, todos contra todos y suizo, con marcadores, clasificación y campeón.",
+    "ja": "ゲーム大会を運営。勝ち抜き戦、総当たり戦、スイス式。スコア、順位表、優勝者まで。",
+    "zh": "举办游戏之夜的比赛：淘汰赛、循环赛和瑞士制，记录比分、积分榜和冠军。",
+    "ko": "게임 대회를 운영하세요: 토너먼트, 리그전, 스위스 방식, 점수, 순위표, 우승자까지."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 980, "height": 580, "minWidth": 440, "minHeight": 400, "resizable": true},
+  "singleInstance": true,
+  "gamepad": false,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

@@ -48,5 +48,11 @@
   "pause_menu": "暂停",
   "new_game": "新游戏",
   "reset_records": "重置纪录",
-  "records_reset": "纪录已重置"
+  "records_reset": "纪录已重置",
+  "map_meadow": "地图：草地",
+  "map_canyon": "地图：峡谷",
+  "map_serpent": "地图：蛇形",
+  "endless_opt": "无尽：{0}",
+  "endless_best": "无尽最佳：第 {0} 波",
+  "endless_go": "无尽模式！"
 }

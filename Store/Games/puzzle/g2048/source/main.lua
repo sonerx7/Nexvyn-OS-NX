@@ -1,5 +1,6 @@
 -- 2048 for Nexvyn OS: slide and merge tiles on a 3x3 .. 6x6 board. Swipe, arrows/WASD, D-pad or stick;
--- undo, a saved game per board size, best score per size and statistics.
+-- undo, a saved game per board size, best score per size and statistics. Time Attack mode (three minutes per run,
+-- its own saves and best scores) and a hint that looks two moves ahead (expectimax-style search over the spawns).
 local K = require("kit")
 local F = require("frame")
 local app = {}
@@ -29,6 +30,11 @@ local popups = {}           -- {text, t}
 local swipe = nil
 local B = {x = 0, y = 0, s = 0, cell = 0, gap = 0}
 local scoreBox = {x = 0, y = 0, w = 0}
+local mode = 1              -- 1 classic, 2 time attack
+local TA_TIME = 180
+local timeLeft = TA_TIME
+local hintDir, hintT = nil, -10
+local ARROW = {left = "arrow_back", right = "arrow_forward", up = "arrow_upward", down = "arrow_downward"}
 
 local function idx(r, c) return (r - 1) * N + c end
 
@@ -42,10 +48,13 @@ local function saveStats()
   store.set("stats", stats)
 end
 
+local function gkey(n) return (mode == 2 and "gta" or "game") .. n end
+local function bkey() return (mode == 2 and "t" or "") .. tostring(N) end
 local function saveGame()
   local cells = {}
   for i = 1, N * N do cells[i] = grid[i] and grid[i].v or 0 end
-  store.set("game" .. N, {cells = cells, score = score, won = won, keep = keepGoing, over = over, started = started})
+  store.set(gkey(N), {cells = cells, score = score, won = won, keep = keepGoing, over = over, started = started,
+                      left = timeLeft})
 end
 
 local function spawn(at)
@@ -62,6 +71,7 @@ local function newGame()
   grid, ghosts, history, popups = {}, {}, {}, {}
   score = 0
   won, keepGoing, over, started = false, false, false, false
+  timeLeft, hintDir = TA_TIME, nil
   local now = sys.time()
   spawn(now)
   spawn(now + 0.05)
@@ -73,8 +83,9 @@ local function loadGame(n)
   N = n
   for i, s in ipairs(SIZES) do if s == n then sizeIdx = i end end
   store.set("size", N)
-  local g = store.get("game" .. N)
+  local g = store.get(gkey(N))
   grid, ghosts, history, popups = {}, {}, {}, {}
+  hintDir = nil
   if type(g) == "table" and type(g.cells) == "table" and #g.cells == N * N then
     local now, any = sys.time(), false
     for i = 1, N * N do
@@ -87,6 +98,7 @@ local function loadGame(n)
     if any then
       score = tonumber(g.score) or 0
       won, keepGoing, over, started = g.won == true, g.keep == true, g.over == true, g.started == true
+      timeLeft = tonumber(g.left) or TA_TIME
       if over then F.open("over") else F.play() end
       return
     end
@@ -113,6 +125,100 @@ local function linePos(dir, line, j)
   elseif dir == "right" then return line, N + 1 - j
   elseif dir == "up" then return j, line end
   return N + 1 - j, line
+end
+
+-- ------------------------------------------------------------------ hint search on plain value grids
+local function slideVals(v, dir)
+  local out, gained, moved = {}, 0, false
+  for i = 1, N * N do out[i] = 0 end
+  for line = 1, N do
+    local k, last, lastMerged, lastPos = 0, 0, false, nil
+    for j = 1, N do
+      local r, c = linePos(dir, line, j)
+      local x = v[idx(r, c)]
+      if x > 0 then
+        if last == x and not lastMerged then
+          out[lastPos] = x * 2
+          gained, moved, last, lastMerged = gained + x * 2, true, x * 2, true
+        else
+          k = k + 1
+          local tr, tc = linePos(dir, line, k)
+          local q = idx(tr, tc)
+          out[q] = x
+          if q ~= idx(r, c) then moved = true end
+          last, lastMerged, lastPos = x, false, q
+        end
+      end
+    end
+  end
+  return out, gained, moved
+end
+
+local LOG2 = {}
+local function lg(x)
+  if x <= 0 then return 0 end
+  local l = LOG2[x]
+  if not l then l = math.log(x, 2); LOG2[x] = l end
+  return l
+end
+
+-- empty cells, monotonic rows / columns, smooth neighbours and the biggest tile in a corner
+local function evalGrid(v)
+  local empty, mono, smooth, maxv = 0, 0, 0, 0
+  for i = 1, N * N do
+    if v[i] == 0 then empty = empty + 1 elseif v[i] > maxv then maxv = v[i] end
+  end
+  for a = 1, N do
+    local i1, d1, i2, d2 = 0, 0, 0, 0
+    for b = 1, N - 1 do
+      local x, y = lg(v[idx(a, b)]), lg(v[idx(a, b + 1)])
+      if x > y then d1 = d1 + x - y else i1 = i1 + y - x end
+      if x > 0 and y > 0 then smooth = smooth - abs(x - y) end
+      local p, q = lg(v[idx(b, a)]), lg(v[idx(b + 1, a)])
+      if p > q then d2 = d2 + p - q else i2 = i2 + q - p end
+      if p > 0 and q > 0 then smooth = smooth - abs(p - q) end
+    end
+    mono = mono - min(i1, d1) - min(i2, d2)
+  end
+  local corner = 0
+  for _, i in ipairs({1, N, N * N - N + 1, N * N}) do if v[i] == maxv then corner = lg(maxv) end end
+  return empty * 2.7 + mono + smooth * 0.1 + corner * 1.5
+end
+
+local DLIST = {"up", "left", "right", "down"}
+local function bestMove()
+  local v = {}
+  for i = 1, N * N do v[i] = grid[i] and grid[i].v or 0 end
+  local bestD, bestS = nil, -1e9
+  for _, d in ipairs(DLIST) do
+    local a, gained, moved = slideVals(v, d)
+    if moved then
+      local empties = {}
+      for i = 1, N * N do if a[i] == 0 then empties[#empties + 1] = i end end
+      local total, n = 0, 0
+      local step = max(1, floor(#empties / 6))
+      for e = 1, #empties, step do
+        local i = empties[e]
+        a[i] = 2
+        local best2 = evalGrid(a) - 50
+        for _, d2 in ipairs(DLIST) do
+          local b, g2, m2 = slideVals(a, d2)
+          if m2 then best2 = max(best2, evalGrid(b) + lg(g2 + 1) * 0.3) end
+        end
+        a[i] = 0
+        total, n = total + best2, n + 1
+      end
+      local sc = (n > 0 and total / n or evalGrid(a)) + lg(gained + 1) * 0.5
+      if sc > bestS then bestD, bestS = d, sc end
+    end
+  end
+  return bestD
+end
+
+local function showHint()
+  if F.scene ~= "play" or over then return end
+  hintDir, hintT = bestMove(), sys.time()
+  if hintDir then K.tone(880, 0.06, 0.15, "sine") end
 end
 
 local function finishGame()
@@ -170,6 +276,7 @@ local function move(dir)
   end
   history[#history + 1] = snap
   if #history > UNDO_MAX then table.remove(history, 1) end
+  hintDir = nil
   grid = ng
   moveT0 = now
   score = score + gained
@@ -188,11 +295,11 @@ local function move(dir)
   else
     K.tone(520, 0.03, 0.08, "sine")
   end
-  local key = tostring(N)
+  local key = bkey()
   if score > (best[key] or 0) then best[key] = score end
   if topMerge > stats.top then stats.top = topMerge end
   spawn(now + SLIDE)
-  if topMerge >= 2048 and not won then
+  if topMerge >= 2048 and not won and mode == 1 then
     won = true
     stats.wins = stats.wins + 1
     F.winSound()
@@ -258,14 +365,32 @@ function app.load()
   if type(s) == "table" then
     for k, v in pairs(stats) do stats[k] = tonumber(s[k]) or v end
   end
+  mode = K.clamp(floor(tonumber(store.get("mode", 1)) or 1), 1, 2)
   local n = tonumber(store.get("size", 4)) or 4
   if n < 3 or n > 6 then n = 4 end
   loadGame(floor(n))
   F.open("title")
 end
 
+local function setMode(m)
+  if m == mode then return end
+  saveGame()
+  mode = m
+  store.set("mode", mode)
+  loadGame(N)
+end
+
 function app.update(dt)
   local now = sys.time()
+  if mode == 2 and F.scene == "play" and started and not over then
+    local before = timeLeft
+    timeLeft = timeLeft - dt
+    if timeLeft <= 10 and floor(before) ~= floor(timeLeft) then K.tone(1500, 0.02, 0.08, "square") end
+    if timeLeft <= 0 then
+      timeLeft = 0
+      finishGame()
+    end
+  end
   if #ghosts > 0 and now > moveT0 + SLIDE then ghosts = {} end
   fx:update(dt)
   for i = #popups, 1, -1 do
@@ -359,11 +484,18 @@ local function drawHeader(w)
   local m = 16
   gfx.color(theme.text)
   gfx.text("2048", m, 8, 40, "bold")
-  gfx.color(theme.text2)
-  gfx.text(TR("tagline"), m + 2, 54, 12, "medium")
+  if mode == 2 then
+    local low = timeLeft <= 10
+    gfx.color(low and theme.red or theme.blue)
+    gfx.icon("timer", m + 10, 62, 16, low and theme.red or theme.blue)
+    gfx.text(K.fmtTime(math.ceil(timeLeft)) .. "  ·  " .. TR("time_attack"), m + 22, 54, 13, "semibold")
+  else
+    gfx.color(theme.text2)
+    gfx.text(TR("tagline"), m + 2, 54, 12, "medium")
+  end
   local sw = min(96, floor((w - 2 * m - 140) / 2))
   local bx = w - m - sw
-  K.stat(bx, 12, sw, 50, TR("best"), tostring(best[tostring(N)] or 0))
+  K.stat(bx, 12, sw, 50, TR("best"), tostring(best[bkey()] or 0))
   K.stat(bx - sw - 8, 12, sw, 50, TR("score"), tostring(score), theme.orange)
   scoreBox.x, scoreBox.y, scoreBox.w = bx - sw - 8, 12, sw
 end
@@ -371,7 +503,7 @@ end
 local function drawToolbar(w, y)
   local m = 16
   local bw = 40
-  local segW = min(280, w - 2 * m - 4 * (bw + 6) - 8)
+  local segW = min(280, w - 2 * m - 5 * (bw + 6) - 8)
   local ns = ui.segmented("size", SIZE_LABELS, sizeIdx, m, y, segW, 34)
   if ns ~= sizeIdx and not F.modal() then K.lastInput = "pointer"; setSize(ns) end
   local x = w - m - bw
@@ -384,6 +516,8 @@ local function drawToolbar(w, y)
   if ui.iconButton("refresh", x, y, bw, 34, nil, false, "new") and not F.modal() then askNew() end
   x = x - bw - 6
   if ui.iconButton("undo", x, y, bw, 34, #history > 0 and theme.accent or nil, false, "undo") and not F.modal() then undo() end
+  x = x - bw - 6
+  if ui.iconButton("lightbulb", x, y, bw, 34, theme.yellow, false, "hint") and not F.modal() then showHint() end
 end
 
 local function drawPopups(now)
@@ -398,11 +532,11 @@ end
 
 local function drawHints(w, y)
   if K.lastInput == "pad" then
-    K.hints({{"dpad", TR("h_move")}, {"B", TR("h_undo")}, {"X", TR("h_new")}, {{"L", "R"}, TR("h_size")},
-             {"+", TR("h_pause")}}, 0, y, w)
+    K.hints({{"dpad", TR("h_move")}, {"B", TR("h_undo")}, {"Y", TR("hint")}, {"X", TR("h_new")},
+             {{"L", "R"}, TR("h_size")}, {"+", TR("h_pause")}}, 0, y, w)
   elseif K.lastInput == "key" then
-    K.hints({{TR("k_arrows"), TR("h_move")}, {"Z", TR("h_undo")}, {"N", TR("h_new")}, {"1-4", TR("h_size")}},
-            0, y, w)
+    K.hints({{TR("k_arrows"), TR("h_move")}, {"Z", TR("h_undo")}, {"H", TR("hint")}, {"N", TR("h_new")},
+             {"1-4", TR("h_size")}}, 0, y, w)
   else
     K.hints({{"touch", TR("h_swipe")}}, 0, y, w)
   end
@@ -410,9 +544,11 @@ end
 
 local function drawTitle(w, h)
   F.titleScreen(w, h, {icon = "grid_4x4", c1 = "#F7C873", c2 = "#E8913A", title = "2048", subtitle = TR("tagline"),
-    extraH = 46,
+    extraH = 88,
     extra = function(x, y, bw)
-      local ns = ui.segmented("tsize", SIZE_LABELS, sizeIdx, x, y, bw, 32)
+      local nm = ui.segmented("tmode", {TR("classic"), TR("time_attack")}, mode, x, y, bw, 32)
+      if nm ~= mode and F.scene == "title" then setMode(nm); F.open("title") end
+      local ns = ui.segmented("tsize", SIZE_LABELS, sizeIdx, x, y + 42, bw, 32)
       if ns ~= sizeIdx and F.scene == "title" then setSize(ns); F.open("title") end
     end,
     buttons = {{started and not over and TR("continue") or TR("play"), function()
@@ -420,7 +556,7 @@ local function drawTitle(w, h)
                 end, "primary", "play_arrow"},
                {TR("new_game"), function() newGame(); K.play("pop", 0.6) end, "default", "refresh"},
                {TR("stats_title"), function() F.open("stats") end, "default", "bar_chart"}},
-    footer = TR("best_size", SIZE_LABELS[sizeIdx]) .. ": " .. tostring(best[tostring(N)] or 0)})
+    footer = TR("best_size", SIZE_LABELS[sizeIdx]) .. ": " .. tostring(best[bkey()] or 0)})
 end
 
 local function drawDialogs(w, h)
@@ -433,12 +569,13 @@ local function drawDialogs(w, h)
       buttons = {{TR("keep_going"), function() keepGoing = true; F.play(); saveGame() end},
                  {TR("new_game"), function() newGame(); K.play("pop", 0.6) end}}})
   elseif F.scene == "over" then
-    local key = tostring(N)
-    K.dialog(F.dlg, w, h, {icon = "sentiment_dissatisfied", iconColor = theme.red, title = TR("over_title"),
-      subtitle = TR("over_sub"),
+    local key = bkey()
+    local timeUp = mode == 2 and timeLeft <= 0
+    K.dialog(F.dlg, w, h, {icon = timeUp and "timer_off" or "sentiment_dissatisfied", iconColor = theme.red,
+      title = timeUp and TR("times_up") or TR("over_title"), subtitle = timeUp and TR("time_attack") or TR("over_sub"),
       lines = {{TR("score"), tostring(score)}, {TR("best"), tostring(best[key] or 0)}},
-      buttons = {{TR("new_game"), function() newGame(); K.play("pop", 0.6) end},
-                 {TR("undo"), undo, "default", "undo"}}})
+      buttons = timeUp and {{TR("new_game"), function() newGame(); K.play("pop", 0.6) end}} or
+                {{TR("new_game"), function() newGame(); K.play("pop", 0.6) end}, {TR("undo"), undo, "default", "undo"}}})
   elseif F.scene == "confirm" then
     K.dialog(F.dlg, w, h, {icon = "refresh", title = TR("confirm_title"), subtitle = TR("confirm_sub"),
       buttons = {{TR("new_game"), function() newGame(); K.play("pop", 0.6) end, "destructive"},
@@ -447,9 +584,10 @@ local function drawDialogs(w, h)
     local lines = {{TR("played"), tostring(stats.played)}, {TR("wins"), tostring(stats.wins)},
                    {TR("top_tile"), tostring(stats.top)}, {TR("moves"), tostring(stats.moves)}}
     for _, s in ipairs(SIZES) do
-      lines[#lines + 1] = {TR("best_size", s .. "×" .. s), tostring(best[tostring(s)] or 0)}
+      lines[#lines + 1] = {TR("best_size", s .. "×" .. s), tostring(best[tostring(s)] or 0) .. "  ·  " ..
+        TR("time_attack") .. " " .. tostring(best["t" .. s] or 0)}
     end
-    K.dialog(F.dlg, w, h, {icon = "bar_chart", title = TR("stats_title"), width = 320, lines = lines,
+    K.dialog(F.dlg, w, h, {icon = "bar_chart", title = TR("stats_title"), width = 380, lines = lines,
       buttons = {{TR("close"), F.close},
                  {TR("reset_stats"), function() F.open("reset", 2) end, "destructive"}}})
   elseif F.scene == "reset" then
@@ -484,6 +622,14 @@ function app.draw(w, h)
   B.x = floor((w - s) / 2)
   B.y = floor(top + (bottom - top - s) / 2)
   drawBoard(now)
+  if hintDir and now - hintT < 1.6 then
+    local a = min(1, (1.6 - (now - hintT)) / 0.4)
+    local cx, cy = B.x + B.s / 2, B.y + B.s / 2
+    gfx.alpha(a)
+    gfx.circle(cx, cy, B.s * 0.16, K.col(theme.bg, 0.85))
+    gfx.icon(ARROW[hintDir], cx, cy, B.s * 0.2, theme.accent)
+    gfx.unalpha()
+  end
   if over and F.scene == "play" then
     gfx.rect(B.x, B.y, B.s, B.s, 12, K.col(theme.bg, 0.35))
   end
@@ -504,7 +650,8 @@ function app.event(e)
   if t == "paddown" then
     local p = e.pad
     if DIRS[p] then move(p)
-    elseif p == "b" or p == "y" then undo()
+    elseif p == "b" then undo()
+    elseif p == "y" then showHint()
     elseif p == "x" or p == "minus" then askNew()
     elseif p == "l" or p == "zl" then setSize(sizeIdx - 1)
     elseif p == "r" or p == "zr" then setSize(sizeIdx + 1)
@@ -513,6 +660,8 @@ function app.event(e)
     local k = e.key
     if KEYDIR[k] and not e.ctrl then move(KEYDIR[k])
     elseif k == "z" or k == "u" or k == "backspace" then undo()
+    elseif k == "h" then showHint()
+    elseif k == "t" then setMode(3 - mode)
     elseif k == "n" or k == "f2" or k == "r" then askNew()
     elseif k == "1" or k == "2" or k == "3" or k == "4" then setSize(tonumber(k))
     elseif k == "escape" or k == "p" then F.open("pause") end
@@ -547,6 +696,10 @@ function app.menu()
                  enabled = #history > 0}, "-"}
   for _, it in ipairs(sizes) do items[#items + 1] = it end
   items[#items + 1] = "-"
+  items[#items + 1] = {label = TR("classic"), id = 21, checked = mode == 1}
+  items[#items + 1] = {label = TR("time_attack"), id = 22, checked = mode == 2, shortcut = "T"}
+  items[#items + 1] = {label = TR("hint"), id = 23, shortcut = "H"}
+  items[#items + 1] = "-"
   items[#items + 1] = {label = TR("sound"), id = 3, checked = not K.muted}
   items[#items + 1] = {label = TR("stats_title"), id = 4}
   return {{title = TR("menu_game"), items = items}}
@@ -557,6 +710,8 @@ function app.onmenu(id)
   elseif id == 2 then undo()
   elseif id == 3 then K.setMuted(not K.muted)
   elseif id == 4 then F.open("stats")
+  elseif id == 21 or id == 22 then setMode(id - 20)
+  elseif id == 23 then showHint()
   elseif id > 10 and id <= 10 + #SIZES then setSize(id - 10) end
 end
 

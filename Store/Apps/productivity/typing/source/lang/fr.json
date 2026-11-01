@@ -43,5 +43,12 @@
   "clear_title": "Effacer tous les résultats ?",
   "clear_msg": "Votre historique et vos meilleurs scores seront supprimés.",
   "clear": "Effacer",
-  "cancel": "Annuler"
+  "cancel": "Annuler",
+  "les_words": "Mots courants",
+  "les_words_d": "Les mots que l’on tape le plus",
+  "les_weak": "Touches faibles",
+  "les_weak_d": "Un exercice avec vos touches les plus ratées",
+  "weak_keys": "À travailler : {0}",
+  "les_minute": "Test d’une minute",
+  "les_minute_d": "Tapez un maximum de mots en 60 secondes"
 }

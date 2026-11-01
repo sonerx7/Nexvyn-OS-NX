@@ -11,7 +11,7 @@
     "ko": "타자 연습"
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",
@@ -23,11 +23,14 @@
   },
   "gamepad": false,
   "description": {
-    "en": "Learn touch typing with live speed and accuracy",
-    "tr": "Canlı hız ve doğruluk ölçümüyle on parmak klavye öğrenin",
-    "de": "Lerne Zehnfingerschreiben mit Live-Anzeige von Tempo und Genauigkeit",
-    "fr": "Apprenez la dactylographie avec vitesse et précision en direct",
-    "es": "Aprende mecanografía con velocidad y precisión en vivo"
+    "en": "Learn touch typing row by row, then train common words, your weakest keys and a one-minute speed test.",
+    "tr": "Satır satır on parmak yazmayı öğren; sonra sık kelimeler, zayıf tuşların ve bir dakikalık hız testiyle çalış.",
+    "de": "Lerne Zehnfingerschreiben Reihe für Reihe, dann trainiere häufige Wörter, deine schwachen Tasten und einen Ein-Minuten-Test.",
+    "fr": "Apprenez la dactylographie rangée par rangée, puis travaillez les mots courants, vos touches faibles et un test d’une minute.",
+    "es": "Aprende mecanografía fila a fila y entrena palabras comunes, tus teclas débiles y una prueba de un minuto.",
+    "ja": "段ごとにタッチタイピングを習得。よく使う単語、苦手なキー、1分間スピードテストで練習。",
+    "zh": "逐行学习盲打，再练习常用单词、薄弱按键和一分钟速度测试。",
+    "ko": "줄별로 타자를 배우고, 자주 쓰는 단어, 약한 키, 1분 속도 테스트로 연습하세요."
   },
   "permissions": []
 }

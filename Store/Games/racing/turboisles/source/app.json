@@ -1,0 +1,41 @@
+{
+  "id": "com.sonerx7.turboisles",
+  "name": {
+    "en": "Turbo Isles",
+    "tr": "Turbo Adaları",
+    "de": "Turbo-Inseln",
+    "fr": "Îles Turbo",
+    "es": "Islas Turbo",
+    "ja": "ターボアイランズ",
+    "zh": "极速群岛",
+    "ko": "터보 아일즈"
+  },
+  "description": {
+    "en": "A 3D arcade racer on three island circuits: drift for mini-turbos, burn nitro and win Grand Prix cups.",
+    "tr": "Üç ada pistinde 3B atari yarışı: mini turbo için drift yap, nitroyu ateşle ve Grand Prix kupalarını kazan.",
+    "de": "Ein 3D-Arcade-Racer auf drei Inselkursen: Drifte für Mini-Turbos, zünde Nitro und gewinne Grand-Prix-Pokale.",
+    "fr": "Un jeu de course arcade 3D sur trois circuits insulaires : driftez pour des mini-turbos, lâchez la nitro et gagnez des coupes.",
+    "es": "Carreras arcade en 3D en tres circuitos isleños: derrapa para mini turbos, usa el nitro y gana copas de Gran Premio.",
+    "ja": "3 つの島サーキットを走る 3D アーケードレース。ドリフトでミニターボ、ニトロを噴かしてグランプリを制覇しよう。",
+    "zh": "三座海岛赛道上的 3D 街机赛车：漂移获得小加速，点燃氮气，赢下大奖赛奖杯。",
+    "ko": "세 개의 섬 서킷을 달리는 3D 아케이드 레이싱. 드리프트로 미니 터보, 니트로를 터뜨려 그랑프리 컵을 차지하세요."
+  },
+  "category": "games",
+  "genre": "racing",
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": true,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

@@ -15,10 +15,13 @@
     "tr": "Kutu, 4-7-8 ve uyumlu nefes kalıplarıyla rehberli nefes egzersizi; yumuşak uyarılar ve oturum geçmişi.",
     "de": "Geführtes Atmen mit Box-, 4-7-8- und Kohärenzmuster, sanften Hinweisen und Sitzungsverlauf.",
     "fr": "Respiration guidée avec les rythmes carré, 4-7-8 et cohérence cardiaque, des signaux doux et l’historique des séances.",
-    "es": "Respiración guiada con patrones de caja, 4-7-8 y coherente, señales suaves e historial de sesiones."
+    "es": "Respiración guiada con patrones de caja, 4-7-8 y coherente, señales suaves e historial de sesiones.",
+    "ja": "ガイド付きの呼吸で心を落ち着ける",
+    "zh": "跟随引导呼吸，平静下来",
+    "ko": "안내에 따라 호흡하며 마음을 진정시키세요"
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

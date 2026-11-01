@@ -1,0 +1,43 @@
+{
+  "subtitle": {
+    "en": "Recipes, cooking mode and shopping",
+    "tr": "Tarifler, pişirme kipi ve alışveriş",
+    "de": "Rezepte, Kochmodus und Einkauf",
+    "fr": "Recettes, mode cuisine et courses",
+    "es": "Recetas, modo cocina y compra",
+    "ja": "レシピ、調理モード、買い物",
+    "zh": "菜谱、烹饪模式和购物",
+    "ko": "레시피, 요리 모드, 장보기"
+  },
+  "description": {
+    "en": "Recipe Box keeps your recipes and helps at the counter. Change the servings and every amount follows, switch between metric and US units, and cook with big text, read-aloud steps and timers found in the steps.\n\n• Ingredients scale with the servings; grams, cups, spoons and more convert\n• Hands-free cooking mode: one step at a time, read aloud, D-pad to move on\n• Several timers at once with an alarm\n• Shopping list built from recipes; tags, favourites and search\n• Import text or Markdown recipes, export them, back everything up; undo/redo",
+    "tr": "Tarif Kutusu tariflerini saklar ve mutfakta yardım eder. Porsiyonu değiştir, tüm miktarlar ona uysun; metrik ve ABD ölçüleri arasında geç; büyük yazı, sesli okunan adımlar ve adımlarda geçen sürelerden kurulan zamanlayıcılarla pişir.\n\n• Malzemeler porsiyona göre ölçeklenir; gram, bardak, kaşık ve daha fazlası çevrilir\n• Eller serbest pişirme kipi: her seferinde bir adım, sesli okuma, yön tuşuyla ilerleme\n• Alarmlı, aynı anda birden çok zamanlayıcı\n• Tariflerden oluşan alışveriş listesi; etiketler, favoriler ve arama\n• Metin ya da Markdown tarifleri içe/dışa aktar, hepsini yedekle; geri al/yinele",
+    "de": "Die Rezeptbox bewahrt deine Rezepte auf und hilft am Herd. Ändere die Portionen und alle Mengen passen sich an, wechsle zwischen metrischen und US-Einheiten und koche mit großer Schrift, vorgelesenen Schritten und Timern aus dem Text.\n\n• Zutaten skalieren mit den Portionen; Gramm, Cups, Löffel und mehr werden umgerechnet\n• Freihändiger Kochmodus: ein Schritt nach dem anderen, vorgelesen, weiter mit dem Steuerkreuz\n• Mehrere Timer gleichzeitig mit Alarm\n• Einkaufsliste aus Rezepten; Tags, Favoriten und Suche\n• Text- und Markdown-Rezepte importieren und exportieren, Sicherung; Rückgängig",
+    "fr": "Boîte à recettes garde vos recettes et vous aide en cuisine. Changez le nombre de portions et toutes les quantités suivent, passez du métrique aux unités US et cuisinez avec un grand texte, des étapes lues à voix haute et des minuteurs repérés dans le texte.\n\n• Ingrédients ajustés aux portions ; grammes, tasses, cuillères convertis\n• Mode cuisine mains libres : une étape à la fois, lue à voix haute, croix pour avancer\n• Plusieurs minuteurs en même temps avec alarme\n• Liste de courses à partir des recettes ; étiquettes, favoris et recherche\n• Import et export texte ou Markdown, sauvegarde ; annuler/rétablir",
+    "es": "Recetario guarda tus recetas y te ayuda en la cocina. Cambia las raciones y todas las cantidades se ajustan, alterna entre unidades métricas y de EE. UU. y cocina con texto grande, pasos leídos en voz alta y temporizadores sacados del texto.\n\n• Ingredientes según las raciones; gramos, tazas, cucharas y más se convierten\n• Modo cocina manos libres: un paso a la vez, en voz alta, cruceta para avanzar\n• Varios temporizadores a la vez con alarma\n• Lista de la compra desde las recetas; etiquetas, favoritos y búsqueda\n• Importa y exporta recetas en texto o Markdown, copia de seguridad; deshacer",
+    "ja": "レシピボックスはレシピをしまっておき、キッチンで手伝ってくれます。人数を変えれば分量がすべて変わり、メートル法と US 単位を切り替え、大きな文字と読み上げ、手順の時間から作るタイマーで料理できます。\n\n• 人数に合わせて材料を計算、グラム・カップ・スプーンなどを換算\n• ハンズフリーの調理モード: 1 手順ずつ表示して読み上げ、十字ボタンで次へ\n• アラーム付きの複数タイマー\n• レシピから作る買い物リスト、タグ、お気に入り、検索\n• テキストや Markdown の読み込みと書き出し、バックアップ、取り消し",
+    "zh": "菜谱盒帮你收藏菜谱，也在厨房里帮忙。改变份数，所有用量随之变化；在公制和美制单位间切换；用大字号、语音朗读的步骤和从步骤中识别出的计时器来做菜。\n\n• 食材按份数缩放，克、杯、勺等自动换算\n• 免手动烹饪模式：一次一步、朗读步骤、用方向键前进\n• 同时运行多个带提醒的计时器\n• 由菜谱生成的购物清单；标签、收藏和搜索\n• 导入导出文本或 Markdown 菜谱，备份全部；撤销/重做",
+    "ko": "레시피 상자는 레시피를 보관하고 주방에서 도와줍니다. 인분을 바꾸면 모든 양이 따라 바뀌고, 미터법과 미국 단위를 오가며, 큰 글자와 소리 내어 읽는 단계, 단계 속 시간으로 만든 타이머로 요리하세요.\n\n• 인분에 맞춰 재료 계산, 그램·컵·스푼 등 단위 변환\n• 핸즈프리 요리 모드: 한 단계씩, 소리 내어 읽기, 방향 버튼으로 다음\n• 알람이 있는 여러 타이머 동시 사용\n• 레시피로 만드는 장보기 목록, 태그, 즐겨찾기, 검색\n• 텍스트나 Markdown 레시피 가져오기·내보내기, 백업, 실행 취소"
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key c",
+      "key right",
+      "wait 1"
+    ],
+    [
+      "key escape",
+      "key e",
+      "wait 1"
+    ],
+    [
+      "key escape",
+      "dark 1",
+      "key down",
+      "wait 1.5"
+    ]
+  ]
+}

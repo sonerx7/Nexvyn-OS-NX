@@ -49,5 +49,14 @@
   "tab_stats": "Estadísticas",
   "tab_settings": "Ajustes",
   "menu_timer": "Temporizador",
-  "menu_view": "Visualización"
+  "menu_view": "Visualización",
+  "add_task": "¿En qué estás trabajando?",
+  "task_title": "Tarea de enfoque",
+  "task_msg": "Pon nombre a la tarea de tus sesiones. Sus minutos se cuentan en las estadísticas.",
+  "top_tasks": "Tareas principales (7 días)",
+  "no_tasks": "Pon nombre a una tarea en el temporizador para ver adónde va tu tiempo.",
+  "set_goal": "Meta diaria (sesiones)",
+  "today_goal": "Hoy: {0}/{1} sesiones · {2}",
+  "goal_reached": "¡Meta diaria cumplida!",
+  "goal_body": "{0} sesiones de enfoque hoy. Buen trabajo."
 }

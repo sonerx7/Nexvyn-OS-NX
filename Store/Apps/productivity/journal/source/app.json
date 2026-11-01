@@ -11,14 +11,17 @@
     "ko": "일기"
   },
   "description": {
-    "en": "A daily journal with mood, tags, search, word count and a writing streak.",
-    "tr": "Ruh hâli, etiketler, arama, kelime sayısı ve yazma serisiyle günlük defteri.",
-    "de": "Ein tägliches Tagebuch mit Stimmung, Tags, Suche, Wortzählung und Schreibserie.",
-    "fr": "Un journal quotidien avec humeur, tags, recherche, nombre de mots et série d’écriture.",
-    "es": "Un diario con estado de ánimo, etiquetas, búsqueda, recuento de palabras y racha de escritura."
+    "en": "A few lines a day with mood and tags, plus insights, writing prompts, On this day, search and backups.",
+    "tr": "Ruh hali ve etiketlerle günde birkaç satır; özet, yazma fikirleri, Önceki yıllarda bugün, arama ve yedekler.",
+    "de": "Ein paar Zeilen am Tag mit Stimmung und Tags, dazu Einblicke, Schreibimpulse, An diesem Tag, Suche und Sicherung.",
+    "fr": "Quelques lignes par jour avec humeur et étiquettes, plus aperçus, idées d’écriture, Ce jour-là, recherche et sauvegardes.",
+    "es": "Unas líneas al día con ánimo y etiquetas, además de resumen, ideas para escribir, Tal día como hoy, búsqueda y copias.",
+    "ja": "気分とタグつきで1日数行。インサイト、書くヒント、過去の今日、検索、バックアップ。",
+    "zh": "每天几行字，记录心情和标签；还有洞察、写作提示、往年的今天、搜索和备份。",
+    "ko": "기분과 태그로 하루 몇 줄. 인사이트, 글감, 지난 해의 오늘, 검색, 백업까지."
   },
   "category": "productivity",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

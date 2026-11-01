@@ -1,28 +1,44 @@
 {
   "subtitle": {
-    "en": "Program beats on a 16-step grid",
-    "tr": "16 adımlı ızgarada ritim programla",
-    "de": "Beats im 16-Step-Raster bauen",
-    "fr": "Composez vos rythmes sur 16 pas",
-    "es": "Programa ritmos en 16 pasos",
-    "ja": "16 ステップのグリッドでビートを作る",
-    "zh": "在 16 步网格上编排节拍",
-    "ko": "16스텝 격자로 비트를 만드세요"
+    "en": "16 steps, accents and nine styles",
+    "tr": "16 adım, vurgular ve dokuz tarz",
+    "de": "16 Schritte, Akzente, neun Stile",
+    "fr": "16 pas, accents et neuf styles",
+    "es": "16 pasos, acentos y nueve estilos",
+    "ja": "16ステップ、アクセント、9スタイル",
+    "zh": "16 步、重音和九种风格",
+    "ko": "16스텝, 악센트, 아홉 가지 스타일"
   },
   "description": {
-    "en": "Drum Machine is a classic 16-step sequencer with eight synthesized drum tracks: kick, snare, closed and open hi-hat, clap, low and high tom and rim shot. Tap the pads to build a beat, set the tempo anywhere from 60 to 200 BPM and add swing for a looser groove. Start from the Rock, Hip Hop or House presets, mute tracks as you play, and save your own patterns by name.\n\n• 8 tracks × 16 steps, every sound synthesized live\n• BPM, swing and master volume\n• Mute any track while the beat runs\n• Presets plus your own saved patterns\n• Keyboard: Space plays, arrows move, Enter toggles a step, M mutes, 1–8 play a sound",
-    "tr": "Ritim Makinesi, sekiz sentezlenmiş davul kanalına sahip klasik bir 16 adımlı sekansördür: bas davul, trampet, kapalı ve açık hi-hat, el çırpma, kalın ve ince tom, kenar vuruşu. Pedlere dokunarak ritmini kur, temposu 60 ile 200 BPM arasında ayarla, daha rahat bir groove için swing ekle. Rock, Hip Hop ya da House hazır ritimleriyle başla, çalarken kanalları sustur, kendi ritimlerini adıyla kaydet.\n\n• 8 kanal × 16 adım, tüm sesler anında sentezlenir\n• BPM, swing ve ana ses ayarı\n• Ritim çalarken istediğin kanalı sustur\n• Hazır ritimler ve kendi kaydettiğin desenler\n• Klavye: Boşluk çalar, oklar gezinir, Enter adımı açar/kapatır, M susturur, 1–8 sesi çalar",
-    "de": "Der Drumcomputer ist ein klassischer 16-Step-Sequencer mit acht synthetisierten Drum-Spuren: Bassdrum, Snare, geschlossene und offene Hi-Hat, Clap, tiefes und hohes Tom und Rimshot. Tippe auf die Pads, um deinen Beat zu bauen, stell das Tempo zwischen 60 und 200 BPM ein und gib mit Swing mehr Groove dazu. Starte mit den Presets Rock, Hip-Hop oder House, schalte Spuren beim Spielen stumm und speichere eigene Patterns unter einem Namen.\n\n• 8 Spuren × 16 Steps, jeder Sound live synthetisiert\n• BPM, Swing und Gesamtlautstärke\n• Spuren stummschalten, während der Beat läuft\n• Presets und eigene gespeicherte Patterns\n• Tastatur: Leertaste spielt, Pfeile bewegen, Enter setzt einen Step, M schaltet stumm, 1–8 spielen einen Sound",
-    "fr": "Boîte à rythmes est un séquenceur classique à 16 pas avec huit pistes de batterie synthétisées : grosse caisse, caisse claire, charleston fermé et ouvert, clap, tom grave et aigu, rim shot. Touchez les pads pour construire votre rythme, réglez le tempo de 60 à 200 BPM et ajoutez du swing pour un groove plus souple. Partez des préréglages Rock, Hip-hop ou House, coupez des pistes en jouant et enregistrez vos propres motifs sous un nom.\n\n• 8 pistes × 16 pas, chaque son synthétisé en direct\n• BPM, swing et volume général\n• Coupez une piste pendant la lecture\n• Préréglages et motifs enregistrés\n• Clavier : Espace lance la lecture, flèches pour se déplacer, Entrée active un pas, M coupe, 1–8 jouent un son",
-    "es": "Caja de ritmos es un secuenciador clásico de 16 pasos con ocho pistas de batería sintetizadas: bombo, caja, hi-hat cerrado y abierto, palmada, tom grave y agudo y rim shot. Toca los pads para crear tu ritmo, ajusta el tempo entre 60 y 200 BPM y añade swing para un groove más suelto. Empieza con los ritmos Rock, Hip hop o House, silencia pistas mientras suena y guarda tus propios patrones con nombre.\n\n• 8 pistas × 16 pasos, cada sonido sintetizado en directo\n• BPM, swing y volumen general\n• Silencia cualquier pista mientras suena el ritmo\n• Ritmos predefinidos y tus patrones guardados\n• Teclado: Espacio reproduce, flechas para moverte, Intro activa un paso, M silencia, 1–8 suenan",
-    "ja": "ドラムマシンは、8 つのシンセサイズされたドラムトラック (キック、スネア、クローズド/オープンハイハット、クラップ、ロー/ハイタム、リムショット) を備えた定番の 16 ステップシーケンサーです。パッドをタップしてビートを組み、テンポを 60〜200 BPM の範囲で設定し、スウィングを加えてノリを出しましょう。ロック、ヒップホップ、ハウスのプリセットから始め、演奏中にトラックをミュートし、自分のパターンに名前を付けて保存できます。\n\n• 8 トラック × 16 ステップ、すべての音をリアルタイムに合成\n• BPM、スウィング、マスター音量\n• ビートの再生中に任意のトラックをミュート\n• プリセットと自分で保存したパターン\n• キーボード: Space で再生、矢印キーで移動、Enter でステップを切り替え、M でミュート、1–8 で音を鳴らす",
-    "zh": "鼓机是一款经典的 16 步音序器，包含八条合成鼓轨道：底鼓、军鼓、闭镲和开镲、拍手、低音和高音嗵鼓以及鼓边。轻点打击垫即可编排节拍，速度可在 60 到 200 BPM 之间设置，还可以加入摇摆感让律动更松弛。从摇滚、嘻哈或浩室预设开始，演奏时可静音轨道，并按名称保存你自己的节奏型。\n\n• 8 条轨道 × 16 步，每个声音都实时合成\n• BPM、摇摆和主音量\n• 节拍运行时可静音任意轨道\n• 预设以及你自己保存的节奏型\n• 键盘：空格播放，方向键移动，Enter 切换步，M 静音，1–8 播放声音",
-    "ko": "드럼 머신은 킥, 스네어, 클로즈드 및 오픈 하이햇, 클랩, 로우 및 하이 탐, 림샷 등 합성 드럼 트랙 8개를 갖춘 클래식 16스텝 시퀀서입니다. 패드를 탭하여 비트를 만들고, 템포를 60에서 200 BPM 사이로 설정하고, 스윙을 더해 더 여유로운 그루브를 만드세요. 록, 힙합, 하우스 프리셋으로 시작하고, 연주하면서 트랙을 음소거하고, 나만의 패턴을 이름을 붙여 저장하세요.\n\n• 8트랙 × 16스텝, 모든 소리를 실시간으로 합성\n• BPM, 스윙, 마스터 볼륨\n• 비트가 재생되는 동안 원하는 트랙 음소거\n• 프리셋과 직접 저장한 패턴\n• 키보드: Space 재생, 화살표 이동, Enter 스텝 전환, M 음소거, 1–8 소리 재생"
+    "en": "Drum Machine is a classic 16-step sequencer with eight synthesized drum tracks: kick, snare, closed and open hi-hat, clap, low and high tom and rim shot. Tap the pads to build a beat, set the tempo anywhere from 60 to 200 BPM and add swing for a looser groove.\n\nTurn on Accent mode and tap a step to make it hit harder, so your beats breathe. Start from nine styles (Rock, Hip Hop, House, Funk, Disco, Reggae, Breakbeat, Bossa Nova and Trap), or let Generate Groove build a fresh pattern with a kick on the one, a backbeat and a few surprises. Mute tracks as you play and save your own patterns by name.\n\n• 8 tracks × 16 steps, every sound synthesized live\n• Accented steps for dynamics\n• Nine style presets and a groove generator\n• BPM, swing, master volume and per-track mute\n• Your own saved patterns\n• Keyboard: Space plays, arrows move, Enter toggles, X accents, G generates, M mutes",
+    "tr": "Davul Makinesi, sekiz sentez davul kanalı olan klasik 16 adımlı bir sıralayıcıdır: bas davul, trampet, kapalı ve açık hi-hat, el çırpma, alçak ve yüksek tom ve rim shot. Bir ritim kurmak için pedlere dokun, tempoyu 60 ile 200 BPM arasında ayarla ve daha gevşek bir his için swing ekle.\n\nVurgu modunu aç ve bir adıma dokunarak daha güçlü vurmasını sağla; ritimlerin nefes alsın. Dokuz tarzdan (Rock, Hip Hop, House, Funk, Disko, Reggae, Breakbeat, Bossa Nova ve Trap) başla ya da Ritim Üret'in birinci vuruşta bas davul, arka vuruş ve birkaç sürprizle yepyeni bir kalıp kurmasına izin ver. Çalarken kanalları sustur, kendi kalıplarını adıyla kaydet.\n\n• 8 kanal × 16 adım, her ses canlı sentezlenir\n• Dinamik için vurgulu adımlar\n• Dokuz tarz hazır ayarı ve ritim üretici\n• BPM, swing, ana ses ve kanal başına susturma\n• Kendi kaydettiğin kalıplar\n• Klavye: Boşluk çalar, oklar gezer, Enter açar/kapatır, X vurgular, G üretir, M susturur",
+    "de": "Drum Machine ist ein klassischer 16-Schritt-Sequenzer mit acht synthetisierten Drumspuren: Kick, Snare, geschlossene und offene Hi-Hat, Clap, tiefe und hohe Tom und Rimshot. Tipp auf die Pads für einen Beat, stell das Tempo zwischen 60 und 200 BPM ein und gib Swing dazu.\n\nSchalte den Akzentmodus ein und tippe einen Schritt an, damit er kräftiger schlägt. Starte mit neun Stilen (Rock, Hip-Hop, House, Funk, Disco, Reggae, Breakbeat, Bossa Nova und Trap) oder lass „Groove erzeugen“ ein frisches Muster mit Kick auf der Eins, Backbeat und ein paar Überraschungen bauen. Schalte Spuren beim Spielen stumm und speichere eigene Muster mit Namen.\n\n• 8 Spuren × 16 Schritte, jeder Klang live synthetisiert\n• Akzentuierte Schritte für Dynamik\n• Neun Stil-Presets und ein Groove-Generator\n• BPM, Swing, Gesamtlautstärke und Stummschaltung je Spur\n• Eigene gespeicherte Muster\n• Tastatur: Leertaste spielt, Pfeile bewegen, Enter setzt, X akzentuiert, G erzeugt, M schaltet stumm",
+    "fr": "Drum Machine est un séquenceur 16 pas classique avec huit pistes de batterie synthétisées : grosse caisse, caisse claire, charleston fermé et ouvert, clap, tom grave et aigu et rim shot. Touchez les pads pour créer un rythme, réglez le tempo de 60 à 200 BPM et ajoutez du swing.\n\nActivez le mode accent et touchez un pas pour qu’il frappe plus fort. Partez de neuf styles (Rock, Hip-hop, House, Funk, Disco, Reggae, Breakbeat, Bossa nova et Trap), ou laissez « Générer un groove » créer un motif neuf avec une grosse caisse sur le premier temps, un contretemps et quelques surprises. Coupez des pistes en jouant et enregistrez vos motifs par nom.\n\n• 8 pistes × 16 pas, chaque son synthétisé en direct\n• Pas accentués pour plus de dynamique\n• Neuf styles prédéfinis et un générateur de groove\n• BPM, swing, volume général et muet par piste\n• Vos propres motifs enregistrés\n• Clavier : Espace lit, flèches déplacent, Entrée active, X accentue, G génère, M coupe",
+    "es": "Caja de ritmos es un secuenciador clásico de 16 pasos con ocho pistas de batería sintetizadas: bombo, caja, charles cerrado y abierto, palmada, tom grave y agudo y aro. Toca los pads para crear un ritmo, ajusta el tempo de 60 a 200 BPM y añade swing.\n\nActiva el modo acento y toca un paso para que suene más fuerte. Empieza con nueve estilos (Rock, Hip hop, House, Funk, Disco, Reggae, Breakbeat, Bossa nova y Trap) o deja que «Generar ritmo» cree un patrón nuevo con bombo en el uno, contratiempo y alguna sorpresa. Silencia pistas mientras suena y guarda tus patrones con nombre.\n\n• 8 pistas × 16 pasos, cada sonido sintetizado en directo\n• Pasos acentuados para dar dinámica\n• Nueve estilos y un generador de ritmos\n• BPM, swing, volumen general y silencio por pista\n• Tus propios patrones guardados\n• Teclado: Espacio reproduce, flechas mueven, Intro activa, X acentúa, G genera, M silencia",
+    "ja": "Drum Machine は、キック、スネア、クローズ／オープンハイハット、クラップ、ロー／ハイタム、リムショットの8トラックを合成する定番の16ステップシーケンサーです。パッドをタップしてビートを作り、テンポを60〜200 BPM で設定し、スウィングでノリを加えましょう。\n\nアクセントモードをオンにしてステップをタップすると、そのステップが強く鳴ります。ロック、ヒップホップ、ハウス、ファンク、ディスコ、レゲエ、ブレイクビーツ、ボサノバ、トラップの9スタイルから始めるか、「グルーヴを生成」で1拍目のキック、バックビート、ちょっとした意外性のある新しいパターンを作れます。演奏中にトラックをミュートし、自作パターンを名前をつけて保存。\n\n• 8トラック × 16ステップ、すべての音をリアルタイム合成\n• 強弱をつけるアクセントステップ\n• 9つのスタイルプリセットとグルーヴ生成\n• BPM、スウィング、マスター音量、トラックごとのミュート\n• 自作パターンの保存\n• キーボード：Space 再生、矢印で移動、Enter 切り替え、X アクセント、G 生成、M ミュート",
+    "zh": "鼓机是一款经典的 16 步音序器，有八条合成鼓轨：底鼓、军鼓、闭合与开放踩镲、拍手、低音与高音通鼓以及鼓边击。点击打击垫编排节奏，把速度设在 60 到 200 BPM 之间，再加点摇摆感。\n\n打开重音模式并点击某一步，让它敲得更重，节奏更有起伏。从九种风格（摇滚、嘻哈、浩室、放克、迪斯科、雷鬼、碎拍、波萨诺瓦和陷阱说唱）开始，或者让“生成节奏”创造一个新的律动：第一拍底鼓、反拍军鼓，再加点惊喜。演奏时可静音轨道，并按名称保存自己的节奏型。\n\n• 8 轨 × 16 步，所有声音实时合成\n• 带重音的步进，层次更丰富\n• 九种风格预设和节奏生成器\n• BPM、摇摆、总音量和每轨静音\n• 保存自己的节奏型\n• 键盘：空格播放，方向键移动，回车切换，X 重音，G 生成，M 静音",
+    "ko": "Drum Machine은 킥, 스네어, 클로즈·오픈 하이햇, 클랩, 로우·하이 탐, 림숏의 여덟 트랙을 합성하는 클래식 16스텝 시퀀서입니다. 패드를 탭해 비트를 만들고, 템포를 60~200 BPM으로 정하고, 스윙을 더해 그루브를 살리세요.\n\n악센트 모드를 켜고 스텝을 탭하면 더 세게 칩니다. 록, 힙합, 하우스, 펑크, 디스코, 레게, 브레이크비트, 보사노바, 트랩의 아홉 가지 스타일로 시작하거나, '그루브 생성'이 첫 박의 킥, 백비트, 몇 가지 놀라움이 있는 새 패턴을 만들게 하세요. 연주 중 트랙을 음소거하고 자신만의 패턴을 이름으로 저장하세요.\n\n• 8트랙 × 16스텝, 모든 소리를 실시간 합성\n• 강약을 주는 악센트 스텝\n• 아홉 가지 스타일 프리셋과 그루브 생성기\n• BPM, 스윙, 마스터 볼륨, 트랙별 음소거\n• 직접 저장한 패턴\n• 키보드: Space 재생, 화살표 이동, Enter 켜기, X 악센트, G 생성, M 음소거"
   },
   "shots": [
-    ["wait 3"],
-    ["key space", "wait 2"],
-    ["key down", "key down", "key right", "key right", "key right", "key enter", "wait 1.5"],
-    ["dark 1", "wait 1.5"]
+    [
+      "wait 3"
+    ],
+    [
+      "key space",
+      "wait 2"
+    ],
+    [
+      "key down",
+      "key down",
+      "key right",
+      "key right",
+      "key right",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
   ]
 }

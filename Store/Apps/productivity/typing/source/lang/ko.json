@@ -43,5 +43,12 @@
   "clear_title": "모든 결과를 지우시겠습니까?",
   "clear_msg": "기록과 최고 점수가 삭제됩니다.",
   "clear": "지우기",
-  "cancel": "취소"
+  "cancel": "취소",
+  "les_words": "자주 쓰는 단어",
+  "les_words_d": "가장 자주 치는 단어",
+  "les_weak": "약한 키",
+  "les_weak_d": "가장 많이 틀리는 키로 만든 연습",
+  "weak_keys": "연습할 키: {0}",
+  "les_minute": "1분 테스트",
+  "les_minute_d": "60초 동안 최대한 많이 입력"
 }

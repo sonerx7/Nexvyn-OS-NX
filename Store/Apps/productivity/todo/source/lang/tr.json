@@ -104,5 +104,21 @@
   "deleted": "Görev silindi.",
   "deleted_named": "“{0}” silindi",
   "undo": "Geri Al",
-  "undo_delete": "Silmeyi Geri Al"
+  "undo_delete": "Silmeyi Geri Al",
+  "repeat": "Tekrarla",
+  "rep_none": "Hiç",
+  "rep_daily": "Her gün",
+  "rep_weekly": "Her hafta",
+  "rep_monthly": "Her ay",
+  "repeat_next": "Sıradaki: {0}",
+  "steps": "Adımlar",
+  "step_ph": "Adım ekle…",
+  "add_step": "Ekle",
+  "backup": "Yedekle",
+  "backup_done": "Yedek kaydedildi",
+  "restore": "Geri yükle",
+  "restore_confirm": "Tüm listelerin bu yedekteki {0} görevle değiştirilsin mi?",
+  "restore_done": "{0} görev geri yüklendi",
+  "restore_bad": "Bu dosya bir Yapılacaklar yedeği değil",
+  "cancel": "Vazgeç"
 }

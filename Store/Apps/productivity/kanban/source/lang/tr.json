@@ -69,5 +69,16 @@
   "wd_3": "Çar",
   "wd_4": "Per",
   "wd_5": "Cum",
-  "wd_6": "Cmt"
+  "wd_6": "Cmt",
+  "checklist": "Kontrol listesi",
+  "step_hint": "Madde ekle…",
+  "add_step": "Ekle",
+  "filter": "Filtre",
+  "filter_hint": "Bu metni içeren kartları öne çıkar (hepsini göstermek için boş bırak).",
+  "export_md": "Markdown olarak dışa aktar",
+  "backup": "Yedekle",
+  "restore": "Geri yükle",
+  "restore_confirm": "Tüm panoların bu yedekteki {0} panoyla değiştirilsin mi?",
+  "restore_bad": "Bu dosya bir Kanban yedeği değil.",
+  "ok": "Tamam"
 }

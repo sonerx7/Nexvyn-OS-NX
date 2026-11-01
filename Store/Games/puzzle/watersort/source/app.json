@@ -15,9 +15,12 @@
     "tr": "Renkli katmanları tüpler arasında dökerek her tüpte tek renk kalmasını sağlayın. Hepsi çözülebilir olarak denetlenen sonsuz seviye.",
     "de": "Gieß die farbigen Schichten zwischen den Röhren um, bis jede Röhre nur eine Farbe enthält. Endlos generierte Level, alle auf Lösbarkeit geprüft.",
     "fr": "Transvasez les couches colorées entre les tubes jusqu’à ce que chaque tube ne contienne qu’une seule couleur. Des niveaux générés à l’infini, tous vérifiés comme solubles.",
-    "es": "Vierte las capas de colores entre los tubos hasta que cada tubo tenga un solo color. Niveles generados sin fin, todos comprobados para que tengan solución."
+    "es": "Vierte las capas de colores entre los tubos hasta que cada tubo tenga un solo color. Niveles generados sin fin, todos comprobados para que tengan solución.",
+    "ja": "すべての試験管が 1 色になるまで注ごう",
+    "zh": "倒来倒去，直到每根试管只有一种颜色",
+    "ko": "관마다 한 가지 색이 될 때까지 부으세요"
   },
-  "version": "1.0.2",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

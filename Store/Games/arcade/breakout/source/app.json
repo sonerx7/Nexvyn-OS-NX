@@ -1,23 +1,26 @@
 {
   "id": "com.sonerx7.breakout",
   "name": {
-    "en": "Breakout",
+    "en": "Brick Smash",
     "tr": "Tuğla Kır",
-    "de": "Breakout",
+    "de": "Steinbrecher",
     "fr": "Casse-briques",
-    "es": "Breakout",
+    "es": "Rompeladrillos",
     "ja": "ブロック崩し",
     "zh": "打砖块",
     "ko": "벽돌 깨기"
   },
   "description": {
-    "en": "Smash every brick with the ball and catch power-ups: wide paddle, multi-ball, slow ball and extra lives.",
-    "tr": "Topla bütün tuğlaları kır, güçlendirmeleri yakala: geniş raket, çoklu top, yavaş top ve ekstra can.",
-    "de": "Zerschlage jeden Stein mit dem Ball und fange Power-ups: breiter Schläger, Multiball, langsamer Ball und Extraleben.",
-    "fr": "Cassez toutes les briques avec la balle et attrapez des bonus : raquette large, multi-balle, balle lente et vies supplémentaires.",
-    "es": "Rompe todos los ladrillos con la bola y atrapa potenciadores: pala ancha, multibola, bola lenta y vidas extra."
+    "en": "Smash bricks through 15 designed stages or an endless run, with steel and bomb bricks and eight power-ups.",
+    "tr": "15 tasarlanmış bölümde ya da sonsuz modda tuğla kır: çelik ve bomba tuğlalar, sekiz güçlendirme.",
+    "de": "Zerschlag Steine in 15 gestalteten Stufen oder endlos, mit Stahl- und Bombensteinen und acht Extras.",
+    "fr": "Cassez des briques sur 15 niveaux conçus à la main ou sans fin, avec briques d’acier, bombes et huit bonus.",
+    "es": "Rompe ladrillos en 15 fases diseñadas o sin fin, con ladrillos de acero, bombas y ocho potenciadores.",
+    "ja": "15のステージかエンドレスでブロックを崩そう。鋼鉄ブロック、爆弾ブロック、8種類のパワーアップ。",
+    "zh": "在 15 个精心设计的关卡或无尽模式中打砖块，有钢砖、炸弹砖和八种道具。",
+    "ko": "15개의 디자인된 스테이지나 무한 모드에서 벽돌을 깨세요. 강철 벽돌, 폭탄 벽돌, 여덟 가지 파워업."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

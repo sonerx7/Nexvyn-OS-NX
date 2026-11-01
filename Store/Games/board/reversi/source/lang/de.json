@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "Schwarz spielen (zuerst)",
   "play_white": "Weiß spielen",
-  "show_moves": "Legale Züge anzeigen"
+  "show_moves": "Legale Züge anzeigen",
+  "mode_expert": "Experte",
+  "review": "Partie ansehen",
+  "review_move": "Zug {0} / {1}",
+  "done": "Fertig"
 }

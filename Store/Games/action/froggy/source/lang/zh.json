@@ -37,5 +37,19 @@
   "time_out": "时间到了！",
   "fly_bonus": "苍蝇奖励 +200！",
   "c_move": "十字键 / 摇杆 / 方向键 / WASD：跳跃",
-  "c_touch": "触控：轻扫，或轻点青蛙旁边"
+  "c_touch": "触控：轻扫，或轻点青蛙旁边",
+  "records": "纪录",
+  "no_records": "还没有成绩。来玩一局吧！",
+  "rounds": "局数",
+  "total_time": "总时长",
+  "total_points": "总得分",
+  "medal": "奖牌",
+  "medal_bronze": "铜牌",
+  "medal_silver": "银牌",
+  "medal_gold": "金牌",
+  "easy": "简单",
+  "normal": "普通",
+  "hard": "困难",
+  "close": "关闭",
+  "rec_hint": "X：纪录  ·  L / R：难度"
 }

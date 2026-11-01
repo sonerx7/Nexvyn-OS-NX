@@ -1,0 +1,41 @@
+{
+  "id": "com.sonerx7.voiddelve",
+  "name": {
+    "en": "Void Delve",
+    "tr": "Boşluk Dalışı",
+    "de": "Void Delve",
+    "fr": "Void Delve",
+    "es": "Void Delve",
+    "ja": "ヴォイドデルヴ",
+    "zh": "虚空深潜",
+    "ko": "보이드 델브"
+  },
+  "description": {
+    "en": "A twin-stick roguelite: procedural floors, relics that change every run, bosses and permanent upgrades.",
+    "tr": "Çift çubuklu roguelite: yordamsal katlar, her koşuyu değiştiren kalıntılar, bosslar ve kalıcı geliştirmeler.",
+    "de": "Ein Twin-Stick-Roguelite: prozedurale Ebenen, Relikte für jeden Lauf, Bosse und dauerhafte Upgrades.",
+    "fr": "Un roguelite twin-stick : étages procéduraux, reliques qui changent chaque partie, boss et améliorations permanentes.",
+    "es": "Un roguelite de doble stick: pisos procedurales, reliquias que cambian cada partida, jefes y mejoras permanentes.",
+    "ja": "ツインスティックのローグライト。自動生成フロア、毎回変わるレリック、ボス、永続アップグレード。",
+    "zh": "双摇杆肉鸽射击：随机生成楼层、每局不同的遗物、首领战和永久升级。",
+    "ko": "트윈 스틱 로그라이트: 절차 생성 층, 매번 달라지는 유물, 보스, 영구 업그레이드."
+  },
+  "category": "games",
+  "genre": "action",
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": true,
+  "minSdk": "1.6",
+  "targetSdk": "1.7",
+  "permissions": []
+}

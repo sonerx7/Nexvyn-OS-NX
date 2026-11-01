@@ -2,6 +2,7 @@
 -- The generator makes a random full grid, then removes cells (in symmetric pairs) while the puzzle still has exactly
 -- one solution. Call S.generate inside a coroutine: it yields whenever the frame slice (S.sliceEnd, os.clock) is used.
 local S = {}
+S.rand = math.random   -- replaced by a seeded generator for the daily puzzle
 
 local ROW, COL, BOX = {}, {}, {}
 for i = 1, 81 do
@@ -55,7 +56,7 @@ local function search(g, rm, cm, bm, limit, count, rand, steps)
   local digits = {}
   for d = 1, 9 do if bestMask & (1 << d) ~= 0 then digits[#digits + 1] = d end end
   if rand then
-    for k = #digits, 2, -1 do local j = math.random(k); digits[k], digits[j] = digits[j], digits[k] end
+    for k = #digits, 2, -1 do local j = S.rand(k); digits[k], digits[j] = digits[j], digits[k] end
   end
   local r, c, b = ROW[best], COL[best], BOX[best]
   for _, d in ipairs(digits) do
@@ -108,7 +109,7 @@ function S.solve(g)
 end
 
 -- givens: target number of clues (the result can have a few more when no further cell can be removed)
-function S.generate(givens)
+local function generateOnce(givens)
   local full = {}
   for i = 1, 81 do full[i] = 0 end
   local rm, cm, bm = masks(full)
@@ -117,7 +118,7 @@ function S.generate(givens)
   for i = 1, 81 do puzzle[i] = full[i] end
   local order = {}
   for i = 1, 41 do order[i] = i end
-  for k = #order, 2, -1 do local j = math.random(k); order[k], order[j] = order[j], order[k] end
+  for k = #order, 2, -1 do local j = S.rand(k); order[k], order[j] = order[j], order[k] end
   local filled = 81
   for _, i in ipairs(order) do
     if filled <= givens then break end
@@ -135,7 +136,7 @@ function S.generate(givens)
   if filled > givens then
     local singles = {}
     for i = 1, 81 do if puzzle[i] ~= 0 then singles[#singles + 1] = i end end
-    for k = #singles, 2, -1 do local j = math.random(k); singles[k], singles[j] = singles[j], singles[k] end
+    for k = #singles, 2, -1 do local j = S.rand(k); singles[k], singles[j] = singles[j], singles[k] end
     for _, i in ipairs(singles) do
       if filled <= givens then break end
       local a = puzzle[i]
@@ -145,6 +146,19 @@ function S.generate(givens)
     end
   end
   return puzzle, full
+end
+
+-- tries > 1 (Expert) keeps the attempt with the fewest clues
+function S.generate(givens, tries)
+  local bestP, bestF, bestN = nil, nil, 99
+  for _ = 1, tries or 1 do
+    local p, f = generateOnce(givens)
+    local n = 0
+    for i = 1, 81 do if p[i] ~= 0 then n = n + 1 end end
+    if n < bestN then bestP, bestF, bestN = p, f, n end
+    if n <= givens then break end
+  end
+  return bestP, bestF
 end
 
 return S

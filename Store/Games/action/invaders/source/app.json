@@ -1,23 +1,26 @@
 {
   "id": "com.sonerx7.invaders",
   "name": {
-    "en": "Space Invaders",
-    "tr": "Uzay İstilası",
-    "de": "Space Invaders",
-    "fr": "Space Invaders",
-    "es": "Invasores espaciales",
-    "ja": "スペースインベーダー",
-    "zh": "太空入侵者",
-    "ko": "우주 침략자"
+    "en": "Star Siege",
+    "tr": "Yıldız Kuşatması",
+    "de": "Sternenbelagerung",
+    "fr": "Siège stellaire",
+    "es": "Asedio estelar",
+    "ja": "スターシージ",
+    "zh": "星际围攻",
+    "ko": "스타 시즈"
   },
   "description": {
-    "en": "Hold the line against rows of marching invaders. Hide behind the shields, shoot down the mystery saucer and survive wave after wave.",
-    "tr": "Yürüyen uzaylı sıralarına karşı hattı koru. Kalkanların arkasına saklan, gizemli daireyi vur ve dalga dalga gelen istilaya dayan.",
-    "de": "Halte die Stellung gegen Reihen anrückender Invasoren. Versteck dich hinter den Schilden, schieß das mysteriöse UFO ab und überlebe Welle um Welle.",
-    "fr": "Tenez bon face aux rangées d’envahisseurs en marche. Abritez-vous derrière les boucliers, abattez la soucoupe mystère et survivez vague après vague.",
-    "es": "Resiste frente a filas de invasores que avanzan. Escóndete tras los escudos, derriba el platillo misterioso y sobrevive oleada tras oleada."
+    "en": "Hold the line against marching alien waves with shields, a mystery saucer and four power-ups.",
+    "tr": "Siperler, gizemli uçan daire ve dört güçlendirmeyle ilerleyen uzaylı dalgalarına karşı hattı tut.",
+    "de": "Halte die Stellung gegen marschierende Alienwellen, mit Schilden, Mysterie-Ufo und vier Extras.",
+    "fr": "Tenez bon face aux vagues d’aliens en marche, avec abris, soucoupe mystère et quatre bonus.",
+    "es": "Resiste las oleadas de alienígenas con escudos, un platillo misterioso y cuatro potenciadores.",
+    "ja": "シールドと謎の円盤、4種類のパワーアップで、行進してくるエイリアンの波を食い止めよう。",
+    "zh": "借助掩体、神秘飞碟和四种道具，守住防线，抵挡行进中的外星人浪潮。",
+    "ko": "방벽, 미스터리 비행접시, 네 가지 파워업으로 행진하는 외계인 물결을 막아 내세요."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

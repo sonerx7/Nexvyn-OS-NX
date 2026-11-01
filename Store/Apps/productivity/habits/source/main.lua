@@ -112,6 +112,9 @@ local sheetT = 0
 local cursor = {row = 0, col = 0}
 local lastDay = 0
 local tabT = 1
+local banner, bannerT = "", -10     -- milestone / info banner
+local MILESTONES = {[7] = true, [14] = true, [21] = true, [30] = true, [50] = true, [100] = true, [200] = true,
+                    [365] = true}
 
 local function save()
   store.set("habits", habits)
@@ -127,24 +130,35 @@ local function hcolor(h) return theme[h.color] or theme.green end
 
 local function computeStats(h)
   local today = todayNum()
-  local days = {}
+  local first = nil
   local total = 0
   for k, v in pairs(h.done) do
     if v then
       local dn = dayOfKey(k)
-      if dn then days[#days + 1] = dn; total = total + 1 end
+      if dn then total = total + 1; if not first or dn < first then first = dn end end
     end
   end
-  table.sort(days)
-  local best, run, prev = 0, 0, nil
-  for _, dn in ipairs(days) do
-    if prev and dn == prev + 1 then run = run + 1 elseif prev ~= dn then run = 1 end
-    prev = dn
-    if run > best then best = run end
+  local rest = h.rest or {}
+  -- walk the days once: done days add to the run, rest days bridge it, any other day ends it
+  local best, run = 0, 0
+  if first then
+    for dn = math.max(first, today - 3650), today do
+      local k = keyOf(dn)
+      if h.done[k] then
+        run = run + 1
+        if run > best then best = run end
+      elseif not rest[k] and dn < today then
+        run = 0
+      end
+    end
   end
   local cur = 0
-  local start = h.done[keyOf(today)] and today or today - 1
-  while h.done[keyOf(start - cur)] do cur = cur + 1 end
+  local dn = (h.done[keyOf(today)] or rest[keyOf(today)]) and today or today - 1
+  for _ = 1, 3650 do
+    local k = keyOf(dn)
+    if h.done[k] then cur = cur + 1 elseif not rest[k] then break end
+    dn = dn - 1
+  end
   stats[h.id] = {cur = cur, best = best, total = total}
 end
 
@@ -167,11 +181,28 @@ local function toggle(h, dn)
     audio.tone(392, 0.07, 0.25, "triangle")
   else
     h.done[k] = true
+    if h.rest then h.rest[k] = nil end
     computeStats(h)
     local s = stats[h.id].cur
+    if dn == today and MILESTONES[s] then
+      banner, bannerT = TR("milestone", h.name, s), sys.time()
+      timer.after(0.25, function() audio.play("notify") end)
+    end
     audio.tone(660 + min(12, s) * 30, 0.08, 0.3, "triangle")
     timer.after(0.07, function() audio.tone(990 + min(12, s) * 30, 0.1, 0.25, "triangle") end)
   end
+  pops[h.id .. ":" .. dn] = sys.time()
+  computeStats(h)
+  saveNow()
+end
+
+local function toggleRest(h, dn)
+  if dn > todayNum() then audio.play("error") return end
+  local k = keyOf(dn)
+  if h.done[k] then return end
+  h.rest = h.rest or {}
+  h.rest[k] = (not h.rest[k]) or nil
+  audio.tone(h.rest[k] and 520 or 392, 0.06, 0.2, "sine")
   pops[h.id .. ":" .. dn] = sys.time()
   computeStats(h)
   saveNow()
@@ -187,6 +218,12 @@ local function sanitize(h)
   if type(h.done) == "table" then
     for k, v in pairs(h.done) do
       if type(k) == "string" and v == true and dayOfKey(k) then o.done[k] = true end
+    end
+  end
+  if type(h.rest) == "table" then
+    o.rest = {}
+    for k, v in pairs(h.rest) do
+      if type(k) == "string" and v == true and dayOfKey(k) then o.rest[k] = true end
     end
   end
   if o.id == "" then o.id = "h" .. nextId; nextId = nextId + 1 end
@@ -313,6 +350,7 @@ end
 local function habitMenu(h)
   ui.contextMenu({
     {label = TR("edit"), id = 1, icon = "edit"},
+    {label = (h.rest and h.rest[keyOf(todayNum())]) and TR("rest_off") or TR("rest_today"), id = 5, icon = "bedtime"},
     {label = TR("move_up"), id = 2, icon = "arrow_upward"},
     {label = TR("move_down"), id = 3, icon = "arrow_downward"},
     "-",
@@ -321,12 +359,13 @@ local function habitMenu(h)
     if id == 1 then openEditor(h)
     elseif id == 2 then moveHabit(h.id, -1)
     elseif id == 3 then moveHabit(h.id, 1)
-    elseif id == 4 then deleteHabit(h.id) end
+    elseif id == 4 then deleteHabit(h.id)
+    elseif id == 5 then toggleRest(h, todayNum()) end
   end)
 end
 
 -- ------------------------------------------------------------------ lifecycle
-function app.load()
+function app.load(arg)
   nextId = tonumber(store.get("nextId", 1)) or 1
   local list = store.get("habits", {})
   habits = {}
@@ -346,7 +385,8 @@ function app.load()
   lastDay = todayNum()
   recomputeAll()
   checkReminders()
-  timer.every(20, checkReminders)
+  if not app._rt then app._rt = timer.every(20, checkReminders) end
+  if type(arg) == "string" and arg:match("^habit:") then app.open(arg) end
 end
 
 function app.update(dt)
@@ -373,9 +413,13 @@ local function checkCircle(h, dn, cx, cy, r, today, interactive, focused)
     gfx.color(theme.accent)
     gfx.circleLine(cx, cy, r + 5, 2)
   end
+  local rested = not done and h.rest and h.rest[keyOf(dn)]
   if done then
     gfx.circle(cx, cy, r * s, col)
     gfx.icon("check", cx, cy, r * 1.2 * s, WHITE)
+  elseif rested then
+    gfx.circle(cx, cy, r * s, fade(theme.text3, 0.18))
+    gfx.icon("bedtime", cx, cy, r * 1.1 * s, theme.text2)
   elseif future then
     gfx.color(fade(theme.text3, 0.5))
     gfx.circleLine(cx, cy, r - 2, 1.5)
@@ -385,6 +429,7 @@ local function checkCircle(h, dn, cx, cy, r, today, interactive, focused)
     gfx.circleLine(cx, cy, (r - 1) * s, 2)
   end
   if hit and hit.clicked then toggle(h, dn) end
+  if hit and hit.rightClicked then toggleRest(h, dn) end
 end
 
 local function sheetBackdrop(w, h)
@@ -874,6 +919,19 @@ function app.draw(w, h)
   gfx.pop()
   gfx.unalpha()
   if sheet then drawSheet(w, h) end
+  local age = sys.time() - bannerT
+  if age < 3.2 then
+    local a = min(1, age / 0.2) * min(1, (3.2 - age) / 0.4)
+    local tw = min(w - 40, gfx.textWidth(banner, 14, "semibold") + 60)
+    local bx, by = (w - tw) / 2, h - 64 + (1 - min(1, age / 0.25)) * 16
+    gfx.alpha(a)
+    gfx.shadow(bx, by, tw, 40, 20, 14, 4)
+    gfx.rect(bx, by, tw, 40, 20, theme.dark and "#3A3A3C" or "#1C1C1E")
+    gfx.icon("local_fire_department", bx + 24, by + 20, 20, theme.orange)
+    gfx.color(WHITE)
+    gfx.text(banner, bx + 42, by + 11, 14, "semibold")
+    gfx.unalpha()
+  end
 end
 
 -- ------------------------------------------------------------------ input
@@ -916,6 +974,9 @@ function app.event(e)
     elseif (e.key == "enter" or e.key == "space") and cursor.row > 0 then
       local hb = habits[cursor.row]
       if hb then toggle(hb, mondayOf(todayNum()) + weekOffset * 7 + cursor.col - 1) end
+    elseif e.key == "r" and cursor.row > 0 then
+      local hb = habits[cursor.row]
+      if hb then toggleRest(hb, mondayOf(todayNum()) + weekOffset * 7 + cursor.col - 1) end
     elseif e.key == "e" and cursor.row > 0 then
       local hb = habits[cursor.row]
       if hb then openEditor(hb) end
@@ -934,9 +995,79 @@ function app.event(e)
   end
 end
 
+local function exportCSV()
+  ui.saveFile(function(path)
+    if not path then return end
+    local lines = {"date,habit,status"}
+    local rows = {}
+    for _, hb in ipairs(habits) do
+      for k in pairs(hb.done) do rows[#rows + 1] = {k, hb.name, "done"} end
+      for k in pairs(hb.rest or {}) do rows[#rows + 1] = {k, hb.name, "rest"} end
+    end
+    table.sort(rows, function(a, b) if a[1] ~= b[1] then return a[1] < b[1] end return a[2] < b[2] end)
+    for _, r in ipairs(rows) do lines[#lines + 1] = r[1] .. ',"' .. r[2]:gsub('"', '""') .. '",' .. r[3] end
+    if fs.write(path, table.concat(lines, "\n") .. "\n") then banner, bannerT = TR("exported"), sys.time() end
+  end, "habits.csv", TR("export_csv"))
+end
+
+local function backup()
+  ui.saveFile(function(path)
+    if not path then return end
+    if fs.write(path, json.encode({app = "habits", version = 2, habits = habits, nextId = nextId}, true)) then
+      banner, bannerT = TR("backup_done"), sys.time()
+    end
+  end, "habits-backup.json", TR("backup"))
+end
+
+local function restore()
+  ui.openFile(function(path)
+    if not path then return end
+    local d = json.decode(fs.read(path) or "")
+    if type(d) ~= "table" or d.app ~= "habits" or type(d.habits) ~= "table" then
+      banner, bannerT = TR("restore_bad"), sys.time()
+      audio.play("error")
+      return
+    end
+    ui.alert(TR("restore"), TR("restore_confirm", #d.habits), {TR("restore"), TR("cancel")}, function(b)
+      if b ~= 1 then return end
+      store.set("habits", d.habits)
+      store.set("nextId", tonumber(d.nextId) or 1)
+      app.load()
+      saveNow()
+      banner, bannerT = TR("restore_done", #habits), sys.time()
+    end)
+  end, {".json"}, TR("restore"))
+end
+
+-- Quick Search: "habit name" offers to tick it off for today
+function app.search(query)
+  local q = (query or ""):lower()
+  if q == "" then return {} end
+  local out = {}
+  for _, hb in ipairs(habits) do
+    if hb.name:lower():find(q, 1, true) then
+      local done = hb.done[keyOf(todayNum())]
+      out[#out + 1] = {title = hb.name, subtitle = done and TR("done_today") or TR("mark_today"),
+                       icon = done and "check_circle" or "radio_button_unchecked", arg = "habit:" .. hb.id}
+      if #out >= 5 then break end
+    end
+  end
+  return out
+end
+
+function app.open(arg)
+  local id = tostring(arg or ""):match("^habit:(.+)$")
+  local hb = id and findHabit(id)
+  if hb and not hb.done[keyOf(todayNum())] then toggle(hb, todayNum()) end
+  tab, weekOffset = 1, 0
+end
+
 function app.menu()
   return {{title = TR("menu_habits"), items = {
     {label = TR("new_habit"), id = 1, shortcut = "N"},
+    {label = TR("export_csv") .. "…", id = 6},
+    {label = TR("backup") .. "…", id = 7},
+    {label = TR("restore") .. "…", id = 8},
     "-",
     {label = TR("tab_week"), id = 2, checked = tab == 1},
     {label = TR("tab_month"), id = 3, checked = tab == 2},
@@ -949,7 +1080,10 @@ end
 function app.onmenu(id)
   if id == 1 then openEditor(nil)
   elseif id >= 2 and id <= 4 then tab = id - 1; tabT = 0; save()
-  elseif id == 5 then tab = 1; weekOffset = 0 end
+  elseif id == 5 then tab = 1; weekOffset = 0
+  elseif id == 6 then exportCSV()
+  elseif id == 7 then backup()
+  elseif id == 8 then restore() end
 end
 
 function app.close()

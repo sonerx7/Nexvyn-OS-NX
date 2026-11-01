@@ -69,5 +69,16 @@
   "wd_3": "Wed",
   "wd_4": "Thu",
   "wd_5": "Fri",
-  "wd_6": "Sat"
+  "wd_6": "Sat",
+  "checklist": "Checklist",
+  "step_hint": "Add an item…",
+  "add_step": "Add",
+  "filter": "Filter",
+  "filter_hint": "Highlight the cards that contain this text (leave empty to show all).",
+  "export_md": "Export as Markdown",
+  "backup": "Back Up",
+  "restore": "Restore",
+  "restore_confirm": "Replace all your boards with the {0} boards in this backup?",
+  "restore_bad": "That file is not a Kanban backup.",
+  "ok": "OK"
 }

@@ -11,13 +11,16 @@
     "ko": "미로 먹보"
   },
   "description": {
-    "en": "Gobble every dot in the maze while three ghosts hunt you down. Grab a power pellet and turn the tables.",
-    "tr": "Üç hayalet peşindeyken labirentteki bütün noktaları ye. Güç hapını kap ve avcıyı av yap.",
-    "de": "Friss jeden Punkt im Labyrinth, während dich drei Geister jagen. Schnapp dir eine Kraftpille und dreh den Spieß um.",
-    "fr": "Gobez tous les points du labyrinthe pendant que trois fantômes vous traquent. Attrapez une super pastille et renversez la situation.",
-    "es": "Cómete todos los puntos del laberinto mientras tres fantasmas te persiguen. Coge una píldora de poder y dale la vuelta a la tortilla."
+    "en": "Eat the dots and outsmart three ghosts across four mazes. Three difficulties, medals and records.",
+    "tr": "Dört labirentte noktaları ye, üç hayaleti atlat. Üç zorluk, madalyalar ve rekorlar.",
+    "de": "Friss die Punkte und überliste drei Geister in vier Labyrinthen. Drei Schwierigkeitsgrade, Medaillen und Rekorde.",
+    "fr": "Mangez les points et déjouez trois fantômes dans quatre labyrinthes. Trois difficultés, médailles et records.",
+    "es": "Come los puntos y burla a tres fantasmas en cuatro laberintos. Tres dificultades, medallas y récords.",
+    "ja": "4つの迷路でドットを食べ、3匹のおばけを出し抜こう。3段階の難易度、メダル、記録。",
+    "zh": "在四个迷宫中吃掉豆子，智胜三个幽灵。三种难度、奖牌和纪录。",
+    "ko": "네 개의 미로에서 점을 먹고 유령 셋을 따돌리세요. 세 가지 난이도, 메달, 기록."
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

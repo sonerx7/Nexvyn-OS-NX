@@ -72,5 +72,9 @@
   "stat_fmt": "{0} – {1} – {2}",
   "play_black": "Siyahla oyna (ilk)",
   "play_white": "Beyazla oyna",
-  "show_moves": "Geçerli hamleleri göster"
+  "show_moves": "Geçerli hamleleri göster",
+  "mode_expert": "Uzman",
+  "review": "Oyunu incele",
+  "review_move": "Hamle {0} / {1}",
+  "done": "Bitti"
 }

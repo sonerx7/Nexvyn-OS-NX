@@ -26,5 +26,13 @@
   "pre_rock": "Rock",
   "pre_hiphop": "Hip Hop",
   "pre_house": "House",
-  "pre_empty": "Boş"
+  "pre_empty": "Boş",
+  "pre_funk": "Funk",
+  "pre_disco": "Disko",
+  "pre_reggae": "Reggae",
+  "pre_break": "Breakbeat",
+  "pre_bossa": "Bossa Nova",
+  "pre_trap": "Trap",
+  "generate": "Ritim Üret",
+  "accent_mode": "Vurgu Modu"
 }

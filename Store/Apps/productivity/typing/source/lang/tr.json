@@ -43,5 +43,12 @@
   "clear_title": "Tüm sonuçlar silinsin mi?",
   "clear_msg": "Geçmişiniz ve en iyi skorlarınız silinecek.",
   "clear": "Temizle",
-  "cancel": "Vazgeç"
+  "cancel": "Vazgeç",
+  "les_words": "Sık kelimeler",
+  "les_words_d": "En sık yazdığın kelimeler",
+  "les_weak": "Zayıf tuşlar",
+  "les_weak_d": "En çok kaçırdığın tuşlardan bir alıştırma",
+  "weak_keys": "Çalış: {0}",
+  "les_minute": "Bir dakikalık test",
+  "les_minute_d": "60 saniyede yazabildiğin kadar kelime yaz"
 }

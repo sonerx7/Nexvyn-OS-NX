@@ -32,5 +32,18 @@
   "cancel": "取消",
   "menu_records": "纪录",
   "best_line": "{0}：{1} 秒",
-  "wins_line": "{1} 局中胜 {0} 局"
+  "wins_line": "{1} 局中胜 {0} 局",
+  "custom": "自定义",
+  "custom_board": "自定义棋盘",
+  "columns": "列数",
+  "rows": "行数",
+  "mines": "地雷数",
+  "start": "开始",
+  "statistics": "统计",
+  "st_played": "局数",
+  "st_won": "胜局",
+  "st_best": "最佳 秒",
+  "st_streak": "连胜",
+  "close": "关闭",
+  "question_marks": "问号标记 (?)"
 }

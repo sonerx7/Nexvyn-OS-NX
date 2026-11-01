@@ -1,12 +1,20 @@
--- Asteroitler / Asteroids for Nexvyn OS: rotate, thrust and shoot in a wrap-around field, rocks split in
+-- Kaya Avcısı / Rock Blaster for Nexvyn OS: rotate, thrust and shoot in a wrap-around field, rocks split in
 -- three sizes, flying saucers, hyperspace, waves, lives, chain combos and a demo ship behind the title.
+-- Power crystals (triple shot, rapid fire, shield) drop from big rocks and saucers; three difficulties,
+-- medals and records.
 local K = require("arcade")
 local floor, min, max, abs, sqrt, sin, cos, pi, atan = math.floor, math.min, math.max, math.abs, math.sqrt,
   math.sin, math.cos, math.pi, math.atan
 local random = math.random
 
 local W, H = 960, 600
-local G = {icon = "rocket_launch", accent = "#FF7A45", overIcon = "public"}
+local G = {icon = "rocket_launch", accent = "#FF7A45", overIcon = "public", difficulty = true,
+  medals = {8000, 25000, 60000}}
+local POW = {triple = {"call_split", "#64D2FF", "p_triple"}, rapid = {"bolt", "#FFD60A", "p_rapid"},
+  shield = {"shield", "#32D74B", "p_shield"}}
+local POWKEYS = {"triple", "rapid", "shield"}
+local crystals = {}
+local tripleT, rapidT, powers = 0, 0, 0
 local RAD = {14, 26, 46}
 local PTS = {100, 50, 20}
 
@@ -39,7 +47,7 @@ end
 
 local function newRock(size, x, y, sp)
   local a = random() * 2 * pi
-  sp = sp or (40 + random() * 50) * (1 + (3 - size) * 0.35) * (1 + wave * 0.04)
+  sp = sp or (40 + random() * 50) * (1 + (3 - size) * 0.35) * (1 + wave * 0.04) * K.dmul
   local shape = {}
   for i = 1, 11 do shape[i] = 0.72 + random() * 0.32 end
   rocks[#rocks + 1] = {x = x, y = y, vx = cos(a) * sp, vy = sin(a) * sp, size = size, r = RAD[size],
@@ -61,7 +69,8 @@ function G.reset()
   wave, lives, fireCd, ufoT = 1, 3, 0, 14
   shots, hits, destroyed, nextLife = 0, 0, 0, 10000
   ship.x, ship.y, ship.vx, ship.vy, ship.a = W / 2, H / 2, 0, 0, -pi / 2
-  ship.inv, ship.alive, ship.respawn = 2, true, 0
+  ship.inv, ship.alive, ship.respawn, ship.shield = 2, true, 0, false
+  crystals, tripleT, rapidT, powers = {}, 0, 0, 0
   for i = 1, #BUL do BUL[i].life = 0 end
   ufo.on = false
   pointer = nil
@@ -86,9 +95,14 @@ local function shoot()
   if not ship.alive or fireCd > 0 then return end
   local n = 0
   for i = 1, #BUL do if BUL[i].life > 0 and not BUL[i].enemy then n = n + 1 end end
-  if n >= 8 then return end
-  if fire(ship.x + cos(ship.a) * 16, ship.y + sin(ship.a) * 16, ship.a, false) then
-    fireCd = 0.12
+  if n >= (rapidT > 0 and 14 or 8) then return end
+  local ok = fire(ship.x + cos(ship.a) * 16, ship.y + sin(ship.a) * 16, ship.a, false)
+  if ok and tripleT > 0 then
+    fire(ship.x + cos(ship.a) * 16, ship.y + sin(ship.a) * 16, ship.a - 0.2, false)
+    fire(ship.x + cos(ship.a) * 16, ship.y + sin(ship.a) * 16, ship.a + 0.2, false)
+  end
+  if ok then
+    fireCd = rapidT > 0 and 0.06 or 0.12
     if K.state == "play" then
       shots = shots + 1
       K.sfx("shoot", 0.6)
@@ -120,7 +134,22 @@ function G.pointer(e)
   end
 end
 
+local function dropCrystal(x, y)
+  local a = random() * 2 * pi
+  crystals[#crystals + 1] = {x = x, y = y, vx = cos(a) * 30, vy = sin(a) * 30, kind = POWKEYS[random(#POWKEYS)],
+    t = 0, life = 10}
+end
+
 local function explodeShip()
+  if ship.shield then
+    ship.shield, ship.inv = false, 1.5
+    K.burst(ship.x, ship.y, 36, "#32D74B", 220, 0.6, 2.8)
+    K.sfx("hit")
+    K.shake(6)
+    K.vibrate(0.5, 90)
+    return
+  end
+  tripleT, rapidT = 0, 0
   ship.alive = false
   ship.respawn = 2
   K.burst(ship.x, ship.y, 60, "#FF7A45", 260, 1.2, 3.5)
@@ -134,7 +163,7 @@ local function explodeShip()
   if lives <= 0 then
     local acc = shots > 0 and floor(hits / shots * 100 + 0.5) or 0
     K.over({stats = {{TR("wave"), tostring(wave)}, {TR("destroyed"), tostring(destroyed)},
-      {TR("accuracy"), acc .. "%"}}})
+      {TR("accuracy"), acc .. "%"}, {TR("powerups"), tostring(powers)}}})
   end
 end
 
@@ -153,6 +182,7 @@ local function breakRock(i, byPlayer)
     K.addScore(pts)
     K.popup(r.x, r.y - r.r, "+" .. pts, c > 1 and "#FFD60A" or "#FFFFFF")
     K.sfx(r.size == 3 and "boom" or "small", r.size == 3 and 0.7 or 1)
+    if r.size == 3 and random() < 0.1 then dropCrystal(r.x, r.y) end
     K.shake(r.size * 2.5)
     if K.score >= nextLife then
       nextLife = nextLife + 10000
@@ -215,6 +245,28 @@ local function simulate(dt, demo)
     end
   end
   if fireCd > 0 then fireCd = fireCd - dt end
+  if tripleT > 0 then tripleT = tripleT - dt end
+  if rapidT > 0 then rapidT = rapidT - dt end
+  -- power crystals drift, blink out after 10 s and are picked up by flying through them
+  local ci = 1
+  while ci <= #crystals do
+    local c = crystals[ci]
+    c.x, c.y, c.t, c.life = c.x + c.vx * dt, c.y + c.vy * dt, c.t + dt, c.life - dt
+    wrap(c)
+    if ship.alive and not demo and circleHit(c.x, c.y, ship.x, ship.y, 26) then
+      powers = powers + 1
+      if c.kind == "triple" then tripleT = 12 elseif c.kind == "rapid" then rapidT = 10 else ship.shield = true end
+      K.callout(TR(POW[c.kind][3]), POW[c.kind][2], 30, "pow")
+      K.burst(c.x, c.y, 24, POW[c.kind][2], 200, 0.6, 3)
+      K.sfx("power")
+      K.vibrate(0.4, 70)
+      table.remove(crystals, ci)
+    elseif c.life <= 0 then
+      table.remove(crystals, ci)
+    else
+      ci = ci + 1
+    end
+  end
   -- rocks
   for i = 1, #rocks do
     local r = rocks[i]
@@ -254,6 +306,7 @@ local function simulate(dt, demo)
             K.addScore(pts)
             K.popup(ufo.x, ufo.y - 20, "+" .. pts, "#BF5AF2")
             K.callout(TR("ufo_down"), "#BF5AF2", 30, "ufo")
+            dropCrystal(ufo.x, ufo.y)
             K.sfx("boom")
             K.shake(8)
           end
@@ -288,7 +341,7 @@ local function simulate(dt, demo)
     ufo.y = ufo.y + sin(ufo.t * 2) * 50 * dt
     ufo.fire = ufo.fire - dt
     if ufo.fire <= 0 and ship.alive then
-      ufo.fire = ufo.small and 0.9 or 1.4
+      ufo.fire = (ufo.small and 0.9 or 1.4) / K.dmul
       local a = atan(ship.y - ufo.y, ship.x - ufo.x) + (random() - 0.5) * (ufo.small and 0.25 or 0.9)
       fire(ufo.x, ufo.y, a, true, 330)
       if not demo then K.tone(900, 0.06, 0.06, "square") end
@@ -411,6 +464,23 @@ function G.draw(w, h)
       K.color("#7DF9FF", 0.25 + 0.15 * sin(t * 10))
       gfx.circleLine(ox + ship.x * S, oy + ship.y * S, 26 * S, 2)
     end
+    if ship.shield then
+      K.color("#32D74B", 0.16 + 0.08 * sin(t * 6))
+      gfx.circle(ox + ship.x * S, oy + ship.y * S, 24 * S)
+      K.color("#7CFF9E", 0.7)
+      gfx.circleLine(ox + ship.x * S, oy + ship.y * S, 24 * S, 2)
+    end
+  end
+  for _, c in ipairs(crystals) do
+    if c.life > 2.5 or floor(t * 8) % 2 == 0 then
+      local p = POW[c.kind]
+      local X, Y, r = ox + c.x * S, oy + c.y * S, (14 + sin(c.t * 5) * 2) * S
+      K.color(p[2], 0.25)
+      gfx.circle(X, Y, r * 1.6)
+      K.color(p[2])
+      gfx.poly({X, Y - r, X + r, Y, X, Y + r, X - r, Y})
+      gfx.icon(p[1], X, Y, 14 * S, "#101018")
+    end
   end
   K.drawParticles(S, ox, oy)
   K.drawPopups(S, ox, oy, 18)
@@ -423,6 +493,9 @@ function G.draw(w, h)
   gfx.color(0, 0, 0, 120)
   gfx.rect(x, 8, 20 + max(1, lives) * 22, 34, 17)
   for i = 1, lives do shipShape(x + 4 + i * 22, 25, -pi / 2, 0.6, "#7DF9FF", 1) end
+  x = x + 28 + max(1, lives) * 22
+  if tripleT > 0 then x = x + K.pill(x, 8, POW.triple[1], tostring(math.ceil(tripleT)), POW.triple[2]) + 6 end
+  if rapidT > 0 then K.pill(x, 8, POW.rapid[1], tostring(math.ceil(rapidT)), POW.rapid[2]) end
   K.bestPill(w - 60, 8)
 end
 

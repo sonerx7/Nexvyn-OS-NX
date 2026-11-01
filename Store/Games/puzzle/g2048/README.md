@@ -5,6 +5,24 @@ ve her boyut için en iyi skor.
 Slide numbered tiles and merge equal ones to reach the 2048 tile; four board sizes from 3×3 to 6×6, undo and a best
 score for every size.
 
+## Yenilikler 1.1 / What's new in 1.1
+
+**Türkçe:** Dört tahta, Zamana Karşı, akıllı ipucu.
+
+- Klasik ve Zamana Karşı (3 dakika)
+- Ayrı kaydedilen 3×3, 4×4, 5×5 ve 6×6 tahtalar
+- Akıllı ipucu ve geri alma
+- Tahta ve mod başına en iyi skorlar, istatistikler
+- Kaydırma, yön tuşları, çubuk, oklar ya da WASD
+
+**English:** Four boards, Time Attack, smart hints.
+
+- Classic and Time Attack (3 minutes)
+- 3×3, 4×4, 5×5 and 6×6 boards, saved separately
+- Smart hint and undo
+- Best scores per board and mode, statistics
+- Swipe, D-pad, stick, arrows or WASD
+
 ## Kontroller / Controls
 
 - **Dokunmatik / Touch:** tahtada kaydırın / swipe on the board.

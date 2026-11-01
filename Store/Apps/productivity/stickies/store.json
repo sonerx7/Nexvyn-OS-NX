@@ -26,7 +26,7 @@
       "wait 0.5",
       "text Weekend plan",
       "key enter",
-      "text - Finish Zelda shrine",
+      "text - Finish the shrine puzzle",
       "key enter",
       "wait 1.5"
     ],
