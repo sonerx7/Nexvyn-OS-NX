@@ -8,7 +8,7 @@
     "fr": "Convertissez les couleurs entre HEX, RGB, HSL, HSV et CMJN avec des curseurs synchronisés, vérifiez le contraste WCAG sur blanc et sur noir et copiez n’importe quel format.",
     "es": "Convierte colores entre HEX, RGB, HSL, HSV y CMYK con controles deslizantes sincronizados, comprueba el contraste WCAG frente al blanco y el negro y copia cualquier formato."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

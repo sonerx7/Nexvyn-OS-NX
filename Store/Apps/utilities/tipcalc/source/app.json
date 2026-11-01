@@ -8,7 +8,7 @@
     "fr": "Calculez le pourboire, le total et la part de chacun : pastilles de pourboire rapides, partage entre plusieurs personnes et arrondi.",
     "es": "Calcula la propina, el total y lo que paga cada persona: botones rápidos de propina, reparto entre personas y redondeo al alza."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

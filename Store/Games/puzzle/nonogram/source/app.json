@@ -17,7 +17,7 @@
     "fr": "Utilisez les indices numériques pour remplir la grille et révéler 25 images faites main, de 5×5 à 10×10.",
     "es": "Usa las pistas numéricas para rellenar la cuadrícula y descubrir 25 dibujos hechos a mano, de 5×5 a 10×10."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

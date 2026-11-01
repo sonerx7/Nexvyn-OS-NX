@@ -8,7 +8,7 @@
     "fr": "Faites glisser et fusionnez les tuiles numérotées pour atteindre 2048. Quatre tailles de plateau, annulation et meilleurs scores.",
     "es": "Desliza y combina fichas numeradas hasta llegar a 2048. Cuatro tamaños de tablero, deshacer y mejores puntuaciones."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

@@ -8,7 +8,7 @@
     "fr": "Trouvez la sortie lumineuse de dix labyrinthes 3D à la première personne, de 5×5 à 25×25 salles, avec mini-carte et meilleurs temps.",
     "es": "Encuentra la salida luminosa de diez laberintos 3D en primera persona, de 5×5 a 25×25 salas, con minimapa y mejores tiempos."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "games",

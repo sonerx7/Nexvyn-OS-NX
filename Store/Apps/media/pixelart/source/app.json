@@ -8,7 +8,7 @@
     "fr": "Dessinez du pixel art en 8×8, 16×16 ou 32×32 avec crayon, remplissage, ligne et miroir, gardez une galerie et exportez de vrais fichiers PNG.",
     "es": "Dibuja pixel art de 8×8, 16×16 o 32×32 con lápiz, relleno, línea y espejo, guarda una galería y exporta archivos PNG reales."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "media",

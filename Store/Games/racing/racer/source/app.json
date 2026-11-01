@@ -18,7 +18,7 @@
     "es": "Una carrera 3D de tres vueltas en circuito con colinas, rivales de IA, pedales táctiles y dirección por inclinación."
   },
   "category": "games",
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "icon": "icon.png",

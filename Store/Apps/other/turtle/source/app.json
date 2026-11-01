@@ -8,7 +8,7 @@
     "fr": "Apprenez à coder en dessinant : donnez à la tortue des commandes comme avancer, droite et répéter (en turc ou en anglais) et regardez-la dessiner des étoiles, des spirales et des fleurs.",
     "es": "Aprende a programar dibujando: da a la tortuga órdenes como avanzar, derecha y repetir (en turco o en inglés) y mira cómo dibuja estrellas, espirales y flores."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "other",

@@ -8,7 +8,7 @@
     "fr": "Calculez les litres aux 100 km et le coût d’un trajet, et tenez un carnet de pleins avec moyennes et graphique.",
     "es": "Calcula los litros a los 100 km y el coste de un viaje, y lleva un registro de repostajes con promedios y un gráfico."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

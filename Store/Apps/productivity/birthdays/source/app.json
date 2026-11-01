@@ -8,7 +8,7 @@
     "fr": "Ne manquez plus aucun anniversaire : la liste des prochains avec les jours restants et l’âge atteint, une vue du mois et un rappel la veille.",
     "es": "No te pierdas ningún cumpleaños: una lista de los próximos con los días que faltan y la edad que cumplen, una vista del mes y un recordatorio el día anterior."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

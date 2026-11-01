@@ -8,7 +8,7 @@
     "fr": "Comptez les jours et les heures avant chaque examen, chronométrez vos séances de révision et entretenez votre série quotidienne.",
     "es": "Cuenta los días y las horas que faltan para cada examen, cronometra tus sesiones de estudio y mantén una racha diaria de estudio."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "productivity",

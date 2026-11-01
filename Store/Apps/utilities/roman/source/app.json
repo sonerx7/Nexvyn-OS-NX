@@ -8,7 +8,7 @@
     "fr": "Convertissez nombres et chiffres romains dans les deux sens pendant la saisie, voyez comment chacun est construit, consultez les règles et testez-vous avec un quiz.",
     "es": "Convierte números y números romanos en ambos sentidos mientras escribes, mira cómo se forma cada uno, consulta las reglas y ponte a prueba con un cuestionario."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "utilities",

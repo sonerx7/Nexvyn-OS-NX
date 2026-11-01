@@ -8,7 +8,7 @@
     "fr": "Validez du JSON avec la ligne et la colonne exactes des erreurs, formatez-le ou minifiez-le en gardant l’ordre des clés, triez les clés et explorez-le sous forme d’arbre consultable avec des statistiques.",
     "es": "Valida JSON con la línea y la columna exactas de cada error, formatéalo o minifícalo conservando el orden de las claves, ordena las claves y explóralo como un árbol con búsqueda y estadísticas."
   },
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "Soner Çakır (sonerx7)",
   "homepage": "https://github.com/sonerx7",
   "category": "developer",
