@@ -1,0 +1,53 @@
+{
+  "age": "teen",
+  "tags": [
+    "2d",
+    "pixel-art",
+    "roguelike",
+    "action",
+    "procedural",
+    "controller"
+  ],
+  "subtitle": {
+    "en": "Five realms. Thirty boons. A lost dawn.",
+    "tr": "Beş bölge. Otuz lütuf. Kayıp bir şafak.",
+    "de": "Fünf Reiche, dreißig Segen, eine Reise.",
+    "fr": "Cinq royaumes, trente bénédictions.",
+    "es": "Cinco reinos y treinta bendiciones."
+  },
+  "description": {
+    "en": "An original top-down pixel-art action roguelike with five distinct region layouts and palettes, thirteen branching route nodes per region and a twenty-five-room complete journey. Three starting weapons, ten enemy variants, five bosses with telegraphed attacks and a second phase. Thirty ranked boons, six functional synergies, shops, treasure, shrines, healing sanctuaries and permanent workshop upgrades. Seeded runs, permadeath and resumable saves. Animated original sprites, bitmap typography, integer-scaled pixels and original music. English and Turkish. Images are labelled software previews; real-device validation is pending.",
+    "tr": "Beş farklı bölge yerleşimi ve paletiyle üstten görünümlü özgün piksel aksiyon roguelike. Bölge başına on üç dallanan rota düğümü; tam yolculukta yirmi beş oda. Üç başlangıç silahı, on düşman varyantı, işaretli saldırıları ve ikinci evresi olan beş boss. Otuz kademeli lütuf, altı işlevsel birliktelik, tüccar, hazine, sunak, sığınak ve kalıcı atölye geliştirmeleri. Tohumlu yolculuklar, kalıcı ölüm ve devam edilebilir kayıt. Animasyonlu özgün sprite’lar, bitmap yazı, tam sayı piksel ölçeği ve özgün müzikler. Türkçe ve İngilizce. Görseller yazılım önizlemesidir; cihaz doğrulaması bekleniyor.",
+    "de": "Ein eigenständiges Action-Roguelike in Pixelgrafik aus der Vogelperspektive: fünf Regionen mit unterschiedlichen Grundrissen und Paletten, dreizehn verzweigte Routenknoten pro Region und fünfundzwanzig Räume je vollständiger Reise. Drei Startwaffen, zehn Gegnervarianten und fünf Bosse mit angekündigten Angriffen und zweiter Phase. Dreißig aufwertbare Segen, sechs Synergien, Händler, Schätze, Schreine, Zufluchtsorte und dauerhafte Werkstattverbesserungen. Startwertbasierte Reisen, endgültiger Tod und fortsetzbare Spielstände. Animierte eigene Sprites, Pixelschrift, ganzzahlige Skalierung und eigene Musik. Spieltexte auf Englisch und Türkisch. Die Bilder sind gekennzeichnete Softwarevorschauen; der Test auf echten Geräten steht aus.",
+    "fr": "Un roguelike d’action original en pixel art et vue de dessus : cinq régions aux plans et palettes distincts, treize étapes ramifiées par région et vingt-cinq salles pour un voyage complet. Trois armes de départ, dix variantes d’ennemis et cinq boss avec attaques annoncées et seconde phase. Trente bénédictions améliorables, six synergies, marchands, trésors, autels, refuges et améliorations permanentes de l’atelier. Voyages générés par graine, mort définitive et sauvegardes permettant de reprendre. Sprites animés, police bitmap, mise à l’échelle entière et musique originale. Textes en anglais et turc. Les images sont des aperçus logiciels signalés ; la validation sur appareil reste à effectuer.",
+    "es": "Un roguelike de acción original en pixel art con vista cenital: cinco regiones con diseños y paletas distintos, trece nodos de ruta por región y veinticinco salas por viaje completo. Tres armas iniciales, diez variantes de enemigos y cinco jefes con ataques anunciados y segunda fase. Treinta bendiciones mejorables, seis sinergias, comerciantes, tesoros, altares, refugios y mejoras permanentes del taller. Partidas generadas por semilla, muerte permanente y guardado para continuar. Sprites animados, tipografía bitmap, escalado entero y música original. Textos en inglés y turco. Las imágenes son vistas previas de software identificadas; falta la validación en un dispositivo real."
+  },
+  "changelog": {
+    "en": "First release: five pixel-art regions, thirty boons, three weapons and permanent workshop upgrades.",
+    "tr": "İlk sürüm: beş piksel bölge, otuz lütuf, üç silah ve kalıcı atölye geliştirmeleri.",
+    "de": "Erste Version: fünf Pixelregionen, dreißig Segen, drei Waffen und dauerhafte Werkstattverbesserungen.",
+    "fr": "Première version : cinq régions, trente bénédictions, trois armes et améliorations permanentes.",
+    "es": "Primera versión: cinco regiones, treinta bendiciones, tres armas y mejoras permanentes."
+  },
+  "shots": [
+    [
+      "wait 1"
+    ],
+    [
+      "key enter",
+      "key enter",
+      "key enter",
+      "wait 1"
+    ],
+    [
+      "key tab",
+      "wait 0.4"
+    ],
+    [
+      "key escape",
+      "wait 0.4"
+    ]
+  ],
+  "kind": "game",
+  "license": "GPL-3.0-or-later"
+}

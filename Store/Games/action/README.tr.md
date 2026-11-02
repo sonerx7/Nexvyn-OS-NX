@@ -4,6 +4,7 @@
 
 | | Öğe | Sürüm | Açıklama |
 |---|---|---|---|
+| <img src="frost-lantern/icon.png" width="32"> | [Ayaz Feneri](frost-lantern/) | 1.0.0 | Beş bölge. Otuz lütuf. Kayıp bir şafak. |
 | <img src="lanternfall/icon.png" width="32"> | [Fener Düşüşü](lanternfall/) | 1.0.0 | Fener ışığında platform: 3 dünya, 3 boss |
 | <img src="missile/icon.png" width="32"> | [Füze Savunması](missile/) | 1.1.0 | Altı şehir, üç batarya: göğü savun |
 | <img src="spacearena/icon.png" width="32"> | [Uzay Arenası](spacearena/) | 1.1.0 | Neon arenada dalga dalga düşmana dayan |

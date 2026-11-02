@@ -540,6 +540,17 @@
       }
     ]
   },
+  "com.sonerx7.frostlantern": {
+    "added": "2026-11-02",
+    "updated": "2026-11-02",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-02"
+      }
+    ]
+  },
   "com.sonerx7.fuel": {
     "added": "2026-10-29",
     "updated": "2026-11-01",

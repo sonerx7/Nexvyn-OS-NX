@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **155** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -134,7 +134,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki 
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
 
-## Oyunlar (44)
+## Oyunlar (45)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -151,6 +151,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki 
 | <img src="Games/puzzle/sokoban/icon.png" width="32"> | [Kutu İtme](Games/puzzle/sokoban/) | 40 bölümlük kutu itme bulmacası |
 | <img src="Games/puzzle/blocks/icon.png" width="32"> | [Blok Düşür](Games/puzzle/blocks/) | Maraton, Sprint, Ultra ve Kazı modları |
 | <img src="Games/board/connect4/icon.png" width="32"> | [Dört Bağla](Games/board/connect4/) | Pulları bırak, dördünü yan yana getir |
+| <img src="Games/action/frost-lantern/icon.png" width="32"> | [Ayaz Feneri](Games/action/frost-lantern/) | Beş bölge. Otuz lütuf. Kayıp bir şafak. |
 | <img src="Games/casual/fishing/icon.png" width="32"> | [Balık Tut](Games/casual/fishing/) | Oltanı at, makarayı sar, koleksiyonu doldur |
 | <img src="Games/word/hangman/icon.png" width="32"> | [Adam Asmaca](Games/word/hangman/) | Kelimeyi harf harf tahmin et |
 | <img src="Games/action/lanternfall/icon.png" width="32"> | [Fener Düşüşü](Games/action/lanternfall/) | Fener ışığında platform: 3 dünya, 3 boss |
