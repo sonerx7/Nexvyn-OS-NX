@@ -11,16 +11,17 @@ Write store.json for this Nexvyn OS app for the App Market.
 {
   "kind": "app | game | demo | template",
   "tags": ["3-6 lower-case search words"],
-  "subtitle": {"en": "...", "tr": "...", "de": "...", "fr": "...", "es": "..."},
-  "description": {"en": "...", "tr": "...", "de": "...", "fr": "...", "es": "..."},
+  "subtitle": {"en": "...", "<other language code>": "..."},
+  "description": {"en": "...", "<other language code>": "..."},
   "shots": [[...], [...], [...]]
 }
 
 Rules:
-- subtitle: under 60 characters, says the benefit, no app name, no ending period.
+- subtitle: at most 45 characters, says the benefit, no app name, no ending period.
 - description: one paragraph of 2-3 sentences on what the user can do, then "\n\n" and 4-6 bullets ("• ..."),
   each one real feature found in the code. No claims that are not in the code. No superlatives.
-- All five languages, natural wording (not word-for-word), the same facts in each.
+- English is required. Add exactly the other languages the app's lang/ folder has (<list them>), natural wording
+  (not word-for-word), the same facts in each.
 - shots: 3 or 4 shots; each shot is a list of steps run before that screenshot, and the state carries over to the
   next shot. Allowed steps only:
     wait <seconds>          e.g. "wait 1.5"
@@ -34,9 +35,9 @@ Rules:
   Start with "wait 3" so the app has loaded. Show the most important screens with realistic, non-personal data.
   End with a "dark 1" shot.
 
-Also write README.md for the item folder: "# <Turkish name> / <English name>", two sentences in Turkish and in English,
+Also write README.md for the item folder: "# <name>", two or three sentences in English (more languages if I ask),
 a table (Id, Language, Min SDK, Permissions, Gamepad, Window), a "What it teaches"/features list and a versions table.
 ```
 
-Check the result with `python SDK/Tools/nxv/nxv.py check <item folder>`: it validates the five languages, `kind`, `tags`
+Check the result with `python SDK/Tools/nxv/nxv.py check <item folder>`: it checks that English is there, `kind`, `tags`
 and every `shots` step.

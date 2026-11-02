@@ -11,11 +11,11 @@ Checker output:
 <paste the whole output of python tools/lua_check.py ... (or js_check / py_check / rt_check / nxv check)>
 
 Files:
-<paste app.json, the files named in the output and lang/en.json + lang/tr.json>
+<paste app.json, the files named in the output and lang/en.json (plus the other lang files named in the output)>
 
 How to read the output:
-- "lang/en.json missing: <key>" / "TR(...) missing": add the key to lang/en.json AND lang/tr.json (and the other lang
-  files), or fix a typo in the TR() call. The checker also scans comments: a TR("...") example in a comment counts.
+- "lang/en.json missing: <key>" / "TR(...) missing": add the key to lang/en.json (and to every other lang
+  file the app ships, at least the one named in the output), or fix a typo in the TR() call. The checker also scans comments: a TR("...") example in a comment counts.
 - "unknown icon names (not in Icons.codepoints, nothing is drawn)": use a name from Material Icons Round
   (e.g. "settings", "delete", "add").
 - "expected number for argument N": a gfx call got nil or a string; find which variable is nil on that frame.

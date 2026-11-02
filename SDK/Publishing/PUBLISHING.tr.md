@@ -38,7 +38,7 @@ Store/
 ├── Games/<tür>/<kısa-ad>/        oyunlar: action, arcade, board, cards, casual, puzzle, racing, sports, strategy, word
 │   ├── source/                   paket: app.json, main.*, icon.png, lang/*.json, diğer dosyalar
 │   ├── store.json                mağaza metinleri, tür, etiketler, ekran görüntüsü betiği
-│   ├── README.md                 GitHub'da gezenler için açıklama (İngilizce ve Türkçe)
+│   ├── README.md                 GitHub'da gezenler için açıklama (İngilizce; başka diller isteğe bağlı)
 │   ├── screenshots/1.png ...     3-4 ekran görüntüsü (bakımcı da üretebilir, bölüm 6)
 │   ├── icon.png                  build_store.py source/icon.png'den kopyalar
 │   └── <kısa-ad>.nxvapp          build_store.py yazar, elle eklemeyin
@@ -62,7 +62,7 @@ Store/
 | Alan | Kural |
 |---|---|
 | `id` | Benzersiz, ters alan adı: `com.adiniz.uygulama` (harf, rakam, `.`, `-`, `_`; en çok 128). Güncellemeler bununla eşleşir: **asla değiştirmeyin**. |
-| `name`, `description` | `{"en", "tr", "de", "fr", "es"}` dil tabloları (en az İngilizce). `description` kısa bir cümledir; uzun metin `store.json`'a. |
+| `name`, `description` | `{"en": ..., "de": ...}` dil tabloları: İngilizce zorunlu, başka her dil isteğe bağlı. `description` kısa bir cümledir; uzun metin `store.json`'a. |
 | `version` | `"1.0"`, `"1.2.3"`: noktalı sayılar (`1.10` > `1.9`). Her güncellemede artırın. |
 | `author`, `homepage` | Hakkında penceresinde ve Uygulama Mağazası'nda görünür. |
 | `category` | `productivity`, `utilities`, `media`, `internet`, `developer`, `system`, `switch`, `other`, `games`. |
@@ -91,9 +91,12 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 
 ## 4. Simge ve README
 
-- `source/icon.png`: 128×128 ya da 256×256, saydam PNG. Yerleşik stilde:
-  `python SDK/Tools/nxv/nxv.py icon water_drop "#5AC8FA" "#0A6CFF" <klasör>/source/icon.png --sdk <kaynak deposu>`.
-- `README.md`: başlık `# English Name / Türkçe Ad`, iki dilde bir iki cümle, kimlik / dil / SDK / izinler tablosu,
+- `source/icon.png`: 256×256 PNG. SDK ile yapılan oyun ve app'lerde ikon **öğenin kendi key art'ıdır**: kahramanı
+  ya da ana nesnesi, dünyası, ışığı, adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde olacak şekilde kenardan
+  kenara dolu ve mağazadaki diğer ikonlara benzemez. Gradyan üstünde düz sembol kabul edilmez (`nxv icon` bunları
+  yalnızca çalışırken geçici olarak üretir). Blender tarifi ve AI prompt'uyla nasıl yapılacağı:
+  `Guides/MAKE_A_GAME.tr.md` (*Mağaza ikonu ve key art*) ve `AI/tasks/store-icon.tr.md`.
+- `README.md`: başlık `# Ad`, İngilizce birkaç cümle (başka diller isteğe bağlı), kimlik / dil / SDK / izinler tablosu,
   kontroller, sürüm tablosu ve sizin yapmadığınız her şeyin lisansı.
 
 ## 5. store.json
@@ -102,15 +105,15 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 {
   "kind": "app",
   "tags": ["water", "health", "reminders"],
-  "subtitle": {"en": "Drink enough every day", "tr": "...", "de": "...", "fr": "...", "es": "..."},
-  "description": {"en": "Two or three sentences.\n\n• Bullet\n• Bullet", "tr": "...", "de": "...", "fr": "...", "es": "..."},
+  "subtitle": {"en": "Drink enough every day", "tr": "..."},
+  "description": {"en": "Two or three sentences.\n\n• Bullet\n• Bullet", "tr": "..."},
   "age": "everyone",
   "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["dark 1", "wait 1.5"]]
 }
 ```
 
-- `subtitle` (en çok 45 karakter) ve `description`: **İngilizce zorunludur**, Türkçe şiddetle önerilir; Almanca,
-  Fransızca ve İspanyolca (ve Japonca, Çince, Korece) yazabiliyorsanız ekleyin. Eksik diller İngilizceye düşer.
+- `subtitle` (en çok 45 karakter) ve `description`: **İngilizce zorunludur**; istediğiniz başka dilleri
+  ekleyin (Türkçe, Almanca, Fransızca, İspanyolca, Japonca, Çince, Korece). Eksik diller İngilizceye düşer.
 - `kind`: `app`, `game`, `demo` ya da `template`. `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
 - `age`: içerik notu. `everyone` (varsayılan) ya da `teen` (hafif şiddet, korkutucu temalar, kullanıcıların ürettiği
   web içeriği). Yalnızca yetişkinlere yönelik içerik kabul edilmez.
@@ -149,7 +152,9 @@ Listenin tamamı [inceleme listesidir](REVIEW.tr.md). Kısacası şu öğeler **
   yayımlamaya izin veren bir lisansa sahip olmalısınız**; üçüncü taraf parçalar lisanslarıyla README'de listelenir
   (Türkçe yamalardaki YamaNX notları gibi: kim yaptı, nereden geliyor, hangi lisansla);
 - yalnızca yetişkinlere yönelik, nefret içeren ya da korsan dahil yasa dışı bir şeyi özendirenler;
-- İngilizce metni olmayanlar.
+- İngilizce metni olmayanlar;
+- bir örneğin ya da başka bir oyunun menü düzenini ve başlığını kopyalayan ya da key art yerine düz sembol ikonu olan
+  oyunlar (inceleme listesine bakın).
 
 ## 9. Güncellemeler
 

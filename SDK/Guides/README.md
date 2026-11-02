@@ -18,6 +18,7 @@ English summary. The complete API reference is always [SDK/Reference/SDK.en.md](
 | [LUA_CAPABILITIES.md](LUA_CAPABILITIES.en.md) | What can realistically be built with Lua, and where the limits are | TR |
 | [GAME_ENGINE.md](GAME_ENGINE.en.md) | Tutorial for the `nexvyn.game` 2D engine: scenes, sprites, maps, camera, physics, particles, tweens | TR |
 | [GAME_ENGINE_PROJECTS.md](GAME_ENGINE_PROJECTS.en.md) | The Game Engine app (formerly Game Workshop): making 2D and 3D games with little or no code, the project format | TR |
+| [MAKE_A_GAME.md](MAKE_A_GAME.en.md) | Make a game: the complete recipe for SDK 1.8 (project, 3D models, loading, input, collision, speed, art direction, store icon, publishing), with tested Lua, JavaScript and Python code | EN + TR |
 | [APP_GUIDE.md](APP_GUIDE.en.md) | Writing a built-in C++ app (contributing to the Nexvyn OS source) | EN |
 | [USER_GUIDE.md](USER_GUIDE.en.md) | User guide: setup, desktop, shortcuts, apps, the Store, Connect to PC (FTP) | TR |
 | [FORWARDER.md](FORWARDER.en.md) | The forwarder that opens Nexvyn OS from the HOME menu | TR + EN |

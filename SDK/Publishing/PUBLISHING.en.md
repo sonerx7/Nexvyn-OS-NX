@@ -38,7 +38,7 @@ Store/
 ├── Games/<genre>/<slug>/       games: action, arcade, board, cards, casual, puzzle, racing, sports, strategy, word
 │   ├── source/                 the bundle: app.json, main.*, icon.png, lang/*.json, other files
 │   ├── store.json              store texts, kind, tags, screenshot script
-│   ├── README.md               a description for people browsing GitHub (English and Turkish)
+│   ├── README.md               a description for people browsing GitHub (English; more languages optional)
 │   ├── screenshots/1.png ...   3-4 screenshots (a maintainer can make them, section 6)
 │   ├── icon.png                copied from source/icon.png by build_store.py
 │   └── <slug>.nxvapp           written by build_store.py, do not add it by hand
@@ -62,7 +62,7 @@ Store/
 | Field | Rule |
 |---|---|
 | `id` | Unique, reverse domain: `com.yourname.app` (letters, digits, `.`, `-`, `_`; at most 128). Updates match it: **never change it**. |
-| `name`, `description` | `{"en", "tr", "de", "fr", "es"}` tables (English at least). `description` is one short sentence; the long text goes into `store.json`. |
+| `name`, `description` | `{"en": ..., "de": ...}` tables: English required, any other language optional. `description` is one short sentence; the long text goes into `store.json`. |
 | `version` | `"1.0"`, `"1.2.3"`: dotted numbers (`1.10` > `1.9`). Raise it with every update. |
 | `author`, `homepage` | Shown in the About window and in the App Market. |
 | `category` | `productivity`, `utilities`, `media`, `internet`, `developer`, `system`, `switch`, `other`, `games`. |
@@ -92,9 +92,12 @@ sandboxed, so users are asked once more.
 
 ## 4. Icon and README
 
-- `source/icon.png`: a 128×128 or 256×256 transparent PNG. In the built-in style:
-  `python SDK/Tools/nxv/nxv.py icon water_drop "#5AC8FA" "#0A6CFF" <folder>/source/icon.png --sdk <source checkout>`.
-- `README.md`: a `# English Name / Türkçe Ad` title, one or two sentences in both languages, an id / language / SDK /
+- `source/icon.png`: 256×256 PNG. For games and apps made with the SDK the icon is **key art of the item itself**:
+  its hero or main object, its world, its lighting, its name; bold, readable at 64 px, filled edge to edge with the
+  subject inside the central 80 %, and unlike the other icons in the store. A flat symbol on a gradient is not
+  accepted (`nxv icon` makes those only as placeholders while you work). How to make one, with a Blender recipe and
+  an AI prompt: `Guides/MAKE_A_GAME.en.md` (*Store icon and key art*) and `AI/tasks/store-icon.en.md`.
+- `README.md`: a `# Name` title, a few sentences in English (more languages optional), an id / language / SDK /
   permissions table, controls, a versions table and the licenses of anything you did not make yourself.
 
 ## 5. store.json
@@ -103,15 +106,15 @@ sandboxed, so users are asked once more.
 {
   "kind": "app",
   "tags": ["water", "health", "reminders"],
-  "subtitle": {"en": "Drink enough every day", "tr": "...", "de": "...", "fr": "...", "es": "..."},
-  "description": {"en": "Two or three sentences.\n\n• Bullet\n• Bullet", "tr": "...", "de": "...", "fr": "...", "es": "..."},
+  "subtitle": {"en": "Drink enough every day", "de": "..."},
+  "description": {"en": "Two or three sentences.\n\n• Bullet\n• Bullet", "de": "..."},
   "age": "everyone",
   "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["dark 1", "wait 1.5"]]
 }
 ```
 
-- `subtitle` (at most 45 characters) and `description`: **English is required**, Turkish strongly recommended; German,
-  French and Spanish (and Japanese, Chinese, Korean) when you can. Missing languages fall back to English.
+- `subtitle` (at most 45 characters) and `description`: **English is required**; add any other language you
+  like (Turkish, German, French, Spanish, Japanese, Chinese, Korean). Missing languages fall back to English.
 - `kind`: `app`, `game`, `demo` or `template`. `tags`: lower-case search words. `featured` is set by the maintainer.
 - `age`: a content note. `everyone` (default) or `teen` (mild violence, scary themes, user-generated web content).
   Content for adults only is not accepted.
@@ -149,7 +152,9 @@ The full list is the [review checklist](REVIEW.en.md). In short, an item is **no
   that allows publishing it**, and third-party parts are listed with their licenses in the README (like the YamaNX
   notes for Turkish patches: who made it, where it comes from, under which license);
 - is adult-only, hateful, or encourages illegal activity, including piracy;
-- has no English text.
+- has no English text;
+- is a game that copies a sample's or another game's menu layout and title, or has a flat glyph icon
+  instead of key art (see the review checklist).
 
 ## 9. Updates
 

@@ -2,10 +2,11 @@
 
 [English](add-language.en.md) · **Türkçe**
 
-Nexvyn OS uygulamaları metinlerini `TR("key", ...)` ile `lang/<kod>.json` dosyasından okur; sistemin dilleri arasında
-İngilizce (`en`), Türkçe (`tr`), Almanca (`de`), Fransızca (`fr`) ve İspanyolca (`es`) vardır. `TR` önce İngilizceye,
-sonra sistem metinlerine, sonra anahtarın kendisine düşer. Prompt'u, altına `lang/en.json` (ve bağlam için
-`lang/tr.json`) yapıştırarak gönderin. Bu görev için SDK context pack gerekmez.
+Nexvyn OS uygulamaları metinlerini `TR("key", ...)` ile `lang/<kod>.json` dosyasından okur. Zorunlu tek dosya
+İngilizcedir (`en`); Nexvyn OS'un arayüz dilleri İngilizce (`en`), Türkçe (`tr`), Almanca (`de`), Fransızca (`fr`),
+İspanyolca (`es`), Japonca (`ja`), Korece (`ko`) ve Çincedir (`zh`), bir app bunlardan istediğini ekleyebilir. `TR`
+önce İngilizceye, sonra sistem metinlerine, sonra anahtarın kendisine düşer. Prompt'u, altına `lang/en.json`
+yapıştırarak gönderin. Bu görev için SDK context pack gerekmez.
 
 ```text
 Bu Nexvyn OS uygulamasının lang/en.json dosyasını <dil adı> diline (kod "<xx>") çevir ve lang/<xx>.json olarak döndür.

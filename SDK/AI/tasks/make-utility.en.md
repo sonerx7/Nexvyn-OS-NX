@@ -9,7 +9,8 @@ Write a complete Nexvyn OS utility app.
 
 App: <what it does, who uses it, the 3-5 main features>
 Language: <Lua | JavaScript | Python | Squirrel | C | Java>
-App id: com.<yourname>.<app>   Name: <English name> / <Turkish name>
+App id: com.<yourname>.<app>   Name: <name>
+Languages of the app: English<, plus any others>
 Data: <what must be saved; e.g. "a list of entries with date and amount">
 Network: <none | which public HTTPS API, no API keys>
 
@@ -23,7 +24,7 @@ Requirements:
 - Save every change at once with store (or fs for documents); implement autosave and unsaved if there is a document.
 - If it uses the network: check sys.online() first, show a spinner while loading and a friendly error message.
 - A menu (app.menu / app.onmenu) with the main actions and keyboard shortcuts.
-- Every visible text through TR() with lang/en.json and lang/tr.json (de, fr, es if you can).
+- Every visible text through TR() with lang/en.json, plus one lang/<code>.json for each other language above.
 - Keep app.draw cheap: no file reads, image loads or big allocations per frame.
 
 Deliver every file in full, then how to check it on a PC and run it on the console, and any assumption you made.

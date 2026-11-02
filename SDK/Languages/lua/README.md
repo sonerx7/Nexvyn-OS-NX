@@ -38,8 +38,8 @@ From the root of the Nexvyn OS source repository (needs `pip install lupa`):
 
     python tools/lua_check.py <path>/MyApp.nxvapp --frames 600
 
-It validates `app.json`, compiles every `.lua` file, checks that every `TR` key is in `lang/en.json` and
-`lang/tr.json`, then runs the app against a mock SDK for hundreds of frames with random clicks, keys and pad
+It validates `app.json`, compiles every `.lua` file, checks that every `TR` key is in `lang/en.json` (and in
+`lang/tr.json` when the app has one), then runs the app against a mock SDK for hundreds of frames with random clicks, keys and pad
 presses. `nxv check --sdk <checkout>` runs the same checker.
 
 ## Common pitfalls

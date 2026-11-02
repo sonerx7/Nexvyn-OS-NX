@@ -2,10 +2,10 @@
 
 **English** · [Türkçe](add-language.tr.md)
 
-Nexvyn OS apps read their texts from `lang/<code>.json` through `TR("key", ...)`; the system's languages include
-English (`en`), Turkish (`tr`), German (`de`), French (`fr`) and Spanish (`es`). `TR` falls back to English, then
-to system strings, then to the key. Send the prompt with `lang/en.json` (and `lang/tr.json` for context) pasted
-below it. No SDK context pack is needed for this task.
+Nexvyn OS apps read their texts from `lang/<code>.json` through `TR("key", ...)`. English (`en`) is the one required
+file; the interface languages of Nexvyn OS are English (`en`), Turkish (`tr`), German (`de`), French (`fr`), Spanish
+(`es`), Japanese (`ja`), Korean (`ko`) and Chinese (`zh`), and an app may add any of them. `TR` falls back to
+English, then to system strings, then to the key. Send the prompt with `lang/en.json` pasted below it. No SDK context pack is needed for this task.
 
 ```text
 Translate this Nexvyn OS app's lang/en.json into <language name> (code "<xx>") and return lang/<xx>.json.

@@ -1,0 +1,19 @@
+{
+  "id": "com.sonerx7.demo.emberfield",
+  "name": {"en": "Ember Field", "tr": "Kor Tarlası"},
+  "description": {
+    "en": "A small 3D game: collect embers, dodge rolling stones",
+    "tr": "Küçük bir 3B oyun: korları topla, yuvarlanan taşlardan kaç"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 960, "height": 540, "minWidth": 640, "minHeight": 360, "resizable": true},
+  "gamepad": true,
+  "minSdk": "1.8",
+  "targetSdk": "1.8",
+  "permissions": []
+}

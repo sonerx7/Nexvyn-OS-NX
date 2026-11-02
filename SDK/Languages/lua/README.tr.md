@@ -70,7 +70,7 @@ Nexvyn OS kaynak deposunun kökünden (`pip install lupa` gerekir):
 
     python tools/lua_check.py <yol>/BenimUygulamam.nxvapp --frames 600
 
-`app.json`'u, tüm `.lua` dosyalarının derlenmesini, `TR` anahtarlarının `lang/en.json` ve `lang/tr.json` içinde
+`app.json`'u, tüm `.lua` dosyalarının derlenmesini, `TR` anahtarlarının `lang/en.json` ve (varsa) `lang/tr.json` içinde
 olmasını denetler, sonra uygulamayı sahte bir SDK ile rastgele tıklama, tuş ve kumanda girdisiyle yüzlerce kare
 çalıştırır. `nxv check --sdk <kaynak>` aynı denetleyiciyi çağırır.
 

@@ -2,7 +2,7 @@
 
 **English** · [Türkçe](README.tr.md)
 
-**24** samples.
+**25** samples.
 
 Working sample projects in six languages. Every folder has `source/` (a complete `.nxvapp` bundle), `README.md` (what it teaches, controls, how to run it), `icon.png`, `store.json` (title and description in five languages, kind, tags, screenshot script) and `screenshots/` where available. `Tools/build_store.py` builds a `<slug>.zip` of each sample and `SDK/samples.json`, which Nexvyn OS Studio's *Samples* section reads.
 
@@ -14,6 +14,7 @@ To try one, copy `source/` to `sdmc:/NexvynOS/Applications/<name>.nxvapp`, or ru
 |---|---|---|---|---|
 | <img src="lua/beatbox/icon.png" width="32"> | [Beatbox Demo](lua/beatbox/) | demo | 1.0 | A 16-step drum machine |
 | <img src="lua/effects/icon.png" width="32"> | [Effects Demo](lua/effects/) | demo | 1.0 | Plasma, tunnel and starfield |
+| <img src="lua/ember-field/icon.png" width="32"> | [Ember Field](lua/ember-field/) | game | 1.8 | A complete 3D game with an animated .glb hero |
 | <img src="lua/gestures/icon.png" width="32"> | [Gestures Demo](lua/gestures/) | demo | 1.0 | Pinch, rotate, pan, tilt and rumble |
 | <img src="lua/hello/icon.png" width="32"> | [Hello SDK](lua/hello/) | demo | 1.0 | A tour of the Lua SDK |
 | <img src="lua/particles/icon.png" width="32"> | [Particles Demo](lua/particles/) | demo | 1.2 | Emitters, bursts and gravity wells |
