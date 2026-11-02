@@ -363,7 +363,7 @@ saatinde `{year, month, day, hour, min, sec, wday (0=Pazar), yday, epoch}` · `s
 `sys.online()` · `sys.lang()` (`"tr"`, `"en"`, …) · `sys.username()` · `sys.model()` · `sys.firmware()` ·
 `sys.notify(title, body)` (bildirim şeridi) · `sys.open(path)` (doğru uygulamayla açar) · `sys.launch(appId[, arg])` ·
 `sys.clipboard([text])` al/ayarla · `sys.log(...)` / `print(...)` · `sys.title(text)` pencere başlığı · `sys.exit()`
-pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim) · `sys.appid()` ·
+pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim, non-blocking; en fazla 2000 ms, yalnızca pencere odaktayken, `sys.vibrate(0)` durdurur) · `sys.appid()` ·
 `sys.sdkVersion()` → `"1.7"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
 `sys.games` ve `nxv://` bağlantıları kendi izinlerini gerektirir (bölüm 1).
 

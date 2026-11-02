@@ -372,7 +372,7 @@ Check `sys.online()` first and show a friendly message when offline.
 `sys.battery()` → percent, charging · `sys.online()` · `sys.lang()` (`"tr"`, `"en"`, …) · `sys.username()` ·
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
-`sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])`
+`sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
 (HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.7"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
