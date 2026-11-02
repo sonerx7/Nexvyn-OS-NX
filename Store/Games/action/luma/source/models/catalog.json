@@ -1,0 +1,172 @@
+[
+  {
+    "name": "hero_body",
+    "triangles": 2848,
+    "vertices": 1912
+  },
+  {
+    "name": "hero_arm_l",
+    "triangles": 484,
+    "vertices": 344
+  },
+  {
+    "name": "hero_arm_r",
+    "triangles": 484,
+    "vertices": 344
+  },
+  {
+    "name": "hero_leg_l",
+    "triangles": 412,
+    "vertices": 282
+  },
+  {
+    "name": "hero_leg_r",
+    "triangles": 412,
+    "vertices": 282
+  },
+  {
+    "name": "tree",
+    "triangles": 1332,
+    "vertices": 862
+  },
+  {
+    "name": "pine",
+    "triangles": 424,
+    "vertices": 1060
+  },
+  {
+    "name": "palm",
+    "triangles": 2340,
+    "vertices": 1938
+  },
+  {
+    "name": "mushroom",
+    "triangles": 960,
+    "vertices": 754
+  },
+  {
+    "name": "cactus",
+    "triangles": 1064,
+    "vertices": 1836
+  },
+  {
+    "name": "crystals",
+    "triangles": 336,
+    "vertices": 840
+  },
+  {
+    "name": "coral",
+    "triangles": 768,
+    "vertices": 912
+  },
+  {
+    "name": "flowers",
+    "triangles": 1632,
+    "vertices": 1128
+  },
+  {
+    "name": "grass",
+    "triangles": 24,
+    "vertices": 72
+  },
+  {
+    "name": "cloud",
+    "triangles": 576,
+    "vertices": 296
+  },
+  {
+    "name": "beetle",
+    "triangles": 1484,
+    "vertices": 900
+  },
+  {
+    "name": "hopper",
+    "triangles": 920,
+    "vertices": 632
+  },
+  {
+    "name": "bat",
+    "triangles": 392,
+    "vertices": 340
+  },
+  {
+    "name": "guardian",
+    "triangles": 716,
+    "vertices": 984
+  },
+  {
+    "name": "guardian_arm",
+    "triangles": 60,
+    "vertices": 120
+  },
+  {
+    "name": "coin",
+    "triangles": 280,
+    "vertices": 580
+  },
+  {
+    "name": "star",
+    "triangles": 80,
+    "vertices": 200
+  },
+  {
+    "name": "heart",
+    "triangles": 304,
+    "vertices": 188
+  },
+  {
+    "name": "gate",
+    "triangles": 688,
+    "vertices": 1396
+  },
+  {
+    "name": "checkpoint",
+    "triangles": 240,
+    "vertices": 396
+  },
+  {
+    "name": "crate",
+    "triangles": 244,
+    "vertices": 508
+  },
+  {
+    "name": "lantern",
+    "triangles": 120,
+    "vertices": 264
+  },
+  {
+    "name": "ruins",
+    "triangles": 224,
+    "vertices": 488
+  },
+  {
+    "name": "windmill",
+    "triangles": 252,
+    "vertices": 374
+  },
+  {
+    "name": "windmill_blades",
+    "triangles": 80,
+    "vertices": 160
+  },
+  {
+    "name": "tower",
+    "triangles": 376,
+    "vertices": 892
+  },
+  {
+    "name": "spring",
+    "triangles": 796,
+    "vertices": 1640
+  },
+  {
+    "name": "spikes",
+    "triangles": 228,
+    "vertices": 564
+  },
+  {
+    "name": "brazier",
+    "triangles": 302,
+    "vertices": 221
+  }
+]

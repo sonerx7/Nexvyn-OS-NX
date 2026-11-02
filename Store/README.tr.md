@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **155** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -134,7 +134,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki 
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
 
-## Oyunlar (44)
+## Oyunlar (45)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -155,6 +155,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **154** öğe. Konsoldaki 
 | <img src="Games/word/hangman/icon.png" width="32"> | [Adam Asmaca](Games/word/hangman/) | Kelimeyi harf harf tahmin et |
 | <img src="Games/action/lanternfall/icon.png" width="32"> | [Fener Düşüşü](Games/action/lanternfall/) | Fener ışığında platform: 3 dünya, 3 boss |
 | <img src="Games/puzzle/lightsout/icon.png" width="32"> | [Işıkları Söndür](Games/puzzle/lightsout/) | Bütün ışıkları en az hamleyle söndür |
+| <img src="Games/action/luma/icon.png" width="32"> | [Luma: Yıldız Adaları](Games/action/luma/) | On dünya. Otuz yıldız. Bir macera. |
 | <img src="Games/arcade/mazeeater/icon.png" width="32"> | [Labirent Yiyici](Games/arcade/mazeeater/) | Dört labirent, üç hayalet, tek iştah |
 | <img src="Games/puzzle/memory/icon.png" width="32"> | [Hafıza Kartları](Games/puzzle/memory/) | Kartları çevir, bütün eşleri bul |
 | <img src="Games/puzzle/minesweeper/icon.png" width="32"> | [Mayın Tarlası](Games/puzzle/minesweeper/) | Özel tahtalar, istatistik ve seriler |

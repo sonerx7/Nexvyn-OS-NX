@@ -5,6 +5,7 @@
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="lanternfall/icon.png" width="32"> | [Lanternfall](lanternfall/) | 1.0.0 | Lantern-lit platformer: 3 worlds, 3 bosses |
+| <img src="luma/icon.png" width="32"> | [Luma: Starfall Islands](luma/) | 1.0.1 | Ten worlds. Thirty stars. One adventure. |
 | <img src="missile/icon.png" width="32"> | [Missile Defense](missile/) | 1.1.0 | Six cities, three batteries: hold the sky |
 | <img src="spacearena/icon.png" width="32"> | [Orbit Arena](spacearena/) | 1.1.0 | Survive endless waves in a neon arena |
 | <img src="froggy/icon.png" width="32"> | [Road Crosser](froggy/) | 1.1.0 | Cross the road, ride the river, get home |

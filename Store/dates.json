@@ -811,6 +811,17 @@
       }
     ]
   },
+  "com.sonerx7.luma": {
+    "added": "2026-11-02",
+    "updated": "2026-11-02",
+    "version": "1.0.1",
+    "history": [
+      {
+        "version": "1.0.1",
+        "date": "2026-11-02"
+      }
+    ]
+  },
   "com.sonerx7.mandelbrot": {
     "added": "2026-10-29",
     "updated": "2026-11-01",

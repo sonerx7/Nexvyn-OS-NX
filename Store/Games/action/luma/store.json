@@ -1,0 +1,53 @@
+{
+  "kind": "game",
+  "age": "everyone",
+  "license": "GPL-3.0-or-later",
+  "tags": [
+    "3d",
+    "platformer",
+    "adventure",
+    "double-jump",
+    "stars",
+    "controller"
+  ],
+  "subtitle": {
+    "en": "Ten worlds. Thirty stars. One adventure.",
+    "tr": "On dünya. Otuz yıldız. Bir macera.",
+    "de": "Zehn Welten. Dreißig Sterne. Ein Abenteuer.",
+    "fr": "Dix mondes, trente étoiles, une aventure.",
+    "es": "Diez mundos, treinta estrellas, una aventura."
+  },
+  "description": {
+    "en": "Explore ten original 3D worlds with double jumps, dashes, moving platforms, secret side islands and a guardian boss. Collect thirty star fragments, save at checkpoints and enjoy ten original music themes. Controller, keyboard and touch controls; English and Turkish in-game text. No ads or network access.\n\nThe supplied images are labelled software previews. Physical Switch / Ryujinx verification is pending.",
+    "tr": "Çift zıplama, atılma, hareketli platformlar, gizli yan adalar ve muhafız savaşıyla on özgün 3B dünyayı keşfet. Otuz yıldız parçasını topla, bayraklarda kaydet ve on özgün dünya müziğini dinle. Kumanda, klavye ve dokunmatik; Türkçe ve İngilizce oyun metinleri. Reklam veya ağ erişimi yok.\n\nGörseller etiketli yazılım önizlemeleridir. Fiziksel Switch / Ryujinx doğrulaması bekleniyor.",
+    "de": "Erkunde zehn eigene 3D-Welten mit Doppelsprüngen, Sprints, beweglichen Plattformen, geheimen Nebeninseln und einem Wächter als Endgegner. Sammle dreißig Sternsplitter, speichere an Kontrollpunkten und höre zehn eigene Musikthemen. Controller, Tastatur und Touch; Spieltexte auf Englisch und Türkisch. Keine Werbung oder Netzwerkzugriffe.\n\nDie Bilder sind gekennzeichnete Softwarevorschauen. Der Test auf Switch / Ryujinx steht noch aus.",
+    "fr": "Explorez dix mondes 3D originaux avec double saut, ruée, plateformes mobiles, îles secrètes et un gardien final. Collectez trente fragments d'étoile, sauvegardez aux points de contrôle et découvrez dix thèmes musicaux originaux. Manette, clavier et tactile ; textes du jeu en anglais et turc. Sans publicité ni accès réseau.\n\nLes images sont des aperçus logiciels étiquetés. La vérification sur Switch / Ryujinx reste à faire.",
+    "es": "Explora diez mundos 3D originales con saltos dobles, impulsos, plataformas móviles, islas secretas y un guardián final. Recoge treinta fragmentos de estrella, guarda en los puntos de control y disfruta diez temas musicales originales. Mando, teclado y pantalla táctil; textos en inglés y turco. Sin anuncios ni acceso a la red.\n\nLas imágenes son vistas previas de software identificadas. La verificación en Switch / Ryujinx está pendiente."
+  },
+  "changelog": {
+    "en": "New cinematic icon and first Store submission.",
+    "tr": "Yeni sinematik ikon ve ilk mağaza başvurusu.",
+    "de": "Neues filmisches Symbol und erste Store-Einreichung.",
+    "fr": "Nouvelle icône cinématique et première soumission.",
+    "es": "Nuevo icono cinematográfico y primer envío a la tienda."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key space",
+      "wait 0.2",
+      "key space",
+      "wait 0.3"
+    ],
+    [
+      "key escape",
+      "wait 0.5"
+    ]
+  ]
+}
