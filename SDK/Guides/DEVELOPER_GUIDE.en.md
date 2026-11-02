@@ -154,7 +154,8 @@ Shared rules:
   numbers and a **Reload** button; output goes to `sdmc:/NexvynOS/System/Logs/Apps/<id>.log`.
 - Lua has no `io`, `debug`, `package`, `dofile`, `loadfile`; use `fs` for files. JavaScript has no browser or Node.js
   API (`window`, `fetch`, `require`…); every window has a 64 MB memory limit.
-- Translations live in `lang/en.json` and `lang/tr.json` and are read with `TR("key")`.
+- Translations live in `lang/en.json` (required) and one optional file per other language (`lang/de.json`,
+  `lang/tr.json`, ...) and are read with `TR("key")`; missing keys fall back to English.
 - Two-finger gestures arrive in `event` as `"pinch"` and `"rotate"` (in all three languages). `e.touch` is true,
   `e.x, e.y` is the midpoint of the fingers. `"pinch"`: `e.scale` is the change in finger distance since the previous
   event (> 1 means spreading); multiply your zoom by it. `"rotate"`: `e.angle` is the change in angle (radians,
@@ -218,6 +219,8 @@ The project format, behaviours, events and the whole API: [GAME_ENGINE_PROJECTS.
 ---
 
 ## 5. 3D with g3d
+
+Making a 3D game with models from a 3D tool? Follow [MAKE_A_GAME.en.md](MAKE_A_GAME.en.md), the complete recipe.
 
 `g3d` is a small real-time 3D renderer. It runs on the GPU: a depth buffer, per-pixel lighting, fog and textures. The
 target is 30–60 thousand triangles per frame. If the GPU path is unavailable (or the system setting `g3d.gpu` is
@@ -383,6 +386,17 @@ commands such as `drag`, `dpad`, `a`, `up`, `down`, `set`, `saver`, `desktop`, `
 are at the top of `source/wm/shell_autorun.cpp`.
 
 Delete `autorun.txt` after testing; otherwise it runs again at every startup.
+
+### Freezes and leaks
+
+- `stats <label>` writes one `stats` line to `system.log`: free heap, memory in use, image cache, windows, g3d GL
+  objects (textures, atlases, offscreen target), mixer channels, background writes, stall lines and the frame
+  times since the previous `stats`. Open and close an app many times between two `stats` lines to find a leak.
+- A frame slower than `perf.stallMs` (default 150 ms) writes a `stall` line naming the parts of the frame that took
+  the time (shell layers, services, app ids). Ask users who report a freeze for `System/Logs/system.log`.
+- `set debug.slowSdMs 300` makes every file write and folder listing wait 300 ms, like a slow SD card. With
+  `io.background` on (the default) settings.json, system.log and app logs are written by a background thread, so the
+  desktop stays smooth; `io.background` false (read at start) writes them on the main thread as before.
 
 ### tools/ryu_test.sh
 

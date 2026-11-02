@@ -37,6 +37,8 @@ Every SDK version so far shipped in the development of Nexvyn OS 1.0.0, the firs
 | 1.4 | 1.0.0 | every permission enforced, sharing, scheduled notifications, `nxv://` links, lifecycle callbacks |
 | 1.5 | 1.0.0 | Squirrel, C (TinyCC) and Java (miniJVM) runtimes; Python system library |
 | 1.6 | 1.0.0 | `fs.unzip`, `sys.games` and the `"games"` permission, text to speech; the `"python3"` runtime (CPython 3.12) |
+| 1.7 | 1.1.0 | `g3d.voxels` voxel worlds (JavaScript), `mesh:setTexture(path, pixelated)` |
+| 1.8 | 1.2.0 | `g3d.model`: `.glb` / `.gltf` / `.fbx` models with materials, textures and skeletal animation; `g3d.drawMatrix` |
 
 The full list of functions per version is in the SDK reference (`sdk/SDK.en.md`, "SDK versions").
 
@@ -51,6 +53,21 @@ The full list of functions per version is in the SDK reference (`sdk/SDK.en.md`,
 | `"squirrel"` | Squirrel 3.2 | 1.5 |
 | `"c"` | TinyCC 0.9.28rc | 1.5 |
 | `"java"` | miniJVM 2.2.0 | 1.5 |
+
+### Which languages get new APIs
+
+New SDK functions come to **Lua, JavaScript, Python** (`"python"` and `"python3"`) **and C**. **Squirrel and Java
+are frozen**: everything they have today, SDK 1.8's `g3d.model` functions included, stays and keeps working, and the
+compat suite keeps checking it, but SDK 1.8 is the last version that adds anything to them.
+
+What this means for you:
+
+- A Squirrel or Java app on the App Market keeps running on every later Nexvyn OS, unchanged. Nothing to do.
+- `minSdk` / `targetSdk` above 1.8 bring nothing new to these two languages; keep them at 1.8 or below.
+- For a new app, or when an existing one needs a newer API, pick one of the four languages that keep growing. The
+  SDK calls have the same names in all of them, so moving code over is mostly syntax.
+
+Frozen is not removed: rule 5 still holds, and a bug or security fix in these runtimes still ships.
 
 ## 2. What an app states in app.json
 
@@ -104,6 +121,14 @@ The full list of functions per version is in the SDK reference (`sdk/SDK.en.md`,
    for apps whose `runtimeVersion` (or, without it, `targetSdk`) predates the change, through a shim or by keeping the
    old engine. A new runtime is added to `nxvruntime::kRuntimes`, `tools/sdkinfo.py`, a checker and this page.
 6. **Old names keep working** (section 4).
+7. **A stuck app never takes the system down, and an old app is never ended without the user** (SDK 1.8). Every
+   runtime stops a script callback that runs longer than 3 seconds (10 for the main file and `app.load`; time in the
+   HOME menu, asleep or in a system dialog does not count). For `targetSdk` 1.8+ the app ends with its error screen
+   ("not responding", Reload / Close). For an older app the stop only interrupts that callback: the window is held and
+   the user picks Wait (the app goes on) or Close (normal close). The frozen Squirrel and Java runtimes keep their old
+   behaviour (the error screen). Native code (C apps, C++ apps) is never stopped from outside: when such a callback
+   held the system for 12 seconds and comes back, the user is asked Force Quit / Wait; while it stays stuck, holding
+   + and - for two seconds quits Nexvyn OS and the next start brings the other windows back. Tests: `tools/tests/hang_apps/` (section 5).
 
 ## 4. Deprecated and renamed (kept forever)
 
@@ -136,7 +161,8 @@ apps, since the release repository is not part of the source checkout. Baseline 
 
 ## 6. Checklist for system changes
 
-- **New function / module / permission / app.json field**: implement it in every runtime it belongs to, add it to the
+- **New function / module / permission / app.json field**: implement it in every runtime it belongs to (Lua,
+  JavaScript, Python, C; not Squirrel or Java, section 1 "Which languages get new APIs"), add it to the
   checkers' mocks (the suite reports a missing one), document it in `sdk/SDK.*.md`, bump `NEXVYN_SDK_VERSION`,
   `tools/sdkinfo.py` and the mocks' `sys.sdkVersion()`, and add a row to the tables above.
 - **Behaviour change**: gate it with `sdkcompat::atLeast` (rule 2) and bump the SDK major.
@@ -153,3 +179,5 @@ apps, since the release repository is not part of the source checkout. Baseline 
 - When you raise `targetSdk`, read the "for apps that target SDK x" notes in the SDK reference: those are the only
   behaviour changes you opt into.
 - Deprecation notes in your app's log (Studio's console shows it) tell you what to move to; the old call keeps working.
+- New APIs arrive in Lua, JavaScript, Python and C. Squirrel and Java apps keep working but get nothing after SDK 1.8
+  (section 1).

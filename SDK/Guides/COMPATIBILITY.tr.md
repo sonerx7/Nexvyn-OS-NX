@@ -38,6 +38,8 @@ Hangi değişiklik neyi artırır:
 | 1.4 | 1.0.0 | bütün izinler zorunlu, paylaşma, zamanlanmış bildirimler, `nxv://` bağlantıları, yaşam döngüsü callback'leri |
 | 1.5 | 1.0.0 | Squirrel, C (TinyCC) ve Java (miniJVM) runtime'ları; Python sistem kütüphanesi |
 | 1.6 | 1.0.0 | `fs.unzip`, `sys.games` ve `"games"` izni, metin okuma; `"python3"` runtime'ı (CPython 3.12) |
+| 1.7 | 1.1.0 | `g3d.voxels` voksel dünyaları (JavaScript), `mesh:setTexture(path, pixelated)` |
+| 1.8 | 1.2.0 | `g3d.model`: materyal, texture ve iskelet animasyonlu `.glb` / `.gltf` / `.fbx` modeller; `g3d.drawMatrix` |
 
 Sürüm sürüm bütün fonksiyonlar SDK başvurusundadır (`sdk/SDK.tr.md`, "SDK sürümleri").
 
@@ -52,6 +54,23 @@ Sürüm sürüm bütün fonksiyonlar SDK başvurusundadır (`sdk/SDK.tr.md`, "SD
 | `"squirrel"` | Squirrel 3.2 | 1.5 |
 | `"c"` | TinyCC 0.9.28rc | 1.5 |
 | `"java"` | miniJVM 2.2.0 | 1.5 |
+
+### Hangi diller yeni API alır
+
+Yeni SDK fonksiyonları **Lua, JavaScript, Python** (`"python"` ve `"python3"`) **ve C**'ye gelir. **Squirrel ve Java
+donduruldu**: bugün sahip oldukları her şey, SDK 1.8'in `g3d.model` fonksiyonları dahil, kalır ve çalışmayı sürdürür,
+compat suite de denetlemeye devam eder; ama bu iki dile bir şey ekleyen son sürüm SDK 1.8'dir.
+
+Sizin için anlamı:
+
+- App Market'teki bir Squirrel ya da Java uygulaması sonraki her Nexvyn OS'ta değişmeden çalışır. Yapmanız gereken
+  bir şey yok.
+- 1.8'in üstündeki `minSdk` / `targetSdk` bu iki dile yeni bir şey getirmez; 1.8 ya da altında bırakın.
+- Yeni bir uygulama için, ya da mevcut biri daha yeni bir API isterse, büyümeye devam eden dört dilden birini seçin.
+  SDK çağrılarının adı hepsinde aynıdır, kodu taşımak çoğunlukla sözdizimi işidir.
+
+Dondurmak kaldırmak değildir: kural 5 geçerli kalır, bu runtime'lardaki hata ve güvenlik düzeltmeleri gelmeye devam
+eder.
 
 ## 2. Uygulamanın app.json'da bildirdikleri
 
@@ -107,6 +126,14 @@ Sürüm sürüm bütün fonksiyonlar SDK başvurusundadır (`sdk/SDK.tr.md`, "SD
    bir shim ile ya da eski motor tutularak sürer. Yeni bir runtime `nxvruntime::kRuntimes`, `tools/sdkinfo.py`, bir
    denetleyici ve bu sayfaya eklenir.
 6. **Eski adlar çalışmayı sürdürür** (4. bölüm).
+7. **Takılan bir app sistemi düşürmez, eski bir app kullanıcıya sorulmadan kapatılmaz** (SDK 1.8). Her runtime 3
+   saniyeden uzun süren bir script callback'ini durdurur (ana dosya ve `app.load` için 10; HOME menüsünde, uykuda ya da
+   bir sistem penceresinde geçen süre sayılmaz). `targetSdk` 1.8+ app hata ekranıyla durur ("yanıt vermiyor", Yeniden
+   Yükle / Kapat). Daha eski bir app'te durdurma yalnızca o callback'i keser: pencere bekletilir, kullanıcı Bekle
+   (app devam eder) ya da Kapat'ı (normal kapanış) seçer. Dondurulmuş Squirrel ve Java runtime'ları eski davranışlarını
+   korur (hata ekranı). Yerel kod (C ve C++ app'ler) dışarıdan asla durdurulmaz: böyle bir callback sistemi 12 saniye
+   tutup geri döndüğünde kullanıcıya Zorla Kapat / Bekle sorulur; takılı kalırsa + ve - iki saniye basılı tutulunca
+   Nexvyn OS kapanır ve sonraki açılış diğer pencereleri geri getirir. Testler: `tools/tests/hang_apps/` (5. bölüm).
 
 ## 4. Deprecated ve adı değişenler (sonsuza dek tutulur)
 
@@ -139,7 +166,8 @@ değildir. Nexvyn OS 1.0.0 baseline'ı: 159 uygulama, 159'u geçiyor.
 
 ## 6. Sistem değişiklikleri için kontrol listesi
 
-- **Yeni fonksiyon / modül / izin / app.json alanı**: ait olduğu her runtime'da yazın, denetleyicilerin mock'larına
+- **Yeni fonksiyon / modül / izin / app.json alanı**: ait olduğu her runtime'da yazın (Lua, JavaScript, Python, C;
+  Squirrel ve Java değil, 1. bölüm "Hangi diller yeni API alır"), denetleyicilerin mock'larına
   ekleyin (eksik olanı suite bildirir), `sdk/SDK.*.md`'de belgeleyin, `NEXVYN_SDK_VERSION`'ı, `tools/sdkinfo.py`'yi ve
   mock'ların `sys.sdkVersion()`'ını artırın, yukarıdaki tablolara bir satır ekleyin.
 - **Davranış değişikliği**: `sdkcompat::atLeast` ile koşula bağlayın (kural 2) ve SDK major'ını artırın.
@@ -159,3 +187,5 @@ değildir. Nexvyn OS 1.0.0 baseline'ı: 159 uygulama, 159'u geçiyor.
   ettiğiniz davranış değişiklikleri yalnızca onlardır.
 - Uygulamanızın log'undaki deprecation notları (Studio'nun konsolu gösterir) neye geçeceğinizi söyler; eski çağrı
   çalışmayı sürdürür.
+- Yeni API'ler Lua, JavaScript, Python ve C'ye gelir. Squirrel ve Java uygulamaları çalışmayı sürdürür ama SDK
+  1.8'den sonra yeni bir şey almaz (1. bölüm).

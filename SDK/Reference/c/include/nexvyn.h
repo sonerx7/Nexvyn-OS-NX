@@ -290,5 +290,26 @@ void g3d_line(float x1, float y1, float z1, float x2, float y2, float z2, const 
 void g3d_point(float x, float y, float z, float size, const char* color);
 bool g3d_project(float x, float y, float z, float* sx, float* sy, float* depth);
 int g3d_finish(void);
+/* 3D models (SDK 1.8): .glb .gltf .fbx .obj .stl with materials, textures and skeletal animation. Model ids work with
+ * g3d_draw, g3d_triangles and g3d_free like mesh ids. size > 0 fits the model into size, centered, standing on y = 0.
+ * Clips are named (or "#0", "#1"... by position). x .. s place the model like g3d_draw (s = uniform scale, 0 = 1). */
+int g3d_model(const char* path, float size);                  /* 0 on failure (the reason is in the app log) */
+/* The same without blocking the app: the file is parsed in the background and fn(model, NULL, user) or
+ * fn(0, error, user) is called later on the main thread. */
+typedef void (*nxv_model_fn)(int model, const char* error, void* user);
+void g3d_loadModel(const char* path, float size, nxv_model_fn fn, void* user);
+const char* g3d_modelInfo(int model);                           /* JSON {"triangles", "bones", "animations": [...]} */
+bool g3d_modelPlay(int model, const char* clip, bool loop, float speed, float fade);  /* speed 0 = 1 */
+void g3d_modelStop(int model, float fade);
+void g3d_modelUpdate(int model, float dt);
+float g3d_modelTime(int model);
+void g3d_modelSetTime(int model, float t);
+const char* g3d_modelClip(int model);                           /* NULL when no clip plays */
+bool g3d_modelPlaying(int model);
+bool g3d_modelNode(int model, const char* node, float x, float y, float z, float rx, float ry, float rz, float s,
+                   float* ox, float* oy, float* oz);
+bool g3d_modelNodeMatrix(int model, const char* node, float x, float y, float z, float rx, float ry, float rz, float s,
+                         float out[16]);
+void g3d_drawMatrix(int mesh, const float matrix[16], const char* tint, const char* flags);  /* mesh or model */
 
 #endif

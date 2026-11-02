@@ -11,6 +11,8 @@
 
 This document is the complete contract for third-party Nexvyn OS apps. It is written so that a developer **or an AI
 assistant** can produce a working app from it alone. Everything listed here exists; nothing else does.
+Making a game? `docs/MAKE_A_GAME.en.md` is the step-by-step recipe built on this reference: project, 3D models,
+loading, input, collision, speed on the Switch, art direction, the store icon and publishing.
 
 ## 1. Package layout
 
@@ -19,8 +21,8 @@ MyApp.nxvapp/              ← folder name ends with .nxvapp (or zip the folder'
 ├── app.json              ← manifest (required)
 ├── main.lua              ← entry point (required)
 ├── icon.png              ← 128×128 or 256×256 PNG with transparency (recommended)
-├── lang/en.json          ← translations (optional): {"hello": "Hello"}
-├── lang/tr.json          ←                          {"hello": "Merhaba"}
+├── lang/en.json          ← translations: English is required once you use TR(): {"hello": "Hello"}
+├── lang/es.json          ← any other language is optional (one file each):  {"hello": "Hola"}
 └── anything else          (images, sounds, more .lua modules loaded with require("name"))
 ```
 
@@ -56,7 +58,8 @@ comes from another key. The full package format, signing, the permission rules a
 }
 ```
 
-- `id` must be unique (reverse-domain style). `name`/`description` may be plain strings.
+- `id` must be unique (reverse-domain style). `name`/`description` may be plain strings or language maps: `"en"` is
+  required, every other language is optional (the example's `"tr"` is one of them).
 - `runtime` picks the language when `main` does not: `"lua"` (default), `"js"` (section 11), `"python"` (12),
   `"python3"` (12, CPython), `"squirrel"` (13), `"c"` (14) or `"java"` (15, with `"mainClass"`). A `.js`, `.py`,
   `.nut`, `.c` or `.jar` main file selects it too (`.py` means `"python"`).
@@ -104,7 +107,7 @@ comes from another key. The full package format, signing, the permission rules a
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.7"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.8"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -116,6 +119,13 @@ comes from another key. The full package format, signing, the permission rules a
 | 1.5 | Squirrel (section 13), C compiled on the console (section 14) and Java (section 15) runtimes on one shared implementation; app.json `"runtime"` values `"squirrel"`, `"c"`, `"java"` and `"mainClass"`; Python system library (`itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys`) |
 | 1.6 | `fs.unzip` (unpacks a zip in the background with progress) and `sys.games` (installed games) with the new `"games"` permission, in Lua, JavaScript, Python and Squirrel; `sys.speak` / `sys.stopSpeaking` (text to speech, no permission) in every runtime; the `"python3"` runtime (CPython 3.12, section 12) |
 | 1.7 | `g3d.voxels` voxel worlds in JavaScript (section 8b, *Voxel worlds*): chunk streaming, built-in terrain generator, light, smooth-lit meshes built on background threads, texture atlas shader, saving, ray casts, box physics; `mesh:setTexture(path, pixelated)` in Lua and JavaScript |
+| 1.8 | `g3d.model` (section 8b, *3D models*): `.glb`, `.gltf`, `.fbx` (and `.obj`, `.stl`) files with node hierarchy, materials, embedded and external textures and skeletal animation (`play` with crossfade, `stop`, `update`, `time`, node positions and matrices for attachments), `g3d.drawMatrix`; GPU skinning; in every runtime (Squirrel, C, Java and `"python3"` through `g3d.model*` functions) |
+
+**Languages that get new APIs.** From SDK 1.9 on, new functions come to Lua, JavaScript, Python (`"python"` and
+`"python3"`) and C. Squirrel and Java are frozen at SDK 1.8: every function they have keeps working on every later
+Nexvyn OS and their apps on the App Market need no change, but nothing new is added to them. Start new apps in one of
+the four growing languages; the SDK names are the same in all of them. Details: `docs/COMPATIBILITY.en.md`, *Which
+languages get new APIs*.
 
 ### Compatibility: targetSdk and deprecation
 
@@ -204,7 +214,12 @@ Coordinates are pixels with (0,0) at the top-left of the window content; y grows
 
 Errors: if any callback raises an error, the window shows the message with a traceback and a **Reload** button;
 `print()`/`sys.log()` output and errors go to `sdmc:/NexvynOS/System/Logs/Apps/<id>.log`. A callback that runs for more
-than 3 seconds is aborted (infinite loop protection). Every app may use up to **64 MB** of script memory (Lua since
+than 3 seconds is stopped (infinite loop protection); the main file's top level and `app.load` get **10 seconds**
+(SDK 1.8). Time in the HOME menu, while the console sleeps and while a system dialog (the console keyboard, the user
+picker) is open does not count. What happens then depends on the app's `targetSdk`: from **1.8** on the app ends with
+the error screen ("This app stopped responding": Reload, Close, Copy); an app that targets an older SDK is not ended:
+its callback is stopped, its window pauses and Nexvyn OS asks *"…" is not responding* with **Wait** (the app goes on)
+and **Close**. Long work belongs in the background (`g3d.loadModel`, `net`, `fs.unzip`, timers). Every app may use up to **64 MB** of script memory (Lua since
 SDK 1.4, like JavaScript and Python): past it the app stops with `MemoryError: out of memory (the app used more than
 64 MB)` and an out-of-memory screen; the rest of the system keeps running. `sys.memory()` tells how close you are.
 `store` is written to disk on `app.suspend` / `app.autosave` too, so a sleeping console does not lose it.
@@ -373,7 +388,7 @@ Check `sys.online()` first and show a friendly message when offline.
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.7"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.8"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -408,6 +423,8 @@ closing its window (or a crash) stops them all, and `stop` / `musicPause` / `mus
 
 `TR(key, ...)` → translated text from your `lang/<code>.json` (falls back to English, then to system strings such as
 `TR("common.ok")`, then to the key). `{0}`, `{1}` are replaced by the extra arguments: `TR("score", 42)`.
+`lang/en.json` is the one required file; add any other language as `lang/<code>.json` (`de`, `es`, `fr`, `ja`, `ko`,
+`tr` or `zh`: the interface languages of Nexvyn OS). A partial translation is fine: missing keys show the English text.
 
 ## 8a. Links, sharing, scheduled notifications, permissions (SDK 1.4)
 
@@ -512,6 +529,92 @@ another one (cheap instancing: hundreds of objects, one draw), `DrawOpts::additi
 Motion controls: `input.motion()` → `ax, ay, az` (acceleration in G), `gx, gy, gz` (angular velocity in rad/s),
 `pitch, roll, yaw` (accumulated rotation in radians) from the Joy-Con / Pro Controller / handheld gyroscope.
 
+### 3D models — `g3d.model` (SDK 1.8)
+
+Load model files made in a 3D tool or by an AI model generator and draw them like meshes. Supported: **`.glb` /
+`.gltf`** (glTF 2.0, the best choice), **`.fbx`** (binary and text, 6.x and 7.x) and the older **`.obj` / `.stl`**.
+A model keeps its node hierarchy, its materials (base color, base color texture, alpha mode, double sided), its
+textures (embedded in the `.glb` / `.fbx` file or image files next to the model) and its skeletal animations.
+
+```lua
+local hero, err
+function app.load()
+  hero, err = g3d.model("bundle:/models/hero.glb")   -- nil + error text when it cannot be loaded
+  if hero then hero:play("Idle") end
+end
+function app.update(dt)
+  if hero then hero:update(dt) end                     -- advances the animation
+end
+function app.draw(w, h)
+  g3d.begin(0, 0, w, h, 55)
+  g3d.camera(0, 2, 6, 0, 1, 0)
+  g3d.draw(hero, 0, 0, 0, 0, yaw, 0)                   -- same call as for meshes
+  local m = hero:nodeMatrix("hand_R", 0, 0, 0, 0, yaw, 0)
+  if m then g3d.drawMatrix(sword, m) end               -- a mesh or model held in the hand
+  g3d.finish()
+end
+-- hero:play("Run", {loop = true, speed = 1.2, fade = 0.25})   crossfades from the current pose in 0.25 s
+```
+
+| Function | |
+|---|---|
+| `g3d.loadModel(path[, size], callback)` (SDK 1.8) | the same without blocking the app: the file is read and parsed in the background (one model at a time) and `callback(model)` or `callback(nil, err)` runs later, like a timer. Use it for big files and in `app.load` |
+| `g3d.model(path[, size])` → model or nil, err | load `.glb .gltf .fbx .obj .stl`. Paths resolve like `fs` paths (`"bundle:/models/hero.glb"`). Without `size` the model keeps its authored size (meters, Y up; FBX files are converted from their own axes and units); with `size` it is scaled so its largest side is `size`, centered in x and z and standing on y = 0 (its lowest point; place characters at y = 0 to stand on the ground). Loading the same file again shares its data and textures |
+| `g3d.draw(model, x, y, z, rx, ry, rz, sx, sy, sz, tint, flags)` | draws every mesh of the model in its current pose; the materials give color, texture and transparency, `tint` multiplies them, flags as for meshes |
+| `g3d.drawMatrix(meshOrModel, matrix[, tint[, flags]])` | draws with a 4x4 matrix (16 numbers, column-major), e.g. from `model:nodeMatrix` |
+| `model:info()` | `{format, triangles, vertices, meshes, nodes, bones, materials, textures, skinning, size = {w, h, d}, min = {x, y, z}, max = {x, y, z}, animations = {{name, duration}, ...}}`; `skinning` is `"gpu"`, `"cpu"` or `""` (no skeleton) |
+| `model:play(clip[, {loop, speed, fade}])` → bool | starts a clip by name (or 1-based index in Lua, 0-based elsewhere). Names also match without the armature prefix FBX exports add and without case (`"Walk"` finds `"Rig|Walk"`). `loop` (default true), `speed` (1; negative plays backwards), `fade` (seconds of crossfade from the current pose, 0). False for an unknown clip |
+| `model:stop([fade])` | back to the rest pose (faded over `fade` seconds) |
+| `model:update(dt)` | advances the clip; call it once per frame. A clip that does not loop stops at its last frame |
+| `model:time([t])` → seconds | position in the clip (sets it when `t` is given) |
+| `model:clip()` → name or nil, `model:playing()` → bool | the current clip |
+| `model:node(name[, x, y, z, rx, ry, rz, sx, sy, sz])` → x, y, z | where a node (bone, attachment point) is in the current pose, with the same placement as `g3d.draw`; nil when there is no such node |
+| `model:nodeMatrix(name[, x, ..., sz])` → 16 numbers | the node's full matrix for `g3d.drawMatrix` (things held in a hand, a hat on a head) |
+| `model:triangles()`, `model:free()` | triangle count; frees the model now (otherwise the garbage collector does) |
+
+```lua
+function app.load()
+  g3d.loadModel("bundle:/models/city.glb", function(m, err)   -- the app keeps drawing meanwhile
+    if m then city = m else print(err) end
+  end)
+end
+```
+
+Each model handle has its own animation state, so two `g3d.model()` calls of one file give two characters that
+animate independently while sharing the GPU data.
+
+**Skinning.** On the GPU path skinned meshes are deformed in the vertex shader, up to 32 bones per draw (larger
+skeletons are split into several draws on load). Without it (the CPU fallback, or a driver that cannot hold the bone
+palette) skinning runs on the CPU; the CPU fallback renderer draws models without textures, like meshes.
+
+**Limits.** Files up to 96 MB, 1 000 000 vertices, 1 500 000 triangles, 20 000 nodes, 1024 bones per skeleton and
+4 000 000 animation key values. A damaged or unsupported file only makes `g3d.model` fail with a message; it never
+crashes the app. Morph targets (blend shapes), cameras and lights in the file are ignored; cubic spline animation
+keys are played linearly between their key values; metallic / roughness values are read but not yet rendered. A
+material with an emissive color (and no emissive map) is drawn unlit in its base plus emissive color, so visors,
+lamps and thrusters glow. The rest pose of an FBX skeleton is its bind pose (FBX files store the frame they were saved
+at in the bones), so a model at rest looks like its unskinned mesh.
+
+**Making models.** Export glTF binary (`.glb`) with "+Y up" and meters, embed the textures, keep a few thousand
+triangles per character on the Switch and name the clips. FBX exports work too (the axes and units of the file are
+converted on load). A material's base color texture is used; normal, metallic and emissive maps are not. The full
+recipe (export checklist, budgets, loading screens, attachments, collision): `docs/MAKE_A_GAME.en.md`.
+
+The functions above are the same in JavaScript and Python (`g3d.model(path, size)` returns `null` / `None` on
+failure and writes the reason to the app log; `g3d.loadModel(path, size?)` returns a Promise of the model in
+JavaScript (`const hero = await g3d.loadModel("bundle:/hero.glb")`; rejected with the reason) or takes a callback
+`(model, err)` as its last argument; Python: `g3d.loadModel(path, size=None, callback=None)` → `callback(model, err)`;
+C: `g3d_loadModel(path, size, fn, user)` → `fn(model, error, user)`; `model.node(...)` returns `[x, y, z]` / `(x, y, z)`; `model.play(clip,
+{loop, speed, fade})` in JavaScript, `model.play(clip, loop, speed, fade)` in Python). Squirrel, C, Java and
+`"python3"` call them as `g3d` functions that take the model first: `g3d.modelInfo(m)`, `g3d.modelPlay(m, clip,
+loop?, speed?, fade?)`, `g3d.modelStop(m, fade?)`, `g3d.modelUpdate(m, dt)`, `g3d.modelTime(m, t?)`,
+`g3d.modelClip(m)`, `g3d.modelPlaying(m)`, `g3d.modelNode(m, name, x?, ..., sz?)`, `g3d.modelNodeMatrix(m, name,
+...)`; `g3d.draw`, `g3d.drawMatrix`, `g3d.triangles` and `g3d.free` take models as well.
+
+Native apps (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadModelShared`, `g3d::Animator` (`play`,
+`crossfade`, `stop`, `update`, `nodeMatrix`), `g3d::drawModel(model, animator, matrix, opts)` and
+`g3d::ModelInstance` (what the script bindings use).
+
 ### Voxel worlds — `g3d.voxels` (SDK 1.7, JavaScript)
 
 A block world engine for voxel sandbox games, running natively: the app keeps the game logic in JavaScript, the
@@ -581,7 +684,7 @@ sampled sharp up close and mipmapped cell by cell further away. Needs the GPU pa
 Pixel art on meshes: `mesh.setTexture(path, true)` (SDK 1.7, Lua `mesh:setTexture(path, true)`) magnifies the image
 without smoothing.
 
-## 8c. 2D oyun motoru (nexvyn.game)
+## 8c. 2D game engine (nexvyn.game)
 
 `nexvyn.game` is a small 2D engine written in Lua on top of `gfx`, `input`, `audio` and `store`. It ships with the
 system in `romfs:/System/Lua/nexvyn/`, so any app can `require("nexvyn.game")` (§2: `require` looks in the bundle first,
@@ -797,10 +900,13 @@ Presets: `game.particles.preset(name[, overrides])` → emitter, with `name` one
 
 ## 9. Design guidelines
 
-- Use `theme` colors, rounded corners (6–12 px), the `ui` widgets, `"semibold"`/`"bold"` for headings, 13–15 px body
-  text. Leave 16–20 px margins.
+- Apps: use `theme` colors, rounded corners (6–12 px), the `ui` widgets, `"semibold"`/`"bold"` for headings, 13–15 px
+  body text. Leave 16–20 px margins.
 - Make every interactive element at least 28 px tall — the console is used with fingers and a stick cursor.
 - Games: set `"gamepad": true`, support D-pad/stick + A/B, and also touch where possible; show controls on screen.
+  A game does not use the app rules above: it draws its own menus, HUD and pause screen in its own art direction,
+  not with `theme` colors or `ui` widgets, and does not copy a sample's menu layout (`docs/MAKE_A_GAME.en.md`,
+  *Make it yours*). Its store icon is key art of the game (same guide, *Store icon and key art*).
 - Save user data with `store` or `fs` as soon as it changes.
 - Keep `app.draw` fast: avoid creating big tables every frame; load images once.
 
@@ -910,6 +1016,7 @@ Promise jobs (`await`, `.then`) run every frame.
 | Colors | `"#hex"`, `{r,g,b[,a]}`, numbers | `"#hex"`, `[r, g, b, a]`, `{r, g, b, a}`, or 3–4 numbers where noted |
 | Tables | `{1, 2}`, `{key = v}` | arrays `[1, 2]` and objects `{key: v}` (`gfx.poly([x1, y1, x2, y2, ...])`) |
 | Meshes | `mesh:setColor(c)` | `mesh.setColor(c)`, `mesh.flat(true)`, `mesh.triangles()`, `mesh.setTexture(path)`, `mesh.texture()` |
+| Models (SDK 1.8) | `model:play("Run", {fade = 0.2})` | `model.play("Run", {fade: 0.2})`, `model.node(name)` → `[x, y, z]` or `null`, clip index 0-based |
 | Images | `img.width` | `img.width`, `img.height`, `img.path`; `gfx.draw` also accepts a path string |
 | Printing | `print(...)` | `console.log/info/warn/error(...)`, `print(...)`, `sys.log(...)`: arguments joined with spaces, objects written as JSON |
 | Timers | `timer.after/every/cancel` (seconds) | the same, plus `setTimeout`/`setInterval`/`clearTimeout`/`clearInterval` (milliseconds) and `await timer.sleep(seconds)` |
@@ -1102,6 +1209,7 @@ app = Game()                       # `app = Game` works too: a class is instanti
 | Colors | `"#hex"`, `{r,g,b[,a]}`, numbers | `"#hex"`, a tuple/list `(r, g, b[, a])`, a dict `{"r": .., "g": .., "b": ..}`; `gfx.color(r, g, b[, a])` |
 | Tables | `{1, 2}`, `{key = v}` | lists `[1, 2]` and dicts `{"key": v}`; `menu()` returns a list of dicts, `"-"` is a separator |
 | Meshes | `mesh:setColor(c)` | `mesh.setColor(c)`, `mesh.flat(True)`, `mesh.triangles()`, `mesh.setTexture(path)`, `mesh.texture()` |
+| Models (SDK 1.8) | `model:play("Run", {fade = 0.2})` | `model.play("Run", True, 1.0, 0.2)` (clip, loop, speed, fade), `model.node(name)` → `(x, y, z)` or `None`, clip index 0-based |
 | Bytes | strings | `fs.readBytes(path)` → `bytes`; `fs.write`, `fs.append` and `net.post` take `str` or `bytes` |
 | `sys` | SDK only | merged with Python's `sys` (`sys.platform`, `sys.argv` are there too); `import sys` gives the same module |
 | JSON | `json.encode/decode` | the same (`json.encode(v, True)` pretty-prints, `json.decode` returns `None` for invalid text); `json.dumps/loads` work too |
@@ -1194,7 +1302,7 @@ is iterable (`for`, `list()`), not an iterator (`next()`).
 
 | Limit | What happens |
 |---|---|
-| 3 seconds per callback | `TimeoutError: script took too long (possible infinite loop)`; catching the exception does not stop it |
+| 3 seconds per callback (10 for `app.load` and the main file) | `TimeoutError: script took too long (possible infinite loop)`; catching the exception does not stop it. `targetSdk` below 1.8: the app is held and the user picks Wait or Close (section 2) |
 | 64 MB per window | `MemoryError: out of memory (the app used more than 64 MB)`; `sys.memory()` shows the use |
 | 16 Python windows | the 17th shows "too many Python apps are open" |
 | recursion | `RecursionError: maximum recursion depth exceeded` |
@@ -1282,6 +1390,10 @@ with inheritance, closures, lambdas (`@(x) x * 2`), generators, `foreach`, integ
 `5 / 2.0` is `2.5`), tables `{a = 1}` and arrays `[1, 2]`. Standard library: math (`sin`, `sqrt`, `floor`, `rand`,
 `PI`...) and string (`format`, `split`, `strip`, `regexp`...); no io/system (use `fs`, `sys`).
 
+> **Frozen at SDK 1.8.** Squirrel keeps every function it has (the `g3d.model*` functions of SDK 1.8 included) and
+> Squirrel apps keep working on every later Nexvyn OS, but new SDK functions come only to Lua, JavaScript, Python and
+> C. For a new app, or one that needs a newer API, use one of those.
+
 ```squirrel
 class Counter {
     count = 0;                       // tables/arrays as defaults are shared by every instance: create them in load()
@@ -1312,6 +1424,9 @@ return Counter();                    // or define load/draw/... as global functi
   them: `net.json(url, function(data, err) { weather = data; })`. The arguments are those of the Python table in
   section 12.
 - **Meshes** are `Mesh` instances: `m.setColor(c)`, `m.flat(true)`, `m.triangles()`, `m.setTexture(p)`, `m.free()`.
+  Models (`g3d.model(path)`, SDK 1.8) are `Mesh` instances too, with `m.info()`, `m.play(clip, loop, speed, fade)`,
+  `m.stop(fade)`, `m.update(dt)`, `m.time(t)`, `m.clip()`, `m.playing()`, `m.node(name, x, y, z, rx, ry, rz, s)` and
+  `m.nodeMatrix(...)` (section 8b, *3D models*).
 - **Limits**: 64 MB per window, 3 seconds per callback (checked on every loop; catching the error does not help).
   Errors open the error screen with a traceback (`draw() main.nut:12`).
 - Check a bundle on the PC: `python tools/rt_check.py path/to/App.nxvapp` (SDK names, argument counts, brackets,
@@ -1369,9 +1484,18 @@ void app_onmenu(int id) { if (id == 1) store_setNum("count", count = 0); }
   `timer_after(1.0, on_tick, NULL)`; `ui_alert(title, msg, buttons, 2, on_button, NULL)`. `net_json` hands over the
   JSON text (`json_pretty` formats it; `store_getJson` / `store_setJson` keep JSON values).
 - **Memory**: `malloc` is counted against 64 MB (NULL past it); whatever is left is freed when the window closes.
-- **Native code**: C apps are not sandboxed and an endless loop or a crash cannot be stopped (no 3 second limit). A C
+- **Native code**: C apps are not sandboxed and an endless loop or a crash cannot be stopped (no 3 second limit): when
+  a callback held the system for 12 seconds and comes back, Nexvyn OS asks Force Quit / Wait; while it stays stuck,
+  holding + and − for two seconds quits Nexvyn OS (the other windows come back on the next start). A C
   app installed on the SD card runs only after the user agreed once. C apps need JIT code memory (Atmosphère's
   homebrew loader provides it); without it the error screen says so.
+- **What the compiler accepts**: the program links only against the SDK and the small C library above, so `fopen`,
+  sockets, libnx and `svc*` calls do not exist (files go through `fs_*` and the network through `net_*`, which apply
+  the app's permissions). **For apps that target SDK 1.8** also: `#include` reads only the app's own files and the SDK
+  headers, and inline assembly (`asm`, `__asm__`) is refused; each ends the compile with a `PermissionError` that
+  names it. Apps that target an older SDK compile as before; their log notes what SDK 1.8 would refuse
+  (`sandbox: ...`). This narrows what a C app can do by accident or on purpose, but it is not a sandbox: C code works
+  with raw pointers in the system's own process.
 - Compile errors show on the error screen with file and line. Check on the PC with `python tools/rt_check.py` (compiles
   with devkitA64's gcc against the same headers).
 
@@ -1389,6 +1513,10 @@ jar's manifest has `Main-Class`) and `"minSdk": "1.5"`. Put the sources in `src/
 `romfs/System/Java/minijvm_rt.jar`, and the SDK `nexvyn.jar`). The console runs it on miniJVM (an interpreter):
 `java.lang`, `java.util` (collections, `Random`, `Calendar`...), `java.util.function`, lambdas, `String.format`,
 reflection and threads are there; Swing/AWT, `java.net` sockets and `Runtime.exec` are not.
+
+> **Frozen at SDK 1.8.** Java keeps every class and function it has (`G3d.model*` of SDK 1.8 included) and Java apps
+> keep working on every later Nexvyn OS, but new SDK functions come only to Lua, JavaScript, Python and C. For a new
+> app, or one that needs a newer API, use one of those.
 
 ```java
 package counter;

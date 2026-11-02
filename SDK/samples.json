@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 24,
+  "count": 25,
   "samples": [
     {
       "id": "helloc",
@@ -429,8 +429,8 @@
       "minSdk": "1.1",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/shapes-js.zip",
-      "size": 33015,
-      "sha256": "baa20a8703041239974133d4a462e63bb08d8410bf443ea475dcce6cba24b3a7",
+      "size": 32995,
+      "sha256": "89c54d39149babcbd761bd2fcd8a099b1f58c7260c65293721a5327037624091",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/shapes-js/screenshots/2.png",
@@ -536,8 +536,8 @@
       "minSdk": "1.0",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/effects.zip",
-      "size": 18295,
-      "sha256": "13e41dce1e389ae1fb16cccbb260947c6a98664f2c0f5e106782ed7afb897584",
+      "size": 18268,
+      "sha256": "7f83880385aecb25414213c69e90a247188b35029dc278d2f58fa1f9ea4664cd",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/screenshots/2.png",
@@ -545,6 +545,39 @@
       ],
       "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/effects/README.md",
       "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.emberfield",
+      "slug": "ember-field",
+      "language": "lua",
+      "kind": "game",
+      "name": {
+        "en": "Ember Field",
+        "tr": "Kor Tarlası"
+      },
+      "subtitle": {
+        "en": "A complete 3D game with an animated .glb hero",
+        "tr": "Animasyonlu .glb kahramanlı eksiksiz 3B oyun"
+      },
+      "description": {
+        "en": "A small, complete 3D game made the way the Make a game guide describes. A round courier bird collects embers on a floating island at dusk while stones roll across it.\n\n• g3d.loadModel: the models load in the background while the title screen plays\n• A skinned .glb hero with Idle, Run and Hop clips, crossfades and a one-shot clip\n• A glow halo attached to a bone with nodeMatrix and drawMatrix\n• A heightmap island, circle collisions, a follow camera with shake\n• Title, pause and game over screens in the game's own art direction, controller, keyboard and touch\n• The models and the store icon are made by Blender scripts in art/",
+        "tr": "Oyun yap rehberinin anlattığı yolla yapılmış küçük ama eksiksiz bir 3B oyun. Yuvarlak bir kurye kuş, alacakaranlıkta uçan bir adada korları toplar, taşlar adanın üzerinden yuvarlanır.\n\n• g3d.loadModel: başlık ekranı oynarken modeller arka planda yüklenir\n• Idle, Run ve Hop klipleri olan skin'li bir .glb kahraman, geçişler ve tek seferlik klip\n• nodeMatrix ve drawMatrix ile bir kemiğe takılı parlak hale\n• Yükseklik haritalı ada, daire çarpışmaları, sarsıntılı takip kamerası\n• Oyunun kendi sanat yönünde başlık, duraklatma ve oyun sonu ekranları; kumanda, klavye ve dokunmatik\n• Modelleri ve mağaza ikonunu art/ içindeki Blender script'leri üretir"
+      },
+      "tags": [
+        "g3d",
+        "3d",
+        "glb",
+        "animation",
+        "collision"
+      ],
+      "minSdk": "1.8",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ember-field/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ember-field/ember-field.zip",
+      "size": 81231,
+      "sha256": "e85f8269c7a6094d188c9690a7bcf6f5a75d1e024160af2d9137c7a1ec6316f5",
+      "screenshots": [],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ember-field/README.md",
+      "added": "2026-11-03"
     },
     {
       "id": "com.sonerx7.demo.gestures",
@@ -591,8 +624,8 @@
       "minSdk": "1.0",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/gestures.zip",
-      "size": 18866,
-      "sha256": "9c333caa3539bfaa75f31be655023cd233d5520d93b349cd7c069da861889ebf",
+      "size": 18832,
+      "sha256": "d8ec623f995e4dbaded7072992f752fa65b8fa350a45fc0f29b7e64ddc649e0c",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/gestures/screenshots/2.png",
@@ -701,8 +734,8 @@
       "minSdk": "1.2",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/particles.zip",
-      "size": 17486,
-      "sha256": "4f37e43fd7259cd37fdd93c31ae034aff1c22657700a29d89ca37f625e270c0c",
+      "size": 17465,
+      "sha256": "33fdf3eabf5c808acf06916d68325faeeefdbd16de698e7776b16b47c7a361be",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/particles/screenshots/2.png",
@@ -754,8 +787,8 @@
       "minSdk": "1.2",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/physics.zip",
-      "size": 18959,
-      "sha256": "1b0d4388281679158b94a1477cd89db382705298a25e25f5cc81266608377ad2",
+      "size": 18927,
+      "sha256": "37cf562baaf38b4796c3f861cd670e55db75cb612430f22daa7b1ed734dfc4a4",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/physics/screenshots/2.png",
@@ -810,8 +843,8 @@
       "minSdk": "1.2",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/platformer.zip",
-      "size": 19300,
-      "sha256": "dee7d631392aed8d4a3ff11450441889681c29fb0d394b01e8c0c734ddb3291c",
+      "size": 19273,
+      "sha256": "ac707eb12004a71260ec2979f62089a9cb8405df5ccd010f07ce16179bb4f174",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/platformer/screenshots/2.png",
@@ -865,8 +898,8 @@
       "minSdk": "1.0",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/scene3d.zip",
-      "size": 57625,
-      "sha256": "3ee5e347d27201a756f5247692b55d930d55e48aaa244a46f068fe4f2190370b",
+      "size": 57592,
+      "sha256": "56a98b67c954cf2c9decb83587dfba6507e771f2dd0f683f50555b659cbac2bb",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/screenshots/2.png",
@@ -919,8 +952,8 @@
       "minSdk": "1.0",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/synth.zip",
-      "size": 17697,
-      "sha256": "8ab369e2d13dfbf0884736644ed9680484bb18583ddd9cebae71e677dfd02a42",
+      "size": 17668,
+      "sha256": "ddb8963b95bb1639f8c7fd58f8726a31deb28d7d147bf713ba09ef4ad4d0b5d4",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/synth/screenshots/2.png",
@@ -975,8 +1008,8 @@
       "minSdk": "1.0",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/terrain.zip",
-      "size": 17525,
-      "sha256": "4430d09a1bd09bf50d16211638da2493d19fcc2ba855fd8d1a3a9490e0e50113",
+      "size": 17490,
+      "sha256": "8c441a44e12a75449826f1b53d9be5b6520dfb00be324f58d2848d13ec556a70",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/terrain/screenshots/2.png",
@@ -1028,8 +1061,8 @@
       "minSdk": "1.0",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/ui-gallery.zip",
-      "size": 30452,
-      "sha256": "a7c9b52ab890c0055793437397f2f4ef6d4ee254c436146229c3eaf73aff31f5",
+      "size": 30399,
+      "sha256": "4cff2a501890c3b1042e26cb75af8b226d3ecbee370a6243620bc7dffee30d33",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/ui-gallery/screenshots/2.png",

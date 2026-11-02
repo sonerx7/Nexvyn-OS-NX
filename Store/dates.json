@@ -2556,6 +2556,9 @@
   "sample:effects": {
     "added": "2026-10-29"
   },
+  "sample:ember-field": {
+    "added": "2026-11-03"
+  },
   "sample:gestures": {
     "added": "2026-10-29"
   },

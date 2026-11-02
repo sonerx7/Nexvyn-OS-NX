@@ -84,6 +84,6 @@ node tools/js_check.mjs romfs/Applications/hellojs.nxvapp
 ```
 
 `app.json`'u, tüm `.js` dosyalarının sözdizimini, kullanılan `TR("anahtar")` çevirilerinin `lang/en.json` ve
-`lang/tr.json` içinde bulunmasını kontrol eder, ardından uygulamayı sahte bir SDK ile birkaç yüz kare çalıştırır
+(app'te varsa) `lang/tr.json` içinde bulunmasını kontrol eder, ardından uygulamayı sahte bir SDK ile birkaç yüz kare çalıştırır
 (rastgele tıklamalar, menüler, kapatma). Bu denetim Node.js ile yapılır; asıl deneme için uygulamayı Ryujinx'te
 veya konsolda açın (`sdmc:/NexvynOS/autorun.txt` içinde `launch hellojs` satırı).

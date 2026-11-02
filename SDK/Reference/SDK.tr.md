@@ -13,6 +13,8 @@
 Bu belge, üçüncü taraf Nexvyn OS uygulamalarının eksiksiz sözleşmesidir. Bir geliştiricinin **ya da bir yapay zekâ
 asistanının** yalnızca bu belgeye bakarak çalışan bir uygulama üretebileceği şekilde yazılmıştır. Burada listelenen
 her şey vardır; başka hiçbir şey yoktur.
+Oyun mu yapıyorsunuz? `docs/MAKE_A_GAME.tr.md` bu başvuru üzerine kurulu adım adım tariftir: proje, 3B modeller,
+yükleme, girdi, çarpışma, Switch'te hız, sanat yönü, mağaza ikonu ve yayın.
 
 ## 1. Bundle yapısı
 
@@ -21,8 +23,8 @@ MyApp.nxvapp/              ← klasör adı .nxvapp ile biter (ya da klasörün 
 ├── app.json              ← bildirim dosyası (zorunlu)
 ├── main.lua              ← giriş noktası (zorunlu)
 ├── icon.png              ← 128×128 ya da 256×256, saydamlıklı PNG (önerilir)
-├── lang/en.json          ← çeviriler (isteğe bağlı): {"hello": "Hello"}
-├── lang/tr.json          ←                          {"hello": "Merhaba"}
+├── lang/en.json          ← çeviriler: TR() kullanıldığında İngilizce zorunlu: {"hello": "Hello"}
+├── lang/tr.json          ← başka her dil isteğe bağlı (dil başına bir dosya): {"hello": "Merhaba"}
 └── diğer her şey          (görseller, sesler, require("ad") ile yüklenen başka .lua modülleri)
 ```
 
@@ -58,7 +60,8 @@ kullanıcıyı uyarır. Package biçiminin tamamı, imzalama, izin kuralları ve
 }
 ```
 
-- `id` benzersiz olmalıdır (ters alan adı biçimi). `name`/`description` düz metin de olabilir.
+- `id` benzersiz olmalıdır (ters alan adı biçimi). `name`/`description` düz metin ya da dil haritası olabilir: `"en"`
+  zorunlu, diğer her dil isteğe bağlıdır (örnekteki `"tr"` de onlardan biri).
 - `runtime`, `main` belirlemediğinde dili seçer: `"lua"` (varsayılan), `"js"` (bölüm 11), `"python"` (12),
   `"python3"` (12, CPython), `"squirrel"` (13), `"c"` (14) ya da `"java"` (15, `"mainClass"` ile). `.js`, `.py`, `.nut`,
   `.c` ya da `.jar` uzantılı bir ana dosya da dili seçer (`.py`, `"python"` demektir).
@@ -103,7 +106,7 @@ kullanıcıyı uyarır. Package biçiminin tamamı, imzalama, izin kuralları ve
 
 ### SDK sürümleri
 
-`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.7"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
+`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.8"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
 yükseltin.
 
 | SDK | Nexvyn OS'un ekledikleri |
@@ -116,6 +119,13 @@ yükseltin.
 | 1.5 | Tek ortak uygulama üzerinde Squirrel (bölüm 13), konsolda derlenen C (bölüm 14) ve Java (bölüm 15) runtime'lar; app.json `"runtime"` değerleri `"squirrel"`, `"c"`, `"java"` ve `"mainClass"`; Python sistem kütüphanesi (`itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys`) |
 | 1.6 | `fs.unzip` (bir zip'i arka planda ilerlemeyle açar) ve yeni `"games"` izniyle `sys.games` (yüklü oyunlar), Lua, JavaScript, Python ve Squirrel'da; her runtime'da `sys.speak` / `sys.stopSpeaking` (metin okuma, izin gerekmez); `"python3"` runtime'ı (CPython 3.12, bölüm 12) |
 | 1.7 | JavaScript'te `g3d.voxels` voksel dünyaları (bölüm 8b, *Voksel dünyalar*): chunk akışı, yerleşik arazi üreteci, ışık, arka plan thread'lerinde üretilen yumuşak ışıklı mesh'ler, texture atlas shader'ı, kayıt, ışın testi, kutu fiziği; Lua ve JavaScript'te `mesh:setTexture(path, pixelated)` |
+| 1.8 | `g3d.model` (bölüm 8b, *3B modeller*): node hiyerarşisi, materyaller, gömülü ve harici texture'lar ve iskelet animasyonuyla `.glb`, `.gltf`, `.fbx` (ve `.obj`, `.stl`) dosyaları (geçişli `play`, `stop`, `update`, `time`, bağlama için node konumları ve matrisleri), `g3d.drawMatrix`; GPU skinning; bütün runtime'larda (Squirrel, C, Java ve `"python3"` `g3d.model*` fonksiyonlarıyla) |
+
+**Yeni API alan diller.** SDK 1.9'dan itibaren yeni fonksiyonlar Lua, JavaScript, Python (`"python"` ve `"python3"`)
+ve C'ye gelir. Squirrel ve Java SDK 1.8'de donduruldu: sahip oldukları her fonksiyon sonraki her Nexvyn OS'ta
+çalışmayı sürdürür ve App Market'teki uygulamalarında değişiklik gerekmez, ama onlara yeni bir şey eklenmez. Yeni
+uygulamalara büyümeye devam eden dört dilden biriyle başlayın; SDK adları hepsinde aynıdır. Ayrıntı:
+`docs/COMPATIBILITY.tr.md`, *Hangi diller yeni API alır*.
 
 ### Uyumluluk: targetSdk ve deprecation
 
@@ -206,7 +216,12 @@ gösterir, saat yönünde artar. Renkler `"#RRGGBB"` / `"#RRGGBBAA"` onaltılık
 
 Hatalar: bir callback hata fırlatırsa pencere iletiyi bir stack trace ve **Yeniden Yükle** düğmesiyle gösterir;
 `print()`/`sys.log()` çıktısı ve hatalar `sdmc:/NexvynOS/System/Logs/Apps/<id>.log` dosyasına gider. 3 saniyeden uzun
-süren bir callback durdurulur (sonsuz döngü koruması). Her uygulama **64 MB**'a kadar betik belleği kullanabilir
+süren bir callback durdurulur (sonsuz döngü koruması); ana dosyanın üst düzeyi ve `app.load` **10 saniye** alır
+(SDK 1.8). HOME menüsünde, konsol uykudayken ve bir sistem penceresi (konsol klavyesi, kullanıcı seçici) açıkken geçen
+süre sayılmaz. Sonrası uygulamanın `targetSdk`'sına bağlıdır: **1.8** ve sonrasında uygulama hata ekranıyla durur
+("Bu uygulama yanıt vermiyor": Yeniden Yükle, Kapat, Kopyala); daha eski bir SDK'yı hedefleyen uygulama durdurulmaz:
+callback'i kesilir, penceresi bekletilir ve Nexvyn OS *"…" yanıt vermiyor* diye sorar: **Bekle** (uygulama devam eder)
+ya da **Kapat**. Uzun işler arka plana gider (`g3d.loadModel`, `net`, `fs.unzip`, zamanlayıcılar). Her uygulama **64 MB**'a kadar betik belleği kullanabilir
 (JavaScript ve Python gibi Lua da SDK 1.4'ten beri): bu aşılırsa uygulama `MemoryError: out of memory (the app used
 more than 64 MB)` ile ve bir bellek yetersiz ekranıyla durur; sistemin geri kalanı çalışmaya devam eder.
 `sys.memory()` sınıra ne kadar yakın olduğunuzu söyler. `store`, `app.suspend` / `app.autosave` sırasında da diske
@@ -364,7 +379,7 @@ saatinde `{year, month, day, hour, min, sec, wday (0=Pazar), yday, epoch}` · `s
 `sys.notify(title, body)` (bildirim şeridi) · `sys.open(path)` (doğru uygulamayla açar) · `sys.launch(appId[, arg])` ·
 `sys.clipboard([text])` al/ayarla · `sys.log(...)` / `print(...)` · `sys.title(text)` pencere başlığı · `sys.exit()`
 pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim, non-blocking; en fazla 2000 ms, yalnızca pencere odaktayken, `sys.vibrate(0)` durdurur) · `sys.appid()` ·
-`sys.sdkVersion()` → `"1.7"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
+`sys.sdkVersion()` → `"1.8"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
 `sys.games` ve `nxv://` bağlantıları kendi izinlerini gerektirir (bölüm 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, izin gerekmez) metni yerleşik sesle okur; o an söylenenin ardından sıraya girer ve
@@ -385,6 +400,8 @@ kapanınca (ya da crash olunca) hepsi durur; `stop` / `musicPause` / `musicStop`
 
 `TR(key, ...)` → `lang/<kod>.json` dosyanızdan çevrilmiş metin (önce İngilizceye, sonra `TR("common.ok")` gibi sistem
 metinlerine, sonra anahtarın kendisine düşer). `{0}`, `{1}` ek argument'larla değiştirilir: `TR("score", 42)`.
+Zorunlu tek dosya `lang/en.json`'dur; başka her dili `lang/<kod>.json` olarak ekleyin (`de`, `es`, `fr`, `ja`, `ko`,
+`tr` ya da `zh`: Nexvyn OS arayüz dilleri). Yarım çeviri sorun değildir: eksik anahtarlarda İngilizce metin görünür.
 
 ## 8a. Bağlantılar, paylaşım, zamanlanmış bildirimler, izinler (SDK 1.4)
 
@@ -490,6 +507,95 @@ bayrağı) ve `g3d::lastTriangles()` yanında `g3d::lastDrawCalls()` alır.
 
 Hareket kontrolleri: `input.motion()` → Joy-Con / Pro Controller / el modu jiroskopundan `ax, ay, az` (G cinsinden
 ivme), `gx, gy, gz` (rad/s cinsinden açısal hız), `pitch, roll, yaw` (radyan cinsinden birikmiş dönüş).
+
+### 3B modeller — `g3d.model` (SDK 1.8)
+
+Bir 3B araçta ya da yapay zekâ model üreticisiyle yapılmış model dosyalarını yükleyip mesh'ler gibi çizin.
+Desteklenenler: **`.glb` / `.gltf`** (glTF 2.0, en iyi seçim), **`.fbx`** (binary ve metin, 6.x ve 7.x) ve daha eski
+**`.obj` / `.stl`**. Model node hiyerarşisini, materyallerini (temel renk, temel renk texture'ı, alfa modu, çift yüz),
+texture'larını (`.glb` / `.fbx` dosyasının içinde ya da modelin yanındaki görsel dosyaları) ve iskelet
+animasyonlarını korur.
+
+```lua
+local hero, err
+function app.load()
+  hero, err = g3d.model("bundle:/models/hero.glb")   -- yüklenemezse nil + hata metni
+  if hero then hero:play("Idle") end
+end
+function app.update(dt)
+  if hero then hero:update(dt) end                     -- animasyonu ilerletir
+end
+function app.draw(w, h)
+  g3d.begin(0, 0, w, h, 55)
+  g3d.camera(0, 2, 6, 0, 1, 0)
+  g3d.draw(hero, 0, 0, 0, 0, yaw, 0)                   -- mesh'lerle aynı çağrı
+  local m = hero:nodeMatrix("hand_R", 0, 0, 0, 0, yaw, 0)
+  if m then g3d.drawMatrix(sword, m) end               -- elde tutulan bir mesh ya da model
+  g3d.finish()
+end
+-- hero:play("Run", {loop = true, speed = 1.2, fade = 0.25})   şimdiki pozdan 0.25 sn'de geçiş yapar
+```
+
+| Fonksiyon | |
+|---|---|
+| `g3d.loadModel(path[, size], callback)` (SDK 1.8) | aynısı, uygulamayı bekletmeden: dosya arka planda okunup çözülür (bir seferde bir model) ve `callback(model)` ya da `callback(nil, err)` sonra, bir zamanlayıcı gibi çalışır. Büyük dosyalarda ve `app.load` içinde bunu kullanın |
+| `g3d.model(path[, size])` → model ya da nil, err | `.glb .gltf .fbx .obj .stl` yükler. Yollar `fs` yolları gibi çözülür (`"bundle:/models/hero.glb"`). `size` verilmezse model kendi boyutunu korur (metre, Y yukarı; FBX dosyaları kendi eksen ve birimlerinden dönüştürülür); `size` verilirse en uzun kenarı `size` olacak şekilde ölçeklenir, x ve z'de ortalanır ve y = 0'ın üstünde durur (en alçak noktası; karakterleri zeminde durmaları için y = 0'a koyun). Aynı dosyayı yeniden yüklemek verisini ve texture'larını paylaşır |
+| `g3d.draw(model, x, y, z, rx, ry, rz, sx, sy, sz, tint, flags)` | modelin bütün mesh'lerini şimdiki pozunda çizer; renk, texture ve saydamlığı materyaller verir, `tint` bunlarla çarpılır, flag'ler mesh'lerdeki gibidir |
+| `g3d.drawMatrix(meshYaDaModel, matrix[, tint[, flags]])` | 4x4 matrisle (16 sayı, sütun sıralı) çizer, örneğin `model:nodeMatrix`'ten gelen |
+| `model:info()` | `{format, triangles, vertices, meshes, nodes, bones, materials, textures, skinning, size = {w, h, d}, min = {x, y, z}, max = {x, y, z}, animations = {{name, duration}, ...}}`; `skinning` `"gpu"`, `"cpu"` ya da `""` (iskelet yok) |
+| `model:play(clip[, {loop, speed, fade}])` → bool | klibi adıyla başlatır (ya da sırasıyla: Lua'da 1'den, diğerlerinde 0'dan). Adlar FBX dışa aktarımlarının eklediği iskelet öneki olmadan ve büyük/küçük harf ayrımı olmadan da bulunur (`"Walk"`, `"Rig|Walk"`'u bulur). `loop` (varsayılan true), `speed` (1; negatif geriye oynatır), `fade` (şimdiki pozdan geçiş süresi, sn, 0). Bilinmeyen klipte false |
+| `model:stop([fade])` | dinlenme pozuna döner (`fade` saniyede geçerek) |
+| `model:update(dt)` | klibi ilerletir; her frame bir kez çağırın. Döngüsüz bir klip son karesinde durur |
+| `model:time([t])` → saniye | klipteki konum (`t` verilirse önce onu ayarlar) |
+| `model:clip()` → ad ya da nil, `model:playing()` → bool | çalan klip |
+| `model:node(name[, x, y, z, rx, ry, rz, sx, sy, sz])` → x, y, z | bir node'un (kemik, bağlama noktası) şimdiki pozdaki yeri, `g3d.draw` ile aynı yerleştirmeyle; böyle bir node yoksa nil |
+| `model:nodeMatrix(name[, x, ..., sz])` → 16 sayı | node'un `g3d.drawMatrix` için tam matrisi (elde tutulan şeyler, başta şapka) |
+| `model:triangles()`, `model:free()` | üçgen sayısı; modeli hemen serbest bırakır (yoksa çöp toplayıcı yapar) |
+
+```lua
+function app.load()
+  g3d.loadModel("bundle:/models/city.glb", function(m, err)   -- uygulama bu sırada çizmeye devam eder
+    if m then city = m else print(err) end
+  end)
+end
+```
+
+Her model handle'ının kendi animasyon durumu vardır: aynı dosyayı iki kez `g3d.model()` ile açmak GPU verisini
+paylaşan ama ayrı ayrı oynayan iki karakter verir.
+
+**Skinning.** GPU yolunda skinned mesh'ler vertex shader'da deforme edilir, çizim başına en fazla 32 kemik (daha
+büyük iskeletler yüklenirken birkaç çizime bölünür). GPU skinning yoksa (CPU yedeği ya da kemik paletini tutamayan bir
+sürücü) skinning CPU'da yapılır; CPU yedeği modelleri mesh'ler gibi texture'sız çizer.
+
+**Sınırlar.** En fazla 96 MB dosya, 1 000 000 vertex, 1 500 000 üçgen, 20 000 node, iskelet başına 1024 kemik ve
+4 000 000 animasyon anahtar değeri. Bozuk ya da desteklenmeyen bir dosya yalnızca `g3d.model`'in bir mesajla
+başarısız olmasına yol açar; uygulamayı asla çökertmez. Morph target'lar (blend shape), dosyadaki kamera ve ışıklar
+yok sayılır; cubic spline animasyon anahtarları anahtar değerleri arasında doğrusal oynatılır; metallic / roughness
+değerleri okunur ama henüz çizime yansımaz. Emissive rengi olan (ve emissive haritası olmayan) bir materyal temel renk
+artı emissive renkle ışıksız çizilir; vizörler, lambalar ve iticiler parlar. Bir FBX iskeletinin dinlenme pozu bind
+pozudur (FBX dosyaları kaydedildikleri kareyi kemiklerde tutar), bu yüzden dinlenmedeki model skinsiz mesh'iyle aynı
+görünür.
+
+**Model hazırlamak.** "+Y yukarı" ve metreyle glTF binary (`.glb`) olarak dışa aktarın, texture'ları gömün, Switch'te
+karakter başına birkaç bin üçgende kalın ve klipleri adlandırın. FBX dışa aktarımları da çalışır (dosyanın eksen ve
+birimleri yüklenirken dönüştürülür). Materyalin temel renk texture'ı kullanılır; normal, metallic ve emissive
+haritaları kullanılmaz. Tarifin tamamı (dışa aktarma listesi, bütçeler, yükleme ekranları, takılan nesneler,
+çarpışma): `docs/MAKE_A_GAME.tr.md`.
+
+Yukarıdaki fonksiyonlar JavaScript ve Python'da aynıdır (`g3d.model(path, size)` başarısız olunca `null` / `None`
+döndürür ve sebebi uygulama loguna yazar; `g3d.loadModel(path, size?)` JavaScript'te modelin Promise'ini döndürür
+(`const hero = await g3d.loadModel("bundle:/hero.glb")`; sebeple reddedilir) ya da son argüman olarak bir `(model,
+err)` callback'i alır; Python: `g3d.loadModel(path, size=None, callback=None)` → `callback(model, err)`; C:
+`g3d_loadModel(path, size, fn, user)` → `fn(model, error, user)`; `model.node(...)` `[x, y, z]` / `(x, y, z)` döndürür; JavaScript'te
+`model.play(clip, {loop, speed, fade})`, Python'da `model.play(clip, loop, speed, fade)`). Squirrel, C, Java ve
+`"python3"` bunları modeli ilk argüman alan `g3d` fonksiyonları olarak çağırır: `g3d.modelInfo(m)`,
+`g3d.modelPlay(m, clip, loop?, speed?, fade?)`, `g3d.modelStop(m, fade?)`, `g3d.modelUpdate(m, dt)`,
+`g3d.modelTime(m, t?)`, `g3d.modelClip(m)`, `g3d.modelPlaying(m)`, `g3d.modelNode(m, name, x?, ..., sz?)`,
+`g3d.modelNodeMatrix(m, name, ...)`; `g3d.draw`, `g3d.drawMatrix`, `g3d.triangles` ve `g3d.free` modelleri de alır.
+
+Native uygulamalar (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadModelShared`, `g3d::Animator` (`play`,
+`crossfade`, `stop`, `update`, `nodeMatrix`), `g3d::drawModel(model, animator, matrix, opts)` ve
+`g3d::ModelInstance` (script binding'lerinin kullandığı).
 
 ### Voksel dünyalar — `g3d.voxels` (SDK 1.7, JavaScript)
 
@@ -740,11 +846,14 @@ bir emitter üzerinden üretir.
 
 ## 9. Tasarım ilkeleri
 
-- `theme` renklerini, yuvarlak köşeleri (6–12 px), `ui` bileşenlerini, başlıklar için `"semibold"`/`"bold"`'u ve
-  13–15 px gövde metnini kullanın. 16–20 px kenar boşluğu bırakın.
+- Uygulamalar: `theme` renklerini, yuvarlak köşeleri (6–12 px), `ui` bileşenlerini, başlıklar için
+  `"semibold"`/`"bold"`'u ve 13–15 px gövde metnini kullanın. 16–20 px kenar boşluğu bırakın.
 - Her etkileşimli öğeyi en az 28 px yüksekliğinde yapın — konsol parmakla ve çubuk imleciyle kullanılır.
 - Oyunlar: `"gamepad": true` ayarlayın, D-pad/çubuk + A/B'yi ve mümkünse dokunmatiği de destekleyin; kontrolleri
-  ekranda gösterin.
+  ekranda gösterin. Oyun yukarıdaki uygulama kurallarını kullanmaz: menülerini, HUD'unu ve duraklatma ekranını
+  `theme` renkleri ya da `ui` bileşenleriyle değil, kendi sanat yönüyle kendisi çizer ve bir örneğin menü düzenini
+  kopyalamaz (`docs/MAKE_A_GAME.tr.md`, *Kendinin yap*). Mağaza ikonu oyunun key art'ıdır (aynı rehber, *Mağaza
+  ikonu ve key art*).
 - Kullanıcı verilerini değişir değişmez `store` ya da `fs` ile kaydedin.
 - `app.draw`'ı hızlı tutun: her karede büyük tablolar oluşturmaktan kaçının; görselleri bir kez yükleyin.
 
@@ -856,6 +965,7 @@ Promise işleri (`await`, `.then`) her karede çalışır.
 | Renkler | `"#hex"`, `{r,g,b[,a]}`, sayılar | `"#hex"`, `[r, g, b, a]`, `{r, g, b, a}` ya da belirtilen yerlerde 3–4 sayı |
 | Tablolar | `{1, 2}`, `{key = v}` | diziler `[1, 2]` ve nesneler `{key: v}` (`gfx.poly([x1, y1, x2, y2, ...])`) |
 | Mesh'ler | `mesh:setColor(c)` | `mesh.setColor(c)`, `mesh.flat(true)`, `mesh.triangles()`, `mesh.setTexture(path)`, `mesh.texture()` |
+| Modeller (SDK 1.8) | `model:play("Run", {fade = 0.2})` | `model.play("Run", {fade: 0.2})`, `model.node(name)` → `[x, y, z]` ya da `null`, klip sırası 0'dan |
 | Görseller | `img.width` | `img.width`, `img.height`, `img.path`; `gfx.draw` bir yol metni de kabul eder |
 | Yazdırma | `print(...)` | `console.log/info/warn/error(...)`, `print(...)`, `sys.log(...)`: argument'lar boşlukla birleştirilir, nesneler JSON olarak yazılır |
 | Zamanlayıcılar | `timer.after/every/cancel` (saniye) | aynısı, artı `setTimeout`/`setInterval`/`clearTimeout`/`clearInterval` (milisaniye) ve `await timer.sleep(seconds)` |
@@ -1048,6 +1158,7 @@ döndürür.
 | Renkler | `"#hex"`, `{r,g,b[,a]}`, sayılar | `"#hex"`, bir tuple/liste `(r, g, b[, a])`, bir dict `{"r": .., "g": .., "b": ..}`; `gfx.color(r, g, b[, a])` |
 | Tablolar | `{1, 2}`, `{key = v}` | listeler `[1, 2]` ve dict'ler `{"key": v}`; `menu()` dict'lerden oluşan bir liste döndürür, `"-"` bir ayraçtır |
 | Mesh'ler | `mesh:setColor(c)` | `mesh.setColor(c)`, `mesh.flat(True)`, `mesh.triangles()`, `mesh.setTexture(path)`, `mesh.texture()` |
+| Modeller (SDK 1.8) | `model:play("Run", {fade = 0.2})` | `model.play("Run", True, 1.0, 0.2)` (clip, loop, speed, fade), `model.node(name)` → `(x, y, z)` ya da `None`, klip sırası 0'dan |
 | Baytlar | metinler | `fs.readBytes(path)` → `bytes`; `fs.write`, `fs.append` ve `net.post` `str` ya da `bytes` alır |
 | `sys` | yalnızca SDK | Python'un `sys`'iyle birleştirilmiştir (`sys.platform`, `sys.argv` de vardır); `import sys` aynı modülü verir |
 | JSON | `json.encode/decode` | aynısı (`json.encode(v, True)` girintili yazar, `json.decode` geçersiz metin için `None` döndürür); `json.dumps/loads` da çalışır |
@@ -1135,7 +1246,7 @@ modüllerin CPython API'leriyle saf Python sürümlerini ekler: `itertools` (`co
 
 | Sınır | Ne olur |
 |---|---|
-| Callback başına 3 saniye | `TimeoutError: script took too long (possible infinite loop)`; istisnayı yakalamak onu durdurmaz |
+| Callback başına 3 saniye (`app.load` ve ana dosya için 10) | `TimeoutError: script took too long (possible infinite loop)`; istisnayı yakalamak onu durdurmaz. `targetSdk` 1.8'den eskiyse uygulama bekletilir, kullanıcı Bekle ya da Kapat'ı seçer (bölüm 2) |
 | Pencere başına 64 MB | `MemoryError: out of memory (the app used more than 64 MB)`; `sys.memory()` kullanımı gösterir |
 | 16 Python penceresi | 17.'si "too many Python apps are open" gösterir |
 | özyineleme | `RecursionError: maximum recursion depth exceeded` |
@@ -1227,6 +1338,11 @@ ve ondalık sayılar (`5 / 2` `2`'dir, `5 / 2.0` `2.5`'tir), tablolar `{a = 1}` 
 math (`sin`, `sqrt`, `floor`, `rand`, `PI`...) ve string (`format`, `split`, `strip`, `regexp`...); io/system yok
 (`fs`, `sys` kullanın).
 
+> **SDK 1.8'de donduruldu.** Squirrel sahip olduğu her fonksiyonu tutar (SDK 1.8'in `g3d.model*` fonksiyonları dahil)
+> ve Squirrel uygulamaları sonraki her Nexvyn OS'ta çalışmayı sürdürür, ama yeni SDK fonksiyonları yalnızca Lua,
+> JavaScript, Python ve C'ye gelir. Yeni bir uygulama için, ya da daha yeni bir API gerekirse, bunlardan birini
+> kullanın.
+
 ```squirrel
 class Counter {
     count = 0;                       // varsayılan değer olarak tablolar/diziler her örnek tarafından paylaşılır: onları load() içinde oluşturun
@@ -1257,6 +1373,9 @@ return Counter();                    // ya da load/draw/... Function'larını ge
   yüzden alanlar ve method'lar içlerinde çalışır: `net.json(url, function(data, err) { weather = data; })`. Argument'lar
   bölüm 12'deki Python tablosundakilerdir.
 - **Mesh'ler** `Mesh` örnekleridir: `m.setColor(c)`, `m.flat(true)`, `m.triangles()`, `m.setTexture(p)`, `m.free()`.
+  Modeller (`g3d.model(path)`, SDK 1.8) de `Mesh` örnekleridir; `m.info()`, `m.play(clip, loop, speed, fade)`,
+  `m.stop(fade)`, `m.update(dt)`, `m.time(t)`, `m.clip()`, `m.playing()`, `m.node(name, x, y, z, rx, ry, rz, s)` ve
+  `m.nodeMatrix(...)` (bölüm 8b, *3B modeller*).
 - **Sınırlar**: pencere başına 64 MB, callback başına 3 saniye (her döngüde denetlenir; hatayı yakalamak işe
   yaramaz). Hatalar stack trace ile (`draw() main.nut:12`) hata ekranını açar.
 - Bir bundle'ı PC'de denetleyin: `python tools/rt_check.py path/to/App.nxvapp` (SDK adları, argument sayıları,
@@ -1317,9 +1436,17 @@ void app_onmenu(int id) { if (id == 1) store_setNum("count", count = 0); }
   verir (`json_pretty` onu biçimlendirir; `store_getJson` / `store_setJson` JSON değerlerini saklar).
 - **Bellek**: `malloc` 64 MB'a karşı sayılır (aşınca NULL); pencere kapanınca geriye kalan her şey serbest bırakılır.
 - **Yerel kod**: C uygulamaları sandbox'ta çalışmaz ve sonsuz bir döngü ya da bir çökme durdurulamaz (3 saniye
-  sınırı yok). SD karta kurulan bir C uygulaması yalnızca kullanıcı bir kez onay verdikten sonra çalışır. C
+  sınırı yok): bir callback sistemi 12 saniye tutup geri döndüğünde Nexvyn OS Zorla Kapat / Bekle diye sorar; takılı
+  kalırsa + ve − iki saniye basılı tutulunca Nexvyn OS kapanır (diğer pencereler sonraki açılışta geri gelir). SD karta kurulan bir C uygulaması yalnızca kullanıcı bir kez onay verdikten sonra çalışır. C
   uygulamaları JIT kod belleği gerektirir (Atmosphère'in homebrew yükleyicisi bunu sağlar); yoksa hata ekranı bunu
   söyler.
+- **Derleyicinin kabul ettikleri**: program yalnızca SDK'ya ve yukarıdaki küçük C kütüphanesine bağlanır, yani
+  `fopen`, soketler, libnx ve `svc*` çağrıları yoktur (dosyalar `fs_*`, ağ `net_*` üzerinden gider; ikisi de
+  uygulamanın izinlerini uygular). **SDK 1.8'i hedefleyen uygulamalarda** ayrıca: `#include` yalnızca uygulamanın
+  kendi dosyalarını ve SDK header'larını okur, inline assembly (`asm`, `__asm__`) reddedilir; her biri derlemeyi adını
+  veren bir `PermissionError` ile bitirir. Daha eski bir SDK'yı hedefleyen uygulamalar eskisi gibi derlenir; log'ları
+  SDK 1.8'in neyi reddedeceğini not eder (`sandbox: ...`). Bu, bir C uygulamasının kazara ya da bilerek
+  yapabileceklerini daraltır ama bir sandbox değildir: C kodu sistemin kendi sürecinde ham pointer'larla çalışır.
 - Derleme hataları hata ekranında dosya ve satırla gösterilir. PC'de `python tools/rt_check.py` ile denetleyin (aynı
   header'larına karşı devkitA64'ün gcc'siyle derler).
 
@@ -1338,6 +1465,10 @@ class library `romfs/System/Java/minijvm_rt.jar` ve SDK `nexvyn.jar`'a karşı d
 yorumlayıcı) çalıştırır: `java.lang`, `java.util` (koleksiyonlar, `Random`, `Calendar`...), `java.util.function`,
 lambda'lar, `String.format`, reflection ve thread'ler vardır; Swing/AWT, `java.net` soketleri ve `Runtime.exec`
 yoktur.
+
+> **SDK 1.8'de donduruldu.** Java sahip olduğu her sınıfı ve fonksiyonu tutar (SDK 1.8'in `G3d.model*`'ı dahil) ve
+> Java uygulamaları sonraki her Nexvyn OS'ta çalışmayı sürdürür, ama yeni SDK fonksiyonları yalnızca Lua, JavaScript,
+> Python ve C'ye gelir. Yeni bir uygulama için, ya da daha yeni bir API gerekirse, bunlardan birini kullanın.
 
 ```java
 package counter;

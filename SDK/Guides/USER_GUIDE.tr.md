@@ -797,10 +797,29 @@ Hesaplar > Oturum açılışında aç**.
 
 ### 3D Modelleme
 
-Dokunmatik, kumanda ve klavyeyle low-poly modelleme: sahne hiyerarşisi, özellik paneli, ayarlanabilir temel şekiller,
-yakalamalı taşı/döndür/ölçekle aracı ve köşe, kenar, yüz düzenleme (extrude, inset, birleştirme, subdivide, normaller).
-64 adım geri alma. `.nxv3d` projeleri, OBJ/STL içe aktarma, OBJ+MTL/STL dışa aktarma ve PNG görüntü kaydı. Örnekler: ev,
-ağaç, araba.
+Dokunmatik, kumanda ve klavyeyle poligon modelleme: sahne hiyerarşisi, özellik paneli, ayarlanabilir temel şekiller,
+taşı/döndür/ölçekle aracı ve köşe, kenar, yüz düzenleme. 64 adım geri alma. `.nxv3d` projeleri, OBJ/STL içe aktarma,
+glTF ikili (`.glb`), OBJ+MTL ve STL dışa aktarma, PNG görüntü kaydı. Örnekler: ev, ağaç, araba.
+
+- **Düzenleme araçları** (Düzenleme modunda; panel düğmeleri, Mesh menüsü, uzun basma / sağ tık menüsü ya da tuşlar):
+  extrude (bölge ya da her yüz ayrı), inset (bölge ya da her yüz ayrı), bevel (genişlik ve segment sayısıyla kenarlar
+  ya da köşeler), halka kesim (bir kenar seçin; kesim sayısı ve kaydırma), bıçak (yüzeyde noktalara dokunun, sonra
+  Tamam), köprü (iki kenar halkası ya da iki yüz), doldur, çöz, döndürerek çoğalt (spin), geometriyi aynala, birleştir,
+  subdivide, normalleri çevir / düzelt. Araçtan sonra paneldeki **Ayarla** kartı değerlerini değiştirir.
+- **Seçim:** halka, şerit, büyüt, küçült, bağlı parçalar, kutu seçimi.
+- **Dönüşümler:** orantılı düzenleme (yakındaki köşeler yumuşak geçişle gelir; yarıçap panelde ya da taşırken `[` `]`),
+  ızgara ve köşe yakalama, genel ya da yerel eksenler, tam değer (taşırken sayı yazın ya da alttaki çubuktaki tuş
+  takımı düğmesi).
+- **Modifier'lar** (tahribatsız, projeyle kaydedilir, dışa aktarıma girer): ayna, dizi, alt bölümlü yüzey (1-3
+  seviye), kalınlaştır, pah, yumuşat, azalt. Onay düğmesi modifier'ı ağa uygular. Çok büyük sonuçlar sistem akıcı
+  kalsın diye bir notla atlanır.
+- **Malzemeler:** nesne başına birden çok malzeme yuvası, yüzlerin yuvalara atanması, PBR değerleri (ana renk,
+  metalik, pürüzlülük, ışıma, opaklık) ve ana renk görseli.
+- **UV:** akıllı, kutu, silindir, küre ve düzlem açma; UV görünümü ve dama önizlemesi.
+- **Görünüm:** dörtlü görünüm (üst, ön, sağ ve serbest kamera), ölçümlü istatistikler (uzaklık, uzunluk, alan,
+  boyut), seçime odaklan.
+- **Oyunlar için:** **Dosya > Dışa Aktar > glTF İkili**, nesne hiyerarşisini, malzemeye göre bölünmüş ağları,
+  malzemeleri ve görselleri tek bir `.glb` dosyasına yazar; bu, oyun motorlarının ve 3D yazılımların ortak biçimidir.
 
 ### Oyun Motoru
 

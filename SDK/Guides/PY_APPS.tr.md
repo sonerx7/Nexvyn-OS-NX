@@ -156,7 +156,7 @@ python tools/py_check.py romfs/Applications/hellopy.nxvapp
 ```
 
 `app.json`'u, tüm `.py` dosyalarının sözdizimini ve konsolda çalışmayan kalıpları, kullanılan `TR("anahtar")`
-çevirilerinin `lang/en.json` ve `lang/tr.json` içinde bulunmasını ve `net.*` kullanan uygulamanın `network` iznini
+çevirilerinin `lang/en.json` ve (app'te varsa) `lang/tr.json` içinde bulunmasını ve `net.*` kullanan uygulamanın `network` iznini
 istemesini kontrol eder; ardından uygulamayı gerçek imzalarla kurulmuş sahte bir SDK ile birkaç yüz kare çalıştırır
 (rastgele tıklamalar, tuşlar, zamanlayıcılar, geri çağırmalar, menüler, kapatma). Denetim CPython ile yapılır; asıl
 deneme için uygulamayı Ryujinx'te veya konsolda açın (`sdmc:/NexvynOS/autorun.txt` içinde `launch hellopy` satırı).

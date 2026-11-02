@@ -138,4 +138,81 @@ public final class G3d {
     public static void free(Object... args) {
         Host.run(F_FREE, args);
     }
+
+    private static final int F_MODEL = Host.index("g3d.model");
+
+    /** g3d.model(path, size?) */
+    public static Mesh model(Object... args) {
+        return Host.mesh(F_MODEL, args);
+    }
+
+    private static final int F_DRAW_MATRIX = Host.index("g3d.drawMatrix");
+
+    /** g3d.drawMatrix(obj, matrix, tint?, flags?) */
+    public static void drawMatrix(Object... args) {
+        Host.run(F_DRAW_MATRIX, args);
+    }
+
+    private static final int F_MODEL_INFO = Host.index("g3d.modelInfo");
+
+    /** g3d.modelInfo(model) */
+    public static Record modelInfo(Object... args) {
+        return Host.rec(F_MODEL_INFO, args);
+    }
+
+    private static final int F_MODEL_PLAY = Host.index("g3d.modelPlay");
+
+    /** g3d.modelPlay(model, clip, loop?, speed?, fade?) */
+    public static boolean modelPlay(Object... args) {
+        return Host.bool(F_MODEL_PLAY, args);
+    }
+
+    private static final int F_MODEL_STOP = Host.index("g3d.modelStop");
+
+    /** g3d.modelStop(model, fade?) */
+    public static void modelStop(Object... args) {
+        Host.run(F_MODEL_STOP, args);
+    }
+
+    private static final int F_MODEL_UPDATE = Host.index("g3d.modelUpdate");
+
+    /** g3d.modelUpdate(model, dt) */
+    public static void modelUpdate(Object... args) {
+        Host.run(F_MODEL_UPDATE, args);
+    }
+
+    private static final int F_MODEL_TIME = Host.index("g3d.modelTime");
+
+    /** g3d.modelTime(model, t?) */
+    public static double modelTime(Object... args) {
+        return Host.num(F_MODEL_TIME, args);
+    }
+
+    private static final int F_MODEL_CLIP = Host.index("g3d.modelClip");
+
+    /** g3d.modelClip(model) */
+    public static String modelClip(Object... args) {
+        return Host.str(F_MODEL_CLIP, args);
+    }
+
+    private static final int F_MODEL_PLAYING = Host.index("g3d.modelPlaying");
+
+    /** g3d.modelPlaying(model) */
+    public static boolean modelPlaying(Object... args) {
+        return Host.bool(F_MODEL_PLAYING, args);
+    }
+
+    private static final int F_MODEL_NODE = Host.index("g3d.modelNode");
+
+    /** g3d.modelNode(model, name, x?, y?, z?, rx?, ry?, rz?, sx?, sy?, sz?) */
+    public static double[] modelNode(Object... args) {
+        return Host.nums(F_MODEL_NODE, args);
+    }
+
+    private static final int F_MODEL_NODE_MATRIX = Host.index("g3d.modelNodeMatrix");
+
+    /** g3d.modelNodeMatrix(model, name, x?, y?, z?, rx?, ry?, rz?, sx?, sy?, sz?) */
+    public static double[] modelNodeMatrix(Object... args) {
+        return Host.nums(F_MODEL_NODE_MATRIX, args);
+    }
 }

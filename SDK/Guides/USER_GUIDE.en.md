@@ -794,10 +794,29 @@ To open just a few apps at login you do not need Automation: **System Settings >
 
 ### 3D Modeling
 
-Low-poly modeling with touch, controller and keyboard: a scene hierarchy, a properties panel, adjustable primitives, a
-move/rotate/scale tool with snapping, and vertex, edge and face editing (extrude, inset, merge, subdivide, normals).
-64 levels of undo. `.nxv3d` projects, OBJ/STL import, OBJ+MTL/STL export and saving PNG images. Samples: a house, a
-tree, a car.
+Polygon modeling with touch, controller and keyboard: a scene hierarchy, a properties panel, adjustable primitives, a
+move/rotate/scale tool and vertex, edge and face editing. 64 levels of undo. `.nxv3d` projects, OBJ/STL import,
+glTF binary (`.glb`), OBJ+MTL and STL export, and saving PNG images. Samples: a house, a tree, a car.
+
+- **Edit tools** (Edit mode; panel buttons, the Mesh menu, the long-press / right-click menu or keys): extrude (region
+  or each face), inset (region or each face), bevel (edges with width and segments, or vertices), loop cut (pick an
+  edge; number of cuts and slide), knife (tap points on the surface, then OK), bridge (two edge loops or two faces),
+  fill, dissolve, spin, mirror geometry, merge, subdivide, flip / recalculate normals. After a tool the **Adjust** card
+  in the panel changes its values.
+- **Selection:** loop, ring, grow, shrink, linked, box select.
+- **Transforms:** proportional editing (nearby vertices follow with a falloff; radius in the panel or `[` `]` while
+  moving), grid and vertex snapping, global or local axes, exact values (type a number while moving, or the keypad
+  button in the bar at the bottom).
+- **Modifiers** (non-destructive, saved with the project, included in exports): mirror, array, subdivision surface
+  (1-3 levels), solidify, bevel, smooth, decimate. The check button applies a modifier to the mesh. Very large results
+  are skipped with a note so the system stays responsive.
+- **Materials:** several material slots per object, faces assigned per slot, PBR values (base color, metallic,
+  roughness, emission, opacity) and a base color image.
+- **UV:** smart, box, cylinder, sphere and planar unwrapping; a UV view and a checker preview.
+- **View:** quad view (top, front, right and the free camera), statistics with measurements (distance, length, area,
+  size), frame selected.
+- **For games:** **File > Export > glTF Binary** writes the object hierarchy, meshes per material, materials and
+  images in one `.glb` file, the common format of game engines and 3D software.
 
 ### Game Engine
 

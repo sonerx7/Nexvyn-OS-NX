@@ -88,6 +88,6 @@ node tools/js_check.mjs romfs/Applications/hellojs.nxvapp
 ```
 
 It checks `app.json`, the syntax of every `.js` file and that every `TR("key")` translation used exists in
-`lang/en.json` and `lang/tr.json`, then runs the app for a few hundred frames against a fake SDK (random clicks, menus,
+`lang/en.json` (and in `lang/tr.json` when the app has one), then runs the app for a few hundred frames against a fake SDK (random clicks, menus,
 closing). This check runs in Node.js; for the real test open the app in Ryujinx or on the console (a `launch hellojs`
 line in `sdmc:/NexvynOS/autorun.txt`).

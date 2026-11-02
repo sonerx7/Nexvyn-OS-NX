@@ -152,7 +152,8 @@ Ortak kurallar:
   Yükle** düğmesi çıkar; çıktı `sdmc:/NexvynOS/System/Logs/Apps/<id>.log` dosyasına yazılır.
 - Lua'da `io`, `debug`, `package`, `dofile`, `loadfile` yoktur; dosyalar için `fs` kullanılır. JavaScript'te tarayıcı ya
   da Node.js API'si yoktur (`window`, `fetch`, `require`…); her pencerenin 64 MB bellek sınırı vardır.
-- Çeviriler `lang/en.json` ve `lang/tr.json` içinde durur; `TR("anahtar")` ile okunur.
+- Çeviriler `lang/en.json` (zorunlu) ve her başka dil için isteğe bağlı bir dosyada (`lang/de.json`, `lang/tr.json`,
+  ...) durur; `TR("anahtar")` ile okunur, eksik anahtarlar İngilizceye düşer.
 - İki parmak hareketleri `event` ile `"pinch"` ve `"rotate"` olarak gelir (üç dilde de). `e.touch` doğrudur,
   `e.x, e.y` parmakların ortasıdır. `"pinch"`: `e.scale`, bir önceki olaydan bu yana parmak aralığındaki değişimdir
   (> 1 açılıyor); yakınlaştırmayı bununla çarpın. `"rotate"`: `e.angle`, açıdaki değişimdir (radyan, pozitif = saat
@@ -218,6 +219,8 @@ Proje biçimi, davranışlar, olaylar ve API'nin tamamı: [GAME_ENGINE_PROJECTS.
 ---
 
 ## 5. g3d ile 3D
+
+3B araçta yapılmış modellerle bir 3B oyun mu yapıyorsunuz? Eksiksiz tarif: [MAKE_A_GAME.tr.md](MAKE_A_GAME.tr.md).
 
 `g3d` küçük bir gerçek zamanlı 3D çizicidir. GPU'da çalışır: derinlik tamponu, piksel başına ışık, sis ve dokular.
 Kareye 30–60 bin üçgen hedeflenir. GPU yolu kullanılamazsa (ya da sistem ayarı `g3d.gpu` `false` ise) aynı çağrılar
@@ -382,6 +385,18 @@ Komutlar: `wait <sn>`, `setup <dil>`, `unlock`, `launch <appId> [arg]`, `shot <a
 `source/wm/shell_autorun.cpp` dosyasının başındadır.
 
 Testten sonra `autorun.txt`'yi silin; yoksa her açılışta yeniden çalışır.
+
+### Donma ve sızıntılar
+
+- `stats <etiket>`, `system.log`'a bir `stats` satırı yazar: boş heap, kullanılan bellek, görüntü önbelleği,
+  pencereler, g3d GL nesneleri (texture, atlas, offscreen target), mixer kanalları, arka plan yazmaları,
+  stall satırları ve bir önceki `stats`'tan beri kare süreleri. Sızıntı bulmak için iki `stats` arasında bir app'i
+  defalarca açıp kapatın.
+- `perf.stallMs`'ten (varsayılan 150 ms) yavaş bir kare, zamanı alan bölümleri (shell katmanları, servisler, app
+  id'leri) sayan bir `stall` satırı yazar. Donma bildiren kullanıcıdan `System/Logs/system.log`'u isteyin.
+- `set debug.slowSdMs 300`, yavaş bir SD kart gibi her dosya yazmasını ve klasör listelemesini 300 ms bekletir.
+  `io.background` açıkken (varsayılan) settings.json, system.log ve app log'ları arka plandaki bir thread ile yazılır,
+  masaüstü akıcı kalır; `io.background` false (açılışta okunur) onları eskisi gibi ana thread'de yazar.
 
 ### tools/ryu_test.sh
 

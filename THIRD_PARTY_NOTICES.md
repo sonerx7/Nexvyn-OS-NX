@@ -18,10 +18,12 @@ Nexvyn OS is distributed under **GPL-3.0-or-later**. The components below are li
 | pocketpy 2.2.0 (`lib/pocketpy`) | MIT | Python yorumlayıcısı |
 | CPython 3.12.16 (`tools/build_cpython.sh`, Python Software Foundation) ve standart kütüphanesi (`romfs/System/Python3/lib.zip`) | PSF-2.0 (Python Software Foundation License Version 2; GPL uyumlu / GPL-compatible) | `"python3"` çalışma ortamı; `tools/cpython_tool.py`'de "Nexvyn OS" işaretli değişiklikler. Kendi içindeki HACL* (MIT/Apache-2.0) ve BLAKE2 (CC0) kodu dahil |
 | Squirrel 3.2 (`lib/squirrel`, Alberto Demichelis) | MIT | Squirrel çalışma ortamı (SDK 1.5); `sqvm.cpp`'de işaretli bir değişiklik |
-| TinyCC 0.9.28rc (`lib/tinycc`, Fabrice Bellard ve katkıcılar) | LGPL-2.1-or-later | C uygulamalarını konsolda derler (SDK 1.5); `tccrun.c` ve `tcc.h`'de işaretli `__SWITCH__` değişiklikleri, `config.h` bizim |
+| TinyCC 0.9.28rc (`lib/tinycc`, Fabrice Bellard ve katkıcılar) | LGPL-2.1-or-later | C uygulamalarını konsolda derler (SDK 1.5); `tccrun.c` ve `tcc.h`'de işaretli `__SWITCH__` değişiklikleri, `libtcc.c` ve `tccasm.c`'de işaretli "Nexvyn OS" değişiklikleri (dosya erişimi kontrolü, inline assembly reddi), `config.h` bizim |
 | miniJVM 2.2.0 (`lib/minijvm`, Gust) | MIT (C kaynakları) | Java çalışma ortamı (SDK 1.5); işaretli `__SWITCH__` değişiklikleri |
 | miniJVM sınıf kütüphanesi `romfs/System/Java/minijvm_rt.jar` | GPLv2 + yazarın ikili jar istisnası | 2.2.0 sürümündeki jar olduğu gibi |
 | stb_image | MIT / Public Domain | Resim çözme |
+| ufbx 0.23.1 (`lib/ufbx`, Samuli Raivio) | MIT (ya da Public Domain / or Public Domain, `LICENSE`) | `.fbx` 3B model okuma (SDK 1.8, `g3d.model`), değiştirilmedi / unmodified |
+| cgltf 1.15 (`lib/cgltf`, Johannes Kuhlmann) | MIT (`LICENSE`) | `.gltf` / `.glb` 3B model okuma (SDK 1.8, `g3d.model`), değiştirilmedi / unmodified; `cgltf_impl.c` bizim |
 | libusbhsfs (ISC yapı) + FatFs | ISC + FatFs lisansı | USB bellek |
 | libretro API başlığı | MIT | Retro çekirdek arayüzü |
 | eSpeak NG 1.52.0 (`lib/espeak-ng`, Reece H. Dunn, Jonathan Duddington ve katkıcılar) + ucd-tools | GPL-3.0-or-later (Unicode verisi / Unicode data: Unicode lisansı, `COPYING.UCD`) | Metin okuma (TTS) ve Ekran Okuyucu; yalnızca sentezleyici, `config.h`, `Makefile` ve `src/include/compat/endian.h` bizim |

@@ -31,7 +31,11 @@ When the app is opened for the first time, the loader (`source/runtimes/nxvmod.c
    C apps (TinyCC), and it works in Ryujinx too.
 3. Puts the writable segments (`.data`, `.got`, `.init_array`, `.bss`) into **a second CodeMemory** object and maps it
    RW exactly at the address the module expects (right behind the RX view). This way the code's PC-relative (`adrp`)
-   data accesses land in writable memory.
+   data accesses land in writable memory. `svcCreateCodeMemory` fills both objects with `0xFF` (the console's kernel
+   does it, and Ryujinx copies that), so the loader clears both views **after** mapping them and only then copies the
+   segments: `.bss` and the gaps must read as zero. (Until 1.2 the loader cleared the source pages before that call;
+   `.bss` came up as `0xFF`, every function-local static's guard byte read "already constructed", and the apps crashed
+   on strings and mutexes made of `0xFF` bytes. That is why 1.0.0 shipped without modules.)
 4. Applies the relocations: `R_AARCH64_RELATIVE`, `GLOB_DAT`, `JUMP_SLOT`, `ABS64` (and `RELR` if present). A symbol
    is looked up first **in the NRO's own `.dynsym` table** (the NRO reads its own table through `_DYNAMIC`), then in
    the module's own definitions: a dynamic linker's "executable first" rule. This way a single copy (the NRO's) of
@@ -70,9 +74,17 @@ rebuilt; since the ABI id changes with every build anyway, modules are always bu
   is empty and no module is loaded).
 - `tools/build_modules.py` computes the same value from `NexvynOS.elf` and writes it into every module as the
   `.nxvabi` section, and into the package's `app.json` as `"abi"`.
-- A module with a different ABI: loading is refused ("… needs to be rebuilt for Nexvyn OS x.y"), the App Market lists
-  only module entries that match the running system's ABI, and if an installed module's ABI differs from the
-  catalog's, "Update" appears.
+- A module with a different ABI is never loaded. Opening it says so ("… was made for another version of Nexvyn OS")
+  and at the same moment queues this system's build for the automatic install (section 7); the app opens again once
+  it has arrived.
+- The App Market keeps **one build per Nexvyn OS version**: a native entry of the catalog has a `"builds"` array
+  (`{"nexvyn", "abi", "version", "download", "sha256", "size"}`), and every console takes the build whose `abi` is its
+  own. An older console keeps finding the build made for it after newer ones are published; a console with no matching
+  build does not list the app, and a console that has the app built in ignores `"builds"`. The top level of the entry
+  stays what consoles before 1.2 understand (`"builtin": true` for apps they ship as optional apps), so their store
+  pages keep working; it never says `"runtime": "native"`, which an older console would hide.
+- After a system update every installed module of the old ABI is queued at the first boot (`osupdate`), so the user
+  does not have to look for updates; "Update" in the App Market does the same by hand.
 
 ## 4. Package format
 
@@ -92,7 +104,8 @@ other packages.
 
 ## 5. Building
 
-`tools/modules.json` lists the apps that become modules and their source files:
+`tools/modules.json` lists the apps that become modules and their source files (or the file named by the
+`NXVMOD_LIST` environment variable: `NXVMOD_LIST=tools/modules.full.json ./build.sh`):
 
 ```json
 {"modules": [{"id": "news", "sources": ["source/apps/app_news.cpp", "source/apps/news_xml.cpp"], "permissions": ["network", "launch"]}]}
@@ -111,6 +124,22 @@ other packages.
 
 The app's bundle stays in the source as `romfs/Applications/<id>.app` (icon, `lang/`, `app.json`); it just does not go
 into the NRO's romfs. To embed an app in the system again, removing it from `tools/modules.json` is enough.
+
+A list can also name `"bundles"`: script apps of `romfs/Applications` (the sample apps) that leave the NRO's romfs and
+become ordinary App Market packages (`build/modules/<id>.nxvapp`, no ABI). They are listed in `System/Modules.json`
+like the modules, so the same placeholders and the same automatic return after an update apply to them.
+
+The split is staged and switched by the list alone. `tools/modules.json` is **empty in 1.2.0** (a beta that ships only
+the NRO, with no Store changes): every app stays built in, `System/Modules.json` does not exist, so the Recommended
+packs step, the Launcher placeholders and the update migration have nothing to do. Ready to flip, together with the
+Store builds (`tools/store_pending/README.md`):
+
+- `tools/modules.lowrisk.json`: small, self-contained apps (Color Meter, Controller Test, Fonts, Dictionary, Currency,
+  Stickies, Tech Demo), the first step.
+- `tools/modules.full.json`: the full split of the task plan (32 C++ apps and the 9 sample apps), after console
+  testing. Its `_kept_in_nro` note lists what stays embedded and why.
+
+Both build, load and run in Ryujinx (section 10).
 
 `romfs:/System/Modules.json` carries the name, category and icon of the module apps: a module app that is not
 installed becomes a "store only" placeholder in the registry; Quick Search says "… get it from the App Market", desktop
@@ -142,15 +171,45 @@ Catalog entries:
 hidden. For optional apps not in the catalog, the Store builds a local page from `app.json` (it opens offline too).
 `subtitle` is a single-line introduction of at most 45 characters.
 
-## 7. Known limits
+## 7. Automatic installs, updates and failures
 
-- Apps that were embedded before an update and are modules now (for example News) must be downloaded once from the
-  Store after the update; their data (`Application Support/<id>`) is kept.
-- A module's services (`REGISTER_SERVICE`) start running after the app has been opened for the first time.
+**The install queue** (`source/apps/appstore_auto.h`, settings array `apps.autoInstall`): the system installs App
+Market apps by itself, with no window and no question. A background service starts 8 s after boot, waits while the
+console is offline (checks every 30 s), loads the catalog, picks this system's build, downloads it, checks it like any
+App Market download (SHA-256, signature, App Guard) and installs it. A failure is logged and tried again after 1, 2, 4
+… up to 30 minutes; an app the catalog does not have yet is looked for at the next catalog fetch. An entry leaves the
+queue only when the app is installed and, for a module, built for this ABI. A changed signing key or a package App
+Guard calls dangerous is never installed this way. When the queue is empty, one notification says how many apps
+arrived. Nexvyn OS's own modules (ids in `System/Modules.json`) installed from the App Market are trusted at once
+(`apps.trustedNative`); a module from anywhere else still asks on its first launch.
+
+**Updating from a version that had the app built in** (`registry.cpp`, `migrateModules`): at the first boot of the new
+version every app of `System/Modules.json` the user used is queued (`upgrade`). Used = pinned in the Dock, the taskbar
+or Start, in the recent apps or launch counts, added as an optional app, or with data in some user's
+`Library/Application Support/<id>`. Until it arrives the app waits in the Launcher as a "Downloading…" placeholder
+(dimmed icon, progress ring, a cloud while offline); opening it says it is on its way. Nothing is deleted or
+rewritten: pins, settings and data stay as they are and work again the moment the module is installed. Each id is
+looked at once (`apps.modulesHandled`), so a later release that moves more apps handles just those. A new console
+gets the same apps through the setup assistant's **Recommended packs** step (Office, Media, Modding, Tools, Retro and
+Demos; only packs that contain modules of this build are shown, all chosen at first, Skip chooses none). The chosen
+apps are queued at the end of the setup; offline, a notification says they will come once the console is online.
+
+**When a module cannot run** the app shows a dialog and the desktop goes on: another ABI (the right build is fetched,
+see section 3), a load error (Try Again / Reinstall / Cancel), or turned off after 3 crashes. Crashes are counted per
+module file (settings `apps.moduleCrashes`): a fault isolated in its window, a crash in its constructors, or a session
+that ended in it. The third one turns the app off with a Reinstall button; a new file (reinstall or update) starts the
+count again. Reinstall queues the app with `force`, keeps its data and opens its App Market page. Nothing in this path
+runs at boot except the queue's service, which never blocks: a missing network or catalog only delays the downloads.
+
+## 8. Known limits
+
+- A module's services (`REGISTER_SERVICE`) start running after the app has been opened for the first time. Apps with
+  services that must run unopened (alarms, reminders, calendar alerts, the PC server) stay embedded.
 - Every build of the NRO may produce a new ABI: modules must be republished together with the release
-  (`build/modules/catalog.json`).
+  (`build/modules/catalog.json`, one more entry in each module's `"builds"`).
+- Modules are not unloaded; an updated module is loaded next to the old code at its next launch.
 
-## 8. Result (1.0.0)
+## 9. Result (1.0.0)
 
 - Apps that became modules: Color Meter (`colorpicker`), Controller Test (`gamepad`), Fonts (`fontbook`),
   Dictionary (`dictionary`), Currency (`currency`), News (`news` + `news_xml.cpp`), Stickies (`stickies`), Network
@@ -159,6 +218,26 @@ hidden. For optional apps not in the catalog, the Store builds a local page from
   data (the `.text` column) 38 983 202 → 38 388 624 bytes. The NRO exports 336 symbols (a few KB). Packages are
   51–131 KB.
 - To turn it off: empty the list in `tools/modules.json`; the apps are embedded in the NRO again (as optional apps).
-- Trying it in the emulator: put `build/modules/<id>.nxvapp` into `sdmc:/NexvynOS/Applications/` (or open and install it
-  from Files), open the app and confirm the trust question (in autorun: `set apps.trustedNative ["colorpicker"]`). Log:
-  the `nxvmod` tag ("loaded ... at ...", or the reason for the error).
+- Trying it in the emulator: unpack `build/modules/<id>.nxvapp` into the folder `sdmc:/NexvynOS/Applications/<id>.nxvapp/`
+  (or open and install it from Files; a zip named `<id>.nxvapp` dropped into Applications is not unpacked), open the
+  app and confirm the trust question (in autorun: `set apps.trustedNative ["colorpicker"]`). Log: the `nxvmod` tag
+  ("loaded ... at ...", or the reason for the error).
+
+## 10. Result (1.2)
+
+- Loader fixed (section 1): the 8 apps of 1.0.0 load and run in Ryujinx, every module of `tools/modules.lowrisk.json` passes 3
+  open/close cycles and 5 open at once closed in another order and reopened, and the 41 packages of
+  `tools/modules.full.json` open and close twice each.
+- Measured without CPython and the retro cores (`NexvynOS.nro`, bytes):
+
+| | NRO | code part | romfs | packages |
+|---|---|---|---|---|
+| before (every app built in) | 63 488 321 | 42 958 848 | 20 494 444 | – |
+| `tools/modules.lowrisk.json` (7 modules) | 62 900 625 (−574 KB) | 42 549 248 | 20 316 348 | 7, 519 KB |
+| `tools/modules.full.json` (32 modules, 9 bundles) | 58 898 793 (−4.4 MB) | 39 727 104 | 19 136 660 | 41, 3.3 MB |
+
+- 1.2.0 as shipped (`tools/modules.json` empty): 63 552 661 bytes, every app built in as before; the 64 KB more are the
+  new loader, queue, setup step and strings. The same 69 C++ apps register as in 1.1.2.
+- The NRO exports 306 symbols with the low-risk list and 751 with the full split. A clean `JOBS=8 ./build.sh` took 230 s
+  before and 204 s with the low-risk list (same machine with other jobs running: within the noise). Boot to the first desktop
+  frame in Ryujinx: 8.5–8.7 s before, 7.3–9.1 s after (no measurable change).

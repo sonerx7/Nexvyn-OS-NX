@@ -20,6 +20,14 @@ kimliği (`gamemaker`), proje biçimi ve `Oyunlarım` klasörü değişmedi; esk
   (tema): Orman, Kar, Çöl, Mağara, Uzay, Şeker diyarı, Okyanus; her kartta o dünyanın arka planı ve kahramanı görünür.
   3) Ad. "Oyunumu kur!" türün şablonunu kopyalar, temayı uygular (karakterler, düşmanlar, toplananlar, süsler, karolar,
   arka plan, müzik; 3D'de gökyüzü ve zemin rengi) ve hemen oynanabilen oyunu açar.
+- **Hızlı Oyun:** ana ekrandaki ilk düğme. Büyük kartlarla üç adım: 1) Tür, 17 hazır ve oynanabilir oyun: Platform,
+  Koşu 2D (kendiliğinden koşar, sen zıplarsın), Kanat Çırp (dokunup boşluklardan uç), Tuğla Kırıcı, Uzay savaşı, Arena
+  (üstten, dalgalara karşı dayan), Macera, Labirent, Anahtar Bulmacası, Hazine Avı, Toplama Yarışı, Kaçış, Koşucu 3D,
+  Yarış 3D, Ada Macerası 3D (platformlar, anahtar, kapı, geçit), Toplama 3D ve Labirent Kaçışı 3D (birinci şahıs).
+  2) Dünya (tema). 3) Ayarlar: zorluk (Kolay / Normal / Zor: düşmanların ve hareketli nesnelerin hızı, ateş etme ve
+  çoğalma sıklığı), can (1/3/5/9), süre (yok, 60, 90, 120, 180 sn ya da şablonun kendi süresi), türün birden çok
+  kontrolü varsa kontroller (örneğin üçüncü ya da birinci şahıs, otomatik ya da serbest koşu) ve ad. "Hemen oyna"
+  oyunu yapıp hemen başlatır; "Editörde aç" düzenlemek için açar.
 - **Rehberli tur:** ilk açılışta sekiz adımlık bir tur palete, sahneye, Geri al / Geçmiş'e, mod düğmesine, Paylaş'a ve
   Oyna'ya ışık tutar (Atla ile geçilebilir; Esc kapatır, Enter ilerletir). Yardım düğmesi ve Yardım menüsü turu
   yeniden başlatır. "Hareketi azalt" açıkken ışık kayarak değil hemen yer değiştirir ve yanıp sönmez.
@@ -40,6 +48,16 @@ kimliği (`gamemaker`), proje biçimi ve `Oyunlarım` klasörü değişmedi; esk
   cümleyle gösterilir; "Bir şey söyler" açılınca söyleyeceği sözler sorulur. Büyük yeşil **▶ Oyna**
   oyunu hemen açar; oyundaki kırmızı ■ düğmesi düzenlemeye döner. Geri al / Yinele hep görünür; her ekranın büyük
   bir geri düğmesi vardır. İlk kullanımda zıplayan sarı ipuçları yol gösterir.
+- **Varlıklar paneli:** arama kutusu ve kategoriler; aralarında **Dokular** (3D: dokunulan doku seçili nesneye, hiçbir
+  şey seçili değilse zemine uygulanır; denetçinin Doku / Zemin dokusu satırlarından da açılır), **Hazır kurulumlar**
+  (tek dokunuşla görünümün ortasına ayarlı bir nesne ya da kural takımı ekler: platform kahramanı, üçüncü / birinci
+  şahıs kamera, araba, devriye ve kovalayan düşman, sayaçlı toplanabilir, anahtar ve kapı, kontrol noktası, can, geri
+  sayım, düşman dalgaları, gündüz ve gece (3D), hareketli platform) ve **Son kullanılanlar** (son konan 12 nesne)
+  vardır. Sesler gruplanmıştır (zıplama, altın, toplama, güçlenme, vuruş, hasar, patlama, ateş, arayüz, ayak sesi, kapı,
+  araç, ortam, kazanma ve kaybetme); dokununca önizleme çalar.
+- **Ses Üretici:** Sesler sekmesinden (ya da ses listesinin ilk karosundan): sekiz hazır ayar (altın, zıplama, lazer,
+  patlama, güçlenme, vuruş, bip, sürpriz), dalga, perde, süre, kayma, titreşim, nota sıçraması ve parlaklık
+  kaydırıcıları, Rastgele, Dinle ve "Oyuna kaydet" (`sounds/<ad>.wav`; kayıt parametreleri `synth` altında saklar).
 - **Gelişmiş mod:** sekmeler: Sahne (sayılarla denetçi, katmanlar, davranış parametreleri ve her davranışın açıklaması,
   nesne betiği), Olaylar (Scratch benzeri bloklar; paletteki her bloğun altında ne yaptığını anlatan bir satır),
   Çizimler (Studio'nun piksel editörü), Karolar (Studio'nun karo haritası editörü),
@@ -58,15 +76,20 @@ kimliği (`gamemaker`), proje biçimi ve `Oyunlarım` klasörü değişmedi; esk
 | `source/apps/app_gamemaker.cpp` | uygulama: ana ekran, 2D/3D sahne, palet, davranış karoları, denetçi, sekmeler, Oyna/Paylaş |
 | `source/apps/workshop_doc.*` | kütüphane, davranış ve blok katalogları, proje dosyaları, paket üretimi, Lua üretimi, model içe aktarma |
 | `source/apps/workshop_blocks.cpp`, `workshop_ui.h` | olay bloğu editörü ve ortak arayüz parçaları |
+| `source/apps/workshop_sfx.*` | efekt sentezleyici (`tools/gen_sfx.py`'nin C++ karşılığı) ve Ses Üretici paneli |
 | `romfs/System/Lua/nexvyn/workshop.lua` | çalışma zamanı: proje yükleme, olaylar, API, 2D sahne, başlık / bitiş ekranı |
 | `romfs/System/Lua/nexvyn/workshop3d.lua` | 3D sahne (g3d) |
-| `romfs/System/Workshop/` | `library.json` (sihirbazın `genres` ve `themes` listeleri dahil), `art/`, `tiles.png`, `bg/`, `sounds/`, `Templates/`, `Samples/` |
-| `tools/gen_workshop.py` | bütün kütüphaneyi, şablonları ve örnekleri üretir (Pillow) |
+| `romfs/System/Workshop/` | `library.json` (sihirbazın `genres` ve `themes` listeleri, `textures`, `setups` dahil), `art/`, `tiles.png`, `bg/`, `sounds/`, `sfx/`, `textures/`, `Templates/`, `Samples/` |
+| `tools/gen_workshop.py` | bütün kütüphaneyi, şablonları ve örnekleri üretir (Pillow); alttaki ikisinin kataloglarını okur |
+| `tools/gen_textures.py` | 7 grupta 40 dikişsiz 256×256 malzeme dokusu (`textures/`, Pillow + numpy) |
+| `tools/gen_sfx.py` | 14 grupta 67 ses efekti (`sfx/`, numpy): kendi retro sentezleyicimiz |
 | `romfs/Applications/gamemaker.app/lang/{tr,en,de,fr,es}.json` | arayüz metinleri (`gamemaker.*`) |
 
-Bütün resimler ve sesler `tools/gen_workshop.py` ile kodla üretilir; dışarıdan hazır varlık yoktur. Ses efektleri
-48 kHz stereo WAV'dır (karıştırıcının biçimi; dönüştürme gerekmez). Müzikler dosya değil, `game.audio.song` ile
-çalınan sentez melodileridir.
+Bütün resimler ve sesler `tools/gen_workshop.py`, `tools/gen_textures.py` ve `tools/gen_sfx.py` ile kodla üretilir
+(önce son ikisi çalıştırılır: `gen_workshop.py` katalog için onların dosyalarını okur); dışarıdan hazır varlık yoktur.
+İlk 22 ses efekti 48 kHz stereo WAV'dır (karıştırıcının biçimi); efekt kütüphanesi (`sfx/`) ve Ses Üretici sesleri mono
+16 bit 24 kHz WAV'dır, yüklenirken bir kez dönüştürülür (dörtte bir boyut). Dokular 64 renkli PNG'dir. Müzikler dosya
+değil, `game.audio.song` ile çalınan sentez melodileridir.
 
 ## Proje biçimi (`project.json`)
 
@@ -89,19 +112,29 @@ Bütün resimler ve sesler `tools/gen_workshop.py` ile kodla üretilir; dışar�
 ```
 
 - `mode`: `"2d"` ya da `"3d"`. `settings.view` (2D): `"side"` (yandan, yerçekimi) ya da `"top"` (üstten).
+  `settings.difficulty`: `"easy"`, `"normal"` (varsayılan) ya da `"hard"`: düşman ve hareketli nesne hızları × 0,75 / 1 /
+  1,3; ateş, çoğalma ve zıplama aralıkları aynı oranda kısalır ya da uzar. `settings.dayNight` (3D): bir günün saniyesi,
+  0 = hep gündüz.
   `settings.camera`: `"follow"` ya da `"fixed"`. `settings.winText` / `settings.loseText`: bitiş ekranında "Kazandın!" /
   "Oyun bitti" altında görünen sözler. Sihirbazla yapılan oyunlarda `genre` ve `theme` de yazılır (bilgi amaçlı).
 - **2D bölüm:** `{"name", "background": "sky", "cols": 60, "rows": 17, "tiles": ["....1111", ...], "objects": [...]}`.
   `tiles` her satır için bir dizgedir: `.` boş, `1`…`9`, `a`…`z` = 1…35 numaralı karo (`library.json` "tiles":
   `solid`, `oneway`, `hazard`, `ice`). Bir karo 16 birimdir.
-- **3D bölüm:** `{"name", "ground": {"size": 30, "color": "#7FCB6A"}, "objects": [...]}`. Birim metredir, y yukarı,
-  zemin y = 0'dadır.
+- **3D bölüm:** `{"name", "ground": {"size": 30, "color": "#7FCB6A", "tex": "grass"}, "objects": [...]}`. Birim
+  metredir, y yukarı, zemin y = 0'dadır. `tex` (isteğe bağlı) her `scale` metrede tekrarlanan bir kütüphane dokusudur;
+  dokuların çizilmediği yerde renk kullanılır.
 - **Nesne:** `{"id": 7, "kind": "cat", "x": 40, "y": 200, "z": 0, "flip": false, "sx": 1, "s": 1, "rot": 0,
-  "ry": 0, "layer": 1, "name": "kapi", "beh": [{"t": "player", "style": "platform"}], "scriptFile":
-  "scripts/object7.lua"}`. `kind` bir kütüphane kimliği, `spr:<ad>` (kendi çizimi) ya da `obj:<ad>` (içe aktarılan
+  "ry": 0, "layer": 1, "name": "kapi", "tex": "brick", "beh": [{"t": "player", "style": "platform"}], "scriptFile":
+  "scripts/object7.lua"}`. `tex` (3D) nesnenin modeline bir kütüphane dokusu giydirir (kutu parçaları onu tekrarlar;
+  bir model parçası kendi `tex`'ini verebilir, nesneninki onun yerine geçer). `kind` bir kütüphane kimliği, `spr:<ad>` (kendi çizimi) ya da `obj:<ad>` (içe aktarılan
   3D model). `beh` yoksa kütüphanedeki varsayılan davranışlar kullanılır. 2D'de x, y resmin merkezidir.
-- **Davranışlar** (`t` ve isteğe bağlı parametreler): `player` (`style`: platform/top/ship, 3D'de
-  walk/fps/car/runner; koşucu kendiliğinden ileri koşar, çubuk yalnız sağa sola kaydırır; `speed`, `jump`), `patrol`
+- **Davranışlar** (`t` ve isteğe bağlı parametreler): `player` (`style`: platform/top/ship/runner/flap/paddle, 3D'de
+  walk/fps/car/runner; koşucu kendiliğinden ileri koşar (2D'de sağa, oyuncu yalnız zıplar; 3D'de çubuk yalnız sağa sola
+  kaydırır); flap kendiliğinden sağa uçar, her zıplama basışında kanat çırpar, duvara, yere ya da tavana değmek bir can
+  götürür ve son kontrol noktasından başlar; paddle yalnız sağa sola gider; `speed`, `jump`), `checkpoint` (düşen ya da
+  çarpan oyuncunun yeniden başlama noktası), `ball` (2D, `speed`: duvarlardan, oyuncudan ve kırılabilirlerden seker,
+  zıplama ya da ateşe kadar oyuncunun üstünde bekler, dışarı düşerse bir can gider), `breakable` (2D, `points`: top ya
+  da atış değince kırılır, `health` ile birkaç vuruşta), `patrol`
   (`speed`, `dist`), `wander` (`speed`; rastgele yönlere gezer), `jumper` (`every`, `power`), `follow` (`speed`,
   `range`), `spin` (`speed`), `move` (`vx`, `vy`; 3D'de `vz`), `collect` (`points`, `life`, `sound`), `counter`
   (`var`; toplanınca değişkeni 1 artırır, tek başına da nesneyi toplanabilir yapar), `hurt` (`stomp`, `damage` = giden
@@ -111,8 +144,8 @@ Bütün resimler ve sesler `tools/gen_workshop.py` ile kodla üretilir; dışar�
   baktığı yöne ateş eden taret).
 - **Olay kuralı:** `{"on": olay, "if": [koşullar], "do": [eylemler]}`.
   - Olaylar: `start`, `every {sec}`, `touch {a, b}`, `button {b}`, `score {n}`, `allgone {k}`, `var {name, n}`
-    (değişken n'ye ulaşınca bir kez), `timeup`, `lifelost`. Seçiciler: `@player`, `@enemy`, `@item`, `@goal`, `@any`
-    ya da bir `kind`.
+    (değişken n'ye ulaşınca bir kez), `timeup`, `lifelost`. Seçiciler: `@player`, `@enemy`, `@item`, `@goal`,
+    `@brick` (kırılabilirler), `@any` ya da bir `kind`.
   - Koşullar: `cmp {a, op, b}` (a = score/lives/time/level ya da değişken adı; op = `= != < > <= >=`),
     `count {k, op, n}`, `chance {p}`, `held {b}` (tuş basılı tutuluyor).
   - Eylemler: `score {n}`, `life {n}`, `hurt {n}` (oyuncudan n can alır), `setvar {name, n}`, `addvar {name, n}`,
@@ -127,11 +160,19 @@ Bütün resimler ve sesler `tools/gen_workshop.py` ile kodla üretilir; dışar�
   Zıplama Yayı, Kardan Adam, Palmiye dahil); Şeker ve Kale taşı karoları; Çöl ve Şeker diyarı arka planları; 3D'de
   Kardan Adam, Kaktüs, Fıçı, Mantar ve Zıplama Yayı; sentezlenmiş 22 ses efekti (Boing, Çan, Vuuş, Seviye atlama,
   Vızz, Şapırtı, Tık, Alarm dahil). Hepsi `tools/gen_workshop.py` ile çizilir ve her çalıştırmada aynı çıkar.
-- **Sihirbaz verisi** (`library.json`): `genres` = `{"id", "template", "icon", "colors"}` (türün kopyalanan şablonu),
+- **Sihirbaz verisi** (`library.json`): `genres` = `{"id", "template", "icon", "colors", "controls"}` (türün
+  kopyalanan şablonu; `controls` = Hızlı Oyun'un sunduğu oyuncu stilleri, ilki şablonunki),
   `themes` = `{"id", "icon", "colors", "bg", "bgTop", "music", "sky", "ground", "kinds": {"cat": "penguin", ...},
   "tiles": {"grass": "snow", ...}}`. Tema uygulanırken (`ws::applyTheme`; ikizi `tools/lua_check.py` içindeki
   `apply_theme`) değişen nesne eski türünün davranışlarını korur; `what` parametrelerindeki ve olay bloklarındaki
-  (`a`, `b`, `k`) türler de değişir; 2D'de arka plan görünüme göre (`bg` yandan, `bgTop` üstten) seçilir.
+  (`a`, `b`, `k`) türler de değişir; 2D'de arka plan görünüme göre (`bg` yandan, `bgTop` üstten) seçilir; temanın
+  `groundTex`'i 3D zeminin dokusunu değiştirir ("" kaldırır). Hızlı Oyun ardından ayarlarını uygular (`ws::applyQuick`,
+  ikizi `apply_quick`).
+- **Dokular** (`library.json` `textures`): `{"id", "cat", "name", "file", "scale", "color"}`, gruplar `textureCats`'te.
+  **Sesler** bir `cat` (gruplar `soundCats`'te) ve döngüler için `loop` taşır. **Hazır kurulumlar** (`setups`):
+  `{"id", "icon", "2d": {...}, "3d": {...}}`; her parçada `objects` (`kind`, görünüm ortasından `dx`/`dy`/`dz`, `beh`,
+  `ifNoPlayer`), `player` (her kahraman için `style`, `kind`), `vars`, `events` (yoksa eklenir) ve `settings`
+  (birleştirilir) bulunur; `ws::applySetup` ve `tools/lua_check.py` içindeki ikizi `apply_setup` uygular.
 
 ## Çalışma zamanı
 
@@ -145,6 +186,8 @@ Kod üretmek yerine proje JSON'u doğrudan yorumlanır (`nexvyn.workshop`):
   (`all`, `k:<kind>`, `player`, `enemy`, `item`, `goal`, `solid`, `body`). Davranışlar varlığa güncelleme
   fonksiyonları ve gruplar ekler; çarpışmalar `world:collide` ile kurulur (olay kuralları önce, böylece
   toplanan bir nesne "değince" olayını da tetikler).
+- Dokular: çalışma zamanı kutuları ve zemini doku tekrarlansın diye `g3d.custom` ile kurar (`mesh:setTexture`);
+  `settings.dayNight` gökyüzünü, sisi ve ışığı gündüzden geceye çevirir.
 - 3D: `nexvyn.workshop3d` nesneleri `library.json` "models" parçalarından (g3d ilkel şekilleri) ya da OBJ'den
   çizer; yerçekimi, katı nesnelere karşı eksen hizalı kutu çarpışması, taşıyan hareketli platformlar, gölge
   diski, üçüncü kişi / birinci kişi / araba kontrolü, sis ve gökyüzü rengi vardır.
@@ -155,14 +198,17 @@ Kod üretmek yerine proje JSON'u doğrudan yorumlanır (`nexvyn.workshop`):
   `ws.player`, `ws.find`, `ws.shake`, `ws.chance`, `ws.win`, `ws.lose`, `ws.nextLevel`, `ws.restart`.
 - Dışa aktarılan paket şunları içerir: `app.json`, `main.lua` (3 satır), `project.json`, `icon.png`, projenin
   `sprites/ sounds/ models/ scripts/` klasörleri, çalışma zamanının bir kopyası (`nexvyn/workshop*.lua`) ve kütüphane
-  (`lib/`). Paketteki kopya sistemdekinden önce yüklenir, böylece oyun her Nexvyn OS'ta aynı çalışır.
+  (`lib/`; `sfx/` ve `textures/` klasörlerinden yalnız projenin adını verdiği dosyalar ve çalışma zamanının kendi
+  çaldığı üç efekt). Paketteki kopya sistemdekinden önce yüklenir, böylece oyun her Nexvyn OS'ta aynı çalışır.
 - 3D Modelleme'den `.nxv3d` (ya da `.obj`) içe aktarılınca köşe renkli, tabanı y = 0'da, en uzun kenarı 1 olan bir
   OBJ'ye dönüştürülür.
 
 ## Denetim
 
 `python tools/lua_check.py --workshop` her şablonu ve örneği hem başlık ekranından hem oyna-test modunda sahte
-SDK'ya karşı çalıştırır; ardından sihirbazın her türünü her temayla (6 × 7) oyna-test modunda oynatır.
+SDK'ya karşı çalıştırır; ardından sihirbazın her türünü her temayla (17 × 7) oyna-test modunda, her türü Hızlı Oyun
+ayarlarıyla (zor, tek can, 60 sn; kolay ve diğer her kontrol stili) ve her Hazır kurulumu boş 2D / 3D şablonlarda ve
+kahramanı olan bir şablonda oynatır.
 
 ---
 
