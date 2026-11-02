@@ -163,6 +163,17 @@
       }
     ]
   },
+  "com.sonerx7.ashprotocol": {
+    "added": "2026-11-02",
+    "updated": "2026-11-02",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-02"
+      }
+    ]
+  },
   "com.sonerx7.asteroids": {
     "added": "2026-10-29",
     "updated": "2026-11-01",
@@ -819,6 +830,17 @@
       {
         "version": "1.0",
         "date": "2026-11-01"
+      }
+    ]
+  },
+  "com.sonerx7.luma": {
+    "added": "2026-11-02",
+    "updated": "2026-11-02",
+    "version": "1.2.0",
+    "history": [
+      {
+        "version": "1.2.0",
+        "date": "2026-11-02"
       }
     ]
   },

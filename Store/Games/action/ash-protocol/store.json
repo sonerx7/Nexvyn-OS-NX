@@ -1,0 +1,54 @@
+{
+  "kind": "game",
+  "license": "GPL-3.0-or-later",
+  "age": "teen",
+  "tags": [
+    "3d",
+    "fps",
+    "shooter",
+    "story",
+    "textured",
+    "controller"
+  ],
+  "subtitle": {
+    "en": "Six chapters. Four weapons. One last order.",
+    "tr": "Altı bölüm. Dört silah. Son bir emir.",
+    "de": "Sechs Kapitel. Vier Waffen. Ein Befehl.",
+    "fr": "Six chapitres, quatre armes, un ordre.",
+    "es": "Seis capítulos, cuatro armas, una orden."
+  },
+  "changelog": {
+    "en": "First Store release: six story chapters, four weapons, six enemy types and textured 3D environments.",
+    "tr": "İlk Store sürümü: altı hikâye bölümü, dört silah, altı düşman türü ve dokulu 3B ortamlar.",
+    "de": "Erste Store-Version: sechs Story-Kapitel, vier Waffen, sechs Gegnertypen und texturierte 3D-Umgebungen.",
+    "fr": "Première version Store : six chapitres, quatre armes, six types d’ennemis et décors 3D texturés.",
+    "es": "Primera versión Store: seis capítulos, cuatro armas, seis tipos de enemigos y entornos 3D texturizados."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 0.3",
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key tab",
+      "wait 0.4"
+    ],
+    [
+      "key escape",
+      "key f",
+      "wait 0.5"
+    ]
+  ],
+  "description": {
+    "en": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
+    "tr": "Gerçek 3B meshlerle kurulan özgün, hızlı bir FPS. Altı hikâye bölümü, 36 oda ve yüksek güvertede dört silah, atılma, yakın dövüş ve enerji atışı yansıtmayla savaş. Altı düşman türü, 18 kayıt ve iki son. Gerçek UV dokuları, piksel başına yönlü ışık, tepki veren mesh düzeyinde yerel ışık ve fener. Gölge haritası veya PBR yok. Kumanda, klavye/sürüklemeli fare ve dokunmatik. Görseller yazılım önizlemesidir; cihaz doğrulaması bekleniyor.",
+    "de": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
+    "fr": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
+    "es": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending."
+  }
+}

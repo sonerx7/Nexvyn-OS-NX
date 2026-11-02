@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **155** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -134,7 +134,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **155** öğe. Konsoldaki 
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
 
-## Oyunlar (45)
+## Oyunlar (47)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -142,6 +142,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **155** öğe. Konsoldaki 
 | <img src="Games/puzzle/g2048/icon.png" width="32"> | [2048](Games/puzzle/g2048/) | Dört tahta, Zamana Karşı, akıllı ipucu |
 | <img src="Games/racing/maze3d/icon.png" width="32"> | [3D Labirent](Games/racing/maze3d/) | On labirentte parlayan çıkışı bul |
 | <img src="Games/arcade/airhockey/icon.png" width="32"> | [Hava Hokeyi](Games/arcade/airhockey/) | Hızlı masa hokeyi, tek başına ya da ikili |
+| <img src="Games/action/ash-protocol/icon.png" width="32"> | [Kül Protokolü](Games/action/ash-protocol/) | Altı bölüm. Dört silah. Son bir emir. |
 | <img src="Games/strategy/aldmoor/icon.png" width="32"> | [Aldmoor Sancakları](Games/strategy/aldmoor/) | Sıra tabanlı taktik: sekiz savaşlık sefer |
 | <img src="Games/sandbox/blockcraft/icon.png" width="32"> | [BlockCraft](Games/sandbox/blockcraft/) | Blok dünyasında kaz, inşa et, hayatta kal |
 | <img src="Games/sports/bowling/icon.png" width="32"> | [Bowling](Games/sports/bowling/) | On pinli bowlingde on çerçeve |
@@ -156,6 +157,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **155** öğe. Konsoldaki 
 | <img src="Games/word/hangman/icon.png" width="32"> | [Adam Asmaca](Games/word/hangman/) | Kelimeyi harf harf tahmin et |
 | <img src="Games/action/lanternfall/icon.png" width="32"> | [Fener Düşüşü](Games/action/lanternfall/) | Fener ışığında platform: 3 dünya, 3 boss |
 | <img src="Games/puzzle/lightsout/icon.png" width="32"> | [Işıkları Söndür](Games/puzzle/lightsout/) | Bütün ışıkları en az hamleyle söndür |
+| <img src="Games/action/luma/icon.png" width="32"> | [Luma: Yıldız Adaları](Games/action/luma/) | On dünyayı keşfet. Sekiz düşmanla savaş. |
 | <img src="Games/arcade/mazeeater/icon.png" width="32"> | [Labirent Yiyici](Games/arcade/mazeeater/) | Dört labirent, üç hayalet, tek iştah |
 | <img src="Games/puzzle/memory/icon.png" width="32"> | [Hafıza Kartları](Games/puzzle/memory/) | Kartları çevir, bütün eşleri bul |
 | <img src="Games/puzzle/minesweeper/icon.png" width="32"> | [Mayın Tarlası](Games/puzzle/minesweeper/) | Özel tahtalar, istatistik ve seriler |
