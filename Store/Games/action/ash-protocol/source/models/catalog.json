@@ -1,0 +1,98 @@
+[
+  {
+    "name": "weapon1",
+    "triangles": 908
+  },
+  {
+    "name": "weapon2",
+    "triangles": 1112
+  },
+  {
+    "name": "weapon3",
+    "triangles": 976
+  },
+  {
+    "name": "weapon4",
+    "triangles": 1052
+  },
+  {
+    "name": "glove",
+    "triangles": 588
+  },
+  {
+    "name": "stalker",
+    "triangles": 1000
+  },
+  {
+    "name": "stalker_arm",
+    "triangles": 388
+  },
+  {
+    "name": "leg",
+    "triangles": 128
+  },
+  {
+    "name": "trooper",
+    "triangles": 576
+  },
+  {
+    "name": "drone",
+    "triangles": 1368
+  },
+  {
+    "name": "siege",
+    "triangles": 708
+  },
+  {
+    "name": "priest",
+    "triangles": 1744
+  },
+  {
+    "name": "warden",
+    "triangles": 1176
+  },
+  {
+    "name": "crate",
+    "triangles": 160
+  },
+  {
+    "name": "barrel",
+    "triangles": 332
+  },
+  {
+    "name": "terminal",
+    "triangles": 200
+  },
+  {
+    "name": "relay",
+    "triangles": 412
+  },
+  {
+    "name": "turbine",
+    "triangles": 456
+  },
+  {
+    "name": "core",
+    "triangles": 1904
+  },
+  {
+    "name": "medkit",
+    "triangles": 88
+  },
+  {
+    "name": "ammo",
+    "triangles": 160
+  },
+  {
+    "name": "armor",
+    "triangles": 128
+  },
+  {
+    "name": "key",
+    "triangles": 76
+  },
+  {
+    "name": "datapad",
+    "triangles": 76
+  }
+]

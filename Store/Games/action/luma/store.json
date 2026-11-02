@@ -1,0 +1,51 @@
+{
+  "kind": "game",
+  "license": "GPL-3.0-or-later",
+  "age": "everyone",
+  "tags": [
+    "3d",
+    "platformer",
+    "exploration",
+    "adventure",
+    "textured",
+    "controller"
+  ],
+  "subtitle": {
+    "en": "Explore ten worlds. Outsmart eight enemies.",
+    "tr": "On dünyayı keşfet. Sekiz düşmanla savaş.",
+    "de": "Zehn Welten, acht verschiedene Gegner.",
+    "fr": "Dix mondes, huit types d’ennemis.",
+    "es": "Diez mundos, ocho tipos de enemigos."
+  },
+  "changelog": {
+    "en": "First Store release: ten worlds, eight enemy behaviours, 48 original models and UV textures.",
+    "tr": "İlk Store sürümü: on dünya, sekiz düşman davranışı, 48 özgün model ve UV dokuları.",
+    "de": "Erste Store-Version: zehn Welten, acht Gegnerverhalten, 48 eigene Modelle und UV-Texturen.",
+    "fr": "Première version Store : dix mondes, huit comportements ennemis, 48 modèles et textures UV.",
+    "es": "Primera versión Store: diez mundos, ocho comportamientos enemigos, 48 modelos y texturas UV."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key space",
+      "wait 0.4"
+    ],
+    [
+      "key escape",
+      "wait 0.5"
+    ]
+  ],
+  "description": {
+    "en": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
+    "tr": "On dünya, geniş bölgeler, yürünebilir yollar ve alternatif rotalarla 3B keşif-platform macerası. Yıldızları bul, dostunu kurtar, arenaları temizle ve mühürleri aç. Sekiz düşman davranışı, gerçek UV dokuları, 48 özgün model, on özgün müzik, kayıt ve mini harita. Görseller etiketli yazılım önizlemeleridir; cihaz doğrulaması bekleniyor.",
+    "de": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
+    "fr": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
+    "es": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending."
+  }
+}

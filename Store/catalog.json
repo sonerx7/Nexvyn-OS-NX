@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 155,
+  "count": 157,
   "apps": [
     {
       "id": "aichat",
@@ -5690,6 +5690,64 @@
       ]
     },
     {
+      "id": "com.sonerx7.ashprotocol",
+      "name": {
+        "tr": "Kül Protokolü",
+        "en": "Ash Protocol",
+        "de": "Ascheprotokoll",
+        "fr": "Protocole Cendre",
+        "es": "Protocolo Ceniza"
+      },
+      "description": {
+        "en": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
+        "tr": "Gerçek 3B meshlerle kurulan özgün, hızlı bir FPS. Altı hikâye bölümü, 36 oda ve yüksek güvertede dört silah, atılma, yakın dövüş ve enerji atışı yansıtmayla savaş. Altı düşman türü, 18 kayıt ve iki son. Gerçek UV dokuları, piksel başına yönlü ışık, tepki veren mesh düzeyinde yerel ışık ve fener. Gölge haritası veya PBR yok. Kumanda, klavye/sürüklemeli fare ve dokunmatik. Görseller yazılım önizlemesidir; cihaz doğrulaması bekleniyor.",
+        "de": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
+        "fr": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
+        "es": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending."
+      },
+      "version": "1.0.0",
+      "author": "sonerx7",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/ash-protocol.nxvapp",
+      "size": 3627283,
+      "sha256": "88cfb1669c65e6881b79e36bdc05e09361fbfd9158fa738b79c1e44fee4de3de",
+      "minSdk": "1.4",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/screenshots/4.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/ash-protocol",
+      "runtime": "lua",
+      "subtitle": {
+        "en": "Six chapters. Four weapons. One last order.",
+        "tr": "Altı bölüm. Dört silah. Son bir emir.",
+        "de": "Sechs Kapitel. Vier Waffen. Ein Befehl.",
+        "fr": "Six chapitres, quatre armes, un ordre.",
+        "es": "Seis capítulos, cuatro armas, una orden."
+      },
+      "changelog": {
+        "en": "First Store release: six story chapters, four weapons, six enemy types and textured 3D environments.",
+        "tr": "İlk Store sürümü: altı hikâye bölümü, dört silah, altı düşman türü ve dokulu 3B ortamlar.",
+        "de": "Erste Store-Version: sechs Story-Kapitel, vier Waffen, sechs Gegnertypen und texturierte 3D-Umgebungen.",
+        "fr": "Première version Store : six chapitres, quatre armes, six types d’ennemis et décors 3D texturés.",
+        "es": "Primera versión Store: seis capítulos, cuatro armas, seis tipos de enemigos y entornos 3D texturizados."
+      },
+      "added": "2026-11-02",
+      "updated": "2026-11-02",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-02"
+        }
+      ]
+    },
+    {
       "id": "com.sonerx7.aldmoor",
       "name": {
         "en": "Banners of Aldmoor",
@@ -6609,6 +6667,64 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.luma",
+      "name": {
+        "tr": "Luma: Yıldız Adaları",
+        "en": "Luma: Starfall Islands",
+        "de": "Luma: Sterneninseln",
+        "fr": "Luma : Les îles étoilées",
+        "es": "Luma: Islas estelares"
+      },
+      "description": {
+        "en": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
+        "tr": "On dünya, geniş bölgeler, yürünebilir yollar ve alternatif rotalarla 3B keşif-platform macerası. Yıldızları bul, dostunu kurtar, arenaları temizle ve mühürleri aç. Sekiz düşman davranışı, gerçek UV dokuları, 48 özgün model, on özgün müzik, kayıt ve mini harita. Görseller etiketli yazılım önizlemeleridir; cihaz doğrulaması bekleniyor.",
+        "de": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
+        "fr": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
+        "es": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending."
+      },
+      "version": "1.2.0",
+      "author": "sonerx7",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/luma.nxvapp",
+      "size": 9142324,
+      "sha256": "f789845f335ea5ad634d3c104c1a55052150f0dd011460b0e23e846ce75473db",
+      "minSdk": "1.4",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/screenshots/4.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/luma",
+      "runtime": "lua",
+      "subtitle": {
+        "en": "Explore ten worlds. Outsmart eight enemies.",
+        "tr": "On dünyayı keşfet. Sekiz düşmanla savaş.",
+        "de": "Zehn Welten, acht verschiedene Gegner.",
+        "fr": "Dix mondes, huit types d’ennemis.",
+        "es": "Diez mundos, ocho tipos de enemigos."
+      },
+      "changelog": {
+        "en": "First Store release: ten worlds, eight enemy behaviours, 48 original models and UV textures.",
+        "tr": "İlk Store sürümü: on dünya, sekiz düşman davranışı, 48 özgün model ve UV dokuları.",
+        "de": "Erste Store-Version: zehn Welten, acht Gegnerverhalten, 48 eigene Modelle und UV-Texturen.",
+        "fr": "Première version Store : dix mondes, huit comportements ennemis, 48 modèles et textures UV.",
+        "es": "Primera versión Store: diez mundos, ocho comportamientos enemigos, 48 modelos y texturas UV."
+      },
+      "added": "2026-11-02",
+      "updated": "2026-11-02",
+      "history": [
+        {
+          "version": "1.2.0",
+          "date": "2026-11-02"
         }
       ]
     },

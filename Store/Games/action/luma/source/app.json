@@ -1,0 +1,36 @@
+{
+  "id": "com.sonerx7.luma",
+  "name": {
+    "tr": "Luma: Yıldız Adaları",
+    "en": "Luma: Starfall Islands",
+    "de": "Luma: Sterneninseln",
+    "fr": "Luma : Les îles étoilées",
+    "es": "Luma: Islas estelares"
+  },
+  "description": {
+    "tr": "On özgün dünyada çift zıplama, sırlar ve dev bir muhafız içeren 3B platform macerası.",
+    "en": "A 3D platform adventure across ten handcrafted worlds, with double jumps, secrets and a guardian boss.",
+    "de": "Ein 3D-Plattformabenteuer in zehn Welten mit Doppelsprüngen, Geheimnissen und einem Wächter.",
+    "fr": "Une aventure de plateforme 3D dans dix mondes avec doubles sauts, secrets et un gardien géant.",
+    "es": "Una aventura de plataformas 3D en diez mundos con saltos dobles, secretos y un guardián gigante."
+  },
+  "version": "1.2.0",
+  "author": "sonerx7",
+  "homepage": "https://github.com/sonerx7/Nexvyn-OS-NX",
+  "license": "GPL-3.0-or-later",
+  "category": "games",
+  "icon": "icon.png",
+  "runtime": "lua",
+  "main": "main.lua",
+  "minSdk": "1.4",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "minWidth": 640,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "permissions": []
+}
