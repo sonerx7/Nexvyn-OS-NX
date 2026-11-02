@@ -52,9 +52,8 @@ CHECKER = {"lua": ["python", "tools/lua_check.py"], "javascript": ["node", "tool
            "c": ["python", "tools/rt_check.py"], "java": ["python", "tools/rt_check.py"]}
 
 CATEGORIES = {"system", "productivity", "utilities", "media", "internet", "games", "developer", "other"}
-PERMISSIONS = {"network", "files", "launch", "notifications", "clipboard"}
+PERMISSIONS = {"network", "files", "launch", "notifications", "games", "clipboard"}
 SHARE_KINDS = {"text", "url", "file", "image"}
-STORE_LANGS = ("en", "tr", "de", "fr", "es")
 KINDS = {"app", "game", "demo", "template"}
 # SDK calls that need a permission, in every language (Lua/JS/Python/Squirrel sys.x, C sys_x, Java Sys.x / Net.x)
 USES = {
@@ -62,6 +61,7 @@ USES = {
     "notifications": r"\b(?:sys|Sys)[._](?:notify|schedule)\s*\(",
     "clipboard": r"\b(?:sys|Sys)[._](?:clipboard|setClipboard)\s*\(",
     "launch": r"\b(?:sys|Sys)[._](?:launch|appUrl)\s*\(|nxv://",
+    "games": r"\b(?:sys|Sys)[._]games\s*\(",
 }
 TR_CALL = re.compile(r"""\bTR[123]?\(\s*["']([^"'\n]+)["']""")
 # store.json "shots" steps (SnxOS tools/store_shots.py)
@@ -193,18 +193,18 @@ def cmd_new(a):
     if not re.fullmatch(r"[A-Za-z0-9_\-][A-Za-z0-9_.\-]{0,127}", app_id):
         die("bad id %r: letters, digits, '.', '-', '_' (reverse domain: com.you.app)" % app_id)
     m["id"] = app_id
-    m["name"] = {code: a.name for code in STORE_LANGS}
+    m["name"] = {"en": a.name}  # English is required; add other languages as more keys ("de": "...")
     if a.author:
         m["author"] = a.author
     write_json(os.path.join(dest, "app.json"), m)
     if item:
         write_json(os.path.join(item, "store.json"), {
             "kind": "app", "tags": [],
-            "subtitle": {code: "" for code in STORE_LANGS},
-            "description": {code: "" for code in STORE_LANGS},
+            "subtitle": {"en": ""},
+            "description": {"en": ""},
             "shots": [["wait 3"], ["wait 1.5"], ["dark 1", "wait 1.5"]]})
         with open(os.path.join(item, "README.md"), "w", encoding="utf-8", newline="\n") as f:
-            f.write("# %s\n\nTR: Uygulamanın ne yaptığını iki üç cümleyle anlatın.\n\nEN: Say what the app does in two or three "
+            f.write("# %s\n\nSay what the app does in two or three "
                     "sentences.\n\n| | |\n|---|---|\n| Id | `%s` |\n| Language | %s |\n| Min SDK | %s |\n| Permissions | %s |\n"
                     % (a.name, app_id, lang, m.get("minSdk", "1.0"), ", ".join(m.get("permissions", [])) or "none"))
         os.makedirs(os.path.join(item, "screenshots"), exist_ok=True)
@@ -231,11 +231,8 @@ def check_manifest(bundle, m, rep):
         if not v:
             (rep.error if field == "name" else rep.warn)("app.json: %s missing" % field)
         elif isinstance(v, dict):
-            if "en" not in v:
+            if "en" not in v:  # English is required; every other language is optional (it falls back to English)
                 rep.warn("app.json: %s has no \"en\" text" % field)
-            missing = [c for c in STORE_LANGS if c not in v]
-            if missing:
-                rep.warn("app.json: %s has no %s text (the store shows five languages)" % (field, "/".join(missing)))
     if "version" in m and not re.fullmatch(r"\d+(\.\d+){0,3}", str(m["version"])):
         rep.error("app.json: version %r must be dotted numbers like \"1.2\"" % m["version"])
     if m.get("category", "other") not in CATEGORIES:
@@ -329,7 +326,8 @@ def check_sources(bundle, lang, perms, rep):
         rep.error("uses %s calls but app.json \"permissions\" does not declare \"%s\" (every permission is enforced)" % (p, p))
     for p in sorted(perms - used - {"files"}):
         rep.warn("declares \"%s\" but no call that needs it was found" % p)
-    # translations: every TR key in lang/en.json and lang/tr.json (dotted keys may be system strings such as common.ok)
+    # translations: every TR key in lang/en.json (required) and in lang/tr.json when the app has one, like the source
+    # repository's checkers; other languages only warn (missing keys show English). Dotted keys may be system strings.
     tables = {}
     ldir = os.path.join(bundle, "lang")
     for code in sorted(os.listdir(ldir)) if os.path.isdir(ldir) else []:
@@ -341,9 +339,8 @@ def check_sources(bundle, lang, perms, rep):
             rep.error("lang/%s: %s" % (code, e))
     if keys and not tables:
         rep.error("TR() is used but there is no lang/ folder")
-    for code in ("en", "tr"):
-        if keys and code not in tables:
-            rep.error("lang/%s.json missing" % code)
+    if keys and "en" not in tables:
+        rep.error("lang/en.json missing (English is required)")
     for code, table in tables.items():
         for k in sorted(keys):
             if k not in table and (code in ("en", "tr")):
@@ -377,11 +374,13 @@ def check_store_item(bundle, rep):
         if not isinstance(v, dict):
             rep.error("store.json: %s must be a {language: text} map" % field)
             continue
-        for code in STORE_LANGS:
-            if not str(v.get(code, "")).strip():
-                rep.error("store.json: %s has no %s text" % (field, code))
-        if field == "subtitle" and any(len(str(t)) > 60 for t in v.values()):
-            rep.warn("store.json: keep subtitles under 60 characters")
+        if not str(v.get("en", "")).strip():  # English is required; other languages are optional
+            rep.error("store.json: %s has no en text" % field)
+        for code, text in v.items():
+            if code != "en" and not str(text).strip():
+                rep.warn("store.json: %s has an empty %s text (remove it or fill it in)" % (field, code))
+        if field == "subtitle" and any(len(str(t)) > 45 for t in v.values()):
+            rep.warn("store.json: keep subtitles at most 45 characters")
     if "kind" in s and s["kind"] not in KINDS:
         rep.error("store.json: kind must be one of %s" % ", ".join(sorted(KINDS)))
     if "tags" in s and (not isinstance(s["tags"], list) or not all(isinstance(t, str) for t in s["tags"])):

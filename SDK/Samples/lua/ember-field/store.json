@@ -1,0 +1,31 @@
+{
+  "kind": "game",
+  "tags": [
+    "g3d",
+    "3d",
+    "glb",
+    "animation",
+    "collision"
+  ],
+  "subtitle": {
+    "en": "A complete 3D game with an animated .glb hero",
+    "tr": "Animasyonlu .glb kahramanlı eksiksiz 3B oyun"
+  },
+  "description": {
+    "en": "A small, complete 3D game made the way the Make a game guide describes. A round courier bird collects embers on a floating island at dusk while stones roll across it.\n\n• g3d.loadModel: the models load in the background while the title screen plays\n• A skinned .glb hero with Idle, Run and Hop clips, crossfades and a one-shot clip\n• A glow halo attached to a bone with nodeMatrix and drawMatrix\n• A heightmap island, circle collisions, a follow camera with shake\n• Title, pause and game over screens in the game's own art direction, controller, keyboard and touch\n• The models and the store icon are made by Blender scripts in art/",
+    "tr": "Oyun yap rehberinin anlattığı yolla yapılmış küçük ama eksiksiz bir 3B oyun. Yuvarlak bir kurye kuş, alacakaranlıkta uçan bir adada korları toplar, taşlar adanın üzerinden yuvarlanır.\n\n• g3d.loadModel: başlık ekranı oynarken modeller arka planda yüklenir\n• Idle, Run ve Hop klipleri olan skin'li bir .glb kahraman, geçişler ve tek seferlik klip\n• nodeMatrix ve drawMatrix ile bir kemiğe takılı parlak hale\n• Yükseklik haritalı ada, daire çarpışmaları, sarsıntılı takip kamerası\n• Oyunun kendi sanat yönünde başlık, duraklatma ve oyun sonu ekranları; kumanda, klavye ve dokunmatik\n• Modelleri ve mağaza ikonunu art/ içindeki Blender script'leri üretir"
+  },
+  "shots": [
+    [
+      "wait 4"
+    ],
+    [
+      "dpad a",
+      "wait 4"
+    ],
+    [
+      "dpad plus",
+      "wait 1.5"
+    ]
+  ]
+}

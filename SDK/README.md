@@ -22,6 +22,10 @@ for `.nxvapp` / `.nxvtheme` / `.nxvfont`, and [Publishing](Publishing/README.md)
 
 If in doubt, start with **Lua**: it has the most samples, the best performance and Studio's visual editors.
 
+**Making a game?** [Make a game](Guides/MAKE_A_GAME.en.md) is the complete recipe (SDK 1.8): project, 3D models
+(`.glb` / `.fbx`), loading, input, collision, speed on the Switch, an art direction of your own, the store icon
+(key art) and publishing. A sample made that way: [Ember Field](Samples/lua/ember-field/).
+
 ## What you can build
 
 A Nexvyn OS app is a `.nxvapp` folder with `app.json`, an entry file and `icon.png` (or that folder zipped into one
@@ -31,7 +35,8 @@ file). Apps run in their own window and share one SDK:
   with `store`, files with `fs`, HTTPS and JSON with `net`, notifications, sharing, Quick Search.
 - **2D games:** the `nexvyn.game` engine (scenes, sprites, tilemaps, camera, physics, particles, tweens, touch
   controls) or plain `gfx` drawing; controller, keyboard, touch and motion sensors.
-- **3D:** `g3d` on the GPU (lighting, fog, textures, `.obj` / `.stl` loading).
+- **3D:** `g3d` on the GPU (lighting, fog, textures) and, since SDK 1.8, animated `.glb` / `.gltf` / `.fbx` models loaded in
+  the background (`g3d.loadModel`), with skeletal animation, crossfades and attachments.
 - **Sound:** synthesised tones, system sounds, `.wav` / `.ogg` / `.mp3` files and streamed music.
 - **Themes** (`.nxvtheme`: colors, wallpaper, sounds) and **font packs** (`.nxvfont`), no code needed.
 

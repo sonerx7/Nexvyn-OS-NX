@@ -21,7 +21,7 @@ vermediği öğelerde gerekçesiyle).
 
 - [ ] `id` benzersiz, ters alan adı biçiminde ve güncellemede değişmemiş
 - [ ] Güncellemede `version` yayımlanandan büyük; README'deki sürüm tablosunda yeni satır var
-- [ ] `minSdk` kullanılan en yeni SDK özelliğine uyuyor
+- [ ] `minSdk` kullanılan en yeni SDK özelliğine uyuyor; yeni öğeler `targetSdk` yazar ("1.8")
 - [ ] Klasör doğru yerde: `Store/Apps/<kategori>/`, `Store/Games/<tür>/`, `Store/Themes/`, `Store/Fonts/`
 
 ## 3. Güvenlik ve gizlilik
@@ -56,15 +56,22 @@ vermediği öğelerde gerekçesiyle).
 - [ ] Konsolda ya da Ryujinx'te kurulup açılıyor; birkaç dakikalık kullanımda çökmüyor
 - [ ] Açık ve koyu modda okunuyor; en küçük pencere boyutunda, el modunda ve TV'de taşma yok
 - [ ] Dokunmatik, imleç ve (oyunlarda) kumandayla kullanılabiliyor; hedefler en az 28 px
-- [ ] Akıcı: `app.draw` içinde ağır iş yok, hiçbir geri çağırma 3 saniyeye yaklaşmıyor
+- [ ] Akıcı: `app.draw` içinde ağır iş yok, hiçbir geri çağırma 3 saniyeye (`app.load` 10'a) yaklaşmıyor; büyük
+      modeller `g3d.loadModel` ile yükleniyor
 - [ ] Veriler hemen kaydediliyor, `suspend` / `autosave` sonrası kaybolmuyor
-- [ ] Ekrandaki her metin `TR()` ile; `lang/en.json` tam (Türkçe şiddetle önerilir)
+- [ ] Ekrandaki her metin `TR()` ile; `lang/en.json` tam (başka diller isteğe bağlı, eksik anahtarlar İngilizceye
+      düşer)
+- [ ] Oyunlar: görünüş oyunun kendisine ait. Başlık, HUD ve duraklatma ekranlarını oyun kendi sanat yönüyle çiziyor
+      (`ui.*` widget'ları ya da `theme` renkleri değil) ve bir örneğin ya da başka bir oyunun menü düzenini, renklerini
+      ya da başlık kompozisyonunu kopyalamıyor
 
 ## 7. Mağaza kaydı
 
 - [ ] `store.json`: en az İngilizce `subtitle` (≤ 45 karakter) ve `description`; `kind`, `tags`; `shots` geçerli
-- [ ] `icon.png` kare 128 ya da 256 px; kişisel veri içermeyen 3-4 ekran görüntüsü
-- [ ] `README.md` İngilizce ve Türkçe
+- [ ] `icon.png` 256 x 256 (eski öğelerde 128): SDK ile yapılan oyun ve app'lerde öğenin kendi key art'ı (kahramanı
+      ya da ana nesnesi, dünyası, ışığı, adı), cesur, 64 px'de okunur, mağazadaki diğer ikonlara benzemiyor; gradyan
+      üstünde düz sembol değil. Kişisel veri içermeyen 3-4 ekran görüntüsü
+- [ ] `README.md` İngilizce (başka diller isteğe bağlı)
 - [ ] Güncellemede bir `changelog` (Yenilikler) var
 
 ## 8. Birleştirdikten sonra

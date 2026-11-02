@@ -2,7 +2,7 @@
 
 [English](README.md) · **Türkçe**
 
-**24** örnek.
+**25** örnek.
 
 Altı dilde çalışan örnek projeler. Her klasörde `source/` (eksiksiz bir `.nxvapp` paketi), `README.md` (ne öğrettiği, kontroller, çalıştırma), `icon.png`, `store.json` (beş dilde başlık ve açıklama, tür, etiketler, ekran görüntüsü betiği) ve varsa `screenshots/` vardır. `Tools/build_store.py` her örnek için `<slug>.zip` ve Nexvyn OS Studio'nun *Örnekler* bölümünün okuduğu `SDK/samples.json` dosyasını üretir.
 
@@ -14,6 +14,7 @@ Bir örneği denemek için `source/` klasörünü `sdmc:/NexvynOS/Applications/<
 |---|---|---|---|---|
 | <img src="lua/beatbox/icon.png" width="32"> | [Ritim Kutusu Demosu](lua/beatbox/) | demo | 1.0 | 16 adımlı davul makinesi |
 | <img src="lua/effects/icon.png" width="32"> | [Efekt Demosu](lua/effects/) | demo | 1.0 | Plazma, tünel ve yıldız alanı |
+| <img src="lua/ember-field/icon.png" width="32"> | [Kor Tarlası](lua/ember-field/) | game | 1.8 | Animasyonlu .glb kahramanlı eksiksiz 3B oyun |
 | <img src="lua/gestures/icon.png" width="32"> | [Hareketler Demosu](lua/gestures/) | demo | 1.0 | Yakınlaştır, döndür, kaydır, eğ ve titret |
 | <img src="lua/hello/icon.png" width="32"> | [Merhaba SDK](lua/hello/) | demo | 1.0 | Lua SDK turu |
 | <img src="lua/particles/icon.png" width="32"> | [Parçacık Demosu](lua/particles/) | demo | 1.2 | Yayıcılar, patlamalar ve çekim kuyuları |

@@ -21,7 +21,7 @@ items the rules do not allow at all).
 
 - [ ] `id` is unique, reverse domain, and unchanged for an update
 - [ ] `version` is higher than the published one for an update; the README's versions table has the new line
-- [ ] `minSdk` matches the newest SDK feature used
+- [ ] `minSdk` matches the newest SDK feature used; new items set `targetSdk` ("1.8")
 - [ ] The folder is in the right place: `Store/Apps/<category>/`, `Store/Games/<genre>/`, `Store/Themes/`, `Store/Fonts/`
 
 ## 3. Safety and privacy
@@ -55,15 +55,22 @@ items the rules do not allow at all).
 - [ ] Installs and opens on the console or in Ryujinx; no crash in a few minutes of use
 - [ ] Readable in light and dark mode; nothing overflows at the minimum window size, handheld and TV
 - [ ] Usable by touch, cursor and (games) controller; targets of at least 28 px
-- [ ] Smooth: nothing heavy in `app.draw`, no callback near 3 seconds
+- [ ] Smooth: nothing heavy in `app.draw`, no callback near 3 seconds (`app.load` near 10); big models load with
+      `g3d.loadModel`
 - [ ] Data is saved right away and survives `suspend` / `autosave`
-- [ ] Every on-screen text goes through `TR()`; `lang/en.json` complete (Turkish strongly recommended)
+- [ ] Every on-screen text goes through `TR()`; `lang/en.json` complete (other languages optional, missing keys fall
+      back to English)
+- [ ] Games: the look is the game's own. Title, HUD and pause screens are drawn by the game in its art direction (not
+      `ui.*` widgets or `theme` colors) and do not copy the menu layout, colours or title composition of a sample or
+      another game
 
 ## 7. Store listing
 
 - [ ] `store.json`: `subtitle` (≤ 45 characters) and `description` at least in English; `kind`, `tags`; `shots` valid
-- [ ] `icon.png` square 128 or 256 px; 3-4 screenshots without personal data
-- [ ] `README.md` in English and Turkish
+- [ ] `icon.png` 256 x 256 (128 for older items): for games and apps made with the SDK, key art of the item itself
+      (its hero or main object, world, light, name), bold and readable at 64 px, unlike the other icons in the store;
+      not a flat symbol on a gradient. 3-4 screenshots without personal data
+- [ ] `README.md` in English (more languages optional)
 - [ ] An update has a `changelog` (What's New)
 
 ## 8. After merging

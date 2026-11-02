@@ -12,22 +12,22 @@ Every file comes in two versions: English `X.en.md` and Turkish `X.tr.md`. Both 
 
 | File | Purpose |
 |---|---|
-| [system-prompt.en.md](system-prompt.en.md) · [Turkish](system-prompt.tr.md) | The main context pack (~5k tokens): bundle layout, `app.json`, enforced permissions, program structure, rules (3 s, 64 MB, 60 fps, `TR()`), a summary of the whole API, language differences, the store format |
+| [system-prompt.en.md](system-prompt.en.md) · [Turkish](system-prompt.tr.md) | The main context pack (~6k tokens, SDK 1.8): bundle layout, `app.json`, enforced permissions, program structure, rules (3 s, 64 MB, 60 fps, `TR()`), a summary of the whole API, language differences, the store format |
 | [languages/](languages/) | Language packs: [lua](languages/lua.en.md), [javascript](languages/javascript.en.md), [python](languages/python.en.md), [squirrel](languages/squirrel.en.md), [c](languages/c.en.md), [java](languages/java.en.md) (Turkish: `.tr.md`): skeleton, language rules, checker |
-| [tasks/](tasks/) | Task prompts: [make a game](tasks/make-game.en.md), [make a utility](tasks/make-utility.en.md), [port a Lua game to JS](tasks/port-lua-to-js.en.md), [add a UI language](tasks/add-language.en.md), [write store.json and the screenshot script](tasks/store-listing.en.md), [fix a checker failure](tasks/fix-lua-check.en.md) (Turkish: `.tr.md`) |
+| [tasks/](tasks/) | Task prompts: [make a game](tasks/make-game.en.md), [make a 3D game with models](tasks/make-3d-game.en.md), [the store icon (key art)](tasks/store-icon.en.md), [make a utility](tasks/make-utility.en.md), [port a Lua game to JS](tasks/port-lua-to-js.en.md), [add a UI language](tasks/add-language.en.md), [write store.json and the screenshot script](tasks/store-listing.en.md), [fix a checker failure](tasks/fix-lua-check.en.md) (Turkish: `.tr.md`) |
 | [checklist.en.md](checklist.en.md) · [Turkish](checklist.tr.md) | What the assistant must verify before answering |
 
 ## Which language to use
 
 - **If you talk to the assistant in English**, or use a small local model, give it the English files (small models
   usually follow English instructions more strictly).
-- **If you talk to it in Turkish**, give it the `.tr.md` files: the instructions, examples and task prompts are in
-  Turkish and the assistant answers in Turkish. Both system prompts tell the model to reply in the language the user
-  writes in, so a Turkish question with the English context still gets a Turkish answer.
+- **If you talk to it in Turkish**, you can give it the `.tr.md` files: the instructions, examples and task prompts
+  are in Turkish. Both system prompts tell the model to answer in the language the user writes in, so a question in
+  any language with the English context gets an answer in that language.
 - Do not mix them: the system prompt, the language pack, the task prompt and the checklist should be in the same
   language.
-- API names, `app.json` keys, file names and checker commands are the same in both versions. The app itself is
-  bilingual either way, through `lang/en.json` and `lang/tr.json`.
+- API names, `app.json` keys, file names and checker commands are the same in both versions. The app itself is in
+  English (`lang/en.json`, required) plus every language you ask for (`lang/<code>.json`); Turkish is not required.
 
 ## How to use them
 

@@ -22,6 +22,10 @@ Sonra: her işlev için [SDK başvurusu](Reference/SDK.tr.md), `.nxvapp` / `.nxv
 
 Kararsızsanız **Lua** ile başlayın: en çok örnek, en iyi performans ve Studio'daki görsel editörler onunla gelir.
 
+**Oyun mu yapıyorsunuz?** [Oyun yap](Guides/MAKE_A_GAME.tr.md) eksiksiz tariftir (SDK 1.8): proje, 3B modeller
+(`.glb` / `.fbx`), yükleme, girdi, çarpışma, Switch'te hız, size ait bir sanat yönü, mağaza ikonu (key art) ve
+yayın. Bu yolla yapılmış bir örnek: [Kor Tarlası](Samples/lua/ember-field/).
+
 ## Neler yapabilirsiniz
 
 Bir Nexvyn OS uygulaması, içinde `app.json`, giriş dosyası ve `icon.png` bulunan bir `.nxvapp` klasörüdür (ya da bu
@@ -31,7 +35,8 @@ klasörün zip'lenmiş tek dosya hâli). Uygulamalar kendi penceresinde çalış
   kutuları), `store` ile kalıcı veri, `fs` ile dosyalar, `net` ile HTTPS ve JSON, bildirimler, paylaşım, Hızlı Arama.
 - **2D oyunlar:** `nexvyn.game` motoru (sahneler, sprite, tilemap, kamera, fizik, parçacıklar, tween, dokunmatik
   kontroller) ya da düz `gfx` çizimi; kumanda, klavye, dokunmatik ve hareket sensörleri.
-- **3D:** GPU'da `g3d` (ışık, sis, doku, `.obj` / `.stl` yükleme).
+- **3D:** GPU'da `g3d` (ışık, sis, doku) ve SDK 1.8'den beri arka planda yüklenen (`g3d.loadModel`) animasyonlu
+  `.glb` / `.gltf` / `.fbx` modeller: iskelet animasyonu, geçişler ve takılan nesneler.
 - **Ses:** sentezlenmiş tonlar, sistem sesleri, `.wav` / `.ogg` / `.mp3` dosyaları ve akış müziği.
 - Kod gerektirmeyen **temalar** (`.nxvtheme`: renkler, duvar kâğıdı, sesler) ve **yazı tipi paketleri** (`.nxvfont`).
 

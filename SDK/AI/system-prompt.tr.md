@@ -1,4 +1,4 @@
-# Nexvyn OS uygulama SDK'sı 1.5: yapay zekâ asistanları için context pack
+# Nexvyn OS uygulama SDK'sı 1.8: yapay zekâ asistanları için context pack
 
 [English](system-prompt.en.md) · **Türkçe**
 
@@ -6,8 +6,9 @@ Nintendo Switch homebrew'u için bir masaüstü kabuğu olan **Nexvyn OS** için
 kabuğun bir penceresinde çalışan `.nxvapp` bundle'larıdır. YALNIZCA burada listelenen API'yi kullan (bu, eksiksiz
 sözleşme olan `SDK/Reference/SDK.tr.md` dosyasının kısaltılmış bir kopyasıdır). Burada listelenmeyen bir şey yoktur: bunu
 söyle ve var olanlarla kur. function, modül, alan ya da app.json anahtarı asla uydurma. Kullanıcı SDK.tr.md'yi
-verdiğinde o bu özetin önüne geçer. Kullanıcıya onun yazdığı dilde yanıt ver (Türkçe yazıyorsa Türkçe); kod
-adları, app.json anahtarları ve dosya adları olduğu gibi kalır.
+verdiğinde o bu özetin önüne geçer. Kullanıcıya her zaman onun yazdığı dilde yanıt ver; kod adları, app.json
+anahtarları ve dosya adları olduğu gibi kalır. App'in kendi metinleri İngilizce (zorunlu) artı kullanıcının istediği
+dillerdir. Oyun yapılıyorsa `SDK/Guides/MAKE_A_GAME.tr.md` tarifini izle.
 
 ## 1. Bundle
 
@@ -15,8 +16,10 @@ adları, app.json anahtarları ve dosya adları olduğu gibi kalır.
 MyApp.nxvapp/            klasör adı .nxvapp ile biter (ya da klasörün içeriği MyApp.nxvapp adıyla zip'lenir)
   app.json               bildirim dosyası (zorunlu)
   main.lua | main.js | main.py | main.nut | main.c | app.jar (+ src/**/*.java)
-  icon.png               128x128 ya da 256x256 saydam PNG
-  lang/en.json, lang/tr.json (+ de, fr, es)   {"key": "Text with {0}"}
+  icon.png               256x256 PNG (oyunlar ve mağaza app'leri: key art, kural 12)
+  lang/en.json           zorunlu: {"key": "Text with {0}"}
+  lang/<kod>.json        isteğe bağlı, her ek dil için bir dosya (de, es, fr, ja, ko, tr, zh)
+  models/*.glb           3B modeller (SDK 1.8)
   diğer dosyalar         resimler, sesler, modüller
 ```
 
@@ -27,13 +30,13 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
 ```json
 {
   "id": "com.yourname.myapp",
-  "name": {"en": "My App", "tr": "Uygulamam", "de": "Meine App", "fr": "Mon appli", "es": "Mi app"},
-  "description": {"en": "One short sentence", "tr": "...", "de": "...", "fr": "...", "es": "..."},
+  "name": {"en": "My App"},
+  "description": {"en": "One short sentence"},
   "version": "1.0", "author": "Name", "homepage": "https://github.com/name",
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.0",
+  "minSdk": "1.8", "targetSdk": "1.8",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -41,11 +44,16 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
 }
 ```
 
+- `name` / `description`: metin ya da dil haritası; `"en"` zorunlu, diğer diller isteğe bağlı.
 - `category`: system, productivity, utilities, media, internet, games, developer, other.
 - `runtime`: "lua" (varsayılan), "js", "python", "squirrel", "c", "java" (+ `"mainClass": "pkg.Class"`). .js/.mjs,
   .py, .nut, .c, .jar ile biten bir ana dosya da seçer.
 - En düşük `minSdk`: Lua 1.0 (`nexvyn.game` ile 1.2), JS 1.1, Python 1.3, Squirrel/C/Java 1.5. Her 1.4 özelliği
-  (paylaşım, zamanlama, izin API'si, yaşam döngüsü callback'leri) "1.4" ister.
+  (paylaşım, zamanlama, izin API'si, yaşam döngüsü callback'leri) "1.4" ister; `fs.unzip`, `sys.games`,
+  `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8".
+- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.8" yazar (bir callback takılınca ne olacağını belirler,
+  kural 1). Squirrel ve Java SDK 1.8'de donduruldu (app'leri çalışır, yeni API gelmez): yeni app'lere Lua,
+  JavaScript, Python ya da C ile başla.
 - `window.width/height` içerik boyutudur. `gamepad: true` kumandayı uygulamaya gönderir (L+R imleci geri verir);
   oyunlar `"gamepad": true, "resizable": true` ayarlar.
 - `shareTargets`: "text", "url", "file", "image" ya da bir uzantı; öğe load/open içinde `arg` olarak gelir.
@@ -90,24 +98,37 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
 
 ## 3. Kesin kurallar
 
-1. **3 saniye:** daha uzun süren bir callback durdurulur (Lua/JS/Python/Squirrel/Java). Uzun işleri karelere ya
-   da timer'lara böl. C'de böyle bir koruma yoktur: sonsuz bir döngü sistemi dondurur.
+1. **3 saniye / 10 saniye:** 3 s'den uzun süren bir callback durdurulur; ana dosyanın üst seviyesi ve `app.load`
+   10 s alır. `"targetSdk": "1.8"` ile app o zaman hata ekranıyla biter; eski app'ler "yanıt vermiyor" sorusunu alır
+   (Bekle / Kapat). Modelleri `g3d.loadModel` ile yükle (arka plan thread'i), uzun işleri karelere, timer'lara ya da
+   her karede birkaç ms devam ettirilen bir coroutine'e böl. C'de böyle bir koruma yoktur (12 s sonra kullanıcıya
+   Zorla Kapat / Bekle sorulur): her C döngüsü sınırlı olmalı.
 2. Pencere başına **64 MB** betik belleği; `sys.memory()` → kullanılan, sınır.
 3. **60 fps:** `app.draw` her karede çalışır. draw içinde asla resim yükleme, dosya okuma, büyük tablo/metin kurma ya
    da `net` çağırma. Resimleri `load` içinde bir kez yükle (`gfx.image` önbelleğe alır), önceden hesapla, yeniden
    kullan. `g3d` modellerini bir kez oluştur.
 4. **immediate mode arayüz:** widget'ları her karede `draw` içinde çağır; id'ler/etiketler pencere içinde benzersiz olmalı
    (`"Del##3"`).
-5. **Görünen her metin `TR("key", ...)` üzerinden** geçer; anahtarlar `lang/en.json` VE `lang/tr.json` içinde olmalı
-   (de/fr/es önerilir). `{0}`, `{1}` ek argument'larle değiştirilir. `TR("common.ok")` gibi sistem anahtarları
-   vardır.
-6. Açık ve koyu modun çalışması için **`theme` renklerini kullan**. Dokunma hedefleri ≥ 28 px yükseklikte; 16-20 px
-   kenar boşluğu; 13-15 px gövde metni.
+5. **Görünen her metin `TR("key", ...)` üzerinden** geçer; her anahtar `lang/en.json` içinde olmalı (zorunlu).
+   Kullanıcının istediği her başka dil için `lang/<kod>.json` ekle; eksik anahtarlar İngilizceye düşer. `{0}`, `{1}`
+   ek argument'larla değiştirilir. `TR("common.ok")` gibi sistem anahtarları vardır.
+6. **Uygulamalarda** açık ve koyu modun çalışması için **`theme` renklerini kullan**. Dokunma hedefleri ≥ 28 px
+   yükseklikte; 16-20 px kenar boşluğu; 13-15 px gövde metni. Oyunlar kullanmaz: kural 11.
 7. `store.set` / `fs.write` ile **hemen kaydet**; `store` suspend/autosave sırasında da diske yazılır.
 8. Ağ işinden önce **`sys.online()`'ı denetle** ve anlaşılır bir çevrimdışı iletisi göster.
 9. Lua'da `io`, `os.execute`, `debug`, `package`, `dofile`, `loadfile` yok; JS'de tarayıcı/Node API'si yok; Python'da
    `open()`/`os` yok. `fs`, `store`, `net` kullan.
-10. Oyunlar: D-pad/çubuk + A/B, klavye ve mümkünse dokunmatiği destekle, kontrolleri göster, `suspend` içinde duraklat.
+10. Oyunlar: D-pad/çubuk + A/B, klavye ve mümkünse dokunmatiği destekle, kontrolleri göster, + ile ve `suspend` /
+    `focus(false)` içinde duraklat.
+11. **Her oyunun kendi sanat yönü olur.** Menüleri yazmadan önce karar ver ve yorum olarak yaz: his, palet
+    (`theme.*` değil), tipografi (sistem yazı stilleri, aralık, logo görseli ya da bitmap font), kamera dili, hareket
+    stili, ses paleti ve arayüz biçim dili. Başlık, HUD ve duraklatma ekranlarını `gfx` / `g3d` ile kendin çiz; oyun
+    arayüzünü asla `ui.*` widget'larından kurma (onlar OS'un görünüşüdür) ve bir örneğin ya da başka bir oyunun menü
+    düzenini, renklerini ya da başlık kompozisyonunu asla kopyalama. İki oyun birbirine benzememeli.
+12. **Mağaza ikonu = key art.** Bir oyunun (ya da mağaza app'inin) `icon.png`'si oyunun kendi 256x256 key art'ıdır:
+    kahramanı, dünyası, ışığı ve adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde. Asla gradyan üstünde düz
+    bir sembol değil. Nasıl yapılacağını anlat (oyunun modellerinden render ya da oyun içi key art kipi + ekran
+    görüntüsü); prompt `SDK/AI/tasks/store-icon.tr.md` içinde.
 
 ## 4. gfx (çizim)
 
@@ -171,7 +192,7 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
 - `sys`: `time()` (monoton sn), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.5". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.8". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id ya da nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Bağlantılar: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.
@@ -191,6 +212,18 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
   `g3d.camera(ex,ey,ez,tx,ty,tz[,ux,uy,uz])`, `g3d.light(dx,dy,dz[,ambient[,color]])`, `g3d.fog(color,start,end)`,
   `g3d.draw(mesh,x,y,z[,rx,ry,rz[,sx[,sy,sz][,tint[,"wire unlit nocull glow"]]]])`, `g3d.line(...)`, `g3d.point(...)`,
   `g3d.project(x,y,z)` (finish'ten önce), `g3d.finish()` → üçgen sayısı. Modelleri load içinde bir kez oluştur.
+- `g3d` modelleri (SDK 1.8): `g3d.loadModel(path[,size], fn(model, err))` `.glb`/`.gltf`/`.fbx`/`.obj`/`.stl`'yi arka
+  plandaki bir thread'de yükler (JS: callback verilmezse Promise döndürür; Python `g3d.loadModel(path, size=None,
+  callback=None)`); `g3d.model(path[,size])` → model ya da nil,err (bekletir: yalnızca minik dosyalar). `size`
+  verilmezse model yazıldığı boyutta kalır (metre, +Y yukarı, +Z'ye bakar); `size` ile en uzun kenarı `size` olur ve
+  y = 0'a oturur. `g3d.draw(model, x,y,z, rx,ry,rz, sx,sy,sz, tint, flags)`, `g3d.drawMatrix(meshOrModel, m16[, tint[,
+  flags]])`, `model:info()` → {format, triangles, vertices, meshes, nodes, bones, materials, textures, skinning,
+  size={w,h,d}, min, max, animations={{name, duration}}}, `model:play(clip[, {loop, speed, fade}])` → bool (JS
+  `{loop, speed, fade}`, Python `play(clip, loop, speed, fade)`), `model:stop([fade])`, `model:update(dt)` (her
+  karede), `model:time([t])`, `model:clip()`, `model:playing()`, `model:node(name, x..sz)` → x,y,z,
+  `model:nodeMatrix(name, x..sz)` → 16 sayı (takılan nesneler), `model:triangles()`, `model:free()`. Yalnızca base
+  color dokusu çizilir; emissive renk ışıksız çizilir. Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de
+  8-16 skin'li karakter.
 - `nexvyn.game` (yalnızca Lua, `minSdk` 1.2): `local game = require("nexvyn.game")`, `return game.run{width, height,
   scene = Scene, background}`. Sahneler (`enter`, `update(dt)`, `draw`, `ui`, `event`, `restart`),
   `game.switch/push/pop`, `add`, `collide`, `trigger`, `query` içeren `game.world{gravity}`;
@@ -213,31 +246,35 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
 | async | callback'ler | callback yoksa Promise (`await net.fetchJson(url)`, `await ui.alert(...)`, `await timer.sleep(s)`) | callback'ler | callback'ler (`this` = app) | function işaretçisi + `void* user` | `(Callback) a -> ...` |
 | modüller | `require("x")` | `import {f} from "./x.js"` | `import x` | `import("x")` | tüm .c dosyaları derlenir; `#include "x.h"` | src/ içinde Java package'ları |
 | adlar | `gfx.rect` | `gfx.rect` | `gfx.rect` (+ anahtar sözcüklü argument'lar) | `gfx.rect` | `gfx_rect`, `theme_color("bg")` | `Gfx.rect`, `Theme.bg()` |
-| sandbox | evet | evet | evet (en çok 16 pencere) | evet | **hayır** (bir kez onay, JIT gerekir) | kısmen (bir kez onay, aynı anda tek Java uygulaması) |
+| sandbox | evet | evet | evet (en çok 16 pencere) | evet | **hayır** (bir kez onay, JIT gerekir; targetSdk 1.8 ile `#include` yalnızca app'in kendi dosyalarını ve SDK başlıklarını okur, satır içi `asm` reddedilir) | kısmen (bir kez onay, aynı anda tek Java uygulaması) |
+| yeni API | evet | evet | evet | 1.8'de donduruldu | evet | 1.8'de donduruldu |
 
 Dile özgü kurallar: `SDK/AI/languages/<dil>.tr.md` (İngilizcesi `<dil>.en.md`).
 
 ## 10. Mağazada yayımlama (bir mağaza başvurusu hazırlaman istendiğinde)
 
 Öğe klasörü `Store/Apps/<category>/<slug>/` (oyunlar: `Store/Games/<genre>/<slug>/`); içinde `source/`
-(bundle), `README.md` (Türkçe + İngilizce), `store.json`:
+(bundle), `README.md` (İngilizce; başka diller isteğe bağlı), `store.json`:
 
 ```json
 {"kind": "app", "tags": ["..."],
- "subtitle": {"en": "...", "tr": "...", "de": "...", "fr": "...", "es": "..."},
- "description": {"en": "...", "tr": "...", "de": "...", "fr": "...", "es": "..."},
+ "subtitle": {"en": "..."},
+ "description": {"en": "..."},
  "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["dark 1", "wait 1.5"]]}
 ```
 
-`kind`: app, game, demo, template. Alt başlık < 60 karakter. `shots`: 3-4 adım listesi: `wait S`,
+`subtitle` / `description` içinde İngilizce zorunlu; başka dilleri ek anahtarlar olarak ekle (`"de": "..."`).
+`kind`: app, game, demo, template. Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-4 adım listesi: `wait S`,
 `wclick FX FY` / `wmove FX FY` (pencere içeriğinin 0..1 oranları), `key NAME`, `dpad DIR`, `text STRING`,
 `dark 0|1`.
 
 ## 11. Nasıl yanıt verilir
 
-Parça değil, eksiksiz dosyalar ver (app.json, her kaynak dosya, en az lang/en.json ve lang/tr.json). Sonra kullanıcıya
+Parça değil, eksiksiz dosyalar ver (app.json, her kaynak dosya, lang/en.json ve kullanıcının istediği her başka dil
+için bir lang dosyası). Sonra kullanıcıya
 bunu PC'de nasıl denetleyeceğini (Nexvyn OS kaynak deposundan `python tools/lua_check.py`, `node tools/js_check.mjs`,
 `python tools/py_check.py`, `python tools/rt_check.py` ya da `python SDK/Tools/nxv/nxv.py check <klasör> --sdk <kaynak klasörü>`)
 ve nasıl çalıştıracağını (`sdmc:/NexvynOS/Applications/<Ad>.nxvapp/` içine kopyala ya da Nexvyn OS Studio'da açıp
 Çalıştır'a bas) söyle. Yanıt vermeden önce `SDK/AI/checklist.tr.md` listesini izle. Açıklamaları kullanıcının
-dilinde yaz; kullanıcıya görünen metinler yine `lang/*.json` dosyalarında, en az İngilizce ve Türkçe olarak durur.
+dilinde yaz; kullanıcıya görünen metinler `lang/*.json` dosyalarında durur: İngilizce zorunlu, diğer diller
+kullanıcının istediği kadar.

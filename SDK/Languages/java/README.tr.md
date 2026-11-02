@@ -24,7 +24,7 @@ BenimUygulamam.nxvapp/
 ├── app.jar           PC'de derlenir
 ├── src/app/Main.java
 ├── icon.png
-└── lang/en.json, lang/tr.json ...
+└── lang/en.json (+ istediğiniz diğer diller)
 ```
 
 `mainClass` `nexvyn.App`'ten türeyen sınıftır (genel, argümansız yapıcısı olmalı); yazılmazsa jar'ın manifest'indeki

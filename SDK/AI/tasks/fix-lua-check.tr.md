@@ -12,11 +12,11 @@ Checker çıktısı:
 <python tools/lua_check.py ... (ya da js_check / py_check / rt_check / nxv check) çıktısının tamamını yapıştırın>
 
 Dosyalar:
-<app.json'u, çıktıda adı geçen dosyaları ve lang/en.json + lang/tr.json'u yapıştırın>
+<app.json'u, çıktıda adı geçen dosyaları ve lang/en.json'u (artı çıktıda adı geçen diğer lang dosyalarını) yapıştırın>
 
 Çıktı nasıl okunur:
-- "lang/en.json missing: <key>" / "TR(...) missing": anahtarı lang/en.json VE lang/tr.json'a (ve diğer lang
-  dosyalarına) ekle ya da TR() çağrısındaki yazım hatasını düzelt. Checker yorumları da tarar: yorumdaki bir
+- "lang/en.json missing: <key>" / "TR(...) missing": anahtarı lang/en.json'a (ve app'in taşıdığı diğer lang
+  dosyalarına, en azından çıktıda adı geçene) ekle ya da TR() çağrısındaki yazım hatasını düzelt. Checker yorumları da tarar: yorumdaki bir
   TR("...") örneği de sayılır.
 - "unknown icon names (not in Icons.codepoints, nothing is drawn)": Material Icons Round'dan bir ad kullan
   (ör. "settings", "delete", "add").

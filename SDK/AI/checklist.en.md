@@ -8,17 +8,21 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
 ## API
 
 - [ ] Every function, module, field, event type, key name and app.json key I used is in SDK.en.md / system-prompt.en.md.
-      Nothing is invented (no `fetch`, `localStorage`, `io.open`, `os.listdir`, `ui.image`, `gfx.sprite`...).
+      Nothing is invented (no `fetch`, `localStorage`, `io.open`, `os.listdir`, `ui.image`, `gfx.sprite`,
+      `gfx.font`, custom shaders...).
 - [ ] The language rules are applied: index base (Lua 1, others 0), several results (Lua multiple returns, JS arrays,
       Python tuples, Squirrel arrays, C pointers, Java `double[]`/`List`), `ui.textfield` / `ui.submitted`, `ui.row`.
 - [ ] Async: Lua/Python/Squirrel callbacks; JS Promises with `try`/`catch`; C function pointers with `void* user`;
       Java `(Callback)` lambdas.
 - [ ] `minSdk` matches the newest feature used and the language (JS 1.1, Python 1.3, Squirrel/C/Java 1.5,
-      `nexvyn.game` 1.2, share/schedule/permission API/lifecycle callbacks 1.4).
+      `nexvyn.game` 1.2, share/schedule/permission API/lifecycle callbacks 1.4, `fs.unzip`/`sys.games`/`sys.speak`
+      1.6, `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8). New apps set `"targetSdk": "1.8"`.
+- [ ] New apps are not written in Squirrel or Java (frozen at SDK 1.8) unless the user asked for it.
 
 ## app.json
 
-- [ ] Valid JSON; `id` reverse-domain (`com.name.app`); `name` and `description` with at least `en` and `tr`.
+- [ ] Valid JSON; `id` reverse-domain (`com.name.app`); `name` and `description` with at least `en` (other languages
+      only when the user wants them).
 - [ ] `runtime` / `main` (and `mainClass` for Java) match the files I delivered.
 - [ ] `permissions` lists exactly what the code uses (`network`, `files`, `launch`, `notifications`, `games`);
       `[]` when nothing.
@@ -27,23 +31,37 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
 
 ## Behaviour
 
-- [ ] No callback can run near 3 seconds (no unbounded loops; long work split across frames or timers). C code has
-      bounded loops (it is not stopped by the system).
-- [ ] `draw` is cheap: no image loading, file reading, network calls or big allocations per frame; meshes and images
-      are created once.
+- [ ] No callback can run near 3 seconds (`app.load` and the top level near 10): no unbounded loops; models load
+      with `g3d.loadModel`; long work is split across frames, timers or a coroutine. C code has bounded loops (it
+      is not stopped by the system).
+- [ ] `draw` is cheap: no image or model loading, file reading, network calls or big allocations per frame; meshes,
+      models and images are created once.
 - [ ] Data is saved with `store` / `fs` when it changes; nothing is lost on `suspend` or close.
 - [ ] Network: `sys.online()` checked, loading and error states shown, no API keys or secrets in the code.
-- [ ] Works with touch, the controller cursor and a keyboard; games also with the controller (and pause).
-- [ ] Every visible string goes through `TR()`; every key exists in `lang/en.json` and `lang/tr.json`; placeholders
-      `{0}` match the arguments. No `TR("...")` examples in comments for keys that do not exist.
-- [ ] `theme` colors for UI (light and dark mode); controls ≥ 28 px; the layout fits the minimum window size.
+- [ ] Works with touch, the controller cursor and a keyboard; games also with the controller, pause on + and in
+      `suspend` / `focus(false)`.
+- [ ] Every visible string goes through `TR()`; every key exists in `lang/en.json` (and in each other lang file I
+      delivered, or it falls back to English); placeholders `{0}` match the arguments.
+- [ ] Apps: `theme` colors (light and dark mode); controls ≥ 28 px; the layout fits the minimum window size.
 - [ ] Widget ids are unique in the window (`"Delete##" + i` in lists).
+
+## Games: look and identity
+
+- [ ] I wrote the art direction down (feeling, palette, typography, camera, motion, sound, UI shapes) and the title
+      screen, HUD and pause screen follow it.
+- [ ] The game UI is drawn with `gfx` / `g3d`, not with `ui.*` widgets or `theme` colors, and it does not copy a
+      sample's or another game's menu layout, colours or title composition.
+- [ ] 3D models: `.glb` (or `.fbx`), metres, +Y up, facing +Z, pivot at the feet, named clips; triangle budget kept
+      (hero 3-8k, 30-60k per frame).
+- [ ] The store icon is 256x256 key art of the game (hero, world, light, name), not a glyph on a gradient; I said
+      how to make it.
 
 ## Answer
 
 - [ ] Every file is complete (no "..." or "rest unchanged"), with its path in the bundle.
+- [ ] I answered in the user's language; the app's texts are in English plus the languages the user asked for.
 - [ ] I said how to check it (`lua_check.py` / `js_check.mjs` / `py_check.py` / `rt_check.py`, or `nxv check`) and
       how to run it (copy to `sdmc:/NexvynOS/Applications/<Name>.nxvapp/`, or Studio → Run).
 - [ ] I listed what I am unsure about instead of guessing silently.
-- [ ] For a store submission: `store.json` with `subtitle` / `description` in en, tr, de, fr, es, `kind`, `tags` and
-      `shots` using only `wait`, `wclick`, `wmove`, `key`, `dpad`, `text`, `dark`.
+- [ ] For a store submission: `store.json` with `subtitle` / `description` in English at least (more languages when
+      wanted), `kind`, `tags` and `shots` using only `wait`, `wclick`, `wmove`, `key`, `dpad`, `text`, `dark`.
