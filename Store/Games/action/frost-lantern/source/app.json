@@ -1,0 +1,18 @@
+{
+  "id": "com.sonerx7.frostlantern",
+  "name": {"tr": "Ayaz Feneri", "en": "Frost Lantern", "de": "Frostlaterne", "fr": "Lanterne de givre", "es": "Farol de escarcha"},
+  "description": {"tr": "Beş bölgeli piksel roguelike. Lütufları birleştir, bekçileri yen, kayıp şafağı kurtar.", "en": "A five-region pixel roguelike. Combine boons, defeat the keepers and restore a lost dawn.", "de": "Pixel-Roguelike mit fünf Regionen, kombinierbaren Segen und fünf Bossen. Spiel auf Englisch und Türkisch.", "fr": "Roguelike en pixel art avec cinq régions, des bénédictions combinables et cinq boss. Jeu en anglais et turc.", "es": "Roguelike de pixel art con cinco regiones, bendiciones combinables y cinco jefes. Juego en inglés y turco."},
+  "version": "1.0.0",
+  "author": "sonerx7",
+  "homepage": "https://github.com/sonerx7",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "runtime": "lua",
+  "minSdk": "1.4",
+  "targetSdk": "1.4",
+  "singleInstance": true,
+  "gamepad": true,
+  "permissions": [],
+  "window": {"width": 1280, "height": 720, "minWidth": 640, "minHeight": 360, "resizable": true}
+}
