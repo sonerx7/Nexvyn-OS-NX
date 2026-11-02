@@ -268,6 +268,20 @@ masaüstü simge boyutu, kendi avatarlarıyla birden çok kullanıcı ve kilit e
 
 ---
 
+## Gereksinimler
+
+- **Atmosphère** ile açılan bir konsol. Önerilen: Atmosphère **1.12.1** veya daha yenisi.
+- **Sistem sürümü 5.0.0 veya üstü.** **20.5.x**'e kadar test edildi. Daha yeni sistem sürümlerinde Nexvyn OS açılır,
+  ama birkaç özellik orada henüz test edilmedi; Nexvyn OS bunu bir kez bildirir. 5.0.0'ın altında oyun başlatma ve
+  USB dosya aktarımı (MTP) yoktur.
+- SD kartta `.nro` dosyası (yaklaşık 63 MB) için yaklaşık **70 MB** boş yer, artı kendi dosyalarınız için yer.
+- SD kart bölümü (partition) ya da ek kurulum gerekmez.
+- **Önerilen başlatma: başlık modu.** Bir oyunu **R** tuşuna basılı tutarak başlatın, sonra Nexvyn OS'u Homebrew
+  menüsünden açın. Böylece belleğin tamamı (yaklaşık 3,2 GB) kullanılır. Albüm'den (applet modu) açılınca yalnızca
+  birkaç yüz MB olur: büyük app'ler, tam tarayıcı ve oyun başlatma sınırlıdır; Nexvyn OS bunu söyler.
+
+Ayarlar > Hakkında; sistem sürümünü, Atmosphère sürümünü ve başlatma modunu gösterir.
+
 ## Kurulum
 
 1. Atmosphère ile açılan bir Nintendo Switch gerekir.
@@ -281,6 +295,34 @@ masaüstü simge boyutu, kendi avatarlarıyla birden çok kullanıcı ve kilit e
 
 Nexvyn OS bundan sonra kendini **Sistem Ayarları > Yazılım Güncelleme** üzerinden bu depodaki sürümlerden günceller.
 Her şeyin ayrıntısı [kullanım rehberinde](SDK/Guides/USER_GUIDE.tr.md).
+
+## Çevrimiçi ve çevrimdışı
+
+Nexvyn OS ağ olmadan çalışır. Şu bölümler internet bağlantısı ister:
+
+- **Tarayıcı** (web sayfaları) ve **tam tarayıcı**
+- **App Market** (app kurma ve güncelleme) ve **sistem güncellemeleri**
+- **AI Sohbet** (kendi API anahtarınızla)
+- **Hava Durumu**, **Haberler**, **Döviz** (kurlar), **Haritalar**, **Sözlük**
+- **Radyo**, **IPTV** ve **video** app'i
+- **Mod Bulucu** ve Türkçe yama indirmeleri
+- Anonim kullanım istatistikleri (isteğe bağlı, Ayarlar > Gizlilik'ten kapatılabilir)
+
+Yalnızca yerel ağı kullananlar: **PC Bağlantısı** ile **FTP** sunucusu ve istemcisi.
+Geri kalan her şey (dosyalar, notlar, takvim, müzik ve video oynatıcılar, oyunlar, Oyun Motoru, Studio) çevrimdışı
+çalışır.
+
+## Bilinen sorunlar
+
+- **Yeni sistem sürümlerinde tam tarayıcı.** Sistem sürümü 20.5.x'in üstünde olan bazı konsollarda tam tarayıcıyı
+  açmak konsolu bir Atmosphère fatal hatasıyla durdurdu. Nexvyn OS test edilmemiş sistem sürümlerinde tam tarayıcıyı
+  kapalı tutar ve sayfayı kendi tarayıcısında açar. Tarayıcı ayarlarından izin verebilirsiniz; konsol durursa Nexvyn
+  OS yeniden açılışta onu tekrar kapatır. Lütfen sistem ve Atmosphère sürümünüzle ve `sdmc:/atmosphere/fatal_errors/`
+  içindeki raporla bildirin.
+- **Masaüstü bir an donuyor ya da oyunlardan sonra yavaşlıyor.** Lütfen
+  `sdmc:/NexvynOS/System/Logs/system.log` dosyasını (yeniden başlattıysanız `system.prev.log`'u da) gönderin.
+  `stall` ile başlayan satırlar zamanı alan bölümü söyler. Yavaşlamış ya da bozulmaya başlamış SD kart sık bir
+  nedendir.
 
 ## Ne nerede
 
@@ -333,6 +375,23 @@ Bir öğeyi bildirmek için mağaza sayfasındaki **Bu Uygulamayı Bildir** dü�
 [bildirim formunu](https://github.com/sonerx7/Nexvyn-OS-NX/issues/new?template=report-app.yml) kullanın.
 
 ## SSS
+
+**Ayrı bir SD kart bölümü gerekiyor mu?** Hayır. Normal bir homebrew dosyası ve bir klasör.
+
+**Ne kadar yer kaplıyor?** `.nro` yaklaşık 63 MB. `sdmc:/NexvynOS/` klasörü küçük başlar, dosyalarınız ve app'lerle
+büyür.
+
+**Tarayıcıda abonelikli video servislerini izleyebilir miyim?** Hayır. Videolarını DRM ile koruyan servisler ne yerleşik
+tarayıcıda ne tam tarayıcıda oynar. DRM'siz ücretsiz video siteleri ve canlı yayınlar genelde çalışır.
+
+**Tarayıcı verilerimi kaydediyor mu?** Yerleşik tarayıcı geçmişi, yer imlerini, çerezleri ve indirmeleri kullanıcı
+klasörünüze kaydeder (`sdmc:/NexvynOS/Users/<ad>/Library/Application Support/browser/`). Kayıtlı şifreler
+şifrelenir. Gizli sekmeler geçmiş bırakmaz. Tarayıcı ayarları > Gizlilik geçmişi, çerezleri ve site verilerini siler
+(kayıtlı şifreler siz silene kadar kalır).
+
+**Ne kadar belleği var?** Başlık modunda belleğin tamamı (yaklaşık 3,2 GB). Applet modunda (Albüm'den) sistem
+sürümüne göre birkaç yüz MB.
+
 
 **Konsolun sisteminin yerine mi geçiyor?**
 Hayır. Nexvyn OS, Atmosphère ile konsolun kendi sisteminin üzerinde çalışan bir homebrew uygulamasıdır. Kapattığınızda

@@ -257,6 +257,20 @@ size, several users with their own avatars, and an optional PIN on the lock scre
 
 ---
 
+## Requirements
+
+- A console that boots with **Atmosphère**. Recommended: Atmosphère **1.12.1** or newer.
+- **System version 5.0.0 or later.** Tested up to **20.5.x**. Newer system versions start Nexvyn OS, but a few
+  features are not tested there yet; Nexvyn OS shows a one-time notice about it. Below 5.0.0, launching games and
+  USB file transfer (MTP) are not available.
+- About **70 MB** free on the SD card for the `.nro` file (about 63 MB), plus space for your own files.
+- No SD card partition and no extra setup is needed.
+- **Recommended launch: title mode.** Hold **R** while starting a game, then open Nexvyn OS from the Homebrew menu.
+  This gives the full memory (about 3.2 GB). Started from the Album (applet mode) it gets only a few hundred MB:
+  large apps, the full browser and launching games are limited, and Nexvyn OS tells you so.
+
+Settings > About shows your system version, Atmosphère version and launch mode.
+
 ## Installation
 
 1. You need a Nintendo Switch that runs Atmosphère.
@@ -270,6 +284,32 @@ size, several users with their own avatars, and an optional PIN on the lock scre
 
 From then on, Nexvyn OS updates itself from this repository's releases in **System Settings > Software Update**.
 The [user guide](SDK/Guides/USER_GUIDE.en.md) explains everything in detail.
+
+## Online and offline
+
+Nexvyn OS works without a network. These parts need an internet connection:
+
+- **Browser** (web pages) and the **full browser**
+- **App Market** (installing and updating apps) and **system updates**
+- **AI Chat** (with your own API key)
+- **Weather**, **News**, **Currency** (exchange rates), **Maps**, **Dictionary**
+- **Radio**, **IPTV** and the **video** app
+- **Mod Finder** and the Turkish patch downloads
+- Anonymous usage statistics (optional, can be turned off in Settings > Privacy)
+
+These use only your local network: **PC Connect** and the **FTP** server and client.
+Everything else (files, notes, calendar, music and video players, games, the Game Engine, the Studio) works offline.
+
+## Known issues
+
+- **Full browser on newer system versions.** On some consoles with a system version above 20.5.x, opening the full
+  browser stopped the console with an Atmosphère fatal error. Nexvyn OS keeps the full browser off on untested
+  system versions and opens the page in its built-in browser instead. You can allow it in Browser settings; if the
+  console stops, Nexvyn OS turns it off again after the restart. Please report it with your system and Atmosphère
+  versions and the report in `sdmc:/atmosphere/fatal_errors/`.
+- **The desktop freezes for a moment, or gets slow after games.** Please send us the log file
+  `sdmc:/NexvynOS/System/Logs/system.log` (and `system.prev.log` if you restarted since). Lines starting with
+  `stall` name the part of Nexvyn OS that took the time. A slow or failing SD card is a common cause.
 
 ## What is where
 
@@ -322,6 +362,23 @@ report an item, use **Report This App** on its store page or the
 [report form](https://github.com/sonerx7/Nexvyn-OS-NX/issues/new?template=report-app.yml).
 
 ## FAQ
+
+**Does it need its own SD card partition?** No. It is a normal homebrew file plus one folder.
+
+**How much space does it take?** The `.nro` is about 63 MB. The `sdmc:/NexvynOS/` folder starts small and grows
+with your files and apps.
+
+**Can I watch subscription video services in the browser?** No. Services that protect their videos with DRM do not
+play in the built-in browser or the full browser. Free video sites and live streams without DRM usually work.
+
+**Does the browser save my data?** The built-in browser saves history, bookmarks, cookies and downloads in your user
+folder (`sdmc:/NexvynOS/Users/<name>/Library/Application Support/browser/`). Saved passwords are encrypted. Private
+tabs keep no history. Browser settings > Privacy clears history, cookies and site data (saved passwords stay until
+you remove them).
+
+**How much memory does it have?** Title mode: the full memory (about 3.2 GB). Applet mode (from the Album): a few
+hundred MB, depending on the system version.
+
 
 **Does it replace the console's system?**
 No. Nexvyn OS is a homebrew app that runs on top of the console's own system with Atmosphère. Close it and you are back
