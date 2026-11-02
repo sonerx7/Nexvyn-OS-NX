@@ -26,9 +26,25 @@ A.uiScale = (w, h) => {
 };
 A.saveSettings = () => store.set("settings", A.settings);
 
+// share of the script heap in use (0..1); 0 when the system does not say
+A.memUse = () => {
+  try { const m = sys.memory(); return m && m[1] > 0 ? m[0] / m[1] : 0; } catch (e) { return 0; }
+};
 A.startGame = (meta) => {
-  if (A.game) A.game.dispose();
-  A.game = new Game(A, meta);
+  if (A.game) { A.game.dispose(); A.game = null; }
+  if (A.memUse() > 0.85) { ui.alert(TR("title"), TR("msg.low_memory"), [TR("ui.ok")], () => {}); return; }
+  try {
+    A.game = new Game(A, meta);
+  } catch (e) {
+    console.log("world load failed: " + (e && e.stack || e));
+    if (A.game) { try { A.game.dispose(); } catch (e2) { /* already gone */ } }
+    A.game = null;
+    A.state = "menu";
+    A.screens.screen = "title";
+    A.screens.stack = [];
+    ui.alert(TR("title"), TR("msg.load_failed"), [TR("ui.ok")], () => {});
+    return;
+  }
   A.state = "game";
   A.screens.screen = "loading";
 };
@@ -36,6 +52,7 @@ A.resume = () => { A.screens.screen = null; A.screens.stack = []; };
 A.pause = () => {
   const g = A.game;
   if (!g || g.state === "loading") return;
+  g.stopRumble();
   if (g.state === "screen") g.closeScreen();
   g.interaction.reset();
   A.screens.screen = "pause";
@@ -46,6 +63,7 @@ A.pause = () => {
   g.save();
 };
 A.quitToTitle = () => {
+  if (A.game) A.game.stopRumble();
   if (A.game) { A.game.save(); A.game.dispose(); A.game = null; }
   A.state = "menu";
   A.screens.screen = "title";
@@ -78,6 +96,7 @@ app.update = (dt) => {
       g.frame(dt);
     } else if (sc === "pause" || sc === "settings" || sc === "help") {
       // paused: the world does not move
+      g.rumbleWatch(dt);
       g.updateEnv(0);
       g.updateCamera(0);
     } else {
@@ -110,12 +129,23 @@ app.draw = (w, h) => {
   if (A.screens.screen && !(g && g.state === "screen")) A.screens.draw(w, h, dt);
 };
 
-app.event = (e) => { if (A.input) A.input.event(e); };
+app.event = (e) => {
+  // the inventory screen takes finger input itself (tap, drag, hold, swipe)
+  if (A.invui && A.invui.isOpen && (e.type === "mousedown" || e.type === "mousemove" || e.type === "mouseup") && A.invui.pointer(e)) {
+    if (A.input) A.input.touchMode = true;
+    return;
+  }
+  if (A.input) A.input.event(e);
+};
 
-app.suspend = () => { if (A.game && A.game.state !== "loading") A.pause(); };
+app.suspend = () => {
+  if (A.game) A.game.stopRumble();
+  if (A.game && A.game.state !== "loading") A.pause();
+};
 app.autosave = () => { if (A.game && A.game.state !== "loading") A.game.save(); };
 app.unsaved = () => false;
 app.close = () => {
+  try { sys.vibrate(0, 0); } catch (e) { /* no rumble */ }
   if (A.game) { A.game.save(); A.game.dispose(); A.game = null; }
   if (A.screens) A.screens.stopPanorama();
   return true;

@@ -286,5 +286,9 @@
  "ui.world_broken": "This world could not be loaded.",
  "ui.world_name": "World name",
  "ui.world_type": "World type",
- "ui.you_died": "You died!"
+ "ui.you_died": "You died!",
+ "msg.low_memory": "Not enough memory to open a world. Close other windows and try again.",
+ "msg.load_failed": "This world could not be loaded.",
+ "msg.low_memory_view": "Memory is running low: view distance lowered to {0} chunks",
+ "ui.inv_help_touch": "Tap to take, tap again to place · drag to move · hold to split · tap outside to drop"
 }

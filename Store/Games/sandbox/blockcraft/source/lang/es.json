@@ -286,5 +286,9 @@
  "ui.world_broken": "No se pudo cargar este mundo.",
  "ui.world_name": "Nombre del mundo",
  "ui.world_type": "Tipo de mundo",
- "ui.you_died": "¡Has muerto!"
+ "ui.you_died": "¡Has muerto!",
+ "msg.low_memory": "No hay memoria suficiente para abrir un mundo. Cierra otras ventanas e inténtalo de nuevo.",
+ "msg.load_failed": "No se pudo cargar este mundo.",
+ "msg.low_memory_view": "Queda poca memoria: distancia de visión reducida a {0} chunks",
+ "ui.inv_help_touch": "Toca para coger y otra vez para dejar · arrastra para mover · mantén para dividir · toca fuera para soltar"
 }

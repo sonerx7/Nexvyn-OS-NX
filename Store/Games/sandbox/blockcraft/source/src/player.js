@@ -119,6 +119,7 @@ export class Player {
     let mdx = this.vel.x * dt, mdz = this.vel.z * dt;
     const mdy = this.vel.y * dt;
     // sneaking never walks off an edge
+    if (!(mdx === mdx) || !(mdz === mdz)) { mdx = 0; mdz = 0; this.vel.x = 0; this.vel.z = 0; }
     if (this.sneaking && this.onGround) {
       const st = 0.05, p = this.pos, hw = this.hw;
       while (mdx !== 0 && !hasGround(world, p.x + mdx, p.y, p.z, hw)) mdx = Math.abs(mdx) < st ? 0 : mdx - Math.sign(mdx) * st;
@@ -270,7 +271,7 @@ export class Player {
     }
     this.game.sound.play("hurt");
     this.game.hud.flashDamage();
-    this.game.rumble(Math.min(1, 0.35 + amount * 0.08), 120);
+    this.game.rumble(Math.min(1, 0.35 + amount * 0.08), 80);
     if (this.health <= 0) this.die(cause);
     return true;
   }

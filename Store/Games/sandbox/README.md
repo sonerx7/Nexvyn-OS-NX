@@ -4,4 +4,4 @@
 
 | | Item | Version | Description |
 |---|---|---|---|
-| <img src="blockcraft/icon.png" width="32"> | [BlockCraft](blockcraft/) | 1.0.0 | Mine, build and survive in a block world |
+| <img src="blockcraft/icon.png" width="32"> | [BlockCraft](blockcraft/) | 1.0.1 | Mine, build and survive in a block world |

@@ -286,5 +286,9 @@
  "ui.world_broken": "이 월드를 불러올 수 없습니다.",
  "ui.world_name": "월드 이름",
  "ui.world_type": "월드 유형",
- "ui.you_died": "죽었습니다!"
+ "ui.you_died": "죽었습니다!",
+ "msg.low_memory": "월드를 열 메모리가 부족합니다. 다른 창을 닫고 다시 시도하세요.",
+ "msg.load_failed": "이 월드를 불러올 수 없습니다.",
+ "msg.low_memory_view": "메모리가 부족합니다: 시야 거리를 {0}청크로 줄였습니다",
+ "ui.inv_help_touch": "탭해서 집고 다시 탭해서 놓기 · 드래그로 이동 · 길게 눌러 나누기 · 바깥을 탭해서 버리기"
 }

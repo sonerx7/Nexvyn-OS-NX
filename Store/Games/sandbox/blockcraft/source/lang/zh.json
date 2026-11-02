@@ -286,5 +286,9 @@
  "ui.world_broken": "无法载入此世界。",
  "ui.world_name": "世界名称",
  "ui.world_type": "世界类型",
- "ui.you_died": "你死了！"
+ "ui.you_died": "你死了！",
+ "msg.low_memory": "内存不足，无法打开世界。请关闭其他窗口后重试。",
+ "msg.load_failed": "无法加载此世界。",
+ "msg.low_memory_view": "内存不足：视距已降至 {0} 个区块",
+ "ui.inv_help_touch": "点按拿起，再点按放下 · 拖动移动 · 长按拆分 · 点按外部丢弃"
 }

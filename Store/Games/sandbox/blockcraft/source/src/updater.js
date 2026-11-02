@@ -13,6 +13,7 @@ const HEIGHT = 128;
 const WATER_DELAY = 5;   // ticks (0.25 s)
 const LAVA_DELAY = 30;   // ticks (1.5 s): lava creeps much slower than water
 const MAX_PER_TICK = 256;
+const MAX_SCHEDULED = 12000;
 const LEAF_R = 4;        // leaves farther than this from any log decay
 const RANDOM_PER_CHUNK = 6;  // samples per chunk column per ambient-tick round
 const RANDOM_BOOST = 8;      // rounds run every other tick with a quarter of the samples: growth odds x8
@@ -56,6 +57,8 @@ export class BlockUpdater {
   schedule(x, y, z, delay) {
     if (y < 0 || y >= HEIGHT) return;
     const k = `${x},${y},${z}`;
+    // a flood into a big cave must not grow the queue without end: past MAX_SCHEDULED the spreading pauses
+    if (this.scheduled.size >= MAX_SCHEDULED && !this.scheduled.has(k)) return;
     const at = this.now + Math.max(1, delay);
     const prev = this.scheduled.get(k);
     if (prev !== undefined && prev <= at) return;

@@ -286,5 +286,9 @@
  "ui.world_broken": "Diese Welt konnte nicht geladen werden.",
  "ui.world_name": "Name der Welt",
  "ui.world_type": "Welttyp",
- "ui.you_died": "Du bist gestorben!"
+ "ui.you_died": "Du bist gestorben!",
+ "msg.low_memory": "Nicht genug Speicher, um eine Welt zu öffnen. Schließe andere Fenster und versuche es erneut.",
+ "msg.load_failed": "Diese Welt konnte nicht geladen werden.",
+ "msg.low_memory_view": "Der Speicher wird knapp: Sichtweite auf {0} Chunks verringert",
+ "ui.inv_help_touch": "Tippen zum Nehmen, erneut tippen zum Ablegen · ziehen zum Verschieben · halten zum Teilen · außerhalb tippen zum Wegwerfen"
 }

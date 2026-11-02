@@ -286,5 +286,9 @@
  "ui.world_broken": "Bu dünya yüklenemedi.",
  "ui.world_name": "Dünya adı",
  "ui.world_type": "Dünya tipi",
- "ui.you_died": "Öldün!"
+ "ui.you_died": "Öldün!",
+ "msg.low_memory": "Dünyayı açmak için yeterli bellek yok. Diğer pencereleri kapatıp yeniden dene.",
+ "msg.load_failed": "Bu dünya yüklenemedi.",
+ "msg.low_memory_view": "Bellek azalıyor: görüş mesafesi {0} chunk'a indirildi",
+ "ui.inv_help_touch": "Almak için dokun, koymak için yine dokun · taşımak için sürükle · bölmek için basılı tut · atmak için dışarı dokun"
 }

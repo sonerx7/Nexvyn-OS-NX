@@ -7,8 +7,26 @@ const EPS = 1e-7;
 
 // Moves e by (dx, dy, dz) with step-up, sets e.onGround / e.collidedH / e.hitCeiling and stops the velocity along
 // blocked axes.
+// The native sweep walks every cell the move covers, so a broken position or delta (NaN, Infinity, a huge jump)
+// would stall the whole system: positions must be finite, deltas are clamped to MAX_STEP per call.
+const MAX_STEP = 4, MAX_COORD = 3e7;
+const fin = v => typeof v === "number" && v === v && v > -MAX_COORD && v < MAX_COORD;
+const clampD = v => (v === v && v > -1e9 && v < 1e9 ? (v > MAX_STEP ? MAX_STEP : v < -MAX_STEP ? -MAX_STEP : v) : 0);
+export function sanePos(e) {
+  if (fin(e.pos.x) && fin(e.pos.y) && fin(e.pos.z) && e.pos.y > -512 && e.pos.y < 1024) return true;
+  // recover: back to the last good spot (or straight up out of the world for mobs, which then despawn)
+  const g = e.lastGood;
+  if (g) { e.pos.x = g.x; e.pos.y = g.y; e.pos.z = g.z; } else { e.pos.x = 0.5; e.pos.y = 200; e.pos.z = 0.5; }
+  e.vel.x = e.vel.y = e.vel.z = 0;
+  return false;
+}
 export function moveBoxStep(world, e, dx, dy, dz, stepH = 0) {
-  const r = world.v.move(e.pos.x, e.pos.y, e.pos.z, e.hw, e.h, dx, dy, dz, stepH);
+  if (!sanePos(e)) return 0;
+  dx = clampD(dx); dy = clampD(dy); dz = clampD(dz);
+  if (!(e.vel.x === e.vel.x) || !(e.vel.y === e.vel.y) || !(e.vel.z === e.vel.z)) e.vel.x = e.vel.y = e.vel.z = 0;
+  const r = world.v.move(e.pos.x, e.pos.y, e.pos.z, e.hw, e.h, dx, dy, dz, Math.min(1.5, Math.max(0, stepH || 0)));
+  if (!e.lastGood) e.lastGood = { x: 0, y: 0, z: 0 };
+  e.lastGood.x = r[0]; e.lastGood.y = r[1]; e.lastGood.z = r[2];
   const f = r[3];
   e.pos.x = r[0]; e.pos.y = r[1]; e.pos.z = r[2];
   e.onGround = (f & 1) !== 0;
@@ -21,7 +39,7 @@ export function moveBoxStep(world, e, dx, dy, dz, stepH = 0) {
 }
 export const moveBox = (world, e, dx, dy, dz) => moveBoxStep(world, e, dx, dy, dz, 0);
 
-export function boxBlocked(world, x, y, z, hw, h) { return world.v.blocked(x, y, z, hw, h); }
+export function boxBlocked(world, x, y, z, hw, h) { return fin(x) && fin(y) && fin(z) ? world.v.blocked(x, y, z, hw, h) : true; }
 
 // Cells (block ids) overlapping a box, for contact effects (fire, ladders, cactus).
 export function touchingIds(world, e, grow = 0) {
@@ -85,6 +103,8 @@ export function rayBox(ox, oy, oz, dx, dy, dz, minX, minY, minZ, maxX, maxY, max
 // Block ray cast. Solid targets come from the voxel world (selection boxes included); liquids (buckets) are found
 // with a JavaScript walk: "source" stops at water / lava sources, "any" at any liquid.
 export function raycastBlocks(world, ox, oy, oz, dx, dy, dz, maxDist, liquids = null) {
+  if (!fin(ox) || !fin(oy) || !fin(oz) || !fin(dx) || !fin(dy) || !fin(dz) || !(maxDist > 0)) return null;
+  maxDist = Math.min(maxDist, 96);
   const h = world.v.raycast(ox, oy, oz, dx, dy, dz, maxDist);
   let hit = h ? { x: h.x, y: h.y, z: h.z, id: h.id, face: [h.nx, h.ny, h.nz], dist: h.dist } : null;
   if (!liquids) return hit;

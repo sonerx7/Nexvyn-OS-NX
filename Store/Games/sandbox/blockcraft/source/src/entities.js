@@ -5,6 +5,7 @@ import { moveBox, liquidContact, rayBox, raycastBlocks } from "./physics.js";
 import { stack, canStack } from "./inventory.js";
 
 let nextId = 1;
+const MAX_EXPLOSIONS_PER_FRAME = 1, MAX_PRIMED_TNT = 24, MAX_ENTITIES = 500;
 
 export class Entity {
   constructor(game, x, y, z) {
@@ -166,7 +167,14 @@ export class PrimedTNT extends Entity {
     this.vel.y -= 25 * dt;
     moveBox(g.world, this, this.vel.x * dt, this.vel.y * dt, this.vel.z * dt);
     if (this.onGround) { this.vel.x *= Math.exp(-6 * dt); this.vel.z *= Math.exp(-6 * dt); }
-    if (this.fuse <= 0) { this.remove(); explode(g, this.pos.x, this.pos.y + 0.5, this.pos.z, 4, 28, 8); return; }
+    if (this.fuse <= 0) {
+      // one explosion per frame: a chain of TNT goes off over several frames instead of all at once
+      if (g.entities.explosions >= MAX_EXPLOSIONS_PER_FRAME) return;
+      g.entities.explosions++;
+      this.remove();
+      explode(g, this.pos.x, this.pos.y + 0.5, this.pos.z, 4, 28, 8);
+      return;
+    }
     if (Math.random() < dt * 20) g.renderer.particles.smoke(this.pos.x, this.pos.y + 1.05, this.pos.z, 1);
   }
   draw(r) {
@@ -215,7 +223,7 @@ export function explode(game, x, y, z, power, maxDamage, radius) {
   const p = game.player;
   const pd = Math.hypot(p.pos.x - x, p.pos.y + 0.9 - y, p.pos.z - z);
   game.shake = Math.max(game.shake, Math.max(0, 1 - pd / (radius * 2)) * 0.9);
-  game.rumble(Math.max(0.2, 1 - pd / (radius * 2)), 350);
+  if (pd < radius * 3) game.rumble(Math.max(0.2, 1 - pd / (radius * 2)), 90);
   const r = power * 1.4;
   const ri = Math.ceil(r);
   let drops = 0;
@@ -229,6 +237,8 @@ export function explode(game, x, y, z, power, maxDamage, radius) {
     const def = blocks[id];
     if (def.hardness === Infinity) continue;
     if (def.tnt) {
+      // chain reaction, capped: past MAX_PRIMED_TNT live charges the block simply stays
+      if (game.entities.primedCount() >= MAX_PRIMED_TNT) continue;
       w.setBlock(X, Y, Z, B.air);
       game.entities.spawnTNT(X + 0.5, Y, Z + 0.5, 0.5 + Math.random());
       continue;
@@ -265,7 +275,17 @@ export class EntityManager {
     this.game = game;
     this.list = [];
   }
-  add(e) { this.list.push(e); return e; }
+  add(e) {
+    // hard cap: past MAX_ENTITIES the oldest dropped item goes (mobs and TNT have their own caps)
+    if (this.list.length >= MAX_ENTITIES) {
+      let old = -1;
+      for (let i = 0; i < this.list.length; i++) { const o = this.list[i]; if (!o.dead && o instanceof ItemEntity && (old < 0 || o.age > this.list[old].age)) old = i; }
+      if (old >= 0) this.list[old].remove(); else if (!(e instanceof PrimedTNT)) return e;
+    }
+    this.list.push(e);
+    return e;
+  }
+  primedCount() { let n = 0; for (const e of this.list) if (!e.dead && e instanceof PrimedTNT) n++; return n; }
   spawnItem(x, y, z, s, vel) { return this.add(new ItemEntity(this.game, x, y, z, s, vel)); }
   spawnTNT(x, y, z, fuse) { return this.add(new PrimedTNT(this.game, x, y, z, fuse)); }
   spawnSpores(x, y, z, radius, life) {
@@ -278,6 +298,7 @@ export class EntityManager {
   }
   update(dt) {
     const p = this.game.player;
+    this.explosions = 0;
     for (let i = 0; i < this.list.length; i++) {
       const e = this.list[i];
       if (e.dead) continue;

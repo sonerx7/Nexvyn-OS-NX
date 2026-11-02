@@ -10,6 +10,7 @@ import { Weather } from "./weather.js";
 import { Interaction, raycastBlocks } from "./interaction.js";
 import { smeltResult, fuelSeconds, SMELT_SECONDS, newFurnace, newChest } from "./crafting.js";
 import { villagePlan, stampVillage, VILLAGE_CELL } from "./structures.js";
+import { carveChunk } from "./caves.js";
 import { Renderer } from "./render.js";
 import { saveWorld } from "./storage.js";
 import { mulberry32, angleDiff } from "./util.js";
@@ -17,6 +18,7 @@ import { mulberry32, angleDiff } from "./util.js";
 export const DAY_SECONDS = 1200;
 const TICK = 1 / 20;
 const AUTOSAVE_SECONDS = 30;
+const RUMBLE_MAX_MS = 90, RUMBLE_GAP = 0.25, RUMBLE_WATCHDOG = 0.5;
 const CREATIVE_HOTBAR = [B.grass, B.dirt, B.stone, B.cobblestone, B.planks, B.oak_log, B.glass, B.torch, B.bricks];
 const LOOT = [
   [I.bread, 1, 4, 0.6], [I.apple, 1, 3, 0.45], [I.wheat, 2, 8, 0.4], [I.wheat_seeds, 2, 6, 0.4], [I.iron_ingot, 1, 4, 0.35],
@@ -114,6 +116,7 @@ export class Game {
     for (const [cx, cz] of fresh) {
       const x0 = cx * CHUNK, z0 = cz * CHUNK;
       if (this.meta.type === "normal") {
+        this.carveCaves(cx, cz);
         this.sulfurVeins(cx, cz);
         for (let vz = Math.floor((z0 - 64) / VILLAGE_CELL); vz <= Math.floor((z0 + 80) / VILLAGE_CELL); vz++)
           for (let vx = Math.floor((x0 - 64) / VILLAGE_CELL); vx <= Math.floor((x0 + 80) / VILLAGE_CELL); vx++) {
@@ -122,6 +125,19 @@ export class Game {
           }
       }
     }
+  }
+
+  // Tunnels, chambers, surface mouths and deep pools (caves.js) carved as bytes into the fresh chunk.
+  carveCaves(cx, cz) {
+    const v = this.world.v;
+    const data = v.chunk(cx, cz);
+    if (!data) return;
+    if (!this.caveCache) this.caveCache = new Map();
+    const x0 = cx * CHUNK, z0 = cz * CHUNK;
+    const rects = this.villagesNear(x0 + 8, z0 + 8, 120).map(({ plan: p }) => [p.minX - 3, p.minZ - 3, p.maxX + 3, p.maxZ + 3]);
+    const avoid = (x, z) => this.villagesNear(x, z, 40).length > 0;
+    if (carveChunk(data, cx, cz, HEIGHT, this.world.seed, (x, z) => this.column(x, z), this.meta.caveSpawn, avoid, rects, this.caveCache))
+      v.setChunk(cx, cz, data);
   }
 
   // Two to four small veins of sulfur ore per chunk between y 6 and 48, only inside stone. The same seed always
@@ -168,6 +184,8 @@ export class Game {
       p.load(m.player);
       this.inventory.load(m.inventory);
     }
+    // the world spawn that guarantees a cave mouth nearby (kept so the caves stay the same in this world)
+    if (!m.caveSpawn) m.caveSpawn = { x: Math.floor(p.spawn ? p.spawn.x : p.pos.x), z: Math.floor(p.spawn ? p.spawn.z : p.pos.z) };
     this.planVillages(p.pos.x, p.pos.z);
   }
 
@@ -234,6 +252,7 @@ export class Game {
   openScreen(kind, be) {
     if (this.state !== "playing") return;
     this.state = "screen";
+    this.stopRumble();
     this.interaction.reset();
     this.app.invui.open(kind, be);
   }
@@ -278,7 +297,27 @@ export class Game {
     this.time = t;
     this.hud.message(`${TR("ui.time")}: ${TR("time." + this.dayPhase())}`);
   }
-  rumble(strength, ms) { if (this.settings.rumble) { try { sys.vibrate(strength, ms); } catch (e) { /* no rumble */ } } }
+  // Rumble: short pulses only. Every pulse is at most RUMBLE_MAX_MS long (the system stops pulses up to 200 ms by
+  // itself), at most one starts per RUMBLE_GAP seconds, and a watchdog sends an explicit stop shortly after each
+  // pulse, so a motor can never be left running (pause, menus, death, quit and close stop it too).
+  rumble(strength, ms) {
+    if (!this.settings.rumble || this.state === "loading") return;
+    const now = this.clock;
+    if (now - (this.rumbleAt ?? -1) < RUMBLE_GAP) return;
+    this.rumbleAt = now;
+    this.rumbleStop = RUMBLE_WATCHDOG;
+    const s = Math.max(0, Math.min(1, strength)), d = Math.max(16, Math.min(RUMBLE_MAX_MS, ms | 0));
+    try { sys.vibrate(s, d); } catch (e) { /* no rumble */ }
+  }
+  stopRumble() {
+    this.rumbleStop = 0;
+    try { sys.vibrate(0, 0); } catch (e) { /* no rumble */ }
+  }
+  rumbleWatch(dt) {
+    if (!(this.rumbleStop > 0)) return;
+    this.rumbleStop -= dt;
+    if (this.rumbleStop <= 0) this.stopRumble();
+  }
 
   // ---------- beds ----------
   trySleep(x, y, z) {
@@ -341,7 +380,8 @@ export class Game {
     }
     this.inventory.changed();
     this.deathMessage = TR("death." + cause);
-    this.rumble(1, 400);
+    this.rumbleAt = -1;
+    this.rumble(1, 90);
   }
   respawn() {
     this.player.respawn();
@@ -366,7 +406,7 @@ export class Game {
     if (!quiet) {
       this.sound.play(`break:${def.sound}`, { x: x + 0.5, y: y + 0.5, z: z + 0.5 });
       this.renderer.particles.blockBreak(x, y, z, def);
-      if (byPlayer) this.rumble(0.25, 40);
+      if (byPlayer) this.rumble(0.25, 30);
     }
     if (drops) this.spawnBlockDrops(x, y, z, id);
   }
@@ -473,6 +513,7 @@ export class Game {
   frame(dt) {
     const input = this.input, p = this.player;
     this.clock += dt;
+    this.rumbleWatch(dt);
     this.fpsAcc += dt; this.fpsFrames++;
     if (this.fpsAcc >= 0.5) { this.fps = Math.round(this.fpsFrames / this.fpsAcc); this.fpsAcc = 0; this.fpsFrames = 0; }
     if (this.state === "playing" && this.clock > 20) {
@@ -483,6 +524,18 @@ export class Game {
         this.world.renderDistance = this.settings.renderDistance;
         this.app.saveSettings();
         this.hud.message(TR("msg.view_lowered", this.settings.renderDistance));
+      }
+    }
+    // memory guard: drop caches when the script heap fills up, then shrink the view before it runs out
+    this.memT = (this.memT || 0) + dt;
+    if (this.memT >= 2) {
+      this.memT = 0;
+      const use = this.app.memUse ? this.app.memUse() : 0;
+      if (use > 0.8) { this.columnCache.clear(); if (this.caveCache) this.caveCache.clear(); }
+      if (use > 0.9 && this.settings.renderDistance > 3) {
+        this.settings.renderDistance--;
+        this.world.renderDistance = this.settings.renderDistance;
+        this.hud.message(TR("msg.low_memory_view", this.settings.renderDistance));
       }
     }
     this.perfT = (this.perfT || 0) + dt;
@@ -609,6 +662,7 @@ export class Game {
     return n;
   }
   dispose() {
+    this.stopRumble();
     this.sound.rain(false);
     this.sound.stopMusic();
     this.world.dispose();

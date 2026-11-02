@@ -2,7 +2,7 @@
 // drawn by render.js. Horses and donkeys are not part of this version (their ids stay reserved).
 // The Puffcap is the night's spore creature: a hopping mushroom that swells up next to the player and puffs a cloud
 // of spores (entities.js SporeCloud) that slows and weakens whoever stands in it. It never breaks blocks.
-import { B, I, SOLID, COLLIDE, blocks, isLiquid, isLava } from "./registry.js";
+import { B, I, SOLID, COLLIDE, blocks, isLiquid, isLava, isWater } from "./registry.js";
 import { Entity } from "./entities.js";
 import { moveBox, moveBoxStep, liquidContact, touchingIds, raycastBlocks } from "./physics.js";
 import { stack } from "./inventory.js";
@@ -23,6 +23,84 @@ const COOKED = { [I.porkchop]: I.cooked_porkchop, [I.beef]: I.steak, [I.chicken]
 const PASSIVE = ["pig", "cow", "sheep", "chicken"];
 const HOSTILE = [["zombie", 0.4], ["skeleton", 0.3], ["puffcap", 0.3]];
 const BABY_SECONDS = 300;
+// Hostile mobs hear a player this close (no line of sight needed) and then hunt him with a path around walls.
+const HEAR = 16, FORGET = 32, PATH_NODES = 360, PATH_BUDGET = 2;
+
+// ---------------------------------------------------------------- path finding
+// A* over block cells a 2-high mob can stand in: walk, step up one block, drop up to three, swim. Bounded by
+// PATH_NODES expansions; when the goal is not reached the path leads to the closest cell found.
+function standable(w, x, y, z) {
+  if (y < 1 || y >= HEIGHT - 2) return false;
+  const a = w.getBlock(x, y, z);
+  if (COLLIDE[a] || isLava(a) || a === B.fire || COLLIDE[w.getBlock(x, y + 1, z)]) return false;
+  if (isWater(a)) return true;
+  const below = w.getBlock(x, y - 1, z);
+  return COLLIDE[below] === 1 && below !== B.cactus;
+}
+export function findPath(w, sx, sy, sz, tx, ty, tz) {
+  sx = Math.floor(sx); sy = Math.floor(sy); sz = Math.floor(sz);
+  tx = Math.floor(tx); ty = Math.floor(ty); tz = Math.floor(tz);
+  const key = (x, y, z) => ((x - sx + 64) & 127) | (((z - sz + 64) & 127) << 7) | (y << 14);
+  const h = (x, y, z) => Math.abs(x - tx) + Math.abs(z - tz) + Math.abs(y - ty) * 1.5;
+  const nodes = new Map();
+  const start = { x: sx, y: sy, z: sz, g: 0, f: h(sx, sy, sz), hh: h(sx, sy, sz), parent: null, closed: false };
+  nodes.set(key(sx, sy, sz), start);
+  const open = [start];
+  let best = start, expanded = 0;
+  const push = n => {
+    let i = open.length;
+    open.push(n);
+    while (i > 0) { const q = (i - 1) >> 1; if (open[q].f <= n.f) break; open[i] = open[q]; i = q; }
+    open[i] = n;
+  };
+  const pop = () => {
+    const top = open[0], last = open.pop();
+    const n = open.length;
+    if (n) {
+      let i = 0;
+      for (;;) {
+        const l = i * 2 + 1, r = l + 1;
+        let m = -1, mf = last.f;
+        if (l < n && open[l].f < mf) { m = l; mf = open[l].f; }
+        if (r < n && open[r].f < mf) { m = r; }
+        if (m < 0) break;
+        open[i] = open[m]; i = m;
+      }
+      open[i] = last;
+    }
+    return top;
+  };
+  const DIRS = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+  while (open.length && expanded < PATH_NODES) {
+    const c = pop();
+    if (c.closed) continue;
+    c.closed = true; expanded++;
+    if (c.hh < best.hh) best = c;
+    if (Math.abs(c.x - tx) + Math.abs(c.z - tz) <= 1 && Math.abs(c.y - ty) <= 1) { best = c; break; }
+    for (const [dx, dz] of DIRS) {
+      const nx = c.x + dx, nz = c.z + dz;
+      if (Math.abs(nx - sx) > 60 || Math.abs(nz - sz) > 60) continue;
+      let ny = -1;
+      if (standable(w, nx, c.y, nz)) ny = c.y;
+      else if (!COLLIDE[w.getBlock(c.x, c.y + 2, c.z)] && standable(w, nx, c.y + 1, nz)) ny = c.y + 1;
+      else if (!COLLIDE[w.getBlock(nx, c.y, nz)] && !COLLIDE[w.getBlock(nx, c.y + 1, nz)])
+        for (let k = 1; k <= 3; k++) if (standable(w, nx, c.y - k, nz)) { ny = c.y - k; break; }
+      if (ny < 0) continue;
+      const k = key(nx, ny, nz);
+      const g = c.g + 1 + (ny !== c.y ? 0.5 : 0);
+      let n = nodes.get(k);
+      if (n && (n.closed || n.g <= g)) continue;
+      if (!n) { n = { x: nx, y: ny, z: nz, g, f: 0, hh: h(nx, ny, nz), parent: c, closed: false }; nodes.set(k, n); }
+      n.g = g; n.parent = c; n.f = g + n.hh;
+      push(n);
+    }
+  }
+  if (best === start) return null;
+  const path = [];
+  for (let n = best; n && n !== start; n = n.parent) path.push(n);
+  path.reverse();
+  return path;
+}
 const rand = (a, b) => a + Math.random() * (b - a);
 const angleDiff = (a, b) => { let d = (b - a) % (Math.PI * 2); if (d > Math.PI) d -= Math.PI * 2; if (d < -Math.PI) d += Math.PI * 2; return d; };
 
@@ -331,11 +409,13 @@ export class Mob extends Entity {
     this.headPitch += ((dist < 8 ? Math.atan2(p.eyeY - (this.pos.y + this.h), Math.hypot(dx, dz)) * 0.6 : 0) - this.headPitch) * Math.min(1, dt * 6);
 
     if (def.hostile) {
-      const tp = !p.dead && !p.creative && dist < (this.aggro ? 32 : def.sense || 16);
-      if (!tp) this.aggro = false;
+      // notices a player it can see within its sense range, or hears one within HEAR blocks; hunts until FORGET
+      const tp = !p.dead && !p.creative && dist < (this.aggro ? FORGET : Math.max(HEAR, def.sense || HEAR));
+      if (!tp) { this.aggro = false; this.path = null; }
       this.seeTimer = (this.seeTimer || 0) - dt;
       if (tp && this.seeTimer <= 0) { this.seeTimer = 0.3; this.sees = this.canSee(p); }
-      if (tp && (this.sees || this.aggro)) {
+      if (tp && (this.sees || dist < HEAR)) this.aggro = true;
+      if (tp && this.aggro) {
         if (def.spores) return this.thinkPuffcap(dt, p);
         if (def.ranged) return this.thinkSkeleton(dt, dist, p);
         return this.thinkZombie(dt, p);
@@ -408,13 +488,42 @@ export class Mob extends Entity {
     else this.brake(dt);
   }
 
+  // Moves toward target t: straight at it when it is close, seen and level, otherwise along an A* path that is
+  // recomputed every second or so (the spawner hands out PATH_BUDGET path searches per frame).
+  navTo(t, speed, dt) {
+    const g = this.game;
+    const hd = Math.hypot(t.pos.x - this.pos.x, t.pos.z - this.pos.z), dy = t.pos.y - this.pos.y;
+    if (hd < 5 && Math.abs(dy) < 1.2 && this.sees) { this.path = null; this.steer(t.pos.x, t.pos.z, speed, dt, false); return; }
+    this.pathT = (this.pathT || 0) - dt;
+    if ((!this.path || this.pathT <= 0) && g.spawner.pathBudget > 0) {
+      g.spawner.pathBudget--;
+      this.pathT = 0.9 + Math.random() * 0.5;
+      this.path = findPath(g.world, this.pos.x, this.pos.y + 0.2, this.pos.z, t.pos.x, t.pos.y + 0.2, t.pos.z);
+      this.pathI = 0;
+    }
+    const path = this.path;
+    if (path && this.pathI < path.length) {
+      let n = path[this.pathI];
+      if (Math.hypot(n.x + 0.5 - this.pos.x, n.z + 0.5 - this.pos.z) < 0.4 && Math.abs(n.y - this.pos.y) < 1.1) {
+        this.pathI++;
+        if (this.pathI >= path.length) { this.path = null; this.steer(t.pos.x, t.pos.z, speed, dt, false); return; }
+        n = path[this.pathI];
+      }
+      if (n.y > Math.floor(this.pos.y + 0.1) && this.onGround && !this.def.hops && Math.hypot(n.x + 0.5 - this.pos.x, n.z + 0.5 - this.pos.z) < 1.3) this.vel.y = 8.6;
+      this.steer(n.x + 0.5, n.z + 0.5, speed, dt, false);
+      return;
+    }
+    this.steer(t.pos.x, t.pos.z, speed, dt, false);
+  }
+
   // Chases and hits a target (the player or a villager).
   thinkZombie(dt, t) {
     this.attackCooldown -= dt;
     const hd = Math.hypot(t.pos.x - this.pos.x, t.pos.z - this.pos.z);
-    if (hd > 0.9) this.steer(t.pos.x, t.pos.z, this.def.speed, dt, false);
-    else this.brake(dt);
-    if (hd < 1.4 && Math.abs(t.pos.y - this.pos.y) < 1.6 && this.attackCooldown <= 0) {
+    const reach = this.hw + (t.hw || 0.3) + 0.9;
+    if (hd > reach * 0.6) this.navTo(t, this.def.speed, dt);
+    else { this.brake(dt); this.yaw += angleDiff(this.yaw, Math.atan2(t.pos.x - this.pos.x, t.pos.z - this.pos.z)) * Math.min(1, dt * 8); }
+    if (hd < reach && Math.abs(t.pos.y - this.pos.y) < 1.8 && this.attackCooldown <= 0) {
       this.attackCooldown = 1;
       this.attackAnim = 1;
       if (t === this.game.player) t.damage(this.def.damage, "zombie", this);
@@ -425,8 +534,8 @@ export class Mob extends Entity {
   thinkSkeleton(dt, dist, p) {
     const hd = Math.hypot(p.pos.x - this.pos.x, p.pos.z - this.pos.z);
     const want = Math.atan2(p.pos.x - this.pos.x, p.pos.z - this.pos.z);
-    if (hd > 11) this.steer(p.pos.x, p.pos.z, this.def.speed, dt, true);
-    else if (hd < 5) this.steer(this.pos.x - (p.pos.x - this.pos.x), this.pos.z - (p.pos.z - this.pos.z), this.def.speed, dt, true);
+    if (hd > 12 || !this.sees) this.navTo(p, this.def.speed, dt);
+    else if (hd < 6) this.steer(this.pos.x - (p.pos.x - this.pos.x), this.pos.z - (p.pos.z - this.pos.z), this.def.speed, dt, true);
     else {
       // strafe sideways while keeping the bow on the player
       const side = Math.sin(this.age * 0.7) > 0 ? 1 : -1;
@@ -435,11 +544,11 @@ export class Mob extends Entity {
     }
     this.yaw += angleDiff(this.yaw, want) * Math.min(1, dt * 10);
     this.shootCooldown -= dt;
-    if (this.shootCooldown <= 0 && hd < 16 && this.canSee(p)) {
+    if (this.shootCooldown <= 0 && hd < 16 && this.sees && this.canSee(p)) {
       this.shootCooldown = rand(1.8, 2.6);
       const ex = this.pos.x, ey = this.pos.y + 1.5, ez = this.pos.z;
       const tx = p.pos.x - ex, ty = p.pos.y + 1.2 - ey, tz = p.pos.z - ez;
-      const d = Math.hypot(tx, ty, tz);
+      const d = Math.max(1, Math.hypot(tx, ty, tz));
       const speed = 22, t = d / speed;
       const spread = 0.06;
       const vx = (tx / t) + rand(-1, 1) * spread * speed, vz = (tz / t) + rand(-1, 1) * spread * speed;
@@ -471,7 +580,7 @@ export class Mob extends Entity {
       g.sound.play("puffcap_swell", { x: this.pos.x, y: this.pos.y + 0.8, z: this.pos.z });
       return;
     }
-    if (hd > 1.5) this.steer(p.pos.x, p.pos.z, this.def.speed, dt, false);
+    if (hd > 1.5) this.navTo(p, this.def.speed, dt);
     else { this.brake(dt); this.yaw += angleDiff(this.yaw, want) * Math.min(1, dt * 6); }
   }
 
@@ -497,12 +606,14 @@ export class MobSpawner {
     this.passiveTimer = 0.5;
     this.villageTimer = 1;
     this.boost = 12; // fast initial passive spawning so the first view has animals
+    this.pathBudget = PATH_BUDGET;
   }
 
   get mobs() { return this.game.entities.list.filter(e => e instanceof Mob && !e.dead); }
 
   update(dt) {
     const g = this.game;
+    this.pathBudget = PATH_BUDGET;
     if (this.boost > 0) this.boost -= dt;
     this.hostileTimer -= dt;
     this.passiveTimer -= dt;
@@ -571,7 +682,7 @@ export class MobSpawner {
 
   trySpawnHostile() {
     const g = this.game, w = g.world, p = g.player;
-    const { x, z } = this.ring(24, 48);
+    const { x, z } = this.ring(18, 44);
     if (!w.isLoaded(x, z) || !w.v.light(x, 64, z)) return;
     const skySub = Math.round((1 - (g.daylight - 0.25) / 0.75) * 11);
     const y0 = Math.max(1, Math.floor(p.pos.y) - 24), y1 = Math.min(HEIGHT - 3, Math.floor(p.pos.y) + 24);
