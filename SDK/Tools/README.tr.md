@@ -22,6 +22,15 @@ Tek dosyalık Python 3 aracı, ek paket gerektirmez: [nxv/README.md](nxv/README.
 | `nxv install <paket>` | Ryujinx'in (ya da verilen) SD kart klasörüne kopyala, istersen `autorun.txt` ile aç |
 | `nxv push <paket> --host <ip>` | Konsoldaki **Bilgisayara Bağlan** FTP sunucusuna yükle (klasör ya da tek `.nxvapp`) |
 
+`nxv icon` yalnızca geçici ikon yapar: bir oyunun mağaza ikonu key art'tır (sonraki araç).
+
+### 2. Mağaza ikonu aracı ([`icon/`](icon/README.tr.md))
+
+Oyununuzun kendi modelinden App Market için key art: `hero_render.py` (Blender, ekransız: poz, dramatik ana ve rim
+ışıkları, saydam arka plan) ve `finish_icon.py` (Pillow: ışık huzmeli arka plan, parlama, rim, bloom, kıvılcım,
+vinyet, logo olarak başlık, bütün boyutlar ve 256 / 128 / 64 px önizleme). Bununla yapılmış üç örnek ikon
+`icon/examples/` içinde.
+
 ## Öneriler (öncelik sırasıyla)
 
 | # | Araç | Ne kazandırır | Dayanacağı | Emek |

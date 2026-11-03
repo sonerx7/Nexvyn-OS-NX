@@ -15,6 +15,12 @@ and its `shots` script; with `--sdk` the language's official checker runs too), 
 `nxv pack` (the same deterministic `.nxvapp` as `build_store.py`, `--sign` to sign), `nxv icon` (`make_icon.py`),
 `nxv install` (copy into Ryujinx's or another SD card folder, optionally with `autorun.txt`) and
 `nxv push --host <ip>` (upload to the console's **Connect to PC** FTP server, as a folder or one `.nxvapp`).
+`nxv icon` makes placeholders only: a game's store icon is key art (next tool).
+
+**Store icon tool (in [`icon/`](icon/README.md)).** Key art for the App Market from your game's own model:
+`hero_render.py` (Blender, headless: pose, dramatic key and rim lights, transparent background) and `finish_icon.py`
+(Pillow: background with light rays, glow, rim, bloom, sparks, vignette, the title as a logo, every size and a
+preview at 256 / 128 / 64 px). Three example icons made with it are in `icon/examples/`.
 
 ## Proposals (in priority order)
 
