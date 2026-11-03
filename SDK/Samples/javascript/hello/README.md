@@ -23,7 +23,7 @@ The built-in **Hello JS** app: a to-do list, an analog clock and live weather JS
 - a toast with `setTimeout` / `clearTimeout`
 - `app.menu` / `app.onmenu`, the `ui.alert` Promise
 
-**Controls:** Change tabs with the segmented control at the top.
+**Controls:** Switch tabs with the segmented control at the top.
 
 ## Running it
 

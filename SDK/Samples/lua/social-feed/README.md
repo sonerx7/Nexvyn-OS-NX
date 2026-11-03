@@ -10,7 +10,7 @@ SDK 1.9 functions. About 250 lines of commented Lua.
 | Id | `com.sonerx7.demo.socialfeed` |
 | Language | Lua 5.4 |
 | Min SDK | 1.9 |
-| Permissions | `network`, `launch` (the share link) |
+| Permissions | `network` |
 | Gamepad | cursor |
 | Window | 720 × 640, resizable |
 

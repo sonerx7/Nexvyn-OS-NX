@@ -1,13 +1,13 @@
 {
   "subtitle": {
-    "en": "Turkish patches for your console games",
-    "tr": "Konsol oyunların için Türkçe yamalar",
-    "de": "Türkische Patches für deine Konsolenspiele",
-    "fr": "Patchs turcs pour vos jeux sur console",
-    "es": "Parches en turco para tus juegos de consola",
-    "ja": "本体のゲーム用トルコ語パッチ",
-    "zh": "主机游戏的土耳其语补丁",
-    "ko": "콘솔 게임용 터키어 패치"
+    "en": "Turkish patches for your Switch games",
+    "tr": "Switch oyunların için Türkçe yamalar",
+    "de": "Türkische Patches für deine Switch-Spiele",
+    "fr": "Patchs turcs pour vos jeux Switch",
+    "es": "Parches en turco para tus juegos de Switch",
+    "ja": "Switch ゲーム用トルコ語パッチ",
+    "zh": "Switch 游戏的土耳其语补丁",
+    "ko": "Switch 게임용 터키어 패치"
   },
   "description": {
     "en": "YamaNX finds the Turkish translation patches for the games on your console and installs them with one press. This is the Nexvyn OS port of YamaNX, the Turkish patch installer by SertAy (github.com/sertay1/YamaNX), ported to Lua by Soner Çakır with a new interface for Nexvyn OS windows. Free, no ads, for non-commercial use under the YamaNX license.\n\n• My games: only the games installed on this console that have a Turkish patch\n• More than 700 patches by Swatalk, Soner Çakır, Profesör Pikachu, Dede00 and many other translators, each credited in the patch details\n• Install with a progress bar: download, extract and copy to sdmc:/atmosphere/contents/<Title ID>/\n• Updates when a newer patch is in the list; uninstall removes exactly the files it installed and puts replaced files back\n• Installed badges, version check against your game, search by name or Title ID, cover pictures\n• Compatible with YamaNX itself: patches installed by either one are recognised by the other\n• Gamepad, touch and keyboard; Turkish, English, German, French and Spanish\n\nNeeds Atmosphère for the patches to load. The patches belong to their translators.",

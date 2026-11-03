@@ -2,18 +2,18 @@
 
 **SertAy'ın [YamaNX](https://github.com/sertay1/YamaNX)'i temel alınmıştır / Based on [YamaNX](https://github.com/sertay1/YamaNX) by SertAy.**
 
-Konsol oyunları için Türkçe yama yükleyici. Konsolundaki oyunların Türkçe yamalarını bulur, indirir ve
+Switch oyunları için Türkçe yama yükleyici. Konsolundaki oyunların Türkçe yamalarını bulur, indirir ve
 `sdmc:/atmosphere/contents/<Title ID>/` içine kurar; güncellemeleri gösterir, kaldırırken yalnızca kurduğu dosyaları
 siler ve değiştirdiği dosyaları geri koyar.
 
-Turkish patch installer for console games. It finds the Turkish patches for the games on your console,
+Turkish patch installer for Switch games. It finds the Turkish patches for the games on your console,
 downloads them and installs them to `sdmc:/atmosphere/contents/<Title ID>/`; it shows updates, and uninstalling removes
 only the files it installed and puts replaced files back.
 
 | | |
 |---|---|
 | Kimlik / Id | `yamanx` |
-| Kategori / Category | Konsol Araçları / Console Tools |
+| Kategori / Category | Switch Araçları / Switch Tools |
 | Özgün geliştirici / Original author | SertAy — <https://github.com/sertay1/YamaNX>, <https://linktr.ee/yamanx> |
 | Nexvyn OS uyarlaması / Nexvyn OS port | Soner Çakır (sonerx7), Lua |
 | İzinler / Permissions | `network`, `files` (sdmc:/atmosphere), `games` (yüklü oyunlar / installed games) |
@@ -35,6 +35,6 @@ The patches belong to their translators (Swatalk, Soner Çakır, Profesör Pikac
 
 ## Kurulum / Install
 
-Nexvyn OS'ta **Uygulama Mağazası > Konsol Araçları > YamaNX**. Yamaların yüklenmesi için Atmosphère gerekir.
+Nexvyn OS'ta **Uygulama Mağazası > Switch Araçları > YamaNX**. Yamaların yüklenmesi için Atmosphère gerekir.
 
-In Nexvyn OS: **App Market > Console Tools > YamaNX**. Atmosphère is needed for the patches to load.
+In Nexvyn OS: **App Market > Switch Tools > YamaNX**. Atmosphère is needed for the patches to load.

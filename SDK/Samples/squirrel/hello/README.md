@@ -22,7 +22,7 @@ The built-in **Hello Squirrel** app: a to-do list, an analog clock and live weat
 - `foreach`, lambdas (`@(i, t) !t.done`), `todos.filter`
 - `timer.after` / `timer.cancel`, a menu, `ui.alert`
 
-**Controls:** Change tabs with the segmented control at the top.
+**Controls:** Switch tabs with the segmented control at the top.
 
 ## Running it
 

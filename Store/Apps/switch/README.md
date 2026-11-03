@@ -17,4 +17,4 @@
 | <img src="savebackup/icon.png" width="32"> | [Save Backup](savebackup/) · ships with Nexvyn OS | 1.0 | Back up and restore your game saves |
 | <img src="sysmodules/icon.png" width="32"> | [System Modules](sysmodules/) · ships with Nexvyn OS | 1.0 | See and control background sysmodules |
 | <img src="turkish-patches/icon.png" width="32"> | [Turkish Patches](turkish-patches/) · ships with Nexvyn OS | 1.0 | Install Turkish translation patches |
-| <img src="yamanx/icon.png" width="32"> | [YamaNX](yamanx/) · ships with Nexvyn OS | 1.0 | Turkish patches for your console games |
+| <img src="yamanx/icon.png" width="32"> | [YamaNX](yamanx/) · ships with Nexvyn OS | 1.0 | Turkish patches for your Switch games |

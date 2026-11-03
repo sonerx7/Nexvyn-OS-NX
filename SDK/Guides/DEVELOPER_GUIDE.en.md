@@ -27,7 +27,7 @@ For the user side: [USER_GUIDE.en.md](USER_GUIDE.en.md).
 6. [Packaging: .nxvapp v2](#6-packaging-nxvapp-v2)
 7. [Community catalog](#7-community-catalog)
 8. [Overlay: replacing system files](#8-overlay-replacing-system-files)
-9. [Testing in Ryujinx](#9-testing-in-ryujinx)
+9. [Testing on a PC](#9-testing-on-a-pc)
 10. [Built-in (native) app development](#10-built-in-native-app-development)
 11. [English summary](#english-summary)
 
@@ -349,17 +349,17 @@ way a translation fix, a wallpaper or a new version of a built-in Lua app can be
 
 ---
 
-## 9. Testing in Ryujinx
+## 9. Testing on a PC
 
-Nexvyn OS runs in the Ryujinx emulator. Hardware-dependent features (USB, MTP, brightness, launching games, PC games)
+Nexvyn OS also runs in an emulator on a PC. Hardware-dependent features (USB, MTP, brightness, launching games, PC games)
 are off there.
 
 ### Running by hand
 
-- `./build.sh run`: builds and opens `NexvynOS.nro` in Ryujinx.
-- The path to Ryujinx is given with the `RYUJINX` environment variable. The default path in the scripts is the project
+- `./build.sh run`: builds and opens `NexvynOS.nro` in the emulator.
+- The path to the emulator is given with the `RYUJINX` environment variable. The default path in the scripts is the project
   owner's computer; give your own path.
-- Copy your app into `NexvynOS/Applications/` in Ryujinx's SD card folder.
+- Copy your app into `NexvynOS/Applications/` in the emulator's SD card folder.
 
 ### Automatic tour with autorun.txt
 
@@ -404,8 +404,8 @@ Delete `autorun.txt` after testing; otherwise it runs again at every startup.
 tools/ryu_test.sh <cikti.png> [bekleme_sn] [keep]
 ```
 
-It closes a running Ryujinx, starts `NexvynOS.nro`, waits the given time (default 14 s) and saves a screenshot of the
-window. If the third argument is `keep`, Ryujinx stays open. The script runs in Git Bash and uses PowerShell (Windows).
+It closes a running emulator, starts `NexvynOS.nro`, waits the given time (default 14 s) and saves a screenshot of the
+window. If the third argument is `keep`, the emulator stays open. The script runs in Git Bash and uses PowerShell (Windows).
 Together with `autorun.txt`, an app tour can be run headless.
 
 ---
@@ -503,7 +503,7 @@ start here.
   (Steam, CorkDeck, provider names).
 - The license is GPL-3.0-or-later. Only GPLv3-compatible code is linked; external homebrew programs are not linked,
   only launched. If you add a new component, update [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
-- After checking a file, try it in Ryujinx with `autorun.txt` (section 9).
+- After checking a file, try it on the PC test setup with `autorun.txt` (section 9).
 
 ---
 
@@ -534,7 +534,7 @@ repeating them: [sdk/SDK.en.md](../Reference/SDK.en.md) (full API), [JS_APPS.en.
    *Settings > Apps*) and verifies each download's SHA-256.
 8. **Overlay:** files under `sdmc:/NexvynOS/System/Overlay/` replace the romfs file with the same relative path.
 9. **Testing:** `./build.sh run`, `sdmc:/NexvynOS/autorun.txt` scripts (command list at the top of
-   `source/wm/shell_autorun.cpp`) and `tools/ryu_test.sh <out.png> [wait] [keep]` for Ryujinx screenshots.
+   `source/wm/shell_autorun.cpp`) and `tools/ryu_test.sh <out.png> [wait] [keep]` for screenshots on the PC test setup.
 10. **Native apps:** C++17 classes registered with `REGISTER_APP`, strings in `lang/*.json` read with `TR()`, immediate
     mode `ui::` widgets, an entry in `tools/apps_manifest.json`, and `tools/check.sh` per file. Modding tools share
     `source/core/modkit.h`: Atmosphère paths, SD-only path checks (`safeSdPath`, `safeRel`), installed titles, build

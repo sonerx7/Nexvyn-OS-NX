@@ -11,5 +11,5 @@
   "singleInstance": true,
   "minSdk": "1.9",
   "targetSdk": "1.9",
-  "permissions": ["network", "launch"]
+  "permissions": ["network"]
 }

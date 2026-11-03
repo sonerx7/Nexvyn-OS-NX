@@ -4,7 +4,7 @@
 
 <p align="center"><b>English</b> · <a href="README.tr.md">Türkçe</a></p>
 
-<p align="center">A desktop shell for the Nintendo Switch homebrew environment, with its own apps, an App Market and an
+<p align="center">A desktop shell for Switch homebrew with Atmosphère, with its own apps, an App Market and an
 SDK for apps and games. One <code>.nro</code> file, opened from the Homebrew Menu. No reboot, no partitioning.</p>
 
 <p align="center">
@@ -98,8 +98,8 @@ end
 - **The same API in Lua, JavaScript, Python and C.** Squirrel and Java apps keep working; they are frozen at SDK 1.8.
 - **Compatible.** Apps made for SDK 1.0 to 1.8 run unchanged; nothing is removed and new behaviour applies only to
   apps that target the new SDK ([SDK versions](SDK/Guides/SDK_VERSIONS.en.md)).
-- **Recipes and samples.** [Recipes](SDK/Guides/RECIPES.en.md) with a complete PBR game and a social feed in Lua and
-  JavaScript, the [PBR, Lights and Shadows](SDK/Samples/lua/pbr3d/) and [Social Feed](SDK/Samples/lua/social-feed/)
+- **Recipes and samples.** A [PBR game recipe](SDK/Guides/PBR_GAME_RECIPE.en.md) and a
+  [social app recipe](SDK/Guides/SOCIAL_APP_RECIPE.en.md), complete in Lua and JavaScript with Python and C versions, the [PBR, Lights and Shadows](SDK/Samples/lua/pbr3d/) and [Social Feed](SDK/Samples/lua/social-feed/)
   samples, and [Ember Field](SDK/Samples/lua/ember-field/), a small 3D game with an animated model.
 - **AI-assisted development.** Context packs and task prompts in [SDK/AI](SDK/AI/README.md), and a
   [workflow guide](SDK/Guides/AI_WORKFLOW.en.md) from generated models and textures to console-ready files.
@@ -270,7 +270,7 @@ only your local network. Everything else (files, notes, calendar, music and vide
 | For | Start with |
 |---|---|
 | Users | [User guide](SDK/Guides/USER_GUIDE.en.md) · [Forwarder](SDK/Guides/FORWARDER.en.md) · [Browser](SDK/Guides/BROWSER.en.md) · [Release notes](CHANGELOG.md) |
-| App and game makers | [SDK start page](SDK/README.md) · [SDK reference](SDK/Reference/SDK.en.md) · [Recipes](SDK/Guides/RECIPES.en.md) · [Make a game](SDK/Guides/MAKE_A_GAME.en.md) · [Make a social app](SDK/Guides/MAKE_A_SOCIAL_APP.en.md) · [SDK versions](SDK/Guides/SDK_VERSIONS.en.md) · [All guides](SDK/Guides/README.md) |
+| App and game makers | [SDK start page](SDK/README.md) · [SDK reference](SDK/Reference/SDK.en.md) · [PBR game recipe](SDK/Guides/PBR_GAME_RECIPE.en.md) · [Social app recipe](SDK/Guides/SOCIAL_APP_RECIPE.en.md) · [Make a game](SDK/Guides/MAKE_A_GAME.en.md) · [Make a social app](SDK/Guides/MAKE_A_SOCIAL_APP.en.md) · [SDK versions](SDK/Guides/SDK_VERSIONS.en.md) · [All guides](SDK/Guides/README.md) |
 | Developers using AI tools | [SDK/AI](SDK/AI/README.md) · [AI-assisted workflow](SDK/Guides/AI_WORKFLOW.en.md) |
 | Publishing | [Contributing](CONTRIBUTING.md) · [Publishing guide](SDK/Publishing/PUBLISHING.en.md) · [Review checklist](SDK/Publishing/REVIEW.en.md) |
 | Security | [Security policy](SECURITY.md) · [App Guard](SDK/Guides/APP_GUARD.en.md) · [Compatibility](SDK/Guides/COMPATIBILITY.en.md) |
@@ -348,8 +348,7 @@ and translations come as issues. See [Contributing](CONTRIBUTING.md).
 Nexvyn OS is **GPL-3.0-or-later** ([LICENSE](LICENSE)); third-party components and their licenses are listed in
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Items in the store come under the same license unless they state
 otherwise (font packs carry their own license, mostly the SIL Open Font License). YamaNX is based on YamaNX by SertAy.
-Nintendo Switch is a trademark of Nintendo; this project is not affiliated with Nintendo. Content shown in the Browser,
-YousTube, Live TV and Radio belongs to its owners.
+Content shown in the Browser, YousTube, Live TV and Radio belongs to its owners.
 
 Developed by **Soner Çakır** · [github.com/sonerx7](https://github.com/sonerx7). Designed and directed by its author and
 built with the help of AI coding tools.

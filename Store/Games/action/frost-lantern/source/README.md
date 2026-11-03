@@ -24,4 +24,4 @@ Dokunmatikte sol alan hareket + otomatik saldırı, sağ alan otomatik nişanla 
 
 Grafikler, bitmap alfabe ve sesler bu oyun için oluşturuldu. Açılış illüstrasyonu yerleşik OpenAI ImageGen ile üretildi. / Graphics, bitmap alphabet and audio were authored for this game. The title illustration was generated using built-in OpenAI ImageGen.
 
-İlk Store sürümü. Gerçek Switch / Ryujinx performansı henüz doğrulanmamıştır. / First Store release; real Switch / Ryujinx performance is not yet validated.
+İlk Store sürümü. Gerçek konsol performansı henüz doğrulanmamıştır. / First Store release; real console performance is not yet validated.

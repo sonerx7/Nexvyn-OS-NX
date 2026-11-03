@@ -38,9 +38,7 @@ Gereksinimler:
   1-4 renkli nokta ya da spot ışık (g3d.addLight, g3d.updateLight ile hareket). g3d.shadows({quality = "medium",
   distance = <görünen oyun alanı>}); g3d.postfx({exposure, tonemap = "aces" ya da "filmic", bloom = 0.03-0.1});
   1'in üstündeki emissive parçalar parlar. Modeller PBR haritalarını korur (glTF base color, normal, ORM, emissive;
-  FBX: normal ve emissive haritalarını FBX içinde bağla ya da bütün haritaları bir .glb'ye göm; bağlanmamışken
-  yalnızca dış base color dosyasının yanındaki MetallicSmoothness, Metallic, Roughness ve AO dosyaları bulunur); düz
-  mesh'lere g3d.material(mesh, {metallic, roughness, ...}); cama {transmission =
+  FBX texture klasörü yanında); düz mesh'lere g3d.material(mesh, {metallic, roughness, ...}); cama {transmission =
   0.9, roughness = 0.05}. Tekrarlanan nesneler (çimen, sütun, kasa) g3d.drawInstanced ile çizilir. Renderer'ı ve
   fps'i kapatılabilen bir hata ayıklama satırında göster.
 - Kamera: <takip / yörünge / sabit / birinci şahıs>, yumuşak, darbelerde kısa sarsıntılı. Hareket kameraya göre;

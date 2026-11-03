@@ -100,7 +100,7 @@ SkyHop.nxvapp/
 3. **On the console:** start the FTP server in *Connect to PC*, then
    `python SDK/Tools/nxv/nxv.py push SkyHop.nxvapp --host <console-ip>`. Errors show in the window with the line
    number and go to `sdmc:/NexvynOS/System/Logs/Apps/<id>.log`.
-4. **In the Ryujinx emulator:** `python SDK/Tools/nxv/nxv.py install SkyHop.nxvapp` copies the game into the
+4. **In an emulator on your PC:** `python SDK/Tools/nxv/nxv.py install SkyHop.nxvapp` copies the game into the
    emulator's SD card. To replay a test without touching anything, put `sdmc:/NexvynOS/autorun.txt` there:
 
    ```
@@ -114,7 +114,7 @@ SkyHop.nxvapp/
    ```
 
    Screenshots land in `sdmc:/NexvynOS/autoshots/`. Delete `autorun.txt` afterwards, it runs at every start.
-   Ryujinx is fine for logic and looks; measure speed on a real console (section 10).
+   An emulator is fine for logic and looks; measure speed on a real console (section 10).
 
 ## 4. 3D models: make, export, check
 
@@ -701,10 +701,11 @@ animated models at 60 fps; 64 of them at about 33 fps in an emulator. On a conso
 | Textures | per material: base colour + normal at 1024 px, ORM / metallic-smoothness / AO / emissive at 512 px |
 | Repeats | grass, pillars, crates, debris: `g3d.drawInstanced` (one GPU call per 128 copies) |
 
-- **Texture sets.** Export glTF (`.glb`) with every map, or FBX with its texture folder next to it: files named like
-  the base colour map (`T_X_BaseColor.png`, `_Normal`, `_MetallicSmoothness` or `_Metallic` + `_Roughness`, `_AO`,
-  `_Emissive`) are found on their own, so asset kits exported for other game engines work after scaling the maps down. Scale 4K
-  atlases to 1024 px before shipping: the console loads every map into memory at full size.
+- **Texture sets.** Export glTF (`.glb`) with every map embedded, or FBX with its texture folder next to it. FBX uses
+  the maps the file links; when it links a base colour *file* but no metallic, roughness or occlusion map, files next
+  to it named like it are found on their own (`T_X_BaseColor.png` -> `T_X_MetallicSmoothness.png`, or
+  `T_X_Metallic.png` + `T_X_Roughness.png`, and `T_X_AO.png`). Normal and emissive maps are never guessed: link them
+  in the FBX. Scale 4K atlases to 1024 px before shipping: the console loads every map into memory at full size.
 - **Light like a level artist.** One warm sun through windows or over the scene, a cool sky (`g3d.environment`, or a
   6-face cube map rendered from your scene's sky), a few coloured lights where the player looks, and emissive parts
   above 1 so screens, lamps and signs bloom. Pick exposure and colours per game: they are part of its art direction.
@@ -728,8 +729,8 @@ you building blocks, not a menu template:
 - Particles: `game.emitter` and ten presets in `nexvyn.game`, or a small pool of your own (Ember Field's sparks).
 - Sound: five waveforms, files, streamed music.
 
-There are no custom shaders or post-processing passes for scripts: the look comes from palette, light, shape, type
-and motion. The **feel kit** (`SDK/Languages/lua/kits/juice.lua`, `SDK/Languages/javascript/kits/juice.js`) has
+Scripts do not write their own shaders. SDK 1.9's pbr renderer adds lights, shadows, tone mapping and bloom
+(`g3d.postfx`, section 10), and they are tools, not a look: the look comes from palette, light, shape, type and motion. The **feel kit** (`SDK/Languages/lua/kits/juice.lua`, `SDK/Languages/javascript/kits/juice.js`) has
 these as ready blocks: easing and tweens, springs, screen shake, hit-stop, flashes, glowing particles, generated
 glow / vignette / grain / shadow textures, multi-stop gradients, styled titles, panels with depth in five shapes,
 buttons with states, transitions, smoothed 2D and 3D cameras, 3D light and fog moods. Before / after for each and
@@ -907,7 +908,7 @@ attractive picture of the game's own subject in soft light, with a restrained gl
    or `--style loud` adds light rays, sparks, bloom and contrast, and `--title "NAME"` a title logo, when you want
    them. Examples (one is Ember Field, from its own `pip.glb`) are in `SDK/Tools/icon/examples/`.
 2. **Or compose it in the game:** add a hidden key-art mode that draws the hero large with your best lighting, take
-   a screenshot (Ryujinx, or `shot` in `autorun.txt`), crop it square and finish it in an image editor.
+   a screenshot (in an emulator, or `shot` in `autorun.txt`), crop it square and finish it in an image editor.
 3. **Or paint it,** or have it painted: it must match the game's real look.
 
 **AI prompt for key art** (for an image generator whose terms let you publish the result; paste a render or a

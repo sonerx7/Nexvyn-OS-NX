@@ -6,7 +6,7 @@
     nxv build <bundle> --sdk PATH                       Java: compile src/ into app.jar
     nxv pack <bundle> [-o OUT.nxvapp] [--sign KEY.pem --sdk PATH]  default: dist/<name>.nxvapp next to the folder
     nxv icon <glyph> <top color> <bottom color> <out.png> --sdk PATH [--glyph-color #FFFFFF]
-    nxv install <bundle> [--sd SDROOT] [--autorun]      copy into an SD card folder (Ryujinx's by default)
+    nxv install <bundle> [--sd SDROOT] [--autorun]      copy into an SD card folder (--sd, $NXV_SD or found)
     nxv push <bundle> --host CONSOLE_IP [--port 5000] [--user U --password P] [--packed] [--dry-run]
 
 <lang> is lua, js (javascript), py (python), sq (squirrel), c or java. <bundle> is an app folder with app.json at its
@@ -23,6 +23,7 @@ import argparse
 import ftplib
 import hashlib
 import io
+import glob
 import json
 import os
 import re
@@ -527,16 +528,23 @@ def cmd_icon(a):
     return 0 if r.returncode == 0 else 1
 
 
-# ------------------------------------------------------------------ install (local SD card folder, e.g. Ryujinx)
+# ------------------------------------------------------------------ install (local SD card folder, e.g. an emulator's)
 def default_sd():
-    if os.name == "nt":
-        return os.path.join(os.environ.get("APPDATA", ""), "Ryujinx", "sdcard")
-    return os.path.join(os.path.expanduser("~"), ".config", "Ryujinx", "sdcard")
+    """$NXV_SD, else the only "<app data>/<program>/sdcard" folder that already holds NexvynOS/ (an emulator's
+    virtual SD card), else None (then --sd is needed)."""
+    if os.environ.get("NXV_SD"):
+        return os.environ["NXV_SD"]
+    base = os.environ.get("APPDATA", "") if os.name == "nt" else os.path.join(os.path.expanduser("~"), ".config")
+    found = sorted(glob.glob(os.path.join(base, "*", "sdcard", "NexvynOS")))
+    return os.path.dirname(found[0]) if len(found) == 1 else None
 
 
 def cmd_install(a):
     bundle = bundle_dir(a.bundle)
-    sd = os.path.abspath(a.sd or default_sd())
+    sd = a.sd or default_sd()
+    if not sd:
+        die("no SD card folder found: pass --sd <folder> or set NXV_SD (the folder that holds NexvynOS/)")
+    sd = os.path.abspath(sd)
     if not os.path.isdir(sd):
         die("SD card folder not found: %s (pass --sd)" % sd)
     m = load_json(os.path.join(bundle, "app.json"))
@@ -655,7 +663,7 @@ def main(argv=None):
     p.add_argument("--sdk")
     p.set_defaults(fn=cmd_icon)
 
-    p = sub.add_parser("install", help="copy a bundle into an SD card folder (default: Ryujinx's)")
+    p = sub.add_parser("install", help="copy a bundle into an SD card folder (--sd, $NXV_SD, or the one emulator SD folder that has NexvynOS/)")
     p.add_argument("bundle")
     p.add_argument("--sd", help="SD card root folder")
     p.add_argument("--autorun", action="store_true", help="also write NexvynOS/autorun.txt that opens the app at boot")

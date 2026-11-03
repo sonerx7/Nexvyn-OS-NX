@@ -64,10 +64,10 @@ USES = {
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
 CAT_NAMES = {
     "en": {"productivity": "Productivity", "utilities": "Utilities", "media": "Media", "internet": "Internet",
-           "developer": "Developer", "system": "System", "switch": "Console Tools", "other": "Other", "games": "Games",
+           "developer": "Developer", "system": "System", "switch": "Switch Tools", "other": "Other", "games": "Games",
            "themes": "Themes", "fonts": "Fonts"},
     "tr": {"productivity": "Verimlilik", "utilities": "Araçlar", "media": "Medya", "internet": "İnternet",
-           "developer": "Geliştirici", "system": "Sistem", "switch": "Konsol Araçları", "other": "Diğer",
+           "developer": "Geliştirici", "system": "Sistem", "switch": "Switch Araçları", "other": "Diğer",
            "games": "Oyunlar", "themes": "Temalar", "fonts": "Yazı Tipleri"},
 }
 # listing pages: README.md in English (what GitHub shows) and README.tr.md in Turkish

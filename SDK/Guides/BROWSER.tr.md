@@ -41,7 +41,7 @@ Bu yüzden Nexvyn OS **karma (hibrit)** bir yol izliyor:
   `webReplyGetExitReason`. ([libnx web.h](https://switchbrew.github.io/libnx/web_8h.html), devkitPro
   `libnx/include/switch/applets/web.h`)
 - Kısıtlar: applet yalnızca uygulama (başlık) olarak çalışan bir programdan açılabilir; Albüm'den açılan homebrew
-  (applet modu) ve emülatörler (Ryujinx web applet'i uygulamaz) bunu yapamaz. BrowseNX gibi araçlar da aynı applet'i
+  (applet modu) ve emülatörler (web applet orada yok) bunu yapamaz. BrowseNX gibi araçlar da aynı applet'i
   hbmenu üzerinden açar ve NRO sürümünde HTML5 video desteği olmadığını not eder.
   ([GameBrew: BrowseNX](https://gamebrew.org/wiki/BrowseNX_Switch))
 - Applet açıkken Nexvyn OS bekler (çağrı engelleyicidir); çerezler/oturumlar applet ile paylaşılmaz.
@@ -225,7 +225,7 @@ start, JS KB)`.
 | Ölçüm | Değer |
 |---|---|
 | Motor + Tarayıcı kodu (`web_*.o`, `app_browser.o`, text) | önce 1,14 MB, şimdi 1,23 MB (+85 KB), 44 MB'lık NRO text'inin içinde; prelude romfs'te 163 KB |
-| Ryujinx, boş Tarayıcı penceresi + hata sayfası | açıldığı ana göre yaklaşık 5,5 MB heap |
+| PC test ortamı, boş Tarayıcı penceresi + hata sayfası | açıldığı ana göre yaklaşık 5,5 MB heap |
 | Boşta, Tarayıcı penceresi yok | 0 thread, 0 QuickJS runtime, önbellekler boş (ölçüm: yukarıdaki günlük satırları; konsol sayıları bu tabloya girmeli) |
 
 **App Market'ten ayrı bir uygulama mı?** Native modüller (`.nxvmod`) 1.0.x'te kapalı: stickies, fontbook ve network
@@ -234,7 +234,7 @@ o bellekte çekirdek kilitlemesi başarısız oluyor). Tarayıcı tam olarak bun
 `web_layout.cpp` ve `app_browser.cpp` `static Mutex` / `CondVar` tutuyor, `web_js.cpp` ise yükleyicinin reddettiği
 (`PT_TLS`) bir `thread_local` derleme runtime'ı kullanıyor. Modül yapmak için (1) yükleyicinin yazılabilir segmenti
 sıradan bellek olarak eşlemesi (ya da modülün kilitlerinin heap'e taşınması), (2) TLS desteği ya da `thread_local`'ın
-kaldırılması, (3) modül testlerinin Ryujinx'te ve konsolda yeniden açılması gerekir. Kazanç 66 MB'lık NRO'da yaklaşık
+kaldırılması, (3) modül testlerinin PC test ortamında ve konsolda yeniden açılması gerekir. Kazanç 66 MB'lık NRO'da yaklaşık
 1,4 MB (kod + prelude) olur, RAM'de hiç olmaz: yerleşik bir uygulamanın kod sayfaları kapalıyken bir şey tutmaz ve
 motor artık heap'ini bırakıyor. Öneri: Tarayıcı yerleşik kalsın (diğer uygulamalar da bağlantıları onunla açıyor);
 sahibi listelerden kaldırılabilir olmasını isterse mevcut opsiyonel uygulama mekanizması (`"optional": true`, App

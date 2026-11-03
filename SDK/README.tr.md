@@ -87,8 +87,8 @@ Emin değilseniz **Lua** ile başlayın: en çok örnek, kitler ve Studio'nun g�
 
 | İstediğiniz | Okuyun |
 |---|---|
-| pbr renderer'lı bir 3B oyunu adım adım kurmak | [Tarifler](Guides/RECIPES.tr.md), tarif 1 (Lua ve JavaScript) · [Oyun yap](Guides/MAKE_A_GAME.tr.md) |
-| Akış, fotoğraf, kısa video ya da sohbet uygulaması yapmak | [Tarifler](Guides/RECIPES.tr.md), tarif 2 · [Sosyal uygulama yap](Guides/MAKE_A_SOCIAL_APP.tr.md) |
+| pbr renderer'lı bir 3B oyunu adım adım kurmak | [PBR oyun tarifi](Guides/PBR_GAME_RECIPE.tr.md) (Lua, JavaScript, Python, C) · [Oyun yap](Guides/MAKE_A_GAME.tr.md) |
+| Akış, fotoğraf, kısa video ya da sohbet uygulaması yapmak | [Sosyal uygulama tarifi](Guides/SOCIAL_APP_RECIPE.tr.md) · [Sosyal uygulama yap](Guides/MAKE_A_SOCIAL_APP.tr.md) |
 | Kod, model ve doku için AI araçlarını kullanmak | [AI destekli çalışma](Guides/AI_WORKFLOW.tr.md) · [SDK/AI](AI/README.tr.md) |
 | İyi ses ve his | [Ses tasarımı](Guides/SOUND_DESIGN.tr.md) · [Grafik, arayüz ve oyun hissi](Guides/GAME_FEEL.tr.md) |
 | Hangi SDK sürümünde ne olduğunu bilmek | [SDK sürümleri](Guides/SDK_VERSIONS.tr.md) · [Uyumluluk](Guides/COMPATIBILITY.tr.md) |

@@ -99,7 +99,7 @@ Bugün yapılan bir oyunun `app.json`'u:
 3. **Konsolda:** *Bilgisayara Bağlan*'da FTP sunucusunu başlatın, sonra
    `python SDK/Tools/nxv/nxv.py push SkyHop.nxvapp --host <konsol-ip>`. Hatalar pencerede satır numarasıyla görünür
    ve `sdmc:/NexvynOS/System/Logs/Apps/<id>.log` dosyasına yazılır.
-4. **Ryujinx emülatöründe:** `python SDK/Tools/nxv/nxv.py install SkyHop.nxvapp` oyunu emülatörün SD kartına
+4. **Bilgisayarınızdaki bir emülatörde:** `python SDK/Tools/nxv/nxv.py install SkyHop.nxvapp` oyunu emülatörün SD kartına
    kopyalar. Bir testi elinizi sürmeden tekrar oynatmak için oraya `sdmc:/NexvynOS/autorun.txt` koyun:
 
    ```
@@ -113,7 +113,7 @@ Bugün yapılan bir oyunun `app.json`'u:
    ```
 
    Ekran görüntüleri `sdmc:/NexvynOS/autoshots/` klasörüne düşer. İşiniz bitince `autorun.txt`'yi silin, her
-   açılışta çalışır. Ryujinx mantık ve görünüş için iyidir; hızı gerçek konsolda ölçün (10. bölüm).
+   açılışta çalışır. Emülatör mantık ve görünüş için iyidir; hızı gerçek konsolda ölçün (10. bölüm).
 
 ## 4. 3B modeller: yap, dışa aktar, kontrol et
 
@@ -709,11 +709,12 @@ bloom'u açar (SDK referansı, bölüm 8b, *Modern görüntü*). GPU zamanı har
 | Dokular | materyal başına: temel renk + normal 1024 px, ORM / metallic-smoothness / AO / emissive 512 px |
 | Tekrarlar | çimen, sütun, kasa, döküntü: `g3d.drawInstanced` (128 kopya başına bir GPU çağrısı) |
 
-- **Doku setleri.** Bütün haritalarıyla glTF (`.glb`) ya da texture klasörü yanında FBX dışa aktarın: temel renk
-  haritasıyla aynı adlı dosyalar (`T_X_BaseColor.png`, `_Normal`, `_MetallicSmoothness` ya da `_Metallic` +
-  `_Roughness`, `_AO`, `_Emissive`) kendiliğinden bulunur; başka oyun motorları için dışa aktarılmış kitler
-  haritalar küçültüldükten sonra çalışır. 4K atlasları göndermeden önce 1024 px'e indirin: konsol her haritayı tam boyutta
-  belleğe yükler.
+- **Doku setleri.** Bütün haritaları gömülü glTF (`.glb`) ya da texture klasörü yanında FBX dışa aktarın. FBX,
+  dosyanın bağladığı haritaları kullanır; bir temel renk *dosyası* bağlı olup metallic, roughness ya da occlusion
+  haritası bağlı değilse, yanındaki aynı adlı dosyalar kendiliğinden bulunur (`T_X_BaseColor.png` ->
+  `T_X_MetallicSmoothness.png` ya da `T_X_Metallic.png` + `T_X_Roughness.png`, ve `T_X_AO.png`). Normal ve emissive
+  haritaları tahmin edilmez: onları FBX'te bağlayın. 4K atlasları göndermeden önce 1024 px'e indirin: konsol her
+  haritayı tam boyutta belleğe yükler.
 - **Bölüm sanatçısı gibi ışıklandırın.** Pencerelerden ya da sahnenin üstünden sıcak bir güneş, serin bir gök
   (`g3d.environment` ya da sahnenizin göğünden çekilmiş 6 yüzlü bir cube map), oyuncunun baktığı yerde birkaç renkli
   ışık ve 1'in üstünde emissive parçalar; ekranlar, lambalar ve tabelalar parlasın. Pozlamayı ve renkleri her oyun
@@ -740,7 +741,8 @@ menü şablonu değil, yapı taşları verir:
   kıvılcımları).
 - Ses: beş dalga biçimi, dosyalar, akışla müzik.
 
-Script'ler için özel shader ya da post-processing yoktur: görünüş palet, ışık, biçim, yazı ve hareketten gelir.
+Script'ler kendi shader'larını yazmaz. SDK 1.9'un pbr renderer'ı ışık, gölge, ton eşleme ve bloom ekler
+(`g3d.postfx`, bölüm 10); bunlar araçtır, görünüş değil: görünüş palet, ışık, biçim, yazı ve hareketten gelir.
 **His kiti** (`SDK/Languages/lua/kits/juice.lua`, `SDK/Languages/javascript/kits/juice.js`) bunları hazır taş olarak
 verir: easing ve tween, yaylar, ekran sarsıntısı, hit-stop, flaş, parlayan parçacıklar, üretilen parlama / vinyet /
 gren / gölge dokuları, çok duraklı gradyanlar, stilli başlıklar, beş şekilde derinlikli paneller, durumlu düğmeler,
@@ -918,7 +920,7 @@ parlamalı, sakin renk ayarlı, yazısız, özenli ve çekici bir resmi.
    `--style bold` ya da `--style loud` ışık huzmesi, kıvılcım, bloom ve kontrast, `--title "AD"` bir başlık logosu
    ekler. Örnekler (biri Kor Tarlası, kendi `pip.glb`'sinden) `SDK/Tools/icon/examples/` içinde.
 2. **Ya da oyunun içinde kurun:** kahramanı en iyi ışığınızla büyük çizen gizli bir key art kipi ekleyin, ekran
-   görüntüsü alın (Ryujinx ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
+   görüntüsü alın (emülatörde ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
 3. **Ya da çizin** veya çizdirin: oyunun gerçek görünüşüne uymalı.
 
 **Key art için AI prompt'u** (sonucunu yayınlamanıza izin veren bir görsel üretici için; ikon oyuna uysun diye

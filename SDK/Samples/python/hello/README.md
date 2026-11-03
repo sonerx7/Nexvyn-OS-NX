@@ -21,7 +21,7 @@ The built-in **Hello Python** app: a to-do list, an analog clock and live weathe
 - `net.json(url, callback)` with `(data, error)` (`network` permission)
 - `store`, a toast with `timer.after`, a menu and a method passed as the `ui.alert` callback
 
-**Controls:** Change tabs with the segmented control at the top.
+**Controls:** Switch tabs with the segmented control at the top.
 
 ## Running it
 

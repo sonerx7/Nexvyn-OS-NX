@@ -62,6 +62,11 @@ typedef struct {
     const char* url;       /* after redirects */
     const char* contentType;
     const char* headers;   /* "name: value\n" lines, lowercase names */
+    /* SDK 1.9 (net_fetch; false / "" for net_get and the other older calls). There is no parsed "data" field as in
+     * Lua, JavaScript and Python: body holds the JSON text, parse it yourself. */
+    bool fromCache;        /* answered from the offline cache ("cache" option) */
+    bool stale;            /* from the cache because the network failed: the data may be old */
+    const char* path;      /* the file written with "saveTo", or "" */
 } nxv_response;
 
 typedef struct {
@@ -332,7 +337,7 @@ void g3d_drawInstancedMatrices(int obj, const float* matrices, int count, const 
 
 /* ------------------------------------------------------------------ SDK 1.9: feeds, media, network
  * sdk/SDK.en.md section 8d. Options are JSON text ("{\"retry\": 2, \"cache\": 300}"), NULL for none. Returned
- * strings stay valid until the next frame. */
+ * strings stay valid for the next 15 SDK calls, like every other returned string: copy them to keep them. */
 /* HTTP with every SDK 1.9 option (method, headers, json, form, multipart, file, saveTo, timeout, retry, cache,
  * cookies, responseType...). fn gets the response; progress(now, total) runs while it moves. Returns the id. */
 int net_fetch(const char* options, nxv_net_fn fn, nxv_progress_fn progress, void* user);

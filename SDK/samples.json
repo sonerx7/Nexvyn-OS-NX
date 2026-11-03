@@ -1003,8 +1003,8 @@
       "minSdk": "1.9",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/social-feed.zip",
-      "size": 453592,
-      "sha256": "710b12645091205eb650883e43d0e34b679dde690f484862223a6bcc1be5bd3a",
+      "size": 453589,
+      "sha256": "b1f7ff82ddfffdb6fc34982d8af619f61552e769070224c4bb2962c1c525a6c0",
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/screenshots/2.png",

@@ -9,7 +9,8 @@ Every guide exists in English (`NAME.en.md`) and Turkish (`NAME.tr.md`). The com
 
 | Guide | What it covers |
 |---|---|
-| [Recipes](RECIPES.en.md) | Two complete apps step by step, in Lua and JavaScript with Python and C notes: a PBR 3D game (renderer, materials, lights, shadows, bloom, instancing) and a social photo feed (network, web pictures, virtualized feed, rich text) |
+| [PBR game recipe](PBR_GAME_RECIPE.en.md) | A complete small 3D game step by step on the pbr renderer (materials, lights, shadows, bloom, instancing, a loaded model), in Lua and JavaScript, with Python and C versions |
+| [Social app recipe](SOCIAL_APP_RECIPE.en.md) | A complete feed app step by step (network with an offline cache, web pictures, a virtualized feed, rich text, a clip player), in Lua and JavaScript, with Python and C versions |
 | [AI-assisted workflow](AI_WORKFLOW.en.md) | From AI-generated code, models and textures to a console-ready game: context packs, scale, pivot, LOD, texture sizes, ORM and MetallicSmoothness maps, normal maps, glass and emission, reflections, rights |
 | [SDK versions](SDK_VERSIONS.en.md) | What each SDK version from 1.0 to 1.9 added, which Nexvyn OS brought it, which languages get new APIs, how to set `minSdk` and `targetSdk` |
 | [Make a game](MAKE_A_GAME.en.md) | The complete game recipe: project, 3D models (`.glb` / `.fbx`), loading, input, collision, speed on the console, the pbr renderer budget, art direction, store icon, publishing |
@@ -52,4 +53,4 @@ Every guide exists in English (`NAME.en.md`) and Turkish (`NAME.tr.md`). The com
 | [Turkish patches](TURKISH_PATCHES.en.md) | The Turkish Patches app |
 
 Where to start: the [SDK start page](../README.md), then the [quick start of your language](../Languages/README.md),
-then the [Recipes](RECIPES.en.md).
+then the [PBR game recipe](PBR_GAME_RECIPE.en.md) or the [social app recipe](SOCIAL_APP_RECIPE.en.md).

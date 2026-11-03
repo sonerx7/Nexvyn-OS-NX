@@ -10,7 +10,7 @@ uygulamalarının yapı taşları. Yaklaşık 250 satır açıklamalı Lua.
 | Id | `com.sonerx7.demo.socialfeed` |
 | Dil | Lua 5.4 |
 | En düşük SDK | 1.9 |
-| İzinler | `network`, `launch` (paylaşım bağlantısı) |
+| İzinler | `network` |
 | Gamepad | imleç |
 | Pencere | 720 × 640, boyutlandırılabilir |
 

@@ -3,7 +3,7 @@
 **English** · [Türkçe](README.tr.md)
 
 `textures.py` prepares PBR texture sets for the Nexvyn OS pbr renderer (SDK 1.9): textures from asset kits, texture
-generators and 3D programs usually arrive too large, in another channel layout or with -Y (green down) normal maps.
+generators and 3D programs usually arrive too large, in another channel layout or with DirectX-style normal maps.
 Python 3.8+ with Pillow (`python -m pip install Pillow`).
 
 ```
@@ -15,7 +15,7 @@ python textures.py orm <ao|-> <roughness|-> <metallic|-> <out.png>
                                                           ("-" = constant: AO 1, roughness 0.5, metallic 0)
 python textures.py smoothness <MetallicSmoothness.png> <outRoughness.png> [--metallic outMetallic.png]
                                                           R metallic, A smoothness -> roughness = 1 - smoothness
-python textures.py flipgreen <normal.png> <out.png>       -Y normal map (green down) -> +Y (green up)
+python textures.py flipgreen <normal.png> <out.png>       DirectX normal map (green down) -> OpenGL (green up)
 ```
 
 ## Which maps the renderer reads

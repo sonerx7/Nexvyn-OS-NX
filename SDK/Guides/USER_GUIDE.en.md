@@ -5,7 +5,7 @@
 This guide is for the person who installs Nexvyn OS on their console and uses it every day. If you want to write
 apps, see [DEVELOPER_GUIDE.en.md](DEVELOPER_GUIDE.en.md).
 
-Nexvyn OS is a homebrew desktop shell for the Nintendo Switch (`NexvynOS.nro`). It does not change the console's own
+Nexvyn OS is a homebrew desktop shell for the Switch with Atmosphère (`NexvynOS.nro`). It does not change the console's own
 system: it is opened from the Homebrew menu, and closing it returns you to the Homebrew menu. The interface is in
 Turkish and English; new languages can be added.
 
@@ -75,9 +75,9 @@ notes in the guide.
 **Quit Nexvyn OS…** in the system menu closes Nexvyn OS and returns to the Homebrew menu. The same menu also has
 **Sleep**, **Lock Screen**, **Restart Console…** and **Shut Down Console…**. Save unsaved documents first.
 
-### In the emulator (Ryujinx)
+### In an emulator
 
-Nexvyn OS also opens in Ryujinx. Hardware services the emulator does not have (brightness, USB, MTP, launching games,
+Nexvyn OS also opens in an emulator on a PC. Hardware services the emulator does not have (brightness, USB, MTP, launching games,
 PC games, game saves, build IDs and the like) are off there or shown as "not available".
 
 ---
@@ -359,7 +359,7 @@ keyboard has been used, the on-screen keyboard stays hidden.
 | Esc | Closes the open menu, search or panel |
 
 Keyboard layout (Turkish Q or English US): **System Settings > Keyboard and Input**. In the same place you can choose
-the console's own keyboard ("Nintendo system keyboard") instead of the on-screen keyboard.
+the console's own system keyboard instead of the on-screen keyboard.
 
 ---
 
@@ -502,7 +502,7 @@ the renames also run in the background, with progress and **Cancel**. Each file 
 ### The console's system files
 
 Files, Terminal, Text Editor and Code warn before they change anything that belongs to the console's custom firmware or
-to other homebrew: `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`, `sdmc:/emuMMC`, `sdmc:/switch`,
+to other homebrew: `sdmc:/atmosphere`, `sdmc:/bootloader`, the system's own data folder, `sdmc:/emuMMC`, `sdmc:/switch`,
 `sdmc:/config` and the boot files in the root of the card (`hbmenu.nro`, `boot.dat`, `boot.ini`, `payload.bin`,
 `exosphere.ini`). Changing or deleting them can stop the console from booting. **Cancel** is the default; **I
 understand, continue** goes ahead, and **Don't ask again for this session** stops the question until Nexvyn OS starts
@@ -518,7 +518,7 @@ tools (Mod Manager, Cheats, Sysmodules, Overlays, Turkish Patches) write there b
 - Supported file systems: FAT12/16/32 and exFAT. NTFS is not supported.
 - Before unplugging, press the **Safely Remove** button next to the drive in Files. Unplug it when "You can now remove
   it" appears.
-- USB drives do not work in Ryujinx.
+- USB drives do not work in an emulator.
 
 ### Connect to Computer
 
@@ -538,7 +538,7 @@ only on a home network you trust.
 **USB cable (MTP):** connect the console, out of the dock, to the computer with a USB-C cable; the computer sees it like
 a phone. This feature works only on a real console.
 
-Known status: the FTP server was tried from Windows against Ryujinx; listing, folders and downloads worked, uploading
+Known status: the FTP server was tried from a PC against an emulator; listing, folders and downloads worked, uploading
 could not be tried there because of the emulator's network layer. MTP and FTP uploads still need to be confirmed on a
 real console.
 
@@ -710,7 +710,7 @@ The **Modding** folder on the desktop gathers six apps for modding games. First,
 - **Playing online with a modded game or with cheats can get your account banned.**
 - These apps work only on the SD card; paths in archives that point outside the SD card are not written.
 - Parts that need console services (build ID, running game, starting/stopping system modules, saves) work only on a
-  real console; in the emulator they show "unknown". These apps were tried in Ryujinx and have not been confirmed on a
+  real console; in the emulator they show "unknown". These apps were tried in an emulator and have not been confirmed on a
   real console yet. Back up your important saves and files first.
 
 | App | What it does |
@@ -862,7 +862,7 @@ runs.
 - A / right arrow: next scene · B / left arrow: previous · +: pause · X: statistics panel (FPS, triangles, draw calls,
   render path) · Y: music · −: quality (Automatic, Low, Medium, High).
 - A free camera with the sticks or by dragging.
-- At automatic quality, if the frame rate drops, the quality goes down one step. 58–60 FPS was measured in Ryujinx on
+- At automatic quality, if the frame rate drops, the quality goes down one step. 58–60 FPS was measured on the PC test setup on
   the graphics-card path; values on a real console may differ.
 
 ### Office

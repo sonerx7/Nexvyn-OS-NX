@@ -1,13 +1,13 @@
 {
   "subtitle": {
-    "en": "Your Steam and PC games, on the console",
-    "tr": "Steam ve PC oyunların konsolda",
-    "de": "Deine Steam- und PC-Spiele auf der Konsole",
-    "fr": "Vos jeux Steam et PC sur la console",
-    "es": "Tus juegos de Steam y PC en la consola",
-    "ja": "Steam と PC のゲームを本体で",
-    "zh": "在主机上玩你的 Steam 和 PC 游戏",
-    "ko": "콘솔에서 Steam과 PC 게임을"
+    "en": "Your Steam and PC games, on the Switch",
+    "tr": "Steam ve PC oyunların Switch'te",
+    "de": "Deine Steam- und PC-Spiele auf der Switch",
+    "fr": "Vos jeux Steam et PC sur la Switch",
+    "es": "Tus juegos de Steam y PC en la Switch",
+    "ja": "Steam と PC のゲームを Switch で",
+    "zh": "在 Switch 上玩你的 Steam 和 PC 游戏",
+    "ko": "Switch에서 Steam과 PC 게임을"
   },
   "description": {
     "en": "Browse your Steam library and PC programs in a console-style window and start them with Play. The games themselves run in CorkDeck or Autorun, separate open-source programs that PC Games downloads and installs for you if they're missing. Add your SteamID and Web API key to see your whole Steam library with play time, or copy a game folder to the SD card and it shows up under PC Library.\n\n• Steam library through CorkDeck, PC programs through CorkDeck or Autorun\n• Installs CorkDeck or Autorun in place when needed\n• Steam play time and last played, with your Web API key\n• Sort by recently played, name, play time or size\n• Filter installed and not installed games, with search\n• Open an .exe from Files to play it directly",

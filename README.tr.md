@@ -4,7 +4,7 @@
 
 <p align="center"><a href="README.md">English</a> · <b>Türkçe</b></p>
 
-<p align="center">Nintendo Switch homebrew ortamı için kendi uygulamaları, bir Uygulama Mağazası ve uygulama ile oyunlar
+<p align="center">Atmosphère kurulu Switch homebrew ortamı için kendi uygulamaları, bir Uygulama Mağazası ve uygulama ile oyunlar
 için bir SDK'sı olan bir masaüstü kabuğu. Homebrew Menüsü'nden açılan tek bir <code>.nro</code> dosyası. Yeniden
 başlatma yok, bölümlendirme yok.</p>
 
@@ -101,8 +101,8 @@ end
   donduruldular.
 - **Uyumlu.** SDK 1.0-1.8 için yapılmış uygulamalar değişmeden çalışır; hiçbir şey kaldırılmaz, yeni davranış
   yalnızca yeni SDK'yı hedefleyen uygulamalara uygulanır ([SDK sürümleri](SDK/Guides/SDK_VERSIONS.tr.md)).
-- **Tarifler ve örnekler.** Lua ve JavaScript'te eksiksiz bir PBR oyunu ve sosyal akış içeren
-  [Tarifler](SDK/Guides/RECIPES.tr.md), [PBR, Işıklar ve Gölgeler](SDK/Samples/lua/pbr3d/) ve
+- **Tarifler ve örnekler.** Lua ve JavaScript'te eksiksiz, Python ve C sürümleri de olan bir
+  [PBR oyun tarifi](SDK/Guides/PBR_GAME_RECIPE.tr.md) ve bir [sosyal uygulama tarifi](SDK/Guides/SOCIAL_APP_RECIPE.tr.md), [PBR, Işıklar ve Gölgeler](SDK/Samples/lua/pbr3d/) ve
   [Sosyal Akış](SDK/Samples/lua/social-feed/) örnekleri ve animasyonlu modelli küçük bir 3B oyun olan
   [Ember Field](SDK/Samples/lua/ember-field/).
 - **AI destekli geliştirme.** [SDK/AI](SDK/AI/README.tr.md) içinde context pack'ler ve görev prompt'ları, üretilmiş
@@ -280,7 +280,7 @@ oynatıcılar, oyunlar, Oyun Motoru, 3D Modelleme, Studio) çevrimdışı çalı
 | Kimin için | Başlangıç |
 |---|---|
 | Kullanıcılar | [Kullanım rehberi](SDK/Guides/USER_GUIDE.tr.md) · [Forwarder](SDK/Guides/FORWARDER.tr.md) · [Tarayıcı](SDK/Guides/BROWSER.tr.md) · [Sürüm notları](CHANGELOG.md) |
-| Uygulama ve oyun yapımcıları | [SDK başlangıç sayfası](SDK/README.tr.md) · [SDK başvurusu](SDK/Reference/SDK.tr.md) · [Tarifler](SDK/Guides/RECIPES.tr.md) · [Oyun yap](SDK/Guides/MAKE_A_GAME.tr.md) · [Sosyal uygulama yap](SDK/Guides/MAKE_A_SOCIAL_APP.tr.md) · [SDK sürümleri](SDK/Guides/SDK_VERSIONS.tr.md) · [Bütün rehberler](SDK/Guides/README.tr.md) |
+| Uygulama ve oyun yapımcıları | [SDK başlangıç sayfası](SDK/README.tr.md) · [SDK başvurusu](SDK/Reference/SDK.tr.md) · [PBR oyun tarifi](SDK/Guides/PBR_GAME_RECIPE.tr.md) · [Sosyal uygulama tarifi](SDK/Guides/SOCIAL_APP_RECIPE.tr.md) · [Oyun yap](SDK/Guides/MAKE_A_GAME.tr.md) · [Sosyal uygulama yap](SDK/Guides/MAKE_A_SOCIAL_APP.tr.md) · [SDK sürümleri](SDK/Guides/SDK_VERSIONS.tr.md) · [Bütün rehberler](SDK/Guides/README.tr.md) |
 | AI araçlarıyla geliştirenler | [SDK/AI](SDK/AI/README.tr.md) · [AI destekli çalışma](SDK/Guides/AI_WORKFLOW.tr.md) |
 | Yayımlama | [Katkı](CONTRIBUTING.tr.md) · [Yayımlama rehberi](SDK/Publishing/PUBLISHING.tr.md) · [İnceleme listesi](SDK/Publishing/REVIEW.tr.md) |
 | Güvenlik | [Güvenlik politikası](SECURITY.tr.md) · [App Guard](SDK/Guides/APP_GUARD.tr.md) · [Uyumluluk](SDK/Guides/COMPATIBILITY.tr.md) |
@@ -358,7 +358,7 @@ ve çeviriler konu olarak gelir. [Katkı](CONTRIBUTING.tr.md) sayfasına bakın.
 Nexvyn OS **GPL-3.0-or-later** lisanslıdır ([LICENSE](LICENSE)); üçüncü taraf bileşenler ve lisansları
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) içindedir. Mağazadaki öğeler aksi belirtilmedikçe aynı lisansla
 gelir (yazı tipi paketleri kendi lisanslarını taşır, çoğunlukla SIL Open Font License). YamaNX, SertAy'ın YamaNX'ine
-dayanır. Nintendo Switch, Nintendo'nun ticari markasıdır; bu proje Nintendo ile bağlantılı değildir. Tarayıcı, YousTube,
+dayanır. Tarayıcı, YousTube,
 Canlı TV ve Radyo'da gösterilen içerik sahiplerine aittir.
 
 Geliştiren **Soner Çakır** · [github.com/sonerx7](https://github.com/sonerx7). Yazarı tarafından tasarlanıp

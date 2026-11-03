@@ -1,58 +1,220 @@
-# SDK versions
+# SDK versions: 1.0 to 1.9
 
 **English** · [Türkçe](SDK_VERSIONS.tr.md)
 
-Every Nexvyn OS release provides one SDK version: the API that `.nxvapp` apps build on. `sys.sdkVersion()` returns it,
-and **System Settings > About** shows it. An app states the oldest SDK it needs with `"minSdk"` and the SDK it was
-tested on with `"targetSdk"` in `app.json`.
+What each version of the Nexvyn OS app SDK added, which Nexvyn OS release shipped it and which languages have it. The
+function-by-function contract is the [SDK reference](../Reference/SDK.en.md) (section 1, *SDK versions*); the compatibility
+rules behind this page are in [COMPATIBILITY.en.md](COMPATIBILITY.en.md).
 
-## The promise
+## Contents
 
-- **Nothing is removed.** Every function keeps working on every later Nexvyn OS. A function that gets a replacement is
-  marked deprecated: it still works and writes one note to the app's log.
-- **Behaviour changes are opt-in.** When an existing function changes how it behaves, only apps whose `targetSdk` is
-  that version or newer get the new behaviour.
-- **Newer apps on older systems.** An app whose `minSdk` is newer than the system's SDK is not installed and is shown
-  as needing a newer Nexvyn OS.
-- **Every release is checked** against every App Market app, game and sample before it ships.
+1. [Three version numbers](#1-three-version-numbers)
+2. [At a glance](#2-at-a-glance)
+3. [Version by version](#3-version-by-version)
+4. [minSdk and targetSdk](#4-minsdk-and-targetsdk)
+5. [Nothing is removed, only deprecated](#5-nothing-is-removed-only-deprecated)
+6. [Which languages get new APIs](#6-which-languages-get-new-apis)
+7. [Picking minSdk for your app](#7-picking-minsdk-for-your-app)
 
-The full contract: [Compatibility](COMPATIBILITY.en.md).
+## 1. Three version numbers
 
-## History
-
-| SDK | First Nexvyn OS | What it added |
+| Number | Example | Meaning |
 |---|---|---|
-| **1.9** | **1.3.0** | **NexGFX pbr renderer** (opt-in per app with `g3d.renderer("pbr")`): metallic-roughness materials with normal, occlusion and emissive maps from glTF and FBX, `g3d.material`, real-time point, spot and directional lights (`g3d.addLight` and friends), sun and spot shadows, HDR, ACES / filmic tone mapping, bloom, MSAA, cube map reflections, thin glass (transmission), clearcoat, `g3d.drawInstanced`, `g3d.caps`, `g3d.rendererInfo`. **Feeds, media and network:** `net.request` options (JSON, form, multipart and file bodies, `saveTo`, upload progress, cookies, retries, offline cache), `net.cancel` / `clearCookies` / `clearCache`, WebSocket client (`net.ws`), sign-in in the console's browser (`net.oauth`), web pictures with a disk cache (`gfx.imageUrl`), embedded video and audio players (`media.*`), virtualized feeds and grids (`ui.beginFeed`), a swipe pager (`ui.pager`), rich text (`ui.richText`), `sys.relativeTime`. **Runtime library:** `net.request` in Lua; `TextEncoder` / `TextDecoder`, `URL`, `URLSearchParams`, `structuredClone` in JavaScript; more `str` methods, `dict.setdefault` / `fromkeys`, `pow()`, `urllib.parse`, `html`, `uuid` in Python. Lua, JavaScript, Python and C only |
-| 1.8 | 1.2.0 | 3D model files: `g3d.model` / `g3d.loadModel` for `.glb`, `.gltf`, `.fbx` (and `.obj`, `.stl`) with node hierarchy, materials, textures and skeletal animation (play, crossfade, stop, node positions and matrices), `g3d.drawMatrix`, GPU skinning. A callback that runs too long ends apps that target 1.8 with an error screen; older apps are held and the user picks Wait or Close |
-| 1.7 | 1.1.0 | `g3d.voxels` voxel worlds in JavaScript (chunks, terrain generator, light, ray casts, box physics, saving); `mesh:setTexture(path, pixelated)` |
-| 1.6 | 1.0.0 | `fs.unzip`, `sys.games` and the `"games"` permission, `sys.speak`, the `"python3"` runtime (CPython 3.12) |
-| 1.5 | 1.0.0 | Squirrel, C (compiled on the console) and Java runtimes; Python system library |
-| 1.4 | 1.0.0 | Every permission enforced; sharing, scheduled notifications, permission API, `nxv://` links, lifecycle callbacks (`suspend`, `resume`, `focus`, `autosave`, `unsaved`), Quick Search for apps, signed packages |
-| 1.3 | 1.0.0 | Python runtime (pocketpy) |
-| 1.2 | 1.0.0 | The 2D game engine `nexvyn.game`, `sys.sdkVersion()`, `minSdk` and `permissions` in `app.json` |
-| 1.1 | 1.0.0 | JavaScript runtime with Promises; `g3d` textures on the GPU |
-| 1.0 | 1.0.0 | Lua runtime: `gfx`, `ui`, `fs`, `json`, `store`, `net`, `sys`, `audio`, `input`, `timer`, `TR`, `g3d` |
+| **Nexvyn OS** | `1.3.0` | the system release (major.minor.patch), shown in Settings > About |
+| **SDK** | `1.9` | the API surface apps are written against (major.minor); `sys.sdkVersion()` returns it |
+| **Runtime engine** | Lua 5.4.7, QuickJS-ng 0.17.0, pocketpy 2.2.0 | the interpreter or compiler behind one language |
 
-SDK 1.0 to 1.6 were made during the development of Nexvyn OS 1.0.0, the first public release, which ships all of them.
-The complete function lists are in the [SDK reference](../Reference/SDK.en.md), section 1, *SDK versions*.
+A new SDK function raises the SDK minor version and comes with a new Nexvyn OS minor release. A change in how an
+existing function behaves would raise the SDK major version, and only apps that target the new SDK would get it
+(section 4).
 
-## Languages
+## 2. At a glance
 
-| Language | Since | New APIs |
+| SDK | First Nexvyn OS | Headline | Languages |
+|---|---|---|---|
+| 1.0 | 1.0.0 | Lua apps: drawing, widgets, files, network, system, sound, timers, translations, 3D | Lua |
+| 1.1 | 1.0.0 | JavaScript runtime with Promises; 3D textures on the GPU | Lua, JavaScript |
+| 1.2 | 1.0.0 | `nexvyn.game` 2D engine, `sys.sdkVersion()`, `minSdk` and `permissions` | Lua, JavaScript (`nexvyn.game`: Lua) |
+| 1.3 | 1.0.0 | Python runtime (pocketpy) | Lua, JavaScript, Python |
+| 1.4 | 1.0.0 | every permission enforced, sharing, scheduled notifications, `nxv://` links, lifecycle callbacks | Lua, JavaScript, Python |
+| 1.5 | 1.0.0 | Squirrel, C and Java runtimes; Python system library | all six |
+| 1.6 | 1.0.0 | `fs.unzip`, `sys.games`, text to speech; the `"python3"` runtime (CPython 3.12) | see section 3 |
+| 1.7 | 1.1.0 | `g3d.voxels` voxel worlds; pixel-art textures on meshes | JavaScript (voxels); Lua, JavaScript (textures) |
+| 1.8 | 1.2.0 | `g3d.model`: `.glb` / `.gltf` / `.fbx` models with materials, textures and skeletal animation | all six |
+| 1.9 | 1.3.0 | runtime library; feed, photo and short-video apps; the pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
+
+SDK 1.0 to 1.6 were all built during the development of Nexvyn OS 1.0.0, the first public release, which has SDK 1.6.
+A language that arrived later got the whole earlier SDK with it: Squirrel, C and Java started at SDK 1.5 with
+everything from 1.0 to 1.4.
+
+## 3. Version by version
+
+### SDK 1.0 (Nexvyn OS 1.0.0)
+
+- The Lua runtime and the modules every later language shares: `gfx`, `ui`, `fs`, `json`, `store`, `net`, `sys`,
+  `audio`, `input`, `timer`, `TR`, `g3d`.
+
+### SDK 1.1 (Nexvyn OS 1.0.0)
+
+- The JavaScript runtime (QuickJS-ng, ES modules) with the same modules; asynchronous calls return Promises when the
+  callback is left out.
+- `g3d` textures on the GPU.
+
+### SDK 1.2 (Nexvyn OS 1.0.0)
+
+- The `nexvyn.game` 2D engine for Lua (`require("nexvyn.game")`): scenes, sprites, tilemaps, physics, particles,
+  tweens.
+- `sys.sdkVersion()`; app.json `minSdk` and `permissions`; the single-file `.nxvapp` v2 with `manifest.sha256`.
+
+### SDK 1.3 (Nexvyn OS 1.0.0)
+
+- The Python runtime (pocketpy) with the same modules; asynchronous calls take callbacks.
+
+### SDK 1.4 (Nexvyn OS 1.0.0)
+
+- Every permission is enforced (`network`, `files`, `launch`, `notifications`), with the user's answer kept per app.
+- `sys.share` and app.json `shareTargets`; `sys.schedule` / `unschedule` / `scheduled`; `sys.hasPermission` /
+  `requestPermission`; `sys.memory`; `sys.appUrl` and `nxv://` links in `sys.open`.
+- Callbacks `app.search`, `app.suspend`, `app.resume`, `app.focus`, `app.autosave`, `app.unsaved`.
+- Signed packages; the 64 MB script memory limit for Lua apps too.
+
+### SDK 1.5 (Nexvyn OS 1.0.0)
+
+- Three more runtimes on one shared implementation: Squirrel 3.2 (`"squirrel"`), C compiled on the console by TinyCC
+  (`"c"`, `nexvyn.h`) and Java on miniJVM (`"java"`, `"mainClass"`).
+- `g3d.setColor` / `flat` / `triangles` / `setTexture` / `texture` / `free` as functions.
+- The Python system library: `itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys`.
+
+### SDK 1.6 (Nexvyn OS 1.0.0)
+
+- `fs.unzip` (in the background, with progress) and `sys.games` with the new `"games"` permission, in Lua,
+  JavaScript, Python and Squirrel.
+- `sys.speak` / `sys.stopSpeaking` (text to speech, no permission) in every runtime.
+- The `"python3"` runtime: CPython 3.12 with its standard library.
+
+### SDK 1.7 (Nexvyn OS 1.1.0)
+
+- `g3d.voxels` voxel worlds in JavaScript: chunk streaming, a terrain generator, light, meshes built on background
+  threads, saving, ray casts and box physics.
+- `mesh:setTexture(path, pixelated)` in Lua and JavaScript: textures magnified without smoothing.
+
+### SDK 1.8 (Nexvyn OS 1.2.0)
+
+- `g3d.model` and `g3d.loadModel` (parsed in the background): `.glb`, `.gltf`, `.fbx` (and `.obj`, `.stl`) with node
+  hierarchy, materials, embedded and external textures and skeletal animation (play with crossfade, stop, node
+  positions and matrices for attachments); `g3d.drawMatrix`; skinning on the GPU. In every runtime (Squirrel, C, Java
+  and `"python3"` through `g3d.model*` functions).
+- Time limits: the main file and `app.load` get 10 seconds, other callbacks 3 seconds; time in the HOME menu, asleep
+  or in a system dialog does not count. A stopped callback ends an app that targets SDK 1.8 or newer with the error
+  screen; an older app is held and the user picks **Wait** or **Close**.
+- For C apps that target SDK 1.8: `#include` reads only the app's own files and the SDK headers, and inline assembly
+  is refused.
+
+### SDK 1.9 (Nexvyn OS 1.3.0)
+
+- **Runtime library:** `net.request{url, method, body, contentType, headers}` in Lua; JavaScript `TextEncoder` /
+  `TextDecoder`, `URL` / `URLSearchParams`, `structuredClone`; the Python `str` methods pocketpy lacked,
+  `dict.setdefault` / `fromkeys`, `pow()`, and the system modules `urllib.parse`, `html`, `uuid`.
+- **Feed, photo and short-video apps** (reference section 8d): `net.request` options (JSON, form, multipart and file
+  bodies, `saveTo`, upload progress, cookies, retries, offline cache), `net.cancel`, `net.clearCookies`,
+  `net.clearCache`; the WebSocket client (`net.ws`, `wsSend`, `wsPoll`, `wsClose`, `wsState`); `net.oauth`;
+  `gfx.imageUrl` / `imageState`; `media.*` players; `ui.beginFeed` / `feedItem` / `endFeed`, `ui.pager`,
+  `ui.richText` / `measureRichText`; `sys.relativeTime`.
+- **The pbr renderer**, NexGFX 1.0, opt-in per app with `g3d.renderer("pbr")`: metallic-roughness materials with
+  normal, occlusion and emissive maps (from model files or `g3d.material`), real-time lights (`g3d.addLight` /
+  `updateLight` / `removeLight` / `clearLights` / `lights`), sun and spot shadows (`g3d.shadows`), HDR with tone mapping,
+  bloom and MSAA (`g3d.postfx`), hemisphere or cube map ambient (`g3d.environment`), `g3d.drawInstanced`, `g3d.caps`,
+  `g3d.rendererInfo`. An app that never asks for it renders exactly as with SDK 1.8.
+- Lua, JavaScript, Python (`"python"` and `"python3"`) and C. Guides: [PBR_GAME_RECIPE.en.md](PBR_GAME_RECIPE.en.md),
+  [SOCIAL_APP_RECIPE.en.md](SOCIAL_APP_RECIPE.en.md), [MAKE_A_SOCIAL_APP.en.md](MAKE_A_SOCIAL_APP.en.md).
+
+## 4. minSdk and targetSdk
+
+```json
+{
+  "minSdk": "1.9",
+  "targetSdk": "1.9"
+}
+```
+
+- **`minSdk`** is the oldest SDK the app runs on: the newest SDK feature it uses. A system with an older SDK does not
+  install it, the App Market shows *This app needs a newer version of Nexvyn OS* and never offers it as an update, and a
+  copy already on the SD card opens a window that says so (with a Software Update button) instead of running.
+- **`targetSdk`** is the SDK you built and tested the app on. Later systems keep behaving the way that SDK did for your
+  app. Default: `minSdk`, or `"1.0"` when neither is given; a `targetSdk` below `minSdk` counts as `minSdk`. Studio
+  writes the current SDK into both for new projects.
+- **Raising `targetSdk` is a choice.** Read the "for apps that target SDK x" notes in the reference, test on the new
+  system, then raise it. The example so far is SDK 1.8's time limit: with `targetSdk` 1.8 or newer a stuck callback
+  ends the app with the error screen; with an older one the user is asked *Wait* or *Close*.
+- `runtimeVersion` (optional) records the engine version you tested on, for example `"2.2"` for pocketpy.
+- Unknown app.json fields and unknown permissions are ignored, so a manifest written for a newer system never breaks an
+  older one.
+
+## 5. Nothing is removed, only deprecated
+
+Every function in the reference keeps working in every later Nexvyn OS. A function that gets a replacement becomes
+*deprecated*: it works exactly as before, and the first call in a run writes
+`deprecated: <name> still works; use <replacement>` to the app's log (Studio's console shows it). Deprecated today:
+
+| Old | Use instead | What happens |
 |---|---|---|
-| Lua 5.4 | 1.0 | yes |
-| JavaScript (ES2023) | 1.1 | yes |
-| Python (`"python"`, light) | 1.3 | yes |
-| Python (`"python3"`, CPython 3.12) | 1.6 | yes |
-| C (`nexvyn.h`) | 1.5 | yes |
-| Squirrel | 1.5 | frozen at 1.8: apps keep working, no new functions |
-| Java | 1.5 | frozen at 1.8: apps keep working, no new functions |
+| `require("snx.*")` (Lua) | `require("nexvyn.*")` | loads the same module; a note in the app log |
+| permission `"clipboard"` | nothing: `sys.clipboard` needs no permission | accepted and ignored |
+| app ids `finder`, `launchpad` | `files`, `launcher` | `sys.launch`, `nxv://` links and shortcuts resolve them |
 
-New SDK functions have the same names in Lua, JavaScript, Python and C. Start new apps in one of these four.
+Runtimes are not removed either while apps use them, and a new engine version must run every App Market app, game and
+sample unchanged before it ships.
 
-## Choosing `minSdk` and `targetSdk`
+## 6. Which languages get new APIs
 
-- `minSdk`: the lowest version that has every function your app calls. A Lua app that uses `g3d.model` needs `"1.8"`;
-  one that calls `g3d.renderer` or `ui.beginFeed` needs `"1.9"`.
-- `targetSdk`: the newest version you tested on. New apps use `"1.9"`.
-- Unsure which function came when? Search the reference for the function: each section says its SDK version.
+From SDK 1.9 on, new functions come to **Lua, JavaScript, Python** (`"python"` and `"python3"`) **and C**, with the same
+names in all four. **Squirrel and Java are frozen at SDK 1.8**: everything they have, SDK 1.8's `g3d.model` functions
+included, keeps working on every later Nexvyn OS and their apps on the App Market need no change, but nothing new is
+added to them. A `minSdk` or `targetSdk` above 1.8 brings nothing new to these two languages. Frozen is not removed:
+bug and security fixes in these runtimes still ship.
+
+Start new apps in Lua, JavaScript, Python or C.
+
+## 7. Picking minSdk for your app
+
+Set `minSdk` to the highest row whose feature you use (and at least the row of your language):
+
+| You use | minSdk |
+|---|---|
+| Lua and the base modules | 1.0 (or leave it out) |
+| JavaScript | 1.1 |
+| `nexvyn.game`, `permissions` in app.json | 1.2 |
+| Python (`"python"`) | 1.3 |
+| sharing, scheduled notifications, `nxv://` links, `app.suspend` / `resume` / `autosave` and the other lifecycle callbacks | 1.4 |
+| C | 1.5 |
+| `fs.unzip`, `sys.games`, `sys.speak`, the `"python3"` runtime | 1.6 |
+| `g3d.voxels`, pixel-art textures | 1.7 |
+| `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` | 1.8 |
+| `g3d.renderer("pbr")` and the rest of *Modern rendering*, `net.request` options, `net.ws`, `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed` / `ui.pager` / `ui.richText`, `sys.relativeTime` | 1.9 |
+
+To use something newer only where it exists, check at run time and keep a fallback:
+
+```lua
+local app = {}
+
+local function sdkAtLeast(major, minor)
+  local v = sys.sdkVersion and sys.sdkVersion() or "1.0"   -- sys.sdkVersion arrived in SDK 1.2
+  local a, b = v:match("^(%d+)%.(%d+)")
+  a, b = tonumber(a) or 1, tonumber(b) or 0
+  return a > major or (a == major and b >= minor)
+end
+
+function app.load()
+  if sdkAtLeast(1, 9) then g3d.renderer("pbr") end   -- older systems keep the basic renderer
+end
+
+return app
+```
+
+Testing for the function itself works too (`if g3d.renderer then ... end`). Compare versions as numbers, not as text:
+`"1.10"` is newer than `"1.9"`.
+
+## See also
+
+[SDK reference](../Reference/SDK.en.md) · [Compatibility](COMPATIBILITY.en.md) · [Developer guide](DEVELOPER_GUIDE.en.md) ·
+[AI-assisted workflow](AI_WORKFLOW.en.md)

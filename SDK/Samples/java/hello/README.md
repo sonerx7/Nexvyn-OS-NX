@@ -22,7 +22,7 @@ The built-in **Hello Java** app: a to-do list, an analog clock and live weather 
 - `Record` (`str`, `num`, `integer`, `bool`, `rec`), a `List` in `Store`
 - `Menu.bar(new Menu(...).item(...).separator())`, `Timer.after`, `Ui.alert`
 
-**Controls:** Change tabs with the segmented control at the top.
+**Controls:** Switch tabs with the segmented control at the top.
 
 ## Running it
 

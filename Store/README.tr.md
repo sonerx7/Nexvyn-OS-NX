@@ -8,7 +8,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 
 | | Ad | Açıklama |
 |---|---|---|
-| <img src="Apps/productivity/aichat/icon.png" width="32"> | [AI Sohbet](Apps/productivity/aichat/) · Nexvyn OS ile gelir | Claude, Gemini ve GPT artık konsolunda |
+| <img src="Apps/productivity/aichat/icon.png" width="32"> | [AI Sohbet](Apps/productivity/aichat/) · Nexvyn OS ile gelir | Claude, Gemini ve GPT artık Switch'inde |
 | <img src="Apps/productivity/breathe/icon.png" width="32"> | [Nefes](Apps/productivity/breathe/) | Rehberli nefesle sakinleş |
 | <img src="Apps/productivity/budget/icon.png" width="32"> | [Bütçe](Apps/productivity/budget/) | Bütçeler, tekrarlar, aylık grafikler |
 | <img src="Apps/productivity/contacts/icon.png" width="32"> | [Kişiler](Apps/productivity/contacts/) · Nexvyn OS ile gelir | vCard destekli adres defterin |
@@ -106,7 +106,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Apps/system/network/icon.png" width="32"> | [Ağ Araçları](Apps/system/network/) · Nexvyn OS ile gelir | DNS sorgu, ping, port tarama ve hız testi |
 | <img src="Apps/system/sysinfo/icon.png" width="32"> | [Sistem Bilgisi](Apps/system/sysinfo/) · Nexvyn OS ile gelir | Konsolunla ilgili her şey, canlı |
 
-## Konsol Araçları (14)
+## Switch Araçları (14)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -123,7 +123,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Apps/switch/savebackup/icon.png" width="32"> | [Kayıt Yedekleme](Apps/switch/savebackup/) · Nexvyn OS ile gelir | Oyun kayıtlarını yedekle, geri yükle |
 | <img src="Apps/switch/sysmodules/icon.png" width="32"> | [Sistem Modülleri](Apps/switch/sysmodules/) · Nexvyn OS ile gelir | Arka plan sistem modüllerini gör, yönet |
 | <img src="Apps/switch/turkish-patches/icon.png" width="32"> | [Türkçe Yamalar](Apps/switch/turkish-patches/) · Nexvyn OS ile gelir | Oyunlarını Türkçe oynat, yamaları kolayca kur |
-| <img src="Apps/switch/yamanx/icon.png" width="32"> | [YamaNX](Apps/switch/yamanx/) · Nexvyn OS ile gelir | Konsol oyunların için Türkçe yamalar |
+| <img src="Apps/switch/yamanx/icon.png" width="32"> | [YamaNX](Apps/switch/yamanx/) · Nexvyn OS ile gelir | Switch oyunların için Türkçe yamalar |
 
 ## Diğer (4)
 
@@ -165,7 +165,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Games/action/missile/icon.png" width="32"> | [Füze Savunması](Games/action/missile/) | Altı şehir, üç batarya: göğü savun |
 | <img src="Games/puzzle/nonogram/icon.png" width="32"> | [Resim Bulmaca](Games/puzzle/nonogram/) | Kareleri boya, gizli resmi ortaya çıkar |
 | <img src="Games/action/spacearena/icon.png" width="32"> | [Uzay Arenası](Games/action/spacearena/) | Neon arenada dalga dalga düşmana dayan |
-| <img src="Games/platforms/pcgames/icon.png" width="32"> | [PC Oyunları](Games/platforms/pcgames/) · Nexvyn OS ile gelir | Steam ve PC oyunların konsolda |
+| <img src="Games/platforms/pcgames/icon.png" width="32"> | [PC Oyunları](Games/platforms/pcgames/) · Nexvyn OS ile gelir | Steam ve PC oyunların Switch'te |
 | <img src="Games/puzzle/photongarden/icon.png" width="32"> | [Foton Bahçesi](Games/puzzle/photongarden/) | 120 ışık bükme bulmacası ve bölüm düzenleyici |
 | <img src="Games/arcade/pinball/icon.png" width="32"> | [Langırt](Games/arcade/pinball/) | Paletler, tamponlar ve gerçek bir fırlatıcı |
 | <img src="Games/arcade/pixelrun/icon.png" width="32"> | [Pixel Koşu](Games/arcade/pixelrun/) | Üç dünyada koş, zıpla, düşmanları ez |

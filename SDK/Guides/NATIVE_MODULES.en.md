@@ -28,11 +28,11 @@ When the app is opened for the first time, the loader (`source/runtimes/nxvmod.c
 1. Reads the file and checks the ELF header and the `.nxvabi` section (section 3).
 2. Puts the read-only segments (code, `.rodata`, symbol tables) into a **CodeMemory** object: the RX view becomes the
    module's address 0, the RW view is at another address for writing the code. It is the same as the JIT approach in
-   C apps (TinyCC), and it works in Ryujinx too.
+   C apps (TinyCC), and it works in an emulator too.
 3. Puts the writable segments (`.data`, `.got`, `.init_array`, `.bss`) into **a second CodeMemory** object and maps it
    RW exactly at the address the module expects (right behind the RX view). This way the code's PC-relative (`adrp`)
    data accesses land in writable memory. `svcCreateCodeMemory` fills both objects with `0xFF` (the console's kernel
-   does it, and Ryujinx copies that), so the loader clears both views **after** mapping them and only then copies the
+   does it, and emulators copy that), so the loader clears both views **after** mapping them and only then copies the
    segments: `.bss` and the gaps must read as zero. (Until 1.2 the loader cleared the source pages before that call;
    `.bss` came up as `0xFF`, every function-local static's guard byte read "already constructed", and the apps crashed
    on strings and mutexes made of `0xFF` bytes. That is why 1.0.0 shipped without modules.)
@@ -139,7 +139,7 @@ Store builds (`tools/store_pending/README.md`):
 - `tools/modules.full.json`: the full split of the task plan (32 C++ apps and the 9 sample apps), after console
   testing. Its `_kept_in_nro` note lists what stays embedded and why.
 
-Both build, load and run in Ryujinx (section 10).
+Both build, load and run on the PC test setup (section 10).
 
 `romfs:/System/Modules.json` carries the name, category and icon of the module apps: a module app that is not
 installed becomes a "store only" placeholder in the registry; Quick Search says "… get it from the App Market", desktop
@@ -225,7 +225,7 @@ runs at boot except the queue's service, which never blocks: a missing network o
 
 ## 10. Result (1.2)
 
-- Loader fixed (section 1): the 8 apps of 1.0.0 load and run in Ryujinx, every module of `tools/modules.lowrisk.json` passes 3
+- Loader fixed (section 1): the 8 apps of 1.0.0 load and run on the PC test setup, every module of `tools/modules.lowrisk.json` passes 3
   open/close cycles and 5 open at once closed in another order and reopened, and the 41 packages of
   `tools/modules.full.json` open and close twice each.
 - Measured without CPython and the retro cores (`NexvynOS.nro`, bytes):
@@ -240,4 +240,4 @@ runs at boot except the queue's service, which never blocks: a missing network o
   new loader, queue, setup step and strings. The same 69 C++ apps register as in 1.1.2.
 - The NRO exports 306 symbols with the low-risk list and 751 with the full split. A clean `JOBS=8 ./build.sh` took 230 s
   before and 204 s with the low-risk list (same machine with other jobs running: within the noise). Boot to the first desktop
-  frame in Ryujinx: 8.5–8.7 s before, 7.3–9.1 s after (no measurable change).
+  frame on the PC test setup: 8.5–8.7 s before, 7.3–9.1 s after (no measurable change).

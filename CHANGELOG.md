@@ -7,7 +7,7 @@
 
 ### fieldfix: saha geri bildirimi (donma, sızıntı, tam tarayıcı, firmware) (7)
 
-- Bazı konsollarda 3 saniyede bir gelen donma giderildi: masaüstünün 3 s'lik klasör ve Çöp Kutusu taraması artık bir worker thread'de, yalnızca klasör değişince yeniden kuruluyor. Yavaş SD taklidiyle (`debug.slowSdMs` 300) Ryujinx'te 3 s'de bir 930 ms'lik takılma 0'a indi (1183 frame, ortalama 17.2 ms).
+- Bazı konsollarda 3 saniyede bir gelen donma giderildi: masaüstünün 3 s'lik klasör ve Çöp Kutusu taraması artık bir worker thread'de, yalnızca klasör değişince yeniden kuruluyor. Yavaş SD taklidiyle (`debug.slowSdMs` 300) PC test ortamında 3 s'de bir 930 ms'lik takılma 0'a indi (1183 frame, ortalama 17.2 ms).
 - Yeni `core/bgio`: ayar, durum ve log yazmaları tek bir arka plan thread'inde, aynı dosyaya giden yazmalar birleştiriliyor. Kapanışta en fazla 3 s bekleniyor. `io.background=false` eski davranışa döndürür.
 - `settings::set` değer değişmediyse diske yazmıyor (masaüstü taşınca `settings.json` her 3 s'de yeniden yazılıyordu).
 - Yeni stall log'u (`core/stall`): `perf.stallMs`'den (150) uzun süren frame hangi katman, servis ve app'te geçtiğini yazıyor.
@@ -105,7 +105,7 @@
 - `shell.cpp`: 500 ms'den uzun her frame `perf: slow frame N ms (update, window contents, draw, present; front <app>)` diye loglanıyor. Bir de `boot: desktop drawn N ms after the start` satırı var. Bir sonraki konsol logu 30 s'nin nereye gittiğini gösterecek.
 - `JOBS=8 ./build.sh` OK, `tools/nro_version.py`: 1.1.1 ok.
 - lang_check (8 dil %100), lua_check, js_check, py_check, rt_check, compat_check (145/145): OK.
-- Ryujinx çalıştırılamadı: shared SD'yi değiştirip geri yükleyen script permission classifier tarafından reddedildi.
+- PC testi çalıştırılamadı: shared SD'yi değiştirip geri yükleyen script permission classifier tarafından reddedildi.
 - BlockCraft'ta TNT: titreşim en fazla 2 s içinde bitmeli. Patlama sırasında HOME, uyku ya da pencereyi kapatmak onu hemen durdurmalı. Handheld, dual Joy-Con, tek Joy-Con ve Pro Controller ile denenmeli.
 - Controller Test'te basılı tutunca titreşim kesik kesik olmamalı.
 - Uyku → uyanma: masaüstü hemen cevap vermeli. Donarsa `Logs/system.log` içindeki son `power:` satırına bakılmalı.
@@ -128,7 +128,7 @@
 - `sdkcompat::osForSdk("1.7") = "1.1.0"` ve `sdkcompat::requirement()` eklendi ("Requires Nexvyn OS 1.1.0 or newer" /
 - Lua ve Python: free edilmiş bir mesh artık native null pointer değil, script hatası veriyor. JS binding'leri zaten
 - `g3d.voxels` 96 MB'tan az free heap varsa açıklayıcı bir `RangeError` ile reddediyor (applet mode'da R ipucuyla).
-- Ryujinx: BlockCraft bu worktree build'iyle açıldı ve menü arkasındaki voxel dünyası çizildi, crash yok. Konsoldaki crash
+- PC testi: BlockCraft bu worktree build'iyle açıldı ve menü arkasındaki voxel dünyası çizildi, crash yok. Konsoldaki crash
 
 ### osfix111: oyun müziği, touch scroll, IR kamera (23)
 
@@ -222,7 +222,7 @@
 - `source/core/g3d_gl.cpp`: voksel GPU yolu: 16 bayt vertex (`VoxVert`: 1/32 blok int16 pozisyon, uint16 atlas UV, sky / blk / shade / fx baytları), tüm chunk'ların paylaştığı quad index buffer, chunk başına AABB frustum culling, solid ve cutout önden arkaya (early-z), su arkadan öne ve culling kapalı. Atlas: NEAREST büyütme, hücre bazında 2x2 kutu filtresiyle mipmap (tile'lar arası taşma yok, yaprak kapsaması %35 eşiğiyle korunur). Shader: orijinalin "classic" ışık eğrisi (`lightCurve`), daylight x sky tint, sıcak blok ışığı, sallanan yaprak / bitki, su için dalga normali + fresnel gökyüzü yansıması + güneş parlaması + derinlikle artan opaklık. Eski GL nesneleri bir kare sonra silinir (mevcut `Dropped` kuralı).
 - `source/lua/jsapp_voxel.cpp`: `VoxelWorld` JS sınıfı (`JsApp::voxClass`), `g3d.voxels` `jsapp_draw.cpp`'de.
 - `node tools/js_check.mjs` (Blok Diyarı bundle'ı dahil), `python tools/compat_check.py`, `lang_check`, `lua_check`, `py_check`, `rt_check`.
-- Ryujinx: başlık ekranı panoraması, yeni dünya, köy yanında doğma, envanter.
+- PC testi: başlık ekranı panoraması, yeni dünya, köy yanında doğma, envanter.
 - Avuç içi modda FPS (`perf` satırları uygulama log'unda: `sdmc:/NexvynOS/System/Logs/Apps/com.sonerx7.blocklands.log`).
 - Worker thread'lerin 1. ve 2. çekirdekte açılması (applet modunda da), chunk yüklenirken takılma olmaması.
 - Bellek: görüş mesafesi 12'de GPU bellek kullanımı (chunk başına ~100-300 KB vertex).
@@ -253,7 +253,7 @@
 - Her şey her karede o anki pencere boyutundan hesaplanır (pencerenin mantıksal boyutu arayüz ölçeğini içerir):
 - Oyun sayfasının başlığı aynı yöntemle: kapak `clamp(min(H × 0.3, W × 0.22), 110, 210)`, başlık bloğu ölçülür,
 - **Eski ölçekten kalan konumlar temizleniyor.** Pencere boyutu ya da arayüz ölçeği değişince (`onRelayout`):
-- Ryujinx'te el modu %100 (1280×616 / 760×510), %125 (1024×472 / 760×472) ve %150 (852×376 / 760×376)
+- PC test ortamında el modu %100 (1280×616 / 760×510), %125 (1024×472 / 760×472) ve %150 (852×376 / 760×376)
 - **Önbellekteki kitaplık anında açılır.** Son taramanın başlıkları, adları, oyun istatistikleri ve boyutları
 - **Artımlı (incremental) yenileme.** Tarama yalnızca yeni ya da değişmiş başlıklar (ns kaydının "last updated"
 - **Kare başına sınırlı yükleme.** `gamelib::pump()` karede en fazla 4 doku ve yaklaşık 3 ms yükler (eskiden 10):
@@ -387,7 +387,7 @@
 - **Asıl neden 1 (`app_settings.cpp`, `resetAllSettings`):** Geliştirici > Tüm ayarları sıfırla (ve Hakkında > Sıfırla > Ayarları Sıfırla) `user.setupDone` değerini bilerek koruyordu; ayrıca `users.switchLinks` silindiği için sonraki açılışta Switch profili bağlantısız kalıp profil adına yeni bir kullanıcı açılabiliyordu. Artık sıfırlama `user.setupAgain` yazar; sonraki açılışın ilk `settings::load()`'u bunu `setupDone = false` yapar ve kurulum yardımcısı ad ve dil dolu olarak açılır. Profil bağlantıları ve ev klasörü korunur; kurulum yardımcısı ad değişse bile var olan ev klasörünü kullanır (yalnızca görünen adı değiştirir). Sıfırlanan oturum yeniden başlatılana kadar eskisi gibi çalışır.
 - **Asıl neden 2 (Nexvyn OS'u Sil):** silme başladıktan sonra bellekteki ayarlar (`setupDone = true`) hâlâ duruyordu; silme ekranının son karelerinde ya da kapanışta (`shell::shutdown` → `settings::saveNow`) `settings.json` yeniden yazılıyor, yalnızca `main()`'deki `erase::finalSweep()` bunu temizliyordu. Kapanış o noktaya ulaşmazsa (kapanırken bir hata, HOME ile kapatma) dosya kalıyor ve kurulum atlanıyordu. Artık silme başlarken `settings::eraseAndFreeze()` bellekteki ayarları varsayılana (kurulum yapılmadı) çeker ve o oturumda diske hiçbir şey yazmaz.
 - Sıfırlama seçeneklerinin açıklamaları (8 dil) gerçekte olanı söylüyor: ayarlar varsayılana döner, sonraki açılışta kurulum yardımcısı çalışır; dosyalar, uygulamalar ve kullanıcılar kalır. Nexvyn OS'u Sil'in açıklaması da kurulum yardımcısını anıyor. Kullanıcı rehberindeki "Ayarları sıfırlamak" bölümü güncellendi.
-- Files, Terminal, Text Editor ve Code; `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`, `sdmc:/emuMMC` (`emummc`), `sdmc:/switch`, `sdmc:/config` ve kökteki `hbmenu.nro`, `boot.dat`, `boot.ini`, `payload.bin`, `exosphere.ini` altında bir şeyi değiştirmeden önce uyarır: "Bu, Switch'inizin özel yazılımına (custom firmware) ait bir sistem dosyası. Değiştirmek ya da silmek Switch'inizin açılmamasına yol açabilir." Varsayılan düğme **İptal** (B / Escape de iptal eder), **Anlıyorum, devam et** işlemi yapar; **Bu oturumda bir daha sorma** kutusu soruyu yeniden başlatmaya kadar kapatır. Bu bir engel değil, uyarıdır.
+- Files, Terminal, Text Editor ve Code; `sdmc:/atmosphere`, `sdmc:/bootloader`, sistemin kendi veri klasörü, `sdmc:/emuMMC` (`emummc`), `sdmc:/switch`, `sdmc:/config` ve kökteki `hbmenu.nro`, `boot.dat`, `boot.ini`, `payload.bin`, `exosphere.ini` altında bir şeyi değiştirmeden önce uyarır: "Bu, Switch'inizin özel yazılımına (custom firmware) ait bir sistem dosyası. Değiştirmek ya da silmek Switch'inizin açılmamasına yol açabilir." Varsayılan düğme **İptal** (B / Escape de iptal eder), **Anlıyorum, devam et** işlemi yapar; **Bu oturumda bir daha sorma** kutusu soruyu yeniden başlatmaya kadar kapatır. Bu bir engel değil, uyarıdır.
 - Files'ta sorulan işlemler: Çöp Sepeti'ne taşıma, Hemen Sil, yeniden adlandırma (yazmaya başlamadan önce), toplu yeniden adlandırma, kes/yapıştır ve sürükle-bırak ile taşıma (çıkılan klasör de değiştiği için), içeriye kopyalama/yapıştırma, çoğaltma, sıkıştırma, açma, yeni dosya/klasör, Dosya Adlarını Onar. Kaydetme penceresi bu yerlere kaydetmeden önce sorar.
 - Terminal: `rm`, `rmdir`, `mv` (kaynak ve hedef), `cp` (hedef), `touch`, `mkdir`, `curl -o` / `wget -O` (ya da çalışılan klasör) ve `>` / `>>` yönlendirmesi sorar; İptal'de "İptal edildi: konsolun sistem dosyaları değiştirilmedi." yazar.
 - Text Editor ve Code: bu yerlerdeki bir dosyada ilk kaydetme (otomatik kaydetme dahil) bir kez sorar; reddedilirse belge kilitlenir ve Farklı Kaydet ile başka yere kaydedilir.
@@ -432,7 +432,7 @@
 - Diller: Arayüzün tamamı ve tüm yerleşik uygulamalar Almanca, Fransızca ve İspanyolcaya çevrildi
 - Geliştirici araçları: lua_check bilinmeyen simge adlarını, py_check konsolda çalışmayan iç içe koşullu ifadeleri yakalar
 - Geliştirici araçları: make_icon.py tek komutla yerleşik stilde uygulama simgesi çizer
-- Geliştirici araçları: ui_smoke.py tüm uygulamaları Ryujinx'te açıp ekran görüntüsü alır ve çökmeleri raporlar; release.py sürümü tek komutla yayımlar
+- Geliştirici araçları: ui_smoke.py tüm uygulamaları emülatörde açıp ekran görüntüsü alır ve çökmeleri raporlar; release.py sürümü tek komutla yayımlar
 - Uygulama Mağazası deposu: build_store.py paketleri, kataloğu ve listeleri üretir; kullanılan ama bildirilmeyen izinleri yayından önce yakalar
 
 ### Sıfırlama, Switch profili, Switch Araçları ve SDK 1.6 (24)
@@ -474,7 +474,7 @@
 - Denetim Merkezi'ndeki arayüz boyutu düğmeleri TV'de TV adımlarını kullanıyor
 - Kurulum yardımcısının boyut seçimi TV için yeni değerleri (küçük %67, normal %80, büyük %100) kullanıyor; yeni soru eklenmedi
 - Kumanda: Ayarlar > Kumandalar > Tuş eşleme: her tuşa (A, B, X, Y, L, R, ZL, ZR, +, −, iki çubuk basışı, dört yön tuşu) bir işlev atanabiliyor: seç/tıkla, geri/kapat (×), pencereyi kapat, bağlam menüsü, uygulama başlatıcı / Başlat, pencere değiştir, masaüstünü göster, Bildirim Merkezi, Denetim Merkezi, ekran klavyesi, ekran görüntüsü, arama, asistan, kaydırma modu, yakınlaştırma, ses ve parlaklık artır/azalt, ekranı kilitle, odak gezinme ya da hiçbir şey
-- Kumanda: Hazır düzenler: Nintendo düzeni (varsayılan, B = geri/kapat), Alternatif düzen (A/B yer değiştirmiş) ve Solak düzeni; "Varsayılanlara dön" düğmesi
+- Kumanda: Hazır düzenler: Standart düzen (varsayılan, B = geri/kapat), Alternatif düzen (A/B yer değiştirmiş) ve Solak düzeni; "Varsayılanlara dön" düğmesi
 - Kumanda: Tuş deneme alanı: basılan tuşun hangi işlevi tetiklediğini gösteriyor, hiçbir şey çalıştırmıyor (birkaç saniye sonra ya da + ve − basılı tutulunca biter)
 - Kumanda: Hiçbir tuş seçmiyor ya da geri gitmiyorsa kırmızı uyarı çıkıyor
 - Kumanda: Eşleme masaüstüne, menülere, iletişim kutularına ve yerleşik uygulamalara uygulanıyor; oyunlar ve kumandayı kendisi okuyan uygulamalar gerçek tuşları almaya devam ediyor
@@ -1534,15 +1534,15 @@
 
 ### Kamera sonrası donma düzeltmesi (fixfreeze) (3)
 
-- libnx bir transfer memory'nin (IR kameranın çalışma alanı, six-axis sensör tamponu) belleğini kendi handle'ını kapatır kapatmaz serbest bırakıyor; servis belleği hâlâ tutuyorsa (Ryujinx'in stub `irs` servisi `RunImageTransferProcessor`'dan aldığı handle'ı hiç kapatmıyor, konsolda da durdurma sürerken olabilir) çekirdek bu aralığı kilitli (borrowed) tutuyor. Heap aynı belleği tekrar dağıttığında GPU tamponları (`SetMemoryAttribute`) ve IPC tamponları (`SendSyncRequest`) `InvalidCurrentMemory` ile başarısız oluyor ve sistem donuyordu. Artık `__libnx_free` belleği heap'e vermeden önce `svcQueryMemory` ile kontrol ediyor; servisin hâlâ tuttuğu blok heap dışında kalıyor ve sistem günlüğüne bir uyarı yazılıyor
-- Kamera'yı açıp kapattıktan sonra diğer uygulamalara geçince Ryujinx'te yaşanan donma giderildi; tam UI smoke testi (74 uygulama) çökme ve script hatası olmadan bitiyor
+- libnx bir transfer memory'nin (IR kameranın çalışma alanı, six-axis sensör tamponu) belleğini kendi handle'ını kapatır kapatmaz serbest bırakıyor; servis belleği hâlâ tutuyorsa (emülatörün stub `irs` servisi `RunImageTransferProcessor`'dan aldığı handle'ı hiç kapatmıyor, konsolda da durdurma sürerken olabilir) çekirdek bu aralığı kilitli (borrowed) tutuyor. Heap aynı belleği tekrar dağıttığında GPU tamponları (`SetMemoryAttribute`) ve IPC tamponları (`SendSyncRequest`) `InvalidCurrentMemory` ile başarısız oluyor ve sistem donuyordu. Artık `__libnx_free` belleği heap'e vermeden önce `svcQueryMemory` ile kontrol ediyor; servisin hâlâ tuttuğu blok heap dışında kalıyor ve sistem günlüğüne bir uyarı yazılıyor
+- Kamera'yı açıp kapattıktan sonra diğer uygulamalara geçince PC test ortamında yaşanan donma giderildi; tam UI smoke testi (74 uygulama) çökme ve script hatası olmadan bitiyor
 - Geliştiriciler: `tools/ui_smoke.py` isteğe bağlı (optional) sistem uygulamalarını test süresince ekliyor (`enableall`), böylece 37 uygulamanın App Market sayfası yerine kendi penceresi test ediliyor; `apps.optionalEnabled` ayarı test bitince eski haline dönüyor
 
 ### 3D oyun testi çökmesi, Switch Araçları klasörü ve dili izleyen masaüstü klasörleri (fix11) (14)
 
-- **Asıl neden (g3d GPU back end):** Oyun Motoru'nda bir 3D projede **Oynat**'a basınca editörün 3D sahnesi ve oyun testi penceresi aynı karede çiziliyor. Oyun testinin görünümü daha büyük olduğu için g3d'nin offscreen texture'ı büyütülüyor, eski texture (editör onu aynı karede ekrana kopyalamıştı) ve depth renderbuffer'ı kare ekrana verilmeden siliniyordu. GPU sürücüsü (Switch nouveau) bunları o karenin push buffer'ında hâlâ tutuyordu ve `SDL_RenderPresent` içinde ikinci kez serbest bıraktı (`nouveau_bo_del` → `free` → çift free). Ryujinx günlüksüz kapanıyordu (HostMappedUnsafe'te 0xC0000005); konsolda da aynı hata vardı. 2D Platform oyunu etkilenmiyordu çünkü 2D editör g3d kullanmıyor.
+- **Asıl neden (g3d GPU back end):** Oyun Motoru'nda bir 3D projede **Oynat**'a basınca editörün 3D sahnesi ve oyun testi penceresi aynı karede çiziliyor. Oyun testinin görünümü daha büyük olduğu için g3d'nin offscreen texture'ı büyütülüyor, eski texture (editör onu aynı karede ekrana kopyalamıştı) ve depth renderbuffer'ı kare ekrana verilmeden siliniyordu. GPU sürücüsü (Switch nouveau) bunları o karenin push buffer'ında hâlâ tutuyordu ve `SDL_RenderPresent` içinde ikinci kez serbest bıraktı (`nouveau_bo_del` → `free` → çift free). Emülatör günlüksüz kapanıyordu (HostMappedUnsafe'te 0xC0000005); konsolda da aynı hata vardı. 2D Platform oyunu etkilenmiyordu çünkü 2D editör g3d kullanmıyor.
 - g3d artık kullanmayı bıraktığı GL nesnelerini (ölü mesh'lerin buffer'ları, küçük kalan offscreen texture, eski depth buffer) bir kare sonra siliyor: yeni `gfx::frameIndex()` her karede ilerliyor ve hiçbir nesne, kullanıldığı kare ekrana verilmeden silinmiyor. Büyüyen hedef, kullanılmakta olan depth buffer'ı yeniden boyutlandırmak yerine yeni bir renderbuffer alıyor.
-- Ryujinx'te 3D Koşucu, 3D Yarış, 3D Toplama ve Boş 3D şablonları ile Robot Koşusu ve Altın Ada örnekleri Oyun Motoru'ndan açılıp oynatıldı: hepsi çalışıyor. `lua_check --workshop` her türü her temada (78 paket) oynatıyor, hata yok.
+- PC test ortamında 3D Koşucu, 3D Yarış, 3D Toplama ve Boş 3D şablonları ile Robot Koşusu ve Altın Ada örnekleri Oyun Motoru'ndan açılıp oynatıldı: hepsi çalışıyor. `lua_check --workshop` her türü her temada (78 paket) oynatıyor, hata yok.
 - **Koşucu (runner) stili:** kendiliğinden koşan oyuncu şeridindeki bir kutuya (solid) çarpınca sonsuza dek orada takılı kalıyordu. Artık önündeki engele bir an dayanınca bu bir çarpma sayılıyor: bir can gider (şablonların "kutulara çarpma!" uyarısındaki gibi) ve oyuncu bir adım geri sekip kaçabiliyor ya da zıplayabiliyor. Yandan bir engele sürtünmek can götürmüyor.
 - Yeni kurulumdan sonra **Switch Araçları** klasöründe yalnızca YamaNX vardı: diğer araçlar isteğe bağlı (optional) yerleşik uygulamalar ve App Market'ten **Al** denince kuruluyor, ama kısayolları klasöre hiç eklenmiyordu. Artık bir uygulama kurulunca ya da isteğe bağlı bir uygulama eklenince kısayolu ait olduğu varsayılan masaüstü klasörüne (Oyunlar, Araçlar, Ofis, Medya, Switch Araçları) ekleniyor; klasör yoksa yeniden oluşturulmuyor. Yerleşik uygulamalar `defaultGroups()` listelerine göre, paketten kurulan uygulamalar app.json `category` alanına göre (`switch` → Switch Araçları, `games` → Oyunlar, `utilities` → Araçlar, `productivity` → Ofis, `media` → Medya) yerleşiyor. Masaüstünde zaten kısayolu olan bir uygulamaya klasörde ikincisi açılmıyor.
 - Uygulama kaldırılınca ya da isteğe bağlı uygulama çıkarılınca sistemin yaptığı kısayol da klasörden siliniyor; yeniden eklenince geri geliyor.
@@ -1602,7 +1602,7 @@
 - Dil listesindeki ikinci ad artık seçili arayüz dilinde ("日本語 · Japonca"); en, tr, de, fr ve es için dil adları eklendi
 - Japonca, Çince ve Korece karakterler her yerde çiziliyor (dosya adları, web sayfaları, sohbet, notlar): konsolun kendi shared font'ları (pl:u) runtime'da kullanılıyor, NRO'ya yazı tipi eklenmedi
 - Han karakterleri arayüz dilinin bölgesel biçimiyle çiziliyor (ja → Japonca, zh → Basitleştirilmiş Çince, ko → Korece yazı tipi), arayüz CJK değilse konsol dilininkiyle; dil değişince hemen güncelleniyor
-- Fallback glyph'ler Latin yazının baseline'ına hizalı; Nintendo tuş sembolleri (NintendoExt) de metinde görünüyor
+- Fallback glyph'ler Latin yazının baseline'ına hizalı; tuş sembolleri (genişletilmiş sembol yazı tipi) de metinde görünüyor
 - Shared font yoksa (firmware yazı tipleri olmayan bir emülatör) `sdmc:/NexvynOS/System/Fonts/` içindeki bir Noto Sans CJK font pack'i (NotoSansCJK-Regular.ttc ya da NotoSansJP / SC / KR / TC) kullanılıyor; dosya belleğe okunmadan karttan stream ediliyor
 - Ayarlar > Dil ve Bölge: "CJK yazı tipi" satırı kaynağı gösteriyor (konsol yazı tipi / font pack / bulunamadı); bulunamazsa ne yapılacağını anlatan not
 - Satır kırma: CJK metinler iki karakter arasında kırılıyor; kapanış noktalamasından (、。」） küçük kana, ー) önce ve açılış noktalamasından (「（) sonra kırılmıyor (kinsoku); Korece arayüzde kelimeler bölünmüyor
@@ -1610,7 +1610,7 @@
 - Metin alanlarında çift dokunma / uzun basma ve "Seç" CJK kelimeleri seçiyor; metin düzenleyicinin kelime sayacı her ideogramı bir kelime sayıyor
 - Ekran klavyesi: Korece 2-set düzeni; jamo'lar yazarken heceye birleşiyor (ㅎ ㅏ ㄴ → 한), Shift sert ünsüzleri veriyor, Backspace son jamo'yu geri alıyor
 - Ekran klavyesi: Japonca romaji düzeni; romaji hiraganaya dönüşüyor (nihongo → にほんご), Shift / caps lock ile katakana, 、。「」ー tuşları
-- Ekran klavyesi: Japonca, Çince ya da Korece arayüzde (veya düzende) bir IME tuşu Nintendo sistem klavyesini doğru klavye türüyle açıyor (Korece, Basitleştirilmiş Çince pinyin, Japonca kana-kanji); sonuç odaktaki alana giriyor
+- Ekran klavyesi: Japonca, Çince ya da Korece arayüzde (veya düzende) bir IME tuşu sistem klavyesini doğru klavye türüyle açıyor (Korece, Basitleştirilmiş Çince pinyin, Japonca kana-kanji); sonuç odaktaki alana giriyor
 - Sistem klavyesi artık her yerde (klavye menüsü, "sistem klavyesi" giriş modu) CJK yazabiliyor; eskiden yalnızca QWERTY açılıyordu
 - Metin düzenleme balonunda CJK arayüzde "Sistem klavyesi" seçeneği
 - Sistem klavyesi açılamazsa (applet modu) nedenini ve çözümünü anlatan bir bildirim çıkıyor (oturumda bir kez); iptal etmek bildirim göstermiyor

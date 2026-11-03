@@ -87,8 +87,8 @@ If in doubt, start with **Lua**: it has the most samples, the kits and Studio's 
 
 | You want to | Read |
 |---|---|
-| Build a 3D game with the pbr renderer, step by step | [Recipes](Guides/RECIPES.en.md), recipe 1 (Lua and JavaScript) · [Make a game](Guides/MAKE_A_GAME.en.md) |
-| Build a feed, photo, short-video or chat app | [Recipes](Guides/RECIPES.en.md), recipe 2 · [Make a social app](Guides/MAKE_A_SOCIAL_APP.en.md) |
+| Build a 3D game with the pbr renderer, step by step | [PBR game recipe](Guides/PBR_GAME_RECIPE.en.md) (Lua, JavaScript, Python, C) · [Make a game](Guides/MAKE_A_GAME.en.md) |
+| Build a feed, photo, short-video or chat app | [Social app recipe](Guides/SOCIAL_APP_RECIPE.en.md) · [Make a social app](Guides/MAKE_A_SOCIAL_APP.en.md) |
 | Use AI tools for code, models and textures | [AI-assisted workflow](Guides/AI_WORKFLOW.en.md) · [SDK/AI](AI/README.md) |
 | Make it sound and feel good | [Sound design](Guides/SOUND_DESIGN.en.md) · [Graphics, UI and game feel](Guides/GAME_FEEL.en.md) |
 | Know which SDK version has what | [SDK versions](Guides/SDK_VERSIONS.en.md) · [Compatibility](Guides/COMPATIBILITY.en.md) |

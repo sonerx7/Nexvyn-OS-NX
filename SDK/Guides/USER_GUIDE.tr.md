@@ -5,7 +5,7 @@
 Bu rehber, Nexvyn OS'u konsoluna kuran ve günlük olarak kullanan kişi içindir. Uygulama yazmak istiyorsanız
 [DEVELOPER_GUIDE.tr.md](DEVELOPER_GUIDE.tr.md) belgesine bakın.
 
-Nexvyn OS, Nintendo Switch için bir homebrew masaüstü kabuğudur (`NexvynOS.nro`). Konsolun kendi sistemini değiştirmez:
+Nexvyn OS, Atmosphère kurulu Switch için bir homebrew masaüstü kabuğudur (`NexvynOS.nro`). Konsolun kendi sistemini değiştirmez:
 Homebrew menüsünden açılır, kapatınca Homebrew menüsüne dönülür. Arayüz Türkçe ve İngilizcedir; yeni dil eklenebilir.
 
 ## İçindekiler
@@ -75,9 +75,9 @@ Sistem menüsünde **Nexvyn OS'tan Çık…** seçeneği Nexvyn OS'u kapatır ve
 **Ekranı Kilitle**, **Konsolu Yeniden Başlat…** ve **Konsolu Kapat…** da vardır. Kaydedilmemiş belgeleri önce
 kaydedin.
 
-### Emülatörde (Ryujinx)
+### Emülatörde
 
-Nexvyn OS Ryujinx'te de açılır. Emülatörde bulunmayan donanım servisleri (parlaklık, USB, MTP, oyun başlatma, PC oyunları,
+Nexvyn OS bilgisayarda bir emülatörde de açılır. Emülatörde bulunmayan donanım servisleri (parlaklık, USB, MTP, oyun başlatma, PC oyunları,
 oyun kayıtları, build ID gibi) orada kapalı ya da "kullanılamıyor" olarak görünür.
 
 ---
@@ -358,7 +358,7 @@ sonra ekran klavyesi gizli kalır.
 | Esc | Açık menüyü, aramayı ya da paneli kapatır |
 
 Klavye düzeni (Türkçe Q veya İngilizce ABD): **Sistem Ayarları > Klavye ve Giriş**. Aynı yerden ekran klavyesi
-yerine konsolun kendi klavyesini ("Nintendo sistem klavyesi") seçebilirsiniz.
+yerine konsolun kendi sistem klavyesini seçebilirsiniz.
 
 ---
 
@@ -504,7 +504,7 @@ Onar...** aynı işi açık klasör için yapar.
 ### Konsolun sistem dosyaları
 
 Dosyalar, Terminal, Metin Düzenleyici ve Code, konsolun özel yazılımına (custom firmware) ya da diğer homebrew
-uygulamalarına ait bir şeyi değiştirmeden önce uyarır: `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`,
+uygulamalarına ait bir şeyi değiştirmeden önce uyarır: `sdmc:/atmosphere`, `sdmc:/bootloader`, sistemin kendi veri klasörü,
 `sdmc:/emuMMC`, `sdmc:/switch`, `sdmc:/config` ve kartın kökündeki açılış dosyaları (`hbmenu.nro`, `boot.dat`,
 `boot.ini`, `payload.bin`, `exosphere.ini`). Bunları değiştirmek ya da silmek konsolun açılmamasına yol açabilir.
 Varsayılan düğme **İptal**'dir; **Anlıyorum, devam et** işlemi yapar, **Bu oturumda bir daha sorma** ise Nexvyn OS
@@ -521,7 +521,7 @@ tarafından kilitli kalır.
 - Desteklenen dosya sistemleri: FAT12/16/32 ve exFAT. NTFS desteklenmez.
 - Çıkarmadan önce Dosyalar'da belleğin yanındaki **Güvenli Çıkar** düğmesine basın. "Artık çıkarabilirsiniz" yazınca
   çıkarın.
-- USB bellek Ryujinx'te çalışmaz.
+- USB bellek emülatörde çalışmaz.
 
 ### Bilgisayara Bağlan
 
@@ -541,7 +541,7 @@ seçilir. Parola koymazsanız aynı ağdaki herkes bağlanabilir. FTP şifrelenm
 **USB kablosu (MTP):** konsolu dock dışında USB-C kablosuyla bilgisayara bağlayın; bilgisayar onu bir telefon gibi
 görür. Bu özellik yalnızca gerçek konsolda çalışır.
 
-Bilinen durum: FTP sunucusu Windows'tan Ryujinx'te denendi; listeleme, klasörler ve indirme çalıştı, yükleme
+Bilinen durum: FTP sunucusu bir bilgisayardan emülatörde denendi; listeleme, klasörler ve indirme çalıştı, yükleme
 emülatörün ağ katmanı yüzünden orada denenemedi. MTP ve FTP yüklemesinin gerçek konsolda doğrulanması bekleniyor.
 
 ### FTP İstemcisi
@@ -713,7 +713,7 @@ Masaüstündeki **Modlama** klasörü oyun modlamak için altı uygulamayı topl
 - **Modlu oyunla ya da hilelerle çevrimiçi oynamak hesabınızın engellenmesine yol açabilir.**
 - Bu uygulamalar yalnızca SD kart üzerinde çalışır; arşivlerdeki SD kartın dışını gösteren yollar yazılmaz.
 - Konsol servisi gerektiren bölümler (build ID, çalışan oyun, sistem modüllerini başlatma/durdurma, kayıtlar) yalnızca
-  gerçek konsolda çalışır; emülatörde "bilinmiyor" görünür. Bu uygulamalar Ryujinx'te denendi, gerçek konsolda henüz
+  gerçek konsolda çalışır; emülatörde "bilinmiyor" görünür. Bu uygulamalar emülatörde denendi, gerçek konsolda henüz
   doğrulanmadı. Önemli kayıtlarınızı ve dosyalarınızı önce yedekleyin.
 
 | Uygulama | Ne yapar |
@@ -861,7 +861,7 @@ oyun alanı, 2D efektler ve parçacıklardan oluşan logo. Bütün modeller, dok
 - A / sağ ok: sonraki sahne · B / sol ok: önceki · +: duraklat · X: istatistik paneli (FPS, üçgen, çizim çağrısı,
   çizim yolu) · Y: müzik · −: kalite (Otomatik, Düşük, Orta, Yüksek).
 - Çubuklarla ya da sürükleyerek serbest kamera.
-- Otomatik kalitede kare hızı düşerse kalite bir basamak iner. Ryujinx'te ekran kartı yolunda 58–60 FPS ölçüldü;
+- Otomatik kalitede kare hızı düşerse kalite bir basamak iner. PC test ortamında ekran kartı yolunda 58–60 FPS ölçüldü;
   gerçek konsolda değerler farklı olabilir.
 
 ### Ofis

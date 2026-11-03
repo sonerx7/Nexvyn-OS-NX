@@ -9,7 +9,8 @@ Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin
 
 | Rehber | Konusu |
 |---|---|
-| [Tarifler](RECIPES.tr.md) | Adım adım iki eksiksiz uygulama, Lua ve JavaScript'te, Python ve C notlarıyla: PBR'lı bir 3B oyun (renderer, materyal, ışık, gölge, bloom, instancing) ve bir sosyal fotoğraf akışı (ağ, web resimleri, sanal akış, zengin metin) |
+| [PBR oyun tarifi](PBR_GAME_RECIPE.tr.md) | pbr renderer üzerinde adım adım eksiksiz küçük bir 3B oyun (materyal, ışık, gölge, bloom, instancing, yüklenen model), Lua ve JavaScript'te, Python ve C sürümleriyle |
+| [Sosyal uygulama tarifi](SOCIAL_APP_RECIPE.tr.md) | Adım adım eksiksiz bir akış uygulaması (çevrimdışı önbellekli ağ, web resimleri, sanal akış, zengin metin, klip oynatıcı), Lua ve JavaScript'te, Python ve C sürümleriyle |
 | [AI destekli çalışma](AI_WORKFLOW.tr.md) | AI ile üretilmiş kod, model ve dokulardan konsola hazır oyuna: context pack'ler, ölçek, pivot, LOD, doku boyutları, ORM ve MetallicSmoothness haritaları, normal haritaları, cam ve ışıma, yansımalar, haklar |
 | [SDK sürümleri](SDK_VERSIONS.tr.md) | 1.0'dan 1.9'a her SDK sürümünün ekledikleri, hangi Nexvyn OS'la geldiği, hangi dillerin yeni API aldığı, `minSdk` ve `targetSdk` seçimi |
 | [Oyun yap](MAKE_A_GAME.tr.md) | Eksiksiz oyun tarifi: proje, 3B modeller (`.glb` / `.fbx`), yükleme, girdi, çarpışma, konsolda hız, pbr renderer bütçesi, sanat yönü, mağaza ikonu, yayımlama |
@@ -52,4 +53,4 @@ Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin
 | [Türkçe yamalar](TURKISH_PATCHES.tr.md) | Türkçe Yamalar uygulaması |
 
 Nereden başlamalı: [SDK başlangıç sayfası](../README.tr.md), sonra [dilinizin hızlı başlangıcı](../Languages/README.tr.md),
-sonra [Tarifler](RECIPES.tr.md).
+sonra [PBR oyun tarifi](PBR_GAME_RECIPE.tr.md) ya da [sosyal uygulama tarifi](SOCIAL_APP_RECIPE.tr.md).
