@@ -6,6 +6,26 @@ Everything for people who make apps, games, themes and fonts for Nexvyn OS: the 
 template for each language, guides, working samples, prompts for AI assistants, the publishing guide and the `nxv`
 command line. Every document exists in English (`NAME.en.md`, `README.md`) and Turkish (`NAME.tr.md`, `README.tr.md`).
 
+## New in SDK 1.8: 3D models, animation and a recipe for games
+
+<p align="center"><img src="../.github/assets/ember-field.webp" width="49%" alt="Ember Field: a small 3D game with an animated .glb hero"> <img src="../.github/assets/fbx-walk.webp" width="49%" alt="Eight animated FBX robots with skinned walk cycles"></p>
+
+- **3D model files:** `g3d.model(path[, size])` opens `.glb`, `.gltf` and `.fbx` (also `.obj` and `.stl`) with the node
+  tree, materials, embedded textures, skins and animation clips. `g3d.loadModel(path[, size], callback)` loads in the
+  background, so the game keeps drawing.
+- **Animation:** `model:play(name, {loop, speed, fade})`, crossfades, `stop`, `setTime`, GPU skinning, and
+  `model:nodeMatrix` with `g3d.drawMatrix` to attach objects to bones.
+- **The same API in Lua, JavaScript, Python and C.** Squirrel and Java apps keep working as they are. Apps for SDK 1.0
+  to 1.7 run unchanged; new behaviour only applies to apps with `"targetSdk": "1.8"`.
+- **[Make a game](Guides/MAKE_A_GAME.en.md):** the complete recipe from an empty project to the App Market: 3D models,
+  loading, input, collision, speed on the console, your own art direction, the key-art icon and publishing.
+- **[Ember Field](Samples/lua/ember-field/):** a complete small 3D game with an animated `.glb` hero, also a Studio
+  template. **3D models** is a smaller template with two clips and an attachment.
+- **[AI prompts](AI/README.md)** for SDK 1.8, including *make a 3D game with models* and *the store icon*. Apps are
+  written in English, with `lang/*.json` files for more languages.
+- On the console: **Quick Game** in the Game Engine and the new **3D Modeler** tools (bevel, loop cut, modifiers,
+  `.glb` export) make the models and levels your code loads.
+
 ## Start here
 
 | Language | 1. Quick start | 2. Template | 3. Guide | 4. Samples |

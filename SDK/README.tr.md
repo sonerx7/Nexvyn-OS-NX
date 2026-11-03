@@ -6,6 +6,26 @@ Nexvyn OS için uygulama, oyun, tema ve yazı tipi yapanlar için her şey: SDK 
 ve şablon, rehberler, çalışan örnekler, yapay zekâ asistanları için istemler, yayımlama rehberi ve `nxv` komut satırı.
 Her belge İngilizce (`NAME.en.md`, `README.md`) ve Türkçe (`NAME.tr.md`, `README.tr.md`) olarak vardır.
 
+## SDK 1.8'de yeni: 3B modeller, animasyon ve oyun tarifi
+
+<p align="center"><img src="../.github/assets/ember-field.webp" width="49%" alt="Kor Tarlası (Ember Field): animasyonlu .glb kahramanlı küçük bir 3B oyun"> <img src="../.github/assets/fbx-walk.webp" width="49%" alt="İskeletli yürüme animasyonuyla sekiz animasyonlu FBX robot"></p>
+
+- **3B model dosyaları:** `g3d.model(path[, size])`, `.glb`, `.gltf` ve `.fbx` dosyalarını (ayrıca `.obj` ve `.stl`)
+  node ağacı, materyalleri, gömülü texture'ları, iskeletleri ve animasyon klipleriyle açar.
+  `g3d.loadModel(path[, size], callback)` arka planda yükler, oyun çizmeye devam eder.
+- **Animasyon:** `model:play(name, {loop, speed, fade})`, geçişler (crossfade), `stop`, `setTime`, GPU skinning ve
+  kemiklere nesne bağlamak için `model:nodeMatrix` ile `g3d.drawMatrix`.
+- **Aynı API Lua, JavaScript, Python ve C'de.** Squirrel ve Java app'leri olduğu gibi çalışmaya devam eder. SDK 1.0-1.7
+  için yapılan app'ler değişmeden çalışır; yeni davranış yalnızca `"targetSdk": "1.8"` olan app'lere uygulanır.
+- **[Oyun yap](Guides/MAKE_A_GAME.tr.md):** boş projeden Uygulama Mağazası'na eksiksiz tarif: 3B modeller, yükleme,
+  girdi, çarpışma, konsolda hız, size ait bir sanat yönü, key art ikon ve yayın.
+- **[Kor Tarlası (Ember Field)](Samples/lua/ember-field/):** animasyonlu `.glb` kahramanlı eksiksiz küçük bir 3B oyun;
+  aynı zamanda Studio şablonu. **3B modeller** iki klipli ve takılı nesneli daha küçük bir şablon.
+- **SDK 1.8'e göre [AI istemleri](AI/README.tr.md)**, *modellerle 3B oyun yap* ve *mağaza ikonu* dahil. App'ler
+  İngilizce yazılır, başka diller `lang/*.json` dosyalarıyla eklenir.
+- Konsolda: Oyun Motoru'ndaki **Hızlı Oyun** ve **3D Modelleme**'nin yeni araçları (bevel, loop cut, modifier'lar,
+  `.glb` dışa aktarma) kodunuzun yüklediği modelleri ve bölümleri üretir.
+
 ## Buradan başlayın
 
 | Dil | 1. Hızlı başlangıç | 2. Şablon | 3. Rehber | 4. Örnekler |
