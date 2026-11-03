@@ -1,99 +1,144 @@
-# Nexvyn OS SDK · Uygulama Geliştirme
+# Nexvyn OS SDK
 
 [English](README.md) · **Türkçe**
 
-Nexvyn OS için uygulama, oyun, tema ve yazı tipi yapanlar için her şey: SDK başvurusu, her dil için hızlı başlangıç
-ve şablon, rehberler, çalışan örnekler, yapay zekâ asistanları için istemler, yayımlama rehberi ve `nxv` komut satırı.
-Her belge İngilizce (`NAME.en.md`, `README.md`) ve Türkçe (`NAME.tr.md`, `README.tr.md`) olarak vardır.
+Nexvyn OS için uygulama, oyun, tema ve yazı tipi yapanlar için her şey: SDK başvurusu, her dil için hızlı başlangıç ve
+şablon, rehberler ve tarifler, çalışan örnekler, AI asistanları için context pack'ler, yayımlama rehberi ve komut
+satırı araçları. Her belge İngilizce ve Türkçe vardır.
 
-## SDK 1.8'de yeni: 3B modeller, animasyon ve oyun tarifi
+**Güncel sürüm: SDK 1.9** (Nexvyn OS 1.3.0). SDK 1.0-1.8 için yapılmış uygulamalar değişmeden çalışır
+([SDK sürümleri](Guides/SDK_VERSIONS.tr.md)).
 
-<p align="center"><img src="../.github/assets/ember-field.webp" width="49%" alt="Kor Tarlası (Ember Field): animasyonlu .glb kahramanlı küçük bir 3B oyun"> <img src="../.github/assets/fbx-walk.webp" width="49%" alt="İskeletli yürüme animasyonuyla sekiz animasyonlu FBX robot"></p>
+## Bir bakışta SDK 1.9
 
-- **3B model dosyaları:** `g3d.model(path[, size])`, `.glb`, `.gltf` ve `.fbx` dosyalarını (ayrıca `.obj` ve `.stl`)
-  node ağacı, materyalleri, gömülü texture'ları, iskeletleri ve animasyon klipleriyle açar.
-  `g3d.loadModel(path[, size], callback)` arka planda yükler, oyun çizmeye devam eder.
-- **Animasyon:** `model:play(name, {loop, speed, fade})`, geçişler (crossfade), `stop`, `setTime`, GPU skinning ve
-  kemiklere nesne bağlamak için `model:nodeMatrix` ile `g3d.drawMatrix`.
-- **Aynı API Lua, JavaScript, Python ve C'de.** Squirrel ve Java app'leri olduğu gibi çalışmaya devam eder. SDK 1.0-1.7
-  için yapılan app'ler değişmeden çalışır; yeni davranış yalnızca `"targetSdk": "1.8"` olan app'lere uygulanır.
-- **[Oyun yap](Guides/MAKE_A_GAME.tr.md):** boş projeden Uygulama Mağazası'na eksiksiz tarif: 3B modeller, yükleme,
-  girdi, çarpışma, konsolda hız, size ait bir sanat yönü, key art ikon ve yayın.
-- **[Kor Tarlası (Ember Field)](Samples/lua/ember-field/):** animasyonlu `.glb` kahramanlı eksiksiz küçük bir 3B oyun;
-  aynı zamanda Studio şablonu. **3B modeller** iki klipli ve takılı nesneli daha küçük bir şablon.
-- **SDK 1.8'e göre [AI istemleri](AI/README.tr.md)**, *modellerle 3B oyun yap* ve *mağaza ikonu* dahil. App'ler
-  İngilizce yazılır, başka diller `lang/*.json` dosyalarıyla eklenir.
-- Konsolda: Oyun Motoru'ndaki **Hızlı Oyun** ve **3D Modelleme**'nin yeni araçları (bevel, loop cut, modifier'lar,
-  `.glb` dışa aktarma) kodunuzun yüklediği modelleri ve bölümleri üretir.
+<p align="center"><img src="../.github/assets/nexgfx-orbit.webp" width="100%" alt="NexGFX ile çizilmiş bir toplantı odasında dönen kamera: camdan giren güneş, gölgeler, kromda ve clearcoat zeminde yansımalar"></p>
+
+### NexGFX pbr renderer
+
+3B uygulama ve oyunlar için fiziksel tabanlı bir renderer; uygulama başına `g3d.renderer("pbr")` ile açılır.
+
+| Özellik | API |
+|---|---|
+| Normal, occlusion ve emissive haritalı metallic-roughness materyaller; glTF ORM, FBX harita setleri, MetallicSmoothness | model dosyasından ya da `g3d.material(meshOrModel, {...}[, name])` |
+| Gerçek zamanlı ışıklar: güneş ve 16'ya kadar nokta, spot ve yönlü ışık (nesne başına 8) | `g3d.light`, `g3d.addLight`, `g3d.updateLight`, `g3d.removeLight` |
+| Gölgeler: güneş (görüşe oturtulmuş, filtreli) ve bir spot ışık | `g3d.shadows({quality, distance, bias})` |
+| Cam: kırılmalı ince geçirgenlik, Fresnel yansıması; alfa karışımı ve alpha to coverage'lı kesik | `transmission`, `ior`, glTF alfa modları |
+| Gök yarım küresinden ya da 6 yüzlü bir cube map'ten (yansıma probu) yansıma ve ortam ışığı | `g3d.environment({sky, ground, cubemap})` |
+| HDR, ACES ya da filmic ton eşleme, bloom, MSAA 2x / 4x / 8x | `g3d.postfx({exposure, tonemap, bloom, msaa})` |
+| GPU instancing, çağrı başına 128 kopyaya kadar | `g3d.drawInstanced(mesh, transforms)` |
+| Konsolun sundukları ve kareleri neyin çizdiği | `g3d.caps()`, `g3d.rendererInfo()` |
+
+Konsol OpenGL ES 3 sunmuyorsa `g3d.renderer("pbr")` `"basic"` döndürür ve aynı çağrılar yine çizer.
+
+| | |
+|:---:|:---:|
+| <img src="../.github/assets/nexgfx-effects.webp" alt="Aynı oda gölgesiz ve bloom'suz, sonra gölge, bloom ve 4x MSAA ile"> | <img src="../.github/assets/sample-pbr3d.webp" alt="PBR, Işıklar ve Gölgeler örneği: emissive şeritli kasalar, pürüzlüden parlak metale küreler, sütunlar ve renkli ışıklar"> |
+| **Son efektler:** gölge, bloom, MSAA | **[PBR, Işıklar ve Gölgeler](Samples/lua/pbr3d/)** örneği |
+
+### Akış, medya ve ağ
+
+| Özellik | API |
+|---|---|
+| JSON, form, multipart ve dosya gövdeli HTTP; yükleme ilerlemesi, çerezler, yeniden deneme, çevrimdışı önbellek | `net.request(options, callback[, progress])`, `net.cancel` |
+| WebSocket istemcisi | `net.ws`, `net.wsSend`, `net.wsPoll`, `net.wsClose` |
+| Konsolun tarayıcısıyla oturum açma (PKCE'li OAuth 2.0) | `net.oauth` |
+| Disk ve bellek önbellekli web resimleri, küçük resimler | `gfx.imageUrl(url, maxSize)` |
+| Uygulama içinde video ve ses oynatıcılar (dosya, MP4, HLS) | `media.open`, `media.draw`, `media.play` ... |
+| Sanal listeler ve ızgaralar, çek-yenile, sonsuz kaydırma | `ui.beginFeed`, `ui.feedItem`, `ui.endFeed` |
+| Tam ekran kaydırmalı sayfalayıcı | `ui.pager` |
+| Kalın, bağlantı, bahsetme ve etiketli zengin metin; 8 dilde "5 dk" tarzı zamanlar | `ui.richText`, `sys.relativeTime` |
+
+<p align="center"><img src="../.github/assets/sample-social-feed.webp" width="90%" alt="Sosyal Akış örneği: karanlık modda fotoğraf akışı, fotoğraf ızgarası ve dikey klip sayfalayıcı"></p>
+
+### SDK 1.9'da ayrıca
+
+- **Runtime kütüphanesi:** Lua'da `net.request`; JavaScript'te `TextEncoder`, `TextDecoder`, `URL`,
+  `URLSearchParams`, `structuredClone`; Python'da daha fazla `str` metodu, `urllib.parse`, `html`, `uuid`.
+- **Lua, JavaScript, Python ve C'de aynı API.** Squirrel ve Java çalışmaya devam eder, SDK 1.8'de donduruldu.
+
+## Kitler ve araçlar
+
+| | |
+|---|---|
+| [Ses kiti](Languages/lua/kits/README.tr.md) (`sfx`) | Tariflerden katmanlı ses efektleri ve müzik: varyantlar, bus'lar, ducking, ortam sesi, müzik döngüleri. Rehber: [Ses tasarımı](Guides/SOUND_DESIGN.tr.md) |
+| [His kiti](Languages/lua/kits/README.tr.md) (`juice`) | Easing ve tween, sarsıntı, hit-stop, parçacıklar, parlama, başlıklar, paneller, düğmeler, geçişler, 2B ve 3B kameralar, 3B ışık atmosferleri. Rehber: [Grafik, arayüz ve oyun hissi](Guides/GAME_FEEL.tr.md) |
+| [İkon aracı](Tools/icon/README.tr.md) | Oyunun kendi modelini çizer ve her boyutta key-art mağaza ikonunu üretir; stil `clean` (varsayılan), `bold` ya da `loud` |
+| [Doku aracı](Tools/textures/README.tr.md) | PBR doku setlerini denetler, haritaları küçültür, ORM paketler, MetallicSmoothness ve DirectX normal haritalarını dönüştürür |
+| [nxv](Tools/nxv/README.tr.md) | Şablondan yeni proje, denetim, derleme (Java), paketleme, imzalama, kurma, konsola gönderme |
+
+Kitler Lua ve JavaScript için vardır (`Languages/lua/kits`, `Languages/javascript/kits`).
+
+<p align="center"><img src="Tools/icon/examples/ember-field/preview.png" width="32%" alt="İkon aracıyla Ember Field için yapılmış key-art ikon, clean stil"> <img src="Tools/icon/examples/orbit-rush/preview.png" width="32%" alt="İkon aracıyla Orbit Rush için yapılmış key-art ikon"> <img src="Tools/icon/examples/shard/preview.png" width="32%" alt="İkon aracıyla Shard için yapılmış key-art ikon"></p>
 
 ## Buradan başlayın
 
 | Dil | 1. Hızlı başlangıç | 2. Şablon | 3. Rehber | 4. Örnekler |
 |---|---|---|---|---|
-| **Lua 5.4** (önerilen) | [Languages/lua](Languages/lua/README.tr.md) | [template](Languages/lua/template/) | [Geliştirici rehberi](Guides/DEVELOPER_GUIDE.tr.md), [oyun motoru](Guides/GAME_ENGINE.tr.md) | [Samples/lua](Samples/lua/) |
-| **JavaScript** | [Languages/javascript](Languages/javascript/README.tr.md) | [template](Languages/javascript/template/) | [JavaScript ile uygulama](Guides/JS_APPS.tr.md) | [Samples/javascript](Samples/javascript/) |
-| **Python** | [Languages/python](Languages/python/README.tr.md) | [template](Languages/python/template/) | [Python ile uygulama](Guides/PY_APPS.tr.md) | [Samples/python](Samples/python/) |
-| **Squirrel** | [Languages/squirrel](Languages/squirrel/README.tr.md) | [template](Languages/squirrel/template/) | [Squirrel ile uygulama](Guides/SQUIRREL_APPS.tr.md) | [Samples/squirrel](Samples/squirrel/) |
-| **C** | [Languages/c](Languages/c/README.tr.md) | [template](Languages/c/template/) | [C ile uygulama](Guides/C_APPS.tr.md) | [Samples/c](Samples/c/) |
-| **Java** | [Languages/java](Languages/java/README.tr.md) | [template](Languages/java/template/) | [Java ile uygulama](Guides/JAVA_APPS.tr.md) | [Samples/java](Samples/java/) |
+| **Lua 5.4** (önerilen) | [Languages/lua](Languages/lua/README.tr.md) | [şablon](Languages/lua/template/) | [Geliştirici rehberi](Guides/DEVELOPER_GUIDE.tr.md), [oyun motoru](Guides/GAME_ENGINE.tr.md) | [Samples/lua](Samples/lua/) |
+| **JavaScript** | [Languages/javascript](Languages/javascript/README.tr.md) | [şablon](Languages/javascript/template/) | [JavaScript ile uygulama](Guides/JS_APPS.tr.md) | [Samples/javascript](Samples/javascript/) |
+| **Python** | [Languages/python](Languages/python/README.tr.md) | [şablon](Languages/python/template/) | [Python ile uygulama](Guides/PY_APPS.tr.md) | [Samples/python](Samples/python/) |
+| **C** | [Languages/c](Languages/c/README.tr.md) | [şablon](Languages/c/template/) | [C ile uygulama](Guides/C_APPS.tr.md) | [Samples/c](Samples/c/) |
+| Squirrel (1.8'de donduruldu) | [Languages/squirrel](Languages/squirrel/README.tr.md) | [şablon](Languages/squirrel/template/) | [Squirrel ile uygulama](Guides/SQUIRREL_APPS.tr.md) | [Samples/squirrel](Samples/squirrel/) |
+| Java (1.8'de donduruldu) | [Languages/java](Languages/java/README.tr.md) | [şablon](Languages/java/template/) | [Java ile uygulama](Guides/JAVA_APPS.tr.md) | [Samples/java](Samples/java/) |
 
-Sonra: her işlev için [SDK başvurusu](Reference/SDK.tr.md), `.nxvapp` / `.nxvtheme` / `.nxvfont` için
-[paket biçimi](Guides/NXVAPP_FORMAT.tr.md) ve işinizi Uygulama Mağazası'na koymak için [Yayımlama](Publishing/README.tr.md).
+Emin değilseniz **Lua** ile başlayın: en çok örnek, kitler ve Studio'nun görsel düzenleyicileri onda.
 
-Kararsızsanız **Lua** ile başlayın: en çok örnek, en iyi performans ve Studio'daki görsel editörler onunla gelir.
+## Tarifler ve rehberler
 
-**Oyun mu yapıyorsunuz?** [Oyun yap](Guides/MAKE_A_GAME.tr.md) eksiksiz tariftir (SDK 1.8): proje, 3B modeller
-(`.glb` / `.fbx`), yükleme, girdi, çarpışma, Switch'te hız, size ait bir sanat yönü, mağaza ikonu (key art) ve
-yayın. Bu yolla yapılmış bir örnek: [Kor Tarlası](Samples/lua/ember-field/).
-Ses, grafik, arayüz ve oyun hissi için `Languages/lua/kits` ve `Languages/javascript/kits` içindeki kitleri kullanın
-([ses tasarımı](Guides/SOUND_DESIGN.tr.md), [grafik, arayüz ve oyun hissi](Guides/GAME_FEEL.tr.md)); mağaza ikonunu
-[ikon aracıyla](Tools/icon/README.tr.md) yapın.
+| İstediğiniz | Okuyun |
+|---|---|
+| pbr renderer'lı bir 3B oyunu adım adım kurmak | [Tarifler](Guides/RECIPES.tr.md), tarif 1 (Lua ve JavaScript) · [Oyun yap](Guides/MAKE_A_GAME.tr.md) |
+| Akış, fotoğraf, kısa video ya da sohbet uygulaması yapmak | [Tarifler](Guides/RECIPES.tr.md), tarif 2 · [Sosyal uygulama yap](Guides/MAKE_A_SOCIAL_APP.tr.md) |
+| Kod, model ve doku için AI araçlarını kullanmak | [AI destekli çalışma](Guides/AI_WORKFLOW.tr.md) · [SDK/AI](AI/README.tr.md) |
+| İyi ses ve his | [Ses tasarımı](Guides/SOUND_DESIGN.tr.md) · [Grafik, arayüz ve oyun hissi](Guides/GAME_FEEL.tr.md) |
+| Hangi SDK sürümünde ne olduğunu bilmek | [SDK sürümleri](Guides/SDK_VERSIONS.tr.md) · [Uyumluluk](Guides/COMPATIBILITY.tr.md) |
+| Bir fonksiyona bakmak | [SDK başvurusu](Reference/SDK.tr.md) |
+| Uygulama Mağazası'nda yayımlamak | [Yayımlama](Publishing/README.tr.md) · [Katkı](../CONTRIBUTING.tr.md) |
 
-## Neler yapabilirsiniz
+Bütün rehberler: [Guides/](Guides/README.tr.md).
 
-Bir Nexvyn OS uygulaması, içinde `app.json`, giriş dosyası ve `icon.png` bulunan bir `.nxvapp` klasörüdür (ya da bu
-klasörün zip'lenmiş tek dosya hâli). Uygulamalar kendi penceresinde çalışır ve aynı SDK'yı kullanır:
+## Bir AI asistanıyla
 
-- **Araç ve verimlilik uygulamaları:** `ui` bileşenleri (düğmeler, metin alanları, listeler, kaydırma, iletişim
-  kutuları), `store` ile kalıcı veri, `fs` ile dosyalar, `net` ile HTTPS ve JSON, bildirimler, paylaşım, Hızlı Arama.
-- **2D oyunlar:** `nexvyn.game` motoru (sahneler, sprite, tilemap, kamera, fizik, parçacıklar, tween, dokunmatik
-  kontroller) ya da düz `gfx` çizimi; kumanda, klavye, dokunmatik ve hareket sensörleri.
-- **3D:** GPU'da `g3d` (ışık, sis, doku) ve SDK 1.8'den beri arka planda yüklenen (`g3d.loadModel`) animasyonlu
-  `.glb` / `.gltf` / `.fbx` modeller: iskelet animasyonu, geçişler ve takılan nesneler.
-- **Ses:** sentezlenmiş tonlar, sistem sesleri, `.wav` / `.ogg` / `.mp3` dosyaları ve akış müziği.
-- Kod gerektirmeyen **temalar** (`.nxvtheme`: renkler, duvar kâğıdı, sesler) ve **yazı tipi paketleri** (`.nxvfont`).
+1. Asistana [`AI/system-prompt.tr.md`](AI/system-prompt.tr.md) (ya da `.en.md`) ve dilinizin paketini
+   ([`AI/languages/`](AI/languages/)) verin. Sohbet asistanları bunları proje dosyası olarak alır; editörde ya da
+   terminalde çalışan kodlama asistanları talimat dosyaları üzerinden deponuzdan okur.
+2. [`AI/tasks/`](AI/tasks/) içinden bir görev prompt'uyla isteyin: modelli ve pbr renderer'lı 3B oyun, oyun, sosyal
+   uygulama, araç, taşıma, dil, mağaza kaydı, mağaza ikonu.
+3. Her yanıtı denetleyin: `python SDK/Tools/nxv/nxv.py check <klasör>`; hataları
+   [düzeltme prompt'uyla](AI/tasks/fix-lua-check.tr.md) geri gönderin. Asistanın doğrulaması gerekenler
+   [kontrol listesinde](AI/checklist.tr.md).
+4. Üretilmiş 3B model ve dokular için [AI destekli çalışma](Guides/AI_WORKFLOW.tr.md) rehberini izleyin: ölçek,
+   pivot, doku boyutları, PBR harita paketleme, cam ve ışıma.
 
-## 10 dakikada ilk uygulama
+## 10 dakikada ilk uygulamanız
 
-**Konsolda (bilgisayar gerekmez):**
+**Konsolda (PC gerekmez):**
 
-1. **Nexvyn OS Studio**'yu açın, **Yeni Proje**'yi seçip bir şablon seçin (ör. *Boş Lua uygulaması*) ya da
-   **Örnekler**'i açın.
-2. Uygulamaya bir ad verin. Proje `sdmc:/NexvynOS/Applications/` içine kurulur ve düzenleyicide açılır.
-3. `main.lua` içinde metni değiştirin, **Çalıştır** (Ctrl+R) ile açın. `print()` çıktısı ve hatalar Studio
-   konsolunda görünür.
-4. Hazır olunca **Paketi Dışa Aktar** (`~/Documents/<ad>.nxvapp`) ya da **Uygulama Mağazası'nda Yayımla** adımlarını
-   izleyin.
+1. **Nexvyn OS Studio**'yu açın, **Yeni Proje**'yi seçip bir şablon (örneğin *3B: PBR, ışıklar ve gölgeler*) seçin ya
+   da **Örnekler**'i açın.
+2. Uygulamaya ad verin. Proje `sdmc:/NexvynOS/Applications/` içine kurulur ve düzenleyicide açılır.
+3. Kodu değiştirip **Çalıştır**'a basın (Ctrl+R). `print()` çıktısı ve hatalar Studio'nun konsolunda görünür.
+4. Hazır olunca **Paketi Dışa Aktar**'ı seçin ya da **Uygulama Mağazası'nda Yayımla**'yı izleyin.
 
 **PC'de:**
 
-1. Bir şablonu kopyalayın: `python SDK/Tools/nxv/nxv.py new lua "Benim Uygulamam" --author adiniz`.
-2. `app.json` içinde `id`, `name`, `description` ve `permissions` alanlarını düzenleyin; kodu yazın.
-3. Denetleyin: `python SDK/Tools/nxv/nxv.py check BenimUygulamam.nxvapp --sdk <Nexvyn OS kaynak klasörü>`.
-4. Konsola gönderin: **Bilgisayara Bağlan** ile FTP sunucusunu açın, sonra
-   `python SDK/Tools/nxv/nxv.py push BenimUygulamam.nxvapp --host <konsol-ip>` (Ryujinx: `nxv install BenimUygulamam.nxvapp`).
-5. Launcher'ı yeniden açın; uygulama oradadır. Hatalar pencerede satır numarasıyla görünür ve
+1. Bir şablon kopyalayın: `python SDK/Tools/nxv/nxv.py new lua "My App" --author adınız`.
+2. `app.json`'da `id`, `name`, `description`, `minSdk` ve `permissions`'ı düzenleyin; kodu yazın.
+3. Denetleyin: `python SDK/Tools/nxv/nxv.py check MyApp.nxvapp`.
+4. Konsola gönderin: **PC Bağlantısı**'nda FTP sunucusunu başlatın, sonra
+   `python SDK/Tools/nxv/nxv.py push MyApp.nxvapp --host <konsol-ip>`.
+5. Başlatıcı'yı yeniden açın; uygulama oradadır. Hatalar pencerede satır numarasıyla görünür ve
    `sdmc:/NexvynOS/System/Logs/Apps/<id>.log` dosyasına yazılır.
 
 ## İçindekiler
 
-| Klasör | Ne var |
+| Klasör | İçinde ne var |
 |---|---|
-| [Reference/](Reference/README.tr.md) | SDK başvurusu (`SDK.en.md`, `SDK.tr.md`), Java SDK kaynakları, C başlığı, SDK sürüm geçmişi |
-| [Languages/](Languages/README.tr.md) | Her dil için hızlı başlangıç ve denetleyiciden geçen hazır şablon |
-| [Guides/](Guides/README.tr.md) | Kullanım ve geliştirici rehberleri: dil rehberleri, paket biçimi, oyun motoru, Oyun Atölyesi, yerel modüller ... |
-| [Samples/](Samples/README.tr.md) | Altı dilde çalışan örnek projeler; Studio'nun *Örnekler* bölümü [`samples.json`](samples.json) dosyasını okur |
-| [AI/](AI/README.tr.md) | Yapay zekâ asistanlarıyla uygulama yazmak için istemler ve bağlam paketleri |
-| [Publishing/](Publishing/README.tr.md) | Uygulama Mağazası'nda yayımlama: akış, inceleme listesi, bildirim ve kaldırma |
-| [Fonts/](Fonts/) | Sistem yazı tipleri (Inter, JetBrains Mono, `Icons.codepoints` ile simge yazı tipi): taslaklar ve simgeler için |
-| [Tools/](Tools/README.tr.md) | `nxv` komut satırı: new, check, build, pack, icon, install, push |
+| [Reference/](Reference/README.md) | SDK başvurusu (`SDK.en.md`, `SDK.tr.md`), Java SDK kaynakları, C başlığı |
+| [Languages/](Languages/README.tr.md) | Her dil için hızlı başlangıç, denetlenmiş şablon ve (Lua, JavaScript) oyun kitleri |
+| [Guides/](Guides/README.tr.md) | Tarifler, oyun ve sosyal uygulama rehberleri, dil rehberleri, biçimler, uyumluluk, kullanıcı rehberleri |
+| [Samples/](Samples/README.tr.md) | Çalışan örnek projeler; [`samples.json`](samples.json) Studio'nun *Örnekler*'inin okuduğu dosyadır |
+| [AI/](AI/README.tr.md) | AI asistanları için context pack'ler, görev prompt'ları ve kontrol listesi |
+| [Publishing/](Publishing/README.tr.md) | Uygulama Mağazası'nda yayımlama: akış, inceleme listesi, bildirimler ve kaldırma |
+| [Fonts/](Fonts/) | Sistem yazı tipleri (Inter, JetBrains Mono, `Icons.codepoints` ile simge yazı tipi) |
+| [Tools/](Tools/README.tr.md) | `nxv`, ikon aracı ve doku aracı |

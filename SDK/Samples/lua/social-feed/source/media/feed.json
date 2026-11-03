@@ -1,0 +1,105 @@
+{
+ "posts": [
+  {
+   "id": 1,
+   "user": "mira",
+   "photo": "photo01.jpg",
+   "caption": "Golden hour on the hills **again** #sunset #nature",
+   "likes": 12,
+   "minutesAgo": 3
+  },
+  {
+   "id": 2,
+   "user": "leo",
+   "photo": "photo02.jpg",
+   "caption": "First try with the new lens, thoughts? @mira",
+   "likes": 19,
+   "minutesAgo": 50
+  },
+  {
+   "id": 3,
+   "user": "ana",
+   "photo": "photo03.jpg",
+   "caption": "Weekend plan: walk, coffee, repeat #weekend",
+   "likes": 26,
+   "minutesAgo": 97
+  },
+  {
+   "id": 4,
+   "user": "kai",
+   "photo": "photo04.jpg",
+   "caption": "The colors today were unreal https://example.com/blog/colors",
+   "likes": 33,
+   "minutesAgo": 144
+  },
+  {
+   "id": 5,
+   "user": "noa",
+   "photo": "photo05.jpg",
+   "caption": "Shot this right before the rain #weather",
+   "likes": 40,
+   "minutesAgo": 191
+  },
+  {
+   "id": 6,
+   "user": "eli",
+   "photo": "photo06.jpg",
+   "caption": "**Big news** coming soon, stay tuned!",
+   "likes": 47,
+   "minutesAgo": 238
+  },
+  {
+   "id": 7,
+   "user": "mira",
+   "photo": "photo07.jpg",
+   "caption": "Thanks @leo for the tip on composition #photography",
+   "likes": 54,
+   "minutesAgo": 285
+  },
+  {
+   "id": 8,
+   "user": "leo",
+   "photo": "photo08.jpg",
+   "caption": "Quiet morning #calm",
+   "likes": 61,
+   "minutesAgo": 332
+  },
+  {
+   "id": 9,
+   "user": "ana",
+   "photo": "photo09.jpg",
+   "caption": "Testing the night mode, not bad #night",
+   "likes": 68,
+   "minutesAgo": 379
+  },
+  {
+   "id": 10,
+   "user": "kai",
+   "photo": "photo10.jpg",
+   "caption": "Throwback to the summer trip #travel @ana",
+   "likes": 75,
+   "minutesAgo": 426
+  },
+  {
+   "id": 11,
+   "user": "noa",
+   "photo": "photo11.jpg",
+   "caption": "Minimal and clean #minimal",
+   "likes": 82,
+   "minutesAgo": 473
+  },
+  {
+   "id": 12,
+   "user": "eli",
+   "photo": "photo12.jpg",
+   "caption": "Can you guess where this is? #guess",
+   "likes": 89,
+   "minutesAgo": 520
+  }
+ ],
+ "clips": [
+  "clip1.mp4",
+  "clip2.mp4",
+  "clip3.mp4"
+ ]
+}

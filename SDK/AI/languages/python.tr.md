@@ -59,6 +59,10 @@ app.json: `"main": "main.py"`, `"minSdk": "1.3"` (aşağıdaki sistem kütüphan
   typing; SDK 1.5 sistem kütüphanesi: itertools, string, textwrap, copy, statistics, base64, colorsys.
 - `sys` Python'un `sys`'iyle birleşiktir; `exit()` pencereyi kapatır; `input()` `""` döndürür.
 
+- SDK 1.9 (`"minSdk": "1.9"`): adlar aynı; seçenekler dict'tir (`g3d.material(obj, options=None,
+  name=None)`, `g3d.addLight({"type": "point", "x": 1})`); `"python3"`te de vardır. Async SDK 1.9 çağrıları
+  callback alır (`net.request(options, cb)`, `net.oauth(options, cb)`); akış ve sayfalayıcı indeksleri 0 tabanlıdır.
+
 ## Denetim
 
 `python tools/py_check.py <bundle> --frames 600`: desteklenmeyen yapıları satır numaralarıyla bulur, TR anahtarlarını

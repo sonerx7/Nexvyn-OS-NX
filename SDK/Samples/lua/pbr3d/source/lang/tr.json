@@ -1,0 +1,10 @@
+{
+  "renderer": "Renderer: {0}",
+  "stats": "{0} üçgen · {1} fps",
+  "pbr": "PBR kullan",
+  "basic": "Temel kullan",
+  "shadowsOn": "Gölgeler açık",
+  "shadowsOff": "Gölgeler kapalı",
+  "bloomOn": "Parlama açık",
+  "bloomOff": "Parlama kapalı"
+}

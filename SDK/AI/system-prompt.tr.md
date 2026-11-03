@@ -1,4 +1,4 @@
-# Nexvyn OS uygulama SDK'sı 1.8: yapay zekâ asistanları için context pack
+# Nexvyn OS uygulama SDK'sı 1.9: yapay zekâ asistanları için context pack
 
 [English](system-prompt.en.md) · **Türkçe**
 
@@ -20,7 +20,7 @@ MyApp.nxvapp/            klasör adı .nxvapp ile biter (ya da klasörün içeri
   icon.png               256x256 PNG (oyunlar ve mağaza app'leri: key art, kural 12)
   lang/en.json           zorunlu: {"key": "Text with {0}"}
   lang/<kod>.json        isteğe bağlı, her ek dil için bir dosya (de, es, fr, ja, ko, tr, zh)
-  models/*.glb           3B modeller (SDK 1.8)
+  models/*.glb           3B modeller (SDK 1.8; PBR haritalarını pbr renderer çizer, SDK 1.9)
   diğer dosyalar         resimler, sesler, modüller
 ```
 
@@ -37,7 +37,7 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.8", "targetSdk": "1.8",
+  "minSdk": "1.9", "targetSdk": "1.9",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -51,8 +51,11 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   .py, .nut, .c, .jar ile biten bir ana dosya da seçer.
 - En düşük `minSdk`: Lua 1.0 (`nexvyn.game` ile 1.2), JS 1.1, Python 1.3, Squirrel/C/Java 1.5. Her 1.4 özelliği
   (paylaşım, zamanlama, izin API'si, yaşam döngüsü callback'leri) "1.4" ister; `fs.unzip`, `sys.games`,
-  `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8".
-- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.8" yazar (bir callback takılınca ne olacağını belirler,
+  `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; pbr renderer
+  (`g3d.renderer`, `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`,
+  `g3d.material`, `g3d.drawInstanced`, `g3d.caps`), bölüm 7'deki SDK 1.9 ağ çağrıları ve akış / medya çağrıları
+  "1.9" (yalnızca Lua, JavaScript, Python, C). App'in yaptığı her çağrıyı içeren en düşük `minSdk`'yı kullan.
+- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.9" yazar (bir callback takılınca ne olacağını belirler,
   kural 1). Squirrel ve Java SDK 1.8'de donduruldu (app'leri çalışır, yeni API gelmez): yeni app'lere Lua,
   JavaScript, Python ya da C ile başla.
 - `window.width/height` içerik boyutudur. `gamepad: true` kumandayı uygulamaya gönderir (L+R imleci geri verir);
@@ -100,7 +103,7 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
 ## 3. Kesin kurallar
 
 1. **3 saniye / 10 saniye:** 3 s'den uzun süren bir callback durdurulur; ana dosyanın üst seviyesi ve `app.load`
-   10 s alır. `"targetSdk": "1.8"` ile app o zaman hata ekranıyla biter; eski app'ler "yanıt vermiyor" sorusunu alır
+   10 s alır. `"targetSdk": "1.8"` ya da daha yenisiyle app o zaman hata ekranıyla biter; eski app'ler "yanıt vermiyor" sorusunu alır
    (Bekle / Kapat). Modelleri `g3d.loadModel` ile yükle (arka plan thread'i), uzun işleri karelere, timer'lara ya da
    her karede birkaç ms devam ettirilen bir coroutine'e böl. C'de böyle bir koruma yoktur (12 s sonra kullanıcıya
    Zorla Kapat / Bekle sorulur): her C döngüsü sınırlı olmalı.
@@ -206,14 +209,28 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
 - `json.decode(text)` → değer ya da nil,err · `json.encode(value[,pretty])`.
 - `net` (async, HTTPS, "network" ister): `net.get(url[,headers],fn(res))`, `net.post(url,body[,contentType],fn)`,
   `net.json(url,fn(data,err))`, `net.download(url,path,fn(ok,pathOrErr)[,progress(now,total)])`, `net.encode(s)`.
-  `res`: ok, status, body, error, url, headers.
+  `res`: ok, status, body, error, url, headers. SDK 1.9 ("minSdk": "1.9" ister): `net.request({url, method, headers,
+  json|form|multipart|file|body, saveTo, responseType="json", cache=saniye, retry=n, cookies=true, timeout}, fn(res)[,
+  progress(now,total,phase)])` → id, `net.cancel(id)`, `net.clearCookies()`, `net.clearCache()`; res'e data,
+  fromCache, stale, path eklenir. WebSocket: `net.ws(url[, {headers, protocols}])` → id, her karede `net.wsPoll(id)`
+  ({type="open"|"message"|"error"|"close", data, binary, code, reason}), `net.wsSend(id, text)`, `net.wsClose(id)`,
+  `net.wsState(id)`. Oturum açma: `net.oauth({url, redirect="http://localhost/cb", pkce=true}, fn(result, err))` →
+  result.code / result.verifier (konsolda başlık modu ister; bir yedek yol sun). Client secret app'e asla yazılmaz.
 - `sys`: `time()` (monoton sn), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.8". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.9". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id ya da nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Bağlantılar: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.
+- SDK 1.9 akış ve medya: `gfx.imageUrl(url, maxSize)` → resim ya da yüklenirken nil (her karede çağır, çizilen boyutu
+  iste; `gfx.imageState(url, maxSize)`); `media.open(src, {loop, muted, autoplay, audioOnly, start})` → id,
+  `media.draw(id, x, y, w, h, "cover"|"contain"|"stretch")`, `media.play/pause/seek/set/info/close` (en çok 3
+  oynatıcı: şimdiki ve sonrakini açık tut); `ui.beginFeed(id, x, y, w, h, count, {itemHeight|heights, columns, gap,
+  refreshing, loadingMore})` → {first, last}, `ui.feedItem(i)` → {x, y, w, h}, `ui.endFeed()` → {refresh, more};
+  `ui.pager(id, x, y, w, h, count)` → {page, pos, changed} (i. sayfayı y + (i - pos) * h'de çiz); `ui.richText(id,
+  text, x, y, w, size)` → {height, clicked} (kalın, bağlantı, @bahsetme, #etiket), `ui.measureRichText(text, w,
+  size)`; `sys.relativeTime(epoch)`. Rehber: SDK/Guides/MAKE_A_SOCIAL_APP.tr.md.
 - `audio.tone(freq,seconds[,volume[,wave]])` (wave "sine","square","saw","triangle","noise") → kanal ·
   `audio.play(nameOrPath[,volume[,loops]])` (sistem sesleri "click","pop","notify","alarm","trash","shutter","error",
   "key","volume","startup" ya da .wav/.ogg/.mp3; loops -1 = tekrar) · `audio.stop(ch)` · `audio.music(path)` ·
@@ -270,9 +287,29 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
   size={w,h,d}, min, max, animations={{name, duration}}}, `model:play(clip[, {loop, speed, fade}])` → bool (JS
   `{loop, speed, fade}`, Python `play(clip, loop, speed, fade)`), `model:stop([fade])`, `model:update(dt)` (her
   karede), `model:time([t])`, `model:clip()`, `model:playing()`, `model:node(name, x..sz)` → x,y,z,
-  `model:nodeMatrix(name, x..sz)` → 16 sayı (takılan nesneler), `model:triangles()`, `model:free()`. Yalnızca base
-  color dokusu çizilir; emissive renk ışıksız çizilir. Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de
+  `model:nodeMatrix(name, x..sz)` → 16 sayı (takılan nesneler), `model:triangles()`, `model:free()`. Basic renderer
+  base color dokusunu çizer (emissive renk ışıksız çizilir); pbr renderer dosyanın bütün haritalarını çizer: glTF'de
+  base color, normal, metallic-roughness + occlusion (ORM) ve emissive; FBX'te de aynısı, dosyanın bağlamadığı
+  haritalar base color haritasının yanındaki dosyalardan okunur (`X_BaseColor.png` -> `X_AO.png`, `X_Metallic.png`,
+  `X_Roughness.png`, Unity `X_MetallicSmoothness.png`: metallic R, smoothness A). Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de
   8-16 skin'li karakter.
+- pbr renderer (NexGFX, SDK 1.9, app başına isteğe bağlı; ayarlar değiştirilene kadar kalır, load içinde ver):
+  `g3d.rendererInfo()` → {name="NexGFX", version, backend, renderer};
+  `g3d.renderer("pbr")` → "pbr" ya da "basic" (GLES 3 yoksa aynı çağrılar basic renderer'la çizer; ışık, gölge ve
+  son efekt görünmez; "pbr" olduğunu asla varsayma); `g3d.caps()` → {gpu, pbr, hdr, shadows, instancing, msaa,
+  maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device};
+  `g3d.addLight({type="point"|"spot"|"directional", x,y,z, dx,dy,dz, color, intensity, range, inner, outer, shadow})`
+  → id (sahnede 16, nesne başına en yakın 8; intensity 1 = 1 m'de tam renk, odalar 5-20), `g3d.updateLight(id,
+  {alanlar})`, `g3d.removeLight(id)`, `g3d.clearLights()`, `g3d.lights()`; güneş `g3d.light(...)`;
+  `g3d.shadows({enabled, quality="low"|"medium"|"high", distance, bias})` (güneş + shadow=true olan bir spot);
+  `g3d.postfx({exposure, tonemap="aces"|"filmic"|"none", bloom, threshold, msaa=0|2|4|8, hdr})`;
+  `g3d.environment({sky, ground, intensity, sun, cubemap={6 yol +X -X +Y -Y +Z -Z}})`;
+  `g3d.material(meshOrModel, {metallic, roughness, emissive, emissiveStrength, normalMap, metalRoughMap,
+  metallicMap, roughnessMap, metalSmoothMap, occlusionMap, emissiveMap, normalScale, occlusionStrength,
+  transmission, ior, clearcoat, clearcoatRoughness}[, name])` (nil = dosyanın değerlerine dön; `transmission` =
+  ince cam); `g3d.drawInstanced(meshOrModel, {x,y,z,rx,ry,rz,s, ...}[, tint[, flags[, stride 7|16]]])`. 1'in üstündeki
+  emisyon bloom'a girer. Bütçe: msaa 0, gölge "medium", dokular <= 1024 px ile başla; her oyun kendi ışık renklerini,
+  pozlamasını ve bloom'unu seçer (sanat yönünün parçası, kural 13).
 - `nexvyn.game` (yalnızca Lua, `minSdk` 1.2): `local game = require("nexvyn.game")`, `return game.run{width, height,
   scene = Scene, background}`. Sahneler (`enter`, `update(dt)`, `draw`, `ui`, `event`, `restart`),
   `game.switch/push/pop`, `add`, `collide`, `trigger`, `query` içeren `game.world{gravity}`;
@@ -309,12 +346,14 @@ Dile özgü kurallar: `SDK/AI/languages/<dil>.tr.md` (İngilizcesi `<dil>.en.md`
 {"kind": "app", "tags": ["..."],
  "subtitle": {"en": "..."},
  "description": {"en": "..."},
- "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["dark 1", "wait 1.5"]]}
+ "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["hold right 1.5", "wait 1"],
+           ["dark 1", "wait 1.5"]]}
 ```
 
 `subtitle` / `description` içinde İngilizce zorunlu; başka dilleri ek anahtarlar olarak ekle (`"de": "..."`).
-`kind`: app, game, demo, template. Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-4 adım listesi: `wait S`,
-`wclick FX FY` / `wmove FX FY` (pencere içeriğinin 0..1 oranları), `key NAME`, `dpad DIR`, `text STRING`,
+`kind`: app, game, demo, template. Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-5 adım listesi (5 önerilir, en
+havalı anlar): `wait S`, `wclick FX FY` / `wmove FX FY` (pencere içeriğinin 0..1 oranları), `key NAME`,
+`hold TUŞ SN`, `dpad DIR`, `text STRING`,
 `dark 0|1`.
 
 ## 11. Nasıl yanıt verilir

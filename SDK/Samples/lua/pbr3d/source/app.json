@@ -1,0 +1,34 @@
+{
+  "id": "com.sonerx7.demo.pbr3d",
+  "name": {
+    "en": "PBR, Lights and Shadows",
+    "tr": "PBR, Işıklar ve Gölgeler",
+    "de": "PBR, Licht und Schatten",
+    "fr": "PBR, lumières et ombres",
+    "es": "PBR, luces y sombras",
+    "ja": "PBR・ライト・影",
+    "zh": "PBR、光照与阴影",
+    "ko": "PBR, 조명과 그림자"
+  },
+  "description": {
+    "en": "The SDK 1.9 pbr renderer: metallic-roughness materials, moving point and spot lights, shadows, HDR, bloom and GPU instancing",
+    "tr": "SDK 1.9 pbr renderer: metallic-roughness materyaller, hareket eden nokta ve spot ışıklar, gölgeler, HDR, bloom ve GPU instancing"
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 960,
+    "height": 600,
+    "minWidth": 480,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": false,
+  "minSdk": "1.9",
+  "targetSdk": "1.9",
+  "permissions": []
+}

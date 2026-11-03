@@ -1,0 +1,15 @@
+{
+  "id": "com.sonerx7.demo.socialfeed",
+  "name": {"en": "Social Feed", "tr": "Sosyal Akış"},
+  "description": {"en": "A photo feed, a photo grid and a vertical video pager built on the SDK 1.9 feed, media and network functions.", "tr": "SDK 1.9 akış, medya ve ağ fonksiyonlarıyla fotoğraf akışı, fotoğraf ızgarası ve dikey video sayfalayıcı."},
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "category": "developer",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {"width": 720, "height": 640, "minWidth": 360, "minHeight": 480, "resizable": true},
+  "singleInstance": true,
+  "minSdk": "1.9",
+  "targetSdk": "1.9",
+  "permissions": ["network", "launch"]
+}

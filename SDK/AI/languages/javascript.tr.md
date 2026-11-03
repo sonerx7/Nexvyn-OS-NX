@@ -52,6 +52,11 @@ app.json: `"main": "main.js"` (ya da `"runtime": "js"`), `"minSdk": "1.1"`, `net
   Yerel saat için `sys.date()` kullan.
 - Mesh'ler: `mesh.setColor(c)` (iki nokta üst üste değil, nokta).
 
+- SDK 1.9 (`"minSdk": "1.9"`): adlar aynı; seçenekler nesnedir, `g3d.lights()` dizi döndürür.
+  Callback'siz `net.request(options)` `res` için Promise döndürür (o zaman iptal edilemez);
+  `net.oauth(options)` Promise döndürür; `gfx.imageUrl` yüklenirken `null` döndürür; akış ve sayfalayıcı
+  indeksleri 0 tabanlıdır (`for (let i = f.first; i <= f.last; i++)`).
+
 ## Denetim
 
 `node tools/js_check.mjs <bundle> --frames 600`: her .js dosyasını modül olarak parse eder, TR anahtarlarını denetler,

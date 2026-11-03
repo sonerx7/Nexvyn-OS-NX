@@ -2,8 +2,8 @@
 
 **English** · [Türkçe](README.tr.md)
 
-This folder holds ready-made context packs and prompts for writing Nexvyn OS apps with Claude, ChatGPT, Gemini or
-local models (LM Studio, Ollama...). Assistants do not know the SDK; without these files they invent functions that
+This folder holds ready-made context packs and prompts for writing Nexvyn OS apps with AI chat assistants, AI
+coding assistants in an editor, or local models. Assistants do not know the SDK; without these files they invent functions that
 do not exist. The packs carry the same facts as `SDK/Reference/SDK.en.md`, only shorter.
 
 ## Files
@@ -12,9 +12,9 @@ Every file comes in two versions: English `X.en.md` and Turkish `X.tr.md`. Both 
 
 | File | Purpose |
 |---|---|
-| [system-prompt.en.md](system-prompt.en.md) · [Turkish](system-prompt.tr.md) | The main context pack (~6k tokens, SDK 1.8): bundle layout, `app.json`, enforced permissions, program structure, rules (3 s, 64 MB, 60 fps, `TR()`), a summary of the whole API, language differences, the store format |
+| [system-prompt.en.md](system-prompt.en.md) · [Turkish](system-prompt.tr.md) | The main context pack (~8k tokens, SDK 1.9): bundle layout, `app.json`, enforced permissions, program structure, rules (3 s, 64 MB, 60 fps, `TR()`), a summary of the whole API, language differences, the store format |
 | [languages/](languages/) | Language packs: [lua](languages/lua.en.md), [javascript](languages/javascript.en.md), [python](languages/python.en.md), [squirrel](languages/squirrel.en.md), [c](languages/c.en.md), [java](languages/java.en.md) (Turkish: `.tr.md`): skeleton, language rules, checker |
-| [tasks/](tasks/) | Task prompts: [make a game](tasks/make-game.en.md), [make a 3D game with models](tasks/make-3d-game.en.md), [the store icon (key art)](tasks/store-icon.en.md), [make a utility](tasks/make-utility.en.md), [port a Lua game to JS](tasks/port-lua-to-js.en.md), [add a UI language](tasks/add-language.en.md), [write store.json and the screenshot script](tasks/store-listing.en.md), [fix a checker failure](tasks/fix-lua-check.en.md) (Turkish: `.tr.md`) |
+| [tasks/](tasks/) | Task prompts: [make a game](tasks/make-game.en.md), [make a 3D game with models and the pbr renderer](tasks/make-3d-game.en.md), [make a feed, photo, short-video or chat app](tasks/make-social-app.en.md), [the store icon (key art)](tasks/store-icon.en.md), [make a utility](tasks/make-utility.en.md), [port a Lua game to JS](tasks/port-lua-to-js.en.md), [add a UI language](tasks/add-language.en.md), [write store.json and the screenshot script](tasks/store-listing.en.md), [fix a checker failure](tasks/fix-lua-check.en.md) (Turkish: `.tr.md`) |
 | [checklist.en.md](checklist.en.md) · [Turkish](checklist.tr.md) | What the assistant must verify before answering |
 
 ## Which language to use
@@ -32,10 +32,10 @@ Every file comes in two versions: English `X.en.md` and Turkish `X.tr.md`. Both 
 ## How to use them
 
 1. **Give the context.** `system-prompt.en.md` (or `system-prompt.tr.md`) + the pack of your programming language:
-   - **Claude:** create a Project and add both files to *Project knowledge* (or paste them into the first message).
-     The context is large enough to add the whole `SDK/Reference/SDK.en.md` as well.
-   - **ChatGPT:** create a GPT or a Project and upload the files, or paste them into the first message.
-   - **Gemini:** put them into the Gem instructions or the first message; with long context add `SDK.en.md` too.
+   - **Chat assistants with projects or knowledge files:** add both files to the project (or paste them into the
+     first message). With a long context, add the whole `SDK/Reference/SDK.en.md` as well.
+   - **Coding assistants in an editor or a terminal:** keep the files in the repository and point the assistant's
+     instruction file (rules, memory or "custom instructions") at them; it can then run the checker itself.
    - **Local models (7-14B):** put only the system prompt + the language pack into the system prompt and set the
      context length to at least 8k (16k is better). Small models mix up the language rules: prefer Lua or JavaScript and check every
      answer.

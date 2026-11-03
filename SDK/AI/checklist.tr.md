@@ -16,8 +16,11 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
       Java'da `(Callback)` lambda.
 - [ ] `minSdk` kullanılan en yeni özelliğe ve dile uyuyor (JS 1.1, Python 1.3, Squirrel/C/Java 1.5, `nexvyn.game`
       1.2, paylaşım/zamanlama/izin API'si/yaşam döngüsü callback'leri 1.4, `fs.unzip`/`sys.games`/`sys.speak` 1.6,
-      `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8). Yeni app'ler `"targetSdk": "1.8"` yazar.
-- [ ] Kullanıcı istemedikçe yeni app Squirrel ya da Java ile yazılmadı (SDK 1.8'de donduruldular).
+      `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8, pbr renderer, `net.request` seçenekleri, `net.ws`,
+      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9). Yeni app'ler
+      `"targetSdk": "1.9"` yazar.
+- [ ] Kullanıcı istemedikçe yeni app Squirrel ya da Java ile yazılmadı (SDK 1.8'de donduruldular). Aynı kod Lua,
+      JavaScript, Python ve C'de aynı SDK adlarıyla çalışırdı.
 
 ## app.json
 
@@ -38,6 +41,9 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
       mesh'ler, modeller ve resimler bir kez oluşturuluyor.
 - [ ] Veri değişince `store` / `fs` ile kaydediliyor; `suspend` ya da kapatmada hiçbir şey kaybolmuyor.
 - [ ] Ağ: `sys.online()` denetleniyor, yükleniyor ve hata durumları gösteriliyor, kodda API anahtarı ya da sır yok.
+- [ ] SDK 1.9 akış ve medya: uzun listeler `ui.beginFeed` kullanıyor (her öğe üstünde döngü yok), web resimleri
+      `maxSize` ile `gfx.imageUrl` ve yüklenirken yer tutucu kullanıyor, en çok 3 `media` oynatıcı açık (şimdiki ve
+      sonraki), oynatıcılar `suspend`'de duruyor, soketler her karede okunuyor, oturum açmanın yedek yolu var.
 - [ ] Dokunmatik, kumanda imleci ve klavyeyle çalışıyor; oyunlar kumandayla da, + ile ve `suspend` /
       `focus(false)` içinde duraklıyor.
 - [ ] Görünen her metin `TR()` üzerinden geçiyor; her anahtar `lang/en.json` içinde (ve verdiğim her başka lang
@@ -69,6 +75,9 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
 - [ ] Arayüz: tek şekil dili; derinliği olan paneller; hover, basılı, odak ve devre dışı hâlleri olan düğmeler; her
       iki ekran arasında geçiş; başlık ekranında canlı bir şey.
 - [ ] Kamera: yumuşak; 3D'de gökyüzü renginde sis ve renkli ana ışık.
+- [ ] pbr renderer (SDK 1.9): `g3d.renderer("pbr")` `app.load` içinde çağrılıyor ve `"basic"` dönünce de oyun
+      çalışıyor; ışıklar, gölgeler, pozlama ve bloom sanat yönüne uyuyor; tekrarlanan nesneler `g3d.drawInstanced`
+      ile çiziliyor; bütçe msaa 0, gölge "medium" ve en çok 1024 px dokularla başlıyor.
 - [ ] Kitlerin uyduğu yerde onları kullandım (`sfx`, `juice` bundle'a kopyalandı), daha zayıf kopyalarını uydurmadım
       ve yalnızca gerçekten var olan fonksiyonlarını kullandım.
 
@@ -81,4 +90,4 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
       söyledim.
 - [ ] Sessizce tahmin etmek yerine emin olmadığım şeyleri listeledim.
 - [ ] Mağaza başvurusu için: en az İngilizce `subtitle` / `description` (istenirse başka diller), `kind`, `tags` ve
-      yalnızca `wait`, `wclick`, `wmove`, `key`, `dpad`, `text`, `dark` kullanan `shots` içeren `store.json`.
+      yalnızca `wait`, `wclick`, `wmove`, `key`, `hold`, `dpad`, `text`, `dark` kullanan `shots` (5 önerilir) içeren `store.json`.

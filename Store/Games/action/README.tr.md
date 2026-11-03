@@ -4,7 +4,7 @@
 
 | | Öğe | Sürüm | Açıklama |
 |---|---|---|---|
-| <img src="ash-protocol/icon.png" width="32"> | [Kül Protokolü](ash-protocol/) | 1.0.0 | Altı bölüm. Dört silah. Son bir emir. |
+| <img src="ash-protocol/icon.png" width="32"> | [Kül Protokolü](ash-protocol/) | 1.0.1 | Altı bölüm. Dört silah. Son bir emir. |
 | <img src="frost-lantern/icon.png" width="32"> | [Ayaz Feneri](frost-lantern/) | 1.0.0 | Beş bölge. Otuz lütuf. Kayıp bir şafak. |
 | <img src="lanternfall/icon.png" width="32"> | [Fener Düşüşü](lanternfall/) | 1.0.0 | Fener ışığında platform: 3 dünya, 3 boss |
 | <img src="luma/icon.png" width="32"> | [Luma: Yıldız Adaları](luma/) | 1.2.0 | On dünyayı keşfet. Sekiz düşmanla savaş. |

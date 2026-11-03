@@ -1,0 +1,52 @@
+{
+  "kind": "demo",
+  "tags": [
+    "g3d",
+    "3d",
+    "pbr",
+    "lighting",
+    "shadows",
+    "bloom",
+    "instancing"
+  ],
+  "subtitle": {
+    "en": "PBR materials, lights, shadows and bloom",
+    "tr": "PBR materyal, ışık, gölge ve bloom",
+    "de": "PBR-Materialien, Licht, Schatten, Bloom",
+    "fr": "Matériaux PBR, lumières, ombres, bloom",
+    "es": "Materiales PBR, luces, sombras y bloom",
+    "ja": "PBR マテリアル、ライト、影、ブルーム",
+    "zh": "PBR 材质、光照、阴影与泛光",
+    "ko": "PBR 재질, 조명, 그림자, 블룸"
+  },
+  "description": {
+    "en": "The NexGFX pbr renderer of SDK 1.9 in about 120 lines of Lua: a crate model with base colour, normal, metallic-roughness and emissive maps, five spheres from rough to polished metal, a warm and a cool point light that move, a spot light that casts shadows, sun shadows, HDR with ACES tone mapping and bloom, and 24 pillars drawn with one instanced call. Buttons switch between the pbr and the basic renderer, shadows and bloom, so you can see what each part adds.",
+    "tr": "SDK 1.9'un NexGFX pbr renderer'ı yaklaşık 120 satır Lua'da: base color, normal, metallic-roughness ve emissive haritalı bir kasa modeli, pürüzlüden parlak metale beş küre, hareket eden sıcak ve soğuk iki nokta ışık, gölge düşüren bir spot ışık, güneş gölgeleri, ACES ton eşlemeli HDR ve bloom, tek instanced çağrıyla çizilen 24 sütun. Düğmeler pbr ile basic renderer, gölgeler ve bloom arasında geçiş yapar; her parçanın ne kattığını görürsünüz.",
+    "de": "Der NexGFX-pbr-Renderer von SDK 1.9 in rund 120 Zeilen Lua: ein Kistenmodell mit Basisfarbe-, Normal-, Metallic-Roughness- und Emissive-Maps, fünf Kugeln von rauem bis poliertem Metall, ein warmes und ein kühles Punktlicht in Bewegung, ein Spotlicht mit Schatten, Sonnenschatten, HDR mit ACES-Tonemapping und Bloom sowie 24 Säulen in einem einzigen instanzierten Aufruf. Schaltflächen wechseln zwischen pbr- und basic-Renderer, Schatten und Bloom.",
+    "fr": "Le moteur de rendu pbr NexGFX du SDK 1.9 en 120 lignes de Lua environ : une caisse avec cartes de couleur de base, normales, metallic-roughness et émissives, cinq sphères du métal rugueux au métal poli, deux lumières ponctuelles chaude et froide en mouvement, un projecteur qui projette des ombres, les ombres du soleil, le HDR avec tone mapping ACES et bloom, et 24 piliers dessinés en un seul appel instancié. Des boutons basculent entre les rendus pbr et basic, les ombres et le bloom.",
+    "es": "El renderizador pbr NexGFX del SDK 1.9 en unas 120 líneas de Lua: una caja con mapas de color base, normales, metallic-roughness y emisivos, cinco esferas del metal rugoso al pulido, una luz puntual cálida y otra fría en movimiento, un foco que proyecta sombras, sombras del sol, HDR con tone mapping ACES y bloom, y 24 pilares dibujados con una sola llamada instanciada. Los botones alternan entre el renderizador pbr y el basic, las sombras y el bloom.",
+    "ja": "SDK 1.9 の NexGFX pbr レンダラーを約 120 行の Lua で: ベースカラー・法線・メタリック/ラフネス・エミッシブのマップを持つ木箱モデル、粗い金属から磨かれた金属までの 5 つの球、動く暖色と寒色のポイントライト、影を落とすスポットライト、太陽の影、ACES トーンマッピング付き HDR とブルーム、1 回のインスタンス描画で描く 24 本の柱。ボタンで pbr と basic のレンダラー、影、ブルームを切り替えられます。",
+    "zh": "用约 120 行 Lua 展示 SDK 1.9 的 NexGFX pbr 渲染器：带基础色、法线、金属度-粗糙度和自发光贴图的箱子模型，从粗糙到抛光金属的五个球体，移动的暖色与冷色点光源，投射阴影的聚光灯，太阳阴影，带 ACES 色调映射的 HDR 与泛光，以及一次实例化调用绘制的 24 根柱子。按钮可在 pbr 与 basic 渲染器、阴影和泛光之间切换。",
+    "ko": "SDK 1.9의 NexGFX pbr 렌더러를 약 120줄의 Lua로: 베이스 컬러·노멀·메탈릭-러프니스·이미시브 맵을 가진 상자 모델, 거친 금속부터 광택 금속까지 다섯 개의 구, 움직이는 따뜻한 점광원과 차가운 점광원, 그림자를 드리우는 스포트라이트, 태양 그림자, ACES 톤 매핑 HDR과 블룸, 한 번의 인스턴스 호출로 그리는 기둥 24개. 버튼으로 pbr과 basic 렌더러, 그림자, 블룸을 전환합니다."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wait 4"
+    ],
+    [
+      "wclick 0.73 0.95",
+      "wait 2"
+    ],
+    [
+      "wclick 0.6 0.95",
+      "wait 2"
+    ],
+    [
+      "dark 1",
+      "wait 2"
+    ]
+  ]
+}

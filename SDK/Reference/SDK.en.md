@@ -107,7 +107,7 @@ comes from another key. The full package format, signing, the permission rules a
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.8"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.9"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -120,6 +120,7 @@ comes from another key. The full package format, signing, the permission rules a
 | 1.6 | `fs.unzip` (unpacks a zip in the background with progress) and `sys.games` (installed games) with the new `"games"` permission, in Lua, JavaScript, Python and Squirrel; `sys.speak` / `sys.stopSpeaking` (text to speech, no permission) in every runtime; the `"python3"` runtime (CPython 3.12, section 12) |
 | 1.7 | `g3d.voxels` voxel worlds in JavaScript (section 8b, *Voxel worlds*): chunk streaming, built-in terrain generator, light, smooth-lit meshes built on background threads, texture atlas shader, saving, ray casts, box physics; `mesh:setTexture(path, pixelated)` in Lua and JavaScript |
 | 1.8 | `g3d.model` (section 8b, *3D models*): `.glb`, `.gltf`, `.fbx` (and `.obj`, `.stl`) files with node hierarchy, materials, embedded and external textures and skeletal animation (`play` with crossfade, `stop`, `update`, `time`, node positions and matrices for attachments), `g3d.drawMatrix`; GPU skinning; in every runtime (Squirrel, C, Java and `"python3"` through `g3d.model*` functions) |
+| 1.9 | Runtime library: `net.request{url, method, body, contentType, headers}` in Lua (any method, as in JavaScript and Python); JavaScript `TextEncoder` / `TextDecoder` (UTF-8), `URL` / `URLSearchParams`, `structuredClone`; Python `str` methods pocketpy lacked (`isdigit`, `isalpha`, `isspace`, `title`, `partition`, `rfind`, `rsplit`, `removeprefix`... and `split(sep, maxsplit)`, `find` / `count` with start and end, `startswith` with a tuple), `dict.setdefault` / `fromkeys`, `pow()`; Python system library `urllib.parse`, `html`, `uuid`; feed, photo and short-video apps (section 8d): `net.request` options (JSON, form, multipart and file bodies, `saveTo`, upload progress, cookies, retries, offline cache), `net.cancel`, `net.clearCookies`, `net.clearCache`, WebSocket client (`net.ws`, `wsSend`, `wsPoll`, `wsClose`, `wsState`), `net.oauth` (sign-in in the console's browser), `gfx.imageUrl` / `imageState` (web pictures with a disk and memory cache), `media.*` video and audio players, `ui.beginFeed` / `feedItem` / `endFeed`, `ui.pager`, `ui.richText` / `measureRichText`, `sys.relativeTime`; in Lua, JavaScript, Python and C; the pbr renderer (section 8b, *Modern rendering*), opt-in per app with `g3d.renderer("pbr")`: metallic-roughness materials with normal, occlusion and emissive maps (glTF and FBX, Unity MetallicSmoothness), `g3d.material`, real-time lights (`g3d.addLight` / `updateLight` / `removeLight` / `clearLights` / `lights`), sun and spot shadows (`g3d.shadows`), HDR, tone mapping, bloom and MSAA (`g3d.postfx`), cube map or hemisphere ambient (`g3d.environment`), `g3d.drawInstanced`, `g3d.caps`; Lua, JavaScript, Python and C |
 
 **Languages that get new APIs.** From SDK 1.9 on, new functions come to Lua, JavaScript, Python (`"python"` and
 `"python3"`) and C. Squirrel and Java are frozen at SDK 1.8: every function they have keeps working on every later
@@ -375,10 +376,14 @@ net.post(url, body[, contentType], callback)                      -- default x-w
 net.json(url, function(data, err) end)                            -- GET + json.decode
 net.download(url, "files/x.zip", function(ok, pathOrError) end, function(now, total) end)
 net.encode("a b&c")                                               -- URL-encode
+net.request({url = u, method = "PUT", body = json.encode(t),      -- SDK 1.9: any method (PUT, PATCH, DELETE...),
+             contentType = "application/json", headers = {}},      -- the same as net.request in JavaScript / Python
+            function(res) end)
 ```
 
 `res`: `ok` (2xx/3xx), `status`, `body`, `error`, `url` (after redirects), `headers` (lowercase names).
-Check `sys.online()` first and show a friendly message when offline.
+Check `sys.online()` first and show a friendly message when offline. Uploads, JSON bodies, cookies, retries, an
+offline cache, WebSockets and sign-in are in section 8d (`net.request`, SDK 1.9).
 
 ## 8. System — `sys`, `audio`, `timer`, `TR`
 
@@ -388,7 +393,7 @@ Check `sys.online()` first and show a friendly message when offline.
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.8"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.9"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -590,14 +595,15 @@ palette) skinning runs on the CPU; the CPU fallback renderer draws models withou
 **Limits.** Files up to 96 MB, 1 000 000 vertices, 1 500 000 triangles, 20 000 nodes, 1024 bones per skeleton and
 4 000 000 animation key values. A damaged or unsupported file only makes `g3d.model` fail with a message; it never
 crashes the app. Morph targets (blend shapes), cameras and lights in the file are ignored; cubic spline animation
-keys are played linearly between their key values; metallic / roughness values are read but not yet rendered. A
-material with an emissive color (and no emissive map) is drawn unlit in its base plus emissive color, so visors,
-lamps and thrusters glow. The rest pose of an FBX skeleton is its bind pose (FBX files store the frame they were saved
+keys are played linearly between their key values. Metallic, roughness, normal, occlusion and emissive maps are
+drawn by the pbr renderer (SDK 1.9, *Modern rendering* below). On the basic renderer a material with an emissive
+color (and no emissive map) is drawn unlit in its base plus emissive color, so visors, lamps and thrusters glow. The rest pose of an FBX skeleton is its bind pose (FBX files store the frame they were saved
 at in the bones), so a model at rest looks like its unskinned mesh.
 
 **Making models.** Export glTF binary (`.glb`) with "+Y up" and meters, embed the textures, keep a few thousand
 triangles per character on the Switch and name the clips. FBX exports work too (the axes and units of the file are
-converted on load). A material's base color texture is used; normal, metallic and emissive maps are not. The full
+converted on load). The basic renderer uses a material's base color texture; the pbr renderer (SDK 1.9) uses all
+of its maps. The full
 recipe (export checklist, budgets, loading screens, attachments, collision): `docs/MAKE_A_GAME.en.md`.
 
 The functions above are the same in JavaScript and Python (`g3d.model(path, size)` returns `null` / `None` on
@@ -614,6 +620,102 @@ loop?, speed?, fade?)`, `g3d.modelStop(m, fade?)`, `g3d.modelUpdate(m, dt)`, `g3
 Native apps (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadModelShared`, `g3d::Animator` (`play`,
 `crossfade`, `stop`, `update`, `nodeMatrix`), `g3d::drawModel(model, animator, matrix, opts)` and
 `g3d::ModelInstance` (what the script bindings use).
+
+### Modern rendering — `g3d.renderer("pbr")` (SDK 1.9)
+
+The **pbr renderer** draws the same meshes and models with physically based materials, real-time lights, shadows,
+HDR with tone mapping and bloom, and GPU instancing. It is **NexGFX**, Nexvyn OS's versioned graphics core (1.0 in
+Nexvyn OS 1.3.0; `g3d.rendererInfo()` names it and its backend). It runs on the console's OpenGL ES 3 GPU path and is
+**opt-in per app**: an app that never calls the functions below renders exactly as before.
+
+```lua
+local hero, sun
+function app.load()
+  print(g3d.renderer("pbr"))            -- "pbr", or "basic" when the GPU does not offer it (the same calls still draw)
+  g3d.shadows({quality = "high", distance = 25})
+  g3d.postfx({exposure = 1.0, tonemap = "aces", bloom = 0.06, msaa = 4})
+  g3d.environment({sky = "#9DB8E8", ground = "#4A4038", sun = 2.5})
+  hero = g3d.model("bundle:/models/hero.glb")        -- its PBR maps are used as they are
+  lamp = g3d.addLight({type = "point", x = 1, y = 2, z = 0, color = "#FF9A3C", intensity = 6, range = 8})
+end
+function app.update(dt)
+  t = (t or 0) + dt
+  g3d.updateLight(lamp, {x = math.cos(t) * 2, z = math.sin(t) * 2})   -- only the fields you give change
+end
+function app.draw(w, h)
+  g3d.begin(0, 0, w, h, 55)
+  g3d.camera(0, 2, 6, 0, 1, 0)
+  g3d.light(0.5, 0.8, 0.3, 0.4, "#FFF1DD")        -- the sun: direction to it, ambient, color
+  g3d.draw(hero, 0, 0, 0)
+  g3d.finish()
+end
+```
+
+Renderer settings belong to the app and stay until changed: set them once (in `app.load`) and change them when you
+need to. They apply to every `g3d.begin` of the app; other apps never see them.
+
+| Function | Description |
+|---|---|
+| `g3d.renderer([name])` → name | `"pbr"` or `"basic"` (the renderer of SDK 1.0–1.8). Returns the renderer frames will use: `"basic"` when the GPU path is off or offers no OpenGL ES 3 (the reason is in the system log). The first `"pbr"` call builds the shaders (about half a second): call it in `app.load` |
+| `g3d.rendererInfo()` → table | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: what draws this app's frames |
+| `g3d.caps()` → table | `{gpu, pbr, hdr, shadows, instancing, msaa, maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device}`: what this console offers |
+| `g3d.addLight(options)` → id | a light: `type` (`"point"`, `"spot"`, `"directional"`), `x, y, z` (position), `dx, dy, dz` (the direction it shines to), `color`, `intensity` (1 = a white surface 1 m away gets the full color; rooms need 5–20), `range` (m; the light fades out smoothly there), `inner` / `outer` (spot cone half angles in degrees), `shadow` (spot: casts shadows; the first spot that asks gets them). Up to 16 lights; each object is lit by the 8 strongest near it |
+| `g3d.updateLight(id, options)` → bool | changes the given fields; false for an unknown id |
+| `g3d.removeLight(id)` → bool, `g3d.clearLights()`, `g3d.lights()` → list | |
+| `g3d.shadows(true \| false \| options)` | shadows of the sun (`g3d.light`) and of one spot light: `enabled`, `quality` (`"low"` 1024 px 1 tap, `"medium"` 2048 px 3×3 filter, `"high"` 2048 px 4×4 filter), `distance` (m of the view the sun's shadows cover, default 30), `bias` (raise it if surfaces show shadow stripes, lower it if shadows float) |
+| `g3d.postfx(options)` | `exposure` (1), `tonemap` (`"aces"`, `"filmic"`, `"none"`), `bloom` (strength, 0 = off, default 0.05), `threshold` (HDR brightness where bloom starts, 1), `msaa` (0, 2, 4, 8 samples), `hdr` (false: no float target, tone mapping per pixel, no bloom; faster) |
+| `g3d.environment(options)` | ambient light and reflections: `sky` / `ground` (hemisphere colors), `intensity` (times the ambient of `g3d.light`), `sun` (sun intensity, default 3), `cubemap` (6 image paths +X −X +Y −Y +Z −Z of a sky; reflections and ambient come from it; `nil` = hemisphere) |
+| `g3d.material(meshOrModel, options \| nil[, name])` | PBR values: `metallic`, `roughness` (0–1), `emissive` (color) and `emissiveStrength` (above 1 glows into the bloom), `normalMap`, `metalRoughMap` (glTF: roughness G, metallic B), `metallicMap`, `roughnessMap` (R), `metalSmoothMap` (Unity: metallic R, smoothness A), `occlusionMap` (R), `emissiveMap`, `normalScale`, `occlusionStrength`, `transmission` (0–1: thin glass, see below), `ior` (1–3, reflectance; 1.5), `clearcoat` / `clearcoatRoughness` (a varnish layer). On a model it overrides the file's materials (only the given fields; `name` = one material, default all); `nil` goes back to the file's values. Meshes without a material are non-metal, roughness 0.6 |
+| `g3d.drawInstanced(meshOrModel, transforms[, tint[, flags[, stride]]])` | draws one mesh many times: `transforms` is a flat list of 7 numbers per copy (`x, y, z, rx, ry, rz, scale`), or 16 (a column-major matrix) with `stride` 16. On the pbr renderer up to 128 copies go to the GPU in one call; on the basic renderer they are drawn one by one. Up to 65 536 copies per call |
+
+**Model files.** glTF / `.glb` materials bring everything: base color, normal, metallic-roughness (and occlusion,
+"ORM") and emissive maps with their factors, `KHR_materials_emissive_strength`, `KHR_materials_transmission`,
+`KHR_materials_ior` and `KHR_materials_clearcoat` (factors), and the alpha modes. FBX files bring base color,
+normal, metallic, roughness, emissive and (where the exporter writes it) ambient occlusion; maps the file does not
+link are taken from image files next to the base color map named like it — `T_Chair_BaseColor.png` →
+`T_Chair_AO.png`, `T_Chair_Metallic.png`, `T_Chair_Roughness.png` or the Unity pair `T_Chair_MetallicSmoothness.png`
+(metallic in R, smoothness in A). So a model exported for Unity or Unreal works with its texture folder copied
+next to the `.fbx`. Normal maps are OpenGL style (green up), tangents come from the texture coordinates.
+
+**What the pbr renderer does.** Metallic-roughness BRDF (GGX), image-based ambient from the hemisphere or the cube
+map with a split-sum specular term, the sun plus up to 8 point / spot / directional lights per object, sun shadows
+fitted to the view (texel-snapped, filtered) and one spot shadow, objects outside the view still cast shadows,
+linear lighting with sRGB textures, fog, HDR target with ACES / filmic tone mapping, 5-level bloom, MSAA.
+Translucent and glowing meshes, lines, points and voxel worlds draw as before inside the same frame. Instancing
+needs no setup.
+
+**Transparency, glass and reflections.** Alpha `MASK` materials (and textured meshes) are cut out; with MSAA their
+edges use alpha to coverage, so leaves and grilles are smooth. `BLEND` materials and colours with alpha are drawn
+after the opaque scene, sorted back to front per object, with premultiplied alpha: the reflection keeps its full
+strength and the surface gets more opaque at grazing angles (Fresnel), as glass does; double-sided ones draw their
+far side first. A material with `transmission` is thin glass: the opaque scene behind it shows through, tinted by
+its base colour and bent by its normal map (screen-space refraction from a copy of the scene; without a float
+target it blends instead). Reflections come from `g3d.environment`: the sky hemisphere, or a 6-face cube map that
+can be a **reflection probe** captured at a point of your level (render the 6 faces in your 3D tool from there);
+rough surfaces read its blurred levels (prefiltered on load). Not available: screen-space reflections, planar
+mirrors and probes captured by the console at run time (the GPU budget of a 720p frame does not allow them; a
+probe image plus clearcoat or glossy materials gives most of the look).
+
+**Budget (Switch).** Measure on the console: 720p with shadows "high", bloom and 4× MSAA costs more GPU time than
+the basic renderer. Start with `msaa = 0`, `quality = "medium"`, few lights per area and textures of 1024 px or
+less; turn `hdr` off on scenes that only need lighting. Memory: the float target, bloom chain and shadow maps take
+about 35 MB at 720p (4× MSAA adds about 47 MB); they are freed when no 3D app is open.
+
+**Fallback.** When the console offers no OpenGL ES 3, a shader cannot be built, or the system setting `g3d.pbr` is
+off, `g3d.renderer("pbr")` returns `"basic"` and the frames draw with the basic renderer; lights, shadows and post
+effects are then simply not shown. A missing float target turns off HDR and bloom only; missing multisampling turns
+off MSAA only.
+
+The functions are the same in JavaScript and Python (options are objects / dicts; JavaScript `g3d.lights()` returns
+an array). C (`nexvyn.h`) takes the options as JSON text: `g3d_renderer("pbr")`, `g3d_addLight("{\"type\":\"point\",
+\"x\":1,\"y\":2}")`, `g3d_updateLight(id, json)`, `g3d_removeLight`, `g3d_clearLights`, `g3d_lights`, `g3d_shadows`,
+`g3d_postfx`, `g3d_environment`, `g3d_material(obj, json, name)`, `g3d_rendererInfo()` (JSON), `g3d_drawInstanced(obj, floats, count, tint,
+flags)` (7 floats per copy) and `g3d_drawInstancedMatrices` (16), `g3d_caps()` (JSON). `"python3"` apps call the
+same `g3d` functions. Squirrel and Java are frozen at SDK 1.8 and do not get them. The Studio template "3D: PBR,
+Lights and Shadows" shows all of it.
+
+Native apps (C++, `source/core/g3d.h`): `g3d::scene(Scene)` between `begin` and `end`, `g3d::Light`,
+`g3d::PbrMaterial` (`Mesh::material`, `DrawOpts::material`), `g3d::drawInstanced`, `g3d::caps`.
 
 ### Voxel worlds — `g3d.voxels` (SDK 1.7, JavaScript)
 
@@ -898,6 +1000,182 @@ Presets: `game.particles.preset(name[, overrides])` → emitter, with `name` one
   a graph of the last 90 frame times, the pointer in virtual and world units, and `game.watch(name, value)` entries
   (`game.unwatch(name)`).
 
+## 8d. Feeds, media and network (SDK 1.9)
+
+Everything a photo feed, a short video app or a chat needs, in Lua, JavaScript, Python (`"python"` and `"python3"`)
+and C (section 14). Every call returns at once: transfers, decoding and players run on background threads, results
+arrive in callbacks (or by polling) on the main thread. Network calls need the `"network"` permission; a refused call
+reports `"permission denied: network"` like `net.get`. A step-by-step guide with a complete app:
+`docs/MAKE_A_SOCIAL_APP.en.md`.
+
+### HTTP: `net.request(options, callback[, progress])` → id
+
+```lua
+local id = net.request({
+  url = "https://api.example.com/v1/posts?page=2",
+  method = "GET",                      -- default GET (POST when json / form / multipart is given, PUT for file)
+  headers = {Authorization = "Bearer " .. token},
+  responseType = "json",               -- res.data = the decoded body
+  cache = 300,                         -- offline cache: fresh for 300 s, the last good answer when offline
+  retry = 3,                           -- up to 3 more tries on no answer, 408, 429 or 5xx (backoff 0.5, 1, 2 s + jitter)
+  cookies = true,                      -- the app's own cookie jar (kept on the SD card)
+}, function(res)
+  if res.ok then posts = res.data.items else showError(res.error) end
+end)
+net.cancel(id)                         -- the callback is not called for a cancelled request
+```
+
+| Option | Meaning |
+|---|---|
+| `url`, `method`, `headers`, `body`, `contentType` | as in SDK 1.4 (`body` may be any text) |
+| `json = value` | body = the value as JSON, `Content-Type: application/json` |
+| `form = {k = v}` | body = `k=v&...` (URL-encoded) |
+| `multipart = { {name, value} or {name, file, filename?, type?}, ... }` | multipart/form-data; files are read from disk while they are sent (photo and video uploads) |
+| `file = path` | a file as the whole body (`PUT` by default: uploads to a signed URL) |
+| `saveTo = path` | stream the answer into a file instead of `res.body` (`res.path`) |
+| `responseType = "json"` | `res.data` = decoded body (`res.ok` is false and `res.error` says why when it is not JSON) |
+| `timeout` | seconds for the whole transfer, 1–600 (default 30) |
+| `redirects = false` | do not follow redirects |
+| `maxBytes` | largest body kept in memory (default 16 MB, at most 64 MB; use `saveTo` for more) |
+| `retry = n` | 0–5 more tries (`Retry-After` is honoured up to 60 s). Only for requests that are safe to repeat |
+| `cache = seconds` (or `true` = revalidate every time) | GET/HEAD: answer from the disk cache while fresh, revalidate with `ETag` / `Last-Modified`, and the last good answer (`res.stale = true`) when the network fails. 32 MB per app, oldest first out |
+| `cookies = true` | send and store cookies (Set-Cookie) in the app's jar; `net.clearCookies()` empties it |
+
+`res`: `ok`, `status`, `body`, `error`, `url`, `headers` (lowercase), `contentType`, `fromCache`, `stale`, `seconds`,
+`data` (with `responseType = "json"`), `path` (with `saveTo`). `progress(now, total, phase)` runs at most once a frame;
+`phase` is `"upload"` while the body is sent and `"download"` while the answer arrives. At most 64 requests per app at a
+time. `net.clearCache()` → bytes freed (responses and pictures).
+
+### WebSocket: `net.ws(url[, options])` → id
+
+```lua
+chat = net.ws("wss://chat.example.com/socket", {headers = {Authorization = "Bearer " .. token}, protocols = "v1"})
+function app.update(dt)
+  for _, ev in ipairs(net.wsPoll(chat)) do
+    if ev.type == "open" then net.wsSend(chat, json.encode({join = "room1"}))
+    elseif ev.type == "message" then addMessage(json.decode(ev.data))
+    elseif ev.type == "close" then reconnectLater(ev.code) end   -- also "error" with ev.message
+  end
+end
+```
+
+`net.wsSend(id, text[, binary])` → true when queued (binary data is base64 text) · `net.wsPoll(id)` → the events since
+the last call: `{type = "open"}`, `{type = "message", data, binary}`, `{type = "error", message}`, `{type = "close",
+code, reason}` · `net.wsClose(id[, code[, reason]])` · `net.wsState(id)` → `"connecting"`, `"open"`, `"closing"`,
+`"closed"`. Options: `headers`, `protocols` (text or list), `cookies = true`. Poll every frame: a socket whose unread
+messages pass 16 MB is closed. At most 4 sockets per app, messages up to 4 MB; a quiet socket sends a ping every 25 s.
+Sockets close when the app closes and end with a `close` event after the console slept.
+
+### Sign-in: `net.oauth(options, callback(result, err))`
+
+Opens the sign-in page in the console's web browser and returns when it reaches your redirect address (OAuth 2.0 for
+native apps, RFC 8252). `redirect` must be a loopback address (`http://localhost/...`, `http://127.0.0.1/...`) or the
+app's own link (`nxv://app/<id>...`). `state` is added and checked for you; `pkce = true` adds a PKCE challenge
+(S256) and gives you the `verifier` for the token request.
+
+```lua
+net.oauth({url = "https://auth.example.com/authorize?client_id=ID&response_type=code&scope=read",
+           redirect = "http://localhost/callback", pkce = true}, function(r, err)
+  if err then status = err return end                  -- "cancelled", or why the browser is not available
+  net.request({url = "https://auth.example.com/token", method = "POST", responseType = "json",
+    form = {grant_type = "authorization_code", code = r.code, redirect_uri = "http://localhost/callback",
+            client_id = "ID", code_verifier = r.verifier}}, function(res) token = res.data and res.data.access_token end)
+end)
+```
+
+`result`: `code`, `state`, `verifier`, `params` (every query / fragment parameter), `url`. The browser needs Nexvyn OS
+started as an application on a console (not on emulators, not from the Album); otherwise `err` says so. Offer a
+fallback then (a device code shown as text or a QR code). Keep client secrets off the console.
+
+### Pictures from the web: `gfx.imageUrl(url[, maxSize])`
+
+Immediate mode, like `gfx.image`: call it every frame. The first call starts the download; until the picture is ready
+it returns `nil, "loading"` (JavaScript and Python: `null` / `None`, `gfx.imageState(url[, maxSize])` gives the
+state), afterwards the image (and `"ready"`). `maxSize > 0` stores a thumbnail no larger than that on its longer side
+(use it for feeds and avatars). Pictures are cached on the SD card (96 MB per app, the oldest downloads go first) and in the
+image cache in memory; decoding and scaling run in the background, so a feed scrolls without stutter. Pictures you
+stop asking for are skipped before they download. PNG, JPEG, WebP, GIF (first frame) and BMP up to 16 megapixels.
+
+```lua
+local img = gfx.imageUrl(post.thumb, 480)
+if img then gfx.draw(img, x, y, w, h, 12) else gfx.rect(x, y, w, h, 12, theme.control) end
+```
+
+### Video and audio players: `media`
+
+```lua
+local p = media.open("https://cdn.example.com/clip.m3u8", {loop = true, muted = false, autoplay = true})
+media.draw(p, x, y, w, h, "cover")   -- every frame: "contain" (default), "cover" or "stretch"[, alpha]
+media.pause(p); media.play(p); media.seek(p, 12.5)
+media.set(p, {muted = true, volume = 0.5, loop = false, speed = 1.5})
+local i = media.info(p)  -- state ("opening" "playing" "paused" "ended" "failed"), position, duration, buffering,
+                         -- live, width, height, muted, volume, hasVideo, error
+media.close(p)
+```
+
+Sources: files (path rules of `fs.read`) and `http(s)://` (progressive MP4/WebM/MKV, HLS `.m3u8` live and on demand;
+needs `"network"`). Decoding uses the console's video hardware. `audioOnly = true` streams sound only (podcasts,
+radio); `start = seconds` begins later. At most 3 players per app: keep the current and the next video of a pager open
+and close the rest. Players stop when the app closes; pause them in `app.suspend`.
+
+### Feeds: `ui.beginFeed` / `ui.feedItem` / `ui.endFeed`
+
+A virtualized scroll view for long lists and photo grids: only the visible items are drawn, so 10,000 posts cost what
+10 cost. Pull-to-refresh and "load more" are built in.
+
+```lua
+local f = ui.beginFeed("home", 0, 56, w, h - 56, #posts, {itemHeight = 360, gap = 8, refreshing = loading})
+for i = f.first, f.last do
+  local r = ui.feedItem(i)                -- {x, y, w, h} in content coordinates
+  drawPost(posts[i], r.x, r.y, r.w, r.h)
+end
+local ev = ui.endFeed()
+if ev.refresh then reload() end           -- the user pulled down and let go
+if ev.more then loadNextPage() end        -- the last items are on screen
+```
+
+Options: `itemHeight` (default 80), `heights` (a list: one height per item, for posts of different sizes; measure text
+with `ui.measureRichText`), `columns` (grid; cells are square, or `aspect` = height / width, or `itemHeight`), `gap`,
+`padTop`, `padBottom`, `refreshing` (shows the spinner at the top), `loadingMore` (spinner at the end, no more `more`),
+`ahead` (rows before the end that trigger `more`, default 3). Returns `first`, `last`, `scrollY`, `contentHeight`,
+`pull` (0..1 while pulling). `more` is reported once per list length; it comes again when the list grew or the user
+scrolled back. Always call `ui.endFeed()` (a feed left open is closed at the end of `app.draw`).
+
+### Swipe pager: `ui.pager(id, x, y, w, h, count[, options])`
+
+Full-screen vertical paging like short video apps: drag or fling to the next or previous page (one page per swipe),
+wheel, D-pad and Page Up/Down work too. Returns `page` (the page it settles on), `pos` (position in pages, fractional
+while it moves), `changed` (true on the frame the page changed), `dragging`, `settled`. Draw page `i` at
+`y + (i - pos) * h`. Options: `horizontal = true`, `page = n` (jump).
+
+```lua
+local pg = ui.pager("reels", 0, 0, w, h, #videos)
+for i = math.max(1, math.floor(pg.pos)), math.min(#videos, math.floor(pg.pos) + 1) do
+  media.draw(players[i], 0, (i - pg.pos) * h, w, h, "cover")
+end
+if pg.changed then switchVideo(pg.page) end
+```
+
+### Rich text: `ui.richText(id, text, x, y, w[, size[, options]])`
+
+Draws text with `**bold**`, links (`https://...`), `@mentions` and `#hashtags` in the link colour, wrapped to `w`.
+Returns `{height, clicked}`; `clicked` is `{type = "link" | "mention" | "hashtag", value}` on the frame one was
+tapped, else nil. Options: `color`, `linkColor`, `maxLines` (cut with "…"), `lineSpacing`. `ui.measureRichText(text, w[,
+size[, options]])` → the height without drawing (for `heights` in a feed). What a tap does is up to the app: show a
+profile for a mention, a search for a hashtag, and open a link in the Browser with `sys.launch("browser", url)`
+(needs `"launch"`).
+
+### Relative time: `sys.relativeTime(epoch[, now])`
+
+`"now"`, `"5m"`, `"3h"`, `"2d"`, `"1w"`, then a short date, in the interface language (`"5 dk"` in Turkish).
+
+### Notifications, sharing and links for social apps
+
+Nothing new is needed: `sys.schedule` (section 8a) posts reminders while the app is closed; `sys.share(text or path)`
+opens the share sheet; `sys.appUrl(id, arg)` makes a link (`nxv://app/<id>?arg=post:42`) that opens the app at a post
+(`app.load(arg)` / `app.open(arg)`). A background feed check cannot run while the app is closed: refresh in
+`app.resume` and when the app opens.
+
 ## 9. Design guidelines
 
 - Apps: use `theme` colors, rounded corners (6–12 px), the `ui` widgets, `"semibold"`/`"bold"` for headings, 13–15 px
@@ -1068,6 +1346,14 @@ app.draw = (w, h) => {
 };
 ```
 
+### SDK 1.9 in JavaScript
+
+The section 8d functions have the same names. `net.request(options, callback, progress)` returns the request id with a
+callback and a `Promise` of the response without one (then it cannot be cancelled); `net.oauth(options)` returns a
+`Promise` too (it rejects with the error). `gfx.imageUrl(url, maxSize)` returns `null` while the picture loads:
+`gfx.imageState(url, maxSize)` says why. Feed and pager indexes are 0-based (`for (let i = f.first; i <= f.last;
+i++)`). Binary WebSocket messages are base64 text (`atob`-style decoding is up to you).
+
 ### SDK 1.4 in JavaScript
 
 `app.search = (q) => [{ title, subtitle, icon, arg }]`, `app.suspend`, `app.resume`, `app.focus = (focused) => {}`,
@@ -1085,6 +1371,13 @@ permission); the callback gets the complete array after the console scan. `fs.un
 
 `fs.readBytes(path)` → `Uint8Array` or `null`; `fs.write`, `fs.append` and `net.post` also accept a `Uint8Array`
 or `ArrayBuffer`. `ui.submitted(id)`. `net.fetch`, `net.fetchJson`, `net.request`. `timer.sleep`.
+
+Web-standard helpers (SDK 1.9; QuickJS already has `queueMicrotask`, `atob` / `btoa`, `performance.now()`):
+`TextEncoder` / `TextDecoder` (UTF-8 only; `new TextDecoder("utf-8", {fatal: true})` throws on invalid bytes),
+`URL` (parts, `searchParams`, relative URLs against a base, `URL.canParse`) and `URLSearchParams` (`get`, `getAll`, `set`,
+`append`, `delete`, `has`, `sort`, iteration, `toString` with `+` for spaces), and `structuredClone` (objects, arrays,
+`Date`, `RegExp`, `Map`, `Set`, `ArrayBuffer`, typed arrays, cycles; functions throw). An app that defines its own
+version of one of them keeps it.
 
 ### Complete example
 
@@ -1278,6 +1571,14 @@ class Weather:
 app = Weather()
 ```
 
+### SDK 1.9 in Python
+
+The section 8d functions have the same names in `"python"` and `"python3"`; records (responses, feed and pager
+results, WebSocket events) read as attributes or keys (`res.ok`, `ev["type"]`). `net.request(options, callback,
+progress)` returns the request id; `net.oauth(options, callback)` calls `callback(result, error)`. `gfx.imageUrl(url,
+size)` returns `None` while loading (`gfx.imageState(url, size)`). Indexes are 0-based:
+`for i in range(f.first, f.last + 1)`.
+
 ### SDK 1.4 in Python
 
 Define `search(query)`, `suspend()`, `resume()`, `focus(focused)`, `autosave()` and `unsaved()` like the other
@@ -1300,6 +1601,18 @@ of modules pocketpy lacks, with the CPython APIs: `itertools` (`count`, `cycle`,
 (`mean`, `median`, `mode`, `stdev`, `variance`, `quantiles`...), `base64` (standard and URL-safe) and `colorsys` (RGB ↔
 HSV/HLS/YIQ, plus `to_hex` / `from_hex` for gfx colors). A module of the same name in the bundle wins. `itertools.chain`
 is iterable (`for`, `list()`), not an iterator (`next()`).
+
+SDK 1.9 adds `urllib.parse` (`quote`, `quote_plus`, `unquote`, `unquote_plus`, `urlencode`, `parse_qs`, `parse_qsl`,
+`urlsplit`, `urlparse`, `urlunsplit`, `urlunparse`, `urljoin`), `html` (`escape`, `unescape`) and `uuid` (`uuid4()`,
+`UUID(hex)` with `str`, `hex`, `bytes`, `version`; no `.int`: pocketpy's integers are 64-bit). It also gives `str` the
+CPython methods pocketpy lacked: `isdigit`, `isdecimal`, `isnumeric`, `isalpha`, `isalnum`, `isspace`, `isascii`,
+`isprintable`, `isidentifier`, `islower`, `isupper`, `istitle`, `title`, `capitalize`, `swapcase`, `casefold`, `center`,
+`expandtabs`, `rfind`, `rindex`, `partition`, `rpartition`, `removeprefix`, `removesuffix`, `format_map`, `maketrans`,
+`translate`, `rsplit`; `split(sep, maxsplit)`, `find` / `index` / `count` with start and end, `startswith` / `endswith`
+with a tuple; `dict.setdefault`, `dict.fromkeys` and `pow(base, exp[, mod])`. Letters and case beyond ASCII follow
+Latin, Greek and Cyrillic (and treat CJK, kana and Hangul as letters); `str.lower()` / `upper()` themselves are unchanged
+(ASCII only). Still missing on pocketpy: `re`, `hashlib`, `struct`, format specs with `,` and `!r`, integers past 64
+bits, `max` / `min` with `default=`; use the `"python3"` runtime when an app needs them.
 
 ### Limits
 
@@ -1486,6 +1799,14 @@ void app_onmenu(int id) { if (id == 1) store_setNum("count", count = 0); }
   `net_json(url, NULL, on_data, NULL)` with `void on_data(const char* json, const char* error, void* user)`;
   `timer_after(1.0, on_tick, NULL)`; `ui_alert(title, msg, buttons, 2, on_button, NULL)`. `net_json` hands over the
   JSON text (`json_pretty` formats it; `store_getJson` / `store_setJson` keep JSON values).
+- **SDK 1.9** (section 8d) takes options as JSON text: `net_fetch("{\"url\": \"https://...\", \"retry\": 2}", on_res,
+  on_progress, NULL)` → id (`net_cancel`); `net_ws` / `net_wsSend` / `net_wsPoll` (JSON array of events) /
+  `net_wsClose` / `net_wsState`; `net_oauth(options, on_json, user)`; `gfx_imageUrl(url, maxSize, &w, &h)` → the path to
+  draw (NULL while loading, `gfx_imageState`); `media_open` / `media_draw` / `media_play` / `media_pause` /
+  `media_seek` / `media_set` / `media_info` (JSON) / `media_close`; `ui_beginFeed` (an `nxv_feed` struct) /
+  `ui_feedItem(i, &x, &y, &w, &h)` / `ui_endFeed()` (bit 1 refresh, bit 2 more); `ui_pager(..., &page)` → position;
+  `ui_richText(..., &clicked)` (`"link:<url>"`, `"mention:<name>"`, `"hashtag:<tag>"`) → height;
+  `ui_measureRichText`; `sys_relativeTime(epoch)`. Indexes are 0-based.
 - **Memory**: `malloc` is counted against 64 MB (NULL past it); whatever is left is freed when the window closes.
 - **Native code**: C apps are not sandboxed and an endless loop or a crash cannot be stopped (no 3 second limit): when
   a callback held the system for 12 seconds and comes back, Nexvyn OS asks Force Quit / Wait; while it stays stuck,

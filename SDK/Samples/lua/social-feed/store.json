@@ -1,0 +1,37 @@
+{
+  "kind": "demo",
+  "tags": [
+    "net",
+    "feed",
+    "media",
+    "video",
+    "images"
+  ],
+  "subtitle": {
+    "en": "Feeds, photos and clips on SDK 1.9",
+    "tr": "SDK 1.9 ile akış, fotoğraf ve klip",
+    "de": "Feeds, Fotos und Clips mit SDK 1.9",
+    "fr": "Fils, photos et clips avec le SDK 1.9",
+    "es": "Feeds, fotos y clips con el SDK 1.9",
+    "ja": "SDK 1.9 のフィード、写真、クリップ",
+    "zh": "SDK 1.9 的信息流、照片和短片",
+    "ko": "SDK 1.9의 피드, 사진, 클립"
+  },
+  "description": {
+    "en": "A photo feed, a photo grid and a vertical clip pager: cached web pictures with thumbnails, a virtualized feed with pull-to-refresh and infinite scroll, captions with links, mentions and hashtags, and video players that keep only the current and the next clip open. About 250 lines of commented Lua; the media is generated and CC0.",
+    "tr": "Fotoğraf akışı, fotoğraf ızgarası ve dikey klip sayfalayıcı: küçük resimli önbellekli web resimleri, çek-yenile ve sonsuz kaydırmalı sanal akış, bağlantı, bahsetme ve etiketli açıklamalar ve yalnızca şimdiki ile sonraki klibi açık tutan video oynatıcılar. Yaklaşık 250 satır açıklamalı Lua; medya üretilmiş ve CC0.",
+    "de": "Ein Foto-Feed, ein Fotoraster und ein vertikaler Clip-Pager: zwischengespeicherte Webbilder mit Vorschaubildern, ein virtualisierter Feed mit Ziehen zum Aktualisieren und endlosem Scrollen, Bildunterschriften mit Links, Erwähnungen und Hashtags und Videoplayer, die nur den aktuellen und den nächsten Clip offen halten. Rund 250 Zeilen kommentiertes Lua; die Medien sind generiert und CC0.",
+    "fr": "Un fil de photos, une grille de photos et un défilement vertical de clips : images web en cache avec miniatures, fil virtualisé avec tirer pour actualiser et défilement infini, légendes avec liens, mentions et hashtags, et lecteurs vidéo qui ne gardent ouverts que le clip actuel et le suivant. Environ 250 lignes de Lua commenté ; les médias sont générés et CC0.",
+    "es": "Un feed de fotos, una cuadrícula de fotos y un paginador vertical de clips: imágenes web en caché con miniaturas, un feed virtualizado con tirar para actualizar y desplazamiento infinito, textos con enlaces, menciones y hashtags, y reproductores de vídeo que solo mantienen abiertos el clip actual y el siguiente. Unas 250 líneas de Lua comentado; los medios son generados y CC0.",
+    "ja": "写真フィード、写真グリッド、縦スワイプのクリップページャー: サムネイル付きでキャッシュされる Web 画像、引っ張って更新と無限スクロールの仮想化フィード、リンク・メンション・ハッシュタグ付きのキャプション、現在と次のクリップだけを開いておく動画プレーヤー。コメント付き Lua 約 250 行。メディアは生成物で CC0 です。",
+    "zh": "照片信息流、照片网格和竖向短片翻页：带缩略图的缓存网络图片、支持下拉刷新和无限滚动的虚拟化信息流、带链接、提及和话题标签的说明文字，以及只保持当前和下一个短片打开的视频播放器。约 250 行带注释的 Lua；媒体为生成内容，采用 CC0。",
+    "ko": "사진 피드, 사진 그리드, 세로 클립 페이저: 썸네일과 함께 캐시되는 웹 이미지, 당겨서 새로고침과 무한 스크롤이 되는 가상화 피드, 링크·멘션·해시태그가 있는 캡션, 현재와 다음 클립만 열어 두는 동영상 플레이어. 주석이 달린 Lua 약 250줄이며 미디어는 생성된 CC0입니다."
+  },
+  "shots": [
+    ["wait 4"],
+    ["wclick 0.31 0.045", "wait 3"],
+    ["wclick 0.5 0.045", "wait 3"],
+    ["key down", "wait 2.5"],
+    ["dark 1", "wclick 0.11 0.045", "wait 2"]
+  ]
+}

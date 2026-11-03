@@ -1,4 +1,4 @@
-# Oyun yap: eksiksiz tarif (SDK 1.8)
+# Oyun yap: eksiksiz tarif (SDK 1.9)
 
 [English](MAKE_A_GAME.en.md) · **Türkçe**
 
@@ -131,7 +131,7 @@ iskelet, klipler ve dokular tek dosyada. `.fbx` de çalışır (eksenleri ve bir
 | Pivot | Ayakların ortasında: modelin orijini durduğu yerdir. `g3d.model(path, size)` modeli ölçekleyip y = 0'a da oturtur |
 | Klip adları | Kısa ve açık: `Idle`, `Run`, `Jump`, `Attack`. Klip adla bulunur, büyük-küçük harf ve FBX'in eklediği armature öneki fark etmez (`"Rig|Run"`, `"run"` ile eşleşir) |
 | Kemik adları | Bir şey takacağınız kemiklere ad verin: `hand_R`, `head`; soket olarak vertex'siz bir kemik (`Lamp`, `Muzzle`) |
-| Dokular | `.glb`'nin içine gömün (ya da dosyanın yanında tutun). Yalnızca **base color** dokusu çizilir; normal, metallic, roughness ve emissive map'leri yok sayılır. Emissive *renk* (map olmadan) malzemeyi ışıksız ve parlak çizer: vizör, lamba, lav |
+| Dokular | `.glb`'nin içine gömün (ya da dosyanın yanında tutun). Basic renderer **base color** dokusunu çizer; pbr renderer (SDK 1.9, bölüm 10'da *Modern görüntü*) normal, metallic-roughness, occlusion ve emissive map'lerini de çizer. Basic renderer'da emissive *renk* (map olmadan) malzemeyi ışıksız ve parlak çizer: vizör, lamba, lav |
 | Doku boyutu | Eşyalar için 512 x 512, kahraman için 1024 x 1024, en fazla 2048; ikinin kuvvetleri. Işığı ve detayı renk dokusuna bake edin |
 | Üçgen | Kahraman 3 000 - 8 000, düşmanlar 1 000 - 4 000, eşyalar 50 - 1 500, bir bölüm toplam 20 000 - 50 000 (10. bölüm) |
 | Kemik | GPU'da tek çizimde en fazla 32 kemik skin edilir; daha büyük iskelet birkaç çizime bölünür. Bir karakter için 20 - 40 kemik bol bol yeter; vertex başına 4 ağırlık |
@@ -695,6 +695,33 @@ animasyonlu model; 64 tanesi bir emülatörde yaklaşık 33 fps. Konsolda payı 
   fazla 96 MB olabilir.
 - **Ölçün.** `sys.fps()`, `g3d.finish()`'in üçgen sayısı, `nexvyn.game`'in F3 katmanı ve konsolda `autorun.txt`
   içinde bir `stats` satırı. Oyununuzun aynı anda doğurduğu en çok düşmanla test edin.
+
+### Modern görüntü (SDK 1.9)
+
+`g3d.renderer("pbr")` oyununuz için PBR materyalleri, gerçek zamanlı ışıkları, gölgeleri, HDR'ı, ton eşlemeyi ve
+bloom'u açar (SDK referansı, bölüm 8b, *Modern görüntü*). GPU zamanı harcar, yukarıdaki bütçenin parçası sayın:
+
+| Kare başına pbr bütçesi (yol gösterici) | |
+|---|---|
+| Işıklar | güneş + aksiyonun yakınında 2-6 nokta / spot ışık (her nesne yakınındaki en güçlü 8'ini alır) |
+| Gölgeler | `"medium"` güneş, `distance` = görünen oyun alanı; en fazla bir spot gölgesi |
+| Son efektler | `bloom` 0.03-0.1; önce `msaa` 0, kare süresi izin verirse 2-4; basit sahnelerde `hdr = false` |
+| Dokular | materyal başına: temel renk + normal 1024 px, ORM / metallic-smoothness / AO / emissive 512 px |
+| Tekrarlar | çimen, sütun, kasa, döküntü: `g3d.drawInstanced` (128 kopya başına bir GPU çağrısı) |
+
+- **Doku setleri.** Bütün haritalarıyla glTF (`.glb`) ya da texture klasörü yanında FBX dışa aktarın: temel renk
+  haritasıyla aynı adlı dosyalar (`T_X_BaseColor.png`, `_Normal`, `_MetallicSmoothness` ya da `_Metallic` +
+  `_Roughness`, `_AO`, `_Emissive`) kendiliğinden bulunur; başka oyun motorları için dışa aktarılmış kitler
+  haritalar küçültüldükten sonra çalışır. 4K atlasları göndermeden önce 1024 px'e indirin: konsol her haritayı tam boyutta
+  belleğe yükler.
+- **Bölüm sanatçısı gibi ışıklandırın.** Pencerelerden ya da sahnenin üstünden sıcak bir güneş, serin bir gök
+  (`g3d.environment` ya da sahnenizin göğünden çekilmiş 6 yüzlü bir cube map), oyuncunun baktığı yerde birkaç renkli
+  ışık ve 1'in üstünde emissive parçalar; ekranlar, lambalar ve tabelalar parlasın. Pozlamayı ve renkleri her oyun
+  için ayrı seçin: sanat yönünün parçasıdır.
+- **"basic"te de oyun doğru kalsın.** GLES 3'ü olmayan ya da renderer'ı kapatılmış bir sistemde `g3d.renderer("pbr")`
+  `"basic"` döndürür; aynı çağrılar yine çizer.
+- **Ölçün:** kendi `stats` satırınızla (`sys.fps()`, `g3d.finish()`'in verdiği üçgen sayısı); `msaa`, gölge kalitesi
+  ve bloom açıkken ve kapalıyken kare süresi, karenin nereye gittiğini söyler.
 
 ## 11. Kendinin yap: sanat yönü
 

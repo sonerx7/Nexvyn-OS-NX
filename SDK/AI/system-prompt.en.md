@@ -1,4 +1,4 @@
-# Nexvyn OS app SDK 1.8: context pack for AI assistants
+# Nexvyn OS app SDK 1.9: context pack for AI assistants
 
 **English** · [Türkçe](system-prompt.tr.md)
 
@@ -19,7 +19,7 @@ MyApp.nxvapp/            folder name ends with .nxvapp (or the folder's contents
   icon.png               256x256 PNG (games and store apps: key art, rule 12)
   lang/en.json           required: {"key": "Text with {0}"}
   lang/<code>.json       optional, one per extra language (de, es, fr, ja, ko, tr, zh)
-  models/*.glb           3D models (SDK 1.8)
+  models/*.glb           3D models (SDK 1.8; PBR maps drawn by the pbr renderer, SDK 1.9)
   any other files        images, sounds, modules
 ```
 
@@ -36,7 +36,7 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.8", "targetSdk": "1.8",
+  "minSdk": "1.9", "targetSdk": "1.9",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -50,8 +50,11 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   ending in .js/.mjs, .py, .nut, .c, .jar selects it too.
 - Minimum `minSdk`: Lua 1.0 (1.2 with `nexvyn.game`), JS 1.1, Python 1.3, Squirrel/C/Java 1.5. Any 1.4 feature
   (share, schedule, permissions API, lifecycle callbacks) needs "1.4"; `fs.unzip`, `sys.games`, `sys.speak`, the
-  "python3" runtime "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8".
-- `targetSdk`: the SDK the app was tested on; new apps use "1.8" (it decides what happens when a callback hangs,
+  "python3" runtime "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; the pbr renderer (`g3d.renderer`,
+  `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`, `g3d.material`,
+  `g3d.drawInstanced`, `g3d.caps`), the section 7 SDK 1.9 network calls and the feed / media calls "1.9" (Lua,
+  JavaScript, Python, C only). Use the lowest `minSdk` that has every call the app makes.
+- `targetSdk`: the SDK the app was tested on; new apps use "1.9" (it decides what happens when a callback hangs,
   rule 1). Squirrel and Java are frozen at SDK 1.8 (their apps keep working, no new APIs): start new apps in Lua,
   JavaScript, Python or C.
 - `window.width/height` is the content size. `gamepad: true` sends the controller to the app (L+R gives the cursor
@@ -99,7 +102,7 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
 ## 3. Hard rules
 
 1. **3 seconds / 10 seconds:** a callback that runs longer than 3 s is stopped; the main file's top level and
-   `app.load` get 10 s. With `"targetSdk": "1.8"` the app then ends with the error screen; older apps get a
+   `app.load` get 10 s. With `"targetSdk": "1.8"` or newer the app then ends with the error screen; older apps get a
    "not responding" question (Wait / Close). Load models with `g3d.loadModel` (background thread), split long work
    across frames, timers or a coroutine resumed a few ms per frame. C has no such guard (after 12 s the user gets
    Force Quit / Wait): every C loop must be bounded.
@@ -204,14 +207,28 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
 - `json.decode(text)` → value or nil,err · `json.encode(value[,pretty])`.
 - `net` (async, HTTPS, needs "network"): `net.get(url[,headers],fn(res))`, `net.post(url,body[,contentType],fn)`,
   `net.json(url,fn(data,err))`, `net.download(url,path,fn(ok,pathOrErr)[,progress(now,total)])`, `net.encode(s)`.
-  `res`: ok, status, body, error, url, headers.
+  `res`: ok, status, body, error, url, headers. SDK 1.9 (needs "minSdk": "1.9"): `net.request({url, method, headers,
+  json|form|multipart|file|body, saveTo, responseType="json", cache=seconds, retry=n, cookies=true, timeout}, fn(res)[,
+  progress(now,total,phase)])` → id, `net.cancel(id)`, `net.clearCookies()`, `net.clearCache()`; res adds data,
+  fromCache, stale, path. WebSocket: `net.ws(url[, {headers, protocols}])` → id, poll `net.wsPoll(id)` every frame
+  ({type="open"|"message"|"error"|"close", data, binary, code, reason}), `net.wsSend(id, text)`, `net.wsClose(id)`,
+  `net.wsState(id)`. Sign-in: `net.oauth({url, redirect="http://localhost/cb", pkce=true}, fn(result, err))` →
+  result.code / result.verifier (needs a console in title mode; offer a fallback). Never put client secrets in an app.
 - `sys`: `time()` (monotonic s), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.8". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.9". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id or nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Links: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.
+- SDK 1.9 feeds and media: `gfx.imageUrl(url, maxSize)` → image or nil while loading (call every frame, ask for the
+  drawn size; `gfx.imageState(url, maxSize)`); `media.open(src, {loop, muted, autoplay, audioOnly, start})` → id,
+  `media.draw(id, x, y, w, h, "cover"|"contain"|"stretch")`, `media.play/pause/seek/set/info/close` (at most 3
+  players: keep the current and next one open); `ui.beginFeed(id, x, y, w, h, count, {itemHeight|heights, columns,
+  gap, refreshing, loadingMore})` → {first, last}, `ui.feedItem(i)` → {x, y, w, h}, `ui.endFeed()` → {refresh, more};
+  `ui.pager(id, x, y, w, h, count)` → {page, pos, changed} (draw page i at y + (i - pos) * h); `ui.richText(id, text,
+  x, y, w, size)` → {height, clicked} (bold, links, @mentions, #hashtags), `ui.measureRichText(text, w, size)`;
+  `sys.relativeTime(epoch)`. Guide: SDK/Guides/MAKE_A_SOCIAL_APP.en.md.
 - `audio.tone(freq,seconds[,volume[,wave]])` (wave "sine","square","saw","triangle","noise") → channel ·
   `audio.play(nameOrPath[,volume[,loops]])` (system "click","pop","notify","alarm","trash","shutter","error","key",
   "volume","startup" or .wav/.ogg/.mp3; loops -1 = repeat) · `audio.stop(ch)` · `audio.music(path)` ·
@@ -268,9 +285,29 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
   min, max, animations={{name, duration}}}, `model:play(clip[, {loop, speed, fade}])` → bool (JS `{loop, speed,
   fade}`, Python `play(clip, loop, speed, fade)`), `model:stop([fade])`, `model:update(dt)` (every frame),
   `model:time([t])`, `model:clip()`, `model:playing()`, `model:node(name, x..sz)` → x,y,z,
-  `model:nodeMatrix(name, x..sz)` → 16 numbers (attachments), `model:triangles()`, `model:free()`. Only the base
-  colour texture is drawn; an emissive colour draws unlit. Budgets: a hero 3-8k triangles, 30-60k per frame,
+  `model:nodeMatrix(name, x..sz)` → 16 numbers (attachments), `model:triangles()`, `model:free()`. The basic
+  renderer draws the base colour texture (an emissive colour draws unlit); the pbr renderer draws every map of the
+  file: glTF base colour, normal, metallic-roughness + occlusion (ORM) and emissive; FBX the same, with maps the file
+  does not link taken from files next to the base colour map (`X_BaseColor.png` -> `X_AO.png`, `X_Metallic.png`,
+  `X_Roughness.png`, Unity `X_MetallicSmoothness.png`: metallic R, smoothness A). Budgets: a hero 3-8k triangles, 30-60k per frame,
   8-16 skinned characters at 60 fps.
+- pbr renderer (NexGFX, SDK 1.9, opt-in per app; settings stay until changed, set them in load):
+  `g3d.rendererInfo()` → {name="NexGFX", version, backend, renderer};
+  `g3d.renderer("pbr")` → "pbr" or "basic" (no GLES 3: the same calls draw with the basic renderer, without
+  lights / shadows / post effects; never assume "pbr"); `g3d.caps()` → {gpu, pbr, hdr, shadows, instancing, msaa,
+  maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device};
+  `g3d.addLight({type="point"|"spot"|"directional", x,y,z, dx,dy,dz, color, intensity, range, inner, outer, shadow})`
+  → id (16 per scene, 8 nearest per object; intensity 1 = full colour at 1 m, rooms 5-20), `g3d.updateLight(id,
+  {fields})`, `g3d.removeLight(id)`, `g3d.clearLights()`, `g3d.lights()`; the sun is `g3d.light(...)`;
+  `g3d.shadows({enabled, quality="low"|"medium"|"high", distance, bias})` (sun + one spot with shadow=true);
+  `g3d.postfx({exposure, tonemap="aces"|"filmic"|"none", bloom, threshold, msaa=0|2|4|8, hdr})`;
+  `g3d.environment({sky, ground, intensity, sun, cubemap={6 paths +X -X +Y -Y +Z -Z}})`;
+  `g3d.material(meshOrModel, {metallic, roughness, emissive, emissiveStrength, normalMap, metalRoughMap,
+  metallicMap, roughnessMap, metalSmoothMap, occlusionMap, emissiveMap, normalScale, occlusionStrength,
+  transmission, ior, clearcoat, clearcoatRoughness}[, name])` (nil = back to the file's values; `transmission` =
+  thin glass); `g3d.drawInstanced(meshOrModel, {x,y,z,rx,ry,rz,s, ...}[, tint[, flags[, stride 7|16]]])`. Emission
+  above 1 blooms. Budget: start with msaa 0, shadows "medium", textures <= 1024 px; each game picks its own light
+  colours, exposure and bloom (part of its art direction, rule 13).
 - `nexvyn.game` (Lua only, `minSdk` 1.2): `local game = require("nexvyn.game")`, `return game.run{width, height,
   scene = Scene, background}`. Scenes (`enter`, `update(dt)`, `draw`, `ui`, `event`, `restart`), `game.switch/push/pop`,
   `game.world{gravity}` with `add`, `collide`, `trigger`, `query`; `game.sprite{x,y,r|w,h, body = true}`,
@@ -307,12 +344,14 @@ Item folder `Store/Apps/<category>/<slug>/` (games: `Store/Games/<genre>/<slug>/
 {"kind": "app", "tags": ["..."],
  "subtitle": {"en": "..."},
  "description": {"en": "..."},
- "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["dark 1", "wait 1.5"]]}
+ "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["hold right 1.5", "wait 1"],
+           ["dark 1", "wait 1.5"]]}
 ```
 
 English is required in `subtitle` / `description`; add other languages as more keys (`"de": "..."`).
-`kind`: app, game, demo, template. Subtitle at most 45 characters. `source/icon.png` is key art (rule 12). `shots`: 3-4 lists of steps: `wait S`,
-`wclick FX FY` / `wmove FX FY` (0..1 fractions of the window content), `key NAME`, `dpad DIR`, `text STRING`,
+`kind`: app, game, demo, template. Subtitle at most 45 characters. `source/icon.png` is key art (rule 12). `shots`: 3-5 lists (5 recommended, the coolest
+moments) of steps: `wait S`, `wclick FX FY` / `wmove FX FY` (0..1 fractions of the window content), `key NAME`,
+`hold KEY S`, `dpad DIR`, `text STRING`,
 `dark 0|1`.
 
 ## 11. How to answer

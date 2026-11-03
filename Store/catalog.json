@@ -5705,13 +5705,13 @@
         "fr": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
         "es": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "sonerx7",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/ash-protocol.nxvapp",
-      "size": 3627283,
-      "sha256": "88cfb1669c65e6881b79e36bdc05e09361fbfd9158fa738b79c1e44fee4de3de",
+      "size": 3627381,
+      "sha256": "da4d1b8eebb864c884cdb50dcc3f37a8e3661938dc0881ed920a4e51b1fc8724",
       "minSdk": "1.4",
       "permissions": [],
       "screenshots": [
@@ -5739,8 +5739,12 @@
         "es": "Primera versión Store: seis capítulos, cuatro armas, seis tipos de enemigos y entornos 3D texturizados."
       },
       "added": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-03",
       "history": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-03"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-02"

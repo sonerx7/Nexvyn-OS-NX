@@ -1,4 +1,4 @@
-# Make a game: the complete recipe (SDK 1.8)
+# Make a game: the complete recipe (SDK 1.9)
 
 **English** · [Türkçe](MAKE_A_GAME.tr.md)
 
@@ -132,7 +132,7 @@ skeleton, the clips and the textures. `.fbx` works too (its axes and units are c
 | Pivot | At the feet, in the middle: the model's origin is where it stands. `g3d.model(path, size)` also scales a model and stands it on y = 0 |
 | Clip names | Short and clear: `Idle`, `Run`, `Jump`, `Attack`. A clip is found by name without case and without the armature prefix FBX adds (`"Rig|Run"` matches `"run"`) |
 | Bone names | Name the bones you attach things to: `hand_R`, `head`, a bone without vertices as a socket (`Lamp`, `Muzzle`) |
-| Textures | Embed them in the `.glb` (or keep them next to the file). Only the **base colour** texture is drawn; normal, metallic, roughness and emissive maps are ignored. An emissive *colour* (without a map) draws the material unlit and bright: visors, lamps, lava |
+| Textures | Embed them in the `.glb` (or keep them next to the file). The basic renderer draws the **base colour** texture; the pbr renderer (SDK 1.9, *Modern rendering* in section 10) also draws the normal, metallic-roughness, occlusion and emissive maps. On the basic renderer an emissive *colour* (without a map) draws the material unlit and bright: visors, lamps, lava |
 | Texture size | 512 x 512 for props, 1024 x 1024 for the hero, 2048 at most; powers of two. Bake lighting and detail into the colour map |
 | Triangles | Hero 3 000 - 8 000, enemies 1 000 - 4 000, props 50 - 1 500, a level 20 000 - 50 000 in total (section 10) |
 | Bones | Up to 32 bones are skinned in one draw on the GPU; a bigger skeleton is split into several draws. 20 - 40 bones is plenty for a character; 4 weights per vertex |
@@ -687,6 +687,31 @@ animated models at 60 fps; 64 of them at about 33 fps in an emulator. On a conso
   apps share: keep the game's models and textures to tens of MB, not hundreds. A model file may be up to 96 MB.
 - **Measure.** `sys.fps()`, the triangle count from `g3d.finish()`, `nexvyn.game`'s F3 overlay, and on a console a
   `stats` line in `autorun.txt`. Test with the most enemies your game ever spawns.
+
+### Modern rendering (SDK 1.9)
+
+`g3d.renderer("pbr")` turns on PBR materials, real-time lights, shadows, HDR, tone mapping and bloom for your game
+(SDK reference, section 8b, *Modern rendering*). It costs GPU time, so treat it as part of the budget above:
+
+| pbr budget per frame (guidelines) | |
+|---|---|
+| Lights | the sun + 2-6 point / spot lights near the action (each object takes the 8 strongest near it) |
+| Shadows | the sun at `"medium"` with `distance` = the visible play area; one spot shadow at most |
+| Post effects | `bloom` 0.03-0.1; `msaa` 0 first, 2-4 only if the frame time allows; `hdr = false` for simple scenes |
+| Textures | per material: base colour + normal at 1024 px, ORM / metallic-smoothness / AO / emissive at 512 px |
+| Repeats | grass, pillars, crates, debris: `g3d.drawInstanced` (one GPU call per 128 copies) |
+
+- **Texture sets.** Export glTF (`.glb`) with every map, or FBX with its texture folder next to it: files named like
+  the base colour map (`T_X_BaseColor.png`, `_Normal`, `_MetallicSmoothness` or `_Metallic` + `_Roughness`, `_AO`,
+  `_Emissive`) are found on their own, so asset kits exported for other game engines work after scaling the maps down. Scale 4K
+  atlases to 1024 px before shipping: the console loads every map into memory at full size.
+- **Light like a level artist.** One warm sun through windows or over the scene, a cool sky (`g3d.environment`, or a
+  6-face cube map rendered from your scene's sky), a few coloured lights where the player looks, and emissive parts
+  above 1 so screens, lamps and signs bloom. Pick exposure and colours per game: they are part of its art direction.
+- **Keep the game correct on "basic".** `g3d.renderer("pbr")` returns `"basic"` on a system without GLES 3 or with
+  the renderer turned off; the same calls still draw.
+- **Measure** with your own `stats` line (`sys.fps()`, the triangle count from `g3d.finish()`): frame time with and
+  without `msaa`, shadow quality and bloom tells you where the frame goes.
 
 ## 11. Make it yours: art direction
 

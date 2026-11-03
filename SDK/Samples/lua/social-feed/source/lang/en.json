@@ -1,0 +1,10 @@
+{
+  "feed": "Feed",
+  "grid": "Grid",
+  "reels": "Clips",
+  "likes": "{0} likes",
+  "clip": "Clip {0}",
+  "swipe": "Swipe up for the next clip",
+  "offline": "Offline: showing the saved feed",
+  "opened": "Opened post {0}"
+}

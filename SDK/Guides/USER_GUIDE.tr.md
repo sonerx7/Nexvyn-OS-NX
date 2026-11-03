@@ -577,7 +577,7 @@ ayarları adıyla bulur.
 | **Homebrew Programları** | Homebrew | Önerilen homebrew programlarını indirme, güncelleme, kaldırma. |
 | **Yazılım Güncelleme** | Yazılım Güncelleme | Yeni Nexvyn OS sürümünü GitHub'dan indirir; mevcut sürümün yedeğini tutar. Yalnızca herkese açık GitHub sürümleriyle çalışır. |
 | **Sistem klasörü** | Hakkında | Overlay durumu ve **Sistem güncellemelerini sıfırla** (bkz. [SSS](#overlay-klasörünü-sıfırlamak)). |
-| **Tanılama**, **Sistem günlükleri**, **Kabuğu Yeniden Başlat**, **Tüm ayarları sıfırla** | Geliştirici | |
+| **Tanılama**, **Sistem günlükleri**, **Kabuğu Yeniden Başlat**, **Tüm ayarları sıfırla**, **Köklü sıfırla** | Geliştirici | |
 
 ### Yeni dil eklemek
 
@@ -964,6 +964,30 @@ ev klasörünüzü korur.
 **Nexvyn OS'u Sil** (aynı yerde) `sdmc:/NexvynOS` klasörünün tamamını siler; Nexvyn OS yeni indirilmiş gibi olur ve
 kurulum yardımcısıyla yeniden başlar. Oyunlar, kayıt verileri, Atmosphère, diğer homebrew uygulamaları ve
 `NexvynOS.nro` dosyası etkilenmez.
+
+### Köklü sıfırlama
+
+**Sistem Ayarları > Geliştirici > Sistem > Köklü sıfırla**, SD kartı tek `.nro` dosyasının ilk kurulumundaki hâline
+getirir: Nexvyn OS'un yazdığı her şey, klasörünün içinde ve dışında silinir ve bir sonraki açılışta kurulum yardımcısı
+başlar. Sayfa, silinecekleri boyutlarıyla ve ayrıca korunacakları listeler. PIN varsa ister ve düğmeyi 3 saniye basılı
+tutarsınız; önce tüm uygulamalar kapatılır.
+
+| Yol | Yazan | Köklü sıfırlama |
+|---|---|---|
+| `sdmc:/NexvynOS` (kullanıcılar, dosyalar, PIN'ler, ayarlar, uygulamalar, modüller, temalar, yazı tipleri, önbellekler, günlükler, oturum durumu, kayıtlı anahtarlar, `autorun.txt`, yedekler, kayıtlar) | Nexvyn OS | Silinir, klasör de |
+| `sdmc:/SnxOS` | Eski sürümler (klasörün yeniden adlandırmadan önceki adı) | Silinir |
+| `sdmc:/switch/NexvynOS/install.log` | Kurulum yardımcısı | Silinir (klasör yalnızca o zaman boşsa) |
+| `.nro`'nun yanındaki `NexvynOS.nro.bak`, `.new`, `.swap` | Güncelleyici (önceki sürüm, indirilen dosya) | Silinir |
+| `NexvynOS.nro` | Siz | Korunur |
+| `sdmc:/atmosphere/contents`, `exefs_patches`, `kip_patches` (modlar, hileler, Türkçe yamalar, sistem modülleri) | Mod uygulamaları, sizin isteğinizle | Korunur: oyun kurulumunuza aittir |
+| Nexvyn OS ile kurulan `sdmc:/switch/...` homebrew'ları, `.overlays` | Homebrew paketleri, sizin isteğinizle | Korunur |
+| `sdmc:/config` (overlay menüsü, sys-clk ayarları), Atmosphère'in kendi ayarları | Ayar uygulamaları, sizin isteğinizle | Korunur |
+| Oyunlar, kayıt verileri, Albüm, HOME menüsü forwarder'ı, emuMMC, `bootloader` | Switch, siz | Asla dokunulmaz |
+
+Elektrik kesintisine karşı güvenlidir: her şey önce `sdmc:/NexvynOS.deleting` klasörüne taşınır (birkaç yeniden
+adlandırma, önce ayarlar), sonra oradan silinir. Konsol yarıda kapanırsa bir sonraki açılış taşımayı bitirir, kurulum
+yardımcısını açar ve kalanı arka planda siler. Hakkında'daki **Nexvyn OS'u Sil** daha hafif sürümdür: yalnızca
+`sdmc:/NexvynOS` klasörünü boşaltır.
 
 ### Masaüstü boştayken daha yavaş görünüyor
 

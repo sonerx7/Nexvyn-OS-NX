@@ -59,6 +59,9 @@ app.json: `"runtime": "squirrel"`, `"main": "main.nut"`, `"minSdk": "1.5"`.
 - Mesh'ler `Mesh` örnekleridir: `m.setColor(c)`, `m.flat(true)`, `m.triangles()`, `m.setTexture(p)`, `m.free()`.
 - Sınırlar: 64 MB, callback başına 3 sn (her döngüde denetlenir; hatayı yakalamak işe yaramaz).
 
+- SDK 1.8'de donduruldu: SDK 1.9 (pbr renderer, akış, medya, WebSocket) yoktur. Yeni app'lere Lua,
+  JavaScript, Python ya da C ile başlayın.
+
 ## Denetim
 
 `python tools/rt_check.py <bundle>`: dengeli parantezler ve metinler, her SDK çağrısının geçerli bir argument

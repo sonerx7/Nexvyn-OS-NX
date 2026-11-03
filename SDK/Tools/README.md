@@ -2,40 +2,13 @@
 
 **English** · [Türkçe](README.tr.md)
 
-Tools for people who make Nexvyn OS apps on a PC. The first one is ready: the [`nxv`](nxv/README.md) command line.
-The list below is a prioritised proposal for the next ones, with what each would build on (files in `SnxOS/tools/` of
-the Nexvyn OS source repository) and a rough effort estimate.
+Tools for people who make Nexvyn OS apps and games on a PC. Each is plain Python 3.8+.
 
-## Ready
+| Tool | What it does | Needs |
+|---|---|---|
+| [`nxv`](nxv/README.md) | The command line for app makers: `new` (a project from `SDK/Languages/<lang>/template`, `--store` for the App Market layout), `check` (manifest, files, icon, translations, used but undeclared permissions, `store.json` and its `shots` script; with `--sdk` the language checker too), `build` (Java `src/` to `app.jar`), `pack` (the same `.nxvapp` as the App Market build, `--sign` to sign), `install` (copy into an SD card folder), `push --host <ip>` (upload to the console's **Connect to PC** FTP server) | nothing but Python |
+| [`icon/`](icon/README.md) | Key-art store icons from your game's own model: `hero_render.py` renders the model with key and rim lights on a transparent background, `finish_icon.py` builds the background, glow, rim, vignette and every size with a 256 / 128 / 64 px preview. Styles `clean` (default), `bold`, `loud`; a title only when asked for | Pillow; `hero_render.py` runs in a free, open-source 3D suite from the command line (see its README) |
+| [`textures/`](textures/README.md) | PBR texture sets for the pbr renderer (SDK 1.9): `check` (sets, sizes, missing maps), `resize` (scale maps down, originals kept), `orm` (pack glTF ORM), `smoothness` (MetallicSmoothness to roughness and metallic), `flipgreen` (DirectX to OpenGL normal maps) | Pillow |
 
-**1. The `nxv` command line (v0.1, in this folder).** One Python 3 file, no extra packages: [nxv/README.md](nxv/README.md).
-`nxv new <lang> <name>` (from `SDK/Languages/<lang>/template`, `--store` for the App Market item layout),
-`nxv check <bundle>` (manifest, files, icon, translations, permissions that are used but not declared, `store.json`
-and its `shots` script; with `--sdk` the language's official checker runs too), `nxv build` (Java `src/` → `app.jar`),
-`nxv pack` (the same deterministic `.nxvapp` as `build_store.py`, `--sign` to sign), `nxv icon` (`make_icon.py`),
-`nxv install` (copy into Ryujinx's or another SD card folder, optionally with `autorun.txt`) and
-`nxv push --host <ip>` (upload to the console's **Connect to PC** FTP server, as a folder or one `.nxvapp`).
-`nxv icon` makes placeholders only: a game's store icon is key art (next tool).
-
-**Store icon tool (in [`icon/`](icon/README.md)).** Key art for the App Market from your game's own model:
-`hero_render.py` (Blender, headless: pose, key and rim lights, transparent background) and `finish_icon.py`
-(Pillow: lit background, glow, rim, vignette, every size and a preview at 256 / 128 / 64 px). Styles `clean`
-(default), `bold` and `loud` (rays, sparks, bloom); a title only when asked for. Examples are in `icon/examples/`.
-
-## Proposals (in priority order)
-
-| # | Tool | What it gives | Builds on | Effort |
-|---|---|---|---|---|
-| 2 | **`nxv watch` and `nxv run`** | `watch`: sends changed files to the console over FTP as you save (only what changed) and can reopen the app. `run`: starts Ryujinx with `NexvynOS.nro` and an `autorun.txt` that says `launch <id>`, and streams the app's log (`System/Logs/Apps/<id>.log`) to the terminal. | `nxv push` / `install`, `ryu_test.sh`, `ui_smoke.py` (Ryujinx path and autorun) | 2-3 days |
-| 3 | **Store submission validator (CI)** | On a pull request, runs `nxv check --sdk` + the language checker for every changed item under `Store/`, `build_store.py --check` and `catalog_check.py`, and posts the result on the PR. Half of the review checklist becomes automatic. | `nxv check`, `tools/ci/store.yml`, `catalog_check.py` | 1-2 days |
-| 4 | **SDK type stubs** | Full SDK signatures for Lua (LuaLS `---@meta`), JavaScript (`nexvyn.d.ts`), Python (`nexvyn.pyi`) and Squirrel (a keyword list): completion and type checks in any editor. Generated from one source, regenerated when the SDK changes. | the function table in `source/runtimes/nxvrt_api.cpp` (already read by `gen_java_sdk.py` and `rt_check.py`), the SIGS list in `py_check.py` | 2-3 days |
-| 5 | **VS Code extension** | Completion from the stubs of 4, a JSON schema for `app.json` / `store.json`, snippets (new app, scene, menu, `net.json`...), checker output in the Problems panel with line numbers, "Send to console" and "Run in Ryujinx" commands. | 2, 4, `nxv check` output | 1-2 weeks |
-| 6 | **Localisation helper** | Extracts the app's `TR()` keys, compares every `lang/*.json` with `en.json` (missing, extra, `{0}` mismatches, texts that are far too long), exports/imports CSV or XLIFF for translators and suggests the shared terms of the system language packs (`common.ok`...). Machine translation only with the user's own key, opt-in. | `lang_check.py` (`--csv`), `romfs/System/Languages`, the translation check of `nxv check` | 2-3 days |
-| 7 | **Icon and screenshot studio** | A desktop/web UI: a Material Icons glyph picker, colour presets, live icon preview; recording a `store.json` `shots` script visually (click on the window to get `wclick` fractions) and playing it in Ryujinx; a contact sheet. | `make_icon.py`, `Icons.codepoints`, `store_shots.py` | 4-6 days |
-| 8 | **Web SDK simulator** | Quick UI prototyping in a browser: `gfx`/`ui`/`store`/`timer` implemented on a canvas; JS apps run directly, Lua apps through wasmoon/fengari. Not a console replacement (font metrics, performance, `g3d`), but layout and flow feedback in seconds. | the mock SDKs in `js_check.mjs` and `lua_check.py` | 2-4 weeks |
-| 9 | **Theme editor** | An editor with preview for `Store/Themes/<slug>/source/theme.json` (appearance, accent, wallpaper, settings) and a `.nxvtheme` packer. | the theme format, `build_store.py` | 3-5 days |
-
-Suggestion: 2 and 3 first (they speed up the daily loop and the review), then 4 (the base for 5 and for every
-editor). There is no `nxlink` upload yet: `nxlink` sends `.nro` files to hbmenu, and Nexvyn OS has no listener that
-accepts app bundles, so `nxv push` uses FTP. If such a listener is added on the system side, `nxv push --nxlink` can
-follow.
+Typical loop: `nxv new lua "My Game"` → write the code → `nxv check` → `nxv push` → try it on the console → make the
+icon with `icon/` → `nxv check` again before you open the pull request ([Contributing](../../CONTRIBUTING.md)).

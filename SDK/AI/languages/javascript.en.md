@@ -51,6 +51,11 @@ app.json: `"main": "main.js"` (or `"runtime": "js"`), `"minSdk": "1.1"`, `"permi
   Use `sys.date()` for local time.
 - Meshes: `mesh.setColor(c)` (dot, not colon).
 
+- SDK 1.9 (`"minSdk": "1.9"`): the same names; options are objects, `g3d.lights()` returns an array.
+  `net.request(options)` without a callback returns a Promise of `res` (it cannot be cancelled then);
+  `net.oauth(options)` returns a Promise; `gfx.imageUrl` returns `null` while loading; feed and pager
+  indexes are 0-based (`for (let i = f.first; i <= f.last; i++)`).
+
 ## Check
 
 `node tools/js_check.mjs <bundle> --frames 600`: parses every .js file as a module, checks the TR keys, runs the app

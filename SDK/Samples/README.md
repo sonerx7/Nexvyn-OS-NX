@@ -2,7 +2,7 @@
 
 **English** · [Türkçe](README.tr.md)
 
-**25** samples.
+**27** samples.
 
 Working sample projects in six languages. Every folder has `source/` (a complete `.nxvapp` bundle), `README.md` (what it teaches, controls, how to run it), `icon.png`, `store.json` (title and description in five languages, kind, tags, screenshot script) and `screenshots/` where available. `Tools/build_store.py` builds a `<slug>.zip` of each sample and `SDK/samples.json`, which Nexvyn OS Studio's *Samples* section reads.
 
@@ -19,8 +19,10 @@ To try one, copy `source/` to `sdmc:/NexvynOS/Applications/<name>.nxvapp`, or ru
 | <img src="lua/hello/icon.png" width="32"> | [Hello SDK](lua/hello/) | demo | 1.0 | A tour of the Lua SDK |
 | <img src="lua/particles/icon.png" width="32"> | [Particles Demo](lua/particles/) | demo | 1.2 | Emitters, bursts and gravity wells |
 | <img src="lua/physics/icon.png" width="32"> | [Verlet Physics Demo](lua/physics/) | demo | 1.2 | Ropes, a bridge and tearable cloth |
+| <img src="lua/pbr3d/icon.png" width="32"> | [PBR, Lights and Shadows](lua/pbr3d/) | demo | 1.9 | PBR materials, moving lights, shadows, bloom and instancing |
 | <img src="lua/platformer/icon.png" width="32"> | [Platformer Demo](lua/platformer/) | game | 1.2 | A complete platformer level with nexvyn.game |
 | <img src="lua/scene3d/icon.png" width="32"> | [3D Scene Demo](lua/scene3d/) | demo | 1.0 | Textured 3D meshes, sun, fog and glow |
+| <img src="lua/social-feed/icon.png" width="32"> | [Social Feed](lua/social-feed/) | demo | 1.9 | Feed, grid and clip pager on SDK 1.9 (network, images, video, rich text) |
 | <img src="lua/synth/icon.png" width="32"> | [Synth Demo](lua/synth/) | demo | 1.0 | Piano, waveforms and an ADSR envelope |
 | <img src="lua/terrain/icon.png" width="32"> | [Terrain Demo](lua/terrain/) | demo | 1.0 | A procedural island to fly over |
 | <img src="lua/ui-gallery/icon.png" width="32"> | [UI Gallery](lua/ui-gallery/) | demo | 1.0 | Every ui widget with its code |

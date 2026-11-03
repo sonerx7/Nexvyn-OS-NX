@@ -16,8 +16,11 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
       Java `(Callback)` lambdas.
 - [ ] `minSdk` matches the newest feature used and the language (JS 1.1, Python 1.3, Squirrel/C/Java 1.5,
       `nexvyn.game` 1.2, share/schedule/permission API/lifecycle callbacks 1.4, `fs.unzip`/`sys.games`/`sys.speak`
-      1.6, `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8). New apps set `"targetSdk": "1.8"`.
-- [ ] New apps are not written in Squirrel or Java (frozen at SDK 1.8) unless the user asked for it.
+      1.6, `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8, the pbr renderer, `net.request` options, `net.ws`,
+      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9). New apps set
+      `"targetSdk": "1.9"`.
+- [ ] New apps are not written in Squirrel or Java (frozen at SDK 1.8) unless the user asked for it. The same code
+      would work with the same SDK names in Lua, JavaScript, Python and C.
 
 ## app.json
 
@@ -38,6 +41,9 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
       models and images are created once.
 - [ ] Data is saved with `store` / `fs` when it changes; nothing is lost on `suspend` or close.
 - [ ] Network: `sys.online()` checked, loading and error states shown, no API keys or secrets in the code.
+- [ ] SDK 1.9 feeds and media: long lists use `ui.beginFeed` (never a loop over every item), web pictures use
+      `gfx.imageUrl` with a `maxSize` and a placeholder while loading, at most 3 `media` players are open (the
+      current and the next), players pause in `suspend`, sockets are polled every frame, sign-in has a fallback.
 - [ ] Works with touch, the controller cursor and a keyboard; games also with the controller, pause on + and in
       `suspend` / `focus(false)`.
 - [ ] Every visible string goes through `TR()`; every key exists in `lang/en.json` (and in each other lang file I
@@ -69,6 +75,9 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
 - [ ] UI: one shape language; panels with depth; buttons with hover, press, focus and disabled states; a transition
       between every pair of screens; something alive on the title screen.
 - [ ] Camera: smoothed; in 3D fog in the sky colour and a coloured key light.
+- [ ] pbr renderer (SDK 1.9): `g3d.renderer("pbr")` is called in `app.load` and the game also works when it returns
+      `"basic"`; lights, shadows, exposure and bloom follow the art direction; repeated props use
+      `g3d.drawInstanced`; the budget starts at msaa 0, shadows "medium", textures up to 1024 px.
 - [ ] Where the kits fit, I used them (`sfx`, `juice` copied into the bundle) instead of inventing weaker versions,
       and only with the functions they really have.
 
@@ -80,4 +89,4 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
       how to run it (copy to `sdmc:/NexvynOS/Applications/<Name>.nxvapp/`, or Studio → Run).
 - [ ] I listed what I am unsure about instead of guessing silently.
 - [ ] For a store submission: `store.json` with `subtitle` / `description` in English at least (more languages when
-      wanted), `kind`, `tags` and `shots` using only `wait`, `wclick`, `wmove`, `key`, `dpad`, `text`, `dark`.
+      wanted), `kind`, `tags` and `shots` (5 recommended) using only `wait`, `wclick`, `wmove`, `key`, `hold`, `dpad`, `text`, `dark`.

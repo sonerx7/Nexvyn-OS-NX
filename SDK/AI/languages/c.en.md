@@ -64,6 +64,13 @@ app.json: `"runtime": "c"`, `"main": "main.c"`, `"minSdk": "1.5"`. Every `.c` fi
   `rand`), string, math, ctype, stdint, limits, assert, stdbool, stdarg.
 - **Not sandboxed:** no 3 s guard, an endless loop or a crash stops Nexvyn OS. Keep loops bounded. Users consent once.
 
+- SDK 1.9 (`"minSdk": "1.9"`): options are JSON text: `g3d_renderer("pbr")`,
+  `int id = g3d_addLight("{\"type\":\"point\",\"x\":1}")`, `g3d_updateLight(id, json)`,
+  `g3d_shadows("{\"quality\":\"high\"}")`, `g3d_postfx(json)`, `g3d_environment(json)`, `g3d_material(model, json, name)`,
+  `g3d_drawInstanced(mesh, floats, count, tint, flags)` (7 floats per copy), `g3d_drawInstancedMatrices(...)` (16),
+  `g3d_caps()` and `g3d_rendererInfo()` → JSON. The feed, media and network calls of SDK.en.md section 8d are in
+  `nexvyn.h` with the same names (`net_request`, `ui_beginFeed`, `media_open`...).
+
 ## Check
 
 `python tools/rt_check.py <bundle>`: compiles each .c file with devkitA64 gcc `-fsyntax-only` against the console's

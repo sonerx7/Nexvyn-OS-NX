@@ -39,7 +39,7 @@ Store/
 │   ├── source/                   paket: app.json, main.*, icon.png, lang/*.json, diğer dosyalar
 │   ├── store.json                mağaza metinleri, tür, etiketler, ekran görüntüsü betiği
 │   ├── README.md                 GitHub'da gezenler için açıklama (İngilizce; başka diller isteğe bağlı)
-│   ├── screenshots/1.png ...     3-4 ekran görüntüsü (bakımcı da üretebilir, bölüm 6)
+│   ├── screenshots/1.png ...     5 ekran görüntüsü önerilir, en az 3 (bakımcı da üretebilir, bölüm 6)
 │   ├── icon.png                  build_store.py source/icon.png'den kopyalar
 │   └── <kısa-ad>.nxvapp          build_store.py yazar, elle eklemeyin
 ├── Themes/<kısa-ad>/             source/ (theme.json, duvar kâğıdı [, sounds/]), store.json, icon.png → <kısa-ad>.nxvtheme
@@ -119,14 +119,18 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 - `kind`: `app`, `game`, `demo` ya da `template`. `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
 - `age`: içerik notu. `everyone` (varsayılan) ya da `teen` (hafif şiddet, korkutucu temalar, kullanıcıların ürettiği
   web içeriği). Yalnızca yetişkinlere yönelik içerik kabul edilmez.
-- `shots`: 3-4 çekim; her çekim o görüntüden önce çalışan adımların listesidir (`wait <sn>`, `wclick <fx> <fy>`,
-  `wmove <fx> <fy>`, `key <ad>`, `dpad <yön>`, `text <metin>`, `dark 0|1`).
+- `shots`: 3-5 çekim, 5 önerilir; her çekim o görüntüden önce çalışan adımların listesidir (`wait <sn>`,
+  `wclick <fx> <fy>`, `wmove <fx> <fy>`, `key <ad>`, `hold <tuş> <sn>`, `dpad <yön>`, `text <metin>`, `dark 0|1`).
 
 ## 6. Ekran görüntüleri
 
-`screenshots/1.png` ... uygulamanın penceresinden kırpılır. Kendiniz alın (konsol ya da Ryujinx) ya da bakımcı Nexvyn
-OS kaynak deposunda `python tools/store_shots.py --only <kısa-ad>` ile `shots` betiğinizi çalıştırıp üretsin. Kişisel
-veri, gerçek ad ya da API anahtarı göstermeyin.
+`screenshots/1.png` ... uygulamanın penceresinden, İngilizce arayüzle kırpılır. **Önerilen: beş ekran görüntüsü**,
+en iyi anlardan: ilk ekran, ana özellik kullanılırken, kalabalık ya da heyecanlı bir an, ikinci bir özellik ya da
+bölüm ve karanlık mod (oyunlarda menüler değil, oynanışın en iyi anları). Kendiniz alın (konsolda ya da bir
+emülatörde) ya da bir `shots` betiği verin, bakımcı Nexvyn OS kaynak deposunda
+`python tools/store_shots.py --only <kısa-ad>` çalıştırır. Betik yoksa sistem beşini kendisi çeker: oyun başlatılıp
+D-pad, A ve ok tuşlarıyla birkaç saniye oynanır, uygulamada tıklanır ve kaydırılır, sonuncusu karanlık modda. Kendi
+ekran görüntüleriniz otomatik olanlarla asla değiştirilmez. Kişisel veri, gerçek ad ya da API anahtarı göstermeyin.
 
 ## 7. Denetimler
 

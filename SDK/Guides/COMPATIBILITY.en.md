@@ -39,6 +39,7 @@ Every SDK version so far shipped in the development of Nexvyn OS 1.0.0, the firs
 | 1.6 | 1.0.0 | `fs.unzip`, `sys.games` and the `"games"` permission, text to speech; the `"python3"` runtime (CPython 3.12) |
 | 1.7 | 1.1.0 | `g3d.voxels` voxel worlds (JavaScript), `mesh:setTexture(path, pixelated)` |
 | 1.8 | 1.2.0 | `g3d.model`: `.glb` / `.gltf` / `.fbx` models with materials, textures and skeletal animation; `g3d.drawMatrix` |
+| 1.9 | 1.3.0 | runtime library: `net.request` in Lua, JavaScript `TextEncoder` / `URL` / `URLSearchParams` / `structuredClone`, Python `str` methods and `urllib.parse` / `html` / `uuid`; feed, photo and short-video apps: `net.request` uploads, cookies, retries and offline cache, WebSocket client, `net.oauth`, `gfx.imageUrl`, `media.*` players, `ui.beginFeed` / `ui.pager` / `ui.richText`, `sys.relativeTime`; the opt-in pbr renderer (`g3d.renderer("pbr")`): PBR materials, real-time lights, shadows, HDR, bloom, MSAA, instancing (Lua, JavaScript, Python, C); apps that do not ask for it render exactly as with 1.8 |
 
 The full list of functions per version is in the SDK reference (`sdk/SDK.en.md`, "SDK versions").
 

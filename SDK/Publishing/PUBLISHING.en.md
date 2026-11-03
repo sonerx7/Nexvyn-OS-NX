@@ -39,7 +39,7 @@ Store/
 │   ├── source/                 the bundle: app.json, main.*, icon.png, lang/*.json, other files
 │   ├── store.json              store texts, kind, tags, screenshot script
 │   ├── README.md               a description for people browsing GitHub (English; more languages optional)
-│   ├── screenshots/1.png ...   3-4 screenshots (a maintainer can make them, section 6)
+│   ├── screenshots/1.png ...   5 screenshots recommended, 3 at least (a maintainer can make them, section 6)
 │   ├── icon.png                copied from source/icon.png by build_store.py
 │   └── <slug>.nxvapp           written by build_store.py, do not add it by hand
 ├── Themes/<slug>/              source/ (theme.json, wallpaper [, sounds/]), store.json, icon.png → <slug>.nxvtheme
@@ -120,14 +120,18 @@ sandboxed, so users are asked once more.
 - `kind`: `app`, `game`, `demo` or `template`. `tags`: lower-case search words. `featured` is set by the maintainer.
 - `age`: a content note. `everyone` (default) or `teen` (mild violence, scary themes, user-generated web content).
   Content for adults only is not accepted.
-- `shots`: 3-4 shots; each is a list of steps that run before that picture (`wait <s>`, `wclick <fx> <fy>`,
-  `wmove <fx> <fy>`, `key <name>`, `dpad <dir>`, `text <string>`, `dark 0|1`).
+- `shots`: 3-5 shots, 5 recommended; each is a list of steps that run before that picture (`wait <s>`,
+  `wclick <fx> <fy>`, `wmove <fx> <fy>`, `key <name>`, `hold <key> <s>`, `dpad <dir>`, `text <string>`, `dark 0|1`).
 
 ## 6. Screenshots
 
-`screenshots/1.png` ... are cropped to the app's window. Take them yourself (the console or Ryujinx), or the maintainer
-runs `python tools/store_shots.py --only <slug>` in the Nexvyn OS source repository, which plays your `shots` script.
-Show no personal data, real names or API keys.
+`screenshots/1.png` ... are cropped to the app's window, with the interface in English. **Recommended: five
+screenshots** from the best moments: the first screen, the main feature in use, a busy or exciting moment, a second
+feature or level, and dark mode (games: the best moments of play, not menus). Take them yourself (on the console or
+in an emulator), or give a `shots` script and the maintainer runs `python tools/store_shots.py --only <slug>` in the
+Nexvyn OS source repository. Without a script the system takes five on its own: a game is started and played for a
+few seconds with the D-pad, A and the arrow keys, an app is clicked and scrolled, the last one in dark mode. Your own
+screenshots are never replaced by automatic ones. Show no personal data, real names or API keys.
 
 ## 7. Checks
 

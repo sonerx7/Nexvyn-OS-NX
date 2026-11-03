@@ -52,6 +52,11 @@ share / schedule / the permission API / lifecycle callbacks).
   `game.gfx` in virtual units, the HUD in `scene:ui()`, input with `game.input`.
 - The checker scans comments too: do not write `TR("...")` examples in comments for keys that do not exist.
 
+- SDK 1.9 (`"minSdk": "1.9"`): options are tables: `g3d.renderer("pbr")`, `g3d.addLight{...}` → id,
+  `g3d.shadows{...}`, `g3d.postfx{...}`, `g3d.environment{...}`, `g3d.material(obj, {...}[, name])`,
+  `g3d.drawInstanced(mesh, {x,y,z,rx,ry,rz,s,...})`; `net.request({...}, fn(res))` → id, `net.ws(url)` → id,
+  `ui.beginFeed(...)` → `{first, last}` (1-based items), `ui.pager(...)` → `{page, pos, changed}`, `media.open(src, {...})`.
+
 ## Check
 
 `python tools/lua_check.py <bundle> --frames 600` (needs `pip install lupa`): compiles every file, checks the TR keys

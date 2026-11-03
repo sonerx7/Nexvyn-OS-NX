@@ -446,7 +446,7 @@ The **Files** app shows the SD card and your home folder:
   folders the same question says so, so you are not asked twice in a row.
 - Drag and drop, copy/cut/paste, zip compression and extraction, the Recycle Bin (with put back).
 - Double-clicking a file opens the right app. **Open With** lets you choose another app.
-- A `.nxvapp` file opens the install sheet (see [App Market](#app-store-and-installing-apps)).
+- A `.nxvapp` file opens the install sheet (see [App Market](#app-market-and-installing-apps)).
 - An `.exe` file opens with PC Games.
 - **Deleting.** Delete asks "Move 3 items to the Trash?" with their names, then moves them to the Trash (Undo puts
   them back). **Delete Immediately**, **Empty Trash** and deleting on a USB drive (USB drives have no Trash) always ask
@@ -575,7 +575,7 @@ Notable settings:
 | **Homebrew Programs** | Homebrew | Downloading, updating and removing the recommended homebrew programs. |
 | **Software Update** | Software Update | Downloads the new Nexvyn OS version from GitHub; keeps a backup of the current version. Works only with public GitHub releases. |
 | **System folder** | About | Overlay status and **Reset system updates** (see [FAQ](#resetting-the-overlay-folder)). |
-| **Diagnostics**, **System logs**, **Restart Shell**, **Reset all settings** | Developer | |
+| **Diagnostics**, **System logs**, **Restart Shell**, **Reset all settings**, **Deep reset** | Developer | |
 
 ### Adding a new language
 
@@ -966,6 +966,30 @@ filled in. Your files, apps and users are kept; the setup assistant keeps your h
 **Erase Nexvyn OS** (in the same place) deletes the whole `sdmc:/NexvynOS` folder, as if Nexvyn OS had just been
 downloaded, and Nexvyn OS restarts into the setup assistant. Games, save data, Atmosphère, other homebrew and the
 `NexvynOS.nro` file are not touched.
+
+### Deep reset
+
+**System Settings > Developer > System > Deep reset** makes the SD card look like a first install of the single
+`.nro`: everything Nexvyn OS wrote is removed, inside and outside its folder, and the next start runs the setup
+assistant. The sheet lists what goes with its size and, separately, what stays. It asks for your PIN (when one is set)
+and you hold the button for 3 seconds; every app is closed first.
+
+| Path | Written by | Deep reset |
+|---|---|---|
+| `sdmc:/NexvynOS` (users, files, PINs, settings, apps, modules, themes, fonts, caches, logs, session state, saved keys, `autorun.txt`, backups, records) | Nexvyn OS | Removed, the folder too |
+| `sdmc:/SnxOS` | Older versions (the folder's name before the rename) | Removed |
+| `sdmc:/switch/NexvynOS/install.log` | Setup assistant | Removed (the folder only when it is empty then) |
+| `NexvynOS.nro.bak`, `.new`, `.swap` next to the `.nro` | Updater (previous version, staged download) | Removed |
+| `NexvynOS.nro` | You | Kept |
+| `sdmc:/atmosphere/contents`, `exefs_patches`, `kip_patches` (mods, cheats, Turkish patches, system modules) | Modding apps, on your request | Kept: they belong to your game setup |
+| `sdmc:/switch/...` homebrew installed through Nexvyn OS, `.overlays` | Homebrew packages, on your request | Kept |
+| `sdmc:/config` (overlay menu, sys-clk settings), Atmosphère's own settings | Settings apps, on your request | Kept |
+| Games, save data, the Album, HOME menu forwarder, emuMMC, `bootloader` | The Switch, you | Never touched |
+
+It is safe against a power cut: everything is first renamed into `sdmc:/NexvynOS.deleting` (a few renames, settings
+first), then deleted from there. If the console turns off on the way, the next start finishes the renames, opens the
+setup assistant and deletes the rest in the background. **Erase Nexvyn OS** in About is the lighter version: it
+empties only the `sdmc:/NexvynOS` folder.
 
 ### The desktop looks slower when idle
 

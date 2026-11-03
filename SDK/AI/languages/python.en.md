@@ -56,6 +56,10 @@ app.json: `"main": "main.py"`, `"minSdk": "1.3"` (`"1.5"` for the system library
   typing; SDK 1.5 system library: itertools, string, textwrap, copy, statistics, base64, colorsys.
 - `sys` is merged with Python's `sys`; `exit()` closes the window; `input()` returns `""`.
 
+- SDK 1.9 (`"minSdk": "1.9"`): the same names; options are dicts (`g3d.material(obj, options=None,
+  name=None)`, `g3d.addLight({"type": "point", "x": 1})`); `"python3"` has them as well. Async SDK 1.9 calls
+  take callbacks (`net.request(options, cb)`, `net.oauth(options, cb)`); feed and pager indexes are 0-based.
+
 ## Check
 
 `python tools/py_check.py <bundle> --frames 600`: finds unsupported constructs with line numbers, checks the TR keys

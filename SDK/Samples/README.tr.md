@@ -2,7 +2,7 @@
 
 [English](README.md) · **Türkçe**
 
-**25** örnek.
+**27** örnek.
 
 Altı dilde çalışan örnek projeler. Her klasörde `source/` (eksiksiz bir `.nxvapp` paketi), `README.md` (ne öğrettiği, kontroller, çalıştırma), `icon.png`, `store.json` (beş dilde başlık ve açıklama, tür, etiketler, ekran görüntüsü betiği) ve varsa `screenshots/` vardır. `Tools/build_store.py` her örnek için `<slug>.zip` ve Nexvyn OS Studio'nun *Örnekler* bölümünün okuduğu `SDK/samples.json` dosyasını üretir.
 
@@ -19,8 +19,10 @@ Bir örneği denemek için `source/` klasörünü `sdmc:/NexvynOS/Applications/<
 | <img src="lua/hello/icon.png" width="32"> | [Merhaba SDK](lua/hello/) | demo | 1.0 | Lua SDK turu |
 | <img src="lua/particles/icon.png" width="32"> | [Parçacık Demosu](lua/particles/) | demo | 1.2 | Yayıcılar, patlamalar ve çekim kuyuları |
 | <img src="lua/physics/icon.png" width="32"> | [Verlet Fizik Demosu](lua/physics/) | demo | 1.2 | Halatlar, köprü ve yırtılan kumaş |
+| <img src="lua/pbr3d/icon.png" width="32"> | [PBR, Işıklar ve Gölgeler](lua/pbr3d/) | demo | 1.9 | PBR materyaller, hareketli ışıklar, gölgeler, bloom ve instancing |
 | <img src="lua/platformer/icon.png" width="32"> | [Platform Demosu](lua/platformer/) | oyun | 1.2 | nexvyn.game ile eksiksiz bir platform bölümü |
 | <img src="lua/scene3d/icon.png" width="32"> | [3B Sahne Demosu](lua/scene3d/) | demo | 1.0 | Dokulu 3D modeller, güneş, sis ve parıltı |
+| <img src="lua/social-feed/icon.png" width="32"> | [Sosyal Akış](lua/social-feed/) | demo | 1.9 | SDK 1.9 ile akış, ızgara ve klip sayfalayıcı (ağ, resimler, video, zengin metin) |
 | <img src="lua/synth/icon.png" width="32"> | [Synth Demosu](lua/synth/) | demo | 1.0 | Piyano, dalga biçimleri ve ADSR zarfı |
 | <img src="lua/terrain/icon.png" width="32"> | [Arazi Demosu](lua/terrain/) | demo | 1.0 | Üzerinde uçulan, kodla üretilmiş bir ada |
 | <img src="lua/ui-gallery/icon.png" width="32"> | [Arayüz Galerisi](lua/ui-gallery/) | demo | 1.0 | Tüm ui bileşenleri ve kodları |

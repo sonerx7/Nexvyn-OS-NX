@@ -1,0 +1,10 @@
+{
+  "renderer": "Renderer: {0}",
+  "stats": "{0} triangles · {1} fps",
+  "pbr": "Use PBR",
+  "basic": "Use basic",
+  "shadowsOn": "Shadows on",
+  "shadowsOff": "Shadows off",
+  "bloomOn": "Bloom on",
+  "bloomOff": "Bloom off"
+}

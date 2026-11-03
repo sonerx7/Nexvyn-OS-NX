@@ -192,7 +192,7 @@ a camera, arcade physics and collision, input actions and touch controls, tweens
 with a pause menu, saving and a debug overlay.
 
 - Step-by-step guide: [GAME_ENGINE.en.md](GAME_ENGINE.en.md).
-- Function list: [SDK.en.md section 8c](../Reference/SDK.en.md#8c-2d-oyun-motoru-nexvyngame).
+- Function list: [SDK.en.md section 8c](../Reference/SDK.en.md#8c-2d-game-engine-nexvyngame).
 - Sample games: **Pixel Koşu** (`romfs/Applications/pixelrun.nxvapp`) and **Uzay Arenası**
   (`romfs/Applications/spacearena.nxvapp`).
 - Known limits: a single touch point, no sloped tiles, no camera rotation (details in GAME_ENGINE.en.md section 16).

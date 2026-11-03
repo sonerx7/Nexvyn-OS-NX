@@ -57,7 +57,8 @@ SHARE_KINDS = {"text", "url", "file", "image"}
 KINDS = {"app", "game", "demo", "template"}
 # SDK calls that need a permission, in every language (Lua/JS/Python/Squirrel sys.x, C sys_x, Java Sys.x / Net.x)
 USES = {
-    "network": r"\b(?:net|Net)[._](?:get|post|json|download|request|fetch|fetchJson)\s*\(",
+    "network": r"\b(?:net|Net)[._](?:get|post|json|download|request|fetch|fetchJson|ws|oauth)\s*\(|"
+               r"\b(?:gfx|Gfx)[._]imageUrl\s*\(",
     "notifications": r"\b(?:sys|Sys)[._](?:notify|schedule)\s*\(",
     "clipboard": r"\b(?:sys|Sys)[._](?:clipboard|setClipboard)\s*\(",
     "launch": r"\b(?:sys|Sys)[._](?:launch|appUrl)\s*\(|nxv://",
@@ -66,7 +67,7 @@ USES = {
 TR_CALL = re.compile(r"""\bTR[123]?\(\s*["']([^"'\n]+)["']""")
 # store.json "shots" steps (SnxOS tools/store_shots.py)
 SHOT_STEP = re.compile(r"^(wait \d+(\.\d+)?|wclick [01](\.\d+)? [01](\.\d+)?|wmove [01](\.\d+)? [01](\.\d+)?|"
-                       r"key \S+|dpad \S+|text .+|dark [01])$")
+                       r"key \S+|hold \S+ \d+(\.\d+)?|dpad \S+|text .+|dark [01])$")
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
 STORED = {".png", ".jpg", ".jpeg", ".ogg", ".mp3", ".zip"}
 MAX_FILES = 20000
@@ -202,7 +203,8 @@ def cmd_new(a):
             "kind": "app", "tags": [],
             "subtitle": {"en": ""},
             "description": {"en": ""},
-            "shots": [["wait 3"], ["wait 1.5"], ["dark 1", "wait 1.5"]]})
+            "shots": [["wait 3"], ["wclick 0.5 0.4", "wait 1.5"], ["key right", "wait 1.5"],
+                      ["hold right 1.5", "wait 1"], ["dark 1", "wait 1.5"]]})
         with open(os.path.join(item, "README.md"), "w", encoding="utf-8", newline="\n") as f:
             f.write("# %s\n\nSay what the app does in two or three "
                     "sentences.\n\n| | |\n|---|---|\n| Id | `%s` |\n| Language | %s |\n| Min SDK | %s |\n| Permissions | %s |\n"
@@ -390,13 +392,15 @@ def check_store_item(bundle, rep):
         if not isinstance(shots, list) or not all(isinstance(x, list) for x in shots):
             rep.error("store.json: shots must be a list of lists of steps")
         else:
-            if not 3 <= len(shots) <= 4:
-                rep.warn("store.json: give 3-4 shots (got %d)" % len(shots))
+            if not 3 <= len(shots) <= 5:
+                rep.warn("store.json: give 3-5 shots, 5 recommended (got %d)" % len(shots))
+            elif len(shots) < 5:
+                rep.warn("store.json: 5 shots are recommended (got %d): the store page shows five" % len(shots))
             for i, shot in enumerate(shots, 1):
                 for step in shot:
                     if not isinstance(step, str) or not SHOT_STEP.match(step):
-                        rep.error("store.json: shot %d: bad step %r (wait S, wclick FX FY, wmove FX FY, key K, dpad D, "
-                                  "text T, dark 0|1)" % (i, step))
+                        rep.error("store.json: shot %d: bad step %r (wait S, wclick FX FY, wmove FX FY, key K, "
+                                  "hold K S, dpad D, text T, dark 0|1)" % (i, step))
     sdir = os.path.join(item, "screenshots")
     if not os.path.isdir(sdir) or not any(n.endswith(".png") for n in os.listdir(sdir)):
         rep.warn("item: no screenshots/*.png yet (SnxOS tools/store_shots.py takes them from \"shots\")")

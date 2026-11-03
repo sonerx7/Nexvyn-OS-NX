@@ -4,7 +4,7 @@
 
 | | Item | Version | Description |
 |---|---|---|---|
-| <img src="ash-protocol/icon.png" width="32"> | [Ash Protocol](ash-protocol/) | 1.0.0 | Six chapters. Four weapons. One last order. |
+| <img src="ash-protocol/icon.png" width="32"> | [Ash Protocol](ash-protocol/) | 1.0.1 | Six chapters. Four weapons. One last order. |
 | <img src="frost-lantern/icon.png" width="32"> | [Frost Lantern](frost-lantern/) | 1.0.0 | Five realms. Thirty boons. A lost dawn. |
 | <img src="lanternfall/icon.png" width="32"> | [Lanternfall](lanternfall/) | 1.0.0 | Lantern-lit platformer: 3 worlds, 3 bosses |
 | <img src="luma/icon.png" width="32"> | [Luma: Starfall Islands](luma/) | 1.2.0 | Explore ten worlds. Outsmart eight enemies. |

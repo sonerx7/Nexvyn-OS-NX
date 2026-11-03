@@ -2,8 +2,8 @@
 
 [English](make-3d-game.en.md) · **Türkçe**
 
-`.glb` / `.fbx` modeller kullanan bir 3B oyun için (SDK 1.8). Context pack'ten (`system-prompt.tr.md` + language pack)
-sonra gönderin. Asistana SDK.tr.md bölüm 8b'yi (*3B* ve *3B modeller*) ve context yetiyorsa
+`.glb` / `.fbx` modeller (SDK 1.8) ve pbr renderer (SDK 1.9) kullanan bir 3B oyun için. Context pack'ten (`system-prompt.tr.md` + language pack)
+sonra gönderin. Asistana SDK.tr.md bölüm 8b'yi (*3B*, *3B modeller* ve *Modern görüntü*) ve context yetiyorsa
 `SDK/Guides/MAKE_A_GAME.tr.md` rehberini verin (tarifin tamamı: dışa aktarma kuralları, yükleme, çarpışma
 yardımcıları, bütçeler, sanat yönü). Eksiksiz küçük bir oyun için `SDK/Samples/lua/ember-field` örneğine bakın ama
 asistanın onun görünüşünü kopyalamasına izin vermeyin.
@@ -12,7 +12,7 @@ asistanın onun görünüşünü kopyalamasına izin vermeyin.
 söylediklerini not edin (boyut, üçgen, kemik, klip adları).
 
 ```text
-SDK 1.8 ile eksiksiz bir Nexvyn OS 3B oyunu yaz.
+SDK 1.9 ile eksiksiz bir Nexvyn OS 3B oyunu yaz.
 
 Oyun: <tür ve tek paragraflık fikir>
 Dil: <Lua | JavaScript | Python>
@@ -24,7 +24,7 @@ Paketteki modeller (model:info()'dan):
 - models/<eşya>.glb: ...
 
 Gereksinimler:
-- app.json: "category": "games", "gamepad": true, boyutlandırılabilir "window", "minSdk": "1.8", "targetSdk": "1.8",
+- app.json: "category": "games", "gamepad": true, boyutlandırılabilir "window", "minSdk": "1.9", "targetSdk": "1.9",
   gerekmedikçe "permissions": [].
 - Her modeli app.load içinde g3d.loadModel ile yükle (büyük dosyalarda asla g3d.model değil) ve modeller gelene kadar
   oyunun stilinde çizilmiş bir yükleme ekranı göster; yükleme hatasını bir mesajla karşıla. Hiçbir callback 3
@@ -33,11 +33,19 @@ Gereksinimler:
 - Animasyon: klipleri adla oynat, yalnızca durum değişince değiştir, {fade = 0.1-0.3} ile geçiş yap, tek seferlik
   klipleri {loop = false} ile oynat ve model:playing() false olunca döngüye dön; her karede model:update(dt) çağır.
   Tutulan nesneleri ya da efektleri model:nodeMatrix + g3d.drawMatrix ile tak.
+- Modern görünüm (SDK 1.9): app.load içinde g3d.renderer("pbr") çağır; "basic" dönerse de oyun doğru çalışsın.
+  Sanat yönüne uygun ışığı seç: güneş (g3d.light yönü ve rengi), gök / zemin ya da cube map (g3d.environment), id'li
+  1-4 renkli nokta ya da spot ışık (g3d.addLight, g3d.updateLight ile hareket). g3d.shadows({quality = "medium",
+  distance = <görünen oyun alanı>}); g3d.postfx({exposure, tonemap = "aces" ya da "filmic", bloom = 0.03-0.1});
+  1'in üstündeki emissive parçalar parlar. Modeller PBR haritalarını korur (glTF base color, normal, ORM, emissive;
+  FBX texture klasörü yanında); düz mesh'lere g3d.material(mesh, {metallic, roughness, ...}); cama {transmission =
+  0.9, roughness = 0.05}. Tekrarlanan nesneler (çimen, sütun, kasa) g3d.drawInstanced ile çizilir. Renderer'ı ve
+  fps'i kapatılabilen bir hata ayıklama satırında göster.
 - Kamera: <takip / yörünge / sabit / birinci şahıs>, yumuşak, darbelerde kısa sarsıntılı. Hareket kameraya göre;
   model yaw 0'da +Z'ye bakar (yaw = math.atan(vx, vz)).
 - Çarpışma: küçük yardımcılar yaz (küre-küre, dışarı itmeli küre-kutu, ışın-kutu, basit bir çarpışma mesh'i için
   ışın-üçgen, yükseklik haritasından zemin yüksekliği); dt'yi sınırla; g3d sahneleri için fizik motoru yoktur.
-- Switch'te 60 fps bütçesi: karede 30-60 bin üçgen, 8-16 skin'li karakter, 150 civarı çizim çağrısı, uzak düzlemi
+- Konsolda 60 fps bütçesi (pbr: msaa 0, gölge "medium", en çok 1024 px dokularla başla): karede 30-60 bin üçgen, 8-16 skin'li karakter, 150 civarı çizim çağrısı, uzak düzlemi
   gizleyen sis, mümkünse sabit eşyalar tek bir g3d.custom mesh'inde. update/draw döngülerinde tablo üretme ya da
   resim yükleme yok.
 - Önce sanat yönü (ana dosyanın başında yorum: his, palet, tipografi, kamera dili, hareket, ses paleti, arayüz biçim
