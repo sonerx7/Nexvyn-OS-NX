@@ -1,0 +1,149 @@
+diff --git a/source/core/g3d_gl.cpp b/source/core/g3d_gl.cpp
+index 52f39e66..ce667130 100644
+--- a/source/core/g3d_gl.cpp
++++ b/source/core/g3d_gl.cpp
+@@ -107,6 +107,11 @@ struct GLFuncs {
+ };
+ static GLFuncs gl;
+ static bool g_glLoaded = false;
++static PFNGLFINISHPROC g_finish = nullptr;
++static PFNGLGENVERTEXARRAYSOESPROC g_genVaos = nullptr;
++static PFNGLBINDVERTEXARRAYOESPROC g_bindVao = nullptr;
++static PFNGLDELETEVERTEXARRAYSOESPROC g_deleteVaos = nullptr;
++static GLuint g_meshVao = 0;
+ 
+ static bool loadGL() {
+ #define X(type, name)                                          \
+@@ -117,6 +122,18 @@ static bool loadGL() {
+     }
+     G3D_GL_FUNCS(X)
+ #undef X
++    // Keep our buffer references out of SDL's VAO. Shared attribute state was
++    // observed failing in nouveau's nvc0_vertex_arrays_validate on world reopen.
++    auto optional = [](const char* core, const char* oes) {
++        void* p = SDL_GL_GetProcAddress(core);
++        return p ? p : SDL_GL_GetProcAddress(oes);
++    };
++    g_genVaos = (PFNGLGENVERTEXARRAYSOESPROC)optional("glGenVertexArrays", "glGenVertexArraysOES");
++    g_bindVao = (PFNGLBINDVERTEXARRAYOESPROC)optional("glBindVertexArray", "glBindVertexArrayOES");
++    g_deleteVaos = (PFNGLDELETEVERTEXARRAYSOESPROC)optional("glDeleteVertexArrays", "glDeleteVertexArraysOES");
++    if (!g_genVaos || !g_bindVao || !g_deleteVaos) g_genVaos = nullptr, g_bindVao = nullptr, g_deleteVaos = nullptr;
++    g_finish = (PFNGLFINISHPROC)SDL_GL_GetProcAddress("glFinish");
++    if (!g_finish) return false;
+     g_glLoaded = true;
+     return true;
+ }
+@@ -314,6 +331,16 @@ static void freeDropped() {
+     auto& v = dropped();
+     if (v.empty()) return;
+     uint64_t now = gfx::frameIndex();
++    bool due = false;
++    for (const auto& d : v) if (d.frame < now) { due = true; break; }
++    if (due && g_glLoaded) {
++        // Present submits commands but does not wait for the GPU. Finish them
++        // before deletion, including SDL's still queued texture composites.
++        gfx::flushBatch();
++        SDL_RenderFlush(gfx::R);
++        g_finish();
++        if (g_meshVao) { g_deleteVaos(1, &g_meshVao); g_meshVao = 0; }
++    }
+     size_t keep = 0;
+     for (size_t i = 0; i < v.size(); i++) {
+         Dropped d = v[i];
+@@ -353,6 +380,7 @@ struct SavedAttrib {
+     void* pointer = nullptr;
+ };
+ struct SavedState {
++    GLint vao = 0;
+     GLint program = 0, arrayBuf = 0, elementBuf = 0, activeTex = GL_TEXTURE0, tex0 = 0, fbo = 0, rbo = 0;
+     GLint viewport[4] = {}, scissorBox[4] = {};
+     GLint blendSrcRGB = GL_ONE, blendDstRGB = GL_ZERO, blendSrcA = GL_ONE, blendDstA = GL_ZERO;
+@@ -365,6 +393,7 @@ struct SavedState {
+ };
+ 
+ static void saveState(SavedState& s) {
++    if (g_bindVao) gl.GetIntegerv(GL_VERTEX_ARRAY_BINDING_OES, &s.vao);
+     gl.GetIntegerv(GL_CURRENT_PROGRAM, &s.program);
+     gl.GetIntegerv(GL_ARRAY_BUFFER_BINDING, &s.arrayBuf);
+     gl.GetIntegerv(GL_ELEMENT_ARRAY_BUFFER_BINDING, &s.elementBuf);
+@@ -413,8 +442,9 @@ static void setCap(GLenum cap, GLboolean on) {
+ }
+ 
+ static void restoreState(const SavedState& s) {
++    if (g_bindVao) g_bindVao((GLuint)s.vao);
+     gl.UseProgram((GLuint)s.program);
+-    for (int i = 0; i < g_nAttribs; i++) {
++    for (int i = 0; !g_bindVao && i < g_nAttribs; i++) {
+         const SavedAttrib& a = s.attr[i];
+         if (i < kSkinAttribs && a.size >= 1 && a.size <= 4) {
+             gl.BindBuffer(GL_ARRAY_BUFFER, (GLuint)a.buffer);
+@@ -918,6 +948,10 @@ static void init() {
+     if (!ensureTarget(256, 256)) return failGpu("cannot create the offscreen texture");
+     SavedState st;
+     saveState(st);
++    if (g_bindVao) {
++        if (!g_meshVao) g_genVaos(1, &g_meshVao);
++        g_bindVao(g_meshVao);
++    }
+     drainErrors();
+     bool ok = buildFbo();
+     restoreState(st);
+diff --git a/source/lua/jsapp_draw.cpp b/source/lua/jsapp_draw.cpp
+index 07cf2420..be1e84b5 100644
+--- a/source/lua/jsapp_draw.cpp
++++ b/source/lua/jsapp_draw.cpp
+@@ -5,6 +5,7 @@
+ #include "../core/theme.h"
+ #include "../core/fsutil.h"
+ #include "../core/g3d.h"
++#include <cmath>
+ 
+ #define JSFN(name) static JSValue name(JSContext* c, JSValueConst, int argc, JSValueConst* argv)
+ #define JSMETHOD(name) static JSValue name(JSContext* c, JSValueConst self, int argc, JSValueConst* argv)
+@@ -604,7 +605,23 @@ void meshFinalizer(JSRuntime*, JSValueConst v) {
+     JSClassID id;
+     delete (g3d::Mesh*)JS_GetAnyOpaque(v, &id);
+ }
+-g3d::Mesh* meshArg(JSContext* c, JSValueConst v) { return (g3d::Mesh*)JS_GetOpaque2(c, v, jsSelf(c)->meshClass); }
++g3d::Mesh* meshArg(JSContext* c, JSValueConst v) {
++    auto* m = (g3d::Mesh*)JS_GetOpaque2(c, v, jsSelf(c)->meshClass);
++    if (!m && !JS_HasException(c)) JS_ThrowTypeError(c, "mesh: this mesh was freed");
++    return m;
++}
++JSMETHOD(mesh_free) {
++    JsApp* app = jsSelf(c);
++    if (!JS_IsObject(self) || JS_GetClassID(self) != app->meshClass)
++        return JS_ThrowTypeError(c, "mesh.free: not a mesh");
++    // Translucent draws retain the mesh until g3d.finish(). Do not leave a
++    // dangling pointer in the renderer's current scene queue.
++    if (app->in3d) return JS_ThrowTypeError(c, "mesh.free: finish the 3D scene first");
++    auto* m = (g3d::Mesh*)JS_GetOpaque(self, app->meshClass);
++    JS_SetOpaque(self, nullptr);
++    delete m;
++    return JS_UNDEFINED;
++}
+ JSValue newMesh(JSContext* c, g3d::Mesh* m) {
+     JSValue obj = JS_NewObjectClass(c, jsSelf(c)->meshClass);
+     if (JS_IsException(obj)) {
+@@ -702,9 +719,10 @@ JSFN(d_custom) {
+         m->v.push_back(v);
+     }
+     for (double d : idx) {
+-        if (d < 0 || d >= (double)m->v.size()) {
++        if (!std::isfinite(d) || d != std::floor(d) || d < 0 || d >= (double)m->v.size()) {
++            const int last = (int)m->v.size() - 1;
+             delete m;
+-            return JS_ThrowRangeError(c, "g3d.custom: index %d out of range (0..%d)", (int)d, (int)m->v.size() - 1);
++            return JS_ThrowRangeError(c, "g3d.custom: index must be an integer in 0..%d", last);
+         }
+         m->idx.push_back((uint32_t)d);
+     }
+@@ -1034,7 +1052,7 @@ void jsBindDraw(JsApp* app) {
+     JS_NewClass(rt, app->meshClass, &meshDef);
+     JSValue meshProto = JS_NewObject(c);
+     static const JsFn meshFns[] = {{"setColor", mesh_setColor, 1}, {"triangles", mesh_triangles, 0}, {"flat", mesh_flat, 1},
+-                                   {"setTexture", mesh_setTexture, 2}, {"texture", mesh_texture, 0}};
++                                   {"setTexture", mesh_setTexture, 2}, {"texture", mesh_texture, 0}, {"free", mesh_free, 0}};
+     jsSetFunctions(c, meshProto, meshFns, sizeof meshFns / sizeof *meshFns);
+     JS_SetClassProto(c, app->meshClass, meshProto);
+     JS_NewClassID(rt, &app->modelClass);  // SDK 1.8

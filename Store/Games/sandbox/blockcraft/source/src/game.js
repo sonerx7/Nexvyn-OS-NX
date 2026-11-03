@@ -68,12 +68,14 @@ export class Game {
 
   // generator height + biome of a column (cached)
   column(x, z) {
-    const k = x * 65536 + z;
+    const k = `${x},${z}`;
     let c = this.columnCache.get(k);
     if (!c) {
       const r = this.world.v.terrain(x, z);
       c = { h: r[0], biome: r[1] };
-      if (this.columnCache.size > 20000) this.columnCache.clear();
+      if (this.columnCache.size >= 32768) {
+        let n=0;for (const old of this.columnCache.keys()) { this.columnCache.delete(old);if (++n>=2048) break; }
+      }
       this.columnCache.set(k, c);
     }
     return c;
@@ -506,9 +508,16 @@ export class Game {
 
   updateWorld() {
     const p = this.player;
-    this.planVillages(p.pos.x, p.pos.z);
-    const fresh = this.world.update(p.pos.x, p.pos.z);
-    if (fresh.length) this.decorate(fresh);
+    // Keep native FRESH chunks uncommitted until their JS decoration completes.
+    // Do not call v.update again while this queue is nonempty: the next native
+    // update marks all previous FRESH chunks ready for meshing/persistence.
+    if (!this.decorationQueue || this.decorationQueue.length===0) {
+      const cx=Math.floor(p.pos.x/CHUNK),cz=Math.floor(p.pos.z/CHUNK);
+      const key=`${cx},${cz},${this.world.renderDistance}`;
+      if (this.plannedAt!==key) { this.planVillages(p.pos.x,p.pos.z);this.plannedAt=key; }
+      this.decorationQueue=this.world.update(p.pos.x,p.pos.z).slice();
+    }
+    if (this.decorationQueue.length) this.decorate([this.decorationQueue.shift()]);
   }
 
   // ---------- frame ----------
@@ -516,11 +525,11 @@ export class Game {
     const input = this.input, p = this.player;
     this.clock += dt;
     this.rumbleWatch(dt);
-    this.fpsAcc += dt; this.fpsFrames++;
+    this.fpsAcc += this.app.frameSeconds || dt; this.fpsFrames++;
     if (this.fpsAcc >= 0.5) { this.fps = Math.round(this.fpsFrames / this.fpsAcc); this.fpsAcc = 0; this.fpsFrames = 0; }
     if (this.state === "playing" && this.clock > 20) {
       this.slowT = this.fps < 25 ? (this.slowT || 0) + dt : 0;
-      if (this.slowT > 12 && this.settings.renderDistance > 4) {
+      if (this.slowT > 12 && this.settings.renderDistance > 3) {
         this.slowT = 0;
         this.settings.renderDistance--;
         this.world.renderDistance = this.settings.renderDistance;

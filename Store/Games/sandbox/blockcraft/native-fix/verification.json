@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "runtime": "Ryujinx 1.3.3 / actual Nexvyn OS 1.2.0 / SDK 1.8 / NV120 GLES 3.2",
+  "native_nro": {
+    "file": "NexvynOS-BlockcraftFix.nro",
+    "bytes": 69336245,
+    "sha256": "671e7a17bc57fcf1147baa8f3fa27ddb0d021f0855200c8d582c9aff297d8161",
+    "nacp_version": "1.2.0",
+    "code_version": "1.2.0",
+    "base_commit": "3cb2ccc4"
+  },
+  "checks": {
+    "free_api_cycles": 200,
+    "custom_mesh_allocate_free_cycles": 1000,
+    "invalid_indices": 6,
+    "in_scene_free_rejected": true,
+    "freed_mesh_methods_throw": true,
+    "normal_world_sessions": 2,
+    "flat_world_sessions": 2,
+    "saved_world_reopen": true,
+    "clean_shutdown": true,
+    "settings_open_after_game_close": true,
+    "gpu_retired_and_dropped_zero": true,
+    "final_package_entry_with_fixed_core": true,
+    "old_core_refused_before_gpu": true
+  },
+  "before_gpu_fix": {
+    "reproduced": true,
+    "scenario": "normal -> flat -> normal, first renderer disposal fix candidate",
+    "stack": [
+      "nvc0_vertex_arrays_validate",
+      "nvc0_draw_vbo",
+      "g3d::gpu::drawItem",
+      "g3d::gpu::end",
+      "d_finish"
+    ],
+    "result": "guest jumped to invalid code and terminated Ryujinx"
+  },
+  "changes": [
+    "Private g3d VAO preserves SDL vertex-array state",
+    "Flush queued SDL work and finish GPU work before deferred object deletion",
+    "Release VAO buffer references before deletion",
+    "Idempotent JS Mesh.free and safe errors after free",
+    "Reject non-finite/fractional/out-of-range geometry indices before conversion; no post-delete object read",
+    "App rejects unpatched cores before GPU/world initialization"
+  ],
+  "desktop_input_used": false,
+  "browser_used": false,
+  "physical_switch_tested": false,
+  "user_report_platform": "physical Switch",
+  "older_quickjs_allocator_report": "Exact older arena corruption not independently reproduced on hardware; do not claim all possible native faults resolved",
+  "publication_authorized": true
+}
