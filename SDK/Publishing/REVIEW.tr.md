@@ -72,10 +72,9 @@ vermediği öğelerde gerekçesiyle).
 ## 7. Mağaza kaydı
 
 - [ ] `store.json`: en az İngilizce `subtitle` (≤ 45 karakter) ve `description`; `kind`, `tags`; `shots` geçerli
-- [ ] `icon.png` 256 x 256 (eski öğelerde 128): SDK ile yapılan oyun ve app'lerde öğenin kendi key art'ı (kahramanı
-      ya da ana nesnesi, dünyası, ışığı, adı), en iyi mağaza ikonları gibi abartılı ve gösterişli (dramatik ışık, rim
-      ışığı, doygun renkler, parlama, derinlik, sıkı kadraj, kalın logo), 64 px'de okunur, mağazadaki diğer ikonlara
-      benzemiyor; gradyan üstünde düz sembol değil. Kişisel veri içermeyen 3-4 ekran görüntüsü
+- [ ] `icon.png` 256 x 256 (eski öğelerde 128): SDK ile yapılan oyun ve app'lerde öğenin kendisinin resmi
+      (kahramanı, ana nesnesi ya da dünyası), 64 px'de okunuyor; gradyan üstünde düz, geçici bir sembol değil. Stil
+      (sakin ya da gösterişli, adlı ya da adsız) yapımcının seçimi. Kişisel veri içermeyen 3-4 ekran görüntüsü
 - [ ] `README.md` İngilizce (başka diller isteğe bağlı)
 - [ ] Güncellemede bir `changelog` (Yenilikler) var
 

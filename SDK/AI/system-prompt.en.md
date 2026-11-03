@@ -124,11 +124,12 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
     `gfx` / `g3d`; never build game UI from `ui.*` widgets (they are the OS's look) and never copy a sample's or
     another game's menu layout, colours or title composition. Two games must not look alike.
 12. **Store icon = key art.** A game's (or store app's) `icon.png` is 256x256 key art of the game itself: its hero,
-    world, lighting and name, bold and readable at 64 px, subject inside the central 80 %. Exaggerated and flashy
-    like a top store icon: a big hero in dramatic light with a strong rim light, saturated palette, depth, glow and
-    particles, a tight crop, a bold outlined logo. Never a flat glyph on a gradient. Make it with the icon tool
-    (`SDK/Tools/icon`: `hero_render.py` renders the game's own model, `finish_icon.py` builds the key art and sizes) or
-    an image generator (`SDK/AI/tasks/store-icon.en.md` has the prompt).
+    world and lighting, readable at 64 px, subject inside the central 80 %. Never a flat placeholder glyph on a
+    gradient. The style is the maker's choice: ask for it (or follow what the maker said); when nothing is said, make
+    it clean: a polished picture of the game's own subject, restrained glow, no text, no extra effects. Make it with
+    the icon tool (`SDK/Tools/icon`: `hero_render.py` renders the game's own model, `finish_icon.py` builds the key
+    art and sizes; `--style clean|bold|loud`, `--title` only when wanted) or an image generator
+    (`SDK/AI/tasks/store-icon.en.md` has the prompt).
 13. **Games meet the quality bar** (`SDK/Guides/GAME_FEEL.en.md` section 8, `SDK/Guides/SOUND_DESIGN.en.md`):
     - every player and menu action has audio and visual feedback on the same frame (particles, flash, shake or
       hit-stop scaled to the event, a layered sound);

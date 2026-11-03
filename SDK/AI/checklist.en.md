@@ -53,9 +53,9 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
       sample's or another game's menu layout, colours or title composition.
 - [ ] 3D models: `.glb` (or `.fbx`), metres, +Y up, facing +Z, pivot at the feet, named clips; triangle budget kept
       (hero 3-8k, 30-60k per frame).
-- [ ] The store icon is 256x256 key art of the game (hero, world, light, name), exaggerated and flashy (dramatic
-      light, strong rim light, saturated colours, glow, tight crop, bold logo), not a glyph on a gradient; I said how
-      to make it (`SDK/Tools/icon` or the image-generator prompt).
+- [ ] The store icon is 256x256 key art that shows the game itself (hero, object or world), not a placeholder glyph
+      on a gradient; it follows the style the maker asked for, or the clean default (no text, restrained effects)
+      when nothing was said; I said how to make it (`SDK/Tools/icon` or the image-generator prompt).
 
 ## Games: quality bar (SDK/Guides/GAME_FEEL.en.md section 8)
 

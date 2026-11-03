@@ -2,73 +2,86 @@
 
 **English** · [Türkçe](README.tr.md)
 
-The App Market icon of a game or app made with the SDK must look like real store key art: a bold hero, dramatic
-light, a strong rim light, a saturated palette, depth, glow and particles, a tight crop, the name as a logo. Never a
-flat symbol on a gradient. These two scripts make one from your game's own model in a few minutes.
+The App Market icon of a game or app made with the SDK shows the item itself: its hero, main object or world, not a
+flat placeholder symbol on a gradient. How it looks is the maker's choice. These two scripts make a polished icon
+from your game's own model in a few minutes, in the style you pick.
 
 | Step | Script | Needs | Makes |
 |---|---|---|---|
 | 1. Hero | [`hero_render.py`](hero_render.py) | Blender 4.4 or newer (free) | `hero.png`: your model posed and lit by a key light, two coloured rim lights and a fill, on a transparent background |
 | 2. Key art | [`finish_icon.py`](finish_icon.py) | Python 3 + Pillow (`pip install pillow`) | `keyart_1024.png`, `icon_512.png`, `icon.png` (256 x 256) and `preview.png` |
 
-`finish_icon.py` builds the background (a lit gradient, light rays, bokeh), a glow behind the hero, a rim highlight
-on its edges, a ground light, sparks, bloom, a colour grade, a vignette and the title (bold, outlined, gradient fill,
-bevel line, glow, slightly tilted). `preview.png` shows the icon at 256, 128 and 64 px with rounded corners, on dark
-and on light, and in grey: if the hero does not stand out in the grey one, the values are too close.
+`finish_icon.py` builds a lit background, a soft glow behind the hero, a rim highlight on its edges and a vignette;
+with the stronger styles also light rays, sparks and bloom. A title is added only when you ask for one. `preview.png`
+shows the icon at 256, 128 and 64 px with rounded corners, on dark and on light, and in grey: if the hero does not
+stand out in the grey one, the values are too close.
 
 ## Quick start
 
 ```sh
-# 1. the hero, from the model the game loads (pick an action pose: a clip and a frame)
+# 1. the hero, from the model the game loads (pick a good pose: a clip and a frame)
 blender -b --factory-startup -P SDK/Tools/icon/hero_render.py -- \
     --model MyGame.nxvapp/models/hero.glb --clip Run --frame 6 --look ember --out hero.png
 
-# 2. the key art and every size
-python SDK/Tools/icon/finish_icon.py hero.png --title "SKY HOP" --look ember --out art/
+# 2. the key art and every size (clean style, no text)
+python SDK/Tools/icon/finish_icon.py hero.png --look ember --out art/
 
 # 3. the icon of the bundle
 copy art/icon.png MyGame.nxvapp/icon.png
 ```
 
-No model (a tool or an app)? `--hero crystal`, `--hero rocket` or `--hero orb` renders a built-in object; better, make
-one object in a 3D tool that stands for what your app does and render that.
+No model (a tool or an app)? `--hero crystal`, `--hero rocket` or `--hero orb` renders a built-in object; better,
+make one object in a 3D tool that stands for what your app does and render that.
+
+## Styles
+
+`--style` (both scripts) is your choice; without it the tool uses **clean**.
+
+| Style | Looks like | Use it for |
+|---|---|---|
+| `clean` (default) | the hero, a soft lit background, a gentle glow and rim, a natural colour grade; no rays, no sparks, no text | most games and apps |
+| `bold` | more contrast and colour, a few light rays and sparks, a stronger rim | action and adventure games that want more punch |
+| `loud` | many rays and sparks, strong bloom and glow, a punchy grade | arcade games that ask for it |
+
+Single options override parts of a style: `--rays`, `--sparks`, `--fill`, `--y`. `--title "NAME"` adds a title logo
+(off by default; a game's name is already shown under its icon), `--frame` an inner badge frame, `--tilt` the title
+angle.
 
 ## Looks
 
 `--look` sets the colours of both scripts: `ember` (orange hero on violet dusk), `frost` (cyan ice on deep blue),
-`toxic` (acid green on black), `synth` (hot pink and cyan), `gold` (gold rays and warm light), `royal` (violet and
-gold), `jungle` (amber on deep green), `noir` (red on black). Pick the one closest to your game's palette, then
-change the colours in the `LOOKS` tables of both scripts so the icon uses your game's real colours.
+`toxic` (acid green on black), `synth` (pink and cyan), `gold` (gold and warm light), `royal` (violet and gold),
+`jungle` (amber on deep green), `noir` (red on black). Pick the one closest to your game's palette, then change the
+colours in the `LOOKS` tables of both scripts so the icon uses your game's real colours.
 
 ## Composition options (finish_icon.py)
 
 | Option | Use |
 |---|---|
-| `--fill 1.05` | the hero larger than the square: a tight crop reads better at 64 px than a small whole figure |
-| `--x 0.55 --y 0.8` | where the hero stands (centre x, bottom), shares of the square |
-| `--frame` | an inner badge frame; with a large `--fill` and `--y` above 1 the head breaks out over the border |
-| `--rays 0`, `--sparks 80` | calmer or busier backgrounds |
-| `--tilt -6` | title angle; `--title "ORBIT RUSH"`; leave `--title` out for no text |
-| `--seed 3` | another random layout of rays and sparks |
+| `--fill 0.9` | hero height as a share of the square (clean 0.78, bold 0.86, loud 0.95; above 1 crops the hero) |
+| `--x 0.55 --y 0.9` | where the hero stands (centre x, bottom), shares of the square |
+| `--seed 3` | another random layout of the background details |
 
 ## Examples
 
-Made with exactly these scripts (commands below), in [examples/](examples/):
+Made with these scripts, in [examples/](examples/):
 
 | | |
 |---|---|
-| ![Ember Field](examples/ember-field/icon.png) | **Ember Field** (the sample in `SDK/Samples/lua/ember-field`): its own `pip.glb`, clip *Run* frame 5, `--look ember --frame --fill 1.02 --y 1.04 --title EMBER`. The antenna breaks out of the frame. |
-| ![Shard](examples/shard/icon.png) | **Shard** (an app without a model): `--hero crystal --look frost --yaw -20`, then `--fill 0.9 --y 0.9 --seed 3 --title SHARD`. |
-| ![Orbit Rush](examples/orbit-rush/icon.png) | **Orbit Rush**: `--hero rocket --look synth --yaw 30 --camera eye --exposure -0.4`, then `--fill 0.95 --y 0.8 --x 0.55 --tilt -6 --title "ORBIT RUSH"`. The nose leaves the square: motion. |
+| ![Ember Field](examples/ember-field/icon.png) | **Ember Field** (the sample in `SDK/Samples/lua/ember-field`), default clean style: its own `pip.glb`, clip *Run* frame 5, `--look ember`. |
+| ![Shard](examples/shard/icon.png) | **Shard** (an app without a model), clean: `--hero crystal --look frost --yaw -20`, then `--look frost --seed 3`. |
+| ![Orbit Rush](examples/orbit-rush/icon.png) | **Orbit Rush**, clean: `--hero rocket --look synth --yaw 30 --camera eye --exposure -0.3`, then `--look synth --seed 11`. |
+| ![Ember Field, bold](examples/ember-field-bold/icon.png) | **Ember Field, bold** (when the maker asks for it): `--style bold` in both scripts, `--title EMBER`. |
 
 Each folder has `icon.png` (256), `icon_512.png` and `preview.png`.
 
 ## Rules the result must meet
 
-- 256 x 256 PNG as `source/icon.png`, filled edge to edge (the corners may be rounded or cut where the icon is shown; use
-  `--mask` only for previews).
-- One hero, big, in the central 80 % (face, silhouette, logo); at most one or two words.
-- Clearly this game: the same hero and colours as the screenshots. Unlike the other icons in its store category.
+- 256 x 256 PNG as `source/icon.png`, filled edge to edge (the corners may be rounded or cut where the icon is shown;
+  use `--mask` only for previews).
+- It shows the game or app itself (the same hero, object or world as the screenshots), not a flat placeholder glyph
+  on a gradient (`nxv icon` makes those only while you work).
+- It reads at 64 px: one main subject inside the central 80 %.
 - Rendered from your own model, or made with a tool whose terms let you publish the result (name it in the README).
 
 More: [Store icon task for AI assistants](../../AI/tasks/store-icon.en.md) (with a prompt for image generators) and

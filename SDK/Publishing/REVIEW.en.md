@@ -71,10 +71,9 @@ items the rules do not allow at all).
 ## 7. Store listing
 
 - [ ] `store.json`: `subtitle` (≤ 45 characters) and `description` at least in English; `kind`, `tags`; `shots` valid
-- [ ] `icon.png` 256 x 256 (128 for older items): for games and apps made with the SDK, key art of the item itself
-      (its hero or main object, world, light, name), exaggerated and flashy like a top store icon (dramatic light,
-      rim light, saturated colours, glow, depth, tight crop, bold logo), readable at 64 px, unlike the other icons in
-      the store; not a flat symbol on a gradient. 3-4 screenshots without personal data
+- [ ] `icon.png` 256 x 256 (128 for older items): for games and apps made with the SDK, a picture of the item itself
+      (its hero, main object or world), readable at 64 px; not a flat placeholder glyph on a gradient. The style (calm
+      or flashy, with or without the name) is the maker's choice. 3-4 screenshots without personal data
 - [ ] `README.md` in English (more languages optional)
 - [ ] An update has a `changelog` (What's New)
 

@@ -866,50 +866,51 @@ Listenin tamamı [GAME_FEEL.tr.md](GAME_FEEL.tr.md) içindeki kalite çıtasıd�
 
 ## 12. Mağaza ikonu ve key art
 
-İkon, oyuncunun App Market'te gördüğü ilk şeydir. SDK ile yapılan oyun ve app'lerde ikon **oyunun kendi key art'ı**
-olmalı: kahramanı, dünyası, ışığı, adı ya da logosu; cesur, 64 px'de okunur ve mağazadaki diğer ikonlara benzemez.
-En çok satan oyunların ikonlarını düşünün: dramatik ışıkta, güçlü bir rim ışığıyla abartılı, gösterişli bir kahraman,
-doygun renkler, derinlik, parlama ve parçacıklar, çerçeveden taşabilen sıkı bir kadraj, kalın bir logo. Gradyan
-üstünde düz bir sembol (`nxv icon` bunları yalnızca geçici olarak üretir) bir oyun için kabul edilmez.
+İkon, oyuncunun App Market'te gördüğü ilk şeydir. SDK ile yapılan oyun ve app'lerde ikon **oyunun kendisini
+göstermeli**: kahramanını, ana nesnesini ya da dünyasını; 64 px'de okunur. Gradyan üstünde düz bir sembol (`nxv icon`
+bunları yalnızca geçici olarak üretir) kabul edilmez. **Stil sizindir**: sakin ya da gösterişli, adlı ya da adsız.
+Seçmediğinizde (ve bir AI asistanına söylenmediğinde) **clean** yapın: oyunun kendi konusunun yumuşak ışıkta, ölçülü
+parlamalı, sakin renk ayarlı, yazısız, özenli ve çekici bir resmi.
 
 | | |
 |---|---|
 | Dosya | Pakette `icon.png` (mağaza klasöründe `source/`'un yanında da) |
 | Boyut | 256 x 256 PNG. 1024 x 1024 yapıp iyi bir filtreyle küçültün |
-| Güvenli alan | Yüzü, kahramanın siluetini ve logoyu ortadaki %80'in içinde tutun: köşeler yuvarlanabilir ya da kesilebilir |
+| Güvenli alan | Konuyu (ve eklediyseniz logoyu) ortadaki %80'in içinde tutun: köşeler yuvarlanabilir ya da kesilebilir |
 | Doluluk | Kareyi kenardan kenara doldurun (opak arka plan olur) |
-| 64 px'de okunma | Tek konu, büyük; kahramanla arka plan arasında güçlü ton farkı; en fazla bir iki kelime |
+| 64 px'de okunma | Tek ana konu; onunla arka plan arasında yeterli ton farkı |
 
 **Nasıl yapılır**
 
 1. **İkon aracıyla kendi modellerinizden render alın** (public depoda `SDK/Tools/icon`): `hero_render.py`
-   (Blender, ekransız) `.glb`'nize poz verir, saydam arka planda bir ana ışık, iki renkli rim ışığı ve bir dolgu
-   ışığıyla aydınlatır; `finish_icon.py` (Pillow) ışık huzmeli arka plan, kahramanın arkasında parlama, kenar rim'i,
-   kıvılcım, bloom, vinyet ve logo olarak başlık ekler, bütün boyutları ve 256 / 128 / 64 px önizlemeyi yazar:
-   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Run --frame 6 --look ember`, sonra
-   `python finish_icon.py hero.png --title "SKY HOP" --look ember --out art/`. Üç örnek (biri Kor Tarlası, kendi
-   `pip.glb`'sinden) `SDK/Tools/icon/examples/` içinde.
-2. **Ya da oyunun içinde kurun:** kahramanı en iyi ışığınızla ve logoyla büyük çizen gizli bir key art kipi ekleyin,
-   ekran görüntüsü alın (Ryujinx ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
+   (Blender, ekransız) `.glb`'nize poz verir, saydam arka planda bir ana ışık, iki rim ışığı ve bir dolgu ışığıyla
+   aydınlatır; `finish_icon.py` (Pillow) ışıklı bir arka plan, kahramanın arkasında yumuşak parlama, kenar rim'i ve
+   vinyet ekler, bütün boyutları ve 256 / 128 / 64 px önizlemeyi yazar:
+   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Idle --frame 10 --look ember`,
+   sonra `python finish_icon.py hero.png --look ember --out art/`. Bu varsayılan `clean` stildir; isterseniz
+   `--style bold` ya da `--style loud` ışık huzmesi, kıvılcım, bloom ve kontrast, `--title "AD"` bir başlık logosu
+   ekler. Örnekler (biri Kor Tarlası, kendi `pip.glb`'sinden) `SDK/Tools/icon/examples/` içinde.
+2. **Ya da oyunun içinde kurun:** kahramanı en iyi ışığınızla büyük çizen gizli bir key art kipi ekleyin, ekran
+   görüntüsü alın (Ryujinx ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
 3. **Ya da çizin** veya çizdirin: oyunun gerçek görünüşüne uymalı.
 
 **Key art için AI prompt'u** (sonucunu yayınlamanıza izin veren bir görsel üretici için; ikon oyuna uysun diye
 kahramanınızın bir render'ını ya da ekran görüntüsünü referans görsel olarak ekleyin). Prompt İngilizcedir, çoğu
-üretici İngilizceyi en iyi anlar:
+üretici İngilizceyi en iyi anlar. Varsayılan, clean:
 
 ```text
-Square game store icon, 1:1, key art for a game called "<NAME>". Hero: <your hero, from the reference image>,
-<dynamic pose / action>, huge in the frame, tight crop, three-quarter view from slightly below, part of it breaking
-out of the frame. Lighting: dramatic <key colour> key light, very strong <contrasting colour> rim light outlining the
-silhouette, glowing <accent colour> highlights. Background: <your world in a few words>, a radial burst of light
-behind the hero, depth (blurred elements in front and behind), floating <sparks / embers / magic particles>, bloom
-and glow. Palette: <3-4 saturated colours of your game>, deep shadows, high contrast. Style: <your art direction,
-e.g. stylised low-poly 3D render, painterly, cel-shaded>, polished, premium, exaggerated, eye-catching.
-Logo "<NAME>" in bold chunky letters with a thick dark outline, a gradient fill and a glow, at the bottom, slightly
-tilted. Readable at 64 px. No other text, no interface, no border, no watermark.
+Square app icon, 1:1, for a game called "<NAME>". Subject: <your hero or main object, from the reference image>,
+<a calm, characteristic pose>, centred, three-quarter view, filling most of the frame. Soft key light, a subtle rim
+light, a simple softly lit background in <your 2-3 palette colours>, gentle depth. Style: <your art direction, e.g.
+stylised low-poly 3D render, painterly, flat-shaded>, clean, polished, appealing, readable at 64 px. No text, no
+interface, no border, no watermark.
 ```
 
-Sonra kontrol edin: açıkça sizin oyununuz mu? 64 px'de okunuyor mu? Mağaza sayfasındaki her ikondan farklı mı?
+Daha gösterişli bir ikon için `dramatic lighting, strong coloured rim light, saturated colours, a burst of light
+behind the subject, floating particles, glow` ekleyin; başlığı `finish_icon.py --title` ile ekleyin (üreticiler adı
+sık yanlış yazar).
+
+Sonra kontrol edin: açıkça sizin oyununuz mu? 64 px'de okunuyor mu? İstediğiniz stilde mi?
 
 ## 13. Diller
 

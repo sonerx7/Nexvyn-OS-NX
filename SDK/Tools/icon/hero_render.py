@@ -17,10 +17,11 @@ Options:
   --size PX         square render size (default 1024)
   --samples N       render samples (default 64)
   --exposure EV     brighter (> 0) or darker (< 0) render (default 0)
+  --style NAME      clean (default: soft rim lights, natural), bold or loud (stronger, more coloured rims)
   --out PATH        output PNG with alpha (default hero.png)
 
-The rig: a key light from the front left, two strong rim lights from behind in contrasting colours (the outline that
-makes a silhouette pop at 64 px), a weak fill from below in the complementary colour, a dark world. The camera frames
+The rig: a key light from the front left, two rim lights from behind in contrasting colours (the outline that keeps
+the silhouette readable at 64 px; soft in the clean style, stronger in bold and loud), a weak fill from below in the complementary colour, a dark world. The camera frames
 the hero to fill the square; finish_icon.py crops and places it again. Tested with Blender 4.4 and 5.2 (EEVEE)."""
 import math
 import os
@@ -44,7 +45,7 @@ LOOKS = {   # key, rim 1, rim 2, fill (RGB 0..1)
 def parse_args():
     a = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     o = {"model": "", "hero": "", "clip": "", "frame": 5, "yaw": -28.0, "camera": "low", "look": "ember",
-         "size": 1024, "samples": 64, "exposure": 0.0, "out": "hero.png"}
+         "size": 1024, "samples": 64, "exposure": 0.0, "style": "clean", "out": "hero.png"}
     i = 0
     while i < len(a):
         k = a[i].lstrip("-")
@@ -192,9 +193,10 @@ def main():
         li.data.color = color
         li.rotation_euler = (centre - li.location).to_track_quat("-Z", "Y").to_euler()
 
-    area((-1.1, -1.4, 0.9), look[0], 50, 0.9)     # key: front left, above
-    area((1.0, 1.0, 0.7), look[1], 260, 0.4)      # rim 1: behind right
-    area((-1.1, 0.9, 0.1), look[2], 200, 0.4)     # rim 2: behind left, lower
+    rim = {"clean": 0.45, "bold": 0.8, "loud": 1.0}.get(o["style"], 0.45)
+    area((-1.1, -1.4, 0.9), look[0], 50 if o["style"] != "clean" else 60, 0.9)     # key: front left, above
+    area((1.0, 1.0, 0.7), look[1], 260 * rim, 0.4)      # rim 1: behind right
+    area((-1.1, 0.9, 0.1), look[2], 200 * rim, 0.4)     # rim 2: behind left, lower
     area((0.4, -1.3, -0.9), look[3], 25, 1.2)     # fill: front, from below
     world = bpy.data.worlds.new("World")
     scene.world = world

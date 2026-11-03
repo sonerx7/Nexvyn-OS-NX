@@ -857,50 +857,49 @@ need. The full list is the quality bar in [GAME_FEEL.en.md](GAME_FEEL.en.md) (se
 
 ## 12. Store icon and key art
 
-The icon is the first thing a player sees in the App Market. For games and apps made with the SDK it must be **key
-art of the game itself**: its hero, its world, its lighting, its name or logo; bold, readable at 64 px, and unlike
-any other icon in the store. Think of the icons of the best-selling games: an exaggerated, flashy hero in dramatic
-light with a strong rim light, saturated colours, depth, glow and particles, a tight crop that may break the frame,
-a bold logo. A flat symbol on a gradient (`nxv icon` makes those, for placeholders only) is not accepted for a game.
+The icon is the first thing a player sees in the App Market. For games and apps made with the SDK it must **show the
+game itself**: its hero, its main object or its world, readable at 64 px. A flat placeholder symbol on a gradient
+(`nxv icon` makes those, for placeholders only) is not accepted. **The style is yours**: calm or flashy, with or
+without the name. When you do not choose (and when an AI assistant has not been told), make it **clean**: a polished,
+attractive picture of the game's own subject in soft light, with a restrained glow, a calm colour grade, no text.
 
 | | |
 |---|---|
 | File | `icon.png` in the bundle (and next to `source/` in the store folder) |
 | Size | 256 x 256 PNG. Make it at 1024 x 1024 and scale it down with a good filter |
-| Safe area | Keep the face, the hero's silhouette and the logo inside the central 80 %: corners may be rounded or cut |
+| Safe area | Keep the subject (and a logo, if you add one) inside the central 80 %: corners may be rounded or cut |
 | Fill | Fill the square edge to edge (an opaque background is fine) |
-| Read at 64 px | One subject, big; strong value contrast between the hero and the background; at most one or two words |
+| Read at 64 px | One main subject; enough value contrast between it and the background |
 
 **How to make one**
 
 1. **Render it from your own models with the icon tool** (`SDK/Tools/icon` in the public repository):
-   `hero_render.py` (Blender, headless) poses your `.glb` and lights it with a key light, two coloured rim lights and
-   a fill on a transparent background; `finish_icon.py` (Pillow) adds a background with light rays, a glow behind the
-   hero, an edge rim, sparks, bloom, a vignette and the title as a logo, and writes every size and a preview at 256 /
-   128 / 64 px:
-   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Run --frame 6 --look ember`, then
-   `python finish_icon.py hero.png --title "SKY HOP" --look ember --out art/`. Three examples (one is Ember Field,
-   from its own `pip.glb`) are in `SDK/Tools/icon/examples/`.
-2. **Or compose it in the game:** add a hidden key-art mode that draws the hero large with your best lighting and the
-   logo, take a screenshot (Ryujinx, or `shot` in `autorun.txt`), crop it square and finish it in an image editor.
+   `hero_render.py` (Blender, headless) poses your `.glb` and lights it with a key light, two rim lights and a fill on
+   a transparent background; `finish_icon.py` (Pillow) adds a lit background, a soft glow behind the hero, an edge
+   rim and a vignette, and writes every size and a preview at 256 / 128 / 64 px:
+   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Idle --frame 10 --look ember`,
+   then `python finish_icon.py hero.png --look ember --out art/`. That is the default `clean` style; `--style bold`
+   or `--style loud` adds light rays, sparks, bloom and contrast, and `--title "NAME"` a title logo, when you want
+   them. Examples (one is Ember Field, from its own `pip.glb`) are in `SDK/Tools/icon/examples/`.
+2. **Or compose it in the game:** add a hidden key-art mode that draws the hero large with your best lighting, take
+   a screenshot (Ryujinx, or `shot` in `autorun.txt`), crop it square and finish it in an image editor.
 3. **Or paint it,** or have it painted: it must match the game's real look.
 
 **AI prompt for key art** (for an image generator whose terms let you publish the result; paste a render or a
-screenshot of your hero as the reference image so the icon matches the game):
+screenshot of your hero as the reference image so the icon matches the game). The default, clean:
 
 ```text
-Square game store icon, 1:1, key art for a game called "<NAME>". Hero: <your hero, from the reference image>,
-<dynamic pose / action>, huge in the frame, tight crop, three-quarter view from slightly below, part of it breaking
-out of the frame. Lighting: dramatic <key colour> key light, very strong <contrasting colour> rim light outlining the
-silhouette, glowing <accent colour> highlights. Background: <your world in a few words>, a radial burst of light
-behind the hero, depth (blurred elements in front and behind), floating <sparks / embers / magic particles>, bloom
-and glow. Palette: <3-4 saturated colours of your game>, deep shadows, high contrast. Style: <your art direction,
-e.g. stylised low-poly 3D render, painterly, cel-shaded>, polished, premium, exaggerated, eye-catching.
-Logo "<NAME>" in bold chunky letters with a thick dark outline, a gradient fill and a glow, at the bottom, slightly
-tilted. Readable at 64 px. No other text, no interface, no border, no watermark.
+Square app icon, 1:1, for a game called "<NAME>". Subject: <your hero or main object, from the reference image>,
+<a calm, characteristic pose>, centred, three-quarter view, filling most of the frame. Soft key light, a subtle rim
+light, a simple softly lit background in <your 2-3 palette colours>, gentle depth. Style: <your art direction, e.g.
+stylised low-poly 3D render, painterly, flat-shaded>, clean, polished, appealing, readable at 64 px. No text, no
+interface, no border, no watermark.
 ```
 
-Then check: is it clearly your game? Does it read at 64 px? Is it different from every icon on the store page?
+For a louder icon add `dramatic lighting, strong coloured rim light, saturated colours, a burst of light behind the
+subject, floating particles, glow`; for a title add it with `finish_icon.py --title` (generators often misspell it).
+
+Then check: is it clearly your game? Does it read at 64 px? Is it the style you wanted?
 
 ## 13. Languages
 

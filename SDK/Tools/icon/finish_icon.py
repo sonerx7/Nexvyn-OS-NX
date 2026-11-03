@@ -1,19 +1,26 @@
 """Builds store key art around a hero render (hero_render.py output, or any PNG with a transparent background):
-a lit background with light rays, a coloured glow behind the hero, a rim highlight on its edges, bloom, sparks, a
-vignette, the title as a logo, then every size the App Market needs and a preview sheet. Needs only Pillow
+a lit background, a soft glow behind the hero, a rim highlight on its edges, a vignette and, if you want them, light
+rays, sparks, bloom and a title; then every size the App Market needs and a preview sheet. Needs only Pillow
 (pip install pillow).
 
-    python finish_icon.py hero.png --title "EMBER FIELD" --look ember --out art/
-    python finish_icon.py hero.png --title "SHARD" --look frost --frame --fill 0.95 --out art/
+    python finish_icon.py hero.png --look ember --out art/                          (clean, the default)
+    python finish_icon.py hero.png --look ember --style bold --title "EMBER" --out art/
+
+The style is the maker's choice:
+  clean (default)   polished and calm: the hero, a soft lit background, a gentle glow and rim, no rays or sparks,
+                    a natural colour grade, no text
+  bold              more contrast and saturation, some light rays and sparks, a stronger glow and rim
+  loud              everything turned up: many rays and sparks, strong bloom, a punchy grade (arcade / action games)
 
 Options:
-  --title TEXT      the name as a logo (one or two short words; "\\n" breaks the line). Leave it out for no text
+  --style NAME      clean, bold or loud (default clean); the options below override single parts of it
+  --title TEXT      a title logo (one or two short words; "\\n" breaks the line). Off unless given
   --look NAME       ember, frost, toxic, synth, gold, royal, jungle, noir (colours of everything)
-  --fill F          hero height as a share of the square (default 0.86; above 1 crops the hero: closer, bolder)
-  --x F / --y F     hero centre x (default 0.5) and the bottom of the hero (default 0.98), shares of the square
-  --frame           an inner badge frame that the hero breaks out of (its head goes over the border)
-  --rays N          light rays behind the hero (default 18, 0 = none)
-  --sparks N        sparks and embers (default 40)
+  --fill F          hero height as a share of the square (default by style, 0.78-0.95; above 1 crops the hero)
+  --x F / --y F     hero centre x (default 0.5) and the bottom of the hero (default by style), shares of the square
+  --frame           an inner badge frame the hero is drawn over (with a large --fill its head goes over the border)
+  --rays N          light rays behind the hero (default by style: 0 / 12 / 18)
+  --sparks N        sparks and embers (default by style: 0 / 20 / 40)
   --tilt DEG        title rotation (default -4)
   --font PATH       a .ttf for the title (default: SDK/Fonts/Inter-Bold.ttf next to this kit)
   --seed N          random layout of sparks and rays
@@ -71,7 +78,19 @@ def radial(cx, cy, scale=1.0):
     return g.crop((left, top, left + N, top + N))
 
 
-def background(look, rnd, rays, cx, cy):
+# per style: hero fill and bottom, rays and their strength, sparks, bokeh, glow behind the hero (near, far), edge rim,
+# bloom (near, far), saturation, contrast, vignette, ground light
+STYLES = {
+    "clean": dict(fill=0.78, y=0.93, rays=0, ray=0.0, sparks=0, bokeh=0.35, halo=0.45, halo2=0.25, rim=0.55,
+                  bloom=(0.15, 0.1), sat=1.04, con=1.03, vig=0.45, ground=0.45),
+    "bold": dict(fill=0.86, y=0.97, rays=12, ray=0.28, sparks=20, bokeh=0.8, halo=0.8, halo2=0.45, rim=1.1,
+                 bloom=(0.35, 0.25), sat=1.12, con=1.06, vig=0.65, ground=0.8),
+    "loud": dict(fill=0.95, y=0.98, rays=18, ray=0.4, sparks=40, bokeh=1.0, halo=1.0, halo2=0.6, rim=1.6,
+                 bloom=(0.5, 0.4), sat=1.18, con=1.08, vig=0.75, ground=1.0),
+}
+
+
+def background(look, rnd, rays, cx, cy, ray_amt=0.4, bokeh=1.0):
     inner, mid, outer, ray = look[0], look[1], look[2], look[3]
     img = ImageOps.colorize(radial(cx, cy, 0.95), rgb(inner), rgb(outer), rgb(mid), 0, 255, 110)
     if rays:
@@ -88,7 +107,7 @@ def background(look, rnd, rays, cx, cy):
         layer = layer.filter(ImageFilter.GaussianBlur(6))
         fade = ImageOps.invert(radial(cx, cy, 0.75))
         layer = ImageChops.multiply(layer, fade)
-        img = screen(img, solid(ray), layer.point(lambda v: int(v * 0.4)))
+        img = screen(img, solid(ray), layer.point(lambda v: int(v * ray_amt)))
     # bokeh: big soft circles far away, small sharper ones nearer
     for blur, count, rmin, rmax, alpha in ((22, 10, 40, 110, 70), (5, 26, 6, 22, 120)):
         layer = Image.new("L", (N, N), 0)
@@ -96,7 +115,7 @@ def background(look, rnd, rays, cx, cy):
         for _ in range(count):
             x, y = rnd.uniform(0, N), rnd.uniform(0, N * 0.9)
             r = rnd.uniform(rmin, rmax)
-            d.ellipse((x - r, y - r, x + r, y + r), fill=int(rnd.uniform(0.4, 1) * alpha))
+            d.ellipse((x - r, y - r, x + r, y + r), fill=int(rnd.uniform(0.4, 1) * alpha * bokeh))
         img = screen(img, solid(look[6]), layer.filter(ImageFilter.GaussianBlur(blur)))
     return img
 
@@ -163,14 +182,15 @@ def squircle(size, n=5.0):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("hero")
+    ap.add_argument("--style", default="clean", choices=sorted(STYLES))
     ap.add_argument("--title", default="")
     ap.add_argument("--look", default="ember", choices=sorted(LOOKS))
-    ap.add_argument("--fill", type=float, default=0.86)
+    ap.add_argument("--fill", type=float, default=None)
     ap.add_argument("--x", type=float, default=0.5)
-    ap.add_argument("--y", type=float, default=0.98)
+    ap.add_argument("--y", type=float, default=None)
     ap.add_argument("--frame", action="store_true")
-    ap.add_argument("--rays", type=int, default=18)
-    ap.add_argument("--sparks", type=int, default=40)
+    ap.add_argument("--rays", type=int, default=None)
+    ap.add_argument("--sparks", type=int, default=None)
     ap.add_argument("--tilt", type=float, default=-4)
     ap.add_argument("--font", default=os.path.join(HERE, "..", "..", "Fonts", "Inter-Bold.ttf"))
     ap.add_argument("--seed", type=int, default=7)
@@ -178,6 +198,10 @@ def main():
     ap.add_argument("--out", default=".")
     a = ap.parse_args()
     look = LOOKS[a.look]
+    st = STYLES[a.style]
+    for k in ("fill", "y", "rays", "sparks"):
+        if getattr(a, k) is None:
+            setattr(a, k, st[k])
     rnd = random.Random(a.seed)
     os.makedirs(a.out, exist_ok=True)
 
@@ -194,11 +218,11 @@ def main():
     alpha.paste(hero.getchannel("A"), (hx, hy))
     focus_y = max(0.25, min(0.6, (hy + hero.height * 0.35) / N))
 
-    img = background(look, rnd, a.rays, a.x, focus_y)
+    img = background(look, rnd, a.rays, a.x, focus_y, st["ray"] or 0.3, st["bokeh"])
     # ground light under the hero
     ground = Image.new("L", (N, N), 0)
     ImageDraw.Draw(ground).ellipse((a.x * N - N * 0.42, a.y * N - N * 0.08, a.x * N + N * 0.42, a.y * N + N * 0.1), fill=200)
-    img = screen(img, solid(look[4]), ground.filter(ImageFilter.GaussianBlur(40)))
+    img = screen(img, solid(look[4]), ground.filter(ImageFilter.GaussianBlur(40)), amount=st["ground"])
     if a.frame:   # a badge frame inside the square; the hero is drawn over it and breaks out at the top
         fr = Image.new("L", (N, N), 0)
         d = ImageDraw.Draw(fr)
@@ -208,15 +232,15 @@ def main():
         img = screen(img, solid(look[5]), fr)
     # glow behind the hero: its silhouette, grown and blurred, in the glow colour
     halo = alpha.filter(ImageFilter.MaxFilter(15)).filter(ImageFilter.GaussianBlur(34))
-    img = screen(img, solid(look[4]), halo)
-    img = screen(img, solid(look[4]), halo.filter(ImageFilter.GaussianBlur(60)), amount=0.6)
+    img = screen(img, solid(look[4]), halo, amount=st["halo"])
+    img = screen(img, solid(look[4]), halo.filter(ImageFilter.GaussianBlur(60)), amount=st["halo2"])
     # the hero
     img.paste(hero.convert("RGB"), (hx, hy), hero.getchannel("A"))
     # edge rim: the edges facing the upper right light up
     shifted = ImageChops.offset(alpha, -9, 9)
     rim = ImageChops.subtract(alpha, shifted).filter(ImageFilter.GaussianBlur(2.5))
     rim = ImageChops.multiply(rim, alpha)
-    img = screen(img, solid(look[5]), rim.point(lambda v: min(255, int(v * 1.6))))
+    img = screen(img, solid(look[5]), rim.point(lambda v: min(255, int(v * st["rim"]))))
     # sparks: small hot dots with a glow, mostly around the hero
     sp = Image.new("L", (N, N), 0)
     d = ImageDraw.Draw(sp)
@@ -232,11 +256,11 @@ def main():
     # bloom: the bright parts bleed light
     lum = img.convert("L").point(lambda v: 0 if v < 205 else int((v - 205) * 5))
     bloom = Image.merge("RGB", [ImageChops.multiply(c, lum) for c in img.split()])
-    img = screen(img, bloom.filter(ImageFilter.GaussianBlur(16)), amount=0.5)
-    img = screen(img, bloom.filter(ImageFilter.GaussianBlur(50)), amount=0.4)
-    # grade: richer colour, more contrast
-    img = ImageEnhance.Color(img).enhance(1.18)
-    img = ImageEnhance.Contrast(img).enhance(1.08)
+    img = screen(img, bloom.filter(ImageFilter.GaussianBlur(16)), amount=st["bloom"][0])
+    img = screen(img, bloom.filter(ImageFilter.GaussianBlur(50)), amount=st["bloom"][1])
+    # grade: colour and contrast by style
+    img = ImageEnhance.Color(img).enhance(st["sat"])
+    img = ImageEnhance.Contrast(img).enhance(st["con"])
     # title over the feet
     if a.title:
         tl = title_layer(a.title, look, a.font, a.tilt)
@@ -247,7 +271,7 @@ def main():
         img = base.convert("RGB")
     # vignette
     vig = radial(0.5, 0.48, 0.72).point(lambda v: max(0, int((v - 120) * 1.3)))
-    img = Image.composite(solid("#000000"), img, vig.point(lambda v: int(v * 0.75)))
+    img = Image.composite(solid("#000000"), img, vig.point(lambda v: int(v * st["vig"])))
 
     def out(im, size, name):
         r = im.resize((size, size), Image.LANCZOS)

@@ -128,10 +128,11 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
     düzenini, renklerini ya da başlık kompozisyonunu asla kopyalama. İki oyun birbirine benzememeli.
 12. **Mağaza ikonu = key art.** Bir oyunun (ya da mağaza app'inin) `icon.png`'si oyunun kendi 256x256 key art'ıdır:
     kahramanı, dünyası, ışığı ve adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde. Asla gradyan üstünde düz
-    bir sembol değil. En iyi mağaza ikonları gibi abartılı ve gösterişli: dramatik ışıkta, güçlü rim ışıklı iri bir
-    kahraman, doygun palet, derinlik, parlama ve parçacıklar, sıkı kadraj, kalın dış hatlı logo. İkon aracıyla yap
+    bir sembol değil. Stil yapımcının seçimidir: sor (ya da yapımcının söylediğine uy); hiçbir şey söylenmediyse
+    clean yap: oyunun kendi konusunun özenli bir resmi, ölçülü parlama, yazı ve fazladan efekt yok. İkon aracıyla yap
     (`SDK/Tools/icon`: `hero_render.py` oyunun kendi modelini render eder, `finish_icon.py` key art'ı ve boyutları
-    kurar) ya da bir görsel üreticiyle (prompt `SDK/AI/tasks/store-icon.tr.md` içinde).
+    kurar; `--style clean|bold|loud`, `--title` yalnızca istenirse) ya da bir görsel üreticiyle (prompt
+    `SDK/AI/tasks/store-icon.tr.md` içinde).
 13. **Oyunlar kalite çıtasını karşılar** (`SDK/Guides/GAME_FEEL.tr.md` bölüm 8, `SDK/Guides/SOUND_DESIGN.tr.md`):
     - oyuncunun ve menünün her eyleminin aynı karede sesli ve görsel karşılığı olur (olayla ölçekli parçacık, flaş,
       sarsıntı ya da hit-stop, katmanlı bir ses);

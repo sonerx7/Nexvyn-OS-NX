@@ -53,9 +53,9 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
       ya da başka bir oyunun menü düzenini, renklerini ya da başlık kompozisyonunu kopyalamıyor.
 - [ ] 3B modeller: `.glb` (ya da `.fbx`), metre, +Y yukarı, +Z'ye bakıyor, pivot ayaklarda, klipler adlı; üçgen
       bütçesi korunuyor (kahraman 3-8 bin, karede 30-60 bin).
-- [ ] Mağaza ikonu oyunun 256x256 key art'ı (kahraman, dünya, ışık, ad), abartılı ve gösterişli (dramatik ışık,
-      güçlü rim ışığı, doygun renkler, parlama, sıkı kadraj, kalın logo), gradyan üstünde sembol değil; nasıl
-      yapılacağını anlattım (`SDK/Tools/icon` ya da görsel üretici prompt'u).
+- [ ] Mağaza ikonu oyunun kendisini gösteren 256x256 key art (kahraman, nesne ya da dünya), gradyan üstünde geçici
+      sembol değil; yapımcının istediği stilde, bir şey söylenmediyse varsayılan clean stilde (yazısız, ölçülü
+      efektler); nasıl yapılacağını anlattım (`SDK/Tools/icon` ya da görsel üretici prompt'u).
 
 ## Oyunlar: kalite çıtası (SDK/Guides/GAME_FEEL.tr.md bölüm 8)
 
