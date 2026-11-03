@@ -22,11 +22,14 @@ export class GameWorld {
         cactus: B.cactus, tallGrass: B.tall_grass, dandelion: B.dandelion, poppy: B.poppy, deadBush: B.dead_bush,
       },
     });
+    if (!this.v) throw new Error("Voxel world allocation failed");
+    try {
     for (const d of blocks) if (d.id > 0) this.v.define(d.id, voxelDef(d));
     this.blockEntities = new Map();   // "x,y,z" -> { type, slots, ... }
     this.updater = new BlockUpdater(this);
     this.game = null;
-    this.fresh = [];                  // chunks generated in the last update (decorated by the game)
+    this.fresh = [];
+    } catch (e) { this.dispose(); throw e; }                  // chunks generated in the last update (decorated by the game)
   }
 
   // ---------- blocks ----------
@@ -75,5 +78,5 @@ export class GameWorld {
     return { done, total, meshed: s.meshed };
   }
   save() { return this.v.save(); }
-  dispose() { this.v.close(); }
+  dispose() { if (this.v) { const v = this.v; this.v = null; v.close(); } }
 }

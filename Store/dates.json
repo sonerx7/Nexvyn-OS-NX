@@ -225,8 +225,8 @@
   },
   "com.sonerx7.blockcraft": {
     "added": "2026-11-01",
-    "updated": "2026-11-02",
-    "version": "1.0.1",
+    "updated": "2026-11-03",
+    "version": "1.0.3",
     "history": [
       {
         "version": "1.0.0",
@@ -235,6 +235,10 @@
       {
         "version": "1.0.1",
         "date": "2026-11-02"
+      },
+      {
+        "version": "1.0.3",
+        "date": "2026-11-03"
       }
     ]
   },

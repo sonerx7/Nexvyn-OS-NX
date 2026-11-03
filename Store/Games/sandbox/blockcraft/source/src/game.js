@@ -36,6 +36,7 @@ export class Game {
     this.input = app.input;
     this.sound = app.sound;
     this.hud = app.hud;
+    try {
     this.world = new GameWorld(meta, this.settings);
     this.world.game = this;
     this.loadBlockEntities(meta.blockEntities);
@@ -62,6 +63,7 @@ export class Game {
     this.columnCache = new Map();
     this.fps = 60; this.fpsAcc = 0; this.fpsFrames = 0;
     this.prepare();
+    } catch (e) { this.dispose(); throw e; }
   }
 
   // generator height + biome of a column (cached)
@@ -662,9 +664,11 @@ export class Game {
     return n;
   }
   dispose() {
-    this.stopRumble();
-    this.sound.rain(false);
-    this.sound.stopMusic();
-    this.world.dispose();
+    if (this.disposed) return;
+    this.disposed = true;
+    try { this.stopRumble(); } catch (e) { /* incomplete constructor */ }
+    try { this.sound.rain(false); this.sound.stopMusic(); }
+    finally { try { if (this.renderer) this.renderer.dispose(); }
+      finally { if (this.world) this.world.dispose(); } }
   }
 }

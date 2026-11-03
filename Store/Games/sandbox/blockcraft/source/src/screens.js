@@ -1,14 +1,12 @@
-// Menu screens: title (over a live panorama of a generated world), world list, new world, settings, pause, death,
+// Menu screens: lightweight 2D title, world list, new world, settings, pause, death,
 // loading and the controls help.
 import { Menu, panel, shadowText } from "./widgets.js";
 import { drawIcon } from "./hud.js";
 import { B } from "./registry.js";
 import { listWorlds, newWorldId, deleteWorld, loadWorld } from "./storage.js";
 import { seedFromString, clamp } from "./util.js";
-import { GameWorld } from "./world.js";
-import { Renderer } from "./render.js";
 
-const TAGLINES = 8, VERSION = "1.0.0";
+const TAGLINES = 8, VERSION = "1.0.3";
 
 export class Screens {
   constructor(app) {
@@ -20,7 +18,6 @@ export class Screens {
     this.selected = 0;
     this.form = { name: "", seed: "", type: "normal", mode: "survival" };
     this.tagline = (Math.random() * TAGLINES) | 0;
-    this.pano = null;
     this.t = 0;
   }
 
@@ -28,38 +25,23 @@ export class Screens {
   backTo() { this.screen = this.stack.pop() || "title"; this.menu.focus = 0; }
   refresh() { this.worlds = listWorlds(); this.selected = clamp(this.selected, 0, Math.max(0, this.worlds.length - 1)); }
 
-  // ---------- title panorama: a small generated world seen from a slowly turning camera ----------
-  startPanorama() {
-    if (this.pano) return;
-    const settings = { ...this.app.settings, renderDistance: 4 };
-    const world = new GameWorld({ id: null, seed: 20241101, type: "normal" }, settings);
-    const fake = { settings, clock: 0, world, player: null };
-    const r = new Renderer(fake);
-    // stand on high ground in plains, forest or taiga (the generator knows every column before it is loaded)
-    let x = 40, z = -30;
-    search: for (let rr = 0; rr <= 960; rr += 24) {
-      const n = Math.max(1, Math.round(rr / 8));
-      for (let i = 0; i < n; i++) {
-        const a = (i / n) * Math.PI * 2, cx = 40 + Math.round(Math.cos(a) * rr), cz = -30 + Math.round(Math.sin(a) * rr);
-        const [hh, biome] = world.v.terrain(cx, cz);
-        if (hh >= 70 && (biome === 2 || biome === 3 || biome === 5)) { x = cx; z = cz; break search; }
+  // Menus intentionally use only 2D drawing. Opening the application must not
+  // allocate native voxel worlds, start generation threads or build GPU meshes.
+  drawBackground(w, h) {
+    gfx.gradient(0, 0, w, h, "#355E94", "#ABCDBF");
+    const unit = Math.max(8, Math.ceil(w / 64));
+    gfx.color("#DFEADD"); gfx.rect(w * .74, h * .14, unit * 5, unit * 5);
+    for (let layer = 0; layer < 3; layer++) {
+      const step = unit * (layer + 2), base = h * (.55 + layer * .14);
+      for (let i = 0; i * step < w; i++) {
+        const rise = (2 + Math.floor((Math.sin(i * .73 + layer * 2) + 1) * 2)) * unit;
+        const x = i * step, y = Math.floor(base - rise);
+        gfx.color(["#608482", "#446D62", "#314E44"][layer]);
+        gfx.rect(x, y, step + 1, h - y);
+        gfx.color(["#94B7A0", "#77A77B", "#5D8E62"][layer]);
+        gfx.rect(x, y, step + 1, Math.max(3, unit * .4));
       }
     }
-    this.pano = { world, fake, r, x, z };
-  }
-  stopPanorama() { if (this.pano) { this.pano.world.dispose(); this.pano = null; } }
-
-  drawPanorama(w, h, dt) {
-    const p = this.pano;
-    if (!p) { gfx.gradient(0, 0, w, h, "#3B6FC4", "#B9D3FF"); return; }
-    p.fake.clock += dt;
-    const a = p.fake.clock * 0.04;
-    const [hgt] = p.world.v.terrain(p.x, p.z);
-    p.world.update(p.x, p.z);
-    p.r.updateEnvironment(0.12 + Math.sin(p.fake.clock * 0.01) * 0.04, { renderDistance: 4 });
-    const cam = p.r.cam;
-    cam.x = p.x; cam.z = p.z; cam.y = Math.max(hgt, 62) + 14; cam.yaw = a; cam.pitch = -0.18; cam.roll = 0; cam.fov = 70;
-    p.r.drawPanorama(w, h);
   }
 
   // ---------- frame ----------
@@ -71,10 +53,10 @@ export class Screens {
     m.nav(dt);
     switch (this.screen) {
       case "title": this.title(w, h, k, dt); break;
-      case "worlds": this.drawPanorama(w, h, dt); this.worldList(w, h, k); break;
-      case "create": this.drawPanorama(w, h, dt); this.create(w, h, k); break;
-      case "settings": if (!this.app.game) this.drawPanorama(w, h, dt); this.settings(w, h, k); break;
-      case "help": if (!this.app.game) this.drawPanorama(w, h, dt); this.help(w, h, k); break;
+      case "worlds": this.drawBackground(w, h); this.worldList(w, h, k); break;
+      case "create": this.drawBackground(w, h); this.create(w, h, k); break;
+      case "settings": if (!this.app.game) this.drawBackground(w, h); this.settings(w, h, k); break;
+      case "help": if (!this.app.game) this.drawBackground(w, h); this.help(w, h, k); break;
       case "pause": this.pause(w, h, k); break;
       case "dead": this.dead(w, h, k); break;
       case "loading": this.loading(w, h, k); break;
@@ -94,8 +76,7 @@ export class Screens {
   }
 
   title(w, h, k, dt) {
-    this.startPanorama();
-    this.drawPanorama(w, h, dt);
+    this.drawBackground(w, h);
     gfx.gradient(0, 0, w, h * 0.55, "#0A1020A0", "#0A102000");
     const ty = h * 0.1;
     this.logo(w, ty, k);
@@ -116,7 +97,7 @@ export class Screens {
     if (m.button("settings", TR("ui.settings"), bx, y, bw / 2 - 7 * k, bh, k, { icon: "settings" })) this.go("settings");
     if (m.button("help", TR("ui.controls"), bx + bw / 2 + 7 * k, y, bw / 2 - 7 * k, bh, k, { icon: "sports_esports" })) this.go("help");
     y += bh + 14 * k;
-    if (m.button("quit", TR("ui.quit"), bx, y, bw, bh, k, { icon: "logout" })) { this.stopPanorama(); sys.exit(); }
+    if (m.button("quit", TR("ui.quit"), bx, y, bw, bh, k, { icon: "logout" })) { sys.exit(); }
     gfx.color("#FFFFFFA0");
     gfx.text(TR("credit"), 10 * k, h - 26 * k, 13 * k, "sans");
     gfx.text("v" + VERSION + "  SDK " + sys.sdkVersion(), 0, h - 26 * k, 13 * k, "sans", "right", w - 10 * k);
@@ -179,7 +160,6 @@ export class Screens {
     if (!wd) return;
     const meta = loadWorld(wd.id);
     if (!meta) { ui.alert(TR("ui.error"), TR("ui.world_broken"), [TR("ui.ok")]); return; }
-    this.stopPanorama();
     this.app.startGame(meta);
   }
 
@@ -203,8 +183,7 @@ export class Screens {
     if (m.button("create", TR("ui.create"), bx, y, bw / 2 - 8 * k, bh, k, { primary: true })) {
       const now = Date.now();
       const meta = { id: newWorldId(), name: f.name || TR("ui.default_world_name", 1), seed: seedFromString(f.seed), type: f.type, mode: f.mode, created: now, lastPlayed: now };
-      this.stopPanorama();
-      this.screen = "title"; this.stack = [];
+        this.screen = "title"; this.stack = [];
       this.app.startGame(meta);
       return;
     }
@@ -219,7 +198,7 @@ export class Screens {
     const cw = (pw - 72 * k) / 2, bh = 44 * k, gap = 10 * k, c0 = px + 24 * k, c1 = c0 + cw + 24 * k;
     let y = py + 62 * k;
     const old = JSON.stringify(s);
-    s.renderDistance = m.slider("rd", TR("set.render_distance"), s.renderDistance, 2, 12, 1, c0, y, cw, bh, k, v => TR("set.chunks", v));
+    s.renderDistance = m.slider("rd", TR("set.render_distance"), s.renderDistance, 3, 8, 1, c0, y, cw, bh, k, v => TR("set.chunks", v));
     s.fov = m.slider("fov", TR("set.fov"), s.fov, 50, 110, 1, c1, y, cw, bh, k); y += bh + gap;
     s.sensitivity = m.slider("sens", TR("set.sensitivity"), s.sensitivity, 0.3, 3, 0.1, c0, y, cw, bh, k, v => v.toFixed(1));
     s.volume = m.slider("vol", TR("set.volume"), s.volume, 0, 1, 0.05, c1, y, cw, bh, k, v => Math.round(v * 100) + "%"); y += bh + gap;

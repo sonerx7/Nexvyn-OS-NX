@@ -8,6 +8,8 @@ import { Screens } from "./src/screens.js";
 import { Game } from "./src/game.js";
 import { clamp } from "./src/util.js";
 
+import { normalizeSettings } from "./src/settings.js";
+
 const DEFAULTS = {
   renderDistance: 6, fov: 75, sensitivity: 1, volume: 0.8, music: true, viewBobbing: true, waving: true, clouds: true,
   invertY: false, rumble: true, showFps: false, uiScale: 0, autoSprint: false,
@@ -31,6 +33,10 @@ A.memUse = () => {
   try { const m = sys.memory(); return m && m[1] > 0 ? m[0] / m[1] : 0; } catch (e) { return 0; }
 };
 A.startGame = (meta) => {
+  if (A.noGpu || A.noVoxels) {
+    ui.alert(TR("title"), TR(A.noGpu ? "ui.no_gpu" : "ui.no_voxels"), [TR("ui.ok")], () => {});
+    return;
+  }
   if (A.game) { A.game.dispose(); A.game = null; }
   if (A.memUse() > 0.85) { ui.alert(TR("title"), TR("msg.low_memory"), [TR("ui.ok")], () => {}); return; }
   try {
@@ -72,13 +78,15 @@ A.quitToTitle = () => {
 
 app.load = () => {
   const saved = store.get("settings", null);
-  if (saved && typeof saved === "object") Object.assign(A.settings, saved);
+  A.settings = normalizeSettings(saved, DEFAULTS);
   A.input = new Input();
   A.sound = new Sound(A.settings);
   A.hud = new Hud(A);
   A.invui = new InvUI(A);
   A.screens = new Screens(A);
-  if (!g3d.gpu()) A.noGpu = true;
+  // Capability checks must not call the native world constructor during startup.
+  A.noGpu = typeof g3d === "undefined" || typeof g3d.gpu !== "function" || !g3d.gpu();
+  A.noVoxels = typeof g3d === "undefined" || typeof g3d.voxels !== "function";
 };
 
 app.update = (dt) => {
@@ -111,10 +119,10 @@ app.update = (dt) => {
 app.draw = (w, h) => {
   A.w = w; A.h = h;
   const dt = 1 / 60;
-  if (A.noGpu) {
+  if (A.noGpu || A.noVoxels) {
     gfx.clear("#101418");
     gfx.color("#FFFFFF");
-    gfx.wrap(TR("ui.no_gpu"), 40, h / 2 - 40, w - 80, 20, "semibold", "center");
+    gfx.wrap(TR(A.noGpu ? "ui.no_gpu" : "ui.no_voxels"), 40, h / 2 - 40, w - 80, 20, "semibold", "center");
     return;
   }
   const g = A.game;
@@ -147,6 +155,5 @@ app.unsaved = () => false;
 app.close = () => {
   try { sys.vibrate(0, 0); } catch (e) { /* no rumble */ }
   if (A.game) { A.game.save(); A.game.dispose(); A.game = null; }
-  if (A.screens) A.screens.stopPanorama();
   return true;
 };

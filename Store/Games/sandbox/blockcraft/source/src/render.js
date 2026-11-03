@@ -71,6 +71,7 @@ export class Renderer {
     this.daylight = 1;
     this.env = null;
     this.cam = { x: 0, y: 80, z: 0, yaw: 0, pitch: 0, roll: 0, fov: 70, fx: 0, fy: 0, fz: -1 };
+    try {
     this.cracks = [];
     for (let k = 0; k < 10; k++) this.cracks.push(this.cubeMesh(() => [k, 0, 1 / 10, 1], CRACKS, 1.006));
     this.unit = g3d.mesh("cube", 1);
@@ -86,6 +87,19 @@ export class Renderer {
       this.stars.push([r * Math.cos(a), u, r * Math.sin(a), 0.5 + rnd() * 1.4, rnd()]);
     }
     this.rainCols = [];
+    } catch (e) { this.dispose(); throw e; }
+  }
+
+  dispose() {
+    if (this.disposed) return;
+    this.disposed = true;
+    const handles = new Set([this.unit, this.shadow, this.arrowMesh, this.clouds, ...(this.cracks || [])]);
+    for (const cache of [this.cubes, this.sprites, this.tileBits]) {
+      if (cache) { for (const m of cache.values()) handles.add(m); cache.clear(); }
+    }
+    if (this.mobParts) { for (const parts of this.mobParts.values()) for (const part of parts) handles.add(part.mesh); this.mobParts.clear(); }
+    for (const m of handles) if (m) { try { m.free(); } catch (e) { console.log("mesh cleanup: " + e); } }
+    if (this.particles) this.particles.list.length = 0;
   }
 
   // ---------------------------------------------------------------- meshes
