@@ -6,7 +6,7 @@ Everything for people who make apps, games, themes and fonts for Nexvyn OS: the 
 template for each language, guides and recipes, working samples, context packs for AI assistants, the publishing guide
 and command-line tools. Every document exists in English and Turkish.
 
-**Current version: SDK 1.9** (Nexvyn OS 1.3.0). Apps made for SDK 1.0 to 1.8 run unchanged
+**Current version: SDK 1.9** (Nexvyn OS 1.2.2). Apps made for SDK 1.0 to 1.8 run unchanged
 ([SDK versions](Guides/SDK_VERSIONS.en.md)).
 
 ## SDK 1.9 at a glance

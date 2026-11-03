@@ -74,7 +74,7 @@
   "settings.detail": "Visual detail: {0}",
   "settings.music": "Music: {0}",
   "settings.aim": "Look sensitivity: {0}",
-  "settings.volume": "Volume: {0}%",
+  "settings.volume": "Effects volume: {0}%",
   "complete.title": "Sector secured.",
   "complete.stats": "{0} kills     Time {1}     Score {2}",
   "boss.name": "THE WARDEN // ASH AUTHORITY",
@@ -161,5 +161,11 @@
   "radio.6.6": "ECHO-9: Clear the final room. Use the access command at the extraction marker at the back.",
   "log.6.1": "FIELD LOG: The Warden protects both the facility and the order you once gave. The dates on the facility walls do not match the evacuation report.",
   "log.6.4": "ARCHIVE NOTE: The Warden is silent. The final decision belongs to you. ECHO-9 claims it has never read this entry before.",
-  "log.6.5": "COMMAND TRACE: The final signature belongs to a human operator. The machines will follow the same order until that authority is revoked."
+  "log.6.5": "COMMAND TRACE: The final signature belongs to a human operator. The machines will follow the same order until that authority is revoked.",
+  "weapon.reloading": "Reloading",
+  "settings.fx": "Effects: {0}",
+  "fx.1": "Low",
+  "fx.2": "Medium",
+  "fx.3": "High",
+  "fx.basic": "(no lights on this GPU)"
 }

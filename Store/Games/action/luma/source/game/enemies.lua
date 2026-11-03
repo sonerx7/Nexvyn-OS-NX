@@ -25,7 +25,8 @@ end
 function E.update(w,dt,prevY)
  local p=w.player
  for _,e in ipairs(w.def.enemies) do
-  if e.alive then
+  if e.alive and not e.bonded then
+   if (e.stunned or 0)>0 then e.stunned=math.max(0,e.stunned-dt);goto continue_enemy end
    local b=w.def.platforms[e.platform]
    e.flash=max(0,e.flash-dt);e.cooldown=e.cooldown-dt;e.timer=max(0,e.timer-dt)
    local dx,dz=p.x-e.x,p.z-e.z;local dist=sqrt(dx*dx+dz*dz);local l=max(.01,dist)
@@ -73,13 +74,14 @@ function E.update(w,dt,prevY)
    e.x=clamp(e.x,b.x-b.w/2+1,b.x+b.w/2-1);e.z=clamp(e.z,b.z-b.d/2+1,b.z+b.d/2-1)
    if b.active and dist<.95 and p.y<e.y+1.1 and p.y+1.6>e.y then
     local stomp=p.vy<-.8 and prevY>=e.y+.55
-    if stomp or p.dash>0 then
+    if stomp or (p.dash>0 and not w.def.adventure) then
      local hit=E.hit(w,e,p.pound)
      if stomp then p.vy=hit and 8 or 5;p.jumps=min(p.jumps,1);p.pound=false end
      if not hit then w:damage(false,e.x,e.z) end
     else w:damage(false,e.x,e.z) end
    end
   end
+ ::continue_enemy::
  end
  for i=#w.projectiles,1,-1 do
   local a=w.projectiles[i];a.life=a.life-dt;a.x=a.x+a.vx*dt;a.y=a.y+(a.vy or 0)*dt;a.z=a.z+a.vz*dt

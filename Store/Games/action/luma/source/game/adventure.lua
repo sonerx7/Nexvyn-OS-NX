@@ -102,6 +102,8 @@ function A.build(n,palette)
   add(d.switches,{platform=zones[z],dx=-4,dz=-3,active=false,index=i})
   local kz=({2,4,7})[i];add(d.keys,{platform=zones[kz],dx=4.5,dz=-4.5,collected=false,id=i})
  end
+ d.hatPuzzles=true
+ d.spirits={{platform=zones[1],dx=4,dz=1,kind="hopper"},{platform=zones[4],dx=-4,dz=2,kind="bat"},{platform=zones[7],dx=4,dz=2,kind="turtle"}}
  d.puzzleOrder=n==7
  if n==5 or n==9 then
   for _,zone in ipairs({2,4,7}) do add(d.hazards,{platform=zones[zone],dx=0,dz=4,kind="beam",phase=zone,radius=3.8}) end
@@ -116,12 +118,19 @@ function A.build(n,palette)
   local k=roster[n][(i-1)%3+1]
   add(d.enemies,{platform=zones[z],kind=k,phase=i,range=3,dx=(i%3-1)*3,dz=(i%2==0 and -1 or 1)*2,group=z==3 and "arena" or nil})
  end
+ for zone=1,8 do
+  local b=d.platforms[zones[zone]]
+  for j,name in ipairs(zone==1 and {"market_stall","garden_seat","trellis"} or zone==4 and {"observatory","mosaic","trellis"} or {"garden_seat","trellis"}) do
+   add(d.props,{model=name,x=b.x+(j%2==0 and -1 or 1)*(b.w*.32),y=b.y,z=b.z-b.d*.28+j*1.3,platform=zones[zone],angle=(zone%2)*math.pi,scale=name=="observatory" and .9 or 1})
+  end
+ end
  local start=d.platforms[zones[1]];d.start={x=start.x,y=start.y+.05,z=start.z+3}
  local exit=d.platforms[zones[8]];d.goal={x=exit.x,y=exit.y,z=exit.z-5,platform=exit}
  if n==10 then d.boss={x=exit.x,y=exit.y,z=exit.z,hp=3,state="sleep",timer=0,radius=0} end
  -- Optional rooftop: double jump is useful for secrets, while the district roads remain walkable.
  local p=d.platforms[zones[5]]
- local roof=floor(p.x+3,p.y+1.7,p.z+3,5,5,"normal")
+ local roof=floor(p.x+3,p.y+4.8,p.z+3,5,5,"normal")
+ d.stars[1].platform=roof;d.stars[1].dx=0;d.stars[1].dz=0
  add(d.coins,{platform=roof,dx=0,dy=1,dz=0,id=#d.coins+1})
  d.bounds={minX=-60,maxX=65,minZ=-120,maxZ=40}
  return d

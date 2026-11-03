@@ -18,11 +18,8 @@
     "es": "Seis capítulos, cuatro armas, una orden."
   },
   "changelog": {
-    "en": "First Store release: six story chapters, four weapons, six enemy types and textured 3D environments.",
-    "tr": "İlk Store sürümü: altı hikâye bölümü, dört silah, altı düşman türü ve dokulu 3B ortamlar.",
-    "de": "Erste Store-Version: sechs Story-Kapitel, vier Waffen, sechs Gegnertypen und texturierte 3D-Umgebungen.",
-    "fr": "Première version Store : six chapitres, quatre armes, six types d’ennemis et décors 3D texturés.",
-    "es": "Primera versión Store: seis capítulos, cuatro armas, seis tipos de enemigos y entornos 3D texturizados."
+    "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). Per-area lighting with shadows, emissive lamps and screens, reflections, wet floors, glass, layered weapon sound and ambience, effects quality setting.",
+    "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Bölgeye göre gölgeli ışık, parlayan lamba ve ekranlar, yansımalar, ıslak zeminler, cam, katmanlı silah sesleri ve ortam sesleri, efekt kalitesi ayarı."
   },
   "shots": [
     [

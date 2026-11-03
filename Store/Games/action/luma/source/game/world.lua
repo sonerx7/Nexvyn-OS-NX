@@ -1,3 +1,4 @@
+local Companion=require('game.companion')
 -- SDK-independent 3D character controller and game rules. Fixed step: 120 Hz.
 local World={}; World.__index=World
 local Enemies=require("game.enemies")
@@ -45,6 +46,7 @@ function World:emit(kind,x,y,z,value)
 end
 
 function World:respawn(initial)
+  if self.bondSource then self.bondSource.bonded=false end;self.cap=nil;self.form=nil;self.bondSource=nil
   local s=self.def.start
   if self.checkpoint>0 then
     local c=self.def.checkpoints[self.checkpoint]; s={x=c.x+1.3,y=c.y+.08,z=c.z}
@@ -70,6 +72,7 @@ end
 function World:damage(fall,sourceX,sourceZ)
   local p=self.player
   if not fall and p.invul>0 then return end
+  if not fall and self.form=="turtle" and self.formShield then self.formShield=false;p.invul=1.2;self:emit("bondShield",p.x,p.y,p.z);return end
   p.hp=p.hp-1; p.invul=1.4
   self:emit("hurt",p.x,p.y,p.z)
   if fall or p.hp<=0 then
@@ -112,9 +115,10 @@ function World:step(dt,c)
   local length=sqrt(mx*mx+mz*mz)
   if length>1 then mx,mz=mx/length,mz/length;length=1 end
   if length>.12 then p.facing=math.atan(mx,mz) end
+  if c.cast then Companion.cast(self) end;Companion.update(self,dt)
   if self.jumpBuffer>0 and (p.coyote>0 or p.jumps<2) then
     if p.coyote>0 then p.jumps=0 end
-    p.jumps=p.jumps+1;p.vy=p.jumps==1 and 10.3 or 9.7
+    p.jumps=p.jumps+1;p.vy=(p.jumps==1 and 10.3 or 9.7)*(self.form=="hopper" and 1.38 or 1)
     p.grounded=false;p.support=nil;p.coyote=0;p.pound=false;self.jumpBuffer=0
     self:emit(p.jumps==1 and "jump" or "doubleJump",p.x,p.y,p.z)
   end
@@ -133,6 +137,7 @@ function World:step(dt,c)
   p.vx=p.vx+self.def.wind*sin(self.time*.7)*dt
   local prevY=p.y
   p.vy=p.vy-25*dt
+  if self.form=="bat" and c.jumpHeld and p.vy< -2.8 then p.vy=-2.8;p.vx=p.vx*1.003;p.vz=p.vz*1.003 end
   if not c.jumpHeld and p.vy>4.5 and p.dash<=0 then p.vy=p.vy-23*dt end
   local oldX=p.x;p.x=p.x+p.vx*dt
   for _,b in ipairs(self.def.platforms) do

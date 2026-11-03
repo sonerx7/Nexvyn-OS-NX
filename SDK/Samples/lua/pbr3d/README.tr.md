@@ -63,4 +63,4 @@ boyutlarını düşürün (SDK başvurusu, bölüm 8b, *Bütçe*).
 
 | Sürüm | Değişiklik |
 |---|---|
-| 1.0 | İlk sürüm (SDK 1.9, Nexvyn OS 1.3.0). |
+| 1.0 | İlk sürüm (SDK 1.9, Nexvyn OS 1.2.2). |

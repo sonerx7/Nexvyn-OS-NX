@@ -1,0 +1,444 @@
+{
+  "revision": 3,
+  "rate": 32000,
+  "music": {
+    "chapter1": {
+      "file": "audio/music/chapter1.ogg",
+      "seconds": 43.636375,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "4ef64958e1aa04ec9cdc0d21538cbc01f074b3f98febca2fbac812b16f7abdf5"
+    },
+    "chapter2": {
+      "file": "audio/music/chapter2.ogg",
+      "seconds": 41.739125,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "c1d9a57a5f2d3901afa7e7eb60a60c4dd379011a3caed227e2bf9ac579181741"
+    },
+    "chapter3": {
+      "file": "audio/music/chapter3.ogg",
+      "seconds": 45.0,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "316d667775232da751807bcf94da390875b46e441da9fe1bce9aa0374cc464ae"
+    },
+    "chapter4": {
+      "file": "audio/music/chapter4.ogg",
+      "seconds": 46.451625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "215c4863711a4e3cb22c61d923f335d8de5c89c06e920fbfaf6094b0b7650e5e"
+    },
+    "chapter5": {
+      "file": "audio/music/chapter5.ogg",
+      "seconds": 39.4520625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "b6275eeab52f60ebd7ff20415fb44424c2507ee1bcd4d3902087f73e40310be6"
+    },
+    "chapter6": {
+      "file": "audio/music/chapter6.ogg",
+      "seconds": 37.89475,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "539b2797107664e764f012ed1f61e878fce2cfd2d690574cae62ff1c224cb481"
+    },
+    "title": {
+      "file": "audio/music/title.ogg",
+      "seconds": 55.384625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "1bb69e9c40b8426c12debd5eb95ccc219e49601ebf174976fa24c51803404d46"
+    }
+  },
+  "effects": {
+    "gun1": {
+      "files": [
+        "audio/sfx/gun1_1.wav",
+        "audio/sfx/gun1_2.wav",
+        "audio/sfx/gun1_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.58,
+        0.58,
+        0.58
+      ]
+    },
+    "gun2": {
+      "files": [
+        "audio/sfx/gun2_1.wav",
+        "audio/sfx/gun2_2.wav",
+        "audio/sfx/gun2_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.72,
+        0.72,
+        0.72
+      ]
+    },
+    "gun3": {
+      "files": [
+        "audio/sfx/gun3_1.wav",
+        "audio/sfx/gun3_2.wav",
+        "audio/sfx/gun3_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.58,
+        0.58,
+        0.58
+      ]
+    },
+    "gun4": {
+      "files": [
+        "audio/sfx/gun4_1.wav",
+        "audio/sfx/gun4_2.wav",
+        "audio/sfx/gun4_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.58,
+        0.58,
+        0.58
+      ]
+    },
+    "hurt": {
+      "files": [
+        "audio/sfx/hurt_1.wav",
+        "audio/sfx/hurt_2.wav",
+        "audio/sfx/hurt_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.33990625,
+        0.37503125,
+        0.463875
+      ]
+    },
+    "hit": {
+      "files": [
+        "audio/sfx/hit_1.wav",
+        "audio/sfx/hit_2.wav",
+        "audio/sfx/hit_3.wav"
+      ],
+      "cooldown": 0.09,
+      "gain": 1,
+      "durations": [
+        0.33990625,
+        0.37503125,
+        0.463875
+      ]
+    },
+    "pickup": {
+      "files": [
+        "audio/sfx/pickup_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.28484375
+      ]
+    },
+    "relay": {
+      "files": [
+        "audio/sfx/relay_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.5278125
+      ]
+    },
+    "door": {
+      "files": [
+        "audio/sfx/door_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.5278125
+      ]
+    },
+    "empty": {
+      "files": [
+        "audio/sfx/empty_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.2806875
+      ]
+    },
+    "parry": {
+      "files": [
+        "audio/sfx/parry_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.27459375
+      ]
+    },
+    "jump": {
+      "files": [
+        "audio/sfx/jump_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.295
+      ]
+    },
+    "dash": {
+      "files": [
+        "audio/sfx/dash_1.wav",
+        "audio/sfx/dash_2.wav",
+        "audio/sfx/dash_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.39,
+        0.39,
+        0.39
+      ]
+    },
+    "land": {
+      "files": [
+        "audio/sfx/land_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.69059375
+      ]
+    },
+    "enemy_death": {
+      "files": [
+        "audio/sfx/enemy_death_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.60415625
+      ]
+    },
+    "boss_warn": {
+      "files": [
+        "audio/sfx/boss_warn_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        1.14
+      ]
+    },
+    "boss_attack": {
+      "files": [
+        "audio/sfx/boss_attack_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.9624375
+      ]
+    },
+    "boss_hit": {
+      "files": [
+        "audio/sfx/boss_hit_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.69059375
+      ]
+    },
+    "victory": {
+      "files": [
+        "audio/sfx/victory_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 0.9,
+      "durations": [
+        3.04
+      ]
+    },
+    "death": {
+      "files": [
+        "audio/sfx/death_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        1.36
+      ]
+    },
+    "step_metal": {
+      "files": [
+        "audio/sfx/step_metal_1.wav",
+        "audio/sfx/step_metal_2.wav",
+        "audio/sfx/step_metal_3.wav",
+        "audio/sfx/step_metal_4.wav"
+      ],
+      "cooldown": 0.24,
+      "gain": 0.65,
+      "durations": [
+        0.3128125,
+        0.266375,
+        0.2545625,
+        0.3986875
+      ]
+    },
+    "step_stone": {
+      "files": [
+        "audio/sfx/step_stone_1.wav",
+        "audio/sfx/step_stone_2.wav",
+        "audio/sfx/step_stone_3.wav",
+        "audio/sfx/step_stone_4.wav"
+      ],
+      "cooldown": 0.24,
+      "gain": 0.65,
+      "durations": [
+        0.2059375,
+        0.20765625,
+        0.2128125,
+        0.2105
+      ]
+    }
+  },
+  "streaming": true,
+  "sources": "audio/licenses/README.md",
+  "presentationMix": 3,
+  "layers": {
+    "gun1": {
+      "files": [
+        "audio/layers/gun1_1.wav",
+        "audio/layers/gun1_2.wav"
+      ],
+      "gain": 0.55,
+      "durations": [
+        0.454,
+        0.454
+      ]
+    },
+    "gun2": {
+      "files": [
+        "audio/layers/gun2_1.wav",
+        "audio/layers/gun2_2.wav"
+      ],
+      "gain": 0.6,
+      "durations": [
+        0.704,
+        0.704
+      ]
+    },
+    "gun3": {
+      "files": [
+        "audio/layers/gun3_1.wav",
+        "audio/layers/gun3_2.wav"
+      ],
+      "gain": 0.45,
+      "durations": [
+        0.304,
+        0.304
+      ]
+    },
+    "gun4": {
+      "files": [
+        "audio/layers/gun4_1.wav",
+        "audio/layers/gun4_2.wav"
+      ],
+      "gain": 0.5,
+      "durations": [
+        0.62,
+        0.62
+      ]
+    },
+    "hit": {
+      "files": [
+        "audio/layers/hit_1.wav",
+        "audio/layers/hit_2.wav"
+      ],
+      "gain": 0.5,
+      "durations": [
+        0.06,
+        0.06
+      ]
+    },
+    "hurt": {
+      "files": [
+        "audio/layers/hurt_1.wav",
+        "audio/layers/hurt_2.wav"
+      ],
+      "gain": 0.6,
+      "durations": [
+        0.35,
+        0.35
+      ]
+    },
+    "pickup": {
+      "files": [
+        "audio/layers/pickup_1.wav",
+        "audio/layers/pickup_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.3,
+        0.3
+      ]
+    },
+    "relay": {
+      "files": [
+        "audio/layers/relay_1.wav",
+        "audio/layers/relay_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.5,
+        0.5
+      ]
+    },
+    "enemy_death": {
+      "files": [
+        "audio/layers/enemy_death_1.wav",
+        "audio/layers/enemy_death_2.wav"
+      ],
+      "gain": 0.5,
+      "durations": [
+        0.5,
+        0.5
+      ]
+    },
+    "door": {
+      "files": [
+        "audio/layers/door_1.wav",
+        "audio/layers/door_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.45,
+        0.45
+      ]
+    }
+  },
+  "ambience": {
+    "facility": {
+      "file": "audio/layers/amb_facility.wav",
+      "gain": 0.2,
+      "seconds": 8
+    },
+    "organic": {
+      "file": "audio/layers/amb_organic.wav",
+      "gain": 0.22,
+      "seconds": 8
+    }
+  }
+}

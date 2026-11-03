@@ -1,8 +1,14 @@
 local World=require("game.world")
 local Render=require("game.render")
+local Audio=require("game.audio")
+local Fx=require("game.fx")
+-- Effects profile for the pbr tier (needs SDK 1.9; skipped when Effects is Low or the GPU has no pbr path): see game/fx.lua.
+-- Each chapter's area values in game/render.lua (AREA) override exposure, bloom and threshold.
+local FX_PROFILE={exposure=1.1,tonemap="aces",bloom=.05,threshold=.9,shadowDistance=24}
 local app={}
 local mode="loading"
 local world,preview,progress,options
+local soundtrack
 local keys,pending={},{}
 local selected,chapter=1,1
 local clock,accum=0,0
@@ -24,11 +30,15 @@ local function save()
  store.set("ash.progress.v1",progress);store.set("ash.options.v1",options)
 end
 local function music(n)
- if audioChannel then audio.stop(audioChannel);audioChannel=nil end
- if options.music then audioChannel=audio.play("bundle:/audio/chapter"..n..".wav",options.volume*.35,-1) end
+ if soundtrack then
+  soundtrack:ambience((n==5 and mode~="title" and mode~="select") and "organic" or "facility")
+  soundtrack:track((mode=="title" or mode=="select" or not world) and "title" or "chapter"..n)
+ end
 end
+local function kick(v) if options.fx>=2 then Render.shake=max(Render.shake or 0,v) end end
 local function modeTo(m)
  mode=m;selected=1;keys={};pending={};touch.drag=nil;touch.fire=false;touch.linger=0;lastMouse=nil;accum=0
+ if soundtrack then soundtrack:pause(m=="pause")end
 end
 local function start(n,resume)
  chapter=n;world=World.new(n,resume);Render.prepare(world)
@@ -79,51 +89,64 @@ local function activate(index)
   if index==1 then archivePage=(archivePage-2)%max(1,pages)+1 elseif index==2 then archivePage=archivePage%max(1,pages)+1 else modeTo("pause") end
  elseif mode=="settings" then
   if index==1 then options.quality=options.quality==2 and 1 or 2;Render.quality=options.quality
-  elseif index==2 then options.music=not options.music;music(chapter)
-  elseif index==3 then options.sensitivity=options.sensitivity>=.004 and .0018 or options.sensitivity+.0006
-  elseif index==4 then options.volume=options.volume>=.99 and .25 or min(1,options.volume+.25);music(chapter)
+  elseif index==2 then local was=Fx.active();options.fx=options.fx%3+1;Fx.setup(options.fx);if Fx.active()~=was then Render.reprepare() end
+  elseif index==3 then options.music=not options.music;music(chapter)
+  elseif index==4 then options.sensitivity=options.sensitivity>=.004 and .0018 or options.sensitivity+.0006
+  elseif index==5 then options.volume=options.volume>=.99 and .25 or min(1,options.volume+.25);music(chapter)
   else modeTo(returnMode) end
   save()
  end
 end
 local function count()
- if mode=="pause" then return 7 elseif mode=="codex" then return 3 elseif mode=="title" or mode=="select" then return 6 elseif mode=="settings" then return 5 elseif mode=="dead" or mode=="complete" or mode=="choice" then return 2 else return 1 end
+ if mode=="pause" then return 7 elseif mode=="codex" then return 3 elseif mode=="title" or mode=="select" then return 6 elseif mode=="settings" then return 6 elseif mode=="dead" or mode=="complete" or mode=="choice" then return 2 else return 1 end
 end
 function app.load()
  progress=store.get("ash.progress.v1",{});if type(progress)~="table" then progress={} end
  progress.unlocked=clamp(tonumber(progress.unlocked) or 1,1,6);progress.records=progress.records or {};progress.archive=progress.archive or {}
  options=store.get("ash.options.v1",{});if type(options)~="table" then options={} end
  options.music=options.music~=false;options.volume=clamp(tonumber(options.volume) or .75,0,1);options.sensitivity=tonumber(options.sensitivity) or .0024;options.quality=options.quality==1 and 1 or 2;Render.quality=options.quality
+ options.fx=(options.fx==1 or options.fx==3) and options.fx or 2   -- Effects: 1 Low, 2 Medium (default), 3 High
+ Fx.setup(options.fx,FX_PROFILE)
+ if soundtrack then soundtrack:stop()end;soundtrack=Audio.new(options,"ash")
  local ok,err=pcall(Render.init);if not ok then errorText=tostring(err) end
 end
 local function events()
  for _,e in ipairs(world.events) do
   if e.kind=="shot" then
-   audio.tone(e.value==2 and 70 or (e.value==4 and 210 or 115),e.value==2 and .12 or .055,options.volume*.23,e.value==4 and "triangle" or "noise")
-  elseif e.kind=="hurt" then audio.tone(90,.09,options.volume*.18,"saw")
-  elseif e.kind=="hit" then audio.tone(480,.025,options.volume*.09,"triangle")
-  elseif e.kind=="pickup" then message("pickup."..e.value);audio.tone(740,.06,options.volume*.12,"sine");save()
-  elseif e.kind=="relay" then message("relay.activated");save()
-  elseif e.kind=="checkpoint" then message("checkpoint.saved");save()
-  elseif e.kind=="door" then message("door.open");save()
+   soundtrack:sfx("gun"..e.value);kick(({.12,.45,.1,.35})[e.value] or .1)
+  elseif e.kind=="hurt" then soundtrack:sfx("hurt");kick(.9)
+  elseif e.kind=="hit" then soundtrack:sfx("hit")
+  elseif e.kind=="pickup" then message("pickup."..e.value);soundtrack:sfx("pickup");save()
+  elseif e.kind=="relay" then message("relay.activated");soundtrack:sfx("relay");save()
+  elseif e.kind=="checkpoint" then message("checkpoint.saved");soundtrack:sfx("relay");save()
+  elseif e.kind=="door" then message("door.open");soundtrack:sfx("door");save()
   elseif e.kind=="gateLocked" then message("gate.locked")
   elseif e.kind=="exitLocked" then message("exit.locked")
   elseif e.kind=="lockedWeapon" then message("weapon.locked")
-  elseif e.kind=="empty" then message("weapon.empty",1.5)
-  elseif e.kind=="parry" then message("combat.parry",1.5)
-  elseif e.kind=="bossDead" then radio.text=TR("radio.bossDead");radio.time=6
+  elseif e.kind=="reload" then message("weapon.reloading",1.3);soundtrack:sfx("door")
+  elseif e.kind=="loaded" then soundtrack:sfx("relay")
+  elseif e.kind=="empty" then message("weapon.empty",1.5);soundtrack:sfx("empty")
+  elseif e.kind=="parry" then message("combat.parry",1.5);soundtrack:sfx("parry")
+  elseif e.kind=="jump" or e.kind=="dash" then soundtrack:sfx(e.kind)
+  elseif e.kind=="melee" then soundtrack:sfx("hit")
+  elseif e.kind=="kill" then soundtrack:sfx("enemy_death");kick(.15)
+  elseif e.kind=="enemyShot" then soundtrack:sfx("gun3",.25)
+  elseif e.kind=="summon" then soundtrack:sfx("boss_warn",.6)
+  elseif e.kind=="bossDead" then kick(1.3);radio.text=TR("radio.bossDead");radio.time=6;soundtrack:sfx("victory")
   elseif e.kind=="room" then radio.text=TR("radio."..chapter.."."..e.value);radio.time=6;save()
   elseif e.kind=="log" then
    progress.archive[chapter..":"..e.value]=true;radio.text=TR("log."..chapter.."."..e.value);radio.time=9;save()
   elseif e.kind=="complete" then
    progress.unlocked=max(progress.unlocked,min(6,chapter+1));progress.records[tostring(chapter)]={kills=world.kills,time=world.elapsed,score=world.score};progress.resume=nil
    modeTo(chapter==6 and "choice" or "complete");save()
-  elseif e.kind=="dead" then modeTo("dead") end
+  elseif e.kind=="dead" then modeTo("dead");soundtrack:sfx("death");soundtrack:track(nil)end
  end
  world.events={}
 end
 function app.update(dt)
- dt=clamp(tonumber(dt) or 0,0,.1);clock=clock+dt;toast.time=max(0,toast.time-dt);radio.time=max(0,radio.time-dt)
+ if mode~="loading" then Render.animate((mode=="title" or mode=="select" or mode=="briefing" or not world) and preview or world,math.min(.1,math.max(0,tonumber(dt) or 0)),mode=="play") end
+ dt=clamp(tonumber(dt) or 0,0,.1);clock=clock+dt;toast.time=max(0,toast.time-dt);Render.shake=max(0,(Render.shake or 0)-dt*4);radio.time=max(0,radio.time-dt)
+ if soundtrack then soundtrack:update(dt);soundtrack:footsteps(world and world.player,chapter==4 and "stone" or "metal",mode=="play")end
  if mode=="loading" then
   if not errorText then local ok,done=pcall(Render.loadNext);if not ok then errorText=tostring(done) elseif done then title() end end
   return
@@ -135,12 +158,12 @@ function app.update(dt)
  p.yaw=p.yaw+((keys.right and 1 or 0)-(keys.left and 1 or 0)+rx*1.6)*2.0*dt
  p.pitch=clamp(p.pitch+((keys.up and 1 or 0)-(keys.down and 1 or 0)+ry*1.4)*1.6*dt,-1.25,1.25)
  local lx,ly=input.stick("left");lx,ly=lx or 0,ly or 0;if math.abs(lx)<.15 then lx=0 end;if math.abs(ly)<.15 then ly=0 end
- local c={strafe=lx+(keys.d and 1 or 0)-(keys.a and 1 or 0),forward=ly+(keys.w and 1 or 0)-(keys.s and 1 or 0),run=input.down("lstick"),fire=keys.fire or input.down("zr") or touch.fire}
+ local c={strafe=lx+(keys.d and 1 or 0)-(keys.a and 1 or 0),forward=ly+(keys.w and 1 or 0)-(keys.s and 1 or 0),run=input.down("lstick"),aim=keys.look or input.down("zl"),fire=keys.fire or input.down("zr") or touch.fire}
  touch.linger=max(0,touch.linger-dt)
  if touch.drag=="move" or touch.linger>0 then c.strafe=touch.dx;c.forward=touch.dz end
  accum=accum+dt;local used=false
  while accum>=1/120 do
-  c.jump=not used and pending.jump;c.dash=not used and pending.dash;c.use=not used and pending.use;c.melee=not used and pending.melee
+  c.reload=not used and pending.reload;c.jump=not used and pending.jump;c.dash=not used and pending.dash;c.use=not used and pending.use;c.melee=not used and pending.melee
   if not used then pending={};used=true end
   world:step(1/120,c);accum=accum-1/120
   if world.status~="play" then break end
@@ -154,6 +177,7 @@ function app.event(e)
   elseif mode=="play" then
    if e.key=="space" then pending.jump=true
    elseif e.key=="shift" or e.key=="lshift" or e.key=="z" then pending.dash=true
+   elseif e.key=="r" then pending.reload=true
    elseif e.key=="e" then pending.use=true
    elseif e.key=="c" then pending.melee=true
    elseif e.key=="f" then world.flashlight=not world.flashlight;message(world.flashlight and "flashlight.on" or "flashlight.off",1.5)
@@ -171,7 +195,7 @@ function app.event(e)
  elseif e.type=="paddown" then
   if e.pad=="plus" then back()
   elseif mode=="play" then
-   if e.pad=="a" then pending.jump=true elseif e.pad=="b" then pending.dash=true elseif e.pad=="x" then pending.use=true elseif e.pad=="zl" then pending.melee=true elseif e.pad=="y" or e.pad=="r" then cycle(1) elseif e.pad=="l" then cycle(-1) elseif e.pad=="rstick" then world.flashlight=not world.flashlight elseif e.pad=="minus" then save();modeTo("map") end
+   if e.pad=="a" then pending.jump=true elseif e.pad=="b" then pending.dash=true elseif e.pad=="x" then pending.use=true elseif e.pad=="l" then pending.reload=true elseif e.pad=="y" or e.pad=="r" then cycle(1) elseif e.pad=="rstick" then pending.melee=true elseif e.pad=="minus" then save();modeTo("map") end
   else
    if e.pad=="a" then activate(selected) elseif e.pad=="b" then back() elseif e.pad=="up" then selected=(selected-2)%count()+1 elseif e.pad=="down" then selected=selected%count()+1 end
   end
@@ -223,9 +247,11 @@ local function hud()
  rect(40,706,315,4,"#243843",2);rect(40,706,315*p.hp/100,4,"#D9AD7E",2)
  rect(925,618,327,78,"#101C29DF",8)
  text(TR("weapon."..world.weapon),946,630,13,"#A5BCBD","bold")
- text(weapon.ammo==0 and TR("ammo.infinite") or tostring(world.ammo[weapon.ammo]),946,653,33,"#E2C8A4","bold")
+ text(tostring(world.magazines[world.weapon]).." / "..(weapon.ammo==0 and TR("ammo.infinite") or tostring(math.max(0,math.floor(world.ammo[weapon.ammo]/weapon.cost)-world.magazines[world.weapon]))),946,653,33,"#E2C8A4","bold")
  text(TR("hud.kills",world.kills),1120,664,13,"#A2B7B8")
- local gap=world.weapon==2 and 13 or 7
+ if world.reloadTimer>0 then rect(552,420,176*(1-world.reloadTimer/world.reloadDuration),3,"#D7B381",1);text(TR("weapon.reloading"),500,438,12,"#D7B381","medium","center",280) end
+ if (world.hitMarker or 0)>0 then gfx.color(world.hitHeadshot and "#E0AC76" or "#D4E9DF");for _,q in ipairs({{-1,-1},{1,-1},{-1,1},{1,1}}) do gfx.line(OX+(640+q[1]*6)*S,OY+(360+q[2]*6)*S,OX+(640+q[1]*12)*S,OY+(360+q[2]*12)*S,2*S) end end
+ local gap=(world.weapon==2 and 13 or 7)*(1-.75*(p.ads or 0))
  gfx.color(world.muzzle>0 and "#F2CE9E" or "#C9D8D1")
  gfx.line(OX+(640-gap-7)*S,OY+360*S,OX+(640-gap)*S,OY+360*S,1.3*S)
  gfx.line(OX+(640+gap)*S,OY+360*S,OX+(640+gap+7)*S,OY+360*S,1.3*S)
@@ -328,10 +354,12 @@ local function helpUI()
 end
 local function settingsUI()
  shade();panel(343,86,594,552);text(TR("menu.settings"),380,132,33,"#E3D3BA","bold")
- local list={TR("settings.detail",TR(options.quality==2 and "high" or "balanced")),TR("settings.music",TR(options.music and "on" or "off")),TR("settings.aim",string.format("%.1f",options.sensitivity*1000)),TR("settings.volume",floor(options.volume*100)),TR("back")}
+ local fxLabel=TR("settings.fx",TR("fx."..options.fx))
+ if options.fx>1 and not Fx.active() then fxLabel=fxLabel.." "..TR("fx.basic") end
+ local list={TR("settings.detail",TR(options.quality==2 and "high" or "balanced")),fxLabel,TR("settings.music",TR(options.music and "on" or "off")),TR("settings.aim",string.format("%.1f",options.sensitivity*1000)),TR("settings.volume",floor(options.volume*100)),TR("back")}
  for i,label in ipairs(list) do
-  local x,y=369,220+(i-1)*73;local hit=ui.hit("setting."..i,OX+x*S,OY+y*S,542*S,60*S)
-  rect(x,y,542,60,selected==i and "#A97D572B" or "#152A37",7);text(label,x+18,y+20,18,"#CCCEC1","medium")
+  local x,y=369,220+(i-1)*64;local hit=ui.hit("setting."..i,OX+x*S,OY+y*S,542*S,54*S)
+  rect(x,y,542,54,selected==i and "#A97D572B" or "#152A37",7);text(label,x+18,y+17,18,"#CCCEC1","medium")
   if hit.clicked then activate(i) end
  end
 end
@@ -384,8 +412,8 @@ function app.onmenu(id)
  elseif id==3 and mode~="loading" then save();title() end
 end
 function app.focus(focused)if not focused then keys={};if mode=="play" then pause() end end end
-function app.suspend()pause();save();if audioChannel then audio.stop(audioChannel);audioChannel=nil end end
-function app.resume()if mode~="loading" then music(chapter) end end
+function app.suspend()pause();save();soundtrack:pause(true)end
+function app.resume()soundtrack:pause(false);if mode~="loading" then music(chapter) end end
 function app.autosave()save()end
-function app.close()save();if audioChannel then audio.stop(audioChannel) end;return true end
+function app.close()save();soundtrack:stop();Render.close();return true end
 return app

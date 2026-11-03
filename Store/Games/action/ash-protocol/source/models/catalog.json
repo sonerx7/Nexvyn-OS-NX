@@ -21,7 +21,11 @@
   },
   {
     "name": "stalker",
-    "triangles": 1000
+    "triangles": 1000,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "stalker_arm",
@@ -37,19 +41,35 @@
   },
   {
     "name": "drone",
-    "triangles": 1368
+    "triangles": 1368,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "siege",
-    "triangles": 708
+    "triangles": 708,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "priest",
-    "triangles": 1744
+    "triangles": 1744,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "warden",
-    "triangles": 1176
+    "triangles": 1176,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "crate",
@@ -57,11 +77,19 @@
   },
   {
     "name": "barrel",
-    "triangles": 332
+    "triangles": 332,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "terminal",
-    "triangles": 200
+    "triangles": 200,
+    "parts": [
+      "body",
+      "screen"
+    ]
   },
   {
     "name": "relay",
@@ -73,7 +101,11 @@
   },
   {
     "name": "core",
-    "triangles": 1904
+    "triangles": 1904,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "medkit",
@@ -89,10 +121,46 @@
   },
   {
     "name": "key",
-    "triangles": 76
+    "triangles": 76,
+    "parts": [
+      "body",
+      "glow"
+    ]
   },
   {
     "name": "datapad",
-    "triangles": 76
+    "triangles": 76,
+    "parts": [
+      "body",
+      "screen"
+    ]
+  },
+  {
+    "name": "generator",
+    "triangles": 572
+  },
+  {
+    "name": "pipe_rack",
+    "triangles": 660
+  },
+  {
+    "name": "cover_panel",
+    "triangles": 292
+  },
+  {
+    "name": "comms",
+    "triangles": 388,
+    "parts": [
+      "body",
+      "glow"
+    ]
+  },
+  {
+    "name": "supply_stack",
+    "triangles": 300
+  },
+  {
+    "name": "gantry",
+    "triangles": 600
   }
 ]

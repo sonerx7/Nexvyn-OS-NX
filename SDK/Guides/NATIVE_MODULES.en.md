@@ -64,17 +64,20 @@ modules save). So the build exports **only what the modules import**:
   never uses but a module wants.
 
 Result: a few hundred symbols, a few KB. The price is that if a new module needs a new symbol, the NRO must be
-rebuilt; since the ABI id changes with every build anyway, modules are always built together with the NRO.
+rebuilt; a module built for an older OS keeps loading while every symbol it needs still exists (section 3).
 
 ## 3. ABI id
 
-`ABI = FNV-1a 64( sorted exported symbol names, each followed by "\n" + NEXVYN_VERSION )`, 16 hex characters.
+`ABI = FNV-1a 64( "nxv-module-abi-gen:" + NEXVYN_MODULE_ABI_GEN )`, 16 hex characters. The generation (`source/runtimes/nxvmod.h`) is raised by hand only
+when a struct or calling convention shared with modules changes incompatibly. It does **not** change with the OS version,
+with headers or with new exported functions: a module that needs a function the running OS lacks is refused cleanly
+("missing symbol"); every other module built for the same generation keeps working.
 
 - The NRO computes it at run time from its own `.dynsym` table (`nxvmod::abiId()`; if there are no exported symbols it
   is empty and no module is loaded).
 - `tools/build_modules.py` computes the same value from `NexvynOS.elf` and writes it into every module as the
   `.nxvabi` section, and into the package's `app.json` as `"abi"`.
-- A module with a different ABI is never loaded. Opening it says so ("… was made for another version of Nexvyn OS")
+- A module of another ABI generation is never loaded. Opening it says so ("… was made for another version of Nexvyn OS")
   and at the same moment queues this system's build for the automatic install (section 7); the app opens again once
   it has arrived.
 - The App Market keeps **one build per Nexvyn OS version**: a native entry of the catalog has a `"builds"` array

@@ -1,9 +1,11 @@
 local C=require('game.content')
 local W=require('game.world')
 local R=require('game.render')
+local Audio=require('game.audio')
+local Fx=require('game.fx')
 local app={}
 local mode,selected,weapon='title',1,1
-local w,progress,options
+local w,progress,options,soundtrack
 local keys,once,buttons={},{},{}
 local clock,accum=0,0
 local pointer={x=320,y=180,fire=false,aim=false}
@@ -14,15 +16,23 @@ local floor,min,max=math.floor,math.min,math.max
 local function ui(key)return C.t(C.ui[key])end
 local function notify(value)toast.text=C.t(value);toast.time=2.3 end
 local function clearInput()keys={};once={};pointer.fire=false;touch.drag=false;touch.linger=0;accum=0 end
-local function to(m)mode=m;selected=m=='title' and progress and not progress.resume and 2 or 1;clearInput()end
+local function to(m)mode=m;selected=m=='title' and progress and not progress.resume and 2 or 1;clearInput();if soundtrack then soundtrack:pause(m=='pause')end end
 local function save()
  if w and w.phase~='dead' and w.phase~='won' then progress.resume=w:snapshot() end
  store.set('frost.progress.v1',W.copy(progress));store.set('frost.options.v1',W.copy(options))
 end
 local function music(n)
- audio.musicStop();if options.music then audio.music('bundle:/audio/biome'..n..'.wav') end
+ if not soundtrack then return end
+ soundtrack:ambience((mode=='title' or mode=='weapons' or not w) and 'cave' or ({'cave','forge','wind','wind','cave'})[n] or 'cave')
+ local key=(mode=='title' or mode=='weapons' or not w) and 'title' or w.node and w.node.kind=='boss' and not w.clear and 'boss' or 'biome'..n
+ if w and (w.phase=='dead' or w.phase=='won') then key=nil end
+ soundtrack:track(key)
 end
-local function sound(name)if options.sound then audio.play('bundle:/audio/'..name..'.wav',.35,0) end end
+local function kick(v) if options.fx>=2 and options.shake then R.kick=max(R.kick or 0,v*(options.fx>=3 and 1.4 or 1)) end end
+local function sound(name)if soundtrack then soundtrack:sfx(name) end end
+-- Light juice (Atmosphere Medium and High): a short hit-stop on kills and the lantern glow swelling on impacts.
+local freeze=0
+local function juice(stop,glow) if options.fx>=2 then freeze=math.max(freeze,stop);R.glow=math.max(R.glow or 0,glow) end end
 local function beginRun()
  progress.runs=progress.runs+1
  local seed=(math.floor(sys.epoch())+progress.runs*7919)%2147483646+1
@@ -36,7 +46,7 @@ end
 local function settle(win)
  progress.shards=progress.shards+w.shards;progress.kills=progress.kills+w.kills
  progress.best=max(progress.best,w.biome);progress.wins=progress.wins+(win and 1 or 0)
- progress.resume=nil;store.set('frost.progress.v1',W.copy(progress));sound(win and 'boon' or 'hurt')
+ progress.resume=nil;store.set('frost.progress.v1',W.copy(progress));sound(win and 'victory' or 'death');soundtrack:track(nil)
 end
 local function handleEvents()
  local events=w.events;w.events={}
@@ -47,15 +57,25 @@ local function handleEvents()
   elseif event.kind=='poor' then notify(C.ui.unaffordable)
   elseif event.kind=='boon' then sound('boon')
   elseif event.kind=='coin' then sound('coin')
-  elseif event.kind=='attack' then sound(w.weapon==1 and 'hit' or 'shoot')
-  elseif event.kind=='hurt' then sound('hurt');sys.vibrate(.3,90)
+  elseif event.kind=='attack' then sound(({'swing','bow','staff'})[w.weapon])
+  elseif event.kind=='hit' then local d=event.data;sound(d and (d.boss or d.kind==1 or d.kind==2 or d.kind==5) and 'armor' or 'hit')
+  elseif event.kind=='kill' then if event.data and event.data.boss then kick(1.2);juice(.09,1) else juice(.035,.6) end;sound(event.data and event.data.boss and 'boss_hit' or 'enemy_death')
+  elseif event.kind=='heal' then sound('heal')
+  elseif event.kind=='chest' then sound('chest')
+  elseif event.kind=='shield' then sound('shield')
+  elseif event.kind=='skill' then kick(.6);juice(.05,1);sound('nova')
+  elseif event.kind=='wave' then sound('clear')
+  elseif event.kind=='wavewarn' then sound('boss_warn')
+  elseif event.kind=='bosswarn' then sound('boss_warn')
+  elseif event.kind=='bossattack' then kick(.5);sound('boss_attack')
+  elseif event.kind=='hurt' then kick(.8);sound('hurt');sys.vibrate(.3,90)
   elseif event.kind=='dash' then sound('dash')
-  elseif event.kind=='clear' then selected=1;sound('boon') end
+  elseif event.kind=='clear' then selected=1;sound('clear') end
  end
 end
 local function count()
  if mode=='title' then return 6 elseif mode=='weapons' then return 3 elseif mode=='pause' then return 6
- elseif mode=='settings' then return 7 elseif mode=='workshop' then return 4 elseif mode=='help' then return 1
+ elseif mode=='settings' then return 9 elseif mode=='workshop' then return 4 elseif mode=='help' then return 1
  elseif mode=='journal' then return 30
  elseif mode=='game' and w then
   if w.phase=='route' then return w.row==4 and 1 or 3 elseif w.phase=='reward' then return #w.rewards
@@ -81,6 +101,8 @@ local function activate(index)
   if index<=4 then local key=names[index];options[key]=not options[key];if key=='music' then music(w and w.biome or 1) end
   elseif index==5 then C.lang=3-C.lang;options.lang=C.lang
   elseif index==6 then options.touch=not options.touch;touch.visible=options.touch
+  elseif index==7 then options.volume=(options.volume or .72)>=.99 and .25 or min(1,(options.volume or .72)+.25)
+  elseif index==8 then options.fx=options.fx%3+1;Fx.setup(options.fx)
   else to(returnMode) end;save()
  elseif mode=='help' then to(returnMode)
  elseif mode=='journal' then selected=index
@@ -103,11 +125,18 @@ function app.load()
  progress=store.get('frost.progress.v1',{shards=0,runs=0,wins=0,kills=0,best=1,meta={health=0,power=0,flask=0}})
  progress.meta=progress.meta or {};progress.shards=progress.shards or 0
  options=store.get('frost.options.v1',{sound=true,music=true,shake=true,autoaim=false,touch=false,lang=sys.lang()=='tr' and 1 or 2})
+ options.volume=max(0,min(1,tonumber(options.volume)or .72))
+ options.fx=(options.fx==1 or options.fx==3) and options.fx or 2   -- Atmosphere: 1 Low, 2 Medium (default), 3 High
+ Fx.setup(options.fx)
+ if soundtrack then soundtrack:stop()end;soundtrack=Audio.new(options,'frost')
  C.lang=options.lang or 1;R.load();touch.visible=options.touch;to('title');music(1)
 end
 function app.update(dt)
- dt=min(dt,.15);clock=clock+dt;toast.time=max(0,toast.time-dt)
+ dt=min(dt,.15);clock=clock+dt;toast.time=max(0,toast.time-dt);R.kick=max(0,(R.kick or 0)-dt*4);R.glow=max(0,(R.glow or 0)-dt*4)
+ soundtrack:update(dt);music(w and w.biome or 1)
+ soundtrack:footsteps(w and w.player,({'stone','metal','snow','grass','stone'})[w and w.biome or 1],mode=='game' and w and w.phase=='play')
  if mode~='game' or not w or w.phase~='play' then return end
+ if freeze>0 then freeze=freeze-dt;return end
  accum=accum+dt
  while accum>=1/60 do
   accum=accum-1/60
@@ -118,7 +147,7 @@ function app.update(dt)
   if touch.linger>0 then touch.linger=max(0,touch.linger-1/60);dx=touch.x;dy=touch.y end
   local auto=options.autoaim or touch.visible
   if pointer.aim and not auto and ax*ax+ay*ay<.04 then ax=pointer.x+R.cx-w.player.x;ay=pointer.y+R.cy-w.player.y end
-  w:step(1/60,{x=dx,y=dy,ax=ax,ay=ay,autoaim=auto,
+  w:step(1/60,{x=dx,y=dy,ax=ax,ay=ay,autoaim=auto,autoattack=auto,
    attack=keys.j or pointer.fire or input.down('zr') or (touch.drag and touch.visible),
    dash=once.dash,heal=once.heal,skill=once.skill,use=once.use})
   once={};handleEvents();if w.phase~='play' then clearInput();break end
@@ -144,7 +173,7 @@ local function titleUI()
  local labels={C.ui.continue,C.ui.new,C.ui.workshop,C.ui.help,C.ui.settings,C.ui.quit}
  for i,label in ipairs(labels) do button(i,label,28,125+(i-1)*29,268,25,i~=1 or progress.resume~=nil) end
  R.icon(38,29,306,20);R.text(tostring(progress.shards)..' '..ui('shards'),54,310);R.text(C.ui.savehint,28,332)
- R.panel(430,302,196,43);R.text('SONERX7',442,309);R.text('v1.0.0  /  NEXVYN OS',442,326)
+ R.panel(430,302,196,43);R.text('SONERX7',442,309);R.text('v1.4.0  /  NEXVYN OS',442,326)
 end
 local function weaponUI()
  background();header(C.ui.chooseweapon,{'Üç farklı oyun tarzı · Her yolculuk yeni bir rota','Three playstyles · Every journey a new route'})
@@ -204,8 +233,9 @@ end
 local function settingsUI()
  background();R.rect(0,0,640,360,'#0b1629bf');header(C.ui.settings)
  local labels={};for i,key in ipairs({'sound','music','shake','autoaim'}) do labels[i]=ui(key)..': '..ui(options[key] and 'on' or 'off') end
- labels[5]='DIL / LANGUAGE: '..(C.lang==1 and 'TÜRKÇE' or 'ENGLISH');labels[6]=(C.lang==1 and 'DOKUNMATIK: ' or 'TOUCH: ')..ui(options.touch and 'on' or 'off');labels[7]=ui('back')
- for i,label in ipairs(labels) do button(i,label,148,69+(i-1)*39,344,32) end
+ labels[5]='DIL / LANGUAGE: '..(C.lang==1 and 'TÜRKÇE' or 'ENGLISH');labels[6]=(C.lang==1 and 'DOKUNMATIK: ' or 'TOUCH: ')..ui(options.touch and 'on' or 'off')
+ labels[7]=ui('volume')..': %'..floor((options.volume or .72)*100);labels[8]=ui('fx')..': '..ui(({'fxlow','fxmid','fxhigh'})[options.fx]);labels[9]=ui('back')
+ for i,label in ipairs(labels) do button(i,label,148,62+(i-1)*32,344,27) end
 end
 local function journalUI()
  R.rect(0,0,640,360,'#101d2bf5');header(C.ui.build,ui('seed')..': '..w.seed..'   '..ui('kills')..': '..w.kills)
@@ -291,11 +321,11 @@ function app.event(e)
   elseif kind=='mouseup' then pointer.fire=false;touch.drag=false;touch.linger=0;touch.x=0;touch.y=0 end
  end
 end
-function app.suspend()if w and mode=='game' then save();to('pause') else save() end;audio.musicPause(true)end
-function app.resume()audio.musicPause(false)end
+function app.suspend()if w and mode=='game' then save();to('pause') else save() end;soundtrack:pause(true)end
+function app.resume()soundtrack:pause(false)end
 function app.focus(focused)if not focused then app.suspend()end end
 function app.autosave()save()end
-function app.close()save();audio.musicStop();return true end
+function app.close()save();soundtrack:stop();return true end
 function app.unsaved()return false end
 function app.menu()return {{title=ui('title'),items={{label=ui('resume'),id=1},{label=ui('help'),id=2},{label=ui('settings'),id=3}}}}end
 function app.onmenu(id)if id==1 and w then to('game') elseif id==2 then returnMode=mode;to('help') elseif id==3 then returnMode=mode;to('settings')end end

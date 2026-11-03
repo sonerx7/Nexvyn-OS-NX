@@ -1,8 +1,10 @@
+local Progress=require('game.progress')
+local Lighting=require('game.lighting')
 local C=require('game.content')
 local R={images={},s=1,ox=0,oy=0,cx=0,cy=0,time=0}
 local floor,min,max=math.floor,math.min,math.max
 function R.load()
- for _,name in ipairs({'hero','enemies','bosses','props','icons','font','title','tiles1','tiles2','tiles3','tiles4','tiles5'}) do
+ for _,name in ipairs({'fx','hero','enemies','bosses','props','icons','font','title','tiles1','tiles2','tiles3','tiles4','tiles5'}) do
   R.images[name]=gfx.image('bundle:/sprites/'..name..'.png')
  end
  local f=json.decode(fs.read('bundle:/sprites/font.json'));R.glyphs={}
@@ -61,6 +63,7 @@ end
 function R.scene(w,shake)
  R.camera(w);local cx,cy=R.cx,R.cy
  if shake and w.player.invul>.51 and w.player.invul<.7 then cx=cx+floor(math.sin(w.time*90)*3);cy=cy+floor(math.cos(w.time*77)*2) end
+ if (R.kick or 0)>0 then cx=cx+floor(math.sin(w.time*97)*R.kick*3);cy=cy+floor(math.cos(w.time*83)*R.kick*2) end
  local m=w.map;R.rect(0,0,640,360,'#101b29')
  local tiles='tiles'..w.biome
  for ty=max(0,floor(cy/32)),min(m.h-1,floor((cy+360)/32)) do
@@ -90,7 +93,8 @@ function R.scene(w,shake)
   if x>-110 and x<750 and y>-90 and y<460 then
    if o.type=='prop' then
     if e.light then R.disc(x,y-24,24,'#d4b47910') end
-    R.prop(e.id,x,y)
+    R.prop(e.id,x,y+(e.animated and floor(math.sin(w.time*3+e.x)*1.5) or 0))
+    if e.light then local f=floor(w.time*10+e.x)%8;R.region('fx',f*64,4*64,64,64,x-16,y-40,32,32) end
    elseif o.type=='object' then
     R.disc(x,y-20,34,'#a8d9bc15');R.prop(w.objectUsed and m.kind=='treasure' and 12 or e.id,x,y)
    elseif o.type=='exit' then
@@ -98,19 +102,30 @@ function R.scene(w,shake)
    elseif o.type=='hero' then
     R.disc(x,y-1,11,'#07141c9c')
     if e.dash>0 then for i=1,3 do R.rect(x-e.dashX*i*8-7,y-e.dashY*i*8-25,14,20,'#8dc5bb25') end end
-    local frame=floor(e.walk)%8;local sx,sy=frame*48,e.face*48
-    if (e.swing or 0)>0 then local idx=e.face*4+min(3,floor((.16-e.swing)*25));sx=(idx%8)*48;sy=(4+floor(idx/8))*48 end
-    if e.invul<=0 or floor(w.time*18)%2==0 or e.dash>0 then R.region('hero',sx,sy,48,48,x-24,y-43) end
+    local frame=(e.moving and floor(e.walk) or floor(w.time*3))%8;local sx,sy=frame*64,e.face*64
+    if (e.swing or 0)>0 then local idx=e.face*8+min(7,floor((.32-e.swing)*25));sx=(idx%8)*64;sy=(4+floor(idx/8))*64 end
+    if e.invul<=0 or floor(w.time*18)%2==0 or e.dash>0 then R.region('hero',sx,sy,64,64,x-32,y-58) end
     if (e.swing or 0)>0 and w.weapon==1 then
      local a=math.atan(e.ay,e.ax);for i=-5,5 do local aa=a+i*.15;R.rect(x+math.cos(aa)*44-1,y-14+math.sin(aa)*30-1,3,3,'#d7e9c4') end
     end
+    if (e.swing or 0)>0 then
+     local frame=min(7,floor((.32-e.swing)*25))
+     R.region('fx',frame*64,(w.weapon-1)*64,64,64,x-32,y-47,64,64,math.deg(math.atan(e.ay,e.ax)))
+    end
+    if e.dash>0 then R.region('fx',floor(w.time*35)%8*64,4*64,64,64,x-32,y-47) end
     if e.shield>0 then R.ring(x,y-16,23,'#c6cbaa79') end
     for orb=1,w:rank('orbit') do local a=w.time*2.3+orb*math.pi*2/w:rank('orbit');local xx,yy=x+math.cos(a)*44,y+math.sin(a)*44-12;R.disc(xx,yy,5,'#86d6c7');R.rect(xx-1,yy-1,3,3,'#fff0c5') end
    elseif o.type=='enemy' then
     local boss=e.boss;local size=boss and 96 or 48;R.disc(x,y-1,boss and 22 or 12,'#06131c8f')
     if e.dead then gfx.alpha(max(0,1-(w.time-e.deathTime)/.7)) end
-    if e.state=='windup' then R.ring(x,y-12,boss and 32 or 17,'#ecc58e');R.rect(x-2,y-size,4,11,'#f5cba0') end
-    R.region(boss and 'bosses' or 'enemies',floor(e.age*7)%6*size,(e.kind-1)*size,size,size,x-size/2,y-size+6)
+    if boss and not e.dead then
+     local phase=e.hp/e.maxhp<.5 and 2 or 1
+     for k=1,6*phase do local a=w.time*.5+k*math.pi*2/(6*phase);local xx,yy=x+math.cos(a)*36,y-20+math.sin(a)*16;R.rect(xx,yy,2,3,C.biomes[w.biome].color) end
+    end
+    if e.flash and e.flash>0 then R.region('fx',min(7,floor((.15-e.flash)*48))*64,3*64,64,64,x-32,y-47) end
+    if (e.spawnIn or 0)>0 then R.ring(x,y-8,18,'#ADDED2') end
+    if e.state=='windup' or e.state=='rushwindup' then R.ring(x,y-12,boss and 32 or 17,'#ecc58e');R.rect(x-2,y-size,4,11,'#f5cba0') end
+    R.region(boss and 'bosses' or 'enemies',(boss and floor(e.age*7)%6 or floor(e.age*9)%8)*size,(e.kind-1)*size,size,size,x-size/2,y-size+6)
     if e.dead then gfx.unalpha() elseif not boss and e.hp<e.maxhp then R.rect(x-13,y-size+1,26,2,'#16232d');R.rect(x-13,y-size+1,26*max(0,e.hp/e.maxhp),2,'#d5a26a') end
     if e.burn>0 then R.rect(x-8,y-12,3,5,'#efab6d');R.rect(x+5,y-18,2,4,'#f4d598') end
     if e.poison>0 then R.rect(x+8,y-20,3,3,'#b4d785') end
@@ -121,6 +136,8 @@ function R.scene(w,shake)
  for _,l in ipairs(w.loot) do R.icon(l.kind=='gold' and 32 or 5,l.x-cx-8,l.y-cy-10,16) end
  for _,s in ipairs(w.shots) do local x,y=s.x-cx,s.y-cy-12;R.rect(x-s.vx*.025-2,y-s.vy*.025-2,4,4,s.color..'50');R.disc(x,y,s.r,s.color);R.rect(x-1,y-1,2,2,'#ffe9c0') end
  for _,q in ipairs(w.particles) do R.rect(q.x-cx,q.y-cy-16,q.size,q.size,q.color) end
+ Progress.world(w,cx,cy,R)
+ Lighting.draw(w,cx,cy,R.rect,R.glow)
  -- Distant air and deliberately discrete dust motes, no blur or gradients.
  for i=1,28 do local x=(i*91+w.time*(i%3+1)*3)%670-15;local y=(i*47+math.sin(w.time*.4+i)*8)%360;R.rect(x,y,i%5==0 and 2 or 1,1,C.biomes[w.biome].color..'65') end
  R.rect(0,0,640,3,'#07111b');R.rect(0,357,640,3,'#07111b')
@@ -132,6 +149,7 @@ function R.hud(w,touch)
  R.panel(420,7,212,43);R.text(C.biomes[w.biome].name,430,13);R.text(string.format('%02d / 05',w.biome)..'  '..C.t(C.ui[w.node.kind]),430,28)
  R.panel(222,7,188,26);R.icon(32,227,11,18);R.text(tostring(w.gold),249,13);R.icon(38,307,11,18);R.text(tostring(w.shards),329,13)
  local boss=nil;for _,e in ipairs(w.enemies) do if e.boss and not e.dead then boss=e;break end end
+ Progress.hud(w,R,C)
  if boss then R.panel(167,56,306,29);R.text(C.biomes[w.biome].boss,176,59,1,'center',288);R.rect(178,78,284,3,'#1d263a');R.rect(178,78,284*max(0,boss.hp/boss.maxhp),3,color) end
  R.panel(8,322,624,30)
  R.icon(w.weapon+1,14,325,23);R.text(C.weapons[w.weapon].name,42,329)

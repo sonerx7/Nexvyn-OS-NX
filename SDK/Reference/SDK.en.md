@@ -625,7 +625,7 @@ Native apps (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadModelShare
 
 The **pbr renderer** draws the same meshes and models with physically based materials, real-time lights, shadows,
 HDR with tone mapping and bloom, and GPU instancing. It is **NexGFX**, Nexvyn OS's versioned graphics core (1.0 in
-Nexvyn OS 1.3.0; `g3d.rendererInfo()` names it and its backend). It runs on the console's OpenGL ES 3 GPU path and is
+Nexvyn OS 1.2.2; `g3d.rendererInfo()` names it and its backend). It runs on the console's OpenGL ES 3 GPU path and is
 **opt-in per app**: an app that never calls the functions below renders exactly as before.
 
 ```lua

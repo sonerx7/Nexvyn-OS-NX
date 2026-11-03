@@ -1,3 +1,4 @@
+local Encounters=require('game.encounters')
 local C=require('game.content')
 local Maps=require('game.maps')
 local Random=require('game.random')
@@ -60,6 +61,7 @@ function W:spawn(kind,x,y,boss)
  local e={id=self.nextId,kind=kind,x=x,y=y,homeX=x,homeY=y,boss=boss or false,r=boss and 24 or 12,
  hp=boss and (260+self.biome*115) or (23+self.biome*10+(kind>=6 and 18 or 0)),timer=1+self.rng:next(),
  invul=0,slow=0,burn=0,poison=0,stacks=0,bleed=0,flash=0,state='walk',cycle=0,age=0}
+ if kind==9 and not boss then e.hp=e.hp*1.6 end
  e.maxhp=e.hp;self.nextId=self.nextId+1;self.enemies[#self.enemies+1]=e;return e
 end
 function W:choose(lane)
@@ -69,12 +71,7 @@ function W:choose(lane)
  local p=self.player;p.x=self.map.entry.x;p.y=self.map.entry.y;p.invul=1.1;p.shield=self:rank('shield');p.dash=0;p.attack=0
  self.objectUsed=false;self.clear=false;self.phase='play';self.pendingReward=false;self.flow=nil;self.flowTimer=0
  if self.node.kind=='boss' then self:spawn(self.biome,self.map.w*16,7*32,true)
- elseif self.node.kind=='combat' or self.node.kind=='elite' then
-  local r=Random.new(self.node.seed+21);local n=4+self.biome+(self.node.kind=='elite' and 3 or 0)
-  for i=1,n do local x,y=r:int(4,24)*32+16,r:int(4,12)*32+16
-   while Maps.blocked(self.map,x,y,14) do x,y=r:int(4,24)*32+16,r:int(4,12)*32+16 end
-   local kind=i%3==0 and min(10,self.biome+5) or ((self.biome+i-2)%5+1);self:spawn(kind,x,y)
-  end
+ elseif Encounters.begin(self) then
  else self.clear=true end
  self:event('room',self.biome);self:event('save');return true
 end
@@ -84,11 +81,11 @@ function W:snapshot()
 end
 function W:heal()
  local p=self.player;if self.phase~='play' or p.potions<1 or p.hp>=p.maxhp then return false end
- p.potions=p.potions-1;p.hp=min(p.maxhp,p.hp+40+self:rank('flask')*10);self:particle(p.x,p.y,'#afd9a0',24);self:event('boon');return true
+ p.potions=p.potions-1;p.hp=min(p.maxhp,p.hp+40+self:rank('flask')*10);self:particle(p.x,p.y,'#afd9a0',24);self:event('heal');return true
 end
 function W:hurt(amount)
  local p=self.player;if p.invul>0 or self.phase~='play' then return false end
- if p.shield>0 then p.shield=p.shield-1;p.invul=.5;self:particle(p.x,p.y,'#cfdbbd',18);return false end
+ if p.shield>0 then p.shield=p.shield-1;p.invul=.5;self:particle(p.x,p.y,'#cfdbbd',18);self:event('shield');return false end
  amount=max(1,amount*(1-.08*self:rank('guard'))*(1+.15*self:rank('glass')))
  p.hp=max(0,p.hp-amount);p.invul=.7;self:particle(p.x,p.y,'#e6a880',16);self:event('hurt',amount)
  if self:rank('thorns')>0 then self:blast(p.x,p.y,70,15*self:rank('thorns'),false) end
@@ -107,13 +104,14 @@ function W:hit(e,damage,secondary)
   if self:rank('bleed')>0 then e.bleed=4 end
  end
  e.hp=e.hp-damage;e.flash=.11;self:particle(e.x,e.y,'#e9d3a1',4)
+ if not secondary then self:event('hit',{kind=e.kind,boss=e.boss,x=e.x,y=e.y})end
  if not secondary and self:rank('spark')>0 and self.hits%4==0 then
   local count=0;for _,other in ipairs(self.enemies) do if other~=e and not other.dead and dist(e,other)<120 and Maps.los(self.map,e.x,e.y,other.x,other.y) then
    self:hit(other,12*self:rank('spark'),true);self:particle(other.x,other.y,'#b1d7f4',8);count=count+1;if count>=3 then break end
   end end
  end
  if e.hp<=0 and not e.dead then
-  e.dead=true;e.deathTime=self.time;self.kills=self.kills+1
+  e.dead=true;e.deathTime=self.time;self.kills=self.kills+1;self:event('kill',{boss=e.boss,x=e.x,y=e.y})
   self:particle(e.x,e.y,C.biomes[self.biome].color,e.boss and 60 or 18)
   self.loot[#self.loot+1]={x=e.x,y=e.y,kind='gold',value=math.floor((e.boss and 50 or 5+self.biome)*(1+.25*self:rank('fortune')))}
   if self.rng:next()<.14 then self.loot[#self.loot+1]={x=e.x+8,y=e.y,kind='heart',value=7} end
@@ -135,7 +133,7 @@ function W:projectile(x,y,a,speed,damage,enemy,life,pierce,color)
 end
 function W:attack()
  local p=self.player;if self.phase~='play' or p.attack>0 or p.dash>0 then return false end
- local s=self:stats();p.attack=s.cool;p.swing=.16;self:event('attack')
+ local s=self:stats();p.attack=s.cool;p.swing=.32;p.swingSerial=(p.swingSerial or 0)+1;self:event('attack')
  if self.weapon==1 then
   for _,e in ipairs(self.enemies) do if not e.dead and dist(p,e)<C.weapons[1].reach+e.r then
    local dx,dy=norm(e.x-p.x,e.y-p.y)
@@ -205,7 +203,7 @@ function W:bossStep(e,dt)
    self:event('bossattack')
   end
  elseif e.timer<=0 then
-  e.cycle=e.cycle+1;e.state='windup';e.timer=e.hp<e.maxhp*.5 and .6 or .9
+  e.cycle=e.cycle+1;e.state='windup';e.timer=e.hp<e.maxhp*.5 and .6 or .9;self:event('bosswarn')
   e.targetX=p.x;e.targetY=p.y
  else
   local dx,dy=norm(p.x-e.x,p.y-e.y)
@@ -213,6 +211,7 @@ function W:bossStep(e,dt)
  end
 end
 function W:enemyStep(e,dt)
+ if (e.spawnIn or 0)>0 then e.spawnIn=max(0,e.spawnIn-dt);return end
  e.age=e.age+dt;e.flash=max(0,e.flash-dt);e.slow=max(0,e.slow-dt);e.thermal=max(0,(e.thermal or 0)-dt)
  local dot=0
  if e.burn>0 then e.burn=e.burn-dt;dot=dot+4*(e.burnRank or 1) end
@@ -223,7 +222,24 @@ function W:enemyStep(e,dt)
  e.timer=e.timer-dt;local p=self.player;local d=dist(e,p);local dx,dy=norm(p.x-e.x,p.y-e.y)
  local caster=e.kind==3 or e.kind==4 or e.kind==5 or e.kind==7 or e.kind==10
  if self.flow and not Maps.los(self.map,e.x,e.y,p.x,p.y) then local fx,fy=Maps.toward(self.map,self.flow,e.x,e.y);if fx*fx+fy*fy>.01 then dx,dy=norm(fx,fy) end end
- local speed=(e.kind==6 and 86 or 47+self.biome*3)*(e.slow>0 and .5 or 1)
+ if e.kind==1 or e.kind==6 then
+  if e.state=='rushwindup' then
+   if e.timer<=0 then e.state='rush';e.timer=.4;e.rushX,e.rushY=norm(p.x-e.x,p.y-e.y) end
+   return
+  elseif e.state=='rush' then
+   Maps.move(self.map,e,e.rushX*240*dt,e.rushY*240*dt,e.r)
+   if d<e.r+14 then self:hurt(13+self.biome*2) end
+   if e.timer<=0 then e.state='walk';e.timer=2.6 end;return
+  elseif e.timer<=0 and d<300 and d>80 and Maps.los(self.map,e.x,e.y,p.x,p.y) then e.state='rushwindup';e.timer=.65;self:event('bosswarn');return end
+ end
+ if e.kind==8 and d<240 then local side=e.id%2==0 and 1 or -1;dx,dy=norm(dx-dy*side*.9,dy+dx*side*.9) end
+ if e.kind==10 then
+  e.summon=(e.summon or 5)-dt
+  if e.summon<=0 and #self.enemies<42 then e.summon=8
+   for i=1,2 do local x,y=e.x+(i==1 and -40 or 40),e.y+30;if not Maps.blocked(self.map,x,y,14) then local a=self:spawn(6,x,y);a.spawnIn=.8 end end
+  end
+ end
+ local speed=(e.kind==6 and 86 or 47+self.biome*3)*(e.slow>0 and .5 or 1)*(e.kind==9 and .65 or 1)
  if not caster or d>180 then
   -- Slide around masonry rather than walking through it. A perpendicular nudge
   -- breaks corner stalls without permitting enemies to cross collision tiles.
@@ -239,10 +255,11 @@ function W:enemyStep(e,dt)
 end
 function W:completeRoom()
  if self.pendingReward or self.clear then return end
+ if self.encounter and self.encounter.wave<self.encounter.total then return end
  self.pendingReward=true;self.clears=self.clears+1;self.player.hp=min(self.player.maxhp,self.player.hp+4*self:rank('renew'))
  -- Collect pending drops before the modal reward so gold cannot be stranded.
  for _,l in ipairs(self.loot) do if l.kind=='gold' then self.gold=self.gold+l.value else self.player.hp=min(self.player.maxhp,self.player.hp+l.value) end end;self.loot={}
- self.clear=true;self.rewards=self:offer(self.node.kind=='boss' or self.node.kind=='elite');self.phase='reward';self:event('clear');self:event('save')
+ self.clear=true;self.clearBanner=3.5;self.gateFlow=Maps.flow(self.map,self.map.exit.x,self.map.exit.y);self.rewards=self:offer(self.node.kind=='boss' or self.node.kind=='elite');self.phase='reward';self:event('clear');self:event('save')
 end
 function W:interact()
  if self.phase~='play' then return false end
@@ -256,7 +273,7 @@ function W:interact()
  end
  if dist(p,self.map.object)<60 and not self.objectUsed then
   local kind=self.node.kind
-  if kind=='treasure' then self.objectUsed=true;self.gold=self.gold+25;self.rewards=self:offer(true);self.phase='reward';self:event('boon')
+  if kind=='treasure' then self.objectUsed=true;self.gold=self.gold+25;self.rewards=self:offer(true);self.phase='reward';self:event('chest')
   elseif kind=='shop' then self.phase='shop'
   elseif kind=='shrine' then self.phase='shrine'
   elseif kind=='rest' then self.objectUsed=true;p.hp=min(p.maxhp,p.hp+35);p.potions=min(5,p.potions+1);self:event('boon');self:event('save') end
@@ -285,6 +302,7 @@ function W:shrine(index)
  self.objectUsed=true;self:event('save');return true
 end
 function W:step(dt,c)
+ self.waveBanner=max(0,(self.waveBanner or 0)-dt);self.clearBanner=max(0,(self.clearBanner or 0)-dt)
  if self.phase~='play' then return end
  c=c or {};dt=min(dt,1/30);self.time=self.time+dt;self.roomTime=self.roomTime+dt;local p=self.player
  p.invul=max(0,p.invul-dt);p.attack=max(0,p.attack-dt);p.swing=max(0,(p.swing or 0)-dt);p.dashcd=max(0,p.dashcd-dt);p.skillcd=max(0,p.skillcd-dt)
@@ -302,7 +320,10 @@ function W:step(dt,c)
  if l>.1 then p.walk=p.walk+dt*10 end
  self.flowTimer=(self.flowTimer or 0)-dt
  if self.flowTimer<=0 then self.flow=Maps.flow(self.map,p.x,p.y);self.flowTimer=.35 end
- if c.attack then self:attack() end
+ p.moving=l>.1 or p.dash>0
+ local attackTarget=false
+ if c.autoattack then for _,a in ipairs(self.enemies) do if not a.dead and dist(a,p)<360 and Maps.los(self.map,p.x,p.y,a.x,a.y) then attackTarget=true;break end end end
+ if c.attack or attackTarget then self:attack() end
  for _,e in ipairs(self.enemies) do if not e.dead then self:enemyStep(e,dt) end end
  -- Separate living bodies, including bosses, so contact attacks remain readable.
  for i=1,#self.enemies do local a=self.enemies[i];if not a.dead then
@@ -349,6 +370,6 @@ function W:step(dt,c)
  end
  for i=#self.particles,1,-1 do local q=self.particles[i];q.x=q.x+q.vx*dt;q.y=q.y+q.vy*dt;q.life=q.life-dt;q.vx=q.vx*.96;q.vy=q.vy*.96;if q.life<=0 then table.remove(self.particles,i) end end
  if c.use then self:interact() end
- if not self.clear and self.phase=='play' then local alive=false;for _,e in ipairs(self.enemies) do if not e.dead then alive=true;break end end;if not alive then self:completeRoom() end end
+ if not self.clear and self.phase=='play' then local alive=false;for _,e in ipairs(self.enemies) do if not e.dead then alive=true;break end end;if not alive and Encounters.empty(self,dt) then self:completeRoom() end end
 end
 return W

@@ -74,7 +74,7 @@
   "settings.detail": "Görsel ayrıntı: {0}",
   "settings.music": "Müzik: {0}",
   "settings.aim": "Bakış hassasiyeti: {0}",
-  "settings.volume": "Ses düzeyi: %{0}",
+  "settings.volume": "Efekt sesi: %{0}",
   "complete.title": "Sektör güvence altında.",
   "complete.stats": "{0} imha     Süre {1}     Puan {2}",
   "boss.name": "BAŞMUHAFIZ // KÜL OTORİTESİ",
@@ -161,5 +161,11 @@
   "radio.6.6": "ECHO-9: Son odayı temizle. Arkadaki tahliye işaretinde erişim komutunu kullan.",
   "log.6.1": "SAHA KAYDI: Başmuhafız yalnızca tesisi değil, verdiğin eski emri de koruyor. Tesis duvarlarındaki tarihler tahliye raporuyla uyuşmuyor.",
   "log.6.4": "ARŞİV NOTU: Muhafız sustu. Son karar artık sana ait. ECHO-9 bu satırı daha önce okumadığını iddia ediyor.",
-  "log.6.5": "KOMUTA İZİ: Son imza bir insan operatöre ait. Yetki iptal edilmediği sürece makineler aynı emri uygulayacak."
+  "log.6.5": "KOMUTA İZİ: Son imza bir insan operatöre ait. Yetki iptal edilmediği sürece makineler aynı emri uygulayacak.",
+  "weapon.reloading": "Şarjör değiştiriliyor",
+  "settings.fx": "Efektler: {0}",
+  "fx.1": "Düşük",
+  "fx.2": "Orta",
+  "fx.3": "Yüksek",
+  "fx.basic": "(bu GPU ışıkları desteklemiyor)"
 }

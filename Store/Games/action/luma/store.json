@@ -18,11 +18,8 @@
     "es": "Diez mundos, ocho tipos de enemigos."
   },
   "changelog": {
-    "en": "First Store release: ten worlds, eight enemy behaviours, 48 original models and UV textures.",
-    "tr": "İlk Store sürümü: on dünya, sekiz düşman davranışı, 48 özgün model ve UV dokuları.",
-    "de": "Erste Store-Version: zehn Welten, acht Gegnerverhalten, 48 eigene Modelle und UV-Texturen.",
-    "fr": "Première version Store : dix mondes, huit comportements ennemis, 48 modèles et textures UV.",
-    "es": "Primera versión Store: diez mundos, ocho comportamientos enemigos, 48 modelos y texturas UV."
+    "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). New PBR renderer look: real-time lights, bloom, per-world mood, reflections, metal and glass materials, layered sound and ambience, effects quality setting.",
+    "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Yeni PBR görünüm: gerçek zamanlı ışıklar, bloom, dünyaya göre atmosfer, yansımalar, metal ve cam malzemeler, katmanlı ses ve ortam sesleri, efekt kalitesi ayarı."
   },
   "shots": [
     [

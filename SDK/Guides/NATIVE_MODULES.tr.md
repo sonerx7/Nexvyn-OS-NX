@@ -69,7 +69,10 @@ derlenmesidir; ABI kimliği zaten her derlemede değiştiği için modüller her
 
 ## 3. ABI kimliği
 
-`ABI = FNV-1a 64( sıralı dışa aktarılan sembol adları, her biri "\n" ile + NEXVYN_VERSION )`, 16 onaltılık karakter.
+`ABI = FNV-1a 64( "nxv-module-abi-gen:" + NEXVYN_MODULE_ABI_GEN )`, 16 onaltılık karakter. Nesil (`source/runtimes/nxvmod.h`) yalnızca modüllerle
+paylaşılan bir yapı ya da çağrı biçimi uyumsuz değişince elle yükseltilir. OS sürümüyle, başlıklarla ya da yeni dışa aktarılan
+fonksiyonlarla **değişmez**: çalışan OS'ta olmayan bir fonksiyon isteyen modül temiz bir hatayla reddedilir ("missing symbol");
+aynı nesil için derlenmiş diğer modüller çalışmaya devam eder.
 
 - NRO bunu çalışırken kendi `.dynsym` tablosundan hesaplar (`nxvmod::abiId()`; dışa aktarılan sembol yoksa boştur ve
   hiçbir modül yüklenmez).

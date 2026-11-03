@@ -23,11 +23,8 @@
     "es": "Un roguelike de acción original en pixel art con vista cenital: cinco regiones con diseños y paletas distintos, trece nodos de ruta por región y veinticinco salas por viaje completo. Tres armas iniciales, diez variantes de enemigos y cinco jefes con ataques anunciados y segunda fase. Treinta bendiciones mejorables, seis sinergias, comerciantes, tesoros, altares, refugios y mejoras permanentes del taller. Partidas generadas por semilla, muerte permanente y guardado para continuar. Sprites animados, tipografía bitmap, escalado entero y música original. Textos en inglés y turco. Las imágenes son vistas previas de software identificadas; falta la validación en un dispositivo real."
   },
   "changelog": {
-    "en": "First release: five pixel-art regions, thirty boons, three weapons and permanent workshop upgrades.",
-    "tr": "İlk sürüm: beş piksel bölge, otuz lütuf, üç silah ve kalıcı atölye geliştirmeleri.",
-    "de": "Erste Version: fünf Pixelregionen, dreißig Segen, drei Waffen und dauerhafte Werkstattverbesserungen.",
-    "fr": "Première version : cinq régions, trente bénédictions, trois armes et améliorations permanentes.",
-    "es": "Primera versión: cinco regiones, treinta bendiciones, tres armas y mejoras permanentes."
+    "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). Layered sound and ambience beds, hit-stop and lantern flare on kills, atmosphere setting.",
+    "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Katmanlı ses ve ortam sesleri, vuruşta duraklama ve fener parlaması, atmosfer ayarı."
   },
   "shots": [
     [

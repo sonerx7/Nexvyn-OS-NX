@@ -8,15 +8,15 @@ function Q.update(w)
  for _,k in ipairs(d.keys) do if not k.collected and near(k,1) then k.collected=true;w:emit("key",p.x,p.y,p.z) end end
  local count=0;for _,s in ipairs(d.switches) do if s.active then count=count+1 end end
  for _,s in ipairs(d.switches) do
-  if not s.active and near(s,1.1) then
+  if not s.active and (d.hatPuzzles and s.struck or not d.hatPuzzles and near(s,1.1)) then
    if not d.puzzleOrder or s.index==count+1 then s.active=true;count=count+1;w:emit("switch",p.x,p.y,p.z)
-   elseif not w.wrongSwitchAt or w.time-w.wrongSwitchAt>2 then w.wrongSwitchAt=w.time;w:emit("order",p.x,p.y,p.z) end
+   elseif not w.wrongSwitchAt or w.time-w.wrongSwitchAt>2 then w.wrongSwitchAt=w.time;w:emit("order",p.x,p.y,p.z);s.struck=false end
   end
  end
  local keys=0;for _,k in ipairs(d.keys) do if k.collected then keys=keys+1 end end
  if keys==3 and not d.cage.opened and near(d.cage,2.4) then d.cage.opened=true;w:emit("rescue",p.x,p.y,p.z) end
  local alive=0;for _,e in ipairs(d.enemies) do if e.group=="arena" and e.alive then alive=alive+1 end end
- if alive==0 and not w.arenaCleared then w.arenaCleared=true;w:emit("arenaClear",p.x,p.y,p.z) end
+ if ((d.hatPuzzles and count==3) or (not d.hatPuzzles and alive==0)) and not w.arenaCleared then w.arenaCleared=true;w:emit("arenaClear",p.x,p.y,p.z) end
  w.switchCount=count;w.keyCount=keys
 end
 function Q.available(w,star)

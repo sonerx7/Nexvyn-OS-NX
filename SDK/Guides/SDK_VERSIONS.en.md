@@ -20,7 +20,7 @@ rules behind this page are in [COMPATIBILITY.en.md](COMPATIBILITY.en.md).
 
 | Number | Example | Meaning |
 |---|---|---|
-| **Nexvyn OS** | `1.3.0` | the system release (major.minor.patch), shown in Settings > About |
+| **Nexvyn OS** | `1.2.2` | the system release (major.minor.patch), shown in Settings > About |
 | **SDK** | `1.9` | the API surface apps are written against (major.minor); `sys.sdkVersion()` returns it |
 | **Runtime engine** | Lua 5.4.7, QuickJS-ng 0.17.0, pocketpy 2.2.0 | the interpreter or compiler behind one language |
 
@@ -41,7 +41,7 @@ existing function behaves would raise the SDK major version, and only apps that 
 | 1.6 | 1.0.0 | `fs.unzip`, `sys.games`, text to speech; the `"python3"` runtime (CPython 3.12) | see section 3 |
 | 1.7 | 1.1.0 | `g3d.voxels` voxel worlds; pixel-art textures on meshes | JavaScript (voxels); Lua, JavaScript (textures) |
 | 1.8 | 1.2.0 | `g3d.model`: `.glb` / `.gltf` / `.fbx` models with materials, textures and skeletal animation | all six |
-| 1.9 | 1.3.0 | runtime library; feed, photo and short-video apps; the pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
+| 1.9 | 1.2.2 | runtime library; feed, photo and short-video apps; the pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
 
 SDK 1.0 to 1.6 were all built during the development of Nexvyn OS 1.0.0, the first public release, which has SDK 1.6.
 A language that arrived later got the whole earlier SDK with it: Squirrel, C and Java started at SDK 1.5 with
@@ -110,7 +110,7 @@ everything from 1.0 to 1.4.
 - For C apps that target SDK 1.8: `#include` reads only the app's own files and the SDK headers, and inline assembly
   is refused.
 
-### SDK 1.9 (Nexvyn OS 1.3.0)
+### SDK 1.9 (Nexvyn OS 1.2.2)
 
 - **Runtime library:** `net.request{url, method, body, contentType, headers}` in Lua; JavaScript `TextEncoder` /
   `TextDecoder`, `URL` / `URLSearchParams`, `structuredClone`; the Python `str` methods pocketpy lacked,

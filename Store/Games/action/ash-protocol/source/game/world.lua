@@ -1,3 +1,4 @@
+local Gunplay=require('game.gunplay')
 local Maps=require("game.maps")
 local F=require("game.physics")
 local W={};W.__index=W
@@ -7,7 +8,7 @@ local function dist(a,b)local x,z=a.x-b.x,a.z-b.z;return sqrt(x*x+z*z)end
 local stats={stalker={hp=50,speed=5,h=1.9,w=.7},trooper={hp=72,speed=2.8,h=2,w=.75},drone={hp=48,speed=3.6,h=.8,w=.9},siege={hp=190,speed=1.7,h=2.3,w=1.25},priest={hp=115,speed=2.2,h=2.2,w=.8},warden={hp=1050,speed=2,h=4.3,w=2.3}}
 W.weapons={{rate=.17,damage=16,ammo=0,cost=0,pellets=1,spread=.008},{rate=.69,damage=13,ammo=1,cost=1,pellets=9,spread=.075},{rate=.11,damage=26,ammo=2,cost=1,pellets=1,spread=.018},{rate=.86,damage=125,ammo=2,cost=5,pellets=1,spread=0,pierce=true}}
 local function initEnemy(e,index)
- local s=stats[e.kind];e.maxHp=s.hp;e.hp=s.hp;e.speed=s.speed;e.h=s.h;e.w=s.w;e.alive=true;e.timer=.7+(index%4)*.31;e.flash=0;e.active=false;e.anim=0;e.angle=0;e.state="idle";e.baseY=e.y;e.deadTime=0
+ local s=stats[e.kind];e.maxHp=s.hp;e.hp=s.hp;e.speed=s.speed;e.h=s.h;e.w=s.w;e.alive=true;e.timer=.7+(index%4)*.31;e.flash=0;e.active=false;e.anim=0;e.angle=0;e.state="idle";e.tactic=index%2;e.baseY=e.y;e.deadTime=0
  if e.kind=="drone" then e.y=e.y+1.6;e.baseY=e.y end
 end
 function W.new(chapter,snapshot)
@@ -35,6 +36,7 @@ function W.new(chapter,snapshot)
   if snapshot.pickupDetails then self.map.pickups=snapshot.pickupDetails end
   for _,log in ipairs(self.map.logs) do log.read=self.logs[tostring(log.index)]==true end
  end
+ Gunplay.init(self,snapshot)
  return self
 end
 function W:emit(kind,value,x,y,z)
@@ -45,6 +47,7 @@ function W:snapshot()
  local s={chapter=self.map.chapter,player={},unlocked=copy(self.unlocked),ammo=copy(self.ammo),visited=copy(self.visited),logs=copy(self.logs),enemies={},actors={},pickups={},pickupDetails={},relays={},doors={}}
  for _,k in ipairs({"x","y","z","yaw","pitch","hp","armor"}) do s.player[k]=self.player[k] end
  for _,k in ipairs({"weapon","kills","shots","hits","elapsed","score","hasKey","checkpoint","flashlight"}) do s[k]=self[k] end
+ s.magazines=copy(self.magazines)
  for i,e in ipairs(self.map.enemies) do
   s.enemies[tostring(i)]=e.hp
   s.actors[i]={kind=e.kind,x=e.x,y=e.y,z=e.z,baseY=e.baseY,room=e.room,boss=e.boss,hp=e.hp,active=e.active}
@@ -55,7 +58,7 @@ function W:snapshot()
  return s
 end
 function W:select(n)
- if self.unlocked[n] then self.weapon=n;self.cooldown=max(self.cooldown,.10);self:emit("weapon",n)
+ if self.unlocked[n] then self.reloadTimer=0;self.weapon=n;self.cooldown=max(self.cooldown,.10);self:emit("weapon",n)
  else self:emit("lockedWeapon") end
 end
 function W:damage(amount)
@@ -68,6 +71,8 @@ function W:hitEnemy(e,amount,y,heavy)
  if not e.alive then return end
  if e.kind=="siege" and not heavy then amount=amount*.65 end
  if e.kind=="warden" and y and abs(y-e.y-2.1)<.45 then amount=amount*1.7 end
+ self.hitMarker=.14;self.hitHeadshot=y and y>e.y+e.h*.8 or false
+ if self.hitHeadshot and e.kind~="warden" then amount=amount*1.5 end
  e.hp=max(0,e.hp-amount);e.flash=.12;e.active=true;self.hits=self.hits+1
  if e.hp==0 then
   e.alive=false;e.deadTime=0;self.kills=self.kills+1;self.score=self.score+(e.boss and 1000 or 100)
@@ -76,16 +81,19 @@ function W:hitEnemy(e,amount,y,heavy)
   self:emit(e.boss and "bossDead" or "kill",e.kind,e.x,e.y+1,e.z)
  else self:emit("hit",nil,e.x,e.y+1,e.z) end
 end
+function W:reload() return Gunplay.reload(self) end
 function W:shoot()
- if self.status~="play" or self.cooldown>0 then return false end
+ if self.status~="play" or self.cooldown>0 or self.reloadTimer>0 then return false end
+ if self.magazines[self.weapon]<=0 then Gunplay.reload(self);return false end
  local weapon=W.weapons[self.weapon];local p=self.player
  if weapon.ammo>0 and self.ammo[weapon.ammo]<weapon.cost then self.cooldown=.2;self:emit("empty");return false end
  if weapon.ammo>0 then self.ammo[weapon.ammo]=self.ammo[weapon.ammo]-weapon.cost end
+ self.magazines[self.weapon]=self.magazines[self.weapon]-1
  self.cooldown=weapon.rate;self.muzzle=.065;self.recoil=min(.18,self.recoil+.10);self.shots=self.shots+1
  self:emit("shot",self.weapon)
  local origin={x=p.x,y=p.y+1.52,z=p.z}
  for pellet=1,weapon.pellets do
-  local spread=weapon.spread
+  local spread=weapon.spread*(1-.72*(p.ads or 0))
   local d=F.direction(p.yaw+(math.random()-.5)*spread*2,p.pitch+(math.random()-.5)*spread*2)
   if self.weapon==3 then
    self.projectiles[#self.projectiles+1]={x=origin.x,y=origin.y,z=origin.z,dx=d.x,dy=d.y,dz=d.z,speed=38,life=2,friendly=true,damage=weapon.damage,r=.12,kind="plasma"}
@@ -179,6 +187,19 @@ function W:updateEnemies(dt)
     if clear and range>=5 and range<=11 and e.kind~="stalker" then
      local strafe=sin(self.time*.9+e.z)>0 and 1 or -1;mx,mz=-dz/l*strafe,dx/l*strafe;moving=true
     end
+    if e.kind=="trooper" and range>6 and range<28 then
+     local cover=e.coverPoint
+     if not cover then local best=1e9
+      for _,point in ipairs(self.map.cover or {}) do if point.room==e.room then local d2=(point.x-e.x)^2+(point.z-e.z)^2;if d2<best then best=d2;cover=point end end end;e.coverPoint=cover
+     end
+     if cover then
+      local peek=(self.time+e.tactic*1.9)%4>2.0
+      local tx=cover.x+(peek and (e.tactic==0 and -1.45 or 1.45) or 0)
+      local tz=cover.z+(p.z>cover.z and -.85 or .85)
+      local ddx,ddz=tx-e.x,tz-e.z;local dd=sqrt(ddx*ddx+ddz*ddz)
+      if dd>.15 then mx,mz=ddx/dd,ddz/dd;moving=true else moving=false end
+     end
+    end
     if e.kind=="warden" then moving=range>10;e.speed=e.hp<e.maxHp*.35 and 4.2 or 2 end
     if moving then
      local nx=e.x+mx*e.speed*dt;local nz=e.z+mz*e.speed*dt
@@ -237,7 +258,8 @@ function W:step(dt,c)
  local strafe,forward=c.strafe or 0,c.forward or 0;local l=sqrt(strafe*strafe+forward*forward)
  if l>1 then strafe,forward=strafe/l,forward/l end
  local dx,dz=cos(p.yaw)*strafe+sin(p.yaw)*forward,sin(p.yaw)*strafe-cos(p.yaw)*forward
- local speed=c.run and 11.5 or 8.6
+ Gunplay.update(self,dt,c)
+ local speed=(c.run and 11.5 or 8.6)*(1-.48*(p.ads or 0))
  if c.dash and p.dashCD<=0 then
   p.dash=.16;p.dashCD=.85;p.dashX=l>.1 and dx or sin(p.yaw);p.dashZ=l>.1 and dz or -cos(p.yaw);self:emit("dash")
  end

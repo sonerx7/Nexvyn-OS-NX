@@ -1,0 +1,512 @@
+{
+  "revision": 3,
+  "rate": 32000,
+  "music": {
+    "world1": {
+      "file": "audio/music/world1.ogg",
+      "seconds": 55.384625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "90b7c01a8e6acb5b77cd5012345ea67bb25ae39c7f9c5f9d4a7ebae90a4073d0"
+    },
+    "world2": {
+      "file": "audio/music/world2.ogg",
+      "seconds": 51.4285625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "e68e7d91f1f1b63fae526e1d07ce9989178d06a406a7a37fc9b1aa13648dc881"
+    },
+    "world3": {
+      "file": "audio/music/world3.ogg",
+      "seconds": 57.6,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "0825cf7ab0a3e973bc049c084ba730a0e2b4b33210df7eb768fef415dec8af2b"
+    },
+    "world4": {
+      "file": "audio/music/world4.ogg",
+      "seconds": 63.29671875,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "7550e221756cd403df524040ad7e2b36f9f051ba5b0c136bf69768b8836e67bb"
+    },
+    "world5": {
+      "file": "audio/music/world5.ogg",
+      "seconds": 50.9734375,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "f6c66d948765e83fbe1d268a41f448186d24fda22b9a196f0e94a57265419483"
+    },
+    "world6": {
+      "file": "audio/music/world6.ogg",
+      "seconds": 66.97675,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "4635a4c7f09b4590bbccc2eeea86e33ca4a91e5d799df517fadda7faaaef70ab"
+    },
+    "world7": {
+      "file": "audio/music/world7.ogg",
+      "seconds": 60.0,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "a05775a51495605dc8969510e2749afe7230a81f7749eceda2cbb50a88271fd4"
+    },
+    "world8": {
+      "file": "audio/music/world8.ogg",
+      "seconds": 53.33334375,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "d6fedc7b525bf4ffc060105087c88ad73a0d85ee96d453a6761625884106d844"
+    },
+    "world9": {
+      "file": "audio/music/world9.ogg",
+      "seconds": 48.8135625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "f7278544bf32c81ee9582c3293d823107c982c56a7feb5a9bcd2f0bad332e45b"
+    },
+    "world10": {
+      "file": "audio/music/world10.ogg",
+      "seconds": 48.0,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "b359b74abf28dff3e27c7ad9163a667c6dbb84e8d8c1c326499c4a8d15e7e5eb"
+    },
+    "title": {
+      "file": "audio/music/title.ogg",
+      "seconds": 60.0,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "367f2b92d1c42fe4cfa741ff17ae55ceaace681e784283dbe90ff5dab44df1a4"
+    },
+    "boss": {
+      "file": "audio/music/boss.ogg",
+      "seconds": 46.451625,
+      "channels": 2,
+      "samplerate": 32000,
+      "sha256": "0e70305c6de2cb0ce637a08ec22457a448b2e80158261ae76afeaa2cf08b9345"
+    }
+  },
+  "effects": {
+    "coin": {
+      "files": [
+        "audio/sfx/coin_1.wav",
+        "audio/sfx/coin_2.wav",
+        "audio/sfx/coin_3.wav"
+      ],
+      "cooldown": 0.13,
+      "gain": 1,
+      "durations": [
+        0.28484375,
+        0.24725,
+        0.24003125
+      ]
+    },
+    "boon": {
+      "files": [
+        "audio/sfx/boon_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 0.9,
+      "durations": [
+        1.39
+      ]
+    },
+    "jump": {
+      "files": [
+        "audio/sfx/jump_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.295
+      ]
+    },
+    "dash": {
+      "files": [
+        "audio/sfx/dash_1.wav",
+        "audio/sfx/dash_2.wav",
+        "audio/sfx/dash_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.39,
+        0.39,
+        0.39
+      ]
+    },
+    "stomp": {
+      "files": [
+        "audio/sfx/stomp_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.51065625
+      ]
+    },
+    "hurt": {
+      "files": [
+        "audio/sfx/hurt_1.wav",
+        "audio/sfx/hurt_2.wav",
+        "audio/sfx/hurt_3.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.33990625,
+        0.37503125,
+        0.463875
+      ]
+    },
+    "checkpoint": {
+      "files": [
+        "audio/sfx/checkpoint_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 0.9,
+      "durations": [
+        1.39
+      ]
+    },
+    "spring": {
+      "files": [
+        "audio/sfx/spring_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.445
+      ]
+    },
+    "break": {
+      "files": [
+        "audio/sfx/break_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.3389375
+      ]
+    },
+    "clear": {
+      "files": [
+        "audio/sfx/clear_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 0.9,
+      "durations": [
+        1.53
+      ]
+    },
+    "boss_hit": {
+      "files": [
+        "audio/sfx/boss_hit_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.69059375
+      ]
+    },
+    "boss_warn": {
+      "files": [
+        "audio/sfx/boss_warn_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        1.14
+      ]
+    },
+    "victory": {
+      "files": [
+        "audio/sfx/victory_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 0.9,
+      "durations": [
+        3.04
+      ]
+    },
+    "slam": {
+      "files": [
+        "audio/sfx/slam_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.69059375
+      ]
+    },
+    "land": {
+      "files": [
+        "audio/sfx/land_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.69059375
+      ]
+    },
+    "armor": {
+      "files": [
+        "audio/sfx/armor_1.wav",
+        "audio/sfx/armor_2.wav",
+        "audio/sfx/armor_3.wav"
+      ],
+      "cooldown": 0.09,
+      "gain": 1,
+      "durations": [
+        0.27459375,
+        0.24346875,
+        0.24803125
+      ]
+    },
+    "parry": {
+      "files": [
+        "audio/sfx/parry_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.27459375
+      ]
+    },
+    "door": {
+      "files": [
+        "audio/sfx/door_1.wav"
+      ],
+      "cooldown": 0.06,
+      "gain": 1,
+      "durations": [
+        0.5278125
+      ]
+    },
+    "step_grass": {
+      "files": [
+        "audio/sfx/step_grass_1.wav",
+        "audio/sfx/step_grass_2.wav",
+        "audio/sfx/step_grass_3.wav",
+        "audio/sfx/step_grass_4.wav"
+      ],
+      "cooldown": 0.24,
+      "gain": 0.65,
+      "durations": [
+        0.22896875,
+        0.24634375,
+        0.2515625,
+        0.2011875
+      ]
+    },
+    "step_wood": {
+      "files": [
+        "audio/sfx/step_wood_1.wav",
+        "audio/sfx/step_wood_2.wav",
+        "audio/sfx/step_wood_3.wav",
+        "audio/sfx/step_wood_4.wav"
+      ],
+      "cooldown": 0.24,
+      "gain": 0.65,
+      "durations": [
+        0.34959375,
+        0.18678125,
+        0.35140625,
+        0.35153125
+      ]
+    },
+    "step_stone": {
+      "files": [
+        "audio/sfx/step_stone_1.wav",
+        "audio/sfx/step_stone_2.wav",
+        "audio/sfx/step_stone_3.wav",
+        "audio/sfx/step_stone_4.wav"
+      ],
+      "cooldown": 0.24,
+      "gain": 0.65,
+      "durations": [
+        0.2059375,
+        0.20765625,
+        0.2128125,
+        0.2105
+      ]
+    },
+    "step_snow": {
+      "files": [
+        "audio/sfx/step_snow_1.wav",
+        "audio/sfx/step_snow_2.wav",
+        "audio/sfx/step_snow_3.wav",
+        "audio/sfx/step_snow_4.wav"
+      ],
+      "cooldown": 0.24,
+      "gain": 0.65,
+      "durations": [
+        0.27696875,
+        0.2851875,
+        0.2833125,
+        0.27740625
+      ]
+    }
+  },
+  "streaming": true,
+  "sources": "audio/licenses/README.md",
+  "presentationMix": 3,
+  "layers": {
+    "coin": {
+      "files": [
+        "audio/layers/coin_1.wav",
+        "audio/layers/coin_2.wav"
+      ],
+      "gain": 0.35,
+      "durations": [
+        0.3,
+        0.3
+      ]
+    },
+    "boon": {
+      "files": [
+        "audio/layers/boon_1.wav",
+        "audio/layers/boon_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.7,
+        0.7
+      ]
+    },
+    "checkpoint": {
+      "files": [
+        "audio/layers/checkpoint_1.wav",
+        "audio/layers/checkpoint_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.7,
+        0.7
+      ]
+    },
+    "clear": {
+      "files": [
+        "audio/layers/clear_1.wav",
+        "audio/layers/clear_2.wav"
+      ],
+      "gain": 0.45,
+      "durations": [
+        0.7,
+        0.7
+      ]
+    },
+    "jump": {
+      "files": [
+        "audio/layers/jump_1.wav",
+        "audio/layers/jump_2.wav"
+      ],
+      "gain": 0.3,
+      "durations": [
+        0.17,
+        0.188
+      ]
+    },
+    "dash": {
+      "files": [
+        "audio/layers/dash_1.wav",
+        "audio/layers/dash_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.284,
+        0.263
+      ]
+    },
+    "land": {
+      "files": [
+        "audio/layers/land_1.wav",
+        "audio/layers/land_2.wav"
+      ],
+      "gain": 0.45,
+      "durations": [
+        0.12,
+        0.12
+      ]
+    },
+    "stomp": {
+      "files": [
+        "audio/layers/stomp_1.wav",
+        "audio/layers/stomp_2.wav"
+      ],
+      "gain": 0.5,
+      "durations": [
+        0.22,
+        0.22
+      ]
+    },
+    "slam": {
+      "files": [
+        "audio/layers/slam_1.wav",
+        "audio/layers/slam_2.wav"
+      ],
+      "gain": 0.6,
+      "durations": [
+        0.71,
+        0.71
+      ]
+    },
+    "hurt": {
+      "files": [
+        "audio/layers/hurt_1.wav",
+        "audio/layers/hurt_2.wav"
+      ],
+      "gain": 0.5,
+      "durations": [
+        0.35,
+        0.35
+      ]
+    },
+    "spring": {
+      "files": [
+        "audio/layers/spring_1.wav",
+        "audio/layers/spring_2.wav"
+      ],
+      "gain": 0.4,
+      "durations": [
+        0.35,
+        0.35
+      ]
+    },
+    "break": {
+      "files": [
+        "audio/layers/break_1.wav",
+        "audio/layers/break_2.wav"
+      ],
+      "gain": 0.5,
+      "durations": [
+        0.1,
+        0.1
+      ]
+    },
+    "boss_hit": {
+      "files": [
+        "audio/layers/boss_hit_1.wav",
+        "audio/layers/boss_hit_2.wav"
+      ],
+      "gain": 0.6,
+      "durations": [
+        0.22,
+        0.22
+      ]
+    }
+  },
+  "ambience": {
+    "wind": {
+      "file": "audio/layers/amb_wind.wav",
+      "gain": 0.22,
+      "seconds": 8
+    },
+    "heat": {
+      "file": "audio/layers/amb_heat.wav",
+      "gain": 0.2,
+      "seconds": 8
+    }
+  }
+}

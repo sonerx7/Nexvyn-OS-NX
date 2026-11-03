@@ -1,5 +1,5 @@
 local Random=require('game.random')
-local M={W=29,H=21,T=32}
+local M={W=59,H=43,T=32}
 function M.routes(seed,biome)
  local r=Random.new(seed+biome*7919);local rows={}
  for y=1,4 do rows[y]={};for lane=1,3 do
@@ -9,79 +9,63 @@ function M.routes(seed,biome)
   elseif y==4 then kind=({'elite','rest','combat'})[(lane+biome)%3+1] end
   rows[y][lane]={row=y,lane=lane,kind=kind,seed=r:int(1,2000000000)}
  end end
- rows[5]={{row=5,lane=1,kind='boss',seed=r:int(1,2000000000)}}
- return rows
-end
-function M.layout(m,r,biome)
- local function paint(x,y,tile,solid)
-  if x>=2 and x<m.w-2 and y>=2 and y<m.h-2 and math.abs(x-14)>1 then
-   m.tiles[y*m.w+x+1]=tile;m.solids[y*m.w+x+1]=solid or false
-  end
- end
- local variant=r:int(0,2)
- if biome==1 then
-  -- Broken cloister wings and a still-water crypt, crossed by a clear aisle.
-  for _,yy in ipairs({6+variant,13-variant}) do for x=4,10 do if x~=7 then paint(x,yy,14,true) end end end
-  for y=5,8 do for x=21,24 do paint(x,y,18,true) end end
-  for y=12,16 do for x=18,24 do if (x+y)%4==0 then paint(x,y,4,false) end end end
- elseif biome==2 then
-  -- Two lava races. Three broad bridges link all three foundry wings.
-  for _,xx in ipairs({8,19}) do for y=3,17 do for x=xx,xx+1 do
-   if y~=7 and y~=8 and y~=10 and y~=13 and y~=14 then paint(x,y,18,true) else paint(x,y,26,false) end
-  end end end
-  for _,p in ipairs({{4,5},{24,6},{4,15},{24,15}}) do paint(p[1],p[2],16,true) end
- elseif biome==3 then
-  -- Frozen crossing, broken pews and ice-covered side chapels.
-  for y=3,17 do for x=3,25 do if (y==9 or y==10 or y==11) and math.abs(x-14)>2 then paint(x,y,20,false) end end end
-  for _,yy in ipairs({6,14}) do for _,xx in ipairs({5,19}) do for x=xx,xx+4 do paint(x,yy,15,true) end end end
- elseif biome==4 then
-  -- Irregular garden ponds, rather than rectangular rooms with a colour swap.
-  for _,center in ipairs({{7,7},{21,13}}) do for yy=-3,3 do for xx=-4,4 do
-   if (xx*xx)/14+(yy*yy)/7<1 then paint(center[1]+xx,center[2]+yy,18,true) end
-  end end end
-  for _,p in ipairs({{5,15},{23,5},{9,16},{20,4}}) do paint(p[1],p[2],14,true) end
- else
-  -- Star archive shelves form diagonal wings around a large central mosaic.
-  for i=0,4 do paint(4+i,4+i,16,true);paint(24-i,4+i,16,true);paint(4+i,16-i,16,true);paint(24-i,16-i,16,true) end
-  for y=7,13 do for x=10,18 do if math.abs(x-14)+math.abs(y-10)<6 then paint(x,y,12,false) end end end
- end
- -- Preserve a cross-shaped traversal spine in every generated layout.
- for x=2,m.w-3 do m.tiles[10*m.w+x+1]=x%3==0 and 12 or 2;m.solids[10*m.w+x+1]=false end
+ rows[5]={{row=5,lane=1,kind='boss',seed=r:int(1,2000000000)}};return rows
 end
 function M.build(seed,biome,kind)
- local r=Random.new(seed);local m={w=M.W,h=M.H,tiles={},solids={},props={},hazards={},seed=seed,kind=kind}
+ local r=Random.new(seed);local combat=kind=='combat' or kind=='elite'
+ local m={w=combat and 59 or kind=='boss' and 43 or 37,h=combat and 43 or kind=='boss' and 33 or 27,tiles={},solids={},props={},hazards={},seed=seed,kind=kind}
+ local cx,cy=math.floor(m.w/2),math.floor(m.h/2)
+ local function paint(x,y,tile,solid)
+  if x>2 and x<m.w-3 and y>2 and y<m.h-3 then local i=y*m.w+x+1;m.tiles[i]=tile;m.solids[i]=solid or false end
+ end
  for y=0,m.h-1 do for x=0,m.w-1 do
-  local index=y*m.w+x+1;local edge=x<2 or x>=m.w-2 or y<2 or y>=m.h-2
-  m.tiles[index]=edge and r:int(13,16) or r:int(1,12);m.solids[index]=edge
-  if not edge and y>3 and y<m.h-4 and x>3 and x<m.w-4 then
-   if (x==7 or x==21) and (y==6 or y==14) then
-    m.solids[index]=true;m.tiles[index]=14;m.props[#m.props+1]={x=x*32+16,y=y*32+23,id=biome,solid=true}
-   end
+  local i=y*m.w+x+1;local edge=x<2 or y<2 or x>=m.w-2 or y>=m.h-2
+  m.tiles[i]=edge and r:int(13,16) or r:int(1,12);m.solids[i]=edge
+ end end
+ -- Four authored district motifs around a central crossing, scaled to each room.
+ for district=1,4 do
+  local ox=math.floor(m.w*(district%2==1 and .25 or .75));local oy=math.floor(m.h*(district<3 and .27 or .70))
+  for dy=-5,5 do for dx=-6,6 do
+   local x,y=ox+dx,oy+dy
+   if biome==1 then
+    if (dy==-4 or dy==4) and math.abs(dx)>1 then paint(x,y,14,true)
+    elseif dx*dx+dy*dy<12 then paint(x,y,21+((x+y)%4),false) end
+   elseif biome==2 then
+    if math.abs(dx)<2 and math.abs(dy)>1 then paint(x,y,18,true)
+    elseif math.abs(dy)<2 then paint(x,y,26,false) end
+   elseif biome==3 then
+    if math.abs(dy)==3 and math.abs(dx)>2 then paint(x,y,15,true)
+    elseif math.abs(dx)<4 and math.abs(dy)<2 then paint(x,y,20,false) end
+   elseif biome==4 then
+    if dx*dx/25+dy*dy/12<1 and dx~=0 and dy~=0 then paint(x,y,18,true) end
+   elseif math.abs(dx)==math.abs(dy) and math.abs(dx)>2 then paint(x,y,16,true)
+   elseif dx*dx+dy*dy<16 then paint(x,y,12,false) end
+  end end
+  m.props[#m.props+1]={x=ox*32+16,y=(oy-5)*32+16,id=biome+5,light=true,animated=true}
+ end
+ -- Wide traversal spine and a circuit route tie the landmarks together.
+ for y=2,m.h-3 do for x=cx-1,cx+1 do paint(x,y,21+y%4,false) end end
+ for x=2,m.w-3 do for y=cy-1,cy+1 do paint(x,y,x%4==0 and 12 or 2,false) end end
+ m.entry={x=cx*32+16,y=(m.h-4)*32+16};m.exit={x=cx*32+16,y=3.5*32}
+ m.object={x=cx*32+16,y=cy*32+16,id=kind=='shop' and 16 or kind=='rest' and 17 or kind=='treasure' and 11 or 14}
+ -- Connectivity repair carves bridges to the central aisle; disconnected scenery
+ -- can never strand drops, wave spawns or the gate.
+ local reached=M.flow(m,m.entry.x,m.entry.y)
+ for y=3,m.h-4 do for x=3,m.w-4 do local id=y*m.w+x+1
+  if not m.solids[id] and not reached[id] then
+   for xx=math.min(cx,x),math.max(cx,x) do local old=m.tiles[y*m.w+xx+1];paint(xx,y,old==18 and 26 or 2,false) end
   end
  end end
- M.layout(m,r,biome)
- -- Broad central aisle always connects the entry to every interaction.
- for y=2,m.h-3 do for x=13,15 do m.tiles[y*m.w+x+1]=21+(y%4);m.solids[y*m.w+x+1]=false end end
- for _,y in ipairs({3,10,17}) do
-  for _,x in ipairs({3,25}) do m.props[#m.props+1]={x=x*32+16,y=y*32+16,id=biome+5,light=true} end
- end
- for i=1,34 do
+ for i=1,(combat and 120 or 65) do
   local x,y=r:int(3,m.w-4),r:int(3,m.h-4)
-  if math.abs(x-14)>3 and not m.solids[y*m.w+x+1] then
-   m.props[#m.props+1]={x=x*32+r:int(4,27),y=y*32+r:int(8,28),id=(i%3==0) and r:int(27,32) or 17+biome}
+  if math.abs(x-cx)>3 and math.abs(y-cy)>2 and not m.solids[y*m.w+x+1] then
+   m.props[#m.props+1]={x=x*32+r:int(6,26),y=y*32+r:int(8,26),id=i%3==0 and r:int(27,32) or 17+biome,animated=i%7==0}
   end
  end
- for i=#m.props,1,-1 do local p=m.props[i]
-  if p.solid and not M.solid(m,p.x,p.y) then table.remove(m.props,i) end
- end
- if kind=='boss' or kind=='combat' or kind=='elite' then
-  for _,pos in ipairs({{5,9},{23,9},{9,15},{19,5}}) do
-   local x,y=pos[1],pos[2];m.hazards[#m.hazards+1]={x=x*32+16,y=y*32+16,r=19,phase=r:next()*6}
-   m.tiles[y*m.w+x+1]=18
-  end
- end
- m.entry={x=14.5*32,y=17.5*32};m.exit={x=14.5*32,y=2.8*32}
- m.object={x=14.5*32,y=8.5*32,id=kind=='shop' and 16 or kind=='rest' and 17 or kind=='treasure' and 11 or 14}
+ if combat or kind=='boss' then for i=1,8 do
+  local x,y=r:int(4,m.w-5),r:int(4,m.h-5)
+  if math.abs(x-cx)>3 and not m.solids[y*m.w+x+1] then m.hazards[#m.hazards+1]={x=x*32+16,y=y*32+16,r=19,phase=r:next()*6} end
+ end end
  return m
 end
 function M.solid(m,x,y)

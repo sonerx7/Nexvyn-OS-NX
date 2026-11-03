@@ -47,7 +47,7 @@ Mağazası getirir.
 
 <p align="center"><img src=".github/assets/desktop-dock.webp" width="100%" alt="Saat, takvim ve dünya saati araç takımlarıyla Dock düzeninde Nexvyn OS masaüstü"></p>
 
-## 1.3.0 sürümündeki yenilikler
+## 1.2.2 sürümündeki yenilikler
 
 <p align="center"><img src=".github/assets/nexgfx-before-after.webp" width="100%" alt="Aynı toplantı odası SDK 1.8 renderer'ında (düz ışık) ve SDK 1.9 NexGFX pbr renderer'ında (camdan giren güneş, gölgeler, yansımalar)"></p>
 

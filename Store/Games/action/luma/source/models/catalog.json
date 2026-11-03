@@ -77,7 +77,10 @@
   {
     "name": "beetle",
     "triangles": 1484,
-    "vertices": 900
+    "vertices": 900,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "hopper",
@@ -87,17 +90,27 @@
   {
     "name": "bat",
     "triangles": 392,
-    "vertices": 340
+    "vertices": 340,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "guardian",
     "triangles": 716,
-    "vertices": 984
+    "vertices": 984,
+    "parts": [
+      "glow",
+      "metal"
+    ]
   },
   {
     "name": "guardian_arm",
     "triangles": 60,
-    "vertices": 120
+    "vertices": 120,
+    "parts": [
+      "metal"
+    ]
   },
   {
     "name": "coin",
@@ -117,12 +130,20 @@
   {
     "name": "gate",
     "triangles": 688,
-    "vertices": 1396
+    "vertices": 1396,
+    "parts": [
+      "glow",
+      "gold"
+    ]
   },
   {
     "name": "checkpoint",
     "triangles": 240,
-    "vertices": 396
+    "vertices": 396,
+    "parts": [
+      "glow",
+      "gold"
+    ]
   },
   {
     "name": "crate",
@@ -132,7 +153,10 @@
   {
     "name": "lantern",
     "triangles": 120,
-    "vertices": 264
+    "vertices": 264,
+    "parts": [
+      "glass"
+    ]
   },
   {
     "name": "ruins",
@@ -152,12 +176,19 @@
   {
     "name": "tower",
     "triangles": 376,
-    "vertices": 892
+    "vertices": 892,
+    "parts": [
+      "glow",
+      "roof"
+    ]
   },
   {
     "name": "spring",
     "triangles": 796,
-    "vertices": 1640
+    "vertices": 1640,
+    "parts": [
+      "metal"
+    ]
   },
   {
     "name": "spikes",
@@ -167,22 +198,35 @@
   {
     "name": "brazier",
     "triangles": 302,
-    "vertices": 221
+    "vertices": 221,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "house",
     "triangles": 748,
-    "vertices": 838
+    "vertices": 838,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "fountain",
     "triangles": 480,
-    "vertices": 866
+    "vertices": 866,
+    "parts": [
+      "gold",
+      "water"
+    ]
   },
   {
     "name": "arch",
     "triangles": 244,
-    "vertices": 508
+    "vertices": 508,
+    "parts": [
+      "gold"
+    ]
   },
   {
     "name": "ship",
@@ -192,22 +236,35 @@
   {
     "name": "shrine",
     "triangles": 140,
-    "vertices": 332
+    "vertices": 332,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "cage",
     "triangles": 708,
-    "vertices": 1128
+    "vertices": 1128,
+    "parts": [
+      "glass",
+      "metal"
+    ]
   },
   {
     "name": "scout",
     "triangles": 412,
-    "vertices": 388
+    "vertices": 388,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "switch",
     "triangles": 136,
-    "vertices": 340
+    "vertices": 340,
+    "parts": [
+      "glow"
+    ]
   },
   {
     "name": "key",
@@ -238,5 +295,29 @@
     "name": "mimic",
     "triangles": 444,
     "vertices": 444
+  },
+  {
+    "name": "market_stall",
+    "triangles": 604
+  },
+  {
+    "name": "garden_seat",
+    "triangles": 132
+  },
+  {
+    "name": "observatory",
+    "triangles": 856
+  },
+  {
+    "name": "trellis",
+    "triangles": 968
+  },
+  {
+    "name": "mosaic",
+    "triangles": 448
+  },
+  {
+    "name": "canal_bridge",
+    "triangles": 204
   }
 ]

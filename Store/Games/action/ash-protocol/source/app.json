@@ -1,1 +1,36 @@
-{"id":"com.sonerx7.ashprotocol","name":{"tr":"Kül Protokolü","en":"Ash Protocol","de":"Ascheprotokoll","fr":"Protocole Cendre","es":"Protocolo Ceniza"},"description":{"tr":"Altı bölümlük hikâye, dokulu 3B tesisler ve hızlı çatışma içeren özgün bir FPS.","en":"An original fast 3D FPS with six story chapters, textured facilities and reactive lighting.","de":"Ein schneller 3D-FPS mit sechs Story-Kapiteln.","fr":"Un FPS 3D rapide en six chapitres.","es":"Un FPS 3D rápido con seis capítulos."},"version":"1.0.1","author":"sonerx7","category":"games","runtime":"lua","main":"main.lua","minSdk":"1.4","icon":"icon.png","license":"GPL-3.0-or-later","window":{"width":1280,"height":720,"minWidth":800,"minHeight":450,"resizable":true},"singleInstance":true,"gamepad":true,"permissions":[]}
+{
+  "id": "com.sonerx7.ashprotocol",
+  "name": {
+    "tr": "Kül Protokolü",
+    "en": "Ash Protocol",
+    "de": "Ascheprotokoll",
+    "fr": "Protocole Cendre",
+    "es": "Protocolo Ceniza"
+  },
+  "description": {
+    "tr": "Altı bölümlük hikâye, dokulu 3B tesisler ve hızlı çatışma içeren özgün bir FPS.",
+    "en": "An original fast 3D FPS with six story chapters, textured facilities and reactive lighting.",
+    "de": "Ein schneller 3D-FPS mit sechs Story-Kapiteln.",
+    "fr": "Un FPS 3D rapide en six chapitres.",
+    "es": "Un FPS 3D rápido con seis capítulos."
+  },
+  "version": "1.5.0",
+  "author": "sonerx7",
+  "category": "games",
+  "runtime": "lua",
+  "main": "main.lua",
+  "minSdk": "1.9",
+  "icon": "icon.png",
+  "license": "GPL-3.0-or-later",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "minWidth": 800,
+    "minHeight": 450,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "permissions": [],
+  "targetSdk": "1.9"
+}

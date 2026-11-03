@@ -6,7 +6,7 @@ Nexvyn OS için uygulama, oyun, tema ve yazı tipi yapanlar için her şey: SDK 
 şablon, rehberler ve tarifler, çalışan örnekler, AI asistanları için context pack'ler, yayımlama rehberi ve komut
 satırı araçları. Her belge İngilizce ve Türkçe vardır.
 
-**Güncel sürüm: SDK 1.9** (Nexvyn OS 1.3.0). SDK 1.0-1.8 için yapılmış uygulamalar değişmeden çalışır
+**Güncel sürüm: SDK 1.9** (Nexvyn OS 1.2.2). SDK 1.0-1.8 için yapılmış uygulamalar değişmeden çalışır
 ([SDK sürümleri](Guides/SDK_VERSIONS.tr.md)).
 
 ## Bir bakışta SDK 1.9

@@ -14,7 +14,7 @@
     "fr": "Une aventure de plateforme 3D dans dix mondes avec doubles sauts, secrets et un gardien géant.",
     "es": "Una aventura de plataformas 3D en diez mundos con saltos dobles, secretos y un guardián gigante."
   },
-  "version": "1.2.0",
+  "version": "1.7.0",
   "author": "sonerx7",
   "homepage": "https://github.com/sonerx7/Nexvyn-OS-NX",
   "license": "GPL-3.0-or-later",
@@ -22,7 +22,7 @@
   "icon": "icon.png",
   "runtime": "lua",
   "main": "main.lua",
-  "minSdk": "1.4",
+  "minSdk": "1.9",
   "window": {
     "width": 1280,
     "height": 720,
@@ -32,5 +32,6 @@
   },
   "singleInstance": true,
   "gamepad": true,
-  "permissions": []
+  "permissions": [],
+  "targetSdk": "1.9"
 }

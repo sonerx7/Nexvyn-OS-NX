@@ -63,4 +63,4 @@ quality and the texture sizes first (SDK reference, section 8b, *Budget*).
 
 | Version | Change |
 |---|---|
-| 1.0 | First release (SDK 1.9, Nexvyn OS 1.3.0). |
+| 1.0 | First release (SDK 1.9, Nexvyn OS 1.2.2). |

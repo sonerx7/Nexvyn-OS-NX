@@ -607,7 +607,7 @@ Native uygulamalar (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadMod
 
 **pbr renderer** aynı mesh ve modelleri fiziksel tabanlı materyallerle, gerçek zamanlı ışıklarla, gölgelerle, ton
 eşlemeli HDR ve bloom'la ve GPU instancing'le çizer. Bu, Nexvyn OS'un sürümlü grafik çekirdeği **NexGFX**'tir
-(Nexvyn OS 1.3.0'da 1.0; `g3d.rendererInfo()` onun ve backend'inin adını verir). Konsolun OpenGL ES 3 GPU yolunda çalışır ve **uygulama
+(Nexvyn OS 1.2.2'da 1.0; `g3d.rendererInfo()` onun ve backend'inin adını verir). Konsolun OpenGL ES 3 GPU yolunda çalışır ve **uygulama
 başına isteğe bağlıdır**: aşağıdaki fonksiyonları hiç çağırmayan bir uygulama eskisiyle birebir aynı çizilir.
 
 ```lua

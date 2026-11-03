@@ -20,7 +20,7 @@ kuralları [COMPATIBILITY.tr.md](COMPATIBILITY.tr.md)'de.
 
 | Numara | Örnek | Anlamı |
 |---|---|---|
-| **Nexvyn OS** | `1.3.0` | sistem sürümü (major.minor.patch), Ayarlar > Hakkında'da görünür |
+| **Nexvyn OS** | `1.2.2` | sistem sürümü (major.minor.patch), Ayarlar > Hakkında'da görünür |
 | **SDK** | `1.9` | uygulamaların karşısına yazıldığı API yüzeyi (major.minor); `sys.sdkVersion()` bunu döndürür |
 | **Runtime motoru** | Lua 5.4.7, QuickJS-ng 0.17.0, pocketpy 2.2.0 | bir dilin arkasındaki yorumlayıcı ya da derleyici |
 
@@ -41,7 +41,7 @@ uygulamalar onu alırdı (bölüm 4).
 | 1.6 | 1.0.0 | `fs.unzip`, `sys.games`, metin okuma; `"python3"` runtime'ı (CPython 3.12) | bkz. bölüm 3 |
 | 1.7 | 1.1.0 | `g3d.voxels` voksel dünyalar; mesh'lerde pixel art dokular | JavaScript (voksel); Lua, JavaScript (dokular) |
 | 1.8 | 1.2.0 | `g3d.model`: materyal, doku ve iskelet animasyonlu `.glb` / `.gltf` / `.fbx` modeller | altısı da |
-| 1.9 | 1.3.0 | runtime kütüphanesi; akış, fotoğraf ve kısa video uygulamaları; pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
+| 1.9 | 1.2.2 | runtime kütüphanesi; akış, fotoğraf ve kısa video uygulamaları; pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
 
 SDK 1.0'dan 1.6'ya kadarki sürümlerin hepsi, ilk herkese açık sürüm olan ve SDK 1.6'ya sahip Nexvyn OS 1.0.0'ın
 geliştirilmesi sırasında yapıldı. Sonradan gelen bir dil, önceki SDK'nın tamamını beraberinde aldı: Squirrel, C ve Java,
@@ -109,7 +109,7 @@ geliştirilmesi sırasında yapıldı. Sonradan gelen bir dil, önceki SDK'nın 
 - SDK 1.8'i hedefleyen C uygulamaları için: `#include` yalnızca uygulamanın kendi dosyalarını ve SDK başlıklarını okur,
   inline assembly reddedilir.
 
-### SDK 1.9 (Nexvyn OS 1.3.0)
+### SDK 1.9 (Nexvyn OS 1.2.2)
 
 - **Runtime kütüphanesi:** Lua'da `net.request{url, method, body, contentType, headers}`; JavaScript'te `TextEncoder` /
   `TextDecoder`, `URL` / `URLSearchParams`, `structuredClone`; pocketpy'de eksik olan Python `str` metotları,

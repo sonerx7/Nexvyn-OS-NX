@@ -44,7 +44,7 @@ a game engine and a 3D modeler, and an App Market where every item is reviewed b
 
 <p align="center"><img src=".github/assets/desktop-dock.webp" width="100%" alt="The Nexvyn OS desktop in the Dock layout with clock, calendar and world clock widgets"></p>
 
-## What's new in 1.3.0
+## What's new in 1.2.2
 
 <p align="center"><img src=".github/assets/nexgfx-before-after.webp" width="100%" alt="The same meeting room on the SDK 1.8 renderer (flat light) and on the SDK 1.9 NexGFX pbr renderer (sunlight through glass, shadows, reflections)"></p>
 

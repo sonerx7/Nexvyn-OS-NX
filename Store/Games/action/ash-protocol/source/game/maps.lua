@@ -118,6 +118,18 @@ function M.build(chapter)
   end
  end
  if chapter==6 then add(d.enemies,{kind="warden",x=last.x,y=0,z=last.z-2,room=6,boss=true}) end
+ d.cover={}
+ for _,r in ipairs(d.rooms) do
+  for _,side in ipairs({-1,1}) do
+   add(d.props,{model="pipe_rack",x=r.x+side*(r.w/2-1.1),y=0,z=r.z+side*2.5,angle=0,room=r.id})
+   add(d.props,{model="generator",x=r.x+side*(r.w/2-2.3),y=0,z=r.z-side*(r.d/2-3.8),angle=side*math.pi/2,room=r.id})
+   local x,z=r.x+side*(r.w/2-4),r.z+side*r.d*.23
+   add(d.props,{model="cover_panel",x=x,y=0,z=z,angle=0,room=r.id,solid=true,w=2.1,h=1.65,d=.4});add(d.cover,{x=x,z=z,room=r.id})
+   add(d.props,{model="supply_stack",x=r.x+side*(r.w/2-1.8),y=0,z=r.z-side*1.2,angle=side,room=r.id})
+  end
+  add(d.props,{model="gantry",x=r.x,y=0,z=r.z+r.d/2-.8,angle=0,room=r.id})
+  add(d.props,{model="comms",x=r.x-r.w/2+1.1,y=0,z=r.z-2.5,angle=math.pi/2,room=r.id})
+ end
  return d
 end
 return M

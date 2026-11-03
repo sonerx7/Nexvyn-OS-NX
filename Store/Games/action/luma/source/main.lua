@@ -1,11 +1,16 @@
 local Levels=require("game.levels")
 local World=require("game.world")
 local Render=require("game.render")
+local Audio=require("game.audio")
+local Fx=require("game.fx")
+-- Effects profile for the pbr tier (needs SDK 1.9; skipped when Effects is Low or the GPU has no pbr path): see game/fx.lua.
+local FX_PROFILE={exposure=1.05,tonemap="aces",bloom=.05,threshold=1,mediumShadow=true,shadowDistance=30}
 local app={}
 local sin,cos,min,max,floor=math.sin,math.cos,math.min,math.max,math.floor
 local mode="loading"
 local selected=1
 local world,preview,progress,options,musicChannel
+local soundtrack
 local keys,pending={},{}
 local cam={x=0,y=1,z=0,yaw=0,pitch=.47,distance=10.7}
 local accumulator=0
@@ -30,19 +35,22 @@ local function save()
   store.set("progress.v2",progress);store.set("options.v1",options)
 end
 local function music(n)
-  if musicChannel then audio.stop(musicChannel);musicChannel=nil end
   musicLevel=n
-  if options.music and options.volume>0 then musicChannel=audio.play("bundle:/audio/world"..n..".wav",options.volume*.38,-1) end
+  if not soundtrack then return end
+  soundtrack:ambience((n==9 and mode~="title" and mode~="select") and "heat" or "wind")
+  local boss=world and world.def.boss
+  local key=(mode=="title" or mode=="select" or not world) and "title" or boss and boss.hp>0 and boss.state~="sleep" and "boss" or "world"..n
+  soundtrack:track(key)
 end
 local function sound(kind)
-  if not options.sound then return end
-  local notes={coin={1046,.07,"sine"},star={1568,.3,"triangle"},jump={520,.07,"sine"},doubleJump={784,.10,"triangle"},dash={220,.09,"triangle"},stomp={185,.1,"triangle"},hurt={130,.18,"saw"},checkpoint={880,.25,"sine"},spring={660,.16,"triangle"},["break"]={293,.1,"triangle"},complete={1174,.5,"sine"},bossHit={392,.2,"triangle"},bossDefeat={1568,.5,"sine"},slam={72,.18,"triangle"},extraLife={1318,.3,"sine"}}
-  local n=notes[kind]
-  if n then audio.tone(n[1],n[2],options.volume*.21,n[3]) end
+  local aliases={cast="dash",catch="coin",bond="boon",stun="armor",bondShield="armor",star="boon",doubleJump="jump",complete="clear",bossHit="boss_hit",bossDefeat="victory",extraLife="boon",bossWake="boss_warn",key="coin",switch="door",rescue="boon",arenaClear="clear",respawn="land"}
+  if soundtrack then soundtrack:sfx(aliases[kind] or kind) end
 end
+local function kick(v) if options.fx>=2 then Render.shake=max(Render.shake or 0,v) end end
 local function notice(key,seconds) toast.text=TR(key);toast.timer=seconds or 3 end
 local function setMode(m)
   mode=m;selected=1;keys={};pending={};touch.drag=false;touch.dx=0;touch.dy=0;touch.linger=0;touch.jumpHeld=false;accumulator=0
+  if soundtrack then soundtrack:pause(m=="pause") end
 end
 
 local function startLevel(n,restore)
@@ -101,11 +109,12 @@ local function act(index)
     if index==1 then startLevel(world.def.number) else title() end
   elseif mode=="settings" then
     if index==1 then options.quality=options.quality==2 and 1 or 2;Render.quality=options.quality
-    elseif index==2 then options.music=not options.music;music(musicLevel)
-    elseif index==3 then options.sound=not options.sound
-    elseif index==4 then options.assist=not options.assist
-    elseif index==5 then options.volume=options.volume>=.95 and .25 or min(1,options.volume+.25);music(musicLevel)
-    elseif index==6 then setMode(settingsReturn) end
+    elseif index==2 then options.fx=options.fx%3+1;Fx.setup(options.fx)
+    elseif index==3 then options.music=not options.music;music(musicLevel)
+    elseif index==4 then options.sound=not options.sound
+    elseif index==5 then options.assist=not options.assist
+    elseif index==6 then options.volume=options.volume>=.95 and .25 or min(1,options.volume+.25);music(musicLevel)
+    elseif index==7 then setMode(settingsReturn) end
     save()
   elseif mode=="help" then setMode(settingsReturn) end
 end
@@ -117,7 +126,7 @@ local function back()
   elseif mode~="loading" and mode~="title" then title() end
 end
 local function itemCount()
-  if mode=="title" or mode=="pause" then return 5 elseif mode=="select" then return 10 elseif mode=="settings" then return 6 elseif mode=="complete" then return 3 elseif mode=="ending" or mode=="gameover" then return 2 else return 1 end
+  if mode=="title" or mode=="pause" then return 5 elseif mode=="select" then return 10 elseif mode=="settings" then return 7 elseif mode=="complete" then return 3 elseif mode=="ending" or mode=="gameover" then return 2 else return 1 end
 end
 local function navigate(delta)
   selected=(selected-1+delta)%itemCount()+1
@@ -132,9 +141,12 @@ function app.load()
   options=store.get("options.v1",{})
   if type(options)~="table" then options={} end
   options.quality=options.quality==1 and 1 or 2
+  options.fx=(options.fx==1 or options.fx==3) and options.fx or 2   -- Effects: 1 Low, 2 Medium (default), 3 High
   options.music=options.music~=false;options.sound=options.sound~=false
   options.assist=options.assist==true;options.volume=clamp(tonumber(options.volume) or .7,0,1)
+  if soundtrack then soundtrack:stop()end;soundtrack=Audio.new(options,"luma")
   Render.quality=options.quality
+  Fx.setup(options.fx,FX_PROFILE)
   local ok,err=pcall(Render.init)
   if not ok then loadingError=tostring(err) end
 end
@@ -142,12 +154,14 @@ end
 local function events()
   for _,e in ipairs(world.events) do
     sound(e.kind)
+    if e.kind=="hurt" then kick(.8) elseif e.kind=="slam" then kick(.9) elseif e.kind=="bossHit" then kick(.9)
+    elseif e.kind=="bossDefeat" then kick(1.4) elseif e.kind=="break" then kick(.35) end
     if e.kind=="checkpoint" then save();notice("checkpoint.saved")
     elseif e.kind=="star" then notice("star.found")
     elseif e.kind=="extraLife" then notice("life.extra")
-    elseif e.kind=="bossWake" then notice("boss.hint",6)
+    elseif e.kind=="bossWake" then notice("boss.hint",6);music(musicLevel)
     elseif e.kind=="bossHit" then notice("boss.hit")
-    elseif e.kind=="bossDefeat" then notice("boss.defeat",5)
+    elseif e.kind=="bossDefeat" then notice("boss.defeat",5);music(musicLevel)
     elseif e.kind=="needStars" then notice("gate.needstars")
     elseif e.kind=="needBoss" then notice("gate.needboss")
     elseif e.kind=="needSwitches" then notice("quest.needSwitches")
@@ -189,7 +203,9 @@ local function cameraStep(dt)
 end
 
 function app.update(dt)
-  dt=clamp(tonumber(dt) or 0,0,.1);clock=clock+dt;toast.timer=max(0,toast.timer-dt)
+  if mode~="loading" and Render.heroRig then Render.animate((mode=="title" or mode=="select" or not world) and preview.player or world.player,math.min(.1,math.max(0,tonumber(dt) or 0)),mode=="play") end
+  dt=clamp(tonumber(dt) or 0,0,.1);clock=clock+dt;toast.timer=max(0,toast.timer-dt);Render.shake=max(0,(Render.shake or 0)-dt*3)
+  if soundtrack then soundtrack:update(dt);soundtrack:footsteps(world and world.player,({"grass","stone","wood","grass","wood","snow","stone","stone","stone","stone"})[musicLevel>0 and musicLevel or 1],mode=="play")end
   if mode=="loading" then
     if not loadingError then
       local ok,done=pcall(Render.loadNext)
@@ -221,9 +237,9 @@ function app.update(dt)
   while accumulator>=1/120 do
     if not stepped then
       if pending.jump then world:jump() end
-      control.dash=pending.dash;control.pound=pending.pound
+      control.cast=pending.dash;control.pound=pending.pound
       pending={};stepped=true
-    else control.dash=false;control.pound=false end
+    else control.cast=false;control.pound=false end
     if options.assist then world.lives=max(4,world.lives) end
     world:step(1/120,control);accumulator=accumulator-1/120
     if world.status~="play" then break end
@@ -319,6 +335,7 @@ local function hud()
   local fraction=clamp(-p.z/((world.def.length-1)*7.2),0,1)
   rect(28,110,158,4,"#142B4277",2);rect(28,110,158*fraction,4,"#8ED9C6",2)
   text(timerText(world.elapsed),199,102,13,"#F1E5D4","mono")
+  text(TR(world.form and "bond."..world.form or "bond.cast"),28,133,13,"#A4E4D1","semibold")
   if p.dashCD>0 then rect(28,124,158*(1-p.dashCD/.85),3,"#D8B6EB",2) end
   if world.def.adventure then
     rect(25,151,264,79,"#112438DB",14)
@@ -414,13 +431,15 @@ end
 local function settingsUI()
   darken();panel(332,54,616,612)
   text(TR("settings.title"),372,100,33,"#F8E3BC","bold")
-  local list={TR("settings.quality",TR(options.quality==2 and "quality.high" or "quality.low")),TR("settings.music",TR(options.music and "on" or "off")),TR("settings.sound",TR(options.sound and "on" or "off")),TR("settings.assist",TR(options.assist and "on" or "off")),TR("settings.volume",floor(options.volume*100)),TR("back")}
+  local fxLabel=TR("settings.fx",TR("fx."..options.fx))
+  if options.fx>1 and not Fx.active() then fxLabel=fxLabel.." "..TR("fx.basic") end
+  local list={TR("settings.quality",TR(options.quality==2 and "quality.high" or "quality.low")),fxLabel,TR("settings.music",TR(options.music and "on" or "off")),TR("settings.sound",TR(options.sound and "on" or "off")),TR("settings.assist",TR(options.assist and "on" or "off")),TR("settings.volume",floor(options.volume*100)),TR("back")}
   for j,label in ipairs(list) do
-    local x,y,w,h=361,165+(j-1)*68,558,56
+    local x,y,w,h=361,165+(j-1)*60,558,52
     local hit=ui.hit("settings."..j,OX+x*S,OY+y*S,w*S,h*S)
     rect(x,y,w,h,(selected==j or hit.hovered) and "#FFFFFF17" or "#0B1D3022",11)
     if selected==j then rect(x,y,4,h,"#E9CD96",2) end
-    text(label,x+22,y+17,18,"#E7E7DC","medium")
+    text(label,x+22,y+15,18,"#E7E7DC","medium")
     if hit.clicked then selected=j;act(j) end
   end
   text(TR("settings.note"),373,609,13,"#AFC6CE")
@@ -484,9 +503,9 @@ function app.onmenu(id)
   elseif id==2 and mode~="loading" then if mode=="play" then save() end;settingsReturn=world and "pause" or "title";setMode("help")
   elseif id==3 and mode~="loading" then save();title() end
 end
-function app.suspend() if mode=="play" then pause() end;save();if musicChannel then audio.stop(musicChannel);musicChannel=nil end end
-function app.resume() if mode~="loading" and options.music then music(musicLevel>0 and musicLevel or 1) end end
+function app.suspend() if mode=="play" then pause() end;save();soundtrack:pause(true)end
+function app.resume()soundtrack:pause(false);if mode~="loading" and options.music then music(musicLevel>0 and musicLevel or 1) end end
 function app.focus(focused) if not focused then keys={};if mode=="play" then pause() end end end
 function app.autosave() save() end
-function app.close() save();if musicChannel then audio.stop(musicChannel) end;return true end
+function app.close() save();soundtrack:stop();Render.close();return true end
 return app

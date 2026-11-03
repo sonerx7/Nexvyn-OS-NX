@@ -5705,14 +5705,14 @@
         "fr": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
         "es": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending."
       },
-      "version": "1.0.1",
+      "version": "1.5.0",
       "author": "sonerx7",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/ash-protocol.nxvapp",
-      "size": 3627381,
-      "sha256": "da4d1b8eebb864c884cdb50dcc3f37a8e3661938dc0881ed920a4e51b1fc8724",
-      "minSdk": "1.4",
+      "size": 14624369,
+      "sha256": "f862891245917c633cc2f6e9326bd81d4db46b93af4167957abe8ad40d5a2414",
+      "minSdk": "1.9",
       "permissions": [],
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/screenshots/1.png",
@@ -5724,6 +5724,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/ash-protocol",
       "runtime": "lua",
+      "targetSdk": "1.9",
       "subtitle": {
         "en": "Six chapters. Four weapons. One last order.",
         "tr": "Altı bölüm. Dört silah. Son bir emir.",
@@ -5732,15 +5733,16 @@
         "es": "Seis capítulos, cuatro armas, una orden."
       },
       "changelog": {
-        "en": "First Store release: six story chapters, four weapons, six enemy types and textured 3D environments.",
-        "tr": "İlk Store sürümü: altı hikâye bölümü, dört silah, altı düşman türü ve dokulu 3B ortamlar.",
-        "de": "Erste Store-Version: sechs Story-Kapitel, vier Waffen, sechs Gegnertypen und texturierte 3D-Umgebungen.",
-        "fr": "Première version Store : six chapitres, quatre armes, six types d’ennemis et décors 3D texturés.",
-        "es": "Primera versión Store: seis capítulos, cuatro armas, seis tipos de enemigos y entornos 3D texturizados."
+        "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). Per-area lighting with shadows, emissive lamps and screens, reflections, wet floors, glass, layered weapon sound and ambience, effects quality setting.",
+        "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Bölgeye göre gölgeli ışık, parlayan lamba ve ekranlar, yansımalar, ıslak zeminler, cam, katmanlı silah sesleri ve ortam sesleri, efekt kalitesi ayarı."
       },
       "added": "2026-11-02",
       "updated": "2026-11-03",
       "history": [
+        {
+          "version": "1.5.0",
+          "date": "2026-11-03"
+        },
         {
           "version": "1.0.1",
           "date": "2026-11-03"
@@ -5876,6 +5878,10 @@
       "added": "2026-11-01",
       "updated": "2026-11-03",
       "history": [
+        {
+          "version": "1.0.3",
+          "date": "2026-11-03"
+        },
         {
           "version": "1.0.1",
           "date": "2026-11-02"
@@ -6370,14 +6376,14 @@
         "fr": "Un roguelike d’action original en pixel art et vue de dessus : cinq régions aux plans et palettes distincts, treize étapes ramifiées par région et vingt-cinq salles pour un voyage complet. Trois armes de départ, dix variantes d’ennemis et cinq boss avec attaques annoncées et seconde phase. Trente bénédictions améliorables, six synergies, marchands, trésors, autels, refuges et améliorations permanentes de l’atelier. Voyages générés par graine, mort définitive et sauvegardes permettant de reprendre. Sprites animés, police bitmap, mise à l’échelle entière et musique originale. Textes en anglais et turc. Les images sont des aperçus logiciels signalés ; la validation sur appareil reste à effectuer.",
         "es": "Un roguelike de acción original en pixel art con vista cenital: cinco regiones con diseños y paletas distintos, trece nodos de ruta por región y veinticinco salas por viaje completo. Tres armas iniciales, diez variantes de enemigos y cinco jefes con ataques anunciados y segunda fase. Treinta bendiciones mejorables, seis sinergias, comerciantes, tesoros, altares, refugios y mejoras permanentes del taller. Partidas generadas por semilla, muerte permanente y guardado para continuar. Sprites animados, tipografía bitmap, escalado entero y música original. Textos en inglés y turco. Las imágenes son vistas previas de software identificadas; falta la validación en un dispositivo real."
       },
-      "version": "1.0.0",
+      "version": "1.4.0",
       "author": "sonerx7",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/frost-lantern/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/frost-lantern/frost-lantern.nxvapp",
-      "size": 3031734,
-      "sha256": "05f533dd487917c7cd662cc2ebc7e7fb0c79cc8981e750f9e1d7cee90b0eb978",
-      "minSdk": "1.4",
+      "size": 11421703,
+      "sha256": "4c64a72f5eadaabbc55aa97fae4ce77cf6f2717920302633ceb329ef8a2004a4",
+      "minSdk": "1.9",
       "permissions": [],
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/frost-lantern/screenshots/1.png",
@@ -6389,7 +6395,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/frost-lantern",
       "runtime": "lua",
-      "targetSdk": "1.4",
+      "targetSdk": "1.9",
       "subtitle": {
         "en": "Five realms. Thirty boons. A lost dawn.",
         "tr": "Beş bölge. Otuz lütuf. Kayıp bir şafak.",
@@ -6398,15 +6404,16 @@
         "es": "Cinco reinos y treinta bendiciones."
       },
       "changelog": {
-        "en": "First release: five pixel-art regions, thirty boons, three weapons and permanent workshop upgrades.",
-        "tr": "İlk sürüm: beş piksel bölge, otuz lütuf, üç silah ve kalıcı atölye geliştirmeleri.",
-        "de": "Erste Version: fünf Pixelregionen, dreißig Segen, drei Waffen und dauerhafte Werkstattverbesserungen.",
-        "fr": "Première version : cinq régions, trente bénédictions, trois armes et améliorations permanentes.",
-        "es": "Primera versión: cinco regiones, treinta bendiciones, tres armas y mejoras permanentes."
+        "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). Layered sound and ambience beds, hit-stop and lantern flare on kills, atmosphere setting.",
+        "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Katmanlı ses ve ortam sesleri, vuruşta duraklama ve fener parlaması, atmosfer ayarı."
       },
       "added": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-03",
       "history": [
+        {
+          "version": "1.4.0",
+          "date": "2026-11-03"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-02"
@@ -6690,14 +6697,14 @@
         "fr": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
         "es": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending."
       },
-      "version": "1.2.0",
+      "version": "1.7.0",
       "author": "sonerx7",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/luma.nxvapp",
-      "size": 9142324,
-      "sha256": "f789845f335ea5ad634d3c104c1a55052150f0dd011460b0e23e846ce75473db",
-      "minSdk": "1.4",
+      "size": 20075541,
+      "sha256": "257780dce1a8fb97735a9428c1240d270e3c2ba4929f3601a60ad84bacfbce3e",
+      "minSdk": "1.9",
       "permissions": [],
       "screenshots": [
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/screenshots/1.png",
@@ -6709,6 +6716,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/luma",
       "runtime": "lua",
+      "targetSdk": "1.9",
       "subtitle": {
         "en": "Explore ten worlds. Outsmart eight enemies.",
         "tr": "On dünyayı keşfet. Sekiz düşmanla savaş.",
@@ -6717,15 +6725,16 @@
         "es": "Diez mundos, ocho tipos de enemigos."
       },
       "changelog": {
-        "en": "First Store release: ten worlds, eight enemy behaviours, 48 original models and UV textures.",
-        "tr": "İlk Store sürümü: on dünya, sekiz düşman davranışı, 48 özgün model ve UV dokuları.",
-        "de": "Erste Store-Version: zehn Welten, acht Gegnerverhalten, 48 eigene Modelle und UV-Texturen.",
-        "fr": "Première version Store : dix mondes, huit comportements ennemis, 48 modèles et textures UV.",
-        "es": "Primera versión Store: diez mundos, ocho comportamientos enemigos, 48 modelos y texturas UV."
+        "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). New PBR renderer look: real-time lights, bloom, per-world mood, reflections, metal and glass materials, layered sound and ambience, effects quality setting.",
+        "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Yeni PBR görünüm: gerçek zamanlı ışıklar, bloom, dünyaya göre atmosfer, yansımalar, metal ve cam malzemeler, katmanlı ses ve ortam sesleri, efekt kalitesi ayarı."
       },
       "added": "2026-11-02",
-      "updated": "2026-11-02",
+      "updated": "2026-11-03",
       "history": [
+        {
+          "version": "1.7.0",
+          "date": "2026-11-03"
+        },
         {
           "version": "1.2.0",
           "date": "2026-11-02"

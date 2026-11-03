@@ -58,7 +58,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Apps/utilities/texttools/icon.png" width="32"> | [Metin Araçları](Apps/utilities/texttools/) | Harf düzelt, metni topla, kelime say |
 | <img src="Apps/utilities/unitconv/icon.png" width="32"> | [Birim Dönüştürücü](Apps/utilities/unitconv/) | Uzunluk, kütle, sıcaklık, veri ve fazlası |
 
-## Medya (16)
+## Medya (15)
 
 | | Ad | Açıklama |
 |---|---|---|
