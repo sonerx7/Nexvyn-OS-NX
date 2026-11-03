@@ -291,22 +291,5 @@
   "msg.load_failed": "无法加载此世界。",
   "msg.low_memory_view": "内存不足：视距已降至 {0} 个区块",
   "ui.inv_help_touch": "点按拿起，再点按放下 · 拖动移动 · 长按拆分 · 点按外部丢弃",
-  "ui.no_voxels": "BlockCraft requires the JavaScript voxel API (SDK 1.7 or later). Update the Nexvyn OS system.",
-  "book.title": "Recipe Book",
-  "book.button": "Recipes · R",
-  "book.fill": "Place ingredients · A",
-  "book.missing": "Required ingredients are missing.",
-  "book.empty_grid": "Empty the crafting grid first.",
-  "book.hint": "Select with arrows. R / B closes.",
-  "set.graphics": "Graphics profile",
-  "set.fast": "Fast",
-  "set.balanced": "Balanced",
-  "set.fancy": "Fancy",
-  "set.profile_hint": "Presets adjust distance, clouds and particles.",
-  "book.clear": "Clear grid · L",
-  "book.available": "Craftable only · Y",
-  "book.all": "All recipes · Y",
-  "book.none": "No craftable recipes with the items in your inventory.",
-  "ui.search_items": "Search items",
-  "ui.search_all": "All · F / −"
+  "ui.no_voxels": "BlockCraft requires the JavaScript voxel API (SDK 1.7 or later). Update the Nexvyn OS system."
 }

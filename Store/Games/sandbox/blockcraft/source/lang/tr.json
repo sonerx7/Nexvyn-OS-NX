@@ -291,22 +291,5 @@
   "msg.load_failed": "Bu dünya yüklenemedi.",
   "msg.low_memory_view": "Bellek azalıyor: görüş mesafesi {0} chunk'a indirildi",
   "ui.inv_help_touch": "Almak için dokun, koymak için yine dokun · taşımak için sürükle · bölmek için basılı tut · atmak için dışarı dokun",
-  "ui.no_voxels": "BlockCraft için JavaScript voxel API desteği (SDK 1.7 veya üzeri) gerekir. Nexvyn OS sistemini güncelleyin.",
-  "book.title": "Üretim Rehberi",
-  "book.button": "Tarifler · R",
-  "book.fill": "Malzemeleri yerleştir · A",
-  "book.missing": "Gerekli malzemeler envanterde yok.",
-  "book.empty_grid": "Önce üretim alanını boşalt.",
-  "book.hint": "Yön tuşlarıyla seç. R / B ile kapat.",
-  "set.graphics": "Görsel profil",
-  "set.fast": "Hızlı",
-  "set.balanced": "Dengeli",
-  "set.fancy": "Ayrıntılı",
-  "set.profile_hint": "Profil; mesafe, bulut ve parçacıkları ayarlar.",
-  "book.clear": "Alanı boşalt · L",
-  "book.available": "Yalnızca üretilebilir · Y",
-  "book.all": "Tüm tarifler · Y",
-  "book.none": "Envanterindeki malzemelerle üretilebilen tarif yok.",
-  "ui.search_items": "Eşya ara",
-  "ui.search_all": "Tümü · F / −"
+  "ui.no_voxels": "BlockCraft için JavaScript voxel API desteği (SDK 1.7 veya üzeri) gerekir. Nexvyn OS sistemini güncelleyin."
 }

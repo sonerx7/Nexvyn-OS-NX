@@ -126,43 +126,6 @@ export function newFurnace() {
 }
 export const RECIPE_COUNT = () => RECIPES.length;
 
-const BOOK_CACHE=new Map();
-export function recipesForGrid(width) {
-  if (BOOK_CACHE.has(width)) return BOOK_CACHE.get(width);
-  const list=[];
-  RECIPES.forEach((r,index)=>{
-    if (r.w>width || r.h>width || r.shapeless && r.shapeless.length>width*width) return;
-    const cells=new Array(width*width).fill(null);
-    if (r.shapeless) r.shapeless.forEach((opts,i)=>cells[i]=opts.slice());
-    else r.pattern.forEach((row,y)=>[...row].forEach((ch,x)=>{if(ch!==' ')cells[y*width+x]=r.key[ch].slice();}));
-    list.push({index,id:r.result.id,count:r.result.count,cells});
-  });
-  BOOK_CACHE.set(width,list);return list;
-}
-
-// Transactional ingredient allocation. Alternatives use backtracking, so a
-// flexible ingredient cannot consume the only item needed by a specific slot.
-// Never mutate the player's inventory until every recipe cell has a source.
-export function prepareRecipe(recipe,slots) {
-  const counts=new Map();for(const s of slots)if(s)counts.set(s.id,(counts.get(s.id)||0)+s.count);
-  const needed=recipe.cells.map((opts,cell)=>({opts,cell})).filter(x=>x.opts);
-  const assigned=new Array(needed.length);
-  function choose(i){
-    if(i===needed.length)return true;
-    for(const id of needed[i].opts){const n=counts.get(id)||0;if(n<1)continue;
-      counts.set(id,n-1);assigned[i]=id;if(choose(i+1))return true;counts.set(id,n);
-    }return false;
-  }
-  if(!choose(0))return null;
-  const result=slots.map(s=>s?{...s}:null),grid=new Array(recipe.cells.length).fill(null);
-  assigned.forEach((id,i)=>{
-    const slot=result.findIndex(s=>s&&s.id===id&&s.count>0);
-    grid[needed[i].cell]={id,count:1,damage:result[slot].damage||0};
-    if(--result[slot].count===0)result[slot]=null;
-  });
-  return {slots:result,grid};
-}
-
 export function newChest() {
   return { type: "chest", slots: new Array(27).fill(null) };
 }

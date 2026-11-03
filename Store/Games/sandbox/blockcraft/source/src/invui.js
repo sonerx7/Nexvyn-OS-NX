@@ -1,4 +1,3 @@
-import { RecipeBook } from './recipebook.js';
 // Inventory screens: player inventory with 2x2 crafting, crafting table (3x3), furnace, chest and the creative
 // palette. Click rules: A / left click picks up, places or swaps a stack, Y / right click splits or places
 // one, ZR / shift quick-moves. The controller moves a slot cursor with the D-pad or left stick.
@@ -16,7 +15,6 @@ const TITLES = { inventory: "ui.crafting", crafting: "ui.crafting_table", furnac
 export class InvUI {
   constructor(app) {
     this.app = app;
-    this.recipeBook=new RecipeBook();
     this.isOpen = false;
     this.kind = null;
     this.be = null;
@@ -28,8 +26,6 @@ export class InvUI {
     this.slots = [];
     this.tab = 0;
     this.scroll = 0;
-    this.search = '';
-    this.paletteCache = null;
     this.repeat = 0;
     this.hover = -1;
     this.tp = null;          // active touch: { x0, y0, x, y, t0, slot, moved, mode, from, scroll0 }
@@ -42,7 +38,7 @@ export class InvUI {
   get game() { return this.app.game; }
 
   open(kind, be) {
-    this.isOpen = true;this.recipeBook.open=false;
+    this.isOpen = true;
     this.kind = kind;
     this.be = be || null;
     this.gridW = kind === "crafting" ? 3 : 2;
@@ -63,25 +59,6 @@ export class InvUI {
     this.isOpen = false;
     if (this.kind === "chest" && g) { const p = g.player; g.sound.play("door_close", { x: p.pos.x, y: p.pos.y, z: p.pos.z, volume: 0.5 }); }
     this.kind = null;
-  }
-
-  clearGrid() {
-    const g=this.game;
-    for(let i=0;i<this.grid.length;i++) {
-      const s=this.grid[i];if(!s)continue;
-      const left=g.inventory.add(s);
-      this.grid[i]=left>0?stack(s.id,left,s.damage):null;
-    }
-    this.result=matchRecipe(this.grid,this.gridW);
-    g.inventory.changed();
-  }
-
-  filteredPalette() {
-    const query=this.search.trim().toLocaleLowerCase();
-    if(!this.paletteCache || this.paletteCache.query!==query || this.paletteCache.tab!==this.tab) {
-      this.paletteCache={query,tab:this.tab,list:this.palette[this.tab].filter(id=>!query||itemName(id).toLocaleLowerCase().includes(query))};
-    }
-    return this.paletteCache.list;
   }
 
   // ---------- slot actions ----------
@@ -169,9 +146,9 @@ export class InvUI {
         if (s.id === I.water_bucket || s.id === I.lava_bucket || s.id === I.milk_bucket) { this.grid[i] = stack(I.bucket, 1); continue; }
         if (--s.count <= 0) this.grid[i] = null;
       }
-      inv.changed();
       g.sound.play("pop", { volume: 0.4 });
     }
+    inv.changed();
   }
 
   // ---------- touch ----------
@@ -190,7 +167,6 @@ export class InvUI {
   // Mouse events while the screen is open (main.js app.event). Finger events are handled here and consumed;
   // mouse events go on to ui.hit as before.
   pointer(e) {
-    if (this.recipeBook.open) return false;
     if (e.type === "mousedown") {
       this.touchUI = !!e.touch;
       if (!e.touch) return false;
@@ -244,25 +220,9 @@ export class InvUI {
   // ---------- frame ----------
   update() {
     const g = this.game, inp = this.app.input;
-    if (this.recipeBook.open) {
-      if(input.pressed('b')||inp.keyPressed('escape')||inp.keyPressed('r'))this.recipeBook.open=false;
-      else {
-        const count=this.recipeBook.items(this).length;
-        if(count&&inp.keyPressed('down'))this.recipeBook.selected=(this.recipeBook.selected+1)%count;
-        if(count&&inp.keyPressed('up'))this.recipeBook.selected=(this.recipeBook.selected-1+count)%count;
-        if(inp.keyPressed('enter'))this.recipeBook.apply(this);
-      }
-      return;
-    }
-    if ((this.kind==='inventory'||this.kind==='crafting')&&(input.pressed('minus')||inp.keyPressed('r'))) {this.recipeBook.toggle();return;}
     if (inp.inventoryPressed() || input.pressed("b") || inp.keyPressed("escape")) { g.closeScreen(); return; }
     this.result = this.kind === "inventory" || this.kind === "crafting" ? matchRecipe(this.grid, this.gridW) : null;
     if (this.kind === "creative" && (input.pressed("l") || input.pressed("r") || inp.keyPressed("tab"))) { this.tab = 1 - this.tab; this.scroll = 0; }
-    if(this.kind==='creative'&&(input.pressed('minus')||inp.keyPressed('f')))this.editSearch();
-  }
-
-  editSearch() {
-    ui.keyboard(this.search,t=>{if(t!==null&&t!==undefined){this.search=t.slice(0,32);this.scroll=0;}},TR('ui.search_items'));
   }
 
   // slot cursor movement with the controller
@@ -294,12 +254,10 @@ export class InvUI {
   }
 
   draw(w, h, dt) {
-    if (this.recipeBook.open) {this.recipeBook.draw(w,h,this);return;}
-    const g = this.game, k = Math.min(this.app.uiScale(w, h),(h-28)/(this.kind==='creative'?550:460)), inv = g.inventory;
+    const g = this.game, k = this.app.uiScale(w, h), inv = g.inventory;
     gfx.color("#00000088"); gfx.rect(0, 0, w, h);
     // slots stay at least 44 px for fingers as long as nine of them fit
-    const rows=this.kind==='creative'?9:7,extra=this.kind==='creative'?136:112;
-    const S = Math.min(Math.max(44 * k, 44), (w - 24) / 9.8,(h-28-extra*k)/rows), pad = 16 * k;
+    const S = Math.min(Math.max(44 * k, 44), (w - 24) / 9.8), pad = 16 * k;
     this.S = S;
     const PW = S * 9 + pad * 2;
     const topH = this.kind === "chest" ? S * 3 + 40 * k : this.kind === "creative" ? S * 5 + 64 * k : S * 3 + 40 * k;
@@ -307,7 +265,7 @@ export class InvUI {
     const px = (w - PW) / 2, py = Math.max(8 * k, (h - PH) / 2);
     this.panel = [px, py, PW, PH];
     gfx.color("#00000066"); gfx.rect(px + 4 * k, py + 6 * k, PW, PH, 10 * k);
-    gfx.color("#C6C6C6"); gfx.rect(px, py, PW, PH, 0);
+    gfx.color("#C6C6C6"); gfx.rect(px, py, PW, PH, 10 * k);
     gfx.color("#FFFFFF80"); gfx.rect(px + 3 * k, py + 3 * k, PW - 6 * k, 3 * k, 2 * k);
     gfx.color("#3F3F3F"); gfx.text(TR(TITLES[this.kind] || "ui.crafting"), px + pad, py + 10 * k, 18 * k, "bold");
     const slots = [];
@@ -332,7 +290,7 @@ export class InvUI {
     } else if (this.kind === "chest") {
       for (let i = 0; i < 27; i++) add(this.be.slots, i, px + pad + (i % 9) * S, top + Math.floor(i / 9) * S);
     } else if (this.kind === "creative") {
-      const list = this.filteredPalette();
+      const list = this.palette[this.tab];
       const rows = Math.ceil(list.length / 9);
       this.scroll = Math.max(0, Math.min(this.scroll, Math.max(0, rows - 5)));
       const tabs = [TR("ui.tab_blocks"), TR("ui.tab_items")];
@@ -347,13 +305,6 @@ export class InvUI {
         if (idx >= list.length) continue;
         add(null, idx, px + pad + c * S, top + r * S, "palette", list[idx]);
       }
-      const sy=top+S*5+3*k;
-      gfx.color('#7C7C7C');gfx.rect(px+pad,sy,PW-pad*2-32*k,23*k,0);
-      gfx.color('#FFFFFF');gfx.text(TR('ui.search_items')+': '+(this.search||TR('ui.search_all')),px+pad+6*k,sy+3*k,13*k,'sans');
-      if(ui.hit('creative:search',px+pad,sy,PW-pad*2-32*k,23*k).clicked)this.editSearch();
-      const tx=px+PW-pad-26*k;
-      gfx.color('#8E4141');gfx.rect(tx,sy,26*k,23*k,0);gfx.icon('delete',tx+13*k,sy+11*k,18*k,'#FFFFFF');
-      if(ui.hit('creative:trash',tx,sy,26*k,23*k).clicked){this.carried=null;inv.changed();}
       // scroll bar
       if (rows > 5) {
         const sh = S * 5, f = this.scroll / Math.max(1, rows - 5);
@@ -370,6 +321,7 @@ export class InvUI {
     const iy = py + PH - pad - S * 4 - 8 * k;
     for (let i = 9; i < 36; i++) add(inv.slots, i, px + pad + ((i - 9) % 9) * S, iy + Math.floor((i - 9) / 9) * S);
     for (let i = 0; i < 9; i++) add(inv.slots, i, px + pad + i * S, iy + S * 3 + 8 * k);
+    if (this.kind === "creative") add(null, 0, px + PW - pad - S, py + 8 * k + 0, "trash");
     this.slots = slots;
 
     // input: controller cursor, then mouse per slot (fingers go through pointer())
@@ -398,15 +350,6 @@ export class InvUI {
       if (input.pressed("zr")) this.quickMove(cur);
     } else if (input.pressed("a") || input.pressed("down") || input.pressed("up") || input.pressed("left") || input.pressed("right")) this.cursor = Math.max(0, slots.length - 9);
 
-    if (this.kind==='inventory'||this.kind==='crafting') {
-      const bx=px+PW-130*k,by=py+8*k;gfx.color('#5B7948');gfx.rect(bx,by,110*k,27*k,0);
-      gfx.color('#FFFFFF');gfx.text(TR('book.button'),bx,by+5*k,13*k,'bold','center',110*k);
-      if(ui.hit('recipe:open',bx,by,110*k,27*k).clicked)this.recipeBook.toggle();
-      const ex=px+PW/2+60*k,ey=top+S*2.3;
-      gfx.color('#737373');gfx.rect(ex,ey,120*k,25*k,0);gfx.color('#FFFFFF');
-      gfx.text(TR('book.clear'),ex,ey+5*k,12*k,'bold','center',120*k);
-      if(ui.hit('recipe:clear',ex,ey,120*k,25*k).clicked||input.pressed('l'))this.clearGrid();
-    }
     // draw slots
     for (let i = 0; i < slots.length; i++) {
       const sl = slots[i];
