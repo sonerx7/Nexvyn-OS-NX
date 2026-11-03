@@ -52,6 +52,11 @@ zamanlama / izin API'si / yaşam döngüsü callback'leriyle `"1.4"`).
   birimlerde `game.gfx` ile çiz, HUD'u `scene:ui()` içinde çiz, girdiyi `game.input` ile al.
 - Checker yorumları da tarar: yorumlara var olmayan anahtarlar için `TR("...")` örnekleri yazma.
 
+- SDK 1.9 (`"minSdk": "1.9"`): seçenekler tablodur: `g3d.renderer("pbr")`, `g3d.addLight{...}` → id,
+  `g3d.shadows{...}`, `g3d.postfx{...}`, `g3d.environment{...}`, `g3d.material(obj, {...}[, name])`,
+  `g3d.drawInstanced(mesh, {x,y,z,rx,ry,rz,s,...})`; `net.request({...}, fn(res))` → id, `net.ws(url)` → id,
+  `ui.beginFeed(...)` → `{first, last}` (öğeler 1 tabanlı), `ui.pager(...)` → `{page, pos, changed}`, `media.open(src, {...})`.
+
 ## Denetim
 
 `python tools/lua_check.py <bundle> --frames 600` (`pip install lupa` gerekir): her dosyayı derler, TR anahtarlarını

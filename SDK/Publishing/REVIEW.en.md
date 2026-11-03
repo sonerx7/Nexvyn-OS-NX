@@ -52,7 +52,7 @@ items the rules do not allow at all).
 
 ## 6. Quality
 
-- [ ] Installs and opens on the console or in Ryujinx; no crash in a few minutes of use
+- [ ] Installs and opens on the console; no crash in a few minutes of use
 - [ ] Readable in light and dark mode; nothing overflows at the minimum window size, handheld and TV
 - [ ] Usable by touch, cursor and (games) controller; targets of at least 28 px
 - [ ] Smooth: nothing heavy in `app.draw`, no callback near 3 seconds (`app.load` near 10); big models load with
@@ -63,13 +63,17 @@ items the rules do not allow at all).
 - [ ] Games: the look is the game's own. Title, HUD and pause screens are drawn by the game in its art direction (not
       `ui.*` widgets or `theme` colors) and do not copy the menu layout, colours or title composition of a sample or
       another game
+- [ ] Games: the quality bar (`Guides/GAME_FEEL.en.md` section 8, `Guides/SOUND_DESIGN.en.md`). Every action has a
+      sound and a visual response; no raw unfiltered beeps as the sound set; music or ambience; a palette, not flat
+      single-colour screens; the title is a styled logo, not default text; buttons show focus for the controller;
+      screens change with a transition
 
 ## 7. Store listing
 
 - [ ] `store.json`: `subtitle` (≤ 45 characters) and `description` at least in English; `kind`, `tags`; `shots` valid
-- [ ] `icon.png` 256 x 256 (128 for older items): for games and apps made with the SDK, key art of the item itself
-      (its hero or main object, world, light, name), bold and readable at 64 px, unlike the other icons in the store;
-      not a flat symbol on a gradient. 3-4 screenshots without personal data
+- [ ] `icon.png` 256 x 256 (128 for older items): for games and apps made with the SDK, a picture of the item itself
+      (its hero, main object or world), readable at 64 px; not a flat placeholder glyph on a gradient. The style (calm
+      or flashy, with or without the name) is the maker's choice. 3-4 screenshots without personal data
 - [ ] `README.md` in English (more languages optional)
 - [ ] An update has a `changelog` (What's New)
 

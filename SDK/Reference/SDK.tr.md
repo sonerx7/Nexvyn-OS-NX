@@ -106,7 +106,7 @@ kullanıcıyı uyarır. Package biçiminin tamamı, imzalama, izin kuralları ve
 
 ### SDK sürümleri
 
-`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.8"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
+`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.9"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
 yükseltin.
 
 | SDK | Nexvyn OS'un ekledikleri |
@@ -120,6 +120,7 @@ yükseltin.
 | 1.6 | `fs.unzip` (bir zip'i arka planda ilerlemeyle açar) ve yeni `"games"` izniyle `sys.games` (yüklü oyunlar), Lua, JavaScript, Python ve Squirrel'da; her runtime'da `sys.speak` / `sys.stopSpeaking` (metin okuma, izin gerekmez); `"python3"` runtime'ı (CPython 3.12, bölüm 12) |
 | 1.7 | JavaScript'te `g3d.voxels` voksel dünyaları (bölüm 8b, *Voksel dünyalar*): chunk akışı, yerleşik arazi üreteci, ışık, arka plan thread'lerinde üretilen yumuşak ışıklı mesh'ler, texture atlas shader'ı, kayıt, ışın testi, kutu fiziği; Lua ve JavaScript'te `mesh:setTexture(path, pixelated)` |
 | 1.8 | `g3d.model` (bölüm 8b, *3B modeller*): node hiyerarşisi, materyaller, gömülü ve harici texture'lar ve iskelet animasyonuyla `.glb`, `.gltf`, `.fbx` (ve `.obj`, `.stl`) dosyaları (geçişli `play`, `stop`, `update`, `time`, bağlama için node konumları ve matrisleri), `g3d.drawMatrix`; GPU skinning; bütün runtime'larda (Squirrel, C, Java ve `"python3"` `g3d.model*` fonksiyonlarıyla) |
+| 1.9 | Runtime kütüphanesi: Lua'da `net.request{url, method, body, contentType, headers}` (JavaScript ve Python'daki gibi her yöntem); JavaScript `TextEncoder` / `TextDecoder` (UTF-8), `URL` / `URLSearchParams`, `structuredClone`; pocketpy'de olmayan Python `str` metotları (`isdigit`, `isalpha`, `isspace`, `title`, `partition`, `rfind`, `rsplit`, `removeprefix`... ve `split(sep, maxsplit)`, başlangıç ve bitişli `find` / `count`, tuple alan `startswith`), `dict.setdefault` / `fromkeys`, `pow()`; Python sistem kütüphanesine `urllib.parse`, `html`, `uuid`; akış, fotoğraf ve kısa video uygulamaları (bölüm 8d): `net.request` seçenekleri (JSON, form, multipart ve dosya gövdesi, `saveTo`, yükleme ilerlemesi, çerezler, yeniden deneme, çevrimdışı önbellek), `net.cancel`, `net.clearCookies`, `net.clearCache`, WebSocket istemcisi (`net.ws`, `wsSend`, `wsPoll`, `wsClose`, `wsState`), `net.oauth` (konsolun tarayıcısında oturum açma), `gfx.imageUrl` / `imageState` (disk ve bellek önbellekli web resimleri), `media.*` video ve ses oynatıcıları, `ui.beginFeed` / `feedItem` / `endFeed`, `ui.pager`, `ui.richText` / `measureRichText`, `sys.relativeTime`; Lua, JavaScript, Python ve C'de; pbr renderer (bölüm 8b, *Modern görüntü*), `g3d.renderer("pbr")` ile uygulama başına isteğe bağlı: normal, occlusion ve emissive haritalı metallic-roughness materyaller (glTF ve FBX, MetallicSmoothness haritaları), `g3d.material`, gerçek zamanlı ışıklar (`g3d.addLight` / `updateLight` / `removeLight` / `clearLights` / `lights`), güneş ve spot gölgeleri (`g3d.shadows`), HDR, ton eşleme, bloom ve MSAA (`g3d.postfx`), cube map ya da yarım küre ortam ışığı (`g3d.environment`), `g3d.drawInstanced`, `g3d.caps`; Lua, JavaScript, Python ve C |
 
 **Yeni API alan diller.** SDK 1.9'dan itibaren yeni fonksiyonlar Lua, JavaScript, Python (`"python"` ve `"python3"`)
 ve C'ye gelir. Squirrel ve Java SDK 1.8'de donduruldu: sahip oldukları her fonksiyon sonraki her Nexvyn OS'ta
@@ -298,7 +299,7 @@ göstermeden benzersiz yapmak için sonuna `"##sonek"` ekleyin).
 | `ui.prompt(title, message, default, function(textOrNil) end)` | metin girişi iletişim kutusu |
 | `ui.openFile(function(pathOrNil) end, {".txt",".md"}[, title])` | sistem açma iletişim kutusu |
 | `ui.saveFile(function(pathOrNil) end, "name.txt"[, title])` | sistem kaydetme iletişim kutusu |
-| `ui.keyboard(initial, function(textOrNil) end[, guide])` | Nintendo sistem klavyesi |
+| `ui.keyboard(initial, function(textOrNil) end[, guide])` | sistem klavyesi |
 
 Bir metin alanı odaklandığında ekran klavyesi kendiliğinden açılır.
 
@@ -366,10 +367,14 @@ net.post(url, body[, contentType], callback)                      -- varsayılan
 net.json(url, function(data, err) end)                            -- GET + json.decode
 net.download(url, "files/x.zip", function(ok, pathOrError) end, function(now, total) end)
 net.encode("a b&c")                                               -- URL kodlama
+net.request({url = u, method = "PUT", body = json.encode(t),      -- SDK 1.9: her yöntem (PUT, PATCH, DELETE...),
+             contentType = "application/json", headers = {}},      -- JavaScript / Python'daki net.request ile aynı
+            function(res) end)
 ```
 
 `res`: `ok` (2xx/3xx), `status`, `body`, `error`, `url` (yönlendirmelerden sonra), `headers` (küçük harfli adlar).
-Önce `sys.online()` ile denetleyin ve çevrimdışıyken anlaşılır bir ileti gösterin.
+Önce `sys.online()` ile denetleyin ve çevrimdışıyken anlaşılır bir ileti gösterin. Yükleme, JSON gövde, çerez,
+yeniden deneme, çevrimdışı önbellek, WebSocket ve oturum açma bölüm 8d'de (`net.request`, SDK 1.9).
 
 ## 8. Sistem — `sys`, `audio`, `timer`, `TR`
 
@@ -379,7 +384,7 @@ saatinde `{year, month, day, hour, min, sec, wday (0=Pazar), yday, epoch}` · `s
 `sys.notify(title, body)` (bildirim şeridi) · `sys.open(path)` (doğru uygulamayla açar) · `sys.launch(appId[, arg])` ·
 `sys.clipboard([text])` al/ayarla · `sys.log(...)` / `print(...)` · `sys.title(text)` pencere başlığı · `sys.exit()`
 pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim, non-blocking; en fazla 2000 ms, yalnızca pencere odaktayken, `sys.vibrate(0)` durdurur) · `sys.appid()` ·
-`sys.sdkVersion()` → `"1.8"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
+`sys.sdkVersion()` → `"1.9"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
 `sys.games` ve `nxv://` bağlantıları kendi izinlerini gerektirir (bölüm 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, izin gerekmez) metni yerleşik sesle okur; o an söylenenin ardından sıraya girer ve
@@ -570,16 +575,17 @@ sürücü) skinning CPU'da yapılır; CPU yedeği modelleri mesh'ler gibi textur
 **Sınırlar.** En fazla 96 MB dosya, 1 000 000 vertex, 1 500 000 üçgen, 20 000 node, iskelet başına 1024 kemik ve
 4 000 000 animasyon anahtar değeri. Bozuk ya da desteklenmeyen bir dosya yalnızca `g3d.model`'in bir mesajla
 başarısız olmasına yol açar; uygulamayı asla çökertmez. Morph target'lar (blend shape), dosyadaki kamera ve ışıklar
-yok sayılır; cubic spline animasyon anahtarları anahtar değerleri arasında doğrusal oynatılır; metallic / roughness
-değerleri okunur ama henüz çizime yansımaz. Emissive rengi olan (ve emissive haritası olmayan) bir materyal temel renk
-artı emissive renkle ışıksız çizilir; vizörler, lambalar ve iticiler parlar. Bir FBX iskeletinin dinlenme pozu bind
+yok sayılır; cubic spline animasyon anahtarları anahtar değerleri arasında doğrusal oynatılır; metallic, roughness,
+normal, occlusion ve emissive haritalarını pbr renderer çizer (SDK 1.9, aşağıda *Modern görüntü*). Basic renderer'da
+emissive rengi olan (ve emissive haritası olmayan) bir materyal temel renk artı emissive renkle ışıksız çizilir;
+vizörler, lambalar ve iticiler parlar. Bir FBX iskeletinin dinlenme pozu bind
 pozudur (FBX dosyaları kaydedildikleri kareyi kemiklerde tutar), bu yüzden dinlenmedeki model skinsiz mesh'iyle aynı
 görünür.
 
 **Model hazırlamak.** "+Y yukarı" ve metreyle glTF binary (`.glb`) olarak dışa aktarın, texture'ları gömün, Switch'te
 karakter başına birkaç bin üçgende kalın ve klipleri adlandırın. FBX dışa aktarımları da çalışır (dosyanın eksen ve
-birimleri yüklenirken dönüştürülür). Materyalin temel renk texture'ı kullanılır; normal, metallic ve emissive
-haritaları kullanılmaz. Tarifin tamamı (dışa aktarma listesi, bütçeler, yükleme ekranları, takılan nesneler,
+birimleri yüklenirken dönüştürülür). Basic renderer materyalin temel renk texture'ını, pbr renderer (SDK 1.9)
+bütün haritalarını kullanır. Tarifin tamamı (dışa aktarma listesi, bütçeler, yükleme ekranları, takılan nesneler,
 çarpışma): `docs/MAKE_A_GAME.tr.md`.
 
 Yukarıdaki fonksiyonlar JavaScript ve Python'da aynıdır (`g3d.model(path, size)` başarısız olunca `null` / `None`
@@ -596,6 +602,102 @@ err)` callback'i alır; Python: `g3d.loadModel(path, size=None, callback=None)` 
 Native uygulamalar (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadModelShared`, `g3d::Animator` (`play`,
 `crossfade`, `stop`, `update`, `nodeMatrix`), `g3d::drawModel(model, animator, matrix, opts)` ve
 `g3d::ModelInstance` (script binding'lerinin kullandığı).
+
+### Modern görüntü — `g3d.renderer("pbr")` (SDK 1.9)
+
+**pbr renderer** aynı mesh ve modelleri fiziksel tabanlı materyallerle, gerçek zamanlı ışıklarla, gölgelerle, ton
+eşlemeli HDR ve bloom'la ve GPU instancing'le çizer. Bu, Nexvyn OS'un sürümlü grafik çekirdeği **NexGFX**'tir
+(Nexvyn OS 1.3.0'da 1.0; `g3d.rendererInfo()` onun ve backend'inin adını verir). Konsolun OpenGL ES 3 GPU yolunda çalışır ve **uygulama
+başına isteğe bağlıdır**: aşağıdaki fonksiyonları hiç çağırmayan bir uygulama eskisiyle birebir aynı çizilir.
+
+```lua
+local hero, lamp
+function app.load()
+  print(g3d.renderer("pbr"))            -- "pbr"; GPU sunmuyorsa "basic" (aynı çağrılar yine çizer)
+  g3d.shadows({quality = "high", distance = 25})
+  g3d.postfx({exposure = 1.0, tonemap = "aces", bloom = 0.06, msaa = 4})
+  g3d.environment({sky = "#9DB8E8", ground = "#4A4038", sun = 2.5})
+  hero = g3d.model("bundle:/models/hero.glb")        -- PBR haritaları olduğu gibi kullanılır
+  lamp = g3d.addLight({type = "point", x = 1, y = 2, z = 0, color = "#FF9A3C", intensity = 6, range = 8})
+end
+function app.update(dt)
+  t = (t or 0) + dt
+  g3d.updateLight(lamp, {x = math.cos(t) * 2, z = math.sin(t) * 2})   -- yalnızca verilen alanlar değişir
+end
+function app.draw(w, h)
+  g3d.begin(0, 0, w, h, 55)
+  g3d.camera(0, 2, 6, 0, 1, 0)
+  g3d.light(0.5, 0.8, 0.3, 0.4, "#FFF1DD")        -- güneş: ona doğru yön, ambient, renk
+  g3d.draw(hero, 0, 0, 0)
+  g3d.finish()
+end
+```
+
+Renderer ayarları uygulamaya aittir ve değiştirilene kadar kalır: bir kez (`app.load`'da) kurun, gerektiğinde
+değiştirin. Uygulamanın her `g3d.begin`'ine uygulanır; başka uygulamalar bunları görmez.
+
+| Fonksiyon | Açıklama |
+|---|---|
+| `g3d.renderer([ad])` → ad | `"pbr"` ya da `"basic"` (SDK 1.0–1.8'in renderer'ı). Karelerin kullanacağı renderer'ı döndürür: GPU yolu kapalıysa ya da OpenGL ES 3 yoksa `"basic"` (nedeni sistem günlüğünde). İlk `"pbr"` çağrısı shader'ları derler (yarım saniye kadar): `app.load`'da çağırın |
+| `g3d.rendererInfo()` → tablo | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: bu uygulamanın karelerini ne çiziyor |
+| `g3d.caps()` → tablo | `{gpu, pbr, hdr, shadows, instancing, msaa, maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device}`: bu konsolun sundukları |
+| `g3d.addLight(seçenekler)` → id | bir ışık: `type` (`"point"`, `"spot"`, `"directional"`), `x, y, z` (konum), `dx, dy, dz` (parladığı yön), `color`, `intensity` (1 = 1 m uzaktaki beyaz yüzey rengin tamamını alır; odalar için 5–20), `range` (m; ışık orada yumuşakça biter), `inner` / `outer` (spot konisinin yarım açıları, derece), `shadow` (spot: gölge düşürür; isteyen ilk spot alır). En fazla 16 ışık; her nesneyi yakınındaki en güçlü 8'i aydınlatır |
+| `g3d.updateLight(id, seçenekler)` → bool | verilen alanları değiştirir; bilinmeyen id için false |
+| `g3d.removeLight(id)` → bool, `g3d.clearLights()`, `g3d.lights()` → liste | |
+| `g3d.shadows(true \| false \| seçenekler)` | güneşin (`g3d.light`) ve bir spot ışığın gölgeleri: `enabled`, `quality` (`"low"` 1024 px tek örnek, `"medium"` 2048 px 3×3 filtre, `"high"` 2048 px 4×4 filtre), `distance` (güneş gölgelerinin kapsadığı görüş mesafesi, m, varsayılan 30), `bias` (yüzeylerde gölge çizgileri varsa artırın, gölgeler havada duruyorsa azaltın) |
+| `g3d.postfx(seçenekler)` | `exposure` (1), `tonemap` (`"aces"`, `"filmic"`, `"none"`), `bloom` (güç, 0 = kapalı, varsayılan 0.05), `threshold` (bloom'un başladığı HDR parlaklığı, 1), `msaa` (0, 2, 4, 8 örnek), `hdr` (false: float hedef yok, ton eşleme piksel başına, bloom yok; daha hızlı) |
+| `g3d.environment(seçenekler)` | ortam ışığı ve yansımalar: `sky` / `ground` (yarım küre renkleri), `intensity` (`g3d.light`'ın ambient'iyle çarpılır), `sun` (güneş şiddeti, varsayılan 3), `cubemap` (bir göğün 6 görsel yolu +X −X +Y −Y +Z −Z; yansıma ve ortam ondan gelir; `nil` = yarım küre) |
+| `g3d.material(meshYaDaModel, seçenekler \| nil[, ad])` | PBR değerleri: `metallic`, `roughness` (0–1), `emissive` (renk) ve `emissiveStrength` (1'in üstü bloom'a taşar), `normalMap`, `metalRoughMap` (glTF: roughness G, metallic B), `metallicMap`, `roughnessMap` (R), `metalSmoothMap` (MetallicSmoothness: metallic R, smoothness A), `occlusionMap` (R), `emissiveMap`, `normalScale`, `occlusionStrength`, `transmission` (0–1: ince cam, aşağıya bakın), `ior` (1–3, yansıtma; 1.5), `clearcoat` / `clearcoatRoughness` (vernik katmanı). Modelde dosyanın materyallerinin yalnızca verilen alanlarını değiştirir (`ad` = tek materyal, varsayılan hepsi); `nil` dosyanın değerlerine döner. Materyali olmayan mesh'ler metal değildir, roughness 0.6 |
+| `g3d.drawInstanced(meshYaDaModel, dönüşümler[, tint[, flags[, stride]]])` | bir mesh'i çok kez çizer: `dönüşümler` kopya başına 7 sayılık düz bir liste (`x, y, z, rx, ry, rz, ölçek`) ya da `stride` 16 ile 16 sayı (sütun öncelikli matris). pbr renderer'da 128'e kadar kopya tek GPU çağrısında gider; basic renderer'da tek tek çizilir. Çağrı başına en fazla 65 536 kopya |
+
+**Model dosyaları.** glTF / `.glb` materyalleri her şeyi getirir: temel renk, normal, metallic-roughness (ve
+occlusion, "ORM") ve emissive haritaları ve çarpanları, `KHR_materials_emissive_strength`,
+`KHR_materials_transmission`, `KHR_materials_ior` ve `KHR_materials_clearcoat` (çarpanlar) ve alfa modları. FBX dosyaları temel renk,
+normal, metallic, roughness, emissive ve (dışa aktaran yazıyorsa) ambient occlusion getirir; dosyanın bağlamadığı
+haritalar temel renk haritasının yanında aynı adlı görsellerden alınır — `T_Chair_BaseColor.png` → `T_Chair_AO.png`,
+`T_Chair_Metallic.png`, `T_Chair_Roughness.png` ya da bir MetallicSmoothness haritası `T_Chair_MetallicSmoothness.png`
+(metallic R'de, smoothness A'da). Böylece bir oyun motoru doku setiyle dışa aktarılmış model, texture klasörü
+`.fbx`'in yanına kopyalanınca çalışır. Bunun için temel renk haritası bir görsel dosyası olmalıdır (`.fbx`'e gömülü
+değil); normal ve emissive haritaları addan asla bulunmaz, onları FBX materyalinde bağlayın.
+Normal haritaları +Y'dir (yeşil yukarı), tangent'lar texture koordinatlarından çıkarılır.
+
+**pbr renderer ne yapar.** Metallic-roughness BRDF (GGX), yarım küreden ya da cube map'ten split-sum speküler
+terimli görüntü tabanlı ortam ışığı, güneş artı nesne başına 8 nokta / spot / yönlü ışık, görüşe oturtulmuş (texel'e
+hizalı, filtreli) güneş gölgeleri ve bir spot gölgesi, görüş dışındaki nesneler de gölge düşürür, sRGB texture'larla
+doğrusal ışık, sis, ACES / filmic ton eşlemeli HDR hedef, 5 seviyeli bloom, MSAA. Yarı saydam ve parlayan mesh'ler,
+çizgiler, noktalar ve voksel dünyalar aynı karede eskisi gibi çizilir. Instancing kurulum istemez.
+
+**Saydamlık, cam ve yansımalar.** Alfa `MASK` materyalleri (ve texture'lı mesh'ler) kesilir; MSAA açıkken
+kenarları alpha to coverage kullanır, yapraklar ve ızgaralar yumuşak görünür. `BLEND` materyalleri ve alfalı renkler
+opak sahneden sonra, nesne başına arkadan öne sıralı ve premultiplied alfayla çizilir: yansıma tam gücünü korur,
+yüzey yatay açılarda daha opaklaşır (Fresnel), camın yaptığı gibi; çift yüzlüler önce uzak yüzlerini çizer.
+`transmission`'ı olan bir materyal ince camdır: arkasındaki opak sahne görünür, temel rengiyle renklenir ve normal
+haritasıyla kırılır (sahnenin bir kopyasından ekran uzayı kırılma; float hedef yoksa onun yerine harmanlanır).
+Yansımalar `g3d.environment`'tan gelir: gök yarım küresi ya da bölümünüzün bir noktasında çekilmiş bir **yansıma
+probu** olabilen 6 yüzlü bir cube map (6 yüzü 3B aracınızda oradan render edin); pürüzlü yüzeyler bulanık
+seviyelerini okur (yüklenirken önceden filtrelenir). Olmayanlar: ekran uzayı yansımalar, düzlem aynalar ve konsolun
+çalışırken çektiği problar (720p bir karenin GPU bütçesi yetmez; bir prob görseli artı clearcoat ya da parlak
+materyaller görünümün çoğunu verir).
+
+**Bütçe (Switch).** Konsolda ölçün: 720p'de "high" gölge, bloom ve 4× MSAA, basic renderer'dan daha çok GPU zamanı
+harcar. `msaa = 0`, `quality = "medium"`, bölge başına az ışık ve 1024 px ya da daha küçük texture'larla başlayın;
+yalnızca ışığa ihtiyaç duyan sahnelerde `hdr`'ı kapatın. Bellek: float hedef, bloom zinciri ve gölge haritaları
+720p'de yaklaşık 35 MB tutar (4× MSAA yaklaşık 47 MB ekler); açık 3B uygulama kalmayınca serbest kalır.
+
+**Yedek.** Konsol OpenGL ES 3 sunmuyorsa, bir shader derlenemezse ya da sistem ayarı `g3d.pbr` kapalıysa
+`g3d.renderer("pbr")` `"basic"` döndürür ve kareler basic renderer'la çizilir; ışıklar, gölgeler ve son efektler o
+zaman görünmez. Float hedef yoksa yalnızca HDR ve bloom, çoklu örnekleme yoksa yalnızca MSAA kapanır.
+
+Fonksiyonlar JavaScript ve Python'da aynıdır (seçenekler nesne / dict; JavaScript'te `g3d.lights()` dizi
+döndürür). C (`nexvyn.h`) seçenekleri JSON metni olarak alır: `g3d_renderer("pbr")`,
+`g3d_addLight("{\"type\":\"point\",\"x\":1,\"y\":2}")`, `g3d_updateLight(id, json)`, `g3d_removeLight`,
+`g3d_clearLights`, `g3d_lights`, `g3d_shadows`, `g3d_postfx`, `g3d_environment`, `g3d_material(nesne, json, ad)`, `g3d_rendererInfo()` (JSON),
+`g3d_drawInstanced(nesne, float'lar, adet, tint, flags)` (kopya başına 7 float) ve `g3d_drawInstancedMatrices`
+(16), `g3d_caps()` (JSON). `"python3"` uygulamaları aynı `g3d` fonksiyonlarını çağırır. Squirrel ve Java SDK 1.8'de
+donduruldu, bunları almaz. Studio'daki "3B: PBR, ışıklar ve gölgeler" şablonu hepsini gösterir.
+
+Yerel uygulamalar (C++, `source/core/g3d.h`): `begin` ile `end` arasında `g3d::scene(Scene)`, `g3d::Light`,
+`g3d::PbrMaterial` (`Mesh::material`, `DrawOpts::material`), `g3d::drawInstanced`, `g3d::caps`.
 
 ### Voksel dünyalar — `g3d.voxels` (SDK 1.7, JavaScript)
 
@@ -844,6 +946,182 @@ bir emitter üzerinden üretir.
   parçacıklar, çarpıştırıcılar, son 90 kare süresinin grafiği, sanal ve dünya birimlerinde işaretçi ve
   `game.watch(name, value)` girdileri (`game.unwatch(name)`).
 
+## 8d. Akışlar, medya ve ağ (SDK 1.9)
+
+Fotoğraf akışı, kısa video uygulaması ya da sohbet için gereken her şey Lua, JavaScript, Python (`"python"` ve
+`"python3"`) ve C'de (bölüm 14) aynı adlarla. Her çağrı hemen döner: aktarımlar, çözme ve oynatıcılar arka plan
+thread'lerinde çalışır, sonuçlar ana thread'de callback'le (ya da yoklayarak) gelir. Ağ çağrıları `"network"` izni
+ister; reddedilen çağrı `net.get` gibi `"permission denied: network"` bildirir. Eksiksiz bir uygulamayla adım adım
+rehber: `docs/MAKE_A_SOCIAL_APP.tr.md`.
+
+### HTTP: `net.request(options, callback[, progress])` → id
+
+```lua
+local id = net.request({
+  url = "https://api.example.com/v1/posts?page=2",
+  method = "GET",                      -- varsayılan GET (json / form / multipart varken POST, file varken PUT)
+  headers = {Authorization = "Bearer " .. token},
+  responseType = "json",               -- res.data = çözülmüş gövde
+  cache = 300,                         -- çevrimdışı önbellek: 300 sn taze, çevrimdışıyken son iyi yanıt
+  retry = 3,                           -- yanıt yoksa, 408, 429 ya da 5xx'te 3 deneme daha (0,5, 1, 2 sn + rastgele)
+  cookies = true,                      -- uygulamanın kendi çerez kutusu (SD kartta saklanır)
+}, function(res)
+  if res.ok then posts = res.data.items else showError(res.error) end
+end)
+net.cancel(id)                         -- iptal edilen isteğin callback'i çağrılmaz
+```
+
+| Seçenek | Anlamı |
+|---|---|
+| `url`, `method`, `headers`, `body`, `contentType` | SDK 1.4'teki gibi (`body` herhangi bir metin olabilir) |
+| `json = değer` | gövde = değerin JSON'u, `Content-Type: application/json` |
+| `form = {k = v}` | gövde = `k=v&...` (URL kodlu) |
+| `multipart = { {name, value} ya da {name, file, filename?, type?}, ... }` | multipart/form-data; dosyalar gönderilirken diskten okunur (fotoğraf ve video yükleme) |
+| `file = yol` | bir dosya gövdenin tamamı (varsayılan `PUT`: imzalı adrese yükleme) |
+| `saveTo = yol` | yanıt `res.body` yerine bir dosyaya akar (`res.path`) |
+| `responseType = "json"` | `res.data` = çözülmüş gövde (JSON değilse `res.ok` false olur, `res.error` nedenini söyler) |
+| `timeout` | aktarımın tamamı için saniye, 1–600 (varsayılan 30) |
+| `redirects = false` | yönlendirmeleri izleme |
+| `maxBytes` | bellekte tutulan en büyük gövde (varsayılan 16 MB, en çok 64 MB; daha büyüğü için `saveTo`) |
+| `retry = n` | 0–5 deneme daha (`Retry-After` 60 sn'ye kadar uygulanır). Yalnızca tekrarlanması güvenli istekler için |
+| `cache = saniye` (ya da `true` = her seferinde doğrula) | GET/HEAD: taze olduğu sürece disk önbelleğinden yanıt, `ETag` / `Last-Modified` ile doğrulama, ağ başarısız olunca son iyi yanıt (`res.stale = true`). Uygulama başına 32 MB, en eski önce gider |
+| `cookies = true` | çerezleri uygulamanın kutusundan gönder ve kaydet (Set-Cookie); `net.clearCookies()` boşaltır |
+
+`res`: `ok`, `status`, `body`, `error`, `url`, `headers` (küçük harf), `contentType`, `fromCache`, `stale`, `seconds`,
+`data` (`responseType = "json"` ile), `path` (`saveTo` ile). `progress(now, total, phase)` karede en çok bir kez
+çalışır; gövde gönderilirken `phase` `"upload"`, yanıt gelirken `"download"` olur. Uygulama başına aynı anda en çok 64
+istek. `net.clearCache()` → boşaltılan bayt (yanıtlar ve resimler).
+
+### WebSocket: `net.ws(url[, options])` → id
+
+```lua
+chat = net.ws("wss://chat.example.com/socket", {headers = {Authorization = "Bearer " .. token}, protocols = "v1"})
+function app.update(dt)
+  for _, ev in ipairs(net.wsPoll(chat)) do
+    if ev.type == "open" then net.wsSend(chat, json.encode({join = "room1"}))
+    elseif ev.type == "message" then addMessage(json.decode(ev.data))
+    elseif ev.type == "close" then reconnectLater(ev.code) end   -- ayrıca ev.message ile "error"
+  end
+end
+```
+
+`net.wsSend(id, metin[, binary])` → kuyruğa girdiyse true (binary veri base64 metindir) · `net.wsPoll(id)` → son
+çağrıdan beri olaylar: `{type = "open"}`, `{type = "message", data, binary}`, `{type = "error", message}`,
+`{type = "close", code, reason}` · `net.wsClose(id[, code[, reason]])` · `net.wsState(id)` → `"connecting"`, `"open"`,
+`"closing"`, `"closed"`. Seçenekler: `headers`, `protocols` (metin ya da liste), `cookies = true`. Her kare yoklayın:
+okunmamış iletileri 16 MB'ı geçen soket kapanır. Uygulama başına en çok 4 soket, ileti en çok 4 MB; sessiz soket 25 sn'de
+bir ping gönderir. Soketler uygulama kapanınca kapanır, konsol uyuduktan sonra `close` olayıyla biter.
+
+### Oturum açma: `net.oauth(options, callback(result, err))`
+
+Oturum açma sayfasını konsolun web tarayıcısında açar ve sayfa yönlendirme adresinize ulaşınca döner (yerel
+uygulamalar için OAuth 2.0, RFC 8252). `redirect` bir loopback adresi (`http://localhost/...`,
+`http://127.0.0.1/...`) ya da uygulamanın kendi bağlantısı (`nxv://app/<id>...`) olmalı. `state` sizin için eklenir ve
+denetlenir; `pkce = true` bir PKCE challenge'ı (S256) ekler ve token isteği için `verifier`'ı verir.
+
+```lua
+net.oauth({url = "https://auth.example.com/authorize?client_id=ID&response_type=code&scope=read",
+           redirect = "http://localhost/callback", pkce = true}, function(r, err)
+  if err then status = err return end                  -- "cancelled" ya da tarayıcının neden açılamadığı
+  net.request({url = "https://auth.example.com/token", method = "POST", responseType = "json",
+    form = {grant_type = "authorization_code", code = r.code, redirect_uri = "http://localhost/callback",
+            client_id = "ID", code_verifier = r.verifier}}, function(res) token = res.data and res.data.access_token end)
+end)
+```
+
+`result`: `code`, `state`, `verifier`, `params` (bütün query / fragment parametreleri), `url`. Tarayıcı, Nexvyn OS'un
+konsolda uygulama olarak açılmasını ister (emülatörde ve Albüm'den açılınca olmaz); öyleyse `err` bunu söyler. O zaman
+bir yedek yol sunun (metin ya da QR kod olarak gösterilen cihaz kodu). İstemci sırlarını konsola koymayın.
+
+### Webden resimler: `gfx.imageUrl(url[, maxSize])`
+
+`gfx.image` gibi anlık modda: her kare çağırın. İlk çağrı indirmeyi başlatır; resim hazır olana kadar `nil, "loading"`
+döner (JavaScript ve Python'da `null` / `None`; durumu `gfx.imageState(url[, maxSize])` verir), sonra resmi (ve
+`"ready"`). `maxSize > 0` uzun kenarı bundan büyük olmayan bir küçük resim saklar (akışlar ve avatarlar için).
+Resimler SD kartta (uygulama başına 96 MB, en eski indirilen önce gider) ve bellekteki resim önbelleğinde tutulur; çözme ve
+küçültme arka planda çalışır, akış takılmadan kayar. Artık istenmeyen resimler indirilmeden atlanır. PNG, JPEG, WebP,
+GIF (ilk kare) ve BMP, en çok 16 megapiksel.
+
+```lua
+local img = gfx.imageUrl(post.thumb, 480)
+if img then gfx.draw(img, x, y, w, h, 12) else gfx.rect(x, y, w, h, 12, theme.control) end
+```
+
+### Video ve ses oynatıcıları: `media`
+
+```lua
+local p = media.open("https://cdn.example.com/clip.m3u8", {loop = true, muted = false, autoplay = true})
+media.draw(p, x, y, w, h, "cover")   -- her kare: "contain" (varsayılan), "cover" ya da "stretch"[, alpha]
+media.pause(p); media.play(p); media.seek(p, 12.5)
+media.set(p, {muted = true, volume = 0.5, loop = false, speed = 1.5})
+local i = media.info(p)  -- state ("opening" "playing" "paused" "ended" "failed"), position, duration, buffering,
+                         -- live, width, height, muted, volume, hasVideo, error
+media.close(p)
+```
+
+Kaynaklar: dosyalar (`fs.read`'in yol kuralları) ve `http(s)://` (aşamalı MP4/WebM/MKV, canlı ve isteğe bağlı HLS
+`.m3u8`; `"network"` ister). Çözme konsolun video donanımını kullanır. `audioOnly = true` yalnızca sesi akıtır
+(podcast, radyo); `start = saniye` daha ileriden başlatır. Uygulama başına en çok 3 oynatıcı: bir sayfalayıcının
+şimdiki ve sonraki videosunu açık tutun, gerisini kapatın. Oynatıcılar uygulama kapanınca durur; `app.suspend`'de
+duraklatın.
+
+### Akışlar: `ui.beginFeed` / `ui.feedItem` / `ui.endFeed`
+
+Uzun listeler ve fotoğraf ızgaraları için sanal kaydırma görünümü: yalnızca görünen öğeler çizilir, 10.000 gönderi 10
+gönderi kadar tutar. Çek-yenile ve "daha fazla yükle" hazır gelir.
+
+```lua
+local f = ui.beginFeed("home", 0, 56, w, h - 56, #posts, {itemHeight = 360, gap = 8, refreshing = loading})
+for i = f.first, f.last do
+  local r = ui.feedItem(i)                -- içerik koordinatlarında {x, y, w, h}
+  drawPost(posts[i], r.x, r.y, r.w, r.h)
+end
+local ev = ui.endFeed()
+if ev.refresh then reload() end           -- kullanıcı aşağı çekip bıraktı
+if ev.more then loadNextPage() end        -- son öğeler ekranda
+```
+
+Seçenekler: `itemHeight` (varsayılan 80), `heights` (bir liste: farklı boyutlu gönderiler için öğe başına bir
+yükseklik; metni `ui.measureRichText` ile ölçün), `columns` (ızgara; hücreler kare, ya da `aspect` = yükseklik / genişlik,
+ya da `itemHeight`), `gap`, `padTop`, `padBottom`, `refreshing` (üstte dönen çark), `loadingMore` (sonda çark, artık
+`more` yok), `ahead` (`more`'u tetikleyen, sondan önceki satır sayısı, varsayılan 3). Dönüş: `first`, `last`,
+`scrollY`, `contentHeight`, `pull` (çekerken 0..1). `more` her liste uzunluğu için bir kez gelir; liste büyüyünce ya da
+kullanıcı geri kaydırınca yeniden gelir. `ui.endFeed()`'i hep çağırın (açık kalan akış `app.draw` sonunda kapatılır).
+
+### Kaydırmalı sayfalayıcı: `ui.pager(id, x, y, w, h, count[, options])`
+
+Kısa video uygulamalarındaki gibi tam ekran dikey sayfalama: sonraki ya da önceki sayfaya sürükleyin veya fırlatın
+(kaydırma başına bir sayfa); tekerlek, D-pad ve Page Up/Down da çalışır. Dönüş: `page` (yerleşeceği sayfa), `pos`
+(sayfa cinsinden konum, hareket ederken kesirli), `changed` (sayfanın değiştiği karede true), `dragging`, `settled`.
+`i` sayfasını `y + (i - pos) * h`'ye çizin. Seçenekler: `horizontal = true`, `page = n` (atla).
+
+```lua
+local pg = ui.pager("reels", 0, 0, w, h, #videos)
+for i = math.max(1, math.floor(pg.pos)), math.min(#videos, math.floor(pg.pos) + 1) do
+  media.draw(players[i], 0, (i - pg.pos) * h, w, h, "cover")
+end
+if pg.changed then switchVideo(pg.page) end
+```
+
+### Zengin metin: `ui.richText(id, text, x, y, w[, size[, options]])`
+
+`**kalın**`, bağlantılar (`https://...`), `@bahsetmeler` ve `#etiketler` bağlantı renginde, `w`'ye sarılarak çizilir.
+Dönüş `{height, clicked}`; `clicked` birine dokunulduğu karede `{type = "link" | "mention" | "hashtag", value}`, yoksa
+nil. Seçenekler: `color`, `linkColor`, `maxLines` ("…" ile keser), `lineSpacing`. `ui.measureRichText(text, w[, size[,
+options]])` → çizmeden yükseklik (akıştaki `heights` için). Dokunuşun ne yapacağı uygulamaya kalmış: bahsetmede profil,
+etikette arama; bağlantıyı Tarayıcı'da `sys.launch("browser", url)` ile açın (`"launch"` ister).
+
+### Göreli zaman: `sys.relativeTime(epoch[, now])`
+
+Arayüz dilinde `"şimdi"`, `"5 dk"`, `"3 sa"`, `"2 g"`, `"1 hf"`, sonra kısa bir tarih (İngilizcede `"5m"`).
+
+### Sosyal uygulamalar için bildirim, paylaşım ve bağlantılar
+
+Yeni bir şey gerekmez: `sys.schedule` (bölüm 8a) uygulama kapalıyken hatırlatma gönderir; `sys.share(metin ya da
+yol)` paylaşım sayfasını açar; `sys.appUrl(id, arg)` uygulamayı bir gönderide açan bağlantı yapar
+(`nxv://app/<id>?arg=post:42`; `app.load(arg)` / `app.open(arg)`). Uygulama kapalıyken arka planda akış denetimi
+çalışmaz: `app.resume`'da ve uygulama açılınca yenileyin.
+
 ## 9. Tasarım ilkeleri
 
 - Uygulamalar: `theme` renklerini, yuvarlak köşeleri (6–12 px), `ui` bileşenlerini, başlıklar için
@@ -853,7 +1131,9 @@ bir emitter üzerinden üretir.
   ekranda gösterin. Oyun yukarıdaki uygulama kurallarını kullanmaz: menülerini, HUD'unu ve duraklatma ekranını
   `theme` renkleri ya da `ui` bileşenleriyle değil, kendi sanat yönüyle kendisi çizer ve bir örneğin menü düzenini
   kopyalamaz (`docs/MAKE_A_GAME.tr.md`, *Kendinin yap*). Mağaza ikonu oyunun key art'ıdır (aynı rehber, *Mağaza
-  ikonu ve key art*).
+  ikonu ve key art*; public `SDK/Tools/icon` aracı). Ses, grafik, arayüz ve oyun hissi için kalite çıtası ve hazır
+  kitler (public `SDK/Languages/lua/kits`, `SDK/Languages/javascript/kits`: `sfx`, `juice`): `docs/SOUND_DESIGN.tr.md`,
+  `docs/GAME_FEEL.tr.md`. Kitler yalnızca bu başvurudaki çağrıları kullanır; yeni API değildir.
 - Kullanıcı verilerini değişir değişmez `store` ya da `fs` ile kaydedin.
 - `app.draw`'ı hızlı tutun: her karede büyük tablolar oluşturmaktan kaçının; görselleri bir kez yükleyin.
 
@@ -1013,6 +1293,14 @@ app.draw = (w, h) => {
 };
 ```
 
+### JavaScript'te SDK 1.9
+
+Bölüm 8d'deki fonksiyonların adları aynı. `net.request(options, callback, progress)` callback'le istek id'sini,
+callback'siz yanıtın `Promise`'ini döndürür (o zaman iptal edilemez); `net.oauth(options)` da `Promise` döndürür (hatada
+reddedilir). `gfx.imageUrl(url, maxSize)` resim yüklenirken `null` döner, nedenini `gfx.imageState(url, maxSize)` söyler.
+Akış ve sayfalayıcı indeksleri 0'dan başlar (`for (let i = f.first; i <= f.last; i++)`). Binary WebSocket iletileri
+base64 metindir.
+
 ### JavaScript'te SDK 1.4
 
 `app.search = (q) => [{ title, subtitle, icon, arg }]`, `app.suspend`, `app.resume`, `app.focus = (focused) => {}`,
@@ -1027,6 +1315,13 @@ dizisi), `sys.hasPermission`, `sys.appUrl` ve `sys.open("nxv://...")` bölüm 8a
 
 `fs.readBytes(path)` → `Uint8Array` ya da `null`; `fs.write`, `fs.append` ve `net.post` bir `Uint8Array` ya da
 `ArrayBuffer` da kabul eder. `ui.submitted(id)`. `net.fetch`, `net.fetchJson`, `net.request`. `timer.sleep`.
+
+Web standardı yardımcılar (SDK 1.9; QuickJS'te `queueMicrotask`, `atob` / `btoa`, `performance.now()` zaten var):
+`TextEncoder` / `TextDecoder` (yalnızca UTF-8; `new TextDecoder("utf-8", {fatal: true})` geçersiz baytta hata fırlatır),
+`URL` (parçalar, `searchParams`, bir tabana göre göreli URL'ler, `URL.canParse`) ve `URLSearchParams` (`get`, `getAll`,
+`set`, `append`, `delete`, `has`, `sort`, yineleme, boşlukları `+` yapan `toString`) ve `structuredClone` (nesneler,
+diziler, `Date`, `RegExp`, `Map`, `Set`, `ArrayBuffer`, typed array'ler, döngüsel referanslar; fonksiyonlar hata verir).
+Bunlardan birinin kendi sürümünü tanımlayan app kendi sürümünü kullanmaya devam eder.
 
 ### Eksiksiz örnek
 
@@ -1222,6 +1517,14 @@ class Weather:
 app = Weather()
 ```
 
+### Python'da SDK 1.9
+
+Bölüm 8d'deki fonksiyonlar `"python"` ve `"python3"`'te aynı adlarla; kayıtlar (yanıtlar, akış ve sayfalayıcı
+sonuçları, WebSocket olayları) öznitelik ya da anahtar olarak okunur (`res.ok`, `ev["type"]`).
+`net.request(options, callback, progress)` istek id'sini döndürür; `net.oauth(options, callback)`
+`callback(result, error)` çağırır. `gfx.imageUrl(url, size)` yüklenirken `None` döner (`gfx.imageState(url, size)`).
+İndeksler 0'dan başlar: `for i in range(f.first, f.last + 1)`.
+
 ### Python'da SDK 1.4
 
 `search(query)`, `suspend()`, `resume()`, `focus(focused)`, `autosave()` ve `unsaved()`'ı diğer callback'ler gibi
@@ -1241,6 +1544,18 @@ modüllerin CPython API'leriyle saf Python sürümlerini ekler: `itertools` (`co
 `statistics` (`mean`, `median`, `mode`, `stdev`, `variance`, `quantiles`...), `base64` (standart ve URL güvenli) ve
 `colorsys` (RGB ↔ HSV/HLS/YIQ, artı gfx renkleri için `to_hex` / `from_hex`). Bundle'daki aynı adlı bir modül önceliklidir.
 `itertools.chain` iterabledir (`for`, `list()`), bir iterator değildir (`next()`).
+
+SDK 1.9 şunları ekler: `urllib.parse` (`quote`, `quote_plus`, `unquote`, `unquote_plus`, `urlencode`, `parse_qs`,
+`parse_qsl`, `urlsplit`, `urlparse`, `urlunsplit`, `urlunparse`, `urljoin`), `html` (`escape`, `unescape`) ve `uuid`
+(`uuid4()`, `str`, `hex`, `bytes`, `version` ile `UUID(hex)`; `.int` yok: pocketpy tamsayıları 64 bit). Ayrıca `str`'ye
+pocketpy'de olmayan CPython metotlarını verir: `isdigit`, `isdecimal`, `isnumeric`, `isalpha`, `isalnum`, `isspace`,
+`isascii`, `isprintable`, `isidentifier`, `islower`, `isupper`, `istitle`, `title`, `capitalize`, `swapcase`, `casefold`,
+`center`, `expandtabs`, `rfind`, `rindex`, `partition`, `rpartition`, `removeprefix`, `removesuffix`, `format_map`,
+`maketrans`, `translate`, `rsplit`; `split(sep, maxsplit)`, başlangıç ve bitişli `find` / `index` / `count`, tuple alan
+`startswith` / `endswith`; `dict.setdefault`, `dict.fromkeys` ve `pow(base, exp[, mod])`. ASCII dışındaki harf ve büyük
+/ küçük harf kuralları Latin, Yunan ve Kiril alfabelerini izler (CJK, kana ve Hangul harf sayılır); `str.lower()` /
+`upper()` değişmedi (yalnızca ASCII). pocketpy'de hâlâ olmayanlar: `re`, `hashlib`, `struct`, `,` ve `!r` biçim
+belirteçleri, 64 biti aşan tamsayılar, `default=` alan `max` / `min`; bunlar gereken app `"python3"` runtime'ını kullanır.
 
 ### Sınırlar
 
@@ -1434,6 +1749,15 @@ void app_onmenu(int id) { if (id == 1) store_setNum("count", count = 0); }
   `void on_data(const char* json, const char* error, void* user)` ile `net_json(url, NULL, on_data, NULL)`;
   `timer_after(1.0, on_tick, NULL)`; `ui_alert(title, msg, buttons, 2, on_button, NULL)`. `net_json` JSON metnini
   verir (`json_pretty` onu biçimlendirir; `store_getJson` / `store_setJson` JSON değerlerini saklar).
+- **SDK 1.9** (bölüm 8d) seçenekleri JSON metni olarak alır: `net_fetch("{\"url\": \"https://...\", \"retry\": 2}",
+  on_res, on_progress, NULL)` → id (`net_cancel`); `nxv_response`'a `fromCache`, `stale` ve `path` eklenir
+  (ayrıştırılmış `data` yoktur: `body` JSON metnidir); `net_ws` / `net_wsSend` / `net_wsPoll` (olayların JSON dizisi) /
+  `net_wsClose` / `net_wsState`; `net_oauth(options, on_json, user)`; `gfx_imageUrl(url, maxSize, &w, &h)` → çizilecek
+  yol (yüklenirken NULL, `gfx_imageState`); `media_open` / `media_draw` / `media_play` / `media_pause` / `media_seek` /
+  `media_set` / `media_info` (JSON) / `media_close`; `ui_beginFeed` (`nxv_feed` struct'ı) /
+  `ui_feedItem(i, &x, &y, &w, &h)` / `ui_endFeed()` (bit 1 yenile, bit 2 daha fazla); `ui_pager(..., &page)` → konum;
+  `ui_richText(..., &clicked)` (`"link:<url>"`, `"mention:<ad>"`, `"hashtag:<etiket>"`) → yükseklik;
+  `ui_measureRichText`; `sys_relativeTime(epoch)`. İndeksler 0'dan başlar.
 - **Bellek**: `malloc` 64 MB'a karşı sayılır (aşınca NULL); pencere kapanınca geriye kalan her şey serbest bırakılır.
 - **Yerel kod**: C uygulamaları sandbox'ta çalışmaz ve sonsuz bir döngü ya da bir çökme durdurulamaz (3 saniye
   sınırı yok): bir callback sistemi 12 saniye tutup geri döndüğünde Nexvyn OS Zorla Kapat / Bekle diye sorar; takılı

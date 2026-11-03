@@ -26,7 +26,7 @@ Klasik yılan oyunu: kumanda, klavye ve dokunmatikle; kenarlar karşıdan devam 
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `snake.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/squirrel/snake/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 
 Dosyalar (satır): `main.nut` (171).
 

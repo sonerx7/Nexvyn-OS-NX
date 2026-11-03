@@ -21,7 +21,7 @@ result is returned). Inside callbacks (`timer`, `net`, dialogs) `this` is the ap
 ## Running it
 
 - **Studio:** **New Project → Blank Squirrel App**, **Run** (Ctrl+R).
-- **Console / Ryujinx:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`).
+- **Console:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`).
 
 ## Checking it on a PC
 
@@ -31,7 +31,7 @@ From the root of the Nexvyn OS source repository:
 
 It checks strings, comments and brackets, that every SDK call names a real function with an accepted argument count,
 that imported files exist, the `TR` keys and the `network` permission. It does not run the code: try the logic on
-the console or in Ryujinx.
+the console.
 
 ## Common pitfalls
 

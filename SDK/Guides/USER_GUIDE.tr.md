@@ -5,7 +5,7 @@
 Bu rehber, Nexvyn OS'u konsoluna kuran ve günlük olarak kullanan kişi içindir. Uygulama yazmak istiyorsanız
 [DEVELOPER_GUIDE.tr.md](DEVELOPER_GUIDE.tr.md) belgesine bakın.
 
-Nexvyn OS, Nintendo Switch için bir homebrew masaüstü kabuğudur (`NexvynOS.nro`). Konsolun kendi sistemini değiştirmez:
+Nexvyn OS, Atmosphère kurulu Switch için bir homebrew masaüstü kabuğudur (`NexvynOS.nro`). Konsolun kendi sistemini değiştirmez:
 Homebrew menüsünden açılır, kapatınca Homebrew menüsüne dönülür. Arayüz Türkçe ve İngilizcedir; yeni dil eklenebilir.
 
 ## İçindekiler
@@ -27,7 +27,11 @@ Homebrew menüsünden açılır, kapatınca Homebrew menüsüne dönülür. Aray
 
 ### Gerekenler
 
-- Atmosphère ile açılan bir Switch. Güncel bir Atmosphère sürümü ve emuMMC önerilir.
+- Atmosphère ile açılan bir Switch. Güncel bir Atmosphère sürümü (1.12.1 veya daha yenisi) ve emuMMC önerilir.
+- **Sistem sürümü 22.5.0 veya üstü** (gerekli). **23.0.x**'e kadar test edildi. Diğer sürümlerde Nexvyn OS yine
+  açılır ve hiçbir şey engellenmez, ama sorunlar olabilir: bir kez bildirim gösterir, tam tarayıcı ise 22.5.0 - 23.0.x
+  dışında dahili tarayıcıda kalır (Tarayıcı ayarlarından yine de izin verilebilir). **Ayarlar > Hakkında** sistem
+  sürümünüzü ve gerekli sürümü gösterir.
 - SD kartta biraz boş yer. Video, PC oyunları ve Retro oyunları için daha fazlası gerekir.
 
 ### Kurulum
@@ -71,9 +75,9 @@ Sistem menüsünde **Nexvyn OS'tan Çık…** seçeneği Nexvyn OS'u kapatır ve
 **Ekranı Kilitle**, **Konsolu Yeniden Başlat…** ve **Konsolu Kapat…** da vardır. Kaydedilmemiş belgeleri önce
 kaydedin.
 
-### Emülatörde (Ryujinx)
+### Emülatörde
 
-Nexvyn OS Ryujinx'te de açılır. Emülatörde bulunmayan donanım servisleri (parlaklık, USB, MTP, oyun başlatma, PC oyunları,
+Nexvyn OS bilgisayarda bir emülatörde de açılır. Emülatörde bulunmayan donanım servisleri (parlaklık, USB, MTP, oyun başlatma, PC oyunları,
 oyun kayıtları, build ID gibi) orada kapalı ya da "kullanılamıyor" olarak görünür.
 
 ---
@@ -354,7 +358,7 @@ sonra ekran klavyesi gizli kalır.
 | Esc | Açık menüyü, aramayı ya da paneli kapatır |
 
 Klavye düzeni (Türkçe Q veya İngilizce ABD): **Sistem Ayarları > Klavye ve Giriş**. Aynı yerden ekran klavyesi
-yerine konsolun kendi klavyesini ("Nintendo sistem klavyesi") seçebilirsiniz.
+yerine konsolun kendi sistem klavyesini seçebilirsiniz.
 
 ---
 
@@ -500,7 +504,7 @@ Onar...** aynı işi açık klasör için yapar.
 ### Konsolun sistem dosyaları
 
 Dosyalar, Terminal, Metin Düzenleyici ve Code, konsolun özel yazılımına (custom firmware) ya da diğer homebrew
-uygulamalarına ait bir şeyi değiştirmeden önce uyarır: `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`,
+uygulamalarına ait bir şeyi değiştirmeden önce uyarır: `sdmc:/atmosphere`, `sdmc:/bootloader`, sistemin kendi veri klasörü,
 `sdmc:/emuMMC`, `sdmc:/switch`, `sdmc:/config` ve kartın kökündeki açılış dosyaları (`hbmenu.nro`, `boot.dat`,
 `boot.ini`, `payload.bin`, `exosphere.ini`). Bunları değiştirmek ya da silmek konsolun açılmamasına yol açabilir.
 Varsayılan düğme **İptal**'dir; **Anlıyorum, devam et** işlemi yapar, **Bu oturumda bir daha sorma** ise Nexvyn OS
@@ -517,7 +521,7 @@ tarafından kilitli kalır.
 - Desteklenen dosya sistemleri: FAT12/16/32 ve exFAT. NTFS desteklenmez.
 - Çıkarmadan önce Dosyalar'da belleğin yanındaki **Güvenli Çıkar** düğmesine basın. "Artık çıkarabilirsiniz" yazınca
   çıkarın.
-- USB bellek Ryujinx'te çalışmaz.
+- USB bellek emülatörde çalışmaz.
 
 ### Bilgisayara Bağlan
 
@@ -537,7 +541,7 @@ seçilir. Parola koymazsanız aynı ağdaki herkes bağlanabilir. FTP şifrelenm
 **USB kablosu (MTP):** konsolu dock dışında USB-C kablosuyla bilgisayara bağlayın; bilgisayar onu bir telefon gibi
 görür. Bu özellik yalnızca gerçek konsolda çalışır.
 
-Bilinen durum: FTP sunucusu Windows'tan Ryujinx'te denendi; listeleme, klasörler ve indirme çalıştı, yükleme
+Bilinen durum: FTP sunucusu bir bilgisayardan emülatörde denendi; listeleme, klasörler ve indirme çalıştı, yükleme
 emülatörün ağ katmanı yüzünden orada denenemedi. MTP ve FTP yüklemesinin gerçek konsolda doğrulanması bekleniyor.
 
 ### FTP İstemcisi
@@ -573,7 +577,7 @@ ayarları adıyla bulur.
 | **Homebrew Programları** | Homebrew | Önerilen homebrew programlarını indirme, güncelleme, kaldırma. |
 | **Yazılım Güncelleme** | Yazılım Güncelleme | Yeni Nexvyn OS sürümünü GitHub'dan indirir; mevcut sürümün yedeğini tutar. Yalnızca herkese açık GitHub sürümleriyle çalışır. |
 | **Sistem klasörü** | Hakkında | Overlay durumu ve **Sistem güncellemelerini sıfırla** (bkz. [SSS](#overlay-klasörünü-sıfırlamak)). |
-| **Tanılama**, **Sistem günlükleri**, **Kabuğu Yeniden Başlat**, **Tüm ayarları sıfırla** | Geliştirici | |
+| **Tanılama**, **Sistem günlükleri**, **Kabuğu Yeniden Başlat**, **Tüm ayarları sıfırla**, **Köklü sıfırla** | Geliştirici | |
 
 ### Yeni dil eklemek
 
@@ -709,7 +713,7 @@ Masaüstündeki **Modlama** klasörü oyun modlamak için altı uygulamayı topl
 - **Modlu oyunla ya da hilelerle çevrimiçi oynamak hesabınızın engellenmesine yol açabilir.**
 - Bu uygulamalar yalnızca SD kart üzerinde çalışır; arşivlerdeki SD kartın dışını gösteren yollar yazılmaz.
 - Konsol servisi gerektiren bölümler (build ID, çalışan oyun, sistem modüllerini başlatma/durdurma, kayıtlar) yalnızca
-  gerçek konsolda çalışır; emülatörde "bilinmiyor" görünür. Bu uygulamalar Ryujinx'te denendi, gerçek konsolda henüz
+  gerçek konsolda çalışır; emülatörde "bilinmiyor" görünür. Bu uygulamalar emülatörde denendi, gerçek konsolda henüz
   doğrulanmadı. Önemli kayıtlarınızı ve dosyalarınızı önce yedekleyin.
 
 | Uygulama | Ne yapar |
@@ -857,7 +861,7 @@ oyun alanı, 2D efektler ve parçacıklardan oluşan logo. Bütün modeller, dok
 - A / sağ ok: sonraki sahne · B / sol ok: önceki · +: duraklat · X: istatistik paneli (FPS, üçgen, çizim çağrısı,
   çizim yolu) · Y: müzik · −: kalite (Otomatik, Düşük, Orta, Yüksek).
 - Çubuklarla ya da sürükleyerek serbest kamera.
-- Otomatik kalitede kare hızı düşerse kalite bir basamak iner. Ryujinx'te ekran kartı yolunda 58–60 FPS ölçüldü;
+- Otomatik kalitede kare hızı düşerse kalite bir basamak iner. PC test ortamında ekran kartı yolunda 58–60 FPS ölçüldü;
   gerçek konsolda değerler farklı olabilir.
 
 ### Ofis
@@ -960,6 +964,30 @@ ev klasörünüzü korur.
 **Nexvyn OS'u Sil** (aynı yerde) `sdmc:/NexvynOS` klasörünün tamamını siler; Nexvyn OS yeni indirilmiş gibi olur ve
 kurulum yardımcısıyla yeniden başlar. Oyunlar, kayıt verileri, Atmosphère, diğer homebrew uygulamaları ve
 `NexvynOS.nro` dosyası etkilenmez.
+
+### Köklü sıfırlama
+
+**Sistem Ayarları > Geliştirici > Sistem > Köklü sıfırla**, SD kartı tek `.nro` dosyasının ilk kurulumundaki hâline
+getirir: Nexvyn OS'un yazdığı her şey, klasörünün içinde ve dışında silinir ve bir sonraki açılışta kurulum yardımcısı
+başlar. Sayfa, silinecekleri boyutlarıyla ve ayrıca korunacakları listeler. PIN varsa ister ve düğmeyi 3 saniye basılı
+tutarsınız; önce tüm uygulamalar kapatılır.
+
+| Yol | Yazan | Köklü sıfırlama |
+|---|---|---|
+| `sdmc:/NexvynOS` (kullanıcılar, dosyalar, PIN'ler, ayarlar, uygulamalar, modüller, temalar, yazı tipleri, önbellekler, günlükler, oturum durumu, kayıtlı anahtarlar, `autorun.txt`, yedekler, kayıtlar) | Nexvyn OS | Silinir, klasör de |
+| `sdmc:/SnxOS` | Eski sürümler (klasörün yeniden adlandırmadan önceki adı) | Silinir |
+| `sdmc:/switch/NexvynOS/install.log` | Kurulum yardımcısı | Silinir (klasör yalnızca o zaman boşsa) |
+| `.nro`'nun yanındaki `NexvynOS.nro.bak`, `.new`, `.swap` | Güncelleyici (önceki sürüm, indirilen dosya) | Silinir |
+| `NexvynOS.nro` | Siz | Korunur |
+| `sdmc:/atmosphere/contents`, `exefs_patches`, `kip_patches` (modlar, hileler, Türkçe yamalar, sistem modülleri) | Mod uygulamaları, sizin isteğinizle | Korunur: oyun kurulumunuza aittir |
+| Nexvyn OS ile kurulan `sdmc:/switch/...` homebrew'ları, `.overlays` | Homebrew paketleri, sizin isteğinizle | Korunur |
+| `sdmc:/config` (overlay menüsü, sys-clk ayarları), Atmosphère'in kendi ayarları | Ayar uygulamaları, sizin isteğinizle | Korunur |
+| Oyunlar, kayıt verileri, Albüm, HOME menüsü forwarder'ı, emuMMC, `bootloader` | Switch, siz | Asla dokunulmaz |
+
+Elektrik kesintisine karşı güvenlidir: her şey önce `sdmc:/NexvynOS.deleting` klasörüne taşınır (birkaç yeniden
+adlandırma, önce ayarlar), sonra oradan silinir. Konsol yarıda kapanırsa bir sonraki açılış taşımayı bitirir, kurulum
+yardımcısını açar ve kalanı arka planda siler. Hakkında'daki **Nexvyn OS'u Sil** daha hafif sürümdür: yalnızca
+`sdmc:/NexvynOS` klasörünü boşaltır.
 
 ### Masaüstü boştayken daha yavaş görünüyor
 

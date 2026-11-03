@@ -1,0 +1,82 @@
+name: App submission / Uygulama gönderimi
+description: Submit an app, game, theme or font for the App Market when you cannot open a pull request yourself.
+title: "[Submission] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The usual way is a pull request ([CONTRIBUTING.md](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/CONTRIBUTING.md)).
+        Use this form only if you cannot open one; the maintainer then adds the item for you after the review.
+        English or Turkish is fine. / Olağan yol bir pull request'tir
+        ([CONTRIBUTING.tr.md](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/CONTRIBUTING.tr.md)). Bu formu yalnızca
+        pull request açamıyorsanız kullanın; bakımcı incelemeden sonra öğeyi sizin için ekler.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you submitting? / Ne gönderiyorsunuz?
+      options:
+        - App / Uygulama
+        - Game / Oyun
+        - Theme / Tema
+        - Font / Yazı tipi
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name and id / Ad ve kimlik
+      placeholder: "Shard Garden · com.yourname.shardgarden"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Where is the bundle? / Paket nerede?
+      description: A public repository, release or archive with the source/ folder (app.json, code, lang/, icon.png). /
+        source/ klasörünü (app.json, kod, lang/, icon.png) içeren herkese açık bir depo, sürüm ya da arşiv.
+      placeholder: https://github.com/yourname/shardgarden
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language / Dil
+      options:
+        - Lua
+        - JavaScript
+        - Python
+        - C
+        - Squirrel
+        - Java
+        - Theme or font (no code) / Tema ya da yazı tipi (kodsuz)
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: What it does / Ne yapar
+      description: Two or three sentences, and the store subtitle (at most 45 characters). / İki üç cümle ve mağaza alt
+        başlığı (en çok 45 karakter).
+    validations:
+      required: true
+  - type: textarea
+    id: permissions
+    attributes:
+      label: Permissions and why / İzinler ve nedenleri
+      placeholder: "network: loads the daily puzzle"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks / Denetimler
+      options:
+        - label: I made this item or have the right to publish it; third-party parts are listed with their licenses. /
+            Bu öğeyi ben yaptım ya da yayımlama hakkım var; üçüncü taraf parçalar lisanslarıyla listelendi.
+          required: true
+        - label: "`nxv check` passes. / `nxv check` hatasız geçiyor."
+          required: true
+        - label: Tried on a console or in an emulator. / Konsolda ya da bir emülatörde denendi.
+          required: true
+        - label: No tracking, hidden data collection, API keys or passwords in the code. / Kodda izleme, gizli veri
+            toplama, API anahtarı ya da parola yok.
+          required: true

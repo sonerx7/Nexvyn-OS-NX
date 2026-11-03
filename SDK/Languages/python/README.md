@@ -19,7 +19,7 @@ something changes (battery friendly). Asynchronous calls take callbacks: `net.js
 ## Running it
 
 - **Studio:** **New Project → Blank Python App** or *Snake (Python)*, **Run** (Ctrl+R).
-- **Console / Ryujinx:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`).
+- **Console:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`).
 
 ## Checking it on a PC
 

@@ -61,6 +61,9 @@ app.json: `"runtime": "java"`, `"main": "app.jar"`, `"mainClass": "myapp.MyApp"`
 - `System.out` / `System.err` go to the log. 64 MB heap, 3 s per callback on the main thread, one Java app at a time.
 - Override `update(double dt)` only for animation.
 
+- Frozen at SDK 1.8: SDK 1.9 (pbr renderer, feeds, media, WebSocket) is not available. Start new apps in
+  Lua, JavaScript, Python or C.
+
 ## Check
 
 `python tools/rt_check.py <bundle>`: compiles the sources against the console's class library, checks that app.jar

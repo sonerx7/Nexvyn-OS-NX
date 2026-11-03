@@ -5,7 +5,7 @@
 This guide is for the person who installs Nexvyn OS on their console and uses it every day. If you want to write
 apps, see [DEVELOPER_GUIDE.en.md](DEVELOPER_GUIDE.en.md).
 
-Nexvyn OS is a homebrew desktop shell for the Nintendo Switch (`NexvynOS.nro`). It does not change the console's own
+Nexvyn OS is a homebrew desktop shell for the Switch with Atmosphère (`NexvynOS.nro`). It does not change the console's own
 system: it is opened from the Homebrew menu, and closing it returns you to the Homebrew menu. The interface is in
 Turkish and English; new languages can be added.
 
@@ -28,7 +28,11 @@ Turkish and English; new languages can be added.
 
 ### Requirements
 
-- A Switch that boots with Atmosphère. A current Atmosphère version and emuMMC are recommended.
+- A Switch that boots with Atmosphère. A current Atmosphère version (1.12.1 or newer) and emuMMC are recommended.
+- **System version 22.5.0 or later** (required). Tested up to **23.0.x**. On other versions Nexvyn OS still starts
+  and nothing is blocked, but problems may occur: it shows a one-time notice, and the full browser stays in the
+  built-in browser outside 22.5.0 - 23.0.x (Browser settings can allow it anyway). **Settings > About** shows your
+  system version and the required one.
 - Some free space on the SD card. Videos, PC games and Retro games need more.
 
 ### Installation
@@ -71,9 +75,9 @@ notes in the guide.
 **Quit Nexvyn OS…** in the system menu closes Nexvyn OS and returns to the Homebrew menu. The same menu also has
 **Sleep**, **Lock Screen**, **Restart Console…** and **Shut Down Console…**. Save unsaved documents first.
 
-### In the emulator (Ryujinx)
+### In an emulator
 
-Nexvyn OS also opens in Ryujinx. Hardware services the emulator does not have (brightness, USB, MTP, launching games,
+Nexvyn OS also opens in an emulator on a PC. Hardware services the emulator does not have (brightness, USB, MTP, launching games,
 PC games, game saves, build IDs and the like) are off there or shown as "not available".
 
 ---
@@ -355,7 +359,7 @@ keyboard has been used, the on-screen keyboard stays hidden.
 | Esc | Closes the open menu, search or panel |
 
 Keyboard layout (Turkish Q or English US): **System Settings > Keyboard and Input**. In the same place you can choose
-the console's own keyboard ("Nintendo system keyboard") instead of the on-screen keyboard.
+the console's own system keyboard instead of the on-screen keyboard.
 
 ---
 
@@ -442,7 +446,7 @@ The **Files** app shows the SD card and your home folder:
   folders the same question says so, so you are not asked twice in a row.
 - Drag and drop, copy/cut/paste, zip compression and extraction, the Recycle Bin (with put back).
 - Double-clicking a file opens the right app. **Open With** lets you choose another app.
-- A `.nxvapp` file opens the install sheet (see [App Market](#app-store-and-installing-apps)).
+- A `.nxvapp` file opens the install sheet (see [App Market](#app-market-and-installing-apps)).
 - An `.exe` file opens with PC Games.
 - **Deleting.** Delete asks "Move 3 items to the Trash?" with their names, then moves them to the Trash (Undo puts
   them back). **Delete Immediately**, **Empty Trash** and deleting on a USB drive (USB drives have no Trash) always ask
@@ -498,7 +502,7 @@ the renames also run in the background, with progress and **Cancel**. Each file 
 ### The console's system files
 
 Files, Terminal, Text Editor and Code warn before they change anything that belongs to the console's custom firmware or
-to other homebrew: `sdmc:/atmosphere`, `sdmc:/bootloader`, `sdmc:/Nintendo`, `sdmc:/emuMMC`, `sdmc:/switch`,
+to other homebrew: `sdmc:/atmosphere`, `sdmc:/bootloader`, the system's own data folder, `sdmc:/emuMMC`, `sdmc:/switch`,
 `sdmc:/config` and the boot files in the root of the card (`hbmenu.nro`, `boot.dat`, `boot.ini`, `payload.bin`,
 `exosphere.ini`). Changing or deleting them can stop the console from booting. **Cancel** is the default; **I
 understand, continue** goes ahead, and **Don't ask again for this session** stops the question until Nexvyn OS starts
@@ -514,7 +518,7 @@ tools (Mod Manager, Cheats, Sysmodules, Overlays, Turkish Patches) write there b
 - Supported file systems: FAT12/16/32 and exFAT. NTFS is not supported.
 - Before unplugging, press the **Safely Remove** button next to the drive in Files. Unplug it when "You can now remove
   it" appears.
-- USB drives do not work in Ryujinx.
+- USB drives do not work in an emulator.
 
 ### Connect to Computer
 
@@ -534,7 +538,7 @@ only on a home network you trust.
 **USB cable (MTP):** connect the console, out of the dock, to the computer with a USB-C cable; the computer sees it like
 a phone. This feature works only on a real console.
 
-Known status: the FTP server was tried from Windows against Ryujinx; listing, folders and downloads worked, uploading
+Known status: the FTP server was tried from a PC against an emulator; listing, folders and downloads worked, uploading
 could not be tried there because of the emulator's network layer. MTP and FTP uploads still need to be confirmed on a
 real console.
 
@@ -571,7 +575,7 @@ Notable settings:
 | **Homebrew Programs** | Homebrew | Downloading, updating and removing the recommended homebrew programs. |
 | **Software Update** | Software Update | Downloads the new Nexvyn OS version from GitHub; keeps a backup of the current version. Works only with public GitHub releases. |
 | **System folder** | About | Overlay status and **Reset system updates** (see [FAQ](#resetting-the-overlay-folder)). |
-| **Diagnostics**, **System logs**, **Restart Shell**, **Reset all settings** | Developer | |
+| **Diagnostics**, **System logs**, **Restart Shell**, **Reset all settings**, **Deep reset** | Developer | |
 
 ### Adding a new language
 
@@ -706,7 +710,7 @@ The **Modding** folder on the desktop gathers six apps for modding games. First,
 - **Playing online with a modded game or with cheats can get your account banned.**
 - These apps work only on the SD card; paths in archives that point outside the SD card are not written.
 - Parts that need console services (build ID, running game, starting/stopping system modules, saves) work only on a
-  real console; in the emulator they show "unknown". These apps were tried in Ryujinx and have not been confirmed on a
+  real console; in the emulator they show "unknown". These apps were tried in an emulator and have not been confirmed on a
   real console yet. Back up your important saves and files first.
 
 | App | What it does |
@@ -858,7 +862,7 @@ runs.
 - A / right arrow: next scene · B / left arrow: previous · +: pause · X: statistics panel (FPS, triangles, draw calls,
   render path) · Y: music · −: quality (Automatic, Low, Medium, High).
 - A free camera with the sticks or by dragging.
-- At automatic quality, if the frame rate drops, the quality goes down one step. 58–60 FPS was measured in Ryujinx on
+- At automatic quality, if the frame rate drops, the quality goes down one step. 58–60 FPS was measured on the PC test setup on
   the graphics-card path; values on a real console may differ.
 
 ### Office
@@ -962,6 +966,30 @@ filled in. Your files, apps and users are kept; the setup assistant keeps your h
 **Erase Nexvyn OS** (in the same place) deletes the whole `sdmc:/NexvynOS` folder, as if Nexvyn OS had just been
 downloaded, and Nexvyn OS restarts into the setup assistant. Games, save data, Atmosphère, other homebrew and the
 `NexvynOS.nro` file are not touched.
+
+### Deep reset
+
+**System Settings > Developer > System > Deep reset** makes the SD card look like a first install of the single
+`.nro`: everything Nexvyn OS wrote is removed, inside and outside its folder, and the next start runs the setup
+assistant. The sheet lists what goes with its size and, separately, what stays. It asks for your PIN (when one is set)
+and you hold the button for 3 seconds; every app is closed first.
+
+| Path | Written by | Deep reset |
+|---|---|---|
+| `sdmc:/NexvynOS` (users, files, PINs, settings, apps, modules, themes, fonts, caches, logs, session state, saved keys, `autorun.txt`, backups, records) | Nexvyn OS | Removed, the folder too |
+| `sdmc:/SnxOS` | Older versions (the folder's name before the rename) | Removed |
+| `sdmc:/switch/NexvynOS/install.log` | Setup assistant | Removed (the folder only when it is empty then) |
+| `NexvynOS.nro.bak`, `.new`, `.swap` next to the `.nro` | Updater (previous version, staged download) | Removed |
+| `NexvynOS.nro` | You | Kept |
+| `sdmc:/atmosphere/contents`, `exefs_patches`, `kip_patches` (mods, cheats, Turkish patches, system modules) | Modding apps, on your request | Kept: they belong to your game setup |
+| `sdmc:/switch/...` homebrew installed through Nexvyn OS, `.overlays` | Homebrew packages, on your request | Kept |
+| `sdmc:/config` (overlay menu, sys-clk settings), Atmosphère's own settings | Settings apps, on your request | Kept |
+| Games, save data, the Album, HOME menu forwarder, emuMMC, `bootloader` | The Switch, you | Never touched |
+
+It is safe against a power cut: everything is first renamed into `sdmc:/NexvynOS.deleting` (a few renames, settings
+first), then deleted from there. If the console turns off on the way, the next start finishes the renames, opens the
+setup assistant and deletes the rest in the background. **Erase Nexvyn OS** in About is the lighter version: it
+empties only the `sdmc:/NexvynOS` folder.
 
 ### The desktop looks slower when idle
 

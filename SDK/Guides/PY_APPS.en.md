@@ -162,4 +162,4 @@ It checks `app.json`, the syntax of every `.py` file and the patterns that do no
 `TR("key")` translation used exists in `lang/en.json` (and in `lang/tr.json` when the app has one), and that an app using `net.*` asks for the
 `network` permission; then it runs the app for a few hundred frames against a fake SDK built with the real signatures
 (random clicks, keys, timers, callbacks, menus, closing). The check runs in CPython; for the real test open the app in
-Ryujinx or on the console (a `launch hellopy` line in `sdmc:/NexvynOS/autorun.txt`).
+an emulator or on the console (a `launch hellopy` line in `sdmc:/NexvynOS/autorun.txt`).

@@ -39,7 +39,7 @@ Store/
 │   ├── source/                   paket: app.json, main.*, icon.png, lang/*.json, diğer dosyalar
 │   ├── store.json                mağaza metinleri, tür, etiketler, ekran görüntüsü betiği
 │   ├── README.md                 GitHub'da gezenler için açıklama (İngilizce; başka diller isteğe bağlı)
-│   ├── screenshots/1.png ...     3-4 ekran görüntüsü (bakımcı da üretebilir, bölüm 6)
+│   ├── screenshots/1.png ...     5 ekran görüntüsü önerilir, en az 3 (bakımcı da üretebilir, bölüm 6)
 │   ├── icon.png                  build_store.py source/icon.png'den kopyalar
 │   └── <kısa-ad>.nxvapp          build_store.py yazar, elle eklemeyin
 ├── Themes/<kısa-ad>/             source/ (theme.json, duvar kâğıdı [, sounds/]), store.json, icon.png → <kısa-ad>.nxvtheme
@@ -92,10 +92,12 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 ## 4. Simge ve README
 
 - `source/icon.png`: 256×256 PNG. SDK ile yapılan oyun ve app'lerde ikon **öğenin kendi key art'ıdır**: kahramanı
-  ya da ana nesnesi, dünyası, ışığı, adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde olacak şekilde kenardan
-  kenara dolu ve mağazadaki diğer ikonlara benzemez. Gradyan üstünde düz sembol kabul edilmez (`nxv icon` bunları
-  yalnızca çalışırken geçici olarak üretir). Blender tarifi ve AI prompt'uyla nasıl yapılacağı:
-  `Guides/MAKE_A_GAME.tr.md` (*Mağaza ikonu ve key art*) ve `AI/tasks/store-icon.tr.md`.
+  ya da ana nesnesi, dünyası; oyunun ya da uygulamanın kendisini gösterir, 64 px'de okunur, konu ortadaki %80'in
+  içinde olacak şekilde kenardan kenara doludur. Stil yapımcının seçimidir (sakin ya da gösterişli, adlı ya da adsız).
+  Gradyan üstünde düz, geçici bir sembol kabul edilmez (`nxv icon` bunları yalnızca çalışırken üretir). Kendi
+  modelinizden ikon aracı `Tools/icon` ile (Blender + Pillow, clean / bold / loud stilleri, örnekler
+  `Tools/icon/examples/` içinde) ya da `AI/tasks/store-icon.tr.md` içindeki görsel üretici prompt'uyla yapın; tarif
+  `Guides/MAKE_A_GAME.tr.md` (*Mağaza ikonu ve key art*) içinde.
 - `README.md`: başlık `# Ad`, İngilizce birkaç cümle (başka diller isteğe bağlı), kimlik / dil / SDK / izinler tablosu,
   kontroller, sürüm tablosu ve sizin yapmadığınız her şeyin lisansı.
 
@@ -117,14 +119,18 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 - `kind`: `app`, `game`, `demo` ya da `template`. `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
 - `age`: içerik notu. `everyone` (varsayılan) ya da `teen` (hafif şiddet, korkutucu temalar, kullanıcıların ürettiği
   web içeriği). Yalnızca yetişkinlere yönelik içerik kabul edilmez.
-- `shots`: 3-4 çekim; her çekim o görüntüden önce çalışan adımların listesidir (`wait <sn>`, `wclick <fx> <fy>`,
-  `wmove <fx> <fy>`, `key <ad>`, `dpad <yön>`, `text <metin>`, `dark 0|1`).
+- `shots`: 3-5 çekim, 5 önerilir; her çekim o görüntüden önce çalışan adımların listesidir (`wait <sn>`,
+  `wclick <fx> <fy>`, `wmove <fx> <fy>`, `key <ad>`, `hold <tuş> <sn>`, `dpad <yön>`, `text <metin>`, `dark 0|1`).
 
 ## 6. Ekran görüntüleri
 
-`screenshots/1.png` ... uygulamanın penceresinden kırpılır. Kendiniz alın (konsol ya da Ryujinx) ya da bakımcı Nexvyn
-OS kaynak deposunda `python tools/store_shots.py --only <kısa-ad>` ile `shots` betiğinizi çalıştırıp üretsin. Kişisel
-veri, gerçek ad ya da API anahtarı göstermeyin.
+`screenshots/1.png` ... uygulamanın penceresinden, İngilizce arayüzle kırpılır. **Önerilen: beş ekran görüntüsü**,
+en iyi anlardan: ilk ekran, ana özellik kullanılırken, kalabalık ya da heyecanlı bir an, ikinci bir özellik ya da
+bölüm ve karanlık mod (oyunlarda menüler değil, oynanışın en iyi anları). Kendiniz alın (konsolda ya da bir
+emülatörde) ya da bir `shots` betiği verin, bakımcı Nexvyn OS kaynak deposunda
+`python tools/store_shots.py --only <kısa-ad>` çalıştırır. Betik yoksa sistem beşini kendisi çeker: oyun başlatılıp
+D-pad, A ve ok tuşlarıyla birkaç saniye oynanır, uygulamada tıklanır ve kaydırılır, sonuncusu karanlık modda. Kendi
+ekran görüntüleriniz otomatik olanlarla asla değiştirilmez. Kişisel veri, gerçek ad ya da API anahtarı göstermeyin.
 
 ## 7. Denetimler
 
@@ -153,8 +159,10 @@ Listenin tamamı [inceleme listesidir](REVIEW.tr.md). Kısacası şu öğeler **
   (Türkçe yamalardaki YamaNX notları gibi: kim yaptı, nereden geliyor, hangi lisansla);
 - yalnızca yetişkinlere yönelik, nefret içeren ya da korsan dahil yasa dışı bir şeyi özendirenler;
 - İngilizce metni olmayanlar;
-- bir örneğin ya da başka bir oyunun menü düzenini ve başlığını kopyalayan ya da key art yerine düz sembol ikonu olan
-  oyunlar (inceleme listesine bakın).
+- bir örneğin ya da başka bir oyunun menü düzenini ve başlığını kopyalayan, oyunun resmi yerine düz geçici sembol ikonu olan ya
+  da kalite çıtasının açıkça altında kalan oyunlar (eylemlerde ses ya da görsel karşılık yok, ham filtresiz bipler,
+  başlık olarak varsayılan yazı, düz tek renk ekranlar; inceleme listesine ve `Guides/GAME_FEEL.tr.md` rehberine
+  bakın).
 
 ## 9. Güncellemeler
 

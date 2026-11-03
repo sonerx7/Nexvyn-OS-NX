@@ -25,7 +25,7 @@ Hesabı, bahşişi ve kişi başı payı hesaplayan, sonucu paylaşabilen küç�
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `tipcalc.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/c/tipcalc/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 - **C:** derleme yok; `.c` dosyaları uygulama açılırken konsolda derlenir. SD karttan kurulan C uygulaması ilk açılışta bir kez onay ister.
 
 Dosyalar (satır): `main.c` (139).

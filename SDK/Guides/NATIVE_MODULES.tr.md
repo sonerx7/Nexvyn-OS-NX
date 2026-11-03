@@ -28,11 +28,11 @@ Yükleyici (`source/runtimes/nxvmod.cpp`), uygulama ilk açıldığında:
 1. Dosyayı okur, ELF başlığını ve `.nxvabi` bölümünü denetler (bölüm 3).
 2. Salt okunur segmentleri (kod, `.rodata`, sembol tabloları) bir **CodeMemory** nesnesine koyar: RX görünümü modülün
    0 adresi olur, RW görünümü kodu yazmak için başka bir adrestedir. C uygulamalarındaki (TinyCC) JIT yaklaşımının
-   aynısıdır ve Ryujinx'te de çalışır.
+   aynısıdır ve emülatörde de çalışır.
 3. Yazılabilir segmentleri (`.data`, `.got`, `.init_array`, `.bss`) **ikinci bir CodeMemory** nesnesine koyar ve onu
    tam modülün beklediği adrese (RX görünümünün hemen arkasına) RW olarak eşler. Böylece kodun PC-göreli (`adrp`)
    veri erişimi yazılabilir belleğe düşer. `svcCreateCodeMemory` iki nesneyi de `0xFF` ile doldurur (konsolun çekirdeği
-   böyle yapar, Ryujinx de aynısını), bu yüzden yükleyici iki görünümü **eşledikten sonra** temizler ve segmentleri
+   böyle yapar, emülatörler de aynısını), bu yüzden yükleyici iki görünümü **eşledikten sonra** temizler ve segmentleri
    ancak ondan sonra kopyalar: `.bss` ve aradaki boşluklar sıfır okunmalıdır. (1.2'ye kadar yükleyici kaynak sayfaları
    bu çağrıdan önce temizliyordu; `.bss` `0xFF` olarak geliyor, her fonksiyon içi statik değişkenin koruma baytı "zaten
    kuruldu" okunuyor ve uygulamalar `0xFF` baytlarından oluşan string ve mutex'lerde çöküyordu. 1.0.0'ın modülsüz
@@ -141,7 +141,7 @@ açılmaya hazır olanlar (`tools/store_pending/README.md`):
 - `tools/modules.full.json`: görev planının tam ayrımı (32 C++ uygulaması ve 9 örnek uygulama), konsol testinden sonra.
   `_kept_in_nro` notu neyin gömülü kaldığını ve nedenini listeler.
 
-İkisi de derlenir, Ryujinx'te yüklenir ve çalışır (bölüm 10).
+İkisi de derlenir, PC test ortamında yüklenir ve çalışır (bölüm 10).
 
 `romfs:/System/Modules.json` modül uygulamalarının adını, kategorisini ve simgesini taşır: kurulu olmayan bir modül
 uygulaması kayıtta "yalnızca mağaza" yer tutucusu olur; Hızlı Arama "… Uygulama Mağazası'ndan al" der, masaüstü kısayolları soluk
@@ -229,7 +229,7 @@ olmaması yalnızca indirmeleri geciktirir.
 
 ## 10. Sonuç (1.2)
 
-- Yükleyici düzeltildi (bölüm 1): 1.0.0'ın 8 uygulaması Ryujinx'te yüklenip çalışıyor, `tools/modules.lowrisk.json`'daki her
+- Yükleyici düzeltildi (bölüm 1): 1.0.0'ın 8 uygulaması PC test ortamında yüklenip çalışıyor, `tools/modules.lowrisk.json`'daki her
   modül 3 aç/kapa turunu ve aynı anda açılan 5 modülün başka sırayla kapatılıp yeniden açılmasını geçiyor,
   `tools/modules.full.json`'daki 41 paketin her biri ikişer kez açılıp kapanıyor.
 - CPython ve retro çekirdekleri olmadan ölçüldü (`NexvynOS.nro`, bayt):
@@ -243,5 +243,5 @@ olmaması yalnızca indirmeleri geciktirir.
 - Çıkan 1.2.0 (`tools/modules.json` boş): 63 552 661 bayt, her uygulama eskisi gibi gömülü; fazladan 64 KB yeni
   yükleyici, kuyruk, kurulum adımı ve metinlerdir. 1.1.2'deki 69 C++ uygulamasının aynısı kaydolur.
 - NRO düşük riskli listeyle 306, tam ayrımla 751 sembol dışa aktarır. Temiz `JOBS=8 ./build.sh` önce 230 sn, düşük riskli listeyle
-  204 sn sürdü (aynı makine, başka işler de çalışıyordu: gürültü içinde). Ryujinx'te ilk masaüstü karesine açılış: önce
+  204 sn sürdü (aynı makine, başka işler de çalışıyordu: gürültü içinde). PC test ortamında ilk masaüstü karesine açılış: önce
   8,5–8,7 sn, sonra 7,3–9,1 sn (ölçülebilir fark yok).

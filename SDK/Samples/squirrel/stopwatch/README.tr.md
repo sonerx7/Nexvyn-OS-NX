@@ -26,7 +26,7 @@ Turlu kronometre: en hızlı tur yeşil, en yavaşı kırmızı; süre ve turlar
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `stopwatch.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/squirrel/stopwatch/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 
 Dosyalar (satır): `main.nut` (146).
 

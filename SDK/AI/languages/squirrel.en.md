@@ -58,6 +58,9 @@ app.json: `"runtime": "squirrel"`, `"main": "main.nut"`, `"minSdk": "1.5"`.
 - Meshes are `Mesh` instances: `m.setColor(c)`, `m.flat(true)`, `m.triangles()`, `m.setTexture(p)`, `m.free()`.
 - Limits: 64 MB, 3 s per callback (checked on every loop; catching the error does not help).
 
+- Frozen at SDK 1.8: SDK 1.9 (pbr renderer, feeds, media, WebSocket) is not available. Start new apps in
+  Lua, JavaScript, Python or C.
+
 ## Check
 
 `python tools/rt_check.py <bundle>`: balanced brackets and strings, every SDK call exists with a valid argument

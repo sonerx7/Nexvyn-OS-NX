@@ -64,6 +64,9 @@ app.json: `"runtime": "java"`, `"main": "app.jar"`, `"mainClass": "myapp.MyApp"`
   Java uygulaması.
 - `update(double dt)`'yi yalnızca animasyon için geçersiz kıl.
 
+- SDK 1.8'de donduruldu: SDK 1.9 (pbr renderer, akış, medya, WebSocket) yoktur. Yeni app'lere Lua,
+  JavaScript, Python ya da C ile başlayın.
+
 ## Denetim
 
 `python tools/rt_check.py <bundle>`: kaynakları konsolun class library'sine karşı derler; app.jar'ın var olduğunu ve

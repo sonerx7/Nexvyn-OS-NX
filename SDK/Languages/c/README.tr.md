@@ -59,7 +59,7 @@ Diğerleri: `app_update(float)`, `app_event(const nxv_event*)`, `bool app_close(
 
 - **Studio:** **Yeni Proje → Boş C uygulaması**, **Çalıştır** (Ctrl+R). Derleme hataları dosya ve satırıyla hata
   ekranında görünür.
-- **Konsol / Ryujinx:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`). Emülatörün
+- **Konsol / emülatör:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`). Emülatörün
   JIT belleği sağlamadığı durumda C uygulaması açılmaz ve hata ekranı nedenini söyler; asıl deneme konsoldadır.
 
 ## PC'de denetim

@@ -2,7 +2,7 @@
 
 **English** · [Türkçe](APP_GUIDE.tr.md)
 
-Nexvyn OS is a desktop shell that runs as a Nintendo Switch homebrew (`NexvynOS.nro`, 1280×720, SDL2 + libnx,
+Nexvyn OS is a desktop shell that runs as Switch homebrew (Atmosphère) (`NexvynOS.nro`, 1280×720, SDL2 + libnx,
 C++17, no exceptions, no RTTI). Built-in apps are C++ classes compiled into the NRO. This guide is everything you need
 to write one. Read the headers it points to; they are short and commented.
 
@@ -140,7 +140,7 @@ Clipboard: `ui::clipboard()`, `ui::setClipboard()`.
 
 - Standard folders: `paths::home(), desktop(), documents(), downloads(), pictures(), screenshots(), music(), movies(),
   trash(), appSupport(id), caches(id)`; system: `paths::APPS` (installed apps), `paths::SYS_APPS` (built-in),
-  `"sdmc:/"` (SD root), `"romfs:/"` (read-only system). Nintendo screenshots: `sdmc:/Nintendo/Album/`.
+  `"sdmc:/"` (SD root), `"romfs:/"` (read-only system). System screenshots: the console's Album folder on the SD card.
 - `fsx::readFile/writeFile` (atomic), `list(dir, showHidden)` (sorted, dirs first), `exists/isDir/fileSize/mtime`,
   `mkdirs`, `copyAll(from, to, progress)`, `move`, `removeAll`, `moveToTrash`, `putBack`, `dirSize`, `diskSpace`,
   `join/parent/filename/stem/ext/uniqueName`, `kindOf`, `iconFor(path, isDir)` (file-type icon png path),
@@ -168,7 +168,7 @@ Clipboard: `ui::clipboard()`, `ui::setClipboard()`.
 `notify(appId, title, body, onClick)`, `alert(title, msg, {buttons}, cb(index), iconPath)` (first button = default),
 `prompt(title, msg, initial, cb(ok, text))`, `openFileDialog(title, {".txt"}, cb(path), startDir)`,
 `saveFileDialog(title, defaultName, cb(path), startDir)`, `chooseFolderDialog`, `systemKeyboard(initial, guide,
-cb(ok, text))` (Nintendo keyboard), `setWallpaper`, `screenshot(mode 0 full/1 window, delay)`, `lockScreen`,
+cb(ok, text))` (system keyboard), `setWallpaper`, `screenshot(mode 0 full/1 window, delay)`, `lockScreen`,
 `exitToHomebrewMenu`, `showLauncher/QuickSearch/Overview/ControlCenter/NotificationCenter`,
 `requestSettingsPane("network")`, `windows()`, `frontWindow()`, `uptime()`, `fps()`, `recentAdd(path)`, `recents()`,
 `launchNro(path, args)`.
@@ -190,7 +190,7 @@ appletMode, atmosphereVersion, realHardware, socTemperature`), user (`userName, 
 sleepConsole`), `vibrate(strength, ms)`.
 
 You may call libnx directly (`#include <switch.h>`) for services this layer does not cover (ns, pdm, hid, pl, nifm...).
-**Ryujinx aborts on unimplemented service commands**, so guard anything unusual with `sys::realHardware()` and show a
+**An emulator may abort on unimplemented service commands**, so guard anything unusual with `sys::realHardware()` and show a
 friendly "not available in this environment" state otherwise. Always check `Result`s with `R_SUCCEEDED`.
 
 ## Networking and audio

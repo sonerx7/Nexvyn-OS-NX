@@ -74,7 +74,7 @@ konsolda olmayan bir API (ör. `Random.nextBoolean`) PC'de hata verir.
 
 - **Studio:** **Yeni Proje → Boş Java uygulaması** derlenmiş jar ile gelir ve çalışır; kaynağı değiştirince jar'ı
   PC'de yeniden derleyin.
-- **Konsol / Ryujinx:** klasörü (jar dahil) `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
+- **Konsol:** klasörü (jar dahil) `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
 
 ## PC'de denetim
 

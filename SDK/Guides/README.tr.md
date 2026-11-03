@@ -2,37 +2,55 @@
 
 [English](README.md) · **Türkçe**
 
-Nexvyn OS'un kullanım ve geliştirici rehberleri. Çoğu Türkçedir; İngilizce olanlar ve İngilizce özeti bulunanlar
-tabloda belirtilmiştir. Tam API başvurusu her zaman [SDK/Reference/SDK.tr.md](../Reference/SDK.tr.md) belgesidir.
+Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin tamamı
+[SDK başvurusundadır](../Reference/SDK.tr.md); orada olmayan fonksiyon yoktur.
 
-## Uygulama geliştirme
+## SDK 1.9 ile başlayın
 
-| Belge | Konu | Dil |
-|---|---|---|
-| [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.tr.md) | Geliştiricinin ana rehberi: Studio ve şablonlar, `app.json`, dil seçimi, 2D oyun, 3D, paketleme, topluluk kataloğu, Overlay, Ryujinx'te test (`autorun.txt`), yerleşik (C++) uygulamalar | TR, İngilizce özet |
-| [NXVAPP_FORMAT.md](NXVAPP_FORMAT.tr.md) | `.nxvapp` v2 paket biçimi: `app.json` alanları, çalışma ortamları, izinler, `manifest.sha256`, imza (`manifest.sig`), kurulum, katalog biçimi, paketleme | TR, İngilizce özet |
-| [JS_APPS.md](JS_APPS.tr.md) | JavaScript uygulamaları: Lua'dan farklar, Promise'ler, sınırlar, denetim | TR |
-| [PY_APPS.md](PY_APPS.tr.md) | Python (pocketpy) uygulamaları: farklar, yorumlayıcı kısıtları, sistem kütüphanesi | TR |
-| [SQUIRREL_APPS.md](SQUIRREL_APPS.tr.md) | Squirrel uygulamaları | TR |
-| [C_APPS.md](C_APPS.tr.md) | Konsolda TinyCC ile derlenen C uygulamaları | TR |
-| [JAVA_APPS.md](JAVA_APPS.tr.md) | miniJVM üzerinde Java uygulamaları ve PC'de derleme | TR |
-| [LANGUAGE_SUPPORT.md](LANGUAGE_SUPPORT.tr.md) | Yeni diller için araştırma ve kararlar: neden Squirrel, TinyCC ve miniJVM, neden CPython değil | TR |
-| [LUA_CAPABILITIES.md](LUA_CAPABILITIES.tr.md) | Lua ile gerçekçi olarak neler yapılabilir, sınırlar nerede | TR |
-| [GAME_ENGINE.md](GAME_ENGINE.tr.md) | `nexvyn.game` 2D oyun motoru eğitimi: sahneler, sprite, harita, kamera, fizik, parçacık, tween | TR |
-| [GAME_ENGINE_PROJECTS.md](GAME_ENGINE_PROJECTS.tr.md) | Oyun Motoru uygulaması (eski adıyla Oyun Atölyesi): kodsuz / az kodlu 2D ve 3D oyun yapımı, proje biçimi | TR |
-| [MAKE_A_GAME.md](MAKE_A_GAME.tr.md) | Oyun yap: SDK 1.8 için eksiksiz tarif (proje, 3B modeller, yükleme, girdi, çarpışma, hız, sanat yönü, mağaza ikonu, yayın), test edilmiş Lua, JavaScript ve Python koduyla | TR + EN |
-| [APP_GUIDE.md](APP_GUIDE.tr.md) | Yerleşik C++ uygulaması yazma (Nexvyn OS kaynak deposuna katkı için) | EN |
+| Rehber | Konusu |
+|---|---|
+| [PBR oyun tarifi](PBR_GAME_RECIPE.tr.md) | pbr renderer üzerinde adım adım eksiksiz küçük bir 3B oyun (materyal, ışık, gölge, bloom, instancing, yüklenen model), Lua ve JavaScript'te, Python ve C sürümleriyle |
+| [Sosyal uygulama tarifi](SOCIAL_APP_RECIPE.tr.md) | Adım adım eksiksiz bir akış uygulaması (çevrimdışı önbellekli ağ, web resimleri, sanal akış, zengin metin, klip oynatıcı), Lua ve JavaScript'te, Python ve C sürümleriyle |
+| [AI destekli çalışma](AI_WORKFLOW.tr.md) | AI ile üretilmiş kod, model ve dokulardan konsola hazır oyuna: context pack'ler, ölçek, pivot, LOD, doku boyutları, ORM ve MetallicSmoothness haritaları, normal haritaları, cam ve ışıma, yansımalar, haklar |
+| [SDK sürümleri](SDK_VERSIONS.tr.md) | 1.0'dan 1.9'a her SDK sürümünün ekledikleri, hangi Nexvyn OS'la geldiği, hangi dillerin yeni API aldığı, `minSdk` ve `targetSdk` seçimi |
+| [Oyun yap](MAKE_A_GAME.tr.md) | Eksiksiz oyun tarifi: proje, 3B modeller (`.glb` / `.fbx`), yükleme, girdi, çarpışma, konsolda hız, pbr renderer bütçesi, sanat yönü, mağaza ikonu, yayımlama |
+| [Sosyal uygulama yap](MAKE_A_SOCIAL_APP.tr.md) | Akış, fotoğraf, kısa video ve sohbet uygulamaları: önbellekli ve yeniden denemeli istekler, yükleme, WebSocket, oturum açma, web resimleri, video oynatıcılar, akış ve sayfalayıcılar |
+| [Ses tasarımı](SOUND_DESIGN.tr.md) | Ses kiti: katmanlı tarifler, varyantlar, bus'lar, ducking, ortam sesi, müzik döngüleri, seviyeler |
+| [Grafik, arayüz ve oyun hissi](GAME_FEEL.tr.md) | His kiti: hareket, darbe, ışık, yazı, arayüz biçimleri, kameralar, 3B atmosferler ve mağaza kalite çıtası |
 
-## Kullanım ve sistem
+## Diller
 
-| Belge | Konu | Dil |
-|---|---|---|
-| [USER_GUIDE.md](USER_GUIDE.tr.md) | Kullanıcı rehberi: kurulum, masaüstü, kısayollar, uygulamalar, Mağaza, Bilgisayara Bağlan (FTP) | TR |
-| [FORWARDER.md](FORWARDER.tr.md) | Nexvyn OS'u ana menüden açan forwarder | TR + EN |
-| [BROWSER.md](BROWSER.tr.md) | Tarayıcı: motor araştırması ve seçilen yol | TR |
-| [TURKISH_PATCHES.md](TURKISH_PATCHES.tr.md) | Türkçe Yamalar uygulamasının araştırması ve tasarımı | TR |
-| [NATIVE_MODULES.md](NATIVE_MODULES.tr.md) | Yerel modüller (`.nxvmod`): Nexvyn OS'un isteğe bağlı C++ uygulamalarının App Market'ten kurulması (iç mekanizma, SDK değil) | TR |
+| Rehber | Konusu |
+|---|---|
+| [Geliştirici rehberi](DEVELOPER_GUIDE.tr.md) | Studio ve şablonlar, `app.json`, dil seçimi, 2B ve 3B, paketleme, test |
+| [JavaScript ile uygulama](JS_APPS.tr.md) | Lua'dan farklar, Promise'ler, sınırlar, denetim |
+| [Python ile uygulama](PY_APPS.tr.md) | Hafif runtime ve CPython 3.12, yorumlayıcı sınırları, sistem kütüphanesi |
+| [C ile uygulama](C_APPS.tr.md) | Konsolda derlenen C, `nexvyn.h`, bellek ve güvenlik kuralları |
+| [Squirrel ile uygulama](SQUIRREL_APPS.tr.md) | Squirrel uygulamaları (SDK 1.8'de donduruldu) |
+| [Java ile uygulama](JAVA_APPS.tr.md) | Java uygulamaları ve PC'de derleme (SDK 1.8'de donduruldu) |
+| [Lua ile neler yapılabilir](LUA_CAPABILITIES.tr.md) | Lua ile gerçekçi olarak neler yapılır, sınırlar nerede |
+| [Dil desteği](LANGUAGE_SUPPORT.tr.md) | Neden bu runtime'lar ve yeni API politikası |
 
-Nereden başlamalı: önce [../README.md](../README.tr.md) (SDK başlangıç sayfası), sonra seçtiğiniz dilin
-[Languages](../Languages/README.tr.md) rehberi, ardından ayrıntı için yukarıdaki dil belgesi ve
-[DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.tr.md).
+## Biçimler, motor ve sistem
+
+| Rehber | Konusu |
+|---|---|
+| [Paket biçimi](NXVAPP_FORMAT.tr.md) | `.nxvapp`, `.nxvtheme`, `.nxvfont`: `app.json` alanları, runtime'lar, izinler, `manifest.sha256`, imzalama |
+| [Uyumluluk](COMPATIBILITY.tr.md) | Uyumluluk sözleşmesi: hiçbir şey kaldırılmaz, `targetSdk`'ya bağlı değişiklikler, dondurulan runtime'lar, sürüm denetimleri |
+| [App Guard](APP_GUARD.tr.md) | Paketlerin kurulmadan önce nasıl tarandığı ve bir uygulamayı neyin *İncele* ya da *Tehlikeli* yaptığı |
+| [Oyun motoru](GAME_ENGINE.tr.md) | `nexvyn.game` 2B motoru: sahneler, sprite'lar, haritalar, kamera, fizik, parçacıklar, tween'ler |
+| [Oyun Motoru projeleri](GAME_ENGINE_PROJECTS.tr.md) | Oyun Motoru uygulaması: az kodla ya da kodsuz oyunlar, Hızlı Oyun, proje biçimi |
+| [Native modüller](NATIVE_MODULES.tr.md) | İsteğe bağlı yerleşik uygulamaların App Market'ten nasıl kurulduğu (iç mekanizma, SDK değil) |
+| [C++ ile yerleşik uygulama](APP_GUIDE.tr.md) | Sistemin kendi uygulamalarının nasıl yazıldığı |
+
+## Kullanıcılar için
+
+| Rehber | Konusu |
+|---|---|
+| [Kullanım rehberi](USER_GUIDE.tr.md) | Kurulum, masaüstü, kısayollar, uygulamalar, App Market, PC'ye Bağlan |
+| [Forwarder](FORWARDER.tr.md) | HOME menüsünde Nexvyn OS'u açan bir simge |
+| [Tarayıcı](BROWSER.tr.md) | Dahili tarayıcı ve tam tarayıcı |
+| [Türkçe yamalar](TURKISH_PATCHES.tr.md) | Türkçe Yamalar uygulaması |
+
+Nereden başlamalı: [SDK başlangıç sayfası](../README.tr.md), sonra [dilinizin hızlı başlangıcı](../Languages/README.tr.md),
+sonra [PBR oyun tarifi](PBR_GAME_RECIPE.tr.md) ya da [sosyal uygulama tarifi](SOCIAL_APP_RECIPE.tr.md).

@@ -53,7 +53,7 @@ vermediği öğelerde gerekçesiyle).
 
 ## 6. Kalite
 
-- [ ] Konsolda ya da Ryujinx'te kurulup açılıyor; birkaç dakikalık kullanımda çökmüyor
+- [ ] Konsolda kurulup açılıyor; birkaç dakikalık kullanımda çökmüyor
 - [ ] Açık ve koyu modda okunuyor; en küçük pencere boyutunda, el modunda ve TV'de taşma yok
 - [ ] Dokunmatik, imleç ve (oyunlarda) kumandayla kullanılabiliyor; hedefler en az 28 px
 - [ ] Akıcı: `app.draw` içinde ağır iş yok, hiçbir geri çağırma 3 saniyeye (`app.load` 10'a) yaklaşmıyor; büyük
@@ -64,13 +64,17 @@ vermediği öğelerde gerekçesiyle).
 - [ ] Oyunlar: görünüş oyunun kendisine ait. Başlık, HUD ve duraklatma ekranlarını oyun kendi sanat yönüyle çiziyor
       (`ui.*` widget'ları ya da `theme` renkleri değil) ve bir örneğin ya da başka bir oyunun menü düzenini, renklerini
       ya da başlık kompozisyonunu kopyalamıyor
+- [ ] Oyunlar: kalite çıtası (`Guides/GAME_FEEL.tr.md` bölüm 8, `Guides/SOUND_DESIGN.tr.md`). Her eylemin sesi ve
+      görsel karşılığı var; ses seti ham, filtresiz biplerden oluşmuyor; müzik ya da ambiyans var; düz tek renk
+      ekranlar değil bir palet var; başlık varsayılan yazı değil stilli bir logo; düğmeler kumanda odağını gösteriyor;
+      ekranlar geçişle değişiyor
 
 ## 7. Mağaza kaydı
 
 - [ ] `store.json`: en az İngilizce `subtitle` (≤ 45 karakter) ve `description`; `kind`, `tags`; `shots` geçerli
-- [ ] `icon.png` 256 x 256 (eski öğelerde 128): SDK ile yapılan oyun ve app'lerde öğenin kendi key art'ı (kahramanı
-      ya da ana nesnesi, dünyası, ışığı, adı), cesur, 64 px'de okunur, mağazadaki diğer ikonlara benzemiyor; gradyan
-      üstünde düz sembol değil. Kişisel veri içermeyen 3-4 ekran görüntüsü
+- [ ] `icon.png` 256 x 256 (eski öğelerde 128): SDK ile yapılan oyun ve app'lerde öğenin kendisinin resmi
+      (kahramanı, ana nesnesi ya da dünyası), 64 px'de okunuyor; gradyan üstünde düz, geçici bir sembol değil. Stil
+      (sakin ya da gösterişli, adlı ya da adsız) yapımcının seçimi. Kişisel veri içermeyen 3-4 ekran görüntüsü
 - [ ] `README.md` İngilizce (başka diller isteğe bağlı)
 - [ ] Güncellemede bir `changelog` (Yenilikler) var
 

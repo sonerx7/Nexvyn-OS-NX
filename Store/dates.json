@@ -165,12 +165,16 @@
   },
   "com.sonerx7.ashprotocol": {
     "added": "2026-11-02",
-    "updated": "2026-11-02",
-    "version": "1.0.0",
+    "updated": "2026-11-03",
+    "version": "1.0.1",
     "history": [
       {
         "version": "1.0.0",
         "date": "2026-11-02"
+      },
+      {
+        "version": "1.0.1",
+        "date": "2026-11-03"
       }
     ]
   },
@@ -2575,6 +2579,9 @@
   "sample:particles": {
     "added": "2026-10-29"
   },
+  "sample:pbr3d": {
+    "added": "2026-11-03"
+  },
   "sample:physics": {
     "added": "2026-10-29"
   },
@@ -2592,6 +2599,9 @@
   },
   "sample:snake": {
     "added": "2026-10-29"
+  },
+  "sample:social-feed": {
+    "added": "2026-11-03"
   },
   "sample:stopwatch": {
     "added": "2026-10-29"

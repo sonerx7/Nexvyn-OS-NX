@@ -2,7 +2,7 @@
 
 [English](APP_GUIDE.en.md) · **Türkçe**
 
-Nexvyn OS, Nintendo Switch homebrew'u olarak çalışan bir masaüstü kabuğudur (`NexvynOS.nro`, 1280×720,
+Nexvyn OS, Switch homebrew'u (Atmosphère) olarak çalışan bir masaüstü kabuğudur (`NexvynOS.nro`, 1280×720,
 SDL2 + libnx, C++17, istisna yok, RTTI yok). Yerleşik uygulamalar NRO'ya derlenmiş C++ sınıflarıdır. Bu rehber, bir
 tane yazmak için ihtiyacınız olan her şeydir. Gösterdiği header'larını okuyun; kısa ve açıklamalıdırlar.
 
@@ -147,7 +147,7 @@ Pano: `ui::clipboard()`, `ui::setClipboard()`.
 
 - Standart klasörler: `paths::home(), desktop(), documents(), downloads(), pictures(), screenshots(), music(), movies(),
   trash(), appSupport(id), caches(id)`; sistem: `paths::APPS` (kurulu uygulamalar), `paths::SYS_APPS` (yerleşik),
-  `"sdmc:/"` (SD kökü), `"romfs:/"` (salt okunur sistem). Nintendo ekran görüntüleri: `sdmc:/Nintendo/Album/`.
+  `"sdmc:/"` (SD kökü), `"romfs:/"` (salt okunur sistem). Sistem ekran görüntüleri: SD karttaki konsolun Albüm klasörü.
 - `fsx::readFile/writeFile` (atomik), `list(dir, showHidden)` (sıralı, önce klasörler), `exists/isDir/fileSize/mtime`,
   `mkdirs`, `copyAll(from, to, progress)`, `move`, `removeAll`, `moveToTrash`, `putBack`, `dirSize`, `diskSpace`,
   `join/parent/filename/stem/ext/uniqueName`, `kindOf`, `iconFor(path, isDir)` (dosya türü simgesi png yolu),
@@ -175,7 +175,7 @@ Pano: `ui::clipboard()`, `ui::setClipboard()`.
 `notify(appId, title, body, onClick)`, `alert(title, msg, {buttons}, cb(index), iconPath)` (ilk düğme = varsayılan),
 `prompt(title, msg, initial, cb(ok, text))`, `openFileDialog(title, {".txt"}, cb(path), startDir)`,
 `saveFileDialog(title, defaultName, cb(path), startDir)`, `chooseFolderDialog`, `systemKeyboard(initial, guide,
-cb(ok, text))` (Nintendo klavyesi), `setWallpaper`, `screenshot(mode 0 full/1 window, delay)`, `lockScreen`,
+cb(ok, text))` (sistem klavyesi), `setWallpaper`, `screenshot(mode 0 full/1 window, delay)`, `lockScreen`,
 `exitToHomebrewMenu`, `showLauncher/QuickSearch/Overview/ControlCenter/NotificationCenter`,
 `requestSettingsPane("network")`, `windows()`, `frontWindow()`, `uptime()`, `fps()`, `recentAdd(path)`, `recents()`,
 `launchNro(path, args)`.
@@ -198,7 +198,7 @@ appletMode, atmosphereVersion, realHardware, socTemperature`), kullanıcı (`use
 sleepConsole`), `vibrate(strength, ms)`.
 
 Bu katmanın kapsamadığı servisler için libnx'i doğrudan çağırabilirsiniz (`#include <switch.h>`) (ns, pdm, hid, pl,
-nifm...). **Ryujinx, uygulanmamış servis komutlarında durur**; bu yüzden olağan dışı her şeyi `sys::realHardware()`
+nifm...). **Bir emülatör, uygulanmamış servis komutlarında durabilir**; bu yüzden olağan dışı her şeyi `sys::realHardware()`
 ile koruyun ve aksi hâlde anlaşılır bir "bu ortamda kullanılamıyor" durumu gösterin. `Result`'ları her zaman
 `R_SUCCEEDED` ile denetleyin.
 

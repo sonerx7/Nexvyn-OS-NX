@@ -19,7 +19,7 @@ python SDK/Tools/nxv/nxv.py <komut> ...          # bu deponun kökünden
 | `build <paket> --sdk YOL` | Java: `src/**/*.java` → `app.jar`. Diğer diller için derleme yoktur. |
 | `pack <paket> [-o ÇIKTI] [--sign ANAHTAR.pem --sdk YOL]` | `Tools/build_store.py` ile aynı, belirlenimci `.nxvapp` (sıralı girdiler, sabit zaman, `manifest.sha256`). Varsayılan çıktı: `MyApp.nxvapp/` için yanındaki `dist/MyApp.nxvapp`, `<öğe>/source/` için `<öğe>/<slug>.nxvapp`. `--sign` kaynak deposunun `nxvapp_pack.py`'sini çağırır. |
 | `icon <glif> <üst renk> <alt renk> <çıktı.png> --sdk YOL` | Yerleşik stilde ikon (`make_icon.py`; Pillow ve numpy gerekir). |
-| `install <paket> [--sd KÖK] [--autorun]` | SD kart klasörüne kopyalar: varsayılan Ryujinx'inki (`%APPDATA%/Ryujinx/sdcard`, Linux/macOS'ta `~/.config/Ryujinx/sdcard`). `--autorun` açılışta uygulamayı açan `NexvynOS/autorun.txt` yazar; testten sonra silin. |
+| `install <paket> [--sd KÖK] [--autorun]` | SD kart klasörüne kopyalar: `--sd`, yoksa `$NXV_SD`, yoksa `%APPDATA%` (Linux/macOS'ta `~/.config`) altında `NexvynOS/` içeren tek emülatör SD kart klasörü. `--autorun` açılışta uygulamayı açan `NexvynOS/autorun.txt` yazar; testten sonra silin. |
 | `push <paket> --host IP [--port 5000] [--user K --password P] [--remote /NexvynOS/Applications] [--name AD] [--packed] [--dry-run]` | Konsoldaki **Bilgisayara Bağlan** uygulamasının FTP sunucusuna yükler. Varsayılan: klasör `/NexvynOS/Applications/<slug>.nxvapp/` olarak. `--packed`: tek `.nxvapp` dosyası (Nexvyn OS bir sonraki açılışta açar ya da Dosyalar'dan kurulur). FTP erişim alanı "yalnızca ana klasör" ise `--remote` ile yolu verin. `--dry-run` hiçbir yere bağlanmadan listeler. |
 
 Çıkış kodu: 0 başarı, 1 sorun bulundu, 2 yanlış kullanım.

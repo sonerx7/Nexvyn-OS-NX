@@ -9,12 +9,29 @@ body:
         Thank you! English or Turkish is fine. / Teşekkürler! İngilizce ya da Türkçe yazabilirsiniz.
         If an App Market item is the problem, use the report form instead. / Sorun bir Uygulama Mağazası öğesindeyse
         bildirim formunu kullanın.
+        Security problems: never here, see SECURITY.md. / Güvenlik sorunları: burada değil, SECURITY.tr.md'ye bakın.
   - type: input
     id: version
     attributes:
       label: Nexvyn OS version / sürümü
       description: System Settings > About / Sistem Ayarları > Hakkında
-      placeholder: "1.0.0"
+      placeholder: "1.3.0"
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: System version / Sistem sürümü
+      description: System Settings > About, "System version" (required 22.5.0 or later) / Sistem Ayarları > Hakkında
+      placeholder: "22.5.0"
+    validations:
+      required: true
+  - type: input
+    id: atmosphere
+    attributes:
+      label: Atmosphère version / Atmosphère sürümü
+      description: System Settings > About / Sistem Ayarları > Hakkında
+      placeholder: "1.12.1"
     validations:
       required: true
   - type: dropdown
@@ -59,9 +76,13 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Crash report or log / Çökme raporu ya da günlük
+      label: Log and crash report / Günlük ve çökme raporu
       description: |
-        Optional. From sdmc:/NexvynOS/System/Logs/Crashes or System Settings > Developer > System logs. Remove anything
-        private first. / İsteğe bağlı. sdmc:/NexvynOS/System/Logs/Crashes ya da Sistem Ayarları > Geliştirici > Sistem
-        günlükleri. Önce özel bilgileri silin.
+        Attach or paste sdmc:/NexvynOS/System/Logs/system.log (and system.prev.log if you restarted since; lines that
+        start with "stall" show freezes). Crash reports are in sdmc:/NexvynOS/System/Logs/Crashes, Atmosphère fatal
+        reports in sdmc:/atmosphere/fatal_errors/. Remove anything private first. /
+        sdmc:/NexvynOS/System/Logs/system.log dosyasını ekleyin ya da yapıştırın (yeniden başlattıysanız
+        system.prev.log'u da; "stall" ile başlayan satırlar donmaları gösterir). Çökme raporları
+        sdmc:/NexvynOS/System/Logs/Crashes, Atmosphère fatal raporları sdmc:/atmosphere/fatal_errors/ içindedir. Önce
+        özel bilgileri silin.
       render: text

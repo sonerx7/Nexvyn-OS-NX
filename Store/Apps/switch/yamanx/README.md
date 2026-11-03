@@ -2,11 +2,11 @@
 
 **SertAy'ın [YamaNX](https://github.com/sertay1/YamaNX)'i temel alınmıştır / Based on [YamaNX](https://github.com/sertay1/YamaNX) by SertAy.**
 
-Nintendo Switch oyunları için Türkçe yama yükleyici. Konsolundaki oyunların Türkçe yamalarını bulur, indirir ve
+Switch oyunları için Türkçe yama yükleyici. Konsolundaki oyunların Türkçe yamalarını bulur, indirir ve
 `sdmc:/atmosphere/contents/<Title ID>/` içine kurar; güncellemeleri gösterir, kaldırırken yalnızca kurduğu dosyaları
 siler ve değiştirdiği dosyaları geri koyar.
 
-Turkish patch installer for Nintendo Switch games. It finds the Turkish patches for the games on your console,
+Turkish patch installer for Switch games. It finds the Turkish patches for the games on your console,
 downloads them and installs them to `sdmc:/atmosphere/contents/<Title ID>/`; it shows updates, and uninstalling removes
 only the files it installed and puts replaced files back.
 

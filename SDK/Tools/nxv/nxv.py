@@ -6,7 +6,7 @@
     nxv build <bundle> --sdk PATH                       Java: compile src/ into app.jar
     nxv pack <bundle> [-o OUT.nxvapp] [--sign KEY.pem --sdk PATH]  default: dist/<name>.nxvapp next to the folder
     nxv icon <glyph> <top color> <bottom color> <out.png> --sdk PATH [--glyph-color #FFFFFF]
-    nxv install <bundle> [--sd SDROOT] [--autorun]      copy into an SD card folder (Ryujinx's by default)
+    nxv install <bundle> [--sd SDROOT] [--autorun]      copy into an SD card folder (--sd, $NXV_SD or found)
     nxv push <bundle> --host CONSOLE_IP [--port 5000] [--user U --password P] [--packed] [--dry-run]
 
 <lang> is lua, js (javascript), py (python), sq (squirrel), c or java. <bundle> is an app folder with app.json at its
@@ -23,6 +23,7 @@ import argparse
 import ftplib
 import hashlib
 import io
+import glob
 import json
 import os
 import re
@@ -57,16 +58,17 @@ SHARE_KINDS = {"text", "url", "file", "image"}
 KINDS = {"app", "game", "demo", "template"}
 # SDK calls that need a permission, in every language (Lua/JS/Python/Squirrel sys.x, C sys_x, Java Sys.x / Net.x)
 USES = {
-    "network": r"\b(?:net|Net)[._](?:get|post|json|download|request|fetch|fetchJson)\s*\(",
+    "network": r"\b(?:net|Net)[._](?:get|post|json|download|request|fetch|fetchJson|ws|oauth)\s*\(|"
+               r"\b(?:gfx|Gfx)[._]imageUrl\s*\(",
     "notifications": r"\b(?:sys|Sys)[._](?:notify|schedule)\s*\(",
-    "clipboard": r"\b(?:sys|Sys)[._](?:clipboard|setClipboard)\s*\(",
-    "launch": r"\b(?:sys|Sys)[._](?:launch|appUrl)\s*\(|nxv://",
+    # sys.clipboard needs no permission (since 1.0.0); sys.appUrl only builds a link, opening one with sys.open does
+    "launch": r"""\b(?:sys|Sys)[._]launch\s*\(|\b(?:sys|Sys)[._]open\s*\(\s*["']nxv://""",
     "games": r"\b(?:sys|Sys)[._]games\s*\(",
 }
 TR_CALL = re.compile(r"""\bTR[123]?\(\s*["']([^"'\n]+)["']""")
 # store.json "shots" steps (SnxOS tools/store_shots.py)
 SHOT_STEP = re.compile(r"^(wait \d+(\.\d+)?|wclick [01](\.\d+)? [01](\.\d+)?|wmove [01](\.\d+)? [01](\.\d+)?|"
-                       r"key \S+|dpad \S+|text .+|dark [01])$")
+                       r"key \S+|hold \S+ \d+(\.\d+)?|dpad \S+|text .+|dark [01])$")
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
 STORED = {".png", ".jpg", ".jpeg", ".ogg", ".mp3", ".zip"}
 MAX_FILES = 20000
@@ -202,7 +204,8 @@ def cmd_new(a):
             "kind": "app", "tags": [],
             "subtitle": {"en": ""},
             "description": {"en": ""},
-            "shots": [["wait 3"], ["wait 1.5"], ["dark 1", "wait 1.5"]]})
+            "shots": [["wait 3"], ["wclick 0.5 0.4", "wait 1.5"], ["key right", "wait 1.5"],
+                      ["hold right 1.5", "wait 1"], ["dark 1", "wait 1.5"]]})
         with open(os.path.join(item, "README.md"), "w", encoding="utf-8", newline="\n") as f:
             f.write("# %s\n\nSay what the app does in two or three "
                     "sentences.\n\n| | |\n|---|---|\n| Id | `%s` |\n| Language | %s |\n| Min SDK | %s |\n| Permissions | %s |\n"
@@ -324,7 +327,9 @@ def check_sources(bundle, lang, perms, rep):
         keys |= {k for k in TR_CALL.findall(code) if not k.endswith((".", "_"))}  # "prefix." + x is built at run time
     for p in sorted(used - perms):
         rep.error("uses %s calls but app.json \"permissions\" does not declare \"%s\" (every permission is enforced)" % (p, p))
-    for p in sorted(perms - used - {"files"}):
+    if "clipboard" in perms:
+        rep.warn("\"clipboard\" is no longer a permission (every app may use sys.clipboard): remove it from app.json")
+    for p in sorted(perms - used - {"files", "clipboard"}):
         rep.warn("declares \"%s\" but no call that needs it was found" % p)
     # translations: every TR key in lang/en.json (required) and in lang/tr.json when the app has one, like the source
     # repository's checkers; other languages only warn (missing keys show English). Dotted keys may be system strings.
@@ -390,13 +395,15 @@ def check_store_item(bundle, rep):
         if not isinstance(shots, list) or not all(isinstance(x, list) for x in shots):
             rep.error("store.json: shots must be a list of lists of steps")
         else:
-            if not 3 <= len(shots) <= 4:
-                rep.warn("store.json: give 3-4 shots (got %d)" % len(shots))
+            if not 3 <= len(shots) <= 5:
+                rep.warn("store.json: give 3-5 shots, 5 recommended (got %d)" % len(shots))
+            elif len(shots) < 5:
+                rep.warn("store.json: 5 shots are recommended (got %d): the store page shows five" % len(shots))
             for i, shot in enumerate(shots, 1):
                 for step in shot:
                     if not isinstance(step, str) or not SHOT_STEP.match(step):
-                        rep.error("store.json: shot %d: bad step %r (wait S, wclick FX FY, wmove FX FY, key K, dpad D, "
-                                  "text T, dark 0|1)" % (i, step))
+                        rep.error("store.json: shot %d: bad step %r (wait S, wclick FX FY, wmove FX FY, key K, "
+                                  "hold K S, dpad D, text T, dark 0|1)" % (i, step))
     sdir = os.path.join(item, "screenshots")
     if not os.path.isdir(sdir) or not any(n.endswith(".png") for n in os.listdir(sdir)):
         rep.warn("item: no screenshots/*.png yet (SnxOS tools/store_shots.py takes them from \"shots\")")
@@ -521,16 +528,23 @@ def cmd_icon(a):
     return 0 if r.returncode == 0 else 1
 
 
-# ------------------------------------------------------------------ install (local SD card folder, e.g. Ryujinx)
+# ------------------------------------------------------------------ install (local SD card folder, e.g. an emulator's)
 def default_sd():
-    if os.name == "nt":
-        return os.path.join(os.environ.get("APPDATA", ""), "Ryujinx", "sdcard")
-    return os.path.join(os.path.expanduser("~"), ".config", "Ryujinx", "sdcard")
+    """$NXV_SD, else the only "<app data>/<program>/sdcard" folder that already holds NexvynOS/ (an emulator's
+    virtual SD card), else None (then --sd is needed)."""
+    if os.environ.get("NXV_SD"):
+        return os.environ["NXV_SD"]
+    base = os.environ.get("APPDATA", "") if os.name == "nt" else os.path.join(os.path.expanduser("~"), ".config")
+    found = sorted(glob.glob(os.path.join(base, "*", "sdcard", "NexvynOS")))
+    return os.path.dirname(found[0]) if len(found) == 1 else None
 
 
 def cmd_install(a):
     bundle = bundle_dir(a.bundle)
-    sd = os.path.abspath(a.sd or default_sd())
+    sd = a.sd or default_sd()
+    if not sd:
+        die("no SD card folder found: pass --sd <folder> or set NXV_SD (the folder that holds NexvynOS/)")
+    sd = os.path.abspath(sd)
     if not os.path.isdir(sd):
         die("SD card folder not found: %s (pass --sd)" % sd)
     m = load_json(os.path.join(bundle, "app.json"))
@@ -649,7 +663,7 @@ def main(argv=None):
     p.add_argument("--sdk")
     p.set_defaults(fn=cmd_icon)
 
-    p = sub.add_parser("install", help="copy a bundle into an SD card folder (default: Ryujinx's)")
+    p = sub.add_parser("install", help="copy a bundle into an SD card folder (--sd, $NXV_SD, or the one emulator SD folder that has NexvynOS/)")
     p.add_argument("bundle")
     p.add_argument("--sd", help="SD card root folder")
     p.add_argument("--autorun", action="store_true", help="also write NexvynOS/autorun.txt that opens the app at boot")

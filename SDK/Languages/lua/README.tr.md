@@ -60,7 +60,7 @@ Diğer geri çağırmalar (SDK 1.4): `app.open`, `app.search`, `app.suspend`, `a
   (Ctrl+R). Hatalar satırıyla işaretlenir, `print` çıktısı Studio konsolundadır.
 - **Konsolda, PC'den:** klasörü `sdmc:/NexvynOS/Applications/` içine kopyalayın (FTP: **Bilgisayara Bağlan**, ya da
   `nxv push`) ve Launcher'ı yeniden açın.
-- **Ryujinx'te:** klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın (`nxv install`).
+- **Emülatörde:** klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın (`nxv install`).
   `sdmc:/NexvynOS/autorun.txt` içine `launch com.adiniz.uygulamam` satırı açılışta uygulamayı açar; testten sonra
   dosyayı silin.
 
@@ -85,6 +85,14 @@ olmasını denetler, sonra uygulamayı sahte bir SDK ile rastgele tıklama, tuş
   `sys.clipboard` için `"clipboard"`, kendi klasörleri dışı için `"files"` gerekir; bildirilmeyen izin verilmez.
 - **Lua 1 tabanlıdır:** `ui.segmented`, `ui.dropdown` ve `ui.alert` dizinleri 1'den başlar (JS/Python'da 0).
 - **`ui` bileşenleri benzersiz kimlik ister:** aynı etiket iki kez varsa `"Sil##3"` gibi sonek ekleyin.
+
+## Oyun kitleri
+
+[`kits/`](kits/) bir oyuna kopyalanacak iki dosya ve ikisini kullanan bir demo app içerir (klasörü app olarak
+çalıştırın): `sfx.lua` (ses tasarımı: bir kez WAV'a üretilen katmanlı prosedürel tarifler, varyantlar, bus'lar,
+ducking, ambiyans, müzik döngüleri) ve `juice.lua` (easing ve tween, sarsıntı, hit-stop, parlayan parçacıklar, vinyet,
+gradyanlar, stilli başlıklar, derinlikli panel ve düğmeler, geçişler, 2D / 3D kameralar, 3D ışık atmosferleri).
+Rehberler: [ses tasarımı](../../Guides/SOUND_DESIGN.tr.md), [grafik, arayüz ve oyun hissi](../../Guides/GAME_FEEL.tr.md).
 
 ## Daha fazlası
 

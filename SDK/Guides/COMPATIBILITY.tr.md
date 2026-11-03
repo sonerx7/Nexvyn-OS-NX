@@ -40,6 +40,7 @@ Hangi değişiklik neyi artırır:
 | 1.6 | 1.0.0 | `fs.unzip`, `sys.games` ve `"games"` izni, metin okuma; `"python3"` runtime'ı (CPython 3.12) |
 | 1.7 | 1.1.0 | `g3d.voxels` voksel dünyaları (JavaScript), `mesh:setTexture(path, pixelated)` |
 | 1.8 | 1.2.0 | `g3d.model`: materyal, texture ve iskelet animasyonlu `.glb` / `.gltf` / `.fbx` modeller; `g3d.drawMatrix` |
+| 1.9 | 1.3.0 | runtime kütüphanesi: Lua'da `net.request`, JavaScript `TextEncoder` / `URL` / `URLSearchParams` / `structuredClone`, Python `str` metotları ve `urllib.parse` / `html` / `uuid`; akış, fotoğraf ve kısa video uygulamaları: `net.request` ile yükleme, çerez, yeniden deneme ve çevrimdışı önbellek, WebSocket istemcisi, `net.oauth`, `gfx.imageUrl`, `media.*` oynatıcıları, `ui.beginFeed` / `ui.pager` / `ui.richText`, `sys.relativeTime`; isteğe bağlı pbr renderer (`g3d.renderer("pbr")`): PBR materyaller, gerçek zamanlı ışıklar, gölgeler, HDR, bloom, MSAA, instancing (Lua, JavaScript, Python, C); bunu istemeyen uygulamalar 1.8'deki gibi birebir çizilir |
 
 Sürüm sürüm bütün fonksiyonlar SDK başvurusundadır (`sdk/SDK.tr.md`, "SDK sürümleri").
 

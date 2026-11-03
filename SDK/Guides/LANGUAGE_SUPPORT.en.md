@@ -96,7 +96,7 @@ the CPython APIs within the subset pocketpy supports, and were tested by compari
   small libc bound to newlib (`stdio.h`, `stdlib.h`, `string.h`, `math.h`, `ctype.h`...). `malloc` is counted (64 MB),
   `printf` writes to the app's log. arm64 `long double` arithmetic is linked from libgcc.
 - **Limits**: native code is not sandboxed and an endless loop cannot be stopped, so third-party C apps ask the user
-  once on their first launch (`apps.trustedC`). Running in the emulator (Ryujinx) depends on its CodeMemory support.
+  once on their first launch (`apps.trustedC`). Running in an emulator depends on its CodeMemory support.
 - **License**: with static linking, LGPL-2.1 requires that the user can modify the library and relink. Since the source
   code is open (once the project is made public) this condition is met; a closed-source distribution would also have
   to ship the object files (`THIRD_PARTY_NOTICES.md`).
@@ -171,7 +171,7 @@ module files) and app bundles' `lang/<code>.json`; a missing string falls back t
 
 - **Fonts.** No CJK font is bundled in the NRO or the repo. `text.cpp` draws characters Inter / JetBrains Mono lack
   with the console's **shared fonts** (pl:u): Standard (Japanese), ChineseSimplified + ExtChineseSimplified,
-  ChineseTraditional, KO and NintendoExt (button symbols). Han characters take the regional shapes of the interface
+  ChineseTraditional, KO and the extended button-symbol font. Han characters take the regional shapes of the interface
   language (ja → Standard, zh → ChineseSimplified, ko → KO), else of the console language. Glyphs are baseline-aligned
   with the Latin font. Emulators serve the shared fonts from their installed firmware.
 - **Without shared fonts** (an emulator without firmware fonts) a **font pack** on the SD card is used:
@@ -184,7 +184,7 @@ module files) and app bundles' `lang/<code>.json`; a missing string falls back t
   interface (Korean is written with spaces); web pages break it anywhere like CSS `word-break: normal`.
 - **Input.** The on-screen keyboard has **Korean 2-set** (jamo compose into syllables while typing, Backspace takes back
   the last jamo) and **Japanese romaji** (romaji → hiragana; Shift / caps lock → katakana) layouts. Kanji, hanzi and
-  Chinese pinyin come from the **Nintendo system keyboard** (swkbd), opened with the keyboard type the language needs
+  Chinese pinyin come from the **system keyboard** (swkbd), opened with the keyboard type the language needs
   (Korean, Simplified Chinese, all languages for Japanese) by the IME key (shown with a CJK interface or layout), the
   keyboard menu or the text editing bubble. swkbd is not available in applet mode: a notification explains it.
 - **Formats.** Dates come from `date.json` (`format_long`, `format_short`, `menubar`, month and day names); 12-hour

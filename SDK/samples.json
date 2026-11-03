@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 25,
+  "count": 27,
   "samples": [
     {
       "id": "helloc",
@@ -745,6 +745,62 @@
       "added": "2026-10-29"
     },
     {
+      "id": "com.sonerx7.demo.pbr3d",
+      "slug": "pbr3d",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "PBR, Lights and Shadows",
+        "tr": "PBR, Işıklar ve Gölgeler",
+        "de": "PBR, Licht und Schatten",
+        "fr": "PBR, lumières et ombres",
+        "es": "PBR, luces y sombras",
+        "ja": "PBR・ライト・影",
+        "zh": "PBR、光照与阴影",
+        "ko": "PBR, 조명과 그림자"
+      },
+      "subtitle": {
+        "en": "PBR materials, lights, shadows and bloom",
+        "tr": "PBR materyal, ışık, gölge ve bloom",
+        "de": "PBR-Materialien, Licht, Schatten, Bloom",
+        "fr": "Matériaux PBR, lumières, ombres, bloom",
+        "es": "Materiales PBR, luces, sombras y bloom",
+        "ja": "PBR マテリアル、ライト、影、ブルーム",
+        "zh": "PBR 材质、光照、阴影与泛光",
+        "ko": "PBR 재질, 조명, 그림자, 블룸"
+      },
+      "description": {
+        "en": "The NexGFX pbr renderer of SDK 1.9 in about 120 lines of Lua: a crate model with base colour, normal, metallic-roughness and emissive maps, five spheres from rough to polished metal, a warm and a cool point light that move, a spot light that casts shadows, sun shadows, HDR with ACES tone mapping and bloom, and 24 pillars drawn with one instanced call. Buttons switch between the pbr and the basic renderer, shadows and bloom, so you can see what each part adds.",
+        "tr": "SDK 1.9'un NexGFX pbr renderer'ı yaklaşık 120 satır Lua'da: base color, normal, metallic-roughness ve emissive haritalı bir kasa modeli, pürüzlüden parlak metale beş küre, hareket eden sıcak ve soğuk iki nokta ışık, gölge düşüren bir spot ışık, güneş gölgeleri, ACES ton eşlemeli HDR ve bloom, tek instanced çağrıyla çizilen 24 sütun. Düğmeler pbr ile basic renderer, gölgeler ve bloom arasında geçiş yapar; her parçanın ne kattığını görürsünüz.",
+        "de": "Der NexGFX-pbr-Renderer von SDK 1.9 in rund 120 Zeilen Lua: ein Kistenmodell mit Basisfarbe-, Normal-, Metallic-Roughness- und Emissive-Maps, fünf Kugeln von rauem bis poliertem Metall, ein warmes und ein kühles Punktlicht in Bewegung, ein Spotlicht mit Schatten, Sonnenschatten, HDR mit ACES-Tonemapping und Bloom sowie 24 Säulen in einem einzigen instanzierten Aufruf. Schaltflächen wechseln zwischen pbr- und basic-Renderer, Schatten und Bloom.",
+        "fr": "Le moteur de rendu pbr NexGFX du SDK 1.9 en 120 lignes de Lua environ : une caisse avec cartes de couleur de base, normales, metallic-roughness et émissives, cinq sphères du métal rugueux au métal poli, deux lumières ponctuelles chaude et froide en mouvement, un projecteur qui projette des ombres, les ombres du soleil, le HDR avec tone mapping ACES et bloom, et 24 piliers dessinés en un seul appel instancié. Des boutons basculent entre les rendus pbr et basic, les ombres et le bloom.",
+        "es": "El renderizador pbr NexGFX del SDK 1.9 en unas 120 líneas de Lua: una caja con mapas de color base, normales, metallic-roughness y emisivos, cinco esferas del metal rugoso al pulido, una luz puntual cálida y otra fría en movimiento, un foco que proyecta sombras, sombras del sol, HDR con tone mapping ACES y bloom, y 24 pilares dibujados con una sola llamada instanciada. Los botones alternan entre el renderizador pbr y el basic, las sombras y el bloom.",
+        "ja": "SDK 1.9 の NexGFX pbr レンダラーを約 120 行の Lua で: ベースカラー・法線・メタリック/ラフネス・エミッシブのマップを持つ木箱モデル、粗い金属から磨かれた金属までの 5 つの球、動く暖色と寒色のポイントライト、影を落とすスポットライト、太陽の影、ACES トーンマッピング付き HDR とブルーム、1 回のインスタンス描画で描く 24 本の柱。ボタンで pbr と basic のレンダラー、影、ブルームを切り替えられます。",
+        "zh": "用约 120 行 Lua 展示 SDK 1.9 的 NexGFX pbr 渲染器：带基础色、法线、金属度-粗糙度和自发光贴图的箱子模型，从粗糙到抛光金属的五个球体，移动的暖色与冷色点光源，投射阴影的聚光灯，太阳阴影，带 ACES 色调映射的 HDR 与泛光，以及一次实例化调用绘制的 24 根柱子。按钮可在 pbr 与 basic 渲染器、阴影和泛光之间切换。",
+        "ko": "SDK 1.9의 NexGFX pbr 렌더러를 약 120줄의 Lua로: 베이스 컬러·노멀·메탈릭-러프니스·이미시브 맵을 가진 상자 모델, 거친 금속부터 광택 금속까지 다섯 개의 구, 움직이는 따뜻한 점광원과 차가운 점광원, 그림자를 드리우는 스포트라이트, 태양 그림자, ACES 톤 매핑 HDR과 블룸, 한 번의 인스턴스 호출로 그리는 기둥 24개. 버튼으로 pbr과 basic 렌더러, 그림자, 블룸을 전환합니다."
+      },
+      "tags": [
+        "g3d",
+        "3d",
+        "pbr",
+        "lighting",
+        "shadows",
+        "bloom",
+        "instancing"
+      ],
+      "minSdk": "1.9",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/pbr3d/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/pbr3d/pbr3d.zip",
+      "size": 223863,
+      "sha256": "81958daf1ab8925e29632ed09434f74ee2fbe96d86466c6861a509d1592d6618",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/pbr3d/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/pbr3d/screenshots/2.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/pbr3d/README.md",
+      "added": "2026-11-03"
+    },
+    {
       "id": "com.sonerx7.demo.physics",
       "slug": "physics",
       "language": "lua",
@@ -907,6 +963,56 @@
       ],
       "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/scene3d/README.md",
       "added": "2026-10-29"
+    },
+    {
+      "id": "com.sonerx7.demo.socialfeed",
+      "slug": "social-feed",
+      "language": "lua",
+      "kind": "demo",
+      "name": {
+        "en": "Social Feed",
+        "tr": "Sosyal Akış"
+      },
+      "subtitle": {
+        "en": "Feeds, photos and clips on SDK 1.9",
+        "tr": "SDK 1.9 ile akış, fotoğraf ve klip",
+        "de": "Feeds, Fotos und Clips mit SDK 1.9",
+        "fr": "Fils, photos et clips avec le SDK 1.9",
+        "es": "Feeds, fotos y clips con el SDK 1.9",
+        "ja": "SDK 1.9 のフィード、写真、クリップ",
+        "zh": "SDK 1.9 的信息流、照片和短片",
+        "ko": "SDK 1.9의 피드, 사진, 클립"
+      },
+      "description": {
+        "en": "A photo feed, a photo grid and a vertical clip pager: cached web pictures with thumbnails, a virtualized feed with pull-to-refresh and infinite scroll, captions with links, mentions and hashtags, and video players that keep only the current and the next clip open. About 250 lines of commented Lua; the media is generated and CC0.",
+        "tr": "Fotoğraf akışı, fotoğraf ızgarası ve dikey klip sayfalayıcı: küçük resimli önbellekli web resimleri, çek-yenile ve sonsuz kaydırmalı sanal akış, bağlantı, bahsetme ve etiketli açıklamalar ve yalnızca şimdiki ile sonraki klibi açık tutan video oynatıcılar. Yaklaşık 250 satır açıklamalı Lua; medya üretilmiş ve CC0.",
+        "de": "Ein Foto-Feed, ein Fotoraster und ein vertikaler Clip-Pager: zwischengespeicherte Webbilder mit Vorschaubildern, ein virtualisierter Feed mit Ziehen zum Aktualisieren und endlosem Scrollen, Bildunterschriften mit Links, Erwähnungen und Hashtags und Videoplayer, die nur den aktuellen und den nächsten Clip offen halten. Rund 250 Zeilen kommentiertes Lua; die Medien sind generiert und CC0.",
+        "fr": "Un fil de photos, une grille de photos et un défilement vertical de clips : images web en cache avec miniatures, fil virtualisé avec tirer pour actualiser et défilement infini, légendes avec liens, mentions et hashtags, et lecteurs vidéo qui ne gardent ouverts que le clip actuel et le suivant. Environ 250 lignes de Lua commenté ; les médias sont générés et CC0.",
+        "es": "Un feed de fotos, una cuadrícula de fotos y un paginador vertical de clips: imágenes web en caché con miniaturas, un feed virtualizado con tirar para actualizar y desplazamiento infinito, textos con enlaces, menciones y hashtags, y reproductores de vídeo que solo mantienen abiertos el clip actual y el siguiente. Unas 250 líneas de Lua comentado; los medios son generados y CC0.",
+        "ja": "写真フィード、写真グリッド、縦スワイプのクリップページャー: サムネイル付きでキャッシュされる Web 画像、引っ張って更新と無限スクロールの仮想化フィード、リンク・メンション・ハッシュタグ付きのキャプション、現在と次のクリップだけを開いておく動画プレーヤー。コメント付き Lua 約 250 行。メディアは生成物で CC0 です。",
+        "zh": "照片信息流、照片网格和竖向短片翻页：带缩略图的缓存网络图片、支持下拉刷新和无限滚动的虚拟化信息流、带链接、提及和话题标签的说明文字，以及只保持当前和下一个短片打开的视频播放器。约 250 行带注释的 Lua；媒体为生成内容，采用 CC0。",
+        "ko": "사진 피드, 사진 그리드, 세로 클립 페이저: 썸네일과 함께 캐시되는 웹 이미지, 당겨서 새로고침과 무한 스크롤이 되는 가상화 피드, 링크·멘션·해시태그가 있는 캡션, 현재와 다음 클립만 열어 두는 동영상 플레이어. 주석이 달린 Lua 약 250줄이며 미디어는 생성된 CC0입니다."
+      },
+      "tags": [
+        "net",
+        "feed",
+        "media",
+        "video",
+        "images"
+      ],
+      "minSdk": "1.9",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/social-feed.zip",
+      "size": 453589,
+      "sha256": "b1f7ff82ddfffdb6fc34982d8af619f61552e769070224c4bb2962c1c525a6c0",
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/screenshots/4.png"
+      ],
+      "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/social-feed/README.md",
+      "added": "2026-11-03"
     },
     {
       "id": "com.sonerx7.demo.synth",

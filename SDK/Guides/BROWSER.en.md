@@ -43,7 +43,7 @@ So Nexvyn OS takes a **hybrid** path:
   `webReplyGetExitReason`. ([libnx web.h](https://switchbrew.github.io/libnx/web_8h.html), devkitPro
   `libnx/include/switch/applets/web.h`)
 - Limits: the applet can only be opened from a program running as an application (title); homebrew opened from the
-  Album (applet mode) and emulators (Ryujinx does not implement the web applet) cannot do this. Tools such as BrowseNX
+  Album (applet mode) and emulators (the web applet is not implemented there) cannot do this. Tools such as BrowseNX
   open the same applet through hbmenu and note that the NRO version has no HTML5 video support.
   ([GameBrew: BrowseNX](https://gamebrew.org/wiki/BrowseNX_Switch))
 - While the applet is open, Nexvyn OS waits (the call is blocking); cookies/sessions are not shared with the applet.
@@ -94,7 +94,8 @@ Sources: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_NX
 - The applet starts with the pointer, touch, page cache and Web Audio on. When it closes, the address the applet showed
   last (`webReplyGetLastUrl`) is written to history; if you went to a different page, an "open that page here"
   notification appears.
-- **When it is unavailable** (applet mode / emulator), "Why is WebKit not available?" appears instead of the button and
+- **When it is unavailable** (applet mode / emulator / a system version outside the tested 22.5.0 - 23.0.x, see
+  `source/core/fwcompat.h`; Browser settings can allow it there anyway), "Why is WebKit not available?" appears instead of the button and
   explains the reason.
 - Settings > General: "Suggest the full browser", "Always open <site> in the full browser".
 - Share menu and right-click menu: "Open in Full Browser (WebKit)", "Always Open This Site in the Full Browser".
@@ -227,7 +228,7 @@ each page.
 | Measurement | Value |
 |---|---|
 | Engine + Browser code (`web_*.o`, `app_browser.o`, text) | 1.14 MB before, 1.23 MB now (+85 KB) of a 44 MB NRO text; the prelude is 163 KB in romfs |
-| Ryujinx, empty Browser window + error page | about 5.5 MB of heap above the moment it opened |
+| PC test setup, empty Browser window + error page | about 5.5 MB of heap above the moment it opened |
 | Idle, no Browser window | 0 threads, 0 QuickJS runtimes, caches freed (measured: see the log lines above; the console numbers belong in this table) |
 
 **A separate app from the App Market?** Native modules (`.nxvmod`) are switched off in 1.0.x: stickies, fontbook and
@@ -236,7 +237,7 @@ network crashed in `mutexLock` on a lock that lives in module memory (the writab
 `web_layout.cpp` and `app_browser.cpp` keep `static Mutex` / `CondVar` objects, and `web_js.cpp` uses a
 `thread_local` compile runtime, which the loader refuses (`PT_TLS`). Making it a module would need (1) the loader to
 map the writable segment as ordinary memory (or the module's locks moved to the heap), (2) TLS support or no
-`thread_local`, (3) the module tests re-enabled in Ryujinx and on a console. The gain would be about 1.4 MB (code +
+`thread_local`, (3) the module tests re-enabled on the PC test setup and on a console. The gain would be about 1.4 MB (code +
 prelude) of a 66 MB NRO, and none in RAM, since the code pages of a built-in app cost nothing while it is closed and
 the engine now frees its heap. Recommendation: keep the Browser built in (it is also what other apps open links
 with); if the owner wants it removable from the lists, the existing optional-app mechanism (`"optional": true`, App

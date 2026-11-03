@@ -26,7 +26,7 @@ Konsola karşı Pong, 7 sayıya kadar; her pencere boyutuna ölçeklenen saha.
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `pong.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/java/pong/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 - **Java:** `src/` değişince `app.jar`'ı PC'de yeniden derleyin: `python tools/java_build.py app SDK/Samples/java/pong/source` (JDK 8+; ya da `python SDK/Tools/nxv/nxv.py build SDK/Samples/java/pong/source`).
 
 Dosyalar (satır): `src/pong/PongApp.java` (202).

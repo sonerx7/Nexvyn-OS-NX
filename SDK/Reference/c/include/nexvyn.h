@@ -62,6 +62,11 @@ typedef struct {
     const char* url;       /* after redirects */
     const char* contentType;
     const char* headers;   /* "name: value\n" lines, lowercase names */
+    /* SDK 1.9 (net_fetch; false / "" for net_get and the other older calls). There is no parsed "data" field as in
+     * Lua, JavaScript and Python: body holds the JSON text, parse it yourself. */
+    bool fromCache;        /* answered from the offline cache ("cache" option) */
+    bool stale;            /* from the cache because the network failed: the data may be old */
+    const char* path;      /* the file written with "saveTo", or "" */
 } nxv_response;
 
 typedef struct {
@@ -311,5 +316,78 @@ bool g3d_modelNode(int model, const char* node, float x, float y, float z, float
 bool g3d_modelNodeMatrix(int model, const char* node, float x, float y, float z, float rx, float ry, float rz, float s,
                          float out[16]);
 void g3d_drawMatrix(int mesh, const float matrix[16], const char* tint, const char* flags);  /* mesh or model */
+/* SDK 1.9: the "pbr" renderer (PBR materials, real-time lights, shadows, HDR, bloom; SDK.md section 8b). Options are
+ * JSON text with the keys of the Lua tables, e.g. g3d_addLight("{\"type\":\"point\",\"x\":1,\"y\":2,\"z\":0}"). */
+const char* g3d_renderer(const char* name);                     /* "pbr" / "basic" (NULL = ask); the one frames use */
+const char* g3d_caps(void);                                     /* JSON {"gpu", "pbr", "hdr", "shadows", "msaa", ...} */
+const char* g3d_rendererInfo(void);                             /* JSON {"name": "NexGFX", "version", "backend", "renderer"} */
+int g3d_addLight(const char* json);                             /* light id > 0 */
+bool g3d_updateLight(int id, const char* json);                 /* false for an unknown id */
+bool g3d_removeLight(int id);
+void g3d_clearLights(void);
+const char* g3d_lights(void);                                   /* JSON array of the lights */
+void g3d_shadows(const char* json);                             /* "true", "false" or {"quality": "high", ...} */
+void g3d_postfx(const char* json);                              /* {"exposure", "tonemap", "bloom", "threshold", "msaa", "hdr"} */
+void g3d_environment(const char* json);                         /* {"sky", "ground", "intensity", "sun", "cubemap": [6 paths]} */
+void g3d_material(int obj, const char* json, const char* name); /* mesh or model; json NULL = back to its own material;
+                                                                 * keys as in Lua, e.g. {"transmission":0.9,"ior":1.5} */
+/* the mesh or model drawn count times: 7 floats per instance (x, y, z, rx, ry, rz, scale) or a 16-float matrix */
+void g3d_drawInstanced(int obj, const float* transforms, int count, const char* tint, const char* flags);
+void g3d_drawInstancedMatrices(int obj, const float* matrices, int count, const char* tint, const char* flags);
+
+/* ------------------------------------------------------------------ SDK 1.9: feeds, media, network
+ * sdk/SDK.en.md section 8d. Options are JSON text ("{\"retry\": 2, \"cache\": 300}"), NULL for none. Returned
+ * strings stay valid for the next 15 SDK calls, like every other returned string: copy them to keep them. */
+/* HTTP with every SDK 1.9 option (method, headers, json, form, multipart, file, saveTo, timeout, retry, cache,
+ * cookies, responseType...). fn gets the response; progress(now, total) runs while it moves. Returns the id. */
+int net_fetch(const char* options, nxv_net_fn fn, nxv_progress_fn progress, void* user);
+void net_cancel(int id);                            /* fn is not called for a cancelled request */
+void net_clearCookies(void);
+double net_clearCache(void);                        /* bytes freed (responses and pictures) */
+/* WebSocket: events come from net_wsPoll as a JSON array:
+ * [{"type":"open"}, {"type":"message","data":"...","binary":false}, {"type":"close","code":1000,"reason":""},
+ *  {"type":"error","message":"..."}]; binary data is base64 text. */
+int net_ws(const char* url, const char* options);   /* {"headers":{...}, "protocols":"chat", "cookies":true} */
+bool net_wsSend(int ws, const char* data, bool binary);
+const char* net_wsPoll(int ws);
+void net_wsClose(int ws, int code, const char* reason);  /* code 0 = 1000 */
+const char* net_wsState(int ws);                    /* "connecting" "open" "closing" "closed" */
+/* Sign-in in the console's web browser: {"url": "https://...authorize?client_id=...", "redirect":
+ * "http://localhost/cb", "pkce": true}; fn(resultJson, NULL, user) with {"code", "state", "verifier", "params", "url"}
+ * or fn(NULL, error, user). */
+void net_oauth(const char* options, nxv_json_fn fn, void* user);
+/* Pictures from the web, cached on disk and in memory; maxSize > 0 downscales (thumbnails). Returns the image path for
+ * gfx_draw once it is ready, NULL while it loads (gfx_imageState tells "loading", "ready" or "error: ..."). */
+const char* gfx_imageUrl(const char* url, int maxSize, int* w, int* h);
+const char* gfx_imageState(const char* url, int maxSize);
+/* Video and audio players (files or http(s), HLS too): {"loop":true, "muted":true, "volume":0.8, "autoplay":true,
+ * "audioOnly":false, "start":0}. At most 3 per app. */
+int media_open(const char* source, const char* options);
+void media_play(int id);
+void media_pause(int id);
+void media_seek(int id, double seconds);
+void media_set(int id, const char* options);        /* loop, muted, volume, speed */
+const char* media_info(int id);                     /* JSON {"state", "position", "duration", "buffering", "width"...} */
+void media_draw(int id, float x, float y, float w, float h, const char* fit);  /* "contain" (NULL), "cover", "stretch" */
+void media_close(int id);
+/* Virtualized feed (list or grid) with pull-to-refresh and infinite scroll. Options: {"itemHeight":80,
+ * "heights":[...], "columns":3, "gap":4, "aspect":1, "refreshing":false, "loadingMore":false, "ahead":3}.
+ * Draw items first..last at ui_feedItem's rectangle (content coordinates), then ui_endFeed: bit 1 = pull-to-refresh
+ * released, bit 2 = near the end (load more). Indexes are 0-based. */
+typedef struct {
+    int first, last;
+    float scrollY, contentHeight, pull;
+} nxv_feed;
+nxv_feed ui_beginFeed(const char* id, float x, float y, float w, float h, int count, const char* options);
+void ui_feedItem(int index, float* x, float* y, float* w, float* h);
+int ui_endFeed(void);
+/* Swipe pager (vertical unless {"horizontal":true}; {"page":n} jumps): returns the position in pages (fractional
+ * while it moves: draw page i at y + (i - pos) * h); *page = the page it settles on. */
+float ui_pager(const char* id, float x, float y, float w, float h, int count, const char* options, int* page);
+/* **bold**, links, @mentions and #hashtags; returns the height. *clicked = "link:<url>", "mention:<name>",
+ * "hashtag:<tag>" on the frame one was tapped, else NULL. Options: {"color", "linkColor", "maxLines", "lineSpacing"}. */
+float ui_richText(const char* id, const char* text, float x, float y, float w, float size, const char* options, const char** clicked);
+float ui_measureRichText(const char* text, float w, float size, const char* options);
+const char* sys_relativeTime(double epoch);         /* "now", "5m", "3h", "2d", "1w" or a date (the system language) */
 
 #endif

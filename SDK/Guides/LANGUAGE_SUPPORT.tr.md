@@ -90,7 +90,7 @@ API'lerini pocketpy'nin desteklediği alt kümede uygular ve sonuçları CPython
   newlib'e bağlanan küçük bir libc (`stdio.h`, `stdlib.h`, `string.h`, `math.h`, `ctype.h`...). `malloc` sayılır (64 MB),
   `printf` uygulama günlüğüne yazar. arm64 `long double` aritmetiği libgcc'den bağlanır.
 - **Sınırlar**: yerel kod korumalı alanda değildir ve sonsuz döngü durdurulamaz; bu yüzden üçüncü taraf C uygulamaları
-  ilk açılışta kullanıcıya bir kez sorulur (`apps.trustedC`). Emülatörde (Ryujinx) çalışması CodeMemory desteğine bağlıdır.
+  ilk açılışta kullanıcıya bir kez sorulur (`apps.trustedC`). Emülatörde çalışması CodeMemory desteğine bağlıdır.
 - **Lisans**: LGPL-2.1 statik bağlamada kullanıcının kütüphaneyi değiştirip yeniden bağlayabilmesini ister. Kaynak kod
   açık olduğundan (proje herkese açıldığında) bu koşul sağlanır; kapalı kaynak bir dağıtımda nesne dosyaları da
   verilmelidir (`THIRD_PARTY_NOTICES.md`).
@@ -166,7 +166,7 @@ pickLanguage).
 
 - **Yazı tipleri.** NRO'da da repoda da CJK yazı tipi yok. `text.cpp`, Inter / JetBrains Mono'da olmayan karakterleri
   konsolun **shared font**'larıyla (pl:u) çizer: Standard (Japonca), ChineseSimplified + ExtChineseSimplified,
-  ChineseTraditional, KO ve NintendoExt (tuş sembolleri). Han karakterleri arayüz dilinin bölgesel biçimini alır
+  ChineseTraditional, KO ve genişletilmiş tuş sembolü yazı tipi. Han karakterleri arayüz dilinin bölgesel biçimini alır
   (ja → Standard, zh → ChineseSimplified, ko → KO), arayüz CJK değilse konsol dilininkini. Glyph'ler Latin yazı
   tipinin baseline'ına hizalanır. Emülatörler shared font'ları kurulu firmware'den verir.
 - **Shared font yoksa** (firmware yazı tipleri olmayan bir emülatör) SD karttaki bir **font pack** kullanılır:
@@ -180,7 +180,7 @@ pickLanguage).
   yerden kırar.
 - **Giriş.** Ekran klavyesinde **Korece 2-set** (jamo'lar yazarken heceye birleşir, Backspace son jamo'yu geri alır)
   ve **Japonca romaji** (romaji → hiragana; Shift / caps lock → katakana) düzenleri var. Kanji, hanzi ve Çince pinyin
-  **Nintendo sistem klavyesinden** (swkbd) gelir; dilin gerektirdiği klavye türüyle (Korece, Basitleştirilmiş Çince,
+  **sistem klavyesinden** (swkbd) gelir; dilin gerektirdiği klavye türüyle (Korece, Basitleştirilmiş Çince,
   Japonca için tüm diller) IME tuşu (CJK arayüzde ya da düzende görünür), klavye menüsü ya da metin düzenleme
   balonu açar. swkbd applet modunda açılamaz: bir bildirim bunu açıklar.
 - **Biçimler.** Tarihler `date.json`'dan gelir (`format_long`, `format_short`, `menubar`, ay ve gün adları); 12 saatlik

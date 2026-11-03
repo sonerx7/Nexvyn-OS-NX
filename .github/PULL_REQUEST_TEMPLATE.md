@@ -37,7 +37,7 @@
 - [ ] `python SDK/Tools/nxv/nxv.py check <folder> --sdk <source checkout>` passes / hatasız
 - [ ] Language checker / dil denetleyicisi (`lua_check` · `js_check` · `py_check` · `rt_check`) passes / hatasız
 - [ ] `python Tools/build_store.py --check` (or the maintainer runs `build_store.py` / ya da bakımcı çalıştırır)
-- [ ] Tried on the console or in Ryujinx / konsolda ya da Ryujinx'te denendi (which / hangisi: )
+- [ ] Tried on the console or in an emulator / konsolda ya da bir emülatörde denendi (which / hangisi: )
 - [ ] Light and dark mode, handheld and TV / açık ve koyu mod, el modu ve TV
 - [ ] Touch + cursor (+ controller for games) / dokunmatik + imleç (+ oyunlarda kumanda)
 - [ ] `store.json`: `subtitle` + `description` (English at least / en az İngilizce), `kind`, `tags`, `shots`

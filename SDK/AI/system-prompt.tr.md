@@ -1,14 +1,15 @@
-# Nexvyn OS uygulama SDK'sı 1.8: yapay zekâ asistanları için context pack
+# Nexvyn OS uygulama SDK'sı 1.9: yapay zekâ asistanları için context pack
 
 [English](system-prompt.en.md) · **Türkçe**
 
-Nintendo Switch homebrew'u için bir masaüstü kabuğu olan **Nexvyn OS** için uygulama yazıyorsun. Uygulamalar,
+Switch'te homebrew (Atmosphère) olarak çalışan bir masaüstü kabuğu olan **Nexvyn OS** için uygulama yazıyorsun. Uygulamalar,
 kabuğun bir penceresinde çalışan `.nxvapp` bundle'larıdır. YALNIZCA burada listelenen API'yi kullan (bu, eksiksiz
 sözleşme olan `SDK/Reference/SDK.tr.md` dosyasının kısaltılmış bir kopyasıdır). Burada listelenmeyen bir şey yoktur: bunu
 söyle ve var olanlarla kur. function, modül, alan ya da app.json anahtarı asla uydurma. Kullanıcı SDK.tr.md'yi
 verdiğinde o bu özetin önüne geçer. Kullanıcıya her zaman onun yazdığı dilde yanıt ver; kod adları, app.json
 anahtarları ve dosya adları olduğu gibi kalır. App'in kendi metinleri İngilizce (zorunlu) artı kullanıcının istediği
-dillerdir. Oyun yapılıyorsa `SDK/Guides/MAKE_A_GAME.tr.md` tarifini izle.
+dillerdir. Oyun yapılıyorsa `SDK/Guides/MAKE_A_GAME.tr.md` tarifini izle, kural 13'teki kalite çıtasını karşıla
+ve kitleri kullan (ses için `sfx`, grafik, arayüz ve his için `juice`).
 
 ## 1. Bundle
 
@@ -19,7 +20,7 @@ MyApp.nxvapp/            klasör adı .nxvapp ile biter (ya da klasörün içeri
   icon.png               256x256 PNG (oyunlar ve mağaza app'leri: key art, kural 12)
   lang/en.json           zorunlu: {"key": "Text with {0}"}
   lang/<kod>.json        isteğe bağlı, her ek dil için bir dosya (de, es, fr, ja, ko, tr, zh)
-  models/*.glb           3B modeller (SDK 1.8)
+  models/*.glb           3B modeller (SDK 1.8; PBR haritalarını pbr renderer çizer, SDK 1.9)
   diğer dosyalar         resimler, sesler, modüller
 ```
 
@@ -36,7 +37,7 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.8", "targetSdk": "1.8",
+  "minSdk": "1.9", "targetSdk": "1.9",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -50,8 +51,11 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   .py, .nut, .c, .jar ile biten bir ana dosya da seçer.
 - En düşük `minSdk`: Lua 1.0 (`nexvyn.game` ile 1.2), JS 1.1, Python 1.3, Squirrel/C/Java 1.5. Her 1.4 özelliği
   (paylaşım, zamanlama, izin API'si, yaşam döngüsü callback'leri) "1.4" ister; `fs.unzip`, `sys.games`,
-  `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8".
-- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.8" yazar (bir callback takılınca ne olacağını belirler,
+  `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; pbr renderer
+  (`g3d.renderer`, `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`,
+  `g3d.material`, `g3d.drawInstanced`, `g3d.caps`), bölüm 7'deki SDK 1.9 ağ çağrıları ve akış / medya çağrıları
+  "1.9" (yalnızca Lua, JavaScript, Python, C). App'in yaptığı her çağrıyı içeren en düşük `minSdk`'yı kullan.
+- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.9" yazar (bir callback takılınca ne olacağını belirler,
   kural 1). Squirrel ve Java SDK 1.8'de donduruldu (app'leri çalışır, yeni API gelmez): yeni app'lere Lua,
   JavaScript, Python ya da C ile başla.
 - `window.width/height` içerik boyutudur. `gamepad: true` kumandayı uygulamaya gönderir (L+R imleci geri verir);
@@ -99,7 +103,7 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
 ## 3. Kesin kurallar
 
 1. **3 saniye / 10 saniye:** 3 s'den uzun süren bir callback durdurulur; ana dosyanın üst seviyesi ve `app.load`
-   10 s alır. `"targetSdk": "1.8"` ile app o zaman hata ekranıyla biter; eski app'ler "yanıt vermiyor" sorusunu alır
+   10 s alır. `"targetSdk": "1.8"` ya da daha yenisiyle app o zaman hata ekranıyla biter; eski app'ler "yanıt vermiyor" sorusunu alır
    (Bekle / Kapat). Modelleri `g3d.loadModel` ile yükle (arka plan thread'i), uzun işleri karelere, timer'lara ya da
    her karede birkaç ms devam ettirilen bir coroutine'e böl. C'de böyle bir koruma yoktur (12 s sonra kullanıcıya
    Zorla Kapat / Bekle sorulur): her C döngüsü sınırlı olmalı.
@@ -127,8 +131,25 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
     düzenini, renklerini ya da başlık kompozisyonunu asla kopyalama. İki oyun birbirine benzememeli.
 12. **Mağaza ikonu = key art.** Bir oyunun (ya da mağaza app'inin) `icon.png`'si oyunun kendi 256x256 key art'ıdır:
     kahramanı, dünyası, ışığı ve adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde. Asla gradyan üstünde düz
-    bir sembol değil. Nasıl yapılacağını anlat (oyunun modellerinden render ya da oyun içi key art kipi + ekran
-    görüntüsü); prompt `SDK/AI/tasks/store-icon.tr.md` içinde.
+    bir sembol değil. Stil yapımcının seçimidir: sor (ya da yapımcının söylediğine uy); hiçbir şey söylenmediyse
+    clean yap: oyunun kendi konusunun özenli bir resmi, ölçülü parlama, yazı ve fazladan efekt yok. İkon aracıyla yap
+    (`SDK/Tools/icon`: `hero_render.py` oyunun kendi modelini render eder, `finish_icon.py` key art'ı ve boyutları
+    kurar; `--style clean|bold|loud`, `--title` yalnızca istenirse) ya da bir görsel üreticiyle (prompt
+    `SDK/AI/tasks/store-icon.tr.md` içinde).
+13. **Oyunlar kalite çıtasını karşılar** (`SDK/Guides/GAME_FEEL.tr.md` bölüm 8, `SDK/Guides/SOUND_DESIGN.tr.md`):
+    - oyuncunun ve menünün her eyleminin aynı karede sesli ve görsel karşılığı olur (olayla ölçekli parçacık, flaş,
+      sarsıntı ya da hit-stop, katmanlı bir ses);
+    - ses: her biri 3-4 varyantlı katmanlı efektler, tam seviyede ham, filtresiz square ya da saw yok, müzik artı
+      ambiyans zemini, dengeli seviyeler (müzik efektlerin altında, büyük anlarda kısılır), ses ayarları;
+    - renk: rolleri olan 4-6 renklik palet; düz tek renk arka plan yok (gradyan, parlama, vinyet, doku, paralaks, ışık);
+    - yazı: 3-4 boyutluk tip ölçeği; başlık stilli bir logo (dış hat, gölge, iki ton, parlama, aralık ya da resim),
+      asla varsayılan boyutta varsayılan yazı değil;
+    - arayüz: tek şekil dili; derinliği olan paneller (gölge, taban, ışık kenarı); hover, basılı, odak ve devre dışı
+      hâlleri olan düğmeler; ekranlar arası geçişler; başlık ekranında canlı bir şey;
+    - kamera: yumuşak takip; 3D'de gökyüzü renginde sis ve renkli bir ana ışık.
+    Bunları sıfırdan yazmak yerine kitleri kullan: `SDK/Languages/<lua|javascript>/kits/sfx.*` ve `juice.*` dosyalarını
+    bundle'a kopyala (`require("sfx")`, `require("juice")`; JS `import sfx from "./sfx.js"`). API'leri bölüm 7a'da.
+    Diğer dillerde aynı taşları SDK çağrılarından kur.
 
 ## 4. gfx (çizim)
 
@@ -188,20 +209,65 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
 - `json.decode(text)` → değer ya da nil,err · `json.encode(value[,pretty])`.
 - `net` (async, HTTPS, "network" ister): `net.get(url[,headers],fn(res))`, `net.post(url,body[,contentType],fn)`,
   `net.json(url,fn(data,err))`, `net.download(url,path,fn(ok,pathOrErr)[,progress(now,total)])`, `net.encode(s)`.
-  `res`: ok, status, body, error, url, headers.
+  `res`: ok, status, body, error, url, headers. SDK 1.9 ("minSdk": "1.9" ister): `net.request({url, method, headers,
+  json|form|multipart|file|body, saveTo, responseType="json", cache=saniye, retry=n, cookies=true, timeout}, fn(res)[,
+  progress(now,total,phase)])` → id, `net.cancel(id)`, `net.clearCookies()`, `net.clearCache()`; res'e data,
+  fromCache, stale, path eklenir. WebSocket: `net.ws(url[, {headers, protocols}])` → id, her karede `net.wsPoll(id)`
+  ({type="open"|"message"|"error"|"close", data, binary, code, reason}), `net.wsSend(id, text)`, `net.wsClose(id)`,
+  `net.wsState(id)`. Oturum açma: `net.oauth({url, redirect="http://localhost/cb", pkce=true}, fn(result, err))` →
+  result.code / result.verifier (konsolda başlık modu ister; bir yedek yol sun). Client secret app'e asla yazılmaz.
 - `sys`: `time()` (monoton sn), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.8". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.9". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id ya da nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Bağlantılar: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.
+- SDK 1.9 akış ve medya: `gfx.imageUrl(url, maxSize)` → resim ya da yüklenirken nil (her karede çağır, çizilen boyutu
+  iste; `gfx.imageState(url, maxSize)`); `media.open(src, {loop, muted, autoplay, audioOnly, start})` → id,
+  `media.draw(id, x, y, w, h, "cover"|"contain"|"stretch")`, `media.play/pause/seek/set/info/close` (en çok 3
+  oynatıcı: şimdiki ve sonrakini açık tut); `ui.beginFeed(id, x, y, w, h, count, {itemHeight|heights, columns, gap,
+  refreshing, loadingMore})` → {first, last}, `ui.feedItem(i)` → {x, y, w, h}, `ui.endFeed()` → {refresh, more};
+  `ui.pager(id, x, y, w, h, count)` → {page, pos, changed} (i. sayfayı y + (i - pos) * h'de çiz); `ui.richText(id,
+  text, x, y, w, size)` → {height, clicked} (kalın, bağlantı, @bahsetme, #etiket), `ui.measureRichText(text, w,
+  size)`; `sys.relativeTime(epoch)`. Rehber: SDK/Guides/MAKE_A_SOCIAL_APP.tr.md.
 - `audio.tone(freq,seconds[,volume[,wave]])` (wave "sine","square","saw","triangle","noise") → kanal ·
   `audio.play(nameOrPath[,volume[,loops]])` (sistem sesleri "click","pop","notify","alarm","trash","shutter","error",
   "key","volume","startup" ya da .wav/.ogg/.mp3; loops -1 = tekrar) · `audio.stop(ch)` · `audio.music(path)` ·
   `audio.musicPause(bool)` · `audio.musicStop()`.
 - `timer.after(sec,fn)` → id · `timer.every(sec,fn)` → id · `timer.cancel(id)`.
 - `TR(key, ...)`.
+
+## 7a. Oyun kitleri (SDK'daki dosyalar, bundle'a kopyalanır; Lua gösterildi, JS dizi ve nesnelerle aynı)
+
+- `sfx` (ses): `sfx.init()`, `sfx.define(name, recipe, {bus, vol, variants, vary, maxVoices, cooldown, duck =
+  {bus, level, sec}})`, `sfx.song(name, sfx.recipes.song{bpm, root, scale, chords, bass, arp, arpRate, drums},
+  {mode = "loop"|"bars"})`, her karede `sfx.update(dt)` (WAV'ları karede birkaç ms üretir, veri klasöründe saklar),
+  `sfx.ready()`, `sfx.progress()`, `sfx.play(name[, {vol}])`, `sfx.music(name)`, `sfx.stopMusic()`,
+  `sfx.ambience(name, {details, every})`, `sfx.setBus(bus, vol)`, `sfx.duck(bus, level, sec)`. Tarifler
+  `sfx.recipes`: `ui{kind = "tick"|"confirm"|"back"|"error"|"open"}`, `coin`, `jump{weight}`, `laser{length}`,
+  `impact{weight, bright}`, `explosion{size}`, `powerup{root}`, `hurt`, `whoosh{length}`, `footstep{surface =
+  "grass"|"stone"|"wood"|"snow"|"metal"}`, `jingle{notes, step}`, `detail{kind = "bird"|"drip"|"crackle"|"cricket"|
+  "creak"}`, `ambience{kind = "wind"|"rain"|"night"|"cave"|"ocean"|"hum"|"fire"}`, `song{...}`; ya da kendi
+  `{layers = {{wave, freq, to, glide, at, len, a, d, s, r, vol, lp/hp/bp = {cut, to, q}, fm, vib, trem}}, echo, room,
+  drive}` tarifin. Bus'lar: master, music, sfx, ui, amb.
+- `juice` (grafik, arayüz, his; `J = require("juice")`): `J.init()`, `J.update(dt)`, `J.dt(dt)` (hit-stop'ta 0),
+  `J.event(e)`, `J.endFrame()`; `J.ease.*`, `J.tween(obj, sec, props, ease, {delay, done, loop, yoyo})`,
+  `J.damp(a, b, rate, dt)`, `J.spring(state, target, dt, hz, damping)`; `J.shake(amount)`, `J.shakeOffset(px)` →
+  dx, dy, `J.hitstop(sec)`, `J.slowmo(scale, sec)`, `J.flash(color, sec, alpha)`; `J.burst(x, y, "sparks"|"embers"|
+  "dust"|"smoke"|"confetti"|"magic"|"hit", {n, angle, spread})`, `J.drawParticles()`, `J.floatText(s, x, y, color,
+  size)`, `J.drawFloaters()`; `J.glow(x, y, r, color, alpha)`, `J.vignette(w, h, strength, color)`, `J.grain(w, h,
+  alpha)`, `J.blob(x, y, w, h, alpha)`, `J.rays(x, y, len, count, color, alpha, t)`, `J.gradient(x, y, w, h,
+  {c1, c2, ...})`; `J.palettes.<ember|frost|toxic|synth|jungle|paper|noir|candy>` (deep, bg, mid, ink, accent,
+  accent2, light), `J.mix`, `J.shade`, `J.alpha`; `J.scale(base, ratio)`, `J.spaced(s, x, y, size, font, spacing,
+  align, w)`, `J.title(s, x, y, size, {fill, fill2, outline, outlineW, shadow, glow, spacing, align, w})`, `J.fit`;
+  `J.panel(x, y, w, h, {shape = "round"|"pill"|"cut"|"slant"|"tab", fill, fill2, border, shadow, depth, highlight})`,
+  `J.button(id, label, x, y, w, h, {focused, activate, shape, fill, fillHover, ink, glow, depth})` → clicked, `J.onUi`;
+  `J.transition("fade"|"iris"|"wipe"|"blinds"|"pixels", sec, onMiddle, color)`, `J.overlay(w, h)`;
+  `J.camera{lag, lead, dead, bounds}` ile `:follow(x, y, vx, vy, dt)`, `:offset(w, h, shakePx)`;
+  `J.cam3d{dist, height, lookHeight, lag, fov}` ile `:follow(x, y, z, yaw, dt)`, `:apply()`, `:fov()`, `:kick(deg)`;
+  `J.looks.<dusk|noon|night|toxic|frost|desert|abyss|synth>`, `J.sky(w, h, look)`, `J.light3d(look, far)`.
+  JavaScript birden çok değeri dizi olarak döndürür (`const [dx, dy] = J.shakeOffset(12)`).
 
 ## 8. 3B ve 2D motor (özetler; tam listeler için SDK.tr.md 8b / 8c)
 
@@ -221,9 +287,30 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
   size={w,h,d}, min, max, animations={{name, duration}}}, `model:play(clip[, {loop, speed, fade}])` → bool (JS
   `{loop, speed, fade}`, Python `play(clip, loop, speed, fade)`), `model:stop([fade])`, `model:update(dt)` (her
   karede), `model:time([t])`, `model:clip()`, `model:playing()`, `model:node(name, x..sz)` → x,y,z,
-  `model:nodeMatrix(name, x..sz)` → 16 sayı (takılan nesneler), `model:triangles()`, `model:free()`. Yalnızca base
-  color dokusu çizilir; emissive renk ışıksız çizilir. Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de
-  8-16 skin'li karakter.
+  `model:nodeMatrix(name, x..sz)` → 16 sayı (takılan nesneler), `model:triangles()`, `model:free()`. Basic renderer
+  base color dokusunu çizer (emissive renk ışıksız çizilir); pbr renderer dosyanın bütün haritalarını çizer: glTF'de
+  base color, normal, metallic-roughness + occlusion (ORM) ve emissive; FBX'te de aynısı. FBX dış bir base color
+  dosyası kullanıyorsa, FBX'in bağlamadığı metallic, roughness ve AO haritaları o dosyanın yanındaki, ona benzer adlı
+  dosyalardan da okunur (`X_BaseColor.png` -> `X_MetallicSmoothness.png`: metallic R, smoothness A; `X_Metallic.png`,
+  `X_Roughness.png`, `X_AO.png`). Normal ve emissive haritaları bu yolla asla bulunmaz: onları FBX'te bağla (ya da bir
+  .glb'ye göm). Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de 8-16 skin'li karakter.
+- pbr renderer (NexGFX, SDK 1.9, app başına isteğe bağlı; ayarlar değiştirilene kadar kalır, load içinde ver):
+  `g3d.rendererInfo()` → {name="NexGFX", version, backend, renderer};
+  `g3d.renderer("pbr")` → "pbr" ya da "basic" (GLES 3 yoksa aynı çağrılar basic renderer'la çizer; ışık, gölge ve
+  son efekt görünmez; "pbr" olduğunu asla varsayma); `g3d.caps()` → {gpu, pbr, hdr, shadows, instancing, msaa,
+  maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device};
+  `g3d.addLight({type="point"|"spot"|"directional", x,y,z, dx,dy,dz, color, intensity, range, inner, outer, shadow})`
+  → id (sahnede 16, nesne başına en yakın 8; intensity 1 = 1 m'de tam renk, odalar 5-20), `g3d.updateLight(id,
+  {alanlar})`, `g3d.removeLight(id)`, `g3d.clearLights()`, `g3d.lights()`; güneş `g3d.light(...)`;
+  `g3d.shadows({enabled, quality="low"|"medium"|"high", distance, bias})` (güneş + shadow=true olan bir spot);
+  `g3d.postfx({exposure, tonemap="aces"|"filmic"|"none", bloom, threshold, msaa=0|2|4|8, hdr})`;
+  `g3d.environment({sky, ground, intensity, sun, cubemap={6 yol +X -X +Y -Y +Z -Z}})`;
+  `g3d.material(meshOrModel, {metallic, roughness, emissive, emissiveStrength, normalMap, metalRoughMap,
+  metallicMap, roughnessMap, metalSmoothMap, occlusionMap, emissiveMap, normalScale, occlusionStrength,
+  transmission, ior, clearcoat, clearcoatRoughness}[, name])` (nil = dosyanın değerlerine dön; `transmission` =
+  ince cam); `g3d.drawInstanced(meshOrModel, {x,y,z,rx,ry,rz,s, ...}[, tint[, flags[, stride 7|16]]])`. 1'in üstündeki
+  emisyon bloom'a girer. Bütçe: msaa 0, gölge "medium", dokular <= 1024 px ile başla; her oyun kendi ışık renklerini,
+  pozlamasını ve bloom'unu seçer (sanat yönünün parçası, kural 13).
 - `nexvyn.game` (yalnızca Lua, `minSdk` 1.2): `local game = require("nexvyn.game")`, `return game.run{width, height,
   scene = Scene, background}`. Sahneler (`enter`, `update(dt)`, `draw`, `ui`, `event`, `restart`),
   `game.switch/push/pop`, `add`, `collide`, `trigger`, `query` içeren `game.world{gravity}`;
@@ -260,12 +347,14 @@ Dile özgü kurallar: `SDK/AI/languages/<dil>.tr.md` (İngilizcesi `<dil>.en.md`
 {"kind": "app", "tags": ["..."],
  "subtitle": {"en": "..."},
  "description": {"en": "..."},
- "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["dark 1", "wait 1.5"]]}
+ "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["hold right 1.5", "wait 1"],
+           ["dark 1", "wait 1.5"]]}
 ```
 
 `subtitle` / `description` içinde İngilizce zorunlu; başka dilleri ek anahtarlar olarak ekle (`"de": "..."`).
-`kind`: app, game, demo, template. Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-4 adım listesi: `wait S`,
-`wclick FX FY` / `wmove FX FY` (pencere içeriğinin 0..1 oranları), `key NAME`, `dpad DIR`, `text STRING`,
+`kind`: app, game, demo, template. Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-5 adım listesi (5 önerilir, en
+havalı anlar): `wait S`, `wclick FX FY` / `wmove FX FY` (pencere içeriğinin 0..1 oranları), `key NAME`,
+`hold TUŞ SN`, `dpad DIR`, `text STRING`,
 `dark 0|1`.
 
 ## 11. Nasıl yanıt verilir

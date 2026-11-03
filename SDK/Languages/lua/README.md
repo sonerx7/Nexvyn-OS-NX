@@ -29,7 +29,7 @@ The manifest above works as is. A `main` ending in `.lua` needs no `"runtime"`. 
   (Ctrl+R). Errors are marked on their line, `print` output goes to Studio's console.
 - **On the console from a PC:** copy the folder into `sdmc:/NexvynOS/Applications/` (FTP: **Connect to PC**, or
   `nxv push`) and reopen Launcher.
-- **In Ryujinx:** copy the folder into `NexvynOS/Applications/` in the emulator's SD card folder (`nxv install`). A
+- **In an emulator:** copy the folder into `NexvynOS/Applications/` in its SD card folder (`nxv install`). A
   line `launch com.you.myapp` in `sdmc:/NexvynOS/autorun.txt` opens the app at boot; delete the file after testing.
 
 ## Checking it on a PC
@@ -53,6 +53,14 @@ presses. `nxv check --sdk <checkout>` runs the same checker.
   `sys.clipboard` `"clipboard"`, paths outside the app's folders `"files"`; an undeclared permission is never granted.
 - **Lua is 1-based:** `ui.segmented`, `ui.dropdown` and `ui.alert` indexes start at 1 (0 in JS/Python).
 - **`ui` widgets need unique ids:** if a label appears twice, add a suffix like `"Delete##3"`.
+
+## Game kits
+
+[`kits/`](kits/) holds two files to copy into a game, plus a demo app that uses both (run the folder as an app):
+`sfx.lua` (sound design: layered procedural recipes rendered to WAV once, variants, buses, ducking, ambience, music
+loops) and `juice.lua` (easing and tweens, shake, hit-stop, glowing particles, vignette, gradients, styled titles,
+panels and buttons with depth, transitions, 2D / 3D cameras, 3D light moods). Guides:
+[sound design](../../Guides/SOUND_DESIGN.en.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.en.md).
 
 ## More
 

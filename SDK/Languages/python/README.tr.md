@@ -48,7 +48,7 @@ dostu). Asenkron çağrılar geri çağırma alır: `net.json(url, lambda veri, 
 ## Çalıştırma
 
 - **Studio:** **Yeni Proje → Boş Python uygulaması** ya da *Yılan (Python)*, **Çalıştır** (Ctrl+R).
-- **Konsol / Ryujinx:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
+- **Konsol:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
 
 ## PC'de denetim
 

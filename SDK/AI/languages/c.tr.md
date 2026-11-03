@@ -66,6 +66,13 @@ app.json: `"runtime": "c"`, `"main": "main.c"`, `"minSdk": "1.5"`. Bundle'daki h
 - **sandbox'ta değil:** 3 sn koruması yok; sonsuz bir döngü ya da bir çökme Nexvyn OS'u durdurur. Döngüleri
   sınırlı tut. Kullanıcılar bir kez onay verir.
 
+- SDK 1.9 (`"minSdk": "1.9"`): seçenekler JSON metnidir: `g3d_renderer("pbr")`,
+  `int id = g3d_addLight("{\"type\":\"point\",\"x\":1}")`, `g3d_updateLight(id, json)`,
+  `g3d_shadows("{\"quality\":\"high\"}")`, `g3d_postfx(json)`, `g3d_environment(json)`, `g3d_material(model, json, name)`,
+  `g3d_drawInstanced(mesh, floats, count, tint, flags)` (kopya başına 7 float), `g3d_drawInstancedMatrices(...)` (16),
+  `g3d_caps()` ve `g3d_rendererInfo()` → JSON. SDK.tr.md bölüm 8d'deki akış, medya ve ağ çağrıları `nexvyn.h`'de
+  aynı adlarla (`net_request`, `ui_beginFeed`, `media_open`...).
+
 ## Denetim
 
 `python tools/rt_check.py <bundle>`: her .c dosyasını konsolun header'larına karşı devkitA64 gcc

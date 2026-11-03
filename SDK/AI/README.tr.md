@@ -2,7 +2,7 @@
 
 [English](README.md) · **Türkçe**
 
-Bu klasör, Claude, ChatGPT, Gemini ya da yerel modellerle (LM Studio, Ollama...) Nexvyn OS uygulaması yazmak için
+Bu klasör, AI sohbet asistanları, editördeki AI kodlama asistanları ya da yerel modellerle Nexvyn OS uygulaması yazmak için
 hazır context pack'ler ve prompt'lar içerir. Asistan SDK'yı bilmez; bu dosyaları vermezseniz var olmayan function'lar
 uydurur. Context pack'ler `SDK/Reference/SDK.tr.md` ile aynı bilgiyi taşır, yalnızca daha kısadır.
 
@@ -12,9 +12,9 @@ Her dosyanın iki sürümü vardır: İngilizce `X.en.md` ve Türkçe `X.tr.md`.
 
 | Dosya (Türkçe · İngilizce) | Ne için |
 |---|---|
-| [system-prompt.tr.md](system-prompt.tr.md) · [system-prompt.en.md](system-prompt.en.md) | Ana context pack (~6 bin token, SDK 1.8): bundle düzeni, `app.json`, zorunlu izinler, program yapısı, kurallar (3 sn, 64 MB, 60 fps, `TR()`), tüm API'nin özeti, dil farkları, store biçimi |
+| [system-prompt.tr.md](system-prompt.tr.md) · [system-prompt.en.md](system-prompt.en.md) | Ana context pack (~8 bin token, SDK 1.9): bundle düzeni, `app.json`, zorunlu izinler, program yapısı, kurallar (3 sn, 64 MB, 60 fps, `TR()`), tüm API'nin özeti, dil farkları, store biçimi |
 | [languages/](languages/) | Language pack'ler: [lua](languages/lua.tr.md), [javascript](languages/javascript.tr.md), [python](languages/python.tr.md), [squirrel](languages/squirrel.tr.md), [c](languages/c.tr.md), [java](languages/java.tr.md) (İngilizceleri `.en.md`): iskelet kod, dile özgü kurallar, checker |
-| [tasks/](tasks/) | Task prompt'ları: [oyun yap](tasks/make-game.tr.md), [modelli 3B oyun yap](tasks/make-3d-game.tr.md), [mağaza ikonu (key art)](tasks/store-icon.tr.md), [araç uygulaması yap](tasks/make-utility.tr.md), [Lua oyununu JS'ye taşı](tasks/port-lua-to-js.tr.md), [arayüz dili ekle](tasks/add-language.tr.md), [store.json ve ekran görüntüsü betiği yaz](tasks/store-listing.tr.md), [checker hatasını düzelt](tasks/fix-lua-check.tr.md) (İngilizceleri `.en.md`) |
+| [tasks/](tasks/) | Task prompt'ları: [oyun yap](tasks/make-game.tr.md), [modelli ve pbr renderer'lı 3B oyun yap](tasks/make-3d-game.tr.md), [akış, fotoğraf, kısa video ya da sohbet uygulaması yap](tasks/make-social-app.tr.md), [mağaza ikonu (key art)](tasks/store-icon.tr.md), [araç uygulaması yap](tasks/make-utility.tr.md), [Lua oyununu JS'ye taşı](tasks/port-lua-to-js.tr.md), [arayüz dili ekle](tasks/add-language.tr.md), [store.json ve ekran görüntüsü betiği yaz](tasks/store-listing.tr.md), [checker hatasını düzelt](tasks/fix-lua-check.tr.md) (İngilizceleri `.en.md`) |
 | [checklist.tr.md](checklist.tr.md) · [checklist.en.md](checklist.en.md) | Asistanın yanıt vermeden önce geçmesi gereken liste |
 
 ## Hangi dili kullanmalı?
@@ -31,10 +31,10 @@ Her dosyanın iki sürümü vardır: İngilizce `X.en.md` ve Türkçe `X.tr.md`.
 ## Nasıl kullanılır
 
 1. **Bağlamı verin.** `system-prompt.tr.md` (ya da `system-prompt.en.md`) + kullandığınız programlama dilinin language pack'i:
-   - **Claude:** bir Proje açın ve iki dosyayı *Project knowledge*'a ekleyin (ya da ilk mesaja yapıştırın).
-     Uzun bağlam yeterlidir; isterseniz `SDK/Reference/SDK.tr.md` dosyasının tamamını da ekleyin.
-   - **ChatGPT:** bir GPT ya da Proje oluşturup dosyaları yükleyin, ya da ilk mesaja yapıştırın.
-   - **Gemini:** Gem talimatlarına ya da ilk mesaja yapıştırın; uzun bağlamla `SDK.tr.md`'yi de ekleyebilirsiniz.
+   - **Proje ya da bilgi dosyası destekleyen sohbet asistanları:** iki dosyayı projeye ekleyin (ya da ilk mesaja
+     yapıştırın). Bağlam uzunsa `SDK/Reference/SDK.tr.md` dosyasının tamamını da ekleyin.
+   - **Editörde ya da terminalde çalışan kodlama asistanları:** dosyaları depoda tutun ve asistanın talimat dosyasını
+     (kurallar, hafıza ya da "özel talimatlar") onlara yönlendirin; checker'ı kendisi de çalıştırabilir.
    - **Yerel modeller (7-14B):** system prompt alanına yalnızca system prompt + language pack'i koyun, bağlam uzunluğunu
      en az 8k (tercihen 16k) yapın. Küçük modeller dil farklarını karıştırır: Lua ya da JavaScript seçin ve her yanıtı denetleyin.
    - **Konsolda:** Nexvyn OS Studio'daki **Yapay zekâya sor** paneli AI Sohbet'teki API anahtarlarıyla çalışır; soruya
@@ -45,7 +45,7 @@ Her dosyanın iki sürümü vardır: İngilizce `X.en.md` ve Türkçe `X.tr.md`.
 4. **Denetleyin.** Asistanın kodu her zaman checker'dan geçmeli:
    `python SDK/Tools/nxv/nxv.py check <klasör> --sdk <Nexvyn OS kaynak klasörü>`. Hata çıkarsa çıktıyı
    [tasks/fix-lua-check.tr.md](tasks/fix-lua-check.tr.md) prompt'uyla geri verin.
-5. **Konsolda deneyin.** Checker'lar mock bir SDK kullanır; asıl deneme konsol ya da Ryujinx'tir.
+5. **Konsolda deneyin.** Checker'lar mock bir SDK kullanır; asıl deneme konsoldur.
 
 Güvenlik: asistana API anahtarı, parola ya da kişisel veri vermeyin; bu tür değerleri koda gömmesine izin vermeyin.
 Store incelemesi gizli veri toplayan uygulamaları geri çevirir.

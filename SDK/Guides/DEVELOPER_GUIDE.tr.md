@@ -27,7 +27,7 @@ Kullanıcı tarafı için: [USER_GUIDE.tr.md](USER_GUIDE.tr.md).
 6. [Paketleme: .nxvapp v2](#6-paketleme-nxvapp-v2)
 7. [Topluluk kataloğu](#7-topluluk-kataloğu)
 8. [Overlay: sistem dosyalarını değiştirmek](#8-overlay-sistem-dosyalarını-değiştirmek)
-9. [Ryujinx'te test](#9-ryujinxte-test)
+9. [Bilgisayarda test](#9-bilgisayarda-test)
 10. [Yerleşik (native) uygulama geliştirme](#10-yerleşik-native-uygulama-geliştirme)
 11. [English summary](#english-summary)
 
@@ -348,17 +348,17 @@ dağıtılabilir.
 
 ---
 
-## 9. Ryujinx'te test
+## 9. Bilgisayarda test
 
-Nexvyn OS, Ryujinx emülatöründe çalışır. Donanıma bağlı özellikler (USB, MTP, parlaklık, oyun başlatma, PC oyunları)
+Nexvyn OS bilgisayarda bir emülatörde de çalışır. Donanıma bağlı özellikler (USB, MTP, parlaklık, oyun başlatma, PC oyunları)
 orada kapalıdır.
 
 ### Elle çalıştırma
 
-- `./build.sh run`: derler ve `NexvynOS.nro`'yu Ryujinx'te açar.
-- Ryujinx'in yolu `RYUJINX` ortam değişkeniyle verilir. Betiklerdeki varsayılan yol proje sahibinin bilgisayarına
+- `./build.sh run`: derler ve `NexvynOS.nro`'yu emülatörde açar.
+- Emülatörün yolu `RYUJINX` ortam değişkeniyle verilir. Betiklerdeki varsayılan yol proje sahibinin bilgisayarına
   göredir; kendi yolunuzu verin.
-- Uygulamanızı Ryujinx'in SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- Uygulamanızı emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 
 ### autorun.txt ile otomatik tur
 
@@ -404,8 +404,8 @@ Testten sonra `autorun.txt`'yi silin; yoksa her açılışta yeniden çalışır
 tools/ryu_test.sh <cikti.png> [bekleme_sn] [keep]
 ```
 
-Açık bir Ryujinx'i kapatır, `NexvynOS.nro`'yu başlatır, verilen süre (varsayılan 14 sn) bekler ve pencerenin ekran
-görüntüsünü kaydeder. Üçüncü argüman `keep` ise Ryujinx açık kalır. Betik Git Bash'te çalışır ve PowerShell kullanır
+Açık bir emülatörü kapatır, `NexvynOS.nro`'yu başlatır, verilen süre (varsayılan 14 sn) bekler ve pencerenin ekran
+görüntüsünü kaydeder. Üçüncü argüman `keep` ise emülatör açık kalır. Betik Git Bash'te çalışır ve PowerShell kullanır
 (Windows). `autorun.txt` ile birlikte kullanılınca bir uygulama turu başsız çalıştırılabilir.
 
 ---
@@ -503,7 +503,7 @@ yeni bir yerleşik araç yazıyorsanız buradan başlayın.
   ederken anılır (Steam, CorkDeck, sağlayıcı adları).
 - Lisans GPL-3.0-or-later'dır. Yalnızca GPLv3 ile uyumlu kod bağlanır; harici homebrew programları bağlanmaz, yalnızca
   başlatılır. Yeni bir bileşen ekliyorsanız [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) dosyasını güncelleyin.
-- Bir dosyayı denetledikten sonra Ryujinx'te `autorun.txt` ile deneyin (bölüm 9).
+- Bir dosyayı denetledikten sonra PC test ortamında `autorun.txt` ile deneyin (bölüm 9).
 
 ---
 
@@ -534,7 +534,7 @@ repeating them: [sdk/SDK.tr.md](../Reference/SDK.tr.md) (full API), [JS_APPS.tr.
    *Settings > Apps*) and verifies each download's SHA-256.
 8. **Overlay:** files under `sdmc:/NexvynOS/System/Overlay/` replace the romfs file with the same relative path.
 9. **Testing:** `./build.sh run`, `sdmc:/NexvynOS/autorun.txt` scripts (command list at the top of
-   `source/wm/shell_autorun.cpp`) and `tools/ryu_test.sh <out.png> [wait] [keep]` for Ryujinx screenshots.
+   `source/wm/shell_autorun.cpp`) and `tools/ryu_test.sh <out.png> [wait] [keep]` for screenshots on the PC test setup.
 10. **Native apps:** C++17 classes registered with `REGISTER_APP`, strings in `lang/*.json` read with `TR()`, immediate
     mode `ui::` widgets, an entry in `tools/apps_manifest.json`, and `tools/check.sh` per file. Modding tools share
     `source/core/modkit.h`: Atmosphère paths, SD-only path checks (`safeSdPath`, `safeRel`), installed titles, build

@@ -1,441 +1,365 @@
-<p align="center"><img src=".github/assets/nexvyn-os-teaser.webp" width="100%" alt="Nexvyn OS iş başında: pencereler, Studio, Oyun Motoru ve 3D"></p>
+<p align="center"><img src=".github/assets/nexvyn-teaser.webp" width="100%" alt="Nexvyn OS iş başında: pencereler, Hızlı Oyun, 3D Modelleme, animasyonlu kahramanlı bir 3D oyun ve animasyonlu FBX modeller"></p>
 
 <h1 align="center"><img src="icon.jpg" width="40" alt=""> Nexvyn OS</h1>
 
 <p align="center"><a href="README.md">English</a> · <b>Türkçe</b></p>
 
-<p align="center"><b>Nintendo Switch için eksiksiz bir masaüstü işletim sistemi kabuğu.</b><br>
-Gerçek pencereler, iki masaüstü düzeni, web tarayıcısı, video, Canlı TV, ofis uygulamaları, oyun motoru, 3D modelleme,
-kod stüdyosu ve Uygulama Mağazası; hepsi Homebrew menüsünden açılan tek bir <code>.nro</code> içinde. Yeniden başlatma
-yok, SD kart bölümleme yok.</p>
+<p align="center">Atmosphère kurulu Switch homebrew ortamı için kendi uygulamaları, bir Uygulama Mağazası ve uygulama ile oyunlar
+için bir SDK'sı olan bir masaüstü kabuğu. Homebrew Menüsü'nden açılan tek bir <code>.nro</code> dosyası. Yeniden
+başlatma yok, bölümlendirme yok.</p>
 
 <p align="center">
-<a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><img src="https://img.shields.io/github/v/release/sonerx7/Nexvyn-OS-NX?label=son%20s%C3%BCr%C3%BCm&color=2f7cf6" alt="Son sürüm"></a>
+<a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><img src="https://img.shields.io/github/v/release/sonerx7/Nexvyn-OS-NX?label=s%C3%BCr%C3%BCm&color=2f7cf6" alt="Son sürüm"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/lisans-GPL--3.0--or--later-blue" alt="Lisans: GPL-3.0-or-later"></a>
-<a href="SDK/README.tr.md"><img src="https://img.shields.io/badge/SDK-1.6-8a5cf6" alt="SDK 1.6"></a>
+<a href="SDK/README.tr.md"><img src="https://img.shields.io/badge/SDK-1.9-8a5cf6" alt="SDK 1.9"></a>
 <a href="#erişilebilirlik-ve-diller"><img src="https://img.shields.io/badge/dil-8-22a55e" alt="8 dil"></a>
 </p>
 
 <p align="center">
-<a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><b>⬇ NexvynOS.nro'yu indir</b></a> ·
-<a href=".github/assets/nexvyn-os-demo.mp4"><b>▶ 1 dakikalık tanıtım videosunu izle</b></a> ·
-<a href="SDK/Guides/USER_GUIDE.tr.md">Kullanım rehberi</a> ·
-<a href="Store/README.tr.md">Uygulama Mağazası</a> ·
+<a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><b>NexvynOS.nro'yu indir</b></a> ·
+<a href="#130-sürümündeki-yenilikler">Yenilikler</a> ·
+<a href="#gereksinimler">Gereksinimler</a> ·
+<a href="#kurulum">Kurulum</a> ·
+<a href="#belgeler">Belgeler</a> ·
 <a href="SDK/README.tr.md">SDK</a> ·
-<a href="CHANGELOG.md">Sürüm notları</a> ·
-<a href="ROADMAP.tr.md">Yol haritası</a>
+<a href="Store/README.tr.md">Uygulama Mağazası</a> ·
+<a href="CHANGELOG.md">Sürüm notları</a>
 </p>
 
-<p align="center"><a href=".github/assets/nexvyn-os-demo.mp4"><img src=".github/assets/hero-desktop.jpg" width="100%" alt="Tarayıcı, YousTube, Fotoğraflar ve Terminal açıkken Nexvyn OS masaüstü"></a></p>
+## Genel bakış
 
-> Ekran görüntüleri ve video İngilizce arayüzle çekildi; Nexvyn OS'un tamamı Türkçe de kullanılabilir.
+Nexvyn OS, konsolun kendi sisteminin üstünde Atmosphère ile çalışır. Konsola pencereli bir masaüstü, 70'ten fazla
+yerleşik uygulama (tarayıcı, video, müzik, ofis, dosyalar, terminal ve daha fazlası), Atmosphère kullanıcıları için
+araçlar, bir kod stüdyosu, bir oyun motoru, bir 3B modelleme aracı ve her öğesi yayından önce incelenen bir Uygulama
+Mağazası getirir.
 
-## Bir bakışta
+- **Masaüstü:** üst üste binen, boyutlandırılabilen pencereler, yaslama, sanal masaüstleri, Pencere Görünümü,
+  Başlatıcı, Hızlı Arama, Denetim Merkezi, bildirimler ve araç takımları; Dock düzeni ya da görev çubuğu düzeni.
+- **Uygulamalar:** Tarayıcı, YousTube, Canlı TV, Radyo, Müzik, Fotoğraflar, Video Oynatıcı, Kelime İşlemci, Hesap Tablosu,
+  Sunu, Dosyalar, Terminal, Hava Durumu, Haritalar, Takvim, Notlar, AI Sohbet ve daha fazlası.
+- **Konsolda uygulama ve oyun yapın:** altı dil için Nexvyn OS Studio, Hızlı Oyun'lu Oyun Motoru ve 3D Modelleme.
+  PC gerekmez.
+- **SDK 1.9:** fiziksel tabanlı 3B görüntü (NexGFX), animasyonlu 3B model dosyaları, sosyal uygulamalar için akış,
+  medya oynatıcı ve ağ fonksiyonları; Lua, JavaScript, Python ve C'de.
+- **Switch Araçları:** modlar, hileler, overlay'ler, saat profilleri, sistem modülleri, kayıt yedekleri ve Türkçe
+  yamalar.
+- **Erişilebilirlik:** 8 dil, Ekran Okuyucu, dokunmatik, kumanda, USB klavye ve fare, el modu ve TV düzenleri.
 
-- **Gerçek bir masaüstü.** Üst üste binen, boyutlandırılabilen pencereler, kenara yaslama, sanal masaüstleri, Pencere
-  Görünümü, Başlatıcı (Launcher), Hızlı Arama, Denetim Merkezi, Bildirim Merkezi, masaüstü widget'ları ve her yerde
-  sağ tık menüleri.
-- **İki düzen.** **Dock düzeni** (üstte menü çubuğu, altta Dock) ya da **görev çubuğu düzeni** (Başlat menülü görev
-  çubuğu, menüler her pencerenin içinde). İstediğiniz an geçebilirsiniz.
-- **70'i aşkın yerleşik uygulama.** Tarayıcı, YousTube, Canlı TV, Radyo, Müzik, Fotoğraflar, Video Oynatıcı, Kelime
-  İşlemci, Hesap Tablosu, Sunum, Dosyalar, Terminal, Hava Durumu, Haritalar, Takvim, Notlar ve çok daha fazlası.
-- **Konsolda üretin.** Altı dilde uygulama yazmak için Nexvyn OS Studio, 2D ve 3D oyunlar için Oyun Motoru ve tam bir
-  3D Modelleme uygulaması; yanında SDK, örnekler ve rehberler.
-- **Uygulama Mağazası (App Market).** Uygulamalar, oyunlar, temalar ve yazı tipi paketleri; her biri yayımlanmadan önce
-  incelenir.
-- **Switch Araçları.** Modlar, hileler, overlay'ler, saat profilleri, sistem modülleri, kayıt yedekleri ve Türkçe yamalar.
-- **Herkes için.** 8 dil, Ekran Okuyucu, dokunmatik, kumanda, USB klavye ve fare, el ve TV düzenleri.
+<p align="center"><img src=".github/assets/desktop-dock.webp" width="100%" alt="Saat, takvim ve dünya saati araç takımlarıyla Dock düzeninde Nexvyn OS masaüstü"></p>
 
----
+## 1.3.0 sürümündeki yenilikler
+
+<p align="center"><img src=".github/assets/nexgfx-before-after.webp" width="100%" alt="Aynı toplantı odası SDK 1.8 renderer'ında (düz ışık) ve SDK 1.9 NexGFX pbr renderer'ında (camdan giren güneş, gölgeler, yansımalar)"></p>
+
+- **NexGFX pbr renderer (SDK 1.9).** 3B uygulama ve oyunlar için yeni, sürümlü bir grafik çekirdeği: normal,
+  occlusion ve emissive haritalı metallic-roughness materyaller, gerçek zamanlı nokta, spot ve yönlü ışıklar, güneş ve
+  spot gölgeleri, ACES ya da filmic ton eşlemeli HDR, bloom, MSAA, cube map yansımaları, kırılmalı ince cam, clearcoat
+  ve GPU instancing. Uygulamalar `g3d.renderer("pbr")` ile açar; açmayan uygulamalar eskisiyle birebir aynı çizilir.
+- **Sosyal ve medya SDK'sı (SDK 1.9).** JSON, form, multipart ve dosya gövdeli, yükleme ilerlemeli, çerezli, yeniden
+  denemeli ve çevrimdışı önbellekli `net.request`; WebSocket istemcisi; konsolun tarayıcısıyla oturum açma; disk
+  önbellekli web resimleri; gömülü video ve ses oynatıcılar; çek-yenileli sanal akış ve ızgaralar; kaydırmalı
+  sayfalayıcı; bağlantı, bahsetme ve etiketli zengin metin.
+- **Runtime kütüphanesi (SDK 1.9).** Lua'da `net.request`; JavaScript'te `TextEncoder`, `TextDecoder`, `URL`,
+  `URLSearchParams` ve `structuredClone`; Python'da daha fazla metin metodu, `urllib.parse`, `html` ve `uuid`.
+- **Köklü sıfırlama.** **Sistem Ayarları > Geliştirici > Köklü sıfırla**, SD kartı ilk kurulumdaki hâline döndürür:
+  Nexvyn OS'un klasörünün içinde ve dışında yazdığı her şey PIN ve 3 saniye basılı tutmadan sonra silinir. Oyunlara,
+  kayıtlara, Albüm'e, Atmosphère'e ve diğer homebrew'lara dokunulmaz. Yarıda kalan sıfırlama sonraki açılışta biter.
+- **Gerekli sistem sürümü 22.5.0.** Nexvyn OS 22.5.0 ile 23.0.x arası sistem sürümleri için yapılıp test edilir.
+  Başka sürümlerde de açılır ve bir kez bildirim gösterir; tam tarayıcı yalnızca test edilen aralıkta kullanılır.
+- **Ses ve oyun hissi kitleri.** Katmanlı ses efektleri ve müzik ile hareket, darbe, ışık, başlık, panel, geçiş ve
+  kameralar için hazır Lua ve JavaScript kitleri; rehberleri ve demo uygulamalarıyla.
+- **Mağaza ikonu aracı.** Oyunun kendi modelini çizip her boyutta key-art ikonunu üretir; stil yapımcının seçimidir,
+  varsayılanı clean'dir.
+- **Uygulama Mağazası görselleri.** Her öğe için İngilizce arayüzle çekilmiş beş ekran görüntüsü.
+
+Tam liste [sürüm notlarında](CHANGELOG.md).
+
+## SDK 1.9: modern 3B ve sosyal uygulamalar
+
+| | |
+|:---:|:---:|
+| <img src=".github/assets/nexgfx-glass.webp" alt="Alfa karışımlı cam ile kıran ve yansıtan ince camın karşılaştırması"> | <img src=".github/assets/nexgfx-office.webp" alt="Cam bölmeli, tavan lambalı ve clearcoat zeminli açık ofis"> |
+| **Cam:** alfa karışımı ile ince cam geçirgenliği | **İç mekânlar:** cam bölmeler, alan ışıkları, clearcoat zemin |
+| <img src=".github/assets/nexgfx-materials.webp" alt="Krom, normal haritalı kumaş ve ambient occlusion'lı ahşap yakın çekimleri"> | <img src=".github/assets/sample-social-feed.webp" alt="Sosyal Akış örneği: karanlık modda fotoğraf akışı, fotoğraf ızgarası ve dikey klip sayfalayıcı"> |
+| **Materyaller:** glTF ve FBX haritalarından metal, kumaş ve ahşap | **Sosyal Akış örneği:** akış, ızgara ve klip sayfalayıcı |
+
+Yukarıdaki 3B sahneleri Nexvyn OS, `.glb` ve `.fbx` olarak dışa aktarılmış bir iç mekân varlık kitinden çizer;
+materyal haritaları dosyalardan olduğu gibi gelir.
+
+```lua
+function app.load()
+  g3d.renderer("pbr")                                   -- "basic" when the console offers no OpenGL ES 3
+  g3d.shadows({quality = "medium", distance = 25})
+  g3d.postfx({exposure = 1.0, tonemap = "aces", bloom = 0.06})
+  g3d.environment({sky = "#9DB8E8", ground = "#4A4038"})
+  g3d.loadModel("bundle:/models/room.glb", function(m) room = m end)   -- PBR maps come from the file
+  lamp = g3d.addLight({type = "point", x = 1, y = 2, z = 0, color = "#FF9A3C", intensity = 6, range = 8})
+end
+```
+
+- **Lua, JavaScript, Python ve C'de aynı API.** Squirrel ve Java uygulamaları çalışmaya devam eder; SDK 1.8'de
+  donduruldular.
+- **Uyumlu.** SDK 1.0-1.8 için yapılmış uygulamalar değişmeden çalışır; hiçbir şey kaldırılmaz, yeni davranış
+  yalnızca yeni SDK'yı hedefleyen uygulamalara uygulanır ([SDK sürümleri](SDK/Guides/SDK_VERSIONS.tr.md)).
+- **Tarifler ve örnekler.** Lua ve JavaScript'te eksiksiz, Python ve C sürümleri de olan bir
+  [PBR oyun tarifi](SDK/Guides/PBR_GAME_RECIPE.tr.md) ve bir [sosyal uygulama tarifi](SDK/Guides/SOCIAL_APP_RECIPE.tr.md), [PBR, Işıklar ve Gölgeler](SDK/Samples/lua/pbr3d/) ve
+  [Sosyal Akış](SDK/Samples/lua/social-feed/) örnekleri ve animasyonlu modelli küçük bir 3B oyun olan
+  [Ember Field](SDK/Samples/lua/ember-field/).
+- **AI destekli geliştirme.** [SDK/AI](SDK/AI/README.tr.md) içinde context pack'ler ve görev prompt'ları, üretilmiş
+  model ve dokulardan konsola hazır dosyalara giden bir [çalışma rehberi](SDK/Guides/AI_WORKFLOW.tr.md).
 
 ## Masaüstü
 
-Nexvyn OS, kaplama giydirilmiş bir başlatıcı değildir. Pencereler gerçektir: sürükleyin, her kenarından boyutlandırın,
-ekranın yarısına ya da çeyreğine yaslayın, büyütün, tam ekrana alın ya da birini her zaman üstte tutun. Her pencere
-bıraktığınız yerde yeniden açılır. Sanal masaüstleri 3D küp geçişiyle değişir; çöken bir uygulama sistemi kendisiyle
-birlikte götürmez.
+Pencereler sürüklenir, her kenarından boyutlandırılır, ekranın yarısına ya da çeyreğine yaslanır, büyütülür, tam ekran
+yapılır ya da üstte tutulur ve bıraktığınız yerde yeniden açılır. Sanal masaüstleri 3B bir küple geçer. Çöken bir
+uygulama kendiliğinden kapanır ve sistemi düşürmez.
+
+<p align="center"><img src=".github/assets/windows.webp" width="80%" alt="Fotoğraflar, Dosyalar ve Hesap Makinesi açılıyor, sonra Pencere Görünümü ve bir pencerenin küçültülmesi"></p>
 
 | | |
 |:---:|:---:|
-| <img src=".github/assets/window-overview.jpg" alt="Pencere Görünümü"> | <img src=".github/assets/taskbar-start-menu.jpg" alt="Başlat menüsüyle görev çubuğu düzeni"> |
-| **Pencere Görünümü:** tüm pencereler ve masaüstleri tek bakışta | Başlat menüsüyle **görev çubuğu düzeni:** sabitlenenler, tüm uygulamalar, arama |
-| <img src=".github/assets/launcher.jpg" alt="Başlatıcı"> | <img src=".github/assets/quick-search.jpg" alt="Hızlı Arama"> |
-| **Başlatıcı:** tüm uygulamalar, kategorilere göre | **Hızlı Arama:** uygulamalar, dosyalar, ayarlar, eylemler, hesap makinesi ve web |
-| <img src=".github/assets/control-center.jpg" alt="Denetim Merkezi"> | <img src=".github/assets/notification-center.jpg" alt="Bildirim Merkezi"> |
-| **Denetim Merkezi:** Wi-Fi, Rahatsız Etme, Karanlık Mod, ses, Şimdi Çalıyor | widget'larıyla **Bildirim Merkezi** |
-| <img src=".github/assets/context-menu.jpg" alt="Masaüstü sağ tık menüsü"> | <img src=".github/assets/files.jpg" alt="Dosyalar"> |
-| Masaüstünde, simgelerde, dosyalarda ve Dock'ta **sağ tık menüleri** | **Dosyalar:** kenar çubuğu, sekmeler, liste ve ızgara görünümü, Çöp Sepeti, USB bellekler |
+| <img src=".github/assets/desktop-taskbar.webp" alt="Aurora duvar kâğıdı ve araç takımlarıyla görev çubuğu düzeni"> | <img src=".github/assets/start-menu.webp" alt="Başlat menüsü: arama, kategoriler, sabitlenmiş uygulamalar ve tüm uygulamalar"> |
+| **Görev çubuğu düzeni:** görev çubuğu, araç takımları, masaüstü simgeleri | **Başlat menüsü:** sabitlenmiş uygulamalar, tüm uygulamalar, arama |
+| <img src=".github/assets/launcher-1.2.webp" alt="Son kullanılanlar ve kategoriye göre tüm uygulamalarla Başlatıcı"> | <img src=".github/assets/window-overview.jpg" alt="Pencere Görünümü"> |
+| **Başlatıcı:** son kullanılanlar, sonra kategoriye göre her uygulama | **Pencere Görünümü:** her pencere ve masaüstü bir bakışta |
+| <img src=".github/assets/quick-search.jpg" alt="Hızlı Arama"> | <img src=".github/assets/control-center.jpg" alt="Denetim Merkezi"> |
+| **Hızlı Arama:** uygulamalar, dosyalar, ayarlar, eylemler, hesap makinesi ve web | **Denetim Merkezi:** Wi-Fi, Rahatsız Etmeyin, Karanlık Mod, ses, Şimdi Çalıyor |
 
-- **Dock düzeni:** uygulamanın menüleri, pil, Wi-Fi, saat ve arama ile bir menü çubuğu; büyütme efekti, çalışan uygulama
-  noktası, sabitleme ve otomatik gizlemeyle bir Dock.
-- **Görev çubuğu düzeni:** ortaya ya da sola hizalanan görev çubuğu; sabitlenen uygulamalar, kategorilere göre tüm
-  uygulamalar ve önerilerle Başlat menüsü; canlı pencere küçük resimleri; her pencerede küçült, büyüt ve kapat düğmeleri.
-- **Masaüstü:** simgeler, kendi simgesi olan klasörler, kısayollar, lastik bant seçimi, klavyeyle gezinme ve widget'lar
-  (saat, takvim, hava durumu, pil, sistem, notlar, anımsatıcılar, dünya saati, radyo).
-- **Kısayollar:** Hızlı Arama için Ctrl+Boşluk, Pencere Görünümü için F3, Başlatıcı için F4, uygulamalar arasında
-  Alt+Tab, masaüstleri arasında Ctrl+Sol/Sağ. Kumandada + uygulamaları, ZR aramayı açar; L ve R pencere değiştirir.
+- **Dock düzeni:** uygulamanın menüleri, pil, Wi-Fi, saat ve aramalı bir menü çubuğu; büyütmeli, çalışan uygulama
+  noktalı, sabitlemeli ve otomatik gizlenen bir Dock.
+- **Görev çubuğu düzeni:** ortalı ya da sola yaslı görev çubuğu, Başlat menüsü, canlı pencere önizlemeleri ve her
+  pencerede küçült, büyüt ve kapat düğmeleri.
+- **Masaüstü:** simgeler, klasörler, kısayollar, sürükleyerek seçme, klavyeyle gezinme ve araç takımları (saat, takvim,
+  hava durumu, pil, sistem, notlar, anımsatıcılar, dünya saati, radyo).
+- **Kısayollar:** Hızlı Arama için Ctrl+Space, Pencere Görünümü için F3, Başlatıcı için F4, uygulama değiştirmek
+  için Alt+Tab, masaüstleri için Ctrl+Sol/Sağ. Kumandada + uygulamaları, ZR aramayı açar, L ve R pencere değiştirir.
+- **Tanıtım Turu:** kurulumdan sonra kendi masaüstünüzde rehberli bir tur; **Yardım > Tanıtım Turu** ile yeniden
+  izleyin.
 
-### Tanıtım Turu
-
-Kurulumdan hemen sonra canlı bir tur sistemi **gerçek masaüstünüzde** gösterir: yerine oturan pencereler, iki masaüstü
-düzeni, Quick Search, Studio'da 20 saniyede yazılıp çalıştırılan bir uygulama, üç dokunuşla yapılan bir oyun. Her adımda
-*Göster* ve *Ben deneyeyim* vardır. İstediğiniz zaman **Yardım > Tanıtım Turu** ile tekrar izleyebilirsiniz.
-
-<p align="center"><img src=".github/assets/welcome-tour.jpg" width="80%" alt="Tanıtım Turu"></p>
-
-## Nexvyn OS Studio — uygulamaları konsolda geliştirin
-
-Doğrudan Switch üzerinde çalışan eksiksiz bir kod stüdyosu. Uygulamanızı yazın, **Çalıştır**'a basın; uygulama kodun
-hemen yanında kendi penceresinde açılır, çıktısı anında konsola akar. Bir satırı değiştirin, **Yeniden Başlat**'a basın;
-değişiklik hemen görünür. Bilgisayar yok, derleme adımı yok.
+## Konsolda uygulama ve oyun yapın
 
 | | |
 |:---:|:---:|
-| <img src=".github/assets/studio-autocomplete.jpg" alt="Nexvyn OS Studio: kodun yanında SDK başvurusuyla SDK otomatik tamamlama"> | <img src=".github/assets/studio-python.jpg" alt="Nexvyn OS Studio'da kodunun yanında çalışan bir CPython 3.12 uygulaması"> |
-| **Tüm SDK için otomatik tamamlama**, başvuru o fonksiyonda açık | **Gerçek CPython 3.12:** dataclasses, statistics ve konsolda `print()` |
-| <img src=".github/assets/studio-javascript.jpg" alt="Nexvyn OS Studio'da kodunun yanında çalışan bir JavaScript uygulaması"> | <img src=".github/assets/studio-error.jpg" alt="Konsolda ve düzenleyicide satır numarasıyla bir çalışma zamanı hatası"> |
-| **JavaScript:** Çalıştır'a basın, uygulama kodun yanında açılır | **Satır numaralı hatalar:** satıra gitmek için tıklayın ya da F8'e basın |
-| <img src=".github/assets/studio-templates.jpg" alt="Yeni Proje: Lua, JavaScript, Python, Squirrel, C ve Java şablonları"> | <img src=".github/assets/studio-samples.jpg" alt="Çevrimiçi örnekler: ekran görüntüleri ve İndir ve Aç düğmesiyle bir örnek sayfası"> |
-| Altı dilde **18 şablon**, hepsi olduğu gibi çalışır | **Örnekler:** hazır bir projeyi tek dokunuşla indirip açın |
+| <img src=".github/assets/studio-autocomplete.jpg" alt="Nexvyn OS Studio: kodun yanında SDK başvurusuyla SDK otomatik tamamlama"> | <img src=".github/assets/quick-game-wizard.webp" alt="Hızlı Oyun sihirbazı: tür adımı"> |
+| **Nexvyn OS Studio:** bütün SDK için otomatik tamamlama, kodun yanında çalıştırma | **Hızlı Oyun:** bir tür ve bir dünya seçin, oynayın |
+| <img src=".github/assets/modeler-edit-tools.webp" alt="Düzenleme Modunda 3D Modelleme: loop cut'lı pahlı bir küp ve İşlemler paneli"> | <img src=".github/assets/game-engine-3d-editor.webp" alt="3B bir bölümle Oyun Motoru düzenleyicisi"> |
+| **3D Modelleme:** düzenleme araçları, modifier yığını, UV açma, `.glb` dışa aktarma | **Oyun Motoru:** resimli kartlarla ya da kodla 2B ve 3B oyunlar |
 
-- **Altı dil:** **Lua 5.4**, **JavaScript**, **Python** (hafif çalışma ortamı ya da standart kütüphanesiyle gerçek
-  **CPython 3.12**), **Squirrel**, konsolda TinyCC ile derlenen **C** ve miniJVM üzerinde **Java 8**.
-- **Tüm SDK için otomatik tamamlama:** `gfx.` yazın, her fonksiyon parametreleriyle listelenir; F1, SDK başvurusunu
-  tam o fonksiyonda açar. Söz dizimi hataları siz yazarken işaretlenir.
-- **Canlı konsolla çalıştırma:** F5 ya da Ctrl+R uygulamayı kendi penceresinde başlatır; `print()` ve `sys.log()`
-  çıktısı anında konsolda görünür. **Yeniden Başlat** değişikliklerinizi alır, isterseniz **Kaydedince Yeniden Başlat**
-  bunu sizin yerinize yapar.
-- **Tıklanabilir hatalar:** bir çalışma zamanı hatası dosyası ve satırıyla konsolda, düzenleyicide ve uygulamanın
-  penceresinde görünür. Tıklayın ya da F8'e basın, doğrudan o satıra gidin.
-- **Şablonlar ve örnekler:** 18 şablondan biriyle başlayın (boş uygulamalar, platform oyunu, nişancı, bulmaca, 3D sahne,
-  ağ, yapılacaklar listesi…) ya da çevrimiçi katalogdan bir örnek indirip proje olarak açın.
-- **Kodun etrafındaki her şey:** projede bul ve değiştir, Hızlı Aç, sprite, tilemap ve sahne düzenleyicileri, anlık
-  görüntüler ve AI Chat'te ayarladığınız sağlayıcı ve anahtarı kullanan bir **AI'ya sor** paneli.
-- **Uygulama Mağazası'nda yayımlayın:** **Dışa Aktar** hemen paylaşabileceğiniz bir `.nxvapp` üretir; **Yayınla**
-  sihirbazı projenizi pull request ile bu depoya eklemeniz için sizi adım adım yönlendirir. Uygulama Mağazası'nda
-  görünmeden önce bakımcı tarafından incelenir.
+- **Nexvyn OS Studio:** Lua 5.4, JavaScript, Python (hafif runtime ya da CPython 3.12), Squirrel, C (konsolda
+  derlenir) ve Java 8. Otomatik tamamlama, F1'de SDK başvurusu, canlı konsol, tıklanabilir hatalar, 20 şablon, çevrimiçi
+  örnekler, **Yapay zekâya sor** paneli, `.nxvapp` dışa aktarma ve **Yayımla** sihirbazı.
+- **Oyun Motoru:** Hızlı Oyun üç adımda oynanabilir bir oyun kurar (17 tür, 7 dünya); Kolay mod resimli kartlar
+  kullanır, Gelişmiş mod denetçi, katmanlar, olay blokları, piksel ve döşeme düzenleyicileri ve üretilen Lua kodunu
+  ekler.
+- **3D Modelleme:** temel şekiller, köşe, kenar ve yüz düzenleme (pah, loop cut, bıçak, köprü, döndürme, ayna),
+  modifier yığını, UV açma, yüz başına materyal, dörtlü görünüm, OBJ ve STL içe/dışa aktarma ve `.glb` dışa aktarma.
 
-## İnternet ve medya
+## İnternet, medya ve verimlilik
 
 | | |
 |:---:|:---:|
 | <img src=".github/assets/browser.jpg" alt="Tarayıcı"> | <img src=".github/assets/youstube.jpg" alt="YousTube"> |
 | Kendi HTML, CSS ve JavaScript motoruyla **Tarayıcı** | **YousTube:** video arayın ve izleyin |
-| <img src=".github/assets/live-tv.jpg" alt="Canlı TV"> | <img src=".github/assets/radio.jpg" alt="Radyo"> |
-| **Canlı TV:** M3U listeleri ve hazır kanal listeleri | **Radyo:** dünyanın dört bir yanından istasyonlar |
-
-- **Tarayıcı:** JavaScript'li (DOM, olaylar, fetch, localStorage) kendi düzen motoru; CSS dönüşümleri, geçişleri ve
-  animasyonları, sekmeler, yer imleri, geçmiş, okuyucu modu, indirmeler ve şifreli parola deposu.
-- **YousTube:** YouTube videolarını arayın ve izleyin; Shorts, yorumlar, bölümler, mini oynatıcı, oynatma hızı, altyazı
-  ve akışın sunduğu yerde 1080p ya da 2160p'ye kadar kalite. Abonelikler, oynatma listeleri ve yorumlar için isteğe bağlı
-  oturum açma (kendi API istemcinizle).
-- **Canlı TV:** kendi M3U listeleriniz ya da ülkelere göre hazır listeler; gruplar, favoriler ve son izlenenler.
-- **Radyo:** istasyonlara ülke ve türe göre göz atın, çalan şarkıyı görün, favorilerinizi saklayın, uyku zamanlayıcısı
-  kurun. Pencereyi kapattıktan sonra da çalmaya devam eder.
-- **Müzik, Fotoğraflar ve Video Oynatıcı:** etiketler, kapak resimleri ve çalma listeleri; resimleriniz ve konsolun Albüm
-  görüntüleri; HTTPS ve HLS akışları dahil MP4, MKV, WebM ve daha fazlası.
-- Ayrıca: **Kamera** (Joy-Con'un IR kamerası), **Hava Durumu**, **Haritalar**, **Haberler**, **Döviz** ve **Sözlük**.
-
-<p align="center"><img src=".github/assets/photos.jpg" width="80%" alt="Fotoğraflar"></p>
-
-### Oyun Kitaplığı
-
-Kurulu Switch oyunlarınız kapakları, oynama süreleri ve Albüm görüntüleriyle; tek dokunuşla başlatılır (title modu).
-Steam ve PC Kitaplığı ile PC oyunlarınız da burada. *(Emülatörde kurulu oyun olmadığı için burada demo modunda.)*
-
-<p align="center"><img src=".github/assets/game-library.jpg" width="80%" alt="Oyun Kitaplığı"></p>
-
-## Verimlilik
-
-| | |
-|:---:|:---:|
 | <img src=".github/assets/writer.jpg" alt="Kelime İşlemci"> | <img src=".github/assets/spreadsheet.jpg" alt="Hesap Tablosu"> |
 | **Kelime İşlemci:** şablonlar, stiller ve biçimlendirme | **Hesap Tablosu:** formüller, grafikler ve CSV |
 
-- **Kelime İşlemci, Hesap Tablosu ve Sunum:** şablonlardan belgeler (mektup, rapor, özgeçmiş, toplantı notları),
-  formüller ve grafikler, sunum temaları, geçişler ve sunum modu.
-- **Dosyalar:** sürükle-bırak, kopyalama ve taşıma, sıkıştırma ve açma, Çöp Sepeti, USB bellekler (FAT ve exFAT).
-- `nxvsh` kabuğuyla **Terminal**, **Kod Düzenleyici**, **Metin Düzenleyici**, **Notlar**, **Takvim**, **Anımsatıcılar**,
-  **Kişiler**, **Hesap Makinesi**, **Saat** ve **Yapışkanlar**.
-- **Otomasyon:** oturum açılışında, belirli bir saatte, pil seviyesinde, konsol dock'a takılınca ya da bir USB bellek
-  takılınca çalışan rutinler.
-- **AI Sohbet:** seçtiğiniz yapay zekâ modeliyle kendi API anahtarınızla sohbet edin; anahtar konsolda şifreli kalır.
-- **Bilgisayara Bağlan:** kablosuz FTP sunucusu ve USB üzerinden dosya aktarımı (MTP); ayrıca bir FTP istemcisi.
-
-## Üretin: konsolda uygulama, oyun ve 3D
-
-| | |
-|:---:|:---:|
-| <img src=".github/assets/studio.jpg" alt="Nexvyn OS Studio"> | <img src=".github/assets/game-engine-editor.jpg" alt="Oyun Motoru düzenleyicisi"> |
-| **Nexvyn OS Studio:** kodu yazın, Çalıştır'a basın, uygulama hemen yanında açılır | **Oyun Motoru:** sürükleyin, bırakın, Oyna'ya basın |
-| <img src=".github/assets/game-engine-3d.jpg" alt="3D'de Oyun Motoru"> | <img src=".github/assets/modeler-3d.jpg" alt="3D Modelleme"> |
-| 3D'de **Oyun Motoru** | **3D Modelleme:** örneklerden bir ev |
-
-- **Nexvyn OS Studio:** altı dilde 18 şablondan projeler: **Lua 5.4**, **JavaScript**, **Python** (hafif çalışma
-  ortamı ya da standart kütüphanesiyle gerçek **CPython 3.12**), **Squirrel**, **C** ve **Java**. Söz dizimi
-  renklendirmesi, canlı hata denetimi, otomatik tamamlama, konsol, sprite, tilemap ve sahne düzenleyicileri, hemen
-  yanında SDK başvurusu ve tek adımda `.nxvapp` paketleme.
-- **Oyun Motoru:** çocukların da kullanabileceği bir 2D ve 3D oyun yapıcı. Oyun sihirbazı üç adımda oynanabilir bir oyun
-  kurar (6 tür, 7 dünya). Kolay mod resim kartları ve sürükle-bırakla çalışır; Gelişmiş mod buna denetçi, katmanlar, olay
-  blokları, piksel ve karo düzenleyicileri ve üretilen Lua kodunu ekler. 13 şablon ve 5 örnek oyun; sonucu uygulama olarak
-  paylaşın ya da Studio'da kodla sürdürün.
-- **3D Modelleme:** sahne ağacı, temel şekiller, taşıma, döndürme ve ölçekleme tutamakları, köşe, kenar ve yüz düzenleme,
-  64 adım geri alma, OBJ ve STL içe ve dışa aktarma.
-- **SDK 1.6:** çizim, arayüz bileşenleri, dosyalar, JSON, kalıcı veri, HTTPS, ses sentezi, bildirimler, hareket
-  sensörleri, `nexvyn.game` 2D oyun motoru (sahneler, sprite'lar, tilemap'ler, kamera, fizik, tween'ler, parçacıklar) ve
-  `g3d` GPU çizicisi.
-- **Gösteri:** çizicinin neler yapabildiğini gösteren altı gerçek zamanlı sahne (bir ada, gece şehri, galaksi ve daha
-  fazlası).
-
-| | |
-|:---:|:---:|
-| <img src=".github/assets/game-engine-play.jpg" alt="Oyun Motoru'nda yapılmış bir oyun çalışırken"> | <img src=".github/assets/showcase-3d.jpg" alt="Gösteri: Prosedürel Ada"> |
-| Çalışan bir Oyun Motoru oyunu | **Gösteri:** GPU'da çizilen 56.000 üçgenlik bir ada |
+- **Tarayıcı:** sekmeler, yer imleri, geçmiş, okuma modu, indirmeler ve şifreli parola deposu.
+- **Medya:** YousTube, Canlı TV (M3U listeleri), Radyo, Müzik, Fotoğraflar ve MP4, MKV, WebM ile HTTPS ve HLS
+  yayınları için Video Oynatıcı.
+- **Verimlilik:** Kelime İşlemci, Hesap Tablosu, Sunu, Dosyalar (USB sürücüler, arşivler, Çöp Kutusu), Terminal, Kod
+  Düzenleyici, Notlar, Takvim, Anımsatıcılar, Kişiler, Hesap Makinesi, Saat, Otomasyon ve kendi API anahtarınızla AI
+  Sohbet.
+- **PC Bağlantısı:** kablosuz FTP sunucusu ve USB dosya aktarımı (MTP), ayrıca bir FTP istemcisi.
+- **Oyun Kitaplığı:** kapakları, oynama süresi ve Albüm görüntüleriyle kurulu oyunlarınız, başlık modunda açılır.
 
 ## Uygulama Mağazası
 
-<p align="center"><img src=".github/assets/app-market.jpg" width="80%" alt="Uygulama Mağazası: Yeni ve Öne Çıkan"></p>
+<p align="center"><img src=".github/assets/app-market-games.webp" width="80%" alt="Uygulama Mağazası: öne çıkan bir oyunla Oyunlar sekmesi"></p>
 
-Uygulamalar, oyunlar, temalar ve yazı tipi paketleri. Yeni rafı son iki haftada gelenleri, Öne Çıkan bölümü denemeniz
-için bir öğeyi gösterir; her sayfa kurmadan önce izinleri listeler. Paketler SHA-256 ile denetlenir, güncellemeler tek
-dokunuşla gelir, Homebrew bölümü bilinen homebrew programlarını GitHub sürümlerinden kurar. **Her öğe yayımlanmadan önce
-bakımcı tarafından incelenir.** Tam liste: [Store/](Store/README.tr.md).
+Uygulamalar, oyunlar, temalar ve yazı tipi paketleri. Her sayfa kurmadan önce izinleri listeler. Paketler SHA-256 ile
+denetlenir ve imzalıdır, güncellemeler tek dokunuşla gelir. **Her öğe yayımlanmadan önce bakımcı tarafından
+incelenir.** Hepsine [Store/](Store/README.tr.md) içinden göz atın; kendinizinkini yayımlamak için
+[Katkı](CONTRIBUTING.tr.md) sayfasını okuyun.
 
 ## Switch Araçları
 
-<p align="center"><img src=".github/assets/switch-tools.jpg" width="80%" alt="Başlatıcı'da Switch Araçları"></p>
-
-Atmosphère kullanıcıları için bir araç klasörü: **Mod Yöneticisi** ve **Mod Bulucu**, **Hile Yöneticisi** (çalışan
-oyunda hileleri açıp kapatma), **Katmanlar** (overlay'ler), **Saat Profilleri** (sys-clk için oyuna özel saat hızları),
-**Sistem Modülleri**, **Kayıt Yedekleme**, **Oyun Bilgileri**, **Yama Yöneticisi**, **Çökme Raporları**, **Atmosphère
-Ayarları** ve **Homebrew**. **Türkçe Yamalar** indirdiğiniz çeviri yamalarını kurar ve özgün dosyaları saklar, böylece
-istediğiniz an geri dönebilirsiniz; **YamaNX** Switch oyunları için bir Türkçe yama yükleyicisidir. **Oyun Kitaplığı**
-yüklü oyunlarınızı oynama süresi ve Albüm görüntüleriyle gösterir. Modlarla yapılan değişiklikler oyunun bir sonraki
-açılışında geçerli olur.
+Atmosphère kullanıcıları için bir araç klasörü: **Mod Yöneticisi** ve **Mod Bulucu**, **Hile Yöneticisi**,
+**Overlay'ler**, **Saat Profilleri**, **Sistem Modülleri**, **Kayıt Yedeği**, **Oyun Bilgisi**, **Yama Yöneticisi**,
+**Çökme Raporları**, **Atmosphère Ayarları** ve **Homebrew**. **Türkçe Yamalar** çeviri yamalarını kurar ve geri
+dönebilmeniz için özgün dosyaları saklar. Modların değişiklikleri oyun bir sonraki açılışında geçerli olur.
 
 ## Erişilebilirlik ve diller
 
 | | |
 |:---:|:---:|
 | <img src=".github/assets/accessibility.jpg" alt="Ekran Okuyucu ile erişilebilirlik ayarları"> | <img src=".github/assets/japanese-ui.jpg" alt="Japonca Nexvyn OS"> |
-| **Ekran Okuyucu** ve erişilebilirlik ayarları | Sistemin tamamı **Japonca** |
+| **Ekran Okuyucu** ve erişilebilirlik ayarları | Bütün sistem **Japonca** |
 
-- **8 dil:** English, Türkçe, Deutsch, Français, Español, 日本語, 中文 ve 한국어; Hangul ve romaji girişi.
-- Odaktaki öğeyi sesli okuyan, sesi, hızı, perdesi ve ipuçları ayarlanabilen bir **Ekran Okuyucu**.
-- İmleci takip eden yakınlaştırma, renkleri ters çevirme, yazı ve imleç boyutu, hareketi ve saydamlığı azaltma, büyük
-  pencere düğmeleri.
-- Kelime önerili ekran klavyesi (yerleşik, yüzen ya da bölünmüş) ya da konsolun kendi klavyesi.
-
-## Size göre
-
-| | |
-|:---:|:---:|
-| <img src=".github/assets/settings-appearance.jpg" alt="Görünüm ayarları"> | <img src=".github/assets/dark-mode.jpg" alt="Karanlık mod"> |
-| **Görünüm:** açık, koyu ya da otomatik, vurgu renkleri, temalar | **Karanlık mod** |
-
-Duvar kâğıtları, vurgu renkleri, Uygulama Mağazası'ndan temalar, zamanlanabilen Gece Modu, Dock boyutu ve konumu,
-masaüstü simge boyutu, kendi avatarlarıyla birden çok kullanıcı ve kilit ekranında isteğe bağlı PIN.
+- **8 dil:** English, Türkçe, Deutsch, Français, Español, 日本語, 中文 ve 한국어; Hangul ve romaji girişiyle.
+- Kendi sesi, hızı, perdesi ve ipuçlarıyla bir **Ekran Okuyucu**; yakınlaştırma, renkleri ters çevirme, yazı ve
+  imleç boyutu, azaltılmış hareket ve saydamlık, büyük pencere düğmeleri.
+- Kelime önerili ekran klavyesi (sabit, yüzen ya da bölünmüş) ya da konsolun kendi klavyesi.
+- **Girdi:** dokunmatik (dokunma, basılı tutma, iki parmakla kaydırma, kıstırma, kenar kaydırmaları), kumanda (sol
+  çubuk imleci taşır, kumandayı oyundan geri almak için L+R'yi basılı tutun), USB klavye ve fare. El modu ve TV
+  (1080p) düzenleri.
 
 ## Gizlilik ve güvenlik
 
-<p align="center"><img src=".github/assets/privacy.jpg" width="80%" alt="Gizlilik ve İzinler"></p>
-
-- SD karttan kurulan uygulamalar ihtiyaç duydukları izinleri (ağ, dosyalar vb.) **bir kez** sorar. Bunları
-  **Sistem Ayarları > Gizlilik ve İzinler** bölümünden görüp değiştirebilirsiniz. Yerel C, Java ve modül kodu ilk kez
-  çalışmadan önce sorar.
-- Tarayıcıdaki parolalar ve AI Sohbet'teki API anahtarları konsolda şifreli saklanır.
-- **App Guard** her paketi kurulmadan önce tarar ve nedenleriyle birlikte *Sorun bulunmadı*, *İncele* ya da *Tehlikeli*
-  sonucunu gösterir (özel verilerinizi dışarı gönderebilecek kod, çalışırken indirilip çalıştırılan kod, gizlenmiş kod).
-  Tehlikeli uygulamalar ikinci bir onay ister. Mağaza uygulamaları dosya izni olsa bile sistem ayarlarını, başka
-  uygulamaların verilerini ya da tarayıcının parolalarını okuyamaz. Sistem dosyaları görülebilir ama değiştirilemez.
-  [Ayrıntılar](SDK/Guides/APP_GUARD.tr.md)
-- Anonim kullanım istatistikleri Nexvyn OS ilk açıldığında bildirilir. Dosyalarınızı, parolalarınızı ya da anahtarlarınızı
-  asla içermez; **Sistem Ayarları > Hakkında > Gizlilik** bölümünden istediğiniz an kapatabilirsiniz.
-- Çöken uygulama tek başına kapanır, donan bir uygulama zorla kapatılabilir; belgeler otomatik kaydedilip geri yüklenir;
-  çöken bir uygulama bir sonraki oturum açılışında bir kez atlanır ve bir şeyler ters giderse Güvenli Mod hazırdır.
-
-## El modu, TV ve girdi
-
-- **El ve TV düzenleri:** el modunda arayüz dokunmatik için daha büyüktür; TV'de kendi Dock'u, masaüstü simgeleri ve
-  pencere çerçeveleriyle 1080p çizilir.
-- **Dokunmatik:** dokunarak tıklama, basılı tutarak sağ tık, iki parmakla kaydırma, iki parmakla yakınlaştırma ve
-  döndürme, ekran kenarlarından kaydırma ve masaüstleri arasında üç parmakla geçiş.
-- **Kumanda:** sol çubuk imleci hareket ettirir, A tıklar, X sağ tıklar, D-pad düğmeler arasında atlar. Bir oyundan
-  kumandayı geri almak için L+R'yi bir saniye basılı tutun.
-- Yukarıdaki kısayollarla **USB klavye ve fare**.
-- **Kaynaklara özenli:** boşta duran masaüstü saniyede 20 kareye iner, arka plandaki pencereler son karelerini yeniden
-  kullanır, bellek azalınca resimler ve yazı tipleri boşaltılır.
+- Uygulamalar ihtiyaç duyduklarını (ağ, dosyalar vb.) **bir kez** sorar; **Sistem Ayarları > Gizlilik ve İzinler**
+  içinden gözden geçirin. Native C, Java ve modül kodu ilk çalışmadan önce sorar.
+- **App Guard** her paketi kurulmadan önce tarar ve nedenleriyle *Sorun bulunamadı*, *İncele* ya da *Tehlikeli*
+  gösterir. Mağaza uygulamaları sistem ayarlarını, diğer uygulamaların verilerini ya da Tarayıcı'nın parolalarını
+  okuyamaz. [Ayrıntılar](SDK/Guides/APP_GUARD.tr.md)
+- Tarayıcı'daki parolalar ve AI Sohbet'teki API anahtarları konsolda şifreli saklanır.
+- Anonim kullanım istatistikleri ilk açılışta duyurulur, dosyalarınızı, parolalarınızı ya da anahtarlarınızı asla
+  içermez ve **Sistem Ayarları > Hakkında > Gizlilik** içinden kapatılabilir.
+- Bir güvenlik açığı bildirmek için [güvenlik politikasını](SECURITY.tr.md) izleyin; lütfen bunun için herkese açık
+  bir konu açmayın.
 
 ---
 
 ## Gereksinimler
 
-- **Atmosphère** ile açılan bir konsol. Önerilen: Atmosphère **1.12.1** veya daha yenisi.
-- **Sistem sürümü 5.0.0 veya üstü.** **20.5.x**'e kadar test edildi. Daha yeni sistem sürümlerinde Nexvyn OS açılır,
-  ama birkaç özellik orada henüz test edilmedi; Nexvyn OS bunu bir kez bildirir. 5.0.0'ın altında oyun başlatma ve
-  USB dosya aktarımı (MTP) yoktur.
-- SD kartta `.nro` dosyası (yaklaşık 63 MB) için yaklaşık **70 MB** boş yer, artı kendi dosyalarınız için yer.
-- SD kart bölümü (partition) ya da ek kurulum gerekmez.
-- **Önerilen başlatma: başlık modu.** Bir oyunu **R** tuşuna basılı tutarak başlatın, sonra Nexvyn OS'u Homebrew
-  menüsünden açın. Böylece belleğin tamamı (yaklaşık 3,2 GB) kullanılır. Albüm'den (applet modu) açılınca yalnızca
-  birkaç yüz MB olur: büyük app'ler, tam tarayıcı ve oyun başlatma sınırlıdır; Nexvyn OS bunu söyler.
+- **Atmosphère** ile açılan bir konsol. Önerilen: Atmosphère **1.12.1** ya da daha yenisi.
+- **Sistem sürümü 22.5.0 ya da daha yenisi (gerekli).** **23.0.x**'e kadar test edildi. Başka sürümlerde de Nexvyn OS
+  açılır ve hiçbir şey engellenmez ama sorunlar olabilir; bir kez bildirim gösterir. Tam tarayıcı yalnızca test edilen
+  sürümlerde kullanılır (Tarayıcı ayarlarından yine de izin verilebilir).
+- SD kartta `.nro` dosyası için yaklaşık **70 MB** boş alan, ayrıca kendi dosya ve uygulamalarınız için yer.
+- SD kart bölümü ya da ek kurulum gerekmez.
+- **Önerilen açılış: başlık modu.** Bir oyunu başlatırken **R**'yi basılı tutun, sonra Nexvyn OS'u Homebrew
+  Menüsü'nden açın. Böylece belleğin tamamını (yaklaşık 3.2 GB) alır. Albüm'den (applet modu) açılırsa birkaç yüz MB
+  alır: büyük uygulamalar, tam tarayıcı ve oyun başlatma kısıtlıdır ve Nexvyn OS bunu söyler.
 
-Ayarlar > Hakkında; sistem sürümünü, Atmosphère sürümünü ve başlatma modunu gösterir.
+<p align="center"><img src=".github/assets/settings-about.webp" width="70%" alt="Sistem Ayarları > Hakkında: sistem sürümü, Atmosphère, ortam, açılış modu ve App SDK sürümü"></p>
+
+**Sistem Ayarları > Hakkında** sistem sürümünüzü, gerekli sistem sürümünü, Atmosphère sürümünü, açılış modunu ve App
+SDK sürümünü gösterir.
 
 ## Kurulum
 
-1. Atmosphère ile açılan bir Nintendo Switch gerekir.
-2. [Son sürümden](https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest) `NexvynOS.nro` dosyasını indirip SD kartta
-   `sdmc:/switch/NexvynOS.nro` konumuna kopyalayın.
-3. Homebrew menüsünden başlatın. **İpucu:** Homebrew menüsünü bir oyunu açarken **R**'yi basılı tutarak açın (başlık
-   modu). Nexvyn OS böylece tam belleği kullanır; sistem tarayıcısı, Switch oyunlarını başlatma ve PC oyunları çalışır.
-   HOME menüsünde kendi simgesiyle açmak için: [forwarder rehberi](SDK/Guides/FORWARDER.tr.md).
-4. Kurulum yardımcısı dilinizi, klavyenizi, düzeninizi ve görünümü sorar. Sonunda adım adım öğreticilerle **İpuçları**
-   uygulaması açılır.
+1. `NexvynOS.nro`'yu [son sürümden](https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest) indirin.
+2. `sdmc:/switch/NexvynOS.nro` konumuna kopyalayın (SD kartın kökündeki, Homebrew Menüsü'nün baktığı `switch`
+   klasörü). SD kartın köküne koymayın.
+3. Homebrew Menüsü'nden, başlık modunda açın (yukarıya bakın). HOME menüsünde kendi simgesi olsun isterseniz
+   [forwarder rehberine](SDK/Guides/FORWARDER.tr.md) bakın.
+4. Kurulum yardımcısı dilinizi, klavyenizi, düzeninizi ve görünümü sorar. İlk açılışta Nexvyn OS
+   `sdmc:/NexvynOS/` klasörünü oluşturur; ayarlarınız, kullanıcılarınız, dosyalarınız ve uygulamalarınız oradadır.
 
-Nexvyn OS bundan sonra kendini **Sistem Ayarları > Yazılım Güncelleme** üzerinden bu depodaki sürümlerden günceller.
-Her şeyin ayrıntısı [kullanım rehberinde](SDK/Guides/USER_GUIDE.tr.md).
+**Güncellemeler:** **Sistem Ayarları > Yazılım Güncelleme** yeni sürümü bu depodan indirir, eskisinin yedeğini tutar ve
+kurar. Uygulamalarınız, dosyalarınız ve ayarlarınız kalır.
+
+**Kaldırma:** **Sistem Ayarları > Geliştirici > Köklü sıfırla** Nexvyn OS'un SD karta yazdığı her şeyi siler. Sonra
+`sdmc:/switch/NexvynOS.nro`'yu silin. Oyunlara, kayıtlara ve Atmosphère'e asla dokunulmaz.
+
+Her şey [kullanım rehberinde](SDK/Guides/USER_GUIDE.tr.md) ayrıntılı anlatılır.
 
 ## Çevrimiçi ve çevrimdışı
 
-Nexvyn OS ağ olmadan çalışır. Şu bölümler internet bağlantısı ister:
-
-- **Tarayıcı** (web sayfaları) ve **tam tarayıcı**
-- **App Market** (app kurma ve güncelleme) ve **sistem güncellemeleri**
-- **AI Sohbet** (kendi API anahtarınızla)
-- **Hava Durumu**, **Haberler**, **Döviz** (kurlar), **Haritalar**, **Sözlük**
-- **Radyo**, **IPTV** ve **video** app'i
-- **Mod Bulucu** ve Türkçe yama indirmeleri
-- Anonim kullanım istatistikleri (isteğe bağlı, Ayarlar > Gizlilik'ten kapatılabilir)
-
-Yalnızca yerel ağı kullananlar: **PC Bağlantısı** ile **FTP** sunucusu ve istemcisi.
-Geri kalan her şey (dosyalar, notlar, takvim, müzik ve video oynatıcılar, oyunlar, Oyun Motoru, Studio) çevrimdışı
-çalışır.
+Nexvyn OS ağ olmadan çalışır. Şu bölümler internet bağlantısı ister: Tarayıcı ve tam tarayıcı, Uygulama Mağazası ve
+sistem güncellemeleri, AI Sohbet, Hava Durumu, Haberler, Döviz, Haritalar, Sözlük, Radyo, Canlı TV ve video
+yayınları, Mod Bulucu ve Türkçe yama indirmeleri ve isteğe bağlı anonim istatistikler. PC Bağlantısı ile FTP sunucusu
+ve istemcisi yalnızca yerel ağınızı kullanır. Geri kalan her şey (dosyalar, notlar, takvim, müzik ve video
+oynatıcılar, oyunlar, Oyun Motoru, 3D Modelleme, Studio) çevrimdışı çalışır.
 
 ## Bilinen sorunlar
 
-- **Yeni sistem sürümlerinde tam tarayıcı.** Sistem sürümü 20.5.x'in üstünde olan bazı konsollarda tam tarayıcıyı
-  açmak konsolu bir Atmosphère fatal hatasıyla durdurdu. Nexvyn OS test edilmemiş sistem sürümlerinde tam tarayıcıyı
-  kapalı tutar ve sayfayı kendi tarayıcısında açar. Tarayıcı ayarlarından izin verebilirsiniz; konsol durursa Nexvyn
-  OS yeniden açılışta onu tekrar kapatır. Lütfen sistem ve Atmosphère sürümünüzle ve `sdmc:/atmosphere/fatal_errors/`
-  içindeki raporla bildirin.
-- **Masaüstü bir an donuyor ya da oyunlardan sonra yavaşlıyor.** Lütfen
-  `sdmc:/NexvynOS/System/Logs/system.log` dosyasını (yeniden başlattıysanız `system.prev.log`'u da) gönderin.
-  `stall` ile başlayan satırlar zamanı alan bölümü söyler. Yavaşlamış ya da bozulmaya başlamış SD kart sık bir
-  nedendir.
+- **Test edilmemiş sistem sürümlerinde tam tarayıcı.** Test edilmemiş sistem sürümlü bazı konsollarda tam tarayıcıyı
+  açmak konsolu bir Atmosphère fatal hatasıyla durdurdu. Nexvyn OS test edilen 22.5.0 - 23.0.x dışında tam tarayıcıyı
+  kapalı tutar ve sayfayı dahili tarayıcıda açar. İzin verirseniz ve konsol durursa lütfen sistem ve Atmosphère
+  sürümlerinizle ve `sdmc:/atmosphere/fatal_errors/` içindeki raporla
+  [bildirin](https://github.com/sonerx7/Nexvyn-OS-NX/issues/new?template=bug-report.yml).
+- **Kısa donmalar ya da oyunlardan sonra yavaşlayan masaüstü.** Lütfen bir hata bildirimine
+  `sdmc:/NexvynOS/System/Logs/system.log` dosyasını (yeniden başlattıysanız `system.prev.log`'u da) ekleyin. `stall`
+  ile başlayan satırlar zamanın nereye gittiğini söyler. Yavaş ya da arızalı bir SD kart sık görülen bir nedendir.
+- **Büyük 3B sahneler.** Çok büyük `.glb` / `.fbx` dosyaları saniyeler içinde yüklenir ve çok bellek kullanır; pbr
+  renderer GPU zamanı harcar. `g3d.loadModel` kullanın, dokuları 1024 px ya da altında tutun ve konsolda ölçün
+  ([SDK başvurusu](SDK/Reference/SDK.tr.md), bölüm 8b).
 
-## Ne nerede
+## Belgeler
+
+| Kimin için | Başlangıç |
+|---|---|
+| Kullanıcılar | [Kullanım rehberi](SDK/Guides/USER_GUIDE.tr.md) · [Forwarder](SDK/Guides/FORWARDER.tr.md) · [Tarayıcı](SDK/Guides/BROWSER.tr.md) · [Sürüm notları](CHANGELOG.md) |
+| Uygulama ve oyun yapımcıları | [SDK başlangıç sayfası](SDK/README.tr.md) · [SDK başvurusu](SDK/Reference/SDK.tr.md) · [PBR oyun tarifi](SDK/Guides/PBR_GAME_RECIPE.tr.md) · [Sosyal uygulama tarifi](SDK/Guides/SOCIAL_APP_RECIPE.tr.md) · [Oyun yap](SDK/Guides/MAKE_A_GAME.tr.md) · [Sosyal uygulama yap](SDK/Guides/MAKE_A_SOCIAL_APP.tr.md) · [SDK sürümleri](SDK/Guides/SDK_VERSIONS.tr.md) · [Bütün rehberler](SDK/Guides/README.tr.md) |
+| AI araçlarıyla geliştirenler | [SDK/AI](SDK/AI/README.tr.md) · [AI destekli çalışma](SDK/Guides/AI_WORKFLOW.tr.md) |
+| Yayımlama | [Katkı](CONTRIBUTING.tr.md) · [Yayımlama rehberi](SDK/Publishing/PUBLISHING.tr.md) · [İnceleme listesi](SDK/Publishing/REVIEW.tr.md) |
+| Güvenlik | [Güvenlik politikası](SECURITY.tr.md) · [App Guard](SDK/Guides/APP_GUARD.tr.md) · [Uyumluluk](SDK/Guides/COMPATIBILITY.tr.md) |
+
+## Depo düzeni
 
 ```
 Store/            Uygulama Mağazası'nın kurduğu her şey
-├── Apps/<kategori>/<kısa-ad>/      uygulamalar (ve Nexvyn OS ile gelen uygulamaların mağaza sayfaları)
-├── Games/<tür>/<kısa-ad>/          oyunlar
-├── Themes/<kısa-ad>/               temalar (.nxvtheme)
-├── Fonts/<kısa-ad>/                yazı tipi paketleri (.nxvfont)
-└── catalog.json, packages.json     konsolun okuduğu dosyalar; README.md hepsini listeler
+├── Apps/<kategori>/<kısa-ad>/   uygulamalar (ve Nexvyn OS ile gelen uygulamaların mağaza sayfaları)
+├── Games/<tür>/<kısa-ad>/       oyunlar
+├── Themes/<kısa-ad>/            temalar (.nxvtheme)
+├── Fonts/<kısa-ad>/             yazı tipi paketleri (.nxvfont)
+└── catalog.json, packages.json  konsolun okuduğu; README.md hepsini listeler
 SDK/              geliştiriciler için her şey, İngilizce ve Türkçe
-├── Reference/                      SDK başvurusu, Java SDK, C başlığı
-├── Languages/<dil>/                her dil için hızlı başlangıç ve şablon
-├── Guides/                         kullanım ve geliştirici rehberleri
-├── Samples/<dil>/<kısa-ad>/        çalışan örnekler (samples.json: Studio'nun Örnekleri)
-├── AI/                             yapay zekâ asistanları için istemler
-├── Publishing/                     nasıl yayımlanır, inceleme listesi
-├── Fonts/                          sistem yazı tipleri
-└── Tools/nxv/                      nxv komut satırı
+├── Reference/                   SDK başvurusu, Java SDK'sı, C başlığı
+├── Languages/<dil>/             hızlı başlangıç, şablon ve oyun kitleri
+├── Guides/                      rehberler ve tarifler
+├── Samples/<dil>/<kısa-ad>/     çalışan örnekler (samples.json: Studio'nun Örnekler'i)
+├── AI/                          AI asistanları için context pack'ler ve görev prompt'ları
+├── Publishing/                  nasıl yayımlanır, inceleme listesi
+├── Fonts/                       sistem yazı tipleri
+└── Tools/                       nxv komut satırı, ikon aracı, doku aracı
 Tools/            depo bakımı: build_store.py, CI
-.github/          pull request şablonu, issue formları, CODEOWNERS, README görselleri ve tanıtım videosu
+.github/          konu formları, pull request şablonu, CODEOWNERS ve README görselleri
 ```
 
-| Klasör | Buradan başlayın |
-|---|---|
-| [`Store/`](Store/README.tr.md) | Uygulamaların, oyunların, temaların ve yazı tiplerinin tam listesi |
-| [`SDK/`](SDK/README.tr.md) | Dillere göre "Buradan başlayın", başvuru, rehberler, örnekler, yayımlama |
-| [`Tools/`](Tools/README.tr.md) | Kataloğun nasıl üretilip denetlendiği |
-
-## Geliştiriciler için
-
-[SDK](SDK/README.tr.md) ile başlayın: her dil için hızlı başlangıç ve şablon,
-[geliştirici rehberi](SDK/Guides/DEVELOPER_GUIDE.tr.md), [Oyun Motoru rehberi](SDK/Guides/GAME_ENGINE.tr.md),
-[`.nxvapp` biçimi](SDK/Guides/NXVAPP_FORMAT.tr.md) ve [çalışan örnekler](SDK/Samples). Uygulamanın tamamını konsolda
-Nexvyn OS Studio'da ya da bilgisayarınızda `nxv` komut satırıyla yazabilirsiniz.
-
-## Uygulamanızı yayımlayın
-
-Herkes bir uygulama, oyun, tema ya da yazı tipi gönderebilir; bakımcı her gönderiyi yayımlanmadan önce inceler.
-
-1. [SDK](SDK/README.tr.md) ile bilgisayarınızda ya da Nexvyn OS Studio'da yapın.
-2. Bu depoyu fork edin ve öğenizi `Store/Apps/<kategori>/<kısa-ad>/`, `Store/Games/<tür>/<kısa-ad>/`,
-   `Store/Themes/<kısa-ad>/` ya da `Store/Fonts/<kısa-ad>/` altına ekleyin.
-3. Denetimleri çalıştırın (`nxv check`, `Tools/build_store.py --check`) ve şablonla bir pull request açın.
-4. Otomatik denetimlerden sonra bakımcı [inceleme listesiyle](SDK/Publishing/REVIEW.tr.md) inceler; onaylanıp
-   birleştirildiğinde Uygulama Mağazası'nda Yeni olarak görünür.
-
-Akışın tamamı, içerik kuralları, güncellemeler, bildirimler ve imzalama: [SDK/Publishing](SDK/Publishing/PUBLISHING.tr.md).
-Bir öğeyi bildirmek için mağaza sayfasındaki **Bu Uygulamayı Bildir** düğmesini ya da
-[bildirim formunu](https://github.com/sonerx7/Nexvyn-OS-NX/issues/new?template=report-app.yml) kullanın.
+Bu depo Uygulama Mağazası'nı, SDK'yı ve sürümleri barındırır. Nexvyn OS'un kendi kaynak kodu bu depoda değildir.
 
 ## SSS
 
-**Ayrı bir SD kart bölümü gerekiyor mu?** Hayır. Normal bir homebrew dosyası ve bir klasör.
+**Konsolun sisteminin yerine mi geçer?**
+Hayır. Nexvyn OS, konsolun sisteminin üstünde Atmosphère ile çalışan bir homebrew uygulamasıdır. Kapatınca Homebrew
+Menüsü'ne dönersiniz.
 
-**Ne kadar yer kaplıyor?** `.nro` yaklaşık 63 MB. `sdmc:/NexvynOS/` klasörü küçük başlar, dosyalarınız ve app'lerle
-büyür.
-
-**Tarayıcıda abonelikli video servislerini izleyebilir miyim?** Hayır. Videolarını DRM ile koruyan servisler ne yerleşik
-tarayıcıda ne tam tarayıcıda oynar. DRM'siz ücretsiz video siteleri ve canlı yayınlar genelde çalışır.
-
-**Tarayıcı verilerimi kaydediyor mu?** Yerleşik tarayıcı geçmişi, yer imlerini, çerezleri ve indirmeleri kullanıcı
-klasörünüze kaydeder (`sdmc:/NexvynOS/Users/<ad>/Library/Application Support/browser/`). Kayıtlı şifreler
-şifrelenir. Gizli sekmeler geçmiş bırakmaz. Tarayıcı ayarları > Gizlilik geçmişi, çerezleri ve site verilerini siler
-(kayıtlı şifreler siz silene kadar kalır).
-
-**Ne kadar belleği var?** Başlık modunda belleğin tamamı (yaklaşık 3,2 GB). Applet modunda (Albüm'den) sistem
-sürümüne göre birkaç yüz MB.
-
-
-**Konsolun sisteminin yerine mi geçiyor?**
-Hayır. Nexvyn OS, Atmosphère ile konsolun kendi sisteminin üzerinde çalışan bir homebrew uygulamasıdır. Kapattığınızda
-Homebrew menüsüne dönersiniz. Oyunlar, hesaplar, Albüm, pil ve Wi-Fi için konsolun kendi servislerini kullanır.
-
-**Yeniden başlatmam ya da SD kartı bölümlemem gerekir mi?**
-Hayır. Tek bir `.nro` dosyasını kopyalayıp başlatın.
+**Hangi sistem sürümü gerekli?**
+22.5.0 ya da daha yenisi; 23.0.x'e kadar test edildi. **Sistem Ayarları > Hakkında** sizinkini gösterir.
 
 **Neden başlık modu?**
-Albüm'den (applet modu) açılan homebrew belleğin yalnızca küçük bir kısmını alır. Nexvyn OS orada da çalışır ve bunu bir
-kez söyler, ama bazı özellikler başlık modunun tam belleğine ihtiyaç duyar.
+Albüm'den (applet modu) açılan homebrew belleğin küçük bir kısmını alır. Bazı özellikler (büyük uygulamalar, tam
+tarayıcı, oyun başlatma) başlık modunun belleğinin tamamını ister.
+
+**Kod yazmadan oyun yapabilir miyim?**
+Evet. Oyun Motoru'nu açın, **Hızlı Oyun**'a basın, bir tür ve bir dünya seçip **Hemen oyna**'ya basın.
+
+**Kendi 3B modellerimi kullanabilir miyim?**
+Evet. 3B aracınızdan, temizledikten sonra bir AI model üreticisinden ya da yerleşik 3D Modelleme'den `.glb` veya
+`.fbx` dışa aktarın ve `g3d.loadModel` ile yükleyin. pbr renderer'da modelin PBR haritaları olduğu gibi kullanılır.
+[AI destekli çalışma](SDK/Guides/AI_WORKFLOW.tr.md) ve [Oyun yap](SDK/Guides/MAKE_A_GAME.tr.md) rehberlerine bakın.
+
+**AI asistanıyla uygulama yazabilir miyim?**
+Evet. Ona [SDK/AI](SDK/AI/README.tr.md) içinden context pack'i ve bir görev prompt'unu verin; Studio'nun
+**Yapay zekâya sor** paneli AI Sohbet'te ayarladığınız sağlayıcıyı ve anahtarı kullanır.
 
 **Dosyalarım nerede?**
-`sdmc:/NexvynOS/Users/<adınız>/` içinde (Desktop, Documents, Downloads, Pictures, Music, Movies). Ayarlar ve uygulamalar
-hemen yanında, `sdmc:/NexvynOS/` altında durur.
+`sdmc:/NexvynOS/Users/<adınız>/` içinde (Masaüstü, Belgeler, İndirilenler, Resimler, Müzik, Filmler).
 
-**Switch oyunlarımı başlatabilir mi?**
-Evet. Oyun Kitaplığı yüklü oyunlarınızı listeler ve Nexvyn OS başlık modunda çalışırken başlatır.
+**Abonelikli video servislerini tarayıcıda izleyebilir miyim?**
+Hayır. Videolarını DRM ile koruyan servisler dahili tarayıcıda da tam tarayıcıda da oynamaz.
 
 **Mod ve hile kullanmak güvenli mi?**
 Switch Araçları yalnızca SD karta yazar. Değiştirilmiş oyunlarla ya da hilelerle çevrimiçi oynamak hesabın
-engellenmesine yol açabilir; bunları çevrimdışı kullanın.
+yasaklanmasına yol açabilir; çevrimdışı kullanın.
 
-**Emülatörde çalışır mı?**
-Ekran görüntüleri ve video bir emülatörde çekildi. USB bellek, MTP ve kamera gibi gerçek donanım isteyen özellikler
-yalnızca konsolda çalışır.
+**Ekran görüntüleri konsolda mı çekildi?**
+Ekran görüntüleri ve videolar bir emülatörde, İngilizce arayüzle çekildi. USB sürücüler, MTP ve kamera gibi gerçek
+donanım isteyen özellikler yalnızca konsolda çalışır.
 
-**Güncellemeleri nasıl alırım?**
-Sistem Ayarları > Yazılım Güncelleme yeni sürümü indirir, eskisinin yedeğini alır ve kurar.
+## Katkı
 
-## Yol haritası
-
-Nexvyn OS'un bundan sonra nereye gittiği, 1.1, 1.2 ve 2.0 için ölçülebilir hedeflerle: daha hızlı açılış, hiç kaybolmayan
-iş, her denetimi okuyan bir Ekran Okuyucu, daha çok dil, daha iyi bir tarayıcı ve daha büyük bir Uygulama Mağazası.
-[Yol haritasını](ROADMAP.tr.md) okuyun ve [nasıl yardım edebileceğinize](ROADMAP.tr.md#nasıl-yardım-edebilirsiniz) bakın:
-bir uygulama yayımlayın, hata bildirin ya da çeviri yapın.
+Uygulama, oyun, tema ve yazı tipi gönderimleri pull request olarak gelir ve yayından önce incelenir; hata bildirimleri
+ve çeviriler konu olarak gelir. [Katkı](CONTRIBUTING.tr.md) sayfasına bakın.
 
 ## Lisans ve emeği geçenler
 
-Nexvyn OS **GPL-3.0-or-later** ([LICENSE](LICENSE)); üçüncü taraf bileşenler ve lisansları
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) dosyasında. Mağazadaki öğeler, aksi belirtilmedikçe aynı lisansla gelir
-(yazı tipi paketleri kendi lisanslarını taşır, çoğu SIL Open Font License). YamaNX, SertAy'ın YamaNX'ine dayanır.
-Nintendo Switch, Nintendo'nun ticari markasıdır; bu proje Nintendo ile ilişkili değildir. Tarayıcı, YousTube, Canlı TV
-ve Radyo'da görünen içerikler sahiplerine aittir.
+Nexvyn OS **GPL-3.0-or-later** lisanslıdır ([LICENSE](LICENSE)); üçüncü taraf bileşenler ve lisansları
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) içindedir. Mağazadaki öğeler aksi belirtilmedikçe aynı lisansla
+gelir (yazı tipi paketleri kendi lisanslarını taşır, çoğunlukla SIL Open Font License). YamaNX, SertAy'ın YamaNX'ine
+dayanır. Tarayıcı, YousTube,
+Canlı TV ve Radyo'da gösterilen içerik sahiplerine aittir.
 
-Geliştiren: **Soner Çakır** · [github.com/sonerx7](https://github.com/sonerx7) — tasarımı ve yönetimi sahibine ait,
-yapay zekâ destekli kodlama araçlarının yardımıyla geliştirildi.
+Geliştiren **Soner Çakır** · [github.com/sonerx7](https://github.com/sonerx7). Yazarı tarafından tasarlanıp
+yönetildi ve AI kodlama araçlarının yardımıyla yapıldı.

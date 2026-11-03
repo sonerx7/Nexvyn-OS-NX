@@ -1,4 +1,4 @@
-# Oyun yap: eksiksiz tarif (SDK 1.8)
+# Oyun yap: eksiksiz tarif (SDK 1.9)
 
 [English](MAKE_A_GAME.en.md) · **Türkçe**
 
@@ -99,7 +99,7 @@ Bugün yapılan bir oyunun `app.json`'u:
 3. **Konsolda:** *Bilgisayara Bağlan*'da FTP sunucusunu başlatın, sonra
    `python SDK/Tools/nxv/nxv.py push SkyHop.nxvapp --host <konsol-ip>`. Hatalar pencerede satır numarasıyla görünür
    ve `sdmc:/NexvynOS/System/Logs/Apps/<id>.log` dosyasına yazılır.
-4. **Ryujinx emülatöründe:** `python SDK/Tools/nxv/nxv.py install SkyHop.nxvapp` oyunu emülatörün SD kartına
+4. **Bilgisayarınızdaki bir emülatörde:** `python SDK/Tools/nxv/nxv.py install SkyHop.nxvapp` oyunu emülatörün SD kartına
    kopyalar. Bir testi elinizi sürmeden tekrar oynatmak için oraya `sdmc:/NexvynOS/autorun.txt` koyun:
 
    ```
@@ -113,7 +113,7 @@ Bugün yapılan bir oyunun `app.json`'u:
    ```
 
    Ekran görüntüleri `sdmc:/NexvynOS/autoshots/` klasörüne düşer. İşiniz bitince `autorun.txt`'yi silin, her
-   açılışta çalışır. Ryujinx mantık ve görünüş için iyidir; hızı gerçek konsolda ölçün (10. bölüm).
+   açılışta çalışır. Emülatör mantık ve görünüş için iyidir; hızı gerçek konsolda ölçün (10. bölüm).
 
 ## 4. 3B modeller: yap, dışa aktar, kontrol et
 
@@ -131,7 +131,7 @@ iskelet, klipler ve dokular tek dosyada. `.fbx` de çalışır (eksenleri ve bir
 | Pivot | Ayakların ortasında: modelin orijini durduğu yerdir. `g3d.model(path, size)` modeli ölçekleyip y = 0'a da oturtur |
 | Klip adları | Kısa ve açık: `Idle`, `Run`, `Jump`, `Attack`. Klip adla bulunur, büyük-küçük harf ve FBX'in eklediği armature öneki fark etmez (`"Rig|Run"`, `"run"` ile eşleşir) |
 | Kemik adları | Bir şey takacağınız kemiklere ad verin: `hand_R`, `head`; soket olarak vertex'siz bir kemik (`Lamp`, `Muzzle`) |
-| Dokular | `.glb`'nin içine gömün (ya da dosyanın yanında tutun). Yalnızca **base color** dokusu çizilir; normal, metallic, roughness ve emissive map'leri yok sayılır. Emissive *renk* (map olmadan) malzemeyi ışıksız ve parlak çizer: vizör, lamba, lav |
+| Dokular | `.glb`'nin içine gömün (ya da dosyanın yanında tutun). Basic renderer **base color** dokusunu çizer; pbr renderer (SDK 1.9, bölüm 10'da *Modern görüntü*) normal, metallic-roughness, occlusion ve emissive map'lerini de çizer. Basic renderer'da emissive *renk* (map olmadan) malzemeyi ışıksız ve parlak çizer: vizör, lamba, lav |
 | Doku boyutu | Eşyalar için 512 x 512, kahraman için 1024 x 1024, en fazla 2048; ikinin kuvvetleri. Işığı ve detayı renk dokusuna bake edin |
 | Üçgen | Kahraman 3 000 - 8 000, düşmanlar 1 000 - 4 000, eşyalar 50 - 1 500, bir bölüm toplam 20 000 - 50 000 (10. bölüm) |
 | Kemik | GPU'da tek çizimde en fazla 32 kemik skin edilir; daha büyük iskelet birkaç çizime bölünür. Bir karakter için 20 - 40 kemik bol bol yeter; vertex başına 4 ağırlık |
@@ -309,6 +309,12 @@ Sistem yazı tipleri de harf aralığı, büyük/küçük harf ve kaydırılmı�
 - Oyun başına tek ses ailesi: aynı enstrüman, aynı oda. Bir eylemin birkaç sesinden rastgele seçmek tekrarı mekanik
   olmaktan çıkarır.
 - Oyunun çaldığı her şey penceresi kapanınca durur.
+
+**Ses kiti** (`SDK/Languages/lua/kits/sfx.lua`, `SDK/Languages/javascript/kits/sfx.js`) bunların hepsini sizin için
+yapar: veri klasöründe bir kez WAV dosyasına üretilen katmanlı tarifler (vuruş, altın, zıplama, lazer, patlama, menü
+tıkları, ayak sesleri, ambiyans döngüleri, akor ilerlemesinden müzik döngüleri), varyantlar, seviyeli bus'lar,
+ducking, ses sınırları. Seslerin nasıl iyi hissettirdiği, seviyeler ve kontrol listesi:
+[SOUND_DESIGN.tr.md](SOUND_DESIGN.tr.md).
 
 **Titreşim:** `sys.vibrate(güç 0..1, ms)`, en fazla 2000 ms, yalnızca pencere odaktayken; `sys.vibrate(0)` durdurur.
 Frekans deseni yoktur. Toplamalarda kısa ve hafif (0,2-0,3, 40 ms), darbelerde güçlü (0,8, 150 ms) ve ayarlarda
@@ -690,6 +696,34 @@ animasyonlu model; 64 tanesi bir emülatörde yaklaşık 33 fps. Konsolda payı 
 - **Ölçün.** `sys.fps()`, `g3d.finish()`'in üçgen sayısı, `nexvyn.game`'in F3 katmanı ve konsolda `autorun.txt`
   içinde bir `stats` satırı. Oyununuzun aynı anda doğurduğu en çok düşmanla test edin.
 
+### Modern görüntü (SDK 1.9)
+
+`g3d.renderer("pbr")` oyununuz için PBR materyalleri, gerçek zamanlı ışıkları, gölgeleri, HDR'ı, ton eşlemeyi ve
+bloom'u açar (SDK referansı, bölüm 8b, *Modern görüntü*). GPU zamanı harcar, yukarıdaki bütçenin parçası sayın:
+
+| Kare başına pbr bütçesi (yol gösterici) | |
+|---|---|
+| Işıklar | güneş + aksiyonun yakınında 2-6 nokta / spot ışık (her nesne yakınındaki en güçlü 8'ini alır) |
+| Gölgeler | `"medium"` güneş, `distance` = görünen oyun alanı; en fazla bir spot gölgesi |
+| Son efektler | `bloom` 0.03-0.1; önce `msaa` 0, kare süresi izin verirse 2-4; basit sahnelerde `hdr = false` |
+| Dokular | materyal başına: temel renk + normal 1024 px, ORM / metallic-smoothness / AO / emissive 512 px |
+| Tekrarlar | çimen, sütun, kasa, döküntü: `g3d.drawInstanced` (128 kopya başına bir GPU çağrısı) |
+
+- **Doku setleri.** Bütün haritaları gömülü glTF (`.glb`) ya da texture klasörü yanında FBX dışa aktarın. FBX,
+  dosyanın bağladığı haritaları kullanır; bir temel renk *dosyası* bağlı olup metallic, roughness ya da occlusion
+  haritası bağlı değilse, yanındaki aynı adlı dosyalar kendiliğinden bulunur (`T_X_BaseColor.png` ->
+  `T_X_MetallicSmoothness.png` ya da `T_X_Metallic.png` + `T_X_Roughness.png`, ve `T_X_AO.png`). Normal ve emissive
+  haritaları tahmin edilmez: onları FBX'te bağlayın. 4K atlasları göndermeden önce 1024 px'e indirin: konsol her
+  haritayı tam boyutta belleğe yükler.
+- **Bölüm sanatçısı gibi ışıklandırın.** Pencerelerden ya da sahnenin üstünden sıcak bir güneş, serin bir gök
+  (`g3d.environment` ya da sahnenizin göğünden çekilmiş 6 yüzlü bir cube map), oyuncunun baktığı yerde birkaç renkli
+  ışık ve 1'in üstünde emissive parçalar; ekranlar, lambalar ve tabelalar parlasın. Pozlamayı ve renkleri her oyun
+  için ayrı seçin: sanat yönünün parçasıdır.
+- **"basic"te de oyun doğru kalsın.** GLES 3'ü olmayan ya da renderer'ı kapatılmış bir sistemde `g3d.renderer("pbr")`
+  `"basic"` döndürür; aynı çağrılar yine çizer.
+- **Ölçün:** kendi `stats` satırınızla (`sys.fps()`, `g3d.finish()`'in verdiği üçgen sayısı); `msaa`, gölge kalitesi
+  ve bloom açıkken ve kapalıyken kare süresi, karenin nereye gittiğini söyler.
+
 ## 11. Kendinin yap: sanat yönü
 
 Bu kitle yapılan iki oyun birbirine benzememeli, hiçbir oyun da Nexvyn OS masaüstüne benzememeli. Kit size hazır
@@ -707,7 +741,13 @@ menü şablonu değil, yapı taşları verir:
   kıvılcımları).
 - Ses: beş dalga biçimi, dosyalar, akışla müzik.
 
-Script'ler için özel shader ya da post-processing yoktur: görünüş palet, ışık, biçim, yazı ve hareketten gelir.
+Script'ler kendi shader'larını yazmaz. SDK 1.9'un pbr renderer'ı ışık, gölge, ton eşleme ve bloom ekler
+(`g3d.postfx`, bölüm 10); bunlar araçtır, görünüş değil: görünüş palet, ışık, biçim, yazı ve hareketten gelir.
+**His kiti** (`SDK/Languages/lua/kits/juice.lua`, `SDK/Languages/javascript/kits/juice.js`) bunları hazır taş olarak
+verir: easing ve tween, yaylar, ekran sarsıntısı, hit-stop, flaş, parlayan parçacıklar, üretilen parlama / vinyet /
+gren / gölge dokuları, çok duraklı gradyanlar, stilli başlıklar, beş şekilde derinlikli paneller, durumlu düğmeler,
+geçişler, yumuşak 2D ve 3D kameralar, 3D ışık ve sis atmosferleri. Her birinin öncesi / sonrası ve mağazadaki her
+oyunun geçmesi gereken kalite çıtası: [GAME_FEEL.tr.md](GAME_FEEL.tr.md).
 
 ### Yöntem: ilk menüden önce yedi karar
 
@@ -851,46 +891,55 @@ end
 **"Pahalı" görünen cilalar:** her yerde (HUD dahil) sabit bir palet, her değişimde yumuşak hareket (birden belirme
 yok), darbede 2-4 karelik vuruş duraklaması ve kamera itmesi, toplamalarda parçacık, her eylemde ses, içinde canlı
 bir şey olan bir başlık ekranı (bekleyen kahraman, yükselen korlar) ve ekranda oyuncunun ihtiyaç duymadığı hiçbir şey.
+Listenin tamamı [GAME_FEEL.tr.md](GAME_FEEL.tr.md) içindeki kalite çıtasıdır (bölüm 8); mağaza incelemesi onu kontrol eder.
 
 ## 12. Mağaza ikonu ve key art
 
-İkon, oyuncunun App Market'te gördüğü ilk şeydir. SDK ile yapılan oyun ve app'lerde ikon **oyunun kendi key art'ı**
-olmalı: kahramanı, dünyası, ışığı, adı ya da logosu; cesur, 64 px'de okunur ve mağazadaki diğer ikonlara benzemez.
-Gradyan üstünde düz bir sembol (`nxv icon` bunları yalnızca geçici olarak üretir) bir oyun için kabul edilmez.
+İkon, oyuncunun App Market'te gördüğü ilk şeydir. SDK ile yapılan oyun ve app'lerde ikon **oyunun kendisini
+göstermeli**: kahramanını, ana nesnesini ya da dünyasını; 64 px'de okunur. Gradyan üstünde düz bir sembol (`nxv icon`
+bunları yalnızca geçici olarak üretir) kabul edilmez. **Stil sizindir**: sakin ya da gösterişli, adlı ya da adsız.
+Seçmediğinizde (ve bir AI asistanına söylenmediğinde) **clean** yapın: oyunun kendi konusunun yumuşak ışıkta, ölçülü
+parlamalı, sakin renk ayarlı, yazısız, özenli ve çekici bir resmi.
 
 | | |
 |---|---|
 | Dosya | Pakette `icon.png` (mağaza klasöründe `source/`'un yanında da) |
 | Boyut | 256 x 256 PNG. 1024 x 1024 yapıp iyi bir filtreyle küçültün |
-| Güvenli alan | Yüzü, kahramanın siluetini ve logoyu ortadaki %80'in içinde tutun: köşeler yuvarlanabilir ya da kesilebilir |
+| Güvenli alan | Konuyu (ve eklediyseniz logoyu) ortadaki %80'in içinde tutun: köşeler yuvarlanabilir ya da kesilebilir |
 | Doluluk | Kareyi kenardan kenara doldurun (opak arka plan olur) |
-| 64 px'de okunma | Tek konu, büyük; kahramanla arka plan arasında güçlü ton farkı; en fazla bir iki kelime |
+| 64 px'de okunma | Tek ana konu; onunla arka plan arasında yeterli ton farkı |
 
 **Nasıl yapılır**
 
-1. **Kendi modellerinizden render alın,** bir 3B araçta: kahramana poz verin (bir klipten bir kare), ona yakın alçak
-   bir kamera, sıcak bir ana ışık ve zıt renkte güçlü bir kenar (rim) ışığı, arkada oyununuzun gök renkleri, önde
-   logo. Kor Tarlası'nın ikonu böyle bir script'le render edildi (örneğin yanındaki `art/make_keyart.py`, kaynak
-   depoda `tools/gen_ember_keyart.py`):
-   `blender -b --factory-startup -P make_keyart.py -- models/pip.glb keyart.png 1024`.
-2. **Ya da oyunun içinde kurun:** kahramanı en iyi ışığınızla ve logoyla büyük çizen gizli bir key art kipi ekleyin,
-   ekran görüntüsü alın (Ryujinx ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
+1. **İkon aracıyla kendi modellerinizden render alın** (public depoda `SDK/Tools/icon`): `hero_render.py`
+   (Blender, ekransız) `.glb`'nize poz verir, saydam arka planda bir ana ışık, iki rim ışığı ve bir dolgu ışığıyla
+   aydınlatır; `finish_icon.py` (Pillow) ışıklı bir arka plan, kahramanın arkasında yumuşak parlama, kenar rim'i ve
+   vinyet ekler, bütün boyutları ve 256 / 128 / 64 px önizlemeyi yazar:
+   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Idle --frame 10 --look ember`,
+   sonra `python finish_icon.py hero.png --look ember --out art/`. Bu varsayılan `clean` stildir; isterseniz
+   `--style bold` ya da `--style loud` ışık huzmesi, kıvılcım, bloom ve kontrast, `--title "AD"` bir başlık logosu
+   ekler. Örnekler (biri Kor Tarlası, kendi `pip.glb`'sinden) `SDK/Tools/icon/examples/` içinde.
+2. **Ya da oyunun içinde kurun:** kahramanı en iyi ışığınızla büyük çizen gizli bir key art kipi ekleyin, ekran
+   görüntüsü alın (emülatörde ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
 3. **Ya da çizin** veya çizdirin: oyunun gerçek görünüşüne uymalı.
 
 **Key art için AI prompt'u** (sonucunu yayınlamanıza izin veren bir görsel üretici için; ikon oyuna uysun diye
 kahramanınızın bir render'ını ya da ekran görüntüsünü referans görsel olarak ekleyin). Prompt İngilizcedir, çoğu
-üretici İngilizceyi en iyi anlar:
+üretici İngilizceyi en iyi anlar. Varsayılan, clean:
 
 ```text
-Square video game key art, 1:1, for a game called "<NAME>". Subject: <your hero, from the reference image>,
-<pose / action>, large in the frame, three-quarter view, seen from slightly below. Setting: <your world in a few
-words>. Lighting: <key light colour> key light, strong <contrasting colour> rim light, <time of day>. Palette:
-<your 3-4 palette colours>. Style: <your art direction words, e.g. low-poly faceted, painterly, pixel art>.
-Bold silhouette, high contrast, readable at small size, subject and logo inside the central 80 %. Title "<NAME>"
-in a <your typography> logo at the bottom. No other text, no frame, no watermark.
+Square app icon, 1:1, for a game called "<NAME>". Subject: <your hero or main object, from the reference image>,
+<a calm, characteristic pose>, centred, three-quarter view, filling most of the frame. Soft key light, a subtle rim
+light, a simple softly lit background in <your 2-3 palette colours>, gentle depth. Style: <your art direction, e.g.
+stylised low-poly 3D render, painterly, flat-shaded>, clean, polished, appealing, readable at 64 px. No text, no
+interface, no border, no watermark.
 ```
 
-Sonra kontrol edin: açıkça sizin oyununuz mu? 64 px'de okunuyor mu? Mağaza sayfasındaki her ikondan farklı mı?
+Daha gösterişli bir ikon için `dramatic lighting, strong coloured rim light, saturated colours, a burst of light
+behind the subject, floating particles, glow` ekleyin; başlığı `finish_icon.py --title` ile ekleyin (üreticiler adı
+sık yanlış yazar).
+
+Sonra kontrol edin: açıkça sizin oyununuz mu? 64 px'de okunuyor mu? İstediğiniz stilde mi?
 
 ## 13. Diller
 
@@ -1055,4 +1104,6 @@ Konsoldaki Python (pocketpy) üçünün en yavaşıdır: kare başına işi kü�
 [SDK başvurusu](../Reference/SDK.tr.md) (8b *3B modeller*, 8c *2D oyun motoru*) · [Oyun motoru rehberi](GAME_ENGINE.tr.md) ·
 [Geliştirici rehberi](DEVELOPER_GUIDE.tr.md) · [Uyumluluk](COMPATIBILITY.tr.md) ·
 App Market'te yayın: public depoda `SDK/Publishing/PUBLISHING.tr.md` ve `SDK/Publishing/REVIEW.tr.md` ·
+[Ses tasarımı](SOUND_DESIGN.tr.md) · [Grafik, arayüz ve oyun hissi](GAME_FEEL.tr.md) ·
+Kitler: `SDK/Languages/lua/kits`, `SDK/Languages/javascript/kits` · İkon aracı: `SDK/Tools/icon` ·
 AI prompt'ları: `SDK/AI/tasks/make-3d-game.tr.md` ve `SDK/AI/tasks/store-icon.tr.md`.

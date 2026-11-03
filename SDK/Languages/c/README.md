@@ -26,7 +26,7 @@ Every `.c` file of the bundle (subfolders included) is compiled; your own header
 ## Running it
 
 - **Studio:** **New Project → Blank C App**, **Run** (Ctrl+R). Compile errors show on the error screen with file and line.
-- **Console / Ryujinx:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`). If the emulator
+- **Console / emulator:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`). If the emulator
   does not provide JIT memory the C app does not open and the error screen says why; the real test is on the console.
 
 ## Checking it on a PC

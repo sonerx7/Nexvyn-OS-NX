@@ -24,13 +24,13 @@ Dokunmatikte sol alan hareket + otomatik saldırı, sağ alan otomatik nişanla 
 
 Grafikler, bitmap alfabe ve sesler bu oyun için oluşturuldu. Açılış illüstrasyonu yerleşik OpenAI ImageGen ile üretildi. / Graphics, bitmap alphabet and audio were authored for this game. The title illustration was generated using built-in OpenAI ImageGen.
 
-İlk Store sürümü. Gerçek Switch / Ryujinx performansı henüz doğrulanmamıştır. / First Store release; real Switch / Ryujinx performance is not yet validated.
+İlk Store sürümü. Gerçek konsol performansı henüz doğrulanmamıştır. / First Store release; real console performance is not yet validated.
 
 ## Validation / Denetim
 
-The Lua 5.4 behavioral suite passes: 780 connected generated rooms, bridge navigation, collision, three weapons, boons and synergies, economy, JSON-round-tripped immutable saves, five boss loops and the complete victory chain. Strict SDK-adapter checks cover keyboard, controller and touch, 640/1280 layouts, suspend and resume. `nxv check`, archive CRC and SHA-256 manifest checks pass. Real Switch/Ryujinx validation and the full OS runtime checker remain pending.
+The Lua 5.4 behavioral suite passes: 780 connected generated rooms, bridge navigation, collision, three weapons, boons and synergies, economy, JSON-round-tripped immutable saves, five boss loops and the complete victory chain. Strict SDK-adapter checks cover keyboard, controller and touch, 640/1280 layouts, suspend and resume. `nxv check`, archive CRC and SHA-256 manifest checks pass. Real console validation and the full OS runtime checker remain pending.
 
-Lua 5.4 davranış denetimleri geçti: 780 bağlantılı oda, köprü navigasyonu, çarpışma, üç silah, lütuflar ve birliktelikler, ekonomi, JSON üzerinden yeniden yüklenen bağımsız kayıtlar, beş boss döngüsü ve tam bitiş zinciri. Sıkı SDK adaptörü klavye, kumanda, dokunmatik, 640/1280 düzenleri, askıya alma ve devamı denetledi. `nxv check`, paket CRC ve SHA-256 denetimleri geçti. Gerçek Switch/Ryujinx ve tam OS çalışma zamanı denetimi bekleniyor.
+Lua 5.4 davranış denetimleri geçti: 780 bağlantılı oda, köprü navigasyonu, çarpışma, üç silah, lütuflar ve birliktelikler, ekonomi, JSON üzerinden yeniden yüklenen bağımsız kayıtlar, beş boss döngüsü ve tam bitiş zinciri. Sıkı SDK adaptörü klavye, kumanda, dokunmatik, 640/1280 düzenleri, askıya alma ve devamı denetledi. `nxv check`, paket CRC ve SHA-256 denetimleri geçti. Gerçek konsol ve tam OS çalışma zamanı denetimi bekleniyor.
 
 `screenshots/` contains labelled software previews rendered from this game's actual Lua draw commands. They are not device captures. / Görseller bu oyunun gerçek Lua çizim komutlarından üretilmiş, etiketli yazılım önizlemeleridir; cihaz görüntüsü değildir.
 
