@@ -511,7 +511,7 @@ function J.title(s, x, y, size, o)
   end
   local fill = o.fill or "#FFFFFF"
   if o.fill2 then
-    local n = o.bands or 6
+    local n = o.bands or 10
     local top = y + th * 0.18
     local hgt = th * 0.7
     for i = 0, n - 1 do

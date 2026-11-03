@@ -423,7 +423,7 @@ J.title = (s, x, y, size, o = {}) => {
   }
   const fill = o.fill ?? "#FFFFFF";
   if (o.fill2) {
-    const n = o.bands ?? 6;
+    const n = o.bands ?? 10;
     const top = y + th * 0.18, hgt = th * 0.7;
     for (let i = 0; i < n; i++) {
       const y0 = i === 0 ? y - size : top + (hgt * i) / n;
