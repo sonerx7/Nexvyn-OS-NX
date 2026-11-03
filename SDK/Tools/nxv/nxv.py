@@ -60,8 +60,8 @@ USES = {
     "network": r"\b(?:net|Net)[._](?:get|post|json|download|request|fetch|fetchJson|ws|oauth)\s*\(|"
                r"\b(?:gfx|Gfx)[._]imageUrl\s*\(",
     "notifications": r"\b(?:sys|Sys)[._](?:notify|schedule)\s*\(",
-    "clipboard": r"\b(?:sys|Sys)[._](?:clipboard|setClipboard)\s*\(",
-    "launch": r"\b(?:sys|Sys)[._](?:launch|appUrl)\s*\(|nxv://",
+    # sys.clipboard needs no permission (since 1.0.0); sys.appUrl only builds a link, opening one with sys.open does
+    "launch": r"""\b(?:sys|Sys)[._]launch\s*\(|\b(?:sys|Sys)[._]open\s*\(\s*["']nxv://""",
     "games": r"\b(?:sys|Sys)[._]games\s*\(",
 }
 TR_CALL = re.compile(r"""\bTR[123]?\(\s*["']([^"'\n]+)["']""")
@@ -326,7 +326,9 @@ def check_sources(bundle, lang, perms, rep):
         keys |= {k for k in TR_CALL.findall(code) if not k.endswith((".", "_"))}  # "prefix." + x is built at run time
     for p in sorted(used - perms):
         rep.error("uses %s calls but app.json \"permissions\" does not declare \"%s\" (every permission is enforced)" % (p, p))
-    for p in sorted(perms - used - {"files"}):
+    if "clipboard" in perms:
+        rep.warn("\"clipboard\" is no longer a permission (every app may use sys.clipboard): remove it from app.json")
+    for p in sorted(perms - used - {"files", "clipboard"}):
         rep.warn("declares \"%s\" but no call that needs it was found" % p)
     # translations: every TR key in lang/en.json (required) and in lang/tr.json when the app has one, like the source
     # repository's checkers; other languages only warn (missing keys show English). Dotted keys may be system strings.

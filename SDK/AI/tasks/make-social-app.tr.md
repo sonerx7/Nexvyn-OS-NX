@@ -18,7 +18,8 @@ Server API: <base URL, endpoints with request / response JSON, how sign-in works
 
 Requirements:
 - app.json: "minSdk": "1.9", "targetSdk": "1.9", ONLY the permissions the code uses ("network"; "notifications" for
-  sys.schedule; "launch" for sys.launch / sys.appUrl links). No secrets in the bundle.
+  sys.schedule; "launch" for sys.launch and sys.open("nxv://...") - sys.appUrl only builds a link and needs none). No
+  secrets in the bundle.
 - Data with net.request: responseType = "json", retry = 2 for GETs, cache = 300 for the first feed page (show
   "offline" when res.stale), headers from one auth() helper, every error shown in a small toast. Uploads with
   multipart (files streamed) and an upload progress bar from progress(now, total, "upload").
