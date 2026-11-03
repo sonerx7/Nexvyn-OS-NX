@@ -1,0 +1,22 @@
+wait 2
+setup tr
+wait 2
+closeall
+launch tiktok https://www.tiktok.com/@scout2015/video/6718335390845095173
+wait 12
+stats video-open
+shot tiktok-video
+wait 3
+key space
+wait 1
+shot tiktok-paused
+closeall
+launch tiktok
+wait 1
+wclick 0.08 0.455
+wait 1
+shot tiktok-history
+wclick 0.08 0.535
+wait 1
+shot tiktok-account
+stats account

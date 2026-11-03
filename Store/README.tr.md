@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **158** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -58,7 +58,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Apps/utilities/texttools/icon.png" width="32"> | [Metin Araçları](Apps/utilities/texttools/) | Harf düzelt, metni topla, kelime say |
 | <img src="Apps/utilities/unitconv/icon.png" width="32"> | [Birim Dönüştürücü](Apps/utilities/unitconv/) | Uzunluk, kütle, sıcaklık, veri ve fazlası |
 
-## Medya (15)
+## Medya (16)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -75,6 +75,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Apps/media/piano/icon.png" width="32"> | [Piyano](Apps/media/piano/) | Çal, kaydet, şarkıları tuş tuş öğren |
 | <img src="Apps/media/pixelart/icon.png" width="32"> | [Piksel Sanatı](Apps/media/pixelart/) | 64×64'e kadar sprite, PNG dışa aktarma |
 | <img src="Apps/media/radio/icon.png" width="32"> | [Radyo](Apps/media/radio/) · Nexvyn OS ile gelir | Dünyadan binlerce canlı radyo istasyonu |
+| <img src="Apps/media/tikto-nx/icon.png" width="32"> | [TikTo-NX](Apps/media/tikto-nx/) | Native TikTok videoları ve herkese açık profiller |
 | <img src="Apps/media/noise/icon.png" width="32"> | [Beyaz Gürültü](Apps/media/noise/) | Uykuya dalmak için yağmur, dalga, gürültü |
 | <img src="Apps/media/tube/icon.png" width="32"> | [YousTube](Apps/media/tube/) · Nexvyn OS ile gelir | YouTube videoları, Shorts ve kanallar |
 
