@@ -25,6 +25,8 @@ If in doubt, start with **Lua**: it has the most samples, the best performance a
 **Making a game?** [Make a game](Guides/MAKE_A_GAME.en.md) is the complete recipe (SDK 1.8): project, 3D models
 (`.glb` / `.fbx`), loading, input, collision, speed on the Switch, an art direction of your own, the store icon
 (key art) and publishing. A sample made that way: [Ember Field](Samples/lua/ember-field/).
+For sound, graphics, UI and game feel use the kits in `Languages/lua/kits` and `Languages/javascript/kits` ([sound design](Guides/SOUND_DESIGN.en.md),
+[graphics, UI and game feel](Guides/GAME_FEEL.en.md)), and make the store icon with the [icon tool](Tools/icon/README.md).
 
 ## What you can build
 

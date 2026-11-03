@@ -43,11 +43,28 @@ Requirements:
   direction; no ui.* widgets, no theme colors, and no copy of any sample's or game's menu layout or title.
 - Controls: left stick / D-pad + buttons, right stick for the camera, keyboard (WASD + arrows + Space/Enter/Esc) and
   touch (a stick where the finger lands, taps for actions). Pause on +, in suspend and on focus(false).
-- Saving with store: progress, best score and settings (music on/off, effects volume, rumble, invert camera Y).
+- Saving with store: progress, best score and settings (music, effects and ambience volume, rumble, invert camera Y).
+- Quality bar (SDK/Guides/GAME_FEEL.en.md section 8 and SOUND_DESIGN.en.md; mandatory):
+  * Use the kits: copy SDK/Languages/<lua|javascript>/kits/sfx and juice into the bundle and use them for sound,
+    particles, shake, hit-stop, flashes, transitions, titles, panels and buttons (other languages: the same blocks
+    from SDK calls). Use only functions the kits really have (system prompt section 7a).
+  * Every player and menu action has a sound and a visual response on the same frame, scaled to the event.
+  * Sound: layered recipes with 3-4 variants, no raw unfiltered square or saw at full volume, a music loop and an
+    ambience bed, music mixed under the effects and ducked on big hits, music / effects / ambience volume settings.
+  * Colour: a palette of 4-6 colours with roles; no flat single-colour backgrounds (gradients, glow, vignette, light,
+    parallax); readable in grey.
+  * Type: 3-4 sizes from one type scale; the title is a styled logo (outline, shadow, two tones or glow), never
+    default text at default size.
+  * UI: one shape language, panels with depth, buttons with hover / press / focus / disabled states, a transition
+    between screens, something alive on the title screen.
+  * 3D: a sky gradient behind the scene, fog in the sky colour, a coloured key light (juice J.looks / J.sky /
+    J.light3d or your own), glow on emissive parts, a soft contact shadow under characters, a smoothed follow
+    camera (J.cam3d) with a field-of-view kick on dashes and hits.
 - Every visible text through TR(): lang/en.json plus one lang/<code>.json per other language above.
 
 Deliver every file in full, then: how to check it on a PC, how to run it on the console, the export settings I must
-use for the models if they are wrong, how to make the store icon from these models (key art), and what you are not
+use for the models if they are wrong, how to make the store icon from these models (key art with SDK/Tools/icon: the hero_render.py and
+finish_icon.py commands for my hero), which quality-bar items you could not meet, and what you are not
 sure about.
 ```
 

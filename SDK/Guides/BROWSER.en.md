@@ -94,7 +94,8 @@ Sources: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_NX
 - The applet starts with the pointer, touch, page cache and Web Audio on. When it closes, the address the applet showed
   last (`webReplyGetLastUrl`) is written to history; if you went to a different page, an "open that page here"
   notification appears.
-- **When it is unavailable** (applet mode / emulator), "Why is WebKit not available?" appears instead of the button and
+- **When it is unavailable** (applet mode / emulator / a system version outside the tested 22.5.0 - 23.0.x, see
+  `source/core/fwcompat.h`; Browser settings can allow it there anyway), "Why is WebKit not available?" appears instead of the button and
   explains the reason.
 - Settings > General: "Suggest the full browser", "Always open <site> in the full browser".
 - Share menu and right-click menu: "Open in Full Browser (WebKit)", "Always Open This Site in the Full Browser".

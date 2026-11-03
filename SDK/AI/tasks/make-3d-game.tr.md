@@ -45,12 +45,29 @@ Gereksinimler:
   yok, hiçbir örneğin ya da oyunun menü düzeni veya başlığı kopyalanmaz.
 - Kontroller: sol çubuk / D-pad + düğmeler, kamera için sağ çubuk, klavye (WASD + oklar + Boşluk/Enter/Esc) ve
   dokunmatik (parmağın değdiği yerde bir çubuk, eylemler için dokunma). +'da, suspend'de ve focus(false)'da duraklat.
-- store ile kayıt: ilerleme, en yüksek puan ve ayarlar (müzik açık/kapalı, efekt sesi, titreşim, kamera Y'sini ters
+- store ile kayıt: ilerleme, en yüksek puan ve ayarlar (müzik, efekt ve ambiyans sesi, titreşim, kamera Y'sini ters
   çevir).
+- Kalite çıtası (SDK/Guides/GAME_FEEL.tr.md bölüm 8 ve SOUND_DESIGN.tr.md; zorunlu):
+  * Kitleri kullan: SDK/Languages/<lua|javascript>/kits içindeki sfx ve juice dosyalarını bundle'a kopyala; ses,
+    parçacık, sarsıntı, hit-stop, flaş, geçiş, başlık, panel ve düğmeler için onları kullan (diğer dillerde aynı
+    taşları SDK çağrılarından kur). Yalnızca kitlerde gerçekten olan fonksiyonları kullan (system prompt bölüm 7a).
+  * Oyuncunun ve menünün her eyleminin aynı karede, olayla ölçekli bir sesi ve görsel tepkisi var.
+  * Ses: 3-4 varyantlı katmanlı tarifler, tam seviyede ham, filtresiz square ya da saw yok, bir müzik döngüsü ve
+    ambiyans zemini, müzik efektlerin altında ve ağır vuruşlarda kısılıyor, müzik / efekt / ambiyans ses ayarları.
+  * Renk: rolleri olan 4-6 renklik palet; düz tek renk arka plan yok (gradyan, parlama, vinyet, ışık, paralaks); gri
+    tonda okunuyor.
+  * Yazı: tek tip ölçeğinden 3-4 boyut; başlık stilli bir logo (dış hat, gölge, iki ton ya da parlama), asla
+    varsayılan boyutta varsayılan yazı değil.
+  * Arayüz: tek şekil dili, derinliği olan paneller, hover / basılı / odak / devre dışı hâlli düğmeler, ekranlar
+    arası geçiş, başlık ekranında canlı bir şey.
+  * 3D: sahnenin arkasında gökyüzü gradyanı, gökyüzü renginde sis, renkli bir ana ışık (juice J.looks / J.sky /
+    J.light3d ya da kendi ayarın), ışık saçan parçalarda parlama, karakterlerin altında yumuşak temas gölgesi,
+    atılma ve vuruşlarda görüş açısı tekmeli yumuşak takip kamerası (J.cam3d).
 - Görünen her metin TR()'den geçer: lang/en.json, artı yukarıdaki her başka dil için bir lang/<kod>.json.
 
 Her dosyayı eksiksiz ver, sonra: PC'de nasıl denetlenir, konsolda nasıl çalıştırılır, modeller yanlışsa hangi dışa
-aktarma ayarlarını kullanmam gerekir, mağaza ikonu bu modellerden nasıl yapılır (key art) ve neyden emin değilsin.
+aktarma ayarlarını kullanmam gerekir, mağaza ikonu bu modellerden nasıl yapılır (SDK/Tools/icon ile key art: kahramanım için hero_render.py ve
+finish_icon.py komutları), kalite çıtasının hangi maddelerini karşılayamadın ve neyden emin değilsin.
 ```
 
 Devam istekleri: "oyuncuyu basit bir durum makinesiyle kovalayan bir düşman ekle", "bölüm için bir çarpışma mesh'i

@@ -92,10 +92,12 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 ## 4. Simge ve README
 
 - `source/icon.png`: 256×256 PNG. SDK ile yapılan oyun ve app'lerde ikon **öğenin kendi key art'ıdır**: kahramanı
-  ya da ana nesnesi, dünyası, ışığı, adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde olacak şekilde kenardan
-  kenara dolu ve mağazadaki diğer ikonlara benzemez. Gradyan üstünde düz sembol kabul edilmez (`nxv icon` bunları
-  yalnızca çalışırken geçici olarak üretir). Blender tarifi ve AI prompt'uyla nasıl yapılacağı:
-  `Guides/MAKE_A_GAME.tr.md` (*Mağaza ikonu ve key art*) ve `AI/tasks/store-icon.tr.md`.
+  ya da ana nesnesi, dünyası, ışığı, adı; en çok satan bir oyunun ikonu gibi yapılır: abartılı ve gösterişli,
+  güçlü rim ışıklı dramatik ışık, doygun renkler, derinlik, parlama, sıkı kadraj, kalın bir logo; 64 px'de okunur,
+  konu ortadaki %80'in içinde olacak şekilde kenardan kenara dolu ve mağazadaki diğer ikonlara benzemez. Gradyan
+  üstünde düz sembol kabul edilmez (`nxv icon` bunları yalnızca çalışırken geçici olarak üretir). Kendi modelinizden
+  ikon aracı `Tools/icon` ile (Blender + Pillow, örnekler `Tools/icon/examples/` içinde) ya da `AI/tasks/store-icon.tr.md`
+  içindeki görsel üretici prompt'uyla yapın; tarif `Guides/MAKE_A_GAME.tr.md` (*Mağaza ikonu ve key art*) içinde.
 - `README.md`: başlık `# Ad`, İngilizce birkaç cümle (başka diller isteğe bağlı), kimlik / dil / SDK / izinler tablosu,
   kontroller, sürüm tablosu ve sizin yapmadığınız her şeyin lisansı.
 
@@ -153,8 +155,10 @@ Listenin tamamı [inceleme listesidir](REVIEW.tr.md). Kısacası şu öğeler **
   (Türkçe yamalardaki YamaNX notları gibi: kim yaptı, nereden geliyor, hangi lisansla);
 - yalnızca yetişkinlere yönelik, nefret içeren ya da korsan dahil yasa dışı bir şeyi özendirenler;
 - İngilizce metni olmayanlar;
-- bir örneğin ya da başka bir oyunun menü düzenini ve başlığını kopyalayan ya da key art yerine düz sembol ikonu olan
-  oyunlar (inceleme listesine bakın).
+- bir örneğin ya da başka bir oyunun menü düzenini ve başlığını kopyalayan, key art yerine düz sembol ikonu olan ya
+  da kalite çıtasının açıkça altında kalan oyunlar (eylemlerde ses ya da görsel karşılık yok, ham filtresiz bipler,
+  başlık olarak varsayılan yazı, düz tek renk ekranlar; inceleme listesine ve `Guides/GAME_FEEL.tr.md` rehberine
+  bakın).
 
 ## 9. Güncellemeler
 

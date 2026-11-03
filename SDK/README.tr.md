@@ -25,6 +25,9 @@ Kararsızsanız **Lua** ile başlayın: en çok örnek, en iyi performans ve Stu
 **Oyun mu yapıyorsunuz?** [Oyun yap](Guides/MAKE_A_GAME.tr.md) eksiksiz tariftir (SDK 1.8): proje, 3B modeller
 (`.glb` / `.fbx`), yükleme, girdi, çarpışma, Switch'te hız, size ait bir sanat yönü, mağaza ikonu (key art) ve
 yayın. Bu yolla yapılmış bir örnek: [Kor Tarlası](Samples/lua/ember-field/).
+Ses, grafik, arayüz ve oyun hissi için `Languages/lua/kits` ve `Languages/javascript/kits` içindeki kitleri kullanın
+([ses tasarımı](Guides/SOUND_DESIGN.tr.md), [grafik, arayüz ve oyun hissi](Guides/GAME_FEEL.tr.md)); mağaza ikonunu
+[ikon aracıyla](Tools/icon/README.tr.md) yapın.
 
 ## Neler yapabilirsiniz
 

@@ -20,6 +20,8 @@ tabloda belirtilmiştir. Tam API başvurusu her zaman [SDK/Reference/SDK.tr.md](
 | [LUA_CAPABILITIES.md](LUA_CAPABILITIES.tr.md) | Lua ile gerçekçi olarak neler yapılabilir, sınırlar nerede | TR |
 | [GAME_ENGINE.md](GAME_ENGINE.tr.md) | `nexvyn.game` 2D oyun motoru eğitimi: sahneler, sprite, harita, kamera, fizik, parçacık, tween | TR |
 | [GAME_ENGINE_PROJECTS.md](GAME_ENGINE_PROJECTS.tr.md) | Oyun Motoru uygulaması (eski adıyla Oyun Atölyesi): kodsuz / az kodlu 2D ve 3D oyun yapımı, proje biçimi | TR |
+| [SOUND_DESIGN.md](SOUND_DESIGN.tr.md) | Oyunlar için ses tasarımı: ses kiti (katmanlı tarifler, varyantlar, bus'lar, ducking, ambiyans, müzik döngüleri), seslerin nasıl iyi hissettirdiği, seviyeler, kontrol listesi | TR + EN |
+| [GAME_FEEL.md](GAME_FEEL.tr.md) | Grafik, arayüz ve oyun hissi: her taşın öncesi / sonrasıyla his kiti (hareket, vuruş, ışık, yazı, arayüz, kameralar, 3D atmosferler) ve mağaza kalite çıtası | TR + EN |
 | [MAKE_A_GAME.md](MAKE_A_GAME.tr.md) | Oyun yap: SDK 1.8 için eksiksiz tarif (proje, 3B modeller, yükleme, girdi, çarpışma, hız, sanat yönü, mağaza ikonu, yayın), test edilmiş Lua, JavaScript ve Python koduyla | TR + EN |
 | [APP_GUIDE.md](APP_GUIDE.tr.md) | Yerleşik C++ uygulaması yazma (Nexvyn OS kaynak deposuna katkı için) | EN |
 

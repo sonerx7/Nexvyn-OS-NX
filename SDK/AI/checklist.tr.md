@@ -53,8 +53,24 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
       ya da başka bir oyunun menü düzenini, renklerini ya da başlık kompozisyonunu kopyalamıyor.
 - [ ] 3B modeller: `.glb` (ya da `.fbx`), metre, +Y yukarı, +Z'ye bakıyor, pivot ayaklarda, klipler adlı; üçgen
       bütçesi korunuyor (kahraman 3-8 bin, karede 30-60 bin).
-- [ ] Mağaza ikonu oyunun 256x256 key art'ı (kahraman, dünya, ışık, ad), gradyan üstünde sembol değil; nasıl
-      yapılacağını anlattım.
+- [ ] Mağaza ikonu oyunun 256x256 key art'ı (kahraman, dünya, ışık, ad), abartılı ve gösterişli (dramatik ışık,
+      güçlü rim ışığı, doygun renkler, parlama, sıkı kadraj, kalın logo), gradyan üstünde sembol değil; nasıl
+      yapılacağını anlattım (`SDK/Tools/icon` ya da görsel üretici prompt'u).
+
+## Oyunlar: kalite çıtası (SDK/Guides/GAME_FEEL.tr.md bölüm 8)
+
+- [ ] Oyuncunun ve menünün her eyleminin aynı karede, olayla ölçekli bir sesi ve görsel tepkisi var (toplama küçük;
+      ağır vuruşta parçacık, flaş, sarsıntı ve kısa hit-stop).
+- [ ] Ses: varyantlı katmanlı efektler (`sfx` kiti ya da kendi tariflerim), tam seviyede ham, filtresiz square / saw
+      yok, müzik ve ambiyans zemini, müzik efektlerin altında ve büyük anlarda kısılıyor, ses ayarları var.
+- [ ] Renk: rolleri olan 4-6 renklik palet; düz tek renk arka plan yok (gradyan, parlama, vinyet, ışık, doku ya da
+      paralaks); oyuncu ve tehlikeler gri tonda öne çıkıyor.
+- [ ] Yazı: tek ölçekten 3-4 boyut; başlık stilli bir logo, varsayılan boyutta varsayılan yazı değil.
+- [ ] Arayüz: tek şekil dili; derinliği olan paneller; hover, basılı, odak ve devre dışı hâlleri olan düğmeler; her
+      iki ekran arasında geçiş; başlık ekranında canlı bir şey.
+- [ ] Kamera: yumuşak; 3D'de gökyüzü renginde sis ve renkli ana ışık.
+- [ ] Kitlerin uyduğu yerde onları kullandım (`sfx`, `juice` bundle'a kopyalandı), daha zayıf kopyalarını uydurmadım
+      ve yalnızca gerçekten var olan fonksiyonlarını kullandım.
 
 ## Yanıt
 

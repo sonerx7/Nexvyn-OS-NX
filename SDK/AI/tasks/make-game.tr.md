@@ -5,7 +5,8 @@
 Aşağıdaki prompt'u kopyalayın, `<...>` kısımlarını doldurun ve context pack'ten (`system-prompt.tr.md` + language pack)
 sonra gönderin. Lua ile 2D oyunda `nexvyn.game` motoru (SDK.tr.md bölüm 8c) çok kod kazandırır: o bölümü de asistana
 verin. Modelli bir 3B oyun için [make-3d-game.tr.md](make-3d-game.tr.md) kullanın. İnsanlar ve asistanlar için tarifin
-tamamı `SDK/Guides/MAKE_A_GAME.tr.md` içindedir.
+tamamı `SDK/Guides/MAKE_A_GAME.tr.md` içindedir. Context yetiyorsa kit dosyalarını da verin
+(`SDK/Languages/lua/kits/sfx.lua` ve `juice.lua` ya da `.js` sürümleri): asistan onları olduğu gibi kullanır.
 
 ```text
 Eksiksiz bir Nexvyn OS oyunu yaz.
@@ -31,15 +32,26 @@ Gereksinimler:
 - Sabit adımlı ya da sınırlanmış dt ile güncelleme, çizim yalnızca draw içinde; karede allocation ya da resim
   yükleme yok; hiçbir callback 3 saniyeye (app.load 10'a) yaklaşmaz.
 - store ile (ya da nexvyn.game ile game.save) kaydedilen bir en yüksek puan.
-- audio.tone, game.audio ya da ses dosyalarıyla, tutarlı tek bir ses ailesinden efektler; çarpışmalarda sys.vibrate
-  ile hafif titreşim ve onu kapatan bir ayar.
+- sfx kitiyle (ya da ses dosyalarıyla) tutarlı tek bir ses ailesi; çarpışmalarda sys.vibrate ile hafif titreşim ve
+  onu kapatan bir ayar.
 - Görünen her metin TR()'den geçsin: lang/en.json, artı yukarıdaki her başka dil için bir lang/<kod>.json.
-- Cila: yumuşak hareket, darbelerde kısa bir duraklama ya da kamera sarsıntısı, toplamalarda parçacık, başlık
-  ekranında canlı bir şey.
+- Kalite çıtası (SDK/Guides/GAME_FEEL.tr.md bölüm 8 ve SOUND_DESIGN.tr.md; zorunlu):
+  * Kitleri kullan: SDK/Languages/<lua|javascript>/kits içindeki sfx ve juice dosyalarını bundle'a kopyala; ses,
+    parçacık, sarsıntı, hit-stop, flaş, geçiş, başlık, panel ve düğmeler için onları kullan (diğer dillerde aynı
+    taşları SDK çağrılarından kur). Yalnızca kitlerde gerçekten olan fonksiyonları kullan (system prompt bölüm 7a).
+  * Oyuncunun ve menünün her eyleminin aynı karede, olayla ölçekli bir sesi ve görsel tepkisi var.
+  * Ses: 3-4 varyantlı katmanlı tarifler, tam seviyede ham, filtresiz square ya da saw yok, bir müzik döngüsü ve
+    ambiyans zemini, müzik efektlerin altında ve ağır vuruşlarda kısılıyor, müzik / efekt / ambiyans ses ayarları.
+  * Renk: rolleri olan 4-6 renklik palet; düz tek renk arka plan yok (gradyan, parlama, vinyet, ışık, paralaks); gri
+    tonda okunuyor.
+  * Yazı: tek tip ölçeğinden 3-4 boyut; başlık stilli bir logo (dış hat, gölge, iki ton ya da parlama), asla
+    varsayılan boyutta varsayılan yazı değil.
+  * Arayüz: tek şekil dili, derinliği olan paneller, hover / basılı / odak / devre dışı hâlli düğmeler, ekranlar
+    arası geçiş, başlık ekranında canlı bir şey.
 
 Her dosyayı eksiksiz ver (app.json, kaynak dosyalar, lang dosyaları), sonra kısa bir liste: doğru checker'la PC'de
-nasıl denetlenir, konsolda nasıl çalıştırılır, mağaza ikonu nasıl yapılır (bu oyunun key art'ı, bkz.
-store-icon.tr.md) ve neyden emin değilsin.
+nasıl denetlenir, konsolda nasıl çalıştırılır, mağaza ikonu nasıl yapılır (SDK/Tools/icon ile bu oyunun key
+art'ı, bkz. store-icon.tr.md), kalite çıtasının hangi maddelerini karşılayamadın ve neyden emin değilsin.
 ```
 
 İyi çalışan devam istekleri: "ikinci bir bölüm ekle", "zorluk 2 dakika boyunca artsın", "bir ayarlar ekranı ekle

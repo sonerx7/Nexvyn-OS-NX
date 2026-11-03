@@ -53,8 +53,24 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
       sample's or another game's menu layout, colours or title composition.
 - [ ] 3D models: `.glb` (or `.fbx`), metres, +Y up, facing +Z, pivot at the feet, named clips; triangle budget kept
       (hero 3-8k, 30-60k per frame).
-- [ ] The store icon is 256x256 key art of the game (hero, world, light, name), not a glyph on a gradient; I said
-      how to make it.
+- [ ] The store icon is 256x256 key art of the game (hero, world, light, name), exaggerated and flashy (dramatic
+      light, strong rim light, saturated colours, glow, tight crop, bold logo), not a glyph on a gradient; I said how
+      to make it (`SDK/Tools/icon` or the image-generator prompt).
+
+## Games: quality bar (SDK/Guides/GAME_FEEL.en.md section 8)
+
+- [ ] Every player and menu action has a sound and a visual response on the same frame, scaled to the event (a pickup
+      is small; a heavy hit has particles, a flash, shake and a short hit-stop).
+- [ ] Sound: layered effects with variants (the `sfx` kit or my own recipes), no raw unfiltered square / saw at full
+      volume, music and an ambience bed, music mixed under the effects and ducked on big moments, volume settings.
+- [ ] Colour: a palette of 4-6 colours with roles; no flat single-colour background (gradient, glow, vignette, light,
+      texture or parallax); the player and dangers stand out in grey.
+- [ ] Type: 3-4 sizes from one scale; the title is a styled logo, not default text at default size.
+- [ ] UI: one shape language; panels with depth; buttons with hover, press, focus and disabled states; a transition
+      between every pair of screens; something alive on the title screen.
+- [ ] Camera: smoothed; in 3D fog in the sky colour and a coloured key light.
+- [ ] Where the kits fit, I used them (`sfx`, `juice` copied into the bundle) instead of inventing weaker versions,
+      and only with the functions they really have.
 
 ## Answer
 

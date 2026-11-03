@@ -7,7 +7,8 @@ a window of the shell. Use ONLY the API listed here (it is a condensed copy of `
 contract). If something is not listed, it does not exist: say so and build it from what exists. Never invent
 functions, modules, fields or app.json keys. When the user gives you SDK.en.md, it wins over this summary. Always answer
 in the language the user writes in; code names, app.json keys and file names stay as they are. The app's own texts are
-English (required) plus any languages the user asks for. Making a game: follow `SDK/Guides/MAKE_A_GAME.en.md`.
+English (required) plus any languages the user asks for. Making a game: follow `SDK/Guides/MAKE_A_GAME.en.md`,
+meet the quality bar of rule 13 and use the kits (`sfx` for sound, `juice` for graphics, UI and feel).
 
 ## 1. Bundle
 
@@ -123,9 +124,26 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
     `gfx` / `g3d`; never build game UI from `ui.*` widgets (they are the OS's look) and never copy a sample's or
     another game's menu layout, colours or title composition. Two games must not look alike.
 12. **Store icon = key art.** A game's (or store app's) `icon.png` is 256x256 key art of the game itself: its hero,
-    world, lighting and name, bold and readable at 64 px, subject inside the central 80 %. Never a flat glyph on a
-    gradient. Describe how to make it (render from the game's models, or an in-game key-art mode plus a screenshot);
-    `SDK/AI/tasks/store-icon.en.md` has the prompt.
+    world, lighting and name, bold and readable at 64 px, subject inside the central 80 %. Exaggerated and flashy
+    like a top store icon: a big hero in dramatic light with a strong rim light, saturated palette, depth, glow and
+    particles, a tight crop, a bold outlined logo. Never a flat glyph on a gradient. Make it with the icon tool
+    (`SDK/Tools/icon`: `hero_render.py` renders the game's own model, `finish_icon.py` builds the key art and sizes) or
+    an image generator (`SDK/AI/tasks/store-icon.en.md` has the prompt).
+13. **Games meet the quality bar** (`SDK/Guides/GAME_FEEL.en.md` section 8, `SDK/Guides/SOUND_DESIGN.en.md`):
+    - every player and menu action has audio and visual feedback on the same frame (particles, flash, shake or
+      hit-stop scaled to the event, a layered sound);
+    - sound: layered effects with 3-4 variants each, no raw unfiltered square or saw at full volume, music plus an
+      ambience bed, mixed levels (music under the effects, ducked on big moments), volume settings;
+    - colour: a palette of 4-6 colours with roles; no flat single-colour backgrounds (gradients, glow, vignette,
+      texture, parallax, light);
+    - type: a type scale of 3-4 sizes; the title is a styled logo (outline, shadow, two tones, glow, spacing, or an
+      image), never default text at default size;
+    - UI: one shape language; panels with depth (shadow, slab, highlight); buttons with hover, press, focus and
+      disabled states; transitions between screens; something alive on the title screen;
+    - camera: smoothed follow; in 3D, fog in the sky colour and a coloured key light.
+    Use the kits instead of writing these from scratch: copy `SDK/Languages/<lua|javascript>/kits/sfx.*` and
+    `juice.*` into the bundle (`require("sfx")`, `require("juice")`; JS `import sfx from "./sfx.js"`). Their API is in
+    section 7a. Other languages: build the same blocks from the SDK calls.
 
 ## 4. gfx (drawing)
 
@@ -199,6 +217,37 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
   `audio.musicPause(bool)` · `audio.musicStop()`.
 - `timer.after(sec,fn)` → id · `timer.every(sec,fn)` → id · `timer.cancel(id)`.
 - `TR(key, ...)`.
+
+## 7a. Game kits (files in the SDK, copied into the bundle; Lua shown, JS the same with arrays and objects)
+
+- `sfx` (sound): `sfx.init()`, `sfx.define(name, recipe, {bus, vol, variants, vary, maxVoices, cooldown, duck =
+  {bus, level, sec}})`, `sfx.song(name, sfx.recipes.song{bpm, root, scale, chords, bass, arp, arpRate, drums},
+  {mode = "loop"|"bars"})`, `sfx.update(dt)` every frame (renders WAVs a few ms per frame, cached in the data folder),
+  `sfx.ready()`, `sfx.progress()`, `sfx.play(name[, {vol}])`, `sfx.music(name)`, `sfx.stopMusic()`,
+  `sfx.ambience(name, {details, every})`, `sfx.setBus(bus, vol)`, `sfx.duck(bus, level, sec)`. Recipes
+  `sfx.recipes`: `ui{kind = "tick"|"confirm"|"back"|"error"|"open"}`, `coin`, `jump{weight}`, `laser{length}`,
+  `impact{weight, bright}`, `explosion{size}`, `powerup{root}`, `hurt`, `whoosh{length}`, `footstep{surface =
+  "grass"|"stone"|"wood"|"snow"|"metal"}`, `jingle{notes, step}`, `detail{kind = "bird"|"drip"|"crackle"|"cricket"|
+  "creak"}`, `ambience{kind = "wind"|"rain"|"night"|"cave"|"ocean"|"hum"|"fire"}`, `song{...}`; or your own
+  `{layers = {{wave, freq, to, glide, at, len, a, d, s, r, vol, lp/hp/bp = {cut, to, q}, fm, vib, trem}}, echo, room,
+  drive}`. Buses: master, music, sfx, ui, amb.
+- `juice` (graphics, UI, feel; `J = require("juice")`): `J.init()`, `J.update(dt)`, `J.dt(dt)` (0 during hit-stop),
+  `J.event(e)`, `J.endFrame()`; `J.ease.*`, `J.tween(obj, sec, props, ease, {delay, done, loop, yoyo})`,
+  `J.damp(a, b, rate, dt)`, `J.spring(state, target, dt, hz, damping)`; `J.shake(amount)`, `J.shakeOffset(px)` →
+  dx, dy, `J.hitstop(sec)`, `J.slowmo(scale, sec)`, `J.flash(color, sec, alpha)`; `J.burst(x, y, "sparks"|"embers"|
+  "dust"|"smoke"|"confetti"|"magic"|"hit", {n, angle, spread})`, `J.drawParticles()`, `J.floatText(s, x, y, color,
+  size)`, `J.drawFloaters()`; `J.glow(x, y, r, color, alpha)`, `J.vignette(w, h, strength, color)`, `J.grain(w, h,
+  alpha)`, `J.blob(x, y, w, h, alpha)`, `J.rays(x, y, len, count, color, alpha, t)`, `J.gradient(x, y, w, h,
+  {c1, c2, ...})`; `J.palettes.<ember|frost|toxic|synth|jungle|paper|noir|candy>` (deep, bg, mid, ink, accent,
+  accent2, light), `J.mix`, `J.shade`, `J.alpha`; `J.scale(base, ratio)`, `J.spaced(s, x, y, size, font, spacing,
+  align, w)`, `J.title(s, x, y, size, {fill, fill2, outline, outlineW, shadow, glow, spacing, align, w})`, `J.fit`;
+  `J.panel(x, y, w, h, {shape = "round"|"pill"|"cut"|"slant"|"tab", fill, fill2, border, shadow, depth, highlight})`,
+  `J.button(id, label, x, y, w, h, {focused, activate, shape, fill, fillHover, ink, glow, depth})` → clicked, `J.onUi`;
+  `J.transition("fade"|"iris"|"wipe"|"blinds"|"pixels", sec, onMiddle, color)`, `J.overlay(w, h)`;
+  `J.camera{lag, lead, dead, bounds}` with `:follow(x, y, vx, vy, dt)`, `:offset(w, h, shakePx)`;
+  `J.cam3d{dist, height, lookHeight, lag, fov}` with `:follow(x, y, z, yaw, dt)`, `:apply()`, `:fov()`, `:kick(deg)`;
+  `J.looks.<dusk|noon|night|toxic|frost|desert|abyss|synth>`, `J.sky(w, h, look)`, `J.light3d(look, far)`.
+  JavaScript returns several values as arrays (`const [dx, dy] = J.shakeOffset(12)`).
 
 ## 8. 3D and the 2D engine (summaries; see SDK.en.md 8b / 8c for the full lists)
 

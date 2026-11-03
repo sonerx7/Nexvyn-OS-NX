@@ -8,7 +8,8 @@ sözleşme olan `SDK/Reference/SDK.tr.md` dosyasının kısaltılmış bir kopya
 söyle ve var olanlarla kur. function, modül, alan ya da app.json anahtarı asla uydurma. Kullanıcı SDK.tr.md'yi
 verdiğinde o bu özetin önüne geçer. Kullanıcıya her zaman onun yazdığı dilde yanıt ver; kod adları, app.json
 anahtarları ve dosya adları olduğu gibi kalır. App'in kendi metinleri İngilizce (zorunlu) artı kullanıcının istediği
-dillerdir. Oyun yapılıyorsa `SDK/Guides/MAKE_A_GAME.tr.md` tarifini izle.
+dillerdir. Oyun yapılıyorsa `SDK/Guides/MAKE_A_GAME.tr.md` tarifini izle, kural 13'teki kalite çıtasını karşıla
+ve kitleri kullan (ses için `sfx`, grafik, arayüz ve his için `juice`).
 
 ## 1. Bundle
 
@@ -127,8 +128,24 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
     düzenini, renklerini ya da başlık kompozisyonunu asla kopyalama. İki oyun birbirine benzememeli.
 12. **Mağaza ikonu = key art.** Bir oyunun (ya da mağaza app'inin) `icon.png`'si oyunun kendi 256x256 key art'ıdır:
     kahramanı, dünyası, ışığı ve adı; cesur, 64 px'de okunur, konu ortadaki %80'in içinde. Asla gradyan üstünde düz
-    bir sembol değil. Nasıl yapılacağını anlat (oyunun modellerinden render ya da oyun içi key art kipi + ekran
-    görüntüsü); prompt `SDK/AI/tasks/store-icon.tr.md` içinde.
+    bir sembol değil. En iyi mağaza ikonları gibi abartılı ve gösterişli: dramatik ışıkta, güçlü rim ışıklı iri bir
+    kahraman, doygun palet, derinlik, parlama ve parçacıklar, sıkı kadraj, kalın dış hatlı logo. İkon aracıyla yap
+    (`SDK/Tools/icon`: `hero_render.py` oyunun kendi modelini render eder, `finish_icon.py` key art'ı ve boyutları
+    kurar) ya da bir görsel üreticiyle (prompt `SDK/AI/tasks/store-icon.tr.md` içinde).
+13. **Oyunlar kalite çıtasını karşılar** (`SDK/Guides/GAME_FEEL.tr.md` bölüm 8, `SDK/Guides/SOUND_DESIGN.tr.md`):
+    - oyuncunun ve menünün her eyleminin aynı karede sesli ve görsel karşılığı olur (olayla ölçekli parçacık, flaş,
+      sarsıntı ya da hit-stop, katmanlı bir ses);
+    - ses: her biri 3-4 varyantlı katmanlı efektler, tam seviyede ham, filtresiz square ya da saw yok, müzik artı
+      ambiyans zemini, dengeli seviyeler (müzik efektlerin altında, büyük anlarda kısılır), ses ayarları;
+    - renk: rolleri olan 4-6 renklik palet; düz tek renk arka plan yok (gradyan, parlama, vinyet, doku, paralaks, ışık);
+    - yazı: 3-4 boyutluk tip ölçeği; başlık stilli bir logo (dış hat, gölge, iki ton, parlama, aralık ya da resim),
+      asla varsayılan boyutta varsayılan yazı değil;
+    - arayüz: tek şekil dili; derinliği olan paneller (gölge, taban, ışık kenarı); hover, basılı, odak ve devre dışı
+      hâlleri olan düğmeler; ekranlar arası geçişler; başlık ekranında canlı bir şey;
+    - kamera: yumuşak takip; 3D'de gökyüzü renginde sis ve renkli bir ana ışık.
+    Bunları sıfırdan yazmak yerine kitleri kullan: `SDK/Languages/<lua|javascript>/kits/sfx.*` ve `juice.*` dosyalarını
+    bundle'a kopyala (`require("sfx")`, `require("juice")`; JS `import sfx from "./sfx.js"`). API'leri bölüm 7a'da.
+    Diğer dillerde aynı taşları SDK çağrılarından kur.
 
 ## 4. gfx (çizim)
 
@@ -202,6 +219,37 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
   `audio.musicPause(bool)` · `audio.musicStop()`.
 - `timer.after(sec,fn)` → id · `timer.every(sec,fn)` → id · `timer.cancel(id)`.
 - `TR(key, ...)`.
+
+## 7a. Oyun kitleri (SDK'daki dosyalar, bundle'a kopyalanır; Lua gösterildi, JS dizi ve nesnelerle aynı)
+
+- `sfx` (ses): `sfx.init()`, `sfx.define(name, recipe, {bus, vol, variants, vary, maxVoices, cooldown, duck =
+  {bus, level, sec}})`, `sfx.song(name, sfx.recipes.song{bpm, root, scale, chords, bass, arp, arpRate, drums},
+  {mode = "loop"|"bars"})`, her karede `sfx.update(dt)` (WAV'ları karede birkaç ms üretir, veri klasöründe saklar),
+  `sfx.ready()`, `sfx.progress()`, `sfx.play(name[, {vol}])`, `sfx.music(name)`, `sfx.stopMusic()`,
+  `sfx.ambience(name, {details, every})`, `sfx.setBus(bus, vol)`, `sfx.duck(bus, level, sec)`. Tarifler
+  `sfx.recipes`: `ui{kind = "tick"|"confirm"|"back"|"error"|"open"}`, `coin`, `jump{weight}`, `laser{length}`,
+  `impact{weight, bright}`, `explosion{size}`, `powerup{root}`, `hurt`, `whoosh{length}`, `footstep{surface =
+  "grass"|"stone"|"wood"|"snow"|"metal"}`, `jingle{notes, step}`, `detail{kind = "bird"|"drip"|"crackle"|"cricket"|
+  "creak"}`, `ambience{kind = "wind"|"rain"|"night"|"cave"|"ocean"|"hum"|"fire"}`, `song{...}`; ya da kendi
+  `{layers = {{wave, freq, to, glide, at, len, a, d, s, r, vol, lp/hp/bp = {cut, to, q}, fm, vib, trem}}, echo, room,
+  drive}` tarifin. Bus'lar: master, music, sfx, ui, amb.
+- `juice` (grafik, arayüz, his; `J = require("juice")`): `J.init()`, `J.update(dt)`, `J.dt(dt)` (hit-stop'ta 0),
+  `J.event(e)`, `J.endFrame()`; `J.ease.*`, `J.tween(obj, sec, props, ease, {delay, done, loop, yoyo})`,
+  `J.damp(a, b, rate, dt)`, `J.spring(state, target, dt, hz, damping)`; `J.shake(amount)`, `J.shakeOffset(px)` →
+  dx, dy, `J.hitstop(sec)`, `J.slowmo(scale, sec)`, `J.flash(color, sec, alpha)`; `J.burst(x, y, "sparks"|"embers"|
+  "dust"|"smoke"|"confetti"|"magic"|"hit", {n, angle, spread})`, `J.drawParticles()`, `J.floatText(s, x, y, color,
+  size)`, `J.drawFloaters()`; `J.glow(x, y, r, color, alpha)`, `J.vignette(w, h, strength, color)`, `J.grain(w, h,
+  alpha)`, `J.blob(x, y, w, h, alpha)`, `J.rays(x, y, len, count, color, alpha, t)`, `J.gradient(x, y, w, h,
+  {c1, c2, ...})`; `J.palettes.<ember|frost|toxic|synth|jungle|paper|noir|candy>` (deep, bg, mid, ink, accent,
+  accent2, light), `J.mix`, `J.shade`, `J.alpha`; `J.scale(base, ratio)`, `J.spaced(s, x, y, size, font, spacing,
+  align, w)`, `J.title(s, x, y, size, {fill, fill2, outline, outlineW, shadow, glow, spacing, align, w})`, `J.fit`;
+  `J.panel(x, y, w, h, {shape = "round"|"pill"|"cut"|"slant"|"tab", fill, fill2, border, shadow, depth, highlight})`,
+  `J.button(id, label, x, y, w, h, {focused, activate, shape, fill, fillHover, ink, glow, depth})` → clicked, `J.onUi`;
+  `J.transition("fade"|"iris"|"wipe"|"blinds"|"pixels", sec, onMiddle, color)`, `J.overlay(w, h)`;
+  `J.camera{lag, lead, dead, bounds}` ile `:follow(x, y, vx, vy, dt)`, `:offset(w, h, shakePx)`;
+  `J.cam3d{dist, height, lookHeight, lag, fov}` ile `:follow(x, y, z, yaw, dt)`, `:apply()`, `:fov()`, `:kick(deg)`;
+  `J.looks.<dusk|noon|night|toxic|frost|desert|abyss|synth>`, `J.sky(w, h, look)`, `J.light3d(look, far)`.
+  JavaScript birden çok değeri dizi olarak döndürür (`const [dx, dy] = J.shakeOffset(12)`).
 
 ## 8. 3B ve 2D motor (özetler; tam listeler için SDK.tr.md 8b / 8c)
 

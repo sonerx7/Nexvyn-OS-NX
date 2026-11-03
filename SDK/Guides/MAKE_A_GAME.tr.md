@@ -310,6 +310,12 @@ Sistem yazı tipleri de harf aralığı, büyük/küçük harf ve kaydırılmı�
   olmaktan çıkarır.
 - Oyunun çaldığı her şey penceresi kapanınca durur.
 
+**Ses kiti** (`SDK/Languages/lua/kits/sfx.lua`, `SDK/Languages/javascript/kits/sfx.js`) bunların hepsini sizin için
+yapar: veri klasöründe bir kez WAV dosyasına üretilen katmanlı tarifler (vuruş, altın, zıplama, lazer, patlama, menü
+tıkları, ayak sesleri, ambiyans döngüleri, akor ilerlemesinden müzik döngüleri), varyantlar, seviyeli bus'lar,
+ducking, ses sınırları. Seslerin nasıl iyi hissettirdiği, seviyeler ve kontrol listesi:
+[SOUND_DESIGN.tr.md](SOUND_DESIGN.tr.md).
+
 **Titreşim:** `sys.vibrate(güç 0..1, ms)`, en fazla 2000 ms, yalnızca pencere odaktayken; `sys.vibrate(0)` durdurur.
 Frekans deseni yoktur. Toplamalarda kısa ve hafif (0,2-0,3, 40 ms), darbelerde güçlü (0,8, 150 ms) ve ayarlarda
 kapatma düğmesi.
@@ -708,6 +714,11 @@ menü şablonu değil, yapı taşları verir:
 - Ses: beş dalga biçimi, dosyalar, akışla müzik.
 
 Script'ler için özel shader ya da post-processing yoktur: görünüş palet, ışık, biçim, yazı ve hareketten gelir.
+**His kiti** (`SDK/Languages/lua/kits/juice.lua`, `SDK/Languages/javascript/kits/juice.js`) bunları hazır taş olarak
+verir: easing ve tween, yaylar, ekran sarsıntısı, hit-stop, flaş, parlayan parçacıklar, üretilen parlama / vinyet /
+gren / gölge dokuları, çok duraklı gradyanlar, stilli başlıklar, beş şekilde derinlikli paneller, durumlu düğmeler,
+geçişler, yumuşak 2D ve 3D kameralar, 3D ışık ve sis atmosferleri. Her birinin öncesi / sonrası ve mağazadaki her
+oyunun geçmesi gereken kalite çıtası: [GAME_FEEL.tr.md](GAME_FEEL.tr.md).
 
 ### Yöntem: ilk menüden önce yedi karar
 
@@ -851,12 +862,15 @@ end
 **"Pahalı" görünen cilalar:** her yerde (HUD dahil) sabit bir palet, her değişimde yumuşak hareket (birden belirme
 yok), darbede 2-4 karelik vuruş duraklaması ve kamera itmesi, toplamalarda parçacık, her eylemde ses, içinde canlı
 bir şey olan bir başlık ekranı (bekleyen kahraman, yükselen korlar) ve ekranda oyuncunun ihtiyaç duymadığı hiçbir şey.
+Listenin tamamı [GAME_FEEL.tr.md](GAME_FEEL.tr.md) içindeki kalite çıtasıdır (bölüm 8); mağaza incelemesi onu kontrol eder.
 
 ## 12. Mağaza ikonu ve key art
 
 İkon, oyuncunun App Market'te gördüğü ilk şeydir. SDK ile yapılan oyun ve app'lerde ikon **oyunun kendi key art'ı**
 olmalı: kahramanı, dünyası, ışığı, adı ya da logosu; cesur, 64 px'de okunur ve mağazadaki diğer ikonlara benzemez.
-Gradyan üstünde düz bir sembol (`nxv icon` bunları yalnızca geçici olarak üretir) bir oyun için kabul edilmez.
+En çok satan oyunların ikonlarını düşünün: dramatik ışıkta, güçlü bir rim ışığıyla abartılı, gösterişli bir kahraman,
+doygun renkler, derinlik, parlama ve parçacıklar, çerçeveden taşabilen sıkı bir kadraj, kalın bir logo. Gradyan
+üstünde düz bir sembol (`nxv icon` bunları yalnızca geçici olarak üretir) bir oyun için kabul edilmez.
 
 | | |
 |---|---|
@@ -868,11 +882,13 @@ Gradyan üstünde düz bir sembol (`nxv icon` bunları yalnızca geçici olarak 
 
 **Nasıl yapılır**
 
-1. **Kendi modellerinizden render alın,** bir 3B araçta: kahramana poz verin (bir klipten bir kare), ona yakın alçak
-   bir kamera, sıcak bir ana ışık ve zıt renkte güçlü bir kenar (rim) ışığı, arkada oyununuzun gök renkleri, önde
-   logo. Kor Tarlası'nın ikonu böyle bir script'le render edildi (örneğin yanındaki `art/make_keyart.py`, kaynak
-   depoda `tools/gen_ember_keyart.py`):
-   `blender -b --factory-startup -P make_keyart.py -- models/pip.glb keyart.png 1024`.
+1. **İkon aracıyla kendi modellerinizden render alın** (public depoda `SDK/Tools/icon`): `hero_render.py`
+   (Blender, ekransız) `.glb`'nize poz verir, saydam arka planda bir ana ışık, iki renkli rim ışığı ve bir dolgu
+   ışığıyla aydınlatır; `finish_icon.py` (Pillow) ışık huzmeli arka plan, kahramanın arkasında parlama, kenar rim'i,
+   kıvılcım, bloom, vinyet ve logo olarak başlık ekler, bütün boyutları ve 256 / 128 / 64 px önizlemeyi yazar:
+   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Run --frame 6 --look ember`, sonra
+   `python finish_icon.py hero.png --title "SKY HOP" --look ember --out art/`. Üç örnek (biri Kor Tarlası, kendi
+   `pip.glb`'sinden) `SDK/Tools/icon/examples/` içinde.
 2. **Ya da oyunun içinde kurun:** kahramanı en iyi ışığınızla ve logoyla büyük çizen gizli bir key art kipi ekleyin,
    ekran görüntüsü alın (Ryujinx ya da `autorun.txt` içinde `shot`), kare kırpın ve bir görsel düzenleyicide bitirin.
 3. **Ya da çizin** veya çizdirin: oyunun gerçek görünüşüne uymalı.
@@ -882,12 +898,15 @@ kahramanınızın bir render'ını ya da ekran görüntüsünü referans görsel
 üretici İngilizceyi en iyi anlar:
 
 ```text
-Square video game key art, 1:1, for a game called "<NAME>". Subject: <your hero, from the reference image>,
-<pose / action>, large in the frame, three-quarter view, seen from slightly below. Setting: <your world in a few
-words>. Lighting: <key light colour> key light, strong <contrasting colour> rim light, <time of day>. Palette:
-<your 3-4 palette colours>. Style: <your art direction words, e.g. low-poly faceted, painterly, pixel art>.
-Bold silhouette, high contrast, readable at small size, subject and logo inside the central 80 %. Title "<NAME>"
-in a <your typography> logo at the bottom. No other text, no frame, no watermark.
+Square game store icon, 1:1, key art for a game called "<NAME>". Hero: <your hero, from the reference image>,
+<dynamic pose / action>, huge in the frame, tight crop, three-quarter view from slightly below, part of it breaking
+out of the frame. Lighting: dramatic <key colour> key light, very strong <contrasting colour> rim light outlining the
+silhouette, glowing <accent colour> highlights. Background: <your world in a few words>, a radial burst of light
+behind the hero, depth (blurred elements in front and behind), floating <sparks / embers / magic particles>, bloom
+and glow. Palette: <3-4 saturated colours of your game>, deep shadows, high contrast. Style: <your art direction,
+e.g. stylised low-poly 3D render, painterly, cel-shaded>, polished, premium, exaggerated, eye-catching.
+Logo "<NAME>" in bold chunky letters with a thick dark outline, a gradient fill and a glow, at the bottom, slightly
+tilted. Readable at 64 px. No other text, no interface, no border, no watermark.
 ```
 
 Sonra kontrol edin: açıkça sizin oyununuz mu? 64 px'de okunuyor mu? Mağaza sayfasındaki her ikondan farklı mı?
@@ -1055,4 +1074,6 @@ Konsoldaki Python (pocketpy) üçünün en yavaşıdır: kare başına işi kü�
 [SDK başvurusu](../Reference/SDK.tr.md) (8b *3B modeller*, 8c *2D oyun motoru*) · [Oyun motoru rehberi](GAME_ENGINE.tr.md) ·
 [Geliştirici rehberi](DEVELOPER_GUIDE.tr.md) · [Uyumluluk](COMPATIBILITY.tr.md) ·
 App Market'te yayın: public depoda `SDK/Publishing/PUBLISHING.tr.md` ve `SDK/Publishing/REVIEW.tr.md` ·
+[Ses tasarımı](SOUND_DESIGN.tr.md) · [Grafik, arayüz ve oyun hissi](GAME_FEEL.tr.md) ·
+Kitler: `SDK/Languages/lua/kits`, `SDK/Languages/javascript/kits` · İkon aracı: `SDK/Tools/icon` ·
 AI prompt'ları: `SDK/AI/tasks/make-3d-game.tr.md` ve `SDK/AI/tasks/store-icon.tr.md`.
