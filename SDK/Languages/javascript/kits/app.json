@@ -1,0 +1,15 @@
+{
+  "id": "com.yourname.kitdemojs",
+  "name": {"en": "Kit Demo JS"},
+  "description": {"en": "The sound kit and the feel kit working together"},
+  "version": "1.0",
+  "author": "Nexvyn OS SDK",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.js",
+  "minSdk": "1.1",
+  "targetSdk": "1.8",
+  "window": {"width": 960, "height": 540, "minWidth": 640, "minHeight": 360, "resizable": true},
+  "gamepad": true,
+  "permissions": []
+}

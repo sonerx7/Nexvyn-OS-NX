@@ -93,10 +93,12 @@ sandboxed, so users are asked once more.
 ## 4. Icon and README
 
 - `source/icon.png`: 256×256 PNG. For games and apps made with the SDK the icon is **key art of the item itself**:
-  its hero or main object, its world, its lighting, its name; bold, readable at 64 px, filled edge to edge with the
-  subject inside the central 80 %, and unlike the other icons in the store. A flat symbol on a gradient is not
-  accepted (`nxv icon` makes those only as placeholders while you work). How to make one, with a Blender recipe and
-  an AI prompt: `Guides/MAKE_A_GAME.en.md` (*Store icon and key art*) and `AI/tasks/store-icon.en.md`.
+  it shows the game or app itself (its hero, main object or world), readable at 64 px, filled edge to edge with the
+  subject inside the central 80 %. The style is the maker's choice (calm or flashy, with or without the name). A flat
+  placeholder glyph on a gradient is not accepted (`nxv icon` makes those only while you work). Make it from your own
+  model with the icon tool `Tools/icon` (Blender + Pillow, styles clean / bold / loud, examples in
+  `Tools/icon/examples/`) or with the image-generator prompt in `AI/tasks/store-icon.en.md`; the recipe is in
+  `Guides/MAKE_A_GAME.en.md` (*Store icon and key art*).
 - `README.md`: a `# Name` title, a few sentences in English (more languages optional), an id / language / SDK /
   permissions table, controls, a versions table and the licenses of anything you did not make yourself.
 
@@ -153,8 +155,10 @@ The full list is the [review checklist](REVIEW.en.md). In short, an item is **no
   notes for Turkish patches: who made it, where it comes from, under which license);
 - is adult-only, hateful, or encourages illegal activity, including piracy;
 - has no English text;
-- is a game that copies a sample's or another game's menu layout and title, or has a flat glyph icon
-  instead of key art (see the review checklist).
+- is a game that copies a sample's or another game's menu layout and title, or has a flat placeholder glyph
+  icon instead of a picture of the game, or clearly misses the quality bar (no sound or visual feedback on actions, raw unfiltered
+  beeps, default text as the title, flat single-colour screens; see the review checklist and
+  `Guides/GAME_FEEL.en.md`).
 
 ## 9. Updates
 

@@ -54,6 +54,14 @@ presses. `nxv check --sdk <checkout>` runs the same checker.
 - **Lua is 1-based:** `ui.segmented`, `ui.dropdown` and `ui.alert` indexes start at 1 (0 in JS/Python).
 - **`ui` widgets need unique ids:** if a label appears twice, add a suffix like `"Delete##3"`.
 
+## Game kits
+
+[`kits/`](kits/) holds two files to copy into a game, plus a demo app that uses both (run the folder as an app):
+`sfx.lua` (sound design: layered procedural recipes rendered to WAV once, variants, buses, ducking, ambience, music
+loops) and `juice.lua` (easing and tweens, shake, hit-stop, glowing particles, vignette, gradients, styled titles,
+panels and buttons with depth, transitions, 2D / 3D cameras, 3D light moods). Guides:
+[sound design](../../Guides/SOUND_DESIGN.en.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.en.md).
+
 ## More
 
 - SDK reference: [SDK.md](../../Reference/SDK.en.md) sections 1-10 (Lua), 8c (`nexvyn.game`), 8b (`g3d`)

@@ -91,7 +91,8 @@ Kaynaklar: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_
   bırak" seçenekleri vardır.
 - Applet işaretçi, dokunmatik, sayfa önbelleği ve Web Audio açık başlatılır. Kapanınca applet'in son gösterdiği adres
   (`webReplyGetLastUrl`) geçmişe yazılır; farklı bir sayfaya gidildiyse "o sayfayı burada aç" bildirimi gelir.
-- **Kullanılamadığında** (applet modu / emülatör) düğme yerine "WebKit neden yok?" çıkar ve nedenini açıklar.
+- **Kullanılamadığında** (applet modu / emülatör / test edilen 22.5.0 - 23.0.x dışındaki bir sistem sürümü, bkz.
+  `source/core/fwcompat.h`; orada Tarayıcı ayarlarından yine de izin verilebilir) düğme yerine "WebKit neden yok?" çıkar ve nedenini açıklar.
 - Ayarlar > Genel: "Tam tarayıcıyı öner", "<site> sitesini hep tam tarayıcıda aç".
 - Paylaş menüsü ve sağ tık menüsü: "Tam Tarayıcıda Aç (WebKit)", "Bu Siteyi Hep Tam Tarayıcıda Aç".
 

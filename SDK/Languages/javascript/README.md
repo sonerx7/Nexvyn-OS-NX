@@ -46,6 +46,14 @@ unhandled Promise rejections too. It is Node.js, not QuickJS: it catches API mis
 - **An unhandled Promise rejection** opens the error screen: wrap `await` in `try`/`catch`.
 - **`net.*` needs the `"network"` permission;** without it `res.error == "permission denied: network"`.
 
+## Game kits
+
+[`kits/`](kits/) holds two files to copy into a game, plus a demo app that uses both (run the folder as an app):
+`sfx.js` (sound design: layered procedural recipes rendered to WAV once, variants, buses, ducking, ambience, music
+loops) and `juice.js` (easing and tweens, shake, hit-stop, glowing particles, vignette, gradients, styled titles,
+panels and buttons with depth, transitions, 2D / 3D cameras, 3D light moods). Guides:
+[sound design](../../Guides/SOUND_DESIGN.en.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.en.md).
+
 ## More
 
 - SDK: [SDK.md](../../Reference/SDK.en.md) section 11 · Guide: [JS_APPS.md](../../Guides/JS_APPS.en.md)

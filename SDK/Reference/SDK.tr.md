@@ -853,7 +853,9 @@ bir emitter üzerinden üretir.
   ekranda gösterin. Oyun yukarıdaki uygulama kurallarını kullanmaz: menülerini, HUD'unu ve duraklatma ekranını
   `theme` renkleri ya da `ui` bileşenleriyle değil, kendi sanat yönüyle kendisi çizer ve bir örneğin menü düzenini
   kopyalamaz (`docs/MAKE_A_GAME.tr.md`, *Kendinin yap*). Mağaza ikonu oyunun key art'ıdır (aynı rehber, *Mağaza
-  ikonu ve key art*).
+  ikonu ve key art*; public `SDK/Tools/icon` aracı). Ses, grafik, arayüz ve oyun hissi için kalite çıtası ve hazır
+  kitler (public `SDK/Languages/lua/kits`, `SDK/Languages/javascript/kits`: `sfx`, `juice`): `docs/SOUND_DESIGN.tr.md`,
+  `docs/GAME_FEEL.tr.md`. Kitler yalnızca bu başvurudaki çağrıları kullanır; yeni API değildir.
 - Kullanıcı verilerini değişir değişmez `store` ya da `fs` ile kaydedin.
 - `app.draw`'ı hızlı tutun: her karede büyük tablolar oluşturmaktan kaçının; görselleri bir kez yükleyin.
 

@@ -27,7 +27,11 @@ Homebrew menüsünden açılır, kapatınca Homebrew menüsüne dönülür. Aray
 
 ### Gerekenler
 
-- Atmosphère ile açılan bir Switch. Güncel bir Atmosphère sürümü ve emuMMC önerilir.
+- Atmosphère ile açılan bir Switch. Güncel bir Atmosphère sürümü (1.12.1 veya daha yenisi) ve emuMMC önerilir.
+- **Sistem sürümü 22.5.0 veya üstü** (gerekli). **23.0.x**'e kadar test edildi. Diğer sürümlerde Nexvyn OS yine
+  açılır ve hiçbir şey engellenmez, ama sorunlar olabilir: bir kez bildirim gösterir, tam tarayıcı ise 22.5.0 - 23.0.x
+  dışında dahili tarayıcıda kalır (Tarayıcı ayarlarından yine de izin verilebilir). **Ayarlar > Hakkında** sistem
+  sürümünüzü ve gerekli sürümü gösterir.
 - SD kartta biraz boş yer. Video, PC oyunları ve Retro oyunları için daha fazlası gerekir.
 
 ### Kurulum

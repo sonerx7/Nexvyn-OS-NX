@@ -28,7 +28,11 @@ Turkish and English; new languages can be added.
 
 ### Requirements
 
-- A Switch that boots with Atmosphère. A current Atmosphère version and emuMMC are recommended.
+- A Switch that boots with Atmosphère. A current Atmosphère version (1.12.1 or newer) and emuMMC are recommended.
+- **System version 22.5.0 or later** (required). Tested up to **23.0.x**. On other versions Nexvyn OS still starts
+  and nothing is blocked, but problems may occur: it shows a one-time notice, and the full browser stays in the
+  built-in browser outside 22.5.0 - 23.0.x (Browser settings can allow it anyway). **Settings > About** shows your
+  system version and the required one.
 - Some free space on the SD card. Videos, PC games and Retro games need more.
 
 ### Installation

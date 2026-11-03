@@ -68,6 +68,14 @@ yakalamaz.
 - **Yakalanmayan Promise hatası** hata ekranını açar: `await`'i `try`/`catch` içine alın.
 - **`net.*` için `"network"` izni** gerekir; izin yoksa `res.error == "permission denied: network"`.
 
+## Oyun kitleri
+
+[`kits/`](kits/) bir oyuna kopyalanacak iki dosya ve ikisini kullanan bir demo app içerir (klasörü app olarak
+çalıştırın): `sfx.js` (ses tasarımı: bir kez WAV'a üretilen katmanlı prosedürel tarifler, varyantlar, bus'lar,
+ducking, ambiyans, müzik döngüleri) ve `juice.js` (easing ve tween, sarsıntı, hit-stop, parlayan parçacıklar, vinyet,
+gradyanlar, stilli başlıklar, derinlikli panel ve düğmeler, geçişler, 2D / 3D kameralar, 3D ışık atmosferleri).
+Rehberler: [ses tasarımı](../../Guides/SOUND_DESIGN.tr.md), [grafik, arayüz ve oyun hissi](../../Guides/GAME_FEEL.tr.md).
+
 ## Daha fazlası
 
 - SDK: [SDK.md](../../Reference/SDK.tr.md) bölüm 11 · Rehber: [JS_APPS.md](../../Guides/JS_APPS.tr.md)

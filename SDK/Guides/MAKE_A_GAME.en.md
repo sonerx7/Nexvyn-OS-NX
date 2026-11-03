@@ -307,6 +307,11 @@ drew: keep translated text in a system font, or draw the letters every language 
   keep repeats from sounding mechanical.
 - Everything a game plays stops when its window closes.
 
+**The sound kit** (`SDK/Languages/lua/kits/sfx.lua`, `SDK/Languages/javascript/kits/sfx.js`) does all of this for you:
+layered recipes (impacts, coins, jumps, lasers, explosions, UI clicks, footsteps, ambience loops, music loops from a
+chord progression) rendered once into WAV files in the data folder, variants, buses with volumes, ducking, voice
+limits. How to make sounds feel good, levels and the checklist: [SOUND_DESIGN.en.md](SOUND_DESIGN.en.md).
+
 **Rumble:** `sys.vibrate(strength 0..1, ms)`, at most 2000 ms, only while the window has focus; `sys.vibrate(0)`
 stops it. There are no frequency patterns. Short and light for pickups (0.2-0.3, 40 ms), strong for hits (0.8, 150
 ms), and an off switch in your settings.
@@ -699,7 +704,11 @@ you building blocks, not a menu template:
 - Sound: five waveforms, files, streamed music.
 
 There are no custom shaders or post-processing passes for scripts: the look comes from palette, light, shape, type
-and motion.
+and motion. The **feel kit** (`SDK/Languages/lua/kits/juice.lua`, `SDK/Languages/javascript/kits/juice.js`) has
+these as ready blocks: easing and tweens, springs, screen shake, hit-stop, flashes, glowing particles, generated
+glow / vignette / grain / shadow textures, multi-stop gradients, styled titles, panels with depth in five shapes,
+buttons with states, transitions, smoothed 2D and 3D cameras, 3D light and fog moods. Before / after for each and
+the quality bar every store game must meet: [GAME_FEEL.en.md](GAME_FEEL.en.md).
 
 ### The method: seven decisions before the first menu
 
@@ -844,47 +853,53 @@ end
 **Polish that reads as "expensive":** a fixed palette everywhere (HUD included), eased motion on every change (no
 popping), a 2-4 frame hit pause and a camera kick on impacts, particles on pickups, sound on every action, a title
 screen with something alive in it (the hero idling, embers rising), and nothing on screen that the player does not
-need.
+need. The full list is the quality bar in [GAME_FEEL.en.md](GAME_FEEL.en.md) (section 8); the store review checks it.
 
 ## 12. Store icon and key art
 
-The icon is the first thing a player sees in the App Market. For games and apps made with the SDK it must be **key
-art of the game itself**: its hero, its world, its lighting, its name or logo; bold, readable at 64 px, and unlike
-any other icon in the store. A flat symbol on a gradient (`nxv icon` makes those, for placeholders only) is not
-accepted for a game.
+The icon is the first thing a player sees in the App Market. For games and apps made with the SDK it must **show the
+game itself**: its hero, its main object or its world, readable at 64 px. A flat placeholder symbol on a gradient
+(`nxv icon` makes those, for placeholders only) is not accepted. **The style is yours**: calm or flashy, with or
+without the name. When you do not choose (and when an AI assistant has not been told), make it **clean**: a polished,
+attractive picture of the game's own subject in soft light, with a restrained glow, a calm colour grade, no text.
 
 | | |
 |---|---|
 | File | `icon.png` in the bundle (and next to `source/` in the store folder) |
 | Size | 256 x 256 PNG. Make it at 1024 x 1024 and scale it down with a good filter |
-| Safe area | Keep the face, the hero's silhouette and the logo inside the central 80 %: corners may be rounded or cut |
+| Safe area | Keep the subject (and a logo, if you add one) inside the central 80 %: corners may be rounded or cut |
 | Fill | Fill the square edge to edge (an opaque background is fine) |
-| Read at 64 px | One subject, big; strong value contrast between the hero and the background; at most one or two words |
+| Read at 64 px | One main subject; enough value contrast between it and the background |
 
 **How to make one**
 
-1. **Render it from your own models** in a 3D tool: pose the hero (a frame of a clip), a low camera close to it,
-   a warm key light and a strong rim light in a contrasting colour, your game's sky colours behind, the logo in front.
-   Ember Field's icon is rendered this way by a script (`art/make_keyart.py` next to the sample,
-   `tools/gen_ember_keyart.py` in the source repository):
-   `blender -b --factory-startup -P make_keyart.py -- models/pip.glb keyart.png 1024`.
-2. **Or compose it in the game:** add a hidden key-art mode that draws the hero large with your best lighting and the
-   logo, take a screenshot (Ryujinx, or `shot` in `autorun.txt`), crop it square and finish it in an image editor.
+1. **Render it from your own models with the icon tool** (`SDK/Tools/icon` in the public repository):
+   `hero_render.py` (Blender, headless) poses your `.glb` and lights it with a key light, two rim lights and a fill on
+   a transparent background; `finish_icon.py` (Pillow) adds a lit background, a soft glow behind the hero, an edge
+   rim and a vignette, and writes every size and a preview at 256 / 128 / 64 px:
+   `blender -b --factory-startup -P hero_render.py -- --model models/hero.glb --clip Idle --frame 10 --look ember`,
+   then `python finish_icon.py hero.png --look ember --out art/`. That is the default `clean` style; `--style bold`
+   or `--style loud` adds light rays, sparks, bloom and contrast, and `--title "NAME"` a title logo, when you want
+   them. Examples (one is Ember Field, from its own `pip.glb`) are in `SDK/Tools/icon/examples/`.
+2. **Or compose it in the game:** add a hidden key-art mode that draws the hero large with your best lighting, take
+   a screenshot (Ryujinx, or `shot` in `autorun.txt`), crop it square and finish it in an image editor.
 3. **Or paint it,** or have it painted: it must match the game's real look.
 
 **AI prompt for key art** (for an image generator whose terms let you publish the result; paste a render or a
-screenshot of your hero as the reference image so the icon matches the game):
+screenshot of your hero as the reference image so the icon matches the game). The default, clean:
 
 ```text
-Square video game key art, 1:1, for a game called "<NAME>". Subject: <your hero, from the reference image>,
-<pose / action>, large in the frame, three-quarter view, seen from slightly below. Setting: <your world in a few
-words>. Lighting: <key light colour> key light, strong <contrasting colour> rim light, <time of day>. Palette:
-<your 3-4 palette colours>. Style: <your art direction words, e.g. low-poly faceted, painterly, pixel art>.
-Bold silhouette, high contrast, readable at small size, subject and logo inside the central 80 %. Title "<NAME>"
-in a <your typography> logo at the bottom. No other text, no frame, no watermark.
+Square app icon, 1:1, for a game called "<NAME>". Subject: <your hero or main object, from the reference image>,
+<a calm, characteristic pose>, centred, three-quarter view, filling most of the frame. Soft key light, a subtle rim
+light, a simple softly lit background in <your 2-3 palette colours>, gentle depth. Style: <your art direction, e.g.
+stylised low-poly 3D render, painterly, flat-shaded>, clean, polished, appealing, readable at 64 px. No text, no
+interface, no border, no watermark.
 ```
 
-Then check: is it clearly your game? Does it read at 64 px? Is it different from every icon on the store page?
+For a louder icon add `dramatic lighting, strong coloured rim light, saturated colours, a burst of light behind the
+subject, floating particles, glow`; for a title add it with `finish_icon.py --title` (generators often misspell it).
+
+Then check: is it clearly your game? Does it read at 64 px? Is it the style you wanted?
 
 ## 13. Languages
 
@@ -1049,4 +1064,6 @@ Python on the console (pocketpy) is the slowest of the three: keep per-frame wor
 [SDK reference](../Reference/SDK.en.md) (8b *3D models*, 8c *2D game engine*) · [Game engine guide](GAME_ENGINE.en.md) ·
 [Developer guide](DEVELOPER_GUIDE.en.md) · [Compatibility](COMPATIBILITY.en.md) ·
 App Market publishing: `SDK/Publishing/PUBLISHING.en.md` and `SDK/Publishing/REVIEW.en.md` in the public repository ·
+[Sound design](SOUND_DESIGN.en.md) · [Graphics, UI and game feel](GAME_FEEL.en.md) ·
+Kits: `SDK/Languages/lua/kits`, `SDK/Languages/javascript/kits` · Icon tool: `SDK/Tools/icon` ·
 AI prompts: `SDK/AI/tasks/make-3d-game.en.md` and `SDK/AI/tasks/store-icon.en.md`.

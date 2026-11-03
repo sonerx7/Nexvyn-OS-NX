@@ -906,7 +906,10 @@ Presets: `game.particles.preset(name[, overrides])` → emitter, with `name` one
 - Games: set `"gamepad": true`, support D-pad/stick + A/B, and also touch where possible; show controls on screen.
   A game does not use the app rules above: it draws its own menus, HUD and pause screen in its own art direction,
   not with `theme` colors or `ui` widgets, and does not copy a sample's menu layout (`docs/MAKE_A_GAME.en.md`,
-  *Make it yours*). Its store icon is key art of the game (same guide, *Store icon and key art*).
+  *Make it yours*). Its store icon is key art of the game (same guide, *Store icon and key art*; the public
+  `SDK/Tools/icon` tool). The quality bar for sound, graphics, UI and game feel, and ready kits (public
+  `SDK/Languages/lua/kits`, `SDK/Languages/javascript/kits`: `sfx`, `juice`): `docs/SOUND_DESIGN.en.md`,
+  `docs/GAME_FEEL.en.md`. The kits use only the calls in this reference; they are not new API.
 - Save user data with `store` or `fs` as soon as it changes.
 - Keep `app.draw` fast: avoid creating big tables every frame; load images once.
 
