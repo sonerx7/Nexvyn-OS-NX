@@ -291,5 +291,22 @@
   "msg.load_failed": "Diese Welt konnte nicht geladen werden.",
   "msg.low_memory_view": "Der Speicher wird knapp: Sichtweite auf {0} Chunks verringert",
   "ui.inv_help_touch": "Tippen zum Nehmen, erneut tippen zum Ablegen · ziehen zum Verschieben · halten zum Teilen · außerhalb tippen zum Wegwerfen",
-  "ui.no_voxels": "BlockCraft benötigt die JavaScript-Voxel-API (SDK 1.7 oder neuer). Aktualisiere Nexvyn OS."
+  "ui.no_voxels": "BlockCraft benötigt die JavaScript-Voxel-API (SDK 1.7 oder neuer). Aktualisiere Nexvyn OS.",
+  "book.title": "Recipe Book",
+  "book.button": "Recipes · R",
+  "book.fill": "Place ingredients · A",
+  "book.missing": "Required ingredients are missing.",
+  "book.empty_grid": "Empty the crafting grid first.",
+  "book.hint": "Select with arrows. R / B closes.",
+  "set.graphics": "Graphics profile",
+  "set.fast": "Fast",
+  "set.balanced": "Balanced",
+  "set.fancy": "Fancy",
+  "set.profile_hint": "Presets adjust distance, clouds and particles.",
+  "book.clear": "Clear grid · L",
+  "book.available": "Craftable only · Y",
+  "book.all": "All recipes · Y",
+  "book.none": "No craftable recipes with the items in your inventory.",
+  "ui.search_items": "Search items",
+  "ui.search_all": "All · F / −"
 }

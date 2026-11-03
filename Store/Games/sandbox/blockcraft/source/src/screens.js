@@ -6,7 +6,7 @@ import { B } from "./registry.js";
 import { listWorlds, newWorldId, deleteWorld, loadWorld } from "./storage.js";
 import { seedFromString, clamp } from "./util.js";
 
-const TAGLINES = 8, VERSION = "1.0.3";
+const TAGLINES = 8, VERSION = "1.1.0";
 
 export class Screens {
   constructor(app) {
@@ -28,6 +28,8 @@ export class Screens {
   // Menus intentionally use only 2D drawing. Opening the application must not
   // allocate native voxel worlds, start generation threads or build GPU meshes.
   drawBackground(w, h) {
+    if (!this.background) this.background=gfx.image("bundle:/textures/title.png");
+    if (this.background) { gfx.draw(this.background,0,0,w,h);return; }
     gfx.gradient(0, 0, w, h, "#355E94", "#ABCDBF");
     const unit = Math.max(8, Math.ceil(w / 64));
     gfx.color("#DFEADD"); gfx.rect(w * .74, h * .14, unit * 5, unit * 5);
@@ -65,14 +67,11 @@ export class Screens {
 
   // The logo: a grass block next to the name, an accent bar and the subtitle under it.
   logo(w, y, k) {
-    const name = TR("title"), size = 70 * k;
-    const tw = gfx.textWidth(name, size, "bold"), bs = 78 * k, gap = 16 * k;
-    const x0 = (w - (bs + gap + tw)) / 2;
-    drawIcon(B.grass, x0, y + 2 * k, bs);
-    shadowText(name, x0 + bs + gap, y + 6 * k, size, "#FFFFFF", "left", 0, "bold");
-    const by = y + 6 * k + size * 1.18;
-    gfx.gradient(x0 + bs + gap, by, tw, 5 * k, "#7ED957", "#3DC6C4", true);
-    shadowText(TR("subtitle"), 0, y + bs + 26 * k, 18 * k, "#E0E8FF", "center", w, "semibold");
+    if (!this.wordmark) this.wordmark=gfx.image("bundle:/textures/wordmark.png");
+    const width=Math.min(w-40*k,760*k),height=width*144/868;
+    if(this.wordmark)gfx.draw(this.wordmark,(w-width)/2,y,width,height);
+    else shadowText(TR("title"),0,y,70*k,"#FFFFFF","center",w);
+    shadowText(TR("subtitle"),0,y+height+12*k,18*k,"#E0E8FF","center",w,"semibold");
   }
 
   title(w, h, k, dt) {
@@ -83,7 +82,7 @@ export class Screens {
     // one line about the game under the logo, a new one every six seconds (cross-faded)
     const per = 6, tt = this.t / per, f = tt % 1, a = Math.min(1, f * 6, (1 - f) * 6);
     const line = TR("tagline." + (1 + ((this.tagline + Math.floor(tt)) % TAGLINES)));
-    const ts = 15 * k, th = 32 * k, cw = gfx.textWidth(line, ts, "semibold") + 52 * k, cx = (w - cw) / 2, cy = ty + 140 * k;
+    const ts = 15 * k, th = 32 * k, cw = gfx.textWidth(line, ts, "semibold") + 52 * k, cx = (w - cw) / 2, cy = ty + 190 * k;
     gfx.color("#0B1222B8"); gfx.rect(cx, cy, cw, th, th / 2);
     gfx.color("#FFFFFF22"); gfx.rectLine(cx, cy, cw, th, th / 2, 1);
     gfx.alpha(a);
@@ -191,6 +190,7 @@ export class Screens {
   }
 
   settings(w, h, k) {
+    k=Math.min(k,(h-30)/570);
     const m = this.menu, s = this.app.settings;
     const pw = Math.min(w - 40 * k, 860 * k), ph = Math.min(h - 40 * k, 600 * k), px = (w - pw) / 2, py = (h - ph) / 2;
     panel(px, py, pw, ph, k);
@@ -198,6 +198,9 @@ export class Screens {
     const cw = (pw - 72 * k) / 2, bh = 44 * k, gap = 10 * k, c0 = px + 24 * k, c1 = c0 + cw + 24 * k;
     let y = py + 62 * k;
     const old = JSON.stringify(s);
+    const preset=m.option("graphics",TR("set.graphics"),s.graphics??1,[0,1,2],[TR("set.fast"),TR("set.balanced"),TR("set.fancy")],c0,y,cw,bh,k);
+    if (preset!==s.graphics) { s.graphics=preset;s.renderDistance=[3,4,6][preset];s.clouds=preset===2;s.waving=preset>0; }
+    gfx.color("#C8D4D2");gfx.text(TR("set.profile_hint"),c1,y+14*k,13*k,"sans");y+=bh+gap;
     s.renderDistance = m.slider("rd", TR("set.render_distance"), s.renderDistance, 3, 8, 1, c0, y, cw, bh, k, v => TR("set.chunks", v));
     s.fov = m.slider("fov", TR("set.fov"), s.fov, 50, 110, 1, c1, y, cw, bh, k); y += bh + gap;
     s.sensitivity = m.slider("sens", TR("set.sensitivity"), s.sensitivity, 0.3, 3, 0.1, c0, y, cw, bh, k, v => v.toFixed(1));
@@ -219,6 +222,7 @@ export class Screens {
   }
 
   help(w, h, k) {
+    k=Math.min(k,(h-30)/620);
     const m = this.menu;
     const pw = Math.min(w - 40 * k, 900 * k), ph = Math.min(h - 40 * k, 620 * k), px = (w - pw) / 2, py = (h - ph) / 2;
     panel(px, py, pw, ph, k);
@@ -240,8 +244,10 @@ export class Screens {
 
   pause(w, h, k) {
     const m = this.menu, g = this.app.game;
+    k=Math.min(k,h/(g.mode==='creative'?650:570));
     gfx.color("#00000099"); gfx.rect(0, 0, w, h);
     shadowText(TR("ui.paused"), 0, h * 0.16, 34 * k, "#FFFFFF", "center", w);
+    shadowText(g.meta?.name||'',0,h*.16+44*k,15*k,'#CED4BE','center',w,'sans');
     const bw = 380 * k, bh = 48 * k, bx = (w - bw) / 2;
     let y = h * 0.3;
     // (the key that opened the menu must not close it again in the same frame)
@@ -278,6 +284,7 @@ export class Screens {
     const bw = 420 * k, bx = (w - bw) / 2, by = h * 0.4 + 50 * k;
     gfx.color("#2A3240"); gfx.rect(bx, by, bw, 14 * k, 7 * k);
     gfx.color("#4CB860"); gfx.rect(bx, by, Math.max(14 * k, bw * clamp(g ? g.loadProgress || 0 : 0, 0, 1)), 14 * k, 7 * k);
+    shadowText(Math.floor(clamp(g?.loadProgress||0,0,1)*100)+'%',0,by+19*k,16*k,'#FFFFFF','center',w);
     gfx.color("#9AA4B8"); gfx.wrap(TR("tip." + (1 + (Math.floor(this.t / 6) % 9))), w * 0.2, by + 40 * k, w * 0.6, 15 * k, "sans", "center");
   }
 }

@@ -11,7 +11,7 @@ import { clamp } from "./src/util.js";
 import { normalizeSettings } from "./src/settings.js";
 
 const DEFAULTS = {
-  renderDistance: 6, fov: 75, sensitivity: 1, volume: 0.8, music: true, viewBobbing: true, waving: true, clouds: true,
+  renderDistance: 4, graphics: 1, fov: 75, sensitivity: 1, volume: 0.8, music: true, viewBobbing: true, waving: true, clouds: false,
   invertY: false, rumble: true, showFps: false, uiScale: 0, autoSprint: false,
 };
 
@@ -33,6 +33,7 @@ A.memUse = () => {
   try { const m = sys.memory(); return m && m[1] > 0 ? m[0] / m[1] : 0; } catch (e) { return 0; }
 };
 A.startGame = (meta) => {
+  if (!A.gpuChecked && !A.noGpu) { A.noGpu=!g3d.gpu();A.gpuChecked=true; }
   if (A.noGpu || A.noVoxels) {
     ui.alert(TR("title"), TR(A.noGpu ? "ui.no_gpu" : "ui.no_voxels"), [TR("ui.ok")], () => {});
     return;
@@ -85,11 +86,13 @@ app.load = () => {
   A.invui = new InvUI(A);
   A.screens = new Screens(A);
   // Capability checks must not call the native world constructor during startup.
-  A.noGpu = typeof g3d === "undefined" || typeof g3d.gpu !== "function" || !g3d.gpu();
+  A.noGpu = typeof g3d === "undefined" || typeof g3d.gpu !== "function";
+  A.gpuChecked=false;
   A.noVoxels = typeof g3d === "undefined" || typeof g3d.voxels !== "function";
 };
 
 app.update = (dt) => {
+  A.frameSeconds = dt;
   dt = Math.min(dt, 0.05);
   const g = A.game;
   A.input.w = A.w; A.input.h = A.h;

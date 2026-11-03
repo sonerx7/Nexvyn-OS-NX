@@ -291,5 +291,22 @@
   "msg.load_failed": "이 월드를 불러올 수 없습니다.",
   "msg.low_memory_view": "메모리가 부족합니다: 시야 거리를 {0}청크로 줄였습니다",
   "ui.inv_help_touch": "탭해서 집고 다시 탭해서 놓기 · 드래그로 이동 · 길게 눌러 나누기 · 바깥을 탭해서 버리기",
-  "ui.no_voxels": "BlockCraft requires the JavaScript voxel API (SDK 1.7 or later). Update the Nexvyn OS system."
+  "ui.no_voxels": "BlockCraft requires the JavaScript voxel API (SDK 1.7 or later). Update the Nexvyn OS system.",
+  "book.title": "Recipe Book",
+  "book.button": "Recipes · R",
+  "book.fill": "Place ingredients · A",
+  "book.missing": "Required ingredients are missing.",
+  "book.empty_grid": "Empty the crafting grid first.",
+  "book.hint": "Select with arrows. R / B closes.",
+  "set.graphics": "Graphics profile",
+  "set.fast": "Fast",
+  "set.balanced": "Balanced",
+  "set.fancy": "Fancy",
+  "set.profile_hint": "Presets adjust distance, clouds and particles.",
+  "book.clear": "Clear grid · L",
+  "book.available": "Craftable only · Y",
+  "book.all": "All recipes · Y",
+  "book.none": "No craftable recipes with the items in your inventory.",
+  "ui.search_items": "Search items",
+  "ui.search_all": "All · F / −"
 }

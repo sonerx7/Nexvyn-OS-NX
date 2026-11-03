@@ -80,9 +80,11 @@ export class Menu {
     gfx.color("#00000060");
     gfx.rect(x + 2 * k, y + 3 * k, w, h, 6 * k);
     gfx.color(!enabled ? "#2A2D33" : opts.primary ? (on ? "#3E9B4F" : "#2F7D3E") : on ? "#4A5160" : "#323741");
-    gfx.rect(x, y, w, h, 6 * k);
+    gfx.rect(x, y, w, h, 0);
     gfx.color(on ? "#FFFFFF" : "#FFFFFF22");
-    gfx.rectLine(x, y, w, h, 6 * k, on ? 2.5 * k : 1);
+    gfx.rectLine(x, y, w, h, 0, on ? 2.5 * k : 1);
+    gfx.color(on ? "#CAD5BA" : "#A2A69E");gfx.rect(x+2*k,y+2*k,w-4*k,2*k,0);
+    gfx.color("#1F2420");gfx.rect(x+2*k,y+h-4*k,w-4*k,2*k,0);
     if (opts.icon) { gfx.icon(opts.icon, x + 22 * k, y + h / 2, 22 * k, enabled ? "#FFFFFF" : "#888888"); }
     shadowText(label, x + (opts.icon ? 20 * k : 0), y + (h - 20 * k) / 2, 18 * k, enabled ? (on ? "#FFFFA0" : "#FFFFFF") : "#8A8A8A", "center", w - (opts.icon ? 20 * k : 0));
     const clicked = enabled && (hit.clicked || (this.focus === i && input.pressed("a")));
@@ -119,10 +121,10 @@ export class Menu {
     if (this.focus === i) { const s = this.side(); if (s) { this.usePad = true; v = clamp(Math.round((v + s * step) / step) * step, min, max); } }
     v = clamp(v, min, max);
     gfx.color("#00000060"); gfx.rect(x + 2 * k, y + 3 * k, w, h, 6 * k);
-    gfx.color("#262A31"); gfx.rect(x, y, w, h, 6 * k);
+    gfx.color("#262A31"); gfx.rect(x, y, w, h, 0);
     const f = (v - min) / (max - min);
     gfx.color(on ? "#3E7DD8" : "#2E5EA6"); gfx.rect(x, y, Math.max(12 * k, w * f), h, 6 * k);
-    gfx.color(on ? "#FFFFFF" : "#FFFFFF22"); gfx.rectLine(x, y, w, h, 6 * k, on ? 2.5 * k : 1);
+    gfx.color(on ? "#FFFFFF" : "#FFFFFF22"); gfx.rectLine(x, y, w, h, 0, on ? 2.5 * k : 1);
     gfx.color("#E8ECF4"); gfx.rect(x + (w - 10 * k) * f, y + 2 * k, 10 * k, h - 4 * k, 3 * k);
     shadowText(`${label}: ${fmt(Math.round(v * 1000) / 1000)}`, x, y + (h - 20 * k) / 2, 18 * k, on ? "#FFFFA0" : "#FFFFFF", "center", w);
     return v;
