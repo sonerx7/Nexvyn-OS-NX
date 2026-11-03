@@ -17,5 +17,6 @@
 | <img src="piano/icon.png" width="32"> | [Piyano](piano/) | 1.1.0 | Çal, kaydet, şarkıları tuş tuş öğren |
 | <img src="pixelart/icon.png" width="32"> | [Piksel Sanatı](pixelart/) | 1.1.0 | 64×64'e kadar sprite, PNG dışa aktarma |
 | <img src="radio/icon.png" width="32"> | [Radyo](radio/) · Nexvyn OS ile gelir | 1.0 | Dünyadan binlerce canlı radyo istasyonu |
+| <img src="tikto-nx/icon.png" width="32"> | [TikTo-NX](tikto-nx/) | 0.1.0 | Native TikTok videoları ve herkese açık profiller |
 | <img src="noise/icon.png" width="32"> | [Beyaz Gürültü](noise/) | 1.1.0 | Uykuya dalmak için yağmur, dalga, gürültü |
 | <img src="tube/icon.png" width="32"> | [YousTube](tube/) · Nexvyn OS ile gelir | 1.0 | YouTube videoları, Shorts ve kanallar |

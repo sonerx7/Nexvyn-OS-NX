@@ -1,0 +1,36 @@
+wait 2
+setup tr
+wait 2
+closeall
+launch tiktok @scout2015
+wait 9
+shot tikto-nx-profile
+stats profile
+wclick 0.90 0.176
+wait 1
+wclick 0.29 0.54
+wait 8
+shot tikto-nx-playing
+stats playing
+wclick 0.88 0.46
+wait 1
+key down
+wait 6
+shot tikto-nx-next
+key space
+wait 1
+shot tikto-nx-paused
+wait 2
+shot tikto-nx-paused-still
+wclick 0.88 0.892
+wait 1
+wclick 0.08 0.373
+wait 1
+shot tikto-nx-saved
+wclick 0.08 0.294
+wait 1
+shot tikto-nx-following
+wclick 0.08 0.535
+wait 1
+shot tikto-nx-account
+stats complete

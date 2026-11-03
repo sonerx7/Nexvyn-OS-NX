@@ -17,5 +17,6 @@
 | <img src="piano/icon.png" width="32"> | [Piano](piano/) | 1.1.0 | Play, record and learn songs key by key |
 | <img src="pixelart/icon.png" width="32"> | [Pixel Art](pixelart/) | 1.1.0 | Sprites up to 64×64, exported as PNG |
 | <img src="radio/icon.png" width="32"> | [Radio](radio/) · ships with Nexvyn OS | 1.0 | Thousands of live stations worldwide |
+| <img src="tikto-nx/icon.png" width="32"> | [TikTo-NX](tikto-nx/) | 0.1.0 | Native TikTok videos and public profiles |
 | <img src="noise/icon.png" width="32"> | [White Noise](noise/) | 1.1.0 | Rain, waves and noise to help you sleep |
 | <img src="tube/icon.png" width="32"> | [YousTube](tube/) · ships with Nexvyn OS | 1.0 | YouTube videos, Shorts and channels |
