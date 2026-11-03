@@ -6,9 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Check the [roadmap](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/ROADMAP.md) first; it may already be
-        planned. / Önce [yol haritasına](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/ROADMAP.tr.md) bakın; belki
-        zaten planlanmıştır.
+        Search the open and closed issues first; the idea may already be there. / Önce açık ve kapalı konulara bakın;
+        fikir orada olabilir.
   - type: input
     id: area
     attributes:

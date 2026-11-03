@@ -3,3 +3,9 @@ contact_links:
   - name: Publishing guide / Yayımlama rehberi
     url: https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.en.md
     about: How to publish an app, game, theme or font in the App Market (English and Turkish).
+  - name: Report a security vulnerability / Güvenlik açığı bildir
+    url: https://github.com/sonerx7/Nexvyn-OS-NX/security/advisories/new
+    about: Privately, never as a public issue. See SECURITY.md. / Özel olarak, asla herkese açık konu olarak değil.
+  - name: Contributing / Katkı
+    url: https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/CONTRIBUTING.md
+    about: How to publish an item, report bugs, translate and improve the SDK (English and Turkish).
