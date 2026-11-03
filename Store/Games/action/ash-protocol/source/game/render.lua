@@ -3,6 +3,8 @@ local R={models={},catalog={},loaded=0,batches={},quality=2,drawCalls=0,triangle
 local sin,cos,sqrt,min,max,floor=math.sin,math.cos,math.sqrt,math.min,math.max,math.floor
 local function rgb(c)return {tonumber(c:sub(2,3),16),tonumber(c:sub(4,5),16),tonumber(c:sub(6,7),16)}end
 local function draw(mesh,x,y,z,rx,ry,rz,sx,sy,sz,color,flags)
+ -- colour tables must hold whole numbers on Nexvyn OS 1.2.0 and older
+ if type(color)=="table" then color={floor(color[1]+.5),floor(color[2]+.5),floor(color[3]+.5),color[4] and floor(color[4]+.5) or nil} end
  if mesh then g3d.draw(mesh,x,y,z,rx or 0,ry or 0,rz or 0,sx or 1,sy or sx or 1,sz or sx or 1,color,flags);R.drawCalls=R.drawCalls+1 end
 end
 function R.init()
