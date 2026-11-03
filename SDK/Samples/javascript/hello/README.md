@@ -23,12 +23,12 @@ The built-in **Hello JS** app: a to-do list, an analog clock and live weather JS
 - a toast with `setTimeout` / `clearTimeout`
 - `app.menu` / `app.onmenu`, the `ui.alert` Promise
 
-**Controls:** Switch tabs with the segmented control at the top.
+**Controls:** Change tabs with the segmented control at the top.
 
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `hello.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/javascript/hello/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 
 Files (lines): `clock.js` (59), `main.js` (195), `todos.js` (47).
 

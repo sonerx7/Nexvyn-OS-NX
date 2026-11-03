@@ -17,4 +17,4 @@
 | <img src="savebackup/icon.png" width="32"> | [Kayıt Yedekleme](savebackup/) · Nexvyn OS ile gelir | 1.0 | Oyun kayıtlarını yedekle, geri yükle |
 | <img src="sysmodules/icon.png" width="32"> | [Sistem Modülleri](sysmodules/) · Nexvyn OS ile gelir | 1.0 | Arka plan sistem modüllerini gör, yönet |
 | <img src="turkish-patches/icon.png" width="32"> | [Türkçe Yamalar](turkish-patches/) · Nexvyn OS ile gelir | 1.0 | Oyunlarını Türkçe oynat, yamaları kolayca kur |
-| <img src="yamanx/icon.png" width="32"> | [YamaNX](yamanx/) · Nexvyn OS ile gelir | 1.0 | Switch oyunların için Türkçe yamalar |
+| <img src="yamanx/icon.png" width="32"> | [YamaNX](yamanx/) · Nexvyn OS ile gelir | 1.0 | Konsol oyunların için Türkçe yamalar |

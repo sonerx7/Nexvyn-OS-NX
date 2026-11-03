@@ -25,7 +25,7 @@ A small tool that works out the tip, the total and each person's share of a bill
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `tipcalc.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/c/tipcalc/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 - **C:** no build step; the `.c` files are compiled on the console when the app opens. A C app installed from the SD card asks for consent once.
 
 Files (lines): `main.c` (139).

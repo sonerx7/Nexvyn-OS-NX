@@ -29,7 +29,7 @@ The manifest above works as is. A `main` ending in `.lua` needs no `"runtime"`. 
   (Ctrl+R). Errors are marked on their line, `print` output goes to Studio's console.
 - **On the console from a PC:** copy the folder into `sdmc:/NexvynOS/Applications/` (FTP: **Connect to PC**, or
   `nxv push`) and reopen Launcher.
-- **In Ryujinx:** copy the folder into `NexvynOS/Applications/` in the emulator's SD card folder (`nxv install`). A
+- **In an emulator:** copy the folder into `NexvynOS/Applications/` in its SD card folder (`nxv install`). A
   line `launch com.you.myapp` in `sdmc:/NexvynOS/autorun.txt` opens the app at boot; delete the file after testing.
 
 ## Checking it on a PC

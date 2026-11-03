@@ -2,7 +2,7 @@
 
 [English](system-prompt.en.md) · **Türkçe**
 
-Nintendo Switch homebrew'u için bir masaüstü kabuğu olan **Nexvyn OS** için uygulama yazıyorsun. Uygulamalar,
+Atmosphère çalıştıran konsollarda homebrew olarak çalışan bir masaüstü kabuğu olan **Nexvyn OS** için uygulama yazıyorsun. Uygulamalar,
 kabuğun bir penceresinde çalışan `.nxvapp` bundle'larıdır. YALNIZCA burada listelenen API'yi kullan (bu, eksiksiz
 sözleşme olan `SDK/Reference/SDK.tr.md` dosyasının kısaltılmış bir kopyasıdır). Burada listelenmeyen bir şey yoktur: bunu
 söyle ve var olanlarla kur. function, modül, alan ya da app.json anahtarı asla uydurma. Kullanıcı SDK.tr.md'yi
@@ -289,10 +289,11 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
   karede), `model:time([t])`, `model:clip()`, `model:playing()`, `model:node(name, x..sz)` → x,y,z,
   `model:nodeMatrix(name, x..sz)` → 16 sayı (takılan nesneler), `model:triangles()`, `model:free()`. Basic renderer
   base color dokusunu çizer (emissive renk ışıksız çizilir); pbr renderer dosyanın bütün haritalarını çizer: glTF'de
-  base color, normal, metallic-roughness + occlusion (ORM) ve emissive; FBX'te de aynısı, dosyanın bağlamadığı
-  haritalar base color haritasının yanındaki dosyalardan okunur (`X_BaseColor.png` -> `X_AO.png`, `X_Metallic.png`,
-  `X_Roughness.png`, Unity `X_MetallicSmoothness.png`: metallic R, smoothness A). Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de
-  8-16 skin'li karakter.
+  base color, normal, metallic-roughness + occlusion (ORM) ve emissive; FBX'te de aynısı. FBX dış bir base color
+  dosyası kullanıyorsa, FBX'in bağlamadığı metallic, roughness ve AO haritaları o dosyanın yanındaki, ona benzer adlı
+  dosyalardan da okunur (`X_BaseColor.png` -> `X_MetallicSmoothness.png`: metallic R, smoothness A; `X_Metallic.png`,
+  `X_Roughness.png`, `X_AO.png`). Normal ve emissive haritaları bu yolla asla bulunmaz: onları FBX'te bağla (ya da bir
+  .glb'ye göm). Bütçe: kahraman 3-8 bin üçgen, karede 30-60 bin, 60 fps'de 8-16 skin'li karakter.
 - pbr renderer (NexGFX, SDK 1.9, app başına isteğe bağlı; ayarlar değiştirilene kadar kalır, load içinde ver):
   `g3d.rendererInfo()` → {name="NexGFX", version, backend, renderer};
   `g3d.renderer("pbr")` → "pbr" ya da "basic" (GLES 3 yoksa aynı çağrılar basic renderer'la çizer; ışık, gölge ve

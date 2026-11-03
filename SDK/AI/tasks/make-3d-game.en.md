@@ -36,7 +36,9 @@ Requirements:
   (g3d.environment), 1-4 coloured point or spot lights with ids (g3d.addLight, moved with g3d.updateLight).
   g3d.shadows({quality = "medium", distance = <visible play area>}); g3d.postfx({exposure, tonemap = "aces" or
   "filmic", bloom = 0.03-0.1}); emissive parts above 1 glow. Models keep their PBR maps (glTF base colour, normal,
-  ORM, emissive; FBX with its texture folder next to it); plain meshes get g3d.material(mesh, {metallic, roughness,
+  ORM, emissive. FBX: link the normal and emissive maps in the FBX, or embed every map in a .glb; unlinked, only
+  MetallicSmoothness, Metallic, Roughness and AO files next to an external base colour file are found); plain meshes
+  get g3d.material(mesh, {metallic, roughness,
   ...}); glass gets {transmission = 0.9, roughness = 0.05}. Repeated props (grass, pillars, crates) use
   g3d.drawInstanced. Show the renderer and fps in a debug line I can turn off.
 - Camera: <follow / orbit / fixed / first person>, eased, with a short shake on impacts. Movement relative to the

@@ -45,7 +45,7 @@ Geri çağırma vermediğiniz her asenkron fonksiyon Promise döndürür: `const
 ## Çalıştırma
 
 - **Studio:** **Yeni Proje → Boş JS uygulaması** (ya da *Ağ uygulaması*), **Çalıştır** (Ctrl+R).
-- **Konsol / Ryujinx:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
+- **Konsol:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
   `autorun.txt` içine `launch <id>` uygulamayı açılışta açar.
 
 ## PC'de denetim

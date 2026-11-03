@@ -4,7 +4,7 @@
 
 | | Item | Version | Description |
 |---|---|---|---|
-| <img src="aichat/icon.png" width="32"> | [AI Chat](aichat/) · ships with Nexvyn OS | 1.0 | Claude, Gemini and GPT on your Switch |
+| <img src="aichat/icon.png" width="32"> | [AI Chat](aichat/) · ships with Nexvyn OS | 1.0 | Claude, Gemini and GPT on your console |
 | <img src="breathe/icon.png" width="32"> | [Breathe](breathe/) | 1.1.0 | Calm down with guided breathing |
 | <img src="budget/icon.png" width="32"> | [Budget](budget/) | 1.1.0 | Budgets, repeats and monthly charts |
 | <img src="contacts/icon.png" width="32"> | [Contacts](contacts/) · ships with Nexvyn OS | 1.0 | Your address book, with vCard import |

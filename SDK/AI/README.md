@@ -46,7 +46,7 @@ Every file comes in two versions: English `X.en.md` and Turkish `X.tr.md`. Both 
 4. **Check it.** The assistant's code must always pass the checker:
    `python SDK/Tools/nxv/nxv.py check <folder> --sdk <Nexvyn OS checkout>`. If it fails, send the output back with the
    [tasks/fix-lua-check.en.md](tasks/fix-lua-check.en.md) prompt.
-5. **Try it on the console.** The checkers use a mock SDK; the real test is the console or Ryujinx.
+5. **Try it on the console.** The checkers use a mock SDK; the real test is the console.
 
 Safety: do not give the assistant API keys, passwords or personal data, and do not let it embed such values in the
 code. Store review rejects apps that collect hidden data.

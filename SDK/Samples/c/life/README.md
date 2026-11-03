@@ -26,7 +26,7 @@ Conway's Game of Life: paint cells, run, step; the board is saved when you close
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `life.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/c/life/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 - **C:** no build step; the `.c` files are compiled on the console when the app opens. A C app installed from the SD card asks for consent once.
 
 Files (lines): `main.c` (173).

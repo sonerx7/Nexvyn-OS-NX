@@ -26,7 +26,7 @@ Roll one to six dice from d4 to d20, hold some, see your last twelve rolls.
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `dice.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/java/dice/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 - **Java:** after changing `src/`, rebuild `app.jar` on a PC: `python tools/java_build.py app SDK/Samples/java/dice/source` (JDK 8+; or `python SDK/Tools/nxv/nxv.py build SDK/Samples/java/dice/source`).
 
 Files (lines): `src/dice/DiceApp.java` (175).

@@ -19,11 +19,11 @@
   "minSdk": "1.6",
   "license": "YamaNX license (SertAy, all rights reserved, non-commercial) - see LICENSE and NOTICE.md",
   "description": {
-    "en": "Turkish patch installer for Switch games. Based on YamaNX by SertAy",
-    "tr": "Switch oyunları için Türkçe yama yükleyici. SertAy'ın YamaNX'i temel alınmıştır",
-    "de": "Installer für türkische Patches für Switch-Spiele. Basiert auf YamaNX von SertAy",
-    "fr": "Installateur de patchs turcs pour les jeux Switch. Basé sur YamaNX de SertAy",
-    "es": "Instalador de parches turcos para juegos de Switch. Basado en YamaNX de SertAy"
+    "en": "Turkish patch installer for console games. Based on YamaNX by SertAy",
+    "tr": "Konsol oyunları için Türkçe yama yükleyici. SertAy'ın YamaNX'i temel alınmıştır",
+    "de": "Installer für türkische Patches für Konsolenspiele. Basiert auf YamaNX von SertAy",
+    "fr": "Installateur de patchs turcs pour les jeux de la console. Basé sur YamaNX de SertAy",
+    "es": "Instalador de parches turcos para juegos de consola. Basado en YamaNX de SertAy"
   },
   "permissions": [
     "network",

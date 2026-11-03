@@ -21,12 +21,12 @@ The built-in **Hello Python** app: a to-do list, an analog clock and live weathe
 - `net.json(url, callback)` with `(data, error)` (`network` permission)
 - `store`, a toast with `timer.after`, a menu and a method passed as the `ui.alert` callback
 
-**Controls:** Switch tabs with the segmented control at the top.
+**Controls:** Change tabs with the segmented control at the top.
 
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `hello.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/python/hello/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 
 Files (lines): `clock.py` (63), `main.py` (216), `todos.py` (49).
 

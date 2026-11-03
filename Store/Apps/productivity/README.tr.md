@@ -4,7 +4,7 @@
 
 | | Öğe | Sürüm | Açıklama |
 |---|---|---|---|
-| <img src="aichat/icon.png" width="32"> | [AI Sohbet](aichat/) · Nexvyn OS ile gelir | 1.0 | Claude, Gemini ve GPT artık Switch'inde |
+| <img src="aichat/icon.png" width="32"> | [AI Sohbet](aichat/) · Nexvyn OS ile gelir | 1.0 | Claude, Gemini ve GPT artık konsolunda |
 | <img src="breathe/icon.png" width="32"> | [Nefes](breathe/) | 1.1.0 | Rehberli nefesle sakinleş |
 | <img src="budget/icon.png" width="32"> | [Bütçe](budget/) | 1.1.0 | Bütçeler, tekrarlar, aylık grafikler |
 | <img src="contacts/icon.png" width="32"> | [Kişiler](contacts/) · Nexvyn OS ile gelir | 1.0 | vCard destekli adres defterin |

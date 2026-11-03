@@ -37,7 +37,7 @@ library: an API the console lacks (for example `Random.nextBoolean`) fails on th
 
 - **Studio:** **New Project → Blank Java App** comes with a compiled jar and runs; rebuild the jar on a PC after
   changing the source.
-- **Console / Ryujinx:** copy the folder (with the jar) into `NexvynOS/Applications/` (`nxv push` / `nxv install`).
+- **Console:** copy the folder (with the jar) into `NexvynOS/Applications/` (`nxv push` / `nxv install`).
 
 ## Checking it on a PC
 

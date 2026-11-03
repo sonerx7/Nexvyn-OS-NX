@@ -28,7 +28,7 @@ Yerleşik **Merhaba SDK** uygulaması: üç sekmede canlı bileşenler, canlı �
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `hello.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/lua/hello/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 
 Dosyalar (satır): `main.lua` (122).
 

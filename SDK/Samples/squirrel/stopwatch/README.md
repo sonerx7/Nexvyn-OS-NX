@@ -26,7 +26,7 @@ A stopwatch with laps: the fastest lap green, the slowest red; time and laps sur
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `stopwatch.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/squirrel/stopwatch/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 
 Files (lines): `main.nut` (146).
 

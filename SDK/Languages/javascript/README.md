@@ -24,7 +24,7 @@ in the code above. Every asynchronous SDK function returns a Promise when you le
 ## Running it
 
 - **Studio:** **New Project → Blank JS App** (or *Network app*), **Run** (Ctrl+R).
-- **Console / Ryujinx:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`). `launch <id>` in
+- **Console:** copy the folder into `NexvynOS/Applications/` (`nxv push` / `nxv install`). `launch <id>` in
   `autorun.txt` opens it at boot.
 
 ## Checking it on a PC

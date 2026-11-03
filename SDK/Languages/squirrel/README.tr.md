@@ -48,7 +48,7 @@ Diğer dosyalar: `local Saat = import("saat");` (`saat.nut` bir kez çalışır,
 ## Çalıştırma
 
 - **Studio:** **Yeni Proje → Boş Squirrel uygulaması**, **Çalıştır** (Ctrl+R).
-- **Konsol / Ryujinx:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
+- **Konsol:** klasörü `NexvynOS/Applications/` içine kopyalayın (`nxv push` / `nxv install`).
 
 ## PC'de denetim
 
@@ -58,7 +58,7 @@ Nexvyn OS kaynak deposunun kökünden:
 
 Metinleri, yorumları ve parantezleri, her SDK çağrısının gerçek bir fonksiyon olduğunu ve argüman sayısını,
 `import` edilen dosyaların varlığını, `TR` anahtarlarını ve `network` iznini denetler. Kodu çalıştırmaz: mantık
-hatalarını konsolda ya da Ryujinx'te deneyin.
+hatalarını konsolda deneyin.
 
 ## Sık yapılan hatalar
 

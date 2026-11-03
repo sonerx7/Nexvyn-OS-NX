@@ -22,12 +22,12 @@ The built-in **Hello Java** app: a to-do list, an analog clock and live weather 
 - `Record` (`str`, `num`, `integer`, `bool`, `rec`), a `List` in `Store`
 - `Menu.bar(new Menu(...).item(...).separator())`, `Timer.after`, `Ui.alert`
 
-**Controls:** Switch tabs with the segmented control at the top.
+**Controls:** Change tabs with the segmented control at the top.
 
 ## Running it
 
 - **On the console:** copy the `source/` folder to `sdmc:/NexvynOS/Applications/` as `hello.nxvapp` (or `python SDK/Tools/nxv/nxv.py push SDK/Samples/java/hello/source --host <console-ip>`) and open it from Launcher. You can also open the folder in Nexvyn OS Studio and press **Run** (Ctrl+R).
-- **In Ryujinx:** copy the same folder to `NexvynOS/Applications/` in the emulator's SD card folder.
+- **In an emulator:** copy the same folder to `NexvynOS/Applications/` in its SD card folder.
 - **Java:** after changing `src/`, rebuild `app.jar` on a PC: `python tools/java_build.py app SDK/Samples/java/hello/source` (JDK 8+; or `python SDK/Tools/nxv/nxv.py build SDK/Samples/java/hello/source`).
 
 Files (lines): `src/hello/HelloApp.java` (238).

@@ -1,16 +1,16 @@
 {
   "subtitle": {
-    "en": "Claude, Gemini and GPT on your Switch",
-    "tr": "Claude, Gemini ve GPT artık Switch'inde",
-    "de": "Claude, Gemini und GPT auf deiner Switch",
-    "fr": "Claude, Gemini et GPT sur votre Switch",
-    "es": "Claude, Gemini y GPT en tu Switch",
-    "ja": "Switch で Claude、Gemini、GPT",
-    "zh": "在 Switch 上使用 Claude、Gemini 和 GPT",
-    "ko": "Switch에서 Claude, Gemini, GPT를"
+    "en": "Claude, Gemini and GPT on your console",
+    "tr": "Claude, Gemini ve GPT artık konsolunda",
+    "de": "Claude, Gemini und GPT auf deiner Konsole",
+    "fr": "Claude, Gemini et GPT sur votre console",
+    "es": "Claude, Gemini y GPT en tu consola",
+    "ja": "本体で Claude、Gemini、GPT",
+    "zh": "在主机上使用 Claude、Gemini 和 GPT",
+    "ko": "콘솔에서 Claude, Gemini, GPT를"
   },
   "description": {
-    "en": "Chat with the AI model you prefer, right from the desktop. Bring your own API key for Anthropic, Google Gemini, OpenAI or NVIDIA, or point it at any OpenAI-compatible server, including a local model on your computer. Replies stream in live with formatted text and code blocks you can copy. Your conversations are saved, searchable and easy to pick up again.\n\n• Switch provider and model from the toolbar at any time\n• Markdown answers with copyable code blocks\n• Attach text files and ask questions about them\n• Per-chat system prompt and temperature\n• Rename, search, copy or export conversations\n• API keys stay on the console, encrypted",
+    "en": "Chat with the AI model you prefer, right from the desktop. Bring your own API key for Anthropic, Google Gemini, OpenAI or NVIDIA, or point it at any OpenAI-compatible server, including a local model on your computer. Replies stream in live with formatted text and code blocks you can copy. Your conversations are saved, searchable and easy to pick up again.\n\n• Change provider and model from the toolbar at any time\n• Markdown answers with copyable code blocks\n• Attach text files and ask questions about them\n• Per-chat system prompt and temperature\n• Rename, search, copy or export conversations\n• API keys stay on the console, encrypted",
     "tr": "Dilediğin yapay zekâ modeliyle doğrudan masaüstünden sohbet et. Anthropic, Google Gemini, OpenAI ya da NVIDIA için kendi API anahtarını ekle veya bilgisayarındaki yerel model dahil herhangi bir OpenAI uyumlu sunucuya bağlan. Yanıtlar biçimlendirilmiş metin ve kopyalanabilir kod bloklarıyla canlı akar. Sohbetlerin kaydedilir, aranabilir ve kaldığın yerden devam edebilirsin.\n\n• Sağlayıcıyı ve modeli araç çubuğundan istediğin an değiştir\n• Kopyalanabilir kod bloklarıyla Markdown yanıtlar\n• Metin dosyası ekle, içeriği hakkında soru sor\n• Sohbete özel sistem istemi ve sıcaklık ayarı\n• Sohbetleri yeniden adlandır, ara, kopyala ya da dışa aktar\n• API anahtarları konsolda, şifreli olarak saklanır",
     "de": "Chatte direkt vom Desktop aus mit dem KI-Modell deiner Wahl. Nutze deinen eigenen API-Schlüssel für Anthropic, Google Gemini, OpenAI oder NVIDIA oder verbinde dich mit einem beliebigen OpenAI-kompatiblen Server, auch mit einem lokalen Modell auf deinem PC. Antworten erscheinen live, mit formatiertem Text und kopierbaren Codeblöcken. Deine Unterhaltungen werden gespeichert, sind durchsuchbar und jederzeit fortsetzbar.\n\n• Anbieter und Modell jederzeit in der Symbolleiste wechseln\n• Markdown-Antworten mit kopierbaren Codeblöcken\n• Textdateien anhängen und Fragen dazu stellen\n• Systemprompt und Temperatur pro Chat\n• Chats umbenennen, durchsuchen, kopieren oder exportieren\n• API-Schlüssel bleiben verschlüsselt auf der Konsole",
     "fr": "Discutez avec le modèle d’IA de votre choix, directement depuis le bureau. Utilisez votre propre clé d’API pour Anthropic, Google Gemini, OpenAI ou NVIDIA, ou connectez-vous à n’importe quel serveur compatible OpenAI, y compris un modèle local sur votre ordinateur. Les réponses s’affichent en direct, avec du texte mis en forme et des blocs de code à copier. Vos conversations sont enregistrées, consultables et faciles à reprendre.\n\n• Changez de fournisseur et de modèle depuis la barre d’outils\n• Réponses Markdown avec blocs de code copiables\n• Joignez des fichiers texte et posez vos questions\n• Prompt système et température propres à chaque conversation\n• Renommez, recherchez, copiez ou exportez vos conversations\n• Les clés d’API restent chiffrées sur la console",

@@ -45,7 +45,7 @@ Her dosyanın iki sürümü vardır: İngilizce `X.en.md` ve Türkçe `X.tr.md`.
 4. **Denetleyin.** Asistanın kodu her zaman checker'dan geçmeli:
    `python SDK/Tools/nxv/nxv.py check <klasör> --sdk <Nexvyn OS kaynak klasörü>`. Hata çıkarsa çıktıyı
    [tasks/fix-lua-check.tr.md](tasks/fix-lua-check.tr.md) prompt'uyla geri verin.
-5. **Konsolda deneyin.** Checker'lar mock bir SDK kullanır; asıl deneme konsol ya da Ryujinx'tir.
+5. **Konsolda deneyin.** Checker'lar mock bir SDK kullanır; asıl deneme konsoldur.
 
 Güvenlik: asistana API anahtarı, parola ya da kişisel veri vermeyin; bu tür değerleri koda gömmesine izin vermeyin.
 Store incelemesi gizli veri toplayan uygulamaları geri çevirir.

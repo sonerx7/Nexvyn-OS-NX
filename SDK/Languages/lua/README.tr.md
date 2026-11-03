@@ -60,7 +60,7 @@ Diğer geri çağırmalar (SDK 1.4): `app.open`, `app.search`, `app.suspend`, `a
   (Ctrl+R). Hatalar satırıyla işaretlenir, `print` çıktısı Studio konsolundadır.
 - **Konsolda, PC'den:** klasörü `sdmc:/NexvynOS/Applications/` içine kopyalayın (FTP: **Bilgisayara Bağlan**, ya da
   `nxv push`) ve Launcher'ı yeniden açın.
-- **Ryujinx'te:** klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın (`nxv install`).
+- **Emülatörde:** klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın (`nxv install`).
   `sdmc:/NexvynOS/autorun.txt` içine `launch com.adiniz.uygulamam` satırı açılışta uygulamayı açar; testten sonra
   dosyayı silin.
 

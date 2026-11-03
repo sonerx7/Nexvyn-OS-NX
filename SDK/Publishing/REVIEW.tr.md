@@ -53,7 +53,7 @@ vermediği öğelerde gerekçesiyle).
 
 ## 6. Kalite
 
-- [ ] Konsolda ya da Ryujinx'te kurulup açılıyor; birkaç dakikalık kullanımda çökmüyor
+- [ ] Konsolda kurulup açılıyor; birkaç dakikalık kullanımda çökmüyor
 - [ ] Açık ve koyu modda okunuyor; en küçük pencere boyutunda, el modunda ve TV'de taşma yok
 - [ ] Dokunmatik, imleç ve (oyunlarda) kumandayla kullanılabiliyor; hedefler en az 28 px
 - [ ] Akıcı: `app.draw` içinde ağır iş yok, hiçbir geri çağırma 3 saniyeye (`app.load` 10'a) yaklaşmıyor; büyük

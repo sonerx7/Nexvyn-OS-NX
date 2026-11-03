@@ -26,7 +26,7 @@ d4'ten d20'ye bir ile altı zar at, bazılarını tut, son on iki atışı gör.
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `dice.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/java/dice/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 - **Java:** `src/` değişince `app.jar`'ı PC'de yeniden derleyin: `python tools/java_build.py app SDK/Samples/java/dice/source` (JDK 8+; ya da `python SDK/Tools/nxv/nxv.py build SDK/Samples/java/dice/source`).
 
 Dosyalar (satır): `src/dice/DiceApp.java` (175).

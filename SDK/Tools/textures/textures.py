@@ -10,12 +10,13 @@
     python textures.py smoothness <metallicSmoothness.png> <outRoughness.png> [--metallic outMetallic.png]
                                                              split a MetallicSmoothness map (R metallic, A smoothness)
                                                              into roughness (1 - smoothness) and metallic
-    python textures.py flipgreen <normal.png> <out.png>      convert a DirectX-style normal map (green down) to the
-                                                             OpenGL style the pbr renderer reads (green up)
+    python textures.py flipgreen <normal.png> <out.png>      convert a -Y normal map (green down) to the +Y
+                                                             normal map the pbr renderer reads (green up)
 
-Names the pbr renderer finds next to an FBX base colour map: <Name>_BaseColor, _Normal, _AO, _Metallic, _Roughness,
-_MetallicSmoothness, _Emissive (.png / .jpg). glTF (.glb) files carry their maps inside the file; pack them with ORM
-before you export, or let your exporter do it. See SDK/Guides/AI_WORKFLOW.en.md.
+Maps an FBX does not link that the pbr renderer finds next to its external base colour file (<Name>_BaseColor):
+<Name>_AO, _Metallic, _Roughness, _MetallicSmoothness (.png / .jpg). Normal and emissive maps must be linked in the
+FBX. glTF (.glb) files carry their maps inside the file; pack them with ORM before you export, or let your exporter
+do it. See SDK/Guides/AI_WORKFLOW.en.md.
 """
 import os
 import shutil

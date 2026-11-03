@@ -52,7 +52,7 @@ items the rules do not allow at all).
 
 ## 6. Quality
 
-- [ ] Installs and opens on the console or in Ryujinx; no crash in a few minutes of use
+- [ ] Installs and opens on the console; no crash in a few minutes of use
 - [ ] Readable in light and dark mode; nothing overflows at the minimum window size, handheld and TV
 - [ ] Usable by touch, cursor and (games) controller; targets of at least 28 px
 - [ ] Smooth: nothing heavy in `app.draw`, no callback near 3 seconds (`app.load` near 10); big models load with

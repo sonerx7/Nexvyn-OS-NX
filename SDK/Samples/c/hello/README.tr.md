@@ -27,7 +27,7 @@ Yerleşik **Merhaba C** uygulaması: sayaç, zıplayan toplar ve canlı JSON; ko
 ## Çalıştırma
 
 - **Konsolda:** `source/` klasörünü `hello.nxvapp` adıyla `sdmc:/NexvynOS/Applications/` içine kopyalayın (ya da `python SDK/Tools/nxv/nxv.py push SDK/Samples/c/hello/source --host <konsol-ip>`) ve Launcher'dan açın. Nexvyn OS Studio'da klasörü açıp **Çalıştır** (Ctrl+R) ile de deneyebilirsiniz.
-- **Ryujinx'te:** aynı klasörü emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
+- **Emülatörde:** aynı klasörü SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 - **C:** derleme yok; `.c` dosyaları uygulama açılırken konsolda derlenir. SD karttan kurulan C uygulaması ilk açılışta bir kez onay ister.
 
 Dosyalar (satır): `balls.c` (62), `balls.h` (8), `main.c` (124).

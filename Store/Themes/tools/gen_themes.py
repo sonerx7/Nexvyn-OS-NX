@@ -920,7 +920,7 @@ APPEAR = {
 def store_description(t, lang):
     head = {"en": "Included", "tr": "İçerik", "de": "Enthalten", "fr": "Inclus", "es": "Incluye"}[lang]
     howto = {
-        "en": "Get installs it and offers to apply it. Switch themes or restore the default look in System Settings > Appearance > Themes.",
+        "en": "Get installs it and offers to apply it. Change themes or restore the default look in System Settings > Appearance > Themes.",
         "tr": "Al ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
         "de": "„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
         "fr": "Obtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
