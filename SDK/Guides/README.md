@@ -12,7 +12,7 @@ Every guide exists in English (`NAME.en.md`) and Turkish (`NAME.tr.md`). The com
 | [PBR game recipe](PBR_GAME_RECIPE.en.md) | A complete small 3D game step by step on the pbr renderer (materials, lights, shadows, bloom, instancing, a loaded model), in Lua and JavaScript, with Python and C versions |
 | [Social app recipe](SOCIAL_APP_RECIPE.en.md) | A complete feed app step by step (network with an offline cache, web pictures, a virtualized feed, rich text, a clip player), in Lua and JavaScript, with Python and C versions |
 | [AI-assisted workflow](AI_WORKFLOW.en.md) | From AI-generated code, models and textures to a console-ready game: context packs, scale, pivot, LOD, texture sizes, ORM and MetallicSmoothness maps, normal maps, glass and emission, reflections, rights |
-| [SDK versions](SDK_VERSIONS.en.md) | What each SDK version from 1.0 to 1.9 added, which Nexvyn OS brought it, which languages get new APIs, how to set `minSdk` and `targetSdk` |
+| [SDK versions](SDK_VERSIONS.en.md) | What each SDK version from 1.0 to 1.11 added, which Nexvyn OS brought it, which languages get new APIs, how to set `minSdk` and `targetSdk` |
 | [Make a game](MAKE_A_GAME.en.md) | The complete game recipe: project, 3D models (`.glb` / `.fbx`), loading, input, collision, speed on the console, the pbr renderer budget, art direction, store icon, publishing |
 | [Make a social app](MAKE_A_SOCIAL_APP.en.md) | Feed, photo, short-video and chat apps: requests with cache and retry, uploads, WebSocket, sign-in, web pictures, video players, feeds and pagers |
 | [Sound design](SOUND_DESIGN.en.md) | The sound kit: layered recipes, variants, buses, ducking, ambience, music loops, levels |
@@ -40,6 +40,9 @@ Every guide exists in English (`NAME.en.md`) and Turkish (`NAME.tr.md`). The com
 | [App Guard](APP_GUARD.en.md) | How packages are scanned before they are installed, and what makes an app *Review* or *Dangerous* |
 | [Game engine](GAME_ENGINE.en.md) | The `nexvyn.game` 2D engine: scenes, sprites, maps, camera, physics, particles, tweens |
 | [Game Engine projects](GAME_ENGINE_PROJECTS.en.md) | The Game Engine app: games with little or no code, Quick Game, the project format |
+| [Native SDK guide](NATIVE_GUIDE.en.md) | C / C++ apps inside Nexvyn OS: install, new, build, package, crash reports (Native SDK 1.1) |
+| [Native SDK kit](NATIVE_KIT.en.md) | Every `nxv-native` command, header and CMake function of the kit |
+| [Native compatibility layer](NATIVE_COMPAT.en.md) | The POSIX / libc layer that lets ports run unchanged, and its limits |
 | [Native modules](NATIVE_MODULES.en.md) | How the optional built-in apps are installed from the App Market (internal mechanism, not an SDK) |
 | [Built-in apps in C++](APP_GUIDE.en.md) | How the system's own apps are written |
 

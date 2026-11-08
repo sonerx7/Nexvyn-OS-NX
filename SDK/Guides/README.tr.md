@@ -12,7 +12,7 @@ Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin
 | [PBR oyun tarifi](PBR_GAME_RECIPE.tr.md) | pbr renderer üzerinde adım adım eksiksiz küçük bir 3B oyun (materyal, ışık, gölge, bloom, instancing, yüklenen model), Lua ve JavaScript'te, Python ve C sürümleriyle |
 | [Sosyal uygulama tarifi](SOCIAL_APP_RECIPE.tr.md) | Adım adım eksiksiz bir akış uygulaması (çevrimdışı önbellekli ağ, web resimleri, sanal akış, zengin metin, klip oynatıcı), Lua ve JavaScript'te, Python ve C sürümleriyle |
 | [AI destekli çalışma](AI_WORKFLOW.tr.md) | AI ile üretilmiş kod, model ve dokulardan konsola hazır oyuna: context pack'ler, ölçek, pivot, LOD, doku boyutları, ORM ve MetallicSmoothness haritaları, normal haritaları, cam ve ışıma, yansımalar, haklar |
-| [SDK sürümleri](SDK_VERSIONS.tr.md) | 1.0'dan 1.9'a her SDK sürümünün ekledikleri, hangi Nexvyn OS'la geldiği, hangi dillerin yeni API aldığı, `minSdk` ve `targetSdk` seçimi |
+| [SDK sürümleri](SDK_VERSIONS.tr.md) | 1.0'dan 1.11'e her SDK sürümünün ekledikleri, hangi Nexvyn OS'la geldiği, hangi dillerin yeni API aldığı, `minSdk` ve `targetSdk` seçimi |
 | [Oyun yap](MAKE_A_GAME.tr.md) | Eksiksiz oyun tarifi: proje, 3B modeller (`.glb` / `.fbx`), yükleme, girdi, çarpışma, konsolda hız, pbr renderer bütçesi, sanat yönü, mağaza ikonu, yayımlama |
 | [Sosyal uygulama yap](MAKE_A_SOCIAL_APP.tr.md) | Akış, fotoğraf, kısa video ve sohbet uygulamaları: önbellekli ve yeniden denemeli istekler, yükleme, WebSocket, oturum açma, web resimleri, video oynatıcılar, akış ve sayfalayıcılar |
 | [Ses tasarımı](SOUND_DESIGN.tr.md) | Ses kiti: katmanlı tarifler, varyantlar, bus'lar, ducking, ortam sesi, müzik döngüleri, seviyeler |
@@ -40,6 +40,9 @@ Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin
 | [App Guard](APP_GUARD.tr.md) | Paketlerin kurulmadan önce nasıl tarandığı ve bir uygulamayı neyin *İncele* ya da *Tehlikeli* yaptığı |
 | [Oyun motoru](GAME_ENGINE.tr.md) | `nexvyn.game` 2B motoru: sahneler, sprite'lar, haritalar, kamera, fizik, parçacıklar, tween'ler |
 | [Oyun Motoru projeleri](GAME_ENGINE_PROJECTS.tr.md) | Oyun Motoru uygulaması: az kodla ya da kodsuz oyunlar, Hızlı Oyun, proje biçimi |
+| [Native SDK rehberi](NATIVE_GUIDE.tr.md) | Nexvyn OS içinde C / C++ uygulamalar: kurulum, new, build, package, crash raporu (Native SDK 1.1) |
+| [Native SDK kiti](NATIVE_KIT.tr.md) | Kitin her `nxv-native` komutu, başlığı ve CMake fonksiyonu |
+| [Native uyumluluk katmanı](NATIVE_COMPAT.tr.md) | Port'ların değişmeden çalışmasını sağlayan POSIX / libc katmanı ve sınırları |
 | [Native modüller](NATIVE_MODULES.tr.md) | İsteğe bağlı yerleşik uygulamaların App Market'ten nasıl kurulduğu (iç mekanizma, SDK değil) |
 | [C++ ile yerleşik uygulama](APP_GUIDE.tr.md) | Sistemin kendi uygulamalarının nasıl yazıldığı |
 

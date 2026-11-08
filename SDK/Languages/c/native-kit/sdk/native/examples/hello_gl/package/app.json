@@ -1,0 +1,15 @@
+{
+  "id": "com.nexvyn.example.hellogl",
+  "name": "Hello GL",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "exclusive",
+  "main": "hello_gl.nro",
+  "icon": "icon.jpg",
+  "minNative": "1.0",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": ["files"]
+}

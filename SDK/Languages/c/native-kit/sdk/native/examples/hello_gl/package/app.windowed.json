@@ -1,0 +1,16 @@
+{
+  "id": "com.nexvyn.example.hellogl.window",
+  "name": "Hello GL (window)",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "windowed",
+  "main": "hello_gl.nxvmod",
+  "icon": "icon.jpg",
+  "window": {"width": 640, "height": 400, "resizable": true},
+  "minNative": "1.0",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": ["files"]
+}

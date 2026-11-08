@@ -1,0 +1,9 @@
+freopen
+opendir
+mkdir
+rmdir
+unlink
+remove
+rename
+truncate
+chmod

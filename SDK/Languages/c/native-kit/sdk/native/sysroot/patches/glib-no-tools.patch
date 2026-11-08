@@ -1,0 +1,27 @@
+--- a/glib/meson.build
++++ b/glib/meson.build
+@@ -489,8 +489,10 @@
+   endif
+ else
+   gtester = executable('gtester', 'gtester.c',
+-    install : true,
++    # Nexvyn sysroot: helper executables need fork/exec/pipe; they are neither built nor installed
++    install : false,
++    build_by_default : false,
+     install_tag : 'bin-devel',
+     c_args : ['-UG_DISABLE_ASSERT'],
+     include_directories : configinc,
+     dependencies : [libglib_dep])
+--- a/gobject/meson.build
++++ b/gobject/meson.build
+@@ -171,7 +171,9 @@
+ meson.override_dependency('gobject-2.0', libgobject_dep)
+
+ gobject_query = executable('gobject-query', 'gobject-query.c',
+-  install : true,
++  # Nexvyn sysroot: not built, not installed (see glib/meson.build)
++  install : false,
++  build_by_default : false,
+   install_tag : 'bin-devel',
+   dependencies : [libglib_dep, libgobject_dep])
+

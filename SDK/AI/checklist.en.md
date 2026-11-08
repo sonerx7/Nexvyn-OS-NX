@@ -17,8 +17,8 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
 - [ ] `minSdk` matches the newest feature used and the language (JS 1.1, Python 1.3, Squirrel/C/Java 1.5,
       `nexvyn.game` 1.2, share/schedule/permission API/lifecycle callbacks 1.4, `fs.unzip`/`sys.games`/`sys.speak`
       1.6, `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8, the pbr renderer, `net.request` options, `net.ws`,
-      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9). New apps set
-      `"targetSdk": "1.9"`.
+      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9; `ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup` and friends 1.11). New apps set
+      `"targetSdk": "1.11"`.
 - [ ] New apps are not written in Squirrel or Java (frozen at SDK 1.8) unless the user asked for it. The same code
       would work with the same SDK names in Lua, JavaScript, Python and C.
 

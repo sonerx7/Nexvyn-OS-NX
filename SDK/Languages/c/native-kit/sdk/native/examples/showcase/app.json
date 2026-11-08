@@ -1,0 +1,13 @@
+{
+  "id": "com.nexvyn.example.showcase",
+  "name": "Native SDK Showcase",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "icon": "icon.png",
+  "window": {"width": 960, "height": 600, "resizable": true},
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": ["files", "network", "notifications"]
+}

@@ -6,6 +6,8 @@ Nexvyn OS compiles the bundle's `.c` files **on the console** with TinyCC when t
 on the PC. The API is the same as in the other languages with an underscore instead of the dot
 (`gfx.rect` → `gfx_rect`). The header is `<nexvyn.h>` ([SDK/c/include](../../Reference/README.md)). Needs SDK 1.5.
 
+> For C / C++ programs that run as real native code inside Nexvyn OS (windowed or full screen, ports, SDL2, OpenGL ES) use the [Native SDK kit](native-kit/README.md) instead.
+
 > C is native code: it is not sandboxed like Lua/JS/Python, and an endless loop or a crash cannot be stopped (there is
 > no 3 second limit). A C app installed from the SD card asks the user once before it runs. C apps need JIT code
 > memory (Atmosphère's homebrew loader provides it); without it the error screen says so.

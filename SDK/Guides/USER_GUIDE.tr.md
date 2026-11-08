@@ -231,6 +231,9 @@ düğmeleri** ile değiştirin: Otomatik (el modunda), Her zaman veya Kapalı.
 
 - Ctrl+Alt+F ya da yerleşim menüsündeki **Tam Ekran**. Tam ekranda başlık çubuğu ve çubuklar gizlenir.
 - Çıkmak için ekrandaki **Tam ekrandan çık** düğmesini kullanın ya da aynı kısayola basın.
+- Kumandayla **−** tuşunu bir saniye basılı tutun: bir çubuk dolar ve pencere önceki boyutuna döner. **−** tuşuna kısa basış yine uygulamaya gider; uzun basış tamamlansa da bırakma uygulamaya iletilir, böylece tuş takılı kalmaz. (Ayar anahtarı `wm.fullscreenExitHold`, varsayılan açık.)
+- Dokunmatikte üst kenara dokunun ya da üstten aşağı kaydırın: **Tam ekrandan çık** düğmesi ve menü çubuğu birkaç saniye görünür.
+- Bir pencere tam ekrana girince altta bu çıkış yollarını gösteren bir ipucu iki saniye görünür.
 
 ### Açılış boyutu
 

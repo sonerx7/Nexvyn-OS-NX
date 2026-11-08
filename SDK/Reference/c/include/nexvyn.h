@@ -250,6 +250,7 @@ const char* nxv_fmt(const char* fmt, ...);  /* snprintf into a system buffer: TR
 int audio_tone(float freq, float seconds, float volume, const char* wave);
 int audio_play(const char* nameOrPath, float volume, int loops);
 void audio_stop(int channel);
+void audio_stopAll(void);         /* every sound the app started (its music stream stays) */
 bool audio_music(const char* path);
 void audio_musicStop(void);
 void audio_musicPause(bool paused);
@@ -260,6 +261,7 @@ bool input_pressed(const char* button);
 bool input_released(const char* button);
 void input_stick(const char* which, float* x, float* y);
 bool input_key(const char* name);
+bool input_action(const char* name);  /* a button the user mapped to this function ("back", "select"...) was pressed this frame */
 bool input_touch(void);
 void input_motion(float out[9]);  /* ax ay az gx gy gz pitch roll yaw */
 
@@ -316,6 +318,7 @@ bool g3d_modelNode(int model, const char* node, float x, float y, float z, float
 bool g3d_modelNodeMatrix(int model, const char* node, float x, float y, float z, float rx, float ry, float rz, float s,
                          float out[16]);
 void g3d_drawMatrix(int mesh, const float matrix[16], const char* tint, const char* flags);  /* mesh or model */
+/* BEGIN GENERATED api:g3d_renderer:c-header (tools/api/gen.py; do not edit) */
 /* SDK 1.9: the "pbr" renderer (PBR materials, real-time lights, shadows, HDR, bloom; SDK.md section 8b). Options are
  * JSON text with the keys of the Lua tables, e.g. g3d_addLight("{\"type\":\"point\",\"x\":1,\"y\":2,\"z\":0}"). */
 const char* g3d_renderer(const char* name);                     /* "pbr" / "basic" (NULL = ask); the one frames use */
@@ -334,6 +337,24 @@ void g3d_material(int obj, const char* json, const char* name); /* mesh or model
 /* the mesh or model drawn count times: 7 floats per instance (x, y, z, rx, ry, rz, scale) or a 16-float matrix */
 void g3d_drawInstanced(int obj, const float* transforms, int count, const char* tint, const char* flags);
 void g3d_drawInstancedMatrices(int obj, const float* matrices, int count, const char* tint, const char* flags);
+/* END GENERATED api:g3d_renderer:c-header */
+
+/* SDK 1.11: folder picker, kept folders, save backups (sdk/SDK.en.md "SDK 1.11"). */
+/* BEGIN GENERATED api:ui_folder:c-header (tools/api/gen.py; do not edit) */
+/* the folder picker: callback(JSON path, NULL), JSON null when the user cancels, or (NULL, error). options: {"title": "...", "remember": true} */
+void ui_chooseFolder(const char* options, nxv_json_fn fn, void* user);
+const char* ui_tokens(void);
+/* END GENERATED api:ui_folder:c-header */
+/* BEGIN GENERATED api:fs_keep:c-header (tools/api/gen.py; do not edit) */
+const char* fs_folderGrants(void);
+bool fs_folderGranted(const char* path);
+bool fs_revokeFolder(const char* path);
+const char* fs_savePath(void);
+void fs_saveBackup(const char* slot, nxv_json_fn fn, void* user);
+void fs_saveRestore(const char* slot, nxv_json_fn fn, void* user);
+const char* fs_saveBackups(void);
+void fs_saveDeleteBackup(const char* slot, nxv_json_fn fn, void* user);
+/* END GENERATED api:fs_keep:c-header */
 
 /* ------------------------------------------------------------------ SDK 1.9: feeds, media, network
  * sdk/SDK.en.md section 8d. Options are JSON text ("{\"retry\": 2, \"cache\": 300}"), NULL for none. Returned

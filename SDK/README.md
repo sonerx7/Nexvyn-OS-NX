@@ -6,7 +6,7 @@ Everything for people who make apps, games, themes and fonts for Nexvyn OS: the 
 template for each language, guides and recipes, working samples, context packs for AI assistants, the publishing guide
 and command-line tools. Every document exists in English and Turkish.
 
-**Current version: SDK 1.9** (Nexvyn OS 1.2.2). Apps made for SDK 1.0 to 1.8 run unchanged
+**Current version: SDK 1.12** (Nexvyn OS 1.2.2). Apps made for SDK 1.0 to 1.11 run unchanged
 ([SDK versions](Guides/SDK_VERSIONS.en.md)).
 
 ## SDK 1.9 at a glance
@@ -50,6 +50,12 @@ When the console offers no OpenGL ES 3, `g3d.renderer("pbr")` returns `"basic"` 
 
 <p align="center"><img src="../.github/assets/sample-social-feed.webp" width="90%" alt="The Social Feed sample: a photo feed in dark mode, a photo grid and a vertical clip pager"></p>
 
+### Also in SDK 1.10 to 1.12
+
+- **Native SDK 1.1 (SDK 1.10):** C / C++ apps that run inside Nexvyn OS in a window or full screen, built with the [Native SDK kit](Languages/c/native-kit/README.md) (`nxv-native`, templates for apps, games, ports and SDL2) -- start with the [Native SDK guide](Guides/NATIVE_GUIDE.en.md). Since Nexvyn OS 1.2.2 native apps run much faster by default and the system has Settings > Performance (official maximum clocks, optional overclock); the frame-pacing, sound and reserved error-code notes are in the [kit reference](Guides/NATIVE_KIT.en.md) ("Performance, frame pacing and settings").
+- **Kept folders and save backups (SDK 1.11):** `ui.chooseFolder` (the user picks, `remember` keeps the folder), `fs.folderGrants` / `folderGranted` / `revokeFolder`, `fs.savePath`, `fs.saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup`; the same names in Lua, JavaScript, Python and C, no permission needed.
+- **Language parity (SDK 1.12):** `ui.tokens()` (the system look as one table), `audio.stopAll()`, and `input_action` in C; the same names as the native SDK, in Lua, JavaScript, Python and C.
+
 ### Also in SDK 1.9
 
 - **Runtime library:** `net.request` in Lua; `TextEncoder`, `TextDecoder`, `URL`, `URLSearchParams`,
@@ -78,6 +84,7 @@ Kits exist for Lua and JavaScript (`Languages/lua/kits`, `Languages/javascript/k
 | **JavaScript** | [Languages/javascript](Languages/javascript/README.md) | [template](Languages/javascript/template/) | [Apps in JavaScript](Guides/JS_APPS.en.md) | [Samples/javascript](Samples/javascript/) |
 | **Python** | [Languages/python](Languages/python/README.md) | [template](Languages/python/template/) | [Apps in Python](Guides/PY_APPS.en.md) | [Samples/python](Samples/python/) |
 | **C** | [Languages/c](Languages/c/README.md) | [template](Languages/c/template/) | [Apps in C](Guides/C_APPS.en.md) | [Samples/c](Samples/c/) |
+| **C / C++ (native)** | [Languages/c/native-kit](Languages/c/native-kit/README.md) | templates in the kit | [Native SDK guide](Guides/NATIVE_GUIDE.en.md), [kit reference](Guides/NATIVE_KIT.en.md) | kit `examples/` |
 | Squirrel (frozen at 1.8) | [Languages/squirrel](Languages/squirrel/README.md) | [template](Languages/squirrel/template/) | [Apps in Squirrel](Guides/SQUIRREL_APPS.en.md) | [Samples/squirrel](Samples/squirrel/) |
 | Java (frozen at 1.8) | [Languages/java](Languages/java/README.md) | [template](Languages/java/template/) | [Apps in Java](Guides/JAVA_APPS.en.md) | [Samples/java](Samples/java/) |
 

@@ -1,4 +1,4 @@
-# Nexvyn OS app SDK 1.9: context pack for AI assistants
+# Nexvyn OS app SDK 1.11: context pack for AI assistants
 
 **English** · [Türkçe](system-prompt.tr.md)
 
@@ -36,7 +36,7 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.9", "targetSdk": "1.9",
+  "minSdk": "1.9", "targetSdk": "1.11",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -53,8 +53,8 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "python3" runtime "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; the pbr renderer (`g3d.renderer`,
   `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`, `g3d.material`,
   `g3d.drawInstanced`, `g3d.caps`), the section 7 SDK 1.9 network calls and the feed / media calls "1.9" (Lua,
-  JavaScript, Python, C only). Use the lowest `minSdk` that has every call the app makes.
-- `targetSdk`: the SDK the app was tested on; new apps use "1.9" (it decides what happens when a callback hangs,
+  JavaScript, Python, C only), the folder picker, kept-folder and save-backup calls "1.11" (same four). Use the lowest `minSdk` that has every call the app makes.
+- `targetSdk`: the SDK the app was tested on; new apps use "1.11" (it decides what happens when a callback hangs,
   rule 1). Squirrel and Java are frozen at SDK 1.8 (their apps keep working, no new APIs): start new apps in Lua,
   JavaScript, Python or C.
 - `window.width/height` is the content size. `gamepad: true` sends the controller to the app (L+R gives the cursor
@@ -184,6 +184,7 @@ coordinates) · `ui.hit(id,x,y,w,h)` → {hovered,held,pressed,clicked,rightClic
 `ui.alert(title,msg,{"OK","Cancel"},fn(index))` · `ui.prompt(title,msg,default,fn(textOrNil))` ·
 `ui.openFile(fn(pathOrNil),{".txt"}[,title])` · `ui.saveFile(fn(pathOrNil),"name.txt"[,title])` ·
 `ui.keyboard(initial,fn(textOrNil)[,guide])`.
+SDK 1.11 (`"minSdk": "1.11"`; Lua, JavaScript, Python, C): `ui.chooseFolder({title, remember}, fn(pathOrNil, err))` (a cancel gives nil, nil; `remember = true` keeps the folder across runs) · `fs.folderGrants()` · `fs.folderGranted(path)` · `fs.revokeFolder(path)` · `fs.savePath()` · `fs.saveBackup(slot, fn(ok, err))` · `fs.saveRestore(slot, fn)` · `fs.saveDeleteBackup(slot, fn)` · `fs.saveBackups()`. No permission needed: the user picks the folder. Slot names are 1-48 characters of `A-Z a-z 0-9 . _ -`.
 
 ## 6. Input
 
@@ -217,7 +218,7 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
 - `sys`: `time()` (monotonic s), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.9". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.11". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id or nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Links: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.

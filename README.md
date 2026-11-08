@@ -10,13 +10,13 @@ SDK for apps and games. One <code>.nro</code> file, opened from the Homebrew Men
 <p align="center">
 <a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><img src="https://img.shields.io/github/v/release/sonerx7/Nexvyn-OS-NX?label=release&color=2f7cf6" alt="Latest release"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0--or--later-blue" alt="License: GPL-3.0-or-later"></a>
-<a href="SDK/README.md"><img src="https://img.shields.io/badge/SDK-1.9-8a5cf6" alt="SDK 1.9"></a>
+<a href="SDK/README.md"><img src="https://img.shields.io/badge/SDK-1.12-8a5cf6" alt="SDK 1.12"></a>
 <a href="#accessibility-and-languages"><img src="https://img.shields.io/badge/languages-8-22a55e" alt="8 languages"></a>
 </p>
 
 <p align="center">
 <a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><b>Download NexvynOS.nro</b></a> ·
-<a href="#whats-new-in-130">What's new</a> ·
+<a href="#whats-new-in-122">What's new</a> ·
 <a href="#requirements">Requirements</a> ·
 <a href="#installation">Installation</a> ·
 <a href="#documentation">Documentation</a> ·
@@ -39,6 +39,9 @@ a game engine and a 3D modeler, and an App Market where every item is reviewed b
   the 3D Modeler. A PC is optional.
 - **SDK 1.9:** physically based 3D rendering (NexGFX), 3D model files with animation, feeds, media players and
   network functions for social apps, in Lua, JavaScript, Python and C.
+- **SDK 1.10 to 1.12:** native C / C++ apps that run inside Nexvyn OS in a window or full screen (Native SDK 1.1 kit with
+  templates and the `nxv-native` command line), and kept folders and save backups (`ui.chooseFolder`, `fs.saveBackup`) in
+  Lua, JavaScript, Python and C.
 - **Switch Tools:** mods, cheats, overlays, clock profiles, system modules, save backups and Turkish patches.
 - **Accessibility:** 8 languages, a Screen Reader, touch, controller, USB keyboard and mouse, handheld and TV layouts.
 
@@ -48,6 +51,20 @@ a game engine and a 3D modeler, and an App Market where every item is reviewed b
 
 <p align="center"><img src=".github/assets/nexgfx-before-after.webp" width="100%" alt="The same meeting room on the SDK 1.8 renderer (flat light) and on the SDK 1.9 NexGFX pbr renderer (sunlight through glass, shadows, reflections)"></p>
 
+- **Native apps run fast.** Measured on a console: a 3D scene demo went from 10 to 59 fps, an OpenGL showcase from
+  10-16 to 60 fps, a GBA emulator runs at full speed, the hand-off of a frame from an app to the system went from
+  15-24 ms to 0.1 ms and loading a scene from about 30 s to 0.6 s. Apps that were built earlier get the speed-up
+  without a rebuild.
+- **Settings > Performance.** The official maximum clocks of the console are used by default, loading gets a short CPU
+  boost, and an optional overclock (off by default, with a warning and a clear yes) is there for those who want it. A
+  live panel shows CPU per core, GPU, clocks and temperature.
+- **Ports.** Doom (with the free Freedoom data), a GBA emulator and a Quake engine run in their own Nexvyn windows or
+  full screen, as separate apps from the App Market. Game data, BIOS and firmware are never included. The new
+  **Nexvyn Bench** app stress-tests the screen and shows the frame time.
+- **Port kit and Native SDK 1.1 kit.** App makers get the `port` template and the kit reference, now with notes on
+  frame pacing, sound and settings (`SDK/Guides/NATIVE_KIT.en.md`).
+- **Background installs, sound and input.** Installing a package no longer freezes slow SD cards, the crackle in
+  native games' sound effects is gone, and Joy-Con and touch input in native windows are fixed.
 - **NexGFX pbr renderer (SDK 1.9).** A new, versioned graphics core for 3D apps and games: metallic-roughness
   materials with normal, occlusion and emissive maps, real-time point, spot and directional lights, sun and spot
   shadows, HDR with ACES or filmic tone mapping, bloom, MSAA, cube map reflections, thin glass with refraction,
@@ -69,6 +86,13 @@ a game engine and a 3D modeler, and an App Market where every item is reviewed b
 - **Store icon tool.** Renders a game's own model and builds its key-art icon in every size; the style is the maker's
   choice, with a clean default.
 - **App Market pictures.** Five screenshots per item, taken with the interface in English.
+
+### Native apps and ports
+
+| | |
+|:---:|:---:|
+| <img src=".github/assets/native-scenes.webp" alt="A native 3D scene demo running in a Nexvyn window"> | <img src=".github/assets/native-bench.webp" alt="Nexvyn Bench showing the frame time of a city scene"> |
+| <img src=".github/assets/port-doom.webp" alt="Doom running with the free Freedoom data"> | <img src=".github/assets/settings-performance.webp" alt="Settings, Performance pane with the official maximum clocks and live CPU and GPU values"> |
 
 The full list is in the [release notes](CHANGELOG.md).
 
@@ -286,7 +310,7 @@ Store/            what the App Market installs
 └── catalog.json, packages.json  what the console reads; README.md lists everything
 SDK/              everything for developers, in English and Turkish
 ├── Reference/                   the SDK reference, the Java SDK, the C header
-├── Languages/<language>/        a quick start, a template and the game kits
+├── Languages/<language>/        a quick start, a template and the game kits (C: the Native SDK kit in native-kit/)
 ├── Guides/                      guides and recipes
 ├── Samples/<language>/<slug>/   working samples (samples.json: Studio's Samples)
 ├── AI/                          context packs and task prompts for AI assistants

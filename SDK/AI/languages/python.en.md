@@ -64,3 +64,5 @@ app.json: `"main": "main.py"`, `"minSdk": "1.3"` (`"1.5"` for the system library
 
 `python tools/py_check.py <bundle> --frames 600`: finds unsupported constructs with line numbers, checks the TR keys
 and the network permission, runs the app against a mock SDK with the real signatures.
+
+- SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `ui.chooseFolder({"title": "...", "remember": True}, callback)` (`callback(path, err)`, `path` is `None` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `fs.saveBackup(slot, callback)`, `fs.saveRestore(slot, callback)`, `fs.saveDeleteBackup(slot, callback)`, `fs.saveBackups()`

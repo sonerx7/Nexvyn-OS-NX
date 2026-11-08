@@ -1,0 +1,5 @@
+Name: egl
+Description: EGL stub of a windowed app: the display and context belong to Nexvyn OS (nxn_display_open, SDL_GL_CreateContext); nothing to link
+Version: 1.4
+Libs:
+Cflags:

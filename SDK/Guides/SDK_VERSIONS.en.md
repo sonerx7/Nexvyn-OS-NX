@@ -1,4 +1,4 @@
-# SDK versions: 1.0 to 1.9
+# SDK versions: 1.0 to 1.12
 
 **English** · [Türkçe](SDK_VERSIONS.tr.md)
 
@@ -21,7 +21,7 @@ rules behind this page are in [COMPATIBILITY.en.md](COMPATIBILITY.en.md).
 | Number | Example | Meaning |
 |---|---|---|
 | **Nexvyn OS** | `1.2.2` | the system release (major.minor.patch), shown in Settings > About |
-| **SDK** | `1.9` | the API surface apps are written against (major.minor); `sys.sdkVersion()` returns it |
+| **SDK** | `1.12` | the API surface apps are written against (major.minor); `sys.sdkVersion()` returns it |
 | **Runtime engine** | Lua 5.4.7, QuickJS-ng 0.17.0, pocketpy 2.2.0 | the interpreter or compiler behind one language |
 
 A new SDK function raises the SDK minor version and comes with a new Nexvyn OS minor release. A change in how an
@@ -42,6 +42,9 @@ existing function behaves would raise the SDK major version, and only apps that 
 | 1.7 | 1.1.0 | `g3d.voxels` voxel worlds; pixel-art textures on meshes | JavaScript (voxels); Lua, JavaScript (textures) |
 | 1.8 | 1.2.0 | `g3d.model`: `.glb` / `.gltf` / `.fbx` models with materials, textures and skeletal animation | all six |
 | 1.9 | 1.2.2 | runtime library; feed, photo and short-video apps; the pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
+| 1.10 | 1.2.2 (same build for now) | native runtime: full-screen C / C++ apps, Native SDK 1.0 (no script API change) | C / C++ (`nxn_*`) |
+| 1.11 | 1.2.2 (same build for now) | kept folders and save backups for script apps (`ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup`...) | Lua, JavaScript, Python, C |
+| 1.12 | 1.2.2 (same build for now) | language parity with the native SDK (`ui.tokens`, `audio.stopAll`, C `input_action`) | Lua, JavaScript, Python, C |
 
 SDK 1.0 to 1.6 were all built during the development of Nexvyn OS 1.0.0, the first public release, which has SDK 1.6.
 A language that arrived later got the whole earlier SDK with it: Squirrel, C and Java started at SDK 1.5 with
@@ -127,6 +130,32 @@ everything from 1.0 to 1.4.
   `g3d.rendererInfo`. An app that never asks for it renders exactly as with SDK 1.8.
 - Lua, JavaScript, Python (`"python"` and `"python3"`) and C. Guides: [PBR_GAME_RECIPE.en.md](PBR_GAME_RECIPE.en.md),
   [SOCIAL_APP_RECIPE.en.md](SOCIAL_APP_RECIPE.en.md), [MAKE_A_SOCIAL_APP.en.md](MAKE_A_SOCIAL_APP.en.md).
+
+### SDK 1.10 (Nexvyn OS 1.2.2, same build for now)
+
+- **Native runtime:** `"runtime": "native"` with `"mode": "window"` or `"fullscreen"` and a `.nxvmod` as `"main"`: a C / C++
+  app that runs inside Nexvyn OS, in a window or full screen (the user can switch), and reports crashes. Its interface is the Native
+  SDK 1.0 (`nxn_*`, `nexvyn_native.h`): lifecycle, display (GL / GLES), input, audio, files, logging and the
+  `NXN_EVENT_RESIZE` event for docking. Kit and guide: [NATIVE_KIT.en.md](NATIVE_KIT.en.md).
+- No script function changed. The SDK number is raised so that older systems refuse native packages cleanly: a native
+  package carries `"minSdk": "1.10"` (`nxv-native package` writes it and `tools/nxvapp_pack.py` requires it), so a system
+  with SDK 1.9 or older lists it as "needs a newer Nexvyn OS" instead of trying to read the `.nro` as a script.
+- Full-screen apps are not started when Nexvyn OS runs in applet mode (started from the Album): the system asks the
+  user to start it in title mode (hold R while starting a game).
+
+### SDK 1.11 (Nexvyn OS 1.2.2, same build for now)
+
+- **Kept folders and save backups** for script apps, the same functions the native `nxn_pick` / `nxn_grant_*` /
+  `nxn_save_*` have, from one core unit (`source/core/appkeep.cpp`): `ui.chooseFolder({title, remember}, callback)`,
+  `fs.folderGrants`, `fs.folderGranted`, `fs.revokeFolder`, `fs.savePath`, `fs.saveBackup`, `fs.saveRestore`,
+  `fs.saveBackups`, `fs.saveDeleteBackup`. Lua, JavaScript, Python (`"python"` and `"python3"`) and C, with the same
+  names and results. Copying runs on a worker thread. Older apps are not affected: nothing existing changed.
+
+### SDK 1.12 (Nexvyn OS 1.2.2, same build for now)
+
+- **Language parity with the native SDK:** `ui.tokens()` returns the system look as one table (like `nxn_ui_tokens_get`),
+  `audio.stopAll()` stops every sound (like `nxn_sfx_stop_all`), and C gets `input_action` (the other languages had
+  `input.action`). Lua, JavaScript, Python and C. Older apps are not affected.
 
 ## 4. minSdk and targetSdk
 

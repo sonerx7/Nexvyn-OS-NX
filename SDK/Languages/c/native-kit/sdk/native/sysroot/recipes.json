@@ -1,0 +1,374 @@
+{
+  "_comment": "Build recipes for the libraries the devkitPro portlibs do not ship, used by build.py (same folder). Every source is pinned by sha256 and checked on download. Fields: system (cmake, meson, autotools, amalgamation), subdir, flags, patches (patches/), extra_sources (weak shims, shims/), copy_in (vendored trees dropped into the source), c_args (meson), make (autotools steps, {J} jobs, {PREFIX}), needs, provides. Every library goes into THIRD_PARTY_NOTICES.md when it ships.",
+  "prefix": "<sysroot>",
+  "recipes": {
+    "zstd": {
+      "version": "1.5.6",
+      "license": "BSD-3-Clause",
+      "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-1.5.6.tar.gz",
+      "sha256": "8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1",
+      "system": "cmake",
+      "subdir": "build/cmake",
+      "flags": [
+        "-DZSTD_BUILD_PROGRAMS=OFF",
+        "-DZSTD_BUILD_TESTS=OFF",
+        "-DZSTD_BUILD_SHARED=OFF",
+        "-DZSTD_BUILD_STATIC=ON",
+        "-DZSTD_MULTITHREAD_SUPPORT=ON"
+      ],
+      "provides": [
+        "libzstd.a"
+      ],
+      "needs": [],
+      "notes": "Plan item: zstd."
+    },
+    "lz4": {
+      "version": "1.10.0",
+      "license": "BSD-2-Clause (library)",
+      "url": "https://github.com/lz4/lz4/releases/download/v1.10.0/lz4-1.10.0.tar.gz",
+      "sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+      "system": "cmake",
+      "subdir": "build/cmake",
+      "flags": [
+        "-DLZ4_BUILD_CLI=OFF",
+        "-DLZ4_BUILD_LEGACY_LZ4C=OFF",
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DBUILD_STATIC_LIBS=ON"
+      ],
+      "provides": [
+        "liblz4.a"
+      ],
+      "needs": [],
+      "notes": "Plan item: lz4."
+    },
+    "openal": {
+      "version": "1.23.1",
+      "license": "LGPL-2.0-or-later (static library: see docs/NATIVE_KIT.* for the relink note)",
+      "url": "https://github.com/kcat/openal-soft/archive/refs/tags/1.23.1.tar.gz",
+      "sha256": "dfddf3a1f61059853c625b7bb03de8433b455f2f79f89548cbcbd5edca3d4a4a",
+      "system": "cmake",
+      "subdir": ".",
+      "flags": [
+        "-DLIBTYPE=STATIC",
+        "-DALSOFT_UTILS=OFF",
+        "-DALSOFT_EXAMPLES=OFF",
+        "-DALSOFT_TESTS=OFF",
+        "-DALSOFT_INSTALL_EXAMPLES=OFF",
+        "-DALSOFT_REQUIRE_SDL2=ON",
+        "-DALSOFT_BACKEND_SDL2=ON",
+        "-DALSOFT_BACKEND_ALSA=OFF",
+        "-DALSOFT_BACKEND_OSS=OFF",
+        "-DALSOFT_BACKEND_PIPEWIRE=OFF",
+        "-DALSOFT_BACKEND_PULSEAUDIO=OFF",
+        "-DALSOFT_BACKEND_WAVE=OFF",
+        "-DALSOFT_BACKEND_SNDIO=OFF",
+        "-DALSOFT_BACKEND_PORTAUDIO=OFF",
+        "-DALSOFT_BACKEND_JACK=OFF",
+        "-DALSOFT_BACKEND_OPENSL=OFF"
+      ],
+      "provides": [
+        "libopenal.a"
+      ],
+      "needs": [
+        "sdl2"
+      ],
+      "notes": "Audio goes through the SDL2 backend (libnx audren behind SDL2). Builds as is; needs libstdc++ at link time."
+    },
+    "libarchive": {
+      "version": "3.7.7",
+      "license": "BSD-2-Clause",
+      "url": "https://github.com/libarchive/libarchive/releases/download/v3.7.7/libarchive-3.7.7.tar.xz",
+      "sha256": "879acd83c3399c7caaee73fe5f7418e06087ab2aaf40af3e99b9e29beb29faee",
+      "system": "cmake",
+      "subdir": ".",
+      "flags": [
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DENABLE_TEST=OFF",
+        "-DENABLE_OPENSSL=OFF",
+        "-DENABLE_MBEDTLS=ON",
+        "-DENABLE_LIBXML2=OFF",
+        "-DENABLE_EXPAT=OFF",
+        "-DENABLE_ICONV=OFF",
+        "-DENABLE_ACL=OFF",
+        "-DENABLE_XATTR=OFF",
+        "-DENABLE_ZSTD=ON",
+        "-DENABLE_LZ4=ON",
+        "-DENABLE_LZMA=OFF",
+        "-DENABLE_TAR=OFF",
+        "-DENABLE_CPIO=OFF",
+        "-DENABLE_CAT=OFF",
+        "-DENABLE_UNZIP=OFF",
+        "-DHAVE_FCHDIR=1",
+        "-DENABLE_ZLIB=ON",
+        "-DENABLE_BZip2=ON",
+        "-DENABLE_NETTLE=OFF",
+        "-DENABLE_LIBB2=OFF",
+        "-DENABLE_CNG=OFF",
+        "-DENABLE_PCREPOSIX=OFF",
+        "-DENABLE_COVERAGE=OFF",
+        "-DCMAKE_C_FLAGS_RELEASE=-O2 -Dtimezone=_timezone"
+      ],
+      "provides": [
+        "libarchive.a"
+      ],
+      "needs": [
+        "zlib",
+        "bzip2",
+        "zstd",
+        "lz4",
+        "mbedtls"
+      ],
+      "notes": "No fork/exec: weak shims fail the program filters and fchdir cleanly; symlink entries must be skipped at extract time.",
+      "extra_sources": [
+        "shims/libarchive_shim.c"
+      ]
+    },
+    "sqlite": {
+      "version": "3.47.2",
+      "license": "Public domain",
+      "url": "https://www.sqlite.org/2024/sqlite-amalgamation-3470200.zip",
+      "sha256": "aa73d8748095808471deaa8e6f34aa700e37f2f787f4425744f53fdd15a89c40",
+      "system": "amalgamation",
+      "subdir": ".",
+      "flags": [
+        "-DSQLITE_THREADSAFE=1",
+        "-DSQLITE_OMIT_LOAD_EXTENSION",
+        "-DSQLITE_TEMP_STORE=2",
+        "-DSQLITE_OMIT_WAL",
+        "-DSQLITE_DEFAULT_LOCKING_MODE=1"
+      ],
+      "provides": [
+        "libsqlite3.a"
+      ],
+      "needs": [],
+      "notes": "Build sqlite3.c with the flags and archive it. No WAL (no shared memory on FAT), exclusive locking.",
+      "extra_sources": [
+        "shims/sqlite_shim.c"
+      ]
+    },
+    "libiconv": {
+      "version": "1.17",
+      "license": "LGPL-2.1-or-later (library)",
+      "url": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz",
+      "sha256": "8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313",
+      "system": "autotools",
+      "subdir": ".",
+      "flags": [
+        "--host=aarch64-none-elf",
+        "--enable-static",
+        "--disable-shared",
+        "--enable-extra-encodings",
+        "--disable-nls"
+      ],
+      "provides": [
+        "libiconv.a"
+      ],
+      "needs": [],
+      "notes": "Only libcharset and lib are built (the gnulib tool part does not cross-compile). The installed iconv.h shadows newlib's small one.",
+      "make": "make -C libcharset -j{J} all && make -C libcharset install-lib libdir=\"$PWD/lib\" includedir=\"$PWD/lib\" && make -C lib -j{J} all && make -C libcharset install && make -C lib install && install -d {PREFIX}/include && install -m 644 include/iconv.h {PREFIX}/include/iconv.h"
+    },
+    "pixman": {
+      "version": "0.43.4",
+      "license": "MIT",
+      "url": "https://cairographics.org/releases/pixman-0.43.4.tar.gz",
+      "sha256": "a0624db90180c7ddb79fc7a9151093dc37c646d8c38d3f232f767cf64b85a226",
+      "system": "meson",
+      "subdir": ".",
+      "flags": [
+        "-Ddefault_library=static",
+        "-Dtests=disabled",
+        "-Ddemos=disabled",
+        "-Dgtk=disabled",
+        "-Dlibpng=disabled",
+        "-Dopenmp=disabled",
+        "-Dloongson-mmi=disabled",
+        "-Dvmx=disabled",
+        "-Dneon=disabled",
+        "-Da64-neon=enabled"
+      ],
+      "provides": [
+        "libpixman-1.a"
+      ],
+      "needs": [],
+      "notes": "Meson cross build; AArch64 NEON on (the 32-bit neon option is off)."
+    },
+    "glib": {
+      "version": "2.78.6",
+      "license": "LGPL-2.1-or-later (static library: see docs/NATIVE_KIT.* for the relink note)",
+      "url": "https://download.gnome.org/sources/glib/2.78/glib-2.78.6.tar.xz",
+      "sha256": "244854654dd82c7ebcb2f8e246156d2a05eb9cd1ad07ed7a779659b4602c9fae",
+      "system": "meson",
+      "subdir": ".",
+      "flags": [
+        "-Ddefault_library=static",
+        "-Dtests=false",
+        "-Dinstalled_tests=false",
+        "-Dselinux=disabled",
+        "-Dlibmount=disabled",
+        "-Dxattr=false",
+        "-Dnls=disabled",
+        "-Dglib_debug=disabled",
+        "-Dlibelf=disabled",
+        "-Dman=false",
+        "-Ddtrace=false",
+        "-Dsystemtap=false",
+        "-Dsysprof=disabled",
+        "-Dgtk_doc=false",
+        "-Dbsymbolic_functions=false"
+      ],
+      "provides": [
+        "libglib-2.0.a",
+        "libgobject-2.0.a",
+        "libgmodule-2.0.a",
+        "libgthread-2.0.a"
+      ],
+      "needs": [
+        "libiconv",
+        "libffi",
+        "pcre2",
+        "zlib"
+      ],
+      "notes": "gio is patched out (sockets, D-Bus, subprocesses), helper executables are not built, libintl is a header-only stand-in (vendor/proxy-libintl). The main loop needs pipe() from the compat layer at link time.",
+      "patches": [
+        "glib-no-gio.patch",
+        "glib-bool-member.patch",
+        "glib-no-rlimit.patch",
+        "glib-no-utsname.patch",
+        "glib-no-tools.patch"
+      ],
+      "copy_in": {
+        "vendor/proxy-libintl": "subprojects/proxy-libintl"
+      },
+      "c_args": [
+        "-D_POSIX_HOST_NAME_MAX=255",
+        "-DSSIZE_MAX=0x7fffffffffffffffL"
+      ]
+    },
+    "pcre2": {
+      "version": "10.44",
+      "license": "BSD-3-Clause (with PCRE2 exception)",
+      "url": "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.tar.bz2",
+      "sha256": "d34f02e113cf7193a1ebf2770d3ac527088d485d4e047ed10e5d217c6ef5de96",
+      "system": "cmake",
+      "subdir": ".",
+      "flags": [
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DPCRE2_BUILD_PCRE2GREP=OFF",
+        "-DPCRE2_BUILD_TESTS=OFF",
+        "-DPCRE2_SUPPORT_JIT=OFF",
+        "-DPCRE2_STATIC_PIC=ON",
+        "-DPCRE2_SUPPORT_UNICODE=ON"
+      ],
+      "provides": [
+        "libpcre2-8.a"
+      ],
+      "needs": [],
+      "notes": "glib dependency (regex)."
+    },
+    "libffi": {
+      "version": "3.4.6",
+      "license": "MIT",
+      "url": "https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz",
+      "sha256": "b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e",
+      "system": "autotools",
+      "subdir": ".",
+      "flags": [
+        "--host=aarch64-none-elf",
+        "--enable-static",
+        "--disable-shared",
+        "--disable-docs",
+        "--disable-exec-static-tramp",
+        "--disable-multi-os-directory"
+      ],
+      "provides": [
+        "libffi.a"
+      ],
+      "needs": [],
+      "notes": "glib dependency (gobject marshalling). Static closure trampolines off: no executable mappings on the Switch."
+    },
+    "sdl2-nexvyn": {
+      "version": "2.28.5-nexvyn.1",
+      "license": "Zlib",
+      "url": "https://github.com/devkitPro/SDL/archive/0738d3c9f6993875e2f3dd0e8cc0bb4ae4440b4e.tar.gz",
+      "archive_name": "sdl2-devkitpro-0738d3c.tar.gz",
+      "sha256": "888b7641c08b878d7b856bae87ac85ac0a6235d73e375ca024449e14bd497412",
+      "system": "cmake",
+      "subdir": ".",
+      "prefix_subdir": "windowed",
+      "patches": [
+        "sdl2-nexvyn.patch"
+      ],
+      "copy_in": {
+        "../sdl2/overlay/src": "src",
+        "../include/nexvyn": "nexvyn_kit/nexvyn"
+      },
+      "flags": [
+        "-DNEXVYN_SDL=ON",
+        "-DSDL_PTHREADS=ON",
+        "-DSDL_SHARED=OFF",
+        "-DSDL_STATIC=ON",
+        "-DSDL_TEST=OFF",
+        "-DSDL_LOADSO=OFF",
+        "-DSDL_DLOPEN=OFF",
+        "-DSDL_VULKAN=OFF",
+        "-DSDL_HIDAPI=OFF",
+        "-DSDL_CPUINFO=OFF",
+        "-DSDL_HAPTIC=OFF",
+        "-DSDL_SENSOR=OFF",
+        "-DSDL_POWER=OFF",
+        "-DSDL_LOCALE=OFF",
+        "-DSDL_RENDER_D3D=OFF"
+      ],
+      "provides": [
+        "windowed/lib/libSDL2.a"
+      ],
+      "needs": [],
+      "notes": "SDL2 for windowed apps (the devkitPro Switch fork at the commit of its switch-sdl-2.28 branch) with the Nexvyn OS drivers (nxn display / audio / input instead of libnx, EGL, audren). Installed in <sysroot>/windowed: only windowed builds look there (nexvyn-native.cmake); the exclusive-mode build keeps the portlibs SDL2. Zlib license: the SDL license and a note about the added drivers go with the kit (THIRD_PARTY_NOTICES.md)."
+    },
+    "sdl2-mixer-nexvyn": {
+      "version": "2.8.0",
+      "license": "Zlib",
+      "url": "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-2.8.0.tar.gz",
+      "sha256": "1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549",
+      "system": "cmake",
+      "subdir": ".",
+      "prefix_subdir": "windowed",
+      "flags": [
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DCMAKE_PREFIX_PATH={OUT}/windowed;{OUT}",
+        "-DSDL2MIXER_VENDORED=OFF",
+        "-DSDL2MIXER_DEPS_SHARED=OFF",
+        "-DSDL2MIXER_SAMPLES=OFF",
+        "-DSDL2MIXER_INSTALL=ON",
+        "-DSDL2MIXER_CMD=OFF",
+        "-DSDL2MIXER_FLAC=OFF",
+        "-DSDL2MIXER_GME=OFF",
+        "-DSDL2MIXER_MOD=OFF",
+        "-DSDL2MIXER_MP3=ON",
+        "-DSDL2MIXER_MP3_MINIMP3=ON",
+        "-DSDL2MIXER_MIDI=ON",
+        "-DSDL2MIXER_MIDI_FLUIDSYNTH=OFF",
+        "-DSDL2MIXER_MIDI_NATIVE=OFF",
+        "-DSDL2MIXER_MIDI_TIMIDITY=ON",
+        "-DSDL2MIXER_OPUS=OFF",
+        "-DSDL2MIXER_VORBIS=STB",
+        "-DSDL2MIXER_WAVPACK=OFF"
+      ],
+      "provides": [
+        "windowed/lib/libSDL2_mixer.a"
+      ],
+      "needs": [
+        "sdl2-nexvyn"
+      ],
+      "notes": "SDL2_mixer for windowed apps, built against the windowed SDL2 (sdl2-nexvyn) with only built-in decoders (WAV, MP3 minimp3, Ogg stb_vorbis, MIDI timidity without patches): no external audio libraries, all -fPIC. Zlib license."
+    }
+  },
+  "vendored": {
+    "imgui": {
+      "version": "1.91.5",
+      "license": "MIT",
+      "path": "vendor/imgui",
+      "notes": "Source in this kit, SDL2 + OpenGL ES backends."
+    }
+  }
+}

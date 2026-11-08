@@ -10,5 +10,7 @@ Nexvyn OS için bilgisayarda uygulama ve oyun yapanların araçları. Hepsi düz
 | [`icon/`](icon/README.tr.md) | Oyunun kendi modelinden key-art mağaza ikonları: `hero_render.py` modeli ana ve kenar ışıklarıyla saydam arka planda çizer, `finish_icon.py` arka planı, parlamayı, kenar ışığını, vinyeti ve 256 / 128 / 64 px önizlemeli her boyutu üretir. Stiller `clean` (varsayılan), `bold`, `loud`; başlık yalnızca istenirse | Pillow; `hero_render.py` ücretsiz, açık kaynak bir 3B paketinde komut satırından çalışır (README'sine bakın) |
 | [`textures/`](textures/README.tr.md) | pbr renderer (SDK 1.9) için PBR doku setleri: `check` (setler, boyutlar, eksik haritalar), `resize` (haritaları küçültür, özgünleri saklar), `orm` (glTF ORM paketler), `smoothness` (MetallicSmoothness'tan roughness ve metallic), `flipgreen` (-Y'den +Y normal haritası: yeşil aşağıdan yeşil yukarıya) | Pillow |
 
+C / C++ uygulamalar [Native SDK kitinin](../Languages/c/native-kit/README.tr.md) ayrı komut satırını kullanır: `nxv-native` (kit klasöründen `python tools/nxv_native ...`).
+
 Alışılmış döngü: `nxv new lua "My Game"` → kodu yazın → `nxv check` → `nxv push` → konsolda deneyin → ikonu `icon/`
 ile yapın → pull request açmadan önce yeniden `nxv check` ([Katkı](../../CONTRIBUTING.tr.md)).

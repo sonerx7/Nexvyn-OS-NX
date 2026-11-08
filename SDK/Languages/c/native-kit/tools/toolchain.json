@@ -1,0 +1,24 @@
+{
+  "_comment": "The toolchain Nexvyn OS is built with. build.sh warns when the local devkitPro differs (tools/toolchain_check.py); CI builds in the pinned image. Update all three together: install the new packages locally, build and test, then change the versions here and the image in .github/workflows/ci.yml.",
+  "image": "devkitpro/devkita64:20260219@sha256:1fc388c3a0d34bd2045a6dadcb1020e069d5f876a187fd705de14b4440c00282",
+  "gcc": "15.2.0",
+  "packages": {
+    "devkitA64": "r29-3",
+    "libnx": "4.10.0-1",
+    "switch-tools": "1.13.1-1",
+    "general-tools": "1.4.4-1",
+    "switch-sdl2": "2.28.5-4",
+    "switch-sdl2_ttf": "2.22.0-2",
+    "switch-sdl2_image": "2.0.4-1",
+    "switch-sdl2_mixer": "2.0.4-2",
+    "switch-mesa": "20.1.0-5",
+    "switch-glad": "0.1.27-1",
+    "switch-curl": "7.69.1-5",
+    "switch-mbedtls": "2.28.10-1",
+    "switch-ffmpeg": "7.1-5",
+    "switch-zlib": "1.3.1-1",
+    "switch-libpng": "1.6.48-1",
+    "switch-libjpeg-turbo": "2.1.2-2",
+    "switch-freetype": "2.13.3-1"
+  }
+}

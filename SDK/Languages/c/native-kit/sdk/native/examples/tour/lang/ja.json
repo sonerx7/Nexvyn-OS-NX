@@ -1,0 +1,133 @@
+{
+  "page": {
+    "3d": "3D",
+    "sound": "サウンド",
+    "system": "システム",
+    "runtime": "ランタイム",
+    "about": "情報"
+  },
+  "res": {
+    "ok": "OK",
+    "na": "利用不可",
+    "fail": "失敗",
+    "pending": "確認中"
+  },
+  "menu": {
+    "pages": "ページ",
+    "view": "表示",
+    "p3d": "3D",
+    "psound": "サウンド",
+    "psystem": "システム",
+    "pruntime": "ランタイム",
+    "pabout": "情報",
+    "autorotate": "自動回転",
+    "shadows": "影",
+    "fxaa": "エッジを滑らかに"
+  },
+  "g3d": {
+    "na": "このウィンドウでは 3D に OpenGL 4.3 が必要ですが、利用できません。",
+    "failed": "3D シーンを開始できませんでした。",
+    "fps": "フレーム/秒",
+    "loading": "シーンを読み込み中",
+    "shaders": "レンダラーを準備中",
+    "draws": "描画コール（シーン / 影）",
+    "tris": "三角形",
+    "gpu": "GPU メモリ",
+    "rotate": "自動回転",
+    "shadows": "影",
+    "fxaa": "エッジを滑らかに",
+    "scale": "描画スケール",
+    "hint": "画像をドラッグして見回せます。"
+  },
+  "snd": {
+    "volume": "音量",
+    "mixer": "サウンドミキサー",
+    "na": "システムのサウンドミキサーは利用できません。",
+    "play": "音を鳴らす",
+    "click": "クリック",
+    "notify": "通知音",
+    "stop": "すべて停止",
+    "keys": "手続き型キー",
+    "melody": "メロディを再生",
+    "melody_stop": "メロディを停止",
+    "proc": "ここにある音はすべてその場で生成されます。",
+    "ctl": "ボタン",
+    "ctl_na": "ボタン割り当ては利用できません。",
+    "ctl_hint": "設定で割り当てたボタンを押すと音が鳴ります。"
+  },
+  "wave": {
+    "sine": "サイン波",
+    "square": "矩形波",
+    "saw": "のこぎり波",
+    "triangle": "三角波",
+    "noise": "ノイズ"
+  },
+  "act": {
+    "select": "選択",
+    "back": "戻る",
+    "context": "コンテキストメニュー"
+  },
+  "sys": {
+    "na": "このサービスはここでは利用できません。",
+    "notify": "通知",
+    "send": "通知を送る",
+    "notify_title": "ネイティブツアー",
+    "notify_body": "ネイティブアプリから送られた通知です。",
+    "notify_hint": "通知センターに表示されます。",
+    "clipboard": "クリップボード",
+    "copy": "テキストをコピー",
+    "paste": "クリップボードを読む",
+    "rumble": "振動",
+    "rumble_go": "振動させる",
+    "perms": "権限",
+    "files": "ファイルとフォルダ",
+    "open": "ファイルを開く…",
+    "saveas": "名前を付けて保存…",
+    "folder": "フォルダを選択…",
+    "nothing": "まだ何も選択されていません",
+    "cancelled": "キャンセルしました",
+    "save": "セーブデータ",
+    "launches": "{0} 回起動しました",
+    "backup_now": "今すぐバックアップ",
+    "backup": "バックアップ",
+    "restore": "復元",
+    "delete": "削除",
+    "no_backups": "バックアップはまだありません。"
+  },
+  "perm": {
+    "unknown": "不明",
+    "granted": "許可",
+    "denied": "オフ",
+    "notdeclared": "宣言なし",
+    "request": "確認"
+  },
+  "rt": {
+    "title": "ネイティブランタイム",
+    "eh": "C++ 例外",
+    "lib": "共有ライブラリ",
+    "tls": "thread_local",
+    "ehlib": "ライブラリからの例外",
+    "na": "このウィンドウではオフです（設定のスイッチ）",
+    "rerun": "もう一度実行",
+    "switches": "設定 > 開発者: native.windowedTls, windowedEh, windowedLibs",
+    "thread1": "スレッド 1",
+    "thread2": "スレッド 2",
+    "thread3": "スレッド 3",
+    "lib_card": "ライブラリ"
+  },
+  "about": {
+    "sdk": "SDK",
+    "native": "ネイティブ SDK",
+    "abi": "インターフェース世代",
+    "os": "Nexvyn OS",
+    "script": "スクリプト SDK",
+    "app": "このアプリ",
+    "lang": "言語",
+    "theme": "外観",
+    "memory": "メモリ",
+    "heap": "このアプリのヒープ使用量",
+    "gpu": "GPU メモリ",
+    "uptime": "稼働時間",
+    "caps": "機能"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "@TITLE@",
+  "files": {
+    "heading": "Dosya",
+    "open": "Dosya seç...",
+    "none": "Dosya seçilmedi",
+    "size": "{0} bayt"
+  },
+  "settings": {
+    "heading": "Ayarlar",
+    "counter": "{0} kez açıldı",
+    "reset": "Sayacı sıfırla",
+    "large_text": "Büyük yazı"
+  },
+  "quit": "Kapat"
+}

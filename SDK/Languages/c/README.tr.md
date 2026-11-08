@@ -6,6 +6,8 @@ Nexvyn OS paketteki `.c` dosyalarını uygulama açılırken **konsolda** TinyCC
 API diğer dillerle aynıdır, adlarda nokta yerine alt çizgi vardır (`gfx.rect` → `gfx_rect`). Başlık `<nexvyn.h>`
 ([SDK/c/include](../../Reference/README.tr.md)). SDK 1.5 gerekir.
 
+> Nexvyn OS içinde gerçek native kod olarak çalışan C / C++ programlar için (pencere ya da tam ekran, port'lar, SDL2, OpenGL ES) bunun yerine [Native SDK kitini](native-kit/README.tr.md) kullanın.
+
 > C kodu yerel koddur: Lua/JS/Python gibi korumalı alanda çalışmaz, sonsuz döngü ya da çökme durdurulamaz (3 saniye
 > sınırı yoktur). SD karttan kurulan bir C uygulaması ilk açılışta kullanıcıya bir kez sorulur. C uygulamaları JIT kod
 > belleği ister (Atmosphère'in homebrew yükleyicisi sağlar); yoksa hata ekranı bunu söyler.

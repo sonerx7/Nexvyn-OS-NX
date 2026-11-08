@@ -4,6 +4,7 @@
 
 Uygulama C ile yazılıyorsa bunu `system-prompt.tr.md` dosyasından sonra ekleyin. API'nin tamamı `<nexvyn.h>`
 dosyasıdır (`SDK/Reference/c/include/nexvyn.h`): asistanın bağlamı yetiyorsa onu da verin.
+- SDK 1.11 (`"minSdk": "1.11"`, izin gerekmez; klasörü kullanıcı seçer, iptal hata değildir): `ui_chooseFolder("{\"title\":\"Pick\",\"remember\":true}", fn, user)`, `fs_folderGrants()`, `fs_folderGranted(path)`, `fs_revokeFolder(path)`, `fs_savePath()`, `fs_saveBackup(slot, fn, user)`, `fs_saveRestore(slot, fn, user)`, `fs_saveDeleteBackup(slot, fn, user)`, `fs_saveBackups()` (JSON text for lists)
 
 ## İskelet
 

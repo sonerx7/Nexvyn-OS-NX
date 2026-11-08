@@ -1,0 +1,15 @@
+--- a/meson.build
++++ b/meson.build
+@@ -2463,8 +2463,10 @@
+ subdir('gobject')
+ subdir('gthread')
+ subdir('gmodule')
+-subdir('gio')
+-subdir('fuzzing')
++# Nexvyn sysroot: gio (sockets, D-Bus, subprocesses, inotify) cannot work on the Switch and its configure
++# step fails on the missing arpa/nameser.h, so only glib, gobject, gthread and gmodule are built.
++# subdir('gio')
++# subdir('fuzzing')
+
+ # xgettext is optional (on Windows for instance)
+ if find_program('xgettext', required : get_option('nls')).found()

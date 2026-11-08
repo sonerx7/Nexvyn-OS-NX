@@ -67,3 +67,5 @@ app.json: `"main": "main.py"`, `"minSdk": "1.3"` (aşağıdaki sistem kütüphan
 
 `python tools/py_check.py <bundle> --frames 600`: desteklenmeyen yapıları satır numaralarıyla bulur, TR anahtarlarını
 ve ağ iznini denetler, uygulamayı gerçek imzalarla kurulmuş mock bir SDK'ya karşı çalıştırır.
+
+- SDK 1.11 (`"minSdk": "1.11"`, izin gerekmez; klasörü kullanıcı seçer, iptal hata değildir): `ui.chooseFolder({"title": "...", "remember": True}, callback)` (`callback(path, err)`, `path` is `None` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `fs.saveBackup(slot, callback)`, `fs.saveRestore(slot, callback)`, `fs.saveDeleteBackup(slot, callback)`, `fs.saveBackups()`

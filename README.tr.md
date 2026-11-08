@@ -11,13 +11,13 @@ başlatma yok, bölümlendirme yok.</p>
 <p align="center">
 <a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><img src="https://img.shields.io/github/v/release/sonerx7/Nexvyn-OS-NX?label=s%C3%BCr%C3%BCm&color=2f7cf6" alt="Son sürüm"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/lisans-GPL--3.0--or--later-blue" alt="Lisans: GPL-3.0-or-later"></a>
-<a href="SDK/README.tr.md"><img src="https://img.shields.io/badge/SDK-1.9-8a5cf6" alt="SDK 1.9"></a>
+<a href="SDK/README.tr.md"><img src="https://img.shields.io/badge/SDK-1.12-8a5cf6" alt="SDK 1.12"></a>
 <a href="#erişilebilirlik-ve-diller"><img src="https://img.shields.io/badge/dil-8-22a55e" alt="8 dil"></a>
 </p>
 
 <p align="center">
 <a href="https://github.com/sonerx7/Nexvyn-OS-NX/releases/latest"><b>NexvynOS.nro'yu indir</b></a> ·
-<a href="#130-sürümündeki-yenilikler">Yenilikler</a> ·
+<a href="#122-sürümündeki-yenilikler">Yenilikler</a> ·
 <a href="#gereksinimler">Gereksinimler</a> ·
 <a href="#kurulum">Kurulum</a> ·
 <a href="#belgeler">Belgeler</a> ·
@@ -41,6 +41,9 @@ Mağazası getirir.
   PC gerekmez.
 - **SDK 1.9:** fiziksel tabanlı 3B görüntü (NexGFX), animasyonlu 3B model dosyaları, sosyal uygulamalar için akış,
   medya oynatıcı ve ağ fonksiyonları; Lua, JavaScript, Python ve C'de.
+- **SDK 1.10 - 1.12:** Nexvyn OS içinde pencerede ya da tam ekranda çalışan native C / C++ uygulamalar (şablonlu
+  Native SDK 1.1 kiti ve `nxv-native` komut satırı); kalıcı klasörler ve kayıt yedekleri (`ui.chooseFolder`,
+  `fs.saveBackup`): Lua, JavaScript, Python ve C'de.
 - **Switch Araçları:** modlar, hileler, overlay'ler, saat profilleri, sistem modülleri, kayıt yedekleri ve Türkçe
   yamalar.
 - **Erişilebilirlik:** 8 dil, Ekran Okuyucu, dokunmatik, kumanda, USB klavye ve fare, el modu ve TV düzenleri.
@@ -51,6 +54,20 @@ Mağazası getirir.
 
 <p align="center"><img src=".github/assets/nexgfx-before-after.webp" width="100%" alt="Aynı toplantı odası SDK 1.8 renderer'ında (düz ışık) ve SDK 1.9 NexGFX pbr renderer'ında (camdan giren güneş, gölgeler, yansımalar)"></p>
 
+- **Native uygulamalar hızlı çalışır.** Konsolda ölçüldü: 3B sahne demosu 10'dan 59 fps'e, OpenGL showcase 10-16'dan
+  60 fps'e çıktı, bir GBA emülatörü tam hızda çalışıyor, bir karenin uygulamadan sisteme devri 15-24 ms'den 0.1 ms'ye,
+  bir sahnenin yüklenmesi yaklaşık 30 sn'den 0.6 sn'ye indi. Daha önce derlenmiş uygulamalar yeniden derlemeden
+  hızlanır.
+- **Ayarlar > Performans.** Konsolun resmi en yüksek saatleri varsayılan olarak kullanılır, yükleme sırasında kısa bir
+  CPU hızlandırma verilir; isteyenler için isteğe bağlı hız aşırtma da var (varsayılan kapalı, uyarı ve açık onay
+  ister). Canlı panel çekirdek başına CPU'yu, GPU'yu, saatleri ve sıcaklığı gösterir.
+- **Portlar.** Doom (ücretsiz Freedoom verisiyle), bir GBA emülatörü ve bir Quake motoru kendi Nexvyn pencerelerinde ya
+  da tam ekranda, App Market'ten ayrı uygulamalar olarak çalışır. Oyun verisi, BIOS ve firmware pakete asla
+  konmaz. Yeni **Nexvyn Bench** uygulaması ekranı zorlar ve kare süresini gösterir.
+- **Port kiti ve Native SDK 1.1 kiti.** Uygulama yapımcıları `port` şablonunu ve kit başvurusunu alır; başvuruda artık
+  kare ritmi, ses ve ayarlar notları var (`SDK/Guides/NATIVE_KIT.tr.md`).
+- **Arka planda kurulum, ses ve girdi.** Paket kurulumu yavaş SD kartları artık dondurmuyor, native oyunların ses
+  efektlerindeki cızırtı giderildi, native pencerelerde Joy-Con ve dokunmatik girdi düzeltildi.
 - **NexGFX pbr renderer (SDK 1.9).** 3B uygulama ve oyunlar için yeni, sürümlü bir grafik çekirdeği: normal,
   occlusion ve emissive haritalı metallic-roughness materyaller, gerçek zamanlı nokta, spot ve yönlü ışıklar, güneş ve
   spot gölgeleri, ACES ya da filmic ton eşlemeli HDR, bloom, MSAA, cube map yansımaları, kırılmalı ince cam, clearcoat
@@ -71,6 +88,13 @@ Mağazası getirir.
 - **Mağaza ikonu aracı.** Oyunun kendi modelini çizip her boyutta key-art ikonunu üretir; stil yapımcının seçimidir,
   varsayılanı clean'dir.
 - **Uygulama Mağazası görselleri.** Her öğe için İngilizce arayüzle çekilmiş beş ekran görüntüsü.
+
+### Native uygulamalar ve portlar
+
+| | |
+|:---:|:---:|
+| <img src=".github/assets/native-scenes.webp" alt="Nexvyn penceresinde çalışan native 3B sahne demosu"> | <img src=".github/assets/native-bench.webp" alt="Nexvyn Bench bir şehir sahnesinin kare süresini gösteriyor"> |
+| <img src=".github/assets/port-doom.webp" alt="Ücretsiz Freedoom verisiyle çalışan Doom"> | <img src=".github/assets/settings-performance.webp" alt="Ayarlar, Performans bölmesi: resmi en yüksek saatler ve canlı CPU ve GPU değerleri"> |
 
 Tam liste [sürüm notlarında](CHANGELOG.md).
 
@@ -296,7 +320,7 @@ Store/            Uygulama Mağazası'nın kurduğu her şey
 └── catalog.json, packages.json  konsolun okuduğu; README.md hepsini listeler
 SDK/              geliştiriciler için her şey, İngilizce ve Türkçe
 ├── Reference/                   SDK başvurusu, Java SDK'sı, C başlığı
-├── Languages/<dil>/             hızlı başlangıç, şablon ve oyun kitleri
+├── Languages/<dil>/             hızlı başlangıç, şablon ve oyun kitleri (C: native-kit/ içinde Native SDK kiti)
 ├── Guides/                      rehberler ve tarifler
 ├── Samples/<dil>/<kısa-ad>/     çalışan örnekler (samples.json: Studio'nun Örnekler'i)
 ├── AI/                          AI asistanları için context pack'ler ve görev prompt'ları

@@ -230,6 +230,9 @@ buttons**: Automatic (in handheld mode), Always or Off.
 
 - Ctrl+Alt+F or **Full Screen** in the arrangement menu. In full screen the title bar and the bars are hidden.
 - To leave, use the **Exit full screen** button on screen or press the same shortcut.
+- With a controller, hold **−** for one second: a bar fills and the window returns to its previous size. A short press of **−** still goes to the app; after a completed hold the release still reaches the app, so no button stays pressed. (Settings key `wm.fullscreenExitHold`, on by default.)
+- With touch, tap or swipe down from the top edge: the **Exit full screen** button and the menu bar appear for a few seconds.
+- When a window enters full screen, a hint at the bottom shows these ways out for two seconds.
 
 ### Opening size
 

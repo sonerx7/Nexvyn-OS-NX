@@ -1,0 +1,5 @@
+Name: glesv2
+Description: OpenGL ES 3.2 entry points of a windowed app (libnexvyn_window.a, resolved through nxn_display_proc); nothing to link
+Version: 3.2
+Libs:
+Cflags:

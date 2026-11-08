@@ -3,6 +3,7 @@
 **English** · [Türkçe](lua.tr.md)
 
 Add this after `system-prompt.en.md` when the app is written in Lua.
+- SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `ui.chooseFolder({title = "...", remember = true}, function(path, err) end)` (`path` is nil when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `fs.saveBackup(slot, function(ok, err) end)`, `fs.saveRestore(slot, fn)`, `fs.saveDeleteBackup(slot, fn)`, `fs.saveBackups()`
 
 ## Skeleton
 

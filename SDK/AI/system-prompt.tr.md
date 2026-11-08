@@ -1,4 +1,4 @@
-# Nexvyn OS uygulama SDK'sı 1.9: yapay zekâ asistanları için context pack
+# Nexvyn OS uygulama SDK'sı 1.11: yapay zekâ asistanları için context pack
 
 [English](system-prompt.en.md) · **Türkçe**
 
@@ -37,7 +37,7 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.9", "targetSdk": "1.9",
+  "minSdk": "1.9", "targetSdk": "1.11",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -54,8 +54,8 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; pbr renderer
   (`g3d.renderer`, `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`,
   `g3d.material`, `g3d.drawInstanced`, `g3d.caps`), bölüm 7'deki SDK 1.9 ağ çağrıları ve akış / medya çağrıları
-  "1.9" (yalnızca Lua, JavaScript, Python, C). App'in yaptığı her çağrıyı içeren en düşük `minSdk`'yı kullan.
-- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.9" yazar (bir callback takılınca ne olacağını belirler,
+  "1.9" (yalnızca Lua, JavaScript, Python, C), klasör seçici, kalıcı klasör ve kayıt yedeği çağrıları "1.11" (aynı dördü). App'in yaptığı her çağrıyı içeren en düşük `minSdk`'yı kullan.
+- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.11" yazar (bir callback takılınca ne olacağını belirler,
   kural 1). Squirrel ve Java SDK 1.8'de donduruldu (app'leri çalışır, yeni API gelmez): yeni app'lere Lua,
   JavaScript, Python ya da C ile başla.
 - `window.width/height` içerik boyutudur. `gamepad: true` kumandayı uygulamaya gönderir (L+R imleci geri verir);
@@ -186,6 +186,7 @@ koordinatlarında) · `ui.hit(id,x,y,w,h)` → {hovered,held,pressed,clicked,rig
 `ui.alert(title,msg,{"OK","Cancel"},fn(index))` · `ui.prompt(title,msg,default,fn(textOrNil))` ·
 `ui.openFile(fn(pathOrNil),{".txt"}[,title])` · `ui.saveFile(fn(pathOrNil),"name.txt"[,title])` ·
 `ui.keyboard(initial,fn(textOrNil)[,guide])`.
+SDK 1.11 (`"minSdk": "1.11"`; Lua, JavaScript, Python, C): `ui.chooseFolder({title, remember}, fn(pathOrNil, err))` (iptalde nil, nil gelir; `remember = true` klasörü sonraki açılışlarda da tutar) · `fs.folderGrants()` · `fs.folderGranted(path)` · `fs.revokeFolder(path)` · `fs.savePath()` · `fs.saveBackup(slot, fn(ok, err))` · `fs.saveRestore(slot, fn)` · `fs.saveDeleteBackup(slot, fn)` · `fs.saveBackups()`. İzin gerekmez: klasörü kullanıcı seçer. Slot adı `A-Z a-z 0-9 . _ -` karakterlerinden 1-48 karakterdir.
 
 ## 6. Girdi
 
@@ -219,7 +220,7 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
 - `sys`: `time()` (monoton sn), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.9". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.11". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id ya da nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Bağlantılar: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.

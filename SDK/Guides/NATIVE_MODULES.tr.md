@@ -54,6 +54,13 @@ izin sorusu sorulmaz, `app.json`'daki liste yalnızca bilgi içindir.
 Desteklenmeyenler: `thread_local` değişkenler (`PT_TLS`; modül reddedilir), metin yeniden konumlandırmaları
 (`-fPIC` şart), C++ istisnaları ve RTTI (Nexvyn OS zaten `-fno-exceptions -fno-rtti` ile derlenir).
 
+Ortak yükleyici (Native SDK 1.0): 1-4. adımlar (ELF denetimi, JIT kod belleği, segment kopyalama ve temizleme,
+relocation, sembol arama) tek bir düz C biriminde, `sdk/native/loader/nxelf.c` içindedir. Nexvyn OS onu derler
+(Makefile `SOURCES`), `libnexvyn_native` da devralma modundaki app'lerin `.nxvlib` paylaşılan kütüphaneleri için aynı
+dosyayı derler (`NATIVE_KIT.tr.md`, "Paylaşılan kütüphaneler"). Modül kuralları `nxvmod.cpp`'de kalır: `.nxvabi`
+denetimi, export tablosu, constructor'ların çökme koruması, güven ve çökme sayımı. Taşımayla modül ABI kimliği, hata
+metinleri ve yükleme sırası değişmedi; çekirdeği PC'de `tests/test_nxelf.cpp` sınar.
+
 ## 2. NRO tarafı: dışa aktarılan semboller
 
 `-Wl,--export-dynamic` NRO'daki ~23.000 küresel sembolün hepsini dışa aktarır ve NRO'yu yaklaşık 2 MB büyütür

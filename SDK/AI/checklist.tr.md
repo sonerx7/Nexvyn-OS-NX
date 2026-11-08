@@ -17,8 +17,8 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
 - [ ] `minSdk` kullanılan en yeni özelliğe ve dile uyuyor (JS 1.1, Python 1.3, Squirrel/C/Java 1.5, `nexvyn.game`
       1.2, paylaşım/zamanlama/izin API'si/yaşam döngüsü callback'leri 1.4, `fs.unzip`/`sys.games`/`sys.speak` 1.6,
       `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8, pbr renderer, `net.request` seçenekleri, `net.ws`,
-      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9). Yeni app'ler
-      `"targetSdk": "1.9"` yazar.
+      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9; `ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup` ve benzerleri 1.11). Yeni app'ler
+      `"targetSdk": "1.11"` yazar.
 - [ ] Kullanıcı istemedikçe yeni app Squirrel ya da Java ile yazılmadı (SDK 1.8'de donduruldular). Aynı kod Lua,
       JavaScript, Python ve C'de aynı SDK adlarıyla çalışırdı.
 

@@ -61,3 +61,5 @@ app.json: `"main": "main.js"` (ya da `"runtime": "js"`), `"minSdk": "1.1"`, `net
 
 `node tools/js_check.mjs <bundle> --frames 600`: her .js dosyasını modül olarak parse eder, TR anahtarlarını denetler,
 uygulamayı iki dilde mock bir SDK'ya karşı çalıştırır ve yakalanmamış hataları ve işlenmemiş retleri bildirir.
+
+- SDK 1.11 (`"minSdk": "1.11"`, izin gerekmez; klasörü kullanıcı seçer, iptal hata değildir): `await ui.chooseFolder({title, remember})` (`null` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `await fs.saveBackup(slot)`, `await fs.saveRestore(slot)`, `await fs.saveDeleteBackup(slot)`, `fs.saveBackups()`

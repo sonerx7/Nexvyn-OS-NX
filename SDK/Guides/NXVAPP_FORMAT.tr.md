@@ -78,6 +78,29 @@ Kurallar:
 | `abi` | metin | Yalnızca C++ uygulamaları: modülün derlendiği Nexvyn OS yapısının ABI kimliği (16 onaltılık karakter). Farklıysa kurulmaz. |
 | `shareTargets` | metin dizisi | `sys.share` ile alabildikleri (SDK 1.4): `"text"`, `"url"`, `"file"`, `"image"` ya da uzantı (`".txt"`). Paylaşılan öğe `app.load(arg)` / `app.open(arg)` ile gelir. |
 
+### Manifest v2 (kendini tanıtan paket)
+
+Paket ne olduğunu kendisi söyler; Nexvyn OS dosya uzantısına ya da dosya adına bakmaz. Bu alanların hepsi isteğe bağlıdır:
+hiçbirini taşımayan paket (daha önce yapılan her paket) düz bir uygulama olarak okunur ve eskisi gibi kurulur, çalışır;
+sistemin bilmediği alan yok sayılır. Bulunup da kimsenin kullanamayacağı biçimde olan ya da bu sistemin alamayacağı değer
+taşıyan alan, kurulumda temiz bir hatadır ve hiçbir şey yerine açılmaz. (Okuyucu: `source/core/pkgv2.cpp`;
+`python tools/nxv.py check` aynı kuralları uygular.)
+
+| Alan | Tür | Açıklama |
+|------|-----|----------|
+| `type` | metin | `app` (varsayılan), `game`, `lib` (ortak kütüphane, bölüm 5b), `theme`, `runtime`. Bilinmeyen tür: "daha yeni Nexvyn OS gerekir". |
+| `mode` | metin | Native uygulama için `window` (varsayılan) ya da `fullscreen` (`docs/NATIVE_KIT.tr.md`). |
+| `arch` | metin | `aarch64`, Nexvyn OS'un çalıştırdığı tek mimari. Başka değer reddedilir. |
+| `abi` | metin | Eskisi gibi modül ABI kimliği (native modüller). |
+| `minOs` | metin | Çalıştırabilen en eski Nexvyn OS sürümü (`"1.2.0"`); ön sürüm, kararlı sürümden eski sayılır. |
+| `minSdk`, `minNative` | metin | Eskisi gibi: gereken en eski SDK ve Native SDK. |
+| `memory` | sayı | Native uygulamanın istediği heap, MB olarak (1 ile 16384 arası). |
+| `needs` | dizi | Gereken ortak kütüphaneler: `"id"`, `"id@6.1"` ya da `{"id": "...", "version": "6.1"}`. Her kütüphanenin tek sürümü kurulur; kurulu olanın major'ı aynı olmalı ve eski olmamalı (bölüm 5b). |
+| `size` | sayı | Kurulu boyut, bayt (`nxv pack --stamp` yazar). |
+| `hashes` | nesne | `{"<dosya>": "<sha256>"}`; kurulum sırasında karttan geri okunur (`nxv pack --stamp` yazar). Uyuşmazlık kurulumu durdurur. |
+| `dataVersion` | tam sayı | Uygulamanın yazdığı veri biçiminin sürümü (0 ya da daha büyük; yoksa 0). Yeni sürüm veriyi başka biçimde saklıyorsa artırın (bölüm 5a). |
+| `name`, `description` | metin ya da dil tablosu | Eskisi gibi. |
+
 Çalışma ortamları (`runtimes/runtime_kind.h`):
 
 | `runtime` | Uzantı | Varsayılan `main` | Dil | En düşük SDK |
@@ -89,6 +112,7 @@ Kurallar:
 | `"c"` | `.c` | `main.c` | C, konsolda TinyCC ile derlenir; paketteki tüm `.c` dosyaları | 1.5 |
 | `"java"` | `.jar` | `app.jar` | Java 8 sınıf dosyaları (miniJVM); jar PC'de `tools/java_build.py` ile derlenir | 1.5 |
 | `"native"` | `.nxvmod` | `"native"` alanı | C++ yerel modül, NRO ile aynı derleyiciyle derlenir; yalnızca aynı ABI'li sistemde çalışır (`docs/NATIVE_MODULES.tr.md`) | SDK yerine ABI kimliği |
+| `"native"` + `"mode": "window"` / `"fullscreen"` | `.nxvmod` | `<ad>.nxvmod` | Native SDK ile yapılmış C/C++ app (`docs/NATIVE_SDK_DESIGN.tr.md`): Nexvyn OS'un içinde pencerede ya da tam ekranda çalışır, kullanıcı ikisi arasında geçer. (`"mode": "exclusive"` ve `.nro` main'li eski paketler eskisi gibi başlar.) `"minNative"` = istediği Native SDK sürümü; `"minSdk": "1.10"` zorunlu (eski sistemler "daha yeni Nexvyn OS gerekli" der); daha yeni mod ya da Native SDK "daha yeni Nexvyn OS gerekli" olarak görünür | `"minNative"` |
 
 `"c"`, `"java"` ve `"native"` uygulamaları korumalı alanda çalışmadığı için SD karttan kurulanlar ilk açılışta
 kullanıcıya bir kez sorulur (`apps.trustedC`, `apps.trustedJava`, `apps.trustedNative`).
@@ -215,11 +239,67 @@ e4a9...5d20  main.lua
   - **Çalıştır:** paket `~/Library/Caches/nxvinstall/<id>` içine açılır ve bir kez çalıştırılır; Başlatıcı'ya
     eklenmez. (Lua/JS çalışma ortamları dosyaları doğrudan zip'ten okumadığı için paket önce açılır.)
   - **Yükle / Güncelle / Yeniden yükle:** paket `sdmc:/NexvynOS/Applications` içine kurulur.
-- **Atomik kurulum:** paket önce gizli bir geçici klasöre (`Applications/.staging-<id>`) açılır ve denetlenir; sonra
-  eski kopya `.old-<id>` adıyla kenara alınır, yenisi yerine taşınır, en son eskisi silinir. Bir adım başarısız
-  olursa eski kopya geri konur.
+- **Atomik kurulum:** ağır kısım arka planda çalışır ve masaüstünü bloklamaz. Paket gizli bir klasöre
+  (`Applications/.staging-<id>`) açılır; dosya listesi, hash'ler (`manifest.sha256`, `hashes`) ve imza denetlenir, `needs`
+  ile istediği kütüphaneler kurulu olmalıdır. Ancak ondan sonra ana thread'de tek kısa bir adım yerine geçirir: eski kopya
+  `.old-<klasör>` adını alır, yenisi uygulamanın klasörüne taşınır, eski kopya önceki sürüm olur (`.prev-<klasör>`). Yeni
+  kopya yüklenmezse eskisi geri konur. Konsol yarıda kapanırsa ya da uygulama tam ortada kapatılırsa, bir sonraki açılış
+  geride kalanı düzeltir: yarım kalan değişim geri alınır (yeni kopya tamsa ve yükleniyorsa tamamlanır), yarım açılmış
+  klasörler silinir ve kurulu sürüm her durumda çalışmaya devam eder.
 - **Güncelleme:** aynı `id` ile yüklenen paket, kurulu kopyanın klasörüne yazılır. Uygulama verileri
-  (`~/Library/Application Support/<id>`) hiç değişmez.
+  (`~/Library/Application Support/<id>`) paketin parçası değildir ve aşağıda anlatılan durum dışında dokunulmaz.
+
+### 5a. Önceki sürüm ve uygulamanın verisi
+
+- Her güncelleme, değiştirdiği sürümü yenisinin yanında saklar (`apps.keepPrevious` ayarı, varsayılan açık). Sistem
+  Ayarları > Uygulamalar böyle bir uygulama için **Önceki sürüme dön** gösterir; geri dönmek ikisinin yerini değiştirir
+  (şu anki sürüm önceki sürüm olur, yani tekrar geri dönmek ileri gitmektir). Uygulamayı kaldırmak önceki sürümünü de siler.
+- **`dataVersion`.** Sistem her uygulama için, kurulu sürümlerden herhangi birinin sahip olduğu en yüksek `dataVersion`'ı
+  kaydeder (`System/Config/dataversions.json`). Bunu yükselten güncelleme, önce kullanıcının verisini arka planda kopyalar
+  (`~/Library/App Copies/<id>/dv<eski>`). Kopya yapılamazsa (örneğin kart doluysa) güncelleme kurulmaz ve mevcut sürüm
+  olduğu gibi kalır.
+- Verinin `dataVersion`'ından düşük bir sürüme **geri dönülürken** kullanıcıya sorulur: **Yedeğe dön** (güncellemeden
+  önce alınan kopya geri gelir) ya da **Verisiz aç**. İkisinde de yeni veri asla silinmez: ayrı bir kopya olarak
+  (`~/Library/App Copies/<id>/kept-dv<n>`) saklanır. Veri biçimi değişmediyse geri dönmek veriyi olduğu gibi bırakır ve
+  bir şey sormaz.
+
+### 5b. Ortak kütüphaneler (`"type": "lib"`)
+
+Kütüphane paketinin `app.json`'unda `"type": "lib"`, `id`, `version` ve dosyaları vardır; kendi programı yoktur. Aynı atomik
+adımlarla `sdmc:/NexvynOS/Libraries/` içine kurulur. Varsayılan olarak her kütüphanenin tek sürümü kurulur
+(`Libraries/<id>/`); `libs.sideBySide` ayarı (varsayılan kapalı) açıkken major sürümler `Libraries/<id>/<major>/` içinde yan
+yana durur. `needs` içinde kütüphane
+listeleyen uygulama o kütüphane olmadan kurulmaz: Uygulama Mağazası başka nelerin kurulacağını (ad ve boyut) gösterir ve bir
+kez sorar; onayla önce kütüphaneler, sonra uygulama kurulur. Kurulu bir uygulamanın ihtiyaç duyduğu kütüphane asla
+kaldırılmaz.
+- **Yan yana** (`libs.sideBySide`): aynı major'ın daha yeni sürümü `Libraries/<id>/<major>/` içindeki eskisinin yerine geçer
+  (daha yeni sürümü kurulu olan major'ın eski paketi atlanır), farklı major yanına kurulur. Bir ihtiyaç (`"id@6.1"`), 6.1'den
+  eski olmayan en yüksek kurulu 6.x sürümüyle karşılanır; sürüm istenmemişse en yüksek kurulu sürümle. Kurulu bir app'in ya da
+  başka bir kurulu kütüphanenin ihtiyacını karşılayan sürüm kullanımdadır ve asla kaldırılmaz. Önceden kurulmuş kütüphaneler
+  (`Libraries/<id>/app.json`) olduğu gibi okunur; aynı kütüphanenin ilk yan yana kurulumu o klasörü üç rename ile major
+  klasörüne taşır (ortada kesilme bir sonraki açılışta toparlanır, hiçbir şey silinmez). Yan yana tutulan kütüphane, ayar
+  kapatılsa da öyle kalır. Ayar yokken farklı major, eskisi gibi kurulu kütüphanenin yerine geçer.
+- **Ayarlar > Depolama > Kütüphaneler** kurulu her sürümü (ad, sürüm, boyut, kullanan app'ler) listeler ve hiçbirinin
+  kullanmadığı olanları onaydan sonra kaldırır. Klasörler arka planda okunur ve ölçülür; kaldırma ana thread'de sürüm başına
+  bir rename'dir, dosyalar arka planda silinir.
+
+### 5c. Delta güncellemeler (`store.deltaUpdates`, varsayılan kapalı)
+
+Bir güncelleme **delta paketi** olarak da indirilebilir: yalnızca içeriği değişen dosyalar. İçinde `delta.json`
+(`{"format": 1, "id", "from", "to"}`), yeni sürümün `app.json`'u, `manifest.sha256`, `manifest.sig` ve değişen dosyalar olan
+bir zip'tir. `python tools/nxv.py pack --delta eski.nxvapp yeni.nxvapp` üretir; yeni paket `--stamp` ile paketlenmiş olmalıdır
+ki `app.json` `hashes` her dosyayı listelesin (yoksa araç reddeder); `--index` katalog girdisini yazar.
+- **Katalog:** uygulama girdisi `"delta"` taşıyabilir: bir nesne ya da `{"from": "<kurulu sürüm>", "download", "sha256",
+  "size"}` dizisi (https, delta dosyasının sha256'sı). Girdinin kendi `download` / `sha256`'sı kalır: yedek odur.
+  `delta`'sız girdiler eskisi gibi davranır.
+- **Kullanım:** yalnızca ayar açıkken, kurulu sürüm `from`'a eşitken ve delta tam paketten küçükken. Delta katalogdaki sha256
+  ile denetlenir ve staging klasörüne açılır; yeni `hashes`'teki, deltanın getirmediği her dosya, hash'i denetlendikten sonra
+  kurulu sürümden kopyalanır (kendi dosyasını değiştiren app burada elenir); sonuç tam paketle aynı denetimlerden (tüm
+  `hashes`, `manifest.sha256`, geliştirici imzası ve katalogdaki signer, `dataVersion` artışında veri yedeği) ve aynı atomik
+  takastan geçer, yani "Önceki sürüme dön" tam güncellemedeki gibi çalışır. Takasa kadar yalnızca staging klasörüne yazılır.
+- **Yedek:** indirilemeyen, hash'i tutmayan, başka sürüm için olan, taban dosyaları yapıldığı dosyalar olmayan ya da sonucu bir
+  denetimden geçemeyen delta bırakılır ve yerine tam paket kurulur; kullanıcının yapacağı bir şey yoktur. Güç kesilmesi kurulu
+  sürümü çalışır bırakır; sonraki açılış staging klasörünü siler.
 - **Kaldırma:** Başlatıcı'da ikona sağ tık → Kaldır, Sistem Ayarları > Uygulamalar ya da Mağaza. "Verileriyle
   kaldır" `Application Support/<id>` ve `Caches/<id>` klasörlerini de siler.
 - Sistemle gelen bir uygulamayla aynı kimliği taşıyan paket `ext.<id>` kimliğiyle yan yana kurulur.
@@ -299,6 +379,14 @@ adres 404 döndükçe sırayla eski `AppStore/catalog.json` ve `store/catalog.js
 - Katalog denetimi: `python tools/catalog_check.py Store/catalog.json` (şema, benzersiz kimlikler, https adresleri,
   `sha256`, `minSdk`, `signer`, tarih biçimi, `security.blocklist`; `--strict` uyarıları da hata sayar).
 
+Kütüphaneler de katalog girdisidir: `{"id": "com.siz.ffmpeg", "type": "lib", "name", "version", "download", "sha256", "size"}`
+(ikon ya da ekran görüntüsü gerekmez, kendi sayfası yoktur). Uygulama girdisi bunları `"needs"` içinde listeler
+(`app.json`'daki biçimlerle aynı). `python tools/catalog_check.py` her `needs` girdisinin katalogda, onu karşılayan
+sürümde bulunduğunu denetler. Bir kütüphane her major için bir kez listelenebilir (aynı id, farklı sürüm): uygulama ihtiyacını
+karşılayan en yükseğini alır. Uygulama girdisi `"delta"` içinde daha küçük güncelleme paketleri listeleyebilir (bölüm 5c);
+`catalog_check` biçimlerini (`from`, https `download`, `sha256`, `size`) denetler, kullanılamayacak delta'lar için uyarır
+(paketten küçük değil, `from` girdinin kendi sürümü, tekrarlanan `from`).
+
 ### security: Uygulama Koruması'nın engel listesi
 
 ```json
@@ -333,6 +421,11 @@ python tools/nxvapp_keygen.py anahtarim.pem                 # imza anahtarı (bi
 python tools/nxvapp_pack.py Uygulamam.nxvapp --sign anahtarim.pem
 python tools/nxvapp_pack.py --verify Uygulamam.nxvapp       # Nexvyn OS'un yapacağı denetim: liste, değerler, imza
 ```
+
+Tek araç script uygulamalarını, native uygulamaları ve kütüphaneleri kapsar: `python tools/nxv.py pack <klasör|native proje>`
+(`-o`, `--sign`, `size` ve `hashes` yazan `--stamp`) ve `python tools/nxv.py check <klasör|dosya.nxvapp>` (manifest, izinler,
+boyut sınırları, hash'ler, imza ve native modül için ABI; Nexvyn OS reddedecek ya da işaretleyecekse çıkış kodu 1). `pack`
+aşağıdaki paketleyiciyi (native proje için `nxv_native package`'ı) çağırır; `check` onun denetimlerini çağırır.
 
 Paketleyici `app.json`'u denetler (kimlik, ad, giriş dosyası, `minSdk` biçimi, bilinmeyen izinler ve paylaşım
 hedefleri, boyut sınırları) ve `manifest.sha256` (`--sign` ile `manifest.sig`) ekler. Nexvyn OS Studio'daki **Dışa aktar** komutu da aynı biçimi üretir (`~/Documents/<ad>.nxvapp`).

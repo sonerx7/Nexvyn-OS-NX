@@ -53,6 +53,13 @@ question is asked, and the list in `app.json` is for information only.
 Not supported: `thread_local` variables (`PT_TLS`; the module is refused), text relocations (`-fPIC` is required), C++
 exceptions and RTTI (Nexvyn OS is built with `-fno-exceptions -fno-rtti` anyway).
 
+Shared loader (Native SDK 1.0): steps 1-4 (ELF checks, JIT code memory, segment copy and clearing, relocations, symbol
+lookup) live in one plain C unit, `sdk/native/loader/nxelf.c`, that Nexvyn OS compiles (the Makefile's `SOURCES`) and
+`libnexvyn_native` compiles too, for the `.nxvlib` shared libraries of exclusive-mode apps (`NATIVE_KIT.en.md`, "Shared
+libraries"). `nxvmod.cpp` keeps the module rules: the `.nxvabi` check, the export table, the crash guard around the
+constructors, trust and crash counting. The module ABI id, the error texts and the load order did not change with the
+move; `tests/test_nxelf.cpp` covers the core on the PC.
+
 ## 2. The NRO side: exported symbols
 
 `-Wl,--export-dynamic` exports all of the NRO's ~23,000 global symbols and grows the NRO by about 2 MB (more than the

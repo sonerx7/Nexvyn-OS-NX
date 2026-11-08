@@ -41,8 +41,26 @@ Hangi değişiklik neyi artırır:
 | 1.7 | 1.1.0 | `g3d.voxels` voksel dünyaları (JavaScript), `mesh:setTexture(path, pixelated)` |
 | 1.8 | 1.2.0 | `g3d.model`: materyal, texture ve iskelet animasyonlu `.glb` / `.gltf` / `.fbx` modeller; `g3d.drawMatrix` |
 | 1.9 | 1.2.2 | runtime kütüphanesi: Lua'da `net.request`, JavaScript `TextEncoder` / `URL` / `URLSearchParams` / `structuredClone`, Python `str` metotları ve `urllib.parse` / `html` / `uuid`; akış, fotoğraf ve kısa video uygulamaları: `net.request` ile yükleme, çerez, yeniden deneme ve çevrimdışı önbellek, WebSocket istemcisi, `net.oauth`, `gfx.imageUrl`, `media.*` oynatıcıları, `ui.beginFeed` / `ui.pager` / `ui.richText`, `sys.relativeTime`; isteğe bağlı pbr renderer (`g3d.renderer("pbr")`): PBR materyaller, gerçek zamanlı ışıklar, gölgeler, HDR, bloom, MSAA, instancing (Lua, JavaScript, Python, C); bunu istemeyen uygulamalar 1.8'deki gibi birebir çizilir |
+| 1.10 | 1.2.2 (şimdilik aynı build) | native runtime: Nexvyn OS'un içinde pencerede ya da tam ekranda (`"runtime": "native"`, `"mode": "window"` veya `"fullscreen"`, bir `.nxvmod`; `"windowed"` ya da kaldırılan `"exclusive"` yazan paketler çalışmaya devam eder) C / C++ uygulamaları, Native SDK 1.0 (`NATIVE_KIT.en.md`); Native SDK 1.1 yalnızca ekler (`nxn_audio_clear`, USB klavye / fare / metin, dock ve uyku olayları, pencereler için SDL2 sürücüsü), her biri bir `nxn_caps` biti ile bildirilir, 1.0 için derlenmiş app'ler değişmeden çalışır; script API değişikliği yok; native paketler `"minSdk": "1.10"` taşır, bu yüzden SDK 1.9 ve öncesi sistemler "daha yeni bir Nexvyn OS gerekli" der |
+| 1.11 | 1.2.2 (şimdilik aynı build) | script app'ler için kalıcı klasörler ve kayıt yedekleri: `ui.chooseFolder`, `fs.folderGrants` / `folderGranted` / `revokeFolder`, `fs.savePath`, `fs.saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python, C; native `nxn_pick` / `nxn_grant_*` / `nxn_save_*` ile aynı işlevler); eski SDK'lar için yazılmış app'ler eskisi gibi çalışır; bunları kullanan script'ler `"minSdk": "1.11"` taşır |
+| 1.12 | 1.2.2 (şimdilik aynı build) | native SDK ile dil eşitliği: `ui.tokens`, `audio.stopAll`, C `input_action` (Lua, JavaScript, Python, C); eski SDK'lar için yazılmış app'ler eskisi gibi çalışır; bunları kullanan script'ler `"minSdk": "1.12"` taşır |
 
 Sürüm sürüm bütün fonksiyonlar SDK başvurusundadır (`sdk/SDK.tr.md`, "SDK sürümleri").
+
+### Native SDK
+
+Native runtime'ının (C / C++ app'leri, `.nxvmod`) kendi sürümü var: `tools/sdkinfo.py` içinde `NATIVE_VERSION`. Bir app
+ihtiyaç duyduğu en eski sürümü `"minNative"` olarak yazar. Yeni Native SDK yalnızca ekler: her ekleme bir `nxn_caps` biti
+ile bildirilir, eski sürüm için derlenmiş app değişmeden çalışır, daha yenisini isteyen app başlamadan bunu söyler.
+
+| Native SDK | Getiren SDK | İçeriği |
+|---|---|---|
+| 1.0 | 1.10 | `nxn_*` C arayüzü: pencere ekranı (GL), girdi, ses akışları, dosya, log, dönüş; `.nxvmod` app'leri, `.nxvlib` kütüphaneleri |
+| 1.1 | 1.10 | Pencereler için SDL2 sürücüsü; ses ve girdi olayları (`nxn_audio_clear`, USB klavye / fare / metin, dock ve uyku olayları); pencerede POSIX çağrıları (uyum katmanı); sistem servisleri (dosya ve klasör diyalogları, kalıcı klasör erişimi, kayıt verisi, izinler); UI token'ları, sistem fontları ve app'in kendi metinleri (`nxn_ui.h`, `lang/<kod>.json`); NexGFX native (`nexgfx_native.h`); OS ses mikseri (`nxn_sfx_play`, `nxn_tone`); paket v2 (modül, `lang/`, `data/` ile `nxvapp`) |
+
+Nexvyn OS güncellenince native app'lerde değişiklik gerekmez; kitin kendi kuralları `docs/NATIVE_COMPAT.en.md` içinde.
+Yükleme hataları (eksik işlev, başka arayüz nesli, `thread_local`) kullanıcının dilinde, ne yapılacağıyla birlikte
+gösterilir ve app'in log'una yazılır; bkz. `docs/NATIVE_GUIDE.tr.md`.
 
 ### Runtime'lar
 
@@ -87,7 +105,8 @@ eder.
 - **`minSdk`**: uygulamanın çalıştığı en eski SDK. Daha eski SDK'lı bir sistem onu kurmaz.
 - **`targetSdk`**: uygulamanın derlenip test edildiği SDK. Sistem bu uygulama için o SDK'daki gibi davranmayı sürdürür.
   Varsayılanı `minSdk`, ikisi de yoksa `"1.0"` (`minSdk`'den düşük bir `targetSdk`, `minSdk` sayılır). Studio her yeni
-  projeye `minSdk` ve `targetSdk` olarak güncel SDK'yı yazar.
+  betik projesine `targetSdk` olarak güncel SDK'yı, `minSdk` olarak betik API'sini en son değiştiren SDK'yı (1.9)
+  yazar; yalnızca native runtime ekleyen sürümler (1.10) yeni app'leri eski sistemlerden kesmez.
 - **`runtime`**: dil (varsayılanı ana dosyanın uzantısından; `"python3"` yalnızca adıyla).
 - **`runtimeVersion`** (isteğe bağlı): uygulamanın test edildiği motor sürümü. Yoksa `targetSdk` ile gelen motor
   (yukarıdaki tablo). Kurulumda kaydedilir; yalnızca bir motor uygulamaların fark edeceği biçimde değiştiğinde önem
@@ -111,7 +130,10 @@ eder.
    "SDK x'i hedefleyen uygulamalar için" diye belgelenir.
 3. **Daha yeni uygulamalar sessizce idare edilir; bu sistemin bilmediği bir şey yüzünden reddedilmez.** Bilinmeyen
    app.json alanları yok sayılır. Bilinmeyen bir izin manifest'te kabul edilir ve hiçbir şey vermez
-   (`permrules::decide`). Emekliye ayrılmış izin (`"clipboard"`) kabul edilir ve yok sayılır.
+   (`permrules::decide`). Emekliye ayrılmış izin (`"clipboard"`) kabul edilir ve yok sayılır. Manifest v2 alanlarının
+   (`type`, `arch`, `minOs`, `needs`, `size`, `hashes`, `dataVersion`; `docs/NXVAPP_FORMAT.tr.md`) hepsi isteğe bağlıdır:
+   bunlar olmadan paket eskisi gibi kurulur, güncelleme yarıda kalsa bile kurulu sürüm asla kaybolmaz (geri dönmek için
+   önceki sürüm saklanır).
 4. **Daha yeni bir sistem için yazılmış uygulama bunu söyler.** `minSdk`'si bu SDK'nın üstündeyse ya da `runtime`'ı bu
    derlemenin runtime tablosunda yoksa (`sdkcompat::runnable`):
    - Uygulama Mağazası Al yerine *Bu uygulama Nexvyn OS'un daha yeni bir sürümünü gerektiriyor* gösterir, onu Yeni
@@ -135,6 +157,16 @@ eder.
    korur (hata ekranı). Yerel kod (C ve C++ app'ler) dışarıdan asla durdurulmaz: böyle bir callback sistemi 12 saniye
    tutup geri döndüğünde kullanıcıya Zorla Kapat / Bekle sorulur; takılı kalırsa + ve - iki saniye basılı tutulunca
    Nexvyn OS kapanır ve sonraki açılış diğer pencereleri geri getirir. Testler: `tools/tests/hang_apps/` (5. bölüm).
+8. **Kapanan app geride kaynak bırakmaz; hiçbir app'in bellek sınırı yoktur** (SDK 1.10). Mesh'leri, modelleri, voxel
+   dünyaları ve GPU arabellekleri app kapanınca, dokular onları çizen bütün app'ler kapanınca serbest kalır
+   (`g3d_gl.h` `maintain`). Esnek doku bütçesi yalnızca SDK 1.10'u hedefleyen app'lerin boşta kalan dokularını bırakır;
+   eski app'lerde yalnızca log yazar. Hâlâ yaşayan kaynakları `res` satırları ve autorun `stats` satırı
+   (`source/core/resmon.h`) gösterir.
+9. **Paketler: eski paketler ve kataloglar değişmeden çalışır** (Native 1.1 işi). Delta güncellemeler (`store.deltaUpdates`) ve yan
+   yana kütüphaneler (`libs.sideBySide`) varsayılan olarak kapalıdır; `delta`'sız girdi ve tek sürüm kurulmuş kütüphane eskisi
+   gibi davranır. Delta hiçbir zaman tam paketten fazla güvenilmez (aynı hash, imza ve atomik takas) ve her sorun tam
+   pakete düşer. Tek sürümlük klasör olarak kurulmuş kütüphane olduğu gibi okunur ve kayıpsız taşınır; bir app'in ihtiyaç
+   duyduğu kurulu sürüm asla kaldırılmaz. Uyumluluk kimlikleri elle yükseltilen numaralar olarak kalır.
 
 ## 4. Deprecated ve adı değişenler (sonsuza dek tutulur)
 

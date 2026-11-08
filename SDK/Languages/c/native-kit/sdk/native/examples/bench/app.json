@@ -1,0 +1,13 @@
+{
+  "id": "com.nexvyn.example.bench",
+  "name": "Nexvyn Bench",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "icon": "icon.png",
+  "window": {"width": 1280, "height": 720, "resizable": true},
+  "minNative": "1.0",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": ["files"]
+}

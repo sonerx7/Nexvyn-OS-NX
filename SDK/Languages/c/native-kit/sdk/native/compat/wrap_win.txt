@@ -1,0 +1,11 @@
+# Extra --wrap names of a windowed app (libnexvyn_compat_pic.a), added to wrap_core.txt and wrap_fsmap.txt.
+# The runtime hooks sit on the nxn_* imports (Nexvyn OS implements nxn_* for windows and cannot call into the module);
+# socket / accept let the layer close the sockets of an app that ends.
+nxn_init
+nxn_shutdown
+nxn_event_poll
+nxn_should_quit
+nxn_sleep_ns
+nxn_run
+socket
+accept

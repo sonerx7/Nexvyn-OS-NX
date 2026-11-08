@@ -1,0 +1,13 @@
+{
+  "id": "com.nexvyn.example.scenes",
+  "name": "Native SDK Scenes",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "icon": "icon.png",
+  "window": {"width": 1280, "height": 720, "resizable": true},
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.12",
+  "permissions": ["files"]
+}

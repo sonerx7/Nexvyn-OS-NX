@@ -1,0 +1,133 @@
+{
+  "page": {
+    "3d": "3D",
+    "sound": "声音",
+    "system": "系统",
+    "runtime": "运行时",
+    "about": "关于"
+  },
+  "res": {
+    "ok": "正常",
+    "na": "不可用",
+    "fail": "失败",
+    "pending": "检查中"
+  },
+  "menu": {
+    "pages": "页面",
+    "view": "视图",
+    "p3d": "3D",
+    "psound": "声音",
+    "psystem": "系统",
+    "pruntime": "运行时",
+    "pabout": "关于",
+    "autorotate": "自动旋转",
+    "shadows": "阴影",
+    "fxaa": "平滑边缘"
+  },
+  "g3d": {
+    "na": "此窗口中的 3D 需要 OpenGL 4.3，但这里不可用。",
+    "failed": "无法启动 3D 场景。",
+    "fps": "帧每秒",
+    "loading": "正在加载场景",
+    "shaders": "正在准备渲染器",
+    "draws": "绘制调用（场景 / 阴影）",
+    "tris": "三角形",
+    "gpu": "GPU 内存",
+    "rotate": "自动旋转",
+    "shadows": "阴影",
+    "fxaa": "平滑边缘",
+    "scale": "渲染比例",
+    "hint": "拖动画面可环顾四周。"
+  },
+  "snd": {
+    "volume": "音量",
+    "mixer": "声音混音器",
+    "na": "系统声音混音器在这里不可用。",
+    "play": "播放音调",
+    "click": "点击",
+    "notify": "提示音",
+    "stop": "全部停止",
+    "keys": "程序化琴键",
+    "melody": "播放旋律",
+    "melody_stop": "停止旋律",
+    "proc": "这里的每个声音都是即时生成的。",
+    "ctl": "你的按键",
+    "ctl_na": "按键映射在这里不可用。",
+    "ctl_hint": "按下你在设置中映射的按键，就会发出音符。"
+  },
+  "wave": {
+    "sine": "正弦波",
+    "square": "方波",
+    "saw": "锯齿波",
+    "triangle": "三角波",
+    "noise": "噪声"
+  },
+  "act": {
+    "select": "选择",
+    "back": "返回",
+    "context": "上下文菜单"
+  },
+  "sys": {
+    "na": "此服务在这里不可用。",
+    "notify": "通知",
+    "send": "发送通知",
+    "notify_title": "原生导览",
+    "notify_body": "由原生应用发送的通知。",
+    "notify_hint": "显示在通知中心。",
+    "clipboard": "剪贴板",
+    "copy": "复制文本",
+    "paste": "读取剪贴板",
+    "rumble": "触感",
+    "rumble_go": "震动",
+    "perms": "权限",
+    "files": "文件和文件夹",
+    "open": "打开文件…",
+    "saveas": "另存为…",
+    "folder": "选择文件夹…",
+    "nothing": "尚未选择",
+    "cancelled": "已取消",
+    "save": "存档数据",
+    "launches": "已启动 {0} 次",
+    "backup_now": "立即备份",
+    "backup": "备份",
+    "restore": "恢复",
+    "delete": "删除",
+    "no_backups": "还没有备份。"
+  },
+  "perm": {
+    "unknown": "未知",
+    "granted": "允许",
+    "denied": "已关闭",
+    "notdeclared": "未声明",
+    "request": "请求"
+  },
+  "rt": {
+    "title": "原生运行时",
+    "eh": "C++ 异常",
+    "lib": "共享库",
+    "tls": "thread_local",
+    "ehlib": "来自库的异常",
+    "na": "此窗口中已关闭（设置开关）",
+    "rerun": "重新运行",
+    "switches": "设置 > 开发者: native.windowedTls, windowedEh, windowedLibs",
+    "thread1": "线程 1",
+    "thread2": "线程 2",
+    "thread3": "线程 3",
+    "lib_card": "库"
+  },
+  "about": {
+    "sdk": "SDK",
+    "native": "原生 SDK",
+    "abi": "接口代数",
+    "os": "Nexvyn OS",
+    "script": "脚本 SDK",
+    "app": "此应用",
+    "lang": "语言",
+    "theme": "外观",
+    "memory": "内存",
+    "heap": "此应用的堆使用量",
+    "gpu": "GPU 内存",
+    "uptime": "运行时间",
+    "caps": "功能"
+  }
+}

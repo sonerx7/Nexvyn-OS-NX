@@ -1,4 +1,4 @@
-# SDK sürümleri: 1.0'dan 1.9'a
+# SDK sürümleri: 1.0'dan 1.12'ye
 
 [English](SDK_VERSIONS.en.md) · **Türkçe**
 
@@ -21,7 +21,7 @@ kuralları [COMPATIBILITY.tr.md](COMPATIBILITY.tr.md)'de.
 | Numara | Örnek | Anlamı |
 |---|---|---|
 | **Nexvyn OS** | `1.2.2` | sistem sürümü (major.minor.patch), Ayarlar > Hakkında'da görünür |
-| **SDK** | `1.9` | uygulamaların karşısına yazıldığı API yüzeyi (major.minor); `sys.sdkVersion()` bunu döndürür |
+| **SDK** | `1.12` | uygulamaların karşısına yazıldığı API yüzeyi (major.minor); `sys.sdkVersion()` bunu döndürür |
 | **Runtime motoru** | Lua 5.4.7, QuickJS-ng 0.17.0, pocketpy 2.2.0 | bir dilin arkasındaki yorumlayıcı ya da derleyici |
 
 Yeni bir SDK fonksiyonu SDK'nın minor numarasını artırır ve yeni bir Nexvyn OS minor sürümüyle gelir. Var olan bir
@@ -42,6 +42,9 @@ uygulamalar onu alırdı (bölüm 4).
 | 1.7 | 1.1.0 | `g3d.voxels` voksel dünyalar; mesh'lerde pixel art dokular | JavaScript (voksel); Lua, JavaScript (dokular) |
 | 1.8 | 1.2.0 | `g3d.model`: materyal, doku ve iskelet animasyonlu `.glb` / `.gltf` / `.fbx` modeller | altısı da |
 | 1.9 | 1.2.2 | runtime kütüphanesi; akış, fotoğraf ve kısa video uygulamaları; pbr renderer (NexGFX) | Lua, JavaScript, Python, C |
+| 1.10 | 1.2.2 (şimdilik aynı build) | native runtime: tam ekran C / C++ uygulamaları, Native SDK 1.0 (script API değişikliği yok) | C / C++ (`nxn_*`) |
+| 1.11 | 1.2.2 (şimdilik aynı build) | script app'ler için kalıcı klasörler ve kayıt yedekleri (`ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup`...) | Lua, JavaScript, Python, C |
+| 1.12 | 1.2.2 (şimdilik aynı build) | native SDK ile dil eşitliği (`ui.tokens`, `audio.stopAll`, C `input_action`) | Lua, JavaScript, Python, C |
 
 SDK 1.0'dan 1.6'ya kadarki sürümlerin hepsi, ilk herkese açık sürüm olan ve SDK 1.6'ya sahip Nexvyn OS 1.0.0'ın
 geliştirilmesi sırasında yapıldı. Sonradan gelen bir dil, önceki SDK'nın tamamını beraberinde aldı: Squirrel, C ve Java,
@@ -126,6 +129,34 @@ geliştirilmesi sırasında yapıldı. Sonradan gelen bir dil, önceki SDK'nın 
   `g3d.drawInstanced`, `g3d.caps`, `g3d.rendererInfo`. Onu hiç istemeyen bir uygulama SDK 1.8'deki gibi çizilir.
 - Lua, JavaScript, Python (`"python"` ve `"python3"`) ve C. Rehberler: [PBR_GAME_RECIPE.tr.md](PBR_GAME_RECIPE.tr.md),
   [SOCIAL_APP_RECIPE.tr.md](SOCIAL_APP_RECIPE.tr.md), [MAKE_A_SOCIAL_APP.tr.md](MAKE_A_SOCIAL_APP.tr.md).
+
+### SDK 1.10 (Nexvyn OS 1.2.2, şimdilik aynı build)
+
+- **Native runtime:** `"runtime": "native"`, `"mode": "window"` veya `"fullscreen"` ve `"main"` olarak bir `.nxvmod`:
+  Nexvyn OS'un içinde pencerede ya da tam ekranda çalışan (kullanıcı ikisi arasında geçer) ve çökmeleri bildiren C / C++
+  uygulaması. Arayüzü Native SDK 1.0'dır (`nxn_*`,
+  `nexvyn_native.h`): yaşam döngüsü, ekran (GL / GLES), girdi, ses, dosyalar, günlük ve dock değişimi için
+  `NXN_EVENT_RESIZE` olayı. Kit ve rehber: [NATIVE_KIT.tr.md](NATIVE_KIT.tr.md).
+- Hiçbir script fonksiyonu değişmedi. SDK numarası, eski sistemler native paketleri temiz biçimde reddetsin diye
+  yükseltildi: native paket `"minSdk": "1.10"` taşır (`nxv-native package` yazar, `tools/nxvapp_pack.py` şart koşar);
+  SDK 1.9 ve öncesi bir sistem onu `.nro`'yu script gibi okumaya çalışmak yerine "daha yeni bir Nexvyn OS gerekli"
+  diye listeler.
+- Nexvyn OS applet modunda çalışırken (Albüm'den başlatıldığında) tam ekran uygulamalar başlatılmaz: sistem kullanıcıdan
+  başlık modunda açmasını ister (oyun açarken R'ye basılı tutmak).
+
+### SDK 1.11 (Nexvyn OS 1.2.2, şimdilik aynı build)
+
+- Script app'ler için **kalıcı klasörler ve kayıt yedekleri**: native `nxn_pick` / `nxn_grant_*` / `nxn_save_*` ile
+  aynı işlevler, tek core biriminden (`source/core/appkeep.cpp`): `ui.chooseFolder({title, remember}, callback)`,
+  `fs.folderGrants`, `fs.folderGranted`, `fs.revokeFolder`, `fs.savePath`, `fs.saveBackup`, `fs.saveRestore`,
+  `fs.saveBackups`, `fs.saveDeleteBackup`. Lua, JavaScript, Python (`"python"` ve `"python3"`) ve C'de aynı adlar ve
+  sonuçlarla. Kopyalama arka plan thread'inde çalışır. Eski app'ler etkilenmez: var olan hiçbir şey değişmedi.
+
+### SDK 1.12 (Nexvyn OS 1.2.2, şimdilik aynı build)
+
+- **Native SDK ile dil eşitliği:** `ui.tokens()` sistem görünümünü tek tablo olarak döndürür (`nxn_ui_tokens_get` gibi),
+  `audio.stopAll()` bütün sesleri durdurur (`nxn_sfx_stop_all` gibi), C'ye `input_action` gelir (diğer dillerde
+  `input.action` vardı). Lua, JavaScript, Python ve C. Eski app'ler etkilenmez.
 
 ## 4. minSdk ve targetSdk
 

@@ -36,6 +36,14 @@ izinler, dosya denetimi) gösterir. Yayımlamak için klasörü `python tools/nx
 kurulum sayfası **<parmak izi> tarafından imzalandı** gösterir ve bir güncelleme başka bir anahtardan gelirse
 kullanıcıyı uyarır. Package biçiminin tamamı, imzalama, izin kuralları ve depo dizini `docs/NXVAPP_FORMAT.tr.md` içindedir.
 
+**Package v2 (`app.json`'da isteğe bağlı alanlar).** `type` (`app`, `game`, `lib`), `arch`, `minOs`, `needs` (ortak
+kütüphaneler), `size`, `hashes` ve `dataVersion` paketin kendini tanıtmasını sağlar; bunları taşımayan paketler eskisi gibi
+kurulur ve çalışır. Güncelleme arka planda, tek güvenli adımda kurulur (yarıda kalan, kurulu sürümü asla kaybettirmez),
+değiştirdiği sürümü saklar (Sistem Ayarları > Uygulamalar > **Önceki sürüme dön**) ve `dataVersion`'ı yükseltiyorsa önce
+kullanıcının verisi kopyalanır; eski veri biçimli bir sürüme geri dönerken o kopyanın geri yüklenmesi ya da verisiz açılması
+sorulur ve yeni veri asla silinmez. `python tools/nxv.py pack` / `check` script, native ve kütüphane paketlerini paketler ve
+doğrular (`docs/NXVAPP_FORMAT.tr.md` bölüm 2 ve 5).
+
 ### app.json
 
 ```json
@@ -106,7 +114,7 @@ kullanıcıyı uyarır. Package biçiminin tamamı, imzalama, izin kuralları ve
 
 ### SDK sürümleri
 
-`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.9"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
+`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.12"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
 yükseltin.
 
 | SDK | Nexvyn OS'un ekledikleri |
@@ -121,12 +129,23 @@ yükseltin.
 | 1.7 | JavaScript'te `g3d.voxels` voksel dünyaları (bölüm 8b, *Voksel dünyalar*): chunk akışı, yerleşik arazi üreteci, ışık, arka plan thread'lerinde üretilen yumuşak ışıklı mesh'ler, texture atlas shader'ı, kayıt, ışın testi, kutu fiziği; Lua ve JavaScript'te `mesh:setTexture(path, pixelated)` |
 | 1.8 | `g3d.model` (bölüm 8b, *3B modeller*): node hiyerarşisi, materyaller, gömülü ve harici texture'lar ve iskelet animasyonuyla `.glb`, `.gltf`, `.fbx` (ve `.obj`, `.stl`) dosyaları (geçişli `play`, `stop`, `update`, `time`, bağlama için node konumları ve matrisleri), `g3d.drawMatrix`; GPU skinning; bütün runtime'larda (Squirrel, C, Java ve `"python3"` `g3d.model*` fonksiyonlarıyla) |
 | 1.9 | Runtime kütüphanesi: Lua'da `net.request{url, method, body, contentType, headers}` (JavaScript ve Python'daki gibi her yöntem); JavaScript `TextEncoder` / `TextDecoder` (UTF-8), `URL` / `URLSearchParams`, `structuredClone`; pocketpy'de olmayan Python `str` metotları (`isdigit`, `isalpha`, `isspace`, `title`, `partition`, `rfind`, `rsplit`, `removeprefix`... ve `split(sep, maxsplit)`, başlangıç ve bitişli `find` / `count`, tuple alan `startswith`), `dict.setdefault` / `fromkeys`, `pow()`; Python sistem kütüphanesine `urllib.parse`, `html`, `uuid`; akış, fotoğraf ve kısa video uygulamaları (bölüm 8d): `net.request` seçenekleri (JSON, form, multipart ve dosya gövdesi, `saveTo`, yükleme ilerlemesi, çerezler, yeniden deneme, çevrimdışı önbellek), `net.cancel`, `net.clearCookies`, `net.clearCache`, WebSocket istemcisi (`net.ws`, `wsSend`, `wsPoll`, `wsClose`, `wsState`), `net.oauth` (konsolun tarayıcısında oturum açma), `gfx.imageUrl` / `imageState` (disk ve bellek önbellekli web resimleri), `media.*` video ve ses oynatıcıları, `ui.beginFeed` / `feedItem` / `endFeed`, `ui.pager`, `ui.richText` / `measureRichText`, `sys.relativeTime`; Lua, JavaScript, Python ve C'de; pbr renderer (bölüm 8b, *Modern görüntü*), `g3d.renderer("pbr")` ile uygulama başına isteğe bağlı: normal, occlusion ve emissive haritalı metallic-roughness materyaller (glTF ve FBX, MetallicSmoothness haritaları), `g3d.material`, gerçek zamanlı ışıklar (`g3d.addLight` / `updateLight` / `removeLight` / `clearLights` / `lights`), güneş ve spot gölgeleri (`g3d.shadows`), HDR, ton eşleme, bloom ve MSAA (`g3d.postfx`), cube map ya da yarım küre ortam ışığı (`g3d.environment`), `g3d.drawInstanced`, `g3d.caps`; Lua, JavaScript, Python ve C |
+| 1.10 | Native runtime: Nexvyn OS'un içinde pencerede ya da tam ekranda çalışan C / C++ uygulamaları (`"runtime": "native"`, `"mode": "window"` veya `"fullscreen"`, bir `.nxvmod`), Native SDK 1.0 (`docs/NATIVE_SDK_DESIGN.md`, `nxn_*` C arayüzü). Script fonksiyonlarında değişiklik yok. Native paketler `"minSdk": "1.10"` taşır; eski sistemler "daha yeni bir Nexvyn OS gerekli" der |
+| 1.11 | Klasör seçici ve kalıcı klasörler: `ui.chooseFolder` (`remember` klasörü sonraki açılışlara taşır), `fs.folderGrants` / `folderGranted` / `revokeFolder`; kayıt klasörü ve yedekleri: `fs.savePath`, `saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python ve C; native `nxn_pick` / `nxn_grant_*` / `nxn_save_*` ile aynı adlar, ikisi için tek core birimi). Eski SDK'lar için yazılmış app'ler eskisi gibi çalışır |
+| 1.12 | Native SDK ile dil eşitliği (`docs/PARITY.tr.md`): `ui.tokens()` (OS görünümü tek tabloda: renkler, köşe yarıçapları, boşluklar, yazı boyutları, yazı ölçeği, kalın yazı; native `nxn_ui_tokens_get` gibi), `audio.stopAll()` (app'in başlattığı bütün sesleri durdurur; `nxn_sfx_stop_all` gibi) ve C işlevi `input_action(name)` (Lua, JavaScript ve Python'da `input.action` zaten vardı); Lua, JavaScript, Python ve C. Eski SDK'lar için yazılmış app'ler eskisi gibi çalışır |
 
 **Yeni API alan diller.** SDK 1.9'dan itibaren yeni fonksiyonlar Lua, JavaScript, Python (`"python"` ve `"python3"`)
 ve C'ye gelir. Squirrel ve Java SDK 1.8'de donduruldu: sahip oldukları her fonksiyon sonraki her Nexvyn OS'ta
 çalışmayı sürdürür ve App Market'teki uygulamalarında değişiklik gerekmez, ama onlara yeni bir şey eklenmez. Yeni
 uygulamalara büyümeye devam eden dört dilden biriyle başlayın; SDK adları hepsinde aynıdır. Ayrıntı:
 `docs/COMPATIBILITY.tr.md`, *Hangi diller yeni API alır*.
+
+### Native SDK
+
+C / C++ app'leri kendi sürümü olan native runtime'ı kullanır (`app.json` içinde `"minNative"`). Native SDK 1.1 şunları
+getirir: pencereler için SDL2 sürücüsü, ses ve girdi olayları, pencerede POSIX çağrıları, sistem servisleri (diyaloglar,
+kalıcı klasör erişimi, kayıt verisi, izinler), UI token'ları ve app'in kendi metinleri, NexGFX native, OS ses mikseri ve
+paket v2. Yeni Native SDK yalnızca ekler; eski sürüm için derlenmiş app'ler değişmeden çalışır. Tablo ve kurallar:
+`docs/COMPATIBILITY.tr.md`, *Native SDK*; rehber: `docs/NATIVE_GUIDE.tr.md`.
 
 ### Uyumluluk: targetSdk ve deprecation
 
@@ -268,6 +287,14 @@ bkz. 8c).
 `theme.separator`, `theme.control`, `theme.field`, `theme.selection`, `theme.hover`, `theme.accent` ve
 `theme.red/orange/yellow/green/blue/purple/pink/gray`. Uygulamanın iki modda da doğru görünmesi için bunları kullanın.
 
+`ui.tokens()` (SDK 1.12; C: `ui_tokens()`, JSON metni) OS görünümünü tek tabloda verir, native `nxn_ui_tokens_get` ile
+aynı değerler: `dark`, `highContrast`, `boldText`, `textScale` (yazı boyutlarını bununla çarpın), `colors` (`accent`,
+`accentHover`, `accentText`, `windowBg`, `contentBg`, `sidebarBg`, `surface`, `surfaceHover`, `surfacePressed`, `text`,
+`textSecondary`, `textTertiary`, `separator`, `border`, `fieldBg`, `fieldBorder`, `selection`, `selectionText`, `hover`,
+`error`, `warning`, `success`, `info`; hex metin), `cornerRadius`, `cornerRadiusField`, `cornerRadiusRow`, `spacing`
+(6 adım: 4, 8, 12, 16, 24, 32), `controlHeight`, `rowHeight`, `fontSmall`, `fontBody`, `fontLarge`, `fontTitle`.
+`theme.dark` değişince yeniden okuyun; `ui` bileşenleri zaten ona uyar.
+
 ## 4. Widget'lar — `ui`
 
 Immediate mode: widget'ı her karede `app.draw` içinde çağırın; kendini çizer ve ne olduğunu döndürür.
@@ -349,6 +376,32 @@ Göreli yollar uygulamanın özel veri klasöründedir (`~/Library/Application S
 `fs.dir(which)` → `"data"`, `"bundle"`, `"cache"`, `"home"`, `"documents"`, `"desktop"`, `"downloads"`, `"pictures"`,
 `"music"` için mutlak klasör.
 
+**Kalıcı klasörler ve kayıt yedekleri (SDK 1.11).** Native `nxn_pick` / `nxn_grant_*` / `nxn_save_*` ile aynı
+işlevler; Lua, JavaScript, Python ve C'de aynı adlar ve aynı sonuçlarla. İzin gerekmez: klasörü kullanıcı seçer.
+
+- `ui.chooseFolder({title, remember}, callback)` klasör seçiciyi açar. `callback(path, err)`: klasör, ya da kullanıcı
+  vazgeçerse `nil, nil` (vazgeçmek hata değildir). Klasör bu oturum boyunca `fs` çağrılarınıza açıktır.
+  `remember = true` ise sonraki açılışlarda da kalır; Nexvyn OS'un kendi verisi saklanamaz (`err` `"denied"` ile
+  başlar). Callback'siz JavaScript Promise döndürür (vazgeçilirse `null`).
+- `fs.folderGrants()` → saklı klasörlerin listesi · `fs.folderGranted(path)` → `path` saklı bir klasörse ya da onun
+  içindeyse true · `fs.revokeFolder(path)` → saklıysa true (`folderGrants`'ın verdiği yolu aynen verin). Listelemek ya
+  da sormak, saklı klasörü bu çalışmada `fs` çağrılarınıza yeniden açar.
+- Kayıt klasörü app'in veri klasöründeki `save/`'dir: `fs.savePath()` → mutlak yolu (oluşturulur). Yedekler veri
+  klasörlerinin yanında durur (`~/Library/Backups/<id>/<slot>`), bu yüzden app verisini temizlemek yedekleri silmez.
+  Slot adı `A-Z a-z 0-9 . _ -` karakterlerinden 1-48 tanedir; başka ad hata verir. Kopyalama arka plan thread'inde
+  çalışır, pencere çizmeye devam eder, işler başlattığınız sırayla yürür:
+  `fs.saveBackup(slot, callback)` kayıt klasörünü kopyalar (slot'un eski yedeği yenisi tamamlanana kadar durur) ·
+  `fs.saveRestore(slot, callback)` kayıt klasörünü yedekle değiştirir (hata olursa mevcut kayıt kalır) ·
+  `fs.saveDeleteBackup(slot, callback)` · `fs.saveBackups()` → slot adları listesi. Olduysa `callback(true, nil)`,
+  olmadıysa `callback(nil, "not found" | "io error")`.
+
+```lua
+ui.chooseFolder({title = "ROM klasörünü seç", remember = true}, function(path, err)
+  if path then romDir = path end            -- vazgeçilirse nil
+end)
+fs.saveBackup("before-boss", function(ok, err) status = ok and "saved" or err end)
+```
+
 Basit kalıcılık: `store.get(key[, default])`, `store.set(key, value)` (JSON benzeri her değer; bir saniye içinde ve
 kapanışta otomatik kaydedilir), `store.save()`.
 
@@ -384,7 +437,7 @@ saatinde `{year, month, day, hour, min, sec, wday (0=Pazar), yday, epoch}` · `s
 `sys.notify(title, body)` (bildirim şeridi) · `sys.open(path)` (doğru uygulamayla açar) · `sys.launch(appId[, arg])` ·
 `sys.clipboard([text])` al/ayarla · `sys.log(...)` / `print(...)` · `sys.title(text)` pencere başlığı · `sys.exit()`
 pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim, non-blocking; en fazla 2000 ms, yalnızca pencere odaktayken, `sys.vibrate(0)` durdurur) · `sys.appid()` ·
-`sys.sdkVersion()` → `"1.9"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
+`sys.sdkVersion()` → `"1.12"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
 `sys.games` ve `nxv://` bağlantıları kendi izinlerini gerektirir (bölüm 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, izin gerekmez) metni yerleşik sesle okur; o an söylenenin ardından sıraya girer ve
@@ -398,7 +451,7 @@ cümlesini de). C: `sys_speak(text, lang)` (`lang` `NULL` olabilir), `sys_stopSp
 `"noise"` → kanal · `audio.play(nameOrPath[, volume[, loops]])` sistem sesleri `"click"`,`"pop"`,`"notify"`,
 `"alarm"`,`"trash"`,`"shutter"`,`"error"`,`"key"`,`"volume"`,`"startup"` ya da bir `.wav/.ogg/.mp3` dosyası
 (`loops = -1` tekrarlar) → kanal · `audio.stop(channel)` · `audio.music(path)` bir şarkıyı akışla çalar ·
-`audio.musicPause(true|false)` · `audio.musicStop()`. Her ses, nota ve şarkı onu başlatan uygulamanındır: penceresi
+`audio.musicPause(true|false)` · `audio.musicStop()` · `audio.stopAll()` (SDK 1.12: app'in başlattığı bütün sesleri ve notaları durdurur, müziği değil; native `nxn_sfx_stop_all` gibi). Her ses, nota ve şarkı onu başlatan uygulamanındır: penceresi
 kapanınca (ya da crash olunca) hepsi durur; `stop` / `musicPause` / `musicStop` yalnızca uygulamanın kendi seslerine dokunur.
 
 `timer.after(seconds, fn)` → id · `timer.every(seconds, fn)` → id · `timer.cancel(id)`.
@@ -509,6 +562,15 @@ solan bir texture yumuşak yuvarlak sprite'lar verir. CPU yedeği parıltılı m
 Yerel (C++) uygulamalar ayrıca bir mesh'in dönüştürülmüş kopyasını başka bir mesh'le birleştiren
 `g3d::append(dst, src, matrix, color)` (ucuz örnekleme: yüzlerce nesne, tek çizim), `DrawOpts::additive` (`"glow"`
 bayrağı) ve `g3d::lastTriangles()` yanında `g3d::lastDrawCalls()` alır.
+
+Kaynak ömrü (SDK 1.10): mesh'ler, modeller, voxel dünyaları ve GPU arabellekleri onları yapan app'e aittir ve app
+kapanınca serbest kalır; `app.close` içinde bir şey bırakmanız gerekmez. Dokular (mesh ve malzemelerin kullandığı
+görsel dosyaları, voxel atlasları) ortaktır: iki app'in çizdiği bir doku ikisi de kapanana kadar kalır, yalnızca
+kapanmış app'lerin kullandığı doku yaklaşık bir saniye içinde bırakılır. Sistem toplam belleği izler, app başına sınır
+yoktur. SDK 1.10'u hedefleyen app'ler için: 3B dokular esnek bir bütçeyi (256 MB, Albüm'den açılınca 64 MB) geçince
+app'in 30 saniyedir çizmediği dokular bırakılabilir; bir sonraki çizimde yeniden yüklenir (pbr karesinde o mesh bir
+kare geç görünebilir). Eski app'ler çalıştıkları sürece bütün dokularını tutar. Ayarlar > Geliştirici ikisini de
+kapatır.
 
 Hareket kontrolleri: `input.motion()` → Joy-Con / Pro Controller / el modu jiroskopundan `ax, ay, az` (G cinsinden
 ivme), `gx, gy, gz` (rad/s cinsinden açısal hız), `pitch, roll, yaw` (radyan cinsinden birikmiş dönüş).
@@ -639,11 +701,13 @@ değiştirin. Uygulamanın her `g3d.begin`'ine uygulanır; başka uygulamalar bu
 | Fonksiyon | Açıklama |
 |---|---|
 | `g3d.renderer([ad])` → ad | `"pbr"` ya da `"basic"` (SDK 1.0–1.8'in renderer'ı). Karelerin kullanacağı renderer'ı döndürür: GPU yolu kapalıysa ya da OpenGL ES 3 yoksa `"basic"` (nedeni sistem günlüğünde). İlk `"pbr"` çağrısı shader'ları derler (yarım saniye kadar): `app.load`'da çağırın |
-| `g3d.rendererInfo()` → tablo | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: bu uygulamanın karelerini ne çiziyor |
 | `g3d.caps()` → tablo | `{gpu, pbr, hdr, shadows, instancing, msaa, maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device}`: bu konsolun sundukları |
+| `g3d.rendererInfo()` → tablo | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: bu uygulamanın karelerini ne çiziyor |
 | `g3d.addLight(seçenekler)` → id | bir ışık: `type` (`"point"`, `"spot"`, `"directional"`), `x, y, z` (konum), `dx, dy, dz` (parladığı yön), `color`, `intensity` (1 = 1 m uzaktaki beyaz yüzey rengin tamamını alır; odalar için 5–20), `range` (m; ışık orada yumuşakça biter), `inner` / `outer` (spot konisinin yarım açıları, derece), `shadow` (spot: gölge düşürür; isteyen ilk spot alır). En fazla 16 ışık; her nesneyi yakınındaki en güçlü 8'i aydınlatır |
 | `g3d.updateLight(id, seçenekler)` → bool | verilen alanları değiştirir; bilinmeyen id için false |
-| `g3d.removeLight(id)` → bool, `g3d.clearLights()`, `g3d.lights()` → liste | |
+| `g3d.removeLight(id)` → bool | bir ışığı kaldırır; bilinmeyen id için false |
+| `g3d.clearLights()` | uygulamanın bütün ışıklarını kaldırır |
+| `g3d.lights()` → liste | ışıklar, güncel değerleriyle (`id` ve `g3d.addLight`'ın alanları) |
 | `g3d.shadows(true \| false \| seçenekler)` | güneşin (`g3d.light`) ve bir spot ışığın gölgeleri: `enabled`, `quality` (`"low"` 1024 px tek örnek, `"medium"` 2048 px 3×3 filtre, `"high"` 2048 px 4×4 filtre), `distance` (güneş gölgelerinin kapsadığı görüş mesafesi, m, varsayılan 30), `bias` (yüzeylerde gölge çizgileri varsa artırın, gölgeler havada duruyorsa azaltın) |
 | `g3d.postfx(seçenekler)` | `exposure` (1), `tonemap` (`"aces"`, `"filmic"`, `"none"`), `bloom` (güç, 0 = kapalı, varsayılan 0.05), `threshold` (bloom'un başladığı HDR parlaklığı, 1), `msaa` (0, 2, 4, 8 örnek), `hdr` (false: float hedef yok, ton eşleme piksel başına, bloom yok; daha hızlı) |
 | `g3d.environment(seçenekler)` | ortam ışığı ve yansımalar: `sky` / `ground` (yarım küre renkleri), `intensity` (`g3d.light`'ın ambient'iyle çarpılır), `sun` (güneş şiddeti, varsayılan 3), `cubemap` (bir göğün 6 görsel yolu +X −X +Y −Y +Z −Z; yansıma ve ortam ondan gelir; `nil` = yarım küre) |
@@ -1030,7 +1094,7 @@ end)
 ```
 
 `result`: `code`, `state`, `verifier`, `params` (bütün query / fragment parametreleri), `url`. Tarayıcı, Nexvyn OS'un
-konsolda uygulama olarak açılmasını ister (emülatörde ve Albüm'den açılınca olmaz); öyleyse `err` bunu söyler. O zaman
+konsolda başlık modunda (bir oyun üzerinden) açılmasını ister (emülatörde ve Albüm'den açılınca olmaz); öyleyse `err` bunu söyler. O zaman
 bir yedek yol sunun (metin ya da QR kod olarak gösterilen cihaz kodu). İstemci sırlarını konsola koymayın.
 
 ### Webden resimler: `gfx.imageUrl(url[, maxSize])`
@@ -1267,6 +1331,7 @@ Callback alan her SDK function'ı, callback'i vermezseniz bir **Promise** dönd�
 | `ui.alert(title, msg, buttons, (i) => {})` | `await ui.alert(title, msg, buttons)` | düğme indeksi (0 tabanlı) |
 | `ui.prompt(title, msg, initial, (text) => {})` | `await ui.prompt(title, msg, initial)` | metin ya da `null` |
 | `ui.openFile(cb, exts[, title])` | `await ui.openFile(exts[, title])` | yol ya da `null` |
+| `ui.chooseFolder(options, (path, err) => {})` | `await ui.chooseFolder(options)` | klasör ya da `null` (vazgeçildi), SDK 1.11 |
 | `ui.saveFile(cb, name[, title])` | `await ui.saveFile(name[, title])` | yol ya da `null` |
 | `ui.keyboard(initial, cb[, guide])` | `await ui.keyboard(initial, null[, guide])` | metin ya da `null` |
 | `ui.contextMenu(items, (id) => {})` | `await ui.contextMenu(items)` | öğe id'si (menü kapatılırsa hiç sonuçlanmaz — callback'i tercih edin) |
@@ -1483,6 +1548,7 @@ Async function'lar bir callback alır; callback verilmezse çağrı yine çalı�
 | `ui.alert(title, message, buttons, callback)` | düğme indeksi (0 tabanlı) |
 | `ui.prompt(title, message, text, callback)` / `ui.keyboard(text, callback, guide)` | metin ya da `None` |
 | `ui.openFile(callback, exts, title)` / `ui.saveFile(callback, name, title)` | yol ya da `None` |
+| `ui.chooseFolder(options, callback)` | `callback(path, err)`: klasör ya da vazgeçilirse `None` (SDK 1.11) |
 | `ui.contextMenu(items, callback)` | öğe id'si |
 | `timer.after(sec, fn)` / `timer.every(sec, fn)` | — (`timer.cancel(id)` için bir id döndürür) |
 

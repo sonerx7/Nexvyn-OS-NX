@@ -226,6 +226,12 @@ Proje biçimi, davranışlar, olaylar ve API'nin tamamı: [GAME_ENGINE_PROJECTS.
 Kareye 30–60 bin üçgen hedeflenir. GPU yolu kullanılamazsa (ya da sistem ayarı `g3d.gpu` `false` ise) aynı çağrılar
 eski CPU çiziciye düşer: dokusuz, birkaç bin üçgen. Hangisinin etkin olduğunu `g3d.gpu()` söyler.
 
+Shader program önbelleği: sürücü GL program binary'lerini destekliyorsa g3d bağlanan her programı
+`sdmc:/NexvynOS/System/Cache/shaders` içine kaydeder (32 MB sınır, en eski dosya önce gider) ve sonraki açılışta
+derlemek yerine yükler. `g3d.shaderCache` ayarı açar (konsolda kanıtlanana kadar varsayılan kapalı; mevcut GL sürücüsü program binary biçimi bildirmediği için zaten devreye girmiyor); Ayarlar > Depolama > Önbellekleri temizle
+siler. `system.log` içindeki `g3d` satırları her programın derlendiğini mi önbellekten mi yüklendiğini gösterir.
+Sürücüde program binary desteği yoksa (şu anki Mesa derlemesi yok bildiriyor) önbellek kapalı kalır, hiçbir şey yazılmaz.
+
 ```lua
 local cube
 function app.load() cube = g3d.mesh("cube", 1) end
@@ -390,13 +396,26 @@ Testten sonra `autorun.txt`'yi silin; yoksa her açılışta yeniden çalışır
 
 - `stats <etiket>`, `system.log`'a bir `stats` satırı yazar: boş heap, kullanılan bellek, görüntü önbelleği,
   pencereler, g3d GL nesneleri (texture, atlas, offscreen target), mixer kanalları, arka plan yazmaları,
-  stall satırları ve bir önceki `stats`'tan beri kare süreleri. Sızıntı bulmak için iki `stats` arasında bir app'i
-  defalarca açıp kapatın.
+  stall satırları, bir önceki `stats`'tan beri kare süreleri ve `res` ile yaşayan kaynaklar (`source/core/resmon.h`:
+  GL buffer / texture / renderbuffer / framebuffer sayısı ve boyutu, g3d ve voxel mesh'leri, voxel dünyaları ve
+  chunk'ları, modeller, JS ve Lua runtime'ları). Kullanılan bellek 0,1 MB adımla yazılır. Sızıntı bulmak için iki
+  `stats` arasında bir app'i defalarca açıp kapatın.
+- Her app kapanışından sonra bir `res` satırı (`<app> closed: memory in use ...; ...`) o an yaşayan kaynakları yazar.
+  Kapanan app'lerin GL buffer'ları bir sonraki bellek kontrolünde (saniyede bir) gider; yalnızca kapanmış app'lerin
+  çizdiği dokular da o kontrolde bırakılır (`released N textures ... of closed apps`). Bir binding'in tuttuğu nesne
+  yüzünden saklanan JS runtime `js kept` olarak sayılır ve log'a yazılır.
+- Ayarlar > Geliştirici: "Kapanan app'lerin 3B belleğini boşalt" (`g3d.idleRelease`) ve "3B doku bütçesi"
+  (`g3d.resourceBudget`), ikisi de varsayılan açık.
 - `perf.stallMs`'ten (varsayılan 150 ms) yavaş bir kare, zamanı alan bölümleri (shell katmanları, servisler, app
   id'leri) sayan bir `stall` satırı yazar. Donma bildiren kullanıcıdan `System/Logs/system.log`'u isteyin.
 - `set debug.slowSdMs 300`, yavaş bir SD kart gibi her dosya yazmasını ve klasör listelemesini 300 ms bekletir.
   `io.background` açıkken (varsayılan) settings.json, system.log ve app log'ları arka plandaki bir thread ile yazılır,
   masaüstü akıcı kalır; `io.background` false (açılışta okunur) onları eskisi gibi ana thread'de yazar.
+- Yükleme süreleri: `boot` her açılış aşamasının milisaniyesini yazar (`profile`, `sdl_init`, `window`, `sdl` = renderer ...). Büyük bir
+  dosya okuması (512 KB üstü) MB/sn ile bir `io` satırı yazar; native app başlangıcı `module load ... (read, layout, map, link,
+  runtime)` ve `entering main()` yazar. Konsolun stdio tamponu küçük olduğundan 128 KB ve üstü okumalar dosyaya 4 MB'lık
+  isteklerle gider (`fsx::freadBig`); `io.bigRead` false bunu kapatır. NexGFX sahnesi `scene worker: ...` (dosya okuma hızı,
+  kontroller, decode) ve `scene ready ...` (GL yükleme süresi) yazar; shader program'ları derleme sürelerini yazar.
 
 ### tools/ryu_test.sh
 

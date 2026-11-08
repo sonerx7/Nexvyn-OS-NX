@@ -1,0 +1,6 @@
+{
+  "hello": "Hello",
+  "only_en": "English only",
+  "times": "Clicked {0} times",
+  "menu": {"open": "Open", "title": "Showcase", "about": "About", "toggle": "Toggle"}
+}

@@ -1,0 +1,17 @@
+--- a/glib/gutils.c
++++ b/glib/gutils.c
+@@ -44,7 +44,13 @@
+ #include <sys/stat.h>
+ #ifdef G_OS_UNIX
+ #include <pwd.h>
+-#include <sys/utsname.h>
++#if defined(__SWITCH__)
++/* Nexvyn sysroot: newlib has no sys/utsname.h; g_get_os_info() then finds no uname data and falls back to os-release */
++struct utsname { char sysname[65], nodename[65], release[65], version[65], machine[65]; };
++static int uname (struct utsname *u) { (void) u; return -1; }
++#else
++#include <sys/utsname.h>
++#endif
+ #include <unistd.h>
+ #endif
+ #include <sys/types.h>

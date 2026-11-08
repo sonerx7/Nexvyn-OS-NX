@@ -227,6 +227,12 @@ target is 30–60 thousand triangles per frame. If the GPU path is unavailable (
 `false`), the same calls fall back to the older CPU renderer: no textures, a few thousand triangles. `g3d.gpu()` tells
 you which one is active.
 
+Shader program cache: when the driver supports GL program binaries, g3d saves each linked program in
+`sdmc:/NexvynOS/System/Cache/shaders` (32 MB cap, oldest files go first) and loads it on the next start instead of
+compiling. The setting `g3d.shaderCache` turns it on (default off until it is proven on the console; the current GL driver reports no program binary formats, so it stays inactive anyway); Settings > Storage > Clean up caches clears it.
+The `g3d` lines of `system.log` show per program whether it was compiled or loaded from the cache. If the driver has
+no program binaries (the current Mesa build reports none), the cache stays off and nothing is written.
+
 ```lua
 local cube
 function app.load() cube = g3d.mesh("cube", 1) end
@@ -391,12 +397,26 @@ Delete `autorun.txt` after testing; otherwise it runs again at every startup.
 
 - `stats <label>` writes one `stats` line to `system.log`: free heap, memory in use, image cache, windows, g3d GL
   objects (textures, atlases, offscreen target), mixer channels, background writes, stall lines and the frame
-  times since the previous `stats`. Open and close an app many times between two `stats` lines to find a leak.
+  times since the previous `stats`, then `res` with the live resources (`source/core/resmon.h`: count and size of GL
+  buffers, textures, renderbuffers and framebuffers, g3d and voxel meshes, voxel worlds and chunks, models, JS and
+  Lua runtimes). Memory in use is written in 0.1 MB steps. Open and close an app many times between two `stats`
+  lines to find a leak.
+- After every app close a `res` line (`<app> closed: memory in use ...; ...`) lists what is alive at that moment.
+  GL buffers of closed apps go with the next memory check (once a second); textures only closed apps drew are
+  released by that check too (`released N textures ... of closed apps`). A JS runtime kept because a binding still
+  holds an object is counted as `js kept` and logged.
+- Settings > Developer: "Free 3D memory of closed apps" (`g3d.idleRelease`) and "3D texture budget"
+  (`g3d.resourceBudget`), both on by default.
 - A frame slower than `perf.stallMs` (default 150 ms) writes a `stall` line naming the parts of the frame that took
   the time (shell layers, services, app ids). Ask users who report a freeze for `System/Logs/system.log`.
 - `set debug.slowSdMs 300` makes every file write and folder listing wait 300 ms, like a slow SD card. With
   `io.background` on (the default) settings.json, system.log and app logs are written by a background thread, so the
   desktop stays smooth; `io.background` false (read at start) writes them on the main thread as before.
+- Load times: `boot` logs the milliseconds of every start-up stage (`profile`, `sdl_init`, `window`, `sdl` = the renderer ...). A big
+  file read (over 512 KB) writes an `io` line with its MB/s; a native app start writes `module load ... (read, layout, map,
+  link, runtime)` and `entering main()`. The console's stdio buffer is small, so reads of 128 KB or more go to the file in
+  4 MB requests (`fsx::freadBig`); `io.bigRead` false turns that off. A NexGFX scene logs `scene worker: ...` (file read speed,
+  checks, decode) and `scene ready ...` (GL upload time); shader programs log their compile time.
 
 ### tools/ryu_test.sh
 

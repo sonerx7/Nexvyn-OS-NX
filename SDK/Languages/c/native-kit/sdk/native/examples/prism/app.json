@@ -1,0 +1,17 @@
+{
+  "id": "com.nexvyn.sample.prism",
+  "name": "Prism",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "games",
+  "runtime": "native",
+  "mode": "exclusive",
+  "main": "prism.nro",
+  "minNative": "1.0",
+  "icon": "icon.png",
+  "permissions": [
+    "files"
+  ],
+  "minSdk": "1.10",
+  "targetSdk": "1.10"
+}

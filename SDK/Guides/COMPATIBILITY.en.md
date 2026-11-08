@@ -40,8 +40,26 @@ Every SDK version so far shipped in the development of Nexvyn OS 1.0.0, the firs
 | 1.7 | 1.1.0 | `g3d.voxels` voxel worlds (JavaScript), `mesh:setTexture(path, pixelated)` |
 | 1.8 | 1.2.0 | `g3d.model`: `.glb` / `.gltf` / `.fbx` models with materials, textures and skeletal animation; `g3d.drawMatrix` |
 | 1.9 | 1.2.2 | runtime library: `net.request` in Lua, JavaScript `TextEncoder` / `URL` / `URLSearchParams` / `structuredClone`, Python `str` methods and `urllib.parse` / `html` / `uuid`; feed, photo and short-video apps: `net.request` uploads, cookies, retries and offline cache, WebSocket client, `net.oauth`, `gfx.imageUrl`, `media.*` players, `ui.beginFeed` / `ui.pager` / `ui.richText`, `sys.relativeTime`; the opt-in pbr renderer (`g3d.renderer("pbr")`): PBR materials, real-time lights, shadows, HDR, bloom, MSAA, instancing (Lua, JavaScript, Python, C); apps that do not ask for it render exactly as with 1.8 |
+| 1.10 | 1.2.2 (same build for now) | native runtime: C / C++ apps inside Nexvyn OS, in a window or full screen (`"runtime": "native"`, `"mode": "window"` or `"fullscreen"`, a `.nxvmod`; packages that say `"windowed"` or the retired `"exclusive"` still run), Native SDK 1.0 (`NATIVE_KIT.en.md`); Native SDK 1.1 only adds (`nxn_audio_clear`, USB keyboard / mouse / text, dock and sleep events, the SDL2 driver for windows), each announced by an `nxn_caps` bit, so apps built for 1.0 run unchanged; no script API change; native packages carry `"minSdk": "1.10"`, so systems with SDK 1.9 or older say "needs a newer Nexvyn OS" |
+| 1.11 | 1.2.2 (same build for now) | kept folders and save backups for script apps: `ui.chooseFolder`, `fs.folderGrants` / `folderGranted` / `revokeFolder`, `fs.savePath`, `fs.saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python, C; the same functions as the native `nxn_pick` / `nxn_grant_*` / `nxn_save_*`); apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.11"` |
+| 1.12 | 1.2.2 (same build for now) | language parity with the native SDK: `ui.tokens`, `audio.stopAll`, C `input_action` (Lua, JavaScript, Python, C); apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.12"` |
 
 The full list of functions per version is in the SDK reference (`sdk/SDK.en.md`, "SDK versions").
+
+### Native SDK
+
+The native runtime (C / C++ apps, `.nxvmod`) has its own version, `NATIVE_VERSION` in `tools/sdkinfo.py`; an app states
+the oldest one it needs as `"minNative"`. A newer Native SDK only adds: every addition is announced by an `nxn_caps` bit,
+so an app built for an older one runs unchanged, and an app that needs a newer one says so before it starts.
+
+| Native SDK | Brought by SDK | What it contains |
+|---|---|---|
+| 1.0 | 1.10 | `nxn_*` C interface: window display (GL), input, audio streams, files, log, return; `.nxvmod` apps, `.nxvlib` libraries |
+| 1.1 | 1.10 | SDL2 driver for windows; sound and input events (`nxn_audio_clear`, USB keyboard / mouse / text, dock and sleep events); POSIX calls in a window (compat layer); system services (file and folder dialogs, kept folder access, save data, permissions); UI tokens, system fonts and the app's own texts (`nxn_ui.h`, `lang/<code>.json`); NexGFX native (`nexgfx_native.h`); the OS sound mixer (`nxn_sfx_play`, `nxn_tone`); package v2 (`nxvapp` with the module, `lang/`, `data/`) |
+
+Native apps need no change when Nexvyn OS is updated; the kit's own rules are in `docs/NATIVE_COMPAT.en.md`. Load errors
+(missing function, other interface generation, `thread_local`) are shown in the user's language with what to do about
+them, and written to the app's log; see `docs/NATIVE_GUIDE.en.md`.
 
 ### Runtimes
 
@@ -84,7 +102,8 @@ Frozen is not removed: rule 5 still holds, and a bug or security fix in these ru
 - **`minSdk`**: the oldest SDK the app runs on. A system with an older SDK does not install it.
 - **`targetSdk`**: the SDK the app was built and tested against. The system keeps behaving the way that SDK did for
   this app. Default: `minSdk`, or `"1.0"` when neither is given (a `targetSdk` below `minSdk` counts as `minSdk`).
-  Studio writes `minSdk` and `targetSdk` = the current SDK into every new project.
+  Studio writes `targetSdk` = the current SDK and `minSdk` = the newest SDK that changed the script API (1.9) into
+  every new script project, so SDK versions that only add the native runtime (1.10) do not lock new apps out.
 - **`runtime`**: the language (default from the main file's extension; `"python3"` only by name).
 - **`runtimeVersion`** (optional): the engine version the app was tested on. Without it, the engine that came with
   its `targetSdk` (table above). It is recorded on install; it only matters once an engine changes in a way apps can
@@ -107,7 +126,9 @@ Frozen is not removed: rule 5 still holds, and a bug or security fix in these ru
    reference as "for apps that target SDK x".
 3. **Newer apps are ignored gracefully, never rejected for what this system does not know.** Unknown app.json fields
    are ignored. An unknown permission is accepted in the manifest and grants nothing (`permrules::decide`). A retired
-   permission (`"clipboard"`) is accepted and ignored.
+   permission (`"clipboard"`) is accepted and ignored. The manifest v2 fields (`type`, `arch`, `minOs`, `needs`, `size`,
+   `hashes`, `dataVersion`; `docs/NXVAPP_FORMAT.en.md`) are all optional: a package without them installs exactly as before,
+   and an update never costs the installed version, even when it is interrupted (the previous version is kept for going back).
 4. **An app written for a newer system says so.** When its `minSdk` is above this SDK or its `runtime` is not in this
    build's runtime table (`sdkcompat::runnable`):
    - the App Market shows *This app needs a newer version of Nexvyn OS* instead of Get, leaves it out of the New
@@ -130,6 +151,15 @@ Frozen is not removed: rule 5 still holds, and a bug or security fix in these ru
    behaviour (the error screen). Native code (C apps, C++ apps) is never stopped from outside: when such a callback
    held the system for 12 seconds and comes back, the user is asked Force Quit / Wait; while it stays stuck, holding
    + and - for two seconds quits Nexvyn OS and the next start brings the other windows back. Tests: `tools/tests/hang_apps/` (section 5).
+8. **A closed app leaves no resources behind; no app has a memory limit** (SDK 1.10). Its meshes, models, voxel worlds
+   and GPU buffers are freed when it closes, textures once every app that drew them has closed (`g3d_gl.h`
+   `maintain`). A soft texture budget releases idle textures only of apps that target SDK 1.10; under older apps it
+   only logs. The `res` lines and the autorun `stats` line (`source/core/resmon.h`) show what is still alive.
+9. **Packages: old packages and catalogs work unchanged** (Native 1.1 work). Delta updates (`store.deltaUpdates`) and side-by-side
+   libraries (`libs.sideBySide`) are off by default; an entry without `delta` and a library installed as one version behave
+   as before. A delta is never trusted more than a full package (same hashes, signature and atomic swap) and any problem
+   falls back to the full package. A library already installed as a single-version folder is read as it is and moved
+   without loss; no installed version an app needs is ever removed. Compatibility identities stay hand-raised numbers.
 
 ## 4. Deprecated and renamed (kept forever)
 

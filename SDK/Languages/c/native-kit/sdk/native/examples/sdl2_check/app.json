@@ -1,0 +1,16 @@
+{
+  "id": "com.nexvyn.example.sdl2check",
+  "name": "SDL2 Check",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "window",
+  "main": "sdl2_check.nxvmod",
+  "minNative": "1.1",
+  "icon": "icon.png",
+  "window": {"width": 960, "height": 540, "resizable": true},
+  "permissions": ["files"],
+  "minSdk": "1.10",
+  "targetSdk": "1.10"
+}

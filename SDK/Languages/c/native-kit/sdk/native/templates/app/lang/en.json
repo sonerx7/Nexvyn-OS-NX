@@ -1,0 +1,16 @@
+{
+  "title": "@TITLE@",
+  "files": {
+    "heading": "File",
+    "open": "Choose a file...",
+    "none": "No file chosen",
+    "size": "{0} bytes"
+  },
+  "settings": {
+    "heading": "Settings",
+    "counter": "Opened {0} times",
+    "reset": "Reset counter",
+    "large_text": "Large text"
+  },
+  "quit": "Close"
+}

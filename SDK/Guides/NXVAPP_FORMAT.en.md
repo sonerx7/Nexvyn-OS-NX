@@ -78,6 +78,29 @@ Rules:
 | `abi` | string | C++ apps only: the ABI id of the Nexvyn OS build the module was compiled against (16 hex characters). Not installed if it differs. |
 | `shareTargets` | string array | What it can receive through `sys.share` (SDK 1.4): `"text"`, `"url"`, `"file"`, `"image"` or an extension (`".txt"`). The shared item arrives through `app.load(arg)` / `app.open(arg)`. |
 
+### Manifest v2 (self-describing package)
+
+A package says what it is; Nexvyn OS looks at neither the file extension nor the file name. These fields are optional:
+a package without any of them (every package made before) reads as a plain app and installs and runs exactly as before,
+and a field this system does not know is ignored. A field that is there but has a shape nobody can use, or a value this
+system cannot take, is a clean error at install time and nothing is unpacked into place. (Reader: `source/core/pkgv2.cpp`;
+`python tools/nxv.py check` applies the same rules.)
+
+| Field | Type | Description |
+|------|-----|----------|
+| `type` | string | `app` (default), `game`, `lib` (a shared library, section 5b), `theme`, `runtime`. An unknown type: "needs a newer Nexvyn OS". |
+| `mode` | string | `window` (default) or `fullscreen` for a native app (`docs/NATIVE_KIT.en.md`). |
+| `arch` | string | `aarch64`, the only architecture Nexvyn OS runs. Another value is refused. |
+| `abi` | string | The module ABI id (native modules) as before. |
+| `minOs` | string | The oldest Nexvyn OS version that can run it (`"1.2.0"`); a pre-release counts as older than the release. |
+| `minSdk`, `minNative` | string | As before: the oldest SDK and Native SDK. |
+| `memory` | number | The heap a native app asks for, in MB (1 to 16384). |
+| `needs` | array | Shared libraries it needs: `"id"`, `"id@6.1"` or `{"id": "...", "version": "6.1"}`. One version of each library is installed; the one installed must have the same major and not be older (section 5b). |
+| `size` | number | Installed size in bytes (`nxv pack --stamp` writes it). |
+| `hashes` | object | `{"<file>": "<sha256>"}`, read back from the card during the install (`nxv pack --stamp` writes it). A mismatch stops the install. |
+| `dataVersion` | integer | The version of the data format the app writes (0 or more; without it, 0). Raise it when a new version changes how the data is stored (section 5a). |
+| `name`, `description` | string or language table | As before. |
+
 Runtimes (`runtimes/runtime_kind.h`):
 
 | `runtime` | Extension | Default `main` | Language | Minimum SDK |
@@ -89,6 +112,7 @@ Runtimes (`runtimes/runtime_kind.h`):
 | `"c"` | `.c` | `main.c` | C, compiled on the console with TinyCC; every `.c` file in the package | 1.5 |
 | `"java"` | `.jar` | `app.jar` | Java 8 class files (miniJVM); the jar is built on the PC with `tools/java_build.py` | 1.5 |
 | `"native"` | `.nxvmod` | the `"native"` field | C++ native module, compiled with the same compiler as the NRO; runs only on a system with the same ABI (`docs/NATIVE_MODULES.en.md`) | ABI id instead of SDK |
+| `"native"` + `"mode": "window"` / `"fullscreen"` | `.nxvmod` | `<name>.nxvmod` | C/C++ app built with the Native SDK (`NATIVE_KIT.en.md`): runs inside Nexvyn OS in a window or full screen, the user can switch. (Older packages with `"mode": "exclusive"` and a `.nro` main still start as before.) `"minNative"` = the Native SDK version it needs; `"minSdk": "1.10"` is required (older systems then say "needs a newer Nexvyn OS"); a newer mode or Native SDK is shown as "needs a newer Nexvyn OS" | `"minNative"` |
 
 Because `"c"`, `"java"` and `"native"` apps do not run sandboxed, those installed from the SD card ask the user once on
 their first launch (`apps.trustedC`, `apps.trustedJava`, `apps.trustedNative`).
@@ -205,11 +229,69 @@ e4a9...5d20  main.lua
   - **Run:** the package is extracted into `~/Library/Caches/nxvinstall/<id>` and run once; it is not added to
     the Launcher. (The package is extracted first because the Lua/JS runtimes do not read files directly from the zip.)
   - **Install / Update / Reinstall:** the package is installed into `sdmc:/NexvynOS/Applications`.
-- **Atomic installation:** the package is first extracted to a hidden temporary folder (`Applications/.staging-<id>`)
-  and checked; then the old copy is moved aside as `.old-<id>`, the new one is moved into place, and finally the old one
-  is deleted. If a step fails, the old copy is put back.
+- **Atomic installation:** the heavy part runs in the background and never blocks the desktop. The package is extracted
+  to a hidden folder (`Applications/.staging-<id>`), its file list, hashes (`manifest.sha256`, `hashes`) and signature are
+  checked, and the libraries it `needs` must be there. Only then does one short step on the main thread swap it in: the old
+  copy is renamed to `.old-<folder>`, the new one to the app's folder, and the old copy becomes the previous version
+  (`.prev-<folder>`). If the new copy does not load, the old one is put back. If the console loses power or the app is
+  closed in the middle, the next start settles whatever was left: an interrupted swap is undone (or finished, if the new
+  copy is whole and loads), half-extracted folders are deleted, and the installed version keeps running in every case.
 - **Update:** a package installed with the same `id` is written into the installed copy's folder. The app's data
-  (`~/Library/Application Support/<id>`) does not change at all.
+  (`~/Library/Application Support/<id>`) is not part of the package and is not touched, except as described next.
+
+### 5a. Previous version and the data of an app
+
+- Every update keeps the version it replaced beside the new one (setting `apps.keepPrevious`, on by default). System
+  Settings > Apps lists **Previous version** for such an app; going back swaps the two (what was current becomes the
+  previous version, so going back again goes forward again). Uninstalling the app deletes its previous version too.
+- **`dataVersion`.** The system records, per app, the highest `dataVersion` any installed version has had
+  (`System/Config/dataversions.json`). An update that raises it copies the user's data first
+  (`~/Library/App Copies/<id>/dv<old>`), in the background. If the copy cannot be made (for example the card is full) the
+  update is not installed and the current version is unchanged.
+- **Going back** to a version whose `dataVersion` is lower than the data's asks the user: **Restore backup** (the copy made
+  before the update comes back) or **Open without data**. Either way the newer data is never deleted: it is kept as a
+  separate copy (`~/Library/App Copies/<id>/kept-dv<n>`). When the data format did not change, going back keeps the data
+  as it is and asks nothing.
+
+### 5b. Shared libraries (`"type": "lib"`)
+
+A library package has an `app.json` with `"type": "lib"`, an `id`, a `version` and its files, and no program of its own. It
+is installed into `sdmc:/NexvynOS/Libraries/` with the same atomic steps. By default one version of each library is installed
+(`Libraries/<id>/`); with the setting `libs.sideBySide` (off by default) major versions live side by side in
+`Libraries/<id>/<major>/`.
+An app that lists a library in `needs` is not installed without it: the App Market shows what else will be installed
+(names and sizes) and asks once; on approval the libraries go first, then the app. A library an installed app needs is
+never removed.
+- **Side by side** (`libs.sideBySide`): a newer version of the same major replaces the older one in `Libraries/<id>/<major>/`
+  (an older package of a major that has a newer version installed is skipped), a different major is installed beside it. A
+  need (`"id@6.1"`) is served by the highest installed version of major 6 that is not older than 6.1; with no version
+  asked, by the highest installed one. A version that serves the need of an installed app or of another installed library
+  is in use and is never removed. Libraries installed before (`Libraries/<id>/app.json`) are read as they are; the first
+  side-by-side install of the same library moves that folder into its major folder with three renames (a cut in the middle
+  is settled at the next start and nothing is deleted). A library kept side by side stays so even if the setting is turned
+  off. Without the setting a different major replaces the installed library, as before.
+- **Settings > Storage > Libraries** lists every installed version (name, version, size, the apps that use it) and removes
+  the ones nothing uses, after a confirmation. The folders are read and measured in the background; a removal is one rename
+  per version on the main thread, the files are deleted in the background.
+
+### 5c. Delta updates (`store.deltaUpdates`, off by default)
+
+An update can be downloaded as a **delta package**: only the files whose content changed. It is a zip with `delta.json`
+(`{"format": 1, "id", "from", "to"}`), the new version's `app.json`, `manifest.sha256`, `manifest.sig` and the changed
+files. `python tools/nxv.py pack --delta old.nxvapp new.nxvapp` makes it; the new package must be packed with `--stamp`
+so its `app.json` `hashes` list every file (the tool refuses otherwise), and `--index` prints the catalog entry.
+- **Catalog:** an app entry may carry `"delta"`: one object or an array of `{"from": "<installed version>", "download",
+  "sha256", "size"}` (https, the sha256 of the delta file). The entry's own `download` / `sha256` stay: they are the
+  fallback. Entries without `delta` behave as always.
+- **Use:** only with the setting on, when the installed version equals `from` and the delta is smaller than the full
+  package. The delta is checked against its catalog sha256 and unpacked into the staging folder; every file of the new
+  `hashes` it did not bring is copied from the installed version after its hash is checked (an app that changed its own
+  files fails this); then the result goes through the same checks as a full package (all `hashes`, `manifest.sha256`, the
+  developer signature and the catalog's signer, the data backup for a `dataVersion` increase) and the same atomic swap, so
+  "Previous version" works as after a full update. Only the staging folder is written until the swap.
+- **Fallback:** a delta that cannot be downloaded, does not match its hash, is for another version, whose base files are not
+  the ones it was made against, or whose result fails a check is dropped and the full package is installed instead, with
+  nothing for the user to do. A power cut leaves the installed version running; the next start deletes the staging folder.
 - **Uninstalling:** right-click the icon in the Launcher → Uninstall, System Settings > Apps, or the Store. "Uninstall with
   data" also deletes the `Application Support/<id>` and `Caches/<id>` folders.
 - A package that carries the same id as an app that ships with the system is installed side by side with the id
@@ -295,6 +377,14 @@ hours (while online).
 - Catalog check: `python tools/catalog_check.py Store/catalog.json` (schema, unique ids, https addresses, `sha256`,
   `minSdk`, `signer`, date format, `security.blocklist`; `--strict` also treats warnings as errors).
 
+Libraries are catalog entries too: `{"id": "com.you.ffmpeg", "type": "lib", "name", "version", "download", "sha256", "size"}`
+(no icon or screenshots needed, no page of their own). An app entry lists them in `"needs"` (same forms as in `app.json`).
+`python tools/catalog_check.py` checks that every `needs` entry is in the catalog in a version that satisfies it. A library may
+be listed once per major (same id, different versions): an app takes the highest one that serves its need.
+An app entry may list smaller update packages in `"delta"` (section 5c); `catalog_check` checks their shape (`from`,
+https `download`, `sha256`, `size`) and warns about deltas that cannot be used (not smaller than the package, `from` equal
+to the entry's version, a repeated `from`).
+
 ### security: App Guard's blocklist
 
 ```json
@@ -328,6 +418,11 @@ python tools/nxvapp_keygen.py anahtarim.pem                 # signing key (once)
 python tools/nxvapp_pack.py Uygulamam.nxvapp --sign anahtarim.pem
 python tools/nxvapp_pack.py --verify Uygulamam.nxvapp       # the check Nexvyn OS will do: list, values, signature
 ```
+
+One tool covers script apps, native apps and libraries: `python tools/nxv.py pack <folder|native project>` (`-o`, `--sign`,
+`--stamp` to write `size` and `hashes`) and `python tools/nxv.py check <folder|file.nxvapp>` (manifest, permissions, size
+limits, hashes, signature and, for a native module, its ABI; exit code 1 when Nexvyn OS would refuse or flag it). `pack`
+calls the packer below (and `nxv_native package` for a native project); `check` calls its checks.
 
 The packer checks `app.json` (id, name, entry file, `minSdk` format, unknown permissions and share targets, size
 limits) and adds `manifest.sha256` (and `manifest.sig` with `--sign`). The **Export** command in Nexvyn OS Studio

@@ -1,0 +1,233 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2897,6 +2897,53 @@
+     list(APPEND EXTRA_LIBS ${lib})
+   endforeach()
+ 
++elseif(NINTENDO_SWITCH AND NEXVYN_SDL)
++  # Nexvyn OS window build (sdk/native/sdl2): the nxn_* ABI instead of libnx/EGL/audren, so the module only imports
++  # what Nexvyn OS's host import set offers (nxn_*, newlib libc, pthreads). Drivers: src/{video,audio,joystick,
++  # filesystem}/nexvyn. Timer: the generic unix one (clock_gettime, nanosleep).
++  if(SDL_AUDIO)
++    set(SDL_AUDIO_DRIVER_NEXVYN 1)
++    file(GLOB NEXVYN_AUDIO_SOURCES ${SDL2_SOURCE_DIR}/src/audio/nexvyn/*.c)
++    set(SOURCE_FILES ${SOURCE_FILES} ${NEXVYN_AUDIO_SOURCES})
++    set(HAVE_SDL_AUDIO TRUE)
++  endif()
++  if(SDL_FILESYSTEM)
++    set(SDL_FILESYSTEM_NEXVYN 1)
++    file(GLOB NEXVYN_FILESYSTEM_SOURCES ${SDL2_SOURCE_DIR}/src/filesystem/nexvyn/*.c)
++    set(SOURCE_FILES ${SOURCE_FILES} ${NEXVYN_FILESYSTEM_SOURCES})
++    set(HAVE_SDL_FILESYSTEM TRUE)
++  endif()
++  if(SDL_JOYSTICK)
++    set(SDL_JOYSTICK_NEXVYN 1)
++    file(GLOB NEXVYN_JOYSTICK_SOURCES ${SDL2_SOURCE_DIR}/src/joystick/nexvyn/*.c)
++    set(SOURCE_FILES ${SOURCE_FILES} ${NEXVYN_JOYSTICK_SOURCES})
++    set(HAVE_SDL_JOYSTICK TRUE)
++  endif()
++  if(SDL_TIMERS)
++    set(SDL_TIMER_UNIX 1)
++    file(GLOB NEXVYN_TIMER_SOURCES ${SDL2_SOURCE_DIR}/src/timer/unix/*.c)
++    set(SOURCE_FILES ${SOURCE_FILES} ${NEXVYN_TIMER_SOURCES})
++    set(HAVE_SDL_TIMERS TRUE)
++  endif()
++  if(SDL_VIDEO)
++    set(SDL_VIDEO_DRIVER_NEXVYN 1)
++    file(GLOB NEXVYN_VIDEO_SOURCES ${SDL2_SOURCE_DIR}/src/video/nexvyn/*.c)
++    set(SOURCE_FILES ${SOURCE_FILES} ${NEXVYN_VIDEO_SOURCES})
++    set(HAVE_SDL_VIDEO TRUE)
++    set(SDL_VIDEO_OPENGL_ES2 1)
++    set(SDL_VIDEO_RENDER_OGL_ES2 1)
++    set(SDL_VIDEO_OPENGL 1)
++    set(HAVE_VIDEO_OPENGL TRUE)
++    set(HAVE_VIDEO_OPENGLES TRUE)
++  endif()
++  set(SDL_STATIC_PIC ON)
++  list(APPEND EXTRA_LIBS m)
++  add_definitions(-DSDL_NEXVYN_WINDOWED=1)
++  include_directories(${SDL2_SOURCE_DIR}/nexvyn_kit) # <nexvyn/nexvyn_native.h>, copied into the tree by the kit recipe
++  set(HAVE_CLOCK_GETTIME 1)
++  set(PTHREADS ON)
++  set(PTHREADS_SEM ON)
++  CheckPTHREAD()
+ elseif(NINTENDO_SWITCH)
+   if(SDL_AUDIO)
+     set(SDL_AUDIO_DRIVER_SWITCH 1)
+--- a/include/SDL_config.h.cmake
++++ b/include/SDL_config.h.cmake
+@@ -330,6 +330,7 @@
+ #cmakedefine SDL_AUDIO_DRIVER_PS2 @SDL_AUDIO_DRIVER_PS2@
+ #cmakedefine SDL_AUDIO_DRIVER_N3DS @SDL_AUDIO_DRIVER_N3DS@
+ #cmakedefine SDL_AUDIO_DRIVER_SWITCH @SDL_AUDIO_DRIVER_SWITCH@
++#cmakedefine SDL_AUDIO_DRIVER_NEXVYN @SDL_AUDIO_DRIVER_NEXVYN@
+ 
+ /* Enable various input drivers */
+ #cmakedefine SDL_INPUT_LINUXEV @SDL_INPUT_LINUXEV@
+@@ -357,6 +358,7 @@
+ #cmakedefine SDL_JOYSTICK_PS2 @SDL_JOYSTICK_PS2@
+ #cmakedefine SDL_JOYSTICK_N3DS @SDL_JOYSTICK_N3DS@
+ #cmakedefine SDL_JOYSTICK_SWITCH @SDL_JOYSTICK_SWITCH@
++#cmakedefine SDL_JOYSTICK_NEXVYN @SDL_JOYSTICK_NEXVYN@
+ #cmakedefine SDL_HAPTIC_DUMMY @SDL_HAPTIC_DUMMY@
+ #cmakedefine SDL_HAPTIC_LINUX @SDL_HAPTIC_LINUX@
+ #cmakedefine SDL_HAPTIC_IOKIT @SDL_HAPTIC_IOKIT@
+@@ -460,6 +462,7 @@
+ #cmakedefine SDL_VIDEO_DRIVER_VITA @SDL_VIDEO_DRIVER_VITA@
+ #cmakedefine SDL_VIDEO_DRIVER_N3DS @SDL_VIDEO_DRIVER_N3DS@
+ #cmakedefine SDL_VIDEO_DRIVER_SWITCH @SDL_VIDEO_DRIVER_SWITCH@
++#cmakedefine SDL_VIDEO_DRIVER_NEXVYN @SDL_VIDEO_DRIVER_NEXVYN@
+ 
+ #cmakedefine SDL_VIDEO_RENDER_D3D @SDL_VIDEO_RENDER_D3D@
+ #cmakedefine SDL_VIDEO_RENDER_D3D11 @SDL_VIDEO_RENDER_D3D11@
+@@ -521,6 +524,7 @@
+ #cmakedefine SDL_FILESYSTEM_PS2 @SDL_FILESYSTEM_PS2@
+ #cmakedefine SDL_FILESYSTEM_N3DS @SDL_FILESYSTEM_N3DS@
+ #cmakedefine SDL_FILESYSTEM_SWITCH @SDL_FILESYSTEM_SWITCH@
++#cmakedefine SDL_FILESYSTEM_NEXVYN @SDL_FILESYSTEM_NEXVYN@
+ 
+ /* Enable misc subsystem */
+ #cmakedefine SDL_MISC_DUMMY @SDL_MISC_DUMMY@
+--- a/src/video/SDL_video.c
++++ b/src/video/SDL_video.c
+@@ -65,6 +65,9 @@
+ 
+ /* Available video drivers */
+ static VideoBootStrap *bootstrap[] = {
++#if SDL_VIDEO_DRIVER_NEXVYN
++    &NEXVYN_bootstrap,
++#endif
+ #if SDL_VIDEO_DRIVER_COCOA
+     &COCOA_bootstrap,
+ #endif
+--- a/src/video/SDL_sysvideo.h
++++ b/src/video/SDL_sysvideo.h
+@@ -483,6 +483,7 @@
+ extern VideoBootStrap OS2DIVE_bootstrap;
+ extern VideoBootStrap OS2VMAN_bootstrap;
+ extern VideoBootStrap SWITCH_bootstrap;
++extern VideoBootStrap NEXVYN_bootstrap;
+ 
+ /* Use SDL_OnVideoThread() sparingly, to avoid regressions in use cases that currently happen to work */
+ extern SDL_bool SDL_OnVideoThread(void);
+--- a/src/audio/SDL_audio.c
++++ b/src/audio/SDL_audio.c
+@@ -111,6 +111,9 @@
+ #if SDL_AUDIO_DRIVER_EMSCRIPTEN
+     &EMSCRIPTENAUDIO_bootstrap,
+ #endif
++#if SDL_AUDIO_DRIVER_NEXVYN
++    &NEXVYNAUDIO_bootstrap,
++#endif
+ #if SDL_AUDIO_DRIVER_SWITCH
+     &SWITCHAUDIO_bootstrap,
+ #endif
+--- a/src/audio/SDL_sysaudio.h
++++ b/src/audio/SDL_sysaudio.h
+@@ -210,6 +210,7 @@
+ extern AudioBootStrap EMSCRIPTENAUDIO_bootstrap;
+ extern AudioBootStrap OS2AUDIO_bootstrap;
+ extern AudioBootStrap SWITCHAUDIO_bootstrap;
++extern AudioBootStrap NEXVYNAUDIO_bootstrap;
+ 
+ #endif /* SDL_sysaudio_h_ */
+ 
+--- a/src/joystick/SDL_joystick.c
++++ b/src/joystick/SDL_joystick.c
+@@ -105,6 +105,9 @@
+ #ifdef SDL_JOYSTICK_N3DS
+     &SDL_N3DS_JoystickDriver
+ #endif
++#ifdef SDL_JOYSTICK_NEXVYN
++    &SDL_NEXVYN_JoystickDriver,
++#endif
+ #ifdef SDL_JOYSTICK_SWITCH
+     &SDL_SWITCH_JoystickDriver,
+ #endif
+--- a/src/joystick/SDL_sysjoystick.h
++++ b/src/joystick/SDL_sysjoystick.h
+@@ -250,6 +250,7 @@
+ extern SDL_JoystickDriver SDL_VITA_JoystickDriver;
+ extern SDL_JoystickDriver SDL_N3DS_JoystickDriver;
+ extern SDL_JoystickDriver SDL_SWITCH_JoystickDriver;
++extern SDL_JoystickDriver SDL_NEXVYN_JoystickDriver;
+ 
+ /* Ends C function definitions when using C++ */
+ #ifdef __cplusplus
+--- a/src/thread/pthread/SDL_systhread.c
++++ b/src/thread/pthread/SDL_systhread.c
+@@ -194,6 +194,10 @@
+ #if __NACL__ || __RISCOS__ || __OS2__
+     /* FIXME: Setting thread priority does not seem to be supported in NACL */
+     return 0;
++#elif defined(SDL_NEXVYN_WINDOWED)
++    /* an app thread keeps the priority Nexvyn OS clamped it to: SDL never raises it above the OS threads */
++    (void)priority;
++    return 0;
+ #elif __SWITCH__
+     Result res;
+     if (priority == SDL_THREAD_PRIORITY_HIGH) {
+--- a/src/video/SDL_video.c
++++ b/src/video/SDL_video.c
+@@ -3810,6 +3810,11 @@
+         return 0;
+ #endif
+     case SDL_GL_DEPTH_SIZE:
++#if defined(SDL_NEXVYN_WINDOWED)
++        /* the driver stores what Nexvyn OS gave the window (the default framebuffer cannot be queried) */
++        *value = _this->gl_config.depth_size;
++        return 0;
++#endif
+ #if SDL_VIDEO_OPENGL
+         attachment = GL_DEPTH;
+         attachmentattrib = GL_FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE;
+@@ -3817,6 +3822,10 @@
+         attrib = GL_DEPTH_BITS;
+         break;
+     case SDL_GL_STENCIL_SIZE:
++#if defined(SDL_NEXVYN_WINDOWED)
++        *value = _this->gl_config.stencil_size;
++        return 0;
++#endif
+ #if SDL_VIDEO_OPENGL
+         attachment = GL_STENCIL;
+         attachmentattrib = GL_FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE;
+--- a/src/cpuinfo/SDL_cpuinfo.c
++++ b/src/cpuinfo/SDL_cpuinfo.c
+@@ -664,6 +664,19 @@
+ int SDL_GetCPUCount(void)
+ {
+     if (!SDL_CPUCount) {
++#if defined(SDL_NEXVYN_WINDOWED)
++        /* the cores the process may run on (InfoType_CoreMask of the current process): 3 on a console, what an app can
++           really use, not the number of cores the chip has */
++        {
++            unsigned long long mask = 0;
++            extern unsigned int svcGetInfo(unsigned long long *out, unsigned int id0, unsigned int handle, unsigned long long id1);
++            if (svcGetInfo(&mask, 0 /* InfoType_CoreMask */, 0xFFFF8001u /* CUR_PROCESS_HANDLE */, 0) == 0) {
++                for (; mask; mask >>= 1) {
++                    SDL_CPUCount += (int)(mask & 1);
++                }
++            }
++        }
++#endif
+ #ifndef SDL_CPUINFO_DISABLED
+ #if defined(HAVE_SYSCONF) && defined(_SC_NPROCESSORS_ONLN)
+         if (SDL_CPUCount <= 0) {
+--- a/src/audio/SDL_audiotypecvt.c
++++ b/src/audio/SDL_audiotypecvt.c
+@@ -1473,7 +1473,14 @@
+ #if HAVE_NEON_INTRINSICS
++#if defined(SDL_NEXVYN_WINDOWED) && defined(__aarch64__)
++    /* SDL_CPUINFO is off in this build, so SDL_HasNEON() is 0, and ARMv8 builds have no scalar fallback: without this no
++       sample format converter was set and every SDL_AudioCVT / SDL_AudioStream failed (games fell back to crude code of
++       their own). ARMv8 always has NEON. Audio only: the video blitters keep their paths. */
++    if (1) {
++#else
+     if (SDL_HasNEON()) {
++#endif
+         SET_CONVERTER_FUNCS(NEON);
+         return;
+     }
+ #endif
+ 

@@ -34,6 +34,14 @@ folder with `python tools/nxvapp_pack.py MyApp.nxvapp` (adds `manifest.sha256`);
 comes from another key. The full package format, signing, the permission rules and the repository index are in
 `docs/NXVAPP_FORMAT.en.md`.
 
+**Package v2 (optional fields in `app.json`).** `type` (`app`, `game`, `lib`), `arch`, `minOs`, `needs` (shared libraries),
+`size`, `hashes` and `dataVersion` make a package describe itself; packages without them keep installing and running
+unchanged. An update installs in the background in one safe step (an interrupted one never costs the installed version),
+keeps the version it replaced (System Settings > Apps > **Previous version**), and when it raises `dataVersion` the
+user's data is copied first; going back to a version with an older data format asks whether to restore that copy or open
+without data, and the newer data is never deleted. `python tools/nxv.py pack` / `check` pack and verify script, native and
+library packages (`docs/NXVAPP_FORMAT.en.md` section 2 and 5).
+
 ### app.json
 
 ```json
@@ -107,7 +115,7 @@ comes from another key. The full package format, signing, the permission rules a
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.9"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.12"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -121,12 +129,23 @@ comes from another key. The full package format, signing, the permission rules a
 | 1.7 | `g3d.voxels` voxel worlds in JavaScript (section 8b, *Voxel worlds*): chunk streaming, built-in terrain generator, light, smooth-lit meshes built on background threads, texture atlas shader, saving, ray casts, box physics; `mesh:setTexture(path, pixelated)` in Lua and JavaScript |
 | 1.8 | `g3d.model` (section 8b, *3D models*): `.glb`, `.gltf`, `.fbx` (and `.obj`, `.stl`) files with node hierarchy, materials, embedded and external textures and skeletal animation (`play` with crossfade, `stop`, `update`, `time`, node positions and matrices for attachments), `g3d.drawMatrix`; GPU skinning; in every runtime (Squirrel, C, Java and `"python3"` through `g3d.model*` functions) |
 | 1.9 | Runtime library: `net.request{url, method, body, contentType, headers}` in Lua (any method, as in JavaScript and Python); JavaScript `TextEncoder` / `TextDecoder` (UTF-8), `URL` / `URLSearchParams`, `structuredClone`; Python `str` methods pocketpy lacked (`isdigit`, `isalpha`, `isspace`, `title`, `partition`, `rfind`, `rsplit`, `removeprefix`... and `split(sep, maxsplit)`, `find` / `count` with start and end, `startswith` with a tuple), `dict.setdefault` / `fromkeys`, `pow()`; Python system library `urllib.parse`, `html`, `uuid`; feed, photo and short-video apps (section 8d): `net.request` options (JSON, form, multipart and file bodies, `saveTo`, upload progress, cookies, retries, offline cache), `net.cancel`, `net.clearCookies`, `net.clearCache`, WebSocket client (`net.ws`, `wsSend`, `wsPoll`, `wsClose`, `wsState`), `net.oauth` (sign-in in the console's browser), `gfx.imageUrl` / `imageState` (web pictures with a disk and memory cache), `media.*` video and audio players, `ui.beginFeed` / `feedItem` / `endFeed`, `ui.pager`, `ui.richText` / `measureRichText`, `sys.relativeTime`; in Lua, JavaScript, Python and C; the pbr renderer (section 8b, *Modern rendering*), opt-in per app with `g3d.renderer("pbr")`: metallic-roughness materials with normal, occlusion and emissive maps (glTF and FBX, MetallicSmoothness maps), `g3d.material`, real-time lights (`g3d.addLight` / `updateLight` / `removeLight` / `clearLights` / `lights`), sun and spot shadows (`g3d.shadows`), HDR, tone mapping, bloom and MSAA (`g3d.postfx`), cube map or hemisphere ambient (`g3d.environment`), `g3d.drawInstanced`, `g3d.caps`; Lua, JavaScript, Python and C |
+| 1.10 | Native runtime: C / C++ apps that run inside Nexvyn OS, in a window or full screen (`"runtime": "native"`, `"mode": "window"` or `"fullscreen"`, a `.nxvmod`), Native SDK 1.0 (`docs/NATIVE_SDK_DESIGN.md`, the `nxn_*` C interface). No script function changes. Native packages carry `"minSdk": "1.10"`, so older systems say "needs a newer Nexvyn OS" |
+| 1.11 | Folder picker and kept folders: `ui.chooseFolder` (`remember` keeps the folder across runs), `fs.folderGrants` / `folderGranted` / `revokeFolder`; the save folder and its backups: `fs.savePath`, `saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python and C, the same names as the native `nxn_pick` / `nxn_grant_*` / `nxn_save_*`; one core unit for both). Apps built for older SDKs behave as before |
+| 1.12 | Language parity with the native SDK (`docs/PARITY.en.md`): `ui.tokens()` (the OS look as one table: colors, corner radii, spacing, text sizes, text scale, bold text; like the native `nxn_ui_tokens_get`), `audio.stopAll()` (stops every sound the app started; like `nxn_sfx_stop_all`), and the C function `input_action(name)` (Lua, JavaScript and Python already had `input.action`); Lua, JavaScript, Python and C. Apps built for older SDKs behave as before |
 
 **Languages that get new APIs.** From SDK 1.9 on, new functions come to Lua, JavaScript, Python (`"python"` and
 `"python3"`) and C. Squirrel and Java are frozen at SDK 1.8: every function they have keeps working on every later
 Nexvyn OS and their apps on the App Market need no change, but nothing new is added to them. Start new apps in one of
 the four growing languages; the SDK names are the same in all of them. Details: `docs/COMPATIBILITY.en.md`, *Which
 languages get new APIs*.
+
+### Native SDK
+
+C / C++ apps use the native runtime, versioned on its own (`"minNative"` in `app.json`). Native SDK 1.1 brings the SDL2
+driver for windows, sound and input events, POSIX calls in a window, system services (dialogs, kept folder access, save
+data, permissions), UI tokens and the app's own texts, NexGFX native, the OS sound mixer and package v2. A newer Native
+SDK only adds; apps built for an older one run unchanged. The table and the rules: `docs/COMPATIBILITY.en.md`, *Native
+SDK*; the guide: `docs/NATIVE_GUIDE.en.md`.
 
 ### Compatibility: targetSdk and deprecation
 
@@ -264,6 +283,14 @@ in the bundle come from the system Lua library `romfs:/System/Lua/` (for example
 `theme.separator`, `theme.control`, `theme.field`, `theme.selection`, `theme.hover`, `theme.accent`, and
 `theme.red/orange/yellow/green/blue/purple/pink/gray`. Use them so the app looks right in both modes.
 
+`ui.tokens()` (SDK 1.12; C: `ui_tokens()`, a JSON text) returns the OS look as one table, the same values as the native
+`nxn_ui_tokens_get`: `dark`, `highContrast`, `boldText`, `textScale` (multiply font sizes by it), `colors` (`accent`,
+`accentHover`, `accentText`, `windowBg`, `contentBg`, `sidebarBg`, `surface`, `surfaceHover`, `surfacePressed`, `text`,
+`textSecondary`, `textTertiary`, `separator`, `border`, `fieldBg`, `fieldBorder`, `selection`, `selectionText`, `hover`,
+`error`, `warning`, `success`, `info`, as hex strings), `cornerRadius`, `cornerRadiusField`, `cornerRadiusRow`,
+`spacing` (6 steps: 4, 8, 12, 16, 24, 32), `controlHeight`, `rowHeight`, `fontSmall`, `fontBody`, `fontLarge`,
+`fontTitle`. Read it again when `theme.dark` changes; the `ui` widgets already follow it.
+
 ## 4. Widgets — `ui`
 
 Immediate mode: call the widget every frame inside `app.draw`; it draws itself and returns what happened.
@@ -358,6 +385,33 @@ fs.unzip("bundle:/patch.zip", "sdmc:/atmosphere/contents", function(ok, r)
 end, function(done, total) pct = total > 0 and done / total or 0 end)
 ```
 
+**Kept folders and save backups (SDK 1.11).** The same functions as the native `nxn_pick` / `nxn_grant_*` /
+`nxn_save_*`, in Lua, JavaScript, Python and C with the same names and results. No permission is needed: the user
+picks the folder.
+
+- `ui.chooseFolder({title, remember}, callback)` opens the folder picker. `callback(path, err)`: the folder, or
+  `nil, nil` when the user cancels (no error: a cancel is not a failure). The folder is open to your `fs` calls for the
+  session. With `remember = true` it is also kept across runs; Nexvyn OS's own data cannot be kept (`err` starts with
+  `"denied"`). JavaScript without a callback returns a Promise (`null` when cancelled).
+- `fs.folderGrants()` → list of kept folders · `fs.folderGranted(path)` → true when `path` is a kept folder or lies in
+  one · `fs.revokeFolder(path)` → true when it was kept (give back exactly what `folderGrants` listed). Listing or
+  asking opens a kept folder to your `fs` calls again for this run.
+- The save folder is `save/` in the app's data folder: `fs.savePath()` → its absolute path (created). Backups live
+  next to the data folders (`~/Library/Backups/<id>/<slot>`), so clearing the app's data keeps them. A slot name is 1-48
+  characters of `A-Z a-z 0-9 . _ -`; anything else raises an error. Copying runs on a background thread, the window
+  keeps drawing, and jobs run in the order you start them:
+  `fs.saveBackup(slot, callback)` copies the save folder (an older backup of the slot stays until the new one is whole) ·
+  `fs.saveRestore(slot, callback)` replaces the save folder with the backup (the current save stays when it fails) ·
+  `fs.saveDeleteBackup(slot, callback)` · `fs.saveBackups()` → list of slot names. `callback(true, nil)` when it worked,
+  `callback(nil, "not found" | "io error")` otherwise.
+
+```lua
+ui.chooseFolder({title = "Pick your ROM folder", remember = true}, function(path, err)
+  if path then romDir = path end            -- nil when cancelled
+end)
+fs.saveBackup("before-boss", function(ok, err) status = ok and "saved" or err end)
+```
+
 Simple persistence: `store.get(key[, default])`, `store.set(key, value)` (any JSON-like value; saved
 automatically within a second and on close), `store.save()`.
 
@@ -393,7 +447,7 @@ offline cache, WebSockets and sign-in are in section 8d (`net.request`, SDK 1.9)
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.9"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.12"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -421,7 +475,7 @@ end)
 `"noise"` → channel · `audio.play(nameOrPath[, volume[, loops]])` system sounds `"click"`,`"pop"`,`"notify"`,
 `"alarm"`,`"trash"`,`"shutter"`,`"error"`,`"key"`,`"volume"`,`"startup"` or a `.wav/.ogg/.mp3` file
 (`loops = -1` repeats) → channel · `audio.stop(channel)` · `audio.music(path)` stream a song ·
-`audio.musicPause(true|false)` · `audio.musicStop()`. Every sound, note and song belongs to the app that started it:
+`audio.musicPause(true|false)` · `audio.musicStop()` · `audio.stopAll()` (SDK 1.12: stops every sound and note the app started, not its music; like native `nxn_sfx_stop_all`). Every sound, note and song belongs to the app that started it:
 closing its window (or a crash) stops them all, and `stop` / `musicPause` / `musicStop` only touch the app's own.
 
 `timer.after(seconds, fn)` → id · `timer.every(seconds, fn)` → id · `timer.cancel(id)`.
@@ -530,6 +584,14 @@ sprites. The CPU fallback draws glow meshes as normal meshes.
 Native apps (C++) also get `g3d::append(dst, src, matrix, color)`, which merges a transformed copy of a mesh into
 another one (cheap instancing: hundreds of objects, one draw), `DrawOpts::additive` (the `"glow"` flag) and
 `g3d::lastDrawCalls()` next to `g3d::lastTriangles()`.
+
+Resource lifetime (SDK 1.10): meshes, models, voxel worlds and their GPU buffers belong to the app that made them and
+are freed when it closes; you do not need to free anything in `app.close`. Textures (image files used by meshes and
+materials, voxel atlases) are shared: one that two apps draw stays until both have closed, and one only closed apps
+used is released within about a second. The system watches total memory, there is no per-app limit. For apps that
+target SDK 1.10: when 3D textures pass a soft budget (256 MB, 64 MB when started from the Album), ones the app has not
+drawn for 30 seconds may be released; they load again the next time they are drawn (a pbr frame may show that mesh a
+frame later). Older apps keep every texture while they run. Settings > Developer turns both off.
 
 Motion controls: `input.motion()` → `ax, ay, az` (acceleration in G), `gx, gy, gz` (angular velocity in rad/s),
 `pitch, roll, yaw` (accumulated rotation in radians) from the Joy-Con / Pro Controller / handheld gyroscope.
@@ -657,11 +719,13 @@ need to. They apply to every `g3d.begin` of the app; other apps never see them.
 | Function | Description |
 |---|---|
 | `g3d.renderer([name])` → name | `"pbr"` or `"basic"` (the renderer of SDK 1.0–1.8). Returns the renderer frames will use: `"basic"` when the GPU path is off or offers no OpenGL ES 3 (the reason is in the system log). The first `"pbr"` call builds the shaders (about half a second): call it in `app.load` |
-| `g3d.rendererInfo()` → table | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: what draws this app's frames |
 | `g3d.caps()` → table | `{gpu, pbr, hdr, shadows, instancing, msaa, maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device}`: what this console offers |
+| `g3d.rendererInfo()` → table | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: what draws this app's frames |
 | `g3d.addLight(options)` → id | a light: `type` (`"point"`, `"spot"`, `"directional"`), `x, y, z` (position), `dx, dy, dz` (the direction it shines to), `color`, `intensity` (1 = a white surface 1 m away gets the full color; rooms need 5–20), `range` (m; the light fades out smoothly there), `inner` / `outer` (spot cone half angles in degrees), `shadow` (spot: casts shadows; the first spot that asks gets them). Up to 16 lights; each object is lit by the 8 strongest near it |
 | `g3d.updateLight(id, options)` → bool | changes the given fields; false for an unknown id |
-| `g3d.removeLight(id)` → bool, `g3d.clearLights()`, `g3d.lights()` → list | |
+| `g3d.removeLight(id)` → bool | removes a light; false for an unknown id |
+| `g3d.clearLights()` | removes every light of the app |
+| `g3d.lights()` → list | the lights with their current values (`id` and the fields of `g3d.addLight`) |
 | `g3d.shadows(true \| false \| options)` | shadows of the sun (`g3d.light`) and of one spot light: `enabled`, `quality` (`"low"` 1024 px 1 tap, `"medium"` 2048 px 3×3 filter, `"high"` 2048 px 4×4 filter), `distance` (m of the view the sun's shadows cover, default 30), `bias` (raise it if surfaces show shadow stripes, lower it if shadows float) |
 | `g3d.postfx(options)` | `exposure` (1), `tonemap` (`"aces"`, `"filmic"`, `"none"`), `bloom` (strength, 0 = off, default 0.05), `threshold` (HDR brightness where bloom starts, 1), `msaa` (0, 2, 4, 8 samples), `hdr` (false: no float target, tone mapping per pixel, no bloom; faster) |
 | `g3d.environment(options)` | ambient light and reflections: `sky` / `ground` (hemisphere colors), `intensity` (times the ambient of `g3d.light`), `sun` (sun intensity, default 3), `cubemap` (6 image paths +X −X +Y −Y +Z −Z of a sky; reflections and ambient come from it; `nil` = hemisphere) |
@@ -1086,7 +1150,7 @@ end)
 ```
 
 `result`: `code`, `state`, `verifier`, `params` (every query / fragment parameter), `url`. The browser needs Nexvyn OS
-started as an application on a console (not on emulators, not from the Album); otherwise `err` says so. Offer a
+started in title mode on a console (through a game; not on emulators, not from the Album); otherwise `err` says so. Offer a
 fallback then (a device code shown as text or a QR code). Keep client secrets off the console.
 
 ### Pictures from the web: `gfx.imageUrl(url[, maxSize])`
@@ -1322,6 +1386,7 @@ Every SDK function that takes a callback returns a **Promise** when you leave th
 | `ui.alert(title, msg, buttons, (i) => {})` | `await ui.alert(title, msg, buttons)` | button index (0-based) |
 | `ui.prompt(title, msg, initial, (text) => {})` | `await ui.prompt(title, msg, initial)` | text or `null` |
 | `ui.openFile(cb, exts[, title])` | `await ui.openFile(exts[, title])` | path or `null` |
+| `ui.chooseFolder(options, (path, err) => {})` | `await ui.chooseFolder(options)` | folder or `null` (cancelled), SDK 1.11 |
 | `ui.saveFile(cb, name[, title])` | `await ui.saveFile(name[, title])` | path or `null` |
 | `ui.keyboard(initial, cb[, guide])` | `await ui.keyboard(initial, null[, guide])` | text or `null` |
 | `ui.contextMenu(items, (id) => {})` | `await ui.contextMenu(items)` | item id (never settles if the menu is dismissed — prefer the callback) |
@@ -1539,6 +1604,7 @@ runs on a later frame, inside the app (errors in it open the error screen).
 | `ui.alert(title, message, buttons, callback)` | button index (0-based) |
 | `ui.prompt(title, message, text, callback)` / `ui.keyboard(text, callback, guide)` | text or `None` |
 | `ui.openFile(callback, exts, title)` / `ui.saveFile(callback, name, title)` | path or `None` |
+| `ui.chooseFolder(options, callback)` | `callback(path, err)`: folder or `None` when cancelled (SDK 1.11) |
 | `ui.contextMenu(items, callback)` | item id |
 | `timer.after(sec, fn)` / `timer.every(sec, fn)` | — (returns an id for `timer.cancel(id)`) |
 

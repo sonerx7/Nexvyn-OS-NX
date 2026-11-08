@@ -6,7 +6,7 @@ Nexvyn OS için uygulama, oyun, tema ve yazı tipi yapanlar için her şey: SDK 
 şablon, rehberler ve tarifler, çalışan örnekler, AI asistanları için context pack'ler, yayımlama rehberi ve komut
 satırı araçları. Her belge İngilizce ve Türkçe vardır.
 
-**Güncel sürüm: SDK 1.9** (Nexvyn OS 1.2.2). SDK 1.0-1.8 için yapılmış uygulamalar değişmeden çalışır
+**Güncel sürüm: SDK 1.12** (Nexvyn OS 1.2.2). SDK 1.0-1.11 için yapılmış uygulamalar değişmeden çalışır
 ([SDK sürümleri](Guides/SDK_VERSIONS.tr.md)).
 
 ## Bir bakışta SDK 1.9
@@ -50,6 +50,12 @@ Konsol OpenGL ES 3 sunmuyorsa `g3d.renderer("pbr")` `"basic"` döndürür ve ayn
 
 <p align="center"><img src="../.github/assets/sample-social-feed.webp" width="90%" alt="Sosyal Akış örneği: karanlık modda fotoğraf akışı, fotoğraf ızgarası ve dikey klip sayfalayıcı"></p>
 
+### SDK 1.10 - 1.12'de ayrıca
+
+- **Native SDK 1.1 (SDK 1.10):** Nexvyn OS içinde pencerede ya da tam ekranda çalışan C / C++ uygulamalar; [Native SDK kiti](Languages/c/native-kit/README.tr.md) ile yapılır (`nxv-native`, app, oyun, port ve SDL2 şablonları) -- [Native SDK rehberi](Guides/NATIVE_GUIDE.tr.md) ile başlayın. Nexvyn OS 1.2.2'den beri native app'ler varsayılan olarak çok daha hızlı çalışır ve sistemde Ayarlar > Performans vardır (resmi en yüksek saatler, isteğe bağlı hız aşırtma); kare ritmi, ses ve ayrılmış hata kodu notları [kit başvurusunda](Guides/NATIVE_KIT.tr.md) ("Performans, kare ritmi ve ayarlar").
+- **Kalıcı klasörler ve kayıt yedekleri (SDK 1.11):** `ui.chooseFolder` (klasörü kullanıcı seçer, `remember` tutar), `fs.folderGrants` / `folderGranted` / `revokeFolder`, `fs.savePath`, `fs.saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup`; Lua, JavaScript, Python ve C'de aynı adlar, izin gerekmez.
+- **Dil eşitliği (SDK 1.12):** `ui.tokens()` (sistem görünümü tek tablo olarak), `audio.stopAll()` ve C'de `input_action`; native SDK ile aynı adlar, Lua, JavaScript, Python ve C'de.
+
 ### SDK 1.9'da ayrıca
 
 - **Runtime kütüphanesi:** Lua'da `net.request`; JavaScript'te `TextEncoder`, `TextDecoder`, `URL`,
@@ -78,6 +84,7 @@ Kitler Lua ve JavaScript için vardır (`Languages/lua/kits`, `Languages/javascr
 | **JavaScript** | [Languages/javascript](Languages/javascript/README.tr.md) | [şablon](Languages/javascript/template/) | [JavaScript ile uygulama](Guides/JS_APPS.tr.md) | [Samples/javascript](Samples/javascript/) |
 | **Python** | [Languages/python](Languages/python/README.tr.md) | [şablon](Languages/python/template/) | [Python ile uygulama](Guides/PY_APPS.tr.md) | [Samples/python](Samples/python/) |
 | **C** | [Languages/c](Languages/c/README.tr.md) | [şablon](Languages/c/template/) | [C ile uygulama](Guides/C_APPS.tr.md) | [Samples/c](Samples/c/) |
+| **C / C++ (native)** | [Languages/c/native-kit](Languages/c/native-kit/README.tr.md) | kitteki şablonlar | [Native SDK rehberi](Guides/NATIVE_GUIDE.tr.md), [kit başvurusu](Guides/NATIVE_KIT.tr.md) | kitin `examples/` klasörü |
 | Squirrel (1.8'de donduruldu) | [Languages/squirrel](Languages/squirrel/README.tr.md) | [şablon](Languages/squirrel/template/) | [Squirrel ile uygulama](Guides/SQUIRREL_APPS.tr.md) | [Samples/squirrel](Samples/squirrel/) |
 | Java (1.8'de donduruldu) | [Languages/java](Languages/java/README.tr.md) | [şablon](Languages/java/template/) | [Java ile uygulama](Guides/JAVA_APPS.tr.md) | [Samples/java](Samples/java/) |
 
