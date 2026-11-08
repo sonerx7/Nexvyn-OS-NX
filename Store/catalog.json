@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 158,
+  "count": 159,
   "apps": [
     {
       "id": "aichat",
@@ -4203,66 +4203,6 @@
       ]
     },
     {
-      "id": "com.nexvyn.example.showcase",
-      "name": "Native SDK Showcase",
-      "description": {
-        "en": "A tech demo of the Native SDK: real C and C++ code running in a Nexvyn OS window. Flip through pages that show a rotating 3D cube drawn with OpenGL, controller, stick and touch input, audio, files, threads, system services, compression and database libraries, and shared libraries. A Status page checks every feature and lists what passed. It is made for developers who want to see what native apps can do; nothing here changes your console.\n\n• Rotating 3D cube with live frame rate\n• Controller buttons, sticks and touch shown live\n• Sound with pan and pitch controls\n• Self-test of files, threads, sockets and system calls\n• zstd, lz4 and SQLite round trips\n• Switch pages with L and R, or by touch",
-        "tr": "Native SDK için bir teknik demo: Nexvyn OS penceresinde çalışan gerçek C ve C++ kodu. OpenGL ile çizilen dönen 3B küp, kumanda, analog çubuk ve dokunma girdisi, ses, dosyalar, thread'ler, sistem servisleri, sıkıştırma ve veritabanı kütüphaneleri ile paylaşımlı kütüphaneleri gösteren sayfalar arasında gezin. Durum sayfası her özelliği sınar ve nelerin geçtiğini listeler. Yerel uygulamaların neler yapabildiğini görmek isteyen geliştiriciler için hazırlandı; burada hiçbir şey konsolunu değiştirmez.\n\n• Canlı kare hızıyla dönen 3B küp\n• Kumanda düğmeleri, çubuklar ve dokunma canlı görünür\n• Kaydırma ve perde ayarlı ses\n• Dosya, thread, soket ve sistem çağrıları için öz sınama\n• zstd, lz4 ve SQLite gidiş-dönüş testleri\n• Sayfalar L ve R ile ya da dokunarak değişir",
-        "de": "Eine Tech-Demo des Native SDK: echter C- und C++-Code in einem Nexvyn-OS-Fenster. Blättere durch Seiten mit einem rotierenden 3D-Würfel (OpenGL), Controller-, Stick- und Touch-Eingabe, Audio, Dateien, Threads, Systemdiensten, Kompressions- und Datenbankbibliotheken sowie Shared Libraries. Eine Status-Seite prüft jede Funktion und listet, was bestanden hat. Gedacht für Entwickler, die sehen wollen, was native Apps können; nichts hier verändert deine Konsole.\n\n• Rotierender 3D-Würfel mit Live-Bildrate\n• Controller-Tasten, Sticks und Touch live\n• Ton mit Pan- und Tonhöhenregler\n• Selbsttest für Dateien, Threads, Sockets und Systemaufrufe\n• zstd-, lz4- und SQLite-Rundläufe\n• Seitenwechsel mit L und R oder per Touch",
-        "fr": "Une démo technique du Native SDK : du vrai code C et C++ exécuté dans une fenêtre de Nexvyn OS. Parcourez des pages qui montrent un cube 3D en rotation dessiné avec OpenGL, les entrées manette, sticks et tactile, l’audio, les fichiers, les threads, les services système, des bibliothèques de compression et de base de données, et des bibliothèques partagées. Une page État vérifie chaque fonction et liste ce qui a réussi. Conçue pour les développeurs qui veulent voir ce que les apps natives savent faire ; rien ici ne modifie votre console.\n\n• Cube 3D en rotation avec cadence en direct\n• Boutons, sticks et tactile affichés en direct\n• Son avec réglages de panoramique et de hauteur\n• Autotest des fichiers, threads, sockets et appels système\n• Allers-retours zstd, lz4 et SQLite\n• Changez de page avec L et R, ou au toucher",
-        "es": "Una demo técnica del Native SDK: código C y C++ real ejecutándose en una ventana de Nexvyn OS. Recorre páginas que muestran un cubo 3D giratorio dibujado con OpenGL, entrada de mando, sticks y táctil, audio, archivos, hilos, servicios del sistema, bibliotecas de compresión y base de datos, y bibliotecas compartidas. Una página de Estado comprueba cada función y lista lo que pasó. Pensada para desarrolladores que quieren ver qué pueden hacer las apps nativas; nada aquí modifica tu consola.\n\n• Cubo 3D giratorio con tasa de fotogramas en vivo\n• Botones, sticks y táctil en directo\n• Sonido con control de balance y tono\n• Autoprueba de archivos, hilos, sockets y llamadas del sistema\n• Pruebas de ida y vuelta de zstd, lz4 y SQLite\n• Cambia de página con L y R, o al tacto",
-        "ja": "Native SDK のテクニカルデモです。Nexvyn OS のウィンドウで実際の C / C++ コードが動きます。OpenGL で描く回転する 3D キューブ、コントローラー、スティック、タッチ入力、オーディオ、ファイル、スレッド、システムサービス、圧縮とデータベースのライブラリ、共有ライブラリを見せるページを切り替えて確認できます。「Status」ページは各機能をテストし、合格した項目を一覧にします。ネイティブアプリに何ができるかを知りたい開発者向けで、本体の設定は一切変わりません。\n\n• フレームレートをリアルタイム表示する回転 3D キューブ\n• ボタン、スティック、タッチの状態をリアルタイム表示\n• パンとピッチを調整できるサウンド\n• ファイル、スレッド、ソケット、システムコールのセルフテスト\n• zstd、lz4、SQLite の往復テスト\n• L / R またはタッチでページ切り替え",
-        "zh": "Native SDK 的技术演示：真正的 C 和 C++ 代码在 Nexvyn OS 窗口中运行。可翻阅多个页面，查看用 OpenGL 绘制的旋转 3D 立方体、手柄、摇杆和触摸输入、音频、文件、线程、系统服务、压缩与数据库库以及共享库。“Status”页会检测每项功能并列出通过的项目。专为想了解原生应用能做什么的开发者设计；这里的任何内容都不会更改你的主机。\n\n• 带实时帧率的旋转 3D 立方体\n• 实时显示手柄按键、摇杆和触摸\n• 可调声像和音高的声音\n• 文件、线程、套接字和系统调用的自检\n• zstd、lz4 和 SQLite 往返测试\n• 用 L 和 R 或触摸切换页面",
-        "ko": "Native SDK 기술 데모입니다. 실제 C 및 C++ 코드가 Nexvyn OS 창에서 실행됩니다. OpenGL로 그린 회전하는 3D 큐브, 컨트롤러·스틱·터치 입력, 오디오, 파일, 스레드, 시스템 서비스, 압축 및 데이터베이스 라이브러리, 공유 라이브러리를 보여 주는 페이지를 넘겨 볼 수 있습니다. Status 페이지는 모든 기능을 검사하고 통과한 항목을 나열합니다. 네이티브 앱이 무엇을 할 수 있는지 보고 싶은 개발자를 위한 앱이며, 콘솔 설정은 전혀 바뀌지 않습니다.\n\n• 실시간 프레임 속도가 표시되는 회전 3D 큐브\n• 컨트롤러 버튼, 스틱, 터치를 실시간으로 표시\n• 팬과 피치를 조절하는 사운드\n• 파일, 스레드, 소켓, 시스템 호출 자체 테스트\n• zstd, lz4, SQLite 왕복 테스트\n• L, R 또는 터치로 페이지 전환"
-      },
-      "version": "1.0.0",
-      "author": "Nexvyn OS",
-      "category": "developer",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/native-showcase.nxvapp",
-      "size": 1532832,
-      "sha256": "a564505e8bfb56461fc3ee6c742285e719366226072f06de51a54c467c64e911",
-      "minSdk": "1.10",
-      "permissions": [
-        "files",
-        "network",
-        "notifications"
-      ],
-      "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/screenshots/3.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/screenshots/4.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/native-showcase/screenshots/5.png"
-      ],
-      "featured": false,
-      "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/developer/native-showcase",
-      "targetSdk": "1.10",
-      "subtitle": {
-        "en": "Native C++ in a window: a tech demo",
-        "tr": "Pencerede yerel C++: teknik demo",
-        "de": "Natives C++ im Fenster: Tech-Demo",
-        "fr": "C++ natif en fenêtre : démo technique",
-        "es": "C++ nativo en ventana: demo técnica",
-        "ja": "ウィンドウで動くネイティブ C++ のデモ",
-        "zh": "窗口中的原生 C++：技术演示",
-        "ko": "창에서 실행되는 네이티브 C++ 데모"
-      },
-      "changelog": {
-        "en": "First release: a tech demo of the Native SDK.",
-        "tr": "İlk sürüm: Native SDK için teknik demo."
-      },
-      "added": "2026-11-09",
-      "updated": "2026-11-09",
-      "history": [
-        {
-          "version": "1.0.0",
-          "date": "2026-11-09"
-        }
-      ]
-    },
-    {
       "id": "com.sonerx7.regexlab",
       "name": {
         "en": "Regex Lab",
@@ -5478,6 +5418,124 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.nexvyn.demo.graphics",
+      "name": "Graphics Power",
+      "description": {
+        "en": "A graphics tech demo of Nexvyn OS. A cinematic intro leads into seven short chapters, each with an animated card that says what the technology is, which library drives it, which languages can use it, and a before and after number measured on the console. Run the benchmark to get a score and keep a local top ten; nothing is sent anywhere.\n\n• Cinematic intro, then a guided tour through a textured medieval town in native 3D\n• Physically based light and sun shadows, dynamic resolution, instant streaming\n• Zero-copy frames, touch and Joy-Con input, a sound chapter, and a look under the hood\n• Every card shows a before and after number measured on the console\n• A live HUD (fps uncapped, 1% low, draws, memory) and a built-in benchmark with a local score list",
+        "tr": "Nexvyn OS için bir grafik teknik demosu. Sinematik bir giriş, her biri teknolojinin ne olduğunu, hangi kütüphanenin çalıştırdığını, hangi dillerin kullanabildiğini ve konsolda ölçülmüş bir önce-sonra sayısını anlatan animasyonlu bir kart içeren yedi kısa bölüme açılır. Puan almak ve yerel ilk onu tutmak için kıyaslamayı çalıştır; hiçbir şey hiçbir yere gönderilmez.\n\n• Sinematik giriş, ardından dokulu bir ortaçağ kasabasında yerel 3B rehberli tur\n• Fiziksel tabanlı ışık ve güneş gölgeleri, dinamik çözünürlük, anında akıtma\n• Sıfır kopya kareler, dokunma ve Joy-Con girdisi, bir ses bölümü ve kaputun altına bakış\n• Her kart, konsolda ölçülmüş bir önce ve sonra sayısı gösterir\n• Canlı HUD (sınırsız fps, %1 en düşük, çizimler, bellek) ve yerel puan listeli dahili kıyaslama",
+        "de": "Eine Grafik-Techdemo von Nexvyn OS. Ein filmisches Intro führt in sieben kurze Kapitel, jedes mit einer animierten Karte: was die Technik ist, welche Bibliothek sie antreibt, welche Sprachen sie nutzen können und eine auf der Konsole gemessene Vorher-nachher-Zahl. Starte den Benchmark für einen Punktestand und eine lokale Top Ten; nichts wird irgendwohin gesendet.\n\n• Filmisches Intro, dann eine geführte Tour durch eine texturierte mittelalterliche Stadt in nativem 3D\n• Physikalisch basiertes Licht und Sonnenschatten, dynamische Auflösung, sofortiges Streaming\n• Zero-Copy-Frames, Touch- und Joy-Con-Eingabe, ein Klangkapitel und ein Blick unter die Haube\n• Jede Karte zeigt eine auf der Konsole gemessene Vorher-nachher-Zahl\n• Ein Live-HUD (fps unbegrenzt, 1% Tiefstwert, Draws, Speicher) und ein eingebauter Benchmark mit lokaler Bestenliste",
+        "fr": "Une démo technique graphique de Nexvyn OS. Une intro cinématographique ouvre sept courts chapitres, chacun avec une carte animée qui dit ce qu'est la technologie, quelle bibliothèque la fait tourner, quels langages peuvent l'utiliser et un chiffre avant-après mesuré sur la console. Lancez le benchmark pour obtenir un score et garder un top dix local ; rien n'est envoyé nulle part.\n\n• Intro cinématographique, puis visite guidée d'une ville médiévale texturée en 3D native\n• Lumière physique et ombres du soleil, résolution dynamique, streaming instantané\n• Images sans copie, entrées tactile et Joy-Con, un chapitre sonore et un regard sous le capot\n• Chaque carte montre un chiffre avant et après, mesuré sur la console\n• Un HUD en direct (fps illimités, 1% bas, draws, mémoire) et un benchmark intégré avec liste de scores locale",
+        "es": "Una demo técnica gráfica de Nexvyn OS. Una intro cinematográfica da paso a siete capítulos breves, cada uno con una tarjeta animada que dice qué es la tecnología, qué biblioteca la mueve, qué lenguajes pueden usarla y una cifra de antes y después medida en la consola. Ejecuta el benchmark para obtener una puntuación y guardar un top diez local; no se envía nada a ningún sitio.\n\n• Intro cinematográfica y luego un recorrido guiado por una ciudad medieval texturizada en 3D nativo\n• Luz físicamente realista y sombras del sol, resolución dinámica, streaming instantáneo\n• Fotogramas sin copia, entrada táctil y de Joy-Con, un capítulo de sonido y una mirada bajo el capó\n• Cada tarjeta muestra una cifra de antes y después medida en la consola\n• Un HUD en vivo (fps sin límite, 1% bajo, draws, memoria) y un benchmark integrado con lista de puntuaciones local",
+        "ja": "Nexvyn OS のグラフィックス技術デモです。映画のようなイントロから 7 つの短い章へ進み、各章のアニメーションカードで、その技術が何か、どのライブラリが動かしているか、どの言語から使えるか、コンソールで計測した前後の数値を紹介します。ベンチマークを実行するとスコアが付き、ローカルに上位 10 件が残ります。外部には何も送信されません。\n\n• 映画のようなイントロのあと、テクスチャ付きの中世の街をネイティブ 3D でガイドツアー\n• 物理ベースのライトと太陽の影、ダイナミック解像度、瞬時ストリーミング\n• ゼロコピーフレーム、タッチと Joy-Con 入力、サウンドの章、そして内部技術\n• 各カードにコンソールで計測した前後の数値を表示\n• ライブ HUD (fps 制限なし、下位 1%、描画数、メモリ) と、ローカルのスコア一覧付きベンチマークを内蔵",
+        "zh": "Nexvyn OS 的图形技术演示。电影般的开场之后是七个简短章节，每章都有一张动画卡片，说明该技术是什么、由哪个库驱动、哪些语言可以使用，以及在主机上实测的前后数字。运行基准测试即可获得分数，并在本地保留前十名；不会向任何地方发送数据。\n\n• 电影般的开场，随后在原生 3D 中导览一座带贴图的中世纪小镇\n• 基于物理的光照与太阳阴影、动态分辨率、即时流式加载\n• 零拷贝帧、触摸与 Joy-Con 输入、一个声音章节，以及幕后技术\n• 每张卡片都显示在主机上实测的前后数字\n• 实时 HUD（不限帧 fps、最低 1%、绘制数、内存）和带本地分数列表的内置基准测试",
+        "ko": "Nexvyn OS 의 그래픽 기술 데모입니다. 영화 같은 인트로 뒤에 7개의 짧은 챕터가 이어지고, 각 챕터의 애니메이션 카드가 기술이 무엇인지, 어떤 라이브러리가 구동하는지, 어떤 언어에서 쓸 수 있는지, 콘솔에서 측정한 전후 수치를 보여 줍니다. 벤치마크를 실행하면 점수가 매겨지고 로컬에 상위 10개가 저장되며, 아무것도 외부로 전송되지 않습니다.\n\n• 영화 같은 인트로 뒤에, 텍스처가 입혀진 중세 마을을 네이티브 3D 로 안내하는 투어\n• 물리 기반 빛과 태양 그림자, 동적 해상도, 즉시 스트리밍\n• 제로 카피 프레임, 터치와 Joy-Con 입력, 사운드 챕터, 그리고 내부 기술\n• 모든 카드가 콘솔에서 측정한 전후 수치를 보여 줍니다\n• 실시간 HUD(제한 없는 fps, 하위 1%, 드로, 메모리)와 로컬 점수 목록이 있는 내장 벤치마크"
+      },
+      "version": "1.0.0",
+      "author": "Nexvyn OS",
+      "category": "showcase",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/graphics-power.nxvapp",
+      "size": 44981591,
+      "sha256": "e74b970bfe0b724f90217747ae889984119ac7c1b7afdcd9fa059e18ed0e860d",
+      "minSdk": "1.10",
+      "permissions": [
+        "files"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/graphics-power/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/graphics-power",
+      "targetSdk": "1.12",
+      "subtitle": {
+        "en": "A native 3D keynote: seven chapters",
+        "tr": "Yerel 3B keynote: yedi bölüm",
+        "de": "Eine native 3D-Keynote in sieben Kapiteln",
+        "fr": "Une keynote 3D native en sept chapitres",
+        "es": "Una keynote 3D nativa en siete capítulos",
+        "ja": "ネイティブ 3D キーノート: 全 7 章",
+        "zh": "原生 3D 主题演示：共七章",
+        "ko": "네이티브 3D 키노트: 7개 챕터"
+      },
+      "changelog": {
+        "en": "First release: a graphics tech demo with seven chapters and a benchmark.",
+        "tr": "İlk sürüm: yedi bölümlü ve kıyaslamalı bir grafik teknik demosu."
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.nexvyn.example.showcase",
+      "name": "Native SDK Showcase",
+      "description": {
+        "en": "A tech demo of the Native SDK: real C and C++ code running in a Nexvyn OS window. Flip through pages that show a rotating 3D cube drawn with OpenGL, controller, stick and touch input, audio, files, threads, system services, compression and database libraries, and shared libraries. A Status page checks every feature and lists what passed. It is made for developers who want to see what native apps can do; nothing here changes your console.\n\n• Rotating 3D cube with live frame rate\n• Controller buttons, sticks and touch shown live\n• Sound with pan and pitch controls\n• Self-test of files, threads, sockets and system calls\n• zstd, lz4 and SQLite round trips\n• Switch pages with L and R, or by touch",
+        "tr": "Native SDK için bir teknik demo: Nexvyn OS penceresinde çalışan gerçek C ve C++ kodu. OpenGL ile çizilen dönen 3B küp, kumanda, analog çubuk ve dokunma girdisi, ses, dosyalar, thread'ler, sistem servisleri, sıkıştırma ve veritabanı kütüphaneleri ile paylaşımlı kütüphaneleri gösteren sayfalar arasında gezin. Durum sayfası her özelliği sınar ve nelerin geçtiğini listeler. Yerel uygulamaların neler yapabildiğini görmek isteyen geliştiriciler için hazırlandı; burada hiçbir şey konsolunu değiştirmez.\n\n• Canlı kare hızıyla dönen 3B küp\n• Kumanda düğmeleri, çubuklar ve dokunma canlı görünür\n• Kaydırma ve perde ayarlı ses\n• Dosya, thread, soket ve sistem çağrıları için öz sınama\n• zstd, lz4 ve SQLite gidiş-dönüş testleri\n• Sayfalar L ve R ile ya da dokunarak değişir",
+        "de": "Eine Tech-Demo des Native SDK: echter C- und C++-Code in einem Nexvyn-OS-Fenster. Blättere durch Seiten mit einem rotierenden 3D-Würfel (OpenGL), Controller-, Stick- und Touch-Eingabe, Audio, Dateien, Threads, Systemdiensten, Kompressions- und Datenbankbibliotheken sowie Shared Libraries. Eine Status-Seite prüft jede Funktion und listet, was bestanden hat. Gedacht für Entwickler, die sehen wollen, was native Apps können; nichts hier verändert deine Konsole.\n\n• Rotierender 3D-Würfel mit Live-Bildrate\n• Controller-Tasten, Sticks und Touch live\n• Ton mit Pan- und Tonhöhenregler\n• Selbsttest für Dateien, Threads, Sockets und Systemaufrufe\n• zstd-, lz4- und SQLite-Rundläufe\n• Seitenwechsel mit L und R oder per Touch",
+        "fr": "Une démo technique du Native SDK : du vrai code C et C++ exécuté dans une fenêtre de Nexvyn OS. Parcourez des pages qui montrent un cube 3D en rotation dessiné avec OpenGL, les entrées manette, sticks et tactile, l’audio, les fichiers, les threads, les services système, des bibliothèques de compression et de base de données, et des bibliothèques partagées. Une page État vérifie chaque fonction et liste ce qui a réussi. Conçue pour les développeurs qui veulent voir ce que les apps natives savent faire ; rien ici ne modifie votre console.\n\n• Cube 3D en rotation avec cadence en direct\n• Boutons, sticks et tactile affichés en direct\n• Son avec réglages de panoramique et de hauteur\n• Autotest des fichiers, threads, sockets et appels système\n• Allers-retours zstd, lz4 et SQLite\n• Changez de page avec L et R, ou au toucher",
+        "es": "Una demo técnica del Native SDK: código C y C++ real ejecutándose en una ventana de Nexvyn OS. Recorre páginas que muestran un cubo 3D giratorio dibujado con OpenGL, entrada de mando, sticks y táctil, audio, archivos, hilos, servicios del sistema, bibliotecas de compresión y base de datos, y bibliotecas compartidas. Una página de Estado comprueba cada función y lista lo que pasó. Pensada para desarrolladores que quieren ver qué pueden hacer las apps nativas; nada aquí modifica tu consola.\n\n• Cubo 3D giratorio con tasa de fotogramas en vivo\n• Botones, sticks y táctil en directo\n• Sonido con control de balance y tono\n• Autoprueba de archivos, hilos, sockets y llamadas del sistema\n• Pruebas de ida y vuelta de zstd, lz4 y SQLite\n• Cambia de página con L y R, o al tacto",
+        "ja": "Native SDK のテクニカルデモです。Nexvyn OS のウィンドウで実際の C / C++ コードが動きます。OpenGL で描く回転する 3D キューブ、コントローラー、スティック、タッチ入力、オーディオ、ファイル、スレッド、システムサービス、圧縮とデータベースのライブラリ、共有ライブラリを見せるページを切り替えて確認できます。「Status」ページは各機能をテストし、合格した項目を一覧にします。ネイティブアプリに何ができるかを知りたい開発者向けで、本体の設定は一切変わりません。\n\n• フレームレートをリアルタイム表示する回転 3D キューブ\n• ボタン、スティック、タッチの状態をリアルタイム表示\n• パンとピッチを調整できるサウンド\n• ファイル、スレッド、ソケット、システムコールのセルフテスト\n• zstd、lz4、SQLite の往復テスト\n• L / R またはタッチでページ切り替え",
+        "zh": "Native SDK 的技术演示：真正的 C 和 C++ 代码在 Nexvyn OS 窗口中运行。可翻阅多个页面，查看用 OpenGL 绘制的旋转 3D 立方体、手柄、摇杆和触摸输入、音频、文件、线程、系统服务、压缩与数据库库以及共享库。“Status”页会检测每项功能并列出通过的项目。专为想了解原生应用能做什么的开发者设计；这里的任何内容都不会更改你的主机。\n\n• 带实时帧率的旋转 3D 立方体\n• 实时显示手柄按键、摇杆和触摸\n• 可调声像和音高的声音\n• 文件、线程、套接字和系统调用的自检\n• zstd、lz4 和 SQLite 往返测试\n• 用 L 和 R 或触摸切换页面",
+        "ko": "Native SDK 기술 데모입니다. 실제 C 및 C++ 코드가 Nexvyn OS 창에서 실행됩니다. OpenGL로 그린 회전하는 3D 큐브, 컨트롤러·스틱·터치 입력, 오디오, 파일, 스레드, 시스템 서비스, 압축 및 데이터베이스 라이브러리, 공유 라이브러리를 보여 주는 페이지를 넘겨 볼 수 있습니다. Status 페이지는 모든 기능을 검사하고 통과한 항목을 나열합니다. 네이티브 앱이 무엇을 할 수 있는지 보고 싶은 개발자를 위한 앱이며, 콘솔 설정은 전혀 바뀌지 않습니다.\n\n• 실시간 프레임 속도가 표시되는 회전 3D 큐브\n• 컨트롤러 버튼, 스틱, 터치를 실시간으로 표시\n• 팬과 피치를 조절하는 사운드\n• 파일, 스레드, 소켓, 시스템 호출 자체 테스트\n• zstd, lz4, SQLite 왕복 테스트\n• L, R 또는 터치로 페이지 전환"
+      },
+      "version": "1.0.0",
+      "author": "Nexvyn OS",
+      "category": "showcase",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/native-showcase.nxvapp",
+      "size": 1532825,
+      "sha256": "a3e1d4f10f21b5fdc0d674113dd16c3e72318db8310134d9fbbaaa8a0a91578b",
+      "minSdk": "1.10",
+      "permissions": [
+        "files",
+        "network",
+        "notifications"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/native-showcase",
+      "targetSdk": "1.10",
+      "subtitle": {
+        "en": "Native C++ in a window: a tech demo",
+        "tr": "Pencerede yerel C++: teknik demo",
+        "de": "Natives C++ im Fenster: Tech-Demo",
+        "fr": "C++ natif en fenêtre : démo technique",
+        "es": "C++ nativo en ventana: demo técnica",
+        "ja": "ウィンドウで動くネイティブ C++ のデモ",
+        "zh": "窗口中的原生 C++：技术演示",
+        "ko": "창에서 실행되는 네이티브 C++ 데모"
+      },
+      "changelog": {
+        "en": "First release: a tech demo of the Native SDK.",
+        "tr": "İlk sürüm: Native SDK için teknik demo."
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-09"
         }
       ]
     },

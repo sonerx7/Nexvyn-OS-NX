@@ -3,7 +3,7 @@
   "name": "Native SDK Showcase",
   "version": "1.0.0",
   "author": "Nexvyn OS",
-  "category": "developer",
+  "category": "showcase",
   "icon": "icon.png",
   "window": {
     "width": 960,

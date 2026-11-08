@@ -1,0 +1,112 @@
+{
+ "ui": {
+  "skip": "Pulsa un botón para saltar",
+  "sub": "Native SDK",
+  "tag": "3D de clase consola",
+  "on": "SÍ",
+  "off": "NO",
+  "loading": "Cargando la ciudad",
+  "shaders": "Preparando shaders",
+  "fail": "No se pudo cargar"
+ },
+ "hub": {
+  "title": "Potencia gráfica",
+  "tour": "Iniciar el recorrido",
+  "bench": "Benchmark",
+  "scores": "Mejores puntuaciones",
+  "free": "Cámara libre",
+  "hint": "Arriba / Abajo elegir    A abrir    - datos"
+ },
+ "card": {
+  "what": "QUÉ ES",
+  "lang": "LENGUAJES",
+  "meas": "MEDIDO EN CONSOLA",
+  "live": "MEDIDO EN VIVO"
+ },
+ "hud": {
+  "fps": "fps (sin límite)",
+  "low": "1% bajo",
+  "frame": "fotograma",
+  "cpu": "CPU",
+  "draws": "draws",
+  "tris": "triángulos",
+  "vis": "visibles",
+  "heap": "heap",
+  "gpu": "GPU",
+  "res": "render",
+  "docked": "Dock",
+  "hand": "Portátil"
+ },
+ "b": {
+  "title": "Benchmark",
+  "s0": "Órbita",
+  "s1": "Sobrevuelo",
+  "s2": "Gran angular",
+  "s3": "Baja resolución",
+  "s4": "Streaming",
+  "score": "PUNTOS",
+  "saved": "Guardado en la lista local",
+  "best": "Nueva mejor puntuación",
+  "again": "Y repetir    A menú"
+ },
+ "s": {
+  "title": "Mejores puntuaciones",
+  "empty": "Aún no hay puntuaciones. Ejecuta el benchmark.",
+  "back": "B volver"
+ },
+ "f": {
+  "title": "Native SDK, 3D de clase consola",
+  "n0": "fps de la escena",
+  "n1": "carga más rápida",
+  "n2": "traspaso de fotograma más rápido",
+  "n3": "GBA a toda velocidad",
+  "best": "Mejor puntuación",
+  "bench": "A  Benchmark",
+  "menu": "B  Menú"
+ },
+ "free": {
+  "hint": "Stick I mover    Stick D mirar    ZL / ZR bajar / subir    B menú"
+ },
+ "c0": {
+  "name": "Luz físicamente realista",
+  "what": "Las superficies metálicas y rugosas reaccionan a un sol real; las sombras salen de la caché mientras la cámara se desliza.",
+  "r0": "Escena de la ciudad, fps de consola",
+  "live": "Sombras del sol"
+ },
+ "c1": {
+  "name": "Resolución dinámica",
+  "what": "La imagen se dibuja con menos píxeles solo si la tasa cayera por debajo de 60; si no, se mantiene nítida.",
+  "r0": "Misma ciudad: 100% y 60% de píxeles"
+ },
+ "c2": {
+  "name": "Streaming instantáneo",
+  "what": "Un hilo lee la escena mientras el principal sube un poco en cada fotograma; la carga nunca congela la ventana.",
+  "r0": "Tiempo de carga",
+  "live": "Cargado en"
+ },
+ "c3": {
+  "name": "Fotogramas sin copia",
+  "what": "La imagen de la app llega al compositor del escritorio sin copiarse; mostrar una ventana casi no cuesta.",
+  "r0": "Traspaso del fotograma a pantalla",
+  "live": "Medido en consola: 0.10-0.22 ms"
+ },
+ "c4": {
+  "name": "Táctil y Joy-Con",
+  "what": "Sticks, botones y pantalla táctil llegan a la app en el mismo fotograma, en ventana o a pantalla completa. Pruébalo.",
+  "r0": "Táctil, Joy-Con y mundos 3D",
+  "b": "no funcionaba",
+  "a": "funciona"
+ },
+ "c5": {
+  "name": "Sonido",
+  "what": "Un mezclador y un remuestreador convierten cada formato en estéreo limpio; este capítulo toca notas de nxn_tone.",
+  "r0": "mGBA a toda velocidad, sin cortes de audio"
+ },
+ "c6": {
+  "name": "Bajo el capó",
+  "what": "Iluminación por teselas, búferes a media resolución y dibujos agrupados, medidos con Nexvyn Bench en la consola.",
+  "r0": "128 luces, tiled forward",
+  "r1": "Partículas, media resolución",
+  "r2": "Llamadas GL por fotograma, escena 3D"
+ }
+}

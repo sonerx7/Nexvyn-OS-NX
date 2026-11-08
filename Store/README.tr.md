@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **158** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **159** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -89,14 +89,13 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **158** öğe. Konsoldaki 
 | <img src="Apps/internet/news/icon.png" width="32"> | [Haberler](Apps/internet/news/) · Nexvyn OS ile gelir | RSS ve Atom akışların, şık bir okuyucuda |
 | <img src="Apps/internet/weather/icon.png" width="32"> | [Hava Durumu](Apps/internet/weather/) · Nexvyn OS ile gelir | Saatlik ve 10 günlük tahmin, şık görünümle |
 
-## Geliştirici (5)
+## Geliştirici (4)
 
 | | Ad | Açıklama |
 |---|---|---|
 | <img src="Apps/developer/hashtool/icon.png" width="32"> | [Base64 ve Hash](Apps/developer/hashtool/) | Metni kodla, sağlama toplamını doğrula |
 | <img src="Apps/developer/hexpad/icon.png" width="32"> | [Hexpad](Apps/developer/hexpad/) | Her dosya için onaltılık düzenleyici |
 | <img src="Apps/developer/jsonfmt/icon.png" width="32"> | [JSON Biçimlendirici](Apps/developer/jsonfmt/) | JSON'u doğrula, biçimlendir, keşfet |
-| <img src="Apps/developer/native-showcase/icon.png" width="32"> | [Native SDK Showcase](Apps/developer/native-showcase/) | Pencerede yerel C++: teknik demo |
 | <img src="Apps/developer/regexlab/icon.png" width="32"> | [Regex Lab](Apps/developer/regexlab/) | Düzenli ifadeleri canlı dene |
 
 ## Sistem (3)
@@ -134,6 +133,13 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **158** öğe. Konsoldaki 
 | <img src="Apps/other/logiclab/icon.png" width="32"> | [Mantık Laboratuvarı](Apps/other/logiclab/) | Dijital devreler kur ve çalıştır |
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
+
+## Vitrin (2)
+
+| | Ad | Açıklama |
+|---|---|---|
+| <img src="Apps/showcase/graphics-power/icon.png" width="32"> | [Graphics Power](Apps/showcase/graphics-power/) | Yerel 3B keynote: yedi bölüm |
+| <img src="Apps/showcase/native-showcase/icon.png" width="32"> | [Native SDK Showcase](Apps/showcase/native-showcase/) | Pencerede yerel C++: teknik demo |
 
 ## Oyunlar (47)
 

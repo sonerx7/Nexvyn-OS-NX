@@ -44,7 +44,7 @@ SAMPLES = os.path.join(SDK, "samples.json")
 DATES = os.path.join(STORE, "dates.json")
 DEFAULT_LICENSE = "GPL-3.0-or-later"  # the repository's license (README): what an item is under unless it says otherwise
 
-CATEGORIES = ["productivity", "utilities", "media", "internet", "developer", "system", "switch", "other", "games",
+CATEGORIES = ["productivity", "utilities", "media", "internet", "developer", "system", "switch", "other", "showcase", "games",
               "themes", "fonts"]
 PERMISSIONS = {"network", "files", "launch", "notifications", "games"}
 RETIRED = {"clipboard"}  # no longer a permission (sys.clipboard always works); still accepted in old app.json files
@@ -65,10 +65,10 @@ ZIP_TIME = (2026, 1, 1, 0, 0, 0)
 CAT_NAMES = {
     "en": {"productivity": "Productivity", "utilities": "Utilities", "media": "Media", "internet": "Internet",
            "developer": "Developer", "system": "System", "switch": "Switch Tools", "other": "Other", "games": "Games",
-           "themes": "Themes", "fonts": "Fonts"},
+           "themes": "Themes", "fonts": "Fonts", "showcase": "Showcase"},
     "tr": {"productivity": "Verimlilik", "utilities": "Araçlar", "media": "Medya", "internet": "İnternet",
            "developer": "Geliştirici", "system": "Sistem", "switch": "Switch Araçları", "other": "Diğer",
-           "games": "Oyunlar", "themes": "Temalar", "fonts": "Yazı Tipleri"},
+           "games": "Oyunlar", "themes": "Temalar", "fonts": "Yazı Tipleri", "showcase": "Vitrin"},
 }
 # listing pages: README.md in English (what GitHub shows) and README.tr.md in Turkish
 LISTING = {

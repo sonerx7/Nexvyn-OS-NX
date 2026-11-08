@@ -1,0 +1,24 @@
+{
+  "id": "com.nexvyn.demo.graphics",
+  "name": "Graphics Power",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "showcase",
+  "icon": "icon.png",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "resizable": true
+  },
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.12",
+  "permissions": [
+    "files"
+  ],
+  "description": "A graphics tech demo of Nexvyn OS: a fully textured medieval town in native 3D with PBR materials, sun shadows, a cinematic camera and a live performance overlay.",
+  "license": "GPL-3.0-or-later",
+  "runtime": "native",
+  "mode": "window",
+  "main": "graphics.nxvmod"
+}
