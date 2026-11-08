@@ -61,11 +61,13 @@ Mağazası getirir.
 - **Ayarlar > Performans.** Konsolun resmi en yüksek saatleri varsayılan olarak kullanılır, yükleme sırasında kısa bir
   CPU hızlandırma verilir; isteyenler için isteğe bağlı hız aşırtma da var (varsayılan kapalı, uyarı ve açık onay
   ister). Canlı panel çekirdek başına CPU'yu, GPU'yu, saatleri ve sıcaklığı gösterir.
-- **Portlar.** Doom (ücretsiz Freedoom verisiyle), bir GBA emülatörü ve bir Quake motoru kendi Nexvyn pencerelerinde ya
-  da tam ekranda, App Market'ten ayrı uygulamalar olarak çalışır. Oyun verisi, BIOS ve firmware pakete asla
-  konmaz. Yeni **Nexvyn Bench** uygulaması ekranı zorlar ve kare süresini gösterir.
-- **Port kiti ve Native SDK 1.1 kiti.** Uygulama yapımcıları `port` şablonunu ve kit başvurusunu alır; başvuruda artık
-  kare ritmi, ses ve ayarlar notları var (`SDK/Guides/NATIVE_KIT.tr.md`).
+- **Portlar native çalışıyor.** Doom (ücretsiz Freedoom verisiyle), bir GBA emülatörü ve bir Quake motoru native SDK
+  üzerinde ayağa kaldırıldı; kendi Nexvyn pencerelerinde ya da tam ekranda çalışıyorlar. App Market'e daha sonra ayrı
+  uygulamalar olarak gelecekler; oyun verisi, BIOS ve firmware asla pakete konmaz.
+- **App Market'te yeni kategori: Vitrin.** Native SDK Showcase ve bir grafik teknoloji demosu SDK'nın neler
+  yapabildiğini gösterir.
+- **Native SDK 1.1 kiti.** Uygulama yapımcıları `port` şablonunu ve kit başvurusunu alır; başvuruda artık kare ritmi,
+  ses ve ayarlar notları var (`SDK/Guides/NATIVE_KIT.tr.md`). Native ABI v1 donduruldu: artık yalnızca ekleme yapılır.
 - **Arka planda kurulum, ses ve girdi.** Paket kurulumu yavaş SD kartları artık dondurmuyor, native oyunların ses
   efektlerindeki cızırtı giderildi, native pencerelerde Joy-Con ve dokunmatik girdi düzeltildi.
 - **NexGFX pbr renderer (SDK 1.9).** 3B uygulama ve oyunlar için yeni, sürümlü bir grafik çekirdeği: normal,

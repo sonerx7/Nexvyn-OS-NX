@@ -58,11 +58,12 @@ a game engine and a 3D modeler, and an App Market where every item is reviewed b
 - **Settings > Performance.** The official maximum clocks of the console are used by default, loading gets a short CPU
   boost, and an optional overclock (off by default, with a warning and a clear yes) is there for those who want it. A
   live panel shows CPU per core, GPU, clocks and temperature.
-- **Ports.** Doom (with the free Freedoom data), a GBA emulator and a Quake engine run in their own Nexvyn windows or
-  full screen, as separate apps from the App Market. Game data, BIOS and firmware are never included. The new
-  **Nexvyn Bench** app stress-tests the screen and shows the frame time.
-- **Port kit and Native SDK 1.1 kit.** App makers get the `port` template and the kit reference, now with notes on
-  frame pacing, sound and settings (`SDK/Guides/NATIVE_KIT.en.md`).
+- **Ports run natively.** Doom (with the free Freedoom data), a GBA emulator and a Quake engine were brought up on the
+  native SDK and run in their own Nexvyn windows or full screen. They come to the App Market as separate apps later;
+  game data, BIOS and firmware are never included.
+- **New App Market category: Showcase.** The Native SDK Showcase and a graphics tech demo show what the SDK can do.
+- **Native SDK 1.1 kit.** App makers get the `port` template and the kit reference, now with notes on frame pacing,
+  sound and settings (`SDK/Guides/NATIVE_KIT.en.md`). The native ABI v1 is frozen: add-only from now on.
 - **Background installs, sound and input.** Installing a package no longer freezes slow SD cards, the crackle in
   native games' sound effects is gone, and Joy-Con and touch input in native windows are fixed.
 - **NexGFX pbr renderer (SDK 1.9).** A new, versioned graphics core for 3D apps and games: metallic-roughness
