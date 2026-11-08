@@ -93,7 +93,6 @@ Mağazası getirir.
 
 | | |
 |:---:|:---:|
-| <img src=".github/assets/native-scenes.webp" alt="Nexvyn penceresinde çalışan native 3B sahne demosu"> | <img src=".github/assets/native-bench.webp" alt="Nexvyn Bench bir şehir sahnesinin kare süresini gösteriyor"> |
 | <img src=".github/assets/port-doom.webp" alt="Ücretsiz Freedoom verisiyle çalışan Doom"> | <img src=".github/assets/settings-performance.webp" alt="Ayarlar, Performans bölmesi: resmi en yüksek saatler ve canlı CPU ve GPU değerleri"> |
 
 Tam liste [sürüm notlarında](CHANGELOG.md).

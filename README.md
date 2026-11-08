@@ -91,7 +91,6 @@ a game engine and a 3D modeler, and an App Market where every item is reviewed b
 
 | | |
 |:---:|:---:|
-| <img src=".github/assets/native-scenes.webp" alt="A native 3D scene demo running in a Nexvyn window"> | <img src=".github/assets/native-bench.webp" alt="Nexvyn Bench showing the frame time of a city scene"> |
 | <img src=".github/assets/port-doom.webp" alt="Doom running with the free Freedoom data"> | <img src=".github/assets/settings-performance.webp" alt="Settings, Performance pane with the official maximum clocks and live CPU and GPU values"> |
 
 The full list is in the [release notes](CHANGELOG.md).
