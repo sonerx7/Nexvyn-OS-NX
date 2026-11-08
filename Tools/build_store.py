@@ -286,7 +286,9 @@ def build(check):
                  "minSdk": str(app.get("minSdk", "1.0")), "permissions": app.get("permissions", []),
                  "screenshots": shots_of(item), "featured": bool(extra.get("featured", False)),
                  "license": app.get("license") or DEFAULT_LICENSE, "source": TREE + rel(item)}
-        if app.get("runtime"):
+        # a windowed / full screen Native SDK app ("runtime": "native" + "mode") is an ordinary package: a catalog
+        # "runtime": "native" would mean an ABI-bound module and hide it from systems with another build
+        if app.get("runtime") and not (app["runtime"] == "native" and app.get("mode") in ("window", "fullscreen")):
             entry["runtime"] = app["runtime"]
         if app.get("targetSdk"):  # the SDK the app was tested on (docs/COMPATIBILITY.en.md)
             entry["targetSdk"] = str(app["targetSdk"])

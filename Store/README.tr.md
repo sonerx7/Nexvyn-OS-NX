@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **158** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -89,13 +89,14 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **157** öğe. Konsoldaki 
 | <img src="Apps/internet/news/icon.png" width="32"> | [Haberler](Apps/internet/news/) · Nexvyn OS ile gelir | RSS ve Atom akışların, şık bir okuyucuda |
 | <img src="Apps/internet/weather/icon.png" width="32"> | [Hava Durumu](Apps/internet/weather/) · Nexvyn OS ile gelir | Saatlik ve 10 günlük tahmin, şık görünümle |
 
-## Geliştirici (4)
+## Geliştirici (5)
 
 | | Ad | Açıklama |
 |---|---|---|
 | <img src="Apps/developer/hashtool/icon.png" width="32"> | [Base64 ve Hash](Apps/developer/hashtool/) | Metni kodla, sağlama toplamını doğrula |
 | <img src="Apps/developer/hexpad/icon.png" width="32"> | [Hexpad](Apps/developer/hexpad/) | Her dosya için onaltılık düzenleyici |
 | <img src="Apps/developer/jsonfmt/icon.png" width="32"> | [JSON Biçimlendirici](Apps/developer/jsonfmt/) | JSON'u doğrula, biçimlendir, keşfet |
+| <img src="Apps/developer/native-showcase/icon.png" width="32"> | [Native SDK Showcase](Apps/developer/native-showcase/) | Pencerede yerel C++: teknik demo |
 | <img src="Apps/developer/regexlab/icon.png" width="32"> | [Regex Lab](Apps/developer/regexlab/) | Düzenli ifadeleri canlı dene |
 
 ## Sistem (3)

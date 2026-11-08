@@ -1,0 +1,26 @@
+{
+  "id": "com.nexvyn.example.showcase",
+  "name": "Native SDK Showcase",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "icon": "icon.png",
+  "window": {
+    "width": 960,
+    "height": 600,
+    "resizable": true
+  },
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": [
+    "files",
+    "network",
+    "notifications"
+  ],
+  "description": "A tech demo of the Nexvyn Native SDK: native C and C++ code running in a window, with a rotating 3D cube, input, audio, files, threads, libraries and system pages, plus a built-in self-test.",
+  "license": "GPL-3.0-or-later",
+  "runtime": "native",
+  "mode": "window",
+  "main": "showcase.nxvmod"
+}

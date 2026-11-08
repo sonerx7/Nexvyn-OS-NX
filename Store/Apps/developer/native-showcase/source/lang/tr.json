@@ -1,0 +1,5 @@
+{
+  "hello": "Merhaba",
+  "times": "{0} kez tıklandı",
+  "menu": {"open": "Aç", "title": "Vitrin", "about": "Hakkında", "toggle": "Aç / kapat"}
+}
