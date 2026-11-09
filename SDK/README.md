@@ -70,6 +70,7 @@ When the console offers no OpenGL ES 3, `g3d.renderer("pbr")` returns `"basic"` 
 | [Feel kit](Languages/lua/kits/README.md) (`juice`) | Easing and tweens, shake, hit-stop, particles, glow, titles, panels, buttons, transitions, 2D and 3D cameras, 3D light moods. Guide: [Graphics, UI and game feel](Guides/GAME_FEEL.en.md) |
 | [Icon tool](Tools/icon/README.md) | Renders the game's own model and builds its key-art store icon in every size; style `clean` (default), `bold` or `loud` |
 | [Texture tool](Tools/textures/README.md) | Checks PBR texture sets, scales maps down, packs ORM, converts MetallicSmoothness and -Y (green down) normal maps |
+| [Theme tool](Tools/theme/README.md) | Checks a theme pack (`theme.json`, limits, WCAG AA contrast) and packs the `.nxvtheme`; guide: [Making themes](Guides/THEMES.en.md), template: `Samples/themes/template` |
 | [nxv](Tools/nxv/README.md) | New project from a template, check, build (Java), pack, sign, install, push to the console |
 
 Kits exist for Lua and JavaScript (`Languages/lua/kits`, `Languages/javascript/kits`).

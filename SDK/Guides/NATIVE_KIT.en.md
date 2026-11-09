@@ -9,6 +9,15 @@ Status: the toolchain, sysroot scripts, templates and CLI work today. The Nexvyn
 SDL2 driver: section "SDL2 in a window". Without SDL, use the `nxn_*` API directly (`examples/hello_gl`,
 `examples/showcase`).
 
+**ABI v1 is frozen (2026-11-09).** The `nxn_*` functions, the `ngfx_*` API, every struct layout, constant, capability bit,
+error code, host import name and the module identity are recorded in `toolchain/nxn_abi_v1.json`. The rule from now on is
+add-only: nothing in that file is ever removed or changed; new functions, constants and struct fields (appended at the end,
+never into padding) may come. An app built with any earlier kit keeps loading; a module built with the 1.0 kit is part of
+every test run. When your app calls a function added in a later Native SDK version, raise `"minNative"` in `app.json` to
+that version: an older Nexvyn OS refuses a module that imports an `nxn_*` name it does not have, with a clear message. Use
+`NXN_STRUCT_INIT(type)` for every struct you pass, test capability bits (`NXN_CAP_*`, `uint64_t` masks) before optional
+calls, and treat any negative result you do not know as a plain failure.
+
 ## Install
 
 1. Install devkitPro with the Switch packages (`switch-dev`, `switch-sdl2`, `switch-mesa`, ...). The tested versions are
@@ -185,7 +194,9 @@ its own input owner and never calls `nxn_input_poll` itself.
 - `nxn_input_key_poll`, `nxn_input_text`, `nxn_input_mouse` (`NXN_CAP_USB_INPUT`): ordered USB key events (a tap inside one
   frame is not lost), typed text (UTF-8) and the pointer as a mouse. Calling `nxn_input_mouse` once turns the app into a
   mouse user: the pointer then no longer also counts as touch 0 in `nxn_input_touch`. `nxn_input_key_held` knows the
-  modifier keys (usage 224..231).
+  modifier keys (usage 224..231). On the touch screen `nxn_input_touch` gives every finger (up to 16) with a stable
+  `id` (0, 1, 2 ...: the lowest free number when the finger went down, so one finger is always 0); in SDL apps each id is an
+  `SDL_FingerID`, so two fingers send two distinct `SDL_FINGERDOWN` / `SDL_FINGERMOTION` / `SDL_FINGERUP` streams.
 - `NXN_EVENT_DOCK`, `NXN_EVENT_SUSPEND`, `NXN_EVENT_RESUME` (`NXN_CAP_POWER_EVENTS`): docked / handheld, and sleep or the
   HOME menu. After `SUSPEND` Nexvyn OS plays no sound of the app and `nxn_display_swap` reads nothing back until `RESUME`,
   which drops the sound queued before the suspend.
@@ -244,6 +255,32 @@ For apps that should look like part of Nexvyn OS (tools, editors, front ends). *
 - Caps: `NXN_CAP_UI_TOKENS`, `NXN_CAP_TEXT`. In a stand-alone .nro the calls return `NXN_ERR_UNSUPPORTED` and `nxn_tr` returns the key.
 - The showcase has a "UI tokens" page and self-test rows for all of it.
 
+## Error codes (`nxn_result`, `nxn_base.h`)
+
+Values never change (add-only). 0 is `NXN_OK`; every error is negative.
+
+| Code | Value | Meaning |
+|---|---|---|
+| `NXN_ERR_INVALID` | -1 | bad argument |
+| `NXN_ERR_UNSUPPORTED` | -2 | feature missing (see `nxn_caps_get`) |
+| `NXN_ERR_NOT_READY` | -3 | `nxn_init` not called, or object closed |
+| `NXN_ERR_IO` | -4 | file system error |
+| `NXN_ERR_DENIED` | -5 | refused (path outside the app's folders, read-only) |
+| `NXN_ERR_NO_MEMORY` | -6 | out of memory |
+| `NXN_ERR_TOO_SMALL` | -7 | output buffer too small |
+| `NXN_ERR_NOT_FOUND` | -8 | not found |
+| `NXN_ERR_SYSTEM` | -9 | a system service failed (`nxn_last_error`) |
+| `NXN_ERR_CANCELLED` | -10 | the user dismissed a dialog |
+| `NXN_ERR_TIMEOUT` | -11 | reserved: a wait ran out of time |
+| `NXN_ERR_BUSY` | -12 | reserved: resource in use, retry later |
+| `NXN_ERR_EXISTS` | -13 | reserved: target already exists |
+| `NXN_ERR_LIMIT` | -14 | reserved: a limit was reached |
+
+Reserved codes are not returned by any call yet; handle them as "failed, see `nxn_last_error`". Planned mapping of NexGFX
+failures when `ngfx_*` calls surface through `nxn_*` (documentation only, no ngfx ABI change): invalid handle or argument
+-> `NXN_ERR_INVALID`; feature not in caps -> `NXN_ERR_UNSUPPORTED`; allocation failure -> `NXN_ERR_NO_MEMORY`; GL or driver
+failure -> `NXN_ERR_SYSTEM`; resource or queue limit -> `NXN_ERR_LIMIT`.
+
 ## Performance, frame pacing and settings (Nexvyn OS 1.2.2)
 
 What changed for native apps, measured on a console (nothing here needs a code change; older apps run as before):
@@ -252,7 +289,7 @@ What changed for native apps, measured on a console (nothing here needs a code c
 - **Settings > Performance.** Official maximum clocks (`perf.official`, on by default) and a CPU boost while an app loads (`perf.loadBoost`) stay inside the console's official limits. An optional overclock (`perf.mode`, off by default) asks once and needs a clear yes (`perf.consent`). Your app does not call any of this; it only sees the result.
 - **Frame pacing.** `native.frameAhead` (0 default, 1, 2) lets the swap return at once when the previous frame was already taken; it costs up to one frame of latency, so leave it at 0 for games unless you measured a gain. `gfx.dynamicRes` (`auto`, `on`, `off`) scales the render size towards `gfx.dynamicResFps` (60) between `gfx.dynamicResMin` (0.6) and the view's own `render_scale`; `auto` is on only for apps that target an SDK newer than 1.12. Keep your frame time under 16.6 ms and let the system pace the frame: do not busy-wait.
 - **Sound.** The kit's SDL2 now converts every sample format (U8, S8, S16, S32, F32; 11 025 to 48 000 Hz) and mixes more than two channels down to stereo correctly. If your game crackled, rebuild it with the current kit (`python sdk/native/sysroot/build.py sdl2-nexvyn`, then your build).
-- **Errors.** `NXN_ERR_TIMEOUT`, `NXN_ERR_BUSY`, `NXN_ERR_EXISTS` and `NXN_ERR_LIMIT` are reserved names for coming calls. They are not returned by any call yet and their numbers are fixed when the header that ships them is released: treat any unknown negative result as a plain failure.
+- **Errors.** `NXN_ERR_TIMEOUT`, `NXN_ERR_BUSY`, `NXN_ERR_EXISTS` and `NXN_ERR_LIMIT` are reserved (-11 to -14, see "Error codes" above). They are not returned by any call yet: treat any unknown negative result as a plain failure.
 - **Store pictures.** For a game, we recommend five Store screenshots from the best camera angles, taken with the system language set to English. This is advice, not a rule.
 
 ## Toolchain

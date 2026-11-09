@@ -1,0 +1,112 @@
+{
+ "ui": {
+  "skip": "Press any button to skip",
+  "sub": "Native SDK",
+  "tag": "Console-class 3D",
+  "on": "ON",
+  "off": "OFF",
+  "loading": "Loading the town",
+  "shaders": "Preparing shaders",
+  "fail": "Cannot load"
+ },
+ "hub": {
+  "title": "Graphics Power",
+  "tour": "Start the tour",
+  "bench": "Benchmark",
+  "scores": "Best scores",
+  "free": "Free camera",
+  "hint": "Up / Down choose    A open    - overlay"
+ },
+ "card": {
+  "what": "WHAT IT IS",
+  "lang": "LANGUAGES",
+  "meas": "MEASURED ON CONSOLE",
+  "live": "MEASURED LIVE"
+ },
+ "hud": {
+  "fps": "fps (uncapped)",
+  "low": "1% low",
+  "frame": "frame",
+  "cpu": "CPU",
+  "draws": "draws",
+  "tris": "triangles",
+  "vis": "visible",
+  "heap": "heap",
+  "gpu": "GPU",
+  "res": "render",
+  "docked": "Docked",
+  "hand": "Handheld"
+ },
+ "b": {
+  "title": "Benchmark",
+  "s0": "Orbit",
+  "s1": "Fly-by",
+  "s2": "Wide angle",
+  "s3": "Low resolution",
+  "s4": "Streaming",
+  "score": "SCORE",
+  "saved": "Saved to the local score list",
+  "best": "New best score",
+  "again": "Y run again    A menu"
+ },
+ "s": {
+  "title": "Best scores",
+  "empty": "No scores yet. Run the benchmark.",
+  "back": "B back"
+ },
+ "f": {
+  "title": "Native SDK, console-class 3D",
+  "n0": "scene fps",
+  "n1": "faster scene load",
+  "n2": "faster frame handoff",
+  "n3": "GBA at full speed",
+  "best": "Best score",
+  "bench": "A  Benchmark",
+  "menu": "B  Menu"
+ },
+ "free": {
+  "hint": "L-stick move    R-stick look    ZL / ZR down / up    B menu"
+ },
+ "c0": {
+  "name": "Physically based light",
+  "what": "Metal and rough surfaces react to a real sun, with shadows that are cached while the camera glides.",
+  "r0": "3D scene test, console fps",
+  "live": "Sun shadows"
+ },
+ "c1": {
+  "name": "Dynamic resolution",
+  "what": "The picture is drawn at fewer pixels only when the frame rate would fall below 60; otherwise it stays sharp.",
+  "r0": "Same town: 100% pixels and 60% pixels"
+ },
+ "c2": {
+  "name": "Instant streaming",
+  "what": "A worker thread reads the scene while the main thread uploads a little each frame, so loading never freezes the window.",
+  "r0": "Scene load time",
+  "live": "Streamed in"
+ },
+ "c3": {
+  "name": "Zero-copy frames",
+  "what": "The app's picture reaches the desktop compositor without a copy, so showing a window costs almost nothing.",
+  "r0": "Frame handoff to the screen",
+  "live": "Handoff measured on console: 0.10-0.22 ms"
+ },
+ "c4": {
+  "name": "Touch and Joy-Con",
+  "what": "Sticks, buttons and the touch screen reach the app in the same frame, in a window or full screen. Try them now.",
+  "r0": "Touch, Joy-Con and 3D worlds",
+  "b": "not working",
+  "a": "working"
+ },
+ "c5": {
+  "name": "Sound",
+  "what": "A mixer and resampler turn every sample format into clean stereo; this chapter plays notes made by nxn_tone.",
+  "r0": "mGBA at full speed, no audio dropouts"
+ },
+ "c6": {
+  "name": "Under the hood",
+  "what": "Tiled lighting, half-resolution buffers and batched draws, measured in Nexvyn Bench on the console.",
+  "r0": "128 lights, tiled forward",
+  "r1": "Particles, half-res buffer",
+  "r2": "GL calls per frame, 3D scene"
+ }
+}

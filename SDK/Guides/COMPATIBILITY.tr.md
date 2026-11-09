@@ -53,6 +53,12 @@ Native runtime'ının (C / C++ app'leri, `.nxvmod`) kendi sürümü var: `tools/
 ihtiyaç duyduğu en eski sürümü `"minNative"` olarak yazar. Yeni Native SDK yalnızca ekler: her ekleme bir `nxn_caps` biti
 ile bildirilir, eski sürüm için derlenmiş app değişmeden çalışır, daha yenisini isteyen app başlamadan bunu söyler.
 
+**ABI v1 donduruldu (2026-11-09).** Native SDK 1.0 ve 1.1'in her işlevi, imzası, struct yerleşimi, sabit değeri, host
+import adı ve modül kimliği `sdk/native/toolchain/nxn_abi_v1.json` içinde kayıtlı; bundan sonra yalnızca eklenir, hiçbiri
+silinmez ya da değişmez. `tools/abi_check.py` (`tools/compat_check.py`'nin parçası) her silmede ve yerleşim değişikliğinde
+hata verir; 1.0 kitiyle derlenmiş bir modül (`tests/golden/`) her build'in testlerinde yüklenir. `NXN_ABI_GEN` ve host
+nesli elle yükseltilen sayılar olarak kalır, hiçbir sürümden türetilmez.
+
 | Native SDK | Getiren SDK | İçeriği |
 |---|---|---|
 | 1.0 | 1.10 | `nxn_*` C arayüzü: pencere ekranı (GL), girdi, ses akışları, dosya, log, dönüş; `.nxvmod` app'leri, `.nxvlib` kütüphaneleri |

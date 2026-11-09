@@ -98,6 +98,6 @@ What to do:
 - Run the app in a window, in full screen, then resize the window to a small and a large size.
 - Test handheld and docked in turn: undock while the app runs (native: you should see `NXN_EVENT_DOCK`).
 - Play a full round with the touch screen only, then a full round with the pad only and the touch screen untouched.
-- Two fingers at once: the SDL2 check example (`sdl2_check`) prints the most fingers down at once; test pinch, rotate and
-  two-finger pan on real hardware.
+- Two fingers at once: the autorun test command `finger <n> down|move|up <x> <y>` injects them (two ids make
+  pinch, rotate and two-finger pan); the SDL2 check example prints the most fingers down at once.
 - Put the console to sleep during play and wake it: sound and saved state must be right.

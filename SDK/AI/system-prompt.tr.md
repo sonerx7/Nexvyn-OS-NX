@@ -1,4 +1,4 @@
-# Nexvyn OS uygulama SDK'sı 1.11: yapay zekâ asistanları için context pack
+# Nexvyn OS uygulama SDK'sı 1.12: yapay zekâ asistanları için context pack
 
 [English](system-prompt.en.md) · **Türkçe**
 
@@ -37,7 +37,7 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.9", "targetSdk": "1.11",
+  "minSdk": "1.9", "targetSdk": "1.12",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -54,8 +54,8 @@ Kurulum yeri `sdmc:/NexvynOS/Applications/`. Log'lar: `sdmc:/NexvynOS/System/Log
   `sys.speak`, "python3" runtime'ı "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; pbr renderer
   (`g3d.renderer`, `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`,
   `g3d.material`, `g3d.drawInstanced`, `g3d.caps`), bölüm 7'deki SDK 1.9 ağ çağrıları ve akış / medya çağrıları
-  "1.9" (yalnızca Lua, JavaScript, Python, C), klasör seçici, kalıcı klasör ve kayıt yedeği çağrıları "1.11" (aynı dördü). App'in yaptığı her çağrıyı içeren en düşük `minSdk`'yı kullan.
-- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.11" yazar (bir callback takılınca ne olacağını belirler,
+  "1.9" (yalnızca Lua, JavaScript, Python, C), klasör seçici, kalıcı klasör ve kayıt yedeği çağrıları "1.11" (aynı dördü), `ui.tokens` / `audio.stopAll` "1.12" (aynı dördü). App'in yaptığı her çağrıyı içeren en düşük `minSdk`'yı kullan.
+- `targetSdk`: app'in test edildiği SDK; yeni app'ler "1.12" yazar (bir callback takılınca ne olacağını belirler,
   kural 1). Squirrel ve Java SDK 1.8'de donduruldu (app'leri çalışır, yeni API gelmez): yeni app'lere Lua,
   JavaScript, Python ya da C ile başla.
 - `window.width/height` içerik boyutudur. `gamepad: true` kumandayı uygulamaya gönderir (L+R imleci geri verir);
@@ -150,6 +150,7 @@ Koordinatlar: piksel, (0,0) içeriğin sol üstü, y aşağı. Açılar: radyan,
     Bunları sıfırdan yazmak yerine kitleri kullan: `SDK/Languages/<lua|javascript>/kits/sfx.*` ve `juice.*` dosyalarını
     bundle'a kopyala (`require("sfx")`, `require("juice")`; JS `import sfx from "./sfx.js"`). API'leri bölüm 7a'da.
     Diğer dillerde aynı taşları SDK çağrılarından kur.
+14. **Temalar özgündür.** Tema paketi (`.nxvtheme`, bkz. `SDK/Guides/THEMES.tr.md` ve `SDK/AI/tasks/make-theme.tr.md`) istendiğinde, istenen stilde kendi duvar kâğıtlarınla, simgelerinle ve seslerinle yap. Başka bir ürünün logosunu, simgesini, duvar kâğıdını, açılış sesini ya da adını asla kopyalama ya da taklit etme; genel adlar, ters alan adlı bir `id` ve WCAG AA kontrastlı (yazı için 4,5:1) palet çiftleri kullan. Yalnızca belgelenmiş `theme.json` alanları ve `settings` anahtarları vardır.
 
 ## 4. gfx (çizim)
 
@@ -187,6 +188,8 @@ koordinatlarında) · `ui.hit(id,x,y,w,h)` → {hovered,held,pressed,clicked,rig
 `ui.openFile(fn(pathOrNil),{".txt"}[,title])` · `ui.saveFile(fn(pathOrNil),"name.txt"[,title])` ·
 `ui.keyboard(initial,fn(textOrNil)[,guide])`.
 SDK 1.11 (`"minSdk": "1.11"`; Lua, JavaScript, Python, C): `ui.chooseFolder({title, remember}, fn(pathOrNil, err))` (iptalde nil, nil gelir; `remember = true` klasörü sonraki açılışlarda da tutar) · `fs.folderGrants()` · `fs.folderGranted(path)` · `fs.revokeFolder(path)` · `fs.savePath()` · `fs.saveBackup(slot, fn(ok, err))` · `fs.saveRestore(slot, fn)` · `fs.saveDeleteBackup(slot, fn)` · `fs.saveBackups()`. İzin gerekmez: klasörü kullanıcı seçer. Slot adı `A-Z a-z 0-9 . _ -` karakterlerinden 1-48 karakterdir.
+
+SDK 1.12 (`"minSdk": "1.12"`; Lua, JavaScript, Python, C): `ui.tokens()` (C: `ui_tokens()`, JSON metin) sistem görünümünü tek tablo olarak verir: `dark`, `highContrast`, `boldText`, `textScale`, `colors` (hex metinler: `accent`, `windowBg`, `contentBg`, `text`, `textSecondary`, `separator`, `error`, `success`, ...), `cornerRadius`, `spacing`, `controlHeight`, `fontSmall`, `fontBody`, `fontLarge`, `fontTitle` (app'ler okuyabilir; oyunlar kendi görünümünü korur, kural 11). `audio.stopAll()` app'in başlattığı her sesi durdurur (müziği değil). C'de ayrıca `input_action(name)` vardır.
 
 ## 6. Girdi
 
@@ -231,7 +234,7 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
 - `sys`: `time()` (monoton sn), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.11". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.12". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id ya da nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Bağlantılar: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.

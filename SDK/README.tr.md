@@ -70,6 +70,7 @@ Konsol OpenGL ES 3 sunmuyorsa `g3d.renderer("pbr")` `"basic"` döndürür ve ayn
 | [His kiti](Languages/lua/kits/README.tr.md) (`juice`) | Easing ve tween, sarsıntı, hit-stop, parçacıklar, parlama, başlıklar, paneller, düğmeler, geçişler, 2B ve 3B kameralar, 3B ışık atmosferleri. Rehber: [Grafik, arayüz ve oyun hissi](Guides/GAME_FEEL.tr.md) |
 | [İkon aracı](Tools/icon/README.tr.md) | Oyunun kendi modelini çizer ve her boyutta key-art mağaza ikonunu üretir; stil `clean` (varsayılan), `bold` ya da `loud` |
 | [Doku aracı](Tools/textures/README.tr.md) | PBR doku setlerini denetler, haritaları küçültür, ORM paketler, MetallicSmoothness ve -Y (yeşil aşağı) normal haritalarını dönüştürür |
+| [Tema aracı](Tools/theme/README.tr.md) | Tema paketini (`theme.json`, sınırlar, WCAG AA kontrastı) denetler ve `.nxvtheme` paketler; rehber: [Tema yapımı](Guides/THEMES.tr.md), şablon: `Samples/themes/template` |
 | [nxv](Tools/nxv/README.tr.md) | Şablondan yeni proje, denetim, derleme (Java), paketleme, imzalama, kurma, konsola gönderme |
 
 Kitler Lua ve JavaScript için vardır (`Languages/lua/kits`, `Languages/javascript/kits`).

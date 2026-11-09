@@ -62,3 +62,4 @@ app.json: `"main": "main.js"` (or `"runtime": "js"`), `"minSdk": "1.1"`, `"permi
 against a mock SDK in both languages and reports uncaught errors and unhandled rejections.
 
 - SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `await ui.chooseFolder({title, remember})` (`null` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `await fs.saveBackup(slot)`, `await fs.saveRestore(slot)`, `await fs.saveDeleteBackup(slot)`, `fs.saveBackups()`
+- SDK 1.12 (`"minSdk": "1.12"`): `ui.tokens()` returns the system look as an object (colors, radii, spacing, text sizes, `textScale`); `audio.stopAll()` stops every sound the app started.

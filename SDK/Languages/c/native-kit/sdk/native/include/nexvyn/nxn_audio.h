@@ -36,7 +36,9 @@ typedef struct nxn_audio_params {
     void* user;
 } nxn_audio_params;
 
-/* Opens the stream paused. params may be NULL (48 kHz stereo S16, push mode).
+/* Opens the stream paused. params may be NULL (48 kHz stereo S16, push mode). params->size must be set
+ * (NXN_STRUCT_INIT): with a size below 4 Nexvyn OS uses the defaults as for NULL, while the stand-alone library answers
+ * NXN_ERR_INVALID (both kept as they are for compatibility).
  * Thread: any app thread. Memory: *out is a library-owned handle; `params` is only read during the call. */
 NXN_API nxn_result nxn_audio_open(const nxn_audio_params* params, nxn_audio** out);
 /* Thread: any app thread, not from the stream's own callback. Memory: frees the handle; it must not be used afterwards. */

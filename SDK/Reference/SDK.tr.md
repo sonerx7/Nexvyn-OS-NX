@@ -364,6 +364,10 @@ Yoklama: `input.down(button)`, `input.pressed(button)` / `input.released(button)
 `input.stick("left"|"right")` → -1..1 aralığında x, y (yukarı y = pozitif), `input.key(name)` (bu karede basıldı),
 `input.touch()` (kullanıcı dokunmatik ekranda).
 
+Her app ve oyun dokunma, kumanda (Joy-Con çifti ya da tek), portatif ve dock (TV'de dokunma yok), pencere ve tam ekran
+ile ılımlı sesle çalışmalı: her birinin API'si ve kontrol listesi için `docs/INPUT_AND_PLAY_MODES.tr.md` (public
+`SDK/Guides/INPUT_AND_PLAY_MODES.tr.md`).
+
 ## 6. Dosyalar — `fs`
 
 Göreli yollar uygulamanın özel veri klasöründedir (`~/Library/Application Support/<id>/`, sizin için oluşturulur).

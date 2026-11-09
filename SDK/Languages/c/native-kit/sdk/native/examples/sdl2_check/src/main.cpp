@@ -352,6 +352,8 @@ int main(int, char**) {
     unsigned frames = 0, frameCheck = 0;
     bool run = true, fpsReported = false;
     float x = 200, y = 200;
+    long long downIds[16] = {0};  // fingers now down, by SDL finger id (multi-touch: each finger has its own id)
+    int down = 0, maxDown = 0;
     while (run && SDL_GetTicks() - t0 < 30000) {
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
@@ -362,7 +364,16 @@ int main(int, char**) {
                 case SDL_JOYBUTTONDOWN: g_c.joyButtons++; nxn_log(NXN_LOG_INFO, "sdl2check joy button %d", e.jbutton.button); break;
                 case SDL_JOYAXISMOTION: g_c.joyAxes++; break;
                 case SDL_CONTROLLERBUTTONDOWN: g_c.ctrlButtons++; break;
-                case SDL_FINGERDOWN: g_c.fingers++; nxn_log(NXN_LOG_INFO, "sdl2check finger %.2f %.2f", e.tfinger.x, e.tfinger.y); break;
+                case SDL_FINGERDOWN:
+                    g_c.fingers++;
+                    nxn_log(NXN_LOG_INFO, "sdl2check finger id %lld at %.2f %.2f", (long long)e.tfinger.fingerId, e.tfinger.x, e.tfinger.y);
+                    if (down < 16) downIds[down++] = (long long)e.tfinger.fingerId;
+                    if (down > maxDown) maxDown = down;
+                    break;
+                case SDL_FINGERUP:
+                    for (int k = 0; k < down; k++)
+                        if (downIds[k] == (long long)e.tfinger.fingerId) { downIds[k] = downIds[--down]; break; }
+                    break;
                 case SDL_KEYDOWN: g_c.keys++; nxn_log(NXN_LOG_INFO, "sdl2check key scancode %d mod %x", e.key.keysym.scancode, e.key.keysym.mod); break;
                 case SDL_TEXTINPUT: g_c.texts++; nxn_log(NXN_LOG_INFO, "sdl2check text '%s'", e.text.text); break;
                 case SDL_MOUSEBUTTONDOWN: g_c.mouseButtons++; nxn_log(NXN_LOG_INFO, "sdl2check mouse button %d at %d,%d", e.button.button, e.button.x, e.button.y); break;
@@ -424,6 +435,7 @@ int main(int, char**) {
         g_c.joyButtons, g_c.joyAxes, g_c.ctrlButtons, g_c.fingers, g_c.keys, g_c.texts, g_c.mouseButtons, g_c.mouseMoves,
         g_c.wheels, g_c.resizes, g_c.lastW, g_c.lastH, g_c.focusIn, g_c.focusOut, g_c.background, g_c.foreground, g_c.quits);
 
+    row("multitouch", true, "most fingers down at once: %d (needs a two-finger test, autorun \"finger\"; 0 or 1 = none injected)", maxDown);
     SDL_StopTextInput();
     if (dev) SDL_CloseAudioDevice(dev);
     if (gc) SDL_GameControllerClose(gc);

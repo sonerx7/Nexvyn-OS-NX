@@ -4,6 +4,7 @@
 
 Uygulama Lua ile yazılıyorsa bunu `system-prompt.tr.md` dosyasından sonra ekleyin.
 - SDK 1.11 (`"minSdk": "1.11"`, izin gerekmez; klasörü kullanıcı seçer, iptal hata değildir): `ui.chooseFolder({title = "...", remember = true}, function(path, err) end)` (`path` is nil when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `fs.saveBackup(slot, function(ok, err) end)`, `fs.saveRestore(slot, fn)`, `fs.saveDeleteBackup(slot, fn)`, `fs.saveBackups()`
+- SDK 1.12 (`"minSdk": "1.12"`): `ui.tokens()` sistem görünümünü tablo olarak verir (renkler, köşe yarıçapları, boşluklar, yazı boyutları, `textScale`); `audio.stopAll()` app'in başlattığı her sesi durdurur.
 
 ## İskelet
 

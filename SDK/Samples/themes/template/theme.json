@@ -1,0 +1,14 @@
+{
+  "id": "com.yourname.theme.template",
+  "name": {"en": "My Theme", "tr": "Temam"},
+  "subtitle": {"en": "Calm blue desktop with a bottom taskbar", "tr": "Sakin mavi masaüstü, altta görev çubuğu"},
+  "description": {"en": "A quiet desktop in cool blues.", "tr": "Serin mavilerde sakin bir masaüstü."},
+  "version": "1.0",
+  "author": "Your Name",
+  "full": true,
+  "appearance": "dark",
+  "accent": "#3C8DBC",
+  "wallpaper": "wallpaper.jpg",
+  "settings": {"shell.layout": "taskbar", "taskbar.size": "medium", "start.sidePanel": true, "window.chrome": "flat"},
+  "palette": {"windowBg": "1B2430", "contentBg": "202B38", "text": "ECF1F6", "selection": "2F6F96", "selectionText": "FFFFFF"}
+}

@@ -9,6 +9,15 @@ Durum: toolchain, sysroot script'leri, şablonlar ve CLI bugün çalışır. Nex
 `-lnexvyn_native`) varsayılan olarak bağlanır. SDL2, kitin kendi SDL2 sürücüsüyle Nexvyn OS pencerelerinde (ve tam ekranda) çalışır: "Pencerede SDL2" bölümü. SDL
 kullanmayan `nxn_*` API'sini doğrudan kullanır (`examples/hello_gl`, `examples/showcase`).
 
+**ABI v1 donduruldu (2026-11-09).** `nxn_*` işlevleri, `ngfx_*` API'si, her struct yerleşimi, sabit, yetenek biti, hata
+kodu, host import adı ve modül kimliği `toolchain/nxn_abi_v1.json` içinde kayıtlı. Bundan sonraki kural yalnızca eklemedir:
+o dosyadaki hiçbir şey silinmez ya da değişmez; yeni işlevler, sabitler ve struct alanları (sona eklenir, dolguya asla)
+gelebilir. Daha önceki herhangi bir kitle derlenmiş app açılmaya devam eder; 1.0 kitiyle derlenmiş bir modül her test
+koşusunun parçasıdır. App'in daha sonraki bir Native SDK sürümünde eklenen bir işlevi çağırıyorsa `app.json`'daki
+`"minNative"`'i o sürüme yükselt: eski bir Nexvyn OS, sahip olmadığı bir `nxn_*` adını import eden modülü açık bir mesajla
+reddeder. Geçirdiğin her struct için `NXN_STRUCT_INIT(type)` kullan, isteğe bağlı çağrılardan önce yetenek bitlerine
+(`NXN_CAP_*`, `uint64_t` maskeleri) bak ve tanımadığın her negatif sonucu sıradan bir hata say.
+
 ## Kurulum
 
 1. devkitPro'yu Switch paketleriyle kur (`switch-dev`, `switch-sdl2`, `switch-mesa`, ...). Denenen sürümler
@@ -185,7 +194,9 @@ app'i kendi girdi sahibidir ve `nxn_input_poll`'u kendisi çağırmaz.
 - `nxn_input_key_poll`, `nxn_input_text`, `nxn_input_mouse` (`NXN_CAP_USB_INPUT`): sıralı USB tuş olayları (bir kare içindeki
   kısa basış kaybolmaz), yazılan metin (UTF-8) ve imleç fare olarak. `nxn_input_mouse` bir kez çağrılınca app fare
   kullanıcısı olur: imleç artık `nxn_input_touch`'ta parmak 0 sayılmaz. `nxn_input_key_held` değiştirici tuşları bilir
-  (kullanım 224..231).
+  (kullanım 224..231). Dokunmatik ekranda `nxn_input_touch` her parmağı (16'ya kadar) kararlı bir `id` ile verir (0, 1, 2 ...:
+  parmak değdiğinde boştaki en küçük sayı, yani tek parmak hep 0'dır); SDL app'lerinde her id bir `SDL_FingerID`'dir, iki
+  parmak iki ayrı `SDL_FINGERDOWN` / `SDL_FINGERMOTION` / `SDL_FINGERUP` akışı gönderir.
 - `NXN_EVENT_DOCK`, `NXN_EVENT_SUSPEND`, `NXN_EVENT_RESUME` (`NXN_CAP_POWER_EVENTS`): dock / el modu ve uyku ya da HOME menüsü.
   `SUSPEND` sonrası Nexvyn OS app'in sesini çalmaz, `nxn_display_swap` hiçbir şey geri okumaz; `RESUME`, suspend öncesi
   kuyruktaki sesi atar.
@@ -245,6 +256,32 @@ Nexvyn OS'un parçası gibi görünmesi gereken app'ler için (araçlar, editör
 - Caps: `NXN_CAP_UI_TOKENS`, `NXN_CAP_TEXT`. Bağımsız .nro'da çağrılar `NXN_ERR_UNSUPPORTED` döner, `nxn_tr` anahtarı verir.
 - Showcase'te "UI tokens" sayfası ve hepsi için self-test satırları var.
 
+## Hata kodları (`nxn_result`, `nxn_base.h`)
+
+Değerler asla değişmez (yalnızca eklenir). 0 `NXN_OK`; her hata negatiftir.
+
+| Kod | Değer | Anlam |
+|---|---|---|
+| `NXN_ERR_INVALID` | -1 | geçersiz argüman |
+| `NXN_ERR_UNSUPPORTED` | -2 | özellik yok (`nxn_caps_get`) |
+| `NXN_ERR_NOT_READY` | -3 | `nxn_init` çağrılmadı ya da nesne kapalı |
+| `NXN_ERR_IO` | -4 | dosya sistemi hatası |
+| `NXN_ERR_DENIED` | -5 | reddedildi (app klasörleri dışı yol, salt okunur) |
+| `NXN_ERR_NO_MEMORY` | -6 | bellek yok |
+| `NXN_ERR_TOO_SMALL` | -7 | çıktı tamponu küçük |
+| `NXN_ERR_NOT_FOUND` | -8 | bulunamadı |
+| `NXN_ERR_SYSTEM` | -9 | sistem servisi başarısız (`nxn_last_error`) |
+| `NXN_ERR_CANCELLED` | -10 | kullanıcı pencereyi kapattı |
+| `NXN_ERR_TIMEOUT` | -11 | ayrıldı: bekleme süresi doldu |
+| `NXN_ERR_BUSY` | -12 | ayrıldı: kaynak kullanımda, sonra dene |
+| `NXN_ERR_EXISTS` | -13 | ayrıldı: hedef zaten var |
+| `NXN_ERR_LIMIT` | -14 | ayrıldı: bir sınıra ulaşıldı |
+
+Ayrılan kodları şimdilik hiçbir çağrı döndürmez; "başarısız, `nxn_last_error`'a bak" diye ele alın. NexGFX hatalarının
+`nxn_*` üzerinden planlanan eşlemesi (yalnızca doküman, ngfx ABI'sinde değişiklik yok): geçersiz handle/argüman ->
+`NXN_ERR_INVALID`; caps'te olmayan özellik -> `NXN_ERR_UNSUPPORTED`; ayırma hatası -> `NXN_ERR_NO_MEMORY`; GL ya da sürücü
+hatası -> `NXN_ERR_SYSTEM`; kaynak ya da kuyruk sınırı -> `NXN_ERR_LIMIT`.
+
 ## Performans, kare ritmi ve ayarlar (Nexvyn OS 1.2.2)
 
 Native app'ler için neler değişti, konsolda ölçüldü (hiçbiri kod değişikliği istemez; eski app'ler eskisi gibi çalışır):
@@ -253,7 +290,7 @@ Native app'ler için neler değişti, konsolda ölçüldü (hiçbiri kod değiş
 - **Ayarlar > Performans.** Resmi en yüksek saatler (`perf.official`, varsayılan açık) ve app yüklenirken CPU hızlandırma (`perf.loadBoost`) konsolun resmi sınırları içinde kalır. İsteğe bağlı hız aşırtma (`perf.mode`, varsayılan kapalı) bir kez sorar ve açık onay ister (`perf.consent`). App bunların hiçbirini çağırmaz; yalnızca sonucu görür.
 - **Kare ritmi.** `native.frameAhead` (0 varsayılan, 1, 2) bir önceki kare alınmışsa swap'in hemen dönmesini sağlar; en çok bir kare gecikmeye mal olur, ölçülmüş kazanç yoksa oyunlarda 0 bırakın. `gfx.dynamicRes` (`auto`, `on`, `off`) çizim boyutunu `gfx.dynamicResMin` (0.6) ile view'in kendi `render_scale` değeri arasında `gfx.dynamicResFps` (60) hedefine göre ölçekler; `auto` yalnızca SDK 1.12'den yeni hedefleyen app'lerde açıktır. Kare sürenizi 16.6 ms altında tutun ve ritmi sisteme bırakın: meşgul bekleme yapmayın.
 - **Ses.** Kitin SDL2'si artık her örnek biçimini (U8, S8, S16, S32, F32; 11 025 - 48 000 Hz) dönüştürüyor ve ikiden çok kanalı stereoya doğru indiriyor. Oyununuz cızırdadıysa güncel kitle yeniden derleyin (`python sdk/native/sysroot/build.py sdl2-nexvyn`, sonra kendi derlemeniz).
-- **Hatalar.** `NXN_ERR_TIMEOUT`, `NXN_ERR_BUSY`, `NXN_ERR_EXISTS` ve `NXN_ERR_LIMIT` gelecek çağrılar için ayrılmış adlardır. Henüz hiçbir çağrı bunları döndürmez; sayıları onları getiren başlıkla birlikte belirlenir: bilinmeyen her negatif sonucu sade bir hata sayın.
+- **Hatalar.** `NXN_ERR_TIMEOUT`, `NXN_ERR_BUSY`, `NXN_ERR_EXISTS` ve `NXN_ERR_LIMIT` ayrılmış kodlardır (-11 … -14, yukarıdaki hata kodları tablosu). Henüz hiçbir çağrı bunları döndürmez: bilinmeyen her negatif sonucu sade bir hata sayın.
 - **Store görselleri.** Oyunlar için Store'a, en iyi kamera açılarından, sistem dili İngilizce iken çekilmiş beş ekran görüntüsü öneriyoruz. Bu bir öneridir, kural değil.
 
 ## Toolchain

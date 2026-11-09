@@ -1,6 +1,7 @@
 /* Nexvyn Native SDK - base types shared by every nxn_* header (NATIVE_KIT.en.md).
  *
- * ABI rules (v1 draft, not frozen yet):
+ * ABI rules (ABI v1, frozen on 2026-11-09; the frozen surface is sdk/native/toolchain/nxn_abi_v1.json and every later
+ * version is checked against it: names, signatures, struct layouts and constant values are only ever added):
  *  - C only. No C++ type crosses the boundary.
  *  - Every struct passed across the boundary starts with `uint32_t size` = sizeof(the struct the caller compiled
  *    against). The library reads/writes only min(size, its own sizeof); fields are only ever added at the end, so an
@@ -13,6 +14,10 @@
  *  - Functions are only added, never removed or changed. A behaviour change goes behind a new function or flag.
  *  - NXN_ABI_GEN is raised by hand only on an incompatible change (it never follows the OS or SDK version).
  *  - Optional features are discovered with nxn_caps_get(); a missing feature is a clean NXN_ERR_UNSUPPORTED.
+ *  - An app that calls a function added in a later Native SDK version raises its app.json "minNative" to that version:
+ *    an older Nexvyn OS refuses to load a module that imports an nxn_* name it does not have (a clean message, no crash).
+ *  - Enum constants stay inside the int range (C11), so every enum type is 4 bytes wide. 64-bit masks (NXN_CAP_*) are
+ *    macros of type uint64_t, never enum constants.
  *
  * Threads and memory (every function in the nxn_* headers says "Thread:" and "Memory:"; this is the rule behind them):
  *  - Thread: unless a function says otherwise it may be called from any thread that belongs to the app: the thread
@@ -61,7 +66,8 @@ inline T nxn__struct_init() {
 }
 #define NXN_STRUCT_INIT(type) nxn__struct_init<type>()
 #else
-#define NXN_STRUCT_INIT(type) {(uint32_t)sizeof(type)}
+/* C: a designated initializer (the other fields are zero) does not trigger -Wextra "missing initializer". */
+#define NXN_STRUCT_INIT(type) {.size = (uint32_t)sizeof(type)}
 #endif
 
 typedef int32_t nxn_result;
@@ -77,7 +83,14 @@ enum {
     NXN_ERR_TOO_SMALL = -7,    /* the output buffer is too small (nothing was truncated silently) */
     NXN_ERR_NOT_FOUND = -8,
     NXN_ERR_SYSTEM = -9,       /* a system service (EGL, audio, ...) failed; nxn_last_error() says which */
-    NXN_ERR_CANCELLED = -10    /* the user dismissed a dialog (nxn_pick); nothing is wrong */
+    NXN_ERR_CANCELLED = -10,   /* the user dismissed a dialog (nxn_pick); nothing is wrong */
+    /* Reserved before the ABI freeze (add-only; no call returns them yet, apps may already handle them). Treat any
+       other negative value as a plain failure: later versions may add codes below -14. ngfx_* (nexgfx_native.h) has
+       its own NGFX_ERR_* codes; the same number means something else there. */
+    NXN_ERR_TIMEOUT = -11,     /* a wait ran out of time; trying again can work */
+    NXN_ERR_BUSY = -12,        /* the resource is in use right now; try again later */
+    NXN_ERR_EXISTS = -13,      /* the target already exists (create without overwrite) */
+    NXN_ERR_LIMIT = -14        /* a system or app limit was reached (open handles, queue size...) */
 };
 
 #endif /* NEXVYN_NXN_BASE_H */

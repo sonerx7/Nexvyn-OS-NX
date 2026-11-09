@@ -1,4 +1,4 @@
-# Nexvyn OS app SDK 1.11: context pack for AI assistants
+# Nexvyn OS app SDK 1.12: context pack for AI assistants
 
 **English** · [Türkçe](system-prompt.tr.md)
 
@@ -36,7 +36,7 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.9", "targetSdk": "1.11",
+  "minSdk": "1.9", "targetSdk": "1.12",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -53,8 +53,8 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "python3" runtime "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; the pbr renderer (`g3d.renderer`,
   `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`, `g3d.material`,
   `g3d.drawInstanced`, `g3d.caps`), the section 7 SDK 1.9 network calls and the feed / media calls "1.9" (Lua,
-  JavaScript, Python, C only), the folder picker, kept-folder and save-backup calls "1.11" (same four). Use the lowest `minSdk` that has every call the app makes.
-- `targetSdk`: the SDK the app was tested on; new apps use "1.11" (it decides what happens when a callback hangs,
+  JavaScript, Python, C only), the folder picker, kept-folder and save-backup calls "1.11" (same four), `ui.tokens` / `audio.stopAll` "1.12" (same four). Use the lowest `minSdk` that has every call the app makes.
+- `targetSdk`: the SDK the app was tested on; new apps use "1.12" (it decides what happens when a callback hangs,
   rule 1). Squirrel and Java are frozen at SDK 1.8 (their apps keep working, no new APIs): start new apps in Lua,
   JavaScript, Python or C.
 - `window.width/height` is the content size. `gamepad: true` sends the controller to the app (L+R gives the cursor
@@ -148,6 +148,7 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
     Use the kits instead of writing these from scratch: copy `SDK/Languages/<lua|javascript>/kits/sfx.*` and
     `juice.*` into the bundle (`require("sfx")`, `require("juice")`; JS `import sfx from "./sfx.js"`). Their API is in
     section 7a. Other languages: build the same blocks from the SDK calls.
+14. **Themes are original.** When asked for a theme pack (`.nxvtheme`, see `SDK/Guides/THEMES.en.md` and `SDK/AI/tasks/make-theme.en.md`), build it in the requested style with your own wallpapers, icons and sounds. Never copy or imitate another product's logos, icons, wallpapers, startup sounds or names; use generic names, a reverse-domain `id`, and palette pairs with WCAG AA contrast (4.5:1 for text). Only the documented `theme.json` fields and `settings` keys exist.
 
 ## 4. gfx (drawing)
 
@@ -185,6 +186,8 @@ coordinates) · `ui.hit(id,x,y,w,h)` → {hovered,held,pressed,clicked,rightClic
 `ui.openFile(fn(pathOrNil),{".txt"}[,title])` · `ui.saveFile(fn(pathOrNil),"name.txt"[,title])` ·
 `ui.keyboard(initial,fn(textOrNil)[,guide])`.
 SDK 1.11 (`"minSdk": "1.11"`; Lua, JavaScript, Python, C): `ui.chooseFolder({title, remember}, fn(pathOrNil, err))` (a cancel gives nil, nil; `remember = true` keeps the folder across runs) · `fs.folderGrants()` · `fs.folderGranted(path)` · `fs.revokeFolder(path)` · `fs.savePath()` · `fs.saveBackup(slot, fn(ok, err))` · `fs.saveRestore(slot, fn)` · `fs.saveDeleteBackup(slot, fn)` · `fs.saveBackups()`. No permission needed: the user picks the folder. Slot names are 1-48 characters of `A-Z a-z 0-9 . _ -`.
+
+SDK 1.12 (`"minSdk": "1.12"`; Lua, JavaScript, Python, C): `ui.tokens()` (C: `ui_tokens()`, a JSON text) returns the system look as one table: `dark`, `highContrast`, `boldText`, `textScale`, `colors` (hex strings: `accent`, `windowBg`, `contentBg`, `text`, `textSecondary`, `separator`, `error`, `success`, ...), `cornerRadius`, `spacing`, `controlHeight`, `fontSmall`, `fontBody`, `fontLarge`, `fontTitle` (apps may read it; games keep their own look, rule 11). `audio.stopAll()` stops every sound the app started (not its music). C also has `input_action(name)`.
 
 ## 6. Input
 
@@ -229,7 +232,7 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
 - `sys`: `time()` (monotonic s), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.11". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.12". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id or nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Links: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.

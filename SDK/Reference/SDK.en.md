@@ -359,6 +359,10 @@ Polling: `input.down(button)`, `input.pressed(button)` / `input.released(button)
 `input.stick("left"|"right")` → x, y in -1..1 (y up = positive), `input.key(name)` (pressed this frame),
 `input.touch()` (the user is on the touch screen).
 
+Every app and game should work with touch, the controller (Joy-Con pair or single), handheld and docked (no touch on a
+TV), in a window and full screen, with moderate sound: see `docs/INPUT_AND_PLAY_MODES.en.md` (public
+`SDK/Guides/INPUT_AND_PLAY_MODES.en.md`) for the API of each and a checklist.
+
 ## 6. Files — `fs`
 
 Relative paths live in the app's private data folder (`~/Library/Application Support/<id>/`, created for you).

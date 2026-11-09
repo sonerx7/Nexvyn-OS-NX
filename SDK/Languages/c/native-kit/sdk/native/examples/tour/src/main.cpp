@@ -275,11 +275,28 @@ static bool selected_button(const char* label, bool selected, const ImVec2& size
 }
 
 // ------------------------------------------------------------------ input
+// touch markers: a ring that fades out where a finger went down (drawn on the 3D page only, never takes input)
+static float g_ring_x[6], g_ring_y[6];
+static uint64_t g_ring_t[6];
+static unsigned g_ring_n;
+static void draw_touch_rings() {
+    uint64_t now = nxn_time_ns();
+    ImDrawList* dl = ImGui::GetForegroundDrawList();
+    for (int i = 0; i < 6; i++) {
+        if (!g_ring_t[i]) continue;
+        float age = (now - g_ring_t[i]) / 1e9f;
+        if (age > 0.7f) continue;
+        float k = age / 0.7f, a = 1.f - k;
+        dl->AddCircle(ImVec2(g_ring_x[i], g_ring_y[i]), 14.f + 30.f * k, IM_COL32(255, 255, 255, (int)(230 * a)), 0, 3.f);
+        dl->AddCircle(ImVec2(g_ring_x[i], g_ring_y[i]), 14.f + 30.f * k, IM_COL32(40, 160, 255, (int)(160 * a)), 0, 1.5f);
+    }
+}
+
 static void feed_imgui(float dt) {
     ImGuiIO& io = ImGui::GetIO();
     io.DisplaySize = ImVec2((float)g_w, (float)g_h);
     io.DeltaTime = dt > 0.0001f ? dt : 0.0001f;
-    io.AddKeyEvent(ImGuiKey_GamepadFaceDown, (g_in.actions & NXN_ACT_CONFIRM) != 0);
+    io.AddKeyEvent(ImGuiKey_GamepadFaceDown, g_page != P_3D && (g_in.actions & NXN_ACT_CONFIRM) != 0);  // on the 3D page A toggles auto-rotate instead
     io.AddKeyEvent(ImGuiKey_GamepadDpadLeft, (g_in.buttons & NXN_BTN_LEFT) != 0);
     io.AddKeyEvent(ImGuiKey_GamepadDpadRight, (g_in.buttons & NXN_BTN_RIGHT) != 0);
     io.AddKeyEvent(ImGuiKey_GamepadDpadUp, (g_in.buttons & NXN_BTN_UP) != 0);
@@ -298,6 +315,7 @@ static void feed_imgui(float dt) {
         io.AddMouseSourceEvent(ImGuiMouseSource_TouchScreen);
         io.AddMousePosEvent(t.x, t.y);  // in a window nxn_input_touch already reports pixels of the app surface (same space as DisplaySize): no scaling
         io.AddMouseButtonEvent(0, true);
+        if (!was_down) g_ring_x[g_ring_n % 6] = t.x, g_ring_y[g_ring_n % 6] = t.y, g_ring_t[g_ring_n++ % 6] = nxn_time_ns();
         was_down = 1;
     } else if (was_down) {
         io.AddMouseButtonEvent(0, false);
@@ -423,6 +441,7 @@ static void gfx_draw(float dt) {
 
 static void page_3d(float top) {
     ImGuiIO& io = ImGui::GetIO();
+    draw_touch_rings();
     if (!g_gfx_failed && g_dev && !io.WantCaptureMouse && ImGui::IsMouseDragging(0, 2.f)) {  // drag the picture to orbit
         g_orbit -= io.MouseDelta.x * 0.008f;
         g_elev += io.MouseDelta.y * 0.006f;
@@ -1289,6 +1308,7 @@ static int app_main(int, char**) {
         }
         nxn_input_poll(&g_in);
         if (g_in.actions & NXN_ACT_CANCEL) quit = true;
+        if (g_page == P_3D && (g_in.pressed & NXN_BTN_A)) g_autorotate = !g_autorotate, say("A: auto-rotate %s", g_autorotate ? "on" : "off"), menu_update();
         if (g_in.pressed & NXN_BTN_R) goto_page(g_page + 1);
         if (g_in.pressed & NXN_BTN_L) goto_page(g_page - 1);
         if (cap(NXN_CAP_USB_INPUT)) {

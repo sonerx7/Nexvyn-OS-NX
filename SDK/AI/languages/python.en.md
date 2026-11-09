@@ -66,3 +66,4 @@ app.json: `"main": "main.py"`, `"minSdk": "1.3"` (`"1.5"` for the system library
 and the network permission, runs the app against a mock SDK with the real signatures.
 
 - SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `ui.chooseFolder({"title": "...", "remember": True}, callback)` (`callback(path, err)`, `path` is `None` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `fs.saveBackup(slot, callback)`, `fs.saveRestore(slot, callback)`, `fs.saveDeleteBackup(slot, callback)`, `fs.saveBackups()`
+- SDK 1.12 (`"minSdk": "1.12"`): `ui.tokens()` returns the system look as a dict (colors, radii, spacing, text sizes, `textScale`); `audio.stopAll()` stops every sound the app started.

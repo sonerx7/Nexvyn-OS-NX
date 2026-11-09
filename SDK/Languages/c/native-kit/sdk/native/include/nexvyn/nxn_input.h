@@ -15,6 +15,8 @@
 
 NXN_EXTERN_C_BEGIN
 
+/* Button bits (bits 0..15, inside the int range of an enum constant; tested against the uint64_t masks below). A button
+ * at bit 31 or above would be a uint64_t macro like NXN_CAP_* (nxn_base.h), never an enum constant. */
 enum {
     NXN_BTN_A = 1ull << 0, NXN_BTN_B = 1ull << 1, NXN_BTN_X = 1ull << 2, NXN_BTN_Y = 1ull << 3,
     NXN_BTN_LSTICK = 1ull << 4, NXN_BTN_RSTICK = 1ull << 5, NXN_BTN_L = 1ull << 6, NXN_BTN_R = 1ull << 7,
@@ -47,6 +49,9 @@ typedef struct nxn_touch {
 
 /* Reads the controllers and the touch screen. Call once per frame. */
 NXN_API nxn_result nxn_input_poll(nxn_input_state* out);
+/* Touch `index` (0 <= index < nxn_input_state.touch_count of the last poll). Outside that range it fails: inside Nexvyn
+ * OS with NXN_ERR_INVALID (also while the window has no focus; touch_count is 0 then), in a stand-alone .nro with
+ * NXN_ERR_NOT_FOUND. Read touches only up to touch_count and treat any negative result as "no touch". */
 NXN_API nxn_result nxn_input_touch(uint32_t index, nxn_touch* out);
 /* USB keyboard: is the key with this HID usage id (4 = 'a' ... see the USB HID tables) held? Usage ids 224..231 are the
  * modifiers (224 left Ctrl, 225 left Shift, 226 left Alt, 227 left GUI, 228..231 the right ones; Nexvyn OS reports the

@@ -52,6 +52,12 @@ The native runtime (C / C++ apps, `.nxvmod`) has its own version, `NATIVE_VERSIO
 the oldest one it needs as `"minNative"`. A newer Native SDK only adds: every addition is announced by an `nxn_caps` bit,
 so an app built for an older one runs unchanged, and an app that needs a newer one says so before it starts.
 
+**ABI v1 is frozen (2026-11-09).** Every function, signature, struct layout, constant value, host import name and the
+module identity of Native SDK 1.0 and 1.1 are recorded in `sdk/native/toolchain/nxn_abi_v1.json`; from now on they are only
+added to, never removed or changed. `tools/abi_check.py` (part of `tools/compat_check.py`) fails on any removal or layout
+change, and a module built with the 1.0 kit (`tests/golden/`) is loaded by every build's tests. `NXN_ABI_GEN` and the
+host generation stay hand-raised numbers, never derived from a version.
+
 | Native SDK | Brought by SDK | What it contains |
 |---|---|---|
 | 1.0 | 1.10 | `nxn_*` C interface: window display (GL), input, audio streams, files, log, return; `.nxvmod` apps, `.nxvlib` libraries |

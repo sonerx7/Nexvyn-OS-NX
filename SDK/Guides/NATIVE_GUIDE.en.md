@@ -5,6 +5,7 @@ This is the short path. The reference is `docs/NATIVE_KIT.en.md` (every command 
 
 ## 1. Install (once)
 
+0. The kit is the folder `SDK/Languages/c/native-kit` of the public repository (download the repository as a zip or clone it, no installer). Run every command of this guide from that folder.
 1. devkitPro with the Switch packages (`switch-dev`, `switch-sdl2`, `switch-mesa`, `switch-glad`, ...). The tested versions
    are in `tools/toolchain.json`.
 2. Python 3. CMake and Ninja come with devkitPro's shell. On Windows the CLI starts that shell by itself.
@@ -37,7 +38,7 @@ toolchain already targets `-march=armv8-a+crc+crypto -mtune=cortex-a57` (NEON in
 - Emulator: `python tools/nxv_native run notes --sd <SD card root>` copies the bundle to `<sd>/NexvynOS/Applications`.
   It never starts anything; start Nexvyn OS yourself and open the app.
 - Console: `run --sd <SD card root>` onto the console's SD card, or install the `.nxvapp` the way Nexvyn OS installs packages.
-  An unsigned package installs with a warning; Store packages must be signed (`package --sign key.pem`).
+  An unsigned package installs with a warning; for the App Market you do not sign: the maintainers build and sign the Store package from your pull request (`package --sign key.pem` is only for packages you distribute yourself).
 
 ## 4. When it does not work
 

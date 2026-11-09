@@ -63,3 +63,4 @@ app.json: `"main": "main.js"` (ya da `"runtime": "js"`), `"minSdk": "1.1"`, `net
 uygulamayı iki dilde mock bir SDK'ya karşı çalıştırır ve yakalanmamış hataları ve işlenmemiş retleri bildirir.
 
 - SDK 1.11 (`"minSdk": "1.11"`, izin gerekmez; klasörü kullanıcı seçer, iptal hata değildir): `await ui.chooseFolder({title, remember})` (`null` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `await fs.saveBackup(slot)`, `await fs.saveRestore(slot)`, `await fs.saveDeleteBackup(slot)`, `fs.saveBackups()`
+- SDK 1.12 (`"minSdk": "1.12"`): `ui.tokens()` sistem görünümünü nesne olarak verir (renkler, köşe yarıçapları, boşluklar, yazı boyutları, `textScale`); `audio.stopAll()` app'in başlattığı her sesi durdurur.

@@ -323,6 +323,8 @@ hours (while online).
       "permissions": ["network"],
       "screenshots": ["https://.../1.png"],
       "featured": false,
+      "recommended": false,
+      "recommendedOrder": 10,
       "added": "2026-09-20",
       "updated": "2026-10-01",
       "changelog": {"en": "Faster search.", "tr": "Daha hızlı arama."},
@@ -348,6 +350,10 @@ hours (while online).
   `changelog` in the "What's New" section, `tags` in search, and `runtime` (`lua`, `js`, `python`, `squirrel`, `c`,
   `java`) on the detail page.
 - If `signer` is given, the downloaded package must be signed with this key; otherwise it is not installed.
+- `recommended` (`true`, default `false`) lists the entry in the first-run setup's "Recommended Apps" step, pre-checked,
+  with its icon, name, subtitle and size; `recommendedOrder` (whole number, smaller first, default 0) sorts them. The
+  chosen apps join the App Market's install queue after setup and download in the background (offline: when the console
+  is online). Keep the list short; `Tools/build_store.py` copies both fields from the page's `app.json` to the catalog.
 - `subtitle` (at most 45 characters, language table) is shown as a single line under the name on cards, in lists and
   on the detail page; `name`, `subtitle` and `description` are shown in the interface language, or in English if
   missing.
@@ -454,7 +460,7 @@ A file in `sdmc:/NexvynOS/System/Overlay/` is used instead of the file at the sa
 > (shown while the dark appearance is on), optional `sounds` (a folder of `<name>.wav` files replacing the system
 > sounds) and optional `settings` with only these keys: `appearance.reduceTransparency`, `appearance.darkFrom`,
 > `appearance.darkTo`, `dock.size`, `dock.magnify`, `dock.magnification`, `desktop.iconSize`, `screensaver.style`
-> (other keys are ignored, values are clamped). Limits: 64 files, 32 MB, 12 MB per file; only `.json .jpg .jpeg .png
+> (other keys are ignored, values are clamped). Limits: 160 files, 32 MB, 12 MB per file; only `.json .jpg .jpeg .png
 > .webp .wav .md .txt` (+ `manifest.sha256`/`.sig`); unsafe paths refuse the package. Themes install into
 > `~/Library/Themes/<id>/` (same id = update in place). Opening one in Files shows a sheet with **Install** and
 > **Install and Apply**; *System Settings > Appearance > Themes* applies, removes and restores the default look.
@@ -513,7 +519,7 @@ Aurora.nxvtheme  (zip)
 
 Rules and behaviour:
 
-- At most 64 files, 32 MB in total, 12 MB per file; allowed extensions `.json .jpg .jpeg .png .webp .wav .md .txt` (and
+- At most 160 files, 32 MB in total, 12 MB per file; allowed extensions `.json .jpg .jpeg .png .webp .wav .md .txt` (and
   `manifest.sha256`, `manifest.sig`). `__MACOSX/` and hidden files are ignored. A path that is absolute or contains
   `..`, `:` or `\` makes the package be refused (zip-slip protection). The limits are checked before anything is
   extracted.
@@ -527,6 +533,27 @@ Rules and behaviour:
   deleted). The themes' pictures are also listed under a separate heading in the *Wallpaper* pane.
 - If a removed theme is in use, the wallpaper and sounds return to the defaults; the colors stay as they are.
 - The App Market installs themes the same way (`themes::installPackage`, `themes::apply`).
+
+### 9.x Full-experience packs
+
+A theme can change the whole desktop, not only colors and wallpaper. Extra `theme.json` fields (all optional; a pack
+without them behaves as before):
+
+| Field | Meaning |
+|---|---|
+| `"full": true` | The pack owns layout and bar settings too: applying it resets them first, so switching between packs never leaves leftovers. |
+| `"subtitle": {lang: text}` | One-line vibe shown on cards. |
+| `"palette": {name: "RRGGBB[AA]"}` | Overrides of the palette: `windowBg titlebar titlebarInactive contentBg sidebarBg text text2 text3 controlBg controlBorder controlHover fieldBg fieldBorder selection selectionText menuBg menuText panelTint menubarTint menubarText separator accentText`. Unknown names are ignored. |
+| `"icons": "icons"` | Folder with `<app id>.png` (128 px). An app without a file keeps its own icon. Up to 160 files per pack. |
+| `"wallpapers": [..]` | Extra wallpaper choices (the first is `wallpaper`), chosen in Settings > Appearance > Customize. |
+| `"preview": "preview.jpg"` | Picture of the finished desktop for cards (480x270). |
+| `settings` keys | `shell.layout` (`dock`/`taskbar`), `taskbar.size`, `start.sidePanel`, `window.chrome` (`default`/`bevel`/`flat`/`glass`/`mono`), `appearance.themeBold`, `appearance.themeScale` (0.85-1.2), plus the older keys. |
+
+Sounds: `sounds/` may hold `startup click notify error pop key .wav`. Everything is applied atomically (one snapshot of every key;
+any failed check rolls back) and `Undo` in Settings restores it. A missing or broken applied pack falls back to the default look
+at the next start (logged); holding L + R + ZL + ZR while Nexvyn OS starts, or the setting "Reset the look at next start", does the same.
+Packs shipped inside the NRO live in `romfs/System/Themes/<id>/` (read-only, cannot be removed; an installed copy wins).
+Store entries may add `"audio"` (a short preview .wav) for the "Preview sounds" button.
 
 ## 10. Font packs (.nxvfont)
 

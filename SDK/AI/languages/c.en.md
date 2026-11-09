@@ -5,6 +5,7 @@
 Add this after `system-prompt.en.md` when the app is written in C. The full API is `<nexvyn.h>`
 (`SDK/Reference/c/include/nexvyn.h`): give it to the assistant as well when its context allows.
 - SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `ui_chooseFolder("{\"title\":\"Pick\",\"remember\":true}", fn, user)`, `fs_folderGrants()`, `fs_folderGranted(path)`, `fs_revokeFolder(path)`, `fs_savePath()`, `fs_saveBackup(slot, fn, user)`, `fs_saveRestore(slot, fn, user)`, `fs_saveDeleteBackup(slot, fn, user)`, `fs_saveBackups()` (JSON text for lists)
+- SDK 1.12 (`"minSdk": "1.12"`): `ui_tokens()` returns the system look as a JSON text (colors, radii, spacing, text sizes, `textScale`); `audio.stopAll()` stops every sound the app started. C also has `input_action(name)`.
 
 ## Skeleton
 

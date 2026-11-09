@@ -1,0 +1,112 @@
+{
+ "ui": {
+  "skip": "Geçmek için herhangi bir tuşa bas",
+  "sub": "Native SDK",
+  "tag": "Konsol sınıfı 3B",
+  "on": "AÇIK",
+  "off": "KAPALI",
+  "loading": "Kasaba yükleniyor",
+  "shaders": "Shader'lar hazırlanıyor",
+  "fail": "Yüklenemedi"
+ },
+ "hub": {
+  "title": "Grafik Gücü",
+  "tour": "Turu başlat",
+  "bench": "Kıyaslama",
+  "scores": "En iyi puanlar",
+  "free": "Serbest kamera",
+  "hint": "Yukarı / Aşağı seç    A aç    - bilgi"
+ },
+ "card": {
+  "what": "NEDİR",
+  "lang": "DİLLER",
+  "meas": "KONSOLDA ÖLÇÜLDÜ",
+  "live": "CANLI ÖLÇÜLDÜ"
+ },
+ "hud": {
+  "fps": "fps (sınırsız)",
+  "low": "%1 en düşük",
+  "frame": "kare",
+  "cpu": "CPU",
+  "draws": "çizim",
+  "tris": "üçgen",
+  "vis": "görünen",
+  "heap": "bellek",
+  "gpu": "GPU",
+  "res": "çözünürlük",
+  "docked": "TV modu",
+  "hand": "Taşınabilir"
+ },
+ "b": {
+  "title": "Kıyaslama",
+  "s0": "Yörünge",
+  "s1": "Hızlı geçiş",
+  "s2": "Geniş açı",
+  "s3": "Düşük çözünürlük",
+  "s4": "Akıtma",
+  "score": "PUAN",
+  "saved": "Yerel puan listesine kaydedildi",
+  "best": "Yeni en iyi puan",
+  "again": "Y tekrar    A menü"
+ },
+ "s": {
+  "title": "En iyi puanlar",
+  "empty": "Henüz puan yok. Kıyaslamayı çalıştır.",
+  "back": "B geri"
+ },
+ "f": {
+  "title": "Native SDK, konsol sınıfı 3B",
+  "n0": "sahne fps",
+  "n1": "daha hızlı sahne yükleme",
+  "n2": "daha hızlı kare aktarımı",
+  "n3": "GBA tam hızda",
+  "best": "En iyi puan",
+  "bench": "A  Kıyaslama",
+  "menu": "B  Menü"
+ },
+ "free": {
+  "hint": "Sol çubuk hareket    Sağ çubuk bakış    ZL / ZR aşağı / yukarı    B menü"
+ },
+ "c0": {
+  "name": "Fiziksel tabanlı ışık",
+  "what": "Metal ve pürüzlü yüzeyler gerçek bir güneşe tepki verir; gölgeler kamera süzülürken önbellekten gelir.",
+  "r0": "3B sahne testi, konsol fps",
+  "live": "Güneş gölgeleri"
+ },
+ "c1": {
+  "name": "Dinamik çözünürlük",
+  "what": "Resim, kare hızı 60'ın altına düşecekse daha az pikselle çizilir; aksi halde net kalır.",
+  "r0": "Aynı kasaba: %100 piksel ve %60 piksel"
+ },
+ "c2": {
+  "name": "Anında akıtma",
+  "what": "Bir işçi thread sahneyi okurken ana thread her karede biraz yükler; yükleme pencereyi asla dondurmaz.",
+  "r0": "Sahne yükleme süresi",
+  "live": "Akıtıldı"
+ },
+ "c3": {
+  "name": "Sıfır kopya kareler",
+  "what": "App'in resmi masaüstü bileştiricisine kopyalanmadan ulaşır; bir pencereyi göstermek neredeyse bedava.",
+  "r0": "Karenin ekrana aktarımı",
+  "live": "Konsolda ölçülen aktarım: 0.10-0.22 ms"
+ },
+ "c4": {
+  "name": "Dokunma ve Joy-Con",
+  "what": "Çubuklar, düğmeler ve dokunmatik ekran aynı karede app'e ulaşır; pencerede ya da tam ekranda. Şimdi dene.",
+  "r0": "Dokunma, Joy-Con ve 3B dünyalar",
+  "b": "çalışmıyordu",
+  "a": "çalışıyor"
+ },
+ "c5": {
+  "name": "Ses",
+  "what": "Mikser ve yeniden örnekleyici her örnek biçimini temiz stereoya çevirir; bu bölüm nxn_tone ile üretilen notaları çalar.",
+  "r0": "mGBA tam hızda, ses kesilmesi yok"
+ },
+ "c6": {
+  "name": "Kaputun altı",
+  "what": "Bölgeli aydınlatma, yarım çözünürlüklü tamponlar ve toplu çizim; konsolda Nexvyn Bench ile ölçüldü.",
+  "r0": "128 ışık, bölgeli",
+  "r1": "Parçacık, yarım çözünürlük",
+  "r2": "Kare başına GL çağrısı, 3B sahne"
+ }
+}

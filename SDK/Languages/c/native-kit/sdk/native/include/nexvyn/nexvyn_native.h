@@ -1,4 +1,5 @@
-/* Nexvyn Native SDK (nxn_*) - one include for everything. v1 draft (NATIVE_KIT.en.md).
+/* Nexvyn Native SDK (nxn_*) - one include for everything. ABI v1, frozen (NATIVE_KIT.en.md;
+ * the frozen surface: sdk/native/toolchain/nxn_abi_v1.json, add-only).
  *
  *   #include <nexvyn/nexvyn_native.h>       link: -lnexvyn_native (before SDL2, EGL and -lnx)
  *

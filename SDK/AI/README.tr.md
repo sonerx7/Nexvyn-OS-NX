@@ -12,9 +12,9 @@ Her dosyanın iki sürümü vardır: İngilizce `X.en.md` ve Türkçe `X.tr.md`.
 
 | Dosya (Türkçe · İngilizce) | Ne için |
 |---|---|
-| [system-prompt.tr.md](system-prompt.tr.md) · [system-prompt.en.md](system-prompt.en.md) | Ana context pack (~8 bin token, SDK 1.9): bundle düzeni, `app.json`, zorunlu izinler, program yapısı, kurallar (3 sn, 64 MB, 60 fps, `TR()`), tüm API'nin özeti, dil farkları, store biçimi |
+| [system-prompt.tr.md](system-prompt.tr.md) · [system-prompt.en.md](system-prompt.en.md) | Ana context pack (~8 bin token, SDK 1.12): bundle düzeni, `app.json`, zorunlu izinler, program yapısı, kurallar (3 sn, 64 MB, 60 fps, `TR()`), tüm API'nin özeti, dil farkları, store biçimi |
 | [languages/](languages/) | Language pack'ler: [lua](languages/lua.tr.md), [javascript](languages/javascript.tr.md), [python](languages/python.tr.md), [squirrel](languages/squirrel.tr.md), [c](languages/c.tr.md), [java](languages/java.tr.md) (İngilizceleri `.en.md`): iskelet kod, dile özgü kurallar, checker |
-| [tasks/](tasks/) | Task prompt'ları: [oyun yap](tasks/make-game.tr.md), [modelli ve pbr renderer'lı 3B oyun yap](tasks/make-3d-game.tr.md), [akış, fotoğraf, kısa video ya da sohbet uygulaması yap](tasks/make-social-app.tr.md), [mağaza ikonu (key art)](tasks/store-icon.tr.md), [araç uygulaması yap](tasks/make-utility.tr.md), [Lua oyununu JS'ye taşı](tasks/port-lua-to-js.tr.md), [arayüz dili ekle](tasks/add-language.tr.md), [store.json ve ekran görüntüsü betiği yaz](tasks/store-listing.tr.md), [checker hatasını düzelt](tasks/fix-lua-check.tr.md) (İngilizceleri `.en.md`) |
+| [tasks/](tasks/) | Task prompt'ları: [oyun yap](tasks/make-game.tr.md), [modelli ve pbr renderer'lı 3B oyun yap](tasks/make-3d-game.tr.md), [akış, fotoğraf, kısa video ya da sohbet uygulaması yap](tasks/make-social-app.tr.md), [mağaza ikonu (key art)](tasks/store-icon.tr.md), [araç uygulaması yap](tasks/make-utility.tr.md), [tema paketi yap](tasks/make-theme.tr.md), [Lua oyununu JS'ye taşı](tasks/port-lua-to-js.tr.md), [arayüz dili ekle](tasks/add-language.tr.md), [store.json ve ekran görüntüsü betiği yaz](tasks/store-listing.tr.md), [checker hatasını düzelt](tasks/fix-lua-check.tr.md) (İngilizceleri `.en.md`) |
 | [checklist.tr.md](checklist.tr.md) · [checklist.en.md](checklist.en.md) | Asistanın yanıt vermeden önce geçmesi gereken liste |
 
 ## Hangi dili kullanmalı?

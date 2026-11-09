@@ -5,6 +5,7 @@ Bu kısa yoldur. Başvuru belgesi `docs/NATIVE_KIT.en.md` (her komut ve başlık
 
 ## 1. Kurulum (bir kez)
 
+0. Kit, herkese açık deponun `SDK/Languages/c/native-kit` klasörüdür (depoyu zip olarak indirin ya da klonlayın, kurulum programı yoktur). Bu rehberdeki her komutu o klasörden çalıştırın.
 1. Switch paketleriyle devkitPro (`switch-dev`, `switch-sdl2`, `switch-mesa`, `switch-glad`, ...). Denenen sürümler
    `tools/toolchain.json` içinde.
 2. Python 3. CMake ve Ninja devkitPro'nun kabuğuyla gelir. Windows'ta CLI o kabuğu kendisi açar.
@@ -37,7 +38,7 @@ yapar. `app` şablonundaki ImGui, derlemeye kattığınız bir kaynaktır, siste
 - Emülatör: `python tools/nxv_native run notes --sd <SD kart kökü>` paketi `<sd>/NexvynOS/Applications` içine kopyalar.
   Hiçbir şey başlatmaz; Nexvyn OS'u kendiniz açıp app'i başlatın.
 - Konsol: `run --sd <SD kart kökü>` ile konsolun SD kartına, ya da `.nxvapp`'i Nexvyn OS'un paket kurduğu yoldan kurun.
-  İmzasız paket uyarıyla kurulur; Store paketleri imzalı olmalı (`package --sign key.pem`).
+  İmzasız paket uyarıyla kurulur; App Market için imzalamazsınız: Store paketini pull request'inizden bakımcılar üretir ve imzalar (`package --sign key.pem` yalnızca kendiniz dağıttığınız paketler içindir).
 
 ## 4. Çalışmazsa
 

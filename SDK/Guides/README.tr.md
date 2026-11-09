@@ -12,11 +12,12 @@ Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin
 | [PBR oyun tarifi](PBR_GAME_RECIPE.tr.md) | pbr renderer üzerinde adım adım eksiksiz küçük bir 3B oyun (materyal, ışık, gölge, bloom, instancing, yüklenen model), Lua ve JavaScript'te, Python ve C sürümleriyle |
 | [Sosyal uygulama tarifi](SOCIAL_APP_RECIPE.tr.md) | Adım adım eksiksiz bir akış uygulaması (çevrimdışı önbellekli ağ, web resimleri, sanal akış, zengin metin, klip oynatıcı), Lua ve JavaScript'te, Python ve C sürümleriyle |
 | [AI destekli çalışma](AI_WORKFLOW.tr.md) | AI ile üretilmiş kod, model ve dokulardan konsola hazır oyuna: context pack'ler, ölçek, pivot, LOD, doku boyutları, ORM ve MetallicSmoothness haritaları, normal haritaları, cam ve ışıma, yansımalar, haklar |
-| [SDK sürümleri](SDK_VERSIONS.tr.md) | 1.0'dan 1.11'e her SDK sürümünün ekledikleri, hangi Nexvyn OS'la geldiği, hangi dillerin yeni API aldığı, `minSdk` ve `targetSdk` seçimi |
+| [SDK sürümleri](SDK_VERSIONS.tr.md) | 1.0'dan 1.12'ye her SDK sürümünün ekledikleri, hangi Nexvyn OS'la geldiği, hangi dillerin yeni API aldığı, `minSdk` ve `targetSdk` seçimi |
 | [Oyun yap](MAKE_A_GAME.tr.md) | Eksiksiz oyun tarifi: proje, 3B modeller (`.glb` / `.fbx`), yükleme, girdi, çarpışma, konsolda hız, pbr renderer bütçesi, sanat yönü, mağaza ikonu, yayımlama |
 | [Sosyal uygulama yap](MAKE_A_SOCIAL_APP.tr.md) | Akış, fotoğraf, kısa video ve sohbet uygulamaları: önbellekli ve yeniden denemeli istekler, yükleme, WebSocket, oturum açma, web resimleri, video oynatıcılar, akış ve sayfalayıcılar |
 | [Ses tasarımı](SOUND_DESIGN.tr.md) | Ses kiti: katmanlı tarifler, varyantlar, bus'lar, ducking, ortam sesi, müzik döngüleri, seviyeler |
 | [Giriş ve oyun modları](INPUT_AND_PLAY_MODES.tr.md) | Nexvyn'e uyum: dokunma, kumanda (Joy-Con çifti ya da tek), portatif ve dock, pencere ve tam ekran, ses, sistem gezinmesi, performans ve kontrol listesi |
+| [Tema yapımı](THEMES.tr.md) | Tema paketleri (`.nxvtheme`): renkler ve vurgu, duvar kâğıtları, pencere biçimi, dock ya da görev çubuğu düzeni, simge seti, sesler, Store `audio` alanı, deneme, yayın ve özgünlük kuralları; `Samples/themes/template` şablonu ve `Tools/theme/themecheck.py` denetleyicisiyle |
 | [Grafik, arayüz ve oyun hissi](GAME_FEEL.tr.md) | His kiti: hareket, darbe, ışık, yazı, arayüz biçimleri, kameralar, 3B atmosferler ve mağaza kalite çıtası |
 
 ## Diller

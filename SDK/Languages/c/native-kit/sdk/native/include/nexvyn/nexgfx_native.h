@@ -16,6 +16,8 @@
  * library starts its own worker thread per scene to read files (it never touches OpenGL). Memory: the library owns every
  * object; free scenes with ngfx_scene_free and the device with ngfx_device_destroy (the app's end frees both anyway).
  * Errors: calls return NGFX_OK (0) or a negative NGFX_ERR_*; ngfx_native_error() has the text of the last failure on the thread.
+ * NGFX_ERR_* is its own set: never compare an ngfx_* result with NXN_ERR_* (-5 is NGFX_ERR_NOMEM here, NXN_ERR_DENIED there).
+ * Frozen with the Native ABI v1 (sdk/native/toolchain/nxn_abi_v1.json): signatures, layouts and values are only added.
  * A damaged scene file ends as NGFX_ERR_FORMAT in ngfx_scene_step, never as a crash. Feature bit: NXN_CAP_NEXGFX (nxn_app.h)
  * says the host's GL context offers what the device needs (OpenGL 4.3 core). */
 #ifndef NEXGFX_NATIVE_H

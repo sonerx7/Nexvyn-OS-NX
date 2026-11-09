@@ -329,6 +329,8 @@ adres 404 döndükçe sırayla eski `AppStore/catalog.json` ve `store/catalog.js
       "permissions": ["network"],
       "screenshots": ["https://.../1.png"],
       "featured": false,
+      "recommended": false,
+      "recommendedOrder": 10,
       "added": "2026-09-20",
       "updated": "2026-10-01",
       "changelog": {"en": "Faster search.", "tr": "Daha hızlı arama."},
@@ -352,6 +354,10 @@ adres 404 döndükçe sırayla eski `AppStore/catalog.json` ve `store/catalog.js
 - `updated` (`YYYY-AA-GG`, verilmezse `added`) "En yeni" sıralamasında ve ayrıntı sayfasında, `changelog` "Yenilikler" bölümünde,
   `tags` aramada, `runtime` (`lua`, `js`, `python`, `squirrel`, `c`, `java`) ayrıntı sayfasında kullanılır.
 - `signer` verilirse indirilen paket bu anahtarla imzalanmış olmalıdır; değilse kurulmaz.
+- `recommended` (`true`, varsayılan `false`) kaydı ilk kurulum asistanındaki "Önerilen Uygulamalar" adımına koyar: önceden
+  işaretli, ikonu, adı, alt başlığı ve boyutuyla; `recommendedOrder` (tam sayı, küçük önce, varsayılan 0) sıralar.
+  Seçilenler kurulumdan sonra Uygulama Mağazası'nın kurulum sırasına girer ve arka planda iner (çevrimdışıysa konsol
+  çevrimiçi olunca). Liste kısa tutulur; `Tools/build_store.py` iki alanı sayfanın `app.json` dosyasından kataloğa kopyalar.
 - `subtitle` (en çok 45 karakter, dil tablosu) adın altında tek satır olarak kartlarda, listelerde ve ayrıntı
   sayfasında gösterilir; `name`, `subtitle` ve `description` arayüz dilinde, yoksa İngilizce gösterilir.
 - `"builtin": true`: sistemle gelen isteğe bağlı bir uygulama (`download`, `sha256`, `size` yok). "Al" onu listelere
@@ -456,7 +462,7 @@ hedefleri, boyut sınırları) ve `manifest.sha256` (`--sign` ile `manifest.sig`
 > (shown while the dark appearance is on), optional `sounds` (a folder of `<name>.wav` files replacing the system
 > sounds) and optional `settings` with only these keys: `appearance.reduceTransparency`, `appearance.darkFrom`,
 > `appearance.darkTo`, `dock.size`, `dock.magnify`, `dock.magnification`, `desktop.iconSize`, `screensaver.style`
-> (other keys are ignored, values are clamped). Limits: 64 files, 32 MB, 12 MB per file; only `.json .jpg .jpeg .png
+> (other keys are ignored, values are clamped). Limits: 160 files, 32 MB, 12 MB per file; only `.json .jpg .jpeg .png
 > .webp .wav .md .txt` (+ `manifest.sha256`/`.sig`); unsafe paths refuse the package. Themes install into
 > `~/Library/Themes/<id>/` (same id = update in place). Opening one in Files shows a sheet with **Install** and
 > **Install and Apply**; *System Settings > Appearance > Themes* applies, removes and restores the default look.
@@ -514,7 +520,7 @@ Aurora.nxvtheme  (zip)
 
 Kurallar ve davranış:
 
-- En çok 64 dosya, toplam 32 MB, dosya başına 12 MB; izin verilen uzantılar `.json .jpg .jpeg .png .webp .wav .md
+- En çok 160 dosya, toplam 32 MB, dosya başına 12 MB; izin verilen uzantılar `.json .jpg .jpeg .png .webp .wav .md
   .txt` (ve `manifest.sha256`, `manifest.sig`). `__MACOSX/` ve gizli dosyalar yok sayılır. Mutlak, `..`, `:` ya da
   `\` içeren bir yol paketi reddettirir (zip-slip koruması). Sınırlar hiçbir şey açılmadan denetlenir.
 - Kurulum yeri `~/Library/Themes/<id>/` (`sdmc:/NexvynOS/Users/<ad>/Library/Themes/`). Önce gizli bir geçici klasöre
@@ -527,6 +533,27 @@ Kurallar ve davranış:
   Temaların resimleri *Duvar Kâğıdı* bölmesinde de ayrı bir başlık altında listelenir.
 - Kaldırılan tema kullanılıyorsa duvar kâğıdı ve sesler varsayılana döner; renkler olduğu gibi kalır.
 - Uygulama Mağazası temaları aynı yoldan kurar (`themes::installPackage`, `themes::apply`).
+
+### 9.x Tam deneyim paketleri
+
+Bir tema yalnızca renk ve duvar kâğıdını değil tüm masaüstünü değiştirebilir. `theme.json`'a eklenen alanlar (hepsi isteğe bağlı;
+bunlar olmayan paket eskisi gibi davranır):
+
+| Alan | Anlamı |
+|---|---|
+| `"full": true` | Paket düzen ve çubuk ayarlarına da sahiptir: uygulanırken önce bunları sıfırlar, paketler arası geçişte artık kalmaz. |
+| `"subtitle": {dil: metin}` | Kartlarda görünen tek satırlık hava. |
+| `"palette": {ad: "RRGGBB[AA]"}` | Palet geçersiz kılmaları: `windowBg titlebar titlebarInactive contentBg sidebarBg text text2 text3 controlBg controlBorder controlHover fieldBg fieldBorder selection selectionText menuBg menuText panelTint menubarTint menubarText separator accentText`. Bilinmeyen adlar yok sayılır. |
+| `"icons": "icons"` | `<app id>.png` (128 px) dosyalarının klasörü. Dosyası olmayan uygulama kendi simgesini korur. Pakette en çok 160 dosya. |
+| `"wallpapers": [..]` | Ek duvar kâğıdı seçenekleri (ilki `wallpaper`), Ayarlar > Görünüm > Özelleştir'den seçilir. |
+| `"preview": "preview.jpg"` | Kartlar için bitmiş masaüstünün resmi (480x270). |
+| `settings` anahtarları | `shell.layout` (`dock`/`taskbar`), `taskbar.size`, `start.sidePanel`, `window.chrome` (`default`/`bevel`/`flat`/`glass`/`mono`), `appearance.themeBold`, `appearance.themeScale` (0,85-1,2) ve eski anahtarlar. |
+
+Sesler: `sounds/` içinde `startup click notify error pop key .wav` olabilir. Her şey atomik uygulanır (tüm anahtarların tek anlık görüntüsü;
+başarısız kontrol hepsini geri alır) ve Ayarlar'daki `Geri Al` eski durumu getirir. Uygulanan paket eksik ya da bozuksa bir sonraki açılışta
+varsayılan görünüme dönülür (loglanır); Nexvyn OS açılırken L + R + ZL + ZR basılı tutmak ya da "Sonraki açılışta görünümü sıfırla" ayarı aynısını yapar.
+NRO'nun içindeki paketler `romfs/System/Themes/<id>/` altındadır (salt okunur, kaldırılamaz; kurulu kopya önceliklidir).
+Mağaza girdileri "Sesleri dinle" düğmesi için `"audio"` (kısa önizleme .wav) ekleyebilir.
 
 ## 10. Yazı tipi paketleri (.nxvfont)
 

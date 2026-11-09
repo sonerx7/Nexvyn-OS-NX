@@ -68,47 +68,48 @@ NXN_API void nxn_request_return(nxn_return_reason reason, int32_t code, const ch
 
 /* ---------------------------------------------------------------- capabilities */
 
-enum {
-    NXN_CAP_HOSTED = 1ull << 0,       /* started by Nexvyn OS (hand-off read) */
-    NXN_CAP_RETURN = 1ull << 1,       /* ending the app starts Nexvyn OS again */
-    NXN_CAP_CRASH_GUARD = 1ull << 2,  /* CPU faults are recorded and returned (crash handler installed) */
-    NXN_CAP_GL_CORE = 1ull << 3,      /* desktop OpenGL core profile (up to gl_max_major.gl_max_minor) */
-    NXN_CAP_GLES = 1ull << 4,         /* OpenGL ES (up to gles_max_major.gles_max_minor) */
-    NXN_CAP_AUDIO = 1ull << 5,
-    NXN_CAP_TOUCH = 1ull << 6,
-    NXN_CAP_KEYBOARD = 1ull << 7,     /* USB keyboard state */
-    NXN_CAP_APPLET_MODE = 1ull << 8,  /* running as a library applet (less memory; see the porting guide) */
-    NXN_CAP_EVENTS = 1ull << 9,       /* nxn_event_poll (NXN_EVENT_RESIZE) and nxn_display_resize */
-    NXN_CAP_SHARED_LIBS = 1ull << 10, /* nxn_lib_open can load .nxvlib libraries (JIT code memory is available) */
-    NXN_CAP_WINDOWED = 1ull << 11,    /* the app runs inside Nexvyn OS, in a window or full screen (a .nxvmod in the
-                                         OS's process); without it the app is a stand-alone .nro */
-    NXN_CAP_AUDIO_CLEAR = 1ull << 12, /* nxn_audio_clear (Native 1.1) */
-    NXN_CAP_USB_INPUT = 1ull << 13,   /* nxn_input_mouse, nxn_input_key_poll, nxn_input_text (Native 1.1) */
-    NXN_CAP_POWER_EVENTS = 1ull << 14,/* NXN_EVENT_DOCK / SUSPEND / RESUME (Native 1.1) */
-    /* system services (nxn_sys.h, Native 1.1); windowed mode only, the stand-alone library answers NXN_ERR_UNSUPPORTED */
-    NXN_CAP_NOTIFY = 1ull << 15,      /* nxn_notify */
-    NXN_CAP_CLIPBOARD = 1ull << 16,   /* nxn_clipboard_get / nxn_clipboard_set */
-    NXN_CAP_RUMBLE = 1ull << 17,      /* nxn_rumble */
-    NXN_CAP_PICKER = 1ull << 18,      /* nxn_pick, nxn_grant_* (file / folder dialogs, folder access that is kept) */
-    NXN_CAP_SAVEDATA = 1ull << 19,    /* nxn_save_* (the user's save folder and its backups) */
-    NXN_CAP_PERMISSIONS = 1ull << 20, /* nxn_perm_query / nxn_perm_request */
-    NXN_CAP_UI_TOKENS = 1ull << 21,   /* nxn_ui_tokens_get, nxn_ui_font_get, nxn_ui_icon_code, NXN_EVENT_THEME (nxn_ui.h) */
-    NXN_CAP_TEXT = 1ull << 22,        /* nxn_tr, nxn_tr_format: the app's lang/<code>.json (nxn_ui.h) */
-    NXN_CAP_NEXGFX = 1ull << 23,      /* the window's GL context offers what NexGFX needs (OpenGL 4.3 core): ngfx_* (nexgfx_native.h) */
-    NXN_CAP_MIXER = 1ull << 24,       /* nxn_sfx_play, nxn_sfx_stop_all, nxn_tone: the OS sound mixer (nxn_audio.h) */
-    NXN_CAP_INPUT_ACTIONS = 1ull << 25, /* nxn_input_action_buttons: the user's button mapping (nxn_input.h) */
-    /* C/C++ runtime in windowed mode (W2a); the stand-alone .nro always had both */
-    NXN_CAP_TLS = 1ull << 26,         /* thread_local / __thread in the module and its libraries (-mtls-dialect=trad) */
-    NXN_CAP_CXX_EXCEPTIONS = 1ull << 27, /* C++ throw / catch across the module and its libraries */
-    /* JIT and faults (nxn_jit.h); in a window each behind its own setting, off by default */
-    NXN_CAP_JIT = 1ull << 28,           /* nxn_jit_*: executable code memory (rw + rx views) */
-    NXN_CAP_FAULT_HANDLER = 1ull << 29, /* nxn_fault_handler_set: data aborts go to the app's handler first (fastmem) */
-    NXN_CAP_GUARD_PAGES = 1ull << 30,   /* nxn_mem_guard: inaccessible / read-only pages in the app's own heap */
-    /* window menu (nxn_menu.h): the app's menus in the OS menu bar, NXN_EVENT_MENU; setting native.windowMenu, minNative 1.1 */
-    NXN_CAP_MENU = 1ull << 31,
-    /* NXN_UI_FONT_CJK (nxn_ui.h) is a font id this system answers; the font itself may still be absent (NXN_ERR_NOT_FOUND) */
-    NXN_CAP_UI_FONT_CJK = 1ull << 32
-};
+/* Capability bits of nxn_caps.features. Macros of type uint64_t, not enum constants: bit 31 and up do not fit the int
+ * range an enum constant has in C11 (ABI v1 keeps the values; only the spelling changed from an anonymous enum). */
+#define NXN_CAP_HOSTED (UINT64_C(1) << 0)        /* started by Nexvyn OS (hand-off read) */
+#define NXN_CAP_RETURN (UINT64_C(1) << 1)        /* ending the app starts Nexvyn OS again */
+#define NXN_CAP_CRASH_GUARD (UINT64_C(1) << 2)   /* CPU faults are recorded and returned (crash handler installed) */
+#define NXN_CAP_GL_CORE (UINT64_C(1) << 3)       /* desktop OpenGL core profile (up to gl_max_major.gl_max_minor) */
+#define NXN_CAP_GLES (UINT64_C(1) << 4)          /* OpenGL ES (up to gles_max_major.gles_max_minor) */
+#define NXN_CAP_AUDIO (UINT64_C(1) << 5)
+#define NXN_CAP_TOUCH (UINT64_C(1) << 6)
+#define NXN_CAP_KEYBOARD (UINT64_C(1) << 7)      /* USB keyboard state */
+#define NXN_CAP_APPLET_MODE (UINT64_C(1) << 8)   /* running as a library applet (less memory; see the porting guide) */
+#define NXN_CAP_EVENTS (UINT64_C(1) << 9)        /* nxn_event_poll (NXN_EVENT_RESIZE) and nxn_display_resize */
+#define NXN_CAP_SHARED_LIBS (UINT64_C(1) << 10)  /* nxn_lib_open can load .nxvlib libraries (JIT code memory is available) */
+/* NXN_CAP_WINDOWED: the app runs inside Nexvyn OS, in a window or full screen (a .nxvmod in the OS's process); without
+ * it the app is a stand-alone .nro */
+#define NXN_CAP_WINDOWED (UINT64_C(1) << 11)
+#define NXN_CAP_AUDIO_CLEAR (UINT64_C(1) << 12)  /* nxn_audio_clear (Native 1.1) */
+#define NXN_CAP_USB_INPUT (UINT64_C(1) << 13)    /* nxn_input_mouse, nxn_input_key_poll, nxn_input_text (Native 1.1) */
+#define NXN_CAP_POWER_EVENTS (UINT64_C(1) << 14) /* NXN_EVENT_DOCK / SUSPEND / RESUME (Native 1.1) */
+/* system services (nxn_sys.h, Native 1.1); windowed mode only, the stand-alone library answers NXN_ERR_UNSUPPORTED */
+#define NXN_CAP_NOTIFY (UINT64_C(1) << 15)       /* nxn_notify */
+#define NXN_CAP_CLIPBOARD (UINT64_C(1) << 16)    /* nxn_clipboard_get / nxn_clipboard_set */
+#define NXN_CAP_RUMBLE (UINT64_C(1) << 17)       /* nxn_rumble */
+#define NXN_CAP_PICKER (UINT64_C(1) << 18)       /* nxn_pick, nxn_grant_* (file / folder dialogs, folder access that is kept) */
+#define NXN_CAP_SAVEDATA (UINT64_C(1) << 19)     /* nxn_save_* (the user's save folder and its backups) */
+#define NXN_CAP_PERMISSIONS (UINT64_C(1) << 20)  /* nxn_perm_query / nxn_perm_request */
+#define NXN_CAP_UI_TOKENS (UINT64_C(1) << 21)    /* nxn_ui_tokens_get, nxn_ui_font_get, nxn_ui_icon_code, NXN_EVENT_THEME (nxn_ui.h) */
+#define NXN_CAP_TEXT (UINT64_C(1) << 22)         /* nxn_tr, nxn_tr_format: the app's lang/<code>.json (nxn_ui.h) */
+#define NXN_CAP_NEXGFX (UINT64_C(1) << 23)       /* the window's GL context offers what NexGFX needs (OpenGL 4.3 core): ngfx_* (nexgfx_native.h) */
+#define NXN_CAP_MIXER (UINT64_C(1) << 24)        /* nxn_sfx_play, nxn_sfx_stop_all, nxn_tone: the OS sound mixer (nxn_audio.h) */
+#define NXN_CAP_INPUT_ACTIONS (UINT64_C(1) << 25) /* nxn_input_action_buttons: the user's button mapping (nxn_input.h) */
+/* C/C++ runtime in windowed mode (W2a); the stand-alone .nro always had both */
+#define NXN_CAP_TLS (UINT64_C(1) << 26)          /* thread_local / __thread in the module and its libraries (-mtls-dialect=trad) */
+#define NXN_CAP_CXX_EXCEPTIONS (UINT64_C(1) << 27) /* C++ throw / catch across the module and its libraries */
+/* JIT and faults (nxn_jit.h); in a window each behind its own setting, off by default */
+#define NXN_CAP_JIT (UINT64_C(1) << 28)          /* nxn_jit_*: executable code memory (rw + rx views) */
+#define NXN_CAP_FAULT_HANDLER (UINT64_C(1) << 29) /* nxn_fault_handler_set: data aborts go to the app's handler first (fastmem) */
+#define NXN_CAP_GUARD_PAGES (UINT64_C(1) << 30)  /* nxn_mem_guard: inaccessible / read-only pages in the app's own heap */
+/* window menu (nxn_menu.h): the app's menus in the OS menu bar, NXN_EVENT_MENU; setting native.windowMenu, minNative 1.1 */
+#define NXN_CAP_MENU (UINT64_C(1) << 31)
+/* NXN_UI_FONT_CJK (nxn_ui.h) is a font id this system answers; the font itself may still be absent (NXN_ERR_NOT_FOUND) */
+#define NXN_CAP_UI_FONT_CJK (UINT64_C(1) << 32)
 
 typedef struct nxn_caps {
     uint32_t size;

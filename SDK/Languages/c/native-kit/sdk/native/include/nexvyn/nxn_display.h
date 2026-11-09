@@ -39,6 +39,8 @@ typedef struct nxn_display_params {
 } nxn_display_params;
 
 /* Creates the surface and context and makes it current on the calling thread. params may be NULL (GL 4.3 core).
+ * params->size must be set (NXN_STRUCT_INIT): with a size below 4 Nexvyn OS uses the defaults as for NULL, while the
+ * stand-alone library answers NXN_ERR_INVALID (both kept as they are for compatibility).
  * Thread: the app thread that will render (usually the main thread); once. Memory: *out is a library-owned handle;
  * `params` is only read during the call. */
 NXN_API nxn_result nxn_display_open(const nxn_display_params* params, nxn_display** out);
