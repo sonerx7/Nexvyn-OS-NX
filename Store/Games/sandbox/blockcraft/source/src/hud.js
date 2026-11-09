@@ -5,6 +5,7 @@ import { itemDef, nameKey } from "./registry.js";
 import { shadowText } from "./widgets.js";
 import { clamp } from "./util.js";
 
+let iconImage=null, hudImage=null;
 const ICONS = "bundle:/textures/icons.png", HUDTEX = "bundle:/textures/hud.png";
 
 export function itemName(id) {
@@ -18,7 +19,7 @@ export function itemName(id) {
 export function drawIcon(id, x, y, s) {
   const cell = icons[id];
   if (cell === undefined) return;
-  const img = gfx.image(ICONS);
+  const img = iconImage || (iconImage=gfx.image(ICONS));
   if (!img) return;
   gfx.drawRegion(img, (cell % 16) * 48, Math.floor(cell / 16) * 48, 48, 48, x, y, s, s);
 }
@@ -53,7 +54,7 @@ export class Hud {
   showItemName() { this.nameTimer = 2; }
 
   sprite(cell, x, y, s) {
-    const img = gfx.image(HUDTEX);
+    const img = hudImage || (hudImage=gfx.image(HUDTEX));
     if (img) gfx.drawRegion(img, cell * 16, 0, 16, 16, x, y, s, s);
   }
 

@@ -38,7 +38,10 @@ const M = {
   ry(a) { const c = Math.cos(a), s = Math.sin(a); return [c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]; },
   rz(a) { const c = Math.cos(a), s = Math.sin(a); return [c, s, 0, 0, -s, c, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]; },
   // Euler XYZ (three.js default order): Rx * Ry * Rz
-  xyz(x, y, z) { return M.mul(M.mul(M.rx(x), M.ry(y)), M.rz(z)); },
+  xyz(x, y, z) {
+    const a=Math.cos(x),b=Math.sin(x),c=Math.cos(y),d=Math.sin(y),e=Math.cos(z),f=Math.sin(z);
+    return [c*e,a*f+b*d*e,b*f-a*d*e,0,-c*f,a*e-b*d*f,b*e+a*d*f,0,d,-b*c,a*c,0,0,0,0,1];
+  },
 };
 // g3d.draw's rotation is rotY(ry) * rotX(rx) * rotZ(rz): decompose a rotation(+uniform scale) matrix into it
 function toG3d(m) {
@@ -60,6 +63,7 @@ function toG3d(m) {
 export class Renderer {
   constructor(game) {
     this.game = game;
+    this.lightFrame = new Map();
     this.cubes = new Map();      // block id -> textured cube mesh
     this.sprites = new Map();    // "i<id>" / "t<tile>" -> extruded sprite mesh
     this.tileBits = new Map();   // block id -> particle mesh
@@ -98,7 +102,11 @@ export class Renderer {
       if (cache) { for (const m of cache.values()) handles.add(m); cache.clear(); }
     }
     if (this.mobParts) { for (const parts of this.mobParts.values()) for (const part of parts) handles.add(part.mesh); this.mobParts.clear(); }
-    for (const m of handles) if (m) { try { m.free(); } catch (e) { console.log("mesh cleanup: " + e); } }
+    // SDK 1.7/1.8 JS meshes have GC ownership; unlike Models/Squirrel meshes,
+    // their prototype may not expose free(). Drop every strong reference too.
+    for (const m of handles) if (m && typeof m.free === 'function') { try { m.free(); } catch (e) { console.log("mesh cleanup: " + e); } }
+    this.unit=this.shadow=this.arrowMesh=this.clouds=null;
+    this.cracks=[];this.highlight=this.crack=null;
     if (this.particles) this.particles.list.length = 0;
   }
 
@@ -276,6 +284,7 @@ export class Renderer {
 
   // ---------------------------------------------------------------- frame
   draw(w, h) {
+    this.lightFrame.clear();
     const g = this.game, p = g.player, s = g.settings, e = this.env;
     if (!e) return;
     const cam = this.cam;
@@ -346,9 +355,11 @@ export class Renderer {
   }
 
   brightnessAt(x, y, z) {
-    const l = this.game.world.getLight(Math.floor(x), Math.floor(y), Math.floor(z));
+    x=Math.floor(x);y=Math.floor(y);z=Math.floor(z);const key=`${x},${y},${z}`;
+    if (this.lightFrame.has(key)) return this.lightFrame.get(key);
+    const l = this.game.world.getLight(x,y,z);
     const curve = v => { const c = v / (4 - 3 * v); return lerp(c, v, 0.35); };
-    return Math.max(curve((l >> 4) / 15) * this.daylight, curve((l & 15) / 15) * 0.95, 0.08);
+    const k=Math.max(curve((l >> 4) / 15)*this.daylight,curve((l&15)/15)*.95,.08);this.lightFrame.set(key,k);return k;
   }
 
   drawSky(w, h, cam) {
@@ -467,8 +478,9 @@ export class Renderer {
     const forward = type === "zombie" || type === "skeleton";
     const sw = Math.sin(s.walk) * 0.9 * s.amount;
     const swell = 1 + (s.swell || 0) * 0.2;
-    let root = M.mul(M.t(pos.x, pos.y, pos.z), M.ry(yaw));
-    root = M.mul(root, M.s(scale * swell));
+    let root = M.ry(yaw);
+    for(let i=0;i<12;i++)root[i]*=scale*swell;
+    root[12]=pos.x;root[13]=pos.y;root[14]=pos.z;
     if (s.death > 0) root = M.mul(root, M.rz(Math.min(1, s.death / 0.6) * Math.PI / 2));
     const frames = {};
     for (const { p, mesh } of parts) {
@@ -488,10 +500,13 @@ export class Renderer {
       if (nm.startsWith("wing")) rz = (nm === "wing1" ? 1 : -1) * (s.flap ? Math.abs(Math.sin(s.walk * 4)) * 1.1 : 0);
       if (nm === "head") { ry = s.headYaw || 0; rx = -(s.headPitch || 0); }
       const parent = p.parent ? frames[p.parent] : root;
-      const frame = M.mul(M.mul(M.mul(parent || root, M.t(p.pivot[0], p.pivot[1], p.pivot[2])), M.xyz(rx, ry, rz)), M.xyz(p.rot[0], p.rot[1], p.rot[2]));
+      let local=M.xyz(rx,ry,rz);
+      if(p.rot[0]||p.rot[1]||p.rot[2])local=M.mul(local,M.xyz(...p.rot));
+      local[12]=p.pivot[0];local[13]=p.pivot[1];local[14]=p.pivot[2];
+      const frame = M.mul(parent || root,local);
       frames[nm] = frame;
-      const m = M.mul(frame, M.t(p.at[0], p.at[1], p.at[2]));
-      const d = toG3d(m);
+      const d = toG3d(frame);
+      for(let axis=0;axis<3;axis++)d[axis]+=frame[axis]*p.at[0]+frame[4+axis]*p.at[1]+frame[8+axis]*p.at[2];
       // glowing parts (the Puffcap's spots and eyes) ignore the light and pulse with anim.glow
       if (p.glow) g3d.draw(mesh, d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[6], d[6], gray(clamp(s.glow ?? 1, 0, 1)), "unlit glow");
       else g3d.draw(mesh, d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[6], d[6], tint, flags);
@@ -581,7 +596,7 @@ export class Renderer {
       }
     }
     if (wth.rain < 0.05) return;
-    const n = Math.round(160 * wth.rain);
+    const n = Math.round([48,96,160][g.settings.graphics ?? 1] * wth.rain);
     const t = g.clock;
     const snow = wth.precipitationAt(cam.x, cam.z) === "snow";
     const dry = wth.precipitationAt(cam.x, cam.z) === "none";
@@ -614,7 +629,7 @@ class Particles {
     this.r = r;
     this.list = [];
   }
-  add(p) { if (this.list.length < 400) this.list.push(p); }
+  add(p) { if (this.list.length < ([64,128,240][this.r.game.settings.graphics??1])) this.list.push(p); }
   blockBreak(x, y, z, def) {
     const id = def ? def.id : B.stone;
     for (let i = 0; i < 18; i++) {
