@@ -20,8 +20,20 @@
     "ko": "Switch에서 바로 OpenStreetMap으로 세계를 탐험하세요. 터치, 마우스, 스틱으로 이동하고, 어떤 수준으로든 부드럽게 확대하고, 장소, 거리, 주소를 검색하세요. 아무 곳에나 핀을 놓아 무엇이 있는지 보고, 즐겨 찾는 장소를 저장하고, 두 지점 사이의 거리를 측정하세요. 지도 타일이 캐시되므로 가 본 곳은 오프라인에서도 보입니다.\n\n• 터치, 휠, 키, 컨트롤러로 부드러운 확대/축소\n• 최근 검색이 있는 장소 및 주소 검색\n• 그 지점의 주소가 표시되는 핀\n• 즐겨찾기와 최근 연 장소\n• 두 지점 사이의 거리 측정\n• 좌표 복사 또는 OpenStreetMap에서 그 지점 열기"
   },
   "shots": [
-    ["wait 9"],
-    ["key pageup", "wait 0.5", "key pageup", "wait 3"],
-    ["dark 1", "wait 2"]
-  ]
+    [
+      "wait 9"
+    ],
+    [
+      "key pageup",
+      "wait 0.5",
+      "key pageup",
+      "wait 3"
+    ],
+    [
+      "dark 1",
+      "wait 2"
+    ]
+  ],
+  "recommended": true,
+  "recommendedOrder": 3
 }

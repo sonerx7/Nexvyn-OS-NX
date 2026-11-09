@@ -38,5 +38,7 @@
       "dark 1",
       "wait 2"
     ]
-  ]
+  ],
+  "recommended": true,
+  "recommendedOrder": 9
 }

@@ -23,5 +23,7 @@
     "en": "First release: a tech demo of the Native SDK.",
     "tr": "İlk sürüm: Native SDK için teknik demo."
   },
-  "featured": false
+  "featured": false,
+  "recommended": true,
+  "recommendedOrder": 1
 }
