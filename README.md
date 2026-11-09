@@ -5,7 +5,7 @@
 <p align="center"><b>A full desktop, native 3D and a real App Market, on a Switch.</b><br>
 <i>Native 3D from 10 to 60 fps. A GBA game at full speed. WebGL in the browser. Measured on a console.</i></p>
 
-<p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30-second Nexvyn OS tour: click to play the video"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/hero_30s.mp4">Watch the 30-second tour</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/overview.mp4">2-minute overview</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft trailer</a></p>
+<p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30-second Nexvyn OS tour: click to play the video"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4">Watch the 30-second tour</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/overview.mp4">2-minute overview</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft trailer</a></p>
 
 - One `.nro`, opened from the Homebrew Menu. No reboot, no partitioning.
 - A windowed desktop (Dock or taskbar layout), 70+ built-in apps and an App Market where every item is reviewed.
