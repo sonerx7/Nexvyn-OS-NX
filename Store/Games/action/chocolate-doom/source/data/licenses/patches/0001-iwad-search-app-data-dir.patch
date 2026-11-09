@@ -1,0 +1,29 @@
+diff --git a/src/d_iwad.c b/src/d_iwad.c
+index 5b6db20..235d9f3 100644
+--- a/src/d_iwad.c
++++ b/src/d_iwad.c
+@@ -21,6 +21,8 @@
+ #include <ctype.h>
+ #include <string.h>
+ 
++#include <SDL.h>
++
+ #include "deh_str.h"
+ #include "doomkeys.h"
+ #include "d_iwad.h"
+@@ -741,6 +743,15 @@ static void BuildIWADDirList(void)
+     // Look in the current directory.  Doom always does this.
+     AddIWADDir(".");
+ 
++    // Nexvyn OS: the app data folder (SDL_GetPrefPath) is where the user puts the IWAD
++    {
++        char *prefdir = SDL_GetPrefPath("", PACKAGE_TARNAME);
++        if (prefdir != NULL)
++        {
++            AddIWADDir(prefdir);
++        }
++    }
++
+     // Next check the directory where the executable is located. This might
+     // be different from the current directory.
+     AddIWADDir(M_DirName(myargv[0]));

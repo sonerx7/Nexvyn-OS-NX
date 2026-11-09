@@ -86,6 +86,7 @@ library packages (`docs/NXVAPP_FORMAT.en.md` section 2 and 5).
   with `http://`, `https://` or `nxv://`), `"file"` (any file), `"image"` (.png .jpg .jpeg .bmp .gif .webp) or a file
   extension such as `".txt"`. The shared item arrives like a file the app was opened with: `app.load(arg)` when the
   app was not running, `app.open(arg)` when it was.
+- `loadingHint` → optional, `true` for an app that loads a lot and has long frames meanwhile (SDK 1.13). The "not responding" dialog waits 120 s instead of 5 s; after that it may appear anyway. Nothing is ever closed automatically.
 - `permissions` → what the app needs beyond its own folders. **Every permission is enforced** for apps installed on
   the SD card (SDK 1.4; before, only `network` and `files` were):
 
@@ -115,7 +116,7 @@ library packages (`docs/NXVAPP_FORMAT.en.md` section 2 and 5).
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.12"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.13"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -132,6 +133,7 @@ library packages (`docs/NXVAPP_FORMAT.en.md` section 2 and 5).
 | 1.10 | Native runtime: C / C++ apps that run inside Nexvyn OS, in a window or full screen (`"runtime": "native"`, `"mode": "window"` or `"fullscreen"`, a `.nxvmod`), Native SDK 1.0 (`docs/NATIVE_SDK_DESIGN.md`, the `nxn_*` C interface). No script function changes. Native packages carry `"minSdk": "1.10"`, so older systems say "needs a newer Nexvyn OS" |
 | 1.11 | Folder picker and kept folders: `ui.chooseFolder` (`remember` keeps the folder across runs), `fs.folderGrants` / `folderGranted` / `revokeFolder`; the save folder and its backups: `fs.savePath`, `saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python and C, the same names as the native `nxn_pick` / `nxn_grant_*` / `nxn_save_*`; one core unit for both). Apps built for older SDKs behave as before |
 | 1.12 | Language parity with the native SDK (`docs/PARITY.en.md`): `ui.tokens()` (the OS look as one table: colors, corner radii, spacing, text sizes, text scale, bold text; like the native `nxn_ui_tokens_get`), `audio.stopAll()` (stops every sound the app started; like `nxn_sfx_stop_all`), and the C function `input_action(name)` (Lua, JavaScript and Python already had `input.action`); Lua, JavaScript, Python and C. Apps built for older SDKs behave as before |
+| 1.13 | App manifest field `loadingHint` (see *app.json*): `"loadingHint": true` tells the system the app has long frames while it loads; the "not responding" dialog waits 120 s (instead of 5 s) and still appears after that. No new function (Lua, JavaScript, Python, C and native read the same field). *Wait* in the dialog silences it for 60 s and until the app has responded once. Apps built for older SDKs behave as before |
 
 **Languages that get new APIs.** From SDK 1.9 on, new functions come to Lua, JavaScript, Python (`"python"` and
 `"python3"`) and C. Squirrel and Java are frozen at SDK 1.8: every function they have keeps working on every later
@@ -451,7 +453,7 @@ offline cache, WebSockets and sign-in are in section 8d (`net.request`, SDK 1.9)
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.12"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.13"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -1138,7 +1140,7 @@ Sockets close when the app closes and end with a `close` event after the console
 
 ### Sign-in: `net.oauth(options, callback(result, err))`
 
-Opens the sign-in page in the console's web browser and returns when it reaches your redirect address (OAuth 2.0 for
+Opens the sign-in page in a Browser window of Nexvyn OS (a tab of its own browser) and returns when it reaches your redirect address (OAuth 2.0 for
 native apps, RFC 8252). `redirect` must be a loopback address (`http://localhost/...`, `http://127.0.0.1/...`) or the
 app's own link (`nxv://app/<id>...`). `state` is added and checked for you; `pkce = true` adds a PKCE challenge
 (S256) and gives you the `verifier` for the token request.
@@ -1146,15 +1148,15 @@ app's own link (`nxv://app/<id>...`). `state` is added and checked for you; `pkc
 ```lua
 net.oauth({url = "https://auth.example.com/authorize?client_id=ID&response_type=code&scope=read",
            redirect = "http://localhost/callback", pkce = true}, function(r, err)
-  if err then status = err return end                  -- "cancelled", or why the browser is not available
+  if err then status = err return end                  -- "cancelled", or why the sign-in page did not open
   net.request({url = "https://auth.example.com/token", method = "POST", responseType = "json",
     form = {grant_type = "authorization_code", code = r.code, redirect_uri = "http://localhost/callback",
             client_id = "ID", code_verifier = r.verifier}}, function(res) token = res.data and res.data.access_token end)
 end)
 ```
 
-`result`: `code`, `state`, `verifier`, `params` (every query / fragment parameter), `url`. The browser needs Nexvyn OS
-started in title mode on a console (through a game; not on emulators, not from the Album); otherwise `err` says so. Offer a
+`result`: `code`, `state`, `verifier`, `params` (every query / fragment parameter), `url`. The window closes by itself when the page reaches `redirect`; if the user closes it first, `err` is `"cancelled"`.
+It works in every launch mode and on emulators. Sites that block embedded browsers may refuse the sign-in; offer a
 fallback then (a device code shown as text or a QR code). Keep client secrets off the console.
 
 ### Pictures from the web: `gfx.imageUrl(url[, maxSize])`

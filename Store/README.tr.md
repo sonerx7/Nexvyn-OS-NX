@@ -2,33 +2,39 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **175** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
-## Verimlilik (22)
+## Verimlilik (12)
 
 | | Ad | Açıklama |
 |---|---|---|
 | <img src="Apps/productivity/aichat/icon.png" width="32"> | [AI Sohbet](Apps/productivity/aichat/) · Nexvyn OS ile gelir | Claude, Gemini ve GPT artık Switch'inde |
 | <img src="Apps/productivity/breathe/icon.png" width="32"> | [Nefes](Apps/productivity/breathe/) | Rehberli nefesle sakinleş |
-| <img src="Apps/productivity/budget/icon.png" width="32"> | [Bütçe](Apps/productivity/budget/) | Bütçeler, tekrarlar, aylık grafikler |
-| <img src="Apps/productivity/contacts/icon.png" width="32"> | [Kişiler](Apps/productivity/contacts/) · Nexvyn OS ile gelir | vCard destekli adres defterin |
 | <img src="Apps/productivity/flashcards/icon.png" width="32"> | [Kelime Kartları](Apps/productivity/flashcards/) | Aralıklı tekrar, testler, içe aktarma |
-| <img src="Apps/productivity/flowmap/icon.png" width="32"> | [Flowmap](Apps/productivity/flowmap/) | Akış şemaları ve zihin haritaları |
 | <img src="Apps/productivity/habits/icon.png" width="32"> | [Alışkanlıklar](Apps/productivity/habits/) | Seriler, dinlenme günleri, hedefler |
 | <img src="Apps/productivity/interval/icon.png" width="32"> | [Aralıklı Zamanlayıcı](Apps/productivity/interval/) | Her antrenman için HIIT ve Tabata sayacı |
-| <img src="Apps/productivity/journal/icon.png" width="32"> | [Günlük](Apps/productivity/journal/) | Günlük satırlar, ruh hali, anılar |
-| <img src="Apps/productivity/kanban/icon.png" width="32"> | [Görev Panosu](Apps/productivity/kanban/) | Panolar, kontrol listeleri, sürükle-bırak |
 | <img src="Apps/productivity/linkwise/icon.png" width="32"> | [Linkwise](Apps/productivity/linkwise/) | Bağlantılı notlar, geri bağlantılar ve grafik |
 | <img src="Apps/productivity/pomodoro/icon.png" width="32"> | [Pomodoro](Apps/productivity/pomodoro/) | Odak turları, görevler, günlük hedef |
-| <img src="Apps/productivity/slides/icon.png" width="32"> | [Sunum](Apps/productivity/slides/) · Nexvyn OS ile gelir | Şık sunumlar hazırla ve sun |
 | <img src="Apps/productivity/reading/icon.png" width="32"> | [Okuma Listesi](Apps/productivity/reading/) | Kitaplarını, sayfalarını ve hedefini izle |
 | <img src="Apps/productivity/recipebox/icon.png" width="32"> | [Tarif Kutusu](Apps/productivity/recipebox/) | Tarifler, pişirme kipi ve alışveriş |
 | <img src="Apps/productivity/shopping/icon.png" width="32"> | [Alışveriş Listesi](Apps/productivity/shopping/) | Reyonlara göre sıralı, hızlı alışveriş |
 | <img src="Apps/productivity/sleep/icon.png" width="32"> | [Uyku Takibi](Apps/productivity/sleep/) | Gecelerini kaydet, uyku hedefine ulaş |
+| <img src="Apps/productivity/typing/icon.png" width="32"> | [Klavye Ustası](Apps/productivity/typing/) | On parmak, zayıf tuşlar, hız testi |
+
+## Ofis (11)
+
+| | Ad | Açıklama |
+|---|---|---|
+| <img src="Apps/productivity/budget/icon.png" width="32"> | [Bütçe](Apps/productivity/budget/) | Bütçeler, tekrarlar, aylık grafikler |
+| <img src="Apps/productivity/contacts/icon.png" width="32"> | [Kişiler](Apps/productivity/contacts/) · Nexvyn OS ile gelir | vCard destekli adres defterin |
+| <img src="Apps/internet/dictionary/icon.png" width="32"> | [Sözlük](Apps/internet/dictionary/) · Nexvyn OS ile gelir | TDK Türkçe ve İngilizce sözlük bir arada |
+| <img src="Apps/productivity/flowmap/icon.png" width="32"> | [Flowmap](Apps/productivity/flowmap/) | Akış şemaları ve zihin haritaları |
+| <img src="Apps/productivity/journal/icon.png" width="32"> | [Günlük](Apps/productivity/journal/) | Günlük satırlar, ruh hali, anılar |
+| <img src="Apps/productivity/kanban/icon.png" width="32"> | [Görev Panosu](Apps/productivity/kanban/) | Panolar, kontrol listeleri, sürükle-bırak |
+| <img src="Apps/productivity/slides/icon.png" width="32"> | [Sunum](Apps/productivity/slides/) · Nexvyn OS ile gelir | Şık sunumlar hazırla ve sun |
 | <img src="Apps/productivity/sheets/icon.png" width="32"> | [Hesap Tablosu](Apps/productivity/sheets/) · Nexvyn OS ile gelir | Formüller, grafikler ve Excel dosyaları |
 | <img src="Apps/productivity/stickies/icon.png" width="32"> | [Yapışkan Notlar](Apps/productivity/stickies/) · Nexvyn OS ile gelir | Masaüstünde kalan renkli notlar |
 | <img src="Apps/productivity/todo/icon.png" width="32"> | [Yapılacaklar](Apps/productivity/todo/) | Projeler, adımlar, tekrarlar, tarihler |
-| <img src="Apps/productivity/typing/icon.png" width="32"> | [Klavye Ustası](Apps/productivity/typing/) | On parmak, zayıf tuşlar, hız testi |
 | <img src="Apps/productivity/writer/icon.png" width="32"> | [Kelime İşlemci](Apps/productivity/writer/) · Nexvyn OS ile gelir | Word uyumlu kelime işlemci |
 
 ## Araçlar (22)
@@ -78,12 +84,11 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki 
 | <img src="Apps/media/noise/icon.png" width="32"> | [Beyaz Gürültü](Apps/media/noise/) | Uykuya dalmak için yağmur, dalga, gürültü |
 | <img src="Apps/media/tube/icon.png" width="32"> | [YousTube](Apps/media/tube/) · Nexvyn OS ile gelir | YouTube videoları, Shorts ve kanallar |
 
-## İnternet (6)
+## İnternet (5)
 
 | | Ad | Açıklama |
 |---|---|---|
 | <img src="Apps/internet/currency/icon.png" width="32"> | [Döviz](Apps/internet/currency/) · Nexvyn OS ile gelir | 36 para birimi için canlı döviz kurları |
-| <img src="Apps/internet/dictionary/icon.png" width="32"> | [Sözlük](Apps/internet/dictionary/) · Nexvyn OS ile gelir | TDK Türkçe ve İngilizce sözlük bir arada |
 | <img src="Apps/internet/ftp/icon.png" width="32"> | [FTP İstemcisi](Apps/internet/ftp/) · Nexvyn OS ile gelir | FileZilla tarzı dosya aktarımı |
 | <img src="Apps/internet/maps/icon.png" width="32"> | [Haritalar](Apps/internet/maps/) · Nexvyn OS ile gelir | Aramalı ve iğneli OpenStreetMap |
 | <img src="Apps/internet/news/icon.png" width="32"> | [Haberler](Apps/internet/news/) · Nexvyn OS ile gelir | RSS ve Atom akışların, şık bir okuyucuda |
@@ -134,13 +139,14 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki 
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
 
-## Vitrin (1)
+## Vitrin (2)
 
 | | Ad | Açıklama |
 |---|---|---|
 | <img src="Apps/showcase/native-showcase/icon.png" width="32"> | [Native SDK Showcase](Apps/showcase/native-showcase/) | Pencerede yerel C++: teknik demo |
+| <img src="Games/showcase/townbench/icon.png" width="32"> | [Village Bench](Games/showcase/townbench/) | 60 saniyelik köy uçuşu benchmark'ı |
 
-## Oyunlar (47)
+## Oyunlar (50)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -154,6 +160,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki 
 | <img src="Games/sports/bowling/icon.png" width="32"> | [Bowling](Games/sports/bowling/) | On pinli bowlingde on çerçeve |
 | <img src="Games/arcade/breakout/icon.png" width="32"> | [Tuğla Kır](Games/arcade/breakout/) | 15 bölüm, bombalar, lazer ve ateş topu |
 | <img src="Games/board/checkers/icon.png" width="32"> | [Dama](Games/board/checkers/) | Atla, taş al, damana kavuş |
+| <img src="Games/action/chocolate-doom/icon.png" width="32"> | [Chocolate Doom](Games/action/chocolate-doom/) | Klasik nişancı motoru, Freedoom dahil |
 | <img src="Games/puzzle/mastermind/icon.png" width="32"> | [Şifre Kır](Games/puzzle/mastermind/) | Gizli renk şifresini 10 denemede kır |
 | <img src="Games/puzzle/sokoban/icon.png" width="32"> | [Kutu İtme](Games/puzzle/sokoban/) | 40 bölümlük kutu itme bulmacası |
 | <img src="Games/puzzle/blocks/icon.png" width="32"> | [Blok Düşür](Games/puzzle/blocks/) | Maraton, Sprint, Ultra ve Kazı modları |
@@ -161,11 +168,13 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki 
 | <img src="Games/action/frost-lantern/icon.png" width="32"> | [Ayaz Feneri](Games/action/frost-lantern/) | Beş bölge. Otuz lütuf. Kayıp bir şafak. |
 | <img src="Games/casual/fishing/icon.png" width="32"> | [Balık Tut](Games/casual/fishing/) | Oltanı at, makarayı sar, koleksiyonu doldur |
 | <img src="Games/word/hangman/icon.png" width="32"> | [Adam Asmaca](Games/word/hangman/) | Kelimeyi harf harf tahmin et |
+| <img src="Games/action/ironwail/icon.png" width="32"> | [Ironwail](Games/action/ironwail/) | Hızlı klasik 3B motor, LibreQuake dahil |
 | <img src="Games/action/lanternfall/icon.png" width="32"> | [Fener Düşüşü](Games/action/lanternfall/) | Fener ışığında platform: 3 dünya, 3 boss |
 | <img src="Games/puzzle/lightsout/icon.png" width="32"> | [Işıkları Söndür](Games/puzzle/lightsout/) | Bütün ışıkları en az hamleyle söndür |
 | <img src="Games/action/luma/icon.png" width="32"> | [Luma: Yıldız Adaları](Games/action/luma/) | On dünyayı keşfet. Sekiz düşmanla savaş. |
 | <img src="Games/arcade/mazeeater/icon.png" width="32"> | [Labirent Yiyici](Games/arcade/mazeeater/) | Dört labirent, üç hayalet, tek iştah |
 | <img src="Games/puzzle/memory/icon.png" width="32"> | [Hafıza Kartları](Games/puzzle/memory/) | Kartları çevir, bütün eşleri bul |
+| <img src="Games/arcade/mgba/icon.png" width="32"> | [mGBA](Games/arcade/mgba/) | GBA öykünücüsü: oyunlarını sen getir |
 | <img src="Games/puzzle/minesweeper/icon.png" width="32"> | [Mayın Tarlası](Games/puzzle/minesweeper/) | Özel tahtalar, istatistik ve seriler |
 | <img src="Games/sports/minigolf/icon.png" width="32"> | [Mini Golf](Games/sports/minigolf/) | Dokuz çukurlu, kuşbakışı mini golf |
 | <img src="Games/action/missile/icon.png" width="32"> | [Füze Savunması](Games/action/missile/) | Altı şehir, üç batarya: göğü savun |

@@ -30,8 +30,7 @@ Turkish and English; new languages can be added.
 
 - A Switch that boots with Atmosphère. A current Atmosphère version (1.12.1 or newer) and emuMMC are recommended.
 - **System version 22.5.0 or later** (required). Tested up to **23.0.x**. On other versions Nexvyn OS still starts
-  and nothing is blocked, but problems may occur: it shows a one-time notice, and the full browser stays in the
-  built-in browser outside 22.5.0 - 23.0.x (Browser settings can allow it anyway). **Settings > About** shows your
+  and nothing is blocked, but problems may occur: it shows a one-time notice. **Settings > About** shows your
   system version and the required one.
 - Some free space on the SD card. Videos, PC games and Retro games need more.
 
@@ -60,8 +59,8 @@ How much memory Nexvyn OS gets depends on how it is opened.
 
 | Way | How to open | Memory | Note |
 |---|---|---|---|
-| **Title mode** (recommended) | Hold **R** while starting a game. The Homebrew menu opens instead of the game; start Nexvyn OS from there. | Full | No extra setup. Launching Switch games, the system browser and PC games work in this mode. |
-| **Applet mode** | Open the Homebrew menu from the Album and start Nexvyn OS. | Limited | Nexvyn OS shows a warning once. Large apps, the system browser and launching games are restricted. |
+| **Title mode** (recommended) | Hold **R** while starting a game. The Homebrew menu opens instead of the game; start Nexvyn OS from there. | Full | No extra setup. Launching Switch games and PC games work in this mode. |
+| **Applet mode** | Open the Homebrew menu from the Album and start Nexvyn OS. | Limited | Nexvyn OS shows a warning once. Large apps and launching games are restricted. |
 | **Forwarder** | Press the Nexvyn OS icon installed on the HOME menu. | Full | Needs a separate installation. Details: [FORWARDER.en.md](FORWARDER.en.md). |
 
 The **System Settings > About > Launch mode** row shows which mode you are in: "Application (full memory)" or
@@ -601,9 +600,8 @@ downloads, forms and cookies.
   It can be turned off per site: **JavaScript on This Site** in the menu.
 - **Passwords:** login details are saved and filled in automatically. The password store is kept encrypted on the
   device; it can be protected with an optional PIN. It is managed from the **Passwords…** menu.
-- **Limits:** very large web apps (webmail, video sites, maps) need a full browser. A warning appears on those sites.
-  **Open in System Browser** opens the console's own browser (restricted in applet mode); Tube is recommended for
-  video sites.
+- **Limits:** very large web apps (webmail, video sites, maps) need a full browser. A bar on those sites offers a lighter version where one exists;
+  Tube is recommended for video sites. Nexvyn OS has one browser: its own.
 
 ### AI Chat
 
@@ -918,8 +916,8 @@ side panel (it works with the keys from AI Chat) answers questions; it does not 
 
 ### Nexvyn OS says it is "running with limited memory"
 
-You opened Nexvyn OS from the Album (applet mode). In this mode the system gives it little memory: large apps, the
-system browser and launching games are restricted, and heavy pages or videos may close. The fix:
+You opened Nexvyn OS from the Album (applet mode). In this mode the system gives it little memory: large apps and
+launching games are restricted, and heavy pages or videos may close. The fix:
 
 - Hold **R** while starting a game and open the Homebrew menu from there (title mode), or
 - install a forwarder: [FORWARDER.en.md](FORWARDER.en.md).
@@ -1016,8 +1014,7 @@ Nexvyn OS is rebuilt. The details are on the app's own screen.
 
 ### A website does not open or looks broken
 
-Nexvyn OS's browser is a lightweight engine. For heavy sites use **Open in System Browser** (in full-memory mode) or
-open the site's light version. For videos, try Tube.
+Nexvyn OS's browser is a lightweight engine. For heavy sites open the site's light version. For videos, try Tube.
 
 ### Software Update cannot find a version
 

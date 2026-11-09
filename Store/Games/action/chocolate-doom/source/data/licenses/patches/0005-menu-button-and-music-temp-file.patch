@@ -1,0 +1,67 @@
+diff --git a/src/i_joystick.c b/src/i_joystick.c
+index f624c8c..3a3b2ea 100644
+--- a/src/i_joystick.c
++++ b/src/i_joystick.c
+@@ -30,6 +30,7 @@
+ #include "i_system.h"
+ 
+ #include "m_config.h"
++#include "m_controls.h"
+ #include "m_fixed.h"
+ #include "m_misc.h"
+ 
+@@ -528,6 +529,18 @@ void I_InitJoystick(void)
+         nexvyn_pad_default = 1;
+     }
+ 
++    // Nexvyn OS (step 2): upstream binds no pad button to "open the menu" (joyb_menu_activate -1), so + did nothing and
++    // the menu could only be reached by a fire press during the demo. + (SDL "start") opens it now, also for a config
++    // written before (a value the user chose is kept: only the unset -1 is replaced, once).
++    if (nexvyn_pad_default < 2)
++    {
++        if (joybmenu < 0)
++        {
++            joybmenu = SDL_CONTROLLER_BUTTON_START;
++        }
++        nexvyn_pad_default = 2;
++    }
++
+     // Nexvyn OS: gamepad mode finds the first pad itself, an empty GUID is fine there
+     if (!usejoystick || (!use_gamepad && !strcmp(joystick_guid, "")))
+     {
+diff --git a/src/m_misc.c b/src/m_misc.c
+index ace206d..a9a2dea 100644
+--- a/src/m_misc.c
++++ b/src/m_misc.c
+@@ -35,6 +35,9 @@
+ #include <sys/types.h>
+ #endif
+ 
++#include <SDL.h>
++
++#include "config.h"
+ #include "doomtype.h"
+ 
+ #include "deh_str.h"
+@@ -579,6 +582,21 @@ char *M_TempFile(const char *s)
+         tempdir = ".";
+     }
+ #else
++    // Nexvyn OS: there is no /tmp, so the music (MUS converted to a MIDI file, "doom.mid") could not be written and
++    // none played ("MIDI_LoadFile: Failed to open '/tmp/doom.mid'"). The app's data folder holds the file instead.
++    {
++        static char *nexvyn_tmp = NULL;
++
++        if (nexvyn_tmp == NULL)
++        {
++            nexvyn_tmp = SDL_GetPrefPath("", PACKAGE_TARNAME);
++        }
++        if (nexvyn_tmp != NULL)
++        {
++            return M_StringJoin(nexvyn_tmp, s, NULL);  // (the folder name ends with '/')
++        }
++    }
++
+     // In Unix, just use /tmp.
+ 
+     tempdir = "/tmp";

@@ -1,0 +1,22 @@
+diff --git a/src/d_iwad.c b/src/d_iwad.c
+--- a/src/d_iwad.c
++++ b/src/d_iwad.c
+@@ -752,6 +752,18 @@ static void BuildIWADDirList(void)
+         }
+     }
+ 
++    // Nexvyn OS: the IWAD that ships in the package (<package>/data, Freedoom); a user IWAD in the app data
++    // folder above is found first
++    {
++        char *base = SDL_GetBasePath();
++        if (base != NULL)
++        {
++            char *datadir = M_StringJoin(base, "data", NULL);
++            AddIWADDir(datadir);
++            SDL_free(base);
++        }
++    }
++
+     // Next check the directory where the executable is located. This might
+     // be different from the current directory.
+     AddIWADDir(M_DirName(myargv[0]));

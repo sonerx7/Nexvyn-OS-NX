@@ -1,0 +1,4 @@
+mGBA 0.10.5 (MPL-2.0, unmodified): https://github.com/mgba-emu/mgba (tag 0.10.5, commit 26b7884bc25a5933960f3cdcd98bac1ae14d42e2)
+  The window frontend (main.c) and the build files are MPL-2.0, from the Nexvyn OS Native Kit sources of this port.
+blip_buf (LGPL-2.1-or-later) and inih (BSD-3-Clause) are part of the mGBA source tree: src/third-party/.
+No game and no BIOS or firmware is included: choose your own game (.gba) with the file picker.

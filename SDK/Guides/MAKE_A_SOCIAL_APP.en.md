@@ -141,7 +141,7 @@ net.oauth({url = AUTH .. "/authorize?client_id=" .. CLIENT .. "&response_type=co
 end)
 ```
 
-- The sign-in page opens in the console's web browser, so passwords never pass through your app. `state` is checked
+- The sign-in page opens in a Browser window of Nexvyn OS, so passwords never pass through your app. `state` is checked
   for you; use `pkce = true` (public clients must).
 - Register `http://localhost/callback` (or `nxv://app/<your id>/callback`) as the redirect address at your provider.
 - The browser needs a real console with Nexvyn OS started as an application. Elsewhere `err` explains why; offer a
@@ -195,7 +195,7 @@ end
 | attributed text with tappable links | `ui.richText` |
 | HTTP client with interceptors | a small function that adds headers and calls `net.request` |
 | WebSocket class with callbacks | `net.ws` + `net.wsPoll` in `app.update` |
-| sign-in with a system browser session | `net.oauth` |
+| sign-in in a Browser window | `net.oauth` |
 | push notifications | not available: `sys.schedule` for local reminders, refresh on open / resume |
 
 ## 13. Before you publish

@@ -753,7 +753,7 @@ Squirrel ve Java SDK 1.8'de donduruldu ve bu çağrıların hiçbiri onlarda yok
 | İstediğiniz | Nerede |
 |---|---|
 | İlerleme çubuğuyla fotoğraf ya da video yükleme (`multipart`, `file`, `progress(now, total, "upload")`) | [MAKE_A_SOCIAL_APP.tr.md](MAKE_A_SOCIAL_APP.tr.md), bölüm 7 |
-| Konsolun tarayıcısıyla oturum açma (`net.oauth`, PKCE) ve token'ı saklama | aynı rehber, bölüm 8 |
+| Tarayıcı penceresinde oturum açma (`net.oauth`, PKCE) ve token'ı saklama | aynı rehber, bölüm 8 |
 | WebSocket üzerinden sohbet ve canlı sayaçlar (`net.ws`, `net.wsPoll`) | aynı rehber, bölüm 9 |
 | Kaydırarak sayfalanan tam ekran dikey klipler (`ui.pager`) | aynı rehber, bölüm 5; [social-feed](../Samples/lua/social-feed/) örneği |
 | Fotoğraf ızgarası (`columns`, `aspect`) | aynı rehber, bölüm 3 |

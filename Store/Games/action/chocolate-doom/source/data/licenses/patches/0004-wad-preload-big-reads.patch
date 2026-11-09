@@ -1,0 +1,111 @@
+diff --git a/src/w_file_stdc.c b/src/w_file_stdc.c
+index 90846a4e..5bdaff33 100644
+--- a/src/w_file_stdc.c
++++ b/src/w_file_stdc.c
+@@ -18,6 +18,11 @@
+ 
+ #include <stdio.h>
+ 
++#include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
++#include <time.h>
++
+ #include "m_misc.h"
+ #include "w_file.h"
+ #include "z_zone.h"
+@@ -26,8 +31,51 @@ typedef struct
+ {
+     wad_file_t wad;
+     FILE *fstream;
++    unsigned char *image;   // Nexvyn OS: the whole file in memory (NULL: read from the stream as before)
+ } stdc_wad_file_t;
+ 
++// Nexvyn OS: a WAD up to this size is read into memory in big sequential reads when it is opened. The SD card is slow with
++// the many small seek + read calls of lump loading (the console's stdio buffer is about 1 KB); one pass of 1 MB reads is not.
++#define NEXVYN_WAD_PRELOAD_MAX (96u * 1024u * 1024u)
++#define NEXVYN_WAD_CHUNK (1u << 20)
++
++static unsigned char *Nexvyn_ReadWhole(FILE *f, size_t len)
++{
++    unsigned char *img;
++    size_t done = 0;
++
++    if (len == 0 || len > NEXVYN_WAD_PRELOAD_MAX || getenv("NEXVYN_WAD_STREAM") != NULL)
++    {
++        return NULL;
++    }
++    img = malloc(len);
++    if (img == NULL)
++    {
++        return NULL;
++    }
++    struct timespec t0, t1;
++    clock_gettime(CLOCK_MONOTONIC, &t0);
++    rewind(f);
++    while (done < len)
++    {
++        size_t want = len - done < NEXVYN_WAD_CHUNK ? len - done : NEXVYN_WAD_CHUNK;
++        size_t got = fread(img + done, 1, want, f);
++        if (got == 0)
++        {
++            free(img);
++            return NULL;
++        }
++        done += got;
++    }
++    clock_gettime(CLOCK_MONOTONIC, &t1);
++    {
++        double ms = (t1.tv_sec - t0.tv_sec) * 1000.0 + (t1.tv_nsec - t0.tv_nsec) / 1e6;
++        printf("W_StdC: WAD read into memory: %.1f MB in %.0f ms (%.1f MB/s)\n", len / 1048576.0, ms, ms > 0 ? len / 1048576.0 / (ms / 1000.0) : 0.0);
++        fflush(stdout);
++    }
++    return img;
++}
++
+ 
+ static wad_file_t *W_StdC_OpenFile(const char *path)
+ {
+@@ -49,6 +97,14 @@ static wad_file_t *W_StdC_OpenFile(const char *path)
+     result->wad.length = M_FileLength(fstream);
+     result->wad.path = M_StringDuplicate(path);
+     result->fstream = fstream;
++    result->image = NULL;
++    setvbuf(fstream, NULL, _IOFBF, NEXVYN_WAD_CHUNK);   // big buffer: one card request per MB when it streams
++    result->image = Nexvyn_ReadWhole(fstream, result->wad.length);
++    if (result->image != NULL)
++    {
++        fclose(fstream);
++        result->fstream = NULL;
++    }
+ 
+     return &result->wad;
+ }
+@@ -59,7 +115,11 @@ static void W_StdC_CloseFile(wad_file_t *wad)
+ 
+     stdc_wad = (stdc_wad_file_t *) wad;
+ 
+-    fclose(stdc_wad->fstream);
++    if (stdc_wad->fstream != NULL)
++    {
++        fclose(stdc_wad->fstream);
++    }
++    free(stdc_wad->image);
+     Z_Free(stdc_wad);
+ }
+ 
+@@ -74,6 +134,14 @@ size_t W_StdC_Read(wad_file_t *wad, unsigned int offset,
+ 
+     stdc_wad = (stdc_wad_file_t *) wad;
+ 
++    if (stdc_wad->image != NULL)
++    {
++        size_t avail = offset < wad->length ? (size_t) (wad->length - offset) : 0;
++        result = buffer_len < avail ? buffer_len : avail;
++        memcpy(buffer, stdc_wad->image + offset, result);
++        return result;
++    }
++
+     // Jump to the specified position in the file.
+ 
+     fseek(stdc_wad->fstream, offset, SEEK_SET);

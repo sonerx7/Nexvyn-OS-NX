@@ -228,7 +228,7 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
   fromCache, stale, path. WebSocket: `net.ws(url[, {headers, protocols}])` → id, poll `net.wsPoll(id)` every frame
   ({type="open"|"message"|"error"|"close", data, binary, code, reason}), `net.wsSend(id, text)`, `net.wsClose(id)`,
   `net.wsState(id)`. Sign-in: `net.oauth({url, redirect="http://localhost/cb", pkce=true}, fn(result, err))` →
-  result.code / result.verifier (needs a console in title mode; offer a fallback). Never put client secrets in an app.
+  result.code / result.verifier (opens in a Browser window of Nexvyn OS; `err` is "cancelled" if the user closes it). Never put client secrets in an app.
 - `sys`: `time()` (monotonic s), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,

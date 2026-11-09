@@ -1,0 +1,24 @@
+{
+  "id": "com.nexvyn.port.mgba",
+  "name": "mGBA",
+  "version": "0.10.5",
+  "author": "mGBA contributors (port: Nexvyn)",
+  "category": "games",
+  "icon": "icon.png",
+  "window": {
+    "width": 960,
+    "height": 640,
+    "resizable": true
+  },
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": [
+    "files"
+  ],
+  "runtime": "native",
+  "mode": "window",
+  "main": "mgba.nxvmod",
+  "description": "GBA emulator. Bring your own games.",
+  "license": "MPL-2.0"
+}

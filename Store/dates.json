@@ -144,6 +144,17 @@
       }
     ]
   },
+  "com.nexvyn.demo.townbench": {
+    "added": "2026-11-10",
+    "updated": "2026-11-10",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-10"
+      }
+    ]
+  },
   "com.nexvyn.example.showcase": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
@@ -152,6 +163,39 @@
       {
         "version": "1.0.0",
         "date": "2026-11-09"
+      }
+    ]
+  },
+  "com.nexvyn.port.chocolatedoom": {
+    "added": "2026-11-10",
+    "updated": "2026-11-10",
+    "version": "3.1.0",
+    "history": [
+      {
+        "version": "3.1.0",
+        "date": "2026-11-10"
+      }
+    ]
+  },
+  "com.nexvyn.port.ironwail": {
+    "added": "2026-11-10",
+    "updated": "2026-11-10",
+    "version": "0.8.0",
+    "history": [
+      {
+        "version": "0.8.0",
+        "date": "2026-11-10"
+      }
+    ]
+  },
+  "com.nexvyn.port.mgba": {
+    "added": "2026-11-10",
+    "updated": "2026-11-10",
+    "version": "0.10.5",
+    "history": [
+      {
+        "version": "0.10.5",
+        "date": "2026-11-10"
       }
     ]
   },

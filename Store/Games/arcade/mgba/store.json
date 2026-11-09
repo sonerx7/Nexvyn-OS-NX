@@ -1,0 +1,40 @@
+{
+  "kind": "emulator",
+  "license": "MPL-2.0",
+  "tech": "native",
+  "features": [
+    "offline",
+    "controller"
+  ],
+  "players": "1",
+  "subtitle": {
+    "en": "GBA emulator: bring your own games",
+    "tr": "GBA öykünücüsü: oyunlarını sen getir",
+    "de": "GBA-Emulator: eigene Spiele mitbringen",
+    "fr": "Émulateur GBA : apportez vos jeux",
+    "es": "Emulador de GBA: trae tus juegos",
+    "ja": "GBAエミュレーター。ゲームはご自身で",
+    "zh": "GBA 模拟器：自带游戏文件",
+    "ko": "GBA 에뮬레이터: 게임은 직접 준비"
+  },
+  "description": {
+    "en": "mGBA is a fast, accurate GBA emulator that runs in its own window. Choose your own game file (.gba) in the file picker the first time you start it; saves and save states are kept, and holding ZL fast-forwards. No games and no BIOS are included: bring your own, legally owned games. Gamepad: A, B, + as Start, - as Select, L and R.",
+    "tr": "mGBA, kendi penceresinde çalışan hızlı ve doğru bir GBA öykünücüsüdür. İlk açılışta dosya seçiciden kendi oyun dosyanı (.gba) seç; kayıtlar ve durum kayıtları saklanır, ZL basılı tutulunca hızlı ileri sarar. Pakette oyun ve BIOS yok: yasal olarak sahip olduğun oyunları sen getir. Oyun kolu: A, B, + Start, - Select, L ve R.",
+    "de": "mGBA ist ein schneller, genauer GBA-Emulator in einem eigenen Fenster. Wähle beim ersten Start deine eigene Spieldatei (.gba) im Dateiauswahldialog; Spielstände und Savestates bleiben erhalten, ZL gedrückt halten spult vor. Spiele und BIOS sind nicht enthalten: bringe deine eigenen, legal erworbenen Spiele mit. Gamepad: A, B, + als Start, - als Select, L und R.",
+    "fr": "mGBA est un émulateur GBA rapide et précis qui s'exécute dans sa propre fenêtre. Au premier lancement, choisissez votre propre fichier de jeu (.gba) dans le sélecteur de fichiers ; les sauvegardes et états sauvegardés sont conservés, et maintenir ZL avance en accéléré. Aucun jeu ni BIOS n'est fourni : apportez vos jeux, acquis légalement. Manette : A, B, + pour Start, - pour Select, L et R.",
+    "es": "mGBA es un emulador de GBA rápido y preciso que funciona en su propia ventana. La primera vez que lo abras, elige tu propio archivo de juego (.gba) en el selector de archivos; las partidas y los estados guardados se conservan, y mantener ZL avanza rápido. No se incluyen juegos ni BIOS: trae tus propios juegos, adquiridos legalmente. Mando: A, B, + como Start, - como Select, L y R.",
+    "ja": "mGBAは、専用ウィンドウで動く高速で正確なGBAエミュレーターです。初回起動時にファイル選択画面でご自身のゲームファイル（.gba）を選んでください。セーブとステートセーブは保存され、ZLを押し続けると早送りになります。ゲームとBIOSは含まれていません。合法的に入手したご自身のゲームをご用意ください。ゲームパッド：A、B、+でStart、-でSelect、L、R。",
+    "zh": "mGBA 是在独立窗口中运行的快速、精确的 GBA 模拟器。首次启动时在文件选择器中选择你自己的游戏文件（.gba）；存档和即时存档会保留，按住 ZL 可快进。软件不含游戏和 BIOS：请使用你合法拥有的游戏。手柄：A、B，+ 为 Start，- 为 Select，以及 L 和 R。",
+    "ko": "mGBA는 자체 창에서 실행되는 빠르고 정확한 GBA 에뮬레이터입니다. 처음 실행할 때 파일 선택 창에서 본인의 게임 파일(.gba)을 고르세요. 저장 데이터와 상태 저장은 유지되며 ZL을 누르고 있으면 빨리 감기가 됩니다. 게임과 BIOS는 포함되어 있지 않으니 합법적으로 가진 게임을 직접 준비하세요. 게임패드: A, B, +는 Start, -는 Select, L, R."
+  },
+  "changelog": {
+    "en": "First App Market release. Built with Native SDK 1.1 for Nexvyn OS 1.2.3. Opens a file picker when no game is set.",
+    "tr": "İlk App Market sürümü. Nexvyn OS 1.2.3 için Native SDK 1.1 ile derlendi. Oyun seçili değilse dosya seçici açar.",
+    "de": "Erste App-Market-Version. Mit Native SDK 1.1 für Nexvyn OS 1.2.3 gebaut. Öffnet einen Dateidialog, wenn kein Spiel gewählt ist.",
+    "fr": "Première version dans l'App Market. Compilée avec Native SDK 1.1 pour Nexvyn OS 1.2.3. Ouvre un sélecteur de fichiers si aucun jeu n'est choisi.",
+    "es": "Primera versión en el App Market. Compilada con Native SDK 1.1 para Nexvyn OS 1.2.3. Abre un selector de archivos si no hay juego elegido.",
+    "ja": "App Market初公開。Nexvyn OS 1.2.3向けにNative SDK 1.1でビルド。ゲーム未選択時はファイル選択画面を開きます。",
+    "zh": "App Market 首个版本。使用 Native SDK 1.1 为 Nexvyn OS 1.2.3 构建。未选择游戏时会打开文件选择器。",
+    "ko": "App Market 첫 릴리스. Nexvyn OS 1.2.3용 Native SDK 1.1로 빌드. 게임이 없으면 파일 선택 창을 엽니다."
+  }
+}

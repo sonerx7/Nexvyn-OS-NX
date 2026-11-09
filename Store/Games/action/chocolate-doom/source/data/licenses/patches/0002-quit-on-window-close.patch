@@ -1,0 +1,29 @@
+diff --git a/src/doom/d_main.c b/src/doom/d_main.c
+index 8722bb0..4068639 100644
+--- a/src/doom/d_main.c
++++ b/src/doom/d_main.c
+@@ -120,7 +120,8 @@ boolean         storedemo;
+ // If true, the main game loop has started.
+ boolean         main_loop_started = false;
+ 
+-int             show_endoom = 1;
++// Nexvyn OS: the ENDOOM screen waits for a key press after quit; off by default (the user can turn it on in the cfg)
++int             show_endoom = 0;
+ int             show_diskicon = 1;
+ 
+ 
+diff --git a/src/i_video.c b/src/i_video.c
+index 9d9c8cc..db1d4a4 100644
+--- a/src/i_video.c
++++ b/src/i_video.c
+@@ -445,7 +445,9 @@ void I_GetEvent(void)
+                 break;
+ 
+             case SDL_QUIT:
+-                if (screensaver_mode)
++                // Nexvyn OS: closing the window quits at once (the OS stops an app that does not end within a
++                // few seconds of the close button), no "are you sure" question
++                if (screensaver_mode || 1)
+                 {
+                     I_Quit();
+                 }

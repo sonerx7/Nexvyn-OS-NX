@@ -230,7 +230,7 @@ pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,g
   fromCache, stale, path eklenir. WebSocket: `net.ws(url[, {headers, protocols}])` → id, her karede `net.wsPoll(id)`
   ({type="open"|"message"|"error"|"close", data, binary, code, reason}), `net.wsSend(id, text)`, `net.wsClose(id)`,
   `net.wsState(id)`. Oturum açma: `net.oauth({url, redirect="http://localhost/cb", pkce=true}, fn(result, err))` →
-  result.code / result.verifier (konsolda başlık modu ister; bir yedek yol sun). Client secret app'e asla yazılmaz.
+  result.code / result.verifier (Nexvyn OS'un Browser penceresinde açılır; kullanıcı kapatırsa `err` "cancelled" olur). Client secret app'e asla yazılmaz.
 - `sys`: `time()` (monoton sn), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,

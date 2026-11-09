@@ -3,3 +3,8 @@ __pycache__/
 *.part
 .DS_Store
 Thumbs.db
+
+# build outputs never belong here
+*.o
+/SDK/Languages/c/native-kit/sdk/native/lib/*.a
+/SDK/Languages/c/native-kit/sdk/native/lib/build/

@@ -1,0 +1,24 @@
+{
+  "id": "com.nexvyn.port.chocolatedoom",
+  "name": "Chocolate Doom",
+  "version": "3.1.0",
+  "author": "Chocolate Doom team (port: Nexvyn OS)",
+  "category": "games",
+  "runtime": "native",
+  "mode": "window",
+  "main": "chocolate-doom.nxvmod",
+  "minNative": "1.1",
+  "icon": "icon.png",
+  "window": {
+    "width": 960,
+    "height": 600,
+    "resizable": true
+  },
+  "permissions": [
+    "files"
+  ],
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "description": "Classic 1993 shooter engine with the free Freedoom game.",
+  "license": "GPL-2.0-or-later"
+}

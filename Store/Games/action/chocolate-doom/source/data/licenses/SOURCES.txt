@@ -1,0 +1,5 @@
+Chocolate Doom 3.1.0 (GPL-2.0-or-later): https://github.com/chocolate-doom/chocolate-doom (tag chocolate-doom-3.1.0, commit 35fb1372d10756ca27eca05665bd8a7cebc71c05)
+  Nexvyn OS changes: the patch files in licenses/patches/ (apply them to that tag to get the exact source of this build).
+  Libraries linked into this app only: SDL2 and SDL2_mixer (zlib, devkitPro / Nexvyn window drivers), see the Nexvyn OS Native Kit.
+Freedoom 0.13.0 (BSD-3-Clause, freedoom1.wad): https://github.com/freedoom/freedoom (release v0.13.0, freedoom-0.13.0.zip)
+No commercial Doom game data is included: put your own IWAD (doom.wad, doom2.wad, ...) into this app's data folder to play it.

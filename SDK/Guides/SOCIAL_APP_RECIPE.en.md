@@ -751,7 +751,7 @@ Squirrel and Java are frozen at SDK 1.8 and have none of these calls; use Lua, J
 | You want | Where |
 |---|---|
 | Upload a photo or a video with a progress bar (`multipart`, `file`, `progress(now, total, "upload")`) | [MAKE_A_SOCIAL_APP.en.md](MAKE_A_SOCIAL_APP.en.md), section 7 |
-| Sign in with the console's browser (`net.oauth`, PKCE) and keep the token | same guide, section 8 |
+| Sign in in a Browser window (`net.oauth`, PKCE) and keep the token | same guide, section 8 |
 | Chat and live counters over a WebSocket (`net.ws`, `net.wsPoll`) | same guide, section 9 |
 | Full-screen vertical clips with swipe paging (`ui.pager`) | same guide, section 5; the [social-feed](../Samples/lua/social-feed/) sample |
 | A photo grid (`columns`, `aspect`) | same guide, section 3 |

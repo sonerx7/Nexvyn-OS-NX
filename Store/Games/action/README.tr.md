@@ -5,7 +5,9 @@
 | | Öğe | Sürüm | Açıklama |
 |---|---|---|---|
 | <img src="ash-protocol/icon.png" width="32"> | [Kül Protokolü](ash-protocol/) | 1.5.0 | Altı bölüm. Dört silah. Son bir emir. |
+| <img src="chocolate-doom/icon.png" width="32"> | [Chocolate Doom](chocolate-doom/) | 3.1.0 | Klasik nişancı motoru, Freedoom dahil |
 | <img src="frost-lantern/icon.png" width="32"> | [Ayaz Feneri](frost-lantern/) | 1.4.0 | Beş bölge. Otuz lütuf. Kayıp bir şafak. |
+| <img src="ironwail/icon.png" width="32"> | [Ironwail](ironwail/) | 0.8.0 | Hızlı klasik 3B motor, LibreQuake dahil |
 | <img src="lanternfall/icon.png" width="32"> | [Fener Düşüşü](lanternfall/) | 1.0.0 | Fener ışığında platform: 3 dünya, 3 boss |
 | <img src="luma/icon.png" width="32"> | [Luma: Yıldız Adaları](luma/) | 1.7.0 | On dünyayı keşfet. Sekiz düşmanla savaş. |
 | <img src="missile/icon.png" width="32"> | [Füze Savunması](missile/) | 1.1.0 | Altı şehir, üç batarya: göğü savun |

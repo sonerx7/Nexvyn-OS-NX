@@ -1,0 +1,42 @@
+{
+  "kind": "port",
+  "license": "GPL-2.0-or-later",
+  "tech": "native",
+  "features": [
+    "3d",
+    "offline",
+    "controller",
+    "keyboard"
+  ],
+  "players": "1",
+  "subtitle": {
+    "en": "Fast classic 3D engine with LibreQuake",
+    "tr": "Hızlı klasik 3B motor, LibreQuake dahil",
+    "de": "Schnelle 3D-Klassik-Engine mit LibreQuake",
+    "fr": "Moteur 3D classique rapide, LibreQuake inclus",
+    "es": "Motor 3D clásico rápido con LibreQuake",
+    "ja": "LibreQuake付きの高速3Dエンジン",
+    "zh": "快速经典 3D 引擎，内置 LibreQuake",
+    "ko": "LibreQuake 포함 고속 클래식 3D 엔진"
+  },
+  "description": {
+    "en": "Ironwail is a fast, modern engine for the classic 1996 first-person shooter, with OpenGL rendering, smooth controls and widescreen. It comes with LibreQuake, a free set of levels, monsters, weapons and music, so it plays right after installing. Gamepad and keyboard work; there is no network play. The package is large because the levels and music are inside it.",
+    "tr": "Ironwail, 1996'nın klasik birinci şahıs nişancı oyunu için hızlı ve modern bir motordur: OpenGL çizim, akıcı kontrol, geniş ekran. Ücretsiz LibreQuake (bölümler, canavarlar, silahlar ve müzik) içinde gelir, kurar kurmaz oynarsın. Oyun kolu ve klavye çalışır; ağ oyunu yok. Bölümler ve müzik pakette olduğu için paket büyüktür.",
+    "de": "Ironwail ist eine schnelle, moderne Engine für den klassischen Ego-Shooter von 1996 mit OpenGL-Darstellung, flüssiger Steuerung und Breitbild. Dabei ist LibreQuake, ein freies Set aus Leveln, Monstern, Waffen und Musik – nach der Installation kannst du sofort spielen. Gamepad und Tastatur funktionieren; Netzwerkspiel gibt es nicht. Das Paket ist groß, weil Level und Musik darin liegen.",
+    "fr": "Ironwail est un moteur rapide et moderne pour le tir à la première personne classique de 1996 : rendu OpenGL, commandes fluides, écran large. Il est livré avec LibreQuake, un ensemble libre de niveaux, monstres, armes et musiques : on joue dès l'installation. Manette et clavier fonctionnent ; pas de jeu en réseau. Le paquet est volumineux car niveaux et musiques y sont inclus.",
+    "es": "Ironwail es un motor rápido y moderno para el clásico shooter en primera persona de 1996, con render OpenGL, controles fluidos y pantalla panorámica. Incluye LibreQuake, un conjunto libre de niveles, monstruos, armas y música, así que se juega nada más instalarlo. Funciona con mando y teclado; no hay juego en red. El paquete es grande porque los niveles y la música van dentro.",
+    "ja": "Ironwailは、1996年の定番一人称シューティング向けの高速でモダンなエンジンです。OpenGL描画、滑らかな操作、ワイド画面に対応。自由に使えるステージ・モンスター・武器・音楽のセットLibreQuakeが付属し、インストール後すぐ遊べます。ゲームパッドとキーボードに対応、ネットワーク対戦はありません。ステージと音楽を含むためパッケージは大きめです。",
+    "zh": "Ironwail 是为 1996 年经典第一人称射击游戏打造的快速现代引擎，支持 OpenGL 渲染、流畅操控和宽屏。附带自由的 LibreQuake（关卡、怪物、武器和音乐），安装后即可游玩。支持手柄和键盘，没有联网对战。关卡和音乐都在包内，所以安装包较大。",
+    "ko": "Ironwail은 1996년 고전 1인칭 슈팅 게임을 위한 빠르고 현대적인 엔진으로, OpenGL 렌더링과 부드러운 조작, 와이드 화면을 지원합니다. 자유 라이선스 레벨·몬스터·무기·음악 모음인 LibreQuake가 포함되어 설치 후 바로 즐길 수 있습니다. 게임패드와 키보드를 지원하며 네트워크 플레이는 없습니다. 레벨과 음악이 들어 있어 패키지가 큽니다."
+  },
+  "changelog": {
+    "en": "First App Market release. Built with Native SDK 1.1 for Nexvyn OS 1.2.3. LibreQuake v0.09-beta lite included.",
+    "tr": "İlk App Market sürümü. Nexvyn OS 1.2.3 için Native SDK 1.1 ile derlendi. LibreQuake v0.09-beta lite içinde.",
+    "de": "Erste App-Market-Version. Mit Native SDK 1.1 für Nexvyn OS 1.2.3 gebaut. LibreQuake v0.09-beta lite enthalten.",
+    "fr": "Première version dans l'App Market. Compilée avec Native SDK 1.1 pour Nexvyn OS 1.2.3. LibreQuake v0.09-beta lite inclus.",
+    "es": "Primera versión en el App Market. Compilada con Native SDK 1.1 para Nexvyn OS 1.2.3. Incluye LibreQuake v0.09-beta lite.",
+    "ja": "App Market初公開。Nexvyn OS 1.2.3向けにNative SDK 1.1でビルド。LibreQuake v0.09-beta lite同梱。",
+    "zh": "App Market 首个版本。使用 Native SDK 1.1 为 Nexvyn OS 1.2.3 构建，内置 LibreQuake v0.09-beta lite。",
+    "ko": "App Market 첫 릴리스. Nexvyn OS 1.2.3용 Native SDK 1.1로 빌드. LibreQuake v0.09-beta lite 포함."
+  }
+}

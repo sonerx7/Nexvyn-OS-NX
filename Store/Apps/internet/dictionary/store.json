@@ -20,8 +20,44 @@
     "ko": "한 창에서 두 사전으로 단어를 찾아보세요. 터키어 항목은 TDK 현대 터키어 사전에서 뜻, 예문, 복합어, 관용구와 함께 가져오며, 영어 항목은 Wiktionary 기반의 Free Dictionary API에서 유의어, 반의어, 발음 오디오와 함께 가져옵니다. 모든 결과가 저장되므로 전에 열어 본 항목은 오프라인에서도 볼 수 있습니다.\n\n• 터키어(TDK)와 영어 출처, 한 번의 탭으로 전환\n• 예문, 유의어, 반의어가 있는 뜻\n• 터키어 복합어, 속담, 관용구\n• 영어 단어의 발음 오디오\n• 즐겨찾기, 검색 기록, 뒤로/앞으로 이동\n• 찾아본 모든 항목의 오프라인 사본"
   },
   "shots": [
-    ["wait 2", "wclick 0.194 0.127", "wait 0.25", "wclick 0.615 0.046", "wait 0.25", "text serendipity", "key enter", "wait 4", "wclick 0.6 0.7", "wait 0.8"],
-    ["wclick 0.615 0.046", "wait 0.4", "key end", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "key backspace", "text aurora", "key enter", "wait 8", "wclick 0.6 0.7", "wait 0.8"],
-    ["dark 1", "wait 1.5"]
-  ]
+    [
+      "wait 2",
+      "wclick 0.194 0.127",
+      "wait 0.25",
+      "wclick 0.615 0.046",
+      "wait 0.25",
+      "text serendipity",
+      "key enter",
+      "wait 4",
+      "wclick 0.6 0.7",
+      "wait 0.8"
+    ],
+    [
+      "wclick 0.615 0.046",
+      "wait 0.4",
+      "key end",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "key backspace",
+      "text aurora",
+      "key enter",
+      "wait 8",
+      "wclick 0.6 0.7",
+      "wait 0.8"
+    ],
+    [
+      "dark 1",
+      "wait 1.5"
+    ]
+  ],
+  "category": "office"
 }

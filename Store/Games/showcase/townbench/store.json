@@ -1,0 +1,54 @@
+{
+  "subtitle": {
+    "en": "A 60 second village flight benchmark",
+    "tr": "60 saniyelik köy uçuşu benchmark'ı",
+    "de": "Ein 60-Sekunden-Dorfflug als Benchmark",
+    "fr": "Benchmark de 60 s au-dessus d’un village",
+    "es": "Un benchmark de 60 segundos sobre una aldea",
+    "ja": "村の上を飛ぶ 60 秒のベンチマーク",
+    "zh": "60 秒村庄飞行跑分",
+    "ko": "마을 위를 60초간 나는 벤치마크"
+  },
+  "description": {
+    "en": "Measure how smoothly your console draws a 3D village. Village Bench flies a fixed 60 second camera path over a fully textured village and shows the average, minimum and 1% low frame times, the frame rate and a score. Three quality presets (Low, Medium, High), no frame-rate cap and no sound, so the numbers show what the hardware reaches.\n\n• Same camera path every run, so results are comparable\n• Average, minimum and 1% low frame times, fps and score\n• Three presets: render scale, sun shadows, anti-aliasing\n• Best score per preset is kept on the device\n• Opens in a window, maximize it for full screen\n• Controls: Up / Down choose, A start, B quit",
+    "tr": "Konsolunun 3B bir köyü ne kadar akıcı çizdiğini ölç. Köy Benchmark, tamamen dokulu bir köyün üzerinde sabit 60 saniyelik bir kamera yolu izler ve ortalama, en düşük ve %1 düşük kare sürelerini, kare hızını ve bir puan gösterir. Üç kalite ayarı (Düşük, Orta, Yüksek), kare hızı sınırı ve ses yok; sayılar donanımın ulaştığı değeri gösterir.\n\n• Her seferinde aynı kamera yolu, sonuçlar karşılaştırılabilir\n• Ortalama, en düşük ve %1 düşük kare süresi, fps ve puan\n• Üç ayar: çizim ölçeği, güneş gölgesi, kenar yumuşatma\n• Her ayarın en iyi puanı cihazda saklanır\n• Pencerede açılır, tam ekran için büyüt\n• Kontroller: Yukarı / Aşağı seç, A başlat, B çık",
+    "de": "Miss, wie flüssig deine Konsole ein 3D-Dorf zeichnet. Dorf-Benchmark fliegt einen festen 60-Sekunden-Kameraweg über ein vollständig texturiertes Dorf und zeigt durchschnittliche, minimale und 1-%-Low-Bildzeiten, die Bildrate und eine Punktzahl. Drei Qualitätsstufen (Niedrig, Mittel, Hoch), keine Bildratenbegrenzung und kein Ton, damit die Zahlen zeigen, was die Hardware erreicht.\n\n• Jedes Mal derselbe Kameraweg, die Ergebnisse sind vergleichbar\n• Durchschnittliche, minimale und 1-%-Low-Bildzeit, fps und Punkte\n• Drei Stufen: Renderskala, Sonnenschatten, Kantenglättung\n• Die beste Punktzahl je Stufe bleibt auf dem Gerät\n• Öffnet in einem Fenster, vergrößere es für Vollbild\n• Steuerung: Hoch / Runter wählen, A Start, B Beenden",
+    "fr": "Mesurez la fluidité avec laquelle votre console dessine un village en 3D. Benchmark du village suit un trajet de caméra fixe de 60 secondes au-dessus d’un village entièrement texturé et affiche les temps d’image moyen, minimal et 1 % bas, la fréquence d’images et un score. Trois niveaux de qualité (Bas, Moyen, Élevé), aucune limite de fréquence et aucun son : les chiffres montrent ce que le matériel atteint.\n\n• Le même trajet à chaque fois, les résultats sont comparables\n• Temps d’image moyen, minimal et 1 % bas, fps et score\n• Trois niveaux : échelle de rendu, ombres du soleil, anticrénelage\n• Le meilleur score de chaque niveau reste sur l’appareil\n• S’ouvre dans une fenêtre, agrandissez-la pour le plein écran\n• Commandes : Haut / Bas choisir, A démarrer, B quitter",
+    "es": "Mide con qué fluidez dibuja tu consola una aldea en 3D. Benchmark de la aldea recorre una ruta de cámara fija de 60 segundos sobre una aldea totalmente texturizada y muestra el tiempo de fotograma medio, mínimo y 1 % bajo, la tasa de fotogramas y una puntuación. Tres niveles de calidad (Bajo, Medio, Alto), sin límite de fotogramas y sin sonido: las cifras muestran lo que alcanza el hardware.\n\n• La misma ruta cada vez, los resultados son comparables\n• Tiempo de fotograma medio, mínimo y 1 % bajo, fps y puntuación\n• Tres niveles: escala de render, sombras solares, suavizado\n• La mejor puntuación de cada nivel se guarda en el dispositivo\n• Se abre en una ventana, maximízala para pantalla completa\n• Controles: Arriba / Abajo elegir, A empezar, B salir",
+    "ja": "お使いの本体が 3D の村をどれだけなめらかに描画できるかを測ります。ビレッジベンチは、テクスチャ付きの村の上を固定の 60 秒カメラパスで飛び、平均・最小・1% ローのフレームタイム、フレームレート、スコアを表示します。画質プリセットは 3 つ (低・中・高)。フレームレート上限も音もないので、数値はハードウェアの実力を表します。\n\n• 毎回同じカメラパスなので結果を比較できます\n• 平均・最小・1% ローのフレームタイム、fps、スコア\n• 3 つのプリセット: 描画スケール、太陽の影、アンチエイリアス\n• プリセットごとのベストスコアを本体に保存\n• ウィンドウで開きます。最大化でフルスクリーン\n• 操作: 上下で選択、A 開始、B 終了",
+    "zh": "测一测你的主机绘制 3D 村庄有多流畅。村庄跑分沿固定的 60 秒镜头路线飞越一座完整贴图的村庄，显示平均、最小和 1% 低值帧时间、帧率与得分。提供三档画质预设（低、中、高），不限帧率、没有声音，数字反映硬件的真实表现。\n\n• 每次路线相同，结果可以比较\n• 平均、最小和 1% 低值帧时间、fps 与得分\n• 三档预设：渲染比例、太阳阴影、抗锯齿\n• 每档预设的最佳得分保存在设备上\n• 以窗口打开，最大化即全屏\n• 操作：上 / 下选择，A 开始，B 退出",
+    "ko": "콘솔이 3D 마을을 얼마나 부드럽게 그리는지 측정하세요. 빌리지 벤치는 텍스처가 입혀진 마을 위를 고정된 60초 카메라 경로로 비행하며 평균, 최소, 1% 로우 프레임 시간과 프레임 레이트, 점수를 보여 줍니다. 품질 프리셋은 세 가지(낮음, 중간, 높음)이며 프레임 제한과 소리가 없어 숫자가 하드웨어의 실제 성능을 보여 줍니다.\n\n• 매번 같은 카메라 경로라 결과를 비교할 수 있습니다\n• 평균, 최소, 1% 로우 프레임 시간, fps, 점수\n• 세 가지 프리셋: 렌더 배율, 태양 그림자, 안티앨리어싱\n• 프리셋별 최고 점수가 기기에 저장됩니다\n• 창으로 열리며 최대화하면 전체 화면입니다\n• 조작: 위 / 아래 선택, A 시작, B 종료"
+  },
+  "kind": "demo",
+  "features": [
+    "3d"
+  ],
+  "tech": "native",
+  "tags": [
+    "benchmark",
+    "3d",
+    "village",
+    "native"
+  ],
+  "license": "GPL-3.0-or-later",
+  "changelog": {
+    "en": "First release. Requires Nexvyn OS 1.2.2 (SDK 1.12)."
+  },
+  "shots": [
+    [
+      "wait 6"
+    ],
+    [
+      "key down",
+      "wait 1"
+    ],
+    [
+      "key down",
+      "wait 1"
+    ],
+    [
+      "key return",
+      "wait 8"
+    ]
+  ]
+}

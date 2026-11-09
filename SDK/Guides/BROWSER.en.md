@@ -17,36 +17,20 @@ terms:
   modern site can want hundreds of MB.
 - A JIT JS engine (V8) needs executable memory; this is only possible in special runtimes (see Brewser).
 
-So Nexvyn OS takes a **hybrid** path:
+Since 1.2.4 Nexvyn OS has one browser: its own engine (the console's system web applet is no longer used).
 
-1. **Full browser (WebKit)**: the console's own WebKit-based web applet (NetFront NX). While Nexvyn OS runs in title
-   mode, sites that strain the engine open in this applet with one tap; closing it returns to Nexvyn OS.
-2. **Our own engine**: an HTML/CSS/JS engine on QuickJS (`source/web/`). This work added CSS variables, real flexbox,
-   CSS grid, SVG, `<canvas>` 2D, private tabs and link navigation with the gamepad.
+- **Our own engine**: an HTML/CSS/JS engine on QuickJS (`source/web/`). This work added CSS variables, real flexbox,
+  CSS grid, SVG, `<canvas>` 2D, private tabs and link navigation with the gamepad.
+- Sign-in pages for apps (`net.oauth`) open in a tab of this browser; the tab closes when the page reaches the app's
+  redirect address.
 
 ## 2. Research
 
-### 2.1 The Switch's built-in web applet (WebKit / NetFront NX)
+### 2.1 The Switch's built-in web applet (history)
 
-- The Switch has no normal browser open to the user; web content is shown with browser applets. The engine is the
-  WebKit-based **NetFront NX**. The WebKit version in the User-Agent depends on the system version: `AppleWebKit/601.6`
-  on 1.0.0-6.1.0, `606.4` on 10.0.0, `613.0` on 20.1.0 and later (and on Switch 2).
-  ([Switchbrew: Internet Browser](https://switchbrew.org/wiki/Internet_Browser))
-- WebKit 613 roughly matches the Safari 15.4 era: ES2021 JavaScript, flexbox/grid, CSS variables, `<video>` (in
-  whitelisted applets), Web Audio and similar features are there. The state of WebGL and JIT is not documented on
-  Switchbrew.
-- The general-purpose applet is `WebApplet` (010000000000100A). The whitelist only limits page navigation; `<video>` and
-  JS network requests are not affected. Applets do not mount the SD card. The applet heap is 0x15600000 bytes
-  (~342 MB). ([Switchbrew: Internet Browser](https://switchbrew.org/wiki/Internet_Browser))
-- The libnx API: `webPageCreate`, `webConfigSetWhitelist`, `webConfigSetPointer`, `webConfigSetTouchEnabledOnContents`,
-  `webConfigSetPageCache`, `webConfigSetWebAudio`, `webConfigShow`, and on return `webReplyGetLastUrl` /
-  `webReplyGetExitReason`. ([libnx web.h](https://switchbrew.github.io/libnx/web_8h.html), devkitPro
-  `libnx/include/switch/applets/web.h`)
-- Limits: the applet can only be opened from a program running as an application (title); homebrew opened from the
-  Album (applet mode) and emulators (the web applet is not implemented there) cannot do this. Tools such as BrowseNX
-  open the same applet through hbmenu and note that the NRO version has no HTML5 video support.
-  ([GameBrew: BrowseNX](https://gamebrew.org/wiki/BrowseNX_Switch))
-- While the applet is open, Nexvyn OS waits (the call is blocking); cookies/sessions are not shared with the applet.
+Until 1.2.3 Nexvyn OS could hand a page to the console's web applet (WebKit-based NetFront NX). It was removed in
+1.2.4: the user wants one browser, and the applet needed title mode, stopped consoles on untested system versions
+and shared no cookies with the OS. The research notes are not kept here.
 
 ### 2.2 Homebrew engines and libraries
 
@@ -71,7 +55,7 @@ Sources: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_NX
 ### 2.3 Evaluation
 
 - **Compatibility ceiling**: for modern sites (Gmail, YouTube, X, Discord, React/Next apps) to really work, a full
-  engine is required. On the Switch, the best and cheapest source of that is the system's own WebKit.
+  engine is required. Nexvyn OS builds that engine step by step itself.
 - **Our own engine**: fast for news sites, Wikipedia, documents, forums, simple apps and local HTML, and integrated with
   Nexvyn OS (password vault, reader mode, downloads, tabs). The gaps with the most benefit were closed: CSS variables
   (almost every modern site sets its colors with them), real flexbox and grid (menus, card grids), inline SVG (icons),
@@ -82,23 +66,14 @@ Sources: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_NX
 
 ## 3. What was done
 
-### 3.1 Hybrid browsing: "Full browser (WebKit)"
+### 3.1 Compatibility hints
 
 - **Compatibility detector** (`Page::compatibility()`): it scores many scripts on a page with almost no text (an app
   built only with JS), `<video>/<audio>`, WebGL/WebGPU, `<canvas>`, "enable JavaScript" warnings, React/Next/Angular/
-  Nuxt/Gatsby/Svelte markers, repeated script errors and JS being turned off for the site. With a score of 3 or more, a
-  suggestion bar with the reason appears at the top of the page.
-- The bar has **Full Browser (WebKit)** and **Always Open This Way** buttons. Per-site preference: every time you go to
-  that site, the tab shows an "Opened in the full browser" page and the applet opens; there are "Open here this time"
-  and "stop opening this site in the full browser" options.
-- The applet starts with the pointer, touch, page cache and Web Audio on. When it closes, the address the applet showed
-  last (`webReplyGetLastUrl`) is written to history; if you went to a different page, an "open that page here"
-  notification appears.
-- **When it is unavailable** (applet mode / emulator / a system version outside the tested 22.5.0 - 23.0.x, see
-  `source/core/fwcompat.h`; Browser settings can allow it there anyway), "Why is WebKit not available?" appears instead of the button and
-  explains the reason.
-- Settings > General: "Suggest the full browser", "Always open <site> in the full browser".
-- Share menu and right-click menu: "Open in Full Browser (WebKit)", "Always Open This Site in the Full Browser".
+  Nuxt/Gatsby/Svelte markers, repeated script errors and JS being turned off for the site. The score is kept for
+  diagnostics.
+- For a few heavy sites the top bar offers the lighter version of the site (`Lite Version`) or Tube for YouTube videos.
+- Bookmarks bar: off on a new install; users who already had the browser keep it on (Browser > View).
 
 ### 3.2 Engine (source/web)
 
@@ -277,7 +252,7 @@ should be entered in this table.
 | Other | TextEncoder/Decoder, MutationObserver, FormData, matchMedia, CSS.supports, structuredClone, crypto | PASS |
 | JS language | ES2020/ES2022 (QuickJS-ng) | PASS |
 | Canvas | getContext('2d') + getImageData | PASS |
-| WebGL | getContext('webgl') | FAIL (expected: not there → the full browser is suggested) |
+| WebGL | getContext('webgl') | FAIL (expected: not there) |
 | CSS | var() (5 boxes), @media, prefers-color-scheme, calc/clamp, hsl/rgb, :nth-child, :is/:not, [attr^=], !important, @supports | Green |
 | Layout | flexbox 1-11, grid 12-15, flex with variables 16 | As described |
 | SVG | inline, currentColor, `<use>` sprite, linearGradient, data-URI SVG, WebP | Visible |
@@ -297,4 +272,4 @@ should be entered in this table.
   `toDataURL`.
 - `<text>` inside SVG, painting with CSS classes, filters.
 - Web fonts (`@font-face`), MediaSource video (`blob:` streams), WebGL, Service Worker, WebSocket, WebAssembly. The
-  full browser (WebKit) is suggested for sites that need these.
+  sites that need these do not work in this browser.

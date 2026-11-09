@@ -26,7 +26,7 @@ itself.
 |---|---|---|---|
 | How it opens | Album > Homebrew menu | Hold R while starting a game | The Nexvyn OS icon on the HOME menu |
 | Memory | Low (a few hundred MB, firmware dependent) | Full (about 3.2 GB) | Full (about 3.2 GB) |
-| System web applet, launching games | No | Yes | Yes |
+| Launching games | No | Yes | Yes |
 | Extra setup | None | None (Atmosphère default) | NSP install and patches that accept unsigned content |
 | Needs an installed game | No | Yes | No |
 

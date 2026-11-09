@@ -29,8 +29,7 @@ Homebrew menüsünden açılır, kapatınca Homebrew menüsüne dönülür. Aray
 
 - Atmosphère ile açılan bir Switch. Güncel bir Atmosphère sürümü (1.12.1 veya daha yenisi) ve emuMMC önerilir.
 - **Sistem sürümü 22.5.0 veya üstü** (gerekli). **23.0.x**'e kadar test edildi. Diğer sürümlerde Nexvyn OS yine
-  açılır ve hiçbir şey engellenmez, ama sorunlar olabilir: bir kez bildirim gösterir, tam tarayıcı ise 22.5.0 - 23.0.x
-  dışında dahili tarayıcıda kalır (Tarayıcı ayarlarından yine de izin verilebilir). **Ayarlar > Hakkında** sistem
+  açılır ve hiçbir şey engellenmez, ama sorunlar olabilir: bir kez bildirim gösterir. **Ayarlar > Hakkında** sistem
   sürümünüzü ve gerekli sürümü gösterir.
 - SD kartta biraz boş yer. Video, PC oyunları ve Retro oyunları için daha fazlası gerekir.
 
@@ -59,8 +58,8 @@ Nexvyn OS'un ne kadar bellek alacağı, nasıl açıldığına bağlıdır.
 
 | Biçim | Nasıl açılır | Bellek | Not |
 |---|---|---|---|
-| **Başlık modu** (önerilen) | Bir oyunu açarken **R**'yi basılı tutun. Oyun yerine Homebrew menüsü açılır; Nexvyn OS'u oradan başlatın. | Tam | Ek kurulum gerekmez. Switch oyunlarını başlatma, sistem tarayıcısı ve PC oyunları bu modda çalışır. |
-| **Applet modu** | Homebrew menüsünü Albüm'den açıp Nexvyn OS'u başlatın. | Sınırlı | Nexvyn OS bir kez uyarı gösterir. Büyük uygulamalar, sistem tarayıcısı ve oyun başlatma kısıtlıdır. |
+| **Başlık modu** (önerilen) | Bir oyunu açarken **R**'yi basılı tutun. Oyun yerine Homebrew menüsü açılır; Nexvyn OS'u oradan başlatın. | Tam | Ek kurulum gerekmez. Switch oyunlarını başlatma ve PC oyunları bu modda çalışır. |
+| **Applet modu** | Homebrew menüsünü Albüm'den açıp Nexvyn OS'u başlatın. | Sınırlı | Nexvyn OS bir kez uyarı gösterir. Büyük uygulamalar ve oyun başlatma kısıtlıdır. |
 | **Forwarder** | HOME menüsüne kurulan Nexvyn OS simgesine basın. | Tam | Ayrı bir kurulum ister. Ayrıntılar: [FORWARDER.tr.md](FORWARDER.tr.md). |
 
 Hangi modda olduğunuzu **Sistem Ayarları > Hakkında > Başlatma modu** satırı gösterir: "Uygulama (tam bellek)" ya da
@@ -604,8 +603,8 @@ modu, indirmeler, formlar ve çerezler.
 - **Parolalar:** giriş bilgileri kaydedilir ve otomatik doldurulur. Parola deposu cihazda şifreli tutulur; isteğe bağlı
   bir PIN ile korunabilir. **Parolalar…** menüsünden yönetilir.
 - **Sınırlar:** çok büyük web uygulamaları (web postası, video siteleri, haritalar) tam bir tarayıcı ister. Bu
-  sitelerde bir uyarı çıkar. **Sistem Tarayıcısında Aç** konsolun kendi tarayıcısını açar (applet modunda
-  kısıtlıdır); video siteleri için Tube önerilir.
+  sitelerde, varsa hafif sürümü öneren bir çubuk çıkar; video siteleri için Tube önerilir. Nexvyn OS'un tek
+  tarayıcısı kendi tarayıcısıdır.
 
 ### AI Sohbet
 
@@ -914,7 +913,7 @@ Ayrıntılar: [DEVELOPER_GUIDE.tr.md](DEVELOPER_GUIDE.tr.md).
 
 ### Nexvyn OS "sınırlı bellekle çalışıyor" diyor
 
-Nexvyn OS'u Albüm'den (applet modu) açtınız. Bu modda sistem ona az bellek verir: büyük uygulamalar, sistem tarayıcısı
+Nexvyn OS'u Albüm'den (applet modu) açtınız. Bu modda sistem ona az bellek verir: büyük uygulamalar
 ve oyun başlatma kısıtlıdır, ağır sayfalar ya da videolar kapanabilir. Çözüm:
 
 - Bir oyunu açarken **R**'yi basılı tutup Homebrew menüsünü oradan açın (başlık modu), ya da
@@ -1014,8 +1013,7 @@ yeniden derlenir. Ayrıntılar uygulamanın kendi ekranında yazar.
 
 ### Bir web sitesi açılmıyor ya da bozuk görünüyor
 
-Nexvyn OS'un tarayıcısı hafif bir motordur. Ağır siteler için **Sistem Tarayıcısında Aç**'ı kullanın (tam bellekli
-modda) ya da sitenin hafif sürümünü açın. Videolar için Tube'u deneyin.
+Nexvyn OS'un tarayıcısı hafif bir motordur. Ağır siteler için sitenin hafif sürümünü açın. Videolar için Tube'u deneyin.
 
 ### Yazılım Güncelleme sürüm bulamıyor
 

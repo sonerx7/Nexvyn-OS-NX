@@ -16,35 +16,20 @@ Konsolda, tek bir `NexvynOS.nro` içinde ve GPL-3.0-or-later lisansıyla **günc
   Modern bir site sekmesi tek başına yüzlerce MB isteyebilir.
 - JIT'li bir JS motoru (V8) çalıştırılabilir bellek ister; bu ancak özel çalışma ortamlarında mümkün (bkz. Brewser).
 
-Bu yüzden Nexvyn OS **karma (hibrit)** bir yol izliyor:
+1.2.4'ten beri Nexvyn OS'un tek bir tarayıcısı var: kendi motoru (konsolun sistem web applet'i artık kullanılmıyor).
 
-1. **Tam tarayıcı (WebKit)**: Konsolun kendi WebKit tabanlı web applet'i (NetFront NX). Nexvyn OS başlık modunda
-   çalışırken, motoru zorlayan siteler tek dokunuşla bu applet'te açılır; kapatınca Nexvyn OS'a dönülür.
-2. **Kendi motorumuz**: QuickJS üzerinde HTML/CSS/JS motoru (`source/web/`). Bu çalışmada CSS değişkenleri,
-   gerçek flexbox, CSS grid, SVG, `<canvas>` 2D, özel sekme ve gamepad ile bağlantı gezintisi eklendi.
+- **Kendi motor**: QuickJS üzerinde HTML/CSS/JS motoru (`source/web/`). Bu çalışmada CSS değişkenleri, gerçek flexbox,
+  CSS grid, SVG, `<canvas>` 2D, gizli sekmeler ve oyun kolu ile bağlantı gezintisi eklendi.
+- Uygulamaların giriş sayfaları (`net.oauth`) bu tarayıcının bir sekmesinde açılır; sayfa uygulamanın yönlendirme
+  adresine ulaşınca sekme kapanır.
 
 ## 2. Araştırma
 
-### 2.1 Switch'in yerleşik web applet'i (WebKit / NetFront NX)
+### 2.1 Switch'in yerleşik web applet'i (geçmiş)
 
-- Switch'te kullanıcıya açık normal bir tarayıcı yoktur; web içeriği tarayıcı applet'leriyle gösterilir. Motor,
-  WebKit tabanlı **NetFront NX**'tir. User-Agent'taki WebKit sürümü sistem sürümüne göre değişir:
-  1.0.0-6.1.0'da `AppleWebKit/601.6`, 10.0.0'da `606.4`, 20.1.0 ve sonrasında (ve Switch 2'de) `613.0`.
-  ([Switchbrew: Internet Browser](https://switchbrew.org/wiki/Internet_Browser))
-- WebKit 613 kabaca Safari 15.4 dönemine denk gelir: ES2021 JavaScript, flexbox/grid, CSS değişkenleri, `<video>`
-  (whitelist'li applet'lerde), Web Audio gibi özellikler vardır. WebGL ve JIT durumu Switchbrew'de belgelenmemiştir.
-- Genel amaçlı applet `WebApplet` (010000000000100A). Whitelist yalnızca sayfa gezintisini sınırlar; `<video>` ve
-  JS ağ istekleri etkilenmez. Applet'ler SD kartı bağlamaz. Applet yığını 0x15600000 bayttır (~342 MB).
-  ([Switchbrew: Internet Browser](https://switchbrew.org/wiki/Internet_Browser))
-- libnx API'si: `webPageCreate`, `webConfigSetWhitelist`, `webConfigSetPointer`, `webConfigSetTouchEnabledOnContents`,
-  `webConfigSetPageCache`, `webConfigSetWebAudio`, `webConfigShow`, dönüşte `webReplyGetLastUrl` /
-  `webReplyGetExitReason`. ([libnx web.h](https://switchbrew.github.io/libnx/web_8h.html), devkitPro
-  `libnx/include/switch/applets/web.h`)
-- Kısıtlar: applet yalnızca uygulama (başlık) olarak çalışan bir programdan açılabilir; Albüm'den açılan homebrew
-  (applet modu) ve emülatörler (web applet orada yok) bunu yapamaz. BrowseNX gibi araçlar da aynı applet'i
-  hbmenu üzerinden açar ve NRO sürümünde HTML5 video desteği olmadığını not eder.
-  ([GameBrew: BrowseNX](https://gamebrew.org/wiki/BrowseNX_Switch))
-- Applet açıkken Nexvyn OS bekler (çağrı engelleyicidir); çerezler/oturumlar applet ile paylaşılmaz.
+1.2.3'e kadar Nexvyn OS bir sayfayı konsolun web applet'ine (WebKit tabanlı NetFront NX) verebiliyordu. 1.2.4'te
+kaldırıldı: kullanıcı tek tarayıcı istiyor; applet başlık modu gerektiriyordu, test edilmemiş sistem sürümlerinde
+konsolu durduruyordu ve çerezleri OS ile paylaşmıyordu. Araştırma notları burada tutulmuyor.
 
 ### 2.2 Homebrew motorlar ve kütüphaneler
 
@@ -69,7 +54,7 @@ Kaynaklar: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_
 ### 2.3 Değerlendirme
 
 - **Uyumluluk tavanı**: Modern sitelerin (Gmail, YouTube, X, Discord, React/Next uygulamaları) gerçekten çalışması
-  için tam bir motor şart. Switch'te bunun en iyi ve en ucuz kaynağı sistemin kendi WebKit'i.
+  için tam bir motor şart. Nexvyn OS bu motoru adım adım kendisi kuruyor.
 - **Kendi motor**: Haber siteleri, Wikipedia, belgeler, forumlar, basit uygulamalar ve yerel HTML için hızlı,
   Nexvyn OS ile bütünleşik (şifre kasası, okuma modu, indirmeler, sekmeler). En çok fayda sağlayan eksikler
   kapatıldı: CSS değişkenleri (modern sitelerin neredeyse tamamı renkleri bunlarla verir), gerçek flexbox ve grid
@@ -80,21 +65,14 @@ Kaynaklar: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_
 
 ## 3. Yapılanlar
 
-### 3.1 Hibrit tarama: "Tam tarayıcı (WebKit)"
+### 3.1 Uyumluluk ipuçları
 
 - **Uyumluluk dedektörü** (`Page::compatibility()`): sayfada neredeyse hiç metin yokken çok sayıda betik (yalnızca
   JS ile kurulan uygulama), `<video>/<audio>`, WebGL/WebGPU, `<canvas>`, "JavaScript'i etkinleştirin" uyarıları,
   React/Next/Angular/Nuxt/Gatsby/Svelte işaretleri, tekrarlayan betik hataları ve sitede JS'nin kapalı olması
-  puanlanır. Puan 3 ve üstüyse sayfanın üstünde nedeniyle birlikte öneri çubuğu çıkar.
-- Çubukta **Tam Tarayıcı (WebKit)** ve **Hep Böyle Aç** düğmeleri. Site başına tercih: o siteye her gidişte sekme bir
-  "Tam tarayıcıda açıldı" sayfası gösterir ve applet açılır; "Bu kez burada aç" ve "bu siteyi tam tarayıcıda açmayı
-  bırak" seçenekleri vardır.
-- Applet işaretçi, dokunmatik, sayfa önbelleği ve Web Audio açık başlatılır. Kapanınca applet'in son gösterdiği adres
-  (`webReplyGetLastUrl`) geçmişe yazılır; farklı bir sayfaya gidildiyse "o sayfayı burada aç" bildirimi gelir.
-- **Kullanılamadığında** (applet modu / emülatör / test edilen 22.5.0 - 23.0.x dışındaki bir sistem sürümü, bkz.
-  `source/core/fwcompat.h`; orada Tarayıcı ayarlarından yine de izin verilebilir) düğme yerine "WebKit neden yok?" çıkar ve nedenini açıklar.
-- Ayarlar > Genel: "Tam tarayıcıyı öner", "<site> sitesini hep tam tarayıcıda aç".
-- Paylaş menüsü ve sağ tık menüsü: "Tam Tarayıcıda Aç (WebKit)", "Bu Siteyi Hep Tam Tarayıcıda Aç".
+  puanlanır. Puan tanılama için tutulur.
+- Birkaç ağır site için üstteki çubuk sitenin hafif sürümünü (`Hafif Sürüm`) ya da YouTube videoları için Tube'u önerir.
+- Yer imleri çubuğu: yeni kurulumda kapalı; tarayıcıyı zaten kullananlarda açık kalır (Tarayıcı > Görünüm).
 
 ### 3.2 Motor (source/web)
 
@@ -272,7 +250,7 @@ işlenmelidir.
 | Diğer | TextEncoder/Decoder, MutationObserver, FormData, matchMedia, CSS.supports, structuredClone, crypto | PASS |
 | JS dili | ES2020/ES2022 (QuickJS-ng) | PASS |
 | Canvas | getContext('2d') + getImageData | PASS |
-| WebGL | getContext('webgl') | FAIL (beklenen: yok → tam tarayıcı önerilir) |
+| WebGL | getContext('webgl') | FAIL (beklenen: yok) |
 | CSS | var() (5 kutu), @media, prefers-color-scheme, calc/clamp, hsl/rgb, :nth-child, :is/:not, [attr^=], !important, @supports | Yeşil |
 | Düzen | flexbox 1-11, grid 12-15, değişkenli flex 16 | Açıklandığı gibi |
 | SVG | satır içi, currentColor, `<use>` sprite, linearGradient, data-URI SVG, WebP | Görünür |
@@ -297,4 +275,4 @@ sayfa, `?n=` ile büyütülür; kurulum ve ilk kare süreleri başlıkta).
   `toDataURL`.
 - SVG içinde `<text>`, CSS sınıflarıyla boyama, filtreler.
 - Web yazı tipleri (`@font-face`), MediaSource video (`blob:` akışları), WebGL, Service Worker, WebSocket,
-  WebAssembly. Bunlara ihtiyaç duyan siteler için tam tarayıcı (WebKit) önerilir.
+  WebAssembly. Bunlara ihtiyaç duyan siteler bu tarayıcıda çalışmaz.

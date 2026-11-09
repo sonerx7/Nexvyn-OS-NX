@@ -145,3 +145,25 @@ attribution required) and is not linked into Nexvyn OS. License text and the lis
 `romfs/Applications/browser.app/test/three.min.js` is three.js r149 (official build), MIT License, Copyright 2010-2023
 three.js authors, https://github.com/mrdoob/three.js. It is only the test page `webgl_cube.html` of the built-in browser;
 the license text is the header of the file.
+
+## Port app'ler (App Market) / Ports (App Market)
+
+Bu üç program App Market'ten ayrı kurulan, ayrı programlardır; Nexvyn OS'a bağlanmaz. Her paket kendi lisans metinlerini
+(`data/licenses/`) ve kaynak bağlantılarını taşır. Pakette ticari oyun verisi, BIOS ya da firmware yoktur.
+
+These three programs are installed on their own from the App Market; they are not linked into Nexvyn OS. Each package carries
+its own licence texts (`data/licenses/`) and source links. No commercial game data, BIOS or firmware is included.
+
+| Bileşen / Component | Lisans / License | Kaynak / Source |
+|---|---|---|
+| **Chocolate Doom** 3.1.0 (`Store/Games/action/chocolate-doom`) | GPL-2.0-or-later | https://github.com/chocolate-doom/chocolate-doom (etiket / tag `chocolate-doom-3.1.0`); Nexvyn OS yamaları pakette `data/licenses/patches/` / patches in the package |
+| **Freedoom** 0.13.0, `freedoom1.wad` (Chocolate Doom paketinde / in the Chocolate Doom package) | BSD-3-Clause | https://github.com/freedoom/freedoom (v0.13.0) |
+| **Ironwail** 0.8.0 (`Store/Games/action/ironwail`) | GPL-2.0-or-later | https://github.com/andrei-drexler/ironwail (commit `08d578136ff4`) |
+| **LibreQuake** v0.09-beta lite (Ironwail paketinde / in the Ironwail package) | BSD-3-Clause (`progs.dat`, `pop.lmp`: GPL-2.0) | https://github.com/lavenderdotpet/LibreQuake |
+| Tremor (libvorbisidec) ve / and libogg (yalnızca Ironwail'e bağlı / linked into Ironwail only) | BSD-3-Clause | https://gitlab.xiph.org/xiph/tremor , https://gitlab.xiph.org/xiph/ogg |
+| **mGBA** 0.10.5 (`Store/Games/arcade/mgba`) | MPL-2.0 (değiştirilmemiş / unmodified) | https://github.com/mgba-emu/mgba (etiket / tag `0.10.5`) |
+| blip_buf (mGBA içinde / inside mGBA) | LGPL-2.1-or-later | https://github.com/mgba-emu/mgba/tree/0.10.5/src/third-party/blip_buf |
+| inih (mGBA içinde / inside mGBA) | BSD-3-Clause | https://github.com/benhoyt/inih |
+
+SDL2 ve SDL2_mixer (zlib) bu port app'lere yalnızca kendi paketlerinde bağlıdır / SDL2 and SDL2_mixer (zlib) are linked
+into these port apps only, in their own packages.

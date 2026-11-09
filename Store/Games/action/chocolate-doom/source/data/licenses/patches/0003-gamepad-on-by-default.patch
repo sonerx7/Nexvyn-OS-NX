@@ -1,0 +1,75 @@
+--- a/src/i_joystick.c
++++ b/src/i_joystick.c
+@@ -40,10 +40,16 @@
+ 
+ // Standard default.cfg Joystick enable/disable
+ 
+-static int usejoystick = 0;
++// Nexvyn OS: the Joy-Con / Pro Controller works out of the box (a pad is always there on this console, and the setup
++// program is not part of the port), through the SDL_gamecontroller interface with the first gamepad found.
++static int usejoystick = 1;
+ 
+ // Use SDL_gamecontroller interface for the selected device
+-static int use_gamepad = 0;
++static int use_gamepad = 1;
++
++// Nexvyn OS: 0 until the pad defaults above were applied to a config that was written before them (old cfg files hold
++// use_joystick 0); the value is saved, so a later choice of the user in the cfg is kept.
++static int nexvyn_pad_default = 0;
+ 
+ // SDL_GameControllerType of gamepad
+ static int gamepad_type = 0;
+@@ -208,10 +214,9 @@
+     joystick_index = index;
+     gamepad_type = SDL_GameControllerTypeForIndex(index);
+ 
+-    if (strcmp(joystick_guid, ""))
+-    {
+-        joystick_guid = malloc(GUID_STRING_BUF_SIZE);
+-    }
++    // Nexvyn OS: upstream allocates only when the GUID is NOT empty and then writes into the "" literal otherwise
++    // (read-only memory: a crash on the console). Always use a buffer of our own.
++    joystick_guid = malloc(GUID_STRING_BUF_SIZE);
+ 
+     guid = SDL_JoystickGetDeviceGUID(joystick_index);
+     SDL_JoystickGetGUIDString(guid, joystick_guid, GUID_STRING_BUF_SIZE);
+@@ -516,7 +521,15 @@
+ {
+     int index;
+ 
+-    if (!usejoystick || !strcmp(joystick_guid, ""))
++    if (!nexvyn_pad_default)
++    {
++        usejoystick = 1;
++        use_gamepad = 1;
++        nexvyn_pad_default = 1;
++    }
++
++    // Nexvyn OS: gamepad mode finds the first pad itself, an empty GUID is fine there
++    if (!usejoystick || (!use_gamepad && !strcmp(joystick_guid, "")))
+     {
+         return;
+     }
+@@ -796,6 +809,7 @@
+ 
+     M_BindIntVariable("use_joystick",          &usejoystick);
+     M_BindIntVariable("use_gamepad",           &use_gamepad);
++    M_BindIntVariable("nexvyn_pad_default",    &nexvyn_pad_default);
+     M_BindIntVariable("gamepad_type",          &gamepad_type);
+     M_BindStringVariable("joystick_guid",      &joystick_guid);
+     M_BindIntVariable("joystick_index",        &joystick_index);
+--- a/src/m_config.c
++++ b/src/m_config.c
+@@ -1456,6 +1456,12 @@
+     CONFIG_VARIABLE_INT(gamepad_type),
+ 
+     //!
++    // Nexvyn OS: 1 once the gamepad-on-by-default settings were applied (see i_joystick.c).
++    //
++
++    CONFIG_VARIABLE_INT(nexvyn_pad_default),
++
++    //!
+     // Joystick x axis dead zone, specified as a percentage of the axis max
+     // value.
+     //

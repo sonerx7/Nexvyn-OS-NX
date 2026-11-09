@@ -1,0 +1,4 @@
+Ironwail (GPL-2.0-or-later): https://github.com/andrei-drexler/ironwail (commit 08d578136ff43d7d1ef38e636dfbfd3e844be7cd)
+  Nexvyn OS changes: patches/ in https://github.com/sonerx7/Nexvyn-OS-NX (SDK/Ports), a few lines in sys_sdl_unix.c.
+Ogg Vorbis decoding: Tremor (libvorbisidec) and libogg, BSD-3-Clause, Xiph.Org Foundation: https://gitlab.xiph.org/xiph/tremor , https://gitlab.xiph.org/xiph/ogg (devkitPro portlibs build, linked into this app only).
+LibreQuake v0.09-beta (BSD-3-Clause content, GPL-2.0 for progs.dat and pop.lmp): https://github.com/lavenderdotpet/LibreQuake

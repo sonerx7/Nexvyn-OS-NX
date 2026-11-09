@@ -91,6 +91,7 @@ doğrular (`docs/NXVAPP_FORMAT.tr.md` bölüm 2 ve 5).
   (`http://`, `https://` ya da `nxv://` ile başlayan metin), `"file"` (her dosya), `"image"` (.png .jpg .jpeg .bmp .gif
   .webp) ya da `".txt"` gibi bir dosya uzantısı. Paylaşılan öğe, uygulamanın birlikte açıldığı bir dosya gibi gelir:
   uygulama çalışmıyorsa `app.load(arg)`, çalışıyorsa `app.open(arg)`.
+- `loadingHint` → isteğe bağlı, çok veri yükleyip bu sırada uzun kareler üreten app için `true` (SDK 1.13). "Yanıt vermiyor" penceresi 5 sn yerine 120 sn bekler; sonra yine de çıkabilir. Hiçbir şey kendiliğinden kapatılmaz.
 - `permissions` → uygulamanın kendi klasörleri dışında neye ihtiyaç duyduğu. SD karta kurulan uygulamalarda **her izin
   zorunlu olarak uygulanır** (SDK 1.4; öncesinde yalnızca `network` ve `files` uygulanıyordu):
 
@@ -114,7 +115,7 @@ doğrular (`docs/NXVAPP_FORMAT.tr.md` bölüm 2 ve 5).
 
 ### SDK sürümleri
 
-`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.12"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
+`sys.sdkVersion()` bu sistemin sağladığı sürümü döndürür (`"1.13"`). Daha yeni bir şey kullandığınızda `minSdk`'yı
 yükseltin.
 
 | SDK | Nexvyn OS'un ekledikleri |
@@ -132,6 +133,7 @@ yükseltin.
 | 1.10 | Native runtime: Nexvyn OS'un içinde pencerede ya da tam ekranda çalışan C / C++ uygulamaları (`"runtime": "native"`, `"mode": "window"` veya `"fullscreen"`, bir `.nxvmod`), Native SDK 1.0 (`docs/NATIVE_SDK_DESIGN.md`, `nxn_*` C arayüzü). Script fonksiyonlarında değişiklik yok. Native paketler `"minSdk": "1.10"` taşır; eski sistemler "daha yeni bir Nexvyn OS gerekli" der |
 | 1.11 | Klasör seçici ve kalıcı klasörler: `ui.chooseFolder` (`remember` klasörü sonraki açılışlara taşır), `fs.folderGrants` / `folderGranted` / `revokeFolder`; kayıt klasörü ve yedekleri: `fs.savePath`, `saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python ve C; native `nxn_pick` / `nxn_grant_*` / `nxn_save_*` ile aynı adlar, ikisi için tek core birimi). Eski SDK'lar için yazılmış app'ler eskisi gibi çalışır |
 | 1.12 | Native SDK ile dil eşitliği (`docs/PARITY.tr.md`): `ui.tokens()` (OS görünümü tek tabloda: renkler, köşe yarıçapları, boşluklar, yazı boyutları, yazı ölçeği, kalın yazı; native `nxn_ui_tokens_get` gibi), `audio.stopAll()` (app'in başlattığı bütün sesleri durdurur; `nxn_sfx_stop_all` gibi) ve C işlevi `input_action(name)` (Lua, JavaScript ve Python'da `input.action` zaten vardı); Lua, JavaScript, Python ve C. Eski SDK'lar için yazılmış app'ler eskisi gibi çalışır |
+| 1.13 | App manifest alanı `loadingHint` (bkz. *app.json*): `"loadingHint": true` sistemin app'in yüklerken uzun kareler üreteceğini bilmesini sağlar; "yanıt vermiyor" penceresi 5 sn yerine 120 sn bekler, sonra yine çıkar. Yeni fonksiyon yok (Lua, JavaScript, Python, C ve native aynı alanı okur). Penceredeki *Bekle* 60 sn ve app bir kez yanıt verene kadar susturur. Eski SDK'lar için yazılmış app'ler eskisi gibi çalışır |
 
 **Yeni API alan diller.** SDK 1.9'dan itibaren yeni fonksiyonlar Lua, JavaScript, Python (`"python"` ve `"python3"`)
 ve C'ye gelir. Squirrel ve Java SDK 1.8'de donduruldu: sahip oldukları her fonksiyon sonraki her Nexvyn OS'ta
@@ -441,7 +443,7 @@ saatinde `{year, month, day, hour, min, sec, wday (0=Pazar), yday, epoch}` · `s
 `sys.notify(title, body)` (bildirim şeridi) · `sys.open(path)` (doğru uygulamayla açar) · `sys.launch(appId[, arg])` ·
 `sys.clipboard([text])` al/ayarla · `sys.log(...)` / `print(...)` · `sys.title(text)` pencere başlığı · `sys.exit()`
 pencereyi kapatır · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (HD titreşim, non-blocking; en fazla 2000 ms, yalnızca pencere odaktayken, `sys.vibrate(0)` durdurur) · `sys.appid()` ·
-`sys.sdkVersion()` → `"1.12"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
+`sys.sdkVersion()` → `"1.13"` (bkz. *SDK sürümleri*). `sys.notify`, (başka bir uygulama için) `sys.launch`,
 `sys.games` ve `nxv://` bağlantıları kendi izinlerini gerektirir (bölüm 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, izin gerekmez) metni yerleşik sesle okur; o an söylenenin ardından sıraya girer ve
@@ -1082,7 +1084,7 @@ bir ping gönderir. Soketler uygulama kapanınca kapanır, konsol uyuduktan sonr
 
 ### Oturum açma: `net.oauth(options, callback(result, err))`
 
-Oturum açma sayfasını konsolun web tarayıcısında açar ve sayfa yönlendirme adresinize ulaşınca döner (yerel
+Oturum açma sayfasını Nexvyn OS'un bir Tarayıcı penceresinde (kendi tarayıcısının bir sekmesi) açar ve sayfa yönlendirme adresinize ulaşınca döner (yerel
 uygulamalar için OAuth 2.0, RFC 8252). `redirect` bir loopback adresi (`http://localhost/...`,
 `http://127.0.0.1/...`) ya da uygulamanın kendi bağlantısı (`nxv://app/<id>...`) olmalı. `state` sizin için eklenir ve
 denetlenir; `pkce = true` bir PKCE challenge'ı (S256) ekler ve token isteği için `verifier`'ı verir.
@@ -1090,16 +1092,16 @@ denetlenir; `pkce = true` bir PKCE challenge'ı (S256) ekler ve token isteği i�
 ```lua
 net.oauth({url = "https://auth.example.com/authorize?client_id=ID&response_type=code&scope=read",
            redirect = "http://localhost/callback", pkce = true}, function(r, err)
-  if err then status = err return end                  -- "cancelled" ya da tarayıcının neden açılamadığı
+  if err then status = err return end                  -- "cancelled" ya da giriş sayfasının neden açılamadığı
   net.request({url = "https://auth.example.com/token", method = "POST", responseType = "json",
     form = {grant_type = "authorization_code", code = r.code, redirect_uri = "http://localhost/callback",
             client_id = "ID", code_verifier = r.verifier}}, function(res) token = res.data and res.data.access_token end)
 end)
 ```
 
-`result`: `code`, `state`, `verifier`, `params` (bütün query / fragment parametreleri), `url`. Tarayıcı, Nexvyn OS'un
-konsolda başlık modunda (bir oyun üzerinden) açılmasını ister (emülatörde ve Albüm'den açılınca olmaz); öyleyse `err` bunu söyler. O zaman
-bir yedek yol sunun (metin ya da QR kod olarak gösterilen cihaz kodu). İstemci sırlarını konsola koymayın.
+`result`: `code`, `state`, `verifier`, `params` (bütün query / fragment parametreleri), `url`. Sayfa `redirect`'e ulaşınca pencere kendiliğinden
+kapanır; kullanıcı önce kapatırsa `err` `"cancelled"` olur. Her başlatma modunda ve emülatörde çalışır. Gömülü tarayıcıları engelleyen
+siteler girişi reddedebilir; o zaman bir yedek yol sunun (metin ya da QR kod olarak gösterilen cihaz kodu). İstemci sırlarını konsola koymayın.
 
 ### Webden resimler: `gfx.imageUrl(url[, maxSize])`
 

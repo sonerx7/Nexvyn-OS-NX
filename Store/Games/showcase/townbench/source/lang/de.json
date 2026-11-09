@@ -1,0 +1,40 @@
+{
+ "ui": {
+  "loading": "Dorf wird geladen",
+  "shaders": "Shader werden vorbereitet",
+  "fail": "Laden fehlgeschlagen"
+ },
+ "m": {
+  "title": "Dorf-Benchmark",
+  "sub": "60 Sekunden Flug über ein texturiertes Dorf. Jedes Mal derselbe Weg.",
+  "preset": "QUALITÄTSSTUFE",
+  "best": "Beste",
+  "start": "A  Start",
+  "hint": "Hoch / Runter wählen    A Start    B Beenden"
+ },
+ "run": {
+  "title": "Benchmark",
+  "abort": "B abbrechen"
+ },
+ "r": {
+  "title": "Benchmark",
+  "score": "PUNKTE",
+  "avg": "Durchschnitt",
+  "min": "Minimum (schlechtestes Bild)",
+  "low": "1 % Low",
+  "frames": "Bilder",
+  "keys": "A / Y nochmal    B Menü"
+ },
+ "p0": {
+  "n": "Niedrig",
+  "d": "Renderskala 60 %, keine Schatten, keine Kantenglättung"
+ },
+ "p1": {
+  "n": "Mittel",
+  "d": "Renderskala 80 %, Sonnenschatten, Kantenglättung"
+ },
+ "p2": {
+  "n": "Hoch",
+  "d": "Renderskala 100 %, Sonnenschatten, Kantenglättung"
+ }
+}

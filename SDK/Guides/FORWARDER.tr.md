@@ -25,7 +25,7 @@ dosyasını uygulama olarak başlatır. Nexvyn OS'u güncellediğinizde forwarde
 |---|---|---|---|
 | Nasıl açılır | Albüm > Homebrew menüsü | Oyunu açarken R basılı | HOME menüsündeki Nexvyn OS simgesi |
 | Bellek | Az (bellenime göre birkaç yüz MB) | Tam (yaklaşık 3,2 GB) | Tam (yaklaşık 3,2 GB) |
-| Konsolun web applet'i, oyun başlatma | Yok | Var | Var |
+| Oyun başlatma | Yok | Var | Var |
 | Ek kurulum | Yok | Yok (Atmosphère varsayılanı) | NSP kurulumu ve imzasız içeriği kabul eden yamalar |
 | Kurulu bir oyun gerekir mi | Hayır | Evet | Hayır |
 

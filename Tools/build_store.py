@@ -53,7 +53,7 @@ SAMPLES = os.path.join(SDK, "samples.json")
 DATES = os.path.join(STORE, "dates.json")
 DEFAULT_LICENSE = "GPL-3.0-or-later"  # the repository's license (README): what an item is under unless it says otherwise
 
-CATEGORIES = ["productivity", "utilities", "media", "internet", "developer", "system", "switch", "other", "showcase", "games",
+CATEGORIES = ["productivity", "office", "utilities", "media", "internet", "developer", "system", "switch", "other", "showcase", "games",
               "themes", "fonts"]
 PERMISSIONS = {"network", "files", "launch", "notifications", "games"}
 RETIRED = {"clipboard"}  # no longer a permission (sys.clipboard always works); still accepted in old app.json files
@@ -78,10 +78,10 @@ USES = {
 }
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
 CAT_NAMES = {
-    "en": {"productivity": "Productivity", "utilities": "Utilities", "media": "Media", "internet": "Internet",
+    "en": {"office": "Office", "productivity": "Productivity", "utilities": "Utilities", "media": "Media", "internet": "Internet",
            "developer": "Developer", "system": "System", "switch": "Switch Tools", "other": "Other", "games": "Games",
            "themes": "Themes", "fonts": "Fonts", "showcase": "Showcase"},
-    "tr": {"productivity": "Verimlilik", "utilities": "Araçlar", "media": "Medya", "internet": "İnternet",
+    "tr": {"office": "Ofis", "productivity": "Verimlilik", "utilities": "Araçlar", "media": "Medya", "internet": "İnternet",
            "developer": "Geliştirici", "system": "Sistem", "switch": "Switch Araçları", "other": "Diğer",
            "games": "Oyunlar", "themes": "Temalar", "fonts": "Yazı Tipleri", "showcase": "Vitrin"},
 }
@@ -342,7 +342,20 @@ def build(check):
         entry["history"] = list(reversed(hist))[:20]  # newest first
 
     def shots_of(item):
-        return [RAW + rel(s) for s in sorted(glob.glob(os.path.join(item, "screenshots", "*.png")))]
+        # .png, .jpg, .jpeg and .webp; ordered by the numeric prefix of the file name (0_cover < 1 < 2_start < 10);
+        # one shot is never listed twice when both a png and a jpg of it exist (the jpg wins)
+        found = {}
+        for s in glob.glob(os.path.join(item, "screenshots", "*")):
+            stem, ext = os.path.splitext(os.path.basename(s))
+            if ext.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
+                continue
+            if stem not in found or ext.lower() in (".jpg", ".jpeg"):
+                found[stem] = s
+
+        def key(stem):
+            m = re.match(r"(\d+)", stem)
+            return (int(m.group(1)) if m else 1 << 30, stem)
+        return [RAW + rel(found[k]) for k in sorted(found, key=key)]
 
     entries, seen = [], {}
 
@@ -367,7 +380,8 @@ def build(check):
         extra = read_json(os.path.join(item, "store.json"), {}) or {}
         entry = {"id": app["id"], "name": app["name"], "description": app.get("description", ""),
                  "version": str(app.get("version", "1.0")), "author": app.get("author", ""),
-                 "category": app.get("category", "other"), "icon": RAW + rel(os.path.join(item, "icon.png")),
+                 "category": extra.get("category") if extra.get("category") in CATEGORIES else app.get("category", "other"),
+                 "icon": RAW + rel(os.path.join(item, "icon.png")),
                  "download": RAW + rel(pkg), "size": len(data), "sha256": hashlib.sha256(data).hexdigest(),
                  "minSdk": str(app.get("minSdk", "1.0")), "permissions": app.get("permissions", []),
                  "screenshots": shots_of(item), "featured": bool(extra.get("featured", False)),
@@ -455,7 +469,7 @@ def build(check):
         app = read_json(app_json)
         claim(app["id"], item)
         extra = read_json(os.path.join(item, "store.json"), {}) or {}
-        cat = app.get("category") if app.get("category") in CATEGORIES else "other"
+        cat = extra.get("category") if extra.get("category") in CATEGORIES else (app.get("category") if app.get("category") in CATEGORIES else "other")
         entry = {"id": app["id"], "name": app["name"], "description": app.get("description", ""),
                  "version": str(app.get("version", "1.0")), "author": app.get("author", ""), "category": cat,
                  "icon": RAW + rel(os.path.join(item, "icon.png")), "permissions": [],
