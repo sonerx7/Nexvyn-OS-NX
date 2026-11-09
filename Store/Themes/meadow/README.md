@@ -1,0 +1,25 @@
+# Meadow
+
+Parlak mavi ve yeşil, neşeli ve güneşli
+Bright blue and green, playful and sunny
+
+| | |
+|---|---|
+| Id | `com.sonerx7.theme.meadow` |
+| Appearance | light |
+| Accent | `##25823D` |
+| Window style | `glass` |
+| Layout | `taskbar` |
+| Files | wallpaper, 79 icons, 6 sounds |
+
+## Install
+
+**Store:** App Market > Themes > Meadow > Get, then Apply. **File:** open `meadow.nxvtheme` in Files and choose Install and Apply.
+
+Themes are managed in *System Settings > Appearance > Themes* (Undo, Restore Defaults). Everything in this pack is original: the wallpaper is drawn by a script, the icons are transforms of Nexvyn OS's own icon set and the sounds are synthesized.
+
+## Development
+
+    python tools/gen_style_themes.py    (in the Nexvyn OS source repository)
+
+Format: Nexvyn OS `docs/NXVAPP_FORMAT.md`, section 9.

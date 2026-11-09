@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 159,
+  "count": 171,
   "apps": [
     {
       "id": "aichat",
@@ -8669,6 +8669,296 @@
       ]
     },
     {
+      "id": "com.sonerx7.theme.classic95",
+      "kind": "theme",
+      "name": {
+        "en": "Classic 95",
+        "tr": "Classic 95",
+        "de": "Classic 95",
+        "fr": "Classic 95",
+        "es": "Classic 95",
+        "ja": "Classic 95",
+        "zh": "Classic 95",
+        "ko": "Classic 95"
+      },
+      "description": {
+        "en": "Beige 90s desktop with bevelled buttons.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Kabartmalı düğmeli bej 90'lar masaüstü.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Beiger 90er-Desktop mit Reliefschaltflächen.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Bureau beige années 90, boutons biseautés.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Escritorio beige de los 90, botones biselados.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "立体ボタンのベージュな90年代デスクトップ.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "米色90年代桌面与立体按钮.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "입체 버튼의 베이지색 90년대 데스크톱.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/classic-95.nxvtheme",
+      "size": 515392,
+      "sha256": "ad36f180e2413408439d70f2b1255a3b87115b337be1aee3fefe59c27eb1cb09",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/classic-95",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/preview.wav",
+      "subtitle": {
+        "en": "Beige 90s desktop with bevelled buttons",
+        "tr": "Kabartmalı düğmeli bej 90'lar masaüstü",
+        "de": "Beiger 90er-Desktop mit Reliefschaltflächen",
+        "fr": "Bureau beige années 90, boutons biseautés",
+        "es": "Escritorio beige de los 90, botones biselados",
+        "ja": "立体ボタンのベージュな90年代デスクトップ",
+        "zh": "米色90年代桌面与立体按钮",
+        "ko": "입체 버튼의 베이지색 90년대 데스크톱"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.crystal",
+      "kind": "theme",
+      "name": {
+        "en": "Crystal",
+        "tr": "Crystal",
+        "de": "Crystal",
+        "fr": "Crystal",
+        "es": "Crystal",
+        "ja": "Crystal",
+        "zh": "Crystal",
+        "ko": "Crystal"
+      },
+      "description": {
+        "en": "Dark glass with a soft teal glow.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Yumuşak turkuaz parıltılı koyu cam.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Dunkles Glas mit sanftem Türkisglühen.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Verre sombre à doux halo turquoise.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Cristal oscuro con suave brillo turquesa.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "青緑にほのかに光る暗いガラス.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "带柔和青绿光晕的深色玻璃.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "은은한 청록 빛의 어두운 유리.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/crystal/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/crystal/crystal.nxvtheme",
+      "size": 1882293,
+      "sha256": "31e0bd3199583fa034f27657ad18f48a4242d26aafaf4aec0efc45a69de28ab1",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/crystal/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/crystal",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/crystal/preview.wav",
+      "subtitle": {
+        "en": "Dark glass with a soft teal glow",
+        "tr": "Yumuşak turkuaz parıltılı koyu cam",
+        "de": "Dunkles Glas mit sanftem Türkisglühen",
+        "fr": "Verre sombre à doux halo turquoise",
+        "es": "Cristal oscuro con suave brillo turquesa",
+        "ja": "青緑にほのかに光る暗いガラス",
+        "zh": "带柔和青绿光晕的深色玻璃",
+        "ko": "은은한 청록 빛의 어두운 유리"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.dusk",
+      "kind": "theme",
+      "name": {
+        "en": "Dusk",
+        "tr": "Dusk",
+        "de": "Dusk",
+        "fr": "Dusk",
+        "es": "Dusk",
+        "ja": "Dusk",
+        "zh": "Dusk",
+        "ko": "Dusk"
+      },
+      "description": {
+        "en": "Warm orange and aubergine, open desktop.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Sıcak turuncu ve patlıcan moru, açık masaüstü.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Warmes Orange und Aubergine, offener Desktop.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Orange chaud et aubergine, bureau aéré.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Naranja cálido y berenjena, abierto.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "暖かなオレンジとなす紺の開放的なデスクトップ.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "暖橙与茄紫，开阔的桌面.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "따뜻한 주황과 가지색의 탁 트인 데스크톱.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/dusk/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/dusk/dusk.nxvtheme",
+      "size": 1689537,
+      "sha256": "aba6d283dfaa503127557092911e1270cff9fe354ca56882169a1441dbceea5d",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/dusk/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/dusk",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/dusk/preview.wav",
+      "subtitle": {
+        "en": "Warm orange and aubergine, open desktop",
+        "tr": "Sıcak turuncu ve patlıcan moru, açık masaüstü",
+        "de": "Warmes Orange und Aubergine, offener Desktop",
+        "fr": "Orange chaud et aubergine, bureau aéré",
+        "es": "Naranja cálido y berenjena, abierto",
+        "ja": "暖かなオレンジとなす紺の開放的なデスクトップ",
+        "zh": "暖橙与茄紫，开阔的桌面",
+        "ko": "따뜻한 주황과 가지색의 탁 트인 데스크톱"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.executive",
+      "kind": "theme",
+      "name": {
+        "en": "Executive",
+        "tr": "Executive",
+        "de": "Executive",
+        "fr": "Executive",
+        "es": "Executive",
+        "ja": "Executive",
+        "zh": "Executive",
+        "ko": "Executive"
+      },
+      "description": {
+        "en": "Dark business device with brass accents.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Pirinç vurgulu koyu iş cihazı.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Dunkles Business-Gerät mit Messingakzenten.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Appareil pro sombre aux touches de laiton.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Equipo ejecutivo oscuro con latón.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "真鍮のアクセントが映える黒の業務端末.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "带黄铜点缀的深色商务设备.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "황동 포인트의 어두운 비즈니스 기기.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/executive/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/executive/executive.nxvtheme",
+      "size": 1531749,
+      "sha256": "dc0de44c82eaf61459a5d55bbe1dbab09a7d17e028e1c50b9e7e48e1694fa013",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/executive/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/executive",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/executive/preview.wav",
+      "subtitle": {
+        "en": "Dark business device with brass accents",
+        "tr": "Pirinç vurgulu koyu iş cihazı",
+        "de": "Dunkles Business-Gerät mit Messingakzenten",
+        "fr": "Appareil pro sombre aux touches de laiton",
+        "es": "Equipo ejecutivo oscuro con latón",
+        "ja": "真鍮のアクセントが映える黒の業務端末",
+        "zh": "带黄铜点缀的深色商务设备",
+        "ko": "황동 포인트의 어두운 비즈니스 기기"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.flatphone",
+      "kind": "theme",
+      "name": {
+        "en": "Flat Phone",
+        "tr": "Flat Phone",
+        "de": "Flat Phone",
+        "fr": "Flat Phone",
+        "es": "Flat Phone",
+        "ja": "Flat Phone",
+        "zh": "Flat Phone",
+        "ko": "Flat Phone"
+      },
+      "description": {
+        "en": "Flat, bright shapes and clean colour.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Düz, parlak şekiller ve temiz renkler.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Flache, helle Formen und klare Farben.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Formes plates et lumineuses, couleurs nettes.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Formas planas y brillantes, color limpio.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "フラットで明るい形とすっきりした色.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "扁平明亮的图形与干净的色彩.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "평면적이고 밝은 도형과 깔끔한 색.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/flat-phone/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/flat-phone/flat-phone.nxvtheme",
+      "size": 872539,
+      "sha256": "64ec8aa17dfb008b14f36e77004d71d2ec7e5acbe4106386480516497468484f",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/flat-phone/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/flat-phone",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/flat-phone/preview.wav",
+      "subtitle": {
+        "en": "Flat, bright shapes and clean colour",
+        "tr": "Düz, parlak şekiller ve temiz renkler",
+        "de": "Flache, helle Formen und klare Farben",
+        "fr": "Formes plates et lumineuses, couleurs nettes",
+        "es": "Formas planas y brillantes, color limpio",
+        "ja": "フラットで明るい形とすっきりした色",
+        "zh": "扁平明亮的图形与干净的色彩",
+        "ko": "평면적이고 밝은 도형과 깔끔한 색"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
       "id": "com.sonerx7.theme.forest",
       "kind": "theme",
       "name": {
@@ -8719,6 +9009,238 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.glass",
+      "kind": "theme",
+      "name": {
+        "en": "Glass",
+        "tr": "Glass",
+        "de": "Glass",
+        "fr": "Glass",
+        "es": "Glass",
+        "ja": "Glass",
+        "zh": "Glass",
+        "ko": "Glass"
+      },
+      "description": {
+        "en": "Frosted glass taskbar, cool blue light.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Buzlu cam görev çubuğu, serin mavi ışık.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Milchglas-Taskleiste, kühles blaues Licht.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Barre en verre dépoli, lumière bleue.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Barra de cristal esmerilado, luz azul.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "すりガラスのタスクバーと青い光.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "磨砂玻璃任务栏与冷蓝光.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "서리 유리 작업 표시줄과 차가운 푸른 빛.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/glass/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/glass/glass.nxvtheme",
+      "size": 1880664,
+      "sha256": "d7a878d700567108d6e5cd50756a552407a2a05d23080dd0451e922a06cbf2c4",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/glass/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/glass",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/glass/preview.wav",
+      "subtitle": {
+        "en": "Frosted glass taskbar, cool blue light",
+        "tr": "Buzlu cam görev çubuğu, serin mavi ışık",
+        "de": "Milchglas-Taskleiste, kühles blaues Licht",
+        "fr": "Barre en verre dépoli, lumière bleue",
+        "es": "Barra de cristal esmerilado, luz azul",
+        "ja": "すりガラスのタスクバーと青い光",
+        "zh": "磨砂玻璃任务栏与冷蓝光",
+        "ko": "서리 유리 작업 표시줄과 차가운 푸른 빛"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.glossphone",
+      "kind": "theme",
+      "name": {
+        "en": "Gloss Phone",
+        "tr": "Gloss Phone",
+        "de": "Gloss Phone",
+        "fr": "Gloss Phone",
+        "es": "Gloss Phone",
+        "ja": "Gloss Phone",
+        "zh": "Gloss Phone",
+        "ko": "Gloss Phone"
+      },
+      "description": {
+        "en": "Glossy, deep and shiny like a new phone.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Yeni bir telefon gibi parlak ve derin.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Glänzend und tief wie ein neues Smartphone.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Brillant et profond comme un téléphone neuf.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Brillante y profundo como un móvil nuevo.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "新品のスマートフォンのような光沢と奥行き.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "像新手机一样光亮而有层次.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "새 스마트폰처럼 윤기 나고 깊은 느낌.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/gloss-phone/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/gloss-phone/gloss-phone.nxvtheme",
+      "size": 1793578,
+      "sha256": "195501ac82b753456b588df123dfc980b50ba602e19f4394191cb4fa7d42b1a6",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/gloss-phone/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/gloss-phone",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/gloss-phone/preview.wav",
+      "subtitle": {
+        "en": "Glossy, deep and shiny like a new phone",
+        "tr": "Yeni bir telefon gibi parlak ve derin",
+        "de": "Glänzend und tief wie ein neues Smartphone",
+        "fr": "Brillant et profond comme un téléphone neuf",
+        "es": "Brillante y profundo como un móvil nuevo",
+        "ja": "新品のスマートフォンのような光沢と奥行き",
+        "zh": "像新手机一样光亮而有层次",
+        "ko": "새 스마트폰처럼 윤기 나고 깊은 느낌"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.keypad",
+      "kind": "theme",
+      "name": {
+        "en": "Keypad",
+        "tr": "Keypad",
+        "de": "Keypad",
+        "fr": "Keypad",
+        "es": "Keypad",
+        "ja": "Keypad",
+        "zh": "Keypad",
+        "ko": "Keypad"
+      },
+      "description": {
+        "en": "Soft blue-grey menus and a softkey bar.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Yumuşak mavi-gri menüler, tuş çubuğu.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Sanfte blaugraue Menüs, Softkey-Leiste.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Menus bleu-gris et barre de softkeys.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Menús azul grisáceo y barra de teclas.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "青灰色のメニューとソフトキーバー.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "柔和蓝灰菜单与软键栏.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "부드러운 청회색 메뉴와 소프트키 바.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/keypad.nxvtheme",
+      "size": 1353554,
+      "sha256": "6d7fc57ded79e312023dbe7b819247be348ffa7de56d60eb920502dd8da989d8",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/keypad",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/preview.wav",
+      "subtitle": {
+        "en": "Soft blue-grey menus and a softkey bar",
+        "tr": "Yumuşak mavi-gri menüler, tuş çubuğu",
+        "de": "Sanfte blaugraue Menüs, Softkey-Leiste",
+        "fr": "Menus bleu-gris et barre de softkeys",
+        "es": "Menús azul grisáceo y barra de teclas",
+        "ja": "青灰色のメニューとソフトキーバー",
+        "zh": "柔和蓝灰菜单与软键栏",
+        "ko": "부드러운 청회색 메뉴와 소프트키 바"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.meadow",
+      "kind": "theme",
+      "name": {
+        "en": "Meadow",
+        "tr": "Meadow",
+        "de": "Meadow",
+        "fr": "Meadow",
+        "es": "Meadow",
+        "ja": "Meadow",
+        "zh": "Meadow",
+        "ko": "Meadow"
+      },
+      "description": {
+        "en": "Bright blue and green, playful and sunny.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Parlak mavi ve yeşil, neşeli ve güneşli.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Leuchtendes Blau und Grün, verspielt.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Bleu et vert éclatants, joueur et ensoleillé.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Azul y verde vivos, alegre y soleado.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "明るい青と緑の、楽しく陽気な雰囲気.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "明亮的蓝绿配色，活泼而阳光.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "밝은 파랑과 초록의 경쾌한 분위기.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/meadow/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/meadow/meadow.nxvtheme",
+      "size": 1880248,
+      "sha256": "e92151e5af4d02e10b6734089a523fd23f1bd53f52d1ca291fde02c4b2be4d45",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/meadow/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/meadow",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/meadow/preview.wav",
+      "subtitle": {
+        "en": "Bright blue and green, playful and sunny",
+        "tr": "Parlak mavi ve yeşil, neşeli ve güneşli",
+        "de": "Leuchtendes Blau und Grün, verspielt",
+        "fr": "Bleu et vert éclatants, joueur et ensoleillé",
+        "es": "Azul y verde vivos, alegre y soleado",
+        "ja": "明るい青と緑の、楽しく陽気な雰囲気",
+        "zh": "明亮的蓝绿配色，活泼而阳光",
+        "ko": "밝은 파랑과 초록의 경쾌한 분위기"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
         }
       ]
     },
@@ -8993,6 +9515,64 @@
       ]
     },
     {
+      "id": "com.sonerx7.theme.stylus",
+      "kind": "theme",
+      "name": {
+        "en": "Stylus",
+        "tr": "Stylus",
+        "de": "Stylus",
+        "fr": "Stylus",
+        "es": "Stylus",
+        "ja": "Stylus",
+        "zh": "Stylus",
+        "ko": "Stylus"
+      },
+      "description": {
+        "en": "Calm grey-green handheld, pixel icons.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Sakin gri-yeşil el cihazı, piksel simgeler.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Ruhiger grüngrauer Handheld, Pixelsymbole.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Agenda gris-vert calme, icônes pixel.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Agenda gris verdoso, iconos de píxeles.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "落ち着いた灰緑のハンドヘルドとピクセル.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "宁静灰绿掌机风格与像素图标.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "차분한 회녹색 핸드헬드와 픽셀 아이콘.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/stylus/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/stylus/stylus.nxvtheme",
+      "size": 352275,
+      "sha256": "6eff3b0d2ce20dbe9ce7caf28c8d42c302065d19b2e0d9a191c3e3b4630ef6b1",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/stylus/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/stylus",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/stylus/preview.wav",
+      "subtitle": {
+        "en": "Calm grey-green handheld, pixel icons",
+        "tr": "Sakin gri-yeşil el cihazı, piksel simgeler",
+        "de": "Ruhiger grüngrauer Handheld, Pixelsymbole",
+        "fr": "Agenda gris-vert calme, icônes pixel",
+        "es": "Agenda gris verdoso, iconos de píxeles",
+        "ja": "落ち着いた灰緑のハンドヘルドとピクセル",
+        "zh": "宁静灰绿掌机风格与像素图标",
+        "ko": "차분한 회녹색 핸드헬드와 픽셀 아이콘"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
       "id": "com.sonerx7.theme.sunset",
       "kind": "theme",
       "name": {
@@ -9043,6 +9623,122 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.terminalblue",
+      "kind": "theme",
+      "name": {
+        "en": "Terminal Blue",
+        "tr": "Terminal Blue",
+        "de": "Terminal Blue",
+        "fr": "Terminal Blue",
+        "es": "Terminal Blue",
+        "ja": "Terminal Blue",
+        "zh": "Terminal Blue",
+        "ko": "Terminal Blue"
+      },
+      "description": {
+        "en": "Text-mode screen in blue and grey.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Mavi ve gri metin modu ekranı.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Textmodus-Bildschirm in Blau und Grau.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Écran en mode texte, bleu et gris.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Pantalla en modo texto, azul y gris.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "青とグレーのテキストモード画面.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "蓝灰配色的文本模式屏幕.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "파랑과 회색의 텍스트 모드 화면.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/terminal-blue/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/terminal-blue/terminal-blue.nxvtheme",
+      "size": 416870,
+      "sha256": "cefe1a0cb7bb93de738ec9783147ab3db67271d0f1f1739a8a4a0057b7f87c6a",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/terminal-blue/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/terminal-blue",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/terminal-blue/preview.wav",
+      "subtitle": {
+        "en": "Text-mode screen in blue and grey",
+        "tr": "Mavi ve gri metin modu ekranı",
+        "de": "Textmodus-Bildschirm in Blau und Grau",
+        "fr": "Écran en mode texte, bleu et gris",
+        "es": "Pantalla en modo texto, azul y gris",
+        "ja": "青とグレーのテキストモード画面",
+        "zh": "蓝灰配色的文本模式屏幕",
+        "ko": "파랑과 회색의 텍스트 모드 화면"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.tiles",
+      "kind": "theme",
+      "name": {
+        "en": "Tiles",
+        "tr": "Tiles",
+        "de": "Tiles",
+        "fr": "Tiles",
+        "es": "Tiles",
+        "ja": "Tiles",
+        "zh": "Tiles",
+        "ko": "Tiles"
+      },
+      "description": {
+        "en": "Bold flat colour tiles, clean and square.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Cesur düz renkli kareler, sade.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Kräftige flache Farbkacheln, klar.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Tuiles de couleur plates et franches.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Mosaicos planos de color, limpios.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "大胆でフラットな色タイルの画面.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "醒目的扁平色块方砖风格.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "굵직한 평면 색상 타일 스타일.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/tiles/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/tiles/tiles.nxvtheme",
+      "size": 747168,
+      "sha256": "96919adbb82810a5d1202a90ab1bb9523628a67063c2950e7fb26f2a77ae4bc5",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/tiles/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/tiles",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/tiles/preview.wav",
+      "subtitle": {
+        "en": "Bold flat colour tiles, clean and square",
+        "tr": "Cesur düz renkli kareler, sade",
+        "de": "Kräftige flache Farbkacheln, klar",
+        "fr": "Tuiles de couleur plates et franches",
+        "es": "Mosaicos planos de color, limpios",
+        "ja": "大胆でフラットな色タイルの画面",
+        "zh": "醒目的扁平色块方砖风格",
+        "ko": "굵직한 평면 색상 타일 스타일"
+      },
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
         }
       ]
     },

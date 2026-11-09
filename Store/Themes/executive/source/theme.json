@@ -1,0 +1,69 @@
+{
+  "id": "com.sonerx7.theme.executive",
+  "name": {
+    "en": "Executive",
+    "tr": "Executive",
+    "de": "Executive",
+    "fr": "Executive",
+    "es": "Executive",
+    "ja": "Executive",
+    "zh": "Executive",
+    "ko": "Executive"
+  },
+  "subtitle": {
+    "en": "Dark business device with brass accents",
+    "tr": "Pirinç vurgulu koyu iş cihazı",
+    "de": "Dunkles Business-Gerät mit Messingakzenten",
+    "fr": "Appareil pro sombre aux touches de laiton",
+    "es": "Equipo ejecutivo oscuro con latón",
+    "ja": "真鍮のアクセントが映える黒の業務端末",
+    "zh": "带黄铜点缀的深色商务设备",
+    "ko": "황동 포인트의 어두운 비즈니스 기기"
+  },
+  "description": {
+    "en": "Dark business device with brass accents.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+    "tr": "Pirinç vurgulu koyu iş cihazı.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+    "de": "Dunkles Business-Gerät mit Messingakzenten.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+    "fr": "Appareil pro sombre aux touches de laiton.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+    "es": "Equipo ejecutivo oscuro con latón.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+    "ja": "真鍮のアクセントが映える黒の業務端末.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+    "zh": "带黄铜点缀的深色商务设备.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+    "ko": "황동 포인트의 어두운 비즈니스 기기.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+  },
+  "version": "1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "full": true,
+  "appearance": "dark",
+  "accent": "#C2A15A",
+  "wallpaper": "wallpaper.jpg",
+  "wallpapers": [
+    "wallpaper.jpg",
+    "wallpaper2.jpg",
+    "wallpaper3.jpg"
+  ],
+  "sounds": "sounds",
+  "icons": "icons",
+  "settings": {
+    "shell.layout": "taskbar",
+    "taskbar.size": "small",
+    "start.sidePanel": true,
+    "window.chrome": "flat"
+  },
+  "palette": {
+    "windowBg": "1F2227",
+    "titlebar": "2B2F36",
+    "titlebarInactive": "1F2227",
+    "contentBg": "17191D",
+    "sidebarBg": "1B1E23",
+    "controlBg": "343942",
+    "controlHover": "3E444E",
+    "text": "E8E6E0",
+    "text2": "E8E6E0A0",
+    "panelTint": "14161AE6",
+    "menubarTint": "14161AF0",
+    "menuBg": "14161AF2",
+    "selection": "87703F",
+    "accentText": "14161A"
+  },
+  "preview": "preview.jpg"
+}

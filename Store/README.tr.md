@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **159** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -193,18 +193,30 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **159** öğe. Konsoldaki 
 | <img src="Games/puzzle/watersort/icon.png" width="32"> | [Su Sıralama](Games/puzzle/watersort/) | Her tüpte tek renk kalana dek dök |
 | <img src="Games/word/turkish-words/icon.png" width="32"> | [Kelime Bul](Games/word/turkish-words/) | Beş harfli kelimeyi altı denemede bul |
 
-## Temalar (8)
+## Temalar (20)
 
 | | Ad | Açıklama |
 |---|---|---|
 | <img src="Themes/aurora/icon.png" width="32"> | [Kutup Işıkları](Themes/aurora/) | Durgun gölde kuzey ışıkları |
+| <img src="Themes/classic-95/icon.png" width="32"> | [Classic 95](Themes/classic-95/) | Kabartmalı düğmeli bej 90'lar masaüstü |
+| <img src="Themes/crystal/icon.png" width="32"> | [Crystal](Themes/crystal/) | Yumuşak turkuaz parıltılı koyu cam |
+| <img src="Themes/dusk/icon.png" width="32"> | [Dusk](Themes/dusk/) | Sıcak turuncu ve patlıcan moru, açık masaüstü |
+| <img src="Themes/executive/icon.png" width="32"> | [Executive](Themes/executive/) | Pirinç vurgulu koyu iş cihazı |
+| <img src="Themes/flat-phone/icon.png" width="32"> | [Flat Phone](Themes/flat-phone/) | Düz, parlak şekiller ve temiz renkler |
 | <img src="Themes/forest/icon.png" width="32"> | [Orman](Themes/forest/) | Şafakta sisli çamlar, gece ateş böcekleri |
+| <img src="Themes/glass/icon.png" width="32"> | [Glass](Themes/glass/) | Buzlu cam görev çubuğu, serin mavi ışık |
+| <img src="Themes/gloss-phone/icon.png" width="32"> | [Gloss Phone](Themes/gloss-phone/) | Yeni bir telefon gibi parlak ve derin |
+| <img src="Themes/keypad/icon.png" width="32"> | [Keypad](Themes/keypad/) | Yumuşak mavi-gri menüler, tuş çubuğu |
+| <img src="Themes/meadow/icon.png" width="32"> | [Meadow](Themes/meadow/) | Parlak mavi ve yeşil, neşeli ve güneşli |
 | <img src="Themes/midnight-neon/icon.png" width="32"> | [Gece Yarısı Neonu](Themes/midnight-neon/) | Neon ızgara üzerinde synthwave güneşi |
 | <img src="Themes/ocean/icon.png" width="32"> | [Okyanus](Themes/ocean/) | Gündüz güneşli, gece ay ışıklı deniz |
 | <img src="Themes/paper/icon.png" width="32"> | [Kâğıt](Themes/paper/) | Baskı şekilli sade açık görünüm |
 | <img src="Themes/retro-terminal/icon.png" width="32"> | [Retro Terminal](Themes/retro-terminal/) | 8 bit sesli yeşil fosfor CRT |
 | <img src="Themes/sakura/icon.png" width="32"> | [Sakura](Themes/sakura/) | Gündüz ve gece kiraz çiçekleri |
+| <img src="Themes/stylus/icon.png" width="32"> | [Stylus](Themes/stylus/) | Sakin gri-yeşil el cihazı, piksel simgeler |
 | <img src="Themes/sunset/icon.png" width="32"> | [Gün Batımı](Themes/sunset/) | Tepelerin üzerinde altın saat |
+| <img src="Themes/terminal-blue/icon.png" width="32"> | [Terminal Blue](Themes/terminal-blue/) | Mavi ve gri metin modu ekranı |
+| <img src="Themes/tiles/icon.png" width="32"> | [Tiles](Themes/tiles/) | Cesur düz renkli kareler, sade |
 
 ## Yazı Tipleri (12)
 

@@ -319,6 +319,9 @@ def build(check):
                  "sha256": hashlib.sha256(data).hexdigest(), "minSdk": "1.5", "permissions": [],
                  "screenshots": shots, "featured": bool(extra.get("featured", False)),
                  "license": th.get("license") or DEFAULT_LICENSE, "source": TREE + rel(item)}
+        wav = os.path.join(item, "preview.wav")  # a short recording of the theme's system sounds (detail page: Preview sounds)
+        if os.path.isfile(wav):
+            entry["audio"] = RAW + rel(wav)
         listing(entry, extra)
         stamp(entry)
         entries.append((item, th, entry))
