@@ -5,6 +5,8 @@
 <p align="center"><b>Switch'te tam masaüstü, native 3B ve gerçek bir App Market.</b><br>
 <i>Native 3B 10'dan 60 fps'e. Bir GBA oyunu tam hızda. Tarayıcıda WebGL. Konsolda ölçüldü.</i></p>
 
+<p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30 saniyelik Nexvyn OS turu: videoyu oynatmak için tıkla"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/hero_30s.mp4">30 saniyelik turu izle</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/overview.mp4">2 dakikalık genel bakış</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/raw/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft tanıtımı</a></p>
+
 - Tek `.nro`, Homebrew Menüsü'nden açılır. Yeniden başlatma yok, bölümleme yok.
 - Pencereli masaüstü (Dock ya da görev çubuğu düzeni), 70'ten fazla yerleşik app ve her öğesi incelenen bir App Market.
 - Donmuş ABI v1'li native C/C++ SDK, ayrıca Lua, JavaScript ve Python: konsolda ya da PC'de app ve oyun yap.
