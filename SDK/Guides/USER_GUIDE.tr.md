@@ -991,6 +991,8 @@ adlandırma, önce ayarlar), sonra oradan silinir. Konsol yarıda kapanırsa bir
 yardımcısını açar ve kalanı arka planda siler. Hakkında'daki **Nexvyn OS'u Sil** daha hafif sürümdür: yalnızca
 `sdmc:/NexvynOS` klasörünü boşaltır.
 
+Önceki bir sıfırlamadan kalan `NexvynOS.deleting` (veya `NexvynOS.delete`) klasörü bir sonraki açılışta arka planda silinir. Kart bir klasörü archive (concatenation) bitiyle işaretlerse Switch onu dosya gibi listeler ve normal silmeyi reddeder; sıfırlama bunu temizleyip yeniden dener. Yine de silinemeyenler sonuç ekranında ve `System/Logs/erase.log` içinde listelenir.
+
 ### Masaüstü boştayken daha yavaş görünüyor
 
 Bu bilerek yapılır. Hiçbir şey hareket etmediğinde masaüstü saniyede 20 kareye iner ve daha az işlemci kullanır. İlk

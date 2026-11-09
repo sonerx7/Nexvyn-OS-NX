@@ -992,6 +992,8 @@ first), then deleted from there. If the console turns off on the way, the next s
 setup assistant and deletes the rest in the background. **Erase Nexvyn OS** in About is the lighter version: it
 empties only the `sdmc:/NexvynOS` folder.
 
+A leftover `NexvynOS.deleting` (or `NexvynOS.delete`) folder from an earlier reset is removed in the background at the next start. If the card marks a folder with the archive (concatenation) bit, the Switch lists it as a file and refuses a normal delete; the reset clears that and retries. Anything that still cannot be removed is listed on the result sheet and in `System/Logs/erase.log`.
+
 ### The desktop looks slower when idle
 
 This is on purpose. When nothing moves, the desktop drops to 20 frames per second and uses less CPU. On the first touch
