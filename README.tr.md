@@ -6,6 +6,7 @@
 <i>Native 3B 10'dan 60 fps'e. Bir GBA oyunu tam hızda. Tarayıcıda WebGL. Konsolda ölçüldü.</i></p>
 
 <p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30 saniyelik Nexvyn OS turu: videoyu oynatmak için tıkla"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4">30 saniyelik turu izle</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/overview.mp4">2 dakikalık genel bakış</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft tanıtımı</a></p>
+<p align="center"><b>YouTube'da:</b> <a href="https://www.youtube.com/@NexvynOSNX">kanal</a> · <a href="https://www.youtube.com/watch?v=_DQouwS2TYQ">tam tanıtım</a> · <a href="https://www.youtube.com/watch?v=3aze4gmaLnI">temalar ve Doom portu</a> · <a href="https://www.youtube.com/watch?v=5R1F_wDSVAM">BlockCraft</a> · <a href="https://www.youtube.com/watch?v=Wvk8iQVjDMw">tarayıcıda WebGL</a></p>
 
 - Tek `.nro`, Homebrew Menüsü'nden açılır. Yeniden başlatma yok, bölümleme yok.
 - Pencereli masaüstü (Dock ya da görev çubuğu düzeni), 70'ten fazla yerleşik app ve her öğesi incelenen bir App Market.

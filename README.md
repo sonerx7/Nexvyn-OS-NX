@@ -6,6 +6,7 @@
 <i>Native 3D from 10 to 60 fps. A GBA game at full speed. WebGL in the browser. Measured on a console.</i></p>
 
 <p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30-second Nexvyn OS tour: click to play the video"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4">Watch the 30-second tour</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/overview.mp4">2-minute overview</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft trailer</a></p>
+<p align="center"><b>On YouTube:</b> <a href="https://www.youtube.com/@NexvynOSNX">channel</a> · <a href="https://www.youtube.com/watch?v=_DQouwS2TYQ">full showcase</a> · <a href="https://www.youtube.com/watch?v=3aze4gmaLnI">themes and the Doom port</a> · <a href="https://www.youtube.com/watch?v=5R1F_wDSVAM">BlockCraft</a> · <a href="https://www.youtube.com/watch?v=Wvk8iQVjDMw">WebGL in the browser</a></p>
 
 - One `.nro`, opened from the Homebrew Menu. No reboot, no partitioning.
 - A windowed desktop (Dock or taskbar layout), 70+ built-in apps and an App Market where every item is reviewed.
