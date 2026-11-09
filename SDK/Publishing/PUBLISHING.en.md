@@ -164,6 +164,10 @@ The full list is the [review checklist](REVIEW.en.md). In short, an item is **no
   beeps, default text as the title, flat single-colour screens; see the review checklist and
   `Guides/GAME_FEEL.en.md`).
 
+Recommended before you submit (not a rule): the app or game works with touch only and with a controller only, in handheld
+and docked mode, in a window and full screen, with moderate sound that pauses on focus loss and sleep. The checklist is
+`Guides/INPUT_AND_PLAY_MODES.en.md`.
+
 ## 9. Updates
 
 An update is a pull request too: the same `id`, a higher `version`, a line in the README's versions table and,

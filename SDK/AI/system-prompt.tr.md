@@ -200,6 +200,17 @@ kaydırma, D-pad = ok tuşları, B = Escape.
 Yoklama: `input.down(b)`, `input.pressed(b)`, `input.released(b)`, `input.stick("left"|"right")` → x,y (-1..1, yukarı y
 pozitif), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,gy,gz,pitch,roll,yaw.
 
+**Her oyun ve app tüm giriş yöntemlerini desteklemeli** (`Guides/INPUT_AND_PLAY_MODES.tr.md`):
+- dokunma (en az 44 px hedef, yalnız hover ile çalışan eylem yok; yakınlaştırma ya da kaydırma mantıklıysa `pinch` /
+  `rotate` / iki parmak `scroll`), kumanda (oyunlarda `"gamepad": true`; onay / geri `input.action` ile; tek
+  Joy-Con'un tek çubuğu vardır), klavye ve fare;
+- dock'ta dokunma yoktur: hiçbir şey dokunma gerektirmesin, kumanda ilk ekrandan çalışsın; `input.touch()` false iken
+  tuş simgelerini göster;
+- portatif 1280x720 ve dock 1920x1080, pencere ve tam ekran: yerleşimi her karede `gfx.size()` ile kur, çözünürlüğü koda
+  gömme; yazıyı `ui.tokens().textScale` ile ölçekle;
+- ses: ılımlı seviye, yalnız sistem mikseri, `app.focus(false)` / `app.suspend()` içinde duraklat, `app.suspend()` ve
+  `app.close()` içinde kaydet; 16,6 ms'yi aşan kare yok.
+
 ## 7. Veri, ağ, sistem
 
 - `fs` (göreli yollar = uygulamanın veri klasörü; "bundle:/..." = bundle'la gelen dosyalar): `read(p)` → metin ya da

@@ -16,6 +16,7 @@ Her rehber İngilizce (`NAME.en.md`) ve Türkçe (`NAME.tr.md`) vardır. API'nin
 | [Oyun yap](MAKE_A_GAME.tr.md) | Eksiksiz oyun tarifi: proje, 3B modeller (`.glb` / `.fbx`), yükleme, girdi, çarpışma, konsolda hız, pbr renderer bütçesi, sanat yönü, mağaza ikonu, yayımlama |
 | [Sosyal uygulama yap](MAKE_A_SOCIAL_APP.tr.md) | Akış, fotoğraf, kısa video ve sohbet uygulamaları: önbellekli ve yeniden denemeli istekler, yükleme, WebSocket, oturum açma, web resimleri, video oynatıcılar, akış ve sayfalayıcılar |
 | [Ses tasarımı](SOUND_DESIGN.tr.md) | Ses kiti: katmanlı tarifler, varyantlar, bus'lar, ducking, ortam sesi, müzik döngüleri, seviyeler |
+| [Giriş ve oyun modları](INPUT_AND_PLAY_MODES.tr.md) | Nexvyn'e uyum: dokunma, kumanda (Joy-Con çifti ya da tek), portatif ve dock, pencere ve tam ekran, ses, sistem gezinmesi, performans ve kontrol listesi |
 | [Grafik, arayüz ve oyun hissi](GAME_FEEL.tr.md) | His kiti: hareket, darbe, ışık, yazı, arayüz biçimleri, kameralar, 3B atmosferler ve mağaza kalite çıtası |
 
 ## Diller

@@ -16,6 +16,7 @@ Every guide exists in English (`NAME.en.md`) and Turkish (`NAME.tr.md`). The com
 | [Make a game](MAKE_A_GAME.en.md) | The complete game recipe: project, 3D models (`.glb` / `.fbx`), loading, input, collision, speed on the console, the pbr renderer budget, art direction, store icon, publishing |
 | [Make a social app](MAKE_A_SOCIAL_APP.en.md) | Feed, photo, short-video and chat apps: requests with cache and retry, uploads, WebSocket, sign-in, web pictures, video players, feeds and pagers |
 | [Sound design](SOUND_DESIGN.en.md) | The sound kit: layered recipes, variants, buses, ducking, ambience, music loops, levels |
+| [Input and play modes](INPUT_AND_PLAY_MODES.en.md) | Fitting into Nexvyn: touch, controller (Joy-Con pair or single), handheld and docked, window and full screen, sound, system navigation, performance, with a checklist |
 | [Graphics, UI and game feel](GAME_FEEL.en.md) | The feel kit: motion, impact, light, type, UI shapes, cameras, 3D moods and the store quality bar |
 
 ## Languages

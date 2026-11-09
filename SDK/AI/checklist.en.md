@@ -46,6 +46,8 @@ Give this file to the assistant together with `system-prompt.en.md`, or paste it
       current and the next), players pause in `suspend`, sockets are polled every frame, sign-in has a fallback.
 - [ ] Works with touch, the controller cursor and a keyboard; games also with the controller, pause on + and in
       `suspend` / `focus(false)`.
+- [ ] Input and play modes (`Guides/INPUT_AND_PLAY_MODES.en.md`): works with touch only and with a controller only (docked has
+      no touch), handheld and docked sizes, window and full screen, moderate sound that pauses on focus loss and sleep.
 - [ ] Every visible string goes through `TR()`; every key exists in `lang/en.json` (and in each other lang file I
       delivered, or it falls back to English); placeholders `{0}` match the arguments.
 - [ ] Apps: `theme` colors (light and dark mode); controls ≥ 28 px; the layout fits the minimum window size.

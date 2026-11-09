@@ -46,6 +46,8 @@ Bu dosyayı asistana `system-prompt.tr.md` ile birlikte verin ya da bir isteğin
       sonraki), oynatıcılar `suspend`'de duruyor, soketler her karede okunuyor, oturum açmanın yedek yolu var.
 - [ ] Dokunmatik, kumanda imleci ve klavyeyle çalışıyor; oyunlar kumandayla da, + ile ve `suspend` /
       `focus(false)` içinde duraklıyor.
+- [ ] Giriş ve oyun modları (`Guides/INPUT_AND_PLAY_MODES.tr.md`): yalnız dokunmayla ve yalnız kumandayla çalışıyor (dock'ta
+      dokunma yok), portatif ve dock boyutları, pencere ve tam ekran, odak kaybında ve uykuda duran ılımlı ses.
 - [ ] Görünen her metin `TR()` üzerinden geçiyor; her anahtar `lang/en.json` içinde (ve verdiğim her başka lang
       dosyasında, yoksa İngilizceye düşer); `{0}` yer tutucuları argument'larla uyuşuyor.
 - [ ] Uygulamalar: `theme` renkleri (açık ve koyu mod); kontroller ≥ 28 px; yerleşim en küçük pencere boyutuna sığıyor.

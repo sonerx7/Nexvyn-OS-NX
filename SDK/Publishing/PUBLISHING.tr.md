@@ -164,6 +164,10 @@ Listenin tamamı [inceleme listesidir](REVIEW.tr.md). Kısacası şu öğeler **
   başlık olarak varsayılan yazı, düz tek renk ekranlar; inceleme listesine ve `Guides/GAME_FEEL.tr.md` rehberine
   bakın).
 
+Göndermeden önce öneri (kural değil): app ya da oyun yalnız dokunmayla ve yalnız kumandayla, portatif ve dock modunda,
+pencerede ve tam ekranda çalışıyor; sesi ılımlı ve odak kaybında ya da uykuda duruyor. Kontrol listesi
+`Guides/INPUT_AND_PLAY_MODES.tr.md`.
+
 ## 9. Güncellemeler
 
 Güncelleme de bir pull request'tir: aynı `id`, daha büyük `version`, README'deki sürüm tablosunda bir satır ve

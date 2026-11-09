@@ -198,6 +198,17 @@ D-pad = arrow keys, B = Escape.
 Polling: `input.down(b)`, `input.pressed(b)`, `input.released(b)`, `input.stick("left"|"right")` → x,y (-1..1, y up
 positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,gy,gz,pitch,roll,yaw.
 
+**Every game and app must support all input methods** (`Guides/INPUT_AND_PLAY_MODES.en.md`):
+- touch (targets of at least 44 px, no hover-only actions; `pinch` / `rotate` / two-finger `scroll` where zoom or pan makes sense),
+  controller (`"gamepad": true` for games; confirm / back through `input.action`; a single Joy-Con has one stick),
+  keyboard and mouse;
+- docked mode has no touch: nothing may need a touch, the pad works from the first screen; show button glyphs when
+  `input.touch()` is false;
+- handheld 1280x720 and docked 1920x1080, window and full screen: lay out from `gfx.size()` each frame, never hard-code
+  a resolution; scale text with `ui.tokens().textScale`;
+- sound: moderate volume, system mixer only, pause in `app.focus(false)` / `app.suspend()`, save in `app.suspend()` and
+  `app.close()`; no frame over 16.6 ms.
+
 ## 7. Data, network, system
 
 - `fs` (relative paths = the app's data folder; "bundle:/..." = shipped files): `read(p)` → string or nil,err ·
