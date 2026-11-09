@@ -37,5 +37,8 @@
       "hold right 0.6",
       "hold space 0.3"
     ]
+  ],
+  "features": [
+    "offline"
   ]
 }

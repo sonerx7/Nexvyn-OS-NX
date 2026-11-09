@@ -29,6 +29,7 @@ Nexvyn OS is distributed under **GPL-3.0-or-later**. The components below are li
 | libretro API başlığı | MIT | Retro çekirdek arayüzü |
 | eSpeak NG 1.52.0 (`lib/espeak-ng`, Reece H. Dunn, Jonathan Duddington ve katkıcılar) + ucd-tools | GPL-3.0-or-later (Unicode verisi / Unicode data: Unicode lisansı, `COPYING.UCD`) | Metin okuma (TTS) ve Ekran Okuyucu; yalnızca sentezleyici, `config.h`, `Makefile` ve `src/include/compat/endian.h` bizim |
 | Inter, JetBrains Mono | SIL OFL 1.1 | Yazı tipleri |
+| Pixel Operator | CC0 1.0 | Piksel yazı tipi (Classic tema) |
 | Material Symbols / Icons | Apache-2.0 | İkonlar |
 
 ## SDK 1.5 çalışma ortamları / SDK 1.5 runtimes

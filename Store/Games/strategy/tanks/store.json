@@ -34,5 +34,10 @@
     [
       "wait 4"
     ]
+  ],
+  "players": "1-2",
+  "features": [
+    "multiplayer",
+    "offline"
   ]
 }

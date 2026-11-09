@@ -308,6 +308,5 @@
   "book.all": "All recipes · Y",
   "book.none": "No craftable recipes with the items in your inventory.",
   "ui.search_items": "Search items",
-  "ui.search_all": "All · F / −",
-  "msg.nro_required": "This NRO is missing the required 3D resource safety fix. Run the companion NexvynOS-BlockcraftFix.nro from the Blockcraft release and try again. Your worlds are preserved."
+  "ui.search_all": "All · F / −"
 }

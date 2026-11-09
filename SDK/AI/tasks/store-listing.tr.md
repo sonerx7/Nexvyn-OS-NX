@@ -10,7 +10,9 @@ yaptığını ve düğmelerinin nerede olduğunu bilsin diye prompt'un altına `
 Bu Nexvyn OS uygulaması için App Market'e store.json yaz.
 
 {
-  "kind": "app | game | demo | template",
+  "kind": "app | game | demo | port | emulator | template",
+  "features": ["3d | online | multiplayer | coop | offline | touch | controller | keyboard, yalnızca kodun gerçekten yaptıkları"],
+  "players": "2 ya da 1-4 (yalnızca features içinde multiplayer ya da coop varsa)",
   "tags": ["3-6 küçük harfli arama sözcüğü"],
   "subtitle": {"en": "...", "<diğer dil kodu>": "..."},
   "description": {"en": "...", "<diğer dil kodu>": "..."},

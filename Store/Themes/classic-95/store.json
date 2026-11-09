@@ -1,23 +1,34 @@
 {
   "subtitle": {
-    "en": "Beige 90s desktop with bevelled buttons",
-    "tr": "Kabartmalı düğmeli bej 90'lar masaüstü",
-    "de": "Beiger 90er-Desktop mit Reliefschaltflächen",
-    "fr": "Bureau beige années 90, boutons biseautés",
-    "es": "Escritorio beige de los 90, botones biselados",
-    "ja": "立体ボタンのベージュな90年代デスクトップ",
-    "zh": "米色90年代桌面与立体按钮",
-    "ko": "입체 버튼의 베이지색 90년대 데스크톱"
+    "en": "Gray 90s desktop, bevelled windows",
+    "tr": "Gri 90'lar masaüstü, kabartmalı pencere",
+    "de": "Graues 90er-Desktop, Reliefs-Fenster",
+    "fr": "Bureau gris années 90, fenêtres biseautées",
+    "es": "Escritorio gris años 90, ventanas biseladas",
+    "ja": "グレーの90年代デスクトップ",
+    "zh": "灰色90年代桌面、立体窗口",
+    "ko": "회색 90년대 데스크톱, 입체 창"
   },
   "description": {
-    "en": "Beige 90s desktop with bevelled buttons.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
-    "tr": "Kabartmalı düğmeli bej 90'lar masaüstü.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
-    "de": "Beiger 90er-Desktop mit Reliefschaltflächen.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
-    "fr": "Bureau beige années 90, boutons biseautés.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
-    "es": "Escritorio beige de los 90, botones biselados.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
-    "ja": "立体ボタンのベージュな90年代デスクトップ.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
-    "zh": "米色90年代桌面与立体按钮.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
-    "ko": "입체 버튼의 베이지색 90년대 데스크톱.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+    "en": "Gray 90s desktop, teal background, bevelled windows.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+    "tr": "Gri 90'lar masaüstü, deniz yeşili arka plan, kabartmalı pencereler.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+    "de": "Graues 90er-Desktop, petrolfarbener Hintergrund, Reliefs-Fenster.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+    "fr": "Bureau gris années 90, fond sarcelle, fenêtres biseautées.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+    "es": "Escritorio gris de los 90, fondo verde azulado, ventanas biseladas.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+    "ja": "グレーの90年代デスクトップ、青緑の背景、立体ウィンドウ.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+    "zh": "灰色90年代桌面、青绿色背景、立体窗口.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+    "ko": "회색 90년대 데스크톱, 청록색 배경, 입체 창.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
   },
-  "featured": false
+  "changelog": {
+    "en": "Redrawn as a real late-90s desktop: teal background, gray bevelled windows with navy title bars, a menu row, a Start button with the Nexvyn mark, sunken tray and a pixel font. Now named Classic; your selection and settings stay. New hand-drawn icons and a calmer wallpaper.",
+    "tr": "Gerçek bir 90'lar sonu masaüstü olarak yeniden çizildi: deniz yeşili arka plan, lacivert başlıklı gri kabartmalı pencereler, menü satırı, Nexvyn işaretli Başlat düğmesi, çukur bildirim alanı ve piksel yazı tipi. Adı artık Classic; seçiminiz ve ayarlarınız korunur. Elle çizilmiş yeni simgeler ve daha sakin bir duvar kâğıdı.",
+    "de": "Als echter Desktop der späten 90er neu gezeichnet: petrolfarbener Hintergrund, graue Relieffenster mit marineblauer Titelleiste, Menüzeile, Start-Schaltfläche mit Nexvyn-Zeichen, versenkter Infobereich und Pixelschrift. Jetzt Classic; Auswahl und Einstellungen bleiben. Neue handgezeichnete Symbole und ein ruhigeres Hintergrundbild.",
+    "fr": "Redessiné comme un vrai bureau de la fin des années 90 : fond sarcelle, fenêtres grises biseautées à barre de titre bleu marine, ligne de menus, bouton Démarrer avec la marque Nexvyn, zone de notification en creux et police pixel. Il s’appelle désormais Classic ; votre choix et vos réglages restent. Nouvelles icônes dessinées à la main et un fond d’écran plus calme.",
+    "es": "Redibujado como un auténtico escritorio de finales de los 90: fondo verde azulado, ventanas grises biseladas con barra de título azul marino, fila de menús, botón Inicio con la marca Nexvyn, bandeja hundida y fuente de píxeles. Ahora se llama Classic; tu selección y ajustes se mantienen. Iconos nuevos dibujados a mano y un fondo de pantalla más tranquilo.",
+    "ja": "90年代後半のデスクトップを再現して描き直しました。青緑の背景、紺色のタイトルバーを持つ灰色の立体ウィンドウ、メニュー行、Nexvynマーク付きのスタートボタン、くぼんだ通知領域、ドットフォント。名前はClassicになり、選択と設定は維持されます。 手描きの新しいアイコンと、より落ち着いた壁紙。",
+    "zh": "重新绘制为真正的90年代末桌面：青绿色背景、深蓝标题栏的灰色立体窗口、菜单行、带Nexvyn标志的开始按钮、凹陷的通知区和像素字体。现更名为Classic，你的选择和设置保持不变。 全新手绘图标和更柔和的壁纸。",
+    "ko": "90년대 후반 데스크톱처럼 다시 그렸습니다. 청록색 배경, 남색 제목 표시줄의 회색 입체 창, 메뉴 줄, Nexvyn 마크가 있는 시작 버튼, 들어간 알림 영역, 픽셀 글꼴. 이름은 Classic으로 바뀌며 선택과 설정은 유지됩니다. 손으로 그린 새 아이콘과 더 차분한 배경화면."
+  },
+  "featured": false,
+  "themeStyle": "retro"
 }

@@ -362,7 +362,7 @@ orada kapalıdır.
 ### Elle çalıştırma
 
 - `./build.sh run`: derler ve `NexvynOS.nro`'yu emülatörde açar.
-- Emülatörün yolu `RYUJINX` ortam değişkeniyle verilir. Betiklerdeki varsayılan yol proje sahibinin bilgisayarına
+- Emülatörün yolu bir ortam değişkeniyle verilir (betiğe bakın). Betiklerdeki varsayılan yol proje sahibinin bilgisayarına
   göredir; kendi yolunuzu verin.
 - Uygulamanızı emülatörün SD kart klasöründe `NexvynOS/Applications/` içine kopyalayın.
 

@@ -33,16 +33,6 @@ A.memUse = () => {
   try { const m = sys.memory(); return m && m[1] > 0 ? m[0] / m[1] : 0; } catch (e) { return 0; }
 };
 A.startGame = (meta) => {
-  // A stock JS Mesh prototype lacks free(). The companion NRO adds it together
-  // with the renderer lifetime fix. Refuse unsafe cores before any GPU/world
-  // initialization; this CPU-only probe is never created during menu startup.
-  if (!A.noGpu && !A.noVoxels && A.safeMeshRelease === undefined) {
-    try { const probe=g3d.mesh('cube',0.01);A.safeMeshRelease=typeof probe.free==='function';if(A.safeMeshRelease)probe.free(); }
-    catch(e){A.safeMeshRelease=false;}
-  }
-  if (!A.noGpu && !A.noVoxels && !A.safeMeshRelease) {
-    ui.alert(TR('title'),TR('msg.nro_required'),[TR('ui.ok')],()=>{});return;
-  }
   if (!A.gpuChecked && !A.noGpu) { A.noGpu=!g3d.gpu();A.gpuChecked=true; }
   if (A.noGpu || A.noVoxels) {
     ui.alert(TR("title"), TR(A.noGpu ? "ui.no_gpu" : "ui.no_voxels"), [TR("ui.ok")], () => {});
@@ -98,7 +88,6 @@ app.load = () => {
   // Capability checks must not call the native world constructor during startup.
   A.noGpu = typeof g3d === "undefined" || typeof g3d.gpu !== "function";
   A.gpuChecked=false;
-  A.safeMeshRelease=undefined;
   A.noVoxels = typeof g3d === "undefined" || typeof g3d.voxels !== "function";
 };
 

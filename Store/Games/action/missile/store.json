@@ -40,5 +40,10 @@
       "key space",
       "wait 1.5"
     ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

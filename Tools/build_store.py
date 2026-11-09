@@ -13,8 +13,17 @@ SDK samples (SDK/samples.json, read by Nexvyn OS Studio's Samples section):
     SDK/Samples/<language>/<slug>/  source/, README.md, store.json ({"kind", "tags", "subtitle", "description"})
 
 store.json (all optional): {"featured": true, "subtitle": {lang: text}, "description": {lang: text},
-    "changelog": {lang: text}, "license": "MIT", "shots": [...]}
+    "changelog": {lang: text}, "license": "MIT", "shots": [...],
+    "kind": "game", "features": ["3d", "online"], "players": "1-4", "themeStyle": "dark"}
   - "shots" is the screenshot script used by the source repository's tools/store_shots.py.
+  - Store metadata (the App Market's tabs, sorting and filters; all optional, an older App Market ignores them):
+      kind        app, game, port, emulator, demo, theme, font (default: from the folder)
+      features    3d, online, multiplayer, coop, offline, touch, controller, keyboard (default: derived from the code
+                  and permissions: 3d when it calls g3d.*, online when it uses net.*, else offline, touch / controller /
+                  keyboard from the input calls; what the maker lists replaces the derived list)
+      players     "1", "2" or "1-4" (default: not shown); games that list "multiplayer" or "coop" should set it
+      tech        lua, javascript, python, native (default: from the runtime)
+      themeStyle  retro, modern, phone, dark, light, nature, minimal (themes)
 Packages (.nxvapp, .nxvtheme, .nxvfont, sample .zip) are deterministic (fixed zip timestamps, manifest.sha256), so an
 unchanged item keeps its SHA-256. Store/dates.json keeps, per id, when it was first published ("added"), its last
 change ("updated") and every published version ("history"); they drive the store's New badges and version history.
@@ -52,6 +61,12 @@ STORED = {".png", ".jpg", ".jpeg", ".ogg", ".mp3", ".zip", ".jar", ".ttf", ".otf
 LANGS = {"lua": "lua", "javascript": "javascript", "js": "javascript", "python": "python", "py": "python",
          "squirrel": "squirrel", "c": "c", "java": "java"}
 KINDS = {"app", "game", "demo", "template"}
+STORE_KINDS = {"app", "game", "port", "emulator", "demo", "theme", "font"}
+FEATURES = ["3d", "online", "multiplayer", "coop", "offline", "touch", "controller", "keyboard"]
+THEME_STYLES = ["retro", "modern", "phone", "dark", "light", "nature", "minimal"]
+TECHS = {"lua", "javascript", "python", "native", "java", "squirrel"}
+TECH_OF = {"lua": "lua", "js": "javascript", "javascript": "javascript", "python": "python", "py": "python", "c": "native",
+           "native": "native", "java": "java", "squirrel": "squirrel"}
 FONT_STYLES = ["regular", "semibold", "bold", "italic"]
 FONT_FILES = (".ttf", ".otf", ".ttc", ".otc")
 # SDK calls that need a permission (Lua sys.x(...), JS sys.x(...), Python sys.x(...))
@@ -153,6 +168,75 @@ def load_app(src):
     return app
 
 
+def valid_players(v):
+    """"2" or "1-4" (or the number 2): 1 <= min <= max <= 64. Returns (min, max) or None."""
+    m = re.fullmatch(r"(\d{1,2})(?:-(\d{1,2}))?", str(v).strip()) if v is not None else None
+    if not m:
+        return None
+    lo = int(m.group(1))
+    hi = int(m.group(2) or lo)
+    return (lo, hi) if 1 <= lo <= hi <= 64 else None
+
+
+def store_meta(entry, app, src, extra, default_kind, where, warnings):
+    """Adds kind, tech, features, players and themeStyle to a catalog entry. The maker's store.json value wins; what it
+    leaves out is derived from the package (tech, 3d, online / offline, input) where that is possible."""
+    kind = extra.get("kind", default_kind)
+    if kind not in STORE_KINDS:
+        fail("%s: store.json kind %r is not one of %s" % (where, kind, ", ".join(sorted(STORE_KINDS))))
+    if default_kind in ("theme", "font") and kind != default_kind:
+        fail("%s: a %s folder cannot have kind %r" % (where, default_kind, kind))
+    entry["kind"] = kind
+    code = ""
+    if src:
+        for root, _, names in os.walk(src):
+            for n in names:
+                if os.path.splitext(n)[1] in (".lua", ".js", ".mjs", ".py"):
+                    with open(os.path.join(root, n), encoding="utf-8", errors="replace") as f:
+                        code += f.read() + "\n"
+    if default_kind in ("app", "game"):
+        rt = app.get("runtime") or "lua"
+        tech = extra.get("tech") or ("native" if entry.get("builtin") else TECH_OF.get(rt, rt))
+        if tech not in TECHS:
+            fail("%s: tech %r is not one of %s" % (where, tech, ", ".join(sorted(TECHS))))
+        entry["tech"] = tech
+        if "features" in extra:
+            feats = extra["features"]
+            if not isinstance(feats, list) or any(x not in FEATURES for x in feats):
+                fail("%s: store.json features must be a list of %s" % (where, ", ".join(FEATURES)))
+        else:
+            feats = []
+            if re.search(r"\bg3d\.", code):
+                feats.append("3d")
+            feats.append("online" if "network" in entry.get("permissions", []) else "offline")
+            if re.search(r"\binput\.touch|\bui\.(button|tap)", code):
+                feats.append("touch")
+            if re.search(r"\binput\.(down|pressed|stick|buttons)", code):
+                feats.append("controller")
+            if re.search(r"\binput\.key|\bui\.keyboard", code):
+                feats.append("keyboard")
+            if entry.get("builtin") or not src:
+                feats = [x for x in feats if x not in ("touch", "controller", "keyboard")]
+            if kind == "game":
+                warnings.append("%s: game declares no \"features\" in store.json (derived: %s)" % (where, ", ".join(feats)))
+        entry["features"] = [x for x in FEATURES if x in feats]
+        if "players" in extra:
+            pl = valid_players(extra["players"])
+            if not pl:
+                fail("%s: store.json players %r must be like \"2\" or \"1-4\" (1 to 64)" % (where, extra["players"]))
+            entry["players"] = "%d" % pl[0] if pl[0] == pl[1] else "%d-%d" % pl
+        elif ("multiplayer" in feats or "coop" in feats) and kind == "game":
+            warnings.append("%s: lists multiplayer / coop but no \"players\"" % where)
+    if default_kind == "theme" or "themeStyle" in extra:
+        style = extra.get("themeStyle")
+        if style is not None and style not in THEME_STYLES:
+            fail("%s: themeStyle %r is not one of %s" % (where, style, ", ".join(THEME_STYLES)))
+        if default_kind == "theme" and not style:
+            warnings.append("%s: theme declares no \"themeStyle\"" % where)
+        if style:
+            entry["themeStyle"] = style
+
+
 def pack_files(files):
     """A deterministic zip of (name, path) pairs: sorted entries, fixed timestamps, plus manifest.sha256."""
     buf = io.BytesIO()
@@ -238,6 +322,8 @@ def build(check):
         with open(path, "wb") as f:
             f.write(data)
 
+    warnings = []
+
     def put_json(path, obj):
         put(path, (json.dumps(obj, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
 
@@ -293,6 +379,7 @@ def build(check):
         if app.get("targetSdk"):  # the SDK the app was tested on (docs/COMPATIBILITY.en.md)
             entry["targetSdk"] = str(app["targetSdk"])
         listing(entry, extra)
+        store_meta(entry, app, src, extra, "game" if rel(item).startswith("Store/Games/") else "app", rel(item), warnings)
         stamp(entry)
         entries.append((item, app, entry))
 
@@ -323,6 +410,7 @@ def build(check):
         if os.path.isfile(wav):
             entry["audio"] = RAW + rel(wav)
         listing(entry, extra)
+        store_meta(entry, th, None, extra, "theme", rel(item), warnings)
         stamp(entry)
         entries.append((item, th, entry))
 
@@ -352,6 +440,7 @@ def build(check):
             entry["cjk"] = fj["cjk"]
         listing(entry, extra)
         entry["license"] = fj["license"]  # the font's own license, whatever store.json says
+        store_meta(entry, fj, None, extra, "font", rel(item), warnings)
         stamp(entry)
         entries.append((item, fj, entry))
 
@@ -382,6 +471,7 @@ def build(check):
         else:
             entry["builtin"] = True
         listing(entry, extra)
+        store_meta(entry, app, None, extra, "game" if rel(item).startswith("Store/Games/") else "app", rel(item), warnings)
         stamp(entry)
         entries.append((item, app, entry))
 
@@ -455,6 +545,8 @@ def build(check):
             lines.append("")
         put(os.path.join(STORE, L["file"]), "\n".join(lines).encode("utf-8"))
 
+    for w in warnings:
+        print("warning: " + w, file=sys.stderr)
     if check:
         if stale:
             print("out of date (run python Tools/build_store.py):")

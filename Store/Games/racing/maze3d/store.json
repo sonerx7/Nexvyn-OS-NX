@@ -36,5 +36,11 @@
       "key m",
       "wait 1"
     ]
+  ],
+  "features": [
+    "3d",
+    "offline",
+    "touch",
+    "controller"
   ]
 }

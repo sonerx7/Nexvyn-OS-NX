@@ -20,9 +20,56 @@
     "ko": "클래식 암호 풀기 게임입니다. 색깔 핀으로 된 비밀 암호가 숨겨져 있고, 열 번 안에 풀어야 합니다. 추측할 때마다 피드백 핀이 정확한 자리에 있는 색이 몇 개인지, 색은 맞지만 자리가 틀린 것이 몇 개인지 알려 줍니다. 클래식(핀 4개, 색 6가지) 또는 어려움(핀 5개, 색 8가지)으로, 색상 중복 허용 여부를 정해 플레이하세요.\n\n• 클래식과 어려움 모드\n• 색상 중복 켜기 또는 끄기\n• 색각 이상이 있는 플레이어를 위한 번호 핀\n• 힌트, 실행 취소, 추측 분포가 포함된 통계\n• 터치, 컨트롤러, 숫자 키 1–8"
   },
   "shots": [
-    ["wait 2.5"],
-    ["key enter", "wait 1", "key 1", "key 2", "key 3", "key 4", "key enter", "wait 1", "key 2", "key 5", "key 1", "key 6", "key enter", "wait 1", "key 3", "key 1", "key 4", "key 2", "key enter", "wait 1.2"],
-    ["key escape", "wait 0.6", "key down", "key down", "key down", "key enter", "wait 1", "key down", "key down", "key enter", "wait 1.5"],
-    ["key escape", "wait 0.8", "key enter", "wait 1.2", "dark 1", "wait 1.5"]
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1",
+      "key 1",
+      "key 2",
+      "key 3",
+      "key 4",
+      "key enter",
+      "wait 1",
+      "key 2",
+      "key 5",
+      "key 1",
+      "key 6",
+      "key enter",
+      "wait 1",
+      "key 3",
+      "key 1",
+      "key 4",
+      "key 2",
+      "key enter",
+      "wait 1.2"
+    ],
+    [
+      "key escape",
+      "wait 0.6",
+      "key down",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1",
+      "key down",
+      "key down",
+      "key enter",
+      "wait 1.5"
+    ],
+    [
+      "key escape",
+      "wait 0.8",
+      "key enter",
+      "wait 1.2",
+      "dark 1",
+      "wait 1.5"
+    ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

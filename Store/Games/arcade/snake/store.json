@@ -37,5 +37,10 @@
       "dark 1",
       "wait 2"
     ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

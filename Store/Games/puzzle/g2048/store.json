@@ -56,5 +56,10 @@
       "key down",
       "wait 1"
     ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

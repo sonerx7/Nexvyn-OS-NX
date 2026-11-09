@@ -20,9 +20,36 @@
     "ko": "누를 때마다 불 하나와 이웃한 네 개의 불이 바뀌며, 목표는 5×5 보드 전체를 끄는 것입니다. 항상 풀 수 있는 60개 레벨을 차례로 풀어 나가세요. 각 레벨에는 정확한 해법기로 계산한 기준 횟수가 있으며, 기준을 맞추면 별을 얻습니다. 새로운 것을 원하나요? 무작위 퍼즐을 만드세요. 막히면 해법기가 다음에 누를 곳을 알려 줍니다.\n\n• 기준 횟수와 별이 있는 60개 레벨\n• 항상 풀 수 있는 무작위 퍼즐\n• 내장 해법기의 힌트\n• 실행 취소와 레벨별 최소 이동\n• 터치, 컨트롤러, 키보드"
   },
   "shots": [
-    ["wait 2.5"],
-    ["key enter", "wait 1.2", "key h", "wait 0.3", "key enter", "wait 1.2"],
-    ["key h", "key enter", "wait 0.4", "key h", "key enter", "wait 2.5"],
-    ["dark 1", "key escape", "wait 0.6", "key l", "wait 1.5"]
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.2",
+      "key h",
+      "wait 0.3",
+      "key enter",
+      "wait 1.2"
+    ],
+    [
+      "key h",
+      "key enter",
+      "wait 0.4",
+      "key h",
+      "key enter",
+      "wait 2.5"
+    ],
+    [
+      "dark 1",
+      "key escape",
+      "wait 0.6",
+      "key l",
+      "wait 1.5"
+    ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

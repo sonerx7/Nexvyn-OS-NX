@@ -36,5 +36,8 @@
     [
       "wait 2.5"
     ]
+  ],
+  "features": [
+    "offline"
   ]
 }

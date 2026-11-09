@@ -1,0 +1,105 @@
+# Nexvyn OS continuous integration (every push and pull request):
+#   checks  translations, every bundled Lua / JavaScript / Python / Squirrel / Java app and Studio template (headless
+#           smoke tests), app compatibility (tools/compat_check.py), the App Market catalog format, the package signing
+#           tools, the host unit tests (tests/run.sh) and the desktop tests (tools/tests/run.sh)
+#   build   NexvynOS.nro with ./build.sh in the pinned devkitA64 image (tools/toolchain.json), the C apps compiled with
+#           the real toolchain (tools/rt_check.py), the Native SDK showcase and templates (tools/native_templates_check.py)
+#           and the NRO's version (tools/nro_version.py); uploaded as an artifact
+name: CI
+
+# Manual only: GitHub Actions minutes on a private repository are billed once the free monthly quota is used up, and
+# the owner does not want to pay. The same checks run locally before every merge (build.sh, tests/run.sh,
+# compat_check, lang_check, abi_check, catalog_check, release.py --only leakcheck).
+on:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install checker dependencies
+        run: pip install lupa numpy Pillow etcpak
+      - name: Translations
+        run: python tools/lang_check.py
+      - name: Lua apps
+        run: python tools/lua_check.py
+      - name: Lua Studio templates
+        run: python tools/lua_check.py --templates
+      - name: JavaScript apps
+        run: node tools/js_check.mjs
+      - name: Python apps
+        run: python tools/py_check.py
+      # Squirrel and Java here (the runner has a JDK); the C apps compile in the build job, which has devkitA64
+      - name: Squirrel, C and Java apps
+        run: python tools/rt_check.py --templates
+      # docs/COMPATIBILITY.en.md: the built-in apps and templates against tools/compat_baseline.json, and the checkers'
+      # mocks against the runtimes. The store apps need the release repository; tools/release.py checks them.
+      - name: App compatibility
+        run: python tools/compat_check.py
+      # the frozen Native ABI v1 (sdk/native/toolchain/nxn_abi_v1.json): add-only; also part of compat_check
+      - name: Native ABI v1 freeze
+        run: python tools/abi_check.py
+      - name: Catalog format
+        run: python tools/catalog_check.py tests/fixtures/catalog.json
+      - name: Package signing round trip
+        run: |
+          set -e
+          tmp="$(mktemp -d)"
+          python tools/nxvapp_keygen.py "$tmp/key.pem"
+          python tools/nxvapp_pack.py romfs/Applications/hello.nxvapp -o "$tmp/hello.nxvapp" --sign "$tmp/key.pem"
+          python tools/nxvapp_pack.py --verify "$tmp/hello.nxvapp"
+          # a changed file must be caught
+          python - "$tmp/hello.nxvapp" "$tmp/bad.nxvapp" <<'EOF'
+          import sys, zipfile
+          src, dst = sys.argv[1], sys.argv[2]
+          with zipfile.ZipFile(src) as a, zipfile.ZipFile(dst, "w") as b:
+              for i in a.infolist():
+                  data = a.read(i)
+                  if i.filename.endswith(".lua"):
+                      data += b"\n-- tampered\n"
+                  b.writestr(i, data)
+          EOF
+          if python tools/nxvapp_pack.py --verify "$tmp/bad.nxvapp"; then echo "tampering not detected"; exit 1; fi
+      - name: Unit tests
+        run: sh tests/run.sh
+      - name: Desktop tests
+        run: sh tools/tests/run.sh
+
+  build:
+    runs-on: ubuntu-24.04
+    # pinned: the same image as tools/toolchain.json (devkitA64 GCC 15.2.0, libnx 4.10.0); the portlibs are part of it,
+    # so the build normally downloads nothing (pkg.devkitpro.org answered 403 to CI runners)
+    container: devkitpro/devkita64:20260219@sha256:1fc388c3a0d34bd2045a6dadcb1020e069d5f876a187fd705de14b4440c00282
+    steps:
+      - uses: actions/checkout@v4
+      - name: Host tools
+        run: |
+          command -v python3 >/dev/null || { apt-get update -qq && apt-get install -y -qq --no-install-recommends python3; }
+      # the image ships them; a download (and the package server's 403s) only happens if one is missing
+      - name: Portlibs
+        run: |
+          P="switch-sdl2 switch-sdl2_ttf switch-sdl2_image switch-sdl2_mixer switch-mesa switch-glad switch-curl \
+             switch-mbedtls switch-ffmpeg switch-zlib switch-libpng switch-libjpeg-turbo switch-freetype"
+          dkp-pacman -Q $P >/dev/null || dkp-pacman -Sy --noconfirm --needed $P
+      # warns (in the log) when the image's versions differ from tools/toolchain.json
+      - name: Toolchain versions
+        run: python3 tools/toolchain_check.py
+      - name: Build NexvynOS.nro
+        run: JOBS="$(nproc)" sh build.sh
+      - name: C apps (compiled with devkitA64)
+        run: python3 tools/rt_check.py --templates
+      # Native SDK: the showcase and the app / game templates are built and packed from a clean folder with the same
+      # toolchain (docs/NATIVE_KIT.en.md); the port template joins in when a windowed SDL2 sysroot is present
+      - name: Native SDK showcase and templates
+        run: python3 tools/native_templates_check.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexvynOS.nro
+          path: NexvynOS.nro

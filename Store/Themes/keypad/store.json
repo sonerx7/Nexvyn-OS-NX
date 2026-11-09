@@ -1,13 +1,13 @@
 {
   "subtitle": {
-    "en": "Soft blue-grey menus and a softkey bar",
-    "tr": "Yumuşak mavi-gri menüler, tuş çubuğu",
-    "de": "Sanfte blaugraue Menüs, Softkey-Leiste",
-    "fr": "Menus bleu-gris et barre de softkeys",
-    "es": "Menús azul grisáceo y barra de teclas",
-    "ja": "青灰色のメニューとソフトキーバー",
-    "zh": "柔和蓝灰菜单与软键栏",
-    "ko": "부드러운 청회색 메뉴와 소프트키 바"
+    "en": "Early-2000s keypad phone look",
+    "tr": "2000'lerin tuşlu telefonu",
+    "de": "Tastenhandy der frühen 2000er",
+    "fr": "Téléphone à clavier des années 2000",
+    "es": "Móvil de teclado de los 2000",
+    "ja": "2000年代のキー操作ケータイ風",
+    "zh": "2000年代初按键手机风格",
+    "ko": "2000년대 초 키패드 폰"
   },
   "description": {
     "en": "Soft blue-grey menus and a softkey bar.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
@@ -19,5 +19,16 @@
     "zh": "柔和蓝灰菜单与软键栏.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
     "ko": "부드러운 청회색 메뉴와 소프트키 바.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
   },
-  "featured": false
+  "changelog": {
+    "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+    "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+    "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+    "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+    "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+    "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+    "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+    "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+  },
+  "featured": false,
+  "themeStyle": "phone"
 }

@@ -47,5 +47,10 @@
     "de": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
     "fr": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending.",
     "es": "An original fast first-person shooter built from real 3D meshes. Fight through six story chapters, 36 rooms and elevated decks with four distinct weapons, dashes, melee finishers and energy-shot reflection. Face six hostile archetypes, recover 18 records and choose between two endings. Real UV textures, per-pixel directional light plus reactive mesh-level local lighting and a flashlight. No shadow maps or PBR. Controller, keyboard/drag-mouse and touch. Supplied images are labelled software previews; real-device validation is pending."
-  }
+  },
+  "features": [
+    "3d",
+    "offline",
+    "controller"
+  ]
 }

@@ -106,6 +106,7 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 ```json
 {
   "kind": "app",
+  "features": ["offline", "touch", "controller"],
   "tags": ["water", "health", "reminders"],
   "subtitle": {"en": "Drink enough every day", "tr": "..."},
   "description": {"en": "Two or three sentences.\n\n• Bullet\n• Bullet", "tr": "..."},
@@ -116,7 +117,15 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 
 - `subtitle` (en çok 45 karakter) ve `description`: **İngilizce zorunludur**; istediğiniz başka dilleri
   ekleyin (Türkçe, Almanca, Fransızca, İspanyolca, Japonca, Çince, Korece). Eksik diller İngilizceye düşer.
-- `kind`: `app`, `game`, `demo` ya da `template`. `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
+- `kind`: `app`, `game`, `demo`, `port`, `emulator` ya da `template`. `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
+- Mağaza bilgisi (hepsi isteğe bağlı; App Market sekmeler, sıralama ve filtreler için kullanır, eski App Market yok sayar):
+  `features` şunlardan oluşan liste: `3d`, `online`, `multiplayer`, `coop`, `offline`, `touch`, `controller`, `keyboard`;
+  `players` `"2"` ya da `"1-4"` (`multiplayer` ya da `coop` yazan oyunlar bunu da vermeli); `tech` `lua`, `javascript`,
+  `python` ya da `native`; `themeStyle` (temalar) `retro`, `modern`, `phone`, `dark`, `light`, `nature` ya da `minimal`.
+  `Tools/build_store.py` türetebildiğini türetir (tech çalışma ortamından, kod `g3d.*` çağırıyorsa `3d`, `net.*`
+  kullanıyorsa `online`, yoksa `offline`, giriş çağrılarından giriş türü); yazdığınız değer her zaman kazanır, hiç
+  `features` yazmayan oyun uyarı alır. `python tools/catalog_check.py --strict` bilinmeyen değerleri reddeder. Oyunlar
+  mağazada bunlarla süzülür (çevrimiçi, yerel çok oyunculu, tek oyunculu, co-op); doğru yazın.
 - `age`: içerik notu. `everyone` (varsayılan) ya da `teen` (hafif şiddet, korkutucu temalar, kullanıcıların ürettiği
   web içeriği). Yalnızca yetişkinlere yönelik içerik kabul edilmez.
 - `shots`: 3-5 çekim, 5 önerilir; her çekim o görüntüden önce çalışan adımların listesidir (`wait <sn>`,

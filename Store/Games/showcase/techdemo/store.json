@@ -37,5 +37,9 @@
       "key right",
       "wait 4"
     ]
+  ],
+  "kind": "demo",
+  "features": [
+    "offline"
   ]
 }

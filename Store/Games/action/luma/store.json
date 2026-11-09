@@ -44,5 +44,10 @@
     "de": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
     "fr": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending.",
     "es": "A 3D exploration platform adventure with ten worlds, broad districts, walkable roads and alternative routes. Discover stars, rescue a friend, clear arenas and activate seals. Eight enemy behaviours, real UV textures, 48 original models, ten original music loops, checkpoints and a minimap. English/Turkish game text. Supplied images are labelled software previews; real-device validation is pending."
-  }
+  },
+  "features": [
+    "3d",
+    "offline",
+    "controller"
+  ]
 }

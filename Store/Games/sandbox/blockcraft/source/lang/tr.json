@@ -308,6 +308,5 @@
   "book.all": "Tüm tarifler · Y",
   "book.none": "Envanterindeki malzemelerle üretilebilen tarif yok.",
   "ui.search_items": "Eşya ara",
-  "ui.search_all": "Tümü · F / −",
-  "msg.nro_required": "Bu NRO, gerekli 3B kaynak güvenliği düzeltmesini içermiyor. Blockcraft sürümünün yanındaki NexvynOS-BlockcraftFix.nro dosyasını çalıştırıp yeniden dene. Dünyaların korunur."
+  "ui.search_all": "Tümü · F / −"
 }

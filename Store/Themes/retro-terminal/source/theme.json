@@ -14,7 +14,7 @@
     "fr": "Un écran cathodique à phosphore vert avec un journal de démarrage, apparence sombre, panneaux opaques et sons 8 bits.",
     "es": "Una pantalla CRT de fósforo verde con un registro de arranque, aspecto oscuro, paneles opacos y sonidos de 8 bits."
   },
-  "version": "1.0",
+  "version": "1.1",
   "author": "Soner Çakır (sonerx7)",
   "appearance": "dark",
   "accent": "#2FD25B",

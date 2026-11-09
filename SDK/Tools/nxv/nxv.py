@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """nxv - the Nexvyn OS app developer's command line (PC side). One file, Python 3.8+, no extra packages.
 
-    nxv new <lang> <name> [--id ID] [--author NAME] [--dir DIR] [--store]
+    nxv new <lang> <name> [--id ID] [--author NAME] [--dir DIR] [--store [--kind KIND] [--features LIST] [--players N-M]]
     nxv check <bundle> [--sdk PATH] [--frames N]
     nxv build <bundle> --sdk PATH                       Java: compile src/ into app.jar
     nxv pack <bundle> [-o OUT.nxvapp] [--sign KEY.pem --sdk PATH]  default: dist/<name>.nxvapp next to the folder
@@ -55,7 +55,9 @@ CHECKER = {"lua": ["python", "tools/lua_check.py"], "javascript": ["node", "tool
 CATEGORIES = {"system", "productivity", "utilities", "media", "internet", "games", "developer", "other"}
 PERMISSIONS = {"network", "files", "launch", "notifications", "games", "clipboard"}
 SHARE_KINDS = {"text", "url", "file", "image"}
-KINDS = {"app", "game", "demo", "template"}
+KINDS = {"app", "game", "demo", "template", "port", "emulator"}
+STORE_FEATURES = ["3d", "online", "multiplayer", "coop", "offline", "touch", "controller", "keyboard"]
+THEME_STYLES = ["retro", "modern", "phone", "dark", "light", "nature", "minimal"]
 # SDK calls that need a permission, in every language (Lua/JS/Python/Squirrel sys.x, C sys_x, Java Sys.x / Net.x)
 USES = {
     "network": r"\b(?:net|Net)[._](?:get|post|json|download|request|fetch|fetchJson|ws|oauth)\s*\(|"
@@ -200,8 +202,17 @@ def cmd_new(a):
         m["author"] = a.author
     write_json(os.path.join(dest, "app.json"), m)
     if item:
+        feats = [f.strip() for f in (a.features or "").split(",") if f.strip()]
+        bad = [f for f in feats if f not in STORE_FEATURES]
+        if bad or (a.kind or "app") not in KINDS:
+            die("--kind is one of %s; --features a list of %s" % (", ".join(sorted(KINDS)), ", ".join(STORE_FEATURES)))
+        meta = {"kind": a.kind or "app", "tags": []}
+        if feats or (a.kind or "app") == "game":  # features are derived when left out; a game should say them itself
+            meta["features"] = feats
+        if a.players:
+            meta["players"] = a.players
         write_json(os.path.join(item, "store.json"), {
-            "kind": "app", "tags": [],
+            **meta,
             "subtitle": {"en": ""},
             "description": {"en": ""},
             "shots": [["wait 3"], ["wclick 0.5 0.4", "wait 1.5"], ["key right", "wait 1.5"],
@@ -390,6 +401,20 @@ def check_store_item(bundle, rep):
         rep.error("store.json: kind must be one of %s" % ", ".join(sorted(KINDS)))
     if "tags" in s and (not isinstance(s["tags"], list) or not all(isinstance(t, str) for t in s["tags"])):
         rep.error("store.json: tags must be a list of strings")
+    if "features" in s and (not isinstance(s["features"], list) or any(f not in STORE_FEATURES for f in s["features"])):
+        rep.error("store.json: features must be a list of %s" % ", ".join(STORE_FEATURES))
+    elif s.get("kind") == "game" and "features" not in s:
+        rep.warn("store.json: a game should list its features (%s); without them the store derives them" % ", ".join(STORE_FEATURES))
+    if "players" in s and not re.fullmatch(r"\d{1,2}(-\d{1,2})?", str(s["players"])):
+        rep.error('store.json: players must look like "2" or "1-4"')
+    elif "players" in s:
+        lo, _, hi = str(s["players"]).partition("-")
+        if int(lo) < 1 or int(hi or lo) < int(lo) or int(hi or lo) > 64:
+            rep.error("store.json: players is 1 to 64 players, the first number not above the second")
+    if isinstance(s.get("features"), list) and ({"multiplayer", "coop"} & set(s["features"])) and "players" not in s:
+        rep.warn('store.json: features list multiplayer or coop but there is no "players" (e.g. "1-4")')
+    if "themeStyle" in s and s["themeStyle"] not in THEME_STYLES:
+        rep.error("store.json: themeStyle must be one of %s" % ", ".join(THEME_STYLES))
     shots = s.get("shots")
     if shots is not None:
         if not isinstance(shots, list) or not all(isinstance(x, list) for x in shots):
@@ -632,6 +657,9 @@ def main(argv=None):
     p.add_argument("--author")
     p.add_argument("--dir", help="parent folder (default: current folder)")
     p.add_argument("--store", action="store_true", help="App Market item layout: <slug>/source/, store.json, README.md")
+    p.add_argument("--kind", help="with --store: store.json kind (app, game, demo, port, emulator)")
+    p.add_argument("--features", help="with --store: store.json features, comma separated (3d,online,multiplayer,coop,offline,touch,controller,keyboard)")
+    p.add_argument("--players", help='with --store: store.json players, e.g. "2" or "1-4"')
     p.add_argument("--templates", help="Languages folder (default: SDK/Languages of this repository)")
     p.set_defaults(fn=cmd_new)
 

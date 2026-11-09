@@ -40,5 +40,10 @@
       "key n",
       "wait 1.2"
     ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

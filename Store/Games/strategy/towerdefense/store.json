@@ -49,5 +49,8 @@
       "key n",
       "wait 6"
     ]
+  ],
+  "features": [
+    "offline"
   ]
 }

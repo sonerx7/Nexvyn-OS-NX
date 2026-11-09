@@ -18,5 +18,16 @@
     "ja": "やわらかな雲の浮かぶ夏空の下、太陽の光の道に波がきらめきます。夜になると星が現れ、月が水面に銀色の道を描きます。\n\n含まれるもの:\n• ライトとダークに自動で追従\n• 昼と夜の壁紙\n• ターコイズのアクセントカラー\n\n「入手」でインストールし、適用するかを確認します。テーマの切り替えやデフォルトの外観への復元は、システム設定 > 外観 > テーマ で行えます。",
     "zh": "在点缀着柔和云朵的夏日天空下，海浪在阳光洒下的光路中闪闪发亮。夜晚星星出来了，月亮在水面上画出一条银色的路。\n\n包含：\n• 自动跟随浅色和深色\n• 白天和夜晚墙纸\n• 绿松石色强调色\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
     "ko": "부드러운 구름이 떠 있는 여름 하늘 아래 햇빛이 비치는 길을 따라 파도가 반짝입니다. 밤이 되면 별이 뜨고 달이 물 위에 은빛 길을 그립니다.\n\n포함 항목:\n• 라이트와 다크를 자동으로 따름\n• 낮 및 밤 배경 화면\n• 청록색 강조 색상\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
+  },
+  "themeStyle": "nature",
+  "changelog": {
+    "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+    "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+    "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+    "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+    "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+    "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+    "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+    "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
   }
 }

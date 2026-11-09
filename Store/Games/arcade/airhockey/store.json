@@ -34,5 +34,10 @@
     [
       "wait 3"
     ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

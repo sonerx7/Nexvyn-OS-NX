@@ -9,7 +9,9 @@ Send after `system-prompt.en.md` (section 10 describes `store.json`). Paste `app
 Write store.json for this Nexvyn OS app for the App Market.
 
 {
-  "kind": "app | game | demo | template",
+  "kind": "app | game | demo | port | emulator | template",
+  "features": ["3d | online | multiplayer | coop | offline | touch | controller | keyboard, only what the code really does"],
+  "players": "2 or 1-4 (only when features has multiplayer or coop)",
   "tags": ["3-6 lower-case search words"],
   "subtitle": {"en": "...", "<other language code>": "..."},
   "description": {"en": "...", "<other language code>": "..."},

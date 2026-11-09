@@ -357,7 +357,7 @@ Item folder `Store/Apps/<category>/<slug>/` (games: `Store/Games/<genre>/<slug>/
 `README.md` (English; more languages optional), `store.json`:
 
 ```json
-{"kind": "app", "tags": ["..."],
+{"kind": "app", "features": ["offline", "touch"], "tags": ["..."],
  "subtitle": {"en": "..."},
  "description": {"en": "..."},
  "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["hold right 1.5", "wait 1"],
@@ -365,7 +365,7 @@ Item folder `Store/Apps/<category>/<slug>/` (games: `Store/Games/<genre>/<slug>/
 ```
 
 English is required in `subtitle` / `description`; add other languages as more keys (`"de": "..."`).
-`kind`: app, game, demo, template. Subtitle at most 45 characters. `source/icon.png` is key art (rule 12). `shots`: 3-5 lists (5 recommended, the coolest
+`kind`: app, game, demo, port, emulator, template. `features` (fill it for every game and app, from what the code really does): 3d, online, multiplayer, coop, offline, touch, controller, keyboard; games with `multiplayer` or `coop` also get `players` ("2" or "1-4"); themes get `themeStyle` (retro, modern, phone, dark, light, nature, minimal). Subtitle at most 45 characters. `source/icon.png` is key art (rule 12). `shots`: 3-5 lists (5 recommended, the coolest
 moments) of steps: `wait S`, `wclick FX FY` / `wmove FX FY` (0..1 fractions of the window content), `key NAME`,
 `hold KEY S`, `dpad DIR`, `text STRING`,
 `dark 0|1`.

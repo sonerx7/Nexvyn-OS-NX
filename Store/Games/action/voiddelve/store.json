@@ -35,5 +35,9 @@
       "key escape",
       "wait 1"
     ]
+  ],
+  "features": [
+    "offline",
+    "controller"
   ]
 }

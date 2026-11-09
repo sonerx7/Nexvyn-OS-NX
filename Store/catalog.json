@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 170,
+  "count": 171,
   "apps": [
     {
       "id": "aichat",
@@ -46,6 +46,11 @@
         "zh": "在 Switch 上使用 Claude、Gemini 和 GPT",
         "ko": "Switch에서 Claude, Gemini, GPT를"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -104,6 +109,12 @@
         "zh": "跟随引导呼吸，平静下来",
         "ko": "안내에 따라 호흡하며 마음을 진정시키세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -172,6 +183,12 @@
         "zh": "预算、重复记录和月度图表",
         "ko": "예산, 반복 항목, 월별 차트"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -232,6 +249,11 @@
         "zh": "你的通讯录，支持导入 vCard",
         "ko": "vCard 가져오기를 지원하는 주소록"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -291,6 +313,12 @@
         "zh": "间隔重复、测验和导入",
         "ko": "간격 반복, 퀴즈, 가져오기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -359,6 +387,13 @@
         "zh": "流程图和思维导图",
         "ko": "순서도와 마인드맵"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -420,6 +455,12 @@
         "zh": "连续记录、休息日和里程碑",
         "ko": "연속 기록, 쉬는 날, 기념일"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -487,6 +528,12 @@
         "zh": "适用于各种训练的 HIIT 和 Tabata 计时器",
         "ko": "모든 운동을 위한 HIIT 및 타바타 타이머"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -555,6 +602,12 @@
         "zh": "每日记录、心情和回忆",
         "ko": "하루 기록, 기분, 추억"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -621,6 +674,12 @@
         "zh": "看板、清单和拖放",
         "ko": "보드, 체크리스트, 드래그 앤 드롭"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -689,6 +748,13 @@
         "zh": "互相链接的笔记、反向链接和关系图",
         "ko": "연결된 노트, 백링크, 그래프"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -750,6 +816,12 @@
         "zh": "专注冲刺、任务和每日目标",
         "ko": "집중 스프린트, 작업, 일일 목표"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -810,6 +882,11 @@
         "zh": "精美的幻灯片，随时可以演示",
         "ko": "바로 발표할 수 있는 아름다운 슬라이드"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -869,6 +946,12 @@
         "zh": "记录你的书、页数和阅读目标",
         "ko": "책, 쪽수, 독서 목표를 기록하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -937,6 +1020,12 @@
         "zh": "菜谱、烹饪模式和购物",
         "ko": "레시피, 요리 모드, 장보기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -995,6 +1084,12 @@
         "zh": "按货架分类的清单，补货快捷",
         "ko": "매장 구역별로 정리되는 장보기 목록"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1061,6 +1156,12 @@
         "zh": "记录每晚睡眠，达成睡眠目标",
         "ko": "밤마다 기록하고 수면 목표를 달성하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1121,6 +1222,11 @@
         "zh": "公式、图表和 Excel 文件",
         "ko": "수식, 차트, Excel 파일"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -1173,6 +1279,11 @@
         "zh": "停留在桌面上的彩色便笺",
         "ko": "데스크톱에 머무는 알록달록한 메모"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -1231,6 +1342,12 @@
         "zh": "项目、步骤、重复和截止日期",
         "ko": "프로젝트, 단계, 반복, 마감일"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1297,6 +1414,12 @@
         "zh": "盲打、薄弱按键和速度测试",
         "ko": "타자 연습, 약한 키, 속도 테스트"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1357,6 +1480,11 @@
         "zh": "支持 Word 文件的文字处理器",
         "ko": "DOCX 파일을 지원하는 워드 프로세서"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -1416,6 +1544,15 @@
         "zh": "将 z = f(x, y) 绘制为 3D 曲面",
         "ko": "z = f(x, y)를 3D 곡면으로 그리세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1477,6 +1614,11 @@
         "zh": "一键例程和智能触发条件",
         "ko": "원탭 루틴과 스마트 트리거"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -1537,6 +1679,13 @@
         "zh": "游戏之夜的比赛对阵",
         "ko": "게임 대회를 위한 대진표"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -1589,6 +1738,11 @@
         "zh": "拾取屏幕上的任意颜色并复制其代码",
         "ko": "화면의 아무 색이나 집어 코드를 복사하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -1642,6 +1796,11 @@
         "zh": "测试按钮、摇杆、体感和振动",
         "ko": "버튼, 스틱, 모션, 진동을 테스트하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -1703,6 +1862,12 @@
         "zh": "为重要的日子显示醒目的倒计时",
         "ko": "중요한 날까지 째깍째깍 크게 세어 보세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1770,6 +1935,12 @@
         "zh": "日期间隔、日期加减等",
         "ko": "날짜 사이의 일수, 날짜 계산 등"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1837,6 +2008,12 @@
         "zh": "掷 d4 到 d20 骰子或抛硬币",
         "ko": "d4~d20 주사위 굴리기와 동전 던지기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1904,6 +2081,11 @@
         "zh": "贷款、储蓄、百分比和增值税",
         "ko": "대출, 저축, 퍼센트, 부가세"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -1965,6 +2147,11 @@
         "zh": "预览、查看和安装字体",
         "ko": "글꼴을 미리 보고, 살펴보고, 설치하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -2024,6 +2211,13 @@
         "zh": "实时显示昼夜的 3D 地球",
         "ko": "실시간 낮과 밤이 보이는 3D 지구"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2091,6 +2285,12 @@
         "zh": "绘制函数图像，求根与交点",
         "ko": "함수를 그리고 근과 교점을 찾으세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2158,6 +2358,12 @@
         "zh": "今晚的月亮和未来的每个月相",
         "ko": "오늘 밤의 달과 앞으로의 모든 위상"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2225,6 +2431,12 @@
         "zh": "翻译、播放和练习摩尔斯电码",
         "ko": "모스 부호를 번역하고, 재생하고, 연습하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2294,6 +2506,12 @@
         "zh": "会计算的记事本",
         "ko": "계산하는 메모장"
       },
+      "kind": "app",
+      "tech": "javascript",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -2352,6 +2570,12 @@
         "zh": "强密码和易记的密码短语",
         "ko": "강력한 암호와 기억하기 쉬운 암호 문구"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2419,6 +2643,11 @@
         "zh": "全部 118 种元素，一触即达",
         "ko": "118개 원소 전부를 한 번의 탭으로"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2488,6 +2717,12 @@
         "zh": "为文本、链接和 Wi-Fi 生成二维码",
         "ko": "텍스트, 링크, Wi-Fi용 QR 코드"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2555,6 +2790,14 @@
         "zh": "从今天开始运行的行星",
         "ko": "오늘부터 움직이는 행성들"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2622,6 +2865,12 @@
         "zh": "逐项公平分摊账单",
         "ko": "항목별로 공정하게 계산을 나누세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2689,6 +2938,13 @@
         "zh": "转换大小写、整理和排序文本、统计字数",
         "ko": "대/소문자 수정, 텍스트 정리와 정렬, 단어 세기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "keyboard"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2756,6 +3012,12 @@
         "zh": "长度、质量、温度、数据等",
         "ko": "길이, 질량, 온도, 데이터 등"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2817,6 +3079,11 @@
         "zh": "低多边形 3D 建模，支持 OBJ 和 STL",
         "ko": "로우 폴리 3D 모델링, OBJ와 STL"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -2876,6 +3143,14 @@
         "zh": "旋转、缩放和查看 OBJ 与 STL 模型",
         "ko": "OBJ·STL 모델을 돌려 보고 확대하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -2944,6 +3219,12 @@
         "zh": "制作芯片音乐并导出 WAV",
         "ko": "칩튠 음악을 만들고 WAV로 내보내기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -3004,6 +3285,12 @@
         "zh": "和弦、音阶与和弦进行",
         "ko": "코드, 스케일, 코드 진행"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -3065,6 +3352,12 @@
         "zh": "16 步、重音和九种风格",
         "ko": "16스텝, 악센트, 아홉 가지 스타일"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3132,6 +3425,11 @@
         "zh": "深入探索 Mandelbrot 和 Julia 集",
         "ko": "망델브로와 쥘리아 집합 깊숙이 들어가 보세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3192,6 +3490,11 @@
         "zh": "免费电视频道和你的 M3U 播放列表",
         "ko": "무료 TV 채널과 나의 M3U 재생 목록"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3252,6 +3555,12 @@
         "zh": "在钢琴卷帘上谱写旋律",
         "ko": "피아노 롤로 멜로디를 작곡하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3319,6 +3628,12 @@
         "zh": "摆锤摇动，节拍精准",
         "ko": "흔들리는 추로 정확한 박자를 맞추세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3379,6 +3694,11 @@
         "zh": "绘画、素描和编辑图像",
         "ko": "그리고, 스케치하고, 이미지를 편집하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3437,6 +3757,11 @@
         "zh": "弹奏、录音、逐键学曲子",
         "ko": "연주하고, 녹음하고, 곡을 배우기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3504,6 +3829,12 @@
         "zh": "最高 64×64 像素图，导出 PNG",
         "ko": "64×64까지 스프라이트, PNG 내보내기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3564,6 +3895,11 @@
         "zh": "全球数千个直播电台",
         "ko": "전 세계 수천 개의 실시간 방송국"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3623,6 +3959,11 @@
         "zh": "雨声、海浪和噪音，助你入眠",
         "ko": "숙면을 돕는 비, 파도, 소음"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -3684,6 +4025,11 @@
         "zh": "YouTube 视频、Shorts 和频道",
         "ko": "YouTube 동영상, Shorts, 채널"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3737,6 +4083,11 @@
         "zh": "36 种货币的实时汇率",
         "ko": "36개 통화의 실시간 환율"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3789,6 +4140,11 @@
         "zh": "土耳其语 TDK 和英语释义",
         "ko": "터키어 TDK와 영어 정의"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3842,6 +4198,11 @@
         "zh": "FileZilla 风格的文件传输",
         "ko": "FileZilla 스타일의 파일 전송"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3894,6 +4255,11 @@
         "zh": "支持搜索和大头针的 OpenStreetMap",
         "ko": "검색과 핀이 있는 OpenStreetMap"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3947,6 +4313,11 @@
         "zh": "精美呈现你的 RSS 和 Atom 订阅源",
         "ko": "RSS와 Atom 피드를 아름답게"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -3999,6 +4370,11 @@
         "zh": "精美的逐小时和 10 日天气预报",
         "ko": "시간별 및 10일 예보를 아름답게"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4057,6 +4433,13 @@
         "zh": "编码文本并验证校验和",
         "ko": "텍스트를 인코딩하고 체크섬을 확인하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "keyboard"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -4126,6 +4509,12 @@
         "zh": "适用于任何文件的十六进制编辑器",
         "ko": "모든 파일을 위한 16진수 편집기"
       },
+      "kind": "app",
+      "tech": "javascript",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -4185,6 +4574,13 @@
         "zh": "验证、格式化和浏览 JSON",
         "ko": "JSON을 검증하고, 서식을 적용하고, 탐색하세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "keyboard"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -4254,6 +4650,13 @@
         "zh": "实时测试正则表达式",
         "ko": "정규 표현식을 실시간으로 테스트"
       },
+      "kind": "app",
+      "tech": "javascript",
+      "features": [
+        "offline",
+        "touch",
+        "keyboard"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -4313,6 +4716,13 @@
         "zh": "检验主机的 3D 性能",
         "ko": "콘솔의 3D 성능을 시험해 보세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -4374,6 +4784,11 @@
         "zh": "查找、Ping、端口扫描和测速",
         "ko": "조회, 핑, 포트 스캔, 속도 테스트"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4427,6 +4842,11 @@
         "zh": "实时了解主机的一切",
         "ko": "콘솔에 관한 모든 것을 실시간으로"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4479,6 +4899,11 @@
         "zh": "Atmosphère 的隐藏开关，逐一讲解",
         "ko": "Atmosphère의 숨겨진 스위치를 쉽게 설명"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4532,6 +4957,11 @@
         "zh": "按游戏开关 Atmosphère 金手指",
         "ko": "게임별 Atmosphère 치트를 켜거나 끄세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4584,6 +5014,11 @@
         "zh": "按游戏设置 CPU、GPU 和内存频率",
         "ko": "게임별 CPU, GPU, 메모리 클럭"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4636,6 +5071,11 @@
         "zh": "找出崩溃的原因",
         "ko": "무엇이 왜 충돌했는지 알아보세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4688,6 +5128,11 @@
         "zh": "每款游戏的版本、Build ID 和模组",
         "ko": "게임별 버전, 빌드 ID, 모드"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4740,6 +5185,11 @@
         "zh": "所有 .nro 应用集中在一个启动器中",
         "ko": "모든 .nro 앱을 하나의 실행기에서"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4792,6 +5242,11 @@
         "zh": "为你拥有的游戏查找 GameBanana 模组",
         "ko": "보유한 게임의 GameBanana 모드"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4844,6 +5299,11 @@
         "zh": "安全地安装和切换游戏模组",
         "ko": "게임 모드를 안전하게 설치하고 전환하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4896,6 +5356,11 @@
         "zh": "管理 Tesla 叠加层和菜单组合键",
         "ko": "Tesla 오버레이와 메뉴 키 조합 관리"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -4948,6 +5413,11 @@
         "zh": "开启和关闭 IPS 补丁集",
         "ko": "IPS 패치 세트를 켜고 끄세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -5000,6 +5470,11 @@
         "zh": "备份和恢复你的游戏存档",
         "ko": "게임 세이브를 백업하고 복원하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -5052,6 +5527,11 @@
         "zh": "查看和控制后台系统模块",
         "ko": "백그라운드 sysmodule을 보고 제어하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -5105,6 +5585,11 @@
         "zh": "安装土耳其语翻译补丁",
         "ko": "터키어 번역 패치를 설치하세요"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -5151,6 +5636,11 @@
         "zh": "Switch 游戏的土耳其语补丁",
         "ko": "Switch 게임용 터키어 패치"
       },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -5210,6 +5700,12 @@
         "zh": "学习 150 个国家的首都",
         "ko": "150개국의 수도를 배워 보세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5278,6 +5774,13 @@
         "zh": "搭建并运行数字电路",
         "ko": "디지털 회로를 만들고 실행하기"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -5337,6 +5840,12 @@
         "zh": "学习乘法表并赢取星星",
         "ko": "구구단을 배우고 별을 모으세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5404,6 +5913,12 @@
         "zh": "用海龟画图，学习编程",
         "ko": "거북이로 그림을 그리며 코딩을 배우세요"
       },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5472,6 +5987,11 @@
         "en": "First release: a tech demo of the Native SDK.",
         "tr": "İlk sürüm: Native SDK için teknik demo."
       },
+      "kind": "demo",
+      "tech": "native",
+      "features": [
+        "online"
+      ],
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
@@ -5531,6 +6051,13 @@
         "zh": "把方块滑回正确的顺序",
         "ko": "타일을 밀어 순서대로 맞추세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5598,6 +6125,13 @@
         "zh": "四种棋盘、限时挑战、智能提示",
         "ko": "네 가지 보드, 타임 어택, 힌트"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5665,6 +6199,14 @@
         "zh": "找到十座迷宫的发光出口",
         "ko": "열 개 미로의 빛나는 출구를 찾으세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5732,6 +6274,13 @@
         "zh": "快节奏桌上冰球，单人或与朋友对战",
         "ko": "혼자 또는 친구와 즐기는 빠른 테이블 하키"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -5796,6 +6345,13 @@
         "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). Per-area lighting with shadows, emissive lamps and screens, reflections, wet floors, glass, layered weapon sound and ambience, effects quality setting.",
         "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Bölgeye göre gölgeli ışık, parlayan lamba ve ekranlar, yansımalar, ıslak zeminler, cam, katmanlı silah sesleri ve ortam sesleri, efekt kalitesi ayarı."
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-02",
       "updated": "2026-11-03",
       "history": [
@@ -5864,6 +6420,12 @@
         "zh": "回合制战术：八场战斗的战役",
         "ko": "턴제 전술: 여덟 전투 캠페인"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -5895,13 +6457,13 @@
         "zh": "由种子生成的无尽方块世界：平原、森林、沙漠、针叶林与雪峰，遍布矿石的洞穴，还有藏着宝箱的村庄。砍下第一棵树，从木制到钻石打造工具，用熔炉冶炼矿石，种植小麦，饲养动物，建造你想象中的一切。\n\n夜幕降临，僵尸和骷髅四处游荡，喷孢菇也会从黑暗中蹦出来：这种发光的蘑菇会鼓胀起来，喷出一团让你变慢、变虚弱的孢子云。点起火把，在床上睡觉跳过夜晚，或在创造模式中带着所有方块自由飞行。\n\n• 生存与创造模式，有村庄的普通世界或平坦世界\n• 平滑光照、昼夜交替、雨、雪和雷暴\n• 工作台、熔炉、箱子、种田、繁殖、床、门、梯子和 TNT\n• 石头深处的硫磺矿石可以挖出火药\n• 会流动的水和岩浆，会蔓延的火\n• 第一人称视角与两种第三人称视角，创造模式中可调整时间\n• 支持手柄、键盘鼠标和触屏；世界保存在主机上",
         "ko": "시드에서 자라난 끝없는 블록 세계: 평원, 숲, 사막, 타이가, 눈 덮인 봉우리, 광석 가득한 동굴, 털어 갈 상자가 있는 마을. 첫 나무를 베고, 나무부터 다이아몬드까지 도구를 만들고, 화로에서 광석을 제련하고, 밀을 기르고, 동물을 키우며 상상하는 모든 것을 지어 보세요.\n\n밤이 오면 좀비와 스켈레톤이 돌아다니고, 어둠 속에서 퍼프캡이 통통 튀어나옵니다. 부풀어 올라 몸을 느리고 약하게 만드는 포자 구름을 뿜는 빛나는 버섯이죠. 횃불을 밝히고, 침대에서 자며 밤을 건너뛰거나, 크리에이티브 모드에서 모든 블록을 손에 들고 자유롭게 날아 보세요.\n\n• 서바이벌과 크리에이티브 모드, 마을이 있는 일반 월드 또는 평지 월드\n• 부드러운 조명, 낮과 밤, 비, 눈, 뇌우\n• 작업대, 화로, 상자, 농사, 번식, 침대, 문, 사다리, TNT\n• 돌 깊은 곳의 유황 광석에서 화약을 얻습니다\n• 흐르는 물과 용암, 번지는 불\n• 1인칭 시점과 두 가지 3인칭 카메라, 크리에이티브에서 시간대 선택\n• 컨트롤러, 키보드와 마우스, 터치 지원; 월드는 본체에 저장"
       },
-      "version": "1.1.1",
+      "version": "1.1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/blockcraft.nxvapp",
-      "size": 1602683,
-      "sha256": "18aaf5e80dfcaa25fb2efdf68f426bd1c3d38a121ef699b5eb4d087d47a1068e",
+      "size": 1601594,
+      "sha256": "0455df8be6a2ca9865aa1d65cb34ea2d2dae04888d0a0e38e34f578ed562d975",
       "minSdk": "1.8",
       "permissions": [],
       "screenshots": [
@@ -5927,18 +6489,31 @@
         "ko": "블록 세계에서 캐고 짓고 살아남기"
       },
       "changelog": {
-        "en": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced.",
-        "tr": "1.1.1: Eski JavaScript SDK mesh nesnelerinde olmayan free() çağrıları kaldırıldı; oturum kapanırken tutulan mesh referansları temizlenir. Voxel menü, tarif kitabı, üretilebilir filtresi, otomatik malzeme yerleştirme, Yaratıcı envanter araması ve grafik profilleri dahil. GPU yalnızca Oyna isteğinde başlatılır. Eski NRO, GPU başlatılmadan uyumluluk mesajıyla durdurulur. Eşlik eden SDK 1.8 NRO, SDL’den ayrı vertex durumu, GPU işlerinin tamamlanmasından sonra kaynak silme, güvenli mesh.free() ve geçersiz geometri indekslerinde silinmiş nesne erişimi düzeltmesi içerir. Ayrı emulator profilinde native güvenlik ve normal/düz dünya aç-kapat-yeniden açma testleri geçti. Fiziksel Switch doğrulaması yapılmadı; önceki QuickJS allocator çökmesinin kesin nedeni henüz yeniden üretilemedi.",
-        "de": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced.",
-        "fr": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced.",
-        "es": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced.",
-        "ja": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced.",
-        "zh": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced.",
-        "ko": "1.1.1: Avoids calling missing free() methods on older JavaScript SDK meshes and drops retained mesh references on session close. Includes voxel menus, recipe book, craftable filter, automatic ingredient placement, Creative search and graphics profiles. GPU initializes only on Play. Unpatched cores are refused before GPU initialization. The companion SDK 1.8 NRO isolates SDL vertex state, waits for queued GPU work before resource deletion, adds safe mesh.free() and fixes a use-after-free in invalid geometry index handling. Native safety and normal/flat world open-close-reopen checks passed in an isolated emulator profile. Physical Switch testing remains pending; the exact earlier QuickJS allocator crash was not reproduced."
+        "en": "1.1.2: Play works again on the current system. The start check that refused worlds and asked for a separate system file is removed; the game frees its 3D resources the safe way on every system version. Worlds and settings are kept.",
+        "tr": "1.1.2: Oyna düğmesi güncel sistemde yeniden çalışıyor. Dünyaları reddedip ayrı bir sistem dosyası isteyen başlangıç denetimi kaldırıldı; oyun 3B kaynaklarını her sistem sürümünde güvenli yoldan bırakır. Dünyalar ve ayarlar korunur.",
+        "de": "1.1.2: Spielen funktioniert wieder auf dem aktuellen System. Die Startprüfung, die Welten ablehnte und eine separate Systemdatei verlangte, wurde entfernt; das Spiel gibt seine 3D-Ressourcen auf jeder Systemversion sicher frei. Welten und Einstellungen bleiben erhalten.",
+        "fr": "1.1.2 : Jouer fonctionne à nouveau sur le système actuel. La vérification au démarrage qui refusait les mondes et demandait un fichier système séparé est supprimée ; le jeu libère ses ressources 3D de façon sûre sur toutes les versions du système. Mondes et réglages conservés.",
+        "es": "1.1.2: Jugar vuelve a funcionar en el sistema actual. Se eliminó la comprobación de inicio que rechazaba los mundos y pedía un archivo de sistema aparte; el juego libera sus recursos 3D de forma segura en todas las versiones del sistema. Se conservan mundos y ajustes.",
+        "ja": "1.1.2: 現在のシステムで再びプレイできるようになりました。ワールドを拒否して別のシステムファイルを求める起動時チェックを削除し、どのシステムバージョンでも 3D リソースを安全に解放します。ワールドと設定はそのまま残ります。",
+        "zh": "1.1.2：在当前系统上可以重新开始游戏。移除了拒绝进入世界并要求单独系统文件的启动检查；游戏在所有系统版本上都以安全方式释放 3D 资源。世界和设置均保留。",
+        "ko": "1.1.2: 현재 시스템에서 다시 플레이할 수 있습니다. 월드를 거부하고 별도의 시스템 파일을 요구하던 시작 검사를 없앴으며, 모든 시스템 버전에서 3D 리소스를 안전하게 해제합니다. 월드와 설정은 유지됩니다."
       },
+      "kind": "game",
+      "tech": "javascript",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
       "added": "2026-11-01",
-      "updated": "2026-11-03",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1.2",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.1.1",
           "date": "2026-11-03"
@@ -6007,6 +6582,11 @@
         "zh": "十格十瓶保龄球",
         "ko": "10프레임 텐핀 볼링"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6073,6 +6653,13 @@
         "zh": "15 关、炸弹、激光和火球",
         "ko": "15스테이지, 폭탄, 레이저, 불덩이"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6140,6 +6727,13 @@
         "zh": "跳跃、吃子，让你的棋子升王",
         "ko": "뛰어넘고, 잡고, 왕을 만드세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6207,6 +6801,13 @@
         "zh": "在 10 次之内破解秘密颜色密码",
         "ko": "10번 안에 비밀 색상 암호를 푸세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6274,6 +6875,13 @@
         "zh": "40 关推箱子逻辑挑战",
         "ko": "40레벨의 상자 밀기 퍼즐"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6341,6 +6949,13 @@
         "zh": "马拉松、冲刺、极限和挖掘模式",
         "ko": "마라톤, 스프린트, 울트라, 파내기"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6408,6 +7023,15 @@
         "zh": "投下棋子，连成四子",
         "ko": "원판을 떨어뜨려 네 개를 한 줄로"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "multiplayer",
+        "offline",
+        "touch",
+        "controller"
+      ],
+      "players": "1-2",
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6472,6 +7096,12 @@
         "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). Layered sound and ambience beds, hit-stop and lantern flare on kills, atmosphere setting.",
         "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Katmanlı ses ve ortam sesleri, vuruşta duraklama ve fener parlaması, atmosfer ayarı."
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-02",
       "updated": "2026-11-03",
       "history": [
@@ -6535,6 +7165,11 @@
         "zh": "抛竿、收线，充实你的鱼类图鉴",
         "ko": "던지고, 감고, 물고기 도감을 채우세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6602,6 +7237,13 @@
         "zh": "逐个字母猜出土耳其语单词",
         "ko": "터키어 단어를 한 글자씩 맞히세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6670,6 +7312,12 @@
         "zh": "灯笼照亮的平台冒险：三个世界、首领与新能力",
         "ko": "랜턴 플랫포머: 세 세계, 세 보스"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -6729,6 +7377,13 @@
         "zh": "用最少的步数关掉所有灯",
         "ko": "최소한의 이동으로 모든 불을 끄세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6793,6 +7448,13 @@
         "en": "Requires Nexvyn OS 1.2.2 (SDK 1.9). New PBR renderer look: real-time lights, bloom, per-world mood, reflections, metal and glass materials, layered sound and ambience, effects quality setting.",
         "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Yeni PBR görünüm: gerçek zamanlı ışıklar, bloom, dünyaya göre atmosfer, yansımalar, metal ve cam malzemeler, katmanlı ses ve ortam sesleri, efekt kalitesi ayarı."
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-02",
       "updated": "2026-11-03",
       "history": [
@@ -6855,6 +7517,13 @@
         "zh": "四个迷宫，三个幽灵",
         "ko": "네 개의 미로, 세 유령"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6922,6 +7591,15 @@
         "zh": "翻开卡牌，找出所有配对",
         "ko": "카드를 뒤집어 모든 짝을 찾으세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "multiplayer",
+        "offline",
+        "touch",
+        "controller"
+      ],
+      "players": "1-2",
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -6989,6 +7667,13 @@
         "zh": "自定义棋盘、统计和连胜",
         "ko": "사용자 보드, 통계, 연승 기록"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7056,6 +7741,11 @@
         "zh": "九个刁钻的俯视推杆洞",
         "ko": "까다로운 탑다운 퍼팅 9홀"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7123,6 +7813,13 @@
         "zh": "六座城市，三座炮台：守住天空",
         "ko": "도시 여섯 개, 포대 세 개: 하늘을 지키세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7190,6 +7887,13 @@
         "zh": "填满网格，揭示隐藏的图画",
         "ko": "격자를 채워 숨은 그림을 드러내세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7256,6 +7960,11 @@
         "zh": "在霓虹竞技场中抵御无尽的敌潮",
         "ko": "네온 아레나에서 끝없는 웨이브를 버텨 내세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7316,6 +8025,11 @@
         "zh": "在 Switch 上玩你的 Steam 和 PC 游戏",
         "ko": "Switch에서 Steam과 PC 게임을"
       },
+      "kind": "emulator",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -7376,6 +8090,13 @@
         "zh": "120 个光线谜题与关卡编辑器",
         "ko": "빛을 꺾는 퍼즐 120개와 레벨 에디터"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "controller",
+        "keyboard"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -7434,6 +8155,11 @@
         "zh": "挡板、弹柱和真正的弹簧杆",
         "ko": "플리퍼, 범퍼, 진짜 플런저"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7500,6 +8226,11 @@
         "zh": "在三个世界中奔跑、跳跃和踩踏",
         "ko": "세 개의 세계를 달리고, 점프하고, 밟으세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7566,6 +8297,14 @@
         "zh": "与 AI 对手进行三圈 3D 赛车",
         "ko": "AI 라이벌과 3랩 3D 레이스"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7626,6 +8365,11 @@
         "zh": "从 NES 到 GBA 的经典游戏，支持即时存档",
         "ko": "NES부터 GBA까지 고전 게임과 세이브 스테이트"
       },
+      "kind": "emulator",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -7685,6 +8429,15 @@
         "zh": "翻转棋子，占领棋盘",
         "ko": "돌을 뒤집어 보드를 차지하세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "multiplayer",
+        "offline",
+        "touch",
+        "controller"
+      ],
+      "players": "1-2",
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7752,6 +8505,11 @@
         "zh": "击中音符，亲自演奏乐曲",
         "ko": "음표를 맞혀 직접 노래를 연주하세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7819,6 +8577,13 @@
         "zh": "穿过马路，乘着河流，回到家",
         "ko": "길을 건너고, 강을 타고, 집으로 가세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7886,6 +8651,13 @@
         "zh": "击碎陨石，小心背后",
         "ko": "바위를 부수고 뒤를 조심하라"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -7947,6 +8719,11 @@
         "zh": "实时 3D 与音乐演示之旅",
         "ko": "실시간 3D와 음악 데모 투어"
       },
+      "kind": "demo",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-10-29",
       "history": [
@@ -8005,6 +8782,13 @@
         "zh": "四种模式、迷宫关卡和奖牌",
         "ko": "네 가지 모드, 미로 스테이지, 메달"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8072,6 +8856,13 @@
         "zh": "它们步步逼近，你坚守防线",
         "ko": "그들은 진격하고, 당신은 버틴다"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8139,6 +8930,13 @@
         "zh": "四种难度、每日谜题、连续记录",
         "ko": "네 난이도, 오늘의 퍼즐, 연속 기록"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8206,6 +9004,13 @@
         "zh": "在可破坏地形上的回合制炮战",
         "ko": "부서지는 지형에서 펼치는 턴제 포격전"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "multiplayer",
+        "offline"
+      ],
+      "players": "1-2",
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8273,6 +9078,11 @@
         "zh": "三张地图、15 波，然后无尽",
         "ko": "세 맵, 15웨이브, 그리고 무한"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8350,6 +9160,13 @@
         "zh": "1.1.0：处处都是真实纹理：带车道线的沥青、红白路肩、草地、沙滩、海水、岩石、棕榈树、建筑、带云的天空全景，以及带涂装和号码的赛车。街机式碰撞：撞到赛车或墙壁不再让你打转，只会把你轻轻推开并损失一点速度；卡住的赛车会被放回赛道。对手更聪明，会超车而不是挤成一团。摇杆转向更细腻，镜头更平稳，界面更清晰，退出时音乐和引擎声立即停止。",
         "ko": "1.1.0: 모든 곳에 실제 텍스처: 차선이 그려진 아스팔트, 빨강·하양 연석, 잔디, 모래, 바다, 바위, 야자수, 건물, 구름 낀 하늘 파노라마, 번호와 도색이 들어간 차량. 아케이드식 접촉: 차나 벽에 부딪혀도 더 이상 스핀하지 않고 옆으로 살짝 밀리며 속도가 조금 줄어듭니다. 끼어 버린 차는 트랙으로 돌아옵니다. 뭉치지 않고 추월하는 더 똑똑한 라이벌. 더 섬세한 스틱 조향, 차분한 카메라, 읽기 쉬운 HUD, 게임을 끝내면 음악과 엔진 소리가 바로 멈춥니다."
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-02",
       "history": [
@@ -8414,6 +9231,12 @@
         "zh": "双摇杆肉鸽：遗物、首领与无限流派",
         "ko": "유물과 보스의 로그라이트"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "controller"
+      ],
       "added": "2026-11-01",
       "updated": "2026-11-01",
       "history": [
@@ -8473,6 +9296,13 @@
         "zh": "倒来倒去，直到每根试管只有一种颜色",
         "ko": "관마다 한 가지 색이 될 때까지 부으세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8544,6 +9374,13 @@
         "zh": "找出五个字母的土耳其语单词",
         "ko": "다섯 글자 터키어 단어를 찾으세요"
       },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
+      ],
       "added": "2026-10-29",
       "updated": "2026-11-01",
       "history": [
@@ -8581,13 +9418,13 @@
         "zh": "绿色和紫色的光幕在山脊上方荡漾，倒映在下方平静的水面上，头顶是满天繁星。\n\n包含：\n• 深色外观\n• 薄荷绿强调色\n• 星际穿越屏幕保护程序\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "별이 가득한 하늘 아래, 초록색과 보라색 빛의 커튼이 산등성이 위로 일렁이며 아래의 고요한 물에 비칩니다.\n\n포함 항목:\n• 다크 모양\n• 민트 강조 색상\n• 별 워프 화면 보호기\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/aurora/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/aurora/aurora.nxvtheme",
-      "size": 96261,
-      "sha256": "97c3b0297e97d79c92f000015dee2d12c1752e80946f18c53d424bb4ecbba53d",
+      "size": 116238,
+      "sha256": "dbd226b00930a58dd80466f03b36b9301191569beac56cfd60180e122014847f",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -8606,9 +9443,24 @@
         "zh": "宁静湖面上的北极光",
         "ko": "고요한 호수 위의 오로라"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "nature",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -8619,54 +9471,73 @@
       "id": "com.sonerx7.theme.classic95",
       "kind": "theme",
       "name": {
-        "en": "Classic 95",
-        "tr": "Classic 95",
-        "de": "Classic 95",
-        "fr": "Classic 95",
-        "es": "Classic 95",
-        "ja": "Classic 95",
-        "zh": "Classic 95",
-        "ko": "Classic 95"
+        "en": "Classic",
+        "tr": "Classic",
+        "de": "Classic",
+        "fr": "Classic",
+        "es": "Classic",
+        "ja": "Classic",
+        "zh": "Classic",
+        "ko": "Classic"
       },
       "description": {
-        "en": "Beige 90s desktop with bevelled buttons.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
-        "tr": "Kabartmalı düğmeli bej 90'lar masaüstü.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
-        "de": "Beiger 90er-Desktop mit Reliefschaltflächen.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
-        "fr": "Bureau beige années 90, boutons biseautés.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
-        "es": "Escritorio beige de los 90, botones biselados.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
-        "ja": "立体ボタンのベージュな90年代デスクトップ.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
-        "zh": "米色90年代桌面与立体按钮.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
-        "ko": "입체 버튼의 베이지색 90년대 데스크톱.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+        "en": "Gray 90s desktop, teal background, bevelled windows.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Gri 90'lar masaüstü, deniz yeşili arka plan, kabartmalı pencereler.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Graues 90er-Desktop, petrolfarbener Hintergrund, Reliefs-Fenster.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Bureau gris années 90, fond sarcelle, fenêtres biseautées.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Escritorio gris de los 90, fondo verde azulado, ventanas biseladas.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "グレーの90年代デスクトップ、青緑の背景、立体ウィンドウ.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "灰色90年代桌面、青绿色背景、立体窗口.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "회색 90년대 데스크톱, 청록색 배경, 입체 창.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/classic-95.nxvtheme",
-      "size": 515392,
-      "sha256": "ad36f180e2413408439d70f2b1255a3b87115b337be1aee3fefe59c27eb1cb09",
+      "size": 507414,
+      "sha256": "c183d9a7bd45056112b1cd9e3526f4eb1544016609dbac1f695f3fb4a515b529",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/source/wallpaper.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/source/wallpaper.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/classic-95",
       "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/classic-95/preview.wav",
       "subtitle": {
-        "en": "Beige 90s desktop with bevelled buttons",
-        "tr": "Kabartmalı düğmeli bej 90'lar masaüstü",
-        "de": "Beiger 90er-Desktop mit Reliefschaltflächen",
-        "fr": "Bureau beige années 90, boutons biseautés",
-        "es": "Escritorio beige de los 90, botones biselados",
-        "ja": "立体ボタンのベージュな90年代デスクトップ",
-        "zh": "米色90年代桌面与立体按钮",
-        "ko": "입체 버튼의 베이지색 90년대 데스크톱"
+        "en": "Gray 90s desktop, bevelled windows",
+        "tr": "Gri 90'lar masaüstü, kabartmalı pencere",
+        "de": "Graues 90er-Desktop, Reliefs-Fenster",
+        "fr": "Bureau gris années 90, fenêtres biseautées",
+        "es": "Escritorio gris años 90, ventanas biseladas",
+        "ja": "グレーの90年代デスクトップ",
+        "zh": "灰色90年代桌面、立体窗口",
+        "ko": "회색 90년대 데스크톱, 입체 창"
       },
+      "changelog": {
+        "en": "Redrawn as a real late-90s desktop: teal background, gray bevelled windows with navy title bars, a menu row, a Start button with the Nexvyn mark, sunken tray and a pixel font. Now named Classic; your selection and settings stay. New hand-drawn icons and a calmer wallpaper.",
+        "tr": "Gerçek bir 90'lar sonu masaüstü olarak yeniden çizildi: deniz yeşili arka plan, lacivert başlıklı gri kabartmalı pencereler, menü satırı, Nexvyn işaretli Başlat düğmesi, çukur bildirim alanı ve piksel yazı tipi. Adı artık Classic; seçiminiz ve ayarlarınız korunur. Elle çizilmiş yeni simgeler ve daha sakin bir duvar kâğıdı.",
+        "de": "Als echter Desktop der späten 90er neu gezeichnet: petrolfarbener Hintergrund, graue Relieffenster mit marineblauer Titelleiste, Menüzeile, Start-Schaltfläche mit Nexvyn-Zeichen, versenkter Infobereich und Pixelschrift. Jetzt Classic; Auswahl und Einstellungen bleiben. Neue handgezeichnete Symbole und ein ruhigeres Hintergrundbild.",
+        "fr": "Redessiné comme un vrai bureau de la fin des années 90 : fond sarcelle, fenêtres grises biseautées à barre de titre bleu marine, ligne de menus, bouton Démarrer avec la marque Nexvyn, zone de notification en creux et police pixel. Il s’appelle désormais Classic ; votre choix et vos réglages restent. Nouvelles icônes dessinées à la main et un fond d’écran plus calme.",
+        "es": "Redibujado como un auténtico escritorio de finales de los 90: fondo verde azulado, ventanas grises biseladas con barra de título azul marino, fila de menús, botón Inicio con la marca Nexvyn, bandeja hundida y fuente de píxeles. Ahora se llama Classic; tu selección y ajustes se mantienen. Iconos nuevos dibujados a mano y un fondo de pantalla más tranquilo.",
+        "ja": "90年代後半のデスクトップを再現して描き直しました。青緑の背景、紺色のタイトルバーを持つ灰色の立体ウィンドウ、メニュー行、Nexvynマーク付きのスタートボタン、くぼんだ通知領域、ドットフォント。名前はClassicになり、選択と設定は維持されます。 手描きの新しいアイコンと、より落ち着いた壁紙。",
+        "zh": "重新绘制为真正的90年代末桌面：青绿色背景、深蓝标题栏的灰色立体窗口、菜单行、带Nexvyn标志的开始按钮、凹陷的通知区和像素字体。现更名为Classic，你的选择和设置保持不变。 全新手绘图标和更柔和的壁纸。",
+        "ko": "90년대 후반 데스크톱처럼 다시 그렸습니다. 청록색 배경, 남색 제목 표시줄의 회색 입체 창, 메뉴 줄, Nexvyn 마크가 있는 시작 버튼, 들어간 알림 영역, 픽셀 글꼴. 이름은 Classic으로 바뀌며 선택과 설정은 유지됩니다. 손으로 그린 새 아이콘과 더 차분한 배경화면."
+      },
+      "themeStyle": "retro",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -8696,13 +9567,13 @@
         "zh": "带柔和青绿光晕的深色玻璃.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "은은한 청록 빛의 어두운 유리.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/crystal/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/crystal/crystal.nxvtheme",
-      "size": 1882293,
-      "sha256": "31e0bd3199583fa034f27657ad18f48a4242d26aafaf4aec0efc45a69de28ab1",
+      "size": 2893131,
+      "sha256": "c3e443c0d84efd4015c4f1a6669e959878fbab44392aa69d851ddb14d415050a",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -8722,9 +9593,28 @@
         "zh": "带柔和青绿光晕的深色玻璃",
         "ko": "은은한 청록 빛의 어두운 유리"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "modern",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -8754,13 +9644,13 @@
         "zh": "暖橙与茄紫，开阔的桌面.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "따뜻한 주황과 가지색의 탁 트인 데스크톱.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/dusk/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/dusk/dusk.nxvtheme",
-      "size": 1689537,
-      "sha256": "aba6d283dfaa503127557092911e1270cff9fe354ca56882169a1441dbceea5d",
+      "size": 2351514,
+      "sha256": "424355a18bbee32f1c657e59c31a44e99e04c780801a574fa645b82857132300",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -8780,9 +9670,28 @@
         "zh": "暖橙与茄紫，开阔的桌面",
         "ko": "따뜻한 주황과 가지색의 탁 트인 데스크톱"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "dark",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -8812,13 +9721,13 @@
         "zh": "带黄铜点缀的深色商务设备.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "황동 포인트의 어두운 비즈니스 기기.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/executive/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/executive/executive.nxvtheme",
-      "size": 1531749,
-      "sha256": "dc0de44c82eaf61459a5d55bbe1dbab09a7d17e028e1c50b9e7e48e1694fa013",
+      "size": 3624448,
+      "sha256": "aa2d23ed5e74b429b790a2fc494e5f297799b87fe85376c93df94a3966a95c66",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -8838,9 +9747,28 @@
         "zh": "带黄铜点缀的深色商务设备",
         "ko": "황동 포인트의 어두운 비즈니스 기기"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "modern",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -8870,13 +9798,13 @@
         "zh": "扁平明亮的图形与干净的色彩.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "평면적이고 밝은 도형과 깔끔한 색.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/flat-phone/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/flat-phone/flat-phone.nxvtheme",
-      "size": 872539,
-      "sha256": "64ec8aa17dfb008b14f36e77004d71d2ec7e5acbe4106386480516497468484f",
+      "size": 1289702,
+      "sha256": "f70a1d2a18ae92d010e9a3c22450fe28b2671fb10ba1d79bb432d65679288e4e",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -8896,9 +9824,28 @@
         "zh": "扁平明亮的图形与干净的色彩",
         "ko": "평면적이고 밝은 도형과 깔끔한 색"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "phone",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -8925,13 +9872,13 @@
         "zh": "五道松林山脊渐渐隐入晨雾，光束洒落山谷。在深色外观下，森林在月光下沉睡，萤火虫点亮了树林。\n\n包含：\n• 自动跟随浅色和深色\n• 清晨和夜晚墙纸\n• 森林绿强调色\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "다섯 겹의 소나무 능선이 아침 안개 속으로 흐려지고 빛줄기가 골짜기로 쏟아집니다. 다크 모양에서는 숲이 달빛 아래 잠들고 반딧불이가 나무를 밝힙니다.\n\n포함 항목:\n• 라이트와 다크를 자동으로 따름\n• 아침 및 밤 배경 화면\n• 숲 초록 강조 색상\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/forest/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/forest/forest.nxvtheme",
-      "size": 185440,
-      "sha256": "c9bf617cf560072c49d172ddbbf6d12548676bb7771b35a0455e574f3d2be410",
+      "size": 210821,
+      "sha256": "a27aa1e86d2a297a9119bbe3708cc54af85dbf74a96a59da4197c31f45fe986a",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -8950,9 +9897,24 @@
         "zh": "黎明时薄雾中的松林，夜晚的萤火虫",
         "ko": "새벽의 안개 낀 소나무, 밤의 반딧불이"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "nature",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -8982,13 +9944,13 @@
         "zh": "磨砂玻璃任务栏与冷蓝光.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "서리 유리 작업 표시줄과 차가운 푸른 빛.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/glass/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/glass/glass.nxvtheme",
-      "size": 1880664,
-      "sha256": "d7a878d700567108d6e5cd50756a552407a2a05d23080dd0451e922a06cbf2c4",
+      "size": 2289749,
+      "sha256": "34da74d27dec5596fc0c7a25ec35382e65ff93d674b93d749debe8836579a759",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9008,9 +9970,28 @@
         "zh": "磨砂玻璃任务栏与冷蓝光",
         "ko": "서리 유리 작업 표시줄과 차가운 푸른 빛"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "modern",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -9040,13 +10021,13 @@
         "zh": "像新手机一样光亮而有层次.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "새 스마트폰처럼 윤기 나고 깊은 느낌.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/gloss-phone/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/gloss-phone/gloss-phone.nxvtheme",
-      "size": 1793578,
-      "sha256": "195501ac82b753456b588df123dfc980b50ba602e19f4394191cb4fa7d42b1a6",
+      "size": 2217987,
+      "sha256": "0e63ad215653a15885e21498adbb8b67943aa135eb737cf6f8d008a98d0198ed",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9066,9 +10047,28 @@
         "zh": "像新手机一样光亮而有层次",
         "ko": "새 스마트폰처럼 윤기 나고 깊은 느낌"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "phone",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -9098,13 +10098,13 @@
         "zh": "柔和蓝灰菜单与软键栏.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "부드러운 청회색 메뉴와 소프트키 바.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.3",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/keypad.nxvtheme",
-      "size": 1353554,
-      "sha256": "6d7fc57ded79e312023dbe7b819247be348ffa7de56d60eb920502dd8da989d8",
+      "size": 730950,
+      "sha256": "9c88b4563331740776f0b7571b732081c93f9db205e972e65129b92f2a1a5278",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9115,18 +10115,37 @@
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/keypad",
       "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/keypad/preview.wav",
       "subtitle": {
-        "en": "Soft blue-grey menus and a softkey bar",
-        "tr": "Yumuşak mavi-gri menüler, tuş çubuğu",
-        "de": "Sanfte blaugraue Menüs, Softkey-Leiste",
-        "fr": "Menus bleu-gris et barre de softkeys",
-        "es": "Menús azul grisáceo y barra de teclas",
-        "ja": "青灰色のメニューとソフトキーバー",
-        "zh": "柔和蓝灰菜单与软键栏",
-        "ko": "부드러운 청회색 메뉴와 소프트키 바"
+        "en": "Early-2000s keypad phone look",
+        "tr": "2000'lerin tuşlu telefonu",
+        "de": "Tastenhandy der frühen 2000er",
+        "fr": "Téléphone à clavier des années 2000",
+        "es": "Móvil de teclado de los 2000",
+        "ja": "2000年代のキー操作ケータイ風",
+        "zh": "2000年代初按键手机风格",
+        "ko": "2000년대 초 키패드 폰"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "phone",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.3",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -9156,13 +10175,13 @@
         "zh": "明亮的蓝绿配色，活泼而阳光.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "밝은 파랑과 초록의 경쾌한 분위기.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/meadow/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/meadow/meadow.nxvtheme",
-      "size": 1880248,
-      "sha256": "e92151e5af4d02e10b6734089a523fd23f1bd53f52d1ca291fde02c4b2be4d45",
+      "size": 2169663,
+      "sha256": "5944ed0bf0e42dd07dbc4d467981500ca5e582055836a6cb5fff96341676d9b1",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9182,9 +10201,28 @@
         "zh": "明亮的蓝绿配色，活泼而阳光",
         "ko": "밝은 파랑과 초록의 경쾌한 분위기"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "nature",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -9211,13 +10249,13 @@
         "zh": "一轮条纹太阳在镶着霓虹边的群山之间落下，青色和品红色的网格一直延伸到地平线。仿佛直接取自 80 年代的磁带封面。\n\n包含：\n• 深色外观\n• 品红色强调色\n• 星际穿越屏幕保护程序，更强的程序坞放大效果\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "줄무늬 태양이 네온 테두리의 산 사이로 지고, 청록색과 자홍색 격자가 지평선까지 뻗어 있습니다. 80년대 카세트테이프 표지에서 그대로 나온 듯한 모습입니다.\n\n포함 항목:\n• 다크 모양\n• 자홍색 강조 색상\n• 별 워프 화면 보호기, 더 강한 독 확대 효과\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/midnight-neon/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/midnight-neon/midnight-neon.nxvtheme",
-      "size": 327728,
-      "sha256": "f27f7f929d4185acb3f8ef60523a628c498feadd0f51d9891552bad7522f2ac1",
+      "size": 130757,
+      "sha256": "08392cbb1714bd0cad868f72c824b1d6b298a6c4f807384c6fee495fb2f7b559",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9236,9 +10274,24 @@
         "zh": "霓虹网格上的合成波落日",
         "ko": "네온 격자 위의 신스웨이브 태양"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "dark",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -9265,13 +10318,13 @@
         "zh": "在点缀着柔和云朵的夏日天空下，海浪在阳光洒下的光路中闪闪发亮。夜晚星星出来了，月亮在水面上画出一条银色的路。\n\n包含：\n• 自动跟随浅色和深色\n• 白天和夜晚墙纸\n• 绿松石色强调色\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "부드러운 구름이 떠 있는 여름 하늘 아래 햇빛이 비치는 길을 따라 파도가 반짝입니다. 밤이 되면 별이 뜨고 달이 물 위에 은빛 길을 그립니다.\n\n포함 항목:\n• 라이트와 다크를 자동으로 따름\n• 낮 및 밤 배경 화면\n• 청록색 강조 색상\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/ocean/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/ocean/ocean.nxvtheme",
-      "size": 204869,
-      "sha256": "fc7d0f5ab5d08903982033e9406760d0747aacf2635d4cd840f0ea645a0eb0c8",
+      "size": 224095,
+      "sha256": "811c3056e313f863cda4047d8811808ae276c7117a6c722c61e63a2a7d9c4ab7",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9290,9 +10343,24 @@
         "zh": "白天阳光下的大海，夜晚月光下的大海",
         "ko": "낮에는 햇살 바다, 밤에는 달빛 바다"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "nature",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -9319,13 +10387,13 @@
         "zh": "陶土色、墨蓝色和芥末黄的重叠圆形与拱形，像孔版印刷海报一样印在带纤维纹理的米白色纸张上。左侧保持留白，留给你的桌面图标。\n\n包含：\n• 浅色外观\n• 不透明的程序坞和菜单栏（降低透明度）\n• 无放大效果的程序坞\n• 陶土色强调色\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "테라코타, 잉크 블루, 머스터드색의 겹쳐진 원과 아치가 섬유질 오프화이트 종이에 리소그래프 포스터처럼 인쇄되어 있습니다. 왼쪽은 데스크톱 아이콘을 위해 비워 두었습니다.\n\n포함 항목:\n• 라이트 모양\n• 불투명한 독과 메뉴 막대(투명도 줄이기)\n• 확대 효과 없는 독\n• 테라코타 강조 색상\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/paper/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/paper/paper.nxvtheme",
-      "size": 169696,
-      "sha256": "b8508652d2674124643c4ee553c98c5409a62560001cee163a8dcf387b91388e",
+      "size": 106828,
+      "sha256": "5d6e0305af226cad58af84403ab70c0a72a64b29a98a888aebd481b5c9c6940d",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9344,12 +10412,100 @@
         "zh": "带有印刷图形的极简浅色外观",
         "ko": "인쇄된 도형이 있는 미니멀한 라이트 룩"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "light",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.theme.pocket",
+      "kind": "theme",
+      "name": {
+        "en": "Pocket",
+        "tr": "Pocket",
+        "de": "Pocket",
+        "fr": "Pocket",
+        "es": "Pocket",
+        "ja": "Pocket",
+        "zh": "Pocket",
+        "ko": "Pocket"
+      },
+      "description": {
+        "en": "Pocket-PC era: blue bar, Today panel, soft keys.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+        "tr": "Pocket PC dönemi: mavi çubuk, Bugün paneli, yazılım tuşları.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+        "de": "Pocket-PC-Ära: blaue Leiste, Heute-Ansicht, Softkeys.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+        "fr": "Époque Pocket PC : barre bleue, écran Aujourd’hui, softkeys.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+        "es": "Era Pocket PC: barra azul, panel Hoy, teclas de función.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+        "ja": "Pocket PC時代風：青いバー、Todayパネル、ソフトキー.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+        "zh": "Pocket PC时代风格：蓝色栏、今日面板、软键.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+        "ko": "Pocket PC 시대 스타일: 파란 바, 투데이 패널, 소프트키.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+      },
+      "version": "1.1",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "themes",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/pocket/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/pocket/pocket.nxvtheme",
+      "size": 1137664,
+      "sha256": "d0f12bb01cdf5c24bb1ab2b45a55281485b6456f071ebaca50d2207f66c83c15",
+      "minSdk": "1.5",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/pocket/source/wallpaper.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Themes/pocket",
+      "audio": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/pocket/preview.wav",
+      "subtitle": {
+        "en": "Pocket-PC era: blue bar, soft keys",
+        "tr": "Pocket PC dönemi: mavi çubuk",
+        "de": "Pocket-PC-Ära: blaue Leiste",
+        "fr": "Époque Pocket PC : barre bleue",
+        "es": "Era Pocket PC: barra azul",
+        "ja": "Pocket PC時代風：青いバー",
+        "zh": "Pocket PC时代风格：蓝色栏",
+        "ko": "Pocket PC 시대 스타일: 파란 바"
+      },
+      "changelog": {
+        "en": "First release: a Pocket-PC era look with glossy blue title bars, a dark blue top bar, a Today panel and soft keys, an own-drawn meadow-and-river wallpaper, glossy 16-colour icons and a matching sound set.",
+        "tr": "İlk sürüm: Pocket PC dönemi görünümü; parlak mavi başlık çubukları, koyu mavi üst çubuk, Bugün paneli ve yazılım tuşları, kendi çizdiğimiz çayır ve nehir duvar kâğıdı, parlak 16 renkli simgeler ve uyumlu bir ses seti.",
+        "de": "Erste Version: Pocket-PC-Look mit glänzenden blauen Titelleisten, dunkelblauer Kopfleiste, Heute-Ansicht und Softkeys, selbst gezeichnetes Wiese-und-Fluss-Hintergrundbild, glänzende 16-Farben-Symbole und passende Systemtöne.",
+        "fr": "Première version : un look d’époque Pocket PC avec barres de titre bleues brillantes, barre supérieure bleu foncé, écran Aujourd’hui et softkeys, un fond d’écran prairie et rivière dessiné par nous, des icônes brillantes en 16 couleurs et des sons assortis.",
+        "es": "Primera versión: un aspecto de la era Pocket PC con barras de título azules brillantes, barra superior azul oscuro, panel Hoy y teclas de función, un fondo de prado y río dibujado por nosotros, iconos brillantes de 16 colores y sonidos a juego.",
+        "ja": "初リリース：光沢のある青いタイトルバー、濃紺のトップバー、Todayパネル、ソフトキーを備えたPocket PC時代風の外観。自作の草原と川の壁紙、光沢のある16色アイコン、合わせたサウンドセット付き。",
+        "zh": "首次发布：Pocket PC时代风格，带有光泽蓝色标题栏、深蓝顶栏、今日面板和软键，配有自绘的草地与河流壁纸、光泽16色图标和相配的音效。",
+        "ko": "첫 출시: 광택 있는 파란 제목 표시줄, 짙은 파랑 상단 바, 투데이 패널과 소프트키를 갖춘 Pocket PC 시대풍 외관입니다. 직접 그린 초원과 강 배경, 광택 16색 아이콘, 어울리는 소리 세트가 포함됩니다."
+      },
+      "themeStyle": "phone",
+      "added": "2026-11-09",
+      "updated": "2026-11-09",
+      "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.0",
+          "date": "2026-11-09"
         }
       ]
     },
@@ -9373,13 +10529,13 @@
         "zh": "弯曲的绿色屏幕上有扫描线、发光的启动日志和闪烁的提示符。这个主题还会把界面声音换成方波哔哔声。\n\n包含：\n• 深色外观\n• 荧光绿强调色\n• 用于点击、提醒、废纸篓和启动的 8 位音效\n• 不透明面板，时钟屏幕保护程序\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "휘어진 녹색 화면 위의 주사선, 빛나는 부팅 로그, 깜박이는 프롬프트. 이 테마는 인터페이스 사운드도 사각파 삐삐 소리로 바꿉니다.\n\n포함 항목:\n• 다크 모양\n• 인광 초록 강조 색상\n• 클릭, 경고, 휴지통, 시작용 8비트 사운드\n• 불투명한 패널, 시계 화면 보호기\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/retro-terminal/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/retro-terminal/retro-terminal.nxvtheme",
-      "size": 237067,
-      "sha256": "7e2e6e82d031353f3f4ad1545b18c8edbc7d2556d351a1805caa2553da9d359c",
+      "size": 89882,
+      "sha256": "88b47243acf2b96585038927d77ed15340bd8cef1a1591b58014d80792ec638a",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9398,9 +10554,24 @@
         "zh": "绿色荧光 CRT 与 8 位音效",
         "ko": "8비트 사운드가 있는 녹색 인광 CRT"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "retro",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -9427,13 +10598,13 @@
         "zh": "花瓣飘过薄雾笼罩的山丘上一根盛开的花枝。傍晚深色外观开启时，同一根花枝会在月光下闪耀。\n\n包含：\n• 自动跟随浅色和深色\n• 白天和夜晚墙纸\n• 粉色强调色\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "안개 낀 언덕 위로 꽃이 핀 가지 옆을 꽃잎이 흩날립니다. 저녁에 다크 모양이 켜지면 같은 가지가 달빛 아래 빛납니다.\n\n포함 항목:\n• 라이트와 다크를 자동으로 따름\n• 낮 및 밤 배경 화면\n• 분홍 강조 색상\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/sakura/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/sakura/sakura.nxvtheme",
-      "size": 192629,
-      "sha256": "a367e9a81a3900a700c7bd10e5039621817680c3e19e6fb133c082a58e43f9b3",
+      "size": 218704,
+      "sha256": "d6dbc4cdcdb866df8bc4ed7b37afb772fe2b310392c77685cdd9331e164c866e",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9452,9 +10623,24 @@
         "zh": "白天与夜晚的樱花",
         "ko": "낮에도 밤에도 벚꽃"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "nature",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -9484,13 +10670,13 @@
         "zh": "宁静灰绿掌机风格与像素图标.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "차분한 회녹색 핸드헬드와 픽셀 아이콘.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/stylus/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/stylus/stylus.nxvtheme",
-      "size": 352275,
-      "sha256": "6eff3b0d2ce20dbe9ce7caf28c8d42c302065d19b2e0d9a191c3e3b4630ef6b1",
+      "size": 2950703,
+      "sha256": "ffa8fe32924f9861cc535e5aaaaf4f0ebf6957822efb0f549f853bd974d13adb",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9510,9 +10696,28 @@
         "zh": "宁静灰绿掌机风格与像素图标",
         "ko": "차분한 회녹색 핸드헬드와 픽셀 아이콘"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "retro",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -9539,13 +10744,13 @@
         "zh": "太阳沉入五层梅紫色和玫瑰色的山丘之后，天空从紫罗兰色渐变为金色，薄云被从下方照亮。\n\n包含：\n• 浅色外观\n• 橙色强调色（系统颜色之一）\n• 发光的太阳和云彩条纹\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
         "ko": "자두색과 장밋빛의 다섯 겹 언덕 뒤로 해가 지고, 하늘은 보라에서 금빛으로 물들며 얇은 구름이 아래에서 빛을 받습니다.\n\n포함 항목:\n• 라이트 모양\n• 주황 강조 색상(시스템 색상 중 하나)\n• 빛나는 태양과 구름 줄기\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.1",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/sunset/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/sunset/sunset.nxvtheme",
-      "size": 87318,
-      "sha256": "7221dfab085c2c7739ad1b6e4137617c05f04b6cdc1f3223f1e8eee613038070",
+      "size": 114102,
+      "sha256": "8e0b425fa7583e4be44cdc82806607e62bab597cd38d01eb90e5508af310d533",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9564,9 +10769,24 @@
         "zh": "起伏山丘上的黄金时刻",
         "ko": "구릉 위의 황금빛 시간"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "nature",
       "added": "2026-10-29",
-      "updated": "2026-10-29",
+      "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -9596,13 +10816,13 @@
         "zh": "蓝灰配色的文本模式屏幕.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "파랑과 회색의 텍스트 모드 화면.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.3",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/terminal-blue/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/terminal-blue/terminal-blue.nxvtheme",
-      "size": 416870,
-      "sha256": "cefe1a0cb7bb93de738ec9783147ab3db67271d0f1f1739a8a4a0057b7f87c6a",
+      "size": 1158490,
+      "sha256": "b41c1dfd99078270318f2c02673c4d67d4863c96b114328696f8e363c0274930",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9622,9 +10842,32 @@
         "zh": "蓝灰配色的文本模式屏幕",
         "ko": "파랑과 회색의 텍스트 모드 화면"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes. New hand-drawn icons and a calmer wallpaper.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz. Elle çizilmiş yeni simgeler ve daha sakin bir duvar kâğıdı.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen. Neue handgezeichnete Symbole und ein ruhigeres Hintergrundbild.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux. Nouvelles icônes dessinées à la main et un fond d’écran plus calme.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista. Iconos nuevos dibujados a mano y un fondo de pantalla más tranquilo.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。 手描きの新しいアイコンと、より落ち着いた壁紙。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。 全新手绘图标和更柔和的壁纸。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다. 손으로 그린 새 아이콘과 더 차분한 배경화면."
+      },
+      "themeStyle": "retro",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.3",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"
@@ -9654,13 +10897,13 @@
         "zh": "醒目的扁平色块方砖风格.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
         "ko": "굵직한 평면 색상 타일 스타일.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
       },
-      "version": "1.0",
+      "version": "1.2",
       "author": "Soner Çakır (sonerx7)",
       "category": "themes",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/tiles/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Themes/tiles/tiles.nxvtheme",
-      "size": 747168,
-      "sha256": "96919adbb82810a5d1202a90ab1bb9523628a67063c2950e7fb26f2a77ae4bc5",
+      "size": 1093804,
+      "sha256": "76461b749917a5a331aaafa1798379f7ae26d86833ea9808ce299572e1f1a645",
       "minSdk": "1.5",
       "permissions": [],
       "screenshots": [
@@ -9680,9 +10923,28 @@
         "zh": "醒目的扁平色块方砖风格",
         "ko": "굵직한 평면 색상 타일 스타일"
       },
+      "changelog": {
+        "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+        "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+        "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+        "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+        "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+        "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+        "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+        "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
+      },
+      "themeStyle": "modern",
       "added": "2026-11-09",
       "updated": "2026-11-09",
       "history": [
+        {
+          "version": "1.2",
+          "date": "2026-11-09"
+        },
+        {
+          "version": "1.1",
+          "date": "2026-11-09"
+        },
         {
           "version": "1.0",
           "date": "2026-11-09"

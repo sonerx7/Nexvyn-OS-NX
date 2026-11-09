@@ -46,5 +46,10 @@
       "wait 6.5",
       "hold up 3"
     ]
+  ],
+  "features": [
+    "3d",
+    "offline",
+    "controller"
   ]
 }

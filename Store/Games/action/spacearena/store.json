@@ -36,5 +36,8 @@
       "key x",
       "wait 0.6"
     ]
+  ],
+  "features": [
+    "offline"
   ]
 }

@@ -18,5 +18,16 @@
     "ja": "湾曲した緑の画面に、走査線、光る起動ログ、点滅するプロンプト。このテーマはインターフェイスのサウンドも矩形波のピコピコ音に置き換えます。\n\n含まれるもの:\n• ダークの外観\n• 蛍光グリーンのアクセントカラー\n• クリック、アラート、ゴミ箱、起動の 8 ビットサウンド\n• 不透明なパネル、時計のスクリーンセーバー\n\n「入手」でインストールし、適用するかを確認します。テーマの切り替えやデフォルトの外観への復元は、システム設定 > 外観 > テーマ で行えます。",
     "zh": "弯曲的绿色屏幕上有扫描线、发光的启动日志和闪烁的提示符。这个主题还会把界面声音换成方波哔哔声。\n\n包含：\n• 深色外观\n• 荧光绿强调色\n• 用于点击、提醒、废纸篓和启动的 8 位音效\n• 不透明面板，时钟屏幕保护程序\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
     "ko": "휘어진 녹색 화면 위의 주사선, 빛나는 부팅 로그, 깜박이는 프롬프트. 이 테마는 인터페이스 사운드도 사각파 삐삐 소리로 바꿉니다.\n\n포함 항목:\n• 다크 모양\n• 인광 초록 강조 색상\n• 클릭, 경고, 휴지통, 시작용 8비트 사운드\n• 불투명한 패널, 시계 화면 보호기\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
+  },
+  "themeStyle": "retro",
+  "changelog": {
+    "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+    "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+    "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+    "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+    "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+    "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+    "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+    "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
   }
 }

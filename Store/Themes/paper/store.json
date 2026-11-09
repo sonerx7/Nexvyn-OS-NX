@@ -18,5 +18,16 @@
     "ja": "テラコッタ、インクブルー、マスタードの重なり合う円とアーチが、繊維の見えるオフホワイトの紙にリソグラフのポスターのように刷られています。左側はデスクトップのアイコンのために静かに空けてあります。\n\n含まれるもの:\n• ライトの外観\n• 不透明な Dock とメニューバー (透明度を下げる)\n• 拡大なしの Dock\n• テラコッタのアクセントカラー\n\n「入手」でインストールし、適用するかを確認します。テーマの切り替えやデフォルトの外観への復元は、システム設定 > 外観 > テーマ で行えます。",
     "zh": "陶土色、墨蓝色和芥末黄的重叠圆形与拱形，像孔版印刷海报一样印在带纤维纹理的米白色纸张上。左侧保持留白，留给你的桌面图标。\n\n包含：\n• 浅色外观\n• 不透明的程序坞和菜单栏（降低透明度）\n• 无放大效果的程序坞\n• 陶土色强调色\n\n“获取”会安装它并提示是否应用。可在“系统设置 > 外观 > 主题”中切换主题或恢复默认外观。",
     "ko": "테라코타, 잉크 블루, 머스터드색의 겹쳐진 원과 아치가 섬유질 오프화이트 종이에 리소그래프 포스터처럼 인쇄되어 있습니다. 왼쪽은 데스크톱 아이콘을 위해 비워 두었습니다.\n\n포함 항목:\n• 라이트 모양\n• 불투명한 독과 메뉴 막대(투명도 줄이기)\n• 확대 효과 없는 독\n• 테라코타 강조 색상\n\n받기를 누르면 설치되고 적용할지 묻습니다. 시스템 설정 > 모양 > 테마에서 테마를 전환하거나 기본 모양을 복원할 수 있습니다."
+  },
+  "themeStyle": "light",
+  "changelog": {
+    "en": "Calmer wallpaper: softer colours and low contrast, quiet in the middle, detail only toward the edges, easy on the eyes.",
+    "tr": "Daha sakin duvar kağıdı: yumuşak renkler ve düşük kontrast, ortası sakin, ayrıntı yalnızca kenarlarda; gözü yormaz.",
+    "de": "Ruhigeres Hintergrundbild: weichere Farben und geringer Kontrast, ruhige Mitte, Details nur am Rand, schonend für die Augen.",
+    "fr": "Fond d’écran plus calme : couleurs douces et faible contraste, centre apaisé, détails seulement sur les bords, reposant pour les yeux.",
+    "es": "Fondo de pantalla más tranquilo: colores suaves y bajo contraste, centro sereno, detalle solo en los bordes, descansa la vista.",
+    "ja": "落ち着いた壁紙：やわらかな色と低コントラスト、中央は静かで、細部は端だけ。目に優しい仕上がりです。",
+    "zh": "更柔和的壁纸：色彩柔和、对比度低，中间安静，细节只在边缘，不伤眼睛。",
+    "ko": "더 차분한 배경화면: 부드러운 색과 낮은 대비, 가운데는 조용하고 세부는 가장자리에만, 눈이 편안합니다."
   }
 }

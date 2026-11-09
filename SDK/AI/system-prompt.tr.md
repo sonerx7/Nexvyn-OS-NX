@@ -359,7 +359,7 @@ Dile özgü kurallar: `SDK/AI/languages/<dil>.tr.md` (İngilizcesi `<dil>.en.md`
 (bundle), `README.md` (İngilizce; başka diller isteğe bağlı), `store.json`:
 
 ```json
-{"kind": "app", "tags": ["..."],
+{"kind": "app", "features": ["offline", "touch"], "tags": ["..."],
  "subtitle": {"en": "..."},
  "description": {"en": "..."},
  "shots": [["wait 3"], ["wclick 0.5 0.3", "wait 1.5"], ["key right", "wait 1"], ["hold right 1.5", "wait 1"],
@@ -367,7 +367,7 @@ Dile özgü kurallar: `SDK/AI/languages/<dil>.tr.md` (İngilizcesi `<dil>.en.md`
 ```
 
 `subtitle` / `description` içinde İngilizce zorunlu; başka dilleri ek anahtarlar olarak ekle (`"de": "..."`).
-`kind`: app, game, demo, template. Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-5 adım listesi (5 önerilir, en
+`kind`: app, game, demo, port, emulator, template. `features` (her oyun ve app için, kodun gerçekten yaptığına göre doldur): 3d, online, multiplayer, coop, offline, touch, controller, keyboard; `multiplayer` ya da `coop` olan oyunlara `players` ("2" ya da "1-4") da yazılır; temalara `themeStyle` (retro, modern, phone, dark, light, nature, minimal). Alt başlık en fazla 45 karakter. `source/icon.png` key art'tır (kural 12). `shots`: 3-5 adım listesi (5 önerilir, en
 havalı anlar): `wait S`, `wclick FX FY` / `wmove FX FY` (pencere içeriğinin 0..1 oranları), `key NAME`,
 `hold TUŞ SN`, `dpad DIR`, `text STRING`,
 `dark 0|1`.

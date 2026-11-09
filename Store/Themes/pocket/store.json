@@ -1,0 +1,34 @@
+{
+  "subtitle": {
+    "en": "Pocket-PC era: blue bar, soft keys",
+    "tr": "Pocket PC dönemi: mavi çubuk",
+    "de": "Pocket-PC-Ära: blaue Leiste",
+    "fr": "Époque Pocket PC : barre bleue",
+    "es": "Era Pocket PC: barra azul",
+    "ja": "Pocket PC時代風：青いバー",
+    "zh": "Pocket PC时代风格：蓝色栏",
+    "ko": "Pocket PC 시대 스타일: 파란 바"
+  },
+  "description": {
+    "en": "Pocket-PC era: blue bar, Today panel, soft keys.\n\nIncluded:\n• Colors and accent\n• Wallpaper\n• Window style\n• Desktop layout and bar\n• Icon set\n• System sounds (startup, click, notification, error)\n\nGet installs it and offers to apply it. Switch themes or go back to the default look in System Settings > Appearance > Themes.",
+    "tr": "Pocket PC dönemi: mavi çubuk, Bugün paneli, yazılım tuşları.\n\nİçerik:\n• Renkler ve vurgu\n• Duvar kâğıdı\n• Pencere biçimi\n• Masaüstü düzeni ve çubuk\n• Simge seti\n• Sistem sesleri (açılış, tıklama, bildirim, hata)\n\nAl ile yüklenir ve uygulanması önerilir. Temayı Sistem Ayarları > Görünüm > Temalar'dan değiştirebilir ya da varsayılan görünüme dönebilirsiniz.",
+    "de": "Pocket-PC-Ära: blaue Leiste, Heute-Ansicht, Softkeys.\n\nEnthalten:\n• Farben und Akzent\n• Hintergrundbild\n• Fensterstil\n• Desktop-Layout und Leiste\n• Symbolsatz\n• Systemtöne (Start, Klick, Hinweis, Fehler)\n\n„Laden“ installiert das Theme und bietet an, es anzuwenden. Themes wechselst du oder setzt das Aussehen zurück unter Systemeinstellungen > Erscheinungsbild > Themes.",
+    "fr": "Époque Pocket PC : barre bleue, écran Aujourd’hui, softkeys.\n\nInclus:\n• Couleurs et accent\n• Fond d’écran\n• Style des fenêtres\n• Disposition du bureau et barre\n• Jeu d’icônes\n• Sons système (démarrage, clic, notification, erreur)\n\nObtenir l’installe et propose de l’appliquer. Changez de thème ou rétablissez l’apparence par défaut dans Réglages Système > Apparence > Thèmes.",
+    "es": "Era Pocket PC: barra azul, panel Hoy, teclas de función.\n\nIncluye:\n• Colores y acento\n• Fondo de pantalla\n• Estilo de ventanas\n• Disposición del escritorio y barra\n• Juego de iconos\n• Sonidos del sistema (inicio, clic, aviso, error)\n\nObtener lo instala y ofrece aplicarlo. Cambia de tema o vuelve al aspecto predeterminado en Ajustes del Sistema > Apariencia > Temas.",
+    "ja": "Pocket PC時代風：青いバー、Todayパネル、ソフトキー.\n\n内容:\n• 色とアクセント\n• 壁紙\n• ウィンドウのスタイル\n• デスクトップのレイアウトとバー\n• アイコンセット\n• システムサウンド（起動、クリック、通知、エラー）\n\n「入手」でインストールされ、適用を提案します。システム設定 > 外観 > テーマで切り替えや標準の外観への復帰ができます。",
+    "zh": "Pocket PC时代风格：蓝色栏、今日面板、软键.\n\n内容：\n• 颜色与强调色\n• 壁纸\n• 窗口样式\n• 桌面布局与栏\n• 图标集\n• 系统声音（启动、点击、通知、错误）\n\n点“获取”即可安装并提示应用。可在“系统设置 > 外观 > 主题”中切换或恢复默认外观。",
+    "ko": "Pocket PC 시대 스타일: 파란 바, 투데이 패널, 소프트키.\n\n포함 내용:\n• 색상과 강조색\n• 배경화면\n• 창 스타일\n• 데스크톱 레이아웃과 바\n• 아이콘 세트\n• 시스템 소리 (시작, 클릭, 알림, 오류)\n\n받기를 누르면 설치되고 적용을 제안합니다. 시스템 설정 > 외관 > 테마에서 바꾸거나 기본 모양으로 돌아갈 수 있습니다."
+  },
+  "changelog": {
+    "en": "First release: a Pocket-PC era look with glossy blue title bars, a dark blue top bar, a Today panel and soft keys, an own-drawn meadow-and-river wallpaper, glossy 16-colour icons and a matching sound set.",
+    "tr": "İlk sürüm: Pocket PC dönemi görünümü; parlak mavi başlık çubukları, koyu mavi üst çubuk, Bugün paneli ve yazılım tuşları, kendi çizdiğimiz çayır ve nehir duvar kâğıdı, parlak 16 renkli simgeler ve uyumlu bir ses seti.",
+    "de": "Erste Version: Pocket-PC-Look mit glänzenden blauen Titelleisten, dunkelblauer Kopfleiste, Heute-Ansicht und Softkeys, selbst gezeichnetes Wiese-und-Fluss-Hintergrundbild, glänzende 16-Farben-Symbole und passende Systemtöne.",
+    "fr": "Première version : un look d’époque Pocket PC avec barres de titre bleues brillantes, barre supérieure bleu foncé, écran Aujourd’hui et softkeys, un fond d’écran prairie et rivière dessiné par nous, des icônes brillantes en 16 couleurs et des sons assortis.",
+    "es": "Primera versión: un aspecto de la era Pocket PC con barras de título azules brillantes, barra superior azul oscuro, panel Hoy y teclas de función, un fondo de prado y río dibujado por nosotros, iconos brillantes de 16 colores y sonidos a juego.",
+    "ja": "初リリース：光沢のある青いタイトルバー、濃紺のトップバー、Todayパネル、ソフトキーを備えたPocket PC時代風の外観。自作の草原と川の壁紙、光沢のある16色アイコン、合わせたサウンドセット付き。",
+    "zh": "首次发布：Pocket PC时代风格，带有光泽蓝色标题栏、深蓝顶栏、今日面板和软键，配有自绘的草地与河流壁纸、光泽16色图标和相配的音效。",
+    "ko": "첫 출시: 광택 있는 파란 제목 표시줄, 짙은 파랑 상단 바, 투데이 패널과 소프트키를 갖춘 Pocket PC 시대풍 외관입니다. 직접 그린 초원과 강 배경, 광택 16색 아이콘, 어울리는 소리 세트가 포함됩니다."
+  },
+  "featured": false,
+  "themeStyle": "phone"
+}

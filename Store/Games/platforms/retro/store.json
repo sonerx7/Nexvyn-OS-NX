@@ -33,5 +33,9 @@
       "dark 1",
       "wait 1.5"
     ]
+  ],
+  "kind": "emulator",
+  "features": [
+    "offline"
   ]
 }

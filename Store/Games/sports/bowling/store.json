@@ -20,9 +20,43 @@
     "ko": "위에서 내려다보는 텐핀 볼링으로, 스트라이크, 스페어, 10프레임 보너스 투구까지 실제 점수 계산을 지원합니다. 위치를 고르고, 조준하고, 훅 회전을 넣고, 길게 눌러 힘을 정한 후, 공과 핀, 핀과 핀의 실제 충돌로 핀이 흩어지는 것을 지켜보세요. 핀 카메라가 모든 충돌을 확대해 보여 주며, 최고 게임이 저장됩니다.\n\n• 스트라이크와 스페어 점수를 완전히 계산하는 10프레임\n• 위치, 조준, 회전, 힘\n• 사실적인 핀 충돌과 핀 카메라 클로즈업\n• 스트라이크, 스페어, 거터 통계\n• 컨트롤러, 키보드, 드래그 후 놓는 터치"
   },
   "shots": [
-    ["wait 2.5"],
-    ["key enter", "wait 1.5", "hold space 0.8", "wait 2.3"],
-    ["wait 4", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5", "hold space 0.8", "wait 2.5"],
-    ["wait 3", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5", "hold space 0.8", "wait 5"]
+    [
+      "wait 2.5"
+    ],
+    [
+      "key enter",
+      "wait 1.5",
+      "hold space 0.8",
+      "wait 2.3"
+    ],
+    [
+      "wait 4",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 2.5"
+    ],
+    [
+      "wait 3",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5",
+      "hold space 0.8",
+      "wait 5"
+    ]
+  ],
+  "features": [
+    "offline"
   ]
 }

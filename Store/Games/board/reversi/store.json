@@ -40,5 +40,12 @@
       "key enter",
       "wait 2.5"
     ]
+  ],
+  "players": "1-2",
+  "features": [
+    "multiplayer",
+    "offline",
+    "touch",
+    "controller"
   ]
 }

@@ -255,8 +255,8 @@
   },
   "com.sonerx7.blockcraft": {
     "added": "2026-11-01",
-    "updated": "2026-11-03",
-    "version": "1.1.1",
+    "updated": "2026-11-09",
+    "version": "1.1.2",
     "history": [
       {
         "version": "1.0.0",
@@ -273,6 +273,10 @@
       {
         "version": "1.1.1",
         "date": "2026-11-03"
+      },
+      {
+        "version": "1.1.2",
+        "date": "2026-11-09"
       }
     ]
   },
@@ -1557,22 +1561,34 @@
   },
   "com.sonerx7.theme.aurora": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.classic95": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
@@ -1580,10 +1596,18 @@
   "com.sonerx7.theme.crystal": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
@@ -1591,10 +1615,18 @@
   "com.sonerx7.theme.dusk": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
@@ -1602,10 +1634,18 @@
   "com.sonerx7.theme.executive": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
@@ -1613,32 +1653,52 @@
   "com.sonerx7.theme.flatphone": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.forest": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.glass": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
@@ -1646,10 +1706,18 @@
   "com.sonerx7.theme.glossphone": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
@@ -1657,10 +1725,18 @@
   "com.sonerx7.theme.keypad": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.3",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.3",
         "date": "2026-11-09"
       }
     ]
@@ -1668,98 +1744,165 @@
   "com.sonerx7.theme.meadow": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.midnightneon": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.ocean": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.paper": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      }
+    ]
+  },
+  "com.sonerx7.theme.pocket": {
+    "added": "2026-11-09",
+    "updated": "2026-11-09",
+    "version": "1.1",
+    "history": [
+      {
+        "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.retroterminal": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.sakura": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.stylus": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.sunset": {
     "added": "2026-10-29",
-    "updated": "2026-10-29",
-    "version": "1.0",
+    "updated": "2026-11-09",
+    "version": "1.1",
     "history": [
       {
         "version": "1.0",
         "date": "2026-10-29"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
       }
     ]
   },
   "com.sonerx7.theme.terminalblue": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.3",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.3",
         "date": "2026-11-09"
       }
     ]
@@ -1767,10 +1910,18 @@
   "com.sonerx7.theme.tiles": {
     "added": "2026-11-09",
     "updated": "2026-11-09",
-    "version": "1.0",
+    "version": "1.2",
     "history": [
       {
         "version": "1.0",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.1",
+        "date": "2026-11-09"
+      },
+      {
+        "version": "1.2",
         "date": "2026-11-09"
       }
     ]

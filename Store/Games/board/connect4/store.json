@@ -40,5 +40,12 @@
       "key h",
       "wait 2"
     ]
+  ],
+  "players": "1-2",
+  "features": [
+    "multiplayer",
+    "offline",
+    "touch",
+    "controller"
   ]
 }

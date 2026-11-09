@@ -25,5 +25,6 @@
   },
   "featured": false,
   "recommended": true,
-  "recommendedOrder": 1
+  "recommendedOrder": 1,
+  "kind": "demo"
 }

@@ -35,5 +35,11 @@
       "key c",
       "wait 1.5"
     ]
+  ],
+  "features": [
+    "3d",
+    "offline",
+    "touch",
+    "controller"
   ]
 }

@@ -25,8 +25,8 @@ so scores stay comparable with the first reports).
   score stays on screen for 6 s and the app returns code 7.
 - Output in the app data folder, rewritten after every stage: `bench_results.json` (`"complete": true` at the end) and
   `bench_report.txt` (table, `RESULT score=... fail=0` line, log).
-- the emulator: `python tools/ryujinx_bench.py --nro NexvynOS.nro --pkg com.nexvyn.example.bench.nxvapp --secs 4` (shared lock, VSync
-  off for the run, everything put back).
+- PC emulator run: the private test tools run the same package for 4 s per stage (VSync off for the run, everything put
+  back).
 - GPU time per NexGFX pass (shadow, sky, opaque, blend, post): turn on the setting `gfx.ngfxPassTimers`; the app log gets one
   `nexgfx: gpu ms per render` line every 2 s (consoles; emulators give no timestamps).
 

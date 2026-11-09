@@ -55,5 +55,10 @@
       "key enter",
       "wait 1.2"
     ]
+  ],
+  "features": [
+    "offline",
+    "touch",
+    "controller"
   ]
 }

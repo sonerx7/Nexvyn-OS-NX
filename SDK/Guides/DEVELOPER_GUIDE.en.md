@@ -363,7 +363,7 @@ are off there.
 ### Running by hand
 
 - `./build.sh run`: builds and opens `NexvynOS.nro` in the emulator.
-- The path to the emulator is given with the `RYUJINX` environment variable. The default path in the scripts is the project
+- The path to the emulator is given with an environment variable (see the script). The default path in the scripts is the project
   owner's computer; give your own path.
 - Copy your app into `NexvynOS/Applications/` in the emulator's SD card folder.
 

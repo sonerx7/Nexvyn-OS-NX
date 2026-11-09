@@ -107,6 +107,7 @@ sandboxed, so users are asked once more.
 ```json
 {
   "kind": "app",
+  "features": ["offline", "touch", "controller"],
   "tags": ["water", "health", "reminders"],
   "subtitle": {"en": "Drink enough every day", "de": "..."},
   "description": {"en": "Two or three sentences.\n\n• Bullet\n• Bullet", "de": "..."},
@@ -117,7 +118,15 @@ sandboxed, so users are asked once more.
 
 - `subtitle` (at most 45 characters) and `description`: **English is required**; add any other language you
   like (Turkish, German, French, Spanish, Japanese, Chinese, Korean). Missing languages fall back to English.
-- `kind`: `app`, `game`, `demo` or `template`. `tags`: lower-case search words. `featured` is set by the maintainer.
+- `kind`: `app`, `game`, `demo`, `port`, `emulator` or `template`. `tags`: lower-case search words. `featured` is set by the maintainer.
+- Store metadata (all optional; the App Market uses it for its tabs, sorting and filters, and an older App Market ignores it):
+  `features` is a list of `3d`, `online`, `multiplayer`, `coop`, `offline`, `touch`, `controller`, `keyboard`;
+  `players` is `"2"` or `"1-4"` (games that list `multiplayer` or `coop` should set it); `tech` is `lua`, `javascript`,
+  `python` or `native`; `themeStyle` (themes) is `retro`, `modern`, `phone`, `dark`, `light`, `nature` or `minimal`.
+  `Tools/build_store.py` derives what it can (tech from the runtime, `3d` when the code calls `g3d.*`, `online` when it
+  uses `net.*`, otherwise `offline`, input from the input calls); a value you write always wins, and a game that lists
+  no `features` gets a warning. `python tools/catalog_check.py --strict` rejects unknown values. Games are filtered by
+  these in the store (online, local multiplayer, single player, co-op), so state them truthfully.
 - `age`: a content note. `everyone` (default) or `teen` (mild violence, scary themes, user-generated web content).
   Content for adults only is not accepted.
 - `shots`: 3-5 shots, 5 recommended; each is a list of steps that run before that picture (`wait <s>`,

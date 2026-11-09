@@ -6,7 +6,7 @@ import { B } from "./registry.js";
 import { listWorlds, newWorldId, deleteWorld, loadWorld } from "./storage.js";
 import { seedFromString, clamp } from "./util.js";
 
-const TAGLINES = 8, VERSION = "1.1.1";
+const TAGLINES = 8, VERSION = "1.1.2";
 
 export class Screens {
   constructor(app) {
