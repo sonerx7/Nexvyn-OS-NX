@@ -98,6 +98,8 @@ Ne yapmalı:
 - App'i pencerede, tam ekranda çalıştır, sonra pencereyi küçük ve büyük boyuta getir.
 - Portatif ve dock'u sırayla dene: app çalışırken dock'tan çıkar (native: `NXN_EVENT_DOCK` görmelisin).
 - Bir turu yalnız dokunmatikle, bir turu yalnız kumandayla (dokunmatiğe dokunmadan) oyna.
+- Native app'ler her parmağı id'siyle yalnızca `app.json` `"minNative": "1.1"` ya da üstünü söylüyorsa alır; 1.0 app'in
+  dokunması eskisi gibi tek imleç kalır.
 - İki parmak aynı anda: otomatik test komutu `finger <n> down|move|up <x> <y>` enjekte eder (iki id pinch, rotate ve
   iki parmak kaydırma yapar); SDL2 check örneği aynı anda basılı en çok parmağı yazar.
 - Oynarken konsolu uyut ve uyandır: ses ve kayıtlı durum doğru olmalı.

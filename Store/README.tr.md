@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **170** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (22)
 
@@ -134,11 +134,10 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **171** öğe. Konsoldaki 
 | <img src="Apps/other/multiply/icon.png" width="32"> | [Çarpım Tablosu](Apps/other/multiply/) | Çarpım tablosunu öğren, yıldız topla |
 | <img src="Apps/other/turtle/icon.png" width="32"> | [Kaplumbağa Grafikleri](Apps/other/turtle/) | Kaplumbağayla çizerek kodlamayı öğren |
 
-## Vitrin (2)
+## Vitrin (1)
 
 | | Ad | Açıklama |
 |---|---|---|
-| <img src="Apps/showcase/graphics-power/icon.png" width="32"> | [Graphics Power](Apps/showcase/graphics-power/) | Yerel 3B keynote: yedi bölüm |
 | <img src="Apps/showcase/native-showcase/icon.png" width="32"> | [Native SDK Showcase](Apps/showcase/native-showcase/) | Pencerede yerel C++: teknik demo |
 
 ## Oyunlar (47)

@@ -98,6 +98,8 @@ What to do:
 - Run the app in a window, in full screen, then resize the window to a small and a large size.
 - Test handheld and docked in turn: undock while the app runs (native: you should see `NXN_EVENT_DOCK`).
 - Play a full round with the touch screen only, then a full round with the pad only and the touch screen untouched.
+- Native apps get every finger with its id only when `app.json` says `"minNative": "1.1"` or later; a 1.0 app keeps the
+  old single-pointer touch exactly as before.
 - Two fingers at once: the autorun test command `finger <n> down|move|up <x> <y>` injects them (two ids make
   pinch, rotate and two-finger pan); the SDL2 check example prints the most fingers down at once.
 - Put the console to sleep during play and wake it: sound and saved state must be right.

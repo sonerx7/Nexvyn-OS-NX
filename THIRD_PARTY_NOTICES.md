@@ -8,6 +8,7 @@ Nexvyn OS is distributed under **GPL-3.0-or-later**. The components below are li
 |---|---|---|
 | libnx (switchbrew) | ISC | Switch sistem servisleri |
 | SDL2, SDL2_image, SDL2_ttf, SDL2_mixer | zlib (devkitPro paketi LGPL bileşenler içerebilir / package may include LGPL parts) | Pencere, çizim, ses |
+| SDL2 (devkitPro Switch fork, Nexvyn OS pencere sürücüleriyle / with the Nexvyn OS window drivers) | zlib (değiştirilmiş kaynak: `sdk/native/sdl2`, `sdk/native/sysroot/patches/sdl2-nexvyn.patch` / altered source) | Native kit: pencerede SDL2 / SDL2 in windows |
 | FFmpeg (devkitPro `switch-ffmpeg`) | GPL | Video / ses çözme |
 | dav1d | BSD-2-Clause | AV1 çözme |
 | libcurl | curl (MIT tarzı) | HTTP(S), FTP |
@@ -84,6 +85,43 @@ They are built and linked with `tools/build_retro_cores.sh`; only GPLv3-compatib
 
 Kullanılmayanlar / Not used: "ticari olmayan" lisanslı çekirdekler (Snes9x 2010, Genesis Plus GX, PicoDrive) ve yalnızca GPLv2 olanlar (Gambatte). Bunlar GPLv3 ile birleştirilemez.
 
+## Native SDK kiti / Native SDK kit
+
+Native SDK kitindeki (`sdk/native/`) üçüncü parti kod Nexvyn OS'a bağlanmaz; yalnızca geliştiricinin kendi
+app'ine derlenir.
+
+Third-party code in the Native SDK kit (`sdk/native/`) is not linked into Nexvyn OS; it is only compiled into the
+developer's own app.
+
+- **Dear ImGui** 1.91.5 (`sdk/native/sysroot/vendor/imgui/`) — MIT License, Copyright (c) 2014-2024 Omar Cornut.
+  https://github.com/ocornut/imgui
+
+Sysroot kütüphaneleri (`sdk/native/sysroot/build.py` ile statik derlenir, kit arşivinde kaynak sürümü ve lisans dosyası
+yer alır) / Sysroot libraries (built as static libraries by `sdk/native/sysroot/build.py`; the kit archive carries each
+version and licence file):
+
+- **zstd** 1.5.6 — BSD-3-Clause (Meta Platforms). https://facebook.github.io/zstd/
+- **LZ4** 1.10.0 (kütüphane / library) — BSD-2-Clause (Yann Collet). https://lz4.org/
+- **SQLite** 3.47.2 — kamu malı / public domain. https://www.sqlite.org/
+- **libarchive** 3.7.7 — BSD-2-Clause (Tim Kientzle ve katkıda bulunanlar / and contributors). https://libarchive.org/
+- **OpenAL Soft** 1.23.1 — LGPL-2.0-or-later (Chris Robinson ve katkıda bulunanlar / and contributors).
+  https://openal-soft.org/ — statik bağlama notu: `docs/NATIVE_KIT.*` / static linking note: `docs/NATIVE_KIT.*`.
+- **GNU libiconv** 1.17 (kütüphane / library) — LGPL-2.1-or-later (Free Software Foundation).
+  https://www.gnu.org/software/libiconv/ — statik bağlama notu: `docs/NATIVE_KIT.*` / static linking note: `docs/NATIVE_KIT.*`.
+- **pixman** 0.43.4 — MIT. https://www.pixman.org/
+- **GLib** 2.78.6 (glib, gobject, gthread, gmodule) — LGPL-2.1-or-later (GNOME Project). https://www.gtk.org/ —
+  statik bağlama notu: `docs/NATIVE_KIT.*` / static linking note: `docs/NATIVE_KIT.*`.
+- **PCRE2** 10.44 (GLib bağımlılığı / GLib dependency) — BSD-3-Clause, PCRE2 istisnasıyla / with the PCRE2 exception
+  (Philip Hazel). https://github.com/PCRE2Project/pcre2
+- **libffi** 3.4.6 (GLib bağımlılığı / GLib dependency) — MIT (Anthony Green, Red Hat ve katkıda bulunanlar / and
+  contributors). https://libffi.github.io/
+
+Sysroot'taki küçük yardımcı kaynaklar (`sysroot/shims/`, `sysroot/vendor/proxy-libintl/`, `sysroot/patches/`) Nexvyn
+projesinin kendi kodudur (GPL-3.0-or-later); yamalar yalnızca ilgili kütüphanenin kendi lisansı altındaki dosyalara küçük
+değişiklikler getirir. / The small helper sources in the sysroot (`sysroot/shims/`, `sysroot/vendor/proxy-libintl/`,
+`sysroot/patches/`) are the Nexvyn project's own code (GPL-3.0-or-later); the patches only make small changes to files
+that stay under their library's own licence.
+
 ## Ayrı programlar / Separate programs
 
 Nexvyn OS'un indirip kurabildiği homebrew uygulamalar (CorkDeck, Autorun, Moonlight vb.) Nexvyn OS'a **bağlanmaz**; kendi lisanslarıyla ayrı programlar olarak çalışırlar.
@@ -100,3 +138,9 @@ olarak gelir; Nexvyn OS koduna bağlanmaz. Lisans metni ve yapılan değişiklik
 https://github.com/sertay1/YamaNX. It ships as a separate program under its own license (SertAy, non-commercial,
 attribution required) and is not linked into Nexvyn OS. License text and the list of modifications:
 `yamanx.app/LICENSE`, `yamanx.app/NOTICE.md`.
+
+## three.js (browser WebGL test page)
+
+`romfs/Applications/browser.app/test/three.min.js` is three.js r149 (official build), MIT License, Copyright 2010-2023
+three.js authors, https://github.com/mrdoob/three.js. It is only the test page `webgl_cube.html` of the built-in browser;
+the license text is the header of the file.
