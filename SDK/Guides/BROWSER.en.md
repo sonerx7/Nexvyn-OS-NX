@@ -94,7 +94,10 @@ Sources: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_NX
 - **Canvas 2D**: paths, curves, arcs, `roundRect`, `Path2D`, transforms, `save/restore`, nonzero/evenodd fill, strokes
   (joins and caps approximated with discs), `fillRect/strokeRect/clearRect`, `globalAlpha`, `destination-out`,
   `fillText/measureText` (with the system font, as a layer on top of the bitmap), `getImageData`, `putImageData`,
-  `drawImage` from another canvas, `isPointInPath`. The anti-aliased rasterizer is in C++.
+  `drawImage` from another canvas, `isPointInPath`. Since 1.2.6 also: linear and radial gradients, patterns, `clip()`
+  (with the `save/restore` stack), more composite operations (`lighter`, `destination-over`, `source-atop`, `multiply`, `screen`), affine
+  `drawImage` with `imageSmoothingEnabled`, `setLineDash`, approximate shadows, `OffscreenCanvas` and
+  `createImageBitmap`. The anti-aliased rasterizer is in C++.
 - **Private cookie jar and storage**: separate cookies and Web Storage for private tabs that are not written to disk.
 - `CSS.supports()` reports the properties the engine really lays out.
 
@@ -268,8 +271,8 @@ should be entered in this table.
   `auto` sizes and from / to a transparent background without a box jump. Element.animate has no `currentTime`
   seeking, `playbackRate` or composite modes.
 - `grid-auto-flow: dense`, `fr` rows, `subgrid`, `masonry`.
-- Canvas: `clip()`, gradients (painted with the average color), patterns, shadows, `drawImage` from an `<img>`,
-  `toDataURL`.
+- Canvas: `fillText` pixels in `getImageData`, a real `shadowBlur`, `drawImage` from an `<img>`, `toDataURL`, conic
+  gradients.
 - `<text>` inside SVG, painting with CSS classes, filters.
 - Web fonts (`@font-face`), MediaSource video (`blob:` streams), WebGL, Service Worker, WebSocket, WebAssembly. The
   sites that need these do not work in this browser.

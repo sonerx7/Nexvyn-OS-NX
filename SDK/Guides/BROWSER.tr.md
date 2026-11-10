@@ -93,7 +93,10 @@ Kaynaklar: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_
 - **Canvas 2D**: yollar, eğriler, yaylar, `roundRect`, `Path2D`, dönüşümler, `save/restore`, nonzero/evenodd
   dolgu, çizgi (eklem ve uçlar disklerle yaklaşık), `fillRect/strokeRect/clearRect`, `globalAlpha`,
   `destination-out`, `fillText/measureText` (sistem yazı tipiyle, bitmap'in üstünde katman), `getImageData`,
-  `putImageData`, başka bir canvas'tan `drawImage`, `isPointInPath`. Kenar yumuşatmalı rasterleştirici C++'ta.
+  `putImageData`, başka bir canvas'tan `drawImage`, `isPointInPath`. 1.2.6'dan beri ayrıca: doğrusal ve dairesel
+  gradyanlar, desenler, `clip()` (`save/restore` yığınıyla), ek composite işlemleri (`lighter`, `destination-over`, `source-atop`, `multiply`, `screen`)
+  `imageSmoothingEnabled` ile affine `drawImage`, `setLineDash`, yaklaşık gölgeler, `OffscreenCanvas` ve
+  `createImageBitmap`. Kenar yumuşatmalı rasterleştirici C++'ta.
 - **Özel çerez kutusu ve depolama**: özel sekmeler için ayrı, diske yazılmayan çerezler ve Web Storage.
 - `CSS.supports()` motorun gerçekten yerleştirdiği özellikleri bildirir.
 
@@ -271,8 +274,8 @@ sayfa, `?n=` ile büyütülür; kurulum ve ilk kare süreleri başlıkta).
   kutusu olmayan saydam arka plana / arka plandan geçişler atlar. Element.animate'te `currentTime` ile konumlama,
   `playbackRate` ve composite modları yok.
 - `grid-auto-flow: dense`, `fr` satırlar, `subgrid`, `masonry`.
-- Canvas: `clip()`, gradyanlar (ortalama renkle boyanır), desenler, gölgeler, `<img>` kaynaklı `drawImage`,
-  `toDataURL`.
+- Canvas: `getImageData` içinde `fillText` pikselleri, gerçek `shadowBlur`, `<img>` kaynaklı `drawImage`, `toDataURL`,
+  conic gradyanlar.
 - SVG içinde `<text>`, CSS sınıflarıyla boyama, filtreler.
 - Web yazı tipleri (`@font-face`), MediaSource video (`blob:` akışları), WebGL, Service Worker, WebSocket,
   WebAssembly. Bunlara ihtiyaç duyan siteler bu tarayıcıda çalışmaz.
