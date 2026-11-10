@@ -1,0 +1,190 @@
+[
+  {
+    "name": "HTML: belge yapısı",
+    "url": "https://html.spec.whatwg.org/multipage/dom.html"
+  },
+  {
+    "name": "HTML: metin öğeleri",
+    "url": "https://html.spec.whatwg.org/multipage/text-level-semantics.html"
+  },
+  {
+    "name": "HTML: gömülü içerik",
+    "url": "https://html.spec.whatwg.org/multipage/embedded-content.html"
+  },
+  {
+    "name": "HTML: görsel kaynakları",
+    "url": "https://html.spec.whatwg.org/multipage/images.html"
+  },
+  {
+    "name": "HTML: ses ve video",
+    "url": "https://html.spec.whatwg.org/multipage/media.html"
+  },
+  {
+    "name": "HTML: Canvas",
+    "url": "https://html.spec.whatwg.org/multipage/canvas.html"
+  },
+  {
+    "name": "HTML: formlar",
+    "url": "https://html.spec.whatwg.org/multipage/forms.html"
+  },
+  {
+    "name": "HTML: form girdileri",
+    "url": "https://html.spec.whatwg.org/multipage/input.html"
+  },
+  {
+    "name": "HTML: ayrıştırıcı",
+    "url": "https://html.spec.whatwg.org/multipage/parsing.html"
+  },
+  {
+    "name": "HTML: betikler",
+    "url": "https://html.spec.whatwg.org/multipage/scripting.html"
+  },
+  {
+    "name": "HTML: tarayıcı API’leri",
+    "url": "https://html.spec.whatwg.org/multipage/webappapis.html"
+  },
+  {
+    "name": "HTML: gezinme",
+    "url": "https://html.spec.whatwg.org/multipage/browsing-the-web.html"
+  },
+  {
+    "name": "HTML: eleman dizini",
+    "url": "https://html.spec.whatwg.org/multipage/indices.html"
+  },
+  {
+    "name": "DOM",
+    "url": "https://dom.spec.whatwg.org/"
+  },
+  {
+    "name": "Fetch",
+    "url": "https://fetch.spec.whatwg.org/"
+  },
+  {
+    "name": "URL",
+    "url": "https://url.spec.whatwg.org/"
+  },
+  {
+    "name": "Encoding",
+    "url": "https://encoding.spec.whatwg.org/"
+  },
+  {
+    "name": "Streams",
+    "url": "https://streams.spec.whatwg.org/"
+  },
+  {
+    "name": "Infra",
+    "url": "https://infra.spec.whatwg.org/"
+  },
+  {
+    "name": "MIME Sniffing",
+    "url": "https://mimesniff.spec.whatwg.org/"
+  },
+  {
+    "name": "Web IDL",
+    "url": "https://webidl.spec.whatwg.org/"
+  },
+  {
+    "name": "Notifications",
+    "url": "https://notifications.spec.whatwg.org/"
+  },
+  {
+    "name": "Storage",
+    "url": "https://storage.spec.whatwg.org/"
+  },
+  {
+    "name": "XMLHttpRequest",
+    "url": "https://xhr.spec.whatwg.org/"
+  },
+  {
+    "name": "CSS Syntax",
+    "url": "https://www.w3.org/TR/css-syntax-3/"
+  },
+  {
+    "name": "CSS Cascade",
+    "url": "https://www.w3.org/TR/css-cascade-5/"
+  },
+  {
+    "name": "CSS Selectors",
+    "url": "https://www.w3.org/TR/selectors-4/"
+  },
+  {
+    "name": "CSS Flexbox",
+    "url": "https://www.w3.org/TR/css-flexbox-1/"
+  },
+  {
+    "name": "CSS Grid",
+    "url": "https://www.w3.org/TR/css-grid-2/"
+  },
+  {
+    "name": "CSS Values",
+    "url": "https://www.w3.org/TR/css-values-4/"
+  },
+  {
+    "name": "CSS Text",
+    "url": "https://www.w3.org/TR/css-text-3/"
+  },
+  {
+    "name": "CSS Color",
+    "url": "https://www.w3.org/TR/css-color-4/"
+  },
+  {
+    "name": "CSS Backgrounds",
+    "url": "https://www.w3.org/TR/css-backgrounds-3/"
+  },
+  {
+    "name": "CSS Sizing",
+    "url": "https://www.w3.org/TR/css-sizing-3/"
+  },
+  {
+    "name": "CSS Display",
+    "url": "https://www.w3.org/TR/css-display-3/"
+  },
+  {
+    "name": "CSS Fonts",
+    "url": "https://www.w3.org/TR/css-fonts-4/"
+  },
+  {
+    "name": "CSS Transforms",
+    "url": "https://www.w3.org/TR/css-transforms-1/"
+  },
+  {
+    "name": "CSS Animations",
+    "url": "https://www.w3.org/TR/css-animations-1/"
+  },
+  {
+    "name": "CSS Transitions",
+    "url": "https://www.w3.org/TR/css-transitions-1/"
+  },
+  {
+    "name": "CSSOM",
+    "url": "https://www.w3.org/TR/cssom-1/"
+  },
+  {
+    "name": "SVG",
+    "url": "https://www.w3.org/TR/SVG2/"
+  },
+  {
+    "name": "Web Audio",
+    "url": "https://www.w3.org/TR/webaudio/"
+  },
+  {
+    "name": "Media Source Extensions",
+    "url": "https://www.w3.org/TR/media-source-2/"
+  },
+  {
+    "name": "WebRTC",
+    "url": "https://www.w3.org/TR/webrtc/"
+  },
+  {
+    "name": "WebGPU",
+    "url": "https://www.w3.org/TR/webgpu/"
+  },
+  {
+    "name": "HTML: gezinme geçmişi",
+    "url": "https://html.spec.whatwg.org/multipage/nav-history-apis.html"
+  },
+  {
+    "name": "HTML: semantik",
+    "url": "https://html.spec.whatwg.org/multipage/semantics.html"
+  }
+]

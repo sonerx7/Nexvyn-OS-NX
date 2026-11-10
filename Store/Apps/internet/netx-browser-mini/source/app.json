@@ -1,0 +1,16 @@
+{
+  "id": "com.sonerx7.nxbrowser",
+  "name": "NetX-Browser Mini",
+  "description": {"tr":"Hafif masaüstü tarayıcı, yerel YouTube açma ve herkese açık Netflix fragmanları","en":"Lightweight desktop browser, native YouTube handoff and public Netflix trailers"},
+  "version": "0.10.0",
+  "author": "sonerx7",
+  "category": "internet",
+  "main": "main.js",
+  "icon": "icon.png",
+  "minSdk": "1.9",
+  "targetSdk": "1.13",
+  "window": {"width":960,"height":580,"minWidth":460,"minHeight":365,"resizable":true},
+  "singleInstance": true,
+  "shareTargets": ["url"],
+  "permissions": ["network", "launch"]
+}
