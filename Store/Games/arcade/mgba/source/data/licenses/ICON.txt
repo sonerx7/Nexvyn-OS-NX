@@ -1,0 +1,1 @@
+Icon: the original mGBA project icon (ports/mgba/res/mgba-1024.png, MPL-2.0, scaled, background glow added): https://github.com/mgba-emu/mgba

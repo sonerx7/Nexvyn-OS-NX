@@ -48,6 +48,7 @@ nxn_audio_clear
 nxn_input_key_poll
 nxn_input_mouse
 nxn_input_text
+nxn_input_text_request
 nxn_clipboard_get
 nxn_clipboard_set
 nxn_grant_check
@@ -81,6 +82,12 @@ nxn_fault_handler_set
 nxn_mem_guard
 nxn_menu_clear
 nxn_menu_set
+nxn_window_set_mode
+nxn_window_set_modified
+nxn_window_set_title
+nxn_power_get
+nxn_dialog
+nxn_prompt
 nxn_ngfx_backend
 
 ## host

@@ -110,6 +110,14 @@ NXN_API void nxn_request_return(nxn_return_reason reason, int32_t code, const ch
 #define NXN_CAP_MENU (UINT64_C(1) << 31)
 /* NXN_UI_FONT_CJK (nxn_ui.h) is a font id this system answers; the font itself may still be absent (NXN_ERR_NOT_FOUND) */
 #define NXN_CAP_UI_FONT_CJK (UINT64_C(1) << 32)
+/* Native 1.2: nxn_window_set_title / set_mode / set_modified (nxn_window.h) */
+#define NXN_CAP_WINDOW_CTL (UINT64_C(1) << 33)
+/* Native 1.2: nxn_power_get, NXN_EVENT_POWER (nxn_power.h): battery, charger, dock, network */
+#define NXN_CAP_POWER_STATE (UINT64_C(1) << 34)
+/* Native 1.2: nxn_dialog, nxn_prompt (nxn_dialog.h): the OS alert / question / text prompt */
+#define NXN_CAP_DIALOG (UINT64_C(1) << 35)
+/* nxn_input_text_request: the app can ask for the Nexvyn OS on-screen keyboard (nxn_input.h) */
+#define NXN_CAP_TEXT_REQUEST (UINT64_C(1) << 36)
 
 typedef struct nxn_caps {
     uint32_t size;
@@ -144,7 +152,7 @@ typedef enum nxn_info_key {
     NXN_INFO_APP_VERSION = 1,
     NXN_INFO_OS_VERSION = 2,      /* "" when standalone */
     NXN_INFO_SDK_VERSION = 3,     /* script SDK of the system, "" when standalone */
-    NXN_INFO_NATIVE_VERSION = 4,  /* Native SDK version of the system ("1.1"), "" when standalone */
+    NXN_INFO_NATIVE_VERSION = 4,  /* Native SDK version of the system ("1.2"), "" when standalone */
     NXN_INFO_LANGUAGE = 5,        /* "en", "tr", ... (the system language when standalone) */
     NXN_INFO_USER_NAME = 6,
     NXN_INFO_THEME = 7            /* "dark" / "light" */

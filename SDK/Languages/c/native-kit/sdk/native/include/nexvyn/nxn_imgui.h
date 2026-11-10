@@ -271,4 +271,16 @@ static inline ImFont* nxn_imgui_add_font(ImFontAtlas* atlas, nxn_ui_font font, f
     return f;
 }
 
+/* Opens the Nexvyn OS on-screen keyboard while an ImGui text field is being edited: call it once per frame after
+ * ImGui::Render() (or EndFrame). It asks only when io.WantTextInput changes (nxn_input_text_request, nothing happens
+ * where NXN_CAP_TEXT_REQUEST is absent). Feed the typed text back with nxn_input_text -> io.AddInputCharactersUTF8. */
+static inline void nxn_imgui_text_sync(void) {
+    static bool last = false;
+    bool want = ImGui::GetIO().WantTextInput;
+    if (want == last) return;
+    last = want;
+    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
+    if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_TEXT_REQUEST) != 0) nxn_input_text_request(want ? 1 : 0);
+}
+
 #endif /* NEXVYN_NXN_IMGUI_H */

@@ -1,0 +1,15 @@
+{
+  "id": "com.nexvyn.demo.townbench",
+  "name": "Village Bench",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "showcase",
+  "icon": "icon.png",
+  "window": {"width": 1280, "height": 720, "resizable": true},
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.12",
+  "permissions": ["files"],
+  "description": "A 60 second benchmark flight over a textured 3D village with three quality presets and a frame-time result screen.",
+  "license": "GPL-3.0-or-later"
+}

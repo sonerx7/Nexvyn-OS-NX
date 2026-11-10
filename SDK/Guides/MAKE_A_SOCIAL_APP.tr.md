@@ -141,7 +141,7 @@ net.oauth({url = AUTH .. "/authorize?client_id=" .. CLIENT .. "&response_type=co
 end)
 ```
 
-- Oturum açma sayfası Nexvyn OS'un Browser penceresinde açılır; şifreler uygulamanızdan geçmez. `state` sizin için denetlenir;
+- Oturum açma sayfası konsolun web tarayıcısında açılır; şifreler uygulamanızdan geçmez. `state` sizin için denetlenir;
   `pkce = true` kullanın (public istemciler için zorunlu).
 - Sağlayıcınızda yönlendirme adresi olarak `http://localhost/callback`'i (ya da `nxv://app/<id'niz>/callback`)
   kaydedin.

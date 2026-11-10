@@ -1,0 +1,40 @@
+{
+ "ui": {
+  "loading": "Cargando la aldea",
+  "shaders": "Preparando shaders",
+  "fail": "No se puede cargar"
+ },
+ "m": {
+  "title": "Benchmark de la aldea",
+  "sub": "Un vuelo de 60 segundos sobre una aldea con texturas. El mismo recorrido cada vez.",
+  "preset": "NIVEL DE CALIDAD",
+  "best": "Mejor",
+  "start": "A  Empezar",
+  "hint": "Arriba / Abajo elegir    A empezar    B salir"
+ },
+ "run": {
+  "title": "Benchmark",
+  "abort": "B cancelar"
+ },
+ "r": {
+  "title": "Benchmark",
+  "score": "PUNTOS",
+  "avg": "Media",
+  "min": "Mínimo (peor fotograma)",
+  "low": "1 % bajo",
+  "frames": "Fotogramas",
+  "keys": "A / Y repetir    B menú"
+ },
+ "p0": {
+  "n": "Bajo",
+  "d": "Escala de render 60 %, sin sombras, sin suavizado"
+ },
+ "p1": {
+  "n": "Medio",
+  "d": "Escala de render 80 %, sombras solares, suavizado"
+ },
+ "p2": {
+  "n": "Alto",
+  "d": "Escala de render 100 %, sombras solares, suavizado"
+ }
+}

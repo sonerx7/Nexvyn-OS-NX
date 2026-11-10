@@ -304,6 +304,17 @@ ki `app.json` `hashes` her dosyayı listelesin (yoksa araç reddeder); `--index`
   kaldır" `Application Support/<id>` ve `Caches/<id>` klasörlerini de siler.
 - Sistemle gelen bir uygulamayla aynı kimliği taşıyan paket `ext.<id>` kimliğiyle yan yana kurulur.
 
+### 5c. App Market'te Çalışma Ortamları ve Kütüphaneler
+
+`"type": "lib"` ve `"kind": "library"` ya da `"runtime"` olan katalog kaydı, App Market'in "Çalışma Ortamları ve
+Kütüphaneler" kategorisinde (`"category": "runtimes"`) kart alır; `kind`'ı olmayan bir `lib` kaydı gizli kalır ve yalnızca bir
+app'in bağımlılığı olarak kurulur. Bu kayıtlar için ek katalog alanları: `license` (SPDX kimliği, zorunlu), `sourceUrl` (kaynak
+koda https bağlantısı, zorunlu), `providedBy` (kim yapıyor), `neededBy` (onu kullanan app adlarının listesi), `description`
+(zorunlu). Paketin kendisi lisans metnini (`LICENSE` ya da `COPYING`) taşımalıdır. Kurulum, güncelleme ve kaldırma her
+kütüphanedeki gibidir (yukarıda); kurulu bir app kütüphaneye ihtiyaç duyarken kaldırma reddedilir. Kurulu bir app açılırken
+kütüphanesi yoksa sistem hangisi olduğunu söyler ve app'i başlatmak yerine App Market'i önerir. Sistemin açılması için hiçbir
+bileşen gerekmez: isteğe bağlı eklentilerdir. Ayrıntılar: `STORE_COMPONENTS.tr.md`.
+
 ## 6. Topluluk deposu (index.json)
 
 Mağaza, adresi Sistem Ayarları > Uygulamalar'daki "Topluluk uygulama deposu" alanında olan bir JSON dosyası
@@ -547,7 +558,7 @@ bunlar olmayan paket eskisi gibi davranır):
 | `"icons": "icons"` | `<app id>.png` (128 px) dosyalarının klasörü. Dosyası olmayan uygulama kendi simgesini korur. Pakette en çok 160 dosya. |
 | `"wallpapers": [..]` | Ek duvar kâğıdı seçenekleri (ilki `wallpaper`), Ayarlar > Görünüm > Özelleştir'den seçilir. |
 | `"preview": "preview.jpg"` | Kartlar için bitmiş masaüstünün resmi (480x270). |
-| `settings` anahtarları | `shell.layout` (`dock`/`taskbar`), `taskbar.size`, `start.sidePanel`, `window.chrome` (`default`/`bevel`/`flat`/`glass`/`mono`), `appearance.themeBold`, `appearance.themeScale` (0,85-1,2) ve eski anahtarlar. |
+| `settings` anahtarları | `shell.layout` (`dock`/`taskbar`), `taskbar.size`, `start.sidePanel`, `window.chrome` (`default`/`bevel`/`flat`/`glass`/`mono`/`classic3d`/`keypad`/`pocket`), `taskbar.combine` (`always`/`never`), `appearance.themeBold`, `appearance.themeScale` (0,85-1,2) ve eski anahtarlar. |
 
 Sesler: `sounds/` içinde `startup click notify error pop key .wav` olabilir. Her şey atomik uygulanır (tüm anahtarların tek anlık görüntüsü;
 başarısız kontrol hepsini geri alır) ve Ayarlar'daki `Geri Al` eski durumu getirir. Uygulanan paket eksik ya da bozuksa bir sonraki açılışta

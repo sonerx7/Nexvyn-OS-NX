@@ -145,8 +145,10 @@ languages get new APIs*.
 
 C / C++ apps use the native runtime, versioned on its own (`"minNative"` in `app.json`). Native SDK 1.1 brings the SDL2
 driver for windows, sound and input events, POSIX calls in a window, system services (dialogs, kept folder access, save
-data, permissions), UI tokens and the app's own texts, NexGFX native, the OS sound mixer and package v2. A newer Native
-SDK only adds; apps built for an older one run unchanged. The table and the rules: `docs/COMPATIBILITY.en.md`, *Native
+data, permissions), UI tokens and the app's own texts, NexGFX native, the OS sound mixer and package v2. Native SDK 1.2 adds system
+integration for windows: window control (`nxn_window_set_title` / `set_mode` / `set_modified`, `NXN_CAP_WINDOW_CTL`), battery / charger /
+dock / network state (`nxn_power_get`, `NXN_EVENT_POWER`, `NXN_CAP_POWER_STATE`), OS dialogs (`nxn_dialog`, `nxn_prompt`, `NXN_CAP_DIALOG`).
+A newer Native SDK only adds; apps built for an older one run unchanged. The table and the rules: `docs/COMPATIBILITY.en.md`, *Native
 SDK*; the guide: `docs/NATIVE_GUIDE.en.md`.
 
 ### Compatibility: targetSdk and deprecation
@@ -1307,6 +1309,20 @@ end
 return app
 ```
 
+### Store metadata (`store.json`)
+
+Optional keys the App Market uses for its tabs, sorting and filters. An older App Market ignores them, an older catalog without them still renders.
+
+| Key | Values |
+|---|---|
+| `kind` | `app`, `game`, `demo`, `port`, `emulator`, `template` (themes and fonts: set by the folder) |
+| `features` | `3d`, `online`, `multiplayer`, `coop`, `offline`, `touch`, `controller`, `keyboard` |
+| `players` | `"2"` or `"1-4"` (1 to 64) |
+| `tech` | `lua`, `javascript`, `python`, `native` (derived from the runtime) |
+| `themeStyle` | `retro`, `modern`, `phone`, `dark`, `light`, `nature`, `minimal` |
+
+`Tools/build_store.py` derives `tech`, `3d` (code calls `g3d.*`), `online` / `offline` (code uses `net.*`) and the input features; the maker's value wins. `tools/catalog_check.py --strict` accepts known values only. The store filters games by online, local multiplayer, single player and co-op from these fields.
+
 ## 11. JavaScript
 
 > **TR — Özet:** Uygulamalar Lua yerine JavaScript ile de yazılabilir: `app.json` içinde `"main": "main.js"` yazın.
@@ -1982,6 +1998,12 @@ those apps out of `NexvynOS.nro` and writes `build/modules/<id>.nxvapp`). It is 
 derived from `App` and `REGISTER_APP("<id>", Class)`. Nexvyn OS maps the module into JIT code memory on the first
 launch, binds it to the symbols the NRO exports and runs its constructors. A module made for another build is refused
 ("rebuilt for Nexvyn OS x.y needed"); the App Market only offers modules that match the running build. Native code is
-not sandboxed, so the user is asked once before it runs (`apps.trustedNative`); `"permissions"` is informational.
+not sandboxed, so the user is warned once, at install: the App Installer and App Market sheets carry the native-code
+warning after App Guard has scanned the package, and the app then gets a trust record (`apps.nativeTrust`: id, SHA-256
+of the module file, source) and never asks at launch. A package copied into `Applications` by hand has no record: the
+first launch scans it with App Guard and asks once, remembered by the file's hash (a changed build asks again). Nothing
+is ever blocked or killed by this; Settings > Privacy > App Guard "Ask before running unsandboxed native apps"
+(`apps.askNativeUnknown`, default on) turns the question off for such copies. Apps that were already installed keep their
+answer (`apps.trustedNative`) or, when the App Market installed them, get a record silently. `"permissions"` is informational.
 This is not a third-party SDK: the C++ API is Nexvyn OS's internal one and changes with every build, and the modules
 are rebuilt by the release pipeline together with each NexvynOS.nro.

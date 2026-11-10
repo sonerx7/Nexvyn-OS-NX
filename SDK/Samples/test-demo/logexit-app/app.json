@@ -1,0 +1,14 @@
+{
+  "id": "nxvtest.logexit",
+  "name": { "en": "Test Demo Log and Exit" },
+  "description": { "en": "Logs a few lines and closes its own window; used by the nxvtest sample scenarios" },
+  "version": "1.0",
+  "author": "Your Name",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "minSdk": "1.0",
+  "window": { "width": 400, "height": 240, "resizable": false },
+  "gamepad": false,
+  "permissions": []
+}

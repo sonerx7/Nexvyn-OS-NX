@@ -1,0 +1,9 @@
+{
+  "name": "fail-demo",
+  "time_limit": 80,
+  "steps": [
+    { "launch": "nxvtest.button" },
+    { "wait": 3 },
+    { "expect_log": "this line is never printed" }
+  ]
+}

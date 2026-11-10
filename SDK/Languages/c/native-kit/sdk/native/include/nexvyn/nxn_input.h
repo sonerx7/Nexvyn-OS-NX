@@ -84,6 +84,15 @@ NXN_API int nxn_input_key_poll(nxn_key_event* out);
  * `cap` stays for the next call. Thread: one consumer thread. Memory: written into the caller's buffer. */
 NXN_API int nxn_input_text(char* out, size_t cap);
 
+/* Tells Nexvyn OS that the app has a text field the user is editing (wanted = 1) or not any more (0). While it is 1 the
+ * system's on-screen keyboard (or the system keyboard, per the user's setting) opens by itself unless a USB keyboard is
+ * in use, and what the user types arrives through nxn_input_text and nxn_input_key_poll as always. Call it when a
+ * text field gets or loses focus (for ImGui: io.WantTextInput changed); calling it again with the same value is free.
+ * The request ends with the window (close, minimise lose it) and while a dialog is on top. Returns NXN_OK, NXN_ERR_UNSUPPORTED
+ * in the stand-alone library (nothing to open: use the application's own input; NXN_CAP_TEXT_REQUEST is not set).
+ * Thread: any app thread. Memory: none. (Native 1.1 add-on, NXN_CAP_TEXT_REQUEST) */
+NXN_API nxn_result nxn_input_text_request(int wanted);
+
 enum {
     NXN_MOUSE_LEFT = 1u << 0, NXN_MOUSE_RIGHT = 1u << 1, NXN_MOUSE_MIDDLE = 1u << 2
 };

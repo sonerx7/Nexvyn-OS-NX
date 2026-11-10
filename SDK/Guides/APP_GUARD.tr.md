@@ -100,3 +100,9 @@ kapalı). Nexvyn OS kendi ayarlarını ve günlüklerini her durumda yazar.
 | `developer.allowSystemEdits` | `false` | Dosyalar, Terminal ve düzenleyiciler `sdmc:/NexvynOS/System` klasörünü değiştirebilir |
 
 Yüklü paketlerin karmaları `sdmc:/NexvynOS/System/Config/appguard.json` içinde tutulur.
+
+**Yerel (C++) uygulamalar.** Yerel kod sandbox'ta çalışmaz. Uygulama Yükleyici ve Uygulama Mağazası yükleme sayfaları, App
+Guard paketi taradıktan sonra bu konuda tek bir uyarı taşır; uygulama bir kayıtla (kimlik, modül dosyasının SHA-256'sı,
+kaynak) güvenilir sayılır ve açılışta bir daha sormaz. `Applications` klasörüne elle kopyalanan paket ilk açılışta App
+Guard ile taranır ve bir kez sorar, özetle hatırlanır (değişen yapı yeniden sorar). Hiçbir şey engellenmez ya da kapatılmaz.
+`apps.askNativeUnknown` ayarı (Ayarlar > Gizlilik > App Guard, varsayılan açık) bu soruyu kapatır.

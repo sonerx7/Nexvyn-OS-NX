@@ -16,7 +16,8 @@ MyTheme/                  (zipped as MyTheme.nxvtheme; theme.json at the zip roo
 ├── wallpaper.jpg         required, 1280x720 JPG / PNG / WebP
 ├── wallpaper2.jpg ...    optional extra choices
 ├── wallpaper-dark.jpg    optional, shown while the dark appearance is on
-├── icons/<app id>.png    optional, 128 px; an app without a file keeps its own icon (up to 160 files)
+├── icons/<app id>.png    optional, 128 px; no file = the app's own icon (up to 160 files)
+├── icons/files/<key>.png optional, 128 px; folders, file types, disks, Trash, This Console; no file = the default icon
 ├── sounds/*.wav          optional: startup click notify error pop key
 ├── preview.jpg           optional, 480x270 picture of the finished desktop (cards, installer)
 └── README.md
@@ -69,7 +70,8 @@ Only these keys are read. Others are ignored and numbers are clamped.
 | `shell.layout` | `dock` (dock and menu bar) or `taskbar` (bottom bar with a start menu) |
 | `taskbar.size` | `small`, `medium`, `large` |
 | `start.sidePanel` | `true` or `false` (taskbar layout) |
-| `window.chrome` | `default`, `bevel`, `flat`, `glass`, `mono` (window frame and buttons) |
+| `window.chrome` | `default`, `bevel`, `flat`, `glass`, `mono`, `keypad` (keypad-phone status strip, soft keys, 3x4 menu grid, pixel font), `pocket` (pocket-PC bars, Today panel, glossy title bars), `classic3d` (window frame and buttons; `classic3d` also draws bevelled controls, sunken fields and a pixel font in OS apps) |
+| `taskbar.combine` | `always`, `never` (one button per window) |
 | `appearance.themeBold` | `true` or `false` (bold system text) |
 | `appearance.themeScale` | 0.85 to 1.2 (interface scale) |
 | `appearance.reduceTransparency` | `true` or `false` |
@@ -88,8 +90,17 @@ need; the rest follows the appearance and the accent.
 
 ### Icon set
 
-`icons/<app id>.png`: 128 px PNG files named by the app's id (`appstore.png`, `aichat.png`, ...). Restyle only the
-icons you want to change; the others keep the system look. Make them with your own artwork and tools (pixelate,
+`icons/<key>.png`: 128 px PNG files. A key is either an app id (`icons/appstore.png`, `icons/aichat.png`, ...) or a system key under
+`icons/files/` (`icons/files/folder.png`, `icons/files/trash_empty.png`, ...). A theme changes every icon it has a file for:
+app icons, desktop items (This Console, Home, Trash), folders, file types, disks, and the shortcut badge.
+
+**Fallback, like an icon theme:** the pack's icon when the file exists, otherwise the system's default icon. A missing,
+unreadable or odd file never breaks anything, so a pack may restyle only some keys.
+
+System keys (`icons/files/<key>.png`): `computer`, `disk_sd`, `disk_system`, `disk_usb`, `file_archive`, `file_audio`, `file_code`, `file_doc`, `file_font`, `file_generic`, `file_image`, `file_json`, `file_lua`, `file_nro`, `file_nxvapp`, `file_pdf`, `file_sheet`, `file_slides`, `file_text`, `file_video`, `folder`, `folder_apps`, `folder_desktop`, `folder_documents`, `folder_downloads`, `folder_games`, `folder_home`, `folder_media`, `folder_mods`, `folder_movies`, `folder_music`, `folder_office`, `folder_pictures`, `folder_tools`, `shortcut_badge`, `trash_empty`, `trash_full`.
+
+The app keys are the 79 ids of the built-in apps. List every key with `python SDK/Tools/theme/themecheck.py --list-icons`;
+`themecheck.py` warns about missing keys but never fails on them. Make the icons with your own artwork and tools (draw, pixelate,
 bevel, flatten, duotone, frames). Never trace or edit another product's icons.
 
 ### Sounds

@@ -1,0 +1,11 @@
+{
+  "name": "logexit-demo",
+  "time_limit": 80,
+  "steps": [
+    { "launch": "nxvtest.logexit" },
+    { "wait": 5 },
+    { "expect_log": "logexit started" },
+    { "expect_log": "logexit done, exiting" },
+    { "expect_closed": true }
+  ]
+}

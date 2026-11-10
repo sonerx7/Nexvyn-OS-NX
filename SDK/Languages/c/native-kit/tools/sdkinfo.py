@@ -7,7 +7,7 @@ works in the store CI's sparse checkout of tools/. The rules are in docs/COMPATI
 import os
 import re
 
-SDK_VERSION = "1.12"
+SDK_VERSION = "1.13"
 # newest SDK that changed the script API: new script projects use it as minSdk (NEXVYN_SCRIPT_SDK_VERSION)
 SCRIPT_SDK_VERSION = "1.12"
 
@@ -23,7 +23,7 @@ RUNTIMES = {
     "java": {"engine": "miniJVM", "version": "2.2.0", "since": "1.5", "ext": (".jar",), "main": "app.jar"},
     # C/C++: a .nxvmod module ("native": "<file>.nxvmod", ABI id) or a full-screen .nro ("mode": "exclusive",
     # "minNative"; NATIVE_KIT.en.md). "version" is the Native SDK version of this build.
-    "native": {"engine": "nxn", "version": "1.1", "since": "1.10", "ext": (".nro",), "main": "main.nro"},
+    "native": {"engine": "nxn", "version": "1.2", "since": "1.10", "ext": (".nro",), "main": "main.nro"},
 }
 
 NATIVE_VERSION = RUNTIMES["native"]["version"]

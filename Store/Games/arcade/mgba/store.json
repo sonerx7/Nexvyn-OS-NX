@@ -1,40 +1,43 @@
 {
   "kind": "emulator",
   "license": "MPL-2.0",
+  "sourceUrl": "https://github.com/mgba-emu/mgba",
+  "author": "sonerx7",
   "tech": "native",
   "features": [
     "offline",
-    "controller"
+    "controller",
+    "touch"
   ],
   "players": "1",
   "subtitle": {
-    "en": "GBA emulator: bring your own games",
-    "tr": "GBA öykünücüsü: oyunlarını sen getir",
-    "de": "GBA-Emulator: eigene Spiele mitbringen",
-    "fr": "Émulateur GBA : apportez vos jeux",
-    "es": "Emulador de GBA: trae tus juegos",
-    "ja": "GBAエミュレーター。ゲームはご自身で",
-    "zh": "GBA 模拟器：自带游戏文件",
-    "ko": "GBA 에뮬레이터: 게임은 직접 준비"
+    "en": "Game Boy Advance emulator",
+    "tr": "Game Boy Advance öykünücüsü",
+    "de": "Game Boy Advance-Emulator",
+    "fr": "Émulateur Game Boy Advance",
+    "es": "Emulador de Game Boy Advance",
+    "ja": "Game Boy Advanceエミュレーター",
+    "zh": "Game Boy Advance 模拟器",
+    "ko": "Game Boy Advance 에뮬레이터"
   },
   "description": {
-    "en": "mGBA is a fast, accurate GBA emulator that runs in its own window. Choose your own game file (.gba) in the file picker the first time you start it; saves and save states are kept, and holding ZL fast-forwards. No games and no BIOS are included: bring your own, legally owned games. Gamepad: A, B, + as Start, - as Select, L and R.",
-    "tr": "mGBA, kendi penceresinde çalışan hızlı ve doğru bir GBA öykünücüsüdür. İlk açılışta dosya seçiciden kendi oyun dosyanı (.gba) seç; kayıtlar ve durum kayıtları saklanır, ZL basılı tutulunca hızlı ileri sarar. Pakette oyun ve BIOS yok: yasal olarak sahip olduğun oyunları sen getir. Oyun kolu: A, B, + Start, - Select, L ve R.",
-    "de": "mGBA ist ein schneller, genauer GBA-Emulator in einem eigenen Fenster. Wähle beim ersten Start deine eigene Spieldatei (.gba) im Dateiauswahldialog; Spielstände und Savestates bleiben erhalten, ZL gedrückt halten spult vor. Spiele und BIOS sind nicht enthalten: bringe deine eigenen, legal erworbenen Spiele mit. Gamepad: A, B, + als Start, - als Select, L und R.",
-    "fr": "mGBA est un émulateur GBA rapide et précis qui s'exécute dans sa propre fenêtre. Au premier lancement, choisissez votre propre fichier de jeu (.gba) dans le sélecteur de fichiers ; les sauvegardes et états sauvegardés sont conservés, et maintenir ZL avance en accéléré. Aucun jeu ni BIOS n'est fourni : apportez vos jeux, acquis légalement. Manette : A, B, + pour Start, - pour Select, L et R.",
-    "es": "mGBA es un emulador de GBA rápido y preciso que funciona en su propia ventana. La primera vez que lo abras, elige tu propio archivo de juego (.gba) en el selector de archivos; las partidas y los estados guardados se conservan, y mantener ZL avanza rápido. No se incluyen juegos ni BIOS: trae tus propios juegos, adquiridos legalmente. Mando: A, B, + como Start, - como Select, L y R.",
-    "ja": "mGBAは、専用ウィンドウで動く高速で正確なGBAエミュレーターです。初回起動時にファイル選択画面でご自身のゲームファイル（.gba）を選んでください。セーブとステートセーブは保存され、ZLを押し続けると早送りになります。ゲームとBIOSは含まれていません。合法的に入手したご自身のゲームをご用意ください。ゲームパッド：A、B、+でStart、-でSelect、L、R。",
-    "zh": "mGBA 是在独立窗口中运行的快速、精确的 GBA 模拟器。首次启动时在文件选择器中选择你自己的游戏文件（.gba）；存档和即时存档会保留，按住 ZL 可快进。软件不含游戏和 BIOS：请使用你合法拥有的游戏。手柄：A、B，+ 为 Start，- 为 Select，以及 L 和 R。",
-    "ko": "mGBA는 자체 창에서 실행되는 빠르고 정확한 GBA 에뮬레이터입니다. 처음 실행할 때 파일 선택 창에서 본인의 게임 파일(.gba)을 고르세요. 저장 데이터와 상태 저장은 유지되며 ZL을 누르고 있으면 빨리 감기가 됩니다. 게임과 BIOS는 포함되어 있지 않으니 합법적으로 가진 게임을 직접 준비하세요. 게임패드: A, B, +는 Start, -는 Select, L, R."
+    "en": "mGBA is a fast, accurate Game Boy Advance emulator with its own game library. Put your game files into the games folder (or pick a folder) and browse them as a grid or list with covers, details, favourites and search; press Play and come back to the list when you are done. Settings cover the picture size and filter, sound, save states, button mapping (Joy-Con pair, single Joy-Con, Pro Controller, touch buttons) and per-game options. Battery saves and save states are kept. No games and no BIOS are included: bring your own, legally owned games. Optional box art from the internet is off by default and can be turned on in the settings. Optional box art from the internet (libretro thumbnail server): you are asked once, it can be switched off in Settings; it is the reason for the network permission.",
+    "tr": "mGBA, kendi oyun kütüphanesiyle gelen hızlı ve doğru bir Game Boy Advance emülatörüdür. Oyun dosyalarınızı oyunlar klasörüne koyun (ya da bir klasör seçin); kapaklar, ayrıntılar, favoriler ve arama ile ızgara ya da liste görünümünde göz atın. Oyuna basın, işiniz bitince listeye geri dönün. Ayarlar; ekran boyutu ve filtresi, ses, kayıt durumları, tuş eşlemesi (Joy-Con çifti, tek Joy-Con, Pro Controller, dokunmatik tuşlar) ve oyun başına seçenekleri kapsar. Pil kayıtları ve kayıt durumları korunur. Oyun ve BIOS dahil değildir: yasal olarak sahip olduğunuz oyunları kendiniz ekleyin. İnternetten kapak resmi alma isteğe bağlıdır, varsayılan olarak kapalıdır ve ayarlardan açılabilir. İnternetten isteğe bağlı kutu resmi (libretro küçük resim sunucusu): bir kez sorulur, Ayarlar'dan kapatılabilir; ağ iznin nedeni budur.",
+    "de": "mGBA ist ein schneller und genauer Game Boy Advance-Emulator mit eigener Spielebibliothek. Lege deine Spieldateien in den Spiele-Ordner (oder wähle einen Ordner aus) und durchsuche sie als Raster oder Liste mit Covern, Details, Favoriten und Suche. Drücke auf Spielen und kehre danach zur Liste zurück. Die Einstellungen umfassen Bildgröße und Filter, Ton, Spielstände, Tastenbelegung (Joy-Con-Paar, einzelner Joy-Con, Pro Controller, Touch-Tasten) und Optionen pro Spiel. Batteriespeicherungen und Spielstände bleiben erhalten. Es sind weder Spiele noch ein BIOS enthalten: Bringe deine eigenen, rechtmäßig erworbenen Spiele mit. Optionale Boxart-Bilder aus dem Internet sind standardmäßig aus und lassen sich in den Einstellungen aktivieren. Optionale Cover aus dem Internet (libretro-Thumbnail-Server): es wird einmal gefragt, in den Einstellungen abschaltbar; das ist der Grund für die Netzwerkberechtigung.",
+    "fr": "mGBA est un émulateur Game Boy Advance rapide et précis, doté de sa propre bibliothèque de jeux. Placez vos fichiers de jeu dans le dossier des jeux (ou choisissez un dossier) et parcourez-les en grille ou en liste, avec jaquettes, détails, favoris et recherche ; appuyez sur Jouer et revenez à la liste quand vous avez fini. Les réglages couvrent la taille et le filtre de l'image, le son, les sauvegardes d'état, la configuration des boutons (paire de Joy-Con, Joy-Con seul, Pro Controller, boutons tactiles) et les options par jeu. Les sauvegardes de pile et les sauvegardes d'état sont conservées. Aucun jeu ni BIOS n'est inclus : apportez vos propres jeux, dont vous possédez légalement les droits. Les jaquettes en ligne sont facultatives, désactivées par défaut, et peuvent être activées dans les réglages. Jaquettes facultatives depuis Internet (serveur de miniatures libretro) : la question est posée une fois, désactivable dans les réglages ; c'est la raison de l'autorisation réseau.",
+    "es": "mGBA es un emulador de Game Boy Advance rápido y preciso, con su propia biblioteca de juegos. Pon tus archivos de juego en la carpeta de juegos (o elige una carpeta) y explóralos en cuadrícula o lista, con carátulas, detalles, favoritos y búsqueda; pulsa Jugar y vuelve a la lista cuando termines. Los ajustes incluyen el tamaño y filtro de imagen, el sonido, los estados guardados, la asignación de botones (par de Joy-Con, Joy-Con individual, Pro Controller, botones táctiles) y opciones por juego. Los guardados de batería y los estados guardados se conservan. No se incluyen juegos ni BIOS: usa tus propios juegos, con licencia legal. Las carátulas opcionales de internet están desactivadas por defecto y se pueden activar en los ajustes. Carátulas opcionales desde Internet (servidor de miniaturas de libretro): se pregunta una vez, se puede desactivar en los ajustes; es el motivo del permiso de red.",
+    "ja": "mGBA は、独自のゲームライブラリを備えた高速で正確なゲームボーイアドバンス エミュレーターです。ゲームファイルをゲームフォルダに入れる(またはフォルダを選ぶ)と、ジャケット画像、詳細、お気に入り、検索付きのグリッド表示またはリスト表示で閲覧できます。プレイを押し、終わったらリストに戻ります。設定では、画面サイズとフィルター、サウンド、セーブステート、ボタン割り当て(Joy-Con ペア、単体 Joy-Con、Pro Controller、タッチボタン)、ゲームごとのオプションを扱えます。バッテリーセーブとセーブステートは保持されます。ゲームと BIOS は含まれていません。合法的に所有するゲームをご自身で用意してください。インターネットからのボックスアート取得は任意で、初期設定ではオフです。設定からオンにできます。 インターネットからのカバー画像（任意、libretroサムネイルサーバー）：最初に一度だけ確認され、設定でオフにできます。ネットワーク権限の理由です。",
+    "zh": "mGBA 是一款快速、精确的 Game Boy Advance 模拟器，并自带游戏库。将游戏文件放入游戏文件夹（或选择一个文件夹），即可以网格或列表形式浏览，支持封面、详细信息、收藏和搜索；点击“开始”运行游戏，结束后返回列表。设置涵盖画面大小和滤镜、声音、即时存档、按键映射（Joy-Con 双手柄、单个 Joy-Con、Pro Controller、触摸按钮）以及每个游戏的独立选项。电池存档和即时存档均会保留。不包含游戏和 BIOS：请自行添加您合法拥有的游戏。从互联网获取的可选盒装封面默认关闭，可在设置中开启。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。",
+    "ko": "mGBA는 자체 게임 라이브러리를 갖춘 빠르고 정확한 게임보이 어드밴스 에뮬레이터입니다. 게임 파일을 게임 폴더에 넣거나(또는 폴더를 선택하여) 커버, 상세 정보, 즐겨찾기, 검색과 함께 격자 또는 목록 보기로 둘러볼 수 있습니다. 플레이를 누르고 끝나면 목록으로 돌아오세요. 설정에서는 화면 크기와 필터, 사운드, 세이브 스테이트, 버튼 매핑(Joy-Con 페어, 단일 Joy-Con, Pro Controller, 터치 버튼), 게임별 옵션을 다룹니다. 배터리 세이브와 세이브 스테이트는 유지됩니다. 게임과 BIOS는 포함되어 있지 않습니다. 합법적으로 소유한 게임을 직접 준비하세요. 인터넷에서 가져오는 선택적 박스아트는 기본적으로 꺼져 있으며 설정에서 켤 수 있습니다. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다."
   },
   "changelog": {
-    "en": "First App Market release. Built with Native SDK 1.1 for Nexvyn OS 1.2.3. Opens a file picker when no game is set.",
-    "tr": "İlk App Market sürümü. Nexvyn OS 1.2.3 için Native SDK 1.1 ile derlendi. Oyun seçili değilse dosya seçici açar.",
-    "de": "Erste App-Market-Version. Mit Native SDK 1.1 für Nexvyn OS 1.2.3 gebaut. Öffnet einen Dateidialog, wenn kein Spiel gewählt ist.",
-    "fr": "Première version dans l'App Market. Compilée avec Native SDK 1.1 pour Nexvyn OS 1.2.3. Ouvre un sélecteur de fichiers si aucun jeu n'est choisi.",
-    "es": "Primera versión en el App Market. Compilada con Native SDK 1.1 para Nexvyn OS 1.2.3. Abre un selector de archivos si no hay juego elegido.",
-    "ja": "App Market初公開。Nexvyn OS 1.2.3向けにNative SDK 1.1でビルド。ゲーム未選択時はファイル選択画面を開きます。",
-    "zh": "App Market 首个版本。使用 Native SDK 1.1 为 Nexvyn OS 1.2.3 构建。未选择游戏时会打开文件选择器。",
-    "ko": "App Market 첫 릴리스. Nexvyn OS 1.2.3용 Native SDK 1.1로 빌드. 게임이 없으면 파일 선택 창을 엽니다."
+    "en": "Now with a game library: grid and list, covers, details, favourites, search, settings, save states and touch buttons. Games and saves from the earlier version are kept.",
+    "tr": "Artık oyun kütüphanesiyle: ızgara ve liste, kapaklar, ayrıntılar, favoriler, arama, ayarlar, kayıt durumları ve dokunmatik tuşlar. Önceki sürümdeki oyunlar ve kayıtlar korunur.",
+    "de": "Jetzt mit Spielebibliothek: Raster- und Listenansicht, Cover, Details, Favoriten, Suche, Einstellungen, Spielstände und Touch-Tasten. Spiele und Speicherstände aus der vorherigen Version bleiben erhalten.",
+    "fr": "Désormais avec une bibliothèque de jeux : grille et liste, jaquettes, détails, favoris, recherche, réglages, sauvegardes d'état et boutons tactiles. Les jeux et sauvegardes de la version précédente sont conservés.",
+    "es": "Ahora con biblioteca de juegos: cuadrícula y lista, carátulas, detalles, favoritos, búsqueda, ajustes, estados guardados y botones táctiles. Los juegos y guardados de la versión anterior se conservan.",
+    "ja": "ゲームライブラリに対応しました: グリッド表示とリスト表示、ジャケット画像、詳細、お気に入り、検索、設定、セーブステート、タッチボタン。以前のバージョンのゲームとセーブデータは保持されます。",
+    "zh": "现已加入游戏库：网格与列表视图、封面、详细信息、收藏、搜索、设置、即时存档和触摸按钮。早期版本的游戏和存档均会保留。",
+    "ko": "이제 게임 라이브러리를 지원합니다: 격자와 목록 보기, 커버, 상세 정보, 즐겨찾기, 검색, 설정, 세이브 스테이트, 터치 버튼. 이전 버전의 게임과 세이브는 그대로 유지됩니다."
   }
 }

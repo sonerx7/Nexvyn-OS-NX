@@ -1,0 +1,6 @@
+Snes9x (LicenseRef-Snes9x-NonCommercial, unmodified): https://github.com/libretro/snes9x (commit fae2fea08f74180759ef540ee94259213f503480)
+  snes_ntsc (part of the core) (LGPL-2.1-or-later): https://github.com/libretro/snes9x/tree/master/filter
+  The shared frontend (gallery, settings, play loop), the core interface and the build files are MPL-2.0, from the Nexvyn OS Native Kit
+  sources of this port.
+Dear ImGui (MIT): https://github.com/ocornut/imgui   stb_image (MIT / public domain): https://github.com/nothings/stb
+No game and no BIOS or firmware is included: copy your own games (.sfc, .smc) into the games folder.

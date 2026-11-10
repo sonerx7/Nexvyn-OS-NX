@@ -81,6 +81,11 @@ int nxn_input_text(char* out, size_t cap) {
     return 0;
 }
 
+nxn_result nxn_input_text_request(int wanted) {
+    (void)wanted;
+    return NXN_ERR_UNSUPPORTED;
+}
+
 int nxn_input_key_held(uint32_t hid_usage) {
     ready();
     if (hid_usage >= 256) return 0;

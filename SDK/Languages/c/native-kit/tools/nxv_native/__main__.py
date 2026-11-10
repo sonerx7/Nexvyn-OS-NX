@@ -33,6 +33,7 @@ TEMPLATES = os.path.join(KIT, "templates")
 TEMPLATE_NAMES = ("app", "game", "port", "sdl2", "gl", "emu-skeleton", "decomp-skeleton", "shared-lib")
 DKP_BASH = os.environ.get("DKP_BASH", "C:/devkitPro/msys2/usr/bin/bash.exe")
 sys.path.insert(0, os.path.join(REPO, "tools"))
+import ryu_env  # noqa: E402
 import sdkinfo  # noqa: E402  (the SDK facts: Native SDK version and the SDK that brought it)
 
 NATIVE_VERSION = sdkinfo.NATIVE_VERSION
@@ -508,9 +509,7 @@ def cmd_package(a):
 def cmd_run(a):
     d = project_dir(a.dir)
     stage, app = stage_bundle(d, a.windowed)
-    sd = a.sd or os.environ.get("NEXVYN_SD", "")
-    if not sd:
-        die("give --sd <SD card root> (or set NEXVYN_SD)")
+    sd = a.sd or ryu_env.SDROOT
     if not os.path.isdir(sd):
         die("SD card folder not found: %s (pass --sd)" % sd)
     dest = os.path.join(sd, "NexvynOS", "Applications", os.path.basename(stage))

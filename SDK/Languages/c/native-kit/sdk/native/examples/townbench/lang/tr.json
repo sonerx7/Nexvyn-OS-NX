@@ -1,0 +1,40 @@
+{
+ "ui": {
+  "loading": "Köy yükleniyor",
+  "shaders": "Shader'lar hazırlanıyor",
+  "fail": "Yüklenemedi"
+ },
+ "m": {
+  "title": "Köy Benchmark",
+  "sub": "Dokulu bir köyün üzerinde 60 saniyelik uçuş. Her seferinde aynı yol.",
+  "preset": "KALİTE AYARI",
+  "best": "En iyi",
+  "start": "A  Başlat",
+  "hint": "Yukarı / Aşağı seç    A başlat    B çık"
+ },
+ "run": {
+  "title": "Benchmark",
+  "abort": "B iptal"
+ },
+ "r": {
+  "title": "Benchmark",
+  "score": "PUAN",
+  "avg": "Ortalama",
+  "min": "En düşük (en kötü kare)",
+  "low": "%1 düşük",
+  "frames": "Kare",
+  "keys": "A / Y tekrar    B menü"
+ },
+ "p0": {
+  "n": "Düşük",
+  "d": "Çizim ölçeği %60, gölge yok, kenar yumuşatma yok"
+ },
+ "p1": {
+  "n": "Orta",
+  "d": "Çizim ölçeği %80, güneş gölgesi, kenar yumuşatma"
+ },
+ "p2": {
+  "n": "Yüksek",
+  "d": "Çizim ölçeği %100, güneş gölgesi, kenar yumuşatma"
+ }
+}

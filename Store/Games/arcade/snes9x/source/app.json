@@ -1,0 +1,25 @@
+{
+  "id": "com.nexvyn.port.snes9x",
+  "name": "SNES (Snes9x)",
+  "version": "1.0.0",
+  "author": "Snes9x contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
+  "category": "games",
+  "icon": "icon.png",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "resizable": true
+  },
+  "minNative": "1.1",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": [
+    "files",
+    "network"
+  ],
+  "runtime": "native",
+  "mode": "window",
+  "main": "snes9x.nxvmod",
+  "description": "SNES emulator",
+  "license": "LicenseRef-Snes9x-NonCommercial"
+}

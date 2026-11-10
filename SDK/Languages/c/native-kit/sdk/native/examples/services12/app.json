@@ -1,0 +1,12 @@
+{
+  "id": "com.nexvyn.example.services12",
+  "name": "Native 1.2 Services",
+  "version": "1.0.0",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "window": {"width": 640, "height": 400, "resizable": true},
+  "minNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "permissions": []
+}

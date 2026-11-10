@@ -1,0 +1,5 @@
+Gambatte (GPL-2.0-only, unmodified): https://github.com/libretro/gambatte-libretro (commit 77f2567d718b8973d02caa2daa8dce4953faf811)
+  The shared frontend (gallery, settings, play loop), the core interface and the build files are MPL-2.0, from the Nexvyn OS Native Kit
+  sources of this port.
+Dear ImGui (MIT): https://github.com/ocornut/imgui   stb_image (MIT / public domain): https://github.com/nothings/stb
+No game and no BIOS or firmware is included: copy your own games (.gb, .gbc) into the games folder.

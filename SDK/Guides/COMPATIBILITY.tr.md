@@ -64,6 +64,7 @@ nesli elle yükseltilen sayılar olarak kalır, hiçbir sürümden türetilmez.
 |---|---|---|
 | 1.0 | 1.10 | `nxn_*` C arayüzü: pencere ekranı (GL), girdi, ses akışları, dosya, log, dönüş; `.nxvmod` app'leri, `.nxvlib` kütüphaneleri |
 | 1.1 | 1.10 | Pencereler için SDL2 sürücüsü; ses ve girdi olayları (`nxn_audio_clear`, USB klavye / fare / metin, dock ve uyku olayları); pencerede POSIX çağrıları (uyum katmanı); sistem servisleri (dosya ve klasör diyalogları, kalıcı klasör erişimi, kayıt verisi, izinler); UI token'ları, sistem fontları ve app'in kendi metinleri (`nxn_ui.h`, `lang/<kod>.json`); NexGFX native (`nexgfx_native.h`); OS ses mikseri (`nxn_sfx_play`, `nxn_tone`); paket v2 (modül, `lang/`, `data/` ile `nxvapp`) |
+| 1.2 | 1.10 | Pencereler için sistem entegrasyonu: pencere kontrolü (`nxn_window_set_title` / `set_mode` / `set_modified`, `NXN_CAP_WINDOW_CTL`); pil / şarj / dock / ağ durumu (`nxn_power_get`, `NXN_EVENT_POWER`, `NXN_CAP_POWER_STATE`); OS diyalogları (`nxn_dialog`, `nxn_prompt`, `NXN_CAP_DIALOG`). Yalnızca ekleme: 1.0 ve 1.1 için derlenmiş app'ler değişmeden çalışır; kullanan app `"minNative": "1.2"` yazar ve cap bitine bakar  (ilk Nexvyn OS 1.3.0'da) |
 
 Nexvyn OS güncellenince native app'lerde değişiklik gerekmez; kitin kendi kuralları `docs/NATIVE_COMPAT.en.md` içinde.
 Yükleme hataları (eksik işlev, başka arayüz nesli, `thread_local`) kullanıcının dilinde, ne yapılacağıyla birlikte

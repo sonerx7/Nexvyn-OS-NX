@@ -1,0 +1,28 @@
+# Example only: copy to .github/workflows/nxvtest.yml in YOUR app's repository and adapt.
+# A hosted runner has no emulator installed. Use a self-hosted runner that already has an emulator installation
+# running homebrew (with its keys and firmware set up by you), and put its paths in nxvtest.json.
+name: nxvtest
+on:
+  push:
+  pull_request:
+jobs:
+  app-test:
+    runs-on: [self-hosted, windows]        # a machine that has the emulator
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prepare (downloads the latest Nexvyn OS release when os_nro is "latest")
+        run: python SDK/Tools/nxvtest/nxvtest.py --config nxvtest.json setup
+      - name: Run the scenarios (a FAIL makes this step fail)
+        run: |
+          python SDK/Tools/nxvtest/nxvtest.py --config nxvtest.json run tests/start.json
+          python SDK/Tools/nxvtest/nxvtest.py --config nxvtest.json run tests/click.json
+      - name: Keep the results and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nxvtest-results
+          path: nxvtest-work/runs/

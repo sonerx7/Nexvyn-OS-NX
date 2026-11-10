@@ -297,6 +297,17 @@ so its `app.json` `hashes` list every file (the tool refuses otherwise), and `--
 - A package that carries the same id as an app that ships with the system is installed side by side with the id
   `ext.<id>`.
 
+### 5c. Runtimes & Libraries in the App Market
+
+A catalog entry with `"type": "lib"` and `"kind": "library"` or `"runtime"` gets a card in the App Market's
+"Runtimes & Libraries" category (`"category": "runtimes"`); a `lib` entry without `kind` stays hidden and is only installed
+as an app's dependency. Extra catalog fields for these entries: `license` (SPDX id, required), `sourceUrl` (https link to
+the source code, required), `providedBy` (who makes it), `neededBy` (a list of app names that use it), `description`
+(required). The package itself must carry its licence text (`LICENSE` or `COPYING`). Install, update and removal are the
+ones of any library (above); removal is refused while an installed app needs the library. If an installed app's library is
+missing when it is opened, the system says which one and offers the App Market instead of starting it. Nothing in the
+system needs a component to start: they are optional add-ons. Details: `STORE_COMPONENTS.en.md`.
+
 ## 6. Community repository (index.json)
 
 The Store lists a JSON file whose address is in the "Community app repository" field of System Settings > Apps (when
@@ -547,7 +558,7 @@ without them behaves as before):
 | `"icons": "icons"` | Folder with `<app id>.png` (128 px). An app without a file keeps its own icon. Up to 160 files per pack. |
 | `"wallpapers": [..]` | Extra wallpaper choices (the first is `wallpaper`), chosen in Settings > Appearance > Customize. |
 | `"preview": "preview.jpg"` | Picture of the finished desktop for cards (480x270). |
-| `settings` keys | `shell.layout` (`dock`/`taskbar`), `taskbar.size`, `start.sidePanel`, `window.chrome` (`default`/`bevel`/`flat`/`glass`/`mono`), `appearance.themeBold`, `appearance.themeScale` (0.85-1.2), plus the older keys. |
+| `settings` keys | `shell.layout` (`dock`/`taskbar`), `taskbar.size`, `start.sidePanel`, `window.chrome` (`default`/`bevel`/`flat`/`glass`/`mono`/`classic3d`/`keypad`/`pocket`), `taskbar.combine` (`always`/`never`), `appearance.themeBold`, `appearance.themeScale` (0.85-1.2), plus the older keys. |
 
 Sounds: `sounds/` may hold `startup click notify error pop key .wav`. Everything is applied atomically (one snapshot of every key;
 any failed check rolls back) and `Undo` in Settings restores it. A missing or broken applied pack falls back to the default look

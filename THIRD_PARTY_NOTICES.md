@@ -15,7 +15,8 @@ Nexvyn OS is distributed under **GPL-3.0-or-later**. The components below are li
 | mbed TLS | Apache-2.0 | Şifreleme |
 | minizip / zlib | zlib | Zip arşivleri |
 | Lua 5.4 | MIT | Uygulama dili |
-| QuickJS-ng | MIT | JavaScript motoru |
+| QuickJS-ng | MIT | JavaScript motoru (tek yama: `JS_ReadRegExp` nesne başvuru tablosuna kaydolur, `lib/quickjs/quickjs.c`) |
+| wasm3 (`lib/wasm3`, commit 28ecb9af6d2040e474a70f7cb7f43666740141fb = v0.9.1-beta.1 + 18, Steven Massey, Volodymyr Shymanskyy) | MIT (`lib/wasm3/LICENSE`) | Tarayıcının `WebAssembly` desteği (`web.wasm`) / the browser WebAssembly engine; yalnızca yorumlayıcı çekirdeği alındı (`m3_api_*`, uzantılar, platformlar yok), kendi dosyamız `source/nexvyn_shim.c/.h`, özellik anahtarları Makefile'da (`W3DEFS`), ayrıntı `lib/wasm3/README.nexvyn` |
 | pocketpy 2.2.0 (`lib/pocketpy`) | MIT | Python yorumlayıcısı |
 | CPython 3.12.16 (`tools/build_cpython.sh`, Python Software Foundation) ve standart kütüphanesi (`romfs/System/Python3/lib.zip`) | PSF-2.0 (Python Software Foundation License Version 2; GPL uyumlu / GPL-compatible) | `"python3"` çalışma ortamı; `tools/cpython_tool.py`'de "Nexvyn OS" işaretli değişiklikler. Kendi içindeki HACL* (MIT/Apache-2.0) ve BLAKE2 (CC0) kodu dahil |
 | Squirrel 3.2 (`lib/squirrel`, Alberto Demichelis) | MIT | Squirrel çalışma ortamı (SDK 1.5); `sqvm.cpp`'de işaretli bir değişiklik |
@@ -164,6 +165,25 @@ its own licence texts (`data/licenses/`) and source links. No commercial game da
 | **mGBA** 0.10.5 (`Store/Games/arcade/mgba`) | MPL-2.0 (değiştirilmemiş / unmodified) | https://github.com/mgba-emu/mgba (etiket / tag `0.10.5`) |
 | blip_buf (mGBA içinde / inside mGBA) | LGPL-2.1-or-later | https://github.com/mgba-emu/mgba/tree/0.10.5/src/third-party/blip_buf |
 | inih (mGBA içinde / inside mGBA) | BSD-3-Clause | https://github.com/benhoyt/inih |
+| mGBA project icon (`res/mgba-1024.png`, store icon of the mGBA package / mGBA paketinin simgesi) | MPL-2.0 (ölçeklendi / scaled) | https://github.com/mgba-emu/mgba/tree/master/res |
+| **FCEUmm** (libretro, `Store/Games/arcade/fceumm`) | GPL-2.0-or-later (değiştirilmemiş / unmodified; copyright Xodnizel and contributors) | https://github.com/libretro/libretro-fceumm (commit `e0f3086a8104`) |
+| **Gambatte** (libretro, `Store/Games/arcade/gambatte`) | GPL-2.0-only (değiştirilmemiş / unmodified; copyright Sindre Aamas and contributors) | https://github.com/libretro/gambatte-libretro (commit `77f2567d718b`) |
+| **Genesis Plus GX** (libretro, `Store/Games/arcade/genesis-plus-gx`) | Özel, ticari olmayan / custom non-commercial licence (copyright Charles MacDonald, Eke-Eke, MAME team); paket ücretsiz / package is free | https://github.com/libretro/Genesis-Plus-GX (commit `b9c231644197`) |
+| **Snes9x** (libretro, `Store/Games/arcade/snes9x`) | Özel, ticari olmayan / custom non-commercial licence (copyright Gary Henderson, Jerremy Koot and contributors); paket ücretsiz / package is free | https://github.com/libretro/snes9x (commit `fae2fea08f74`) |
+
+Bu dört çekirdek ayrı kurulan, ayrı programlardır; OS'a link edilmez ve her paket lisans metnini, kaynak bağlantısını ve telif sahiplerini About sayfasında gösterir. Arayüz ve port: sonerx7, GPL-3.0-or-later. / These four cores are separate programs installed on their own, not linked into the OS; each package shows its licence text, source link and copyright holders on its About page. Frontend and port: sonerx7, GPL-3.0-or-later.
 
 SDL2 ve SDL2_mixer (zlib) bu port app'lere yalnızca kendi paketlerinde bağlıdır / SDL2 and SDL2_mixer (zlib) are linked
 into these port apps only, in their own packages.
+
+## Çalışma ortamları ve kütüphaneler (App Market) / Runtimes & Libraries (App Market)
+
+App Market'in "Çalışma Ortamları ve Kütüphaneler" kategorisindeki bileşenler `NexvynOS.nro`'ya bağlanmaz; kullanıcının
+kurduğu, ayrı paketlerdir. Her biri kendi lisans metnini (`LICENSE` / `COPYING`) pakette ve SPDX lisansı ile kaynak kod
+bağlantısını kartında taşır; bu dosyaya bileşen eklenmez, kendi paketinde durur. Şu an listelenen bileşen yok.
+
+Components in the App Market's "Runtimes & Libraries" category are not linked into `NexvynOS.nro`; they are separate
+packages the user installs. Each one carries its own licence text (`LICENSE` / `COPYING`) in its package and its SPDX
+licence and source link on its card; they are not added to this file, they stay with their own package. No component is
+listed at the moment.
+

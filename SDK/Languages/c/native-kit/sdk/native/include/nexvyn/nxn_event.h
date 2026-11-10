@@ -43,9 +43,12 @@ typedef enum nxn_event_type {
     NXN_EVENT_THEME = 7,  /* Native 1.1 (NXN_CAP_UI_TOKENS): the OS look changed (light / dark, accent, accessibility). Read
                              nxn_ui_tokens_get again; nxn_info.theme_dark / accent_rgb follow too. Only apps with "minNative"
                              1.1 or later get it */
-    NXN_EVENT_MENU = 8    /* Native 1.1 (NXN_CAP_MENU): the user picked an item of the app's window menu (nxn_menu.h);
+    NXN_EVENT_MENU = 8,   /* Native 1.1 (NXN_CAP_MENU): the user picked an item of the app's window menu (nxn_menu.h);
                              item_id is the id the app gave it. Never merged: every pick arrives. Only apps with "minNative"
                              1.1 or later get it */
+    NXN_EVENT_POWER = 9   /* Native 1.2 (NXN_CAP_POWER_STATE): battery (by 1 percent or more), charger, dock or network state changed;
+                             read it with nxn_power_get (nxn_power.h). At most one per second, unread ones merge. Only apps with
+                             "minNative" 1.2 or later get it */
 } nxn_event_type;
 
 typedef struct nxn_event {

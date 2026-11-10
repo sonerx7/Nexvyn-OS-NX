@@ -25,6 +25,9 @@
 #include "nxn_lib.h"
 #include "nxn_ui.h"
 #include "nxn_menu.h"
+#include "nxn_window.h"
+#include "nxn_power.h"
+#include "nxn_dialog.h"
 #include "nxn_jit.h"
 
 #endif /* NEXVYN_NATIVE_H */

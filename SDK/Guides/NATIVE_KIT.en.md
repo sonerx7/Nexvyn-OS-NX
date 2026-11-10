@@ -191,6 +191,7 @@ its own input owner and never calls `nxn_input_poll` itself.
 `NXN_ERR_UNSUPPORTED` and nothing else changes for older apps):
 
 - `nxn_audio_clear` (`NXN_CAP_AUDIO_CLEAR`): drops what a push stream has queued, the next `nxn_audio_queue` starts fresh.
+- `nxn_input_text_request(wanted)` (`NXN_CAP_TEXT_REQUEST`, bit 36; Native 1.1 add-on, add-only): tells Nexvyn OS that a text field is being edited, so the system's on-screen keyboard opens by itself (not with a USB keyboard) and the typed text arrives through `nxn_input_text`. ImGui apps call `nxn_imgui_text_sync()` (`nxn_imgui.h`) once per frame; SDL apps get it from `SDL_StartTextInput` / `SDL_StopTextInput` (the Nexvyn SDL2 video driver). The stand-alone library answers `NXN_ERR_UNSUPPORTED`.
 - `nxn_input_key_poll`, `nxn_input_text`, `nxn_input_mouse` (`NXN_CAP_USB_INPUT`): ordered USB key events (a tap inside one
   frame is not lost), typed text (UTF-8) and the pointer as a mouse. Calling `nxn_input_mouse` once turns the app into a
   mouse user: the pointer then no longer also counts as touch 0 in `nxn_input_touch`. `nxn_input_key_held` knows the
@@ -239,6 +240,14 @@ scales it. Events arrive while the app calls `nxn_should_quit()` (or while SDL p
 
 **Crashes.** An app that crashes three times in a row makes Nexvyn OS ask "Close / Keep enabled"; a normal exit
 starts the count again.
+
+## System integration (Native 1.2)
+
+For apps that should feel like part of Nexvyn OS. Each call is announced by an `nxn_caps` bit and answers `NXN_ERR_UNSUPPORTED` without it (a stand-alone `.nro`, an older system); an app that uses them says `"minNative": "1.2"`. Everything is add-only: apps built for 1.0 / 1.1 run unchanged. Sample: `sdk/native/examples/services12`.
+
+- **Window control** (`nxn_window.h`, `NXN_CAP_WINDOW_CTL`): `nxn_window_set_title(title, subtitle)` sets the title bar ("Game - Level 3", 200 bytes each, cut at a character boundary), `nxn_window_set_mode(NXN_WIN_NORMAL / MAXIMIZED / FULLSCREEN)` asks for a window mode (the answer is `NXN_EVENT_RESIZE`; maximize is ignored for a window that is not resizable), `nxn_window_set_modified(1)` shows the OS "edited" mark in the title and lists the app among those with unsaved work before Nexvyn OS quits, restarts or powers off (closing still posts `NXN_EVENT_QUIT`). The calls return at once; the OS main thread applies the newest values within a frame.
+- **Power and network state** (`nxn_power.h`, `NXN_CAP_POWER_STATE`): `nxn_power_get(&p)` copies the battery percent (-1 = unknown, e.g. an emulator), charging, docked and online flags that Nexvyn OS already keeps (no file, network or service call: cheap enough for every frame). `NXN_EVENT_POWER` (only apps with `"minNative": "1.2"` or later) arrives when one of them changed (battery by 1 percent or more), at most once a second, unread ones merge: read the state with `nxn_power_get`. A network change is the `online` flag. Use it to lower the load on a low battery or skip an online request while offline.
+- **OS dialogs** (`nxn_dialog.h`, `NXN_CAP_DIALOG`): `nxn_dialog(&params, &picked)` shows the OS alert / question with 1 to 4 buttons of your own (the first is the default, `cancel_button` is what Esc / B answers, `danger_button` is drawn as destructive; labels may be keys of the app's `lang/<code>.json`), `nxn_prompt(title, message, initial, out, cap)` a text field (`NXN_ERR_CANCELLED` when dismissed). Same look, theme, gamepad and touch handling as the OS apps. **Both wait for the user on the calling app thread** (like `nxn_pick`): the OS main thread keeps drawing, the window is not "not responding", and the wait ends with `NXN_ERR_NOT_READY` when the window closes. To keep the app running meanwhile (an emulator that keeps emulating), call them from a worker thread; to pause it, from the main thread. One dialog per app at a time (`NXN_ERR_BUSY`).
 
 ## OS look and the app's own texts (Native 1.1, `nxn_ui.h`)
 

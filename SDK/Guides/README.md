@@ -24,6 +24,7 @@ Every guide exists in English (`NAME.en.md`) and Turkish (`NAME.tr.md`). The com
 
 | Guide | What it covers |
 |---|---|
+| [Automated testing](AutomatedTesting.en.md) | Run your app in an emulator by itself with `SDK/Tools/nxvtest`: scenarios with launch, clicks, keys, screenshots and log checks, a PASS / FAIL report and exit code for CI, troubleshooting, and what it cannot do |
 | [Developer guide](DEVELOPER_GUIDE.en.md) | Studio and templates, `app.json`, choosing a language, 2D and 3D, packaging, testing |
 | [Apps in JavaScript](JS_APPS.en.md) | Differences from Lua, Promises, limits, checking |
 | [Apps in Python](PY_APPS.en.md) | The light runtime and CPython 3.12, interpreter limits, system library |

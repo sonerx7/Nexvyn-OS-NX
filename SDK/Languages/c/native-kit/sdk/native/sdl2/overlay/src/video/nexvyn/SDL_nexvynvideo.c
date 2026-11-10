@@ -331,6 +331,17 @@ static void NEXVYN_PollUSB(NEXVYN_VideoData *vd)
     }
 }
 
+/* SDL_StartTextInput / SDL_StopTextInput: the app has (or no longer has) a text field. Inside Nexvyn OS that opens the
+ * system's on-screen keyboard (nxn_input_text_request); the typed text comes back through nxn_input_text below. */
+static void NEXVYN_TextRequest(int wanted)
+{
+    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
+    if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_TEXT_REQUEST) != 0)
+        nxn_input_text_request(wanted);
+}
+static void NEXVYN_StartTextInput(SDL_VideoDevice *_this) { NEXVYN_TextRequest(1); }
+static void NEXVYN_StopTextInput(SDL_VideoDevice *_this) { NEXVYN_TextRequest(0); }
+
 static void NEXVYN_PumpEvents(SDL_VideoDevice *_this)
 {
     NEXVYN_VideoData *vd = g_video;
@@ -461,6 +472,8 @@ static SDL_VideoDevice *NEXVYN_CreateDevice(void)
     device->MinimizeWindow = NEXVYN_NoWindowOp;
     device->RestoreWindow = NEXVYN_NoWindowOp;
     device->PumpEvents = NEXVYN_PumpEvents;
+    device->StartTextInput = NEXVYN_StartTextInput;
+    device->StopTextInput = NEXVYN_StopTextInput;
     device->GL_LoadLibrary = NEXVYN_GLLoadLibrary;
     device->GL_GetProcAddress = NEXVYN_GLGetProcAddress;
     device->GL_UnloadLibrary = NEXVYN_GLUnloadLibrary;

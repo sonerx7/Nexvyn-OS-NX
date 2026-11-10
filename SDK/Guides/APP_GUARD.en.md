@@ -98,3 +98,9 @@ settings and logs are written as usual either way.
 | `developer.allowSystemEdits` | `false` | Files, Terminal and the editors may change `sdmc:/NexvynOS/System` |
 
 The hashes of installed packages are kept in `sdmc:/NexvynOS/System/Config/appguard.json`.
+
+**Native (C++) apps.** Native code is not sandboxed. The install sheets of the App Installer and App Market carry one
+warning about it, after App Guard has scanned the package; the app is then trusted by a record (id, SHA-256 of its module
+file, source) and never asks at launch. A package copied into `Applications` by hand is scanned by App Guard the first
+time it is launched and asks once, remembered by hash (a changed build asks again). Nothing is blocked or killed.
+Setting `apps.askNativeUnknown` (Settings > Privacy > App Guard, default on) turns that question off.

@@ -90,13 +90,64 @@ Kaynaklar: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_
   keskin çizilir; satır içi `<svg>` artık gizlenmiyor, resim olarak çizilir (`currentColor`, varsayılan dolgu = metin
   rengi, `<use href="#id">` ikon sprite'ları diğer satır içi SVG'lerden de çözülür).
 - **WebP**: SDL_image 2.0.4 libwebp ile derlendiği için durağan WebP zaten çözülüyor (animasyonlu WebP yok).
-- **Canvas 2D**: yollar, eğriler, yaylar, `roundRect`, `Path2D`, dönüşümler, `save/restore`, nonzero/evenodd
-  dolgu, çizgi (eklem ve uçlar disklerle yaklaşık), `fillRect/strokeRect/clearRect`, `globalAlpha`,
-  `destination-out`, `fillText/measureText` (sistem yazı tipiyle, bitmap'in üstünde katman), `getImageData`,
-  `putImageData`, başka bir canvas'tan `drawImage`, `isPointInPath`. 1.2.6'dan beri ayrıca: doğrusal ve dairesel
-  gradyanlar, desenler, `clip()` (`save/restore` yığınıyla), ek composite işlemleri (`lighter`, `destination-over`, `source-atop`, `multiply`, `screen`)
-  `imageSmoothingEnabled` ile affine `drawImage`, `setLineDash`, yaklaşık gölgeler, `OffscreenCanvas` ve
-  `createImageBitmap`. Kenar yumuşatmalı rasterleştirici C++'ta.
+- **Canvas 2D**: yollar, eğriler, yaylar, `ellipse`, `roundRect` (yarıçap dizileri ve noktalar), `Path2D`, dönüşümler,
+  `save/restore`, nonzero/evenodd dolgu, gerçek çizgi (`lineJoin` miter / round / bevel, `miterLimit`, `lineCap`,
+  `lineDashOffset` ile `setLineDash`), `fillRect/strokeRect/clearRect`, `globalAlpha`, `getImageData` / `putImageData`
+  (dirty rect) / `ImageData`, `isPointInPath` (iki dolgu kuralı) ve `isPointInStroke`. Doğrusal, dairesel ve conic gradyanlar,
+  desenler (canvas veya `<img>`), `save/restore` yığınlı `clip()`, 26 composite işleminin hepsi (Porter-Duff ve blend modları),
+  gerçek `shadowBlur` (gaussian yaklaşımı, sınırlı maliyet), `filter` özelliği (`blur`, `brightness`, `contrast`, `grayscale`,
+  `sepia`, `saturate`, `invert`, `opacity`, `hue-rotate`, `drop-shadow`), `imageSmoothingEnabled` / `imageSmoothingQuality`.
+  Metin (`fillText`, `strokeText` kontur, `textAlign`, `textBaseline`, `direction`, `maxWidth`, gerçek mürekkep kutulu
+  `measureText`) sistem yazı tipiyle bitmap'in içine çizilir; `getImageData`, `drawImage` ve `toDataURL` metni görür.
+  `drawImage` / `createPattern` / `createImageBitmap` `<img>` (`onload` ile `new Image()`, data, http ve blob URL'leri),
+  canvas, `ImageBitmap` ve `Blob` kabul eder; başka kaynaklı resimler kirlenmez, uygulamalar çalışmaya devam eder.
+  `toDataURL` / `toBlob` / `OffscreenCanvas.convertToBlob` PNG veya JPEG (kalite parametresi) yazar; başka türler PNG verir.
+  `getContext('2d', {alpha:false})` opak bitmap yapar. `width` / `height` atamak (aynı değer de olsa) canvas'ı siler ve bağlamı
+  sıfırlar. Rasterleştirici, çizgi üretici, bulanıklık, filtreler ve PNG / JPEG kodlayıcıları C++'ta (`web_canvas.cpp`),
+  host birim testleriyle.
+  Sınırlar: video kareleri çizilemez, metin sans yazı tiplerini kullanır (kalın veya normal), canvas bir kenarda en çok
+  4096 px ve 16 MB'tır (OS belleği azsa daha küçük), `isPointInStroke` eklem ve uçları yuvarlak sayar.
+- **ES modülleri** (1.3.0): `<script type="module">` (ertelenir, belge sırasıyla), statik `import` / `export`, dinamik
+  `import()` (klasik betiklerden de), `import.meta.url`, üst düzey `await`, `nomodule`, `<script type="importmap">`
+  (`imports`, `scopes`) ve JSON modülleri. QuickJS import'ları eşzamanlı çözdüğü için modülün tüm grafiği önce indirilip
+  önbelleğe alınır (göreli, mutlak ve `data:` adresleri; en çok 48 MB / 2000 modül); eksik modül ya da eşlenmemiş çıplak ad
+  promise'i reddeder, sayfa çalışmaya devam eder.
+- **Web Workers** (1.3.0): `new Worker(url, {type, name})`; `http(s):`, yerel, `blob:` ve `data:` betikleri ve modül
+  worker'ları. Her worker ana thread'in altında bir thread'dir; kendi QuickJS çalışma zamanı ve kendi kilidi vardır:
+  beklediği hiçbir şeyi ana thread tutmaz. `postMessage` yapılandırılmış klondur (nesneler, diziler, Map, Set, Date,
+  RegExp, typed array'ler, BigInt, döngüler) ve aktarılabilir `ArrayBuffer`'ları taşır; `onmessage` / `onerror`,
+  `terminate()`, `close()`, `importScripts`, `fetch` (sayfa yapar: çerezler, `blob:` ve `data:` çalışır), zamanlayıcılar,
+  `performance.now`, `TextEncoder` / `TextDecoder`, `URL`, `crypto.getRandomValues`, `atob` / `btoa` içeride var.
+  Sınırlar: aynı anda 4 worker (beşinci `new Worker` `QuotaExceededError` fırlatır), her biri 24 MB betik belleği, 4 sn
+  süren bir çağrı worker'ı hata olayıyla sonlandırır (sayfa onu hiç beklemez), worker'lar sayfalarıyla biter. Yok:
+  `SharedWorker`, `SharedArrayBuffer`, worker içinde `import()` ve IndexedDB, `Error` nesnesi ya da fonksiyon göndermek.
+- **IndexedDB** (1.3.0): `indexedDB.open` / `deleteDatabase` / `databases` / `cmp`, `upgradeneeded` ile sürümler,
+  nesne depoları (anahtar yolları, anahtar üreteçleri), indeksler (unique, `multiEntry`, bileşik anahtar yolları),
+  işlemler (`readonly`, `readwrite`, abort geri alır), `get` / `getKey` / `getAll` / `getAllKeys` / `count` / `put` /
+  `add` / `delete` / `clear`, dört yönde imleçler (`continue`, `advance`, `continuePrimaryKey`, `update`, `delete`),
+  `IDBKeyRange`. Değerler yapılandırılmış klondur. Her kaynağın Browser'ın depolama klasöründe kendi dosyaları var
+  (özel sekmelerde bellekte); açarken dosya arka plan thread'inde okunur, değişiklikler son commit'ten biraz sonra yine
+  orada yazılır, ana thread'de asla. Veritabanı başına en çok 32 MB; "gezinti verilerini temizle" onları siler. Bir
+  sayfanın işlemleri sırayla çalışır.
+- **WebAudio** (`AudioContext`, `webkitAudioContext`, `OfflineAudioContext`): `GainNode`, `OscillatorNode` (sine, square,
+  sawtooth, triangle), `AudioBufferSourceNode` (döngü, çalma hızı, başlangıç ofseti, `onended`), `AudioBuffer`,
+  `decodeAudioData` (wav, ogg, mp3, flac; bir worker'da çözülür), `BiquadFilterNode` (lowpass, highpass, bandpass, shelf'ler,
+  peaking, notch, allpass), `DelayNode`, `StereoPannerNode`, `AnalyserNode`, `DynamicsCompressorNode` ve `AudioParam`
+  otomasyonu (`setValueAtTime`, doğrusal ve üstel rampalar, `setTargetAtTime`, `setValueCurveAtTime`, iptal). Graf her
+  context için tek bir düşük öncelikli thread'de çizilir ve OS mixer'ının okuduğu ring buffer'a yazılır; sayfanın
+  thread'i yalnızca komut gönderir (ortak kilit yok). Sınırlar: sayfa başına 4 context, 4096 node, 96 ses. Desteklenmeyen:
+  uzamsal `PannerNode` (geçiren yedek), `ScriptProcessorNode`, `AudioWorklet`, `MediaStream` node'ları; `<audio>`
+  öğeleri kendi çıkışında kalır (`createMediaElementSource` sessiz bir yedek döner). Otomatik oynatma kuralı etkisizdir:
+  context çalışır başlar, `resume()` her zaman çalışır.
+- **WebGL 2** (`getContext('webgl2')`, `WebGL2RenderingContext`): vertex array object'leri, instancing (`drawArraysInstanced`, `drawElementsInstanced`, `vertexAttribDivisor`, `drawRangeElements`), tamsayı attribute'lar, uniform buffer object'leri (`getUniformBlockIndex`, `uniformBlockBinding`, `bindBufferBase/Range`, blok sorguları), `copyBufferSubData` / `getBufferSubData`, 3B ve 2B-dizi dokular (`texImage3D`, `texStorage2D/3D`), sampler object'leri, çoklu render hedefi (`drawBuffers`, `framebufferTextureLayer`, `blitFramebuffer`, `readBuffer`, `invalidateFramebuffer`), float ve tamsayı renk biçimleri (`EXT_color_buffer_float`), occlusion query'ler, sync object'leri (taklit: `clientWaitSync` `glFinish` ile bekler) ve transform feedback. GLSL ES 3.00 ve 1.00 shader'ları OpenGL ES 3 sürücüsüne olduğu gibi gider (`web_glsl3.cpp` yalnızca masaüstü GL sunan bir ana makine için GLSL 430'a da çevirebilir); derleme hataları `getShaderInfoLog` ile döner. Eklentiler ana makinenin sunduğuna göre açılır (`EXT_color_buffer_float`, `OES_texture_float_linear`, `EXT_texture_filter_anisotropic`, `WEBGL_compressed_texture_s3tc`). Sınırlar: bir bağlam 256 MB buffer ve 3B / dizi doku tutabilir; query ya da transform feedback tek bir script görevi (kare callback'i) içinde başlayıp bitmeli; WebGL 1 bağlamları bunların hiçbirini görmez. Bilinen eksikler (emülatör test ortamında geçmiyor; bağlam asla çökmez, çağrılar yalnızca yanlış piksel döner): 2B-dizi dokunun tek katmanına çizim (`framebufferTextureLayer` + clear), 3B doku örnekleme (`sampler3D`) ve vertex array object ya da instance sayısı değişince `drawArraysInstanced`; `ANY_SAMPLES_PASSED_CONSERVATIVE` geçmemiş örnekleri de bildirebilir (spesifikasyon buna izin verir). `MAX_TEXTURE_MAX_ANISOTROPY_EXT` ana makinenin sınırını bildirir (en çok 16). Bu özellikler gerçek konsolda denenene kadar doğrulanmamış sayılır.
+- **Gamepad API**: `navigator.getGamepads()`, `gamepadconnected`, standart eşleme (17 düğme, 4 eksen; standart yerleşim
+  konuma göredir, yani Switch B düğmesi 0. düğmedir), 0.1 ölü bölge, `vibrationActuator.playEffect` (konsolun titreşimi,
+  iki şiddetin büyüğü). Kumanda, diğer tarayıcılardaki gibi ilk girişten sonra görünür. Bir sayfa kumandayı okurken kumanda
+  onundur (kumanda imleci oynatmaz); dokunma çalışır. Sayfa arka plan sekmesindeyken ya da pencere odakta değilken hiçbir
+  şey bildirilmez.
+- **Fullscreen API**: `element.requestFullscreen()`, `document.exitFullscreen()`, `fullscreenElement`,
+  `fullscreenEnabled`, `fullscreenchange` (ve `webkit` adları). Pencere tam ekran olur, araç çubuğu ve sekmeler gizlenir,
+  öğe sayfayı kaplar. Esc çıkarır; kumandayla sayfa kumandayı okurken B'ye bir an basılı tutulur.
 - **Özel çerez kutusu ve depolama**: özel sekmeler için ayrı, diske yazılmayan çerezler ve Web Storage.
 - `CSS.supports()` motorun gerçekten yerleştirdiği özellikleri bildirir.
 
@@ -176,7 +227,7 @@ Gerçek sitelerin ne kadar sık dayandığına göre sıralandı.
 | `filter` | yok | `brightness / contrast / grayscale / sepia / invert / saturate / opacity` çizilen her şeye (resimlerde yalnızca parlaklık); `blur()` ve `drop-shadow()` çizilmez |
 | `backdrop-filter` | yok | bulanıklık çizilmez; arkasındaki yarı saydam arka plan metin okunsun diye neredeyse opak yapılır |
 | `width / height: fit-content` (max-/min-content) | `auto` | içeriğe göre daralır |
-| `<video>` / `<audio>` | gizliydi | sistem medya oynatıcısıyla sayfa içinde oynatma (FFmpeg: mp4/webm/mkv, mp3/aac/ogg, progressive http(s) ve HLS): poster, oynat düğmesi, denetim çubuğu (oynat/duraklat, süre, sarma, ses, "Video Oynatıcı'da aç"); aynı anda biri oynar, ilk oynatmadan önce hiçbir şey oluşturulmaz, gizlenen sekme kod çözücüsünü bırakır. `HTMLMediaElement`: `play()/pause()/load()/canPlayType()`, `currentTime`, `duration`, `paused`, `ended`, `volume`, `muted`, `loop`, `playbackRate`, `videoWidth/Height`, `readyState`, `error` ve `loadstart`, `loadedmetadata`, `canplay`, `play`, `playing`, `pause`, `timeupdate`, `ended`, `error`, `volumechange` olayları. MediaSource (YouTube'daki gibi `blob:` akışları) desteklenmez |
+| `<video>` / `<audio>` | gizliydi | sistem medya oynatıcısıyla sayfa içinde oynatma (FFmpeg: mp4/webm/mkv, mp3/aac/ogg, progressive http(s) ve HLS): poster, oynat düğmesi, denetim çubuğu (oynat/duraklat, süre, sarma, ses, "Video Oynatıcı'da aç"); aynı anda biri oynar, ilk oynatmadan önce hiçbir şey oluşturulmaz, gizlenen sekme kod çözücüsünü bırakır. `HTMLMediaElement`: `play()/pause()/load()/canPlayType()`, `currentTime`, `duration`, `paused`, `ended`, `volume`, `muted`, `loop`, `playbackRate`, `videoWidth/Height`, `readyState`, `error` ve `loadstart`, `loadedmetadata`, `canplay`, `play`, `playing`, `pause`, `timeupdate`, `ended`, `error`, `volumechange` olayları. `seeking`, `buffered`, `seekable`, `networkState` ve `seeking`/`seeked`/`waiting` olayları gerçek durumu yansıtır. MediaSource / SourceBuffer (YouTube'daki gibi `blob:` akışları) H.264 + AAC parçalı MP4 ve WebM için çalışır (aşağıdaki "Video" bölümü) |
 | `<picture>` / `srcset` | srcset'i olan ilk `<source>`, ~600 px aday | `type`'ı burada çözülen ve `media`'sı tutan ilk `<source>`; `srcset` `sizes`'a ve resmin aldığı genişliğe göre (bellek için en çok 1280 px) |
 | `<dialog>` | yalnızca `open` özniteliği | `show()`, `showModal()` (karartılmış sayfanın ortasında, odak `[autofocus]`'a), `close(value)`, `returnValue`, `requestClose()`, `cancel` / `close` olayları, Escape, `<form method=dialog>` |
 | Formlar | text, password, checkbox, radio, select, düğmeler | ek olarak `range` (kaydırıcı), `color` (renk kutusu), `number` (dar alan), tarih / saat türleri (yazılacak biçimi gösteren alan), `<progress>`, `<meter>` (low / high / optimum renkleri) |
@@ -274,8 +325,105 @@ sayfa, `?n=` ile büyütülür; kurulum ve ilk kare süreleri başlıkta).
   kutusu olmayan saydam arka plana / arka plandan geçişler atlar. Element.animate'te `currentTime` ile konumlama,
   `playbackRate` ve composite modları yok.
 - `grid-auto-flow: dense`, `fr` satırlar, `subgrid`, `masonry`.
-- Canvas: `getImageData` içinde `fillText` pikselleri, gerçek `shadowBlur`, `<img>` kaynaklı `drawImage`, `toDataURL`,
-  conic gradyanlar.
+- Canvas: `<video>` karesi `drawImage`, canvas metninde yazı tipi ailesi (yalnızca sans normal / kalın), SVG yol metninden `Path2D`.
 - SVG içinde `<text>`, CSS sınıflarıyla boyama, filtreler.
-- Web yazı tipleri (`@font-face`), MediaSource video (`blob:` akışları), WebGL, Service Worker, WebSocket,
-  WebAssembly. Bunlara ihtiyaç duyan siteler bu tarayıcıda çalışmaz.
+- Web yazı tipleri (`@font-face`), Service Worker, WebSocket. DRM'li video (Widevine, FairPlay, PlayReady) hiçbir zaman
+  oynamaz: konsolda CDM yok ve `navigator.requestMediaKeySystemAccess` reddeder. Bunlara ihtiyaç duyan siteler bu tarayıcıda çalışmaz.
+
+## WebGL örnekleri
+
+Gerçek WebGL sayfaları emülatörde konsol profiliyle (`NEXVYN_CONSOLE_PROFILE=1`, aynı PC'de iki emülatör) Tarayıcı'da
+çalıştırıldı. Kare sayıları **göreli**dir (emülatör, konsol değil): yalnızca sürümleri karşılaştırmak için, asla konsol
+fps'i olarak kullanılmaz. webglsamples.org demoları BSD-3-Clause (Google); yerel bir kopyadan sunuldu, bu depoda yoktur.
+
+| Örnek | Sonuç | Not (ekran görüntüsü) |
+| --- | --- | --- |
+| webglsamples.org dynamic-cubemap | GEÇTİ | Her karede yeniden çizilen cube map'i (6 yüz) yansıtan krom küre, dönen kamera, JS hatası yok, sayfa sayacında yaklaşık 6 fps (0309, 0310) |
+| webglsamples.org field | GEÇTİ | Çimen alanı, sayfa sayacında yaklaşık 18 fps (0312) |
+| webglsamples.org aquarium | çiziyor, çok yavaş | Balık sahnesi çiziliyor, yaklaşık 1 fps; kare sürerken "Yanıt vermiyor" görünüyor (0313) |
+| three.js webgl_materials_cubemap_dynamic | KALDI (hız) | Sayfa ve kontroller açılıyor, canvas siyah kalıyor: `raf` kareleri zaman bütçesini aşıyor (0314) |
+| three.js webgl_geometry_cube | KALDI (yükleme) | 1,2 MB'lık modül profilde yaklaşık 60 sn'de yükleniyor; çekimde siyah |
+| three.js webgl_postprocessing_unreal_bloom | KALDI (hız) | `raf` kareleri zaman bütçesini aşıyor |
+| webgl_loader_gltf, webgl_shadowmap, webgl_instancing_performance, Babylon.js playground | çalıştırılmadı | sonraki tur |
+
+Bu turdaki motor düzeltmeleri (hepsi genel): cube map yüzlerine çizim (2B gölge doku üzerinden çizilip yüze kopyalanır,
+çünkü emülatör her çizimi 0. katmana gönderiyor), `copyTexImage2D` / `copyTexSubImage2D`, `<img>` ve `ImageBitmap`
+kaynaklı `texImage2D` / `texSubImage2D` (eskiden gri tek piksel yüklüyordu), CPU'da üretilen cube map mip zinciri
+(host alt seviyeleri boş bırakıyordu), canvas okumasının bantlar halinde yapılması (tek büyük okuma yalnızca ilk 256
+sütunu döndürüyordu), WebGL sayfalarında kare callback'i, modül çalıştırma ve fetch tamamlanması için daha uzun bütçe,
+yavaş sürücü çağrıları için kredi. Testler: `tests/html5/webgl-cubemap-fbo.html`, `webgl-cube-image.html`.
+
+## Video
+
+Neyi oynatır (konsol CPU'sunda yazılım çözme, `media::Player` / FFmpeg; donanım çözme kapalı kalır: `media.hwdec` varsayılan kapalıdır, hiçbir şey ona güvenmez):
+- Progressive `<video>` / `<audio>`: http(s) ya da yerel dosyadan mp4, webm, mkv, mp3, aac, ogg. Olaylar, `currentTime`, `seeking`, `buffered`.
+- HLS (`.m3u8`, VOD): FFmpeg'in HLS demuxer'ı ile. Hedef yaklaşık 480p'ye kadar H.264.
+- MediaSource (`new MediaSource()` nesnesinin `blob:` adresi): `video/mp4` (avc1 seviye 3.0'a kadar, mp4a.40.x) ve `video/webm` (VP8, Vorbis) için
+  `addSourceBuffer`; `appendBuffer` (asenkron, `updating`, `updateend`), `remove`, `abort`, `timestampOffset`, `appendWindowStart/End`, `buffered`,
+  `endOfStream`, `duration`. Veri ayrı thread'de çözümlenir ve sıkıştırılmış tutulur (MediaSource başına 32 MiB, sonra `QuotaExceededError`); bozuk
+  akış yalnızca kendi MediaSource'unu düşürür. `MediaSource.isTypeSupported`, `canPlayType` ve `navigator.mediaCapabilities.decodingInfo` aynı cevabı
+  verir; uyarlamalı oynatıcılar konsolun çözebileceği basamağı seçer (VP9, Opus, AV1 ve seviye 3.0 üstü H.264, `media.mse.vp9`, `media.mse.opus` ya da
+  gerçek donanımda `media.hwdec` açılmadıkça desteklenmiyor görünür).
+
+Sınırlar:
+- DRM / EME imkansız: CDM yok; `requestMediaKeySystemAccess` reddeder. Kiralık ya da korumalı yayınlar oynamaz.
+- 720p ve üstü yazılım çözmede akıcı değil; 1080p konsolda doğrulanmamış donanım çözme ister.
+- Yapılmadı: `requestVideoFrameCallback`, metin izleri (WebVTT), Picture-in-Picture, `ManagedMediaSource`, gerçek YouTube sitesi uçtan uca (oynatıcı betiği JS
+  motoru için ağır). MSE dışında uyarlamalı HLS bit hızı seçimi FFmpeg varsayılanıdır (ilk varyant).
+- Testler: `tests/html5/video-play.html`, `video-hls.html`, `video-mse.html`, kendi ürettiğimiz kliplerle (`tools/gen_html5_video.py`, üçüncü taraf medya yok).
+- **Özel öğeler ve Shadow DOM (temel)**: `customElements.define/get/whenDefined/upgrade/getName` var olan ve yeni öğeleri yükseltir (constructor, `connectedCallback`, `disconnectedCallback`, `observedAttributes` ile `attributeChangedCallback`). `attachShadow()` düzleştirilmiş bir shadow root döner (host'un ilk çocuğu olan `display:contents` kutusu; `host`, `mode`, `shadowRoot` çalışır, `<slot>` yansıtması ve stil kapsamı yok).
+- **EME (yalnızca ClearKey)**: `navigator.requestMediaKeySystemAccess('org.w3.clearkey')`, `MediaKeys`, `MediaKeySession` (`generateRequest`, ClearKey JSON lisansıyla `update`, `keystatuseschange`), `video.setMediaKeys()` ve MSE'deki CENC fMP4 için `encrypted` olayı. Demuxer, sayfanın lisansındaki anahtarla cenc-aes-ctr çözer (MediaSource başına tek anahtar). Widevine, PlayReady ve FairPlay `NotSupportedError` ile reddedilir: burada olmayan ve taklit edilmeyen bir içerik çözme modülü ister. Test: `tests/html5/eme-clearkey.html`.
+
+## Sitelere giriş
+
+Çerez kuralları RFC 6265bis'i izler (`source/web/web_cookies.cpp`, host testleri `tests/test_cookies.cpp`):
+
+- Her yönlendirme adımının (301, 302, 303, 307, 308) `Set-Cookie`'si sonraki istekten önce saklanır; oturum çerezini
+  yönlendirmede koyan girişler çalışır. `303` ya da `POST` sonrası `301` / `302` `GET` olur; `307` / `308` yöntemi ve
+  gövdeyi korur.
+- `SameSite` Lax / Strict / None, `Secure` (yalnızca https, `SameSite=None` için şart), `__Secure-` / `__Host-` önekleri,
+  public-suffix listesiyle `Domain` ve `Path` eşleşmesi, `Expires`'tan önce `Max-Age`, 400 gün sınırı, `HttpOnly`
+  (`document.cookie`'den gizli, script koyamaz ya da ezemez), çerez başına 4096 bayt, alan adı başına 180, toplam 3000
+  sınırı. `SameSite`'sız çerez Lax gibi davranır; siteler arası üst düzey `POST`'ta 2 dakika yine gider (siteye geri
+  POST eden tek oturum açma için).
+- **Üçüncü taraf çerezleri** (Ayarlar > Gizlilik, "Üçüncü taraf çerezlerini engelle", varsayılan açık): sayfadan başka bir
+  siteye giden resim, stil ve script istekleri çerez göndermez, saklamaz. Siteler arası bir giriş yönlendirmesinin
+  geçtiği site, oturumun geri kalanında muaftır.
+- Süresi olan çerezler ve `localStorage` yeniden başlatmada ve OS güncellemesinde kalır (eski çerez dosyaları aynen
+  yüklenir). Site başına "Site verilerini temizle" o sitenin ve alt alan adlarının çerezlerini ve Web Storage'ını siler;
+  "Tarama verilerini temizle" hepsini siler.
+- HSTS: `Strict-Transport-Security` gönderen siteye oturumun geri kalanında yalnızca https ile gidilir.
+- Formlar: `GET` ve `POST`; `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain` (`enctype`,
+  `formenctype`), gizli alanlar, `required` (boş zorunlu alan gönderimi engeller; `novalidate` / `formnovalidate`
+  kapatır), Enter ve `requestSubmit()`. Parola alanında göster / gizle düğmesi vardır; `type=number` sayısal klavyeyi
+  açar.
+- Şifre yöneticisi: kaydetme teklifi yalnızca giriş işe yaradıktan sonra çıkar (sekme formdan ayrıldı ya da form
+  gitti); yanlış parolada ve özel sekmede asla çıkmaz. Parolalar yalnızca tam origin için dolar. Şifreler sayfasında
+  "Siteyi aç ve giriş yap" düğmesi vardır. Parolalar ve çerezler asla loglanmaz.
+- Hatalar: sertifika sorunu aşılamayan bir "Güvenli bağlantı kurulamadı" sayfası gösterir; zaman aşımı Yeniden dene
+  sayfası gösterir.
+
+Yerel test: `python tests/html5/login_server.py` CSRF belirteçli giriş formu, çerez bayrakları, yönlendirme zinciri, 2FA
+sayfası ve OAuth yönlendirmesi sunar; `python tests/html5/run_login_ryu.py` sayfaları emülatörde koşar. Tek kimlik bilgisi
+yalnızca o sunucuda geçerli sahte bir çifttir.
+
+**SD kartta bytecode önbelleği.** Büyük betikler (8 KB ve üstü) derlenmiş bytecode olarak `jscache/` içinde de tutulur (48 MB, en eskiler silinir); aynı siteye dönüşte ya da yeniden açılışta ayrıştırma atlanır. Ayar `web.jsBytecodeCache` (varsayılan açık); gizli sekmeler kullanmaz. Bozuk ya da eski kayıt yok sayılır ve yeniden derlenir.
+
+**Sayfa hataları ve düzen düzeltmeleri.** Betik hataları ve `console.error` satırları tarayıcı günlüğüne artık kaynak URL ve satır:sütun ile yazılır; zaman bütçesini aşan betik URL'siyle günlüğe düşer. CSS: data: ya da http(s) resimli `mask-image` / `-webkit-mask-image` (resmin şekli arka plan rengiyle boyanır, bir kez rasterlenir ve önbelleğe alınır), katman sırası (`@layer`: katmansız kurallar katmanlıları, sonraki katman öncekini yener, `!important` tersine çevirir), `min-width: max-content` (flex öğeleri doğal genişliğinin altına inmez) ve `grid-template-columns: minmax(0, auto)` sıfıra çökmek yerine içeriğe göre boyutlanır (düğme yazıları harf harf alt satıra düşüyordu). Test sayfası: `tests/web/flex-mincontent.html`.
+
+**Varsayılan masaüstü siteleri.** Tarayıcı artık masaüstü sitelerini ister (Chrome benzeri masaüstü kimliği, `(hover: hover)` / `(pointer: fine)` medya özellikleri, `navigator.platform` `Win32`, dokunma noktası yok). Ayarlarda "Mobil siteleri iste" (varsayılan kapalı) ve adres çubuğu menüsünde site başına anahtar var (eski "varsayılan masaüstü" değeri okunmaz, güncelleyen kullanıcı masaüstü alır; kayıtlı yakınlaştırma korunur). Yakınlaştırma ve cihaz piksel oranı değişmedi. Bilinen eksikler (konsol profilinde bakıldı): github.com hâlâ siyah üst bant ve sıkışık düzen gösteriyor (container query ve bazı özel özellikler henüz yok); en.wikipedia.org yükleyici betiği 1 sn bütçede kesildiği için yaklaşık 40 sn stilsiz kalıyor; old.reddit.com oturumsuz ziyaretçiyi giriş sayfasına yönlendiriyor ve `CSSStyleSheet` istiyor.
+
+## Performans ve bellek
+
+- Arka plan sekmeleri hiçbir şey çalıştırmaz (JS timer, rAF, medya yok); sekme arka plana geçince texture, canvas ve oynatıcılar serbest kalır, JS çöpü bir kez toplanır.
+- Eski sekmelerin belleğini boşalt (Tarayıcı ayarları, `browser.discardTabs`, varsayılan açık): 3'ten (applet modu) ya da 6'dan fazla canlı arka plan sekmesi varsa en eski kullanılanlar bellekte kapatılır. OS düşük bellek bildirince tüm arka plan sekmeleri ve boştaki görsellerin çoğu bırakılır. Atılan sekme adresini, geçmişini ve kaydırma konumunu korur, gösterilince yeniden yüklenir. Özel sekmeler, yüklenen sekmeler, POST sayfaları ve `about:` sayfaları atılmaz.
+- Takılmalar: `perf.stallMs`'den (varsayılan 150 ms) uzun bir kare sistem logunda tek `stall` satırı yazar: evre (`web page parsed`, `web js start`, `web js tick`, `web layout start`, `web job done` = ağ/görsel tamamlanması, `web paint`) ve sayfa adresi. Sonda: `python tools/browser_stall.py`.
+- Ölçümler yalnızca konsol profiliyle yapılır (`NEXVYN_CONSOLE_PROFILE=1`); bkz. `qa/PERFORMANS.md`.
+
+## Güvenlik
+
+- WebGL tampon ve çizim aralıkları (`bufferSubData`, `getBufferSubData`, `drawElements`, `drawRangeElements`) offset ile boyut toplanmadan denetlenir; çok büyük offset sınır kontrolünü artık aşamaz. Script sayıları 64 bit tamsayıya çevrilmeden önce sınırlanır.
+- `new Worker(url)` yalnızca aynı kökenli betikleri, sayfanın kendi `blob:` adreslerini ve `data:` adreslerini kabul eder (yerel sayfa yerel dosya kullanabilir); gerisi `SecurityError` verir.
+- Başka köken'e yönlenen istek `Authorization`, `Cookie`, `Proxy-Authorization` ve CSRF-token başlıklarını bırakır. Üçüncü taraf çerez için giriş yönlendirme izni özel sekmelerde ayrı tutulur ve onlarla birlikte silinir.
+- Özel sekmeler bellekteki bytecode önbelleğini ne okur ne yazar (disk önbelleği zaten kapalıydı). Önbellek kaydı yalnızca anahtar, bağımsız kaynak özeti ve kaynak uzunluğu üçü birden eşleşince kullanılır (önbellek kuşağı `kBytecodeGen` 2; eski `bc1_*` dosyaları yok sayılır ve temizlenir).
+- Arka plan dosya yazımı yazarken ana thread'in aldığı kilidi tutmaz; son özel sekme kapanınca özel IndexedDB veritabanları da bırakılır; başarısız `WebAssembly.Instance` bağlaması kaydettiği import'ları serbest bırakır.

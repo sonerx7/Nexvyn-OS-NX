@@ -1,0 +1,21 @@
+{
+  "name": "button-demo",
+  "time_limit": 80,
+  "steps": [
+    { "launch": "nxvtest.button" },
+    { "wait": 3 },
+    { "screenshot": "button_start" },
+    { "expect_log": "nxvtest-demo: loaded" },
+    { "wclick": [0.5, 0.6] },
+    { "wait": 1 },
+    { "wclick": [0.5, 0.6] },
+    { "wait": 1 },
+    { "screenshot": "button_after_clicks" },
+    { "expect_screenshot": { "name": "button_start", "min_size": [640, 360] } },
+    { "expect_screenshot": "button_after_clicks" },
+    { "expect_screenshots_differ": ["button_start", "button_after_clicks"] },
+    { "expect_log": "button clicked, taps=2" },
+    { "expect_no_crash": true },
+    { "max_not_responding": 0 }
+  ]
+}

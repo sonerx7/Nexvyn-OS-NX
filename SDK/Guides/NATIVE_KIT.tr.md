@@ -191,6 +191,7 @@ app'i kendi girdi sahibidir ve `nxn_input_poll`'u kendisi çağırmaz.
 `NXN_ERR_UNSUPPORTED` döner, eski app'ler için başka hiçbir şey değişmez):
 
 - `nxn_audio_clear` (`NXN_CAP_AUDIO_CLEAR`): push akışının kuyruğundakini atar, sonraki `nxn_audio_queue` taze başlar.
+- `nxn_input_text_request(wanted)` (`NXN_CAP_TEXT_REQUEST`, bit 36; Native 1.1 eki, yalnızca ekleme): bir metin alanı düzenleniyor demektir; Nexvyn OS ekran klavyesini kendisi açar (USB klavyeyle açmaz) ve yazılan metin `nxn_input_text` ile gelir. ImGui app'leri kare başına bir kez `nxn_imgui_text_sync()` (`nxn_imgui.h`) çağırır; SDL app'leri bunu `SDL_StartTextInput` / `SDL_StopTextInput` üzerinden alır (Nexvyn SDL2 video sürücüsü). Bağımsız kütüphane `NXN_ERR_UNSUPPORTED` döner.
 - `nxn_input_key_poll`, `nxn_input_text`, `nxn_input_mouse` (`NXN_CAP_USB_INPUT`): sıralı USB tuş olayları (bir kare içindeki
   kısa basış kaybolmaz), yazılan metin (UTF-8) ve imleç fare olarak. `nxn_input_mouse` bir kez çağrılınca app fare
   kullanıcısı olur: imleç artık `nxn_input_touch`'ta parmak 0 sayılmaz. `nxn_input_key_held` değiştirici tuşları bilir
@@ -240,6 +241,14 @@ döngüyü gösterir. Yüzey değişimi, güvenilmeden önce konsolda kanıtlanm
 
 **Çökmeler.** Art arda üç kez çöken uygulama için Nexvyn OS "Kapat / Açık bırak" diye sorar; normal bir çıkış sayacı
 sıfırlar.
+
+## Sistem entegrasyonu (Native 1.2)
+
+Nexvyn OS'un bir parçası gibi hissettirmek isteyen app'ler için. Her çağrı bir `nxn_caps` biti ile bildirilir, bit yoksa `NXN_ERR_UNSUPPORTED` döner (tek başına `.nro`, eski sistem); kullanan app `"minNative": "1.2"` yazar. Hepsi yalnızca ekleme: 1.0 / 1.1 için derlenmiş app'ler değişmeden çalışır. Örnek: `sdk/native/examples/services12`.
+
+- **Pencere kontrolü** (`nxn_window.h`, `NXN_CAP_WINDOW_CTL`): `nxn_window_set_title(title, subtitle)` başlık çubuğunu ayarlar ("Oyun - Bölüm 3", her biri 200 bayt, karakter sınırından kesilir), `nxn_window_set_mode(NXN_WIN_NORMAL / MAXIMIZED / FULLSCREEN)` pencere kipi ister (cevap `NXN_EVENT_RESIZE`; yeniden boyutlanamayan pencerede büyütme yok sayılır), `nxn_window_set_modified(1)` başlıkta OS'un "düzenlendi" işaretini gösterir ve Nexvyn OS kapanmadan, yeniden başlamadan ya da güç kapanmadan önce app'i kaydedilmemiş işi olanlar arasında listeler (pencere kapatma yine `NXN_EVENT_QUIT` gönderir). Çağrılar hemen döner; OS ana thread'i en yeni değerleri bir kare içinde uygular.
+- **Pil ve ağ durumu** (`nxn_power.h`, `NXN_CAP_POWER_STATE`): `nxn_power_get(&p)` Nexvyn OS'un zaten tuttuğu pil yüzdesini (-1 = bilinmiyor, ör. emülatör), şarj, dock ve çevrimiçi bayraklarını kopyalar (dosya, ağ ya da servis çağrısı yok: her karede çağrılacak kadar ucuz). `NXN_EVENT_POWER` (yalnızca `"minNative": "1.2"` ve üzeri app'ler) bunlardan biri değişince gelir (pil en az yüzde 1), saniyede en çok bir kez, okunmamışlar birleşir: durumu `nxn_power_get` ile okuyun. Ağ değişikliği `online` bayrağıdır. Pil azken yükü düşürmek ya da çevrimdışıyken çevrimiçi isteği atlamak için kullanın.
+- **OS diyalogları** (`nxn_dialog.h`, `NXN_CAP_DIALOG`): `nxn_dialog(&params, &picked)` OS'un uyarı / soru diyaloğunu 1 ile 4 arası kendi düğmelerinizle gösterir (ilki varsayılan, `cancel_button` Esc / B cevabı, `danger_button` yıkıcı stilde çizilir; etiketler app'in `lang/<code>.json` anahtarı olabilir), `nxn_prompt(title, message, initial, out, cap)` bir metin alanı (kapatılırsa `NXN_ERR_CANCELLED`). OS app'leriyle aynı görünüm, tema, gamepad ve dokunma davranışı. **İkisi de çağıran app thread'inde kullanıcıyı bekler** (`nxn_pick` gibi): OS ana thread'i çizmeye devam eder, pencere "yanıt vermiyor" olmaz, pencere kapanırsa bekleme `NXN_ERR_NOT_READY` ile biter. App bu sırada çalışmaya devam etsin istiyorsanız (emülasyon sürsün) bir worker thread'den, durmasını istiyorsanız ana thread'den çağırın. App başına aynı anda tek diyalog (`NXN_ERR_BUSY`).
 
 ## OS görünümü ve app'in kendi metinleri (Native 1.1, `nxn_ui.h`)
 

@@ -1,0 +1,14 @@
+{
+  "id": "nxvtest.button",
+  "name": { "en": "Test Demo Button" },
+  "description": { "en": "A window with a button and a label, used by the nxvtest sample scenarios" },
+  "version": "1.0",
+  "author": "Your Name",
+  "category": "utilities",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "minSdk": "1.0",
+  "window": { "width": 560, "height": 400, "resizable": false },
+  "gamepad": false,
+  "permissions": []
+}

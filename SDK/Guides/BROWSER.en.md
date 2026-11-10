@@ -91,13 +91,63 @@ Sources: [GameBrew: NetSurf for NX](https://www.gamebrew.org/wiki/NetSurf_for_NX
   CSS size; inline `<svg>` is no longer hidden but drawn as an image (`currentColor`, default fill = text color,
   `<use href="#id">` icon sprites are resolved from other inline SVGs too).
 - **WebP**: since SDL_image 2.0.4 is built with libwebp, still WebP is already decoded (no animated WebP).
-- **Canvas 2D**: paths, curves, arcs, `roundRect`, `Path2D`, transforms, `save/restore`, nonzero/evenodd fill, strokes
-  (joins and caps approximated with discs), `fillRect/strokeRect/clearRect`, `globalAlpha`, `destination-out`,
-  `fillText/measureText` (with the system font, as a layer on top of the bitmap), `getImageData`, `putImageData`,
-  `drawImage` from another canvas, `isPointInPath`. Since 1.2.6 also: linear and radial gradients, patterns, `clip()`
-  (with the `save/restore` stack), more composite operations (`lighter`, `destination-over`, `source-atop`, `multiply`, `screen`), affine
-  `drawImage` with `imageSmoothingEnabled`, `setLineDash`, approximate shadows, `OffscreenCanvas` and
-  `createImageBitmap`. The anti-aliased rasterizer is in C++.
+- **Canvas 2D**: paths, curves, arcs, `ellipse`, `roundRect` (radii arrays and points), `Path2D`, transforms, `save/restore`,
+  nonzero/evenodd fill, real strokes (`lineJoin` miter / round / bevel, `miterLimit`, `lineCap`, `setLineDash` with
+  `lineDashOffset`), `fillRect/strokeRect/clearRect`, `globalAlpha`, `getImageData` / `putImageData` (dirty rects) / `ImageData`,
+  `isPointInPath` (both fill rules) and `isPointInStroke`. Linear, radial and conic gradients, patterns (canvas or `<img>`),
+  `clip()` with the `save/restore` stack, all 26 composite operations (Porter-Duff and blend modes), real `shadowBlur`
+  (gaussian approximation, bounded cost), the `filter` property (`blur`, `brightness`, `contrast`, `grayscale`, `sepia`,
+  `saturate`, `invert`, `opacity`, `hue-rotate`, `drop-shadow`), `imageSmoothingEnabled` / `imageSmoothingQuality`.
+  Text (`fillText`, `strokeText` outline, `textAlign`, `textBaseline`, `direction`, `maxWidth`, `measureText` with the real
+  ink box) is rasterized with the system font into the bitmap, so `getImageData`, `drawImage` and `toDataURL` see it.
+  `drawImage` / `createPattern` / `createImageBitmap` take `<img>` (also `new Image()` with `onload`, data, http and blob URLs),
+  canvases, `ImageBitmap` and `Blob`; cross-origin pictures are not tainted, so apps keep working. `toDataURL` / `toBlob` /
+  `OffscreenCanvas.convertToBlob` write PNG or JPEG (quality parameter); other types give PNG. `getContext('2d', {alpha:false})`
+  makes an opaque bitmap. Setting `width` / `height` (even to the same value) clears the canvas and resets the context. The
+  rasterizer, stroker, blur, filters and the PNG / JPEG encoders are C++ (`web_canvas.cpp`) with host unit tests.
+  Limits: video frames cannot be drawn, text uses the sans fonts (bold or regular), a canvas is at most 4096 px a side and
+  16 MB (and smaller when the OS is short of memory), `isPointInStroke` treats joins and caps as round.
+- **ES modules** (1.3.0): `<script type="module">` (deferred, in document order), static `import` / `export`, dynamic
+  `import()` (also from classic scripts), `import.meta.url`, top-level `await`, `nomodule`, `<script type="importmap">`
+  (`imports`, `scopes`) and JSON modules. QuickJS resolves imports synchronously, so a module's whole graph is
+  downloaded and cached first (relative, absolute and `data:` URLs, 48 MB / 2000 modules at most); a missing module or an
+  unmapped bare name rejects the promise and the page keeps running.
+- **Web Workers** (1.3.0): `new Worker(url, {type, name})` with `http(s):`, local, `blob:` and `data:` scripts and module
+  workers. Each worker is a thread (below the main thread) with its own QuickJS runtime and its own lock: nothing it
+  waits on is held by the main thread. `postMessage` is a structured clone (objects, arrays, Map, Set, Date, RegExp,
+  typed arrays, BigInt, cycles) with transferable `ArrayBuffer`s; `onmessage` / `onerror`, `terminate()`, `close()`,
+  `importScripts`, `fetch` (done by the page: cookies, `blob:` and `data:` work), timers, `performance.now`,
+  `TextEncoder` / `TextDecoder`, `URL`, `crypto.getRandomValues`, `atob` / `btoa` inside. Limits: 4 workers at a time
+  (a fifth `new Worker` throws `QuotaExceededError`), 24 MB of script memory each, a callback that runs 4 s ends the
+  worker with an error event (the page never waits for it), workers end with their page. Not there: `SharedWorker`,
+  `SharedArrayBuffer`, `import()` and IndexedDB inside a worker, posting `Error` objects or functions.
+- **IndexedDB** (1.3.0): `indexedDB.open` / `deleteDatabase` / `databases` / `cmp`, versions with `upgradeneeded`,
+  object stores (key paths, key generators), indexes (unique, `multiEntry`, compound key paths), transactions
+  (`readonly`, `readwrite`, abort rolls back), `get` / `getKey` / `getAll` / `getAllKeys` / `count` / `put` / `add` /
+  `delete` / `clear`, cursors in all four directions (`continue`, `advance`, `continuePrimaryKey`, `update`,
+  `delete`), `IDBKeyRange`. Values are structured clones. Each origin has its own files in the Browser's storage folder
+  (private tabs keep theirs in memory); opening reads the file on a background thread and changes are written back
+  there a moment after the last commit, never on the main thread. At most 32 MB per database; "clear browsing data"
+  deletes them. Transactions of a page run one after another.
+- **WebAudio** (`AudioContext`, `webkitAudioContext`, `OfflineAudioContext`): `GainNode`, `OscillatorNode` (sine, square,
+  sawtooth, triangle), `AudioBufferSourceNode` (loop, playback rate, start offset, `onended`), `AudioBuffer`,
+  `decodeAudioData` (wav, ogg, mp3, flac, decoded on a worker), `BiquadFilterNode` (lowpass, highpass, bandpass, shelves,
+  peaking, notch, allpass), `DelayNode`, `StereoPannerNode`, `AnalyserNode`, `DynamicsCompressorNode`, and `AudioParam`
+  automation (`setValueAtTime`, linear and exponential ramps, `setTargetAtTime`, `setValueCurveAtTime`, cancel). The graph
+  renders on one low-priority thread per context into a ring buffer that the OS mixer reads; the page's thread only
+  posts commands (no shared locks). Limits: 4 contexts, 4096 nodes and 96 voices per page. Not supported: spatial
+  `PannerNode` (a pass-through stand-in), `ScriptProcessorNode`, `AudioWorklet`, `MediaStream` nodes; `<audio>` elements
+  keep their own output (`createMediaElementSource` returns a silent stand-in). Autoplay rules are a no-op: a context
+  starts running and `resume()` always works.
+- **WebGL 2** (`getContext('webgl2')`, `WebGL2RenderingContext`): vertex array objects, instancing (`drawArraysInstanced`, `drawElementsInstanced`, `vertexAttribDivisor`, `drawRangeElements`), integer attributes, uniform buffer objects (`getUniformBlockIndex`, `uniformBlockBinding`, `bindBufferBase/Range`, block queries), `copyBufferSubData` / `getBufferSubData`, 3D and 2D-array textures (`texImage3D`, `texStorage2D/3D`), sampler objects, multiple render targets (`drawBuffers`, `framebufferTextureLayer`, `blitFramebuffer`, `readBuffer`, `invalidateFramebuffer`), float and integer color formats (`EXT_color_buffer_float`), occlusion queries, sync objects (emulated: `clientWaitSync` waits with `glFinish`) and transform feedback. GLSL ES 3.00 and 1.00 shaders go to the OpenGL ES 3 driver as written (`web_glsl3.cpp` can also translate them to GLSL 430 for a desktop-only host); compile errors come back in `getShaderInfoLog`. Extensions follow what the host offers (`EXT_color_buffer_float`, `OES_texture_float_linear`, `EXT_texture_filter_anisotropic`, `WEBGL_compressed_texture_s3tc`). Limits: a context may hold 256 MB of buffers and 3D / array textures; a query or transform feedback must start and end inside one script task (a frame callback); WebGL 1 contexts do not see any of this. Known gaps (not passing on the emulator test host; the context never crashes, calls just return wrong pixels): rendering to a single layer of a 2D-array texture (`framebufferTextureLayer` + clear), sampling 3D textures (`sampler3D`), and `drawArraysInstanced` with a changed vertex array object or instance count; `ANY_SAMPLES_PASSED_CONSERVATIVE` may report samples that did not pass (allowed by the spec). `MAX_TEXTURE_MAX_ANISOTROPY_EXT` reports the host limit (at most 16). These features stay unverified until tried on a real console.
+- **Gamepad API**: `navigator.getGamepads()`, `gamepadconnected`, standard mapping (17 buttons, 4 axes; the standard
+  layout is by position, so the Switch B button is button 0), dead zone 0.1, `vibrationActuator.playEffect` (the
+  console's rumble, strongest of the two magnitudes). The pad appears after the first input, as in other browsers.
+  While a page polls the controller it owns the pad (the pad stops moving the pointer); touch still works. Nothing is
+  reported while the page is in a background tab or an unfocused window.
+- **Fullscreen API**: `element.requestFullscreen()`, `document.exitFullscreen()`, `fullscreenElement`,
+  `fullscreenEnabled`, `fullscreenchange` (and the `webkit` names). The window goes fullscreen, the toolbar and tabs hide,
+  and the element covers the page. Esc leaves; with a controller, hold B for a moment while the page polls the pad.
 - **Private cookie jar and storage**: separate cookies and Web Storage for private tabs that are not written to disk.
 - `CSS.supports()` reports the properties the engine really lays out.
 
@@ -176,7 +226,7 @@ Prioritized by how often real sites depend on it.
 | `filter` | none | `brightness / contrast / grayscale / sepia / invert / saturate / opacity` on everything drawn (pictures: brightness only); `blur()` and `drop-shadow()` are not drawn |
 | `backdrop-filter` | none | the blur is not drawn; a see-through background behind it is made almost opaque so the text stays readable |
 | `width / height: fit-content` (max-/min-content) | `auto` | shrink-to-fit |
-| `<video>` / `<audio>` | hidden | inline playback with the system media player (FFmpeg: mp4/webm/mkv, mp3/aac/ogg, progressive http(s) and HLS): poster, play button, controls bar (play/pause, time, seek, mute, "Open in Video Player"); one plays at a time, nothing is made before the first play, a hidden tab frees its decoder. `HTMLMediaElement`: `play()/pause()/load()/canPlayType()`, `currentTime`, `duration`, `paused`, `ended`, `volume`, `muted`, `loop`, `playbackRate`, `videoWidth/Height`, `readyState`, `error` and the events `loadstart`, `loadedmetadata`, `canplay`, `play`, `playing`, `pause`, `timeupdate`, `ended`, `error`, `volumechange`. MediaSource (`blob:` streams, as on YouTube) is not supported |
+| `<video>` / `<audio>` | hidden | inline playback with the system media player (FFmpeg: mp4/webm/mkv, mp3/aac/ogg, progressive http(s) and HLS): poster, play button, controls bar (play/pause, time, seek, mute, "Open in Video Player"); one plays at a time, nothing is made before the first play, a hidden tab frees its decoder. `HTMLMediaElement`: `play()/pause()/load()/canPlayType()`, `currentTime`, `duration`, `paused`, `ended`, `volume`, `muted`, `loop`, `playbackRate`, `videoWidth/Height`, `readyState`, `error` and the events `loadstart`, `loadedmetadata`, `canplay`, `play`, `playing`, `pause`, `timeupdate`, `ended`, `error`, `volumechange`. `seeking`, `buffered`, `seekable`, `networkState` and the `seeking`/`seeked`/`waiting` events are real state. MediaSource / SourceBuffer (`blob:` streams, as on YouTube) work for H.264 + AAC fragmented MP4 and WebM (see "Video" below) |
 | `<picture>` / `srcset` | first `<source>` with a srcset, ~600 px candidate | the first `<source>` whose `type` is decoded here and whose `media` holds; `srcset` by `sizes` and the width the picture gets (capped at 1280 px for memory) |
 | `<dialog>` | `open` attribute only | `show()`, `showModal()` (centered over a dimmed page, focus to `[autofocus]`), `close(value)`, `returnValue`, `requestClose()`, `cancel` / `close` events, Escape, `<form method=dialog>` |
 | Forms | text, password, checkbox, radio, select, buttons | plus `range` (slider), `color` (color well), `number` (narrow field), date / time types (field with the format to type), `<progress>`, `<meter>` (low / high / optimum colors) |
@@ -192,6 +242,8 @@ Already there and checked by the tests: `fetch` with `Response.json/text/blob/ar
 `<svg>` and `<img src=*.svg>`, canvas 2D.
 
 ### 3.7 Memory, size and "a separate app?"
+
+**Bytecode cache on the SD card.** Big scripts (8 KB and more) are also kept as compiled bytecode in `jscache/` (48 MB, oldest removed first), so a revisit or a restart skips the parse. Setting `web.jsBytecodeCache` (default on); private tabs never use it. A damaged or outdated entry is ignored and recompiled.
 
 **Nothing of the engine runs without a Browser window.** The engine keeps a few things between pages: two worker
 threads (1 MB stacks each), a QuickJS compile runtime per worker, the compiled prelude, a bytecode cache (up to
@@ -271,8 +323,103 @@ should be entered in this table.
   `auto` sizes and from / to a transparent background without a box jump. Element.animate has no `currentTime`
   seeking, `playbackRate` or composite modes.
 - `grid-auto-flow: dense`, `fr` rows, `subgrid`, `masonry`.
-- Canvas: `fillText` pixels in `getImageData`, a real `shadowBlur`, `drawImage` from an `<img>`, `toDataURL`, conic
-  gradients.
+- Canvas: `drawImage` of a `<video>` frame, per-family fonts in canvas text (only sans regular / bold), `Path2D` from an SVG path string.
 - `<text>` inside SVG, painting with CSS classes, filters.
-- Web fonts (`@font-face`), MediaSource video (`blob:` streams), WebGL, Service Worker, WebSocket, WebAssembly. The
-  sites that need these do not work in this browser.
+- Web fonts (`@font-face`), Service Worker, WebSocket. DRM video (Widevine, FairPlay, PlayReady) can never play: the
+  console has no CDM and `navigator.requestMediaKeySystemAccess` rejects. The sites that need these do not work in this browser.
+
+## WebGL samples
+
+Real WebGL pages run in the Browser under the console profile on the emulator (`NEXVYN_CONSOLE_PROFILE=1`, two emulators
+sharing one PC). The frame numbers are **relative** (emulator, not a console): use them to compare builds, never as console fps.
+The webglsamples.org demos are BSD-3-Clause (Google); they were served from a local copy that is not part of this repository.
+
+| Sample | Result | Notes (screenshot) |
+| --- | --- | --- |
+| webglsamples.org dynamic-cubemap | PASS | Chrome-like sphere reflecting a cube map that is re-rendered every frame (6 faces), orbiting camera, no JS errors, about 6 fps in the page counter (0309, 0310) |
+| webglsamples.org field | PASS | Grass field, about 18 fps in the page counter (0312) |
+| webglsamples.org aquarium | renders, too slow | Fish scene draws, about 1 fps; the page shows "Not Responding" while a frame runs (0313) |
+| three.js webgl_materials_cubemap_dynamic | FAIL (speed) | Page and controls load, the canvas stays black: `raf` frames exceed the time budget (0314) |
+| three.js webgl_geometry_cube | FAIL (load) | The 1.2 MB module takes about 60 s to load under the profile; black at capture |
+| three.js webgl_postprocessing_unreal_bloom | FAIL (speed) | `raf` frames exceed the time budget |
+| webgl_loader_gltf, webgl_shadowmap, webgl_instancing_performance, Babylon.js playground | not run | next round |
+
+Engine fixes this round (all general): cube-map faces as render targets (drawn through a 2D shadow texture and copied into
+the face, because the emulator sends every draw to layer 0), `copyTexImage2D` / `copyTexSubImage2D`, `texImage2D` /
+`texSubImage2D` from `<img>` and `ImageBitmap` (they used to upload a gray pixel), cube-map mip chains built on the CPU (the
+host left the lower levels empty), canvas read-back in bands (a single large read returned only the first 256 columns), a
+longer budget for the frame callback of WebGL pages, for module evaluation and for fetch completion, and credit for slow
+driver calls. Tests: `tests/html5/webgl-cubemap-fbo.html`, `webgl-cube-image.html`.
+
+## Video
+
+What plays (software decoding on the console CPU, `media::Player` / FFmpeg; hardware decoding stays off: `media.hwdec` defaults to off and nothing assumes it):
+- Progressive `<video>` / `<audio>`: mp4, webm, mkv, mp3, aac, ogg from http(s) or local files. Events, `currentTime`, `seeking`, `buffered`.
+- HLS (`.m3u8`, VOD): the player picks the stream through FFmpeg's HLS demuxer. Target is H.264 up to about 480p.
+- MediaSource (`blob:` URL of `new MediaSource()`): `addSourceBuffer` for `video/mp4` (avc1 up to level 3.0, mp4a.40.x) and `video/webm` (VP8, Vorbis);
+  `appendBuffer` (async, `updating`, `updateend`), `remove`, `abort`, `timestampOffset`, `appendWindowStart/End`, `buffered`, `endOfStream`,
+  `duration`. Data is parsed on a worker thread and held compressed (32 MiB cap per MediaSource, then `QuotaExceededError`); a broken stream only
+  fails its own MediaSource. `MediaSource.isTypeSupported`, `canPlayType` and `navigator.mediaCapabilities.decodingInfo` answer the same way, so
+  adaptive players choose a rung the console can decode (VP9, Opus, AV1 and H.264 above level 3.0 are reported unsupported unless `media.mse.vp9`,
+  `media.mse.opus` or real-hardware `media.hwdec` are on).
+
+Limits:
+- DRM / EME is impossible: no CDM; `requestMediaKeySystemAccess` rejects. Rented or protected streams never play.
+- 720p and above are not smooth in software decoding; 1080p needs hardware decoding that has not been verified on a console.
+- Not done: `requestVideoFrameCallback`, text tracks (WebVTT), Picture-in-Picture, `ManagedMediaSource`, real-site YouTube end to end (the player script
+  itself is heavy for the JS engine). Adaptive HLS bit-rate switching outside MSE is the FFmpeg default (first variant).
+- Tests: `tests/html5/video-play.html`, `video-hls.html`, `video-mse.html` use self-generated clips (`tools/gen_html5_video.py`, no third-party media).
+- **Custom elements and Shadow DOM (basic)**: `customElements.define/get/whenDefined/upgrade/getName` upgrade existing and new elements (constructor, `connectedCallback`, `disconnectedCallback`, `attributeChangedCallback` with `observedAttributes`). `attachShadow()` returns a flattened shadow root (a `display:contents` box that is the host's first child; `host`, `mode`, `shadowRoot` work, `<slot>` projection and style scoping do not).
+- **EME (ClearKey only)**: `navigator.requestMediaKeySystemAccess('org.w3.clearkey')`, `MediaKeys`, `MediaKeySession` (`generateRequest`, `update` with the ClearKey JSON license, `keystatuseschange`), `video.setMediaKeys()` and the `encrypted` event for CENC fMP4 in MSE. The demuxer decrypts cenc-aes-ctr with the key from the page's license (one key per MediaSource). Widevine, PlayReady and FairPlay reject with `NotSupportedError`: they need a content decryption module that is not available here and is not faked. Test: `tests/html5/eme-clearkey.html`.
+
+## Signing in to sites
+
+The cookie rules follow RFC 6265bis (`source/web/web_cookies.cpp`, host tests in `tests/test_cookies.cpp`):
+
+- `Set-Cookie` of every redirect hop (301, 302, 303, 307, 308) is stored before the next request, so a sign-in that sets its
+  session cookie on the redirect works. A `303`, or a `301` / `302` after a `POST`, becomes a `GET`; `307` / `308` keep
+  method and body.
+- `SameSite` Lax / Strict / None, `Secure` (https only, `SameSite=None` needs it), `__Secure-` / `__Host-` prefixes,
+  `Domain` and `Path` matching with a public-suffix list, `Max-Age` before `Expires`, a 400-day cap, `HttpOnly` (hidden from
+  `document.cookie`, scripts cannot set or replace it), limits of 4096 bytes per cookie, 180 per domain and 3000 in all.
+  A cookie without `SameSite` behaves as Lax, and still goes on a cross-site top-level `POST` for 2 minutes (single sign-on
+  that posts back to the site).
+- **Third-party cookies** (Settings > Privacy, "Block third-party cookies", on by default): images, stylesheets and script
+  requests to another site than the page's send and store no cookies. A site that a cross-site sign-in redirect led through
+  is exempt for the rest of the session.
+- Cookies with an expiry and `localStorage` stay across a restart and an OS update (older cookie files load unchanged).
+  "Clear site data" per site removes the cookies and the Web Storage of that site and its subdomains; "Clear browsing data"
+  removes everything.
+- HSTS: a site that sent `Strict-Transport-Security` is only reached over https for the rest of the session.
+- Forms: `GET` and `POST` with `application/x-www-form-urlencoded`, `multipart/form-data` or `text/plain` (`enctype`,
+  `formenctype`), hidden fields, `required` (an empty required field blocks the submit; `novalidate` / `formnovalidate`
+  turn it off), Enter and `requestSubmit()`. Password fields have a show / hide button; `type=number` shows the numeric
+  keyboard.
+- Password manager: the save offer appears only after the sign-in worked (the tab left the form, or the form is gone), never
+  for a wrong password and never in a private tab. Passwords fill for the exact origin only. The Passwords sheet has an "Open
+  site and sign in" button. Passwords and cookies are never logged.
+- Errors: a certificate problem shows a "Secure connection failed" page with no way around it; a timeout shows a page with
+  Retry.
+
+Local test: `python tests/html5/login_server.py` serves a sign-in form with a CSRF token, cookie flags, a redirect chain, a
+2FA page and an OAuth redirect; `python tests/html5/run_login_ryu.py` runs the pages in the emulator. The only credential is
+a fake pair that works on that server alone.
+
+**Page errors and layout fixes.** Script errors and `console.error` lines in the browser log now carry the source URL with line:column, and a script that runs out of its time budget is logged with its URL. CSS: `mask-image` / `-webkit-mask-image` with a data: or http(s) picture (the picture's shape is painted in the background color, rasterized once and cached), cascade layers (`@layer`: unlayered rules beat layered ones, later layers beat earlier ones, `!important` reverses), `min-width: max-content` (flex items no longer shrink below their natural width), and `grid-template-columns: minmax(0, auto)` is sized by content instead of collapsing to zero (this made button labels wrap one letter per line). Test page: `tests/web/flex-mincontent.html`.
+
+**Desktop sites by default.** The Browser now asks for desktop sites (Chrome-like desktop identity, `(hover: hover)` / `(pointer: fine)` media features, `navigator.platform` `Win32`, no touch points). Settings has "Request mobile sites" (off by default) and a per-site switch in the address-bar menu (the old "desktop by default" value is not read, so updating users get desktop sites; saved zoom is kept). Zoom and device pixel ratio are unchanged. Known gaps (checked on the console profile): github.com still shows a black header band and the compact layout (container queries and some custom properties are not supported yet); en.wikipedia.org stays unstyled for about 40 s because its loader script is cut by the 1 s script budget; old.reddit.com redirects signed-out visitors to a sign-in page and needs `CSSStyleSheet`.
+
+## Performance and memory
+
+- Background tabs run nothing (no JS timers, no rAF, no media); when a tab goes to the background its textures, canvases and players are freed and its JS garbage is collected once.
+- Free memory of old tabs (Browser settings, `browser.discardTabs`, default on): with more than 3 (applet mode) or 6 live background tabs, the least recently used ones are closed in memory. When the OS reports low memory, all background tabs and most idle images go. A discarded tab keeps its address, history and scroll position and reloads when shown. Private tabs, loading tabs, POST pages and `about:` pages are never discarded.
+- Stalls: a frame longer than `perf.stallMs` (default 150 ms) writes one `stall` line in the system log naming the phase (`web page parsed`, `web js start`, `web js tick`, `web layout start`, `web job done` = network/image completion, `web paint`) and the page address. Probe: `python tools/browser_stall.py`.
+- Measurements use the console profile only (`NEXVYN_CONSOLE_PROFILE=1`); see `qa/PERFORMANS.md`.
+
+## Security
+
+- WebGL buffer and draw ranges (`bufferSubData`, `getBufferSubData`, `drawElements`, `drawRangeElements`) are checked without adding offset and size, so huge offsets cannot wrap around the bounds check; script numbers are clamped before they become 64-bit integers.
+- `new Worker(url)` accepts only same-origin scripts, the page's own `blob:` URLs and `data:` URLs (a local page may use local files); anything else throws a `SecurityError`.
+- A redirect to another origin drops `Authorization`, `Cookie`, `Proxy-Authorization` and CSRF-token headers. The sign-in redirect allowance for third-party cookies is kept separately for private tabs and cleared with them.
+- Private tabs neither read nor write the in-memory bytecode cache (the disk cache was already off). A cached bytecode entry is used only when its key, an independent source hash and the source length all match (cache generation `kBytecodeGen` 2; older `bc1_*` files are simply ignored and pruned).
+- Background file writes no longer hold the lock the main thread takes while they write; closing the last private tab also drops private IndexedDB databases; a failed `WebAssembly.Instance` link releases the imports it registered.

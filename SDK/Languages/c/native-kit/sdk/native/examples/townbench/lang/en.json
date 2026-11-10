@@ -1,0 +1,40 @@
+{
+ "ui": {
+  "loading": "Loading the village",
+  "shaders": "Preparing shaders",
+  "fail": "Cannot load"
+ },
+ "m": {
+  "title": "Village Bench",
+  "sub": "A 60 second flight over a textured village. Same path every run.",
+  "preset": "QUALITY PRESET",
+  "best": "Best",
+  "start": "A  Start",
+  "hint": "Up / Down choose    A start    B quit"
+ },
+ "run": {
+  "title": "Benchmark",
+  "abort": "B abort"
+ },
+ "r": {
+  "title": "Benchmark",
+  "score": "SCORE",
+  "avg": "Average",
+  "min": "Minimum (worst frame)",
+  "low": "1% low",
+  "frames": "Frames",
+  "keys": "A / Y run again    B menu"
+ },
+ "p0": {
+  "n": "Low",
+  "d": "Render scale 60%, no shadows, no anti-aliasing"
+ },
+ "p1": {
+  "n": "Medium",
+  "d": "Render scale 80%, sun shadows, anti-aliasing"
+ },
+ "p2": {
+  "n": "High",
+  "d": "Render scale 100%, sun shadows, anti-aliasing"
+ }
+}

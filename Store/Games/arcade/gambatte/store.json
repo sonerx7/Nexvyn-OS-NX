@@ -1,0 +1,43 @@
+{
+  "kind": "emulator",
+  "license": "GPL-2.0-only",
+  "sourceUrl": "https://github.com/libretro/gambatte-libretro",
+  "author": "sonerx7",
+  "tech": "native",
+  "features": [
+    "offline",
+    "controller",
+    "touch"
+  ],
+  "players": "1",
+  "subtitle": {
+    "en": "Game Boy emulator",
+    "tr": "Game Boy öykünücüsü",
+    "de": "Game Boy-Emulator",
+    "fr": "Émulateur Game Boy",
+    "es": "Emulador de Game Boy",
+    "ja": "Game Boyエミュレーター",
+    "zh": "Game Boy 模拟器",
+    "ko": "Game Boy 에뮬레이터"
+  },
+  "description": {
+    "en": "Gambatte runs Game Boy / Game Boy Color games in a Nexvyn OS window, with a game library: put your own game files (.gb, .gbc) into the games folder (or pick a folder) and browse them as a grid or list with covers, details, favourites and search; press Play and come back to the list when you are done. Settings cover the picture (size, filter, aspect, frame skip), sound, save states, fast forward, controller layouts and touch buttons. No games and no BIOS are included: bring your own. Optional box art from the internet (libretro thumbnail server): you are asked once, it can be switched off in Settings; it is the reason for the network permission.",
+    "tr": "Gambatte, Game Boy / Game Boy Color oyunlarını Nexvyn OS penceresinde oyun kütüphanesiyle çalıştırır: kendi oyun dosyalarını (.gb, .gbc) oyun klasörüne koy (ya da bir klasör seç), kapak, ayrıntı, favori ve aramayla ızgara ya da liste olarak gez; Oyna'ya bas, işin bitince listeye dön. Ayarlar görüntüyü (boyut, filtre, en-boy, kare atlama), sesi, durum kayıtlarını, hızlı ileri sarmayı, kumanda düzenlerini ve dokunmatik tuşları kapsar. Pakette oyun ve BIOS yoktur: kendi oyunlarını getir. İnternetten isteğe bağlı kutu resmi (libretro küçük resim sunucusu): bir kez sorulur, Ayarlar'dan kapatılabilir; ağ iznin nedeni budur.",
+    "de": "Gambatte spielt Game Boy / Game Boy Color-Spiele in einem Nexvyn-OS-Fenster, mit Spielebibliothek: lege deine eigenen Spieldateien (.gb, .gbc) in den Spieleordner (oder wähle einen Ordner) und blättere als Raster oder Liste mit Covern, Details, Favoriten und Suche; drücke Spielen und kehre danach zur Liste zurück. Die Einstellungen umfassen Bild (Größe, Filter, Seitenverhältnis, Frame-Skip), Ton, Spielstände, Vorspulen, Controller-Layouts und Touch-Tasten. Es sind keine Spiele und kein BIOS enthalten: bringe deine eigenen mit. Optionale Cover aus dem Internet (libretro-Thumbnail-Server): es wird einmal gefragt, in den Einstellungen abschaltbar; das ist der Grund für die Netzwerkberechtigung.",
+    "fr": "Gambatte lance des jeux Game Boy / Game Boy Color dans une fenêtre Nexvyn OS, avec une bibliothèque de jeux : place tes propres fichiers (.gb, .gbc) dans le dossier des jeux (ou choisis un dossier) et parcours-les en grille ou en liste avec jaquettes, détails, favoris et recherche ; appuie sur Jouer puis reviens à la liste. Les réglages couvrent l'image (taille, filtre, format, saut d'images), le son, les sauvegardes d'état, l'avance rapide, les dispositions de manette et les boutons tactiles. Aucun jeu ni BIOS n'est inclus : apporte les tiens. Jaquettes facultatives depuis Internet (serveur de miniatures libretro) : la question est posée une fois, désactivable dans les réglages ; c'est la raison de l'autorisation réseau.",
+    "es": "Gambatte ejecuta juegos de Game Boy / Game Boy Color en una ventana de Nexvyn OS, con biblioteca de juegos: pon tus propios archivos (.gb, .gbc) en la carpeta de juegos (o elige una carpeta) y explóralos en cuadrícula o lista con carátulas, detalles, favoritos y búsqueda; pulsa Jugar y vuelve a la lista al terminar. Los ajustes cubren la imagen (tamaño, filtro, aspecto, salto de fotogramas), el sonido, los estados guardados, el avance rápido, la disposición del mando y los botones táctiles. No se incluye ningún juego ni BIOS: trae los tuyos. Carátulas opcionales desde Internet (servidor de miniaturas de libretro): se pregunta una vez, se puede desactivar en los ajustes; es el motivo del permiso de red.",
+    "ja": "GambatteはNexvyn OSのウィンドウでGame Boy / Game Boy Colorのゲームを実行し、ゲームライブラリを備えています。お持ちのゲームファイル（.gb, .gbc）をゲームフォルダに入れる（またはフォルダを選ぶ）と、カバー、詳細、お気に入り、検索付きのグリッドまたはリストで一覧でき、プレイを押して終わったらリストに戻れます。設定では画面（サイズ、フィルター、アスペクト、フレームスキップ）、サウンド、ステートセーブ、早送り、コントローラー配置、タッチボタンを調整できます。ゲームとBIOSは含まれません。ご自身でご用意ください。 インターネットからのカバー画像（任意、libretroサムネイルサーバー）：最初に一度だけ確認され、設定でオフにできます。ネットワーク権限の理由です。",
+    "zh": "Gambatte 在 Nexvyn OS 窗口中运行 Game Boy / Game Boy Color 游戏，并带有游戏库：把你自己的游戏文件（.gb, .gbc）放进游戏文件夹（或选择一个文件夹），即可以网格或列表浏览，带封面、详情、收藏和搜索；点击开始游戏，结束后返回列表。设置涵盖画面（大小、滤镜、比例、跳帧）、声音、即时存档、快进、手柄布局和触控按键。不包含游戏和 BIOS：请自备。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。",
+    "ko": "Gambatte은(는) Nexvyn OS 창에서 Game Boy / Game Boy Color 게임을 실행하며 게임 라이브러리를 제공합니다. 가지고 있는 게임 파일(.gb, .gbc)을 게임 폴더에 넣거나 폴더를 고르면 표지, 상세 정보, 즐겨찾기, 검색이 있는 격자 또는 목록으로 볼 수 있고, 플레이를 누른 뒤 끝나면 목록으로 돌아옵니다. 설정에서 화면(크기, 필터, 화면비, 프레임 건너뛰기), 소리, 상태 저장, 빨리 감기, 컨트롤러 배치, 터치 버튼을 조절할 수 있습니다. 게임과 BIOS는 포함되어 있지 않으니 직접 준비하세요. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다."
+  },
+  "changelog": {
+    "en": "First release: Gambatte with the shared game library, settings, save states and touch buttons.",
+    "tr": "İlk sürüm: ortak oyun kütüphanesi, ayarlar, durum kayıtları ve dokunmatik tuşlarla Gambatte.",
+    "de": "Erste Version: Gambatte mit der gemeinsamen Spielebibliothek, Einstellungen, Spielständen und Touch-Tasten.",
+    "fr": "Première version : Gambatte avec la bibliothèque de jeux commune, les réglages, les sauvegardes d'état et les boutons tactiles.",
+    "es": "Primera versión: Gambatte con la biblioteca de juegos compartida, ajustes, estados guardados y botones táctiles.",
+    "ja": "初回リリース：共通のゲームライブラリ、設定、ステートセーブ、タッチボタンを備えたGambatte。",
+    "zh": "首个版本：Gambatte，带共享游戏库、设置、即时存档和触控按键。",
+    "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Gambatte."
+  }
+}

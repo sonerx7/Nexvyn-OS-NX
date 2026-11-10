@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **175** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
+Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **179** öğe. Konsoldaki App Market `Store/catalog.json` dosyasını okur; buradaki her şey yayımlanmadan önce incelendi. Kendi işinizi yayımlamak için: [SDK/Publishing](../SDK/Publishing/README.tr.md).
 
 ## Verimlilik (12)
 
@@ -146,7 +146,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **175** öğe. Konsoldaki 
 | <img src="Apps/showcase/native-showcase/icon.png" width="32"> | [Native SDK Showcase](Apps/showcase/native-showcase/) | Pencerede yerel C++: teknik demo |
 | <img src="Games/showcase/townbench/icon.png" width="32"> | [Village Bench](Games/showcase/townbench/) | 60 saniyelik köy uçuşu benchmark'ı |
 
-## Oyunlar (50)
+## Oyunlar (54)
 
 | | Ad | Açıklama |
 |---|---|---|
@@ -166,6 +166,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **175** öğe. Konsoldaki 
 | <img src="Games/puzzle/blocks/icon.png" width="32"> | [Blok Düşür](Games/puzzle/blocks/) | Maraton, Sprint, Ultra ve Kazı modları |
 | <img src="Games/board/connect4/icon.png" width="32"> | [Dört Bağla](Games/board/connect4/) | Pulları bırak, dördünü yan yana getir |
 | <img src="Games/action/frost-lantern/icon.png" width="32"> | [Ayaz Feneri](Games/action/frost-lantern/) | Beş bölge. Otuz lütuf. Kayıp bir şafak. |
+| <img src="Games/arcade/gambatte/icon.png" width="32"> | [Game Boy (Gambatte)](Games/arcade/gambatte/) | Game Boy öykünücüsü |
 | <img src="Games/casual/fishing/icon.png" width="32"> | [Balık Tut](Games/casual/fishing/) | Oltanı at, makarayı sar, koleksiyonu doldur |
 | <img src="Games/word/hangman/icon.png" width="32"> | [Adam Asmaca](Games/word/hangman/) | Kelimeyi harf harf tahmin et |
 | <img src="Games/action/ironwail/icon.png" width="32"> | [Ironwail](Games/action/ironwail/) | Hızlı klasik 3B motor, LibreQuake dahil |
@@ -173,11 +174,13 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **175** öğe. Konsoldaki 
 | <img src="Games/puzzle/lightsout/icon.png" width="32"> | [Işıkları Söndür](Games/puzzle/lightsout/) | Bütün ışıkları en az hamleyle söndür |
 | <img src="Games/action/luma/icon.png" width="32"> | [Luma: Yıldız Adaları](Games/action/luma/) | On dünyayı keşfet. Sekiz düşmanla savaş. |
 | <img src="Games/arcade/mazeeater/icon.png" width="32"> | [Labirent Yiyici](Games/arcade/mazeeater/) | Dört labirent, üç hayalet, tek iştah |
+| <img src="Games/arcade/genesis-plus-gx/icon.png" width="32"> | [Mega Drive (Genesis Plus GX)](Games/arcade/genesis-plus-gx/) | Mega Drive öykünücüsü |
 | <img src="Games/puzzle/memory/icon.png" width="32"> | [Hafıza Kartları](Games/puzzle/memory/) | Kartları çevir, bütün eşleri bul |
-| <img src="Games/arcade/mgba/icon.png" width="32"> | [mGBA](Games/arcade/mgba/) | GBA öykünücüsü: oyunlarını sen getir |
+| <img src="Games/arcade/mgba/icon.png" width="32"> | [mGBA](Games/arcade/mgba/) | Game Boy Advance öykünücüsü |
 | <img src="Games/puzzle/minesweeper/icon.png" width="32"> | [Mayın Tarlası](Games/puzzle/minesweeper/) | Özel tahtalar, istatistik ve seriler |
 | <img src="Games/sports/minigolf/icon.png" width="32"> | [Mini Golf](Games/sports/minigolf/) | Dokuz çukurlu, kuşbakışı mini golf |
 | <img src="Games/action/missile/icon.png" width="32"> | [Füze Savunması](Games/action/missile/) | Altı şehir, üç batarya: göğü savun |
+| <img src="Games/arcade/fceumm/icon.png" width="32"> | [NES (FCEUmm)](Games/arcade/fceumm/) | NES öykünücüsü |
 | <img src="Games/puzzle/nonogram/icon.png" width="32"> | [Resim Bulmaca](Games/puzzle/nonogram/) | Kareleri boya, gizli resmi ortaya çıkar |
 | <img src="Games/action/spacearena/icon.png" width="32"> | [Uzay Arenası](Games/action/spacearena/) | Neon arenada dalga dalga düşmana dayan |
 | <img src="Games/platforms/pcgames/icon.png" width="32"> | [PC Oyunları](Games/platforms/pcgames/) · Nexvyn OS ile gelir | Steam ve PC oyunların Switch'te |
@@ -192,6 +195,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **175** öğe. Konsoldaki 
 | <img src="Games/action/asteroids/icon.png" width="32"> | [Kaya Avcısı](Games/action/asteroids/) | Kayaları patlat, arkanı kolla |
 | <img src="Games/showcase/techdemo/icon.png" width="32"> | [Gösteri](Games/showcase/techdemo/) · Nexvyn OS ile gelir | Gerçek zamanlı 3D ve müzik gösterisi |
 | <img src="Games/arcade/snake/icon.png" width="32"> | [Yılan](Games/arcade/snake/) | Dört mod, labirent bölümleri, madalyalar |
+| <img src="Games/arcade/snes9x/icon.png" width="32"> | [SNES (Snes9x)](Games/arcade/snes9x/) | SNES öykünücüsü |
 | <img src="Games/action/invaders/icon.png" width="32"> | [Yıldız Kuşatması](Games/action/invaders/) | Onlar ilerler, sen hattı tutarsın |
 | <img src="Games/puzzle/sudoku/icon.png" width="32"> | [Sudoku](Games/puzzle/sudoku/) | Dört zorluk, günlük bulmaca, seriler |
 | <img src="Games/strategy/tanks/icon.png" width="32"> | [Tank Düellosu](Games/strategy/tanks/) | Yıkılabilir arazide sıra tabanlı topçu |

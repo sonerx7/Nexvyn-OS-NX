@@ -1,0 +1,40 @@
+{
+ "ui": {
+  "loading": "Chargement du village",
+  "shaders": "Préparation des shaders",
+  "fail": "Chargement impossible"
+ },
+ "m": {
+  "title": "Benchmark du village",
+  "sub": "Un vol de 60 secondes au-dessus d’un village texturé. Même trajet à chaque fois.",
+  "preset": "NIVEAU DE QUALITÉ",
+  "best": "Meilleur",
+  "start": "A  Démarrer",
+  "hint": "Haut / Bas choisir    A démarrer    B quitter"
+ },
+ "run": {
+  "title": "Benchmark",
+  "abort": "B annuler"
+ },
+ "r": {
+  "title": "Benchmark",
+  "score": "SCORE",
+  "avg": "Moyenne",
+  "min": "Minimum (pire image)",
+  "low": "1 % bas",
+  "frames": "Images",
+  "keys": "A / Y relancer    B menu"
+ },
+ "p0": {
+  "n": "Bas",
+  "d": "Échelle de rendu 60 %, sans ombres, sans anticrénelage"
+ },
+ "p1": {
+  "n": "Moyen",
+  "d": "Échelle de rendu 80 %, ombres du soleil, anticrénelage"
+ },
+ "p2": {
+  "n": "Élevé",
+  "d": "Échelle de rendu 100 %, ombres du soleil, anticrénelage"
+ }
+}

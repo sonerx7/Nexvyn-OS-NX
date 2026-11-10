@@ -17,6 +17,7 @@ MyTheme/                  (MyTheme.nxvtheme olarak zip'lenir; theme.json zip kö
 ├── wallpaper2.jpg ...    isteğe bağlı ek seçenekler
 ├── wallpaper-dark.jpg    isteğe bağlı, koyu görünümde gösterilir
 ├── icons/<app id>.png    isteğe bağlı, 128 px; dosyası olmayan app kendi simgesini korur (en çok 160 dosya)
+├── icons/files/<anahtar>.png isteğe bağlı, 128 px; klasör, dosya türü, disk, Çöp, Bu Konsol; dosya yoksa varsayılan simge
 ├── sounds/*.wav          isteğe bağlı: startup click notify error pop key
 ├── preview.jpg           isteğe bağlı, bitmiş masaüstünün 480x270 resmi (kartlar, yükleyici)
 └── README.md
@@ -69,7 +70,8 @@ Yalnızca şu anahtarlar okunur. Diğerleri yok sayılır, sayılar aralığa k�
 | `shell.layout` | `dock` (dock ve menü çubuğu) ya da `taskbar` (başlat menülü alt çubuk) |
 | `taskbar.size` | `small`, `medium`, `large` |
 | `start.sidePanel` | `true` ya da `false` (taskbar düzeni) |
-| `window.chrome` | `default`, `bevel`, `flat`, `glass`, `mono` (pencere çerçevesi ve düğmeleri) |
+| `window.chrome` | `default`, `bevel`, `flat`, `glass`, `mono`, `keypad` (tuşlu telefon durum şeridi, yazılım tuşları, 3x4 menü ızgarası, piksel yazı), `pocket` (cep bilgisayarı çubukları, Bugün paneli, parlak başlık çubukları), `classic3d` (pencere çerçevesi ve düğmeleri; `classic3d` OS app'lerinde kabartmalı kontroller, çukur alanlar ve piksel yazı tipi de çizer) |
+| `taskbar.combine` | `always`, `never` (pencere başına bir düğme) |
 | `appearance.themeBold` | `true` ya da `false` (kalın sistem yazısı) |
 | `appearance.themeScale` | 0,85 - 1,2 (arayüz ölçeği) |
 | `appearance.reduceTransparency` | `true` ya da `false` |
@@ -88,10 +90,18 @@ gerekeni ayarlayın; gerisi görünüm ve vurguyu izler.
 
 ### Simge seti
 
-`icons/<app id>.png`: app'in id'siyle adlandırılmış 128 px PNG dosyaları (`appstore.png`, `aichat.png`, ...). Yalnızca
-değiştirmek istediğiniz simgeleri yeniden biçimlendirin; diğerleri sistem görünümünde kalır. Kendi çizimlerinizle ve
-araçlarınızla üretin (pikselleştirme, kabartma, düzleştirme, çift ton, çerçeve). Başka bir ürünün simgelerini asla
-çizip geçmeyin ya da düzenlemeyin.
+`icons/<anahtar>.png`: 128 px PNG dosyaları. Anahtar ya bir app id'sidir (`icons/appstore.png`, `icons/aichat.png`, ...) ya da
+`icons/files/` altındaki bir sistem anahtarıdır (`icons/files/folder.png`, `icons/files/trash_empty.png`, ...). Tema, dosyası olan her
+simgeyi değiştirir: app simgeleri, masaüstü öğeleri (Bu Konsol, Ev, Çöp), klasörler, dosya türleri, diskler ve kısayol rozeti.
+
+**Yedek kural (simge temaları gibi):** dosya paketteyse paketin simgesi, yoksa sistemin varsayılan simgesi kullanılır. Eksik,
+okunamayan ya da bozuk dosya hiçbir şeyi bozmaz; paket yalnızca bazı anahtarları yeniden biçimlendirebilir.
+
+Sistem anahtarları (`icons/files/<anahtar>.png`): `computer`, `disk_sd`, `disk_system`, `disk_usb`, `file_archive`, `file_audio`, `file_code`, `file_doc`, `file_font`, `file_generic`, `file_image`, `file_json`, `file_lua`, `file_nro`, `file_nxvapp`, `file_pdf`, `file_sheet`, `file_slides`, `file_text`, `file_video`, `folder`, `folder_apps`, `folder_desktop`, `folder_documents`, `folder_downloads`, `folder_games`, `folder_home`, `folder_media`, `folder_mods`, `folder_movies`, `folder_music`, `folder_office`, `folder_pictures`, `folder_tools`, `shortcut_badge`, `trash_empty`, `trash_full`.
+
+App anahtarları yerleşik app'lerin 79 id'sidir. Bütün anahtarları `python SDK/Tools/theme/themecheck.py --list-icons` ile
+listeleyin; `themecheck.py` eksik anahtarlar için uyarı verir ama başarısız olmaz. Simgeleri kendi çizimlerinizle ve araçlarınızla
+üretin (çizim, pikselleştirme, kabartma, düzleştirme, çift ton, çerçeve). Başka bir ürünün simgelerini asla çizip geçmeyin ya da düzenlemeyin.
 
 ### Sesler
 

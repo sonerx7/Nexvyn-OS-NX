@@ -146,7 +146,9 @@ uygulamalara büyümeye devam eden dört dilden biriyle başlayın; SDK adları 
 C / C++ app'leri kendi sürümü olan native runtime'ı kullanır (`app.json` içinde `"minNative"`). Native SDK 1.1 şunları
 getirir: pencereler için SDL2 sürücüsü, ses ve girdi olayları, pencerede POSIX çağrıları, sistem servisleri (diyaloglar,
 kalıcı klasör erişimi, kayıt verisi, izinler), UI token'ları ve app'in kendi metinleri, NexGFX native, OS ses mikseri ve
-paket v2. Yeni Native SDK yalnızca ekler; eski sürüm için derlenmiş app'ler değişmeden çalışır. Tablo ve kurallar:
+paket v2. Native SDK 1.2 pencereler için sistem entegrasyonu ekler: pencere kontrolü (`nxn_window_set_title` /
+`set_mode` / `set_modified`, `NXN_CAP_WINDOW_CTL`), pil / şarj / dock / ağ durumu (`nxn_power_get`, `NXN_EVENT_POWER`,
+`NXN_CAP_POWER_STATE`), OS diyalogları (`nxn_dialog`, `nxn_prompt`, `NXN_CAP_DIALOG`). Yeni Native SDK yalnızca ekler; eski sürüm için derlenmiş app'ler değişmeden çalışır. Tablo ve kurallar:
 `docs/COMPATIBILITY.tr.md`, *Native SDK*; rehber: `docs/NATIVE_GUIDE.tr.md`.
 
 ### Uyumluluk: targetSdk ve deprecation
@@ -1251,6 +1253,20 @@ end
 return app
 ```
 
+### Mağaza bilgisi (`store.json`)
+
+App Market'in sekmeler, sıralama ve filtreler için kullandığı isteğe bağlı anahtarlar. Eski App Market bunları yok sayar, bunlar olmayan eski katalog de sorunsuz görünür.
+
+| Anahtar | Değerler |
+|---|---|
+| `kind` | `app`, `game`, `demo`, `port`, `emulator`, `template` (tema ve yazı tipleri: klasörden gelir) |
+| `features` | `3d`, `online`, `multiplayer`, `coop`, `offline`, `touch`, `controller`, `keyboard` |
+| `players` | `"2"` ya da `"1-4"` (1-64) |
+| `tech` | `lua`, `javascript`, `python`, `native` (çalışma ortamından türetilir) |
+| `themeStyle` | `retro`, `modern`, `phone`, `dark`, `light`, `nature`, `minimal` |
+
+`Tools/build_store.py` `tech`, `3d` (kod `g3d.*` çağırır), `online` / `offline` (kod `net.*` kullanır) ve giriş özelliklerini türetir; yapımcının değeri kazanır. `tools/catalog_check.py --strict` yalnızca bilinen değerleri kabul eder. Mağaza oyunları bu alanlarla çevrimiçi, yerel çok oyunculu, tek oyunculu ve co-op diye süzer.
+
 ## 11. JavaScript
 
 > **Özet:** Uygulamalar Lua yerine JavaScript ile de yazılabilir: `app.json` içinde `"main": "main.js"` yazın.
@@ -1934,6 +1950,12 @@ uygulamaları `NexvynOS.nro` dışında bırakır ve `build/modules/<id>.nxvapp`
 kaynağıdır: `App`'ten türetilmiş bir sınıf ve `REGISTER_APP("<id>", Class)`. Nexvyn OS modülü ilk açılışta JIT kod
 belleğine eşler, NRO'nun dışa aktardığı simgelere bağlar ve yapıcılarını çalıştırır. Başka bir yapı için yapılmış bir
 modül reddedilir ("rebuilt for Nexvyn OS x.y needed"); Uygulama Mağazası yalnızca çalışan yapıyla eşleşen modülleri sunar.
-Yerel kod sandbox'ta çalışmaz; bu yüzden çalışmadan önce kullanıcıya bir kez sorulur (`apps.trustedNative`);
-`"permissions"` yalnızca bilgi amaçlıdır. Bu bir üçüncü taraf SDK'sı değildir: C++ API'si Nexvyn OS'un iç API'sidir ve
+Yerel kod sandbox'ta çalışmaz; bu yüzden kullanıcı bir kez, kurulumda uyarılır: App Guard paketi taradıktan sonra
+Uygulama Yükleyici ve Uygulama Mağazası sayfaları yerel kod uyarısını taşır, uygulama bir güven kaydı alır
+(`apps.nativeTrust`: kimlik, modül dosyasının SHA-256'sı, kaynak) ve açılışta bir daha sormaz. `Applications` klasörüne
+elle kopyalanan paketin kaydı yoktur: ilk açılışta App Guard ile taranır ve bir kez sorulur, dosyanın özetiyle
+hatırlanır (değişen yapı yeniden sorar). Bu yüzden hiçbir şey engellenmez ya da kapatılmaz; Ayarlar > Gizlilik > App
+Guard "Korumasız yerel uygulamalardan önce sor" (`apps.askNativeUnknown`, varsayılan açık) bu kopyalar için soruyu
+kapatır. Önceden kurulu uygulamalar cevabını korur (`apps.trustedNative`) ya da Uygulama Mağazası kurduysa sessizce
+kayıt alır. `"permissions"` yalnızca bilgi amaçlıdır. Bu bir üçüncü taraf SDK'sı değildir: C++ API'si Nexvyn OS'un iç API'sidir ve
 her yapıyla değişir; modüller release pipeline tarafından her NexvynOS.nro ile birlikte yeniden derlenir.

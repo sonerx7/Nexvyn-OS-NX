@@ -1,0 +1,1 @@
+Icon: drawn for this package by the Nexvyn OS project (tools/emucore_icons.py); a plain pad silhouette, no company logo.
