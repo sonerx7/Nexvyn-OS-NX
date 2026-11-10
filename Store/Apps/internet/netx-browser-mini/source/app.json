@@ -1,8 +1,8 @@
 {
   "id": "com.sonerx7.nxbrowser",
   "name": "NetX-Browser Mini",
-  "description": {"tr":"Sekmeli tarayıcı, dahili YouTube arama ve oynatma, herkese açık Netflix fragmanları","en":"Tabbed browser, built-in YouTube search and playback, and public Netflix trailers"},
-  "version": "0.11.0",
+  "description": {"tr":"Sekmeli tarayıcı, okuma modu, indirmeler, YouTube ve açık Netflix fragmanları","en":"Tabbed browser with reader mode, downloads, YouTube and public Netflix trailers"},
+  "version": "0.12.0",
   "author": "sonerx7",
   "category": "internet",
   "main": "main.js",

@@ -4273,25 +4273,27 @@
       "id": "com.sonerx7.nxbrowser",
       "name": "NetX-Browser Mini",
       "description": {
-        "en": "Browse with an editable address bar, up to eight tabs, bookmarks, browsing history and a choice of search engines. Search and watch compatible public YouTube videos in the same tab. Play public trailers that Netflix publishes on its title pages. Netflix sign-in and protected movie or episode playback are unavailable.",
-        "tr": "Düzenlenebilir adres çubuğu, sekiz sekme, favoriler, geçmiş ve arama motoru seçimiyle gezin. YouTube’da ara ve uyumlu herkese açık videoları aynı sekmede izle. Netflix’in başlık sayfalarında sunduğu herkese açık fragmanları oynat. Netflix hesabıyla giriş ve korumalı film ya da bölüm oynatma desteklenmez."
+        "en": "Browse with an editable address bar, up to eight tabs, bookmarks and search suggestions. Find text on a page, use reader mode, and manage downloads. Search and play compatible public YouTube videos and choose from public Netflix trailers when available.",
+        "tr": "Düzenlenebilir adres çubuğu, sekiz sekme, favoriler ve arama önerileriyle gezin. Sayfada metin ara, okuma moduna geç ve indirmeleri yönet. Uyumlu herkese açık YouTube videolarını oynat ve Netflix başlıklarının açık fragmanlarını izle."
       },
-      "version": "0.11.0",
+      "version": "0.12.0",
       "author": "sonerx7",
       "category": "internet",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/netx-browser-mini.nxvapp",
-      "size": 47864,
-      "sha256": "ae4533643b5bd6acb35b4c37e21e2f1368dbad496fefe34ed3a747347b02191d",
+      "size": 98697,
+      "sha256": "f79ac1a8f9fce2a681f2554d1812a4bccb69a5062a93d1b79f6a31586f853fa0",
       "minSdk": "1.9",
       "permissions": [
         "network",
         "launch"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/0-cover.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/1-home-012.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/2-reader-012.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/3-settings-012.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/screenshots/4-tabs-012.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -4302,8 +4304,8 @@
         "tr": "Sekmeler, web araması ve dahili video"
       },
       "changelog": {
-        "en": "Redesigned toolbar and new tab page, tab overflow list, inline address editing, search results, history controls, themes, session restoration and an in-tab YouTube player.",
-        "tr": "Yeni araç çubuğu ve başlangıç ekranı, sekme listesi, yerinde adres girişi, arama sonuçları, geçmiş denetimi, temalar, oturum geri yükleme ve sekme içinde YouTube oynatıcı."
+        "en": "New app icon and storefront artwork, real screenshots, reader mode, find on page, address suggestions, downloads and multiple public Netflix trailers.",
+        "tr": "Yeni uygulama ikonu ve mağaza kapağı, gerçek ekran görüntüleri, okuma modu, sayfada arama, adres önerileri, indirmeler ve birden fazla açık Netflix fragmanı."
       },
       "kind": "app",
       "tech": "javascript",
@@ -4315,6 +4317,10 @@
       "added": "2026-11-10",
       "updated": "2026-11-11",
       "history": [
+        {
+          "version": "0.12.0",
+          "date": "2026-11-11"
+        },
         {
           "version": "0.11.0",
           "date": "2026-11-11"
