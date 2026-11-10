@@ -910,6 +910,16 @@ side panel (it works with the keys from AI Chat) answers questions; it does not 
 | Media | Drawing, Piano, Metronome, Drum Machine, Melody Studio, 3D Viewer (OBJ/STL) |
 | Games | Chess, Solitaire, Minesweeper, Racer (3D), Pixel Koşu, Uzay Arenası |
 
+### Resource warnings and Task Manager
+
+When system resources are under heavy load (free RAM < 12% or used RAM > 90%, sustained CPU load > 90% for 10 seconds, or OS frame time > 40 ms for 8 seconds), a dismissible warning banner appears at the top of the screen under the menu bar.
+
+The banner presents current RAM, CPU, and GPU metrics and offers two quick actions:
+- **Task Manager**: Opens the System Monitor (`activity.app`) to inspect active windows, per-window CPU time, and memory usage. A dedicated Task Manager icon (`monitor_heart`) is also available in the top menu bar status area next to the battery indicator.
+- **Close background apps**: Opens the Force Quit panel to let you choose and close memory-heavy or non-responding applications. Nexvyn OS never closes user applications automatically.
+
+Resource warnings can be toggled in **System Settings > Performance > Resource warnings** (setting `shell.resourceWarn`, default on). Warnings clear automatically once resources recover (RAM free >= 15% and used < 85%, CPU < 75%, frame time < 33 ms) and auto-hide after 12 seconds unless heavy load persists. To prevent interruption, warnings appear at most once per 5 minutes per cause unless load worsens significantly.
+
 ---
 
 ## 10. Troubleshooting and FAQ

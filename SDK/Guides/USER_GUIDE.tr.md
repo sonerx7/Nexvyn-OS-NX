@@ -907,6 +907,16 @@ Ayrıntılar: [DEVELOPER_GUIDE.tr.md](DEVELOPER_GUIDE.tr.md).
 | Medya | Çizim, Piyano, Metronom, Ritim Makinesi, Melodi Stüdyosu, 3D Görüntüleyici (OBJ/STL) |
 | Oyunlar | Satranç, Solitaire, Mayın Tarlası, Yarışçı (3D), Pixel Koşu, Uzay Arenası |
 
+### Kaynak uyarıları ve Görev Yöneticisi
+
+Sistem kaynakları ağır yük altına girdiğinde (boş RAM < %12 veya kullanılan RAM > %90, 10 saniye boyunca kesintisiz CPU yükü > %90 veya 8 saniye boyunca OS kare süresi > 40 ms), ekranın üst kısmında menü çubuğunun altında kapatılabilir bir uyarı bandı görüntülenir.
+
+Uyarı bandı anlık RAM, CPU ve GPU değerlerini gösterir ve iki hızlı seçenek sunar:
+- **Görev Yöneticisi**: Açık pencereleri, pencere başına CPU süresini ve bellek tüketimini incelemek için Sistem İzleyici'yi (`activity.app`) açar. Ayrıca üst menü çubuğunun sağ tarafındaki durum alanında, pil simgesinin hemen yanında bir Görev Yöneticisi düğmesi yer alır.
+- **Arka plan uygulamalarını kapat**: Ağır bellek kullanan veya yanıt vermeyen uygulamaları seçip kapatabilmeniz için Zorla Kapat panelini açar. Nexvyn OS proje kuralı gereği kullanıcı uygulamalarını asla kendiliğinden otomatik kapatmaz.
+
+Kaynak uyarıları **Sistem Ayarları > Performans > Kaynak uyarıları** bölümünden açılıp kapatılabilir (`shell.resourceWarn` ayarı, varsayılan açık). Uyarılar kaynak kullanımı güvenli seviyeye indiğinde (boş RAM >= %15 ve kullanılan < %85, CPU < %75, kare süresi < 33 ms) kendiliğinden temizlenir ve aşırı yük devam etmediği sürece 12 saniye sonra otomatik gizlenir. Bildirim kirliliğini önlemek için her neden başına en fazla 5 dakikada bir (durum belirgin şekilde kötüleşmedikçe) gösterilir.
+
 ---
 
 ## 10. Sorun giderme ve SSS
