@@ -11,32 +11,40 @@ let layout = [];
 let measuredTab, measuredWidth, measuredDocument, contentHeight;
 let references;
 const netflixExample = "https://www.netflix.com/title/80057281";
+const cubemapDemo = "https://webglsamples.org/dynamic-cubemap/dynamic-cubemap.html";
+const youtubeHome = "https://www.youtube.com/";
+const videoId = /^[A-Za-z0-9_-]{11}$/;
+const searchEngines = {
+    Google:"https://www.google.com/search?gbv=1&q=",
+    DuckDuckGo:"https://html.duckduckgo.com/html/?q=",
+    Bing:"https://www.bing.com/search?q=",
+};
 
-function tubeLink(url) {
+function youtubePage(url) {
     const address = new URL(url);
     const path = address.pathname;
-    const video = /^[A-Za-z0-9_-]{11}$/;
-    if (address.hostname === "youtu.be" && video.test(path.slice(1)))
-        return "https://www.youtube.com/watch?v=" + path.slice(1);
+    if (address.hostname === "youtu.be" && videoId.test(path.slice(1)))
+        return {kind:"watch", id:path.slice(1)};
     if (!["youtube.com", "www.youtube.com", "m.youtube.com"].includes(address.hostname))
         return null;
-    if (path === "/") return "";
+    if (path === "/") return {kind:"home"};
     if (path === "/results") {
         const query = (address.searchParams.get("search_query") || "").trim();
-        return query ? "tube:search:" + query.slice(0, 200) : "";
+        return query ? {kind:"search", query:query.slice(0, 200)} : {kind:"home"};
     }
-    if (path === "/watch" && video.test(address.searchParams.get("v") || "")) return url;
-    if (/^\/(?:shorts|live)\/[A-Za-z0-9_-]{11}\/?$/.test(path))
-        return "https://www.youtube.com/watch?v=" + path.split("/")[2];
+    const id = path === "/watch" ? address.searchParams.get("v") : path.split("/")[2];
+    if (id && videoId.test(id) && /^\/(?:watch|shorts\/|live\/|embed\/)/.test(path))
+        return {kind:"watch", id};
     return null;
 }
 
-function openTube(tab, arg) {
-    if (sys.launch("tube", arg)) return true;
-    tab.status = label("YousTube açılamadı. Kurulumu ve başlatma iznini kontrol et.",
-        "Could not open YousTube. Check its installation and launch permission.");
-    return false;
+function youtubeUrl(page) {
+    if (page.kind === "watch") return youtubeHome + "watch?v=" + page.id;
+    if (page.kind === "search") return youtubeHome + "results?search_query=" + encodeURIComponent(page.query);
+    return youtubeHome;
 }
+
+let tabSerial = 0;
 
 function showCatalog(tab) {
     if (!references) {
@@ -46,6 +54,8 @@ function showCatalog(tab) {
     cancel(tab);
     if (mediaTab === tab) closeMedia();
     tab.catalog = true;
+    tab.address = tab.draft = tab.url = "";
+    tab.title = label("Kaynaklar", "Resources");
     tab.info = [];
     tab.sections = [];
     tab.rows = references.map(entry => ({text:entry.name, entry, css:{}}));
@@ -53,7 +63,7 @@ function showCatalog(tab) {
 }
 
 function newTab() {
-    return {address: "", url: "", rows: [], history: [], index: -1, request: 0,
+    return {key:++tabSerial, address: "", draft:"", youtubeQuery:"", url: "", rows: [], history: [], index: -1, request: 0,
         styles: [], revision: 0, title: "", reason: "",
         status: label("Adres veya arama yazın.", "Enter an address or search.")};
 }
@@ -347,6 +357,7 @@ function* parseSteps(body, url, sheets = stylesheetSources(body, url)) {
 function cancel(tab) {
     tab.revision++;
     tab.parser = undefined;
+    if (tab.youtube) tab.youtube.loadingStream = false;
     if (tab.request) net.cancel(tab.request);
     tab.request = 0;
     for (const id of tab.styles) net.cancel(id);
@@ -434,14 +445,29 @@ function describeDocument(body) {
     };
 }
 
-function watchPage(url, info) {
-    const address = new URL(url);
-    if (!["www.youtube.com", "m.youtube.com", "youtube.com"].includes(address.hostname)
-        || address.pathname !== "/watch") return null;
-    const id = address.searchParams.get("v") || "";
-    if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return null;
-    return {id, title:info.title.replace(/\s+-\s+YouTube$/, "") || "YouTube",
-        thumb:"https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"};
+function searchResults(body, url) {
+    const page = new URL(url);
+    if (page.hostname !== "html.duckduckgo.com" || !/^\/html\/?$/.test(page.pathname)) return null;
+    const query = page.searchParams.get("q");
+    if (!query) return null;
+    const items = [], seen = new Set();
+    const clean = html => decode(html.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
+    const anchors = body.slice(0, 350000).matchAll(/<a\s+([^>]+)>([\s\S]*?)<\/a>/gi);
+    for (const anchor of anchors) {
+        const a = attributes(anchor[1]);
+        if (!(a.class || "").split(/\s+/).includes("result__a")) continue;
+        let href = a.href && resolve(a.href, url);
+        if (!href) continue;
+        const link = new URL(href);
+        if (["duckduckgo.com","html.duckduckgo.com"].includes(link.hostname) && /^\/l\/?$/.test(link.pathname))
+            href = resolve(link.searchParams.get("uddg") || "");
+        const title = clean(anchor[2]).slice(0, 155);
+        if (!href || !title || seen.has(href)) continue;
+        seen.add(href);
+        items.push({title, href});
+        if (items.length === 25) break;
+    }
+    return {query, items};
 }
 
 function netflixAsset(value, page) {
@@ -474,37 +500,103 @@ function netflixTitle(body, url, info) {
     };
 }
 
-function watchRecommendations(body, current) {
+function youtubeData(body, field) {
+    const marker = new RegExp("\\b" + field + "\\s*=\\s*(?=\\{)").exec(body);
+    if (!marker) return null;
+    const start = marker.index + marker[0].length;
+    const end = body.indexOf("</script", start);
+    if (end < start || end - start > 2500000) return null;
+    const last = body.lastIndexOf("}", end);
+    try { return JSON.parse(body.slice(start, last + 1)); } catch (_) { return null; }
+}
+
+function youtubeText(value) {
+    if (!value) return "";
+    return value.simpleText || value.content || (value.runs || []).map(run => run.text).join("");
+}
+
+function youtubeVideos(data, current) {
     const items = [], seen = new Set([current]);
-    const pattern = /"compactVideoRenderer"\s*:\s*\{\s*"videoId"\s*:\s*"([A-Za-z0-9_-]{11})"/g;
-    for (const match of body.matchAll(pattern)) {
-        const id = match[1];
-        if (seen.has(id)) continue;
-        const part = body.slice(match.index, match.index + 2400);
-        const title = /"title"\s*:\s*\{\s*(?:"simpleText"\s*:\s*|"runs"\s*:\s*\[\s*\{\s*"text"\s*:\s*)("(?:[^"\\]|\\.)*")/.exec(part);
-        if (!title) continue;
-        let label;
-        try { label = JSON.parse(title[1]); } catch (_) { continue; }
-        seen.add(id);
-        items.push({id,label});
-        if (items.length === 5) break;
+    const stack = data && data.contents ? [data.contents] : [];
+    for (let scanned = 0; stack.length && scanned < 9000 && items.length < 24; scanned++) {
+        const node = stack.pop();
+        if (!node || typeof node !== "object") continue;
+        const card = node.videoRenderer || node.compactVideoRenderer || node.videoWithContextRenderer || node.lockupViewModel;
+        if (card) {
+            const id = card.videoId || card.contentId || "";
+            const name = youtubeText(card.title || (card.metadata && card.metadata.lockupMetadataViewModel
+                && card.metadata.lockupMetadataViewModel.title));
+            if (videoId.test(id) && name && !seen.has(id)) {
+                seen.add(id);
+                items.push({id, title:name.slice(0, 180), length:youtubeText(card.lengthText).slice(0, 16),
+                    author:youtubeText(card.ownerText || card.shortBylineText).slice(0, 80)});
+            }
+            continue;
+        }
+        const children = Object.values(node);
+        for (let i = children.length - 1; i >= 0; i--) {
+            if (children[i] && typeof children[i] === "object") stack.push(children[i]);
+        }
     }
     return items;
 }
 
-function loadWatchMetadata(tab, revision) {
-    const watch = tab.watch;
-    const url = "https://www.youtube.com/oembed?format=json&url="
-        + encodeURIComponent("https://www.youtube.com/watch?v=" + watch.id);
-    let id;
-    id = net.request({url,timeout:8,maxBytes:16384,responseType:"json"}, result => {
-        if (tab.revision !== revision || tab.watch !== watch) return;
-        tab.styles = tab.styles.filter(request => request !== id);
-        if (!result.ok || !result.data) return;
-        if (typeof result.data.title === "string") tab.title = watch.title = result.data.title.slice(0, 180);
-        if (typeof result.data.author_name === "string") watch.author = result.data.author_name.slice(0, 90);
+function youtubeStream(response) {
+    if (!response || !response.streamingData || !response.playabilityStatus
+        || response.playabilityStatus.status !== "OK") return "";
+    const formats = response.streamingData.formats || [];
+    const candidates = formats.filter(f => typeof f.url === "string"
+        && /^video\/mp4\b/i.test(f.mimeType || "") && Number(f.height) <= 720)
+        .sort((a, b) => b.height - a.height);
+    for (const format of candidates) {
+        const url = resolve(format.url);
+        if (!url) continue;
+        const cdn = new URL(url);
+        if (cdn.protocol === "https:" && !cdn.port && cdn.hostname.endsWith(".googlevideo.com"))
+            return url;
+    }
+    return "";
+}
+
+function playYouTube(tab) {
+    const watch = tab.youtube;
+    if (watch.loadingStream) return;
+    watch.loadingStream = true;
+    watch.error = "";
+    const revision = tab.revision;
+    const clientVersion = "21.02.35";
+    const client = {clientName:"ANDROID", clientVersion, androidSdkVersion:30,
+        osName:"Android", osVersion:"11", hl:settings().language};
+    let request;
+    request = net.request({url:youtubeHome + "youtubei/v1/player?prettyPrint=false",
+        method:"POST", body:JSON.stringify({context:{client}, videoId:watch.id}), contentType:"application/json",
+        timeout:16, maxBytes:1600000, cache:false, responseType:"json", headers:{
+            "User-Agent":"com.google.android.youtube/" + clientVersion + " (Linux; U; Android 11) gzip",
+            "X-YouTube-Client-Name":"3",
+            "X-YouTube-Client-Version":clientVersion,
+    }}, result => {
+        if (tab.revision !== revision || tab.youtube !== watch) return;
+        tab.styles = tab.styles.filter(id => id !== request);
+        watch.loadingStream = false;
+        const response = result.ok && result.data;
+        const stream = response && response.videoDetails && response.videoDetails.videoId === watch.id
+            ? youtubeStream(response) : "";
+        if (!stream) {
+            watch.error = result.ok ? label("Bu video için uyumlu akış sunulmadı.", "No compatible stream was offered for this video.")
+                : networkFailure(result);
+            return;
+        }
+        const details = response.videoDetails;
+        watch.title = (details.title || watch.title).slice(0, 180);
+        watch.author = (details.author || watch.author).slice(0, 90);
+        tab.title = watch.title;
+        if (tabs[active] === tab) playMedia(tab, stream, false);
     });
-    if (id) tab.styles.push(id);
+    if (request) tab.styles.push(request);
+    else {
+        watch.loadingStream = false;
+        watch.error = label("Video isteği başlatılamadı.", "Could not start the video request.");
+    }
 }
 
 function networkFailure(result) {
@@ -523,27 +615,33 @@ function openPage(tab, value, historyIndex) {
     if (!input) return;
     const candidate = /^https?:\/\//i.test(input) ? input
         : /^[\w.-]+\.[\w-]+(?:[/:?#][^\s]*)?$/.test(input) ? "https://" + input
-        : "https://www.google.com/search?q=" + encodeURIComponent(input);
-    const url = resolve(candidate);
+        : searchEngines[settings().engine] + encodeURIComponent(input);
+    let url = resolve(candidate);
     if (!url) { tab.status = "Adres geçersiz."; return; }
-    const tube = tubeLink(url);
-    if (tube !== null) { openTube(tab, tube); return; }
+    const youtube = youtubePage(url);
+    if (youtube) url = youtubeUrl(youtube);
     cancel(tab);
     tab.catalog = false;
-    tab.watch = null;
+    tab.youtube = youtube && Object.assign(youtube, {items:[], title:"YouTube", author:"", error:""});
+    if (youtube && youtube.query) tab.youtubeQuery = youtube.query;
     tab.netflix = null;
+    tab.search = null;
+    tab.rows = [];
     tab.info = [];
     tab.sections = [];
     if (mediaTab === tab) closeMedia();
     if (/\.(mp4|webm|mkv|m3u8|mp3|aac|ogg)$/i.test(new URL(url).pathname)) {
-        tab.address = url;
+        tab.address = tab.draft = url;
+        recordPage(tab, url, historyIndex);
         playMedia(tab, url, /\.(mp3|aac|ogg)$/i.test(new URL(url).pathname));
         return;
     }
     const revision = tab.revision;
-    tab.address = url;
+    tab.address = tab.draft = url;
+    tab.title = youtube ? "YouTube" : new URL(url).hostname;
     tab.status = "Yükleniyor…";
     tab.reason = "";
+    if (youtube) recordPage(tab, url, historyIndex);
     const netflix = ["netflix.com", "www.netflix.com"].includes(new URL(url).hostname);
     tab.request = net.request({url, timeout:22, maxBytes:6291456, retry:1, cache:false,
         headers:Object.assign({Accept:"text/html, application/xhtml+xml, text/plain;q=0.9"},desktopHeaders)}, result => {
@@ -552,6 +650,7 @@ function openPage(tab, value, historyIndex) {
         if (!result.ok) {
             tab.reason = String(result.error || "").slice(0, 180);
             tab.status = networkFailure(result);
+            if (youtube) youtube.error = tab.status;
             return;
         }
         const type = String(result.contentType || (result.headers || {})["content-type"] || "").toLowerCase();
@@ -560,53 +659,88 @@ function openPage(tab, value, historyIndex) {
             return;
         }
         tab.url = resolve(result.url || url) || url;
+        if (tab.draft === tab.address) tab.draft = tab.url;
         tab.address = tab.url;
         const body = result.body || "";
         tab.title = "";
         tab.stale = Boolean(result.stale);
+        tab.search = !youtube && searchResults(body, tab.url);
+        if (tab.search && tab.search.items.length) {
+            tab.title = tab.search.query;
+            tab.status = tab.search.items.length + label(" arama sonucu", " search results");
+            recordPage(tab, tab.url, historyIndex);
+            rememberPage(tab);
+            return;
+        }
+        if (youtube) {
+            const info = describeDocument(body);
+            const response = youtube.kind === "watch" ? youtubeData(body, "ytInitialPlayerResponse") : null;
+            const details = response && response.videoDetails || {};
+            youtube.title = (details.title || info.title.replace(/\s+-\s+YouTube$/, "") || "YouTube").slice(0, 180);
+            youtube.author = (details.author || "").slice(0, 90);
+            youtube.items = youtubeVideos(youtubeData(body, "ytInitialData"), youtube.id);
+            tab.title = youtube.kind === "watch" ? youtube.title : youtube.query || "YouTube";
+            tab.status = youtube.kind === "watch" ? tab.url
+                : youtube.items.length + label(" video bulundu", " videos found");
+            rememberPage(tab);
+            return;
+        }
         if (type.startsWith("text/plain")) {
             tab.rows = body.split(/\r?\n/, 600).map(text => ({text:text.slice(0, 4096),css:{}}));
         } else {
             const info = describeDocument(body);
             tab.title = info.title;
             tab.docInfo = info;
-            tab.watch = watchPage(tab.url, info);
             tab.netflix = netflixTitle(body, tab.url, info) || (netflix ? {
                 title: info.title || "Netflix", description: info.description,
             } : null);
-            if (tab.watch) {
-                tab.rows = [];
-                tab.watch.related = watchRecommendations(body, tab.watch.id);
-                tab.parser = parseSteps(body, tab.url, []);
-                loadWatchMetadata(tab, revision);
-            } else if (tab.netflix) {
+            if (tab.netflix) {
                 tab.rows = [];
                 tab.title = tab.netflix.title;
             } else loadStyles(tab, body, revision);
         }
-        if (historyIndex === undefined) {
-            tab.history = tab.history.slice(0, tab.index + 1).concat(tab.url).slice(-50);
-            tab.index = tab.history.length - 1;
-        } else {
-            tab.index = historyIndex;
-            tab.history[historyIndex] = tab.url;
-        }
+        recordPage(tab, tab.url, historyIndex);
+        rememberPage(tab);
         tab.status = tab.parser ? "Belge işleniyor…" : tab.stale ? "Önbellekteki kopya" : tab.netflix || tab.rows.length ? tab.url : "Gösterilebilir içerik bulunamadı.";
     });
 }
 
+function recordPage(tab, url, index) {
+    tab.url = url;
+    if (index === undefined) {
+        tab.history = tab.history.slice(0, tab.index + 1).concat(url).slice(-50);
+        tab.index = tab.history.length - 1;
+    } else {
+        tab.index = index;
+        tab.history[index] = url;
+    }
+}
+
+function rememberPage(tab) {
+    const prefs = settings();
+    if (!prefs.keepHistory) return;
+    prefs.recent = [{url:tab.url, title:tab.title || tab.url}]
+        .concat(prefs.recent.filter(item => item.url !== tab.url)).slice(0, 30);
+    store.set("browser-settings", prefs);
+}
+
 let player;
 let mediaTab;
+let mediaMuted = false;
+let mediaTheater = false;
+let mediaRate = 1;
+const playbackRates = [0.75, 1, 1.25, 1.5, 2];
 
 function closeMedia() {
     if (player) media.close(player);
     player = undefined;
     mediaTab = undefined;
+    mediaTheater = false;
 }
 
 function playMedia(tab, url, audio) {
     closeMedia();
-    player = media.open(url, {autoplay:true, audioOnly:audio});
+    player = media.open(url, {autoplay:true, audioOnly:audio, muted:mediaMuted, speed:mediaRate});
     if (player) mediaTab = tab;
     else tab.status = "Medya açılamadı.";
 }
@@ -676,12 +810,42 @@ function measure(tab, width) {
 }
 
 app.load = function(arg) {
-    tabs.push(newTab());
-    if (arg) openPage(tabs[0], arg);
+    const session = !arg && settings().restoreTabs && store.get("browser-session", {});
+    const saved = session && Array.isArray(session.tabs) ? session.tabs.slice(0, 8) : [];
+    for (const item of saved) {
+        if (!item || typeof item !== "object") continue;
+        const tab = newTab();
+        tab.restore = typeof item.url === "string" ? resolve(item.url) : "";
+        tab.title = typeof item.title === "string" ? item.title.slice(0, 160) : "";
+        tabs.push(tab);
+    }
+    if (!tabs.length) tabs.push(newTab());
+    active = saved.length ? Math.max(0, Math.min(tabs.length - 1, Math.trunc(Number(session.active) || 0))) : 0;
+    if (arg) openPage(tabs[active], arg);
+    else activateTab(active);
 };
 app.open = function(arg) { if (arg) openPage(tabs[active], arg); };
-app.close = function() { for (const tab of tabs) cancel(tab); closeMedia(); return true; };
+app.close = function() {
+    if (settings().restoreTabs) {
+        store.set("browser-session", {active, tabs:tabs.map(tab => ({url:tab.restore || tab.url, title:tab.title}))});
+    }
+    for (const tab of tabs) cancel(tab);
+    closeMedia();
+    return true;
+};
 app.suspend = function() { if (player) media.pause(player); };
+
+function activateTab(index) {
+    const tab = tabs[index];
+    if (!tab) return;
+    if (index !== active && player) closeMedia();
+    active = index;
+    if (tab.restore) {
+        const url = tab.restore;
+        tab.restore = "";
+        openPage(tab, url);
+    }
+}
 
 function drawInfoBox(rows, x, y, width, height) {
     if (height < 65) return;
@@ -707,13 +871,31 @@ function drawInfoBox(rows, x, y, width, height) {
     }
 }
 
-let keyboardOpen = false;
-let browserMenu = false;
+let browserMenu = "";
 let browserSettings;
+const nightChrome = {
+    top:"#121b2c", bar:"#202d42", active:"#30415e", hover:"#394d6b", field:"#101a2b",
+    text:"#edf5ff", muted:"#a6bad5", accent:"#76ddff", border:"#3b5071",
+};
+const oceanChrome = {
+    top:"#12343e", bar:"#1c4c56", active:"#306475", hover:"#3e7584", field:"#122d36",
+    text:"#e9fbff", muted:"#afcdd1", accent:"#8af2db", border:"#497c86",
+};
+let chrome = nightChrome;
 
 function settings() {
-    if (!browserSettings)
-        browserSettings = store.get("browser-settings", {language:sys.lang() === "tr" ? "tr" : "en", bookmarks:[]});
+    if (!browserSettings) {
+        const saved = store.get("browser-settings", {}) || {};
+        browserSettings = {
+            language:saved.language || (sys.lang() === "tr" ? "tr" : "en"),
+            engine:Object.hasOwn(searchEngines, saved.engine) ? saved.engine : "DuckDuckGo",
+            bookmarks:Array.isArray(saved.bookmarks) ? saved.bookmarks : [],
+            recent:Array.isArray(saved.recent) ? saved.recent : [],
+            appearance:saved.appearance === "ocean" ? "ocean" : "night",
+            keepHistory:saved.keepHistory !== false,
+            restoreTabs:saved.restoreTabs === true,
+        };
+    }
     return browserSettings;
 }
 
@@ -721,101 +903,318 @@ function label(tr, en) {
     return settings().language === "en" ? en : tr;
 }
 
+function toggleBookmark(tab) {
+    if (!tab.url) return;
+    const prefs = settings();
+    const index = prefs.bookmarks.findIndex(item => item.url === tab.url);
+    if (index < 0) prefs.bookmarks.unshift({url:tab.url,title:tab.title || tab.url});
+    else prefs.bookmarks.splice(index, 1);
+    prefs.bookmarks = prefs.bookmarks.slice(0, 50);
+    store.set("browser-settings", prefs);
+}
+
+function home(tab) {
+    cancel(tab);
+    if (mediaTab === tab) closeMedia();
+    tab.address = "";
+    tab.draft = "";
+    tab.url = "";
+    tab.title = "";
+    tab.restore = "";
+    tab.catalog = false;
+    tab.youtube = null;
+    tab.netflix = null;
+    tab.search = null;
+    tab.rows = [];
+    tab.status = label("Yeni sekme", "New tab");
+}
+
+function fitText(text, width, size) {
+    if (width < 8) return "";
+    if (gfx.textWidth(text, size) <= width) return text;
+    let left = 0, right = text.length;
+    while (left < right) {
+        const middle = Math.ceil((left + right) / 2);
+        if (gfx.textWidth(text.slice(0, middle) + "…", size) <= width) left = middle;
+        else right = middle - 1;
+    }
+    return text.slice(0, left) + "…";
+}
+
+function chromeIcon(id, icon, x, y, w, h, enabled = true, selected = false) {
+    const hit = enabled && ui.hit(id, x, y, w, h);
+    if (hit && (hit.hovered || selected))
+        gfx.rect(x, y, w, h, 8, hit.hovered ? chrome.hover : chrome.active);
+    gfx.icon(icon, x + w / 2, y + h / 2, 18, selected ? chrome.accent : enabled ? chrome.text : "#657690");
+    return hit && hit.clicked;
+}
+
 function drawBrowserMenu(tab, w, h) {
     const prefs = settings();
-    const x = 18, width = w - 36;
-    gfx.rect(x, 18, width, h - 36, 8, theme.sidebar);
-    ui.label(label("Tarayıcı ayarları", "Browser settings"), x + 14, 29, 20, theme.text, "bold");
-    if (ui.button(label("Kapat", "Close"), w - 104, 24, 70, 31)) browserMenu = false;
-    if (ui.button(label("Dil · Türkçe", "Language · English"), x + 14, 63, 155, 32)) {
-        prefs.language = prefs.language === "en" ? "tr" : "en";
-        store.set("browser-settings", prefs);
+    const width = Math.min(392, w - 24), x = w - width - 12;
+    const y = 87, bottom = h - 28;
+    if (x >= 308) {
+        const rail = x - 30;
+        gfx.rect(17, y, rail, 139, 12, chrome.top);
+        gfx.icon("tune", 42, y + 27, 20, chrome.accent);
+        ui.label(label("Tarayıcı kontrolleri", "Browser controls"), 62, y + 17, 19, chrome.text, "bold");
+        ui.label(label("Etkin sekme", "Active tab"), 31, y + 57, 12, chrome.muted);
+        gfx.clip(30, y + 76, rail - 28, 31);
+        ui.label(tab.title || label("Yeni sekme", "New tab"), 31, y + 80, 17, chrome.text, "bold");
+        gfx.unclip();
+        if (ui.button(label("Ana sayfaya dön", "Return to home"), 17, y + 154, 158, 32, "toolbar", "home")) {
+            home(tab);
+            browserMenu = "";
+            return;
+        }
+        if (tab.url && ui.button(label("Favoriye al / kaldır", "Toggle bookmark"), 183, y + 154, 153, 32, "toolbar", "star")) {
+            toggleBookmark(tab);
+            browserMenu = "bookmarks";
+        }
     }
-    if (ui.button(label("Kaynaklar", "Resources"), x + 178, 63, 108, 32)) {
-        browserMenu = false;
-        showCatalog(tab);
+    gfx.rect(x, y, width, bottom - y, 12, theme.window);
+    gfx.rect(x, y, width, 46, 12, chrome.bar);
+    ui.label(label("Tarayıcı menüsü", "Browser menu"), x + 14, y + 12, 19, chrome.text, "bold");
+    if (chromeIcon("panel-close", "close", x + width - 37, y + 6, 30, 32)) browserMenu = "";
+    const sections = [
+        ["settings",label("Ayarlar", "Settings")],
+        ["bookmarks",label("Favoriler", "Bookmarks")],
+        ["history",label("Geçmiş", "History")],
+        ["tabs",label("Sekmeler", "Tabs")],
+    ];
+    const segment = (width - 24) / sections.length;
+    for (let i = 0; i < sections.length; i++) {
+        const [key, title] = sections[i];
+        if (ui.button(title + "##panel-" + key, x + 12 + i * segment, y + 55, segment - 5, 31,
+            browserMenu === key ? "primary" : "toolbar")) browserMenu = key;
     }
-    if (tab.url && ui.button(label("Sistem motoru", "System engine"), x + 294, 63, 112, 32)) {
-        if (sys.launch("browser", tab.url)) browserMenu = false;
-        else tab.status = label("Sistem tarayıcısı açılamadı.", "Could not open the system browser.");
+    const left = x + 13, top = y + 98, inner = width - 26;
+    if (browserMenu === "settings") {
+        ui.beginScroll("browser-settings-panel", left, top, inner, Math.max(20, bottom - top - 8), 258);
+        ui.label(label("Varsayılan arama motoru", "Default search engine"), 0, 0, 15, theme.text, "bold");
+        const engines = Object.keys(searchEngines);
+        for (let i = 0; i < engines.length; i++) {
+            const name = engines[i];
+            if (ui.button(name + "##engine-" + name, i * (inner - 10) / 3, 24, (inner - 10) / 3 - 5, 32,
+                prefs.engine === name ? "primary" : "toolbar")) {
+                prefs.engine = name;
+                store.set("browser-settings", prefs);
+            }
+        }
+        ui.label(label("Görünüm ve dil", "Appearance and language"), 0, 66, 15, theme.text, "bold");
+        if (ui.button(label("Dil · Türkçe", "Language · English"), 0, 90, 150, 29)) {
+            prefs.language = prefs.language === "en" ? "tr" : "en";
+            store.set("browser-settings", prefs);
+        }
+        if (ui.button(prefs.appearance === "ocean" ? label("Tema · Okyanus", "Theme · Ocean")
+            : label("Tema · Gece", "Theme · Night"), 158, 90, 147, 29)) {
+            prefs.appearance = prefs.appearance === "ocean" ? "night" : "ocean";
+            store.set("browser-settings", prefs);
+        }
+        ui.label(label("Gizlilik ve açılış", "Privacy and startup"), 0, 130, 15, theme.text, "bold");
+        const keepHistory = ui.toggle("keep-history", prefs.keepHistory, 0, 152, 46, 24);
+        ui.label(label("Geçmişi kaydet", "Save browsing history"), 53, 156, 13, theme.text);
+        const restoreTabs = ui.toggle("restore-tabs", prefs.restoreTabs, 0, 181, 46, 24);
+        ui.label(label("Son oturumu geri yükle", "Restore the previous session"), 53, 185, 13, theme.text);
+        if (keepHistory !== prefs.keepHistory || restoreTabs !== prefs.restoreTabs) {
+            prefs.keepHistory = keepHistory;
+            prefs.restoreTabs = restoreTabs;
+            if (!restoreTabs) store.set("browser-session", {});
+            store.set("browser-settings", prefs);
+        }
+        const resources = ui.button(label("Kaynaklar", "Resources"), 0, 218, 98, 29);
+        const cubemap = ui.button("WebGL Cubemap", 104, 218, 116, 29);
+        const copy = tab.url && ui.button(label("Adresi kopyala", "Copy address"), 226, 218, 116, 29);
+        ui.endScroll();
+        if (resources) {
+            browserMenu = "";
+            showCatalog(tab);
+        } else if (copy) {
+            sys.clipboard(tab.url);
+            browserMenu = "";
+        } else if (cubemap) {
+            browserMenu = "";
+            if (!sys.launch("browser", cubemapDemo))
+                tab.status = label("Sistem tarayıcısı açılamadı.", "Could not open the system browser.");
+        }
+        return;
     }
-    ui.label(label("Favoriler", "Bookmarks"), x + 14, 108, 17, theme.text, "bold");
-    const index = prefs.bookmarks.findIndex(item => item.url === tab.url);
-    if (tab.url && ui.button(index < 0 ? label("Sayfayı ekle", "Add page") : label("Sayfayı kaldır", "Remove page"),
-        w - 151, 102, 117, 32)) {
-        if (index < 0) prefs.bookmarks.unshift({url:tab.url,title:tab.title || tab.url});
-        else prefs.bookmarks.splice(index, 1);
-        prefs.bookmarks = prefs.bookmarks.slice(0, 50);
-        store.set("browser-settings", prefs);
+    if (browserMenu === "tabs") {
+        const viewport = Math.max(20, bottom - top - 8);
+        ui.beginScroll("all-tabs", left, top, inner, viewport, tabs.length * 38);
+        let selected = -1;
+        for (let i = 0; i < tabs.length; i++) {
+            const title = fitText(tabs[i].title || label("Yeni sekme", "New tab"), inner - 36, 14).replace(/##/g, "# #");
+            if (ui.button(title + "##choose-tab-" + tabs[i].key, 0, i * 38, inner - 11, 33,
+                i === active ? "primary" : "toolbar")) selected = i;
+        }
+        ui.endScroll();
+        if (selected >= 0) {
+            browserMenu = "";
+            activateTab(selected);
+        }
+        return;
     }
-    const viewport = Math.max(36, h - 161);
-    const [offset] = ui.beginScroll("bookmark-list", x + 10, 139, width - 20, viewport, prefs.bookmarks.length * 37 + 8);
-    let destination;
-    for (let i = 0; i < prefs.bookmarks.length; i++) {
-        const y = i * 37;
-        if (y + 33 < offset || y > offset + viewport) continue;
-        const entry = prefs.bookmarks[i];
-        if (ui.button(entry.title.replace(/##/g, "# #").slice(0, 56) + "##saved" + i, 4, y, width - 43, 32))
-            destination = entry.url;
+    const list = browserMenu === "bookmarks" ? prefs.bookmarks : prefs.recent;
+    if (!list.length) ui.label(label("Henüz kayıt yok.", "Nothing here yet."), left + 4, top + 5, 14, theme.text2);
+    let listTop = top;
+    if (browserMenu === "history" && list.length) {
+        if (ui.button(label("Geçmişi temizle", "Clear history"), left, top, 148, 29)) {
+            prefs.recent = [];
+            store.set("browser-settings", prefs);
+            return;
+        }
+        listTop += 36;
+    }
+    const viewport = Math.max(20, bottom - listTop - 8);
+    const [offset] = ui.beginScroll("browser-list-" + browserMenu, left, listTop, inner, viewport, list.length * 36);
+    let destination = "";
+    for (let i = 0; i < list.length; i++) {
+        const rowY = i * 36;
+        if (rowY + 33 < offset || rowY > offset + viewport) continue;
+        if (ui.button(list[i].title.replace(/##/g, "# #").slice(0, 42) + "##saved" + i,
+            0, rowY, inner - 12, 32)) destination = list[i].url;
     }
     ui.endScroll();
-    if (destination) { browserMenu = false; openPage(tab, destination); }
+    if (destination) { browserMenu = ""; openPage(tab, destination); }
 }
 
-function editNavigation(tab, initial, guide, onSubmit) {
-    if (keyboardOpen) return;
-    keyboardOpen = true;
-    const revision = tab.revision;
-    ui.prompt(guide, "", initial, value => {
-        keyboardOpen = false;
-        if (typeof value !== "string" || !value.trim()) return;
-        if (tab.revision === revision && tabs.includes(tab)) onSubmit(value.trim());
-    });
-}
-
-function drawWatch(tab, w, h) {
-    const wide = w >= 780;
-    const side = wide ? Math.min(268, Math.floor(w * 0.30)) : 0;
-    const width = Math.min(w - 36 - side, (h - 216) * 16 / 9);
-    const x = wide ? 16 : (w - width) / 2, y = 125, height = width * 9 / 16;
-    gfx.rect(0, 79, w, h - 104, 0, "#121212");
-    gfx.rect(16, 93, 26, 17, 4, "#ff0033");
-    ui.label("YouTube", 48, 88, 22, "#ffffff", "bold");
-    const searchX = Math.max(142, Math.floor(w * 0.28));
-    const searchWidth = Math.max(100, Math.min(410, w - searchX - 82));
-    if (ui.button("YouTube’da ara##yt-search", searchX, 87, searchWidth + 54, 30)) {
-        editNavigation(tab, "", "YouTube’da ara", query => openTube(tab, "tube:search:" + query.slice(0, 200)));
+function drawPlayer(tab, x, y, w, h) {
+    const info = media.info(player);
+    gfx.rect(x, y, w, h, 8, "#101722");
+    media.draw(player, x, y, w, h - 66, "contain");
+    const position = Number(info.position) || 0;
+    if (info.duration > 0) {
+        const selected = ui.slider("media-seek-" + tab.key, position, 0, info.duration, x + 9, y + h - 61, w - 111, 0.1);
+        if (Number.isFinite(selected) && Math.abs(selected - position) >= 0.05) media.seek(player, selected);
+        ui.label(mediaTime(position) + " / " + mediaTime(info.duration), x + w - 92, y + h - 58, 12, "#dde8f7");
     }
-    gfx.rect(x, y, width, height, 8, "#171717");
-    const thumbnail = gfx.imageUrl(tab.watch.thumb, 640);
-    if (thumbnail) gfx.draw(thumbnail, x, y, width, height, 8);
-    gfx.color("#ffffff");
-    gfx.wrap(tab.watch.title, x, y + height + 10, width, 19, "bold");
-    if (tab.watch.author) ui.label(tab.watch.author, x, y + height + 39, 13, "#c8c8c8");
-    if (tab.watch.stream) {
-        if (ui.button("Oynat", x + width / 2 - 52, y + height / 2 - 18, 104, 36, "primary"))
-            playMedia(tab, tab.watch.stream, false);
-    } else {
-        if (ui.button("YousTube’da oynat", x + width / 2 - 82, y + height / 2 - 18, 164, 36, "primary")) {
-            const url = "https://www.youtube.com/watch?v=" + tab.watch.id;
-            if (!sys.launch("tube", url))
-                tab.watch.message = "YousTube kurulumu ve uygulama başlatma iznini kontrol et.";
+    if (chromeIcon("media-toggle", info.state === "failed" ? "refresh" : info.state === "playing" ? "pause" : "play_arrow",
+        x + 7, y + h - 34, 32, 28)) {
+        if (info.state === "failed") {
+            closeMedia();
+            if (tab.youtube) playYouTube(tab);
+            else if (tab.netflix && tab.netflix.trailer) playMedia(tab, tab.netflix.trailer, false);
+            else if (tab.address) openPage(tab, tab.address, tab.index);
+            return;
         }
-        if (tab.watch.message) ui.label(tab.watch.message, x, h - 45, 13, "#c8c8c8");
+        if (info.state === "playing") media.pause(player);
+        else media.play(player);
     }
-    if (!wide) return;
-    const right = x + width + 16;
-    ui.label("Önerilen videolar", right, y + 2, 15, "#ffffff", "bold");
-    const related = tab.watch.related || [];
-    if (!related.length) ui.label("Sayfa öneri verisi sunmadı.", right, y + 32, 13, "#c8c8c8");
-    for (let i = 0; i < related.length && y + 102 + i * 70 < h - 25; i++) {
-        const item = related[i], top = y + 30 + i * 70;
-        const preview = gfx.imageUrl("https://i.ytimg.com/vi/" + item.id + "/mqdefault.jpg", 240);
-        if (preview) gfx.draw(preview, right, top, 104, 58, 6);
-        gfx.color("#ffffff");
-        gfx.wrap(item.label.slice(0, 90), right + 111, top, Math.max(80, w - right - 125), 13);
-        if (ui.hit("yt-related" + i, right, top, w - right - 12, 62).clicked) {
-            openPage(tab, "https://www.youtube.com/watch?v=" + item.id);
+    if (chromeIcon("media-mute", mediaMuted ? "volume_off" : "volume_up", x + 43, y + h - 34, 32, 28, true, mediaMuted)) {
+        mediaMuted = !mediaMuted;
+        media.set(player, {muted:mediaMuted});
+    }
+    if (chromeIcon("media-theater", mediaTheater ? "fullscreen_exit" : "fullscreen",
+        x + w - 75, y + h - 34, 32, 28, true, mediaTheater)) mediaTheater = !mediaTheater;
+    const rate = ui.hit("media-speed", x + w - 124, y + h - 34, 44, 28);
+    if (rate.hovered) gfx.rect(x + w - 124, y + h - 34, 44, 28, 6, chrome.hover);
+    ui.label(mediaRate + "×", x + w - 120, y + h - 28, 13, chrome.text);
+    if (rate.clicked) {
+        mediaRate = playbackRates[(playbackRates.indexOf(mediaRate) + 1) % playbackRates.length];
+        media.set(player, {speed:mediaRate});
+    }
+    if (chromeIcon("media-close", "close", x + w - 39, y + h - 34, 32, 28)) closeMedia();
+    const state = info.state === "failed" ? label("Akış oynatılamadı.", "Playback failed.")
+        : info.state === "opening" || info.buffering ? label("Tamponlanıyor…", "Buffering…") : "";
+    ui.label(state, x + 83, y + h - 29, 13, "#dde8f7");
+}
+
+function drawYouTube(tab, w, h) {
+    const page = tab.youtube;
+    gfx.rect(0, 79, w, h - 104, 0, "#101318");
+    gfx.rect(0, 79, w, 53, 0, "#1b2028");
+    gfx.rect(15, 96, 31, 20, 6, "#dc193b");
+    gfx.icon("play_arrow", 30, 106, 18, "#ffffff");
+    ui.label("YouTube", 53, 93, 21, "#f9fbff", "bold");
+    const sx = 151, sw = Math.min(510, w - sx - 64), input = "yt-search-" + tab.key;
+    tab.youtubeQuery = ui.textfield(input, tab.youtubeQuery, sx, 89, sw, 32,
+        label("Videolarda ara", "Search videos"), "search");
+    const pressed = chromeIcon("yt-submit", "search", sx + sw + 7, 89, 36, 32);
+    if ((ui.submitted(input) || pressed) && tab.youtubeQuery.trim()) {
+        ui.focus("browser-navigation");
+        openPage(tab, youtubeUrl({kind:"search", query:tab.youtubeQuery.trim()}));
+        return;
+    }
+    if (page.kind !== "watch") {
+        const heading = page.kind === "search" ? page.query : label("Videolar", "Videos");
+        ui.label(heading.slice(0, Math.floor((w - 38) / 12)), 19, 144, 22, "#f1f6fd", "bold");
+        if (!page.items.length) {
+            const hint = tab.request ? label("YouTube yükleniyor…", "Loading YouTube…")
+                : page.error || label("Video arayın veya adres çubuğuna bir YouTube bağlantısı yazın.",
+                    "Search for videos or enter a YouTube link in the address bar.");
+            gfx.color("#b9c5d7");
+            gfx.wrap(hint, 19, 182, w - 38, 15);
+            return;
+        }
+        const columns = w >= 820 ? 3 : 2, gap = 13, viewport = h - 202;
+        const cardWidth = Math.floor((w - 43 - (columns - 1) * gap) / columns);
+        const thumbHeight = Math.floor(cardWidth * 9 / 16), cardHeight = thumbHeight + 69;
+        const [scroll] = ui.beginScroll("yt-results-" + tab.key + "-" + tab.revision, 17, 175,
+            w - 34, viewport, Math.ceil(page.items.length / columns) * (cardHeight + gap));
+        let chosen;
+        for (let i = 0; i < page.items.length; i++) {
+            const x = i % columns * (cardWidth + gap), y = Math.floor(i / columns) * (cardHeight + gap);
+            if (y + cardHeight < scroll || y > scroll + viewport) continue;
+            const item = page.items[i];
+            const hit = ui.hit("yt-card-" + item.id, x, y, cardWidth, cardHeight);
+            gfx.rect(x, y, cardWidth, cardHeight, 10, hit.hovered ? "#303d50" : "#202833");
+            const image = gfx.imageUrl("https://i.ytimg.com/vi/" + item.id + "/mqdefault.jpg", 320);
+            if (image) gfx.draw(image, x, y, cardWidth, thumbHeight, 10);
+            else gfx.icon("play_circle", x + cardWidth / 2, y + thumbHeight / 2, 28, "#8fa7c6");
+            if (item.length) {
+                gfx.rect(x + cardWidth - 54, y + thumbHeight - 24, 48, 19, 4, "#111722");
+                ui.label(item.length, x + cardWidth - 49, y + thumbHeight - 22, 12, "#ffffff");
+            }
+            gfx.clip(x + 8, y + thumbHeight + 7, cardWidth - 16, 35);
+            gfx.color("#eff5ff");
+            gfx.wrap(item.title, x + 8, y + thumbHeight + 7, cardWidth - 16, 14, "bold");
+            gfx.unclip();
+            ui.label(item.author.slice(0, 32), x + 8, y + thumbHeight + 47, 12, "#a9b7ca");
+            if (hit.clicked) chosen = item.id;
+        }
+        ui.endScroll();
+        if (chosen) openPage(tab, youtubeUrl({kind:"watch",id:chosen}));
+        return;
+    }
+    const wide = w >= 790, side = wide ? Math.min(273, Math.floor(w * 0.29)) : 0;
+    const x = 15, y = 145, width = w - 30 - side, height = h - y - 78;
+    if (player && mediaTab === tab) drawPlayer(tab, x, y, width, height);
+    else {
+        gfx.rect(x, y, width, height, 12, "#202833");
+        const thumbnail = gfx.imageUrl("https://i.ytimg.com/vi/" + page.id + "/hqdefault.jpg", 480);
+        if (thumbnail) {
+            const scale = Math.min(width / thumbnail.width, height / thumbnail.height);
+            gfx.draw(thumbnail, x + (width - thumbnail.width * scale) / 2,
+                y + (height - thumbnail.height * scale) / 2, thumbnail.width * scale, thumbnail.height * scale, 8);
+        }
+        if (ui.button(page.loadingStream ? label("Akış aranıyor…", "Finding stream…") : label("Oynat", "Play"),
+            x + width / 2 - 76, y + height / 2 - 19, 152, 38, "primary", "play_arrow", !page.loadingStream))
+            playYouTube(tab);
+        if (page.error) {
+            gfx.rect(x + 8, y + height - 38, width - 16, 30, 6, "#181f2a");
+            ui.label(page.error.slice(0, 68), x + 15, y + height - 31, 13, "#fbc3cd");
+        }
+    }
+    gfx.clip(x, y + height + 6, width, 29);
+    ui.label(page.title, x, y + height + 8, 17, "#f0f4ff", "bold");
+    gfx.unclip();
+    ui.label(page.author, x, y + height + 32, 13, "#b8c3d4");
+    if (!wide || !page.items.length) return;
+    const right = x + width + 12, sidebarWidth = w - right - 13;
+    ui.label(label("Önerilen videolar", "Recommended"), right, y, 15, "#f0f4ff", "bold");
+    for (let i = 0; i < page.items.length && y + 94 + i * 65 < h - 22; i++) {
+        const item = page.items[i], top = y + 27 + i * 65;
+        const hit = ui.hit("yt-related-" + item.id, right, top, sidebarWidth, 59);
+        if (hit.hovered) gfx.rect(right, top, sidebarWidth, 59, 7, "#263344");
+        const image = gfx.imageUrl("https://i.ytimg.com/vi/" + item.id + "/mqdefault.jpg", 240);
+        if (image) gfx.draw(image, right, top, 99, 56, 6);
+        gfx.color("#eef4ff");
+        gfx.clip(right + 105, top, sidebarWidth - 108, 55);
+        gfx.wrap(item.title, right + 105, top + 2, sidebarWidth - 108, 13);
+        gfx.unclip();
+        if (hit.clicked) {
+            openPage(tab, youtubeUrl({kind:"watch",id:item.id}));
             break;
         }
     }
@@ -853,90 +1252,170 @@ function mediaTime(value) {
     return Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
 }
 
+function drawSearch(tab, w, h) {
+    const panel = Math.min(w - 36, 820), left = (w - panel) / 2;
+    const {query, items} = tab.search;
+    gfx.rect(left, 90, panel, 65, 10, theme.sidebar);
+    ui.label("DuckDuckGo", left + 14, 99, 12, theme.text2, "bold");
+    gfx.clip(left + 14, 114, panel - 28, 34);
+    ui.label(query, left + 14, 117, 22, theme.text, "bold");
+    gfx.unclip();
+    const viewport = h - 190;
+    const [scroll] = ui.beginScroll("web-results-" + tab.key + "-" + tab.revision,
+        left, 161, panel, viewport, items.length * 59);
+    let target;
+    for (let i = 0; i < items.length; i++) {
+        const y = i * 59;
+        if (y + 54 < scroll || y > scroll + viewport) continue;
+        const item = items[i], row = ui.hit("web-hit-" + i, 0, y, panel - 12, 53);
+        gfx.rect(0, y, panel - 12, 53, 7, row.hovered ? theme.field : theme.window);
+        gfx.icon("language", 20, y + 23, 16, theme.accent);
+        gfx.clip(35, y + 3, panel - 56, 48);
+        ui.label(item.title, 37, y + 6, 15, theme.accent, "bold");
+        ui.label(new URL(item.href).hostname, 37, y + 30, 12, theme.text2);
+        gfx.unclip();
+        if (row.clicked) target = item.href;
+    }
+    ui.endScroll();
+    if (target) openPage(tab, target);
+}
+
+function drawHome(tab, w, h) {
+    const width = Math.min(850, w - 36), x = (w - width) / 2;
+    const height = h - 108;
+    ui.beginScroll("home-" + tab.key, x, 84, width, height, 391);
+    gfx.gradient(0, 8, width - 10, 153, "#182948", "#20456b", true, 18);
+    gfx.circle(width - 82, 56, 33, "#28567c");
+    gfx.color("#6b9bc1");
+    gfx.circleLine(width - 82, 56, 29, 1.5);
+    gfx.icon("public", width - 82, 56, 37, chrome.accent);
+    ui.label("NETX / MINI", 22, 23, 12, chrome.accent, "bold");
+    ui.label(label("Web’e açıl", "Open the web"), 22, 43, w >= 620 ? 31 : 26, chrome.text, "bold");
+    ui.label(label("Yeni sekme", "New tab"), 22, 81, 13, "#b6cbe7");
+    const searchWidth = width - 94;
+    const search = ui.hit("home-search", 18, 105, searchWidth, 43);
+    gfx.rect(18, 105, searchWidth, 43, 12, search.hovered ? "#2c547b" : "#13273f");
+    gfx.icon("search", 40, 126, 18, chrome.accent);
+    ui.label(label("Web’de ara veya adres yaz", "Search or enter an address"), 57, 119, 14, chrome.text);
+    ui.label(settings().engine, width - 69, 121, 12, "#c0d7ec");
+    ui.label(label("Hızlı erişim", "Quick access"), 2, 174, 17, theme.text, "bold");
+    const shortcuts = [
+        ["YouTube","play_arrow","#97344c",youtubeHome],
+        ["Netflix","movie","#99414c",netflixExample],
+        ["Wikipedia","menu_book","#2a577c","https://en.wikipedia.org/wiki/Nintendo_Switch"],
+        [label("Teknoloji", "Technology"),"bolt","#78542b","https://news.ycombinator.com/"],
+        ["GitHub","code","#443c76","https://github.com/explore"],
+        [label("Kaynaklar", "Resources"),"bookmarks","#30646d",""],
+    ];
+    const columns = w >= 705 ? 6 : 3, gap = 9;
+    const cardWidth = Math.floor((width - 11 - (columns - 1) * gap) / columns);
+    let target = null;
+    for (let i = 0; i < shortcuts.length; i++) {
+        const [name, icon, color, url] = shortcuts[i];
+        const cardX = i % columns * (cardWidth + gap);
+        const cardY = 201 + Math.floor(i / columns) * 71;
+        const hit = ui.hit("shortcut-" + i, cardX, cardY, cardWidth, 64);
+        gfx.rect(cardX, cardY, cardWidth, 64, 9, hit.hovered ? theme.field : theme.sidebar);
+        gfx.rect(cardX + 8, cardY + 8, 26, 26, 7, color);
+        gfx.icon(icon, cardX + 21, cardY + 21, 16, "#ffffff");
+        ui.label(name, cardX + 8, cardY + 41, 13, theme.text, "medium");
+        if (hit.clicked) target = url;
+    }
+    const recent = settings().recent;
+    const recentY = 201 + Math.ceil(shortcuts.length / columns) * 71 + 6;
+    ui.label(label("Son ziyaretler", "Recent visits"), 2, recentY, 16, theme.text, "bold");
+    if (!recent.length) ui.label(label("Ziyaret ettiğin sayfalar burada görünür.", "Pages you visit appear here."),
+        2, recentY + 26, 13, theme.text2);
+    for (let i = 0; i < Math.min(3, recent.length) && recentY + 57 + i * 33 < 400; i++) {
+        if (ui.button(recent[i].title.replace(/##/g, "# #").slice(0, 49) + "##recent-home-" + i,
+            0, recentY + 23 + i * 33, width - 15, 29, "toolbar", "history"))
+            target = recent[i].url;
+    }
+    ui.endScroll();
+    if (search.clicked) ui.focus("address-" + tab.key);
+    if (target === "") showCatalog(tab);
+    else if (target) openPage(tab, target);
+}
+
 app.draw = function(w, h) {
     gfx.clear(theme.bg);
-    if (browserMenu) { drawBrowserMenu(tabs[active], w, h); return; }
-    gfx.rect(0, 0, w, 36, 0, theme.sidebar);
-    gfx.rect(0, 36, w, 43, 0, theme.window);
-    gfx.rect(0, h - 25, w, 25, 0, theme.sidebar);
-    const tabWidth = Math.min(142, Math.floor((w - 116) / tabs.length));
+    chrome = settings().appearance === "ocean" ? oceanChrome : nightChrome;
+    if (player && mediaTheater) {
+        drawPlayer(mediaTab, 0, 0, w, h);
+        return;
+    }
+    gfx.rect(0, 0, w, 37, 0, chrome.top);
+    gfx.rect(0, 37, w, 42, 0, chrome.bar);
+    gfx.rect(0, h - 24, w, 24, 0, theme.sidebar);
+    const capacity = Math.max(1, Math.floor((w - 77) / 119));
+    const visible = Math.min(tabs.length, capacity);
+    const first = Math.min(Math.max(0, active - Math.floor(visible / 2)), tabs.length - visible);
+    const tabWidth = Math.min(188, Math.floor((w - 77) / visible));
     const previous = tabs[active];
-    for (let i = 0; i < tabs.length; i++) {
-        if (ui.button((tabs[i].title ? tabs[i].title.slice(0, tabWidth > 105 ? 17 : 8) : label("Sekme ", "Tab ") + (i + 1)) + "##tab" + i, 8 + i * tabWidth, 5, tabWidth - 4, 28, i === active ? "primary" : "toolbar")) active = i;
+    for (let i = first; i < first + visible; i++) {
+            const entry = tabs[i], x = 6 + (i - first) * tabWidth;
+            const hasClose = tabs.length > 1, titleWidth = tabWidth - (hasClose ? 42 : 19);
+            const hit = !browserMenu && ui.hit("tab-" + entry.key, x, 5, tabWidth - (hasClose ? 29 : 4), 29);
+            if (i === active || (hit && hit.hovered))
+                gfx.rect(x, 5, tabWidth - 4, 30, 8, i === active ? chrome.active : chrome.hover);
+            if (i === active) gfx.rect(x + 8, 33, tabWidth - 20, 2, 1, chrome.accent);
+            gfx.icon(entry.youtube ? "play_circle" : entry.url ? "language" : "public",
+                x + 14, 19, 15, i === active ? chrome.accent : chrome.muted);
+            ui.label(fitText(entry.title || label("Yeni sekme", "New tab"), titleWidth - 11, 13),
+                x + 26, 12, 13, chrome.text);
+            if (hit && hit.clicked) activateTab(i);
+            if (hasClose && chromeIcon("close-tab-" + entry.key, "close", x + tabWidth - 29, 6, 24, 26, !browserMenu)) {
+                cancel(entry);
+                if (mediaTab === entry) closeMedia();
+                tabs.splice(i, 1);
+                if (i < active || active >= tabs.length) active--;
+                activateTab(active);
+                break;
+            }
     }
-    if (tabs.length < 5 && ui.button("+", 8 + tabs.length * tabWidth, 5, 34, 28)) {
-        active = tabs.push(newTab()) - 1;
-    }
-    if (tabs.length > 1 && ui.button(label("Kapat", "Close"), w - 65, 6, 57, 27)) {
-        cancel(tabs[active]);
-        if (mediaTab === tabs[active]) closeMedia();
-        tabs.splice(active, 1);
-        active = Math.min(active, tabs.length - 1);
-    }
+    if (chromeIcon("add-tab", "add", 7 + visible * tabWidth, 4, 29, 30, !browserMenu && tabs.length < 8))
+        activateTab(tabs.push(newTab()) - 1);
+    if (chromeIcon("tab-list", "expand_more", w - 39, 4, 32, 30, true, browserMenu === "tabs"))
+        browserMenu = browserMenu === "tabs" ? "" : "tabs";
     const tab = tabs[active];
     if (previous !== tab && player) closeMedia();
-    if (ui.button("<", 8, 39, 30, 32)) {
-        if (tab.index > 0) openPage(tab, tab.history[tab.index - 1], tab.index - 1);
+    const menuX = w - 39, starX = w - 76, goX = w - 113, inputX = 140;
+    if (chromeIcon("menu", "more_vert", menuX, 42, 32, 31, true, !!browserMenu))
+        browserMenu = browserMenu ? "" : "settings";
+    if (browserMenu) {
+        ui.label(tab.address.slice(0, 49), inputX + 9, 50, 13, chrome.muted);
+        drawBrowserMenu(tab, w, h);
+        return;
     }
-    if (ui.button(">", 42, 39, 30, 32)) {
-        if (tab.index + 1 < tab.history.length) openPage(tab, tab.history[tab.index + 1], tab.index + 1);
+    if (chromeIcon("back", "arrow_back", 5, 42, 31, 31, tab.index > 0))
+        openPage(tab, tab.history[tab.index - 1], tab.index - 1);
+    if (chromeIcon("forward", "arrow_forward", 37, 42, 31, 31, tab.index + 1 < tab.history.length))
+        openPage(tab, tab.history[tab.index + 1], tab.index + 1);
+    const loading = tab.request || tab.parser || tab.styles.length;
+    if (chromeIcon("refresh", loading ? "close" : "refresh", 69, 42, 31, 31, !!(tab.address || loading))) {
+        if (loading) { cancel(tab); tab.status = label("Durduruldu.", "Stopped."); }
+        else openPage(tab, tab.address, tab.index >= 0 && tab.url === tab.address ? tab.index : undefined);
     }
-    if (ui.button(tab.request || tab.styles.length || tab.parser ? label("Dur", "Stop") : label("Yenile", "Reload"), 76, 39, 61, 32)) {
-        if (tab.request || tab.styles.length || tab.parser) { cancel(tab); tab.status = "Durduruldu."; }
-        else if (tab.url) openPage(tab, tab.url, tab.index);
+    if (chromeIcon("home", "home", 101, 42, 31, 31)) home(tab);
+    const inputId = "address-" + tab.key;
+    tab.draft = ui.textfield(inputId, tab.draft, inputX, 42, goX - inputX - 5, 31,
+        label("Ara veya adres yaz", "Search or enter address"), "search");
+    const go = chromeIcon("go", "arrow_forward", goX, 42, 31, 31, !!tab.draft.trim());
+    if ((ui.submitted(inputId) || go) && tab.draft.trim()) {
+        ui.focus("browser-navigation");
+        openPage(tab, tab.draft);
     }
-    const addressWidth = w - 288;
-    const displayAddress = (tab.address || label("Adres veya arama", "Address or search")).replace(/##/g, "# #");
-    gfx.rect(143, 39, addressWidth, 32, 5, theme.field);
-    gfx.clip(149, 39, addressWidth - 12, 32);
-    ui.label(displayAddress, 152, 47, 14, theme.text);
+    const saved = !!tab.url && settings().bookmarks.some(item => item.url === tab.url);
+    if (chromeIcon("bookmark", saved ? "star" : "star_border", starX, 42, 31, 31, !!tab.url, saved)) toggleBookmark(tab);
+    if (loading) gfx.rect(0, 77, Math.min(w, 47 + (performance.now() / 8) % Math.max(1,w - 47)), 2, 0, chrome.accent);
+    gfx.clip(9, h - 24, w - 18, 24);
+    ui.label((tab.status || label("Hazır", "Ready")).slice(0, 125), 10, h - 20, 12, theme.text2);
     gfx.unclip();
-    if (ui.hit("address-keyboard", 143, 39, addressWidth, 32).clicked
-        || ui.button(label("Gir", "Go"), w - 54, 39, 46, 32, "primary"))
-        editNavigation(tab, tab.address, label("Adres veya arama", "Address or search"), value => openPage(tab, value));
-    if (ui.button(label("Menü", "Menu"), w - 137, 39, 77, 32, "toolbar")) browserMenu = true;
-    ui.label(label("MASAÜSTÜ", "DESKTOP") + "  ·  " + tab.status.slice(0, 73), 10, h - 21, 13);
-    if (player && mediaTab === tab) {
-        const info = media.info(player);
-        media.draw(player, 8, 79, w - 16, h - 177, "contain");
-        if (info.duration > 0) {
-            const position = Number(info.position) || 0;
-            const selected = ui.slider("media-seek", position, 0, info.duration, 9, h - 94, w - 105, 0.1);
-            if (Number.isFinite(selected) && Math.abs(selected - position) >= 0.05) media.seek(player, selected);
-            ui.label(mediaTime(position) + " / " + mediaTime(info.duration), w - 89, h - 92, 13);
-        }
-        if (ui.button(info.state === "playing" ? label("Duraklat", "Pause") : label("Oynat", "Play"), 8, h - 63, 90, 31)) {
-            if (info.state === "playing") media.pause(player);
-            else media.play(player);
-        }
-        if (ui.button(label("Medyayı kapat", "Close media"), 105, h - 63, 118, 31)) closeMedia();
-        const state = info.state === "failed" ? label("Akış oynatılamadı.", "Playback failed.")
-            : info.buffering ? label("Tamponlanıyor…", "Buffering…") : "";
-        ui.label(state, 233, h - 56, 14);
-        return;
-    }
-    if (tab.watch && !tab.catalog) { drawWatch(tab, w, h); return; }
+    if (tab.youtube && !tab.catalog) { drawYouTube(tab, w, h); return; }
+    if (player && mediaTab === tab) { drawPlayer(tab, 8, 85, w - 16, h - 117); return; }
     if (tab.netflix && !tab.catalog) { drawNetflix(tab, w, h); return; }
-    if (!tab.url && !tab.rows.length && !tab.request && !tab.parser && !tab.address) {
-        const left = Math.max(24, (w - 520) / 2);
-        ui.label("NetX-Browser Mini", left, 104, 34, theme.text, "bold");
-        ui.label(label("Adres çubuğundan bir site aç veya arama yap.", "Open a site or search from the address bar."), left, 158, 17, theme.text2);
-        if (ui.button("Wikipedia", left, 199, 112, 36)) openPage(tab, "https://tr.wikipedia.org/");
-        if (ui.button(label("Kaynak kütüphanesi", "Reference library"), left + 122, 199, 160, 36)) showCatalog(tab);
-        if (ui.button("WebGL Cubemap", left + 292, 199, 130, 36)
-            && !sys.launch("browser", "https://webglsamples.org/dynamic-cubemap/dynamic-cubemap.html"))
-            tab.status = label("Sistem tarayıcısı açılamadı.", "Could not open the system browser.");
-        if (ui.button("YouTube", left, 246, 112, 36)) openTube(tab, "");
-        if (ui.button(label("YouTube’da ara", "Search YouTube"), left + 122, 246, 160, 36))
-            editNavigation(tab, "", label("YouTube’da ara", "Search YouTube"),
-                query => openTube(tab, "tube:search:" + query.slice(0, 200)));
-        if (ui.button("Netflix", left + 292, 246, 130, 36)) openPage(tab, netflixExample);
-        if (ui.button(label("Teknoloji haberleri", "Technology news"), left, 293, 160, 36))
-            openPage(tab, "https://news.ycombinator.com/");
-        if (ui.button("GitHub", left + 170, 293, 112, 36))
-            openPage(tab, "https://github.com/explore");
-        return;
-    }
+    if (tab.search && tab.search.items.length && !tab.catalog) { drawSearch(tab, w, h); return; }
+    if (!tab.address && !tab.rows.length && !tab.catalog) { drawHome(tab, w, h); return; }
     const wide = w >= 780 && !tab.catalog && tab.rows.length > 0;
     const contentsWidth = wide && tab.sections && tab.sections.length ? 148 : 0;
     const infoWidth = wide && tab.info && tab.info.length ? Math.min(280, Math.floor(w * 0.28)) : 0;
@@ -963,7 +1442,7 @@ app.draw = function(w, h) {
         ui.label(tab.status, panelX + 24, top + 25, 16, theme.text2);
         return;
     }
-    const [scroll] = ui.beginScroll("page" + active, panelX + 13 + contentsWidth, top + 6,
+    const [scroll] = ui.beginScroll("page-" + tab.key + "-" + tab.revision, panelX + 13 + contentsWidth, top + 6,
         panelWidth - 26 - contentsWidth - infoWidth, viewport - 12, contentHeight + 8);
     let destination = "";
     for (let i = 0; i < layout.length; i++) {

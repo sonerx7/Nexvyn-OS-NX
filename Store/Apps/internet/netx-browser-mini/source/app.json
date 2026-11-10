@@ -1,8 +1,8 @@
 {
   "id": "com.sonerx7.nxbrowser",
   "name": "NetX-Browser Mini",
-  "description": {"tr":"Hafif masaüstü tarayıcı, yerel YouTube açma ve herkese açık Netflix fragmanları","en":"Lightweight desktop browser, native YouTube handoff and public Netflix trailers"},
-  "version": "0.10.0",
+  "description": {"tr":"Sekmeli tarayıcı, dahili YouTube arama ve oynatma, herkese açık Netflix fragmanları","en":"Tabbed browser, built-in YouTube search and playback, and public Netflix trailers"},
+  "version": "0.11.0",
   "author": "sonerx7",
   "category": "internet",
   "main": "main.js",

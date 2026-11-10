@@ -14,15 +14,15 @@
   ],
   "age": "teen",
   "subtitle": {
-    "en": "Desktop browsing and native media",
-    "tr": "Masaüstü gezinme ve yerel medya"
+    "en": "Tabs, web search and built-in video",
+    "tr": "Sekmeler, web araması ve dahili video"
   },
   "description": {
-    "en": "Open desktop-oriented pages in a lightweight browser with tabs, bookmarks, the Nexvyn OS keyboard and links to web standards. YouTube links and searches open in the separate YousTube app. Play available public Netflix trailers in NetX-Browser Mini. Protected Netflix episodes and full desktop web compatibility are outside this release.",
-    "tr": "Sekmeler, favoriler, Nexvyn OS klavyesi ve web standartları bağlantılarıyla masaüstü odaklı sayfaları aç. YouTube bağlantıları ve aramalar ayrı YousTube uygulamasında açılır. Netflix'in herkese açık fragmanları NetX-Browser Mini içinde oynatılır. Korumalı Netflix bölümleri ve tam masaüstü web uyumluluğu bu sürümün kapsamı dışındadır."
+    "en": "Browse with an editable address bar, up to eight tabs, bookmarks, browsing history and a choice of search engines. Search and watch compatible public YouTube videos in the same tab. Play public trailers that Netflix publishes on its title pages. Netflix sign-in and protected movie or episode playback are unavailable.",
+    "tr": "Düzenlenebilir adres çubuğu, sekiz sekme, favoriler, geçmiş ve arama motoru seçimiyle gezin. YouTube’da ara ve uyumlu herkese açık videoları aynı sekmede izle. Netflix’in başlık sayfalarında sunduğu herkese açık fragmanları oynat. Netflix hesabıyla giriş ve korumalı film ya da bölüm oynatma desteklenmez."
   },
   "changelog": {
-    "en": "NetX-Browser Mini branding, YouTube link and search handoff, public Netflix trailers with playback controls.",
-    "tr": "NetX-Browser Mini adı, YouTube bağlantıları ve aramaları için yerel oynatıcıya geçiş, denetimli Netflix fragman oynatma."
+    "en": "Redesigned toolbar and new tab page, tab overflow list, inline address editing, search results, history controls, themes, session restoration and an in-tab YouTube player.",
+    "tr": "Yeni araç çubuğu ve başlangıç ekranı, sekme listesi, yerinde adres girişi, arama sonuçları, geçmiş denetimi, temalar, oturum geri yükleme ve sekme içinde YouTube oynatıcı."
   }
 }
