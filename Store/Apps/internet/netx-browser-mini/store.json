@@ -1,0 +1,28 @@
+{
+  "kind": "app",
+  "tech": "javascript",
+  "features": [
+    "online",
+    "touch",
+    "keyboard"
+  ],
+  "tags": [
+    "browser",
+    "web",
+    "video",
+    "reference"
+  ],
+  "age": "teen",
+  "subtitle": {
+    "en": "Desktop browsing and native media",
+    "tr": "Masaüstü gezinme ve yerel medya"
+  },
+  "description": {
+    "en": "Open desktop-oriented pages in a lightweight browser with tabs, bookmarks, the Nexvyn OS keyboard and links to web standards. YouTube links and searches open in the separate YousTube app. Play available public Netflix trailers in NetX-Browser Mini. Protected Netflix episodes and full desktop web compatibility are outside this release.",
+    "tr": "Sekmeler, favoriler, Nexvyn OS klavyesi ve web standartları bağlantılarıyla masaüstü odaklı sayfaları aç. YouTube bağlantıları ve aramalar ayrı YousTube uygulamasında açılır. Netflix'in herkese açık fragmanları NetX-Browser Mini içinde oynatılır. Korumalı Netflix bölümleri ve tam masaüstü web uyumluluğu bu sürümün kapsamı dışındadır."
+  },
+  "changelog": {
+    "en": "NetX-Browser Mini branding, YouTube link and search handoff, public Netflix trailers with playback controls.",
+    "tr": "NetX-Browser Mini adı, YouTube bağlantıları ve aramaları için yerel oynatıcıya geçiş, denetimli Netflix fragman oynatma."
+  }
+}

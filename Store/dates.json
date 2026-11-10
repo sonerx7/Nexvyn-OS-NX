@@ -1271,6 +1271,17 @@
       }
     ]
   },
+  "com.sonerx7.nxbrowser": {
+    "added": "2026-11-10",
+    "updated": "2026-11-10",
+    "version": "0.10.0",
+    "history": [
+      {
+        "version": "0.10.0",
+        "date": "2026-11-10"
+      }
+    ]
+  },
   "com.sonerx7.palette": {
     "added": "2026-10-29",
     "updated": "2026-11-01",
