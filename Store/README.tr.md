@@ -91,7 +91,7 @@ Bu sayfa `Tools/build_store.py` ile üretilir. Toplam **180** öğe. Konsoldaki 
 | <img src="Apps/internet/currency/icon.png" width="32"> | [Döviz](Apps/internet/currency/) · Nexvyn OS ile gelir | 36 para birimi için canlı döviz kurları |
 | <img src="Apps/internet/ftp/icon.png" width="32"> | [FTP İstemcisi](Apps/internet/ftp/) · Nexvyn OS ile gelir | FileZilla tarzı dosya aktarımı |
 | <img src="Apps/internet/maps/icon.png" width="32"> | [Haritalar](Apps/internet/maps/) · Nexvyn OS ile gelir | Aramalı ve iğneli OpenStreetMap |
-| <img src="Apps/internet/netx-browser-mini/icon.png" width="32"> | [NetX-Browser Mini](Apps/internet/netx-browser-mini/) | Masaüstü gezinme ve yerel medya |
+| <img src="Apps/internet/netx-browser-mini/icon.png" width="32"> | [NetX-Browser Mini](Apps/internet/netx-browser-mini/) | Sekmeler, web araması ve dahili video |
 | <img src="Apps/internet/news/icon.png" width="32"> | [Haberler](Apps/internet/news/) · Nexvyn OS ile gelir | RSS ve Atom akışların, şık bir okuyucuda |
 | <img src="Apps/internet/weather/icon.png" width="32"> | [Hava Durumu](Apps/internet/weather/) · Nexvyn OS ile gelir | Saatlik ve 10 günlük tahmin, şık görünümle |
 
