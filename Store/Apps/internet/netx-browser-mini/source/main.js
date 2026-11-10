@@ -45,6 +45,10 @@ function youtubeUrl(page) {
 }
 
 let tabSerial = 0;
+const maxTabs = 8;
+const closedTabs = [];
+const downloads = [];
+let downloadSerial = 0;
 
 function showCatalog(tab) {
     if (!references) {
@@ -54,6 +58,10 @@ function showCatalog(tab) {
     cancel(tab);
     if (mediaTab === tab) closeMedia();
     tab.catalog = true;
+    tab.directMedia = null;
+    tab.find = "";
+    tab.findOpen = false;
+    tab.suggest = false;
     tab.address = tab.draft = tab.url = "";
     tab.title = label("Kaynaklar", "Resources");
     tab.info = [];
@@ -64,7 +72,7 @@ function showCatalog(tab) {
 
 function newTab() {
     return {key:++tabSerial, address: "", draft:"", youtubeQuery:"", url: "", rows: [], history: [], index: -1, request: 0,
-        styles: [], revision: 0, title: "", reason: "",
+        styles: [], revision: 0, title: "", reason: "", find:"", zoom:100, reader:false,
         status: label("Adres veya arama yazın.", "Enter an address or search.")};
 }
 
@@ -386,6 +394,7 @@ function loadStyles(tab, body, revision) {
             if (--remaining === 0) renderDocument();
         });
         if (id) tab.styles.push(id);
+        else if (--remaining === 0) renderDocument();
     }
 }
 
@@ -479,6 +488,32 @@ function netflixAsset(value, page) {
         && /\.(?:nflxso\.net|nflximg\.net|nflximg\.com|netflix\.com)$/i.test(address.hostname) ? url : "";
 }
 
+function netflixPreviews(body, page, meta, details) {
+    const list = [], seen = new Set();
+    function add(value, title, seconds = 0) {
+        const url = netflixAsset(value, page);
+        if (!url) return;
+        const asset = new URL(url);
+        if (!/\.nflxso\.net$/i.test(asset.hostname) || !/^\/so\/.+\.mp4$/i.test(asset.pathname)) return;
+        if (seen.has(asset.pathname)) return;
+        seen.add(asset.pathname);
+        list.push({url, title:String(title || label("Fragman", "Trailer")).slice(0, 150), seconds:Number(seconds) || 0});
+    }
+    const trailer = details.trailer || {};
+    add(meta["og:video:secure_url"] || meta["og:video"], trailer.name);
+    add(trailer.contentUrl, trailer.name);
+    const supplemental = /"playableVideo"\s*:\s*\{[^{}]{0,4000}?"url"\s*:\s*"((?:\\.|[^"\\]){1,3400})"[^{}]{0,60}\}\s*,\s*"runtimeSec"\s*:\s*(\d+)\s*,\s*"title"\s*:\s*"((?:\\.|[^"\\]){1,700})"\s*,\s*"type"\s*:\s*"TRAILER"/g;
+    function unescape(value) {
+        try { return JSON.parse('"' + value.replace(/\\x([0-9a-f]{2})/gi, "\\u00$1") + '"'); }
+        catch (_) { return ""; }
+    }
+    for (const match of body.slice(0, 2800000).matchAll(supplemental)) {
+        add(unescape(match[1]), unescape(match[3]), match[2]);
+        if (list.length >= 12) break;
+    }
+    return list;
+}
+
 function netflixTitle(body, url, info) {
     const address = new URL(url);
     if (!["netflix.com", "www.netflix.com"].includes(address.hostname)
@@ -490,13 +525,23 @@ function netflixTitle(body, url, info) {
     }
     const title = (metadata["og:title"] || info.title).replace(/^Watch\s+/i, "").replace(/\s*\|\s*Netflix.*$/i, "").trim();
     if (!title) return null;
-    const video = netflixAsset(metadata["og:video:secure_url"] || metadata["og:video"], url);
+    let details = {};
+    const structured = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]{1,100000}?)<\/script>/i.exec(body.slice(0, 600000));
+    if (structured) {
+        try {
+            const data = JSON.parse(structured[1]);
+            if (data && typeof data === "object") details = data;
+        } catch (_) {}
+    }
+    const previews = netflixPreviews(body, url, metadata, details);
+    const year = /^\d{4}/.exec(String(details.dateCreated || details.startDate || ""));
+    const genre = typeof details.genre === "string" ? details.genre : Array.isArray(details.genre) ? details.genre.join(" / ") : "";
     return {
         title: title.slice(0, 160),
         description: (metadata["og:description"] || info.description).slice(0, 480),
         poster: netflixAsset(metadata["og:image"], url),
-        trailer: video && /\.nflxso\.net$/i.test(new URL(video).hostname)
-            && /^\/so\/.+\.mp4$/i.test(new URL(video).pathname) ? video : "",
+        previews,
+        summary:[year && year[0], details.contentRating, genre].filter(Boolean).join(" · ").slice(0, 110),
     };
 }
 
@@ -613,6 +658,10 @@ function networkFailure(result) {
 function openPage(tab, value, historyIndex) {
     const input = value.trim();
     if (!input) return;
+    if (input.length > 4096) {
+        tab.status = label("Adres veya arama çok uzun.", "Address or search is too long.");
+        return;
+    }
     const candidate = /^https?:\/\//i.test(input) ? input
         : /^[\w.-]+\.[\w-]+(?:[/:?#][^\s]*)?$/.test(input) ? "https://" + input
         : searchEngines[settings().engine] + encodeURIComponent(input);
@@ -622,18 +671,26 @@ function openPage(tab, value, historyIndex) {
     if (youtube) url = youtubeUrl(youtube);
     cancel(tab);
     tab.catalog = false;
+    tab.find = "";
+    tab.findOpen = false;
+    tab.suggest = false;
     tab.youtube = youtube && Object.assign(youtube, {items:[], title:"YouTube", author:"", error:""});
     if (youtube && youtube.query) tab.youtubeQuery = youtube.query;
     tab.netflix = null;
     tab.search = null;
+    tab.directMedia = null;
     tab.rows = [];
     tab.info = [];
     tab.sections = [];
     if (mediaTab === tab) closeMedia();
-    if (/\.(mp4|webm|mkv|m3u8|mp3|aac|ogg)$/i.test(new URL(url).pathname)) {
+    const pathname = new URL(url).pathname;
+    if (/\.(mp4|webm|mkv|m3u8|mp3|aac|ogg)$/i.test(pathname)) {
         tab.address = tab.draft = url;
+        tab.title = new URL(url).hostname;
+        tab.status = url;
         recordPage(tab, url, historyIndex);
-        playMedia(tab, url, /\.(mp3|aac|ogg)$/i.test(new URL(url).pathname));
+        tab.directMedia = {url, audio:/\.(mp3|aac|ogg)$/i.test(pathname)};
+        if (tabs[active] === tab) playMedia(tab, url, tab.directMedia.audio);
         return;
     }
     const revision = tab.revision;
@@ -641,7 +698,8 @@ function openPage(tab, value, historyIndex) {
     tab.title = youtube ? "YouTube" : new URL(url).hostname;
     tab.status = "Yükleniyor…";
     tab.reason = "";
-    if (youtube) recordPage(tab, url, historyIndex);
+    recordPage(tab, url, historyIndex);
+    const navigationIndex = tab.index;
     const netflix = ["netflix.com", "www.netflix.com"].includes(new URL(url).hostname);
     tab.request = net.request({url, timeout:22, maxBytes:6291456, retry:1, cache:false,
         headers:Object.assign({Accept:"text/html, application/xhtml+xml, text/plain;q=0.9"},desktopHeaders)}, result => {
@@ -668,7 +726,7 @@ function openPage(tab, value, historyIndex) {
         if (tab.search && tab.search.items.length) {
             tab.title = tab.search.query;
             tab.status = tab.search.items.length + label(" arama sonucu", " search results");
-            recordPage(tab, tab.url, historyIndex);
+            recordPage(tab, tab.url, navigationIndex);
             rememberPage(tab);
             return;
         }
@@ -682,6 +740,7 @@ function openPage(tab, value, historyIndex) {
             tab.title = youtube.kind === "watch" ? youtube.title : youtube.query || "YouTube";
             tab.status = youtube.kind === "watch" ? tab.url
                 : youtube.items.length + label(" video bulundu", " videos found");
+            recordPage(tab, tab.url, navigationIndex);
             rememberPage(tab);
             return;
         }
@@ -699,18 +758,19 @@ function openPage(tab, value, historyIndex) {
                 tab.title = tab.netflix.title;
             } else loadStyles(tab, body, revision);
         }
-        recordPage(tab, tab.url, historyIndex);
+        recordPage(tab, tab.url, navigationIndex);
         rememberPage(tab);
         tab.status = tab.parser ? "Belge işleniyor…" : tab.stale ? "Önbellekteki kopya" : tab.netflix || tab.rows.length ? tab.url : "Gösterilebilir içerik bulunamadı.";
     });
+    if (!tab.request) tab.status = label("İstek başlatılamadı.", "Could not start the request.");
 }
 
 function recordPage(tab, url, index) {
     tab.url = url;
-    if (index === undefined) {
+    if (index === undefined && tab.history[tab.index] !== url) {
         tab.history = tab.history.slice(0, tab.index + 1).concat(url).slice(-50);
         tab.index = tab.history.length - 1;
-    } else {
+    } else if (index !== undefined) {
         tab.index = index;
         tab.history[index] = url;
     }
@@ -720,7 +780,7 @@ function rememberPage(tab) {
     const prefs = settings();
     if (!prefs.keepHistory) return;
     prefs.recent = [{url:tab.url, title:tab.title || tab.url}]
-        .concat(prefs.recent.filter(item => item.url !== tab.url)).slice(0, 30);
+        .concat(prefs.recent.filter(item => item.url !== tab.url)).slice(0, 100);
     store.set("browser-settings", prefs);
 }
 
@@ -778,20 +838,26 @@ function layoutRuns(runs, width, size, font, align) {
     return {lines,lineHeight,height:lines.length * lineHeight};
 }
 
-function measure(tab, width) {
-    if (measuredTab !== tab || measuredWidth !== width || measuredDocument !== tab.rows) {
+let measuredZoom;
+let measuredReader;
+function measure(tab, rows, width) {
+    if (measuredTab !== tab || measuredWidth !== width || measuredDocument !== rows
+        || measuredZoom !== tab.zoom || measuredReader !== tab.reader) {
         measuredTab = tab;
         measuredWidth = width;
-        measuredDocument = tab.rows;
+        measuredDocument = rows;
+        measuredZoom = tab.zoom;
+        measuredReader = tab.reader;
         contentHeight = 8;
         layout = [];
     }
-    const end = Math.min(tab.rows.length, layout.length + 16);
+    const end = Math.min(rows.length, layout.length + 16);
     const deadline = performance.now() + 3;
     for (let i = layout.length; i < end; i++) {
-        const row = tab.rows[i];
-        const css = row.css || {};
-        const size = Math.max(12, Math.min(40, Number((css["font-size"] || "").replace(/px$/, "")) || 17));
+        const row = rows[i];
+        const css = tab.reader && !row.heading ? {} : row.css || {};
+        const baseSize = Number((css["font-size"] || "").replace(/px$/, "")) || (tab.reader ? 18 : 17);
+        const size = Math.max(10, Math.min(55, baseSize * tab.zoom / 100));
         const font = /^(bold|[7-9]00)$/.test(css["font-weight"]) ? "bold" : css["font-style"] === "italic" ? "italic" : "sans";
         const isText = !row.image && !row.stream && !row.entry;
         const padding = isText ? cssPixels(css.padding, 40) : 0;
@@ -811,12 +877,14 @@ function measure(tab, width) {
 
 app.load = function(arg) {
     const session = !arg && settings().restoreTabs && store.get("browser-session", {});
-    const saved = session && Array.isArray(session.tabs) ? session.tabs.slice(0, 8) : [];
+    const saved = session && Array.isArray(session.tabs) ? session.tabs.slice(0, maxTabs) : [];
     for (const item of saved) {
         if (!item || typeof item !== "object") continue;
         const tab = newTab();
         tab.restore = typeof item.url === "string" ? resolve(item.url) : "";
         tab.title = typeof item.title === "string" ? item.title.slice(0, 160) : "";
+        tab.zoom = [80,90,100,110,125,150,175].includes(item.zoom) ? item.zoom : 100;
+        tab.reader = item.reader === true;
         tabs.push(tab);
     }
     if (!tabs.length) tabs.push(newTab());
@@ -827,9 +895,15 @@ app.load = function(arg) {
 app.open = function(arg) { if (arg) openPage(tabs[active], arg); };
 app.close = function() {
     if (settings().restoreTabs) {
-        store.set("browser-session", {active, tabs:tabs.map(tab => ({url:tab.restore || tab.url, title:tab.title}))});
+        store.set("browser-session", {active, tabs:tabs.map(tab => ({
+            url:tab.restore || tab.url, title:tab.title, zoom:tab.zoom, reader:tab.reader,
+        }))});
     }
     for (const tab of tabs) cancel(tab);
+    for (const item of downloads) {
+        if (item.request) net.cancel(item.request);
+        if (fs.exists(item.temporary)) fs.remove(item.temporary, true);
+    }
     closeMedia();
     return true;
 };
@@ -846,6 +920,83 @@ function activateTab(index) {
         openPage(tab, url);
     }
 }
+
+function addTab(url, select = true) {
+    if (tabs.length >= maxTabs) {
+        tabs[active].status = label("Sekme sınırına ulaşıldı.", "Tab limit reached.");
+        return;
+    }
+    const tab = newTab();
+    tabs.push(tab);
+    if (select) activateTab(tabs.length - 1);
+    if (url) openPage(tab, url);
+}
+
+function closeTab(index) {
+    const tab = tabs[index];
+    if (!tab) return;
+    const url = tab.restore || tab.url;
+    if (url) {
+        closedTabs.push({url, title:tab.title, history:tab.history.slice(), index:tab.index});
+        if (closedTabs.length > maxTabs) closedTabs.shift();
+    }
+    cancel(tab);
+    if (mediaTab === tab) closeMedia();
+    tabs.splice(index, 1);
+    if (!tabs.length) tabs.push(newTab());
+    if (index < active || active >= tabs.length) active = Math.max(0, active - 1);
+    activateTab(active);
+}
+
+function reopenTab() {
+    if (!closedTabs.length || tabs.length >= maxTabs) return;
+    const saved = closedTabs.pop();
+    addTab();
+    const tab = tabs[active];
+    tab.history = saved.history;
+    tab.index = saved.index;
+    openPage(tab, saved.url, tab.index >= 0 ? tab.index : undefined);
+}
+
+const zoomLevels = [80, 90, 100, 110, 125, 150, 175];
+function zoomPage(tab, step) {
+    const at = zoomLevels.indexOf(tab.zoom);
+    tab.zoom = step ? zoomLevels[Math.max(0, Math.min(zoomLevels.length - 1, at + step))] : 100;
+}
+
+let focusField = "";
+app.event = function(e) {
+    if (e.type !== "keydown" || !tabs.length) return;
+    const tab = tabs[active];
+    if (e.key === "escape") {
+        tab.suggest = false;
+        if (browserMenu) browserMenu = "";
+        else if (tab.findOpen) { tab.findOpen = false; tab.find = ""; }
+        else if (mediaTheater) mediaTheater = false;
+        return;
+    }
+    if (!e.ctrl) return;
+    if (e.key === "l") {
+        browserMenu = "";
+        mediaTheater = false;
+        focusField = "address-" + tab.key;
+    } else if (e.key === "t") {
+        if (e.shift) reopenTab();
+        else addTab();
+    } else if (e.key === "w") closeTab(active);
+    else if (e.key === "tab") activateTab((active + tabs.length + (e.shift ? -1 : 1)) % tabs.length);
+    else if (e.key === "r" && tab.address) openPage(tab, tab.address, tab.index);
+    else if (e.key === "d") toggleBookmark(tab);
+    else if (e.key === "f" && tab.rows.length && !tab.catalog) {
+        browserMenu = "";
+        tab.findOpen = true;
+        focusField = "find-" + tab.key;
+    } else if (e.key === "h") showMenu("history");
+    else if (e.key === "j") showMenu("downloads");
+    else if (e.key === "=" || e.key === "+") zoomPage(tab, 1);
+    else if (e.key === "-") zoomPage(tab, -1);
+    else if (e.key === "0") zoomPage(tab, 0);
+};
 
 function drawInfoBox(rows, x, y, width, height) {
     if (height < 65) return;
@@ -872,6 +1023,7 @@ function drawInfoBox(rows, x, y, width, height) {
 }
 
 let browserMenu = "";
+let libraryQuery = "";
 let browserSettings;
 const nightChrome = {
     top:"#121b2c", bar:"#202d42", active:"#30415e", hover:"#394d6b", field:"#101a2b",
@@ -883,14 +1035,22 @@ const oceanChrome = {
 };
 let chrome = nightChrome;
 
+function savedLinks(value, limit) {
+    if (!Array.isArray(value)) return [];
+    return value.filter(item => item && typeof item.url === "string" && resolve(item.url))
+        .slice(0, limit).map(item => ({
+            url:item.url, title:typeof item.title === "string" ? item.title.slice(0, 180) : item.url,
+        }));
+}
+
 function settings() {
     if (!browserSettings) {
         const saved = store.get("browser-settings", {}) || {};
         browserSettings = {
             language:saved.language || (sys.lang() === "tr" ? "tr" : "en"),
             engine:Object.hasOwn(searchEngines, saved.engine) ? saved.engine : "DuckDuckGo",
-            bookmarks:Array.isArray(saved.bookmarks) ? saved.bookmarks : [],
-            recent:Array.isArray(saved.recent) ? saved.recent : [],
+            bookmarks:savedLinks(saved.bookmarks, 50),
+            recent:savedLinks(saved.recent, 100),
             appearance:saved.appearance === "ocean" ? "ocean" : "night",
             keepHistory:saved.keepHistory !== false,
             restoreTabs:saved.restoreTabs === true,
@@ -901,6 +1061,158 @@ function settings() {
 
 function label(tr, en) {
     return settings().language === "en" ? en : tr;
+}
+
+function showMenu(section) {
+    browserMenu = section;
+    libraryQuery = "";
+}
+
+function searchable(value) {
+    return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ı/g, "i");
+}
+
+function visibleRows(tab) {
+    if (tab.catalog || (!tab.find.trim() && !tab.reader)) return tab.rows;
+    if (tab.filteredSource !== tab.rows || tab.filteredTerm !== tab.find || tab.filteredReader !== tab.reader) {
+        const term = searchable(tab.find.trim());
+        tab.filteredRows = tab.rows.filter(row => {
+            if (tab.reader && (row.image || row.stream || !row.text.trim())) return false;
+            return !term || searchable(row.text || "").includes(term);
+        });
+        tab.filteredSource = tab.rows;
+        tab.filteredTerm = tab.find;
+        tab.filteredReader = tab.reader;
+    }
+    return tab.filteredRows;
+}
+
+function visitSuggestions(tab) {
+    const query = tab.draft.trim();
+    if (!query || !tab.suggest || tab.draft === tab.address) return [];
+    const term = searchable(query);
+    const prefs = settings();
+    const seen = new Set();
+    const matches = [];
+    for (const entry of prefs.bookmarks.concat(prefs.recent)) {
+        if (seen.has(entry.url) || !searchable(entry.title + " " + entry.url).includes(term)) continue;
+        seen.add(entry.url);
+        matches.push(entry);
+        if (matches.length === 5) break;
+    }
+    return matches;
+}
+
+function drawSuggestions(tab, items, x, w) {
+    gfx.rect(x, 82, w, 43 + items.length * 43, 8, theme.window);
+    ui.label(label("Favoriler ve geçmiş", "Bookmarks and history"), x + 13, 95, 13, theme.text2, "bold");
+    if (ui.button("×##close-suggestions", x + w - 31, 86, 24, 28, "toolbar")) tab.suggest = false;
+    for (let i = 0; i < items.length; i++) {
+        const entry = items[i], y = 120 + i * 43;
+        const hit = ui.hit("address-suggestion-" + i, x + 7, y, w - 14, 40);
+        if (hit.hovered) gfx.rect(x + 7, y, w - 14, 40, 6, theme.sidebar);
+        ui.label(fitText(entry.title, w - 26, 14), x + 13, y + 3, 14, theme.text);
+        ui.label(fitText(entry.url, w - 26, 11), x + 13, y + 21, 11, theme.text2);
+        if (hit.clicked) { openPage(tab, entry.url); break; }
+    }
+}
+
+function downloadFile(url) {
+    if (downloads.filter(item => item.request).length >= 3) {
+        showMenu("downloads");
+        return;
+    }
+    const address = new URL(url);
+    let name = address.pathname.split("/").pop() || address.hostname + ".html";
+    try { name = decodeURIComponent(name); } catch (_) {}
+    name = name.replace(/[<>:"/\\|?*\x00-\x1f]/g, "_").replace(/^\.+/, "").slice(0, 110) || "download";
+    ui.saveFile(path => {
+        if (!path) return;
+        if (downloads.filter(item => item.request).length >= 3
+            || downloads.some(item => item.request && item.path === path)) {
+            showMenu("downloads");
+            return;
+        }
+        const temporary = fs.dir("cache") + "/netx-downloads/" + Date.now() + "-" + ++downloadSerial;
+        const item = {name:path.split("/").pop() || name, path, temporary, state:"running", bytes:0, total:0};
+        downloads.unshift(item);
+        if (downloads.length > 25) {
+            const last = downloads.findIndex((entry, index) => index >= 20 && !entry.request);
+            if (last >= 0) downloads.splice(last, 1);
+        }
+        showMenu("downloads");
+        if (fs.exists(path)) {
+            item.state = "failed";
+            item.error = label("Dosya zaten var. Başka bir ad seç.", "File already exists. Choose a different name.");
+            return;
+        }
+        item.request = net.request({url, saveTo:temporary, timeout:180, redirects:true, headers:desktopHeaders}, result => {
+            item.request = 0;
+            if (item.state !== "cancelled") {
+                const saved = result.ok && fs.rename(temporary, path);
+                item.state = saved ? "done" : "failed";
+                if (!saved) item.error = result.ok ? label("Dosya hedefe kaydedilemedi.", "Could not save to the selected path.")
+                    : networkFailure(result);
+            }
+            if (fs.exists(temporary)) fs.remove(temporary, true);
+        }, (received, total) => {
+            item.bytes = received;
+            item.total = total;
+        });
+        if (!item.request) item.state = "failed";
+    }, name, label("Dosyayı indir", "Download file"));
+}
+
+function linkAction(id, url, x, y, w, h) {
+    const hit = ui.hit(id, x, y, w, h);
+    if (hit.rightClicked) {
+        ui.contextMenu([
+            {label:label("Yeni sekmede aç", "Open in new tab"), id:1, icon:"open_in_new"},
+            {label:label("Bağlantıyı kopyala", "Copy link"), id:2, icon:"content_copy"},
+            {label:label("Bağlantıyı kaydet", "Save link"), id:3, icon:"download"},
+        ], action => {
+            if (action === 1) addTab(url, false);
+            else if (action === 2) sys.clipboard(url);
+            else if (action === 3) downloadFile(url);
+        });
+    }
+    return hit.clicked;
+}
+
+function drawDownloads(x, y, w, h) {
+    if (!downloads.length) {
+        ui.label(label("Bu oturumda indirme yok.", "No downloads this session."), x + 3, y + 6, 14, theme.text2);
+        return;
+    }
+    const [offset] = ui.beginScroll("downloads-list", x, y, w, h, downloads.length * 64);
+    for (let i = 0; i < downloads.length; i++) {
+        const rowY = i * 64;
+        if (rowY + 61 < offset || rowY > offset + h) continue;
+        const item = downloads[i];
+        gfx.rect(0, rowY, w - 10, 59, 6, theme.sidebar);
+        ui.label(fitText(item.name, w - 84, 14), 8, rowY + 6, 14, theme.text, "bold");
+        const progress = Math.min(1, item.bytes / Math.max(1, item.total));
+        const size = item.bytes < 1048576 ? Math.floor(item.bytes / 1024) + " KB" : (item.bytes / 1048576).toFixed(1) + " MB";
+        const status = item.state === "running" ? size + (item.total > 0 ? " · " + Math.floor(progress * 100) + "%" : "")
+            : item.state === "done" ? label("Tamamlandı", "Complete") + " · " + size
+            : item.state === "cancelled" ? label("İptal edildi", "Cancelled")
+            : item.error || label("İndirme başarısız.", "Download failed.");
+        ui.label(fitText(status, w - 91, 12), 8, rowY + 27, 12, theme.text2);
+        if (item.request) {
+            if (item.total > 0) gfx.rect(8, rowY + 47, (w - 86) * progress, 3, 1, theme.accent);
+            if (ui.button("×##cancel-download-" + i, w - 51, rowY + 13, 31, 30, "toolbar")) {
+                item.state = "cancelled";
+                net.cancel(item.request);
+                item.request = 0;
+                if (fs.exists(item.temporary)) fs.remove(item.temporary, true);
+            }
+        } else if (item.state === "done" && ui.button(label("Konum", "Path") + "##download-" + i,
+            w - 73, rowY + 13, 56, 30, "toolbar")) {
+            sys.clipboard(item.path);
+            item.error = "";
+        }
+    }
+    ui.endScroll();
 }
 
 function toggleBookmark(tab) {
@@ -922,9 +1234,13 @@ function home(tab) {
     tab.title = "";
     tab.restore = "";
     tab.catalog = false;
+    tab.find = "";
+    tab.findOpen = false;
+    tab.suggest = false;
     tab.youtube = null;
     tab.netflix = null;
     tab.search = null;
+    tab.directMedia = null;
     tab.rows = [];
     tab.status = label("Yeni sekme", "New tab");
 }
@@ -975,20 +1291,50 @@ function drawBrowserMenu(tab, w, h) {
     gfx.rect(x, y, width, bottom - y, 12, theme.window);
     gfx.rect(x, y, width, 46, 12, chrome.bar);
     ui.label(label("Tarayıcı menüsü", "Browser menu"), x + 14, y + 12, 19, chrome.text, "bold");
-    if (chromeIcon("panel-close", "close", x + width - 37, y + 6, 30, 32)) browserMenu = "";
+    if (chromeIcon("panel-close", "close", x + width - 37, y + 6, 30, 32)) {
+        browserMenu = "";
+        return;
+    }
     const sections = [
         ["settings",label("Ayarlar", "Settings")],
         ["bookmarks",label("Favoriler", "Bookmarks")],
         ["history",label("Geçmiş", "History")],
         ["tabs",label("Sekmeler", "Tabs")],
+        ["downloads",label("İndirilenler", "Downloads")],
+        ["page",label("Sayfa", "Page")],
     ];
-    const segment = (width - 24) / sections.length;
+    const segment = (width - 24) / 3;
     for (let i = 0; i < sections.length; i++) {
         const [key, title] = sections[i];
-        if (ui.button(title + "##panel-" + key, x + 12 + i * segment, y + 55, segment - 5, 31,
-            browserMenu === key ? "primary" : "toolbar")) browserMenu = key;
+        if (ui.button(title + "##panel-" + key, x + 12 + i % 3 * segment, y + 55 + Math.floor(i / 3) * 35, segment - 5, 30,
+            browserMenu === key ? "primary" : "toolbar")) showMenu(key);
     }
-    const left = x + 13, top = y + 98, inner = width - 26;
+    const left = x + 13, top = y + 127, inner = width - 26;
+    if (browserMenu === "page") {
+        const enabled = tab.rows.length > 0 && !tab.catalog;
+        if (ui.button(label("Sayfada ara", "Find on page"), left, top, 158, 30, "default", "search", enabled)) {
+            browserMenu = "";
+            tab.findOpen = true;
+            focusField = "find-" + tab.key;
+        }
+        if (ui.button(label("Okuma modu", "Reader mode"), left + 166, top, 158, 30,
+            tab.reader ? "primary" : "default", "menu_book", enabled)) {
+            tab.reader = !tab.reader;
+            browserMenu = "";
+        }
+        if (ui.button("−##zoom-out", left, top + 36, 32, 30, "toolbar", "", enabled)) zoomPage(tab, -1);
+        if (ui.button(tab.zoom + "%##zoom-reset", left + 39, top + 36, 62, 30, "toolbar", "", enabled)) zoomPage(tab, 0);
+        if (ui.button("+##zoom-in", left + 108, top + 36, 32, 30, "toolbar", "", enabled)) zoomPage(tab, 1);
+        if (ui.button(label("Adresi kaydet", "Save address"), left + 150, top + 36, 174, 30,
+            "default", "download", !!tab.address)) downloadFile(tab.address);
+        if (tab.address && ui.button(label("Sistem tarayıcısında aç", "Open in system browser"), left, top + 72, 232, 30, "toolbar", "open_in_new"))
+            sys.launch("browser", tab.address);
+        return;
+    }
+    if (browserMenu === "downloads") {
+        drawDownloads(left, top, inner, Math.max(28, bottom - top - 8));
+        return;
+    }
     if (browserMenu === "settings") {
         ui.beginScroll("browser-settings-panel", left, top, inner, Math.max(20, bottom - top - 8), 258);
         ui.label(label("Varsayılan arama motoru", "Default search engine"), 0, 0, 15, theme.text, "bold");
@@ -1041,11 +1387,18 @@ function drawBrowserMenu(tab, w, h) {
     }
     if (browserMenu === "tabs") {
         const viewport = Math.max(20, bottom - top - 8);
-        ui.beginScroll("all-tabs", left, top, inner, viewport, tabs.length * 38);
+        ui.beginScroll("all-tabs", left, top, inner, viewport, tabs.length * 38 + 40);
+        if (ui.button(label("Son kapanan sekmeyi aç", "Reopen closed tab"), 0, 0, inner - 11, 32,
+            "toolbar", "restore", !!closedTabs.length && tabs.length < maxTabs)) {
+            reopenTab();
+            browserMenu = "";
+            ui.endScroll();
+            return;
+        }
         let selected = -1;
         for (let i = 0; i < tabs.length; i++) {
             const title = fitText(tabs[i].title || label("Yeni sekme", "New tab"), inner - 36, 14).replace(/##/g, "# #");
-            if (ui.button(title + "##choose-tab-" + tabs[i].key, 0, i * 38, inner - 11, 33,
+            if (ui.button(title + "##choose-tab-" + tabs[i].key, 0, 40 + i * 38, inner - 11, 33,
                 i === active ? "primary" : "toolbar")) selected = i;
         }
         ui.endScroll();
@@ -1055,27 +1408,42 @@ function drawBrowserMenu(tab, w, h) {
         }
         return;
     }
-    const list = browserMenu === "bookmarks" ? prefs.bookmarks : prefs.recent;
+    const bookmarks = browserMenu === "bookmarks";
+    const list = bookmarks ? prefs.bookmarks : prefs.recent;
     if (!list.length) ui.label(label("Henüz kayıt yok.", "Nothing here yet."), left + 4, top + 5, 14, theme.text2);
-    let listTop = top;
-    if (browserMenu === "history" && list.length) {
-        if (ui.button(label("Geçmişi temizle", "Clear history"), left, top, 148, 29)) {
+    if (!list.length) return;
+    libraryQuery = ui.textfield("library-filter-" + browserMenu, libraryQuery, left, top,
+        bookmarks ? inner - 8 : inner - 137, 29, label("Kayıtlarda ara", "Search entries"), "search");
+    if (!bookmarks) {
+        if (ui.button(label("Temizle", "Clear history"), left + inner - 129, top, 120, 29)) {
             prefs.recent = [];
             store.set("browser-settings", prefs);
             return;
         }
-        listTop += 36;
     }
+    const listTop = top + 36;
     const viewport = Math.max(20, bottom - listTop - 8);
-    const [offset] = ui.beginScroll("browser-list-" + browserMenu, left, listTop, inner, viewport, list.length * 36);
+    const query = searchable(libraryQuery.trim());
+    const shown = query ? list.filter(entry => searchable(entry.title + " " + entry.url).includes(query)) : list;
+    const [offset] = ui.beginScroll("browser-list-" + browserMenu, left, listTop, inner, viewport, shown.length * 43);
     let destination = "";
-    for (let i = 0; i < list.length; i++) {
-        const rowY = i * 36;
-        if (rowY + 33 < offset || rowY > offset + viewport) continue;
-        if (ui.button(list[i].title.replace(/##/g, "# #").slice(0, 42) + "##saved" + i,
-            0, rowY, inner - 12, 32)) destination = list[i].url;
+    let remove;
+    for (let i = 0; i < shown.length; i++) {
+        const rowY = i * 43;
+        if (rowY + 40 < offset || rowY > offset + viewport) continue;
+        const entry = shown[i], rowWidth = inner - 45;
+        const hit = ui.hit("saved-" + i, 0, rowY, rowWidth, 41);
+        if (hit.hovered) gfx.rect(0, rowY, rowWidth, 41, 5, theme.sidebar);
+        ui.label(fitText(entry.title, rowWidth - 16, 14), 6, rowY + 4, 14, theme.text);
+        ui.label(fitText(entry.url, rowWidth - 16, 11), 6, rowY + 23, 11, theme.text2);
+        if (hit.clicked) destination = entry.url;
+        if (ui.button("×##remove-record-" + i, inner - 42, rowY + 5, 30, 30, "toolbar")) remove = entry;
     }
     ui.endScroll();
+    if (remove) {
+        list.splice(list.indexOf(remove), 1);
+        store.set("browser-settings", prefs);
+    }
     if (destination) { browserMenu = ""; openPage(tab, destination); }
 }
 
@@ -1094,7 +1462,6 @@ function drawPlayer(tab, x, y, w, h) {
         if (info.state === "failed") {
             closeMedia();
             if (tab.youtube) playYouTube(tab);
-            else if (tab.netflix && tab.netflix.trailer) playMedia(tab, tab.netflix.trailer, false);
             else if (tab.address) openPage(tab, tab.address, tab.index);
             return;
         }
@@ -1132,7 +1499,6 @@ function drawYouTube(tab, w, h) {
         label("Videolarda ara", "Search videos"), "search");
     const pressed = chromeIcon("yt-submit", "search", sx + sw + 7, 89, 36, 32);
     if ((ui.submitted(input) || pressed) && tab.youtubeQuery.trim()) {
-        ui.focus("browser-navigation");
         openPage(tab, youtubeUrl({kind:"search", query:tab.youtubeQuery.trim()}));
         return;
     }
@@ -1223,28 +1589,48 @@ function drawYouTube(tab, w, h) {
 function drawNetflix(tab, w, h) {
     const title = tab.netflix;
     gfx.rect(0, 79, w, h - 104, 0, "#141414");
-    ui.label("NETFLIX", 22, 91, 25, "#e50914", "bold");
-    const heroX = w >= 750 ? Math.floor(w * 0.48) : 22;
+    ui.label("Netflix", 22, 91, 25, "#e50914", "bold");
+    const wide = w >= 750;
+    const heroX = wide ? Math.floor(w * 0.53) : 22;
     const heroWidth = w - heroX - 22;
-    const heroHeight = Math.min(h - 178, heroWidth * 9 / 16);
-    const picture = title.poster && gfx.imageUrl(title.poster, 768);
-    if (picture && w >= 750) {
+    const previewsTop = Math.min(349, Math.max(218, h * 0.61));
+    const heroHeight = Math.min(previewsTop - 126, heroWidth * 9 / 16);
+    const picture = wide && title.poster && gfx.imageUrl(title.poster, 768);
+    if (picture) {
         const scale = Math.min(heroWidth / picture.width, heroHeight / picture.height);
-        gfx.draw(picture, heroX, 130, picture.width * scale, picture.height * scale, 8);
+        gfx.draw(picture, heroX, 122, picture.width * scale, picture.height * scale, 8);
     }
-    const textWidth = w >= 750 ? heroX - 44 : w - 44;
+    const textWidth = wide ? heroX - 44 : w - 44;
+    const heading = fitText(title.title, textWidth, 28);
+    ui.label(heading, 22, 129, 28, "#ffffff", "bold");
+    if (title.summary) ui.label(fitText(title.summary, textWidth, 13), 22, 167, 13, "#b9b9b9");
     gfx.color("#ffffff");
-    const headingHeight = gfx.wrap(title.title, 22, 145, textWidth, 30, "bold");
-    gfx.color("#dedede");
-    gfx.clip(22, 157 + headingHeight, textWidth, Math.max(0, h - 254 - headingHeight));
-    gfx.wrap(title.description, 22, 157 + headingHeight, textWidth, 16);
+    const descriptionTop = title.summary ? 192 : 169;
+    gfx.clip(22, descriptionTop, textWidth, Math.max(0, previewsTop - descriptionTop - 8));
+    gfx.wrap(title.description, 22, descriptionTop, textWidth, 15);
     gfx.unclip();
-    if (title.trailer && ui.button(label("Fragmanı oynat", "Play trailer"), 22, h - 95, 156, 34, "primary"))
-        playMedia(tab, title.trailer, false);
-    if (!title.trailer && ui.button(label("Örnek başlığı aç", "Open sample title"), 22, h - 95, 156, 34))
-        openPage(tab, netflixExample);
-    ui.label(label("Bölümler korumalı oynatıcı gerektirir.", "Episodes require a protected player."),
-        22, h - 51, 13, "#b9b9b9");
+    const previews = title.previews || [];
+    ui.label(label("Herkese açık fragmanlar", "Public trailers"), 22, previewsTop, 16, "#f4f4f4", "bold");
+    if (!previews.length) {
+        if (ui.button(label("Örnek başlığı aç", "Open sample title"), 22, previewsTop + 25, 175, 32))
+            openPage(tab, netflixExample);
+    } else {
+        const viewport = Math.max(39, h - previewsTop - 72);
+        ui.beginScroll("netflix-previews-" + tab.key + "-" + tab.revision, 22, previewsTop + 25,
+            w - 44, viewport, previews.length * 43);
+        let selected;
+        for (let i = 0; i < previews.length; i++) {
+            const item = previews[i];
+            const duration = item.seconds > 0 ? " · " + mediaTime(item.seconds) : "";
+            const name = fitText(item.title, w - 150, 14).replace(/##/g, "# #");
+            if (ui.button(name + duration + "##netflix-trailer-" + i, 0, i * 43, w - 55, 36,
+                i === 0 ? "primary" : "default", "play_arrow")) selected = item;
+        }
+        ui.endScroll();
+        if (selected) playMedia(tab, selected.url, false);
+    }
+    ui.label(label("Film ve bölümler korumalı oynatıcı gerektirir.", "Films and episodes require protected playback."),
+        22, h - 45, 12, "#b9b9b9");
 }
 
 function mediaTime(value) {
@@ -1267,14 +1653,14 @@ function drawSearch(tab, w, h) {
     for (let i = 0; i < items.length; i++) {
         const y = i * 59;
         if (y + 54 < scroll || y > scroll + viewport) continue;
-        const item = items[i], row = ui.hit("web-hit-" + i, 0, y, panel - 12, 53);
-        gfx.rect(0, y, panel - 12, 53, 7, row.hovered ? theme.field : theme.window);
+        const item = items[i];
+        gfx.rect(0, y, panel - 12, 53, 7, theme.window);
         gfx.icon("language", 20, y + 23, 16, theme.accent);
         gfx.clip(35, y + 3, panel - 56, 48);
         ui.label(item.title, 37, y + 6, 15, theme.accent, "bold");
         ui.label(new URL(item.href).hostname, 37, y + 30, 12, theme.text2);
         gfx.unclip();
-        if (row.clicked) target = item.href;
+        if (linkAction("web-hit-" + i, item.href, 0, y, panel - 12, 53)) target = item.href;
     }
     ui.endScroll();
     if (target) openPage(tab, target);
@@ -1292,12 +1678,12 @@ function drawHome(tab, w, h) {
     ui.label("NETX / MINI", 22, 23, 12, chrome.accent, "bold");
     ui.label(label("Web’e açıl", "Open the web"), 22, 43, w >= 620 ? 31 : 26, chrome.text, "bold");
     ui.label(label("Yeni sekme", "New tab"), 22, 81, 13, "#b6cbe7");
-    const searchWidth = width - 94;
+    const searchWidth = width - 122;
     const search = ui.hit("home-search", 18, 105, searchWidth, 43);
     gfx.rect(18, 105, searchWidth, 43, 12, search.hovered ? "#2c547b" : "#13273f");
     gfx.icon("search", 40, 126, 18, chrome.accent);
     ui.label(label("Web’de ara veya adres yaz", "Search or enter an address"), 57, 119, 14, chrome.text);
-    ui.label(settings().engine, width - 69, 121, 12, "#c0d7ec");
+    ui.label(settings().engine, width - 92, 121, 12, "#c0d7ec");
     ui.label(label("Hızlı erişim", "Quick access"), 2, 174, 17, theme.text, "bold");
     const shortcuts = [
         ["YouTube","play_arrow","#97344c",youtubeHome],
@@ -1351,7 +1737,6 @@ app.draw = function(w, h) {
     const visible = Math.min(tabs.length, capacity);
     const first = Math.min(Math.max(0, active - Math.floor(visible / 2)), tabs.length - visible);
     const tabWidth = Math.min(188, Math.floor((w - 77) / visible));
-    const previous = tabs[active];
     for (let i = first; i < first + visible; i++) {
             const entry = tabs[i], x = 6 + (i - first) * tabWidth;
             const hasClose = tabs.length > 1, titleWidth = tabWidth - (hasClose ? 42 : 19);
@@ -1365,23 +1750,18 @@ app.draw = function(w, h) {
                 x + 26, 12, 13, chrome.text);
             if (hit && hit.clicked) activateTab(i);
             if (hasClose && chromeIcon("close-tab-" + entry.key, "close", x + tabWidth - 29, 6, 24, 26, !browserMenu)) {
-                cancel(entry);
-                if (mediaTab === entry) closeMedia();
-                tabs.splice(i, 1);
-                if (i < active || active >= tabs.length) active--;
-                activateTab(active);
+                closeTab(i);
                 break;
             }
     }
-    if (chromeIcon("add-tab", "add", 7 + visible * tabWidth, 4, 29, 30, !browserMenu && tabs.length < 8))
-        activateTab(tabs.push(newTab()) - 1);
+    if (chromeIcon("add-tab", "add", 7 + visible * tabWidth, 4, 29, 30, !browserMenu && tabs.length < maxTabs))
+        addTab();
     if (chromeIcon("tab-list", "expand_more", w - 39, 4, 32, 30, true, browserMenu === "tabs"))
-        browserMenu = browserMenu === "tabs" ? "" : "tabs";
+        showMenu(browserMenu === "tabs" ? "" : "tabs");
     const tab = tabs[active];
-    if (previous !== tab && player) closeMedia();
     const menuX = w - 39, starX = w - 76, goX = w - 113, inputX = 140;
     if (chromeIcon("menu", "more_vert", menuX, 42, 32, 31, true, !!browserMenu))
-        browserMenu = browserMenu ? "" : "settings";
+        showMenu(browserMenu ? "" : "settings");
     if (browserMenu) {
         ui.label(tab.address.slice(0, 49), inputX + 9, 50, 13, chrome.muted);
         drawBrowserMenu(tab, w, h);
@@ -1398,11 +1778,16 @@ app.draw = function(w, h) {
     }
     if (chromeIcon("home", "home", 101, 42, 31, 31)) home(tab);
     const inputId = "address-" + tab.key;
+    if (focusField === inputId) {
+        ui.focus(inputId);
+        focusField = "";
+    }
+    const lastDraft = tab.draft;
     tab.draft = ui.textfield(inputId, tab.draft, inputX, 42, goX - inputX - 5, 31,
         label("Ara veya adres yaz", "Search or enter address"), "search");
+    if (tab.draft !== lastDraft) tab.suggest = true;
     const go = chromeIcon("go", "arrow_forward", goX, 42, 31, 31, !!tab.draft.trim());
     if ((ui.submitted(inputId) || go) && tab.draft.trim()) {
-        ui.focus("browser-navigation");
         openPage(tab, tab.draft);
     }
     const saved = !!tab.url && settings().bookmarks.some(item => item.url === tab.url);
@@ -1411,26 +1796,49 @@ app.draw = function(w, h) {
     gfx.clip(9, h - 24, w - 18, 24);
     ui.label((tab.status || label("Hazır", "Ready")).slice(0, 125), 10, h - 20, 12, theme.text2);
     gfx.unclip();
+    const suggestions = visitSuggestions(tab);
+    if (suggestions.length) {
+        drawSuggestions(tab, suggestions, inputX, Math.min(w - inputX - 10, 610));
+        return;
+    }
     if (tab.youtube && !tab.catalog) { drawYouTube(tab, w, h); return; }
     if (player && mediaTab === tab) { drawPlayer(tab, 8, 85, w - 16, h - 117); return; }
+    if (tab.directMedia) {
+        if (ui.button(label("Medyayı oynat", "Play media"), 20, 97, 155, 34, "primary", "play_arrow"))
+            playMedia(tab, tab.directMedia.url, tab.directMedia.audio);
+        return;
+    }
     if (tab.netflix && !tab.catalog) { drawNetflix(tab, w, h); return; }
     if (tab.search && tab.search.items.length && !tab.catalog) { drawSearch(tab, w, h); return; }
     if (!tab.address && !tab.rows.length && !tab.catalog) { drawHome(tab, w, h); return; }
-    const wide = w >= 780 && !tab.catalog && tab.rows.length > 0;
+    if (tab.findOpen) {
+        const findId = "find-" + tab.key;
+        if (focusField === findId) { ui.focus(findId); focusField = ""; }
+        tab.find = ui.textfield(findId, tab.find, 17, 85, w - 204, 29,
+            label("Sayfada ara", "Find on page"), "search");
+        if (ui.button(label("Kapat", "Close") + "##find-close", w - 71, 85, 54, 29, "toolbar")) {
+            tab.findOpen = false;
+            tab.find = "";
+        }
+    }
+    const rows = visibleRows(tab);
+    if (tab.findOpen && tab.find.trim()) ui.label(rows.length + label(" eşleşen satır", " matching rows"), w - 178, 93, 13, theme.text2);
+    const wide = w >= 780 && !tab.catalog && !tab.reader && !tab.find.trim() && rows.length > 0;
     const contentsWidth = wide && tab.sections && tab.sections.length ? 148 : 0;
     const infoWidth = wide && tab.info && tab.info.length ? Math.min(280, Math.floor(w * 0.28)) : 0;
-    const panelWidth = Math.min(1280, w - 28);
+    const panelWidth = Math.min(tab.reader ? 780 : 1280, w - 28);
     const wiki = wide && /\.wikipedia\.org\//.test(tab.url);
     const panelX = Math.floor((w - panelWidth) / 2);
     const width = panelWidth - 44 - contentsWidth - infoWidth;
-    measure(tab, width);
-    const top = wiki ? 125 : 85;
+    measure(tab, rows, width);
+    const panelTop = tab.findOpen ? 121 : 85;
+    const top = wiki ? panelTop + 40 : panelTop;
     const viewport = h - top - 29;
-    gfx.rect(panelX, 85, panelWidth, h - 114, 6, theme.window);
+    gfx.rect(panelX, panelTop, panelWidth, h - panelTop - 29, 6, theme.window);
     if (wiki) {
-        ui.label("Wikipedia", panelX + 15, 92, 24, theme.text, "bold");
-        ui.label("Özgür ansiklopedi", panelX + 145, 101, 13, theme.text2);
-        gfx.rect(panelX + 12, 119, panelWidth - 24, 1, 0, theme.separator);
+        ui.label("Wikipedia", panelX + 15, panelTop + 7, 24, theme.text, "bold");
+        ui.label(label("Özgür ansiklopedi", "The free encyclopedia"), panelX + 145, panelTop + 16, 13, theme.text2);
+        gfx.rect(panelX + 12, panelTop + 34, panelWidth - 24, 1, 0, theme.separator);
     }
     if (contentsWidth) {
         ui.label("İçindekiler", panelX + 15, top + 12, 15, theme.text, "bold");
@@ -1438,18 +1846,19 @@ app.draw = function(w, h) {
             ui.label(tab.sections[i].text.slice(0, 21), panelX + 15, top + 40 + i * 22, 13, theme.accent);
     }
     if (infoWidth) drawInfoBox(tab.info, panelX + panelWidth - infoWidth - 9, top + 48, infoWidth, viewport - 54);
-    if (!tab.rows.length) {
-        ui.label(tab.status, panelX + 24, top + 25, 16, theme.text2);
+    if (!rows.length) {
+        const status = tab.find.trim() ? label("Bu sayfada eşleşme yok.", "No matches on this page.") : tab.status;
+        ui.label(fitText(status, panelWidth - 48, 16), panelX + 24, top + 25, 16, theme.text2);
         return;
     }
-    const [scroll] = ui.beginScroll("page-" + tab.key + "-" + tab.revision, panelX + 13 + contentsWidth, top + 6,
+    const [scroll] = ui.beginScroll("page-" + tab.key + "-" + tab.revision + (tab.find.trim() ? "-find" : ""), panelX + 13 + contentsWidth, top + 6,
         panelWidth - 26 - contentsWidth - infoWidth, viewport - 12, contentHeight + 8);
     let destination = "";
     for (let i = 0; i < layout.length; i++) {
         const box = layout[i];
         if (box.y > scroll + viewport) break;
         if (box.y + box.height < scroll) continue;
-        const row = tab.rows[i];
+        const row = rows[i];
         if (row.entry) {
             if (ui.button(row.text + "##ref" + i, 8, box.y, width, box.height, "toolbar")) destination = row.entry.url;
         } else if (row.stream) {
@@ -1460,10 +1869,10 @@ app.draw = function(w, h) {
                 const scale = Math.min(width / image.width, box.height / image.height, 1);
                 gfx.draw(image, 8, box.y, image.width * scale, image.height * scale);
             } else ui.label(row.text.slice(0, 90), 8, box.y, 14);
-            if (row.link && ui.hit("imageLink" + i, 8, box.y, width, box.height).clicked) destination = row.link;
+            if (row.link && linkAction("imageLink" + i, row.link, 8, box.y, width, box.height)) destination = row.link;
         } else {
-            const color = row.css.color || "";
-            const background = row.css["background-color"] || "";
+            const color = tab.reader ? "" : row.css.color || "";
+            const background = tab.reader ? "" : row.css["background-color"] || "";
             if (/^#[0-9a-f]{6}$/i.test(background))
                 gfx.rect(8, box.y, box.innerWidth + box.padding * 2, box.height, 0, background);
             const textColor = /^#[0-9a-f]{6}$/i.test(color) ? color : theme.text;
@@ -1477,8 +1886,8 @@ app.draw = function(w, h) {
                         const x = 8 + box.padding + line.offset + part.x;
                         gfx.color(part.link ? theme.accent : textColor);
                         gfx.text(part.text, x, y, box.size, box.font);
-                        if (part.link && ui.hit("inline" + i + ":" + j + ":" + k, x, y,
-                            Math.min(part.w, box.innerWidth), box.rich.lineHeight).clicked) destination = part.link;
+                        if (part.link && linkAction("inline" + i + ":" + j + ":" + k, part.link, x, y,
+                            Math.min(part.w, box.innerWidth), box.rich.lineHeight)) destination = part.link;
                     }
                 }
                 continue;
@@ -1486,7 +1895,7 @@ app.draw = function(w, h) {
             gfx.color(textColor);
             const align = /^(left|right|center)$/.test(row.css["text-align"]) ? row.css["text-align"] : "left";
             gfx.wrap(row.text, 8 + box.padding, box.y + box.padding, box.innerWidth, box.size, box.font, align);
-            if (row.link && ui.hit("link" + i, 8, box.y, width, box.height).clicked) destination = row.link;
+            if (row.link && linkAction("link" + i, row.link, 8, box.y, width, box.height)) destination = row.link;
         }
     }
     ui.endScroll();

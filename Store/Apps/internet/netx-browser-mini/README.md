@@ -16,6 +16,7 @@ Select the address bar to type with the Nexvyn OS keyboard. The chevron on the t
 
 | Version | Changes |
 | --- | --- |
+| 0.12.0 | New icon and store art, reader mode, find on page, address suggestions, downloads and a public trailer gallery |
 | 0.11.0 | Redesigned tab strip, toolbar and start page, inline address editing, settings and in-tab YouTube search and playback |
 | 0.10.0 | NetX-Browser Mini branding, native YouTube handoff and public Netflix trailers |
 
