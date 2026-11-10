@@ -1,7 +1,7 @@
 {
   "id": "com.nexvyn.port.genesis-plus-gx",
   "name": "Mega Drive (Genesis Plus GX)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Genesis Plus GX contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
   "category": "games",
   "icon": "icon.png",

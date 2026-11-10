@@ -1,7 +1,7 @@
 {
   "id": "com.nexvyn.port.gambatte",
   "name": "Game Boy (Gambatte)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Gambatte contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
   "category": "games",
   "icon": "icon.png",

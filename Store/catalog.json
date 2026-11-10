@@ -7262,13 +7262,13 @@
         "zh": "Gambatte 在 Nexvyn OS 窗口中运行 Game Boy / Game Boy Color 游戏，并带有游戏库：把你自己的游戏文件（.gb, .gbc）放进游戏文件夹（或选择一个文件夹），即可以网格或列表浏览，带封面、详情、收藏和搜索；点击开始游戏，结束后返回列表。设置涵盖画面（大小、滤镜、比例、跳帧）、声音、即时存档、快进、手柄布局和触控按键。不包含游戏和 BIOS：请自备。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。",
         "ko": "Gambatte은(는) Nexvyn OS 창에서 Game Boy / Game Boy Color 게임을 실행하며 게임 라이브러리를 제공합니다. 가지고 있는 게임 파일(.gb, .gbc)을 게임 폴더에 넣거나 폴더를 고르면 표지, 상세 정보, 즐겨찾기, 검색이 있는 격자 또는 목록으로 볼 수 있고, 플레이를 누른 뒤 끝나면 목록으로 돌아옵니다. 설정에서 화면(크기, 필터, 화면비, 프레임 건너뛰기), 소리, 상태 저장, 빨리 감기, 컨트롤러 배치, 터치 버튼을 조절할 수 있습니다. 게임과 BIOS는 포함되어 있지 않으니 직접 준비하세요. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "Gambatte contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/gambatte.nxvapp",
-      "size": 943262,
-      "sha256": "711f87014db255b19c36aa2fa1cd637ed9f525b93e6e4c00d3f94b3139b9e7ca",
+      "size": 943830,
+      "sha256": "75330b1565b649905abece85b433d40d05955063be563f2e13e8d58e91c8fd6e",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -7316,6 +7316,10 @@
       "added": "2026-11-10",
       "updated": "2026-11-10",
       "history": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-10"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-10"
@@ -7832,13 +7836,13 @@
         "zh": "Genesis Plus GX 在 Nexvyn OS 窗口中运行 Mega Drive / Genesis 游戏，并带有游戏库：把你自己的游戏文件（.md, .gen, .smd）放进游戏文件夹（或选择一个文件夹），即可以网格或列表浏览，带封面、详情、收藏和搜索；点击开始游戏，结束后返回列表。设置涵盖画面（大小、滤镜、比例、跳帧）、声音、即时存档、快进、手柄布局和触控按键。不包含游戏和 BIOS：请自备。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。 仅限非商业用途免费：此软件包免费，且必须保持免费。",
         "ko": "Genesis Plus GX은(는) Nexvyn OS 창에서 Mega Drive / Genesis 게임을 실행하며 게임 라이브러리를 제공합니다. 가지고 있는 게임 파일(.md, .gen, .smd)을 게임 폴더에 넣거나 폴더를 고르면 표지, 상세 정보, 즐겨찾기, 검색이 있는 격자 또는 목록으로 볼 수 있고, 플레이를 누른 뒤 끝나면 목록으로 돌아옵니다. 설정에서 화면(크기, 필터, 화면비, 프레임 건너뛰기), 소리, 상태 저장, 빨리 감기, 컨트롤러 배치, 터치 버튼을 조절할 수 있습니다. 게임과 BIOS는 포함되어 있지 않으니 직접 준비하세요. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다. 비상업적 용도에 한해 무료입니다. 이 패키지는 무료이며 계속 무료여야 합니다."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "Genesis Plus GX contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/genesis-plus-gx.nxvapp",
-      "size": 1785674,
-      "sha256": "23171a609b1b3a1bdc47b13427a93fdefdb51db7aca282bddec1f03c5028d002",
+      "size": 1788124,
+      "sha256": "44cf394ca2719774c51adfad56adc03e3faca0607e3ac2c228fab1cb72d52c9b",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -7886,6 +7890,10 @@
       "added": "2026-11-10",
       "updated": "2026-11-10",
       "history": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-10"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-10"
@@ -7981,13 +7989,13 @@
         "zh": "mGBA 是一款快速、精确的 Game Boy Advance 模拟器，并自带游戏库。将游戏文件放入游戏文件夹（或选择一个文件夹），即可以网格或列表形式浏览，支持封面、详细信息、收藏和搜索；点击“开始”运行游戏，结束后返回列表。设置涵盖画面大小和滤镜、声音、即时存档、按键映射（Joy-Con 双手柄、单个 Joy-Con、Pro Controller、触摸按钮）以及每个游戏的独立选项。电池存档和即时存档均会保留。不包含游戏和 BIOS：请自行添加您合法拥有的游戏。从互联网获取的可选盒装封面默认关闭，可在设置中开启。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。",
         "ko": "mGBA는 자체 게임 라이브러리를 갖춘 빠르고 정확한 게임보이 어드밴스 에뮬레이터입니다. 게임 파일을 게임 폴더에 넣거나(또는 폴더를 선택하여) 커버, 상세 정보, 즐겨찾기, 검색과 함께 격자 또는 목록 보기로 둘러볼 수 있습니다. 플레이를 누르고 끝나면 목록으로 돌아오세요. 설정에서는 화면 크기와 필터, 사운드, 세이브 스테이트, 버튼 매핑(Joy-Con 페어, 단일 Joy-Con, Pro Controller, 터치 버튼), 게임별 옵션을 다룹니다. 배터리 세이브와 세이브 스테이트는 유지됩니다. 게임과 BIOS는 포함되어 있지 않습니다. 합법적으로 소유한 게임을 직접 준비하세요. 인터넷에서 가져오는 선택적 박스아트는 기본적으로 꺼져 있으며 설정에서 켤 수 있습니다. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다."
       },
-      "version": "0.11.0",
+      "version": "0.11.1",
       "author": "mGBA contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/mgba.nxvapp",
-      "size": 1546383,
-      "sha256": "170f03c12c7a24c5469c9aae2cf9c23cd645f0bad18e690d37ee2fd85fb4b41a",
+      "size": 1546971,
+      "sha256": "e75a5fb1e020fb5f57fbc95e8c6c0887494ad897e49b7224d3c6863790ff947d",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -8035,6 +8043,10 @@
       "added": "2026-11-10",
       "updated": "2026-11-10",
       "history": [
+        {
+          "version": "0.11.1",
+          "date": "2026-11-10"
+        },
         {
           "version": "0.11.0",
           "date": "2026-11-10"
@@ -8278,13 +8290,13 @@
         "zh": "FCEUmm 在 Nexvyn OS 窗口中运行 NES 游戏，并带有游戏库：把你自己的游戏文件（.nes）放进游戏文件夹（或选择一个文件夹），即可以网格或列表浏览，带封面、详情、收藏和搜索；点击开始游戏，结束后返回列表。设置涵盖画面（大小、滤镜、比例、跳帧）、声音、即时存档、快进、手柄布局和触控按键。不包含游戏和 BIOS：请自备。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。",
         "ko": "FCEUmm은(는) Nexvyn OS 창에서 NES 게임을 실행하며 게임 라이브러리를 제공합니다. 가지고 있는 게임 파일(.nes)을 게임 폴더에 넣거나 폴더를 고르면 표지, 상세 정보, 즐겨찾기, 검색이 있는 격자 또는 목록으로 볼 수 있고, 플레이를 누른 뒤 끝나면 목록으로 돌아옵니다. 설정에서 화면(크기, 필터, 화면비, 프레임 건너뛰기), 소리, 상태 저장, 빨리 감기, 컨트롤러 배치, 터치 버튼을 조절할 수 있습니다. 게임과 BIOS는 포함되어 있지 않으니 직접 준비하세요. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "FCEUmm contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/fceumm.nxvapp",
-      "size": 1372742,
-      "sha256": "6cdcee6094e1278ff2cf8550a6461096f981638bebf8982abb90412c22cb679e",
+      "size": 1373542,
+      "sha256": "c5f7f69d0f52de061910e51dac9f8b0858f55783101c93e39461637fcb016b3a",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -8332,6 +8344,10 @@
       "added": "2026-11-10",
       "updated": "2026-11-10",
       "history": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-10"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-10"
@@ -9320,13 +9336,13 @@
         "zh": "Snes9x 在 Nexvyn OS 窗口中运行 SNES 游戏，并带有游戏库：把你自己的游戏文件（.sfc, .smc）放进游戏文件夹（或选择一个文件夹），即可以网格或列表浏览，带封面、详情、收藏和搜索；点击开始游戏，结束后返回列表。设置涵盖画面（大小、滤镜、比例、跳帧）、声音、即时存档、快进、手柄布局和触控按键。不包含游戏和 BIOS：请自备。 可选的网络封面（libretro 缩略图服务器）：仅询问一次，可在设置中关闭；这是需要网络权限的原因。 仅限非商业用途免费：此软件包免费，且必须保持免费。",
         "ko": "Snes9x은(는) Nexvyn OS 창에서 SNES 게임을 실행하며 게임 라이브러리를 제공합니다. 가지고 있는 게임 파일(.sfc, .smc)을 게임 폴더에 넣거나 폴더를 고르면 표지, 상세 정보, 즐겨찾기, 검색이 있는 격자 또는 목록으로 볼 수 있고, 플레이를 누른 뒤 끝나면 목록으로 돌아옵니다. 설정에서 화면(크기, 필터, 화면비, 프레임 건너뛰기), 소리, 상태 저장, 빨리 감기, 컨트롤러 배치, 터치 버튼을 조절할 수 있습니다. 게임과 BIOS는 포함되어 있지 않으니 직접 준비하세요. 인터넷의 선택형 표지 이미지(libretro 썸네일 서버): 한 번 묻고 설정에서 끌 수 있으며, 네트워크 권한이 필요한 이유입니다. 비상업적 용도에 한해 무료입니다. 이 패키지는 무료이며 계속 무료여야 합니다."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "Snes9x contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/snes9x.nxvapp",
-      "size": 2053471,
-      "sha256": "481d62f392d69c2ac8bb447434e2fbede585ba18ddd26fc0667f4c82466d6082",
+      "size": 2052474,
+      "sha256": "cdfb14bb5c31db0942432e5d08f0d0cbe4175118299c144804cc8844f608d672",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -9374,6 +9390,10 @@
       "added": "2026-11-10",
       "updated": "2026-11-10",
       "history": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-10"
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-10"

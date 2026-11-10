@@ -126,6 +126,7 @@
 - [Chapter 15: Common Mistakes and Solutions](#chapter-15-common-mistakes-and-solutions)
   - [15.1 Troubleshooting Matrix (Symptom -> Cause -> Fix)](#151-troubleshooting-matrix-symptom---cause---fix)
   - [15.2 In-Depth Analysis of Critical Failure Modes](#152-in-depth-analysis-of-critical-failure-modes)
+| Red banner "MESSAGE FROM DEAR IMGUI! 2 visible items with conflicting ID" on screen (native ImGui app, often only in an empty or first-run state) | Two widgets share the same label, so the same ImGui ID (e.g. a toolbar Rescan button and an empty-state Rescan button) | Give repeated labels a `##suffix` (`Button("Rescan##toolbar")`), use `PushID(i)` in loops, never an empty label; test every UI state |
 - [Chapter 16: Glossary](#chapter-16-glossary)
 
 ---

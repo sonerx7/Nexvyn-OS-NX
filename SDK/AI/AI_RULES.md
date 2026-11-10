@@ -20,6 +20,8 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 13. Use plain ASCII identifiers. Comments in English.
 14. Tell the user, in the user's language, what you changed and what you did not test.
 
+11. Dear ImGui apps (native, nxn_imgui.h): every visible widget needs a UNIQUE ID in its window. Two buttons with the same label (for example a toolbar "Rescan" and an empty-state "Rescan") trigger the red "2 visible items with conflicting ID!" banner on screen. Always give repeated labels a suffix: `ImGui::Button("Rescan##toolbar")`, `ImGui::Button("Rescan##empty")`; inside loops use `ImGui::PushID(i)` / `PopID()`; never use an empty label (`Button("")`), use `Button("##name")`. Test every screen state (empty library, first run, error) with the test tool and fail on this banner text.
+
 ## 2. MUST NOT
 
 1. Do not rescale window pointer coordinates. Use the coordinates the SDK gives (`e.x`, `e.y`, `ui.mouse()`, `nxn_input_touch`) as they are.

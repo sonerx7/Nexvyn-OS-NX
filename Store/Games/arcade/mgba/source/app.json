@@ -1,7 +1,7 @@
 {
   "id": "com.nexvyn.port.mgba",
   "name": "mGBA",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "author": "mGBA contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
   "category": "games",
   "icon": "icon.png",

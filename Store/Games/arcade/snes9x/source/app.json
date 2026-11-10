@@ -1,7 +1,7 @@
 {
   "id": "com.nexvyn.port.snes9x",
   "name": "SNES (Snes9x)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Snes9x contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
   "category": "games",
   "icon": "icon.png",
