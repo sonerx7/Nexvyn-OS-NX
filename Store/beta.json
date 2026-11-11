@@ -1,7 +1,60 @@
 {
   "schema": 1,
-  "count": 1,
+  "count": 2,
   "apps": [
+    {
+      "id": "com.nexvyn.emu.bochs",
+      "name": {
+        "en": "Bochs x86 PC",
+        "tr": "Bochs x86 PC"
+      },
+      "description": {
+        "en": "Boot MS-DOS, FreeDOS, Windows 95/98/XP/7/10 Lite, ReactOS, and lightweight Linux on Nexvyn OS using the Bochs 3.1 core tuned for Cortex-A57.\n\nIncludes open-source Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, Switch-tuned OS presets, async growing disk creator up to 32 GB (and flat RAW up to 4095 MB), external persistent VM/checkpoint folder support, Sound Blaster 16 & ES1370 audio, SLIRP NAT networking, PC virtual keyboard, full controller/touch UI navigation, and checkpoints.\n\nNo commercial operating systems or proprietary ROMs are included.",
+        "tr": "Cortex-A57 için optimize edilmiş Bochs 3.1 çekirdeğiyle MS-DOS, FreeDOS, Windows 95/98/XP/7/10 Lite, ReactOS ve hafif Linux dağıtımlarını Nexvyn OS üzerinde çalıştırın.\n\nAçık kaynak Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, Switch uyumlu işletim sistemi profilleri, 32 GB'a kadar hızlı growing (ve 4095 MB flat RAW) sanal disk oluşturucu, kalıcı harici klasör koruması, Sound Blaster 16 & ES1370 ses, SLIRP ağ, ekran PC klavyesi, tam kontrolcü/dokunmatik arayüz ve durum kaydı içerir.\n\nTicari işletim sistemi veya telifli ROM içermez."
+      },
+      "version": "3.1.0",
+      "author": "Bochs Project, Kevin Lawton (Nexvyn port)",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/bochs.nxvapp",
+      "size": 2337689,
+      "sha256": "e1311196907e83aa2e20a70e245d889d27a3671da17d334a5393ca48451a1fb9",
+      "minSdk": "1.10",
+      "permissions": [
+        "files",
+        "network"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/4.png"
+      ],
+      "featured": false,
+      "license": "LGPL-2.1-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Beta/Emulators/pc/bochs",
+      "targetSdk": "1.13",
+      "subtitle": {
+        "en": "Full-system x86 & x86-64 PC emulator",
+        "tr": "Tam donanım x86 ve x86-64 PC emülatörü"
+      },
+      "changelog": {
+        "en": "Beta release for Switch (Cortex-A57 -O3): Switch-tuned presets for DOS, Win95/98, WinXP, ReactOS, Linux, and Win7/10 Lite; fixed PCI slot 4 USB UHCI panic; instant growing disk creator up to 32 GB & async flat creator; persistent external VM/profile/checkpoint folder; full controller L1/R1/stick navigation and accurate touchscreen UI/canvas input.",
+        "tr": "Switch beta sürümü (Cortex-A57 -O3): DOS, Win95/98, WinXP, ReactOS, Linux ve Win7/10 Lite için optimize edilmiş profiller; PCI slot 4 USB UHCI panic düzeltmesi; 32 GB'a kadar anlık growing disk ve asenkron flat disk oluşturucu; kalıcı harici profil/checkpoint klasörü koruması; tam kontrolcü ve hassas dokunmatik arayüz desteği."
+      },
+      "kind": "emulator",
+      "emuCategory": "pc",
+      "tech": "native",
+      "features": [
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "players": "1",
+      "beta": true,
+      "updated": "2026-11-11"
+    },
     {
       "id": "com.nexvyn.emu.tinyemu",
       "name": {

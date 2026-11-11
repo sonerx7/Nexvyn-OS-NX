@@ -1,0 +1,42 @@
+{
+  "id": "com.nexvyn.emu.bochs",
+  "name": {
+    "en": "Bochs x86 PC",
+    "tr": "Bochs x86 PC"
+  },
+  "description": {
+    "en": "Full-system x86 and x86-64 PC emulator supporting i386 through Core i7 CPUs, Bochs VBE SVGA, Cirrus CL-GD5446, Voodoo Banshee, ATA disks and CD-ROM, dual floppies, Sound Blaster 16, ES1370 audio, USB HID, SLIRP networking, on-screen PC keyboard, and checkpoints.",
+    "tr": "i386'dan Core i7'ye kadar işlemci, Bochs VBE SVGA, Cirrus CL-GD5446, Voodoo Banshee, ATA sabit disk ve CD-ROM, çift disket, Sound Blaster 16, ES1370 ses, USB HID, SLIRP ağ, ekran PC klavyesi ve durum kaydı sunan tam x86 / x86-64 PC emülatörü."
+  },
+  "version": "3.1.0",
+  "author": "Bochs Project, Kevin Lawton (Nexvyn port)",
+  "category": "games",
+  "runtime": "native",
+  "mode": "window",
+  "type": "app",
+  "arch": "aarch64",
+  "main": "bochs.nxvmod",
+  "icon": "icon.png",
+  "gamepad": true,
+  "loadingHint": true,
+  "memory": 512,
+  "window": {
+    "width": 1180,
+    "height": 700,
+    "minWidth": 720,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "permissions": [
+    "files",
+    "network"
+  ],
+  "fileTypes": [
+    ".img",
+    ".iso",
+    ".bxrc"
+  ],
+  "minNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.13"
+}
