@@ -17,8 +17,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/bochs.nxvapp",
-      "size": 2337689,
-      "sha256": "e1311196907e83aa2e20a70e245d889d27a3671da17d334a5393ca48451a1fb9",
+      "size": 2338547,
+      "sha256": "d2736587237f5e7fc79cf33f50dc09e25a328f3f240727e267637f4ad74fa293",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -28,7 +28,8 @@
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/1.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/2.png",
         "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/3.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/4.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/screenshots/5.png"
       ],
       "featured": false,
       "license": "LGPL-2.1-or-later",

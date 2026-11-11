@@ -38,15 +38,18 @@
       "wait 3"
     ],
     [
-      "pad r",
+      "wclick 0.45 0.52",
       "wait 1"
     ],
     [
-      "pad r",
+      "wclick 0.55 0.52",
       "wait 1"
     ],
     [
-      "pad minus",
+      "wclick 0.50 0.62",
+      "wait 1"
+    ],
+    [
       "wait 1"
     ]
   ]
