@@ -59,4 +59,5 @@ Tam lisans metinleri `data/licenses/` klasöründe yer almaktadır (`DOSBOX_PURE
 
 | Sürüm | Tarih | Değişiklikler |
 |---|---|---|
+| `1.0.1` | 2026-11-11 | Kararlılık güncellemesi: DOS/4GW ve Build motoru oyunlarında (Doom, Duke3D) tam kararlılık için varsayılan CPU çekirdeği Normal (Interpreter) yapıldı; emülasyon senkronizasyonuna konsol kilitlenmesini önleyen 2000 ms watchdog zaman aşımı eklendi. |
 | `1.0.0` | 2026-11-11 | Beta kanalında ilk sürüm: pencereli native port, JIT recompiler + yorumlayıcı yedeği, Dokunmatik Çubuk ve Hızlı Tuşlar, Durum Kayıtları, çoklu disk yöneticisi ve özgün DOSBox Pure simgesi. |

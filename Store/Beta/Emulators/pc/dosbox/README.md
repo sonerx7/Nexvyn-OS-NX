@@ -59,4 +59,5 @@ Full licence texts are bundled in `data/licenses/` (`DOSBOX_PURE_LICENSE.txt`, `
 
 | Version | Date | Changes |
 |---|---|---|
+| `1.0.1` | 2026-11-11 | Stability hotfix: default CPU core set to Normal (Interpreter) for flawless compatibility in DOS/4GW and Build-engine games (Doom, Duke3D), plus added 2000 ms watchdog timeout on emulation thread sync to prevent console hard freezes. |
 | `1.0.0` | 2026-11-11 | Initial release in the Beta channel: windowed native port, JIT recompiler + interpreter fallback, Touch Bar & Quick Keys, Save States, multi-disk switcher, and authentic DOSBox Pure icon. |

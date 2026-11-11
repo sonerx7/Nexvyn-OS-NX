@@ -8,7 +8,7 @@
     "en": "MS-DOS emulator supporting ZIP/DOSZ packages, gamepad mapping, on-screen keyboard, touch mouse, and save states.",
     "tr": "ZIP/DOSZ paketleri, oyun kumandası eşleme, ekran klavyesi, dokunmatik fare ve durum kaydı destekli MS-DOS emülatörü."
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "DOSBox Team, Bernhard Schelling (Nexvyn port)",
   "license": "GPL-2.0-or-later",
   "category": "games",

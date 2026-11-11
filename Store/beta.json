@@ -66,13 +66,13 @@
         "en": "Run MS-DOS games and applications directly on Nexvyn OS. Built on DOSBox Pure, it mounts ZIP, DOSZ, ISO, CUE, CHD, IMG, or folder packages directly, provides automatic controller-to-keyboard bindings, a built-in on-screen keyboard, touch mouse emulation, save states, Sound Blaster / AdLib / MIDI audio, and a native desktop UI.\n\nNo games, BIOS, or proprietary software are included. Select your own DOS files or launch straight into the DOS prompt.",
         "tr": "MS-DOS oyunlarını ve yazılımlarını doğrudan Nexvyn OS üzerinde çalıştırın. DOSBox Pure çekirdeği üzerine kurulu bu port; ZIP, DOSZ, ISO, CUE, CHD, IMG ve klasör paketlerini doğrudan bağlar, otomatik oyun kumandası eşlemesi, dahili ekran klavyesi, dokunmatik fare, durum kaydı, Sound Blaster / AdLib / MIDI sesi ve yerel masaüstü arayüzü sunar.\n\nİçerisinde oyun, BIOS veya telifli yazılım bulunmaz. Kendi DOS dosyalarınızı açın veya doğrudan DOS komut satırına girin."
       },
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "DOSBox Team, Bernhard Schelling (Nexvyn port)",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/dosbox.nxvapp",
-      "size": 2481488,
-      "sha256": "b28566a42510ecbd89772e450ec1a05c8760e868f06b7c240762818f96f8552d",
+      "size": 2482378,
+      "sha256": "de3bd4ea9b9c0908e01036907512a483072c02ffea3593ed46657510e782136e",
       "minSdk": "1.13",
       "permissions": [
         "files"
