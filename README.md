@@ -2,6 +2,8 @@
 
 <h1 align="center">Nexvyn OS</h1>
 
+<h1 align="center">
+Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 <p align="center"><b>A full desktop, native 3D, a real App Market and a browser, on a Switch.</b><br>
 <i>Native 3D from 10 to 60 fps. A GBA game at full speed. Desktop websites, WebGL and video in the browser. Measured on a console.</i></p>
 
