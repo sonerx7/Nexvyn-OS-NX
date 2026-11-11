@@ -43,8 +43,9 @@ jobs:
         run: |
           pip install lupa
           python src/tools/catalog_check.py Store/catalog.json
+          if [ -f Store/beta.json ]; then python src/tools/catalog_check.py Store/beta.json; fi
           base="${{ github.event.pull_request.base.sha || github.event.before }}"
-          items=$(git diff --name-only "$base" HEAD -- Store/Apps Store/Games SDK/Samples | awk -F/ '{print $1"/"$2"/"$3"/"$4}' | sort -u)
+          items=$(git diff --name-only "$base" HEAD -- Store/Apps Store/Games Store/Emulators Store/Beta SDK/Samples | awk -F/ '{if($2=="Beta"){if($3=="Apps"||$3=="Games"||$3=="Emulators")print $1"/"$2"/"$3"/"$4"/"$5; else if($3=="Themes"||$3=="Fonts")print $1"/"$2"/"$3"/"$4; else print $1"/"$2"/"$3} else print $1"/"$2"/"$3"/"$4}' | sort -u)
           for item in $items; do
             src_dir="$item/source"
             [ -f "$src_dir/app.json" ] || continue

@@ -35,6 +35,7 @@
     ]
   ],
   "kind": "emulator",
+  "emuCategory": "pc",
   "features": [
     "offline"
   ]

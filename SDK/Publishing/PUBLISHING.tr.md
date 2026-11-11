@@ -12,7 +12,7 @@ her yeni öğe ve her güncelleme birleştirilmeden önce [inceleme listesine](R
 ## Akışın özeti
 
 ```
-fork  →  Store/<Apps|Games|Themes|Fonts>/<kategori>/<kısa-ad>/ ekle  →  denetimleri çalıştır  →  pull request (şablon)
+fork  →  Store/<Apps|Games|Emulators|Themes|Fonts>/<kategori>/<kısa-ad>/ ekle  →  denetimleri çalıştır  →  pull request (şablon)
       →  otomatik denetimler  →  bakımcının incelemesi (sonerx7)  →  merge = yayında  →  Uygulama Mağazası'nda "Yeni"
 ```
 
@@ -42,6 +42,8 @@ Store/
 │   ├── screenshots/1.png ...     5 ekran görüntüsü önerilir, en az 3 (bakımcı da üretebilir, bölüm 6)
 │   ├── icon.png                  build_store.py source/icon.png'den kopyalar
 │   └── <kısa-ad>.nxvapp          build_store.py yazar, elle eklemeyin
+├── Emulators/<altkat>/<kısa-ad>/ emülatörler: handheld, console, pc, arcade, multi, other
+├── Beta/                         geliştirme aşamasındaki sürümler (`Store/beta.json`; yayınlamak için `build_store.py --release`)
 ├── Themes/<kısa-ad>/             source/ (theme.json, duvar kâğıdı [, sounds/]), store.json, icon.png → <kısa-ad>.nxvtheme
 └── Fonts/<kısa-ad>/              yazı tipi dosyaları, LICENSE, font.json, store.json, icon.png, screenshots/ → <kısa-ad>.nxvfont
 ```
@@ -117,7 +119,7 @@ uygulamaları korumalı alanda çalışmadığı için kullanıcıya ayrıca sor
 
 - `subtitle` (en çok 45 karakter) ve `description`: **İngilizce zorunludur**; istediğiniz başka dilleri
   ekleyin (Türkçe, Almanca, Fransızca, İspanyolca, Japonca, Çince, Korece). Eksik diller İngilizceye düşer.
-- `kind`: `app`, `game`, `demo`, `port`, `emulator` ya da `template`. `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
+- `kind`: `app`, `game`, `demo`, `port`, `emulator` ya da `template`. `emuCategory` (`emulator` için): `handheld`, `console`, `pc`, `arcade`, `multi` ya da `other` (metin veya liste; belirtilmezse `Store/Emulators/<altkat>/` klasöründen alınır). `tags`: küçük harfli arama sözcükleri. `featured`'ı bakımcı açar.
 - Mağaza bilgisi (hepsi isteğe bağlı; App Market sekmeler, sıralama ve filtreler için kullanır, eski App Market yok sayar):
   `features` şunlardan oluşan liste: `3d`, `online`, `multiplayer`, `coop`, `offline`, `touch`, `controller`, `keyboard`;
   `players` `"2"` ya da `"1-4"` (`multiplayer` ya da `coop` yazan oyunlar bunu da vermeli); `tech` `lua`, `javascript`,

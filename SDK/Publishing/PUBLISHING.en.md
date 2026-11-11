@@ -12,7 +12,7 @@ every new item and every update is checked by hand against the [review checklist
 ## The flow at a glance
 
 ```
-fork  →  add Store/<Apps|Games|Themes|Fonts>/<category>/<slug>/  →  run the checks  →  pull request (template)
+fork  →  add Store/<Apps|Games|Emulators|Themes|Fonts>/<category>/<slug>/  →  run the checks  →  pull request (template)
       →  automatic checks  →  review by the maintainer (sonerx7)  →  merge = published  →  "New" in the App Market
 ```
 
@@ -42,6 +42,8 @@ Store/
 │   ├── screenshots/1.png ...   5 screenshots recommended, 3 at least (a maintainer can make them, section 6)
 │   ├── icon.png                copied from source/icon.png by build_store.py
 │   └── <slug>.nxvapp           written by build_store.py, do not add it by hand
+├── Emulators/<subcat>/<slug>/  emulators: handheld, console, pc, arcade, multi, other
+├── Beta/                       in-development builds packaged into Store/beta.json (promote via build_store.py --release)
 ├── Themes/<slug>/              source/ (theme.json, wallpaper [, sounds/]), store.json, icon.png → <slug>.nxvtheme
 └── Fonts/<slug>/               font files, LICENSE, font.json, store.json, icon.png, screenshots/ → <slug>.nxvfont
 ```
@@ -118,7 +120,7 @@ sandboxed, so users are asked once more.
 
 - `subtitle` (at most 45 characters) and `description`: **English is required**; add any other language you
   like (Turkish, German, French, Spanish, Japanese, Chinese, Korean). Missing languages fall back to English.
-- `kind`: `app`, `game`, `demo`, `port`, `emulator` or `template`. `tags`: lower-case search words. `featured` is set by the maintainer.
+- `kind`: `app`, `game`, `demo`, `port`, `emulator` or `template`. `emuCategory` (for `emulator`): `handheld`, `console`, `pc`, `arcade`, `multi` or `other` (string or list; derived from folder under `Store/Emulators/<subcat>/` when omitted). `tags`: lower-case search words. `featured` is set by the maintainer.
 - Store metadata (all optional; the App Market uses it for its tabs, sorting and filters, and an older App Market ignores it):
   `features` is a list of `3d`, `online`, `multiplayer`, `coop`, `offline`, `touch`, `controller`, `keyboard`;
   `players` is `"2"` or `"1-4"` (games that list `multiplayer` or `coop` should set it); `tech` is `lua`, `javascript`,

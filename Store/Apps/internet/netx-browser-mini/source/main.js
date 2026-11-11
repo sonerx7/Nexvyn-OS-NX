@@ -1688,7 +1688,7 @@ function drawHome(tab, w, h) {
     const shortcuts = [
         ["YouTube","play_arrow","#97344c",youtubeHome],
         ["Netflix","movie","#99414c",netflixExample],
-        ["Wikipedia","menu_book","#2a577c","https://en.wikipedia.org/wiki/Nintendo_Switch"],
+        ["Wikipedia","menu_book","#2a577c","https://en.wikipedia.org/wiki/Main_Page"],
         [label("Teknoloji", "Technology"),"bolt","#78542b","https://news.ycombinator.com/"],
         ["GitHub","code","#443c76","https://github.com/explore"],
         [label("Kaynaklar", "Resources"),"bookmarks","#30646d",""],

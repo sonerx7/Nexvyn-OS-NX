@@ -1,5 +1,6 @@
 {
   "kind": "emulator",
+  "emuCategory": "handheld",
   "license": "GPL-2.0-only",
   "sourceUrl": "https://github.com/libretro/gambatte-libretro",
   "author": "sonerx7",

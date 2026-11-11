@@ -1,5 +1,6 @@
 {
   "kind": "emulator",
+  "emuCategory": "handheld",
   "license": "MPL-2.0",
   "sourceUrl": "https://github.com/mgba-emu/mgba",
   "author": "sonerx7",

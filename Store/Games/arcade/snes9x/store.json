@@ -1,5 +1,6 @@
 {
   "kind": "emulator",
+  "emuCategory": "console",
   "license": "LicenseRef-Snes9x-NonCommercial",
   "sourceUrl": "https://github.com/libretro/snes9x",
   "author": "sonerx7",

@@ -35,6 +35,11 @@
     ]
   ],
   "kind": "emulator",
+  "emuCategory": [
+    "multi",
+    "handheld",
+    "console"
+  ],
   "features": [
     "offline"
   ]

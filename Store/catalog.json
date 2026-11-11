@@ -4281,8 +4281,8 @@
       "category": "internet",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/netx-browser-mini.nxvapp",
-      "size": 98697,
-      "sha256": "f79ac1a8f9fce2a681f2554d1812a4bccb69a5062a93d1b79f6a31586f853fa0",
+      "size": 98693,
+      "sha256": "77a15f0fbf0e0bc299134d93990bdfd69a6c48d337ed970e55df967fae0b5a74",
       "minSdk": "1.9",
       "permissions": [
         "network",
@@ -7368,6 +7368,7 @@
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Gambatte."
       },
       "kind": "emulator",
+      "emuCategory": "handheld",
       "tech": "native",
       "features": [
         "offline",
@@ -7942,6 +7943,7 @@
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Genesis Plus GX."
       },
       "kind": "emulator",
+      "emuCategory": "console",
       "tech": "native",
       "features": [
         "offline",
@@ -8095,6 +8097,7 @@
         "ko": "이제 게임 라이브러리를 지원합니다: 격자와 목록 보기, 커버, 상세 정보, 즐겨찾기, 검색, 설정, 세이브 스테이트, 터치 버튼. 이전 버전의 게임과 세이브는 그대로 유지됩니다."
       },
       "kind": "emulator",
+      "emuCategory": "handheld",
       "tech": "native",
       "features": [
         "offline",
@@ -8396,6 +8399,7 @@
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 FCEUmm."
       },
       "kind": "emulator",
+      "emuCategory": "console",
       "tech": "native",
       "features": [
         "offline",
@@ -8605,6 +8609,7 @@
         "ko": "Switch에서 Steam과 PC 게임을"
       },
       "kind": "emulator",
+      "emuCategory": "pc",
       "tech": "native",
       "features": [
         "offline"
@@ -8945,6 +8950,11 @@
         "ko": "NES부터 GBA까지 고전 게임과 세이브 스테이트"
       },
       "kind": "emulator",
+      "emuCategory": [
+        "multi",
+        "handheld",
+        "console"
+      ],
       "tech": "native",
       "features": [
         "offline"
@@ -9442,6 +9452,7 @@
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Snes9x."
       },
       "kind": "emulator",
+      "emuCategory": "console",
       "tech": "native",
       "features": [
         "offline",
