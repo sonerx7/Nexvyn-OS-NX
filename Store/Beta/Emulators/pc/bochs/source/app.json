@@ -9,7 +9,7 @@
     "tr": "i386'dan Core i7'ye kadar işlemci, Bochs VBE SVGA, Cirrus CL-GD5446, Voodoo Banshee, ATA sabit disk ve CD-ROM, çift disket, Sound Blaster 16, ES1370 ses, USB HID, SLIRP ağ, ekran PC klavyesi ve durum kaydı sunan tam x86 / x86-64 PC emülatörü."
   },
   "version": "3.1.0",
-  "author": "Bochs Project, Kevin Lawton (Nexvyn port)",
+  "author": "Bochs Project, Port by sonerx7",
   "category": "games",
   "runtime": "native",
   "mode": "window",
