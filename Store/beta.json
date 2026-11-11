@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 4,
+  "count": 5,
   "apps": [
     {
       "id": "com.nexvyn.emu.bochs",
@@ -51,6 +51,50 @@
         "touch",
         "controller",
         "keyboard"
+      ],
+      "players": "1",
+      "beta": true,
+      "updated": "2026-11-11"
+    },
+    {
+      "id": "com.sonerx7.cncgenerals",
+      "name": "C&C Generals: Zero Hour",
+      "description": {
+        "en": "Native AArch64 static recompilation of Command & Conquer Generals: Zero Hour (SAGE Engine) for Nexvyn OS. Features 60 FPS gameplay, Joy-Con gamepad controls, touch input, and native resolution. No commercial game data is included: copy your own legal game.dat and .big files to sdmc:/NexvynOS/Applications/com.sonerx7.cncgenerals.nxvapp/gamefiles/.",
+        "tr": "Command & Conquer Generals: Zero Hour (SAGE Motoru) oyununun Nexvyn OS için yerel AArch64 statik yeniden derleme portu. 60 FPS oynanış, Joy-Con oyun kolu, dokunmatik ekran ve yerel çözünürlük desteği içerir. Ticari oyun verisi içermez: kendi yasal game.dat ve .big dosyalarınızı sdmc:/NexvynOS/Applications/com.sonerx7.cncgenerals.nxvapp/gamefiles/ klasörüne kopyalayın."
+      },
+      "version": "1.0.4",
+      "author": "EA Los Angeles / sonerx7",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/icon.png",
+      "permissions": [
+        "files"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "MIT",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/cncgenerals/cncgenerals.nxvapp",
+      "size": 26799,
+      "sha256": "ccab12fbe068e861b81102b1e7f6167f6cb4f93b2f3bfc76147376516818bb5b",
+      "minSdk": "1.10",
+      "targetSdk": "1.12",
+      "subtitle": {
+        "en": "Command & Conquer: Generals port",
+        "tr": "Command & Conquer: Generals portu"
+      },
+      "kind": "port",
+      "tech": "native",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller"
       ],
       "players": "1",
       "beta": true,

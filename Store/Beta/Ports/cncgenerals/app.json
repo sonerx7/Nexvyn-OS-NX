@@ -1,0 +1,25 @@
+{
+  "id": "com.sonerx7.cncgenerals",
+  "name": "C&C Generals: Zero Hour",
+  "version": "1.0.4",
+  "author": "EA Los Angeles / sonerx7",
+  "category": "games",
+  "targetSdk": "1.12",
+  "description": "Command & Conquer Generals: Zero Hour static recompilation port for Nexvyn OS.",
+  "minSdk": "1.10",
+  "minNative": "1.1",
+  "runtime": "native",
+  "main": "cncgenerals.nxvmod",
+  "mode": "window",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "resizable": true
+  },
+  "loadingHint": true,
+  "gamepad": true,
+  "permissions": [
+    "files"
+  ],
+  "icon": "icon.png"
+}
