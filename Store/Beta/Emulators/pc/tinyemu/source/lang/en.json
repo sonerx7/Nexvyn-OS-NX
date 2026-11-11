@@ -1,0 +1,121 @@
+{
+  "app": {
+    "title": "TinyEMU"
+  },
+  "nav": {
+    "machines": "Machines",
+    "console": "Console",
+    "display": "Display",
+    "settings": "Settings",
+    "about": "About"
+  },
+  "menu": {
+    "file": "File",
+    "open_cfg": "Open .cfg...",
+    "new_profile": "New VM Profile",
+    "machine": "Machine",
+    "view": "View",
+    "help": "Help"
+  },
+  "view": {
+    "windowed": "Windowed",
+    "fullscreen": "Fullscreen"
+  },
+  "machines": {
+    "open_cfg": "Open .cfg...",
+    "new_profile": "New VM Profile",
+    "incomplete": "No boot image configured"
+  },
+  "empty": {
+    "title": "No RISC-V VM profiles yet",
+    "desc": "TinyEMU runs 32/64/128-bit RISC-V operating systems (Linux, Buildroot, bare-metal payloads) directly from your SD card.",
+    "step_cfg": "Use 'Open .cfg...' to load an existing TinyEMU JSON configuration file.",
+    "step_files": "Or create a profile manually with your OpenSBI/BBL firmware, kernel, initrd, or disk image.",
+    "step_notice": "No OS images, BIOS, or firmware are bundled with this package."
+  },
+  "editor": {
+    "title_new": "New RISC-V VM Profile",
+    "title_edit": "Edit VM Profile",
+    "name": "Profile Name",
+    "arch": "Architecture",
+    "ram_mb": "Memory (MB)",
+    "applet_ram_warn": "Applet mode: keep RAM <= 192 MB",
+    "cfg_file": "Config File (.cfg)",
+    "cfg_overrides_hint": "External .cfg defines firmware, kernel, drives, and devices.",
+    "bios": "BIOS / Firmware",
+    "kernel": "Kernel Image",
+    "initrd": "Initrd Image",
+    "drive": "Disk Image",
+    "drive_mode": "Disk Mode",
+    "share_dir": "9P Shared Folder",
+    "cmdline": "Kernel Cmdline",
+    "enable_fb": "Enable SimpleFB Display",
+    "enable_net": "Enable SLIRP User Networking"
+  },
+  "drive_mode": {
+    "snapshot": "Snapshot (memory overlay)",
+    "ro": "Read-Only",
+    "rw": "Read-Write (direct)"
+  },
+  "picker": {
+    "open_cfg": "Select TinyEMU Configuration (.cfg)"
+  },
+  "dialog": {
+    "replace_vm_title": "Replace Running VM?",
+    "replace_vm_body": "A virtual machine is currently running. Stop it and start the selected profile?",
+    "delete_title": "Delete Profile?",
+    "delete_body": "Remove this VM profile from the list? Disk files on the SD card will not be deleted."
+  },
+  "common": {
+    "launch": "Launch",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "none": "(none)"
+  },
+  "status": {
+    "stopped": "Stopped",
+    "starting": "Starting",
+    "running": "Running",
+    "paused": "Paused",
+    "poweroff": "Powered Off",
+    "error": "Error"
+  },
+  "vm": {
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset",
+    "stop": "Stop",
+    "restart": "Start Again"
+  },
+  "term": {
+    "copy": "Copy",
+    "paste": "Paste",
+    "clear": "Clear",
+    "bottom": "Bottom",
+    "line_hint": "Type command or use USB keyboard...",
+    "send": "Send"
+  },
+  "display": {
+    "no_fb": "The current virtual machine has no graphical framebuffer (SimpleFB).",
+    "go_console": "Open Serial Console"
+  },
+  "settings": {
+    "default_ram": "Default RAM Size (MB)",
+    "term_font": "Terminal Font Size (px)",
+    "fb_linear": "Linear Framebuffer Filtering",
+    "fb_integer": "Integer Scaling",
+    "virt_keys": "Show Quick Terminal Keys",
+    "allow_slirp": "Enable SLIRP Network Stack"
+  },
+  "about": {
+    "subtitle": "RISC-V System Emulator for Nexvyn OS",
+    "summary": "Port of Fabrice Bellard's TinyEMU (2019-12-21) running RISC-V 32/64/128-bit guests on a background worker thread with a built-in VT100/ANSI terminal, SimpleFB display, VirtIO 9P host directory sharing, and SLIRP networking."
+  },
+  "msg": {
+    "missing_boot_media": "Profile needs a .cfg file, BIOS/firmware, or kernel image.",
+    "picker_unsupported": "File picker is unavailable outside Nexvyn OS window mode.",
+    "copied": "Recent terminal text copied to clipboard."
+  }
+}

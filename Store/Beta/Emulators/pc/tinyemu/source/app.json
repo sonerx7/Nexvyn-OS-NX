@@ -1,0 +1,41 @@
+{
+  "id": "com.nexvyn.emu.tinyemu",
+  "name": {
+    "en": "TinyEMU",
+    "tr": "TinyEMU"
+  },
+  "description": {
+    "en": "RISC-V 32/64/128 system emulator with VT100 console, VirtIO 9P sharing, SLIRP networking, and SimpleFB display.",
+    "tr": "VT100 konsol, VirtIO 9P dosya paylaşımı, SLIRP ağ ve SimpleFB ekran destekli RISC-V 32/64/128 sistem emülatörü."
+  },
+  "version": "1.0.0",
+  "author": "Fabrice Bellard (Nexvyn port)",
+  "license": "MIT",
+  "category": "games",
+  "runtime": "native",
+  "mode": "window",
+  "type": "app",
+  "arch": "aarch64",
+  "main": "tinyemu.nxvmod",
+  "icon": "icon.png",
+  "gamepad": true,
+  "loadingHint": true,
+  "memory": 256,
+  "window": {
+    "width": 1024,
+    "height": 620,
+    "minWidth": 640,
+    "minHeight": 400,
+    "resizable": true
+  },
+  "permissions": [
+    "files",
+    "network"
+  ],
+  "fileTypes": [
+    ".cfg"
+  ],
+  "minNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.13"
+}

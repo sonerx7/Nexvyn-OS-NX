@@ -1,0 +1,121 @@
+{
+  "app": {
+    "title": "TinyEMU"
+  },
+  "nav": {
+    "machines": "Makineler",
+    "console": "Konsol",
+    "display": "Ekran",
+    "settings": "Ayarlar",
+    "about": "Hakkında"
+  },
+  "menu": {
+    "file": "Dosya",
+    "open_cfg": ".cfg Aç...",
+    "new_profile": "Yeni VM Profili",
+    "machine": "Makine",
+    "view": "Görünüm",
+    "help": "Yardım"
+  },
+  "view": {
+    "windowed": "Pencere",
+    "fullscreen": "Tam Ekran"
+  },
+  "machines": {
+    "open_cfg": ".cfg Aç...",
+    "new_profile": "Yeni VM Profili",
+    "incomplete": "Önyükleme imajı tanımlı değil"
+  },
+  "empty": {
+    "title": "Henüz RISC-V VM profili yok",
+    "desc": "TinyEMU, 32/64/128-bit RISC-V işletim sistemlerini (Linux, Buildroot, bare-metal ikililer) doğrudan SD kartınızdan çalıştırır.",
+    "step_cfg": "Var olan bir TinyEMU JSON yapılandırma dosyasını açmak için '.cfg Aç...' düğmesini kullanın.",
+    "step_files": "Veya OpenSBI/BBL firmware, çekirdek, initrd ve disk imajı seçerek elle profil oluşturun.",
+    "step_notice": "Bu pakette işletim sistemi imajı, BIOS veya firmware bulunmaz."
+  },
+  "editor": {
+    "title_new": "Yeni RISC-V VM Profili",
+    "title_edit": "VM Profilini Düzenle",
+    "name": "Profil Adı",
+    "arch": "Mimari",
+    "ram_mb": "Bellek (MB)",
+    "applet_ram_warn": "Applet kipi: RAM <= 192 MB önerilir",
+    "cfg_file": "Yapılandırma (.cfg)",
+    "cfg_overrides_hint": "Harici .cfg dosyası firmware, çekirdek, disk ve aygıtları belirler.",
+    "bios": "BIOS / Firmware",
+    "kernel": "Çekirdek İmajı",
+    "initrd": "Initrd İmajı",
+    "drive": "Disk İmajı",
+    "drive_mode": "Disk Kipi",
+    "share_dir": "9P Paylaşım Klasörü",
+    "cmdline": "Çekirdek Satırı",
+    "enable_fb": "SimpleFB Grafik Ekranı Aç",
+    "enable_net": "SLIRP Kullanıcı Ağını Aç"
+  },
+  "drive_mode": {
+    "snapshot": "Anlık Görüntü (RAM katmanı)",
+    "ro": "Salt Okunur",
+    "rw": "Okuma-Yazma (doğrudan)"
+  },
+  "picker": {
+    "open_cfg": "TinyEMU Yapılandırması Seç (.cfg)"
+  },
+  "dialog": {
+    "replace_vm_title": "Çalışan VM Değiştirilsin mi?",
+    "replace_vm_body": "Şu anda bir sanal makine çalışıyor. Durdurulup seçilen profil başlatılsın mı?",
+    "delete_title": "Profil Silinsin mi?",
+    "delete_body": "Bu VM profili listeden silinsin mi? SD karttaki disk dosyaları silinmez."
+  },
+  "common": {
+    "launch": "Başlat",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "none": "(yok)"
+  },
+  "status": {
+    "stopped": "Durdu",
+    "starting": "Başlatılıyor",
+    "running": "Çalışıyor",
+    "paused": "Duraklatıldı",
+    "poweroff": "Kapatıldı",
+    "error": "Hata"
+  },
+  "vm": {
+    "pause": "Duraklat",
+    "resume": "Sürdür",
+    "reset": "Sıfırla",
+    "stop": "Durdur",
+    "restart": "Yeniden Başlat"
+  },
+  "term": {
+    "copy": "Kopyala",
+    "paste": "Yapıştır",
+    "clear": "Temizle",
+    "bottom": "En Alta İn",
+    "line_hint": "Komut yazın veya USB klavye kullanın...",
+    "send": "Gönder"
+  },
+  "display": {
+    "no_fb": "Etkin sanal makinede grafik framebuffer (SimpleFB) bulunmuyor.",
+    "go_console": "Seri Konsolu Aç"
+  },
+  "settings": {
+    "default_ram": "Varsayılan RAM Boyutu (MB)",
+    "term_font": "Terminal Yazı Boyutu (px)",
+    "fb_linear": "Doğrusal Ekran Süzgeci",
+    "fb_integer": "Tam Sayı Ölçekleme",
+    "virt_keys": "Hızlı Terminal Tuşlarını Göster",
+    "allow_slirp": "SLIRP Ağ Yığınını Etkinleştir"
+  },
+  "about": {
+    "subtitle": "Nexvyn OS için RISC-V Sistem Emülatörü",
+    "summary": "Fabrice Bellard'ın TinyEMU (2019-12-21) çekirdeğinin portu. Arka plan işçi thread'inde RISC-V 32/64/128-bit sistemleri çalıştırır; yerleşik VT100/ANSI terminal, SimpleFB ekran, VirtIO 9P klasör paylaşımı ve SLIRP ağı sunar."
+  },
+  "msg": {
+    "missing_boot_media": "Profil için bir .cfg dosyası, BIOS/firmware veya çekirdek gerekir.",
+    "picker_unsupported": "Dosya seçici yalnızca Nexvyn OS pencere kipinde kullanılabilir.",
+    "copied": "Son terminal satırları panoya kopyalandı."
+  }
+}

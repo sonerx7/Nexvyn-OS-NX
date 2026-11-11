@@ -1,5 +1,56 @@
 {
   "schema": 1,
-  "count": 0,
-  "apps": []
+  "count": 1,
+  "apps": [
+    {
+      "id": "com.nexvyn.emu.tinyemu",
+      "name": {
+        "en": "TinyEMU",
+        "tr": "TinyEMU"
+      },
+      "description": {
+        "en": "Port of Fabrice Bellard's TinyEMU system emulator for Nexvyn OS. Emulates 32-, 64-, and 128-bit RISC-V machines with a built-in VT100/ANSI serial terminal, SimpleFB graphical framebuffer, VirtIO block devices (Snapshot, RO, RW), 9P host directory sharing, and optional SLIRP user-mode networking. Bring your own RISC-V firmware, kernel, or .cfg file on the SD card.",
+        "tr": "Fabrice Bellard'ın TinyEMU sistem emülatörünün Nexvyn OS portu. Yerleşik VT100/ANSI seri terminal, SimpleFB grafik ekran, VirtIO disk (Anlık Görüntü, RO, RW), 9P klasör paylaşımı ve isteğe bağlı SLIRP kullanıcı ağı ile 32/64/128-bit RISC-V makineleri öykünür."
+      },
+      "version": "1.0.0",
+      "author": "Fabrice Bellard (Nexvyn port)",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/tinyemu.nxvapp",
+      "size": 739367,
+      "sha256": "6d04dec85254836f8ef2fc3194a649ebbce7af013b719723e6223c696b7383a0",
+      "minSdk": "1.10",
+      "permissions": [
+        "files",
+        "network"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "MIT",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Beta/Emulators/pc/tinyemu",
+      "targetSdk": "1.13",
+      "subtitle": {
+        "en": "RISC-V 32/64/128 system & Linux VM emulator",
+        "tr": "RISC-V 32/64/128 sistem ve Linux VM emülatörü"
+      },
+      "kind": "emulator",
+      "emuCategory": "pc",
+      "tech": "native",
+      "features": [
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "players": "1",
+      "beta": true,
+      "updated": "2026-11-11"
+    }
+  ]
 }

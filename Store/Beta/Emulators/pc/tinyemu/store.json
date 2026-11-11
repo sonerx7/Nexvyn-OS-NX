@@ -1,0 +1,52 @@
+{
+  "kind": "emulator",
+  "emuCategory": "pc",
+  "beta": true,
+  "tech": "native",
+  "license": "MIT",
+  "source": "https://bellard.org/tinyemu/",
+  "players": "1",
+  "features": [
+    "offline",
+    "touch",
+    "controller",
+    "keyboard"
+  ],
+  "tags": [
+    "riscv",
+    "emulator",
+    "linux",
+    "terminal",
+    "vm"
+  ],
+  "subtitle": {
+    "en": "RISC-V 32/64/128 system & Linux VM emulator",
+    "tr": "RISC-V 32/64/128 sistem ve Linux VM emülatörü"
+  },
+  "description": {
+    "en": "Port of Fabrice Bellard's TinyEMU system emulator for Nexvyn OS. Emulates 32-, 64-, and 128-bit RISC-V machines with a built-in VT100/ANSI serial terminal, SimpleFB graphical framebuffer, VirtIO block devices (Snapshot, RO, RW), 9P host directory sharing, and optional SLIRP user-mode networking. Bring your own RISC-V firmware, kernel, or .cfg file on the SD card.",
+    "tr": "Fabrice Bellard'ın TinyEMU sistem emülatörünün Nexvyn OS portu. Yerleşik VT100/ANSI seri terminal, SimpleFB grafik ekran, VirtIO disk (Anlık Görüntü, RO, RW), 9P klasör paylaşımı ve isteğe bağlı SLIRP kullanıcı ağı ile 32/64/128-bit RISC-V makineleri öykünür."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "wclick 0.36 0.04",
+      "wait 1"
+    ],
+    [
+      "wclick 0.10 0.22",
+      "wait 1"
+    ],
+    [
+      "wclick 0.10 0.35",
+      "wait 1"
+    ],
+    [
+      "dark 1",
+      "wclick 0.10 0.22",
+      "wait 1.5"
+    ]
+  ]
+}
