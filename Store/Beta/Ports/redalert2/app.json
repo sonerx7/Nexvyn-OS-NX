@@ -1,0 +1,25 @@
+{
+  "id": "com.sonerx7.redalert2",
+  "name": "RA2 Yuri Port",
+  "version": "1.0.0",
+  "author": "Westwood Studios / sonerx7",
+  "category": "games",
+  "targetSdk": "1.13",
+  "description": "Command & Conquer: Red Alert 2 & Yuri's Revenge static recompilation for Nexvyn OS.",
+  "minSdk": "1.10",
+  "minNative": "1.1",
+  "runtime": "native",
+  "main": "ra2.nxvmod",
+  "mode": "window",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "resizable": true
+  },
+  "loadingHint": true,
+  "gamepad": true,
+  "permissions": [
+    "files"
+  ],
+  "icon": "icon.png"
+}

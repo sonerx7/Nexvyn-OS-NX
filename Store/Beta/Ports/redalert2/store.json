@@ -1,0 +1,27 @@
+{
+  "kind": "port",
+  "genre": "strategy",
+  "license": "MIT",
+  "tech": "native",
+  "features": [
+    "offline",
+    "touch",
+    "controller"
+  ],
+  "players": "1",
+  "tags": [
+    "rts",
+    "strategy",
+    "redalert",
+    "westwood",
+    "port"
+  ],
+  "subtitle": {
+    "en": "Command & Conquer: Red Alert 2 port",
+    "tr": "Command & Conquer: Red Alert 2 portu"
+  },
+  "description": {
+    "en": "Native AArch64 static recompilation of Command & Conquer: Red Alert 2 and Yuri's Revenge for Nexvyn OS. Features Joy-Con gamepad controls, touch input, and native resolution. No commercial game data is included: copy your own legal gamemd.exe and .mix files to sdmc:/NexvynOS/Applications/com.sonerx7.redalert2.nxvapp/game/.",
+    "tr": "Command & Conquer: Red Alert 2 ve Yuri's Revenge'in Nexvyn OS için yerel AArch64 statik yeniden derleme portu. Joy-Con oyun kolu, dokunmatik ekran ve yerel çözünürlük desteği içerir. Ticari oyun verisi içermez: kendi yasal gamemd.exe ve .mix dosyalarınızı sdmc:/NexvynOS/Applications/com.sonerx7.redalert2.nxvapp/game/ klasörüne kopyalayın."
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 2,
+  "count": 3,
   "apps": [
     {
       "id": "com.nexvyn.emu.bochs",
@@ -50,6 +50,49 @@
         "touch",
         "controller",
         "keyboard"
+      ],
+      "players": "1",
+      "beta": true,
+      "updated": "2026-11-11"
+    },
+    {
+      "id": "com.sonerx7.redalert2",
+      "name": "RA2 Yuri Port",
+      "description": {
+        "en": "Native AArch64 static recompilation of Command & Conquer: Red Alert 2 and Yuri's Revenge for Nexvyn OS. Features Joy-Con gamepad controls, touch input, and native resolution. No commercial game data is included: copy your own legal gamemd.exe and .mix files to sdmc:/NexvynOS/Applications/com.sonerx7.redalert2.nxvapp/game/.",
+        "tr": "Command & Conquer: Red Alert 2 ve Yuri's Revenge'in Nexvyn OS için yerel AArch64 statik yeniden derleme portu. Joy-Con oyun kolu, dokunmatik ekran ve yerel çözünürlük desteği içerir. Ticari oyun verisi içermez: kendi yasal gamemd.exe ve .mix dosyalarınızı sdmc:/NexvynOS/Applications/com.sonerx7.redalert2.nxvapp/game/ klasörüne kopyalayın."
+      },
+      "version": "1.0.0",
+      "author": "Westwood Studios / sonerx7",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/icon.png",
+      "permissions": [
+        "files"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "MIT",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/redalert2.nxvapp",
+      "size": 50847234,
+      "sha256": "4a47631c3f297839354c35c53d9b84660f220cd9bcb2887ef7a6f65b498fea26",
+      "minSdk": "1.10",
+      "targetSdk": "1.13",
+      "subtitle": {
+        "en": "Command & Conquer: Red Alert 2 port",
+        "tr": "Command & Conquer: Red Alert 2 portu"
+      },
+      "kind": "port",
+      "tech": "native",
+      "features": [
+        "offline",
+        "touch",
+        "controller"
       ],
       "players": "1",
       "beta": true,

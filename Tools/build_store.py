@@ -520,12 +520,24 @@ def build(check):
                  "screenshots": shots_of(item), "featured": bool(extra.get("featured", False)),
                  "license": DEFAULT_LICENSE}
         module = read_json(os.path.join(item, "module.json"))
-        pkg = os.path.join(item, app["id"] + ".nxvapp")
+        slug = os.path.basename(item)
+        pkg = os.path.join(item, slug + ".nxvapp")
+        if not os.path.isfile(pkg):
+            pkg = os.path.join(item, app["id"] + ".nxvapp")
         if module and os.path.isfile(pkg):
             with open(pkg, "rb") as f:
                 data = f.read()
             entry.update(runtime="native", abi=module["abi"], version=str(module.get("version", entry["version"])),
                          download=RAW + rel(pkg), size=len(data), sha256=hashlib.sha256(data).hexdigest())
+        elif os.path.isfile(pkg):
+            with open(pkg, "rb") as f:
+                data = f.read()
+            entry.update(download=RAW + rel(pkg), size=len(data), sha256=hashlib.sha256(data).hexdigest(),
+                         permissions=app.get("permissions", []))
+            if app.get("minSdk"):
+                entry["minSdk"] = str(app["minSdk"])
+            if app.get("targetSdk"):
+                entry["targetSdk"] = str(app["targetSdk"])
         else:
             entry["builtin"] = True
         listing(entry, extra)
