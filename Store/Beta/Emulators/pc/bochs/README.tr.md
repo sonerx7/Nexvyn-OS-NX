@@ -7,7 +7,7 @@ Nintendo Switch (`Cortex-A57`, `-O3 -fno-strict-aliasing`) için optimize edilmi
 | Alan | Değer |
 |---|---|
 | Uygulama Kimliği (ID) | `com.nexvyn.emu.bochs` |
-| Sürüm | `3.1.0` |
+| Sürüm | `3.1.1` |
 | Mağaza Kanalı / Kategori | Beta (`Store/Beta/Emulators/pc/bochs/`, `emuCategory: "pc"`) |
 | Çalışma Alanı Konumu | `Beta/Emulators/pc/bochs/` |
 | Çalışma Zamanı (Runtime) | `native` (`aarch64`, pencereli `.nxvmod`) |

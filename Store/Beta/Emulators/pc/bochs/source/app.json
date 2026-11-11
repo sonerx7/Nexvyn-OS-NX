@@ -8,7 +8,7 @@
     "en": "Full-system x86 and x86-64 PC emulator supporting i386 through Core i7 CPUs, Bochs VBE SVGA, Cirrus CL-GD5446, Voodoo Banshee, ATA disks and CD-ROM, dual floppies, Sound Blaster 16, ES1370 audio, USB HID, SLIRP networking, on-screen PC keyboard, and checkpoints.",
     "tr": "i386'dan Core i7'ye kadar işlemci, Bochs VBE SVGA, Cirrus CL-GD5446, Voodoo Banshee, ATA sabit disk ve CD-ROM, çift disket, Sound Blaster 16, ES1370 ses, USB HID, SLIRP ağ, ekran PC klavyesi ve durum kaydı sunan tam x86 / x86-64 PC emülatörü."
   },
-  "version": "3.1.0",
+  "version": "3.1.1",
   "author": "Bochs Project, Port by sonerx7",
   "category": "games",
   "runtime": "native",

@@ -5,7 +5,7 @@ Native AArch64 windowed port (`runtime: "native"`, `mode: "window"`, Native SDK 
 | Field | Value |
 |---|---|
 | App ID | `com.nexvyn.emu.bochs` |
-| Version | `3.1.0` |
+| Version | `3.1.1` |
 | Store Channel / Category | Beta (`Store/Beta/Emulators/pc/bochs/`, `emuCategory: "pc"`) |
 | Workspace Location | `Beta/Emulators/pc/bochs/` |
 | Runtime | `native` (`aarch64`, windowed / fullscreen `.nxvmod`) |

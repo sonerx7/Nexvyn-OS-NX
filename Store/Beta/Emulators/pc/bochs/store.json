@@ -23,16 +23,16 @@
     "emulator"
   ],
   "subtitle": {
-    "en": "Full-system x86 & x86-64 PC emulator · Port by sonerx7",
-    "tr": "Tam donanım x86 ve x86-64 PC emülatörü · Port: sonerx7"
+    "en": "x86/x64 PC Emulator · Port by sonerx7",
+    "tr": "x86/x64 PC Emülatörü · Port: sonerx7"
   },
   "description": {
     "en": "Boot MS-DOS, FreeDOS, Windows 95/98/XP/7/10 Lite, ReactOS, and lightweight Linux on Nexvyn OS using the Bochs 3.1 core tuned for Cortex-A57. Ported to Nexvyn OS by sonerx7.\n\nIncludes open-source Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, Switch-tuned OS presets, instant growing disk creator up to 32 GB (and async flat RAW), external persistent VM/checkpoint folder support, Sound Blaster 16 & ES1370 audio, SLIRP NAT networking, PC virtual keyboard, full controller/touch UI navigation, and checkpoints.\n\nNo commercial operating systems or proprietary ROMs are included.",
     "tr": "Cortex-A57 için optimize edilmiş Bochs 3.1 çekirdeğiyle MS-DOS, FreeDOS, Windows 95/98/XP/7/10 Lite, ReactOS ve hafif Linux dağıtımlarını Nexvyn OS üzerinde çalıştırın. sonerx7 tarafından Nexvyn OS için port edilmiştir.\n\nAçık kaynak Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, Switch uyumlu işletim sistemi profilleri, 32 GB'a kadar anlık growing (ve asenkron flat RAW) sanal disk oluşturucu, kalıcı harici klasör koruması, Sound Blaster 16 & ES1370 ses, SLIRP ağ, ekran PC klavyesi, tam kontrolcü/dokunmatik arayüz ve durum kaydı içerir.\n\nTicari işletim sistemi veya telifli ROM içermez."
   },
   "changelog": {
-    "en": "Beta release for Switch (Cortex-A57 -O3): Switch-tuned presets for DOS, Win95/98, WinXP, ReactOS, Linux, and Win7/10 Lite; fixed PCI slot 4 USB UHCI panic; instant growing disk creator up to 32 GB & async flat creator; persistent external VM/profile/checkpoint folder; full controller L1/R1/stick navigation and accurate touchscreen UI/canvas input.",
-    "tr": "Switch beta sürümü (Cortex-A57 -O3): DOS, Win95/98, WinXP, ReactOS, Linux ve Win7/10 Lite için optimize edilmiş profiller; PCI slot 4 USB UHCI panic düzeltmesi; 32 GB'a kadar anlık growing disk ve asenkron flat disk oluşturucu; kalıcı harici profil/checkpoint klasörü koruması; tam kontrolcü ve hassas dokunmatik arayüz desteği."
+    "en": "Beta 3.1.1: Added 5 authentic AppStore screenshots (WinXP, Win98, Ubuntu, DOS DOOM, Launcher), instant growing disk presets up to 32 GB, optimized touch and gamepad navigation, and port by sonerx7.",
+    "tr": "Beta 3.1.1: 5 ozel Magaza gorseli (WinXP, Win98, Ubuntu, DOS DOOM, Launcher), 32 GB'a kadar anlik buyuyen disk secenekleri, dokunmatik ve kontrolcu optimizasyonlari, sonerx7 port imzasi."
   },
   "shots": [
     [
