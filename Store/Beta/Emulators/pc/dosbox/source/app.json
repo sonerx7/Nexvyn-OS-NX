@@ -1,0 +1,46 @@
+{
+  "id": "com.nexvyn.emu.dosbox",
+  "name": {
+    "en": "DOSBox",
+    "tr": "DOSBox"
+  },
+  "description": {
+    "en": "MS-DOS emulator supporting ZIP/DOSZ packages, gamepad mapping, on-screen keyboard, touch mouse, and save states.",
+    "tr": "ZIP/DOSZ paketleri, oyun kumandası eşleme, ekran klavyesi, dokunmatik fare ve durum kaydı destekli MS-DOS emülatörü."
+  },
+  "version": "1.0.0",
+  "author": "DOSBox Team, Bernhard Schelling (Nexvyn port)",
+  "license": "GPL-2.0-or-later",
+  "category": "games",
+  "runtime": "native",
+  "mode": "window",
+  "main": "dosbox.nxvmod",
+  "type": "app",
+  "arch": "aarch64",
+  "minNative": "1.2",
+  "minSdk": "1.13",
+  "targetSdk": "1.13",
+  "loadingHint": true,
+  "memory": 512,
+  "gamepad": true,
+  "fileTypes": [
+    ".dosz",
+    ".com",
+    ".bat",
+    ".img",
+    ".ima",
+    ".vhd",
+    ".jrc"
+  ],
+  "permissions": [
+    "files"
+  ],
+  "window": {
+    "width": 1024,
+    "height": 640,
+    "minWidth": 640,
+    "minHeight": 420,
+    "resizable": true
+  },
+  "icon": "icon.png"
+}

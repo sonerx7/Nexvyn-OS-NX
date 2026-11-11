@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 3,
+  "count": 4,
   "apps": [
     {
       "id": "com.nexvyn.emu.bochs",
@@ -41,6 +41,55 @@
       "changelog": {
         "en": "Beta release for Switch (Cortex-A57 -O3): Switch-tuned presets for DOS, Win95/98, WinXP, ReactOS, Linux, and Win7/10 Lite; fixed PCI slot 4 USB UHCI panic; instant growing disk creator up to 32 GB & async flat creator; persistent external VM/profile/checkpoint folder; full controller L1/R1/stick navigation and accurate touchscreen UI/canvas input.",
         "tr": "Switch beta sürümü (Cortex-A57 -O3): DOS, Win95/98, WinXP, ReactOS, Linux ve Win7/10 Lite için optimize edilmiş profiller; PCI slot 4 USB UHCI panic düzeltmesi; 32 GB'a kadar anlık growing disk ve asenkron flat disk oluşturucu; kalıcı harici profil/checkpoint klasörü koruması; tam kontrolcü ve hassas dokunmatik arayüz desteği."
+      },
+      "kind": "emulator",
+      "emuCategory": "pc",
+      "tech": "native",
+      "features": [
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "players": "1",
+      "beta": true,
+      "updated": "2026-11-11"
+    },
+    {
+      "id": "com.nexvyn.emu.dosbox",
+      "name": {
+        "en": "DOSBox",
+        "tr": "DOSBox"
+      },
+      "description": {
+        "en": "Run MS-DOS games and applications directly on Nexvyn OS. Built on DOSBox Pure, it mounts ZIP, DOSZ, ISO, CUE, CHD, IMG, or folder packages directly, provides automatic controller-to-keyboard bindings, a built-in on-screen keyboard, touch mouse emulation, save states, Sound Blaster / AdLib / MIDI audio, and a native desktop UI.\n\nNo games, BIOS, or proprietary software are included. Select your own DOS files or launch straight into the DOS prompt.",
+        "tr": "MS-DOS oyunlarını ve yazılımlarını doğrudan Nexvyn OS üzerinde çalıştırın. DOSBox Pure çekirdeği üzerine kurulu bu port; ZIP, DOSZ, ISO, CUE, CHD, IMG ve klasör paketlerini doğrudan bağlar, otomatik oyun kumandası eşlemesi, dahili ekran klavyesi, dokunmatik fare, durum kaydı, Sound Blaster / AdLib / MIDI sesi ve yerel masaüstü arayüzü sunar.\n\nİçerisinde oyun, BIOS veya telifli yazılım bulunmaz. Kendi DOS dosyalarınızı açın veya doğrudan DOS komut satırına girin."
+      },
+      "version": "1.0.0",
+      "author": "DOSBox Team, Bernhard Schelling (Nexvyn port)",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/dosbox.nxvapp",
+      "size": 2481488,
+      "sha256": "b28566a42510ecbd89772e450ec1a05c8760e868f06b7c240762818f96f8552d",
+      "minSdk": "1.13",
+      "permissions": [
+        "files"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "GPL-2.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Beta/Emulators/pc/dosbox",
+      "targetSdk": "1.13",
+      "subtitle": {
+        "en": "MS-DOS PC emulator for games and software",
+        "tr": "Oyun ve yazılımlar için MS-DOS emülatörü"
       },
       "kind": "emulator",
       "emuCategory": "pc",
