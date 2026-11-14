@@ -24,15 +24,15 @@
   "author": "sonerx7",
   "category": "system",
   "runtime": "native",
-  "mode": "fullscreen",
+  "mode": "window",
   "main": "nexbench.nxvmod",
   "icon": "icon.png",
   "minNative": "1.2",
   "minSdk": "1.10",
   "targetSdk": "1.13",
   "window": {
-    "width": 1280,
-    "height": 720,
+    "width": 1160,
+    "height": 680,
     "resizable": true
   },
   "gamepad": true,
