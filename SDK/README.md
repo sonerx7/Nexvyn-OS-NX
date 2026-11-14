@@ -140,6 +140,7 @@ python SDK/Tools/nxv/nxv.py pack myapp
 |---|---|
 | [Reference/](Reference/README.md) | Complete SDK contract (`SDK.md`), C headers (`c/include/nexvyn.h`), Java SDK sources |
 | [Languages/](Languages/README.md) | Quick starts, templates, Lua/JS `sfx` & `juice` game kits, and the **Native C/C++ SDK kit (`Languages/c/native-kit/`)** |
+| [Porting/](Porting/README.md) | **Porting & Decompilation Hub:** SDL2/OpenGL ports, decompilations, static recompilation shims, JIT emulators, and [checklist](Porting/CHECKLIST.md) |
 | [Guides/](Guides/README.md) | 34 engineering guides: PBR games, social apps, Native SDK, NexGFX, input modes, compatibility, packaging |
 | [Samples/](Samples/README.md) | Working sample apps and games; [`samples.json`](samples.json) powers Studio's sample browser |
 | [AI/](AI/README.md) | `llms.txt`, `system-prompt.md`, `AI_RULES.md`, language packs, task prompts and verification checklist |

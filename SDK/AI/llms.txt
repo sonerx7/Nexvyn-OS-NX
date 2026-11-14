@@ -88,4 +88,5 @@ Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` i
 - Pre-Answer Checklist: `SDK/AI/checklist.md`
 - Language Packs: `SDK/AI/languages/{lua,javascript,python,native,c}.md`
 - Native C/C++ Guide & Kit Reference: `SDK/Guides/NATIVE_GUIDE.md`, `SDK/Guides/NATIVE_KIT.md`
+- Porting & Decompilation Hub: `SDK/Porting/README.md`, `SDK/Porting/CHECKLIST.md`, `SDK/Guides/PORTING_LARGE_GAMES.md`
 - Game & PBR Guides: `SDK/Guides/MAKE_A_GAME.md`, `SDK/Guides/PBR_GAME_RECIPE.md`, `SDK/Guides/GAME_FEEL.md`, `SDK/Guides/SOUND_DESIGN.md`
