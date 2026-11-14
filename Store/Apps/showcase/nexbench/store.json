@@ -1,0 +1,20 @@
+{
+  "kind": "app",
+  "features": ["3d", "offline", "touch", "controller", "keyboard"],
+  "tags": ["benchmark", "3d", "pbr", "showcase", "system", "n2"],
+  "subtitle": {
+    "en": "System benchmark & 475K-poly PBR showcase",
+    "tr": "Sistem testi ve 475K poligon PBR vitrini"
+  },
+  "description": {
+    "en": "NexBench N2 is a deterministic 5-phase benchmark and NexGFX PBR 3D showcase for Nexvyn OS.\n\nIt benchmarks CPU & Lua 5.4.7 Generational GC, Storage & JSON I/O, 2D NexGFX & NXUI layout throughput, 3D instanced geometry, and a 475,000+ polygon NexGFX PBR scene with real-time point/spot lights, shadows, ACES tone mapping, and bloom. Results are saved locally so you can compare performance across OS releases.",
+    "tr": "NexBench N2, Nexvyn OS için deterministik 5 aşamalı bir sistem testi ve NexGFX PBR 3D vitrinidir.\n\nCPU ve Lua 5.4.7 GenGC, Depolama/JSON I/O, 2D NexGFX ve NXUI arayüz performansı, 3D instanced geometri ve gerçek zamanlı ışık/gölge, ACES ton eşleme ve bloom içeren 475.000+ poligonlu NexGFX PBR sahnesini ölçer. Sonuçlar sürümler arası karşılaştırma için yerel olarak kaydedilir."
+  },
+  "shots": [
+    ["wait 3"],
+    ["wclick 0.25 0.42", "wait 2"],
+    ["wait 10"],
+    ["wclick 0.25 0.50", "wait 3"],
+    ["dark 1", "wait 1.5"]
+  ]
+}

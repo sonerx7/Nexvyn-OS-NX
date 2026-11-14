@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 180,
+  "count": 181,
   "apps": [
     {
       "id": "aichat",
@@ -4857,6 +4857,58 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.nexvyn.nexbench",
+      "name": {
+        "en": "NexBench N2",
+        "tr": "NexBench N2"
+      },
+      "description": {
+        "en": "NexBench N2 is a deterministic 5-phase benchmark and NexGFX PBR 3D showcase for Nexvyn OS.\n\nIt benchmarks CPU & Lua 5.4.7 Generational GC, Storage & JSON I/O, 2D NexGFX & NXUI layout throughput, 3D instanced geometry, and a 475,000+ polygon NexGFX PBR scene with real-time point/spot lights, shadows, ACES tone mapping, and bloom. Results are saved locally so you can compare performance across OS releases.",
+        "tr": "NexBench N2, Nexvyn OS için deterministik 5 aşamalı bir sistem testi ve NexGFX PBR 3D vitrinidir.\n\nCPU ve Lua 5.4.7 GenGC, Depolama/JSON I/O, 2D NexGFX ve NXUI arayüz performansı, 3D instanced geometri ve gerçek zamanlı ışık/gölge, ACES ton eşleme ve bloom içeren 475.000+ poligonlu NexGFX PBR sahnesini ölçer. Sonuçlar sürümler arası karşılaştırma için yerel olarak kaydedilir."
+      },
+      "version": "1.0.0",
+      "author": "",
+      "category": "system",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/nexbench.nxvapp",
+      "size": 4295802,
+      "sha256": "cf1ceeb94537860f6559e0bec046f05f02f6699cfcd8a0ae8f0c5127f9ef9a03",
+      "minSdk": "1.13",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/4.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/nexbench",
+      "runtime": "lua",
+      "targetSdk": "2.0",
+      "subtitle": {
+        "en": "System benchmark & 475K-poly PBR showcase",
+        "tr": "Sistem testi ve 475K poligon PBR vitrini"
+      },
+      "kind": "app",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-14",
+      "updated": "2026-11-14",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-14"
         }
       ]
     },

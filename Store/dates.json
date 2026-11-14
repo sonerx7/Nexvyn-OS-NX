@@ -166,6 +166,17 @@
       }
     ]
   },
+  "com.nexvyn.nexbench": {
+    "added": "2026-11-14",
+    "updated": "2026-11-14",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-14"
+      }
+    ]
+  },
   "com.nexvyn.port.chocolatedoom": {
     "added": "2026-11-10",
     "updated": "2026-11-10",

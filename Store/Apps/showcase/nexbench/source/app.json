@@ -1,0 +1,27 @@
+{
+  "id": "com.nexvyn.nexbench",
+  "name": {
+    "en": "NexBench N2",
+    "tr": "NexBench N2"
+  },
+  "description": {
+    "en": "Deterministic system benchmark & 475K-polygon NexGFX PBR 3D showcase",
+    "tr": "Deterministik sistem testi ve 475K poligon NexGFX PBR 3D vitrini"
+  },
+  "version": "1.0.0",
+  "runtime": "lua",
+  "main": "main.lua",
+  "minSdk": "1.13",
+  "targetSdk": "2.0",
+  "loadingHint": true,
+  "gamepad": true,
+  "category": "system",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "minWidth": 640,
+    "minHeight": 380,
+    "resizable": true
+  },
+  "permissions": []
+}
