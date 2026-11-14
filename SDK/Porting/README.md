@@ -58,6 +58,10 @@ Everything developers and AI assistants need to port existing C/C++ games, engin
 - **User-Supplied Game Data (Never Bundle Copyrighted Assets):** For ports or decompilations that require original game files (`.wad`, `.mpq`, `.otr`, `.z64`, `.dat`), never include proprietary assets in the `.nxvapp`. Prompt the user once with `nxn_choose_folder` (or `ui.chooseFolder`) and remember the granted path across launches.
 - **Handle Window Resize & Dock/Handheld Switching:** Listen for `NXN_EVENT_RESIZE`, call `nxn_display_resize(disp, ev.width, ev.height)`, and update `glViewport`.
 - **Avoid Frame-Copy Bottlenecks:** For 8-bit/16-bit software-rendered ports, convert palettes via a 256-entry lookup table and upload only dirty rectangles when possible.
+- **Maximum Input Support (Gamepad, Multi-Touch Pinch-Zoom, Keyboard):**
+  - Always set `"minNative": "1.2"` so 16-finger multi-touch is enabled.
+  - **SDL2 Ports:** `sdl2-nexvyn` automatically translates **two-finger pinch-to-zoom** to `SDL_MOUSEWHEEL` (or `Ctrl +/-` via `SDL_SetHint("NEXVYN_PINCH_MODE", "ctrl_pm")`), **two-finger tap** and **long-press** to `SDL_BUTTON_RIGHT`, **two-finger pan** to scroll wheel, and supports `SDL_SetHint("NEXVYN_GAMEPAD_MOUSE", "1")` + `SDL_JoystickRumble`. Call `SDL_StopTextInput()` unless a text box is focused.
+  - **Custom / Non-SDL2 / Recompiled Ports:** Use the header-only `<nexvyn/nxn_port_input.h>` (`NXN_PI_PROFILE_RTS`, `NXN_PI_PROFILE_CRPG`, `NXN_PI_PROFILE_FPS`, `NXN_PI_PROFILE_GAMEPAD`) for unified pinch-zoom, multi-touch gestures, virtual stick cursor, custom button bindings, USB/BT keyboard, and OSK toggle.
 
 ---
 

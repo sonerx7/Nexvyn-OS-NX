@@ -34,5 +34,7 @@
     "zh": "在三个世界中奔跑、跳跃和踩踏",
     "ko": "세 개의 세계를 달리고, 점프하고, 밟으세요"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

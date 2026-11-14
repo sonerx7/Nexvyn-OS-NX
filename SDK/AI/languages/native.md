@@ -91,6 +91,10 @@ int main(int argc, char** argv) {
   - `nxn_power_get(&power)` (`battery_percent`, `charger`, `docked`, `online`) and `NXN_EVENT_POWER`
   - `nxn_dialog(&dlg, &choice)` and `nxn_prompt(&pr, buf, cap, &len)`
 - **NXUI Retained UI (`<nexvyn/nxn_nxui.h>`):** `nxn_nxui_tokens_get`, `nxn_nxui_begin`, `nxn_nxui_end`, `nxn_nxui_row_begin`/`end`, `nxn_nxui_column_begin`/`end`, `nxn_nxui_card_begin`/`end`, `nxn_nxui_scroll_begin`/`end`, `nxn_nxui_canvas_begin`/`end`, `nxn_nxui_label`, `nxn_nxui_badge`, `nxn_nxui_button`, `nxn_nxui_toggle`, `nxn_nxui_slider`, `nxn_nxui_textfield`, `nxn_nxui_dropdown`, `nxn_nxui_tabs`, `nxn_nxui_table`, `nxn_nxui_virtuallist`, `nxn_nxui_dialog`, `nxn_nxui_spacer`, `nxn_nxui_move_focus`, `nxn_nxui_activate_focused`.
+- **Port Input (`<nexvyn/nxn_port_input.h>` & SDL2 Gestures):**
+  - `"minNative": "1.2"` enables 16-finger multi-touch. `sdl2-nexvyn` automatically converts two-finger pinch-to-zoom to `SDL_MOUSEWHEEL` (or `Ctrl +/-` with `NEXVYN_PINCH_MODE=ctrl_pm`), two-finger tap & long-press to right-click, two-finger pan to scroll, and supports `NEXVYN_GAMEPAD_MOUSE=1` + `SDL_JoystickRumble`.
+  - For non-SDL2 or custom PC/RTS/CRPG/FPS ports, `#include <nexvyn/nxn_port_input.h>` (`NXN_PI_PROFILE_RTS`, `CRPG`, `FPS`, `GAMEPAD`) gives ready-made pinch-zoom, gestures, stick cursor, and custom key/mouse bindings.
+  - Call `SDL_StopTextInput()` (or `nxn_input_text_request(0)`) when no text field is active so the OSK stays hidden.
 - **Build & Check:**
   - `python SDK/Languages/c/native-kit/tools/nxv_native new myapp --template app`
   - `python SDK/Languages/c/native-kit/tools/nxv_native build myapp`

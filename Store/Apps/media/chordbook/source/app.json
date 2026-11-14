@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.chordbook",
-  "name": {"en": "Chordbook", "tr": "Akor Defteri", "de": "Akkordbuch", "fr": "Carnet d’accords", "es": "Cancionero de acordes", "ja": "コードブック", "zh": "和弦手册", "ko": "코드북"},
+  "name": {
+    "en": "Chordbook",
+    "tr": "Akor Defteri",
+    "de": "Akkordbuch",
+    "fr": "Carnet d’accords",
+    "es": "Cancionero de acordes",
+    "ja": "コードブック",
+    "zh": "和弦手册",
+    "ko": "코드북"
+  },
   "description": {
     "en": "Chords, scales, the circle of fifths and progressions for guitar, ukulele, bass and piano, with sound.",
     "tr": "Gitar, ukulele, bas ve piyano için akorlar, diziler, beşliler çemberi ve akor dizileri, sesli.",
@@ -17,10 +26,16 @@
   "category": "media",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 460, "minHeight": 420, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 460,
+    "minHeight": 420,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

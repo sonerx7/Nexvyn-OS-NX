@@ -36,5 +36,7 @@
   "singleInstance": true,
   "gamepad": false,
   "minSdk": "1.3",
-  "permissions": []
+  "permissions": [],
+  "runtime": "python",
+  "targetSdk": "1.13"
 }

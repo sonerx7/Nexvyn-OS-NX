@@ -17,8 +17,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/bochs/bochs.nxvapp",
-      "size": 2339513,
-      "sha256": "cc9b4b47aebb963cbcda9ade711316f0cfc35b5a6f18cbd937212da97ad08361",
+      "size": 2339517,
+      "sha256": "2fe8672f6f8b4e43b191799476dd105ad5f34f184de7db6437ea6da52b092f6a",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -71,8 +71,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/dosbox.nxvapp",
-      "size": 2482153,
-      "sha256": "26caa873e49a30136cb689da6039a1f586e6af2a178b393dc74f2e76f01c0c0a",
+      "size": 2482159,
+      "sha256": "c95380c1d23489181cd03a57d65f873d340dbf1695f76e98f7314596a5211f65",
       "minSdk": "1.13",
       "permissions": [
         "files"
@@ -129,8 +129,8 @@
       "featured": false,
       "license": "MIT",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/redalert2/redalert2.nxvapp",
-      "size": 50847234,
-      "sha256": "4a47631c3f297839354c35c53d9b84660f220cd9bcb2887ef7a6f65b498fea26",
+      "size": 50847238,
+      "sha256": "d91c176bbc4085de867e8d238c3a8cfc1b253b5c095b2991fe02dc7823d064f7",
       "minSdk": "1.10",
       "targetSdk": "1.13",
       "subtitle": {
@@ -163,8 +163,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/tinyemu/tinyemu.nxvapp",
-      "size": 739367,
-      "sha256": "6d04dec85254836f8ef2fc3194a649ebbce7af013b719723e6223c696b7383a0",
+      "size": 739369,
+      "sha256": "ef87a758b1515d74b242c28a679e103b4ed275140f3501f5fe0420b5332a65e2",
       "minSdk": "1.10",
       "permissions": [
         "files",

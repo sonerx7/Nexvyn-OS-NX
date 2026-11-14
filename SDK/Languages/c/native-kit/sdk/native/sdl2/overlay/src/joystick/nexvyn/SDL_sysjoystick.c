@@ -91,6 +91,14 @@ static int NEXVYN_JoystickOpen(SDL_Joystick *joystick, int device_index)
 
 static int NEXVYN_JoystickRumble(SDL_Joystick *joystick, Uint16 low, Uint16 high)
 {
+    (void)joystick;
+    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
+    if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_RUMBLE)) {
+        Uint16 mx = low > high ? low : high;
+        float strength = (float)mx / 65535.0f;
+        nxn_rumble(strength, mx ? 2000u : 0u);
+        return 0;
+    }
     return SDL_Unsupported();
 }
 

@@ -10,9 +10,9 @@
     "height": 720,
     "resizable": true
   },
-  "minNative": "1.1",
+  "minNative": "1.2",
   "minSdk": "1.10",
-  "targetSdk": "1.10",
+  "targetSdk": "1.13",
   "permissions": [
     "files",
     "network"
@@ -21,5 +21,6 @@
   "mode": "window",
   "main": "emufront.nxvmod",
   "description": "Game Boy Advance emulator with a game library",
-  "license": "MPL-2.0"
+  "license": "MPL-2.0",
+  "targetNative": "1.2"
 }

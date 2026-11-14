@@ -32,5 +32,7 @@
     "resizable": false
   },
   "gamepad": true,
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

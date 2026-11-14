@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.logiclab",
-  "name": {"en": "Logic Lab", "tr": "Mantık Laboratuvarı", "de": "Logiklabor", "fr": "Labo logique", "es": "Laboratorio lógico", "ja": "ロジックラボ", "zh": "逻辑实验室", "ko": "논리 실험실"},
+  "name": {
+    "en": "Logic Lab",
+    "tr": "Mantık Laboratuvarı",
+    "de": "Logiklabor",
+    "fr": "Labo logique",
+    "es": "Laboratorio lógico",
+    "ja": "ロジックラボ",
+    "zh": "逻辑实验室",
+    "ko": "논리 실험실"
+  },
   "description": {
     "en": "Build digital circuits with gates, flip-flops, switches, clocks, LEDs and displays, and see their truth tables.",
     "tr": "Kapılar, flip-floplar, anahtarlar, saatler, LED'ler ve göstergelerle dijital devreler kur, doğruluk tablolarını gör.",
@@ -17,11 +26,19 @@
   "category": "other",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 480, "minHeight": 380, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 480,
+    "minHeight": 380,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "fileTypes": [".logic"],
+  "fileTypes": [
+    ".logic"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

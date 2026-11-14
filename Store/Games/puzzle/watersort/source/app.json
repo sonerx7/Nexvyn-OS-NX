@@ -36,5 +36,7 @@
   "singleInstance": true,
   "gamepad": true,
   "minSdk": "1.1",
-  "permissions": []
+  "permissions": [],
+  "runtime": "js",
+  "targetSdk": "1.13"
 }

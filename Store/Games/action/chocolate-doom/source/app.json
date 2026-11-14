@@ -7,7 +7,7 @@
   "runtime": "native",
   "mode": "window",
   "main": "chocolate-doom.nxvmod",
-  "minNative": "1.1",
+  "minNative": "1.2",
   "icon": "icon.png",
   "window": {
     "width": 960,
@@ -18,7 +18,8 @@
     "files"
   ],
   "minSdk": "1.10",
-  "targetSdk": "1.10",
+  "targetSdk": "1.13",
   "description": "Classic 1993 shooter engine with the free Freedoom game.",
-  "license": "GPL-2.0-or-later"
+  "license": "GPL-2.0-or-later",
+  "targetNative": "1.2"
 }

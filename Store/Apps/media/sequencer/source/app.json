@@ -34,5 +34,7 @@
   "gamepad": false,
   "permissions": [
     "notifications"
-  ]
+  ],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

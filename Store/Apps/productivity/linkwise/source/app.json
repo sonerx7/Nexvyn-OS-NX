@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.linkwise",
-  "name": {"en": "Linkwise", "tr": "Linkwise", "de": "Linkwise", "fr": "Linkwise", "es": "Linkwise", "ja": "Linkwise", "zh": "Linkwise", "ko": "Linkwise"},
+  "name": {
+    "en": "Linkwise",
+    "tr": "Linkwise",
+    "de": "Linkwise",
+    "fr": "Linkwise",
+    "es": "Linkwise",
+    "ja": "Linkwise",
+    "zh": "Linkwise",
+    "ko": "Linkwise"
+  },
   "description": {
     "en": "A Markdown knowledge base: linked notes, backlinks, a graph of everything, tags and search.",
     "tr": "Markdown bilgi bankası: bağlantılı notlar, geri bağlantılar, her şeyin grafiği, etiketler ve arama.",
@@ -17,12 +26,25 @@
   "category": "productivity",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 420, "minHeight": 380, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 420,
+    "minHeight": 380,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "fileTypes": [".md", ".markdown"],
-  "shareTargets": ["text", ".md", ".txt"],
+  "fileTypes": [
+    ".md",
+    ".markdown"
+  ],
+  "shareTargets": [
+    "text",
+    ".md",
+    ".txt"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

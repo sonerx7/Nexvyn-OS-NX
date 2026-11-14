@@ -87,8 +87,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/breathe/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/breathe/breathe.nxvapp",
-      "size": 52527,
-      "sha256": "bbe64e74e80ba7693bf64bf51107024c8e897227a3deefd7e6510b79c66a9e78",
+      "size": 52550,
+      "sha256": "a396c57c303e5117bae14202b07f941c680121261afba14a70beb30e28ba2fcd",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -99,6 +99,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/breathe",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Calm down with guided breathing",
         "tr": "Rehberli nefesle sakinleş",
@@ -159,8 +160,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flashcards/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flashcards/flashcards.nxvapp",
-      "size": 52886,
-      "sha256": "75999edc343825daaf8d8b47fec7db54870a81d8de840fdf483e5b1938bf75cf",
+      "size": 52905,
+      "sha256": "22fbcd83011c3f50c334012ac3d0552aabda28eb890637ad27b2f8f39993f2c0",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -172,6 +173,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/flashcards",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Spaced repetition, quizzes and imports",
         "tr": "Aralıklı tekrar, testler, içe aktarma",
@@ -232,8 +234,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/habits/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/habits/habits.nxvapp",
-      "size": 51584,
-      "sha256": "fc9e5a2eda2b9379b2e4ac58f3d7778eba75a3ee9b402ceebf0230b57d418818",
+      "size": 51603,
+      "sha256": "e9825afdc23773b672c7f442b18b9bbe0bc4246bfd7188abb94a0ed2d1ba96b7",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -247,6 +249,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/habits",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Streaks, rest days and milestones",
         "tr": "Seriler, dinlenme günleri, hedefler",
@@ -307,8 +310,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/interval/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/interval/interval.nxvapp",
-      "size": 51202,
-      "sha256": "01d6ceb6096789ae7c91e074a7d7e69b7fde8ef493ee50fac78462f98299ddd1",
+      "size": 51214,
+      "sha256": "5fdc1306102300c1e5573127d2e45c7d4337261be4257a12e968fc24cfa545d2",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -320,6 +323,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/interval",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "HIIT and Tabata timer for every workout",
         "tr": "Her antrenman için HIIT ve Tabata sayacı",
@@ -380,8 +384,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/linkwise/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/linkwise/linkwise.nxvapp",
-      "size": 91193,
-      "sha256": "deefc13d7a746fa9e4ec4245fc065222e647bf97de717b44b037f74a1e3c437a",
+      "size": 91191,
+      "sha256": "40fc2fe7b716daf34b9c81eb5c32d8d8d46d97135604a72cb0b31d5072de0add",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -393,7 +397,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/linkwise",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Linked notes, backlinks and a graph",
         "tr": "Bağlantılı notlar, geri bağlantılar ve grafik",
@@ -447,8 +451,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/pomodoro/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/pomodoro/pomodoro.nxvapp",
-      "size": 52072,
-      "sha256": "b98026b7d9cf1fb1add9d3dff34ade5e1bdc2d14b03fba2b9f92695beb4f1ccb",
+      "size": 52093,
+      "sha256": "d0270b3fa16df68f37d9bfad7cffdef282f0249703fd367a5c96d74f82fe8b6b",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -462,6 +466,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/pomodoro",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Focus sprints, tasks and a daily goal",
         "tr": "Odak turları, görevler, günlük hedef",
@@ -522,8 +527,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/reading/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/reading/reading.nxvapp",
-      "size": 48067,
-      "sha256": "9c30b4769751695bcc67c1070225f9d31e9535a83750edd5f139ab56ea6b69ac",
+      "size": 48075,
+      "sha256": "36ca8aca4ab77b698e0a0501128469e50b04832a5596a2c320ea15cec6321a83",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -535,6 +540,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/reading",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Track your books, pages and reading goal",
         "tr": "Kitaplarını, sayfalarını ve hedefini izle",
@@ -595,8 +601,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/recipebox/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/recipebox/recipebox.nxvapp",
-      "size": 62047,
-      "sha256": "65fb7eec7d4435fc5908998be96f687d50bb836ae9acd40ca24e798419e3a8d9",
+      "size": 62048,
+      "sha256": "86c1e0b6a378627f378aecf5957adba4fc6b1eac939d707a48be97b00b8449b1",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -608,7 +614,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/recipebox",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Recipes, cooking mode and shopping",
         "tr": "Tarifler, pişirme kipi ve alışveriş",
@@ -661,8 +667,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/shopping/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/shopping/shopping.nxvapp",
-      "size": 47646,
-      "sha256": "a33e2cd10ead68ae8a58788848ed07da5f8d1df51073c7f5df2fc165f82f771f",
+      "size": 47657,
+      "sha256": "83f74be1a3a64d4af8e273c9cfed439e1fd545e6cb5d138fd750d4cebb78fb93",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -673,6 +679,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/shopping",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Lists sorted by aisle, quick to refill",
         "tr": "Reyonlara göre sıralı, hızlı alışveriş",
@@ -733,8 +740,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/sleep/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/sleep/sleep.nxvapp",
-      "size": 44141,
-      "sha256": "93f5a7c06e417a65db40b95b317daf2b93472f74f0bb537eeff20dba2e51302d",
+      "size": 44152,
+      "sha256": "c96b9486961a2188332f4648fc58781270e053261b793751c75dfd43f048510c",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -745,6 +752,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/sleep",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Log your nights and reach your sleep goal",
         "tr": "Gecelerini kaydet, uyku hedefine ulaş",
@@ -805,8 +813,8 @@
       "category": "productivity",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/typing/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/typing/typing.nxvapp",
-      "size": 48407,
-      "sha256": "1e24e8d56271718b725ebc2ebd21a88bccae6b1d09ace2a143c02c7410728abd",
+      "size": 48428,
+      "sha256": "484be9e84b7bb55b03233bdf06bf4286c949a4dc7c567ec9858ffd9692bf20e9",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -817,6 +825,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/typing",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Touch typing, weak keys and speed tests",
         "tr": "On parmak, zayıf tuşlar, hız testi",
@@ -877,8 +886,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/budget.nxvapp",
-      "size": 54865,
-      "sha256": "ceb3eaf03112ffd94f212eeb5860db7380729e22aede790e3820d5f6c13002b6",
+      "size": 54887,
+      "sha256": "f2fee5b1791ff196ae8f784c7f9a5176f7a242b574d7ad3d31be68a8edc407dc",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -891,6 +900,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/budget",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Budgets, repeats and monthly charts",
         "tr": "Bütçeler, tekrarlar, aylık grafikler",
@@ -1065,8 +1075,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/flowmap.nxvapp",
-      "size": 72749,
-      "sha256": "a15e4fde621f3798949b23169711f59c487d13a46c933e66a8ed3258bc4dfb4d",
+      "size": 72747,
+      "sha256": "b94b0fa3c19433e0a9b188be2658316305d34a072a5bea2827f0bbbd7ac24d9e",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -1078,7 +1088,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/flowmap",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Flowcharts and mind maps",
         "tr": "Akış şemaları ve zihin haritaları",
@@ -1132,8 +1142,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/journal.nxvapp",
-      "size": 55137,
-      "sha256": "fe45e03015282f413cd4a582dfca688c87782d63631d7454cfc302cd2380e861",
+      "size": 55156,
+      "sha256": "3e60b176f99eac3981dd388a158ea139f50baf0b1315c703435c2999a69eb736",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -1146,6 +1156,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/journal",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Daily lines, moods, insights, memories",
         "tr": "Günlük satırlar, ruh hali, anılar",
@@ -1206,8 +1217,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/kanban.nxvapp",
-      "size": 49764,
-      "sha256": "40ec92876325acf90c410865c7d459c21942131407b801b6af3842fed32c4091",
+      "size": 49784,
+      "sha256": "7a82de02d44249dae6ea178bc826229c8d70f41411282e20e0982ffd21385c3d",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -1218,6 +1229,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/kanban",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Boards, checklists and drag-and-drop",
         "tr": "Panolar, kontrol listeleri, sürükle-bırak",
@@ -1449,8 +1461,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/todo.nxvapp",
-      "size": 53048,
-      "sha256": "1895a693ffe100e440516b2e870818b102bd3bd8b548c066a8008c501876c0b7",
+      "size": 53058,
+      "sha256": "4f980d7518c02b0911c18584d7e843effef7a0ca6de8846c84f8574626597175",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -1461,6 +1473,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/todo",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Projects, steps, repeats and due dates",
         "tr": "Projeler, adımlar, tekrarlar, tarihler",
@@ -1578,8 +1591,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/graph3d/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/graph3d/graph3d.nxvapp",
-      "size": 48350,
-      "sha256": "17f7003325106cdac4a7cabaae96ea5bc53e0f402fa8dcb9501c94c48d405ccb",
+      "size": 48367,
+      "sha256": "8ad2dc3772a4ac0e066ad6f6d1ae3836d75c57e7331536ad0f9b540dcd344ecc",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -1591,6 +1604,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/graph3d",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Plot z = f(x, y) as a 3D surface",
         "tr": "z = f(x, y) fonksiyonlarını 3D çiz",
@@ -1712,8 +1726,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/bracket/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/bracket/bracket.nxvapp",
-      "size": 65777,
-      "sha256": "826cf90a90dc624623e38034568aedd8ad3eed1ffe42a171ce864af90f65ca2c",
+      "size": 65774,
+      "sha256": "df49ada049551ffdc647ce591bc722b8088234de595027c5c780e538245184da",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -1725,7 +1739,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/bracket",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Tournaments for game nights",
         "tr": "Oyun geceleri için turnuvalar",
@@ -1894,8 +1908,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/countdown/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/countdown/countdown.nxvapp",
-      "size": 50407,
-      "sha256": "ee8645bef7cfb901cd315e39a9bb74cea531733739d9c61968518628db7cfec5",
+      "size": 50421,
+      "sha256": "525b206a0440093adf6b67e794d6456d9b1454028b5352cb41dea9bcac7502d8",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -1909,6 +1923,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/countdown",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Big ticking countdowns to your big days",
         "tr": "Beklediğin günlere canlı geri sayım",
@@ -1969,8 +1984,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/datecalc/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/datecalc/datecalc.nxvapp",
-      "size": 44060,
-      "sha256": "2f95d1440d09ff84e0c02a9dfffcf1c037ad50ce7d3d025fa5c5a9ceb9c104c2",
+      "size": 44068,
+      "sha256": "8ce033c166c9418a3c3b158e91bff1cd02ea0a011db358ba33ced1327850be9d",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -1982,6 +1997,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/datecalc",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Days between dates, date math and more",
         "tr": "Tarih farkı, gün ekleme ve fazlası",
@@ -2042,8 +2058,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/dice/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/dice/dice.nxvapp",
-      "size": 47363,
-      "sha256": "66810bd49a9e9779ce45d1f60d1c23b55f0272ccc1d58d713c9fb17f9fe7a388",
+      "size": 47369,
+      "sha256": "66f1705e3d2b27386cc72d1b2a92a80365bfeb5e1186ae806d3b2fe1caa3f940",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2055,6 +2071,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/dice",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Roll d4 to d20 dice or flip a coin",
         "tr": "d4'ten d20'ye zar at ya da yazı tura",
@@ -2115,8 +2132,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/finance/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/finance/finance.nxvapp",
-      "size": 51067,
-      "sha256": "b219bdf80bc532c74a81015faf1b853318295626f9b38045032aaacdec9aa05b",
+      "size": 51084,
+      "sha256": "736bbb25cc3e0844f82c747040505261173bb051a5de5a73035a993a5a1c13ce",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2128,6 +2145,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/finance",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Loans, savings, percentages and VAT",
         "tr": "Kredi, birikim, yüzde ve KDV hesapları",
@@ -2245,8 +2263,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/globe/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/globe/globe.nxvapp",
-      "size": 54689,
-      "sha256": "b158cf9e278723581849c1ba3d1e9f4fb812ed00995ff4e2ed565b49fabf4678",
+      "size": 54711,
+      "sha256": "931b08cc13930ff702d6225605163086e8b7da436e1af1e131f27b2ff057f64b",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2258,6 +2276,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/globe",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "A 3D Earth with live day and night",
         "tr": "Gece ve gündüzü canlı 3D Dünya",
@@ -2319,8 +2338,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/graph/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/graph/graph.nxvapp",
-      "size": 37843,
-      "sha256": "7c08e0bd79947471361b5c94066cc1062e1ec590d3d42372f65be7b00ac96d69",
+      "size": 37860,
+      "sha256": "c4c0b9cd1c479b2eb787d4135d7b7786b504081d3e323dff8e750c7fcf39a288",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2332,6 +2351,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/graph",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Plot functions, find roots and crossings",
         "tr": "Fonksiyon çiz, kökleri ve kesişimleri bul",
@@ -2392,8 +2412,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/moon/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/moon/moon.nxvapp",
-      "size": 47836,
-      "sha256": "5a0ca49ba2b7c8077f1657b775c628d071536dd95525bc08c5358a1b3ea50a2b",
+      "size": 47849,
+      "sha256": "587162ebfda83f5f0c7049659fcee51e5bbe8f0c04b8afad13ab509b1d27cb58",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2405,6 +2425,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/moon",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Tonight's moon and every phase ahead",
         "tr": "Bu gecenin Ay'ı ve tüm evreleri",
@@ -2465,8 +2486,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/morse/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/morse/morse.nxvapp",
-      "size": 46117,
-      "sha256": "76286d5e94dd3968aa6fcfcf378d0378fb264560aad5eeeb56bdb9b28835bb1d",
+      "size": 46134,
+      "sha256": "f6d0fc13e2c8707bb532b515430279fc33ed2584250e0ef53e1a793fede329ee",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2478,6 +2499,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/morse",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Translate, play and practice Morse code",
         "tr": "Mors kodunu çevir, çal ve pratik yap",
@@ -2539,7 +2561,7 @@
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/numbook/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/numbook/numbook.nxvapp",
       "size": 46412,
-      "sha256": "50dcfcd34dc9b5e9483fa937b78a835ccd238e5c9e7c7a0ae35dd29154fc3f49",
+      "sha256": "dd00f0379c6a5d197c0f5ff13364767ea45356099783c9243853db90e5d8ff4f",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -2552,7 +2574,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/numbook",
       "runtime": "js",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "A notepad that calculates",
         "tr": "Hesap yapan not defteri",
@@ -2605,8 +2627,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/passgen/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/passgen/passgen.nxvapp",
-      "size": 47718,
-      "sha256": "38ebc4db17801050511b2aef10a2042ceb916fef0cce9fde44fea25296fb2bdf",
+      "size": 47736,
+      "sha256": "6d679f8d10511ddd3c317d040fd0193c641fecba291932a7571e28eadd21337c",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2617,6 +2639,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/passgen",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Strong passwords and easy passphrases",
         "tr": "Güçlü şifreler, akılda kalan parolalar",
@@ -2677,8 +2700,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/periodic/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/periodic/periodic.nxvapp",
-      "size": 50608,
-      "sha256": "dd3014eceb1864ec852dff585b1430df6dd055e3f4054396575aa290f2ea302b",
+      "size": 50628,
+      "sha256": "ac839204058511a9098d7f4f3474894c06aa35e144275fe22887c32d20f1b075",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2690,6 +2713,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/periodic",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "All 118 elements, one tap away",
         "tr": "118 elementin hepsi bir dokunuş uzakta",
@@ -2749,8 +2773,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/qrcode/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/qrcode/qrcode.nxvapp",
-      "size": 47615,
-      "sha256": "8f62550e98bf455bb01916fb88f6afe597b9b08f5fae1276341a4a96d60df762",
+      "size": 47631,
+      "sha256": "b53d90fb91531105cf42be3a3a298e75fa969acee37074bc7a722250c3f499f4",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -2764,6 +2788,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/qrcode",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "QR codes for text, links and Wi-Fi",
         "tr": "Metin, bağlantı ve Wi-Fi için QR kod",
@@ -2824,8 +2849,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/solar/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/solar/solar.nxvapp",
-      "size": 59635,
-      "sha256": "e6591513f5d890a47572c11bf31d79431348e742d1639c2aead5d7d15ebbfe13",
+      "size": 59661,
+      "sha256": "04b2b75f283e058fa35de3939c41a80e72e92cf41a236d8169c10d77fdef97db",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2837,6 +2862,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/solar",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "The planets in motion, starting today",
         "tr": "Gezegenler bugünden itibaren hareket hâlinde",
@@ -2899,8 +2925,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/splitbill/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/splitbill/splitbill.nxvapp",
-      "size": 47995,
-      "sha256": "0af02d078eb9fa83effb435b4d1e6203afef9affccbdce26749dcb5b7a72dc67",
+      "size": 48006,
+      "sha256": "3d6a7dbe0f798aafc50e315429afe8dc0611435c1cd38305160728f70e9f9ee5",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2912,6 +2938,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/splitbill",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Split the bill fairly, item by item",
         "tr": "Hesabı ürün ürün, hakkaniyetle böl",
@@ -2972,8 +2999,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/texttools/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/texttools/texttools.nxvapp",
-      "size": 49215,
-      "sha256": "d5f8e103fb2112cf58ffdaaf76e24c06f2d3872e83a0f655f91d5bfca9b51358",
+      "size": 49229,
+      "sha256": "fd4f6ab6d495e4ac366f2a7f89c7f669c980453deac0314211880236665d536a",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -2985,6 +3012,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/texttools",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Fix case, tidy and sort text, count words",
         "tr": "Harf düzelt, metni topla, kelime say",
@@ -3046,8 +3074,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/unitconv/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/utilities/unitconv/unitconv.nxvapp",
-      "size": 49177,
-      "sha256": "9e869404c6485c225dd892c0e27a255165d98f8a269a8a9edfe110b05e88f6fd",
+      "size": 49192,
+      "sha256": "cda029d22b06d2e56a2818a0e7a22e0854434cbc6706470b60e6317c87d02016",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -3059,6 +3087,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/utilities/unitconv",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Length, mass, temperature, data and more",
         "tr": "Uzunluk, kütle, sıcaklık, veri ve fazlası",
@@ -3177,8 +3206,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/viewer3d/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/viewer3d/viewer3d.nxvapp",
-      "size": 54611,
-      "sha256": "96c777ac94274786d62a41a599e28371f26997b28bf20bf570b3c32390e267f6",
+      "size": 54631,
+      "sha256": "9d9b74643b7ae1191f3566d9b9bc48d0a63d544193dac63bea4a73c5748af496",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -3190,6 +3219,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/viewer3d",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Spin, zoom and inspect OBJ and STL models",
         "tr": "OBJ ve STL modellerini döndür, incele",
@@ -3252,8 +3282,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/chiptrack/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/chiptrack/chiptrack.nxvapp",
-      "size": 57531,
-      "sha256": "a1f75adbefa9b1e0e9bbb48b4cd4b38b921872dd9a24fdd31167c0a36405ef26",
+      "size": 57528,
+      "sha256": "73db8a27ce0ed9666d17e3a93ac997968c37fd9561b9b3e78f222887ae7038eb",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -3265,7 +3295,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/chiptrack",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Make chiptune music, export WAV",
         "tr": "Chiptune müzik yap, WAV aktar",
@@ -3318,8 +3348,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/chordbook/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/chordbook/chordbook.nxvapp",
-      "size": 54286,
-      "sha256": "bad2031ead67188a6ab35869aef85cc3cb6a72429d6571b2b18b959a02a0162f",
+      "size": 54290,
+      "sha256": "c0d5eaffc1e91a87b9658611ae1579b4aa5872357314cde4b67c551148854046",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -3331,7 +3361,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/chordbook",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Chords, scales and progressions",
         "tr": "Akorlar, diziler ve akor dizileri",
@@ -3384,8 +3414,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/drums/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/drums/drums.nxvapp",
-      "size": 52659,
-      "sha256": "4ba45e2da5ec3ef70304dff2b25c8e8ce532663c2efefe007401d2837a381178",
+      "size": 52680,
+      "sha256": "04062367ecdf0a346bede067f3b0c30a2d6c86b3005868ae68de5ae61f2d120c",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -3399,6 +3429,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/drums",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "16 steps, accents and nine styles",
         "tr": "16 adım, vurgular ve dokuz tarz",
@@ -3459,8 +3490,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/mandelbrot/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/mandelbrot/mandelbrot.nxvapp",
-      "size": 58288,
-      "sha256": "0a8460e038394be3333e464204a9c774ed3ebc1e77dd368f2e5fedb46176f68b",
+      "size": 58300,
+      "sha256": "93c2a4eab7331830aa6c97aa9f715fdb0d2d534a2ecf8b130f07795664f3823c",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -3472,6 +3503,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/mandelbrot",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Dive deep into Mandelbrot and Julia",
         "tr": "Mandelbrot ve Julia'nın derinliklerine dal",
@@ -3588,8 +3620,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/sequencer/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/sequencer/sequencer.nxvapp",
-      "size": 47697,
-      "sha256": "fb5b19419ed971ba0a3013b0321730e5400c271013412f02280013578fab98d5",
+      "size": 47715,
+      "sha256": "11aca95a7187a088604b91affe64d1d5c16f7c74ab04226e03b133d8cf751b9b",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -3602,6 +3634,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/sequencer",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Compose melodies on a piano roll",
         "tr": "Piyano rulosunda melodi besteleyin",
@@ -3662,8 +3695,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/metronome/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/metronome/metronome.nxvapp",
-      "size": 40415,
-      "sha256": "624f22214f9c139dda98192d40a049e5a14dd3f12949deab2ca478ba0a39f16c",
+      "size": 40434,
+      "sha256": "fb96a7878d2e773974011dc071be0da9664327b8f8fcc5b96d11fe925d33ad39",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -3675,6 +3708,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/metronome",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Keep perfect time with a swinging pendulum",
         "tr": "Sallanan sarkaçla tempoyu hiç kaçırma",
@@ -3792,8 +3826,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/piano/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/piano/piano.nxvapp",
-      "size": 57467,
-      "sha256": "0584d1742dbaabf221b8252ce5658d1d264df9cbbb72f8aa9daa7153c72e04ce",
+      "size": 57489,
+      "sha256": "28df55a15616b2ad20434fdc967287d634f05a7503ab01ed5775fd12e6ab0d52",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -3804,6 +3838,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/piano",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Play, record and learn songs key by key",
         "tr": "Çal, kaydet, şarkıları tuş tuş öğren",
@@ -3863,8 +3898,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/pixelart/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/pixelart/pixelart.nxvapp",
-      "size": 40044,
-      "sha256": "96adce015d05a88f76a4b6410ee1155b3e63ee15e130b730e75a3d23a1c7e17c",
+      "size": 40057,
+      "sha256": "031d4a221b1201ef5489cccf1a6f9fa984882bb7a4758136352ff2599953e1d5",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -3876,6 +3911,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/pixelart",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Sprites up to 64×64, exported as PNG",
         "tr": "64×64'e kadar sprite, PNG dışa aktarma",
@@ -3993,8 +4029,8 @@
       "category": "media",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/noise/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/media/noise/noise.nxvapp",
-      "size": 37614,
-      "sha256": "43f3787bddc31dda865e5f30fe4ccab1ab06b75cdd4815c6ae977d3157806c48",
+      "size": 37625,
+      "sha256": "22b3800c0e72b7fd1b270b6e242364614b7242891190cc5af6e4612bdfbdfaa8",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -4006,6 +4042,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/media/noise",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Rain, waves and noise to help you sleep",
         "tr": "Uykuya dalmak için yağmur, dalga, gürültü",
@@ -4281,8 +4318,8 @@
       "category": "internet",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/netx-browser-mini/netx-browser-mini.nxvapp",
-      "size": 98693,
-      "sha256": "77a15f0fbf0e0bc299134d93990bdfd69a6c48d337ed970e55df967fae0b5a74",
+      "size": 98712,
+      "sha256": "25b97aa34f6111e6b7c1db542e305c194d37c9ad055656c5a6ca99f0ed1b85b1",
       "minSdk": "1.9",
       "permissions": [
         "network",
@@ -4298,6 +4335,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/internet/netx-browser-mini",
+      "runtime": "js",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Tabs, web search and built-in video",
@@ -4473,8 +4511,8 @@
       "category": "developer",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/hashtool/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/hashtool/hashtool.nxvapp",
-      "size": 51795,
-      "sha256": "7eb77701b137c05ae420b393b484879c0ed723f3b0c90a5fad75c1b06edd078e",
+      "size": 51805,
+      "sha256": "120ded53555059fe7424327541d63cb3c290127db725de2ebe07769676ff7462",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -4485,6 +4523,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/developer/hashtool",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Encode text and verify checksums",
         "tr": "Metni kodla, sağlama toplamını doğrula",
@@ -4546,8 +4585,8 @@
       "category": "developer",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/hexpad/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/hexpad/hexpad.nxvapp",
-      "size": 56692,
-      "sha256": "b6b74bee4cd23ba1e0c2b1de56bf4e9b3eb55dd82ad6a2d2400aa340441407a0",
+      "size": 56689,
+      "sha256": "a8a6514b5ba7529352fe2b86034519c173ee18b3c4990dfc240df03967db636d",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -4560,7 +4599,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/developer/hexpad",
       "runtime": "js",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "A hex editor for any file",
         "tr": "Her dosya için onaltılık düzenleyici",
@@ -4613,8 +4652,8 @@
       "category": "developer",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/jsonfmt/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/jsonfmt/jsonfmt.nxvapp",
-      "size": 60779,
-      "sha256": "ebdba5b793cb43c60480dc44f2b183cfc5f80d59a183f3f0ea20d72d062ad4cc",
+      "size": 60787,
+      "sha256": "53559ec645be93c9c811ebb299b9c9f4a7f8fd9017d1e1ce5c5003b303a70e1b",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -4626,6 +4665,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/developer/jsonfmt",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Validate, format and explore JSON",
         "tr": "JSON'u doğrula, biçimlendir, keşfet",
@@ -4687,8 +4727,8 @@
       "category": "developer",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/regexlab/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/developer/regexlab/regexlab.nxvapp",
-      "size": 61897,
-      "sha256": "7fb8a44427bc47b2afa2752abf4fd6d5614883ad7512d9114df5ebb3d1a1e7f1",
+      "size": 61895,
+      "sha256": "cd046cd6e6695385ebc3a089d80a718e1c88d9f59b85a380f7f51dee964c2425",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -4701,7 +4741,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/developer/regexlab",
       "runtime": "js",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Test regular expressions live",
         "tr": "Düzenli ifadeleri canlı dene",
@@ -4755,8 +4795,8 @@
       "category": "system",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/benchmark/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/benchmark/benchmark.nxvapp",
-      "size": 58575,
-      "sha256": "4f8a16d6f4daf7227d70b759d3b355bf2d0eed04c04eb50c552bdbb838586d4e",
+      "size": 58591,
+      "sha256": "698e7f2bfc83bb1b1db668439c89602312df5163137c63a94b16e0015148c72b",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -4768,6 +4808,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/system/benchmark",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Put your console's 3D power to the test",
         "tr": "Konsolunun 3D gücünü sına",
@@ -4875,8 +4916,8 @@
       "category": "system",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/nexbench.nxvapp",
-      "size": 4295802,
-      "sha256": "cf1ceeb94537860f6559e0bec046f05f02f6699cfcd8a0ae8f0c5127f9ef9a03",
+      "size": 4295800,
+      "sha256": "bd03093a8342707b80b1e4d6847e5f0dca16f8924e81a9b79bdfc020764568d6",
       "minSdk": "1.13",
       "permissions": [],
       "screenshots": [
@@ -4889,7 +4930,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/nexbench",
       "runtime": "lua",
-      "targetSdk": "2.0",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "System benchmark & 475K-poly PBR showcase",
         "tr": "Sistem testi ve 475K poligon PBR vitrini"
@@ -5791,8 +5832,8 @@
       "category": "other",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/capitals/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/capitals/capitals.nxvapp",
-      "size": 45689,
-      "sha256": "610004a73b3525669aee4ecc4b7ff53c132c23d1899630d3c24937d4dbd65d19",
+      "size": 45700,
+      "sha256": "a0381c72382a3472a987b90a23dfb72b5ac78a23bec37e427e28c75eec1020c8",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -5804,6 +5845,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/other/capitals",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Learn the capitals of 150 countries",
         "tr": "150 ülkenin başkentini öğren",
@@ -5864,8 +5906,8 @@
       "category": "other",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/logiclab/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/logiclab/logiclab.nxvapp",
-      "size": 57821,
-      "sha256": "e9984114bfac3486baa7daea1f5e290085e321dff19cbdb178c4cfe9046f8a2c",
+      "size": 57824,
+      "sha256": "450e41e2356e2b5934b1035dbc4ab60e1ae52b9ed69c9839cd9bf58a83c731ab",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -5877,7 +5919,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/other/logiclab",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Build and run digital circuits",
         "tr": "Dijital devreler kur ve çalıştır",
@@ -5931,8 +5973,8 @@
       "category": "other",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/multiply/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/multiply/multiply.nxvapp",
-      "size": 49134,
-      "sha256": "64439a22c26ab8ddf333e31d65603b2c8590b940c0f2a6f2db7370f998b2f00a",
+      "size": 49145,
+      "sha256": "abdf2be1b156057b2cd7fa20b125855dda32430d057bef638cdf2892b57959ec",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -5944,6 +5986,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/other/multiply",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Learn the times tables and earn stars",
         "tr": "Çarpım tablosunu öğren, yıldız topla",
@@ -6004,8 +6047,8 @@
       "category": "other",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/turtle/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/other/turtle/turtle.nxvapp",
-      "size": 53179,
-      "sha256": "d500fe2537cd48c5e9766bfbd5913d0beaa25f6e000656f7a589de9313941af0",
+      "size": 53203,
+      "sha256": "224033413bc61cfed0a2d6c9244dd78cccf85652cb4a4abf21509f5bfee93adc",
       "minSdk": "1.3",
       "permissions": [],
       "screenshots": [
@@ -6017,6 +6060,8 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/other/turtle",
+      "runtime": "python",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Learn to code by drawing with a turtle",
         "tr": "Kaplumbağayla çizerek kodlamayı öğren",
@@ -6028,7 +6073,7 @@
         "ko": "거북이로 그림을 그리며 코딩을 배우세요"
       },
       "kind": "app",
-      "tech": "lua",
+      "tech": "python",
       "features": [
         "offline",
         "touch"
@@ -6068,8 +6113,8 @@
       "category": "showcase",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/native-showcase/native-showcase.nxvapp",
-      "size": 1532825,
-      "sha256": "a3e1d4f10f21b5fdc0d674113dd16c3e72318db8310134d9fbbaaa8a0a91578b",
+      "size": 1532833,
+      "sha256": "f3a8ece5e8b929e41f30c0a3995e5b44d3ddc6eb2fb60a03b0fcadd3fb3404f2",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -6086,7 +6131,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/native-showcase",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Native C++ in a window: a tech demo",
         "tr": "Pencerede yerel C++: teknik demo",
@@ -6133,8 +6178,8 @@
       "category": "showcase",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/townbench.nxvapp",
-      "size": 44670027,
-      "sha256": "24305a6cc55de7076a7d30e40dd353722bb1213c6eddfcbcd57ae6c9436bb9e9",
+      "size": 44670029,
+      "sha256": "2d467ca1758a4e93f4d144a8418204f3531f7e026e57144bcd8819906ab27682",
       "minSdk": "1.10",
       "permissions": [
         "files"
@@ -6149,7 +6194,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/showcase/townbench",
-      "targetSdk": "1.12",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "A 60 second village flight benchmark",
         "tr": "60 saniyelik köy uçuşu benchmark'ı",
@@ -6204,8 +6249,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/fifteen/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/fifteen/fifteen.nxvapp",
-      "size": 53009,
-      "sha256": "d5cc7782d16c743c975304523fb0c6db34122df92db005a0c7cbc0c5d93f8f6e",
+      "size": 53019,
+      "sha256": "4b9cd222543d1e9896256c282aa48e4dfd1de6865746aad550c37c56ba8629ec",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -6217,6 +6262,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/fifteen",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Slide the tiles back into order",
         "tr": "Karoları kaydır, sayıları sıraya diz",
@@ -6278,8 +6324,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/g2048/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/g2048/g2048.nxvapp",
-      "size": 61588,
-      "sha256": "e42087ac56fc36b09a7e5668d44b7611efdabe3accd474c2c21d37e69341aae7",
+      "size": 61602,
+      "sha256": "a1e37d7fb9111e5c015d3233ccb04b3b5597bd4da00013e3f449ae37ca16bd04",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -6291,6 +6337,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/g2048",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Four boards, Time Attack, smart hints",
         "tr": "Dört tahta, Zamana Karşı, akıllı ipucu",
@@ -6352,8 +6399,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/maze3d/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/maze3d/maze3d.nxvapp",
-      "size": 48644,
-      "sha256": "08e6329dcc914c5f0834ead5517734aadaeac93931f6f467814c083bd27e685e",
+      "size": 48654,
+      "sha256": "781aa821599ceeb46eb8e45b1bc966893e3a244c0ad9bdbd4ca0061cccd133a5",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -6365,6 +6412,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/racing/maze3d",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Find the glowing exit of ten labyrinths",
         "tr": "On labirentte parlayan çıkışı bul",
@@ -6427,8 +6475,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/airhockey/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/airhockey/airhockey.nxvapp",
-      "size": 46934,
-      "sha256": "5612c92e2d3fc8f3a911f4b86f8d148a6309a0ce3418bf2d0ac21668d3bb1231",
+      "size": 46958,
+      "sha256": "08419973d34bdb84804eb2737749762016e189ba6f5a9358e86aa184c6191f08",
       "minSdk": "1.3",
       "permissions": [],
       "screenshots": [
@@ -6440,6 +6488,8 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/airhockey",
+      "runtime": "python",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Fast table hockey, solo or with a friend",
         "tr": "Hızlı masa hokeyi, tek başına ya da ikili",
@@ -6451,7 +6501,7 @@
         "ko": "혼자 또는 친구와 즐기는 빠른 테이블 하키"
       },
       "kind": "game",
-      "tech": "lua",
+      "tech": "python",
       "features": [
         "offline",
         "touch",
@@ -6495,8 +6545,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ash-protocol/ash-protocol.nxvapp",
-      "size": 14624307,
-      "sha256": "22b12f3639099ed05fc32e02b7d26d73d951fa816fcbb0ce66e9d6879706a512",
+      "size": 14624311,
+      "sha256": "71571b455165d25b99adb85b35402047b46a7f1a3bb3f09b56931926adc75f5c",
       "minSdk": "1.9",
       "permissions": [],
       "screenshots": [
@@ -6509,7 +6559,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/ash-protocol",
       "runtime": "lua",
-      "targetSdk": "1.9",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Six chapters. Four weapons. One last order.",
         "tr": "Altı bölüm. Dört silah. Son bir emir.",
@@ -6572,8 +6622,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/strategy/aldmoor/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/strategy/aldmoor/aldmoor.nxvapp",
-      "size": 1077709,
-      "sha256": "c7ac70cfabee45b88564a1966d93d410733879ca5a63ccbf3204303c85d5d84f",
+      "size": 1077707,
+      "sha256": "2740097be141107f9e793b8c819a8442361fd32d6063113fea89224417228c3a",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -6585,7 +6635,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/strategy/aldmoor",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Turn-based tactics: an eight-battle campaign",
         "tr": "Sıra tabanlı taktik: sekiz savaşlık sefer",
@@ -6638,8 +6688,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sandbox/blockcraft/blockcraft.nxvapp",
-      "size": 1601594,
-      "sha256": "0455df8be6a2ca9865aa1d65cb34ea2d2dae04888d0a0e38e34f578ed562d975",
+      "size": 1601600,
+      "sha256": "3a1d90565d361c148e021e0c798263acdd674b1556093e97f3eb932249818be6",
       "minSdk": "1.8",
       "permissions": [],
       "screenshots": [
@@ -6653,7 +6703,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/sandbox/blockcraft",
       "runtime": "js",
-      "targetSdk": "1.8",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Mine, build and survive in a block world",
         "tr": "Blok dünyasında kaz, inşa et, hayatta kal",
@@ -6735,8 +6785,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sports/bowling/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sports/bowling/bowling.nxvapp",
-      "size": 57946,
-      "sha256": "d00cdc7880f24357957bc20809e3d92b29f60b7e8243567ecc9b0ce73ed4cea5",
+      "size": 57954,
+      "sha256": "aeaf37bcdc2250104238eaa14f9603985349f4693d3cd040c3e82ca57cc981c0",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -6748,6 +6798,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/sports/bowling",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Ten frames of ten-pin bowling",
         "tr": "On pinli bowlingde on çerçeve",
@@ -6807,8 +6858,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/breakout/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/breakout/breakout.nxvapp",
-      "size": 62517,
-      "sha256": "2bfb046927d7db85a29c34d77fd804ced2323a6d797a5813bece0521aa1b95a6",
+      "size": 62527,
+      "sha256": "6cadff269297801395b6df364852c33a2bf496ff8cc3ea82912a6d9167b8de44",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -6819,6 +6870,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/breakout",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "15 stages, bombs, lasers and fireballs",
         "tr": "15 bölüm, bombalar, lazer ve ateş topu",
@@ -6880,8 +6932,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/board/checkers/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/board/checkers/checkers.nxvapp",
-      "size": 70622,
-      "sha256": "c3181aadfd7968eaaf23b053e546e2634007b30e1eed6543c7f781158964b1b5",
+      "size": 70632,
+      "sha256": "4a312ac2116effbe024ed6f3b6b2a5e8fc7939e46c72d7f3305101bb8df74a80",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -6893,6 +6945,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/board/checkers",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Jump, capture and crown your kings",
         "tr": "Atla, taş al, damana kavuş",
@@ -6945,8 +6998,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/chocolate-doom.nxvapp",
-      "size": 11279941,
-      "sha256": "da6d78ac6e16851163bc45706575d1dd30504ac66cd0bc0712f5252b8676953f",
+      "size": 11279949,
+      "sha256": "2826fcb5c2d97699050d8a8f2db22dfae9a983258e167dbd46d151eab8fe5d0d",
       "minSdk": "1.10",
       "permissions": [
         "files"
@@ -6961,7 +7014,7 @@
       "featured": false,
       "license": "GPL-2.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/chocolate-doom",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Classic shooter engine with Freedoom",
         "tr": "Klasik nişancı motoru, Freedoom dahil",
@@ -7026,8 +7079,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/mastermind/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/mastermind/mastermind.nxvapp",
-      "size": 64061,
-      "sha256": "e12f5939db0e0607cb97d3d5e8b73d7f4aa3b302e835bff6b1f42f2ebbcb5617",
+      "size": 64069,
+      "sha256": "89012dc3cf20ce758aa94b8985016350fe23583955e8662130a6885a4346939e",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7039,6 +7092,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/mastermind",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Crack the secret colour code in 10 tries",
         "tr": "Gizli renk şifresini 10 denemede kır",
@@ -7100,8 +7154,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/sokoban/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/sokoban/sokoban.nxvapp",
-      "size": 57512,
-      "sha256": "bb62aeffaed6ac8998ce4531b878f3c675a3033d8880960e3238882d25f01385",
+      "size": 57522,
+      "sha256": "589561a1b3d1e0cc892846ca22b8c9eff2eb95b6487ed7aeb8d6b1f851dea9c9",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7113,6 +7167,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/sokoban",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "40 levels of crate-pushing logic",
         "tr": "40 bölümlük kutu itme bulmacası",
@@ -7174,8 +7229,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/blocks/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/blocks/blocks.nxvapp",
-      "size": 66602,
-      "sha256": "7e3b18708f9b0878140f680d8a5f2e2e8aaf588750ff23a864ced98fb6159d58",
+      "size": 66613,
+      "sha256": "ddc5e6ee20eeaa747f5d0221d164ed51b51cd0029d5a4ea32e29ad0356030d83",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7187,6 +7242,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/blocks",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Marathon, Sprint, Ultra and Dig modes",
         "tr": "Maraton, Sprint, Ultra ve Kazı modları",
@@ -7248,8 +7304,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/board/connect4/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/board/connect4/connect4.nxvapp",
-      "size": 66909,
-      "sha256": "f082da7b719bf0829bec37efd024ae75ff65f4fea40fcc599015726570aaf902",
+      "size": 66918,
+      "sha256": "a59be7f0da780ab9b4ec95bd1e3ab52332001b42ed4f33c122f26e11e131da53",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7261,6 +7317,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/board/connect4",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Drop discs and line up four in a row",
         "tr": "Pulları bırak, dördünü yan yana getir",
@@ -7318,8 +7375,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/frost-lantern/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/frost-lantern/frost-lantern.nxvapp",
-      "size": 11421624,
-      "sha256": "f15d761563a239cba3c428c87bd4cd13e9011008664f94ab6277771ca16d1e09",
+      "size": 11421628,
+      "sha256": "80265d49a8c76fe393ce887d3dafd82f51a7b30dbc9d71e78a3cdb37365949e5",
       "minSdk": "1.9",
       "permissions": [],
       "screenshots": [
@@ -7332,7 +7389,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/frost-lantern",
       "runtime": "lua",
-      "targetSdk": "1.9",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Five realms. Thirty boons. A lost dawn.",
         "tr": "Beş bölge. Otuz lütuf. Kayıp bir şafak.",
@@ -7381,8 +7438,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/gambatte.nxvapp",
-      "size": 943830,
-      "sha256": "75330b1565b649905abece85b433d40d05955063be563f2e13e8d58e91c8fd6e",
+      "size": 943838,
+      "sha256": "8cf87fc7adb0f5d7ee6b819081094fe3ed7314fba25e5e187b5f93eda7912f1a",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -7398,7 +7455,7 @@
       "featured": false,
       "license": "GPL-2.0-only",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/gambatte",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Game Boy emulator",
         "tr": "Game Boy öykünücüsü",
@@ -7468,8 +7525,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/casual/fishing/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/casual/fishing/fishing.nxvapp",
-      "size": 55995,
-      "sha256": "2c73e793bee2d655310c8c3aff1b4aa9fc053c5b8b4f03308f1348f7503ad043",
+      "size": 56008,
+      "sha256": "027d0355dd96bde24064bc43df4e09ed9afd2b89ac76f4df2f505dbcb1af6ded",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -7481,6 +7538,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/casual/fishing",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Cast, reel and fill your fish collection",
         "tr": "Oltanı at, makarayı sar, koleksiyonu doldur",
@@ -7540,8 +7598,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/word/hangman/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/word/hangman/hangman.nxvapp",
-      "size": 55789,
-      "sha256": "2cab026a88948dda43bf71c58681ae72c28602794ad629b0650132983af2f127",
+      "size": 55801,
+      "sha256": "5a2aa783693f2c56ea7932ac828ef11917fb80ca6f336ed81f5df0b7960d73c3",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7553,6 +7611,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/word/hangman",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Guess the Turkish word letter by letter",
         "tr": "Kelimeyi harf harf tahmin et",
@@ -7605,8 +7664,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/ironwail.nxvapp",
-      "size": 55451265,
-      "sha256": "eacca68f5a53a5459eac36446023e3dbae7462fa13052a96c13cfd5765f10e87",
+      "size": 55451269,
+      "sha256": "7a2e27b4ed63fca9c761b26e7680b4c2f663b080e1f9d3cdecd27d8a3b7e501a",
       "minSdk": "1.10",
       "permissions": [
         "files"
@@ -7619,7 +7678,7 @@
       "featured": false,
       "license": "GPL-2.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/ironwail",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Fast classic 3D engine with LibreQuake",
         "tr": "Hızlı klasik 3B motor, LibreQuake dahil",
@@ -7685,8 +7744,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/lanternfall/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/lanternfall/lanternfall.nxvapp",
-      "size": 1482843,
-      "sha256": "3e6b96dfb91a7db307542aa802d1b9a9c1b3b32eaf0210f58f752f667cec5205",
+      "size": 1482845,
+      "sha256": "4e84704565ff56d75744df3251d75fda4c5ba3eeab87d02d8d4718a2a26bea9d",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -7698,7 +7757,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/lanternfall",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Lantern-lit platformer: 3 worlds, 3 bosses",
         "tr": "Fener ışığında platform: 3 dünya, 3 boss",
@@ -7751,8 +7810,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/lightsout/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/lightsout/lightsout.nxvapp",
-      "size": 69700,
-      "sha256": "8c7df8eb210ad7b7e323d777037ece95c70e88c5b282e6a24221393cf37c512f",
+      "size": 69710,
+      "sha256": "54c102a3b1050230cedbd7591a1c04276110fbbf12386ece825a5c9718ee1fa4",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7764,6 +7823,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/lightsout",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Switch off every light in the fewest moves",
         "tr": "Bütün ışıkları en az hamleyle söndür",
@@ -7819,8 +7879,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/luma/luma.nxvapp",
-      "size": 20075455,
-      "sha256": "69cafeae664541b3696d6e5989702856ddc6c737b9650ed0452b1a86145d6513",
+      "size": 20075456,
+      "sha256": "f6e8d1835c32eb8cfe99ca4d101db468fdf24bf7129dc0cb39bb3fab5c3e8b72",
       "minSdk": "1.9",
       "permissions": [],
       "screenshots": [
@@ -7833,7 +7893,7 @@
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/luma",
       "runtime": "lua",
-      "targetSdk": "1.9",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Explore ten worlds. Outsmart eight enemies.",
         "tr": "On dünyayı keşfet. Sekiz düşmanla savaş.",
@@ -7892,8 +7952,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mazeeater/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mazeeater/mazeeater.nxvapp",
-      "size": 61773,
-      "sha256": "aedcf69edf21c187c1d158e8a549ce3692ca9cf3a087b2fae5a2e37e2a31ba3e",
+      "size": 61785,
+      "sha256": "1959cdb5269030c7a862a140ab36b6c50c321f828d68d41d674ef16d2439ec6e",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -7904,6 +7964,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/mazeeater",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Four mazes, three ghosts, one appetite",
         "tr": "Dört labirent, üç hayalet, tek iştah",
@@ -7956,8 +8017,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/genesis-plus-gx.nxvapp",
-      "size": 1788124,
-      "sha256": "44cf394ca2719774c51adfad56adc03e3faca0607e3ac2c228fab1cb72d52c9b",
+      "size": 1788131,
+      "sha256": "12f30a52491d0356d0fa09ebba5f728313d9a967f887b582f8bebd14b84564f4",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -7973,7 +8034,7 @@
       "featured": false,
       "license": "LicenseRef-GenesisPlusGX-NonCommercial",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/genesis-plus-gx",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Mega Drive emulator",
         "tr": "Mega Drive öykünücüsü",
@@ -8043,8 +8104,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/memory/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/memory/memory.nxvapp",
-      "size": 67616,
-      "sha256": "ce4fb92d56211f45392fcf2fdf6743f1081fb6a4c824b953d88a83333e028633",
+      "size": 67628,
+      "sha256": "a472cea176ad68171249336e1d5a2dbe57460f9c1b37311850564b35fb47f5de",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8056,6 +8117,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/memory",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Flip the cards and find all the pairs",
         "tr": "Kartları çevir, bütün eşleri bul",
@@ -8110,8 +8172,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/mgba.nxvapp",
-      "size": 1546971,
-      "sha256": "e75a5fb1e020fb5f57fbc95e8c6c0887494ad897e49b7224d3c6863790ff947d",
+      "size": 1546979,
+      "sha256": "bf0a43d729408bbf3499182640a86bebe63dbb16a025d0a19809f987fc80c251",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -8127,7 +8189,7 @@
       "featured": false,
       "license": "MPL-2.0",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/mgba",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Game Boy Advance emulator",
         "tr": "Game Boy Advance öykünücüsü",
@@ -8201,8 +8263,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/minesweeper/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/minesweeper/minesweeper.nxvapp",
-      "size": 47005,
-      "sha256": "80270fddab6d32393d6adf90ba04970f7648bea120dff75662972318607d2f49",
+      "size": 47025,
+      "sha256": "15b579e1098a69fe142b477598a754fdbe1a7c10e0a88f56918f8ee63e6c81e4",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8214,6 +8276,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/minesweeper",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Custom boards, stats and win streaks",
         "tr": "Özel tahtalar, istatistik ve seriler",
@@ -8275,8 +8338,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sports/minigolf/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/sports/minigolf/minigolf.nxvapp",
-      "size": 46375,
-      "sha256": "010377f727bd6bc7b3fd3dea65a640ef1de7d2733e6bb3e6be12d8d26b284aff",
+      "size": 46388,
+      "sha256": "00691581a6f13f99381df7ff9eb73ad4b2caad9a3e6aabff7326e198c4050fd2",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -8288,6 +8351,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/sports/minigolf",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Nine holes of tricky top-down putting",
         "tr": "Dokuz çukurlu, kuşbakışı mini golf",
@@ -8347,8 +8411,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/missile/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/missile/missile.nxvapp",
-      "size": 62168,
-      "sha256": "af6cb892b9f7933fa208ebb355ef15779d302eb620fd355c1690a80c3bf9d7db",
+      "size": 62179,
+      "sha256": "56a6d59f33daed7da93fbece2be5f2ef975fbf51ca86d14e51a7fc4cbfa11f4a",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8360,6 +8424,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/missile",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Six cities, three batteries: hold the sky",
         "tr": "Altı şehir, üç batarya: göğü savun",
@@ -8412,8 +8477,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/fceumm.nxvapp",
-      "size": 1373542,
-      "sha256": "c5f7f69d0f52de061910e51dac9f8b0858f55783101c93e39461637fcb016b3a",
+      "size": 1373553,
+      "sha256": "171074469c3ec5ce828cdeca73a82120514b86c321b7dc3e8defe353c169c826",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -8429,7 +8494,7 @@
       "featured": false,
       "license": "GPL-2.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/fceumm",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "NES emulator",
         "tr": "NES öykünücüsü",
@@ -8499,8 +8564,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/nonogram/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/nonogram/nonogram.nxvapp",
-      "size": 50063,
-      "sha256": "289d0051b4f23f51796eef4994ff526365f325c0c7a3f568491e06bb6b5733fe",
+      "size": 50073,
+      "sha256": "9eb7dc814a797c20c17d43cd8f81dac8df616bc50a90e3940d271dabd9983dea",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8512,6 +8577,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/nonogram",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Fill the grid and reveal a hidden picture",
         "tr": "Kareleri boya, gizli resmi ortaya çıkar",
@@ -8573,8 +8639,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/spacearena/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/spacearena/spacearena.nxvapp",
-      "size": 57016,
-      "sha256": "3766cd0c0dbb0325d9d8fb2d20df1eb7c1b3af36158eef2e33561273a8d3d2b1",
+      "size": 57035,
+      "sha256": "4c88663c6c3db57c3ef4f5e9e1e7843184c7889de23bea16d067f2a00a228a69",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8585,6 +8651,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/spacearena",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Survive endless waves in a neon arena",
         "tr": "Neon arenada dalga dalga düşmana dayan",
@@ -8702,8 +8769,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/photongarden/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/photongarden/photongarden.nxvapp",
-      "size": 856500,
-      "sha256": "fdc9729b695e5684a621c3461912c7169bd7656062ffdbc37b88132d83a409f7",
+      "size": 856502,
+      "sha256": "fe7d50540bdb684ffec314e16e9030a9426f9e5740e49f0e9db61a01d8dfe2ec",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -8715,7 +8782,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/photongarden",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "120 light-bending puzzles and a level editor",
         "tr": "120 ışık bükme bulmacası ve bölüm düzenleyici",
@@ -8769,8 +8836,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/pinball/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/pinball/pinball.nxvapp",
-      "size": 66926,
-      "sha256": "2ad9aa3f9126854d7992962748f4e72dadd4bd501af35e18fcaaa5fdf0be3191",
+      "size": 66940,
+      "sha256": "fb7f886f5e5d5ad6e89b2070bfdcabe9c08de506935a9338c35cb522084e5e6f",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -8781,6 +8848,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/pinball",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Flippers, bumpers and a real plunger",
         "tr": "Paletler, tamponlar ve gerçek bir fırlatıcı",
@@ -8840,8 +8908,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/pixelrun/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/pixelrun/pixelrun.nxvapp",
-      "size": 38022,
-      "sha256": "2ab6af1aeb7e9b081c17cd230a7fa0e2ae92764184fcc8e79b1e5a796cc2f720",
+      "size": 38051,
+      "sha256": "181663be59ecc4629315e8abcf7393f02a40bb2fc5c31eeb806e070ace504353",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8852,6 +8920,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/pixelrun",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Run, jump and stomp through three worlds",
         "tr": "Üç dünyada koş, zıpla, düşmanları ez",
@@ -8911,8 +8980,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/racer/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/racer/racer.nxvapp",
-      "size": 48135,
-      "sha256": "e9e15757925887885713b3edf456b1115365865a4857629850bd2d06ea89d1a7",
+      "size": 48152,
+      "sha256": "0f712c4338857f8a5be64273bc723fc41f22bf309341b04253da3629117a338c",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -8923,6 +8992,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/racing/racer",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Three-lap 3D races against AI rivals",
         "tr": "Yapay zekâ rakiplere karşı 3 turluk 3B yarış",
@@ -9047,8 +9117,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/board/reversi/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/board/reversi/reversi.nxvapp",
-      "size": 67531,
-      "sha256": "fa94ff982947eedc3d0b11f36006244a66989d4deb59a3b405f3e89e50c44966",
+      "size": 67541,
+      "sha256": "8499f704766743f774a36762e1f6a2b561e15f722aa04ff4e3913fee98d04a49",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -9060,6 +9130,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/board/reversi",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Flip the discs and take over the board",
         "tr": "Taşları çevir, tahtayı ele geçir",
@@ -9123,8 +9194,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/rhythm/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/rhythm/rhythm.nxvapp",
-      "size": 51940,
-      "sha256": "a8a094766d593d94a799e702b3200df3ae4260c18593d60ab590f43fd9408248",
+      "size": 51948,
+      "sha256": "c94d0215efe898a510de85e9b804ac12cb7801192b9c317a83e3df356d9ac1c9",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -9136,6 +9207,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/rhythm",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Hit the notes and play the song yourself",
         "tr": "Notaları yakala, şarkıyı sen çal",
@@ -9195,8 +9267,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/froggy/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/froggy/froggy.nxvapp",
-      "size": 53590,
-      "sha256": "6af202110a16f1e922076abb845ad22fb301aacefa08ea2754f2a975963ecf34",
+      "size": 53601,
+      "sha256": "18c804095e055788c73d48531e6260ef9640b7bf8f0ce6ebf7e82651e561a015",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -9208,6 +9280,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/froggy",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Cross the road, ride the river, get home",
         "tr": "Yolu geç, nehri aş, yuvana ulaş",
@@ -9269,8 +9342,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/asteroids/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/asteroids/asteroids.nxvapp",
-      "size": 64312,
-      "sha256": "e23c66377097be58f8fe2b5ee1dca05d45c3e9c4a6d27218940f2d85d0e214f6",
+      "size": 64324,
+      "sha256": "0df3ae3dde4f8e812d9cc72d9fc3cf748b70f9ce26f33908b7e4d3f53682d707",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -9282,6 +9355,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/asteroids",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Blast the rocks, watch your back",
         "tr": "Kayaları patlat, arkanı kolla",
@@ -9401,8 +9475,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snake/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snake/snake.nxvapp",
-      "size": 71840,
-      "sha256": "30ba7da53ad3c9d2c2ac300d84ee1403ece169f5b675f64574cd4484ef78274f",
+      "size": 71853,
+      "sha256": "999df26b9315ae241aca194e787e643699fa3e1a784cb78b85006b471e003433",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -9413,6 +9487,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/snake",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Four modes, maze stages and medals",
         "tr": "Dört mod, labirent bölümleri, madalyalar",
@@ -9465,8 +9540,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/snes9x.nxvapp",
-      "size": 2052474,
-      "sha256": "cdfb14bb5c31db0942432e5d08f0d0cbe4175118299c144804cc8844f608d672",
+      "size": 2052482,
+      "sha256": "c33e95136dca576f346991c3c6fdfb77b00ac555da5b11234c9a1e3e94c071d3",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -9482,7 +9557,7 @@
       "featured": false,
       "license": "LicenseRef-Snes9x-NonCommercial",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/snes9x",
-      "targetSdk": "1.10",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "SNES emulator",
         "tr": "SNES öykünücüsü",
@@ -9552,8 +9627,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/invaders/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/invaders/invaders.nxvapp",
-      "size": 61761,
-      "sha256": "7fea1fa4d77a7cb8b254a159b2d1ada4fc03657fe62151ef56ad6eb4aea9d152",
+      "size": 61772,
+      "sha256": "8da85f0a4bb55a860353ba8ab5ae8918368b5bbde15a735c828a2b0acc5babc0",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -9565,6 +9640,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/invaders",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "They march. You hold the line",
         "tr": "Onlar ilerler, sen hattı tutarsın",
@@ -9626,8 +9702,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/sudoku/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/sudoku/sudoku.nxvapp",
-      "size": 56827,
-      "sha256": "ef9ef219ae40dd4707272bf01528b24202379a2a2948d782013353164c23f71a",
+      "size": 56842,
+      "sha256": "29e125f8a41d6f6ebd78186224e870ac3352a52525d07fe49bbbebfac22fe3a9",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -9639,6 +9715,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/sudoku",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Four levels, a daily puzzle, streaks",
         "tr": "Dört zorluk, günlük bulmaca, seriler",
@@ -9700,8 +9777,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/strategy/tanks/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/strategy/tanks/tanks.nxvapp",
-      "size": 47094,
-      "sha256": "8984c3b4cb7f85037e7a0074be31be2b3c25420b9bca90308a7d5c045cea1b45",
+      "size": 47105,
+      "sha256": "148d153c9401ad66cd773dc37e55cf192a7c6405e4032425424bb6dcd2a4c863",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -9713,6 +9790,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/strategy/tanks",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Turn-based artillery on destructible land",
         "tr": "Yıkılabilir arazide sıra tabanlı topçu",
@@ -9774,8 +9852,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/strategy/towerdefense/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/strategy/towerdefense/towerdefense.nxvapp",
-      "size": 68074,
-      "sha256": "c1f57f0e45ecdcba3a7ff2acc2a07a7da1a0ef9214e675bcd0ee14fb308c67a0",
+      "size": 68088,
+      "sha256": "dcbcb174c48a3e5afe860ca7335bcaf0485ca564d45c19c24e701f9fef8304c1",
       "minSdk": "1.2",
       "permissions": [],
       "screenshots": [
@@ -9787,6 +9865,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/strategy/towerdefense",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Three maps, 15 waves, then Endless",
         "tr": "Üç harita, 15 dalga, sonra Sonsuz",
@@ -9846,8 +9925,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/turboisles/turboisles.nxvapp",
-      "size": 2290873,
-      "sha256": "08a03deed386ec8527a653d7f235ffb6078e2f7c713be4595261b8a82f5c02b3",
+      "size": 2290874,
+      "sha256": "f8f3d383242e9f0dc1db09df9fa23ff789e257a1a0fe4931cf28fab00e5940d3",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -9858,7 +9937,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/racing/turboisles",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "3D island racing: drift, boost, win cups",
         "tr": "3B ada yarışı: drift, turbo, kupalar",
@@ -9926,8 +10005,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/voiddelve/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/voiddelve/voiddelve.nxvapp",
-      "size": 1074654,
-      "sha256": "94928b86450be6a6114dff91443b70bfad10cc9afd3c753fcff67177524f9a00",
+      "size": 1074657,
+      "sha256": "1c84a1fe9ad88428cedcd36361722f1eba94e1feb6a24d014a6145509b4a5100",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -9939,7 +10018,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/voiddelve",
-      "targetSdk": "1.7",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Twin-stick roguelite with relics and bosses",
         "tr": "Kalıntılı, bosslu çift çubuklu roguelite",
@@ -9992,8 +10071,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/watersort/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/puzzle/watersort/watersort.nxvapp",
-      "size": 50013,
-      "sha256": "8517ca67a906f2c338d365a3c9b09c3e764e101e934797e0970cf0297fff6825",
+      "size": 50031,
+      "sha256": "a20d2474c124829cc16c1815374b2bd3b6253c5114200f1a5fae54651b7beef0",
       "minSdk": "1.1",
       "permissions": [],
       "screenshots": [
@@ -10005,6 +10084,8 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/puzzle/watersort",
+      "runtime": "js",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Pour until every tube holds one colour",
         "tr": "Her tüpte tek renk kalana dek dök",
@@ -10016,7 +10097,7 @@
         "ko": "관마다 한 가지 색이 될 때까지 부으세요"
       },
       "kind": "game",
-      "tech": "lua",
+      "tech": "javascript",
       "features": [
         "offline",
         "touch",
@@ -10070,8 +10151,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/word/turkish-words/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/word/turkish-words/turkish-words.nxvapp",
-      "size": 67187,
-      "sha256": "bba6f771dcc23c6e5ab9be2a40d11b325ba1aa97e9d1c82883db49d71b5f651d",
+      "size": 67197,
+      "sha256": "cea3971805b8c240f2aabd88d3552ea28dd6f60545f1fd20bbd34c189cb13a2d",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -10083,6 +10164,7 @@
       "featured": false,
       "license": "GPL-3.0-or-later",
       "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/word/turkish-words",
+      "targetSdk": "1.13",
       "subtitle": {
         "en": "Find the five-letter Turkish word",
         "tr": "Beş harfli kelimeyi altı denemede bul",

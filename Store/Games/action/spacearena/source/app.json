@@ -34,5 +34,7 @@
     "zh": "在霓虹竞技场中抵御无尽的敌潮",
     "ko": "네온 아레나에서 끝없는 웨이브를 버텨 내세요"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

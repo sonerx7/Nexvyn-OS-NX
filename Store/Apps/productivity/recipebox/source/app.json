@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.recipebox",
-  "name": {"en": "Recipe Box", "tr": "Tarif Kutusu", "de": "Rezeptbox", "fr": "Boîte à recettes", "es": "Recetario", "ja": "レシピボックス", "zh": "菜谱盒", "ko": "레시피 상자"},
+  "name": {
+    "en": "Recipe Box",
+    "tr": "Tarif Kutusu",
+    "de": "Rezeptbox",
+    "fr": "Boîte à recettes",
+    "es": "Recetario",
+    "ja": "レシピボックス",
+    "zh": "菜谱盒",
+    "ko": "레시피 상자"
+  },
   "description": {
     "en": "Your recipes with serving scaling, unit conversion, a hands-free cooking mode with timers and a shopping list.",
     "tr": "Porsiyon ayarı, birim çevirme, zamanlayıcılı eller serbest pişirme kipi ve alışveriş listesiyle tariflerin.",
@@ -17,11 +26,21 @@
   "category": "productivity",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 420, "minHeight": 400, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 420,
+    "minHeight": 400,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "shareTargets": ["text", ".md", ".txt"],
+  "shareTargets": [
+    "text",
+    ".md",
+    ".txt"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

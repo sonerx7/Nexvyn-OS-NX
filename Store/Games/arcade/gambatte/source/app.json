@@ -10,9 +10,9 @@
     "height": 720,
     "resizable": true
   },
-  "minNative": "1.1",
+  "minNative": "1.2",
   "minSdk": "1.10",
-  "targetSdk": "1.10",
+  "targetSdk": "1.13",
   "permissions": [
     "files",
     "network"
@@ -21,5 +21,6 @@
   "mode": "window",
   "main": "gambatte.nxvmod",
   "description": "Game Boy emulator",
-  "license": "GPL-2.0-only"
+  "license": "GPL-2.0-only",
+  "targetNative": "1.2"
 }

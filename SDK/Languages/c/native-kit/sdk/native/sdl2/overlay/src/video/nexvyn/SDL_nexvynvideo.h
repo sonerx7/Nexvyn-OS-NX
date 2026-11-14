@@ -25,6 +25,30 @@ typedef struct NEXVYN_VideoData {
     int touch_count;
     int usb_input; /* the system has NXN_CAP_USB_INPUT: keyboard events, text, mouse */
     int mouse_seen, mouse_x, mouse_y;
+
+    /* Two-finger gesture & long-press state (translates multi-touch to wheel / pinch zoom / right-click) */
+    int gesture_active;
+    uint32_t g_id0, g_id1;
+    float g_start_dist, g_last_dist;
+    float g_start_cx, g_start_cy;
+    float g_last_cx, g_last_cy;
+    float g_pinch_acc, g_pan_acc_x, g_pan_acc_y;
+    Uint64 g_start_ms;
+    int g_moved_or_zoomed;
+
+    int lp_active;
+    uint32_t lp_id;
+    float lp_x, lp_y;
+    Uint64 lp_start_ms;
+    int lp_fired;
+
+    /* Optional gamepad-to-mouse bridge state (NEXVYN_GAMEPAD_MOUSE=1) */
+    float gp_cur_x, gp_cur_y;
+    int gp_cur_init;
+    Uint64 gp_last_ms;
+    uint64_t gp_prev_btns;
+    float gp_wheel_acc;
+    int gp_osk_open;
 } NEXVYN_VideoData;
 
 /* Shared with the joystick driver: one nxn_input_poll per pump (nxn_input_poll keeps per-app edge state, so two

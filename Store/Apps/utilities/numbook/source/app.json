@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.numbook",
-  "name": {"en": "Numbook", "tr": "Hesap Defteri", "de": "Rechenheft", "fr": "Carnet de calcul", "es": "Libreta de cálculo", "ja": "計算ノート", "zh": "计算本", "ko": "계산 노트"},
+  "name": {
+    "en": "Numbook",
+    "tr": "Hesap Defteri",
+    "de": "Rechenheft",
+    "fr": "Carnet de calcul",
+    "es": "Libreta de cálculo",
+    "ja": "計算ノート",
+    "zh": "计算本",
+    "ko": "계산 노트"
+  },
   "description": {
     "en": "A notepad that calculates: totals, variables, percentages, units and temperatures, line by line.",
     "tr": "Hesap yapan not defteri: toplamlar, değişkenler, yüzdeler, birimler ve sıcaklıklar, satır satır.",
@@ -18,11 +27,20 @@
   "icon": "icon.png",
   "main": "main.js",
   "runtime": "js",
-  "window": {"width": 980, "height": 580, "minWidth": 420, "minHeight": 400, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 420,
+    "minHeight": 400,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "shareTargets": ["text", ".txt"],
+  "shareTargets": [
+    "text",
+    ".txt"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

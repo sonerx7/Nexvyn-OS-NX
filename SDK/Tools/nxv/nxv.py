@@ -38,21 +38,24 @@ RELEASE_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))  # Nexvyn
 TEMPLATES = os.path.join(RELEASE_ROOT, "SDK", "Languages")
 
 LANGS = {"lua": "lua", "js": "javascript", "javascript": "javascript", "py": "python", "python": "python",
-         "sq": "squirrel", "nut": "squirrel", "squirrel": "squirrel", "c": "c", "java": "java"}
+         "sq": "squirrel", "nut": "squirrel", "squirrel": "squirrel", "c": "c", "java": "java", "native": "native"}
 # app.json "runtime" value and main-file extension of each language (docs/NXVAPP_FORMAT.md)
-RUNTIME_OF = {"lua": "lua", "js": "javascript", "python": "python", "squirrel": "squirrel", "c": "c", "java": "java"}
+RUNTIME_OF = {"lua": "lua", "js": "javascript", "python": "python", "squirrel": "squirrel", "c": "c", "java": "java",
+              "native": "native"}
 EXT_OF = {".lua": "lua", ".js": "javascript", ".mjs": "javascript", ".py": "python", ".nut": "squirrel", ".c": "c",
-          ".jar": "java"}
+          ".jar": "java", ".nxvmod": "native"}
 DEFAULT_MAIN = {"lua": "main.lua", "javascript": "main.js", "python": "main.py", "squirrel": "main.nut", "c": "main.c",
-                "java": "app.jar"}
-MIN_SDK = {"lua": (1, 0), "javascript": (1, 1), "python": (1, 3), "squirrel": (1, 5), "c": (1, 5), "java": (1, 5)}
+                "java": "app.jar", "native": "main.nxvmod"}
+MIN_SDK = {"lua": (1, 0), "javascript": (1, 1), "python": (1, 3), "squirrel": (1, 5), "c": (1, 5), "java": (1, 5),
+           "native": (1, 10)}
 SOURCE_EXT = {"lua": (".lua",), "javascript": (".js", ".mjs"), "python": (".py",), "squirrel": (".nut",),
               "c": (".c", ".h"), "java": (".java",)}
 CHECKER = {"lua": ["python", "tools/lua_check.py"], "javascript": ["node", "tools/js_check.mjs"],
            "python": ["python", "tools/py_check.py"], "squirrel": ["python", "tools/rt_check.py"],
            "c": ["python", "tools/rt_check.py"], "java": ["python", "tools/rt_check.py"]}
 
-CATEGORIES = {"system", "productivity", "utilities", "media", "internet", "games", "developer", "other"}
+CATEGORIES = {"system", "productivity", "office", "utilities", "media", "internet", "games", "switch", "developer",
+              "emulator", "showcase", "education", "themes", "fonts", "runtimes", "other"}
 PERMISSIONS = {"network", "files", "launch", "notifications", "games", "clipboard"}
 SHARE_KINDS = {"text", "url", "file", "image"}
 KINDS = {"app", "game", "demo", "template", "port", "emulator"}
@@ -253,7 +256,7 @@ def check_manifest(bundle, m, rep):
         rep.error("app.json: unknown category %r (%s)" % (m.get("category"), ", ".join(sorted(CATEGORIES))))
     lang = language_of(m)
     if "runtime" in m and str(m["runtime"]).lower() not in RUNTIME_OF:
-        rep.error("app.json: unknown runtime %r (lua, js, python, squirrel, c, java)" % m["runtime"])
+        rep.error("app.json: unknown runtime %r (lua, js, python, squirrel, c, java, native)" % m["runtime"])
     main = m.get("main") or DEFAULT_MAIN[lang]
     if not os.path.isfile(os.path.join(bundle, main)):
         rep.error("%s missing (app.json \"main\")" % main)
@@ -340,8 +343,9 @@ def check_sources(bundle, lang, perms, rep):
         rep.error("uses %s calls but app.json \"permissions\" does not declare \"%s\" (every permission is enforced)" % (p, p))
     if "clipboard" in perms:
         rep.warn("\"clipboard\" is no longer a permission (every app may use sys.clipboard): remove it from app.json")
-    for p in sorted(perms - used - {"files", "clipboard"}):
-        rep.warn("declares \"%s\" but no call that needs it was found" % p)
+    if lang != "native":
+        for p in sorted(perms - used - {"files", "clipboard"}):
+            rep.warn("declares \"%s\" but no call that needs it was found" % p)
     # translations: every TR key in lang/en.json (required) and in lang/tr.json when the app has one, like the source
     # repository's checkers; other languages only warn (missing keys show English). Dotted keys may be system strings.
     tables = {}
@@ -459,7 +463,7 @@ def cmd_check(a):
             print("  warning: " + w)
         if rep.errors:
             failed += 1
-        if lang and sdk:
+        if lang and lang in CHECKER and sdk:
             tool = CHECKER[lang]
             exe = sys.executable if tool[0] == "python" else shutil.which(tool[0])
             if not exe:

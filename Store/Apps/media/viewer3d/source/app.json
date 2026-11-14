@@ -36,5 +36,7 @@
     "zh": "旋转、缩放和查看 OBJ 与 STL 模型",
     "ko": "OBJ·STL 모델을 돌려 보고 확대하세요"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

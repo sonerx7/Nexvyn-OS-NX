@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.bracket",
-  "name": {"en": "Bracket", "tr": "Turnuva", "de": "Turnierplan", "fr": "Tournoi", "es": "Torneo", "ja": "トーナメント表", "zh": "赛程表", "ko": "대진표"},
+  "name": {
+    "en": "Bracket",
+    "tr": "Turnuva",
+    "de": "Turnierplan",
+    "fr": "Tournoi",
+    "es": "Torneo",
+    "ja": "トーナメント表",
+    "zh": "赛程表",
+    "ko": "대진표"
+  },
   "description": {
     "en": "Run game-night tournaments: knockout brackets, round robin and Swiss, with scores, standings and champions.",
     "tr": "Oyun gecesi turnuvaları düzenle: eleme ağacı, lig usulü ve İsviçre sistemi; skorlar, puan durumu ve şampiyon.",
@@ -17,10 +26,16 @@
   "category": "utilities",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 440, "minHeight": 400, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 440,
+    "minHeight": 400,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

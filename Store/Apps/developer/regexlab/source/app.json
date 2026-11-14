@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.regexlab",
-  "name": {"en": "Regex Lab", "tr": "Regex Lab", "de": "Regex Lab", "fr": "Regex Lab", "es": "Regex Lab", "ja": "Regex Lab", "zh": "Regex Lab", "ko": "Regex Lab"},
+  "name": {
+    "en": "Regex Lab",
+    "tr": "Regex Lab",
+    "de": "Regex Lab",
+    "fr": "Regex Lab",
+    "es": "Regex Lab",
+    "ja": "Regex Lab",
+    "zh": "Regex Lab",
+    "ko": "Regex Lab"
+  },
   "description": {
     "en": "Test regular expressions live: highlighted matches and groups, replace, split, explanations and a pattern library.",
     "tr": "Düzenli ifadeleri canlı dene: renkli eşleşmeler ve gruplar, değiştir, böl, açıklamalar ve desen kitaplığı.",
@@ -18,11 +27,21 @@
   "icon": "icon.png",
   "main": "main.js",
   "runtime": "js",
-  "window": {"width": 980, "height": 580, "minWidth": 460, "minHeight": 400, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 460,
+    "minHeight": 400,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "shareTargets": ["text", ".txt", ".log"],
+  "shareTargets": [
+    "text",
+    ".txt",
+    ".log"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

@@ -32,5 +32,7 @@
     "zh": "绘制函数图像，求根与交点",
     "ko": "함수를 그리고 근과 교점을 찾으세요"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

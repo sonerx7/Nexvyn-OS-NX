@@ -7,7 +7,7 @@
   "targetSdk": "1.13",
   "description": "Command & Conquer: Red Alert 2 & Yuri's Revenge static recompilation for Nexvyn OS.",
   "minSdk": "1.10",
-  "minNative": "1.1",
+  "minNative": "1.2",
   "runtime": "native",
   "main": "ra2.nxvmod",
   "mode": "window",
@@ -21,5 +21,6 @@
   "permissions": [
     "files"
   ],
-  "icon": "icon.png"
+  "icon": "icon.png",
+  "targetNative": "1.2"
 }

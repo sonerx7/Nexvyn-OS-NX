@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.flowmap",
-  "name": {"en": "Flowmap", "tr": "Flowmap", "de": "Flowmap", "fr": "Flowmap", "es": "Flowmap", "ja": "Flowmap", "zh": "Flowmap", "ko": "Flowmap"},
+  "name": {
+    "en": "Flowmap",
+    "tr": "Flowmap",
+    "de": "Flowmap",
+    "fr": "Flowmap",
+    "es": "Flowmap",
+    "ja": "Flowmap",
+    "zh": "Flowmap",
+    "ko": "Flowmap"
+  },
   "description": {
     "en": "Flowcharts and mind maps: shapes, connectors, auto-layout mind maps, undo, SVG and Mermaid export.",
     "tr": "Akış şemaları ve zihin haritaları: şekiller, bağlayıcılar, kendini düzenleyen haritalar, geri alma, SVG ve Mermaid dışa aktarma.",
@@ -17,11 +26,19 @@
   "category": "productivity",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 460, "minHeight": 380, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 460,
+    "minHeight": 380,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "fileTypes": [".flowmap"],
+  "fileTypes": [
+    ".flowmap"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

@@ -32,5 +32,7 @@
     "zh": "强密码和易记的密码短语",
     "ko": "강력한 암호와 기억하기 쉬운 암호 문구"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

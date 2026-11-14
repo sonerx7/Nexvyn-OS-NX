@@ -38,5 +38,6 @@
   ],
   "minNative": "1.2",
   "minSdk": "1.10",
-  "targetSdk": "1.13"
+  "targetSdk": "1.13",
+  "targetNative": "1.2"
 }

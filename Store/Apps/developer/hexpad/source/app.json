@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.hexpad",
-  "name": {"en": "Hexpad", "tr": "Hexpad", "de": "Hexpad", "fr": "Hexpad", "es": "Hexpad", "ja": "Hexpad", "zh": "Hexpad", "ko": "Hexpad"},
+  "name": {
+    "en": "Hexpad",
+    "tr": "Hexpad",
+    "de": "Hexpad",
+    "fr": "Hexpad",
+    "es": "Hexpad",
+    "ja": "Hexpad",
+    "zh": "Hexpad",
+    "ko": "Hexpad"
+  },
   "description": {
     "en": "A hex editor for any file: insert and overwrite, undo, find with wildcards, bookmarks and a data inspector.",
     "tr": "Her dosya için onaltılık düzenleyici: ekleme ve üzerine yazma, geri alma, joker karakterli arama, yer imleri ve veri denetçisi.",
@@ -18,12 +27,28 @@
   "icon": "icon.png",
   "main": "main.js",
   "runtime": "js",
-  "window": {"width": 980, "height": 580, "minWidth": 480, "minHeight": 400, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 480,
+    "minHeight": 400,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "fileTypes": [".bin", ".dat", ".sav", ".rom", ".nca", ".ips", ".raw"],
-  "shareTargets": ["file"],
+  "fileTypes": [
+    ".bin",
+    ".dat",
+    ".sav",
+    ".rom",
+    ".nca",
+    ".ips",
+    ".raw"
+  ],
+  "shareTargets": [
+    "file"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

@@ -32,5 +32,7 @@
     "zh": "翻译、播放和练习摩尔斯电码",
     "ko": "모스 부호를 번역하고, 재생하고, 연습하세요"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

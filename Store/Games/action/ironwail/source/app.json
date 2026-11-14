@@ -7,7 +7,7 @@
   "runtime": "native",
   "mode": "window",
   "main": "ironwail.nxvmod",
-  "minNative": "1.1",
+  "minNative": "1.2",
   "icon": "icon.png",
   "window": {
     "width": 1280,
@@ -18,7 +18,8 @@
     "files"
   ],
   "minSdk": "1.10",
-  "targetSdk": "1.10",
+  "targetSdk": "1.13",
   "description": "Fast classic 3D engine with the free LibreQuake game.",
-  "license": "GPL-2.0-or-later"
+  "license": "GPL-2.0-or-later",
+  "targetNative": "1.2"
 }

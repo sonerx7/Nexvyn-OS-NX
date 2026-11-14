@@ -9,6 +9,7 @@
 #if SDL_VIDEO_DRIVER_NEXVYN
 
 #include "SDL_timer.h"
+#include "SDL_hints.h"
 #include "../SDL_sysvideo.h"
 #include "../../events/SDL_events_c.h"
 #include "../../events/SDL_keyboard_c.h"
@@ -225,6 +226,146 @@ static void NEXVYN_GLDeleteContext(SDL_VideoDevice *_this, SDL_GLContext context
 
 /* ------------------------------------------------------------------ events */
 
+static void NEXVYN_SendZoomStep(SDL_Window *window, float cx, float cy, int dir)
+{
+    const char *pm = SDL_GetHint("NEXVYN_PINCH_MODE");
+    if (pm && SDL_strcmp(pm, "none") == 0) {
+        return;
+    }
+    if (pm && SDL_strcmp(pm, "ctrl_pm") == 0) {
+        SDL_SendKeyboardKey(SDL_PRESSED, SDL_SCANCODE_LCTRL);
+        SDL_SendKeyboardKey(SDL_PRESSED, dir > 0 ? SDL_SCANCODE_EQUALS : SDL_SCANCODE_MINUS);
+        SDL_SendKeyboardKey(SDL_RELEASED, dir > 0 ? SDL_SCANCODE_EQUALS : SDL_SCANCODE_MINUS);
+        SDL_SendKeyboardKey(SDL_RELEASED, SDL_SCANCODE_LCTRL);
+        return;
+    }
+    SDL_SendMouseMotion(window, 0, 0, (int)cx, (int)cy);
+    SDL_SendMouseWheel(window, 0, 0.0f, (float)dir, SDL_MOUSEWHEEL_NORMAL);
+}
+
+static void NEXVYN_ProcessGestures(NEXVYN_VideoData *vd, SDL_Window *window, const uint32_t *ids, const float *px, const float *py, int n)
+{
+    const char *gh = SDL_GetHint("NEXVYN_TOUCH_GESTURES");
+    if (gh && SDL_strcmp(gh, "0") == 0) {
+        vd->gesture_active = 0;
+        vd->lp_active = 0;
+        return;
+    }
+    Uint64 now_ms = SDL_GetTicks64();
+
+    if (n >= 2) {
+        vd->lp_active = 0;
+        int a = 0, b = 1;
+        for (int i = 2; i < n; i++) {
+            if (ids[i] < ids[a]) { b = a; a = i; }
+            else if (ids[i] < ids[b]) b = i;
+        }
+        float dx = px[b] - px[a], dy = py[b] - py[a];
+        float dist = SDL_sqrtf(dx * dx + dy * dy);
+        float cx = (px[a] + px[b]) * 0.5f;
+        float cy = (py[a] + py[b]) * 0.5f;
+
+        if (!vd->gesture_active || vd->g_id0 != ids[a] || vd->g_id1 != ids[b]) {
+            vd->gesture_active = 1;
+            vd->g_id0 = ids[a];
+            vd->g_id1 = ids[b];
+            vd->g_start_dist = vd->g_last_dist = dist;
+            vd->g_start_cx = vd->g_last_cx = cx;
+            vd->g_start_cy = vd->g_last_cy = cy;
+            vd->g_pinch_acc = 0.0f;
+            vd->g_pan_acc_x = 0.0f;
+            vd->g_pan_acc_y = 0.0f;
+            vd->g_start_ms = now_ms;
+            vd->g_moved_or_zoomed = 0;
+            return;
+        }
+
+        float ddist = dist - vd->g_last_dist;
+        float dcx = cx - vd->g_last_cx;
+        float dcy = cy - vd->g_last_cy;
+        vd->g_last_dist = dist;
+        vd->g_last_cx = cx;
+        vd->g_last_cy = cy;
+
+        if (SDL_fabsf(cx - vd->g_start_cx) > 18.0f || SDL_fabsf(cy - vd->g_start_cy) > 18.0f ||
+            SDL_fabsf(dist - vd->g_start_dist) > 18.0f) {
+            vd->g_moved_or_zoomed = 1;
+        }
+
+        /* Pinch-to-zoom */
+        if (dist >= 20.0f) {
+            vd->g_pinch_acc += ddist;
+            const float pinch_step = 26.0f;
+            while (vd->g_pinch_acc >= pinch_step) {
+                NEXVYN_SendZoomStep(window, cx, cy, 1);
+                vd->g_pinch_acc -= pinch_step;
+                vd->g_moved_or_zoomed = 1;
+            }
+            while (vd->g_pinch_acc <= -pinch_step) {
+                NEXVYN_SendZoomStep(window, cx, cy, -1);
+                vd->g_pinch_acc += pinch_step;
+                vd->g_moved_or_zoomed = 1;
+            }
+        }
+
+        /* Two-finger pan -> scroll wheel when fingers move together rather than pinching */
+        if (SDL_fabsf(ddist) < 10.0f) {
+            vd->g_pan_acc_x += dcx;
+            vd->g_pan_acc_y += dcy;
+            const float pan_step = 24.0f;
+            float wx = 0.0f, wy = 0.0f;
+            while (vd->g_pan_acc_x >= pan_step) { wx += 1.0f; vd->g_pan_acc_x -= pan_step; }
+            while (vd->g_pan_acc_x <= -pan_step) { wx -= 1.0f; vd->g_pan_acc_x += pan_step; }
+            while (vd->g_pan_acc_y >= pan_step) { wy += 1.0f; vd->g_pan_acc_y -= pan_step; }
+            while (vd->g_pan_acc_y <= -pan_step) { wy -= 1.0f; vd->g_pan_acc_y += pan_step; }
+            if (wx != 0.0f || wy != 0.0f) {
+                SDL_SendMouseMotion(window, 0, 0, (int)cx, (int)cy);
+                SDL_SendMouseWheel(window, 0, wx, wy, SDL_MOUSEWHEEL_NORMAL);
+                vd->g_moved_or_zoomed = 1;
+            }
+        }
+        return;
+    }
+
+    if (vd->gesture_active) {
+        /* Two-finger tap -> right click when lifted quickly without moving/zooming */
+        if (n == 0 && !vd->g_moved_or_zoomed && (now_ms - vd->g_start_ms) <= 320) {
+            SDL_SendMouseMotion(window, 0, 0, (int)vd->g_start_cx, (int)vd->g_start_cy);
+            SDL_SendMouseButton(window, 0, SDL_PRESSED, SDL_BUTTON_RIGHT);
+            SDL_SendMouseButton(window, 0, SDL_RELEASED, SDL_BUTTON_RIGHT);
+        }
+        if (n == 0) {
+            vd->gesture_active = 0;
+        }
+    }
+
+    /* Single-finger long-press -> optional right click */
+    const char *lp = SDL_GetHint("NEXVYN_LONG_PRESS_RIGHT");
+    int lp_on = !lp || SDL_strcmp(lp, "0") != 0;
+    if (n == 1 && !vd->gesture_active && lp_on) {
+        if (!vd->lp_active || vd->lp_id != ids[0]) {
+            vd->lp_active = 1;
+            vd->lp_id = ids[0];
+            vd->lp_x = px[0];
+            vd->lp_y = py[0];
+            vd->lp_start_ms = now_ms;
+            vd->lp_fired = 0;
+        } else if (!vd->lp_fired) {
+            float mv = SDL_fabsf(px[0] - vd->lp_x) + SDL_fabsf(py[0] - vd->lp_y);
+            if (mv > 16.0f) {
+                vd->lp_fired = 1; /* moved -> drag, not long-press */
+            } else if ((now_ms - vd->lp_start_ms) >= 550) {
+                vd->lp_fired = 1;
+                SDL_SendMouseMotion(window, 0, 0, (int)px[0], (int)py[0]);
+                SDL_SendMouseButton(window, 0, SDL_PRESSED, SDL_BUTTON_RIGHT);
+                SDL_SendMouseButton(window, 0, SDL_RELEASED, SDL_BUTTON_RIGHT);
+            }
+        }
+    } else {
+        vd->lp_active = 0;
+    }
+}
+
 static void NEXVYN_PollTouch(NEXVYN_VideoData *vd, const nxn_input_state *in)
 {
     SDL_Window *window = vd->window;
@@ -242,12 +383,14 @@ static void NEXVYN_PollTouch(NEXVYN_VideoData *vd, const nxn_input_state *in)
         vd->touch_added = 1;
     }
     uint32_t ids[16];
-    float xs[16], ys[16];
+    float xs[16], ys[16], px[16], py[16];
     int n = 0;
     for (uint32_t i = 0; i < in->touch_count && n < 16; i++) {
         nxn_touch t = NXN_STRUCT_INIT(nxn_touch);
         if (nxn_input_touch(i, &t) == NXN_OK) {
             ids[n] = t.id;
+            px[n] = t.x;
+            py[n] = t.y;
             xs[n] = t.x / tw;
             ys[n] = t.y / th;
             n++;
@@ -277,6 +420,68 @@ static void NEXVYN_PollTouch(NEXVYN_VideoData *vd, const nxn_input_state *in)
         vd->touch_ids[i] = ids[i];
     }
     vd->touch_count = n;
+    NEXVYN_ProcessGestures(vd, window, ids, px, py, n);
+}
+
+/* Optional gamepad -> virtual mouse & zoom bridge (enable with SDL_SetHint("NEXVYN_GAMEPAD_MOUSE", "1")). */
+static void NEXVYN_PollGamepadMouse(NEXVYN_VideoData *vd, const nxn_input_state *in)
+{
+    SDL_Window *window = vd->window;
+    if (!window || !SDL_GetHintBoolean("NEXVYN_GAMEPAD_MOUSE", SDL_FALSE)) {
+        return;
+    }
+    float tw = (float)(window->w > 0 ? window->w : 1280);
+    float th = (float)(window->h > 0 ? window->h : 720);
+    if (!vd->gp_cur_init) {
+        vd->gp_cur_x = tw * 0.5f;
+        vd->gp_cur_y = th * 0.5f;
+        vd->gp_cur_init = 1;
+        vd->gp_last_ms = SDL_GetTicks64();
+    }
+    Uint64 now_ms = SDL_GetTicks64();
+    float dt = (float)(now_ms - vd->gp_last_ms) / 1000.0f;
+    if (dt > 0.1f) dt = 0.1f;
+    vd->gp_last_ms = now_ms;
+
+    const float dz = 0.18f;
+    float lx = SDL_fabsf(in->lx) > dz ? in->lx : 0.0f;
+    float ly = SDL_fabsf(in->ly) > dz ? in->ly : 0.0f;
+    if (lx != 0.0f || ly != 0.0f) {
+        float speed = 640.0f;
+        if (in->buttons & NXN_BTN_LSTICK) speed *= 1.8f;
+        vd->gp_cur_x += lx * speed * dt;
+        vd->gp_cur_y -= ly * speed * dt;
+        if (vd->gp_cur_x < 0.0f) vd->gp_cur_x = 0.0f;
+        if (vd->gp_cur_y < 0.0f) vd->gp_cur_y = 0.0f;
+        if (vd->gp_cur_x >= tw) vd->gp_cur_x = tw - 1.0f;
+        if (vd->gp_cur_y >= th) vd->gp_cur_y = th - 1.0f;
+        SDL_SendMouseMotion(window, 0, 0, (int)vd->gp_cur_x, (int)vd->gp_cur_y);
+    }
+
+    float ry = SDL_fabsf(in->ry) > dz ? in->ry : 0.0f;
+    if (ry != 0.0f) {
+        vd->gp_wheel_acc += ry * 10.0f * dt;
+        int steps = (int)vd->gp_wheel_acc;
+        if (steps != 0) {
+            vd->gp_wheel_acc -= (float)steps;
+            SDL_SendMouseWheel(window, 0, 0.0f, (float)steps, SDL_MOUSEWHEEL_NORMAL);
+        }
+    }
+
+    uint64_t newly = in->buttons & ~vd->gp_prev_btns;
+    uint64_t rel = vd->gp_prev_btns & ~in->buttons;
+    vd->gp_prev_btns = in->buttons;
+
+    if (newly & (NXN_BTN_ZR | NXN_BTN_A)) SDL_SendMouseButton(window, 0, SDL_PRESSED, SDL_BUTTON_LEFT);
+    if (rel & (NXN_BTN_ZR | NXN_BTN_A)) SDL_SendMouseButton(window, 0, SDL_RELEASED, SDL_BUTTON_LEFT);
+    if (newly & (NXN_BTN_ZL | NXN_BTN_X)) SDL_SendMouseButton(window, 0, SDL_PRESSED, SDL_BUTTON_RIGHT);
+    if (rel & (NXN_BTN_ZL | NXN_BTN_X)) SDL_SendMouseButton(window, 0, SDL_RELEASED, SDL_BUTTON_RIGHT);
+    if (newly & NXN_BTN_R) NEXVYN_SendZoomStep(window, vd->gp_cur_x, vd->gp_cur_y, 1);
+    if (newly & NXN_BTN_L) NEXVYN_SendZoomStep(window, vd->gp_cur_x, vd->gp_cur_y, -1);
+    if (newly & NXN_BTN_Y) {
+        vd->gp_osk_open = !vd->gp_osk_open;
+        nxn_input_text_request(vd->gp_osk_open);
+    }
 }
 
 /* USB keyboard (ordered key events, HID usage = SDL scancode), typed text and the pointer as a mouse. The queue is always
@@ -389,6 +594,7 @@ static void NEXVYN_PumpEvents(SDL_VideoDevice *_this)
     const nxn_input_state *in = NEXVYN_PollInput(1);
     if (vd->focused) {
         NEXVYN_PollTouch(vd, in);
+        NEXVYN_PollGamepadMouse(vd, in);
     }
     if (vd->usb_input) {
         NEXVYN_PollUSB(vd);

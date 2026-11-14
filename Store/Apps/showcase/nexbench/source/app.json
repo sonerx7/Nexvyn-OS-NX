@@ -12,7 +12,7 @@
   "runtime": "lua",
   "main": "main.lua",
   "minSdk": "1.13",
-  "targetSdk": "2.0",
+  "targetSdk": "1.13",
   "loadingHint": true,
   "gamepad": true,
   "category": "system",

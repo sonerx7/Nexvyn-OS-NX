@@ -36,6 +36,6 @@
   },
   "gamepad": true,
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

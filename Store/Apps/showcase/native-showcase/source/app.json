@@ -10,9 +10,9 @@
     "height": 600,
     "resizable": true
   },
-  "minNative": "1.1",
+  "minNative": "1.2",
   "minSdk": "1.10",
-  "targetSdk": "1.10",
+  "targetSdk": "1.13",
   "permissions": [
     "files",
     "network",
@@ -22,5 +22,6 @@
   "license": "GPL-3.0-or-later",
   "runtime": "native",
   "mode": "window",
-  "main": "showcase.nxvmod"
+  "main": "showcase.nxvmod",
+  "targetNative": "1.2"
 }

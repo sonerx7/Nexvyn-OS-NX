@@ -32,5 +32,7 @@
     "zh": "摆锤摇动，节拍精准",
     "ko": "흔들리는 추로 정확한 박자를 맞추세요"
   },
-  "permissions": []
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
 }

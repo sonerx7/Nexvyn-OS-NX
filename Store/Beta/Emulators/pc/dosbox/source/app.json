@@ -42,5 +42,6 @@
     "minHeight": 420,
     "resizable": true
   },
-  "icon": "icon.png"
+  "icon": "icon.png",
+  "targetNative": "1.2"
 }

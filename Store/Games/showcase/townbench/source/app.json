@@ -10,9 +10,9 @@
     "height": 720,
     "resizable": true
   },
-  "minNative": "1.1",
+  "minNative": "1.2",
   "minSdk": "1.10",
-  "targetSdk": "1.12",
+  "targetSdk": "1.13",
   "permissions": [
     "files"
   ],
@@ -20,5 +20,6 @@
   "license": "GPL-3.0-or-later",
   "runtime": "native",
   "mode": "window",
-  "main": "townbench.nxvmod"
+  "main": "townbench.nxvmod",
+  "targetNative": "1.2"
 }

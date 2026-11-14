@@ -22,7 +22,7 @@
   "main": "main.lua",
   "runtime": "lua",
   "minSdk": "1.9",
-  "targetSdk": "1.9",
+  "targetSdk": "1.13",
   "singleInstance": true,
   "gamepad": true,
   "permissions": [],

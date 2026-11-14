@@ -1,6 +1,15 @@
 {
   "id": "com.sonerx7.chiptrack",
-  "name": {"en": "Chiptrack", "tr": "Chiptrack", "de": "Chiptrack", "fr": "Chiptrack", "es": "Chiptrack", "ja": "Chiptrack", "zh": "Chiptrack", "ko": "Chiptrack"},
+  "name": {
+    "en": "Chiptrack",
+    "tr": "Chiptrack",
+    "de": "Chiptrack",
+    "fr": "Chiptrack",
+    "es": "Chiptrack",
+    "ja": "Chiptrack",
+    "zh": "Chiptrack",
+    "ko": "Chiptrack"
+  },
   "description": {
     "en": "A four-channel chiptune tracker: patterns, instruments, effects, live playback and WAV export.",
     "tr": "Dört kanallı chiptune tracker: desenler, enstrümanlar, efektler, canlı çalma ve WAV dışa aktarma.",
@@ -17,11 +26,19 @@
   "category": "media",
   "icon": "icon.png",
   "main": "main.lua",
-  "window": {"width": 980, "height": 580, "minWidth": 520, "minHeight": 420, "resizable": true},
+  "window": {
+    "width": 980,
+    "height": 580,
+    "minWidth": 520,
+    "minHeight": 420,
+    "resizable": true
+  },
   "singleInstance": true,
   "gamepad": false,
-  "fileTypes": [".chiptrack"],
+  "fileTypes": [
+    ".chiptrack"
+  ],
   "minSdk": "1.6",
-  "targetSdk": "1.7",
+  "targetSdk": "1.13",
   "permissions": []
 }

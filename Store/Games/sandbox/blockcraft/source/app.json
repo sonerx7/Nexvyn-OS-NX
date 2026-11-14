@@ -37,6 +37,6 @@
   "singleInstance": true,
   "gamepad": true,
   "minSdk": "1.8",
-  "targetSdk": "1.8",
+  "targetSdk": "1.13",
   "permissions": []
 }
