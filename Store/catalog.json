@@ -4975,13 +4975,13 @@
         "zh": "Nexy Benchmark 2 是基于 Nexvyn Native SDK 1.2（C++17 + OpenGL 4.3 Core）构建的全屏硬件、图形与系统基准测试套件。在 120 秒内完成 8 阶段固定测试流程，提供千级分制评分（CPU、GPU、内存、UX 与 I/O）、历史 A/B 对比和 3D 场景浏览器。\n\n• 602K+ 多边形 PBR 监狱与 461K+ 轨道反应堆（64 动态光源）\n• 实时 320x180 多核 CPU 光线追踪与 4x4 骨骼蒙皮\n• 48x 重绘 2D 填充率与 12,000 实例化粒子\n• 内存带宽/延迟、存储 IOPS 与 SDK 1.2 诊断\n• 测试前内存清理检查、全屏锁定与 [B]/[Esc] 2 秒紧急中止\n• 支持 8 种语言及手柄、触控、键鼠全操作",
         "ko": "Nexy Benchmark 2는 Nexvyn Native SDK 1.2(C++17 + OpenGL 4.3 Core)로 제작된 전체 화면 하드웨어·그래픽·OS 벤치마크입니다. 120초 이내의 고정 8단계 파이프라인으로 천 단위 점수(CPU, GPU, 메모리, UX & I/O), A/B 기록 비교 및 3D 탐색기를 제공합니다.\n\n• 602K+ 폴리곤 PBR 교도소 & 461K+ 궤도 원자로(64개 동적 조명)\n• 실시간 320x180 멀티코어 CPU 레이트레이서 & 4x4 스키닝\n• 48x 오바드로우 2D 필레이트 & 12,000 인스턴스 파티클\n• 메모리 대역폭/지연 시간, 스토리지 IOPS & SDK 1.2 진단\n• 테스트 전 RAM 정리 검사, 전체 화면 잠금 & [B]/[Esc] 2초 긴급 중단\n• 8개 언어 및 게임패드·터치·키보드/마우스 완벽 지원"
       },
-      "version": "2.2.0",
+      "version": "2.2.1",
       "author": "sonerx7",
       "category": "system",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/nexbench.nxvapp",
-      "size": 11325532,
-      "sha256": "0996ffd223c51aea663aae341646426f3c833f6e4de0074d7b475d72dd812216",
+      "size": 11331262,
+      "sha256": "2d420c8c97570871f4325e3515f40f29bcd42f8767ee0926352c7d466183659a",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -5009,8 +5009,8 @@
         "ko": "8단계 3D PBR 및 시스템 벤치마크"
       },
       "changelog": {
-        "en": "v2.1.0: Dual animated 3D PBR scenes (602K Prison + 461K Orbital Reactor), thousands-scale scoring, 8-language localization, Dark/Light theme tokens, and pre-flight RAM hygiene gate.",
-        "tr": "v2.1.0: Çift animasyonlu 3D PBR sahnesi (602K Hapishane + 461K Yörünge Reaktörü), binler ölçeğinde puanlama, 8 dil desteği, Açık/Koyu tema uyumu ve test öncesi RAM hijyen kontrolü."
+        "en": "v2.2.1: Polished macOS-style UI with dynamic button sizing & OS switches, and fixed Switch hardware 3D rendering (GL scissor/state reset, RGBA8 textures, and FBO completeness fallback).",
+        "tr": "v2.2.1: Dinamik buton boyutları ve OS anahtarlarıyla yenilenen arayüz; gerçek Switch donanımında 3D sahne siyah ekran/gölge sorunları giderildi."
       },
       "kind": "app",
       "tech": "native",
@@ -5024,6 +5024,10 @@
       "added": "2026-11-15",
       "updated": "2026-11-15",
       "history": [
+        {
+          "version": "2.2.1",
+          "date": "2026-11-15"
+        },
         {
           "version": "2.2.0",
           "date": "2026-11-15"

@@ -39,8 +39,8 @@
   "age": "everyone",
   "license": "MIT",
   "changelog": {
-    "en": "v2.1.0: Dual animated 3D PBR scenes (602K Prison + 461K Orbital Reactor), thousands-scale scoring, 8-language localization, Dark/Light theme tokens, and pre-flight RAM hygiene gate.",
-    "tr": "v2.1.0: Çift animasyonlu 3D PBR sahnesi (602K Hapishane + 461K Yörünge Reaktörü), binler ölçeğinde puanlama, 8 dil desteği, Açık/Koyu tema uyumu ve test öncesi RAM hijyen kontrolü."
+    "en": "v2.2.1: Polished macOS-style UI with dynamic button sizing & OS switches, and fixed Switch hardware 3D rendering (GL scissor/state reset, RGBA8 textures, and FBO completeness fallback).",
+    "tr": "v2.2.1: Dinamik buton boyutları ve OS anahtarlarıyla yenilenen arayüz; gerçek Switch donanımında 3D sahne siyah ekran/gölge sorunları giderildi."
   },
   "shots": [
     [
