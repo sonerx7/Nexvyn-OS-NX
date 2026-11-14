@@ -1,6 +1,6 @@
-# NexMark Ultra (`system.nexbench`)
+# Nexy Benchmark 2 (`system.nexbench`)
 
-NexMark Ultra is a full-screen, multi-stage hardware, graphics, and operating-system benchmark suite built on the **Nexvyn Native SDK 1.2** (`nexbench.nxvmod`, C++17 + OpenGL 4.3 Core + Dear ImGui + POSIX compat).
+Nexy Benchmark 2 is a full-screen, multi-stage hardware, graphics, and operating-system benchmark suite built on the **Nexvyn Native SDK 1.2** (`nexbench.nxvmod`, C++17 + OpenGL 4.3 Core + Dear ImGui + POSIX compat).
 
 | Field | Value |
 |---|---|
