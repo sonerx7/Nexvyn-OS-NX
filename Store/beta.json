@@ -54,7 +54,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-14"
+      "updated": "2026-11-15"
     },
     {
       "id": "com.nexvyn.emu.dosbox",
@@ -103,7 +103,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-14"
+      "updated": "2026-11-15"
     },
     {
       "id": "com.sonerx7.redalert2",
@@ -146,7 +146,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-14"
+      "updated": "2026-11-15"
     },
     {
       "id": "com.nexvyn.emu.tinyemu",
@@ -196,7 +196,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-14"
+      "updated": "2026-11-15"
     }
   ]
 }

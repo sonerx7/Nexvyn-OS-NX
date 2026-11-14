@@ -1,0 +1,43 @@
+{
+  "id": "system.nexbench",
+  "name": {
+    "en": "NexMark Ultra",
+    "tr": "NexMark Ultra",
+    "de": "NexMark Ultra",
+    "fr": "NexMark Ultra",
+    "es": "NexMark Ultra",
+    "ja": "NexMark Ultra",
+    "ko": "NexMark Ultra",
+    "zh": "NexMark Ultra"
+  },
+  "description": {
+    "en": "Full-screen hardware & OS benchmark suite featuring 600K+ polygon PBR 3D prison compound stress, 2D fill-rate test, multi-core raytracing, memory/storage I/O, platform framework diagnostics, and AnTuTu-style persistent scoring.",
+    "tr": "600K+ poligonlu PBR 3D hapishane kompleksi stres testi, 2D dolgu hızı, çok çekirdekli raytracing, bellek/depolama I/O, sistem framework tanılaması ve AnTuTu tarzı kalıcı puanlama sunan tam ekran donanım benchmark paketi.",
+    "de": "Vollbild-Hardware- & OS-Benchmark mit 600K+ Polygon-PBR-3D-Gefängnisszene, 2D-Füllrate, Multi-Core-Raytracing, Speicher-/I/O-Tests, SDK-Diagnose und AnTuTu-ähnlicher Verlaufsbewertung.",
+    "fr": "Suite de benchmark matériel et OS en plein écran : scène 3D PBR de prison à 600K+ polygones, remplissage 2D, raytracing multicœur, E/S mémoire et stockage, diagnostics SDK et score AnTuTu persistant.",
+    "es": "Suite de benchmark de hardware y OS a pantalla completa con escena 3D PBR de prisión de 600K+ polígonos, relleno 2D, raytracing multinúcleo, E/S de memoria y almacenamiento, diagnóstico SDK y puntuación estilo AnTuTu.",
+    "ja": "60万ポリゴン超のPBR 3D刑務所ストレス、2Dフィルレート、マルチコアレイトレーシング、メモリ/ストレージI/O、SDK診断、AnTuTu風永続スコアを搭載したフルスクリーンベンチマーク。",
+    "ko": "60만+ 폴리곤 PBR 3D 교도소 스트레스, 2D 필레이트, 멀티코어 레이트레이싱, 메모리/스토리지 I/O, 플랫폼 SDK 진단 및 AnTuTu 스타일 누적 점수를 제공하는 전체 화면 벤치마크.",
+    "zh": "全屏硬件与系统基准测试套件：支持60万+多边形PBR 3D监狱压力场景、2D填充率、多核光线追踪、内存与存储I/O、系统框架诊断及安兔兔风格持久评分。"
+  },
+  "version": "2.1.0",
+  "author": "sonerx7",
+  "category": "system",
+  "runtime": "native",
+  "mode": "fullscreen",
+  "main": "nexbench.nxvmod",
+  "icon": "icon.png",
+  "minNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.13",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "resizable": true
+  },
+  "gamepad": true,
+  "permissions": [
+    "files",
+    "notifications"
+  ]
+}

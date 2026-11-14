@@ -3226,6 +3226,17 @@
       }
     ]
   },
+  "system.nexbench": {
+    "added": "2026-11-15",
+    "updated": "2026-11-15",
+    "version": "2.1.0",
+    "history": [
+      {
+        "version": "2.1.0",
+        "date": "2026-11-15"
+      }
+    ]
+  },
   "techdemo": {
     "added": "2026-10-29",
     "updated": "2026-10-29",

@@ -1,0 +1,66 @@
+{
+  "subtitle": {
+    "en": "8-stage 3D PBR & system benchmark suite",
+    "tr": "8 aşamalı 3D PBR ve sistem benchmark'ı",
+    "de": "8-Stufen-3D-PBR- & System-Benchmark",
+    "fr": "Benchmark système & 3D PBR en 8 étapes",
+    "es": "Benchmark de sistema y 3D PBR en 8 fases",
+    "ja": "8段階 3D PBR＆システムベンチマーク",
+    "zh": "8阶段 3D PBR 与系统性能基准测试",
+    "ko": "8단계 3D PBR 및 시스템 벤치마크"
+  },
+  "description": {
+    "en": "NexMark Ultra is a full-screen hardware, graphics, and operating-system benchmark suite built natively on Nexvyn Native SDK 1.2 (C++17 + OpenGL 4.3 Core). It runs a deterministic 8-stage pipeline under 120 seconds with thousands-scale AnTuTu-style scoring (CPU, GPU, Memory, UX & I/O), persistent run history with A/B delta comparison, and an interactive 3D Explorer.\n\n• 602K+ polygon PBR Prison Complex & 461K+ polygon Orbital Reactor (64 dynamic lights)\n• Live 320x180 multi-core CPU raytracer + 4x4 bone skinning\n• 48x overdraw 2D fill-rate & 12,000 instanced particles\n• Memory bandwidth/latency, storage sequential/4K IOPS & Native SDK 1.2 diagnostics\n• Pre-flight RAM hygiene probe, fullscreen lock & 2.0s [B]/[Esc] emergency abort\n• Full Gamepad, Touch, and Keyboard/Mouse support across 8 languages",
+    "tr": "NexMark Ultra; Nexvyn Native SDK 1.2 (C++17 + OpenGL 4.3 Core) ile yerel olarak geliştirilmiş tam ekran donanım, grafik ve işletim sistemi benchmark paketidir. 120 saniyenin altında deterministik 8 aşamalı test akışıyla binler ölçeğinde AnTuTu tarzı puanlama (CPU, GPU, Bellek, UX & I/O), A/B fark karşılaştırmalı kalıcı geçmiş ve etkileşimli 3D sahne inceleyici sunar.\n\n• 602K+ poligonlu PBR Hapishane & 461K+ poligonlu Yörünge Reaktörü (64 dinamik ışık)\n• Canlı 320x180 çok çekirdekli CPU raytracer ve 4x4 kemik skinning\n• 48x overdraw 2D dolgu hızı ve 12.000 instanced parçacık\n• Bellek bant genişliği/gecikme, depolama sıralı/4K IOPS ve SDK 1.2 tanılama\n• Test öncesi RAM hijyen kontrolü, tam ekran kilidi ve 2.0sn [B]/[Esc] acil iptal\n• 8 dilde tam Gamepad, Dokunmatik ve Klavye/Fare desteği",
+    "de": "NexMark Ultra ist eine native Vollbild-Benchmark-Suite für Hardware, Grafik und System auf Basis des Nexvyn Native SDK 1.2 (C++17 + OpenGL 4.3 Core). Sie führt eine deterministische 8-Stufen-Pipeline unter 120 Sekunden mit Tausender-Wertung (CPU, GPU, Speicher, UX & I/O), Verlauf mit A/B-Vergleich und interaktivem 3D-Explorer aus.\n\n• 602K+ Polygon-PBR-Gefängnis & 461K+ Polygon-Orbitalreaktor (64 Lichter)\n• Live-320x180-Multi-Core-Raytracer & 4x4-Skinning\n• 48x Overdraw 2D-Füllrate & 12.000 instanzierte Partikel\n• Speicherbandbreite/-latenz, Storage-IOPS & SDK-1.2-Diagnose\n• Pre-Flight-RAM-Prüfung, Vollbildsperre & 2,0s [B]/[Esc]-Abbruch\n• Gamepad-, Touch- und Maus/Tastatur-Steuerung in 8 Sprachen",
+    "fr": "NexMark Ultra est une suite de benchmark matériel, graphique et système en plein écran conçue avec le Nexvyn Native SDK 1.2 (C++17 + OpenGL 4.3 Core). Elle exécute un pipeline déterministe en 8 étapes en moins de 120 s avec score en milliers (CPU, GPU, Mémoire, UX & E/S), historique A/B et explorateur 3D.\n\n• Prison PBR 602K+ polygones & Réacteur Orbital 461K+ polygones (64 lumières)\n• Raytracer CPU multicœur 320x180 en direct & skinning 4x4\n• Remplissage 2D 48x overdraw & 12 000 particules instanciées\n• Bande passante/latence mémoire, IOPS stockage & diagnostic SDK 1.2\n• Contrôle RAM pré-test, verrouillage plein écran & arrêt [B]/[Échap] 2,0s\n• Prise en charge manette, tactile et clavier/souris en 8 langues",
+    "es": "NexMark Ultra es una suite de benchmark de hardware, gráficos y sistema a pantalla completa creada con Nexvyn Native SDK 1.2 (C++17 + OpenGL 4.3 Core). Ejecuta 8 fases deterministas en menos de 120 s con puntuación en miles (CPU, GPU, Memoria, UX e E/S), historial comparativo A/B y explorador 3D.\n\n• Prisión PBR de 602K+ polígonos y Reactor Orbital de 461K+ (64 luces)\n• Raytracer CPU multinúcleo 320x180 en vivo y skinning 4x4\n• Relleno 2D 48x overdraw y 12.000 partículas instanciadas\n• Ancho de banda/latencia, IOPS de almacenamiento y diagnóstico SDK 1.2\n• Higiene RAM previa, bloqueo a pantalla completa y cancelación [B]/[Esc] 2,0s\n• Mando, táctil y teclado/ratón en 8 idiomas",
+    "ja": "NexMark Ultra は Nexvyn Native SDK 1.2（C++17 + OpenGL 4.3 Core）で構築されたフルスクリーンのハードウェア・グラフィック・OSベンチマークです。120秒未満の固定8段階パイプラインで千単位スコア（CPU/GPU/メモリ/UX&I/O）、A/B差分履歴、3Dシーン探索を提供します。\n\n• 602K+ ポリゴン PBR 刑務所＆461K+ 軌道リアクター（64動的ライト）\n• ライブ 320x180 マルチコア CPU レイトレーサー＆4x4 スキニング\n• 48x オーバードロー 2D フィルレート＆12,000 パーティクル\n• メモリ帯域/遅延、ストレージIOPS、SDK 1.2 サブシステム診断\n• テスト前RAM整理、全画面ロック＆[B]/[Esc] 2秒緊急中止\n• 8言語対応、コントローラー・タッチ・キーボード/マウス完全操作",
+    "zh": "NexMark Ultra 是基于 Nexvyn Native SDK 1.2（C++17 + OpenGL 4.3 Core）构建的全屏硬件、图形与系统基准测试套件。在 120 秒内完成 8 阶段固定测试流程，提供千级分制评分（CPU、GPU、内存、UX 与 I/O）、历史 A/B 对比和 3D 场景浏览器。\n\n• 602K+ 多边形 PBR 监狱与 461K+ 轨道反应堆（64 动态光源）\n• 实时 320x180 多核 CPU 光线追踪与 4x4 骨骼蒙皮\n• 48x 重绘 2D 填充率与 12,000 实例化粒子\n• 内存带宽/延迟、存储 IOPS 与 SDK 1.2 诊断\n• 测试前内存清理检查、全屏锁定与 [B]/[Esc] 2 秒紧急中止\n• 支持 8 种语言及手柄、触控、键鼠全操作",
+    "ko": "NexMark Ultra는 Nexvyn Native SDK 1.2(C++17 + OpenGL 4.3 Core)로 제작된 전체 화면 하드웨어·그래픽·OS 벤치마크입니다. 120초 이내의 고정 8단계 파이프라인으로 천 단위 점수(CPU, GPU, 메모리, UX & I/O), A/B 기록 비교 및 3D 탐색기를 제공합니다.\n\n• 602K+ 폴리곤 PBR 교도소 & 461K+ 궤도 원자로(64개 동적 조명)\n• 실시간 320x180 멀티코어 CPU 레이트레이서 & 4x4 스키닝\n• 48x 오바드로우 2D 필레이트 & 12,000 인스턴스 파티클\n• 메모리 대역폭/지연 시간, 스토리지 IOPS & SDK 1.2 진단\n• 테스트 전 RAM 정리 검사, 전체 화면 잠금 & [B]/[Esc] 2초 긴급 중단\n• 8개 언어 및 게임패드·터치·키보드/마우스 완벽 지원"
+  },
+  "kind": "app",
+  "features": [
+    "3d",
+    "offline",
+    "touch",
+    "controller",
+    "keyboard"
+  ],
+  "tech": "native",
+  "tags": [
+    "benchmark",
+    "3d",
+    "pbr",
+    "system",
+    "diagnostics",
+    "native"
+  ],
+  "age": "everyone",
+  "license": "MIT",
+  "changelog": {
+    "en": "v2.1.0: Dual animated 3D PBR scenes (602K Prison + 461K Orbital Reactor), thousands-scale scoring, 8-language localization, Dark/Light theme tokens, and pre-flight RAM hygiene gate.",
+    "tr": "v2.1.0: Çift animasyonlu 3D PBR sahnesi (602K Hapishane + 461K Yörünge Reaktörü), binler ölçeğinde puanlama, 8 dil desteği, Açık/Koyu tema uyumu ve test öncesi RAM hijyen kontrolü."
+  },
+  "shots": [
+    [
+      "wait 4"
+    ],
+    [
+      "key right",
+      "wait 2"
+    ],
+    [
+      "key right",
+      "wait 2"
+    ],
+    [
+      "key right",
+      "wait 2"
+    ],
+    [
+      "key right",
+      "wait 2"
+    ]
+  ]
+}
