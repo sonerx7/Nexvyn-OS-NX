@@ -12,7 +12,7 @@ Legend:
 
 ---
 
-## 1. Script SDK (`SDK.en.md`)
+## 1. Script SDK (`SDK.md`)
 
 ### 1.1 Program callbacks (`app.*`, all optional)
 
@@ -245,7 +245,7 @@ Option table for `net.request` (SDK 1.9): `url, method, headers, body, contentTy
 
 ---
 
-## 2. Native SDK (`nxn_*.h`, `docs/NATIVE_KIT.en.md`)
+## 2. Native SDK (`nxn_*.h`, `docs/NATIVE_KIT.md`)
 
 Native apps are C or C++ `.nxvmod` packages. `app.json`: `"runtime": "native"`, `"minNative"` (Native SDK version) and `"minSdk"`. Raise `minNative` to the version of any function you call that is newer than 1.0. Check `nxn_caps_get` bits before optional calls. Every struct: `NXN_STRUCT_INIT(type)`. The `nxn_*` ABI v1 is frozen (add-only).
 

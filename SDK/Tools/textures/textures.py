@@ -16,7 +16,7 @@
 Maps an FBX does not link that the pbr renderer finds next to its external base colour file (<Name>_BaseColor):
 <Name>_AO, _Metallic, _Roughness, _MetallicSmoothness (.png / .jpg). Normal and emissive maps must be linked in the
 FBX. glTF (.glb) files carry their maps inside the file; pack them with ORM before you export, or let your exporter
-do it. See SDK/Guides/AI_WORKFLOW.en.md.
+do it. See SDK/Guides/AI_WORKFLOW.md.
 """
 import os
 import shutil

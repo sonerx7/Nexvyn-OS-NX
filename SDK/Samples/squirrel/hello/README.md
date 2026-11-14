@@ -1,7 +1,5 @@
 # Hello Squirrel
 
-**English** · [Türkçe](README.tr.md)
-
 The built-in **Hello Squirrel** app: a to-do list, an analog clock and live weather JSON.
 
 | | |

@@ -1,21 +1,48 @@
-# Nexvyn OS SDK
+# Nexvyn OS SDK (N2 Architecture — SDK 2.0 / 1.13 & Native SDK 1.2)
 
-**English** · [Türkçe](README.tr.md)
+Everything for developers and AI assistants building apps, games, ports, emulators, themes and fonts for Nexvyn OS:
+the complete SDK reference, the 4 official language tracks, the **NXUI Retained & Semantic UI Engine**, the **NexGFX
+PBR 3D renderer**, the **Native C/C++ ABI v1 kit**, working samples, AI context packs (`AI/llms.txt` &
+`AI/system-prompt.md`), the publishing guide and command-line tools. All documentation is in English.
 
-Everything for people who make apps, games, themes and fonts for Nexvyn OS: the SDK reference, a quick start and a
-template for each language, guides and recipes, working samples, context packs for AI assistants, the publishing guide
-and command-line tools. Every document exists in English and Turkish.
+**Current version: SDK 2.0 / 1.13 & Native SDK 1.2** (Nexvyn OS 1.3.8). Apps made for SDK 1.0 to 1.12 and Native SDK
+1.0 to 1.1 run unchanged ([SDK versions](Guides/SDK_VERSIONS.md)).
 
-**Current version: SDK 1.12** (Nexvyn OS 1.2.2). Apps made for SDK 1.0 to 1.11 run unchanged
-([SDK versions](Guides/SDK_VERSIONS.en.md)).
+---
 
-## SDK 1.9 at a glance
+## What is new in Nexvyn OS N2 (SDK 2.0 / 1.13 & Native SDK 1.2)
+
+### 1. The 4 Official Primary Runtimes
+Nexvyn OS N2 standardizes on four high-performance primary runtimes while keeping earlier runtimes (`PocketPy`,
+`TinyCC C`, `Squirrel 3.2`, `miniJVM Java`) available through the on-demand `ComponentService`:
+
+| Track | Engine | `app.json` Configuration | Best For |
+|---|---|---|---|
+| **Lua 5.4.7** | PUC Lua 5.4.7 with Generational GC (`LUA_GCGEN`, ~0.28 ms step) | `"runtime": "lua"`, `"main": "main.lua"` | System utilities, calculators, tools, 2D games (`nexvyn.game`), PBR 3D apps |
+| **JavaScript ES2023** | QuickJS-ng 0.17.0 with disk bytecode cache & Promises | `"runtime": "js"`, `"main": "main.js"` | Network/REST/WebSocket apps, social feeds, 3D voxel worlds (`g3d.voxels`) |
+| **Python 3.12** | CPython 3.12.16 (full syntax & standard library) | `"runtime": "python3"` (or `"runtime": "python"` with `"targetSdk": "2.0"`) | Data analysis, scientific visualization, automation, complex logic |
+| **Native C / C++** | devkitA64 GCC AOT `.nxvmod` / `.nro` (Frozen ABI v1) | `"runtime": "native"`, `"minNative": "1.2"`, `"main": "<id>.nxvmod"` | High-speed 3D games, OpenGL / SDL2 ports, emulators, CPU-intensive engines |
+
+### 2. NXUI — Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)
+Available with identical semantics in **Lua**, **JavaScript**, **Python** and **Native C/C++** (`#include <nexvyn/nxn_nxui.h>`):
+- **Automatic Flexbox-like Containers:** `nxui.begin(w, h)` / `nxui.endFrame()`, `nxui.row(id, gap)` / `nxui.rowEnd()`, `nxui.column(id, gap)` / `nxui.columnEnd()`, `nxui.card(id)` / `nxui.cardEnd()`, `nxui.scrollBegin(id, w, h, scrollY)` / `nxui.scrollEnd()`, `nxui.canvasBegin(id, w, h)` / `nxui.canvasEnd()`.
+- **Semantic Controls:** `nxui.label(id, text, role)`, `nxui.badge(id, text, rgba)`, `nxui.button(id, label, variant)`, `nxui.toggle(id, checked)`, `nxui.slider(id, val, min, max)`, `nxui.textfield(id, text, placeholder)`, `nxui.dropdown(id, options, selected)`, `nxui.tabs(id, labels, active)`, `nxui.table(id, cols, rows, selectedRow)`, `nxui.virtuallist(id, items, rowH, viewH, selectedRow)` (10,000+ rows at 60 fps), `nxui.dialog(id, title, msg, confirm, cancel)`, `nxui.spacer(size)`.
+- **Design Tokens & Spatial Focus:** `nxui.tokens()` returns the live system design tokens (`space1`..`space6`, `radiusSm`/`Md`/`Lg`, `fontSm`/`Body`/`Title`/`Hero`, `scale`, `dark`, `highContrast`, `reducedMotion`, RGBA palette). D-pad and controller navigation work out of the box via `nxui.moveFocus(dir)` and `nxui.activateFocused()`.
+
+### 3. Native SDK 1.2 & Unified Input Router
+- **Window Control (`NXN_CAP_WINDOW_CTL`):** `nxn_window_set_title`, `nxn_window_set_mode` (windowed, maximized, fullscreen), `nxn_window_set_modified` (unsaved work guard before close).
+- **Power & Dock Telemetry (`NXN_CAP_POWER_STATE`):** `nxn_power_get` and `NXN_EVENT_POWER` for battery percentage, charger state, dock/handheld mode and network status.
+- **Native OS Dialogs (`NXN_CAP_DIALOG`):** `nxn_dialog` and `nxn_prompt` render native system sheets and text prompts.
+- **Loading Grace (`"loadingHint": true`):** Extends the initial loading watchdog threshold from 5 s to 120 s for apps and games that unpack or compile large assets at startup.
+
+---
+
+## NexGFX PBR Renderer & Media Pipeline (SDK 1.9+)
 
 <p align="center"><img src="../.github/assets/nexgfx-orbit.webp" width="100%" alt="A camera orbits a meeting room rendered by NexGFX: sunlight through glass, shadows, reflections on chrome and a clearcoat floor"></p>
 
-### NexGFX pbr renderer
-
-A physically based renderer for 3D apps and games, opt-in per app with `g3d.renderer("pbr")`.
+### NexGFX PBR renderer
+A physically based 3D renderer for apps and games, opt-in per app with `g3d.renderer("pbr")`:
 
 | Feature | API |
 |---|---|
@@ -26,127 +53,96 @@ A physically based renderer for 3D apps and games, opt-in per app with `g3d.rend
 | Reflections and ambient light from a sky hemisphere or a 6-face cube map (reflection probe) | `g3d.environment({sky, ground, cubemap})` |
 | HDR, ACES or filmic tone mapping, bloom, MSAA 2x / 4x / 8x | `g3d.postfx({exposure, tonemap, bloom, msaa})` |
 | GPU instancing, up to 128 copies per call | `g3d.drawInstanced(mesh, transforms)` |
-| What the console offers, and what draws the frames | `g3d.caps()`, `g3d.rendererInfo()` |
-
-When the console offers no OpenGL ES 3, `g3d.renderer("pbr")` returns `"basic"` and the same calls still draw.
+| Hardware capabilities and active backend | `g3d.caps()`, `g3d.rendererInfo()` |
 
 | | |
 |:---:|:---:|
 | <img src="../.github/assets/nexgfx-effects.webp" alt="The same room without shadows and bloom, and with shadows, bloom and 4x MSAA"> | <img src="../.github/assets/sample-pbr3d.webp" alt="The PBR, Lights and Shadows sample: crates with emissive strips, spheres from rough to polished metal, pillars and coloured lights"> |
 | **Post effects:** shadows, bloom, MSAA | **[PBR, Lights and Shadows](Samples/lua/pbr3d/)** sample |
 
-### Feeds, media and network
+### Feeds, media, network & storage
 
 | Feature | API |
 |---|---|
 | HTTP with JSON, form, multipart and file bodies, upload progress, cookies, retries, offline cache | `net.request(options, callback[, progress])`, `net.cancel` |
-| WebSocket client | `net.ws`, `net.wsSend`, `net.wsPoll`, `net.wsClose` |
+| WebSocket client | `net.ws`, `net.wsSend`, `net.wsPoll`, `net.wsClose`, `net.wsState` |
 | Sign-in through the console's browser (OAuth 2.0 with PKCE) | `net.oauth` |
-| Web pictures with a disk and memory cache, thumbnails | `gfx.imageUrl(url, maxSize)` |
+| Web pictures with a disk and memory cache, thumbnails | `gfx.imageUrl(url, maxSize)`, `gfx.imageState` |
 | Video and audio players inside the app (files, MP4, HLS) | `media.open`, `media.draw`, `media.play` ... |
-| Virtualized lists and grids, pull-to-refresh, infinite scroll | `ui.beginFeed`, `ui.feedItem`, `ui.endFeed` |
-| Full-screen swipe pager | `ui.pager` |
-| Rich text with bold, links, mentions and hashtags; "5m" style times in 8 languages | `ui.richText`, `sys.relativeTime` |
+| Virtualized lists and grids, pull-to-refresh, infinite scroll | `nxui.virtuallist`, `ui.beginFeed`, `ui.feedItem`, `ui.endFeed` |
+| Full-screen swipe pager & rich text | `ui.pager`, `ui.richText`, `sys.relativeTime` |
+| Kept folders and save backups (SDK 1.11) | `ui.chooseFolder`, `fs.folderGrants`, `fs.savePath`, `fs.saveBackup`, `fs.saveRestore` |
 
 <p align="center"><img src="../.github/assets/sample-social-feed.webp" width="90%" alt="The Social Feed sample: a photo feed in dark mode, a photo grid and a vertical clip pager"></p>
 
-### Also in SDK 1.10 to 1.12
-
-- **Native SDK 1.1 (SDK 1.10):** C / C++ apps that run inside Nexvyn OS in a window or full screen, built with the [Native SDK kit](Languages/c/native-kit/README.md) (`nxv-native`, templates for apps, games, ports and SDL2) -- start with the [Native SDK guide](Guides/NATIVE_GUIDE.en.md). Since Nexvyn OS 1.2.2 native apps run much faster by default and the system has Settings > Performance (official maximum clocks, optional overclock); the frame-pacing, sound and reserved error-code notes are in the [kit reference](Guides/NATIVE_KIT.en.md) ("Performance, frame pacing and settings").
-- **Kept folders and save backups (SDK 1.11):** `ui.chooseFolder` (the user picks, `remember` keeps the folder), `fs.folderGrants` / `folderGranted` / `revokeFolder`, `fs.savePath`, `fs.saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup`; the same names in Lua, JavaScript, Python and C, no permission needed.
-- **Language parity (SDK 1.12):** `ui.tokens()` (the system look as one table), `audio.stopAll()`, and `input_action` in C; the same names as the native SDK, in Lua, JavaScript, Python and C.
-
-### Also in SDK 1.9
-
-- **Runtime library:** `net.request` in Lua; `TextEncoder`, `TextDecoder`, `URL`, `URLSearchParams`,
-  `structuredClone` in JavaScript; more `str` methods, `urllib.parse`, `html`, `uuid` in Python.
-- **The same API in Lua, JavaScript, Python and C.** Squirrel and Java keep working and are frozen at SDK 1.8.
+---
 
 ## Kits and tools
 
-| | |
+| Tool / Kit | Purpose |
 |---|---|
-| [Sound kit](Languages/lua/kits/README.md) (`sfx`) | Layered sound effects and music from recipes: variants, buses, ducking, ambience, music loops. Guide: [Sound design](Guides/SOUND_DESIGN.en.md) |
-| [Feel kit](Languages/lua/kits/README.md) (`juice`) | Easing and tweens, shake, hit-stop, particles, glow, titles, panels, buttons, transitions, 2D and 3D cameras, 3D light moods. Guide: [Graphics, UI and game feel](Guides/GAME_FEEL.en.md) |
-| [Icon tool](Tools/icon/README.md) | Renders the game's own model and builds its key-art store icon in every size; style `clean` (default), `bold` or `loud` |
-| [Texture tool](Tools/textures/README.md) | Checks PBR texture sets, scales maps down, packs ORM, converts MetallicSmoothness and -Y (green down) normal maps |
-| [Theme tool](Tools/theme/README.md) | Checks a theme pack (`theme.json`, limits, WCAG AA contrast) and packs the `.nxvtheme`; guide: [Making themes](Guides/THEMES.en.md), template: `Samples/themes/template` |
-| [nxv](Tools/nxv/README.md) | New project from a template, check, build (Java), pack, sign, install, push to the console |
-
-Kits exist for Lua and JavaScript (`Languages/lua/kits`, `Languages/javascript/kits`).
+| **[nxv (`create` / `new` / `check` / `pack`)](Tools/nxv/README.md)** | Smart Creator (`nxv.py create MyApp --profile game`), template generator, static checker, deterministic `.nxvapp` packer, signer and FTP pusher |
+| **[Native SDK kit (`nxv-native`)](Languages/c/native-kit/README.md)** | Builds C/C++ `.nxvmod` windowed/fullscreen apps and `.nxvlib` shared libraries (`nxn_*`, `nxn_nxui_*`, SDL2, OpenGL, POSIX compat) |
+| **[Sound kit (`sfx`)](Languages/lua/kits/README.md)** | Layered procedural sound effects and music from recipes: variants, buses, ducking, ambience, music loops ([Sound design](Guides/SOUND_DESIGN.md)) |
+| **[Feel kit (`juice`)](Languages/lua/kits/README.md)** | Easing/tweens, screen shake, hit-stop, particles, glow, styled titles, panels, transitions, 2D/3D cameras and 3D light moods ([Game feel](Guides/GAME_FEEL.md)) |
+| **[Icon tool](Tools/icon/README.md)** | Renders the game's 3D model and composites its 256x256 key-art store icon (`clean`, `bold`, `loud`) |
+| **[Texture tool](Tools/textures/README.md)** | Validates PBR texture sets, downscales maps, packs glTF ORM, and converts MetallicSmoothness / -Y normal maps |
+| **[Theme tool](Tools/theme/README.md)** | Validates a theme pack (`theme.json`, WCAG AA contrast) and packs `.nxvtheme` ([Making themes](Guides/THEMES.md)) |
 
 <p align="center"><img src="Tools/icon/examples/ember-field/preview.png" width="32%" alt="Key-art icon made with the icon tool for Ember Field, clean style"> <img src="Tools/icon/examples/orbit-rush/preview.png" width="32%" alt="Key-art icon made with the icon tool for Orbit Rush"> <img src="Tools/icon/examples/shard/preview.png" width="32%" alt="Key-art icon made with the icon tool for Shard"></p>
 
+---
+
 ## Start here
 
-| Language | 1. Quick start | 2. Template | 3. Guide | 4. Samples |
+| Track | 1. Quick start | 2. Template | 3. Guide | 4. Samples |
 |---|---|---|---|---|
-| **Lua 5.4** (recommended) | [Languages/lua](Languages/lua/README.md) | [template](Languages/lua/template/) | [Developer guide](Guides/DEVELOPER_GUIDE.en.md), [game engine](Guides/GAME_ENGINE.en.md) | [Samples/lua](Samples/lua/) |
-| **JavaScript** | [Languages/javascript](Languages/javascript/README.md) | [template](Languages/javascript/template/) | [Apps in JavaScript](Guides/JS_APPS.en.md) | [Samples/javascript](Samples/javascript/) |
-| **Python** | [Languages/python](Languages/python/README.md) | [template](Languages/python/template/) | [Apps in Python](Guides/PY_APPS.en.md) | [Samples/python](Samples/python/) |
-| **C** | [Languages/c](Languages/c/README.md) | [template](Languages/c/template/) | [Apps in C](Guides/C_APPS.en.md) | [Samples/c](Samples/c/) |
-| **C / C++ (native)** | [Languages/c/native-kit](Languages/c/native-kit/README.md) | templates in the kit | [Native SDK guide](Guides/NATIVE_GUIDE.en.md), [kit reference](Guides/NATIVE_KIT.en.md) | kit `examples/` |
-| Squirrel (frozen at 1.8) | [Languages/squirrel](Languages/squirrel/README.md) | [template](Languages/squirrel/template/) | [Apps in Squirrel](Guides/SQUIRREL_APPS.en.md) | [Samples/squirrel](Samples/squirrel/) |
-| Java (frozen at 1.8) | [Languages/java](Languages/java/README.md) | [template](Languages/java/template/) | [Apps in Java](Guides/JAVA_APPS.en.md) | [Samples/java](Samples/java/) |
+| **Lua 5.4.7** (recommended) | [Languages/lua](Languages/lua/README.md) | [template](Languages/lua/template/) | [Developer guide](Guides/DEVELOPER_GUIDE.md), [game engine](Guides/GAME_ENGINE.md) | [Samples/lua](Samples/lua/) |
+| **JavaScript (ES2023)** | [Languages/javascript](Languages/javascript/README.md) | [template](Languages/javascript/template/) | [Apps in JavaScript](Guides/JS_APPS.md) | [Samples/javascript](Samples/javascript/) |
+| **Python 3.12** | [Languages/python](Languages/python/README.md) | [template](Languages/python/template/) | [Apps in Python](Guides/PY_APPS.md) | [Samples/python](Samples/python/) |
+| **Native C / C++ (`.nxvmod`)** | [Languages/c/native-kit](Languages/c/native-kit/README.md) | templates in the kit | [Native SDK guide](Guides/NATIVE_GUIDE.md), [kit reference](Guides/NATIVE_KIT.md) | kit `examples/` |
+| C (TinyCC on-console) | [Languages/c](Languages/c/README.md) | [template](Languages/c/template/) | [Apps in C](Guides/C_APPS.md) | [Samples/c](Samples/c/) |
+| Squirrel (compat, frozen at 1.8) | [Languages/squirrel](Languages/squirrel/README.md) | [template](Languages/squirrel/template/) | [Apps in Squirrel](Guides/SQUIRREL_APPS.md) | [Samples/squirrel](Samples/squirrel/) |
+| Java (compat, frozen at 1.8) | [Languages/java](Languages/java/README.md) | [template](Languages/java/template/) | [Apps in Java](Guides/JAVA_APPS.md) | [Samples/java](Samples/java/) |
 
-If in doubt, start with **Lua**: it has the most samples, the kits and Studio's visual editors.
+---
 
-## Recipes and guides
+## Building with an AI assistant (Zero-Hallucination Workflow)
 
-| You want to | Read |
-|---|---|
-| Build a 3D game with the pbr renderer, step by step | [PBR game recipe](Guides/PBR_GAME_RECIPE.en.md) (Lua, JavaScript, Python, C) · [Make a game](Guides/MAKE_A_GAME.en.md) |
-| Build a feed, photo, short-video or chat app | [Social app recipe](Guides/SOCIAL_APP_RECIPE.en.md) · [Make a social app](Guides/MAKE_A_SOCIAL_APP.en.md) |
-| Use AI tools for code, models and textures | [AI-assisted workflow](Guides/AI_WORKFLOW.en.md) · [SDK/AI](AI/README.md) |
-| Make it sound and feel good | [Sound design](Guides/SOUND_DESIGN.en.md) · [Graphics, UI and game feel](Guides/GAME_FEEL.en.md) |
-| Know which SDK version has what | [SDK versions](Guides/SDK_VERSIONS.en.md) · [Compatibility](Guides/COMPATIBILITY.en.md) |
-| Look up a function | [SDK reference](Reference/SDK.en.md) |
-| Publish in the App Market | [Publishing](Publishing/README.md) · [Contributing](../CONTRIBUTING.md) |
+The `SDK/AI/` folder is engineered so any LLM or coding agent can build complete, 60 fps Nexvyn OS apps and games without inventing non-existent functions:
 
-All guides: [Guides/](Guides/README.md).
+1. **Feed the AI Context:**
+   - **Quick index for LLMs / IDE agents:** [`AI/llms.txt`](AI/llms.txt) and [`AI/AI_RULES.md`](AI/AI_RULES.md).
+   - **Full system prompt (~8k tokens):** [`AI/system-prompt.md`](AI/system-prompt.md) + the language pack in [`AI/languages/`](AI/languages/) (`lua.md`, `javascript.md`, `python.md`, `native.md`, `c.md`).
+   - **Complete contract:** [`Reference/SDK.md`](Reference/SDK.md).
+2. **Use a Task Prompt:** Pick a structured prompt from [`AI/tasks/`](AI/tasks/) (3D PBR game, 2D game, social/feed app, utility, port, theme pack, store icon, store listing).
+3. **Verify Automatically:** Run `python SDK/Tools/nxv/nxv.py check <folder>` and walk through [`AI/checklist.md`](AI/checklist.md).
 
-## With an AI assistant
+---
 
-1. Give the assistant [`AI/system-prompt.en.md`](AI/system-prompt.en.md) and the pack of your language
-   ([`AI/languages/`](AI/languages/)). Chat assistants take them as project files; coding assistants in an editor or a
-   terminal read them from your repository through their instruction file.
-2. Ask with a task prompt from [`AI/tasks/`](AI/tasks/): a 3D game with models and the pbr renderer, a game, a social
-   app, a utility, a port, a language, the store listing, the store icon.
-3. Check every answer: `python SDK/Tools/nxv/nxv.py check <folder>`; send failures back with the
-   [fix prompt](AI/tasks/fix-lua-check.en.md). The [checklist](AI/checklist.en.md) lists what the assistant must
-   verify.
-4. For generated 3D models and textures follow the [AI-assisted workflow](Guides/AI_WORKFLOW.en.md): scale, pivot,
-   texture sizes, PBR map packing, glass and emission.
+## Your first app in 5 minutes
 
-## Your first app in 10 minutes
+**With Smart Creator on a PC:**
+```bash
+# 1. Create a ready-to-run N2 app (Lua, JS, Python 3.12, or Native C/C++)
+python SDK/Tools/nxv/nxv.py create "My App" --profile utility --runtime lua
 
-**On the console (no PC needed):**
+# 2. Check manifest, translations, permissions and syntax
+python SDK/Tools/nxv/nxv.py check myapp
 
-1. Open **Nexvyn OS Studio**, choose **New Project** and pick a template (for example *3D: PBR, Lights and Shadows*),
-   or open **Samples**.
-2. Name the app. The project is installed into `sdmc:/NexvynOS/Applications/` and opens in the editor.
-3. Change the code and press **Run** (Ctrl+R). `print()` output and errors appear in Studio's console.
-4. When it is ready, **Export Package** or follow **Publish to the App Market**.
-
-**On a PC:**
-
-1. Copy a template: `python SDK/Tools/nxv/nxv.py new lua "My App" --author yourname`.
-2. Edit `id`, `name`, `description`, `minSdk` and `permissions` in `app.json`; write the code.
-3. Check it: `python SDK/Tools/nxv/nxv.py check MyApp.nxvapp`.
-4. Send it to the console: start the FTP server in **Connect to PC**, then
-   `python SDK/Tools/nxv/nxv.py push MyApp.nxvapp --host <console-ip>`.
-5. Reopen the Launcher; the app is there. Errors show in the window with line numbers and are logged to
-   `sdmc:/NexvynOS/System/Logs/Apps/<id>.log`.
+# 3. Pack into a deterministic .nxvapp or push over FTP to the console
+python SDK/Tools/nxv/nxv.py pack myapp
+```
 
 ## Contents
 
 | Folder | What is in it |
 |---|---|
-| [Reference/](Reference/README.md) | The SDK reference (`SDK.en.md`, `SDK.tr.md`), the Java SDK sources, the C header |
-| [Languages/](Languages/README.md) | A quick start, a checked template and (Lua, JavaScript) the game kits for each language |
-| [Guides/](Guides/README.md) | Recipes, the game and social app guides, language guides, formats, compatibility, user guides |
-| [Samples/](Samples/README.md) | Working sample projects; [`samples.json`](samples.json) is what Studio's *Samples* reads |
-| [AI/](AI/README.md) | Context packs, task prompts and the checklist for AI assistants |
-| [Publishing/](Publishing/README.md) | Publishing in the App Market: the flow, the review checklist, reports and takedowns |
-| [Fonts/](Fonts/) | The system fonts (Inter, JetBrains Mono, the icon font with `Icons.codepoints`) |
-| [Tools/](Tools/README.md) | `nxv`, the icon tool and the texture tool |
+| [Reference/](Reference/README.md) | Complete SDK contract (`SDK.md`), C headers (`c/include/nexvyn.h`), Java SDK sources |
+| [Languages/](Languages/README.md) | Quick starts, templates, Lua/JS `sfx` & `juice` game kits, and the **Native C/C++ SDK kit (`Languages/c/native-kit/`)** |
+| [Guides/](Guides/README.md) | 34 engineering guides: PBR games, social apps, Native SDK, NexGFX, input modes, compatibility, packaging |
+| [Samples/](Samples/README.md) | Working sample apps and games; [`samples.json`](samples.json) powers Studio's sample browser |
+| [AI/](AI/README.md) | `llms.txt`, `system-prompt.md`, `AI_RULES.md`, language packs, task prompts and verification checklist |
+| [Publishing/](Publishing/README.md) | App Market submission flow, review checklist, security & privacy rules |
+| [Fonts/](Fonts/) | System fonts (Inter, JetBrains Mono, Material Symbols with `Icons.codepoints`) |
+| [Tools/](Tools/README.md) | `nxv` CLI (with Smart Creator), `icon` key-art generator, `textures` PBR pipeline, `theme` packer |

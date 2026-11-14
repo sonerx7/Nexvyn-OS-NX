@@ -1,4 +1,4 @@
-/* Nexvyn Native SDK - windowed mode (NATIVE_KIT.en.md 3.2). Linked into every windowed app (.nxvmod) by the
+/* Nexvyn Native SDK - windowed mode (NATIVE_KIT.md 3.2). Linked into every windowed app (.nxvmod) by the
  * kit (libnexvyn_window.a; `nxv-native build --windowed`, CMake nexvyn_add_windowed(), `make windowed`).
  *
  * In windowed mode the app runs inside Nexvyn OS's process and Nexvyn OS implements the nxn_* functions: the app

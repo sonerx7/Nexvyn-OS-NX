@@ -1,7 +1,5 @@
 # Hello JS
 
-**English** · [Türkçe](README.tr.md)
-
 The built-in **Hello JS** app: a to-do list, an analog clock and live weather JSON.
 
 | | |

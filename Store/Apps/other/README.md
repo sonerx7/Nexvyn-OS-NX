@@ -1,7 +1,5 @@
 # other
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="capitals/icon.png" width="32"> | [Capitals](capitals/) | 1.1.0 | Learn the capitals of 150 countries |

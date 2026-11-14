@@ -85,7 +85,7 @@ void tls_thread(void* p) {
 
 /* W2b / W3a. JIT: a tiny function written as machine code (mov w0, #42; ret), run from the rx view. The fault handler
  * and guard pages are only registered / set and lifted again: a real fault is never made here (emulators stop the
- * whole program on one); the console check list is in NATIVE_KIT.en.md 3.2.11. */
+ * whole program on one); the console check list is in NATIVE_KIT.md 3.2.11. */
 static int fault_noop(nxn_fault* f, void* user) {
     (void)f;
     (void)user;

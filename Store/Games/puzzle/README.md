@@ -1,7 +1,5 @@
 # puzzle
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="fifteen/icon.png" width="32"> | [15 Puzzle](fifteen/) | 1.1.0 | Slide the tiles back into order |

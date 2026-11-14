@@ -1,7 +1,7 @@
 /* Nexvyn Native SDK - lifecycle, capabilities, system info and the return to Nexvyn OS.
  *
  * The app is a .nxvmod that Nexvyn OS loads into its own process and runs in a window or full screen (app.json "mode":
- * "window" / "fullscreen"; NXN_CAP_WINDOWED, NATIVE_KIT.en.md 3.2). Nexvyn OS implements these calls; the app
+ * "window" / "fullscreen"; NXN_CAP_WINDOWED, NATIVE_KIT.md 3.2). Nexvyn OS implements these calls; the app
  * does not call nxn_init itself in that case (it is already done when main starts).
  * The same library also builds a stand-alone .nro (the retired exclusive mode, kept only for packages built earlier):
  * nxn_init then reads the hand-off file (--nxn-handoff=<file>: paths, user, language, theme, where to return) and the

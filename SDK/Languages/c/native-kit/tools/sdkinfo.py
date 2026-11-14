@@ -1,36 +1,23 @@
 """The SDK facts the Nexvyn OS tools share: the SDK version, the runtime table and the app.json version rules.
 
-It mirrors source/core/sdk_version.h (NEXVYN_SDK_VERSION, sdk::target) and source/runtimes/runtime_kind.h
-(nxvruntime::kRuntimes, detect); tools/compat_check.py fails when they drift apart. Standard library only, so it also
-works in the store CI's sparse checkout of tools/. The rules are in docs/COMPATIBILITY.en.md.
+It mirrors source/core/sdk_version.h (NEXVYN_SDK_VERSION, sdk::target); the runtime table comes from the one registry
+(tools/registry/runtimes.json, generated into tools/sdkinfo_runtime.py and source/runtimes/runtime_table.inc).
+tools/compat_check.py fails when they drift apart. Standard library only, so it also works in the store CI's sparse
+checkout of tools/. The rules are in docs/COMPATIBILITY.md.
 """
 import os
 import re
+
+from sdkinfo_runtime import ALIASES, DEFAULT_RUNTIME, NATIVE_MODES, RUNTIMES  # noqa: F401  (re-exported)
 
 SDK_VERSION = "1.13"
 # newest SDK that changed the script API: new script projects use it as minSdk (NEXVYN_SCRIPT_SDK_VERSION)
 SCRIPT_SDK_VERSION = "1.12"
 
-# runtime id -> engine, engine version in this build, SDK that added it, main file extensions, default main file
-RUNTIMES = {
-    "lua": {"engine": "Lua", "version": "5.4.7", "since": "1.0", "ext": (".lua",), "main": "main.lua"},
-    "js": {"engine": "QuickJS-ng", "version": "0.17.0", "since": "1.1", "ext": (".js", ".mjs"), "main": "main.js"},
-    "python": {"engine": "pocketpy", "version": "2.2.0", "since": "1.3", "ext": (".py",), "main": "main.py"},
-    # only by name: a .py main file alone means "python"
-    "python3": {"engine": "CPython", "version": "3.12.16", "since": "1.6", "ext": (), "main": "main.py"},
-    "squirrel": {"engine": "Squirrel", "version": "3.2", "since": "1.5", "ext": (".nut",), "main": "main.nut"},
-    "c": {"engine": "TinyCC", "version": "0.9.28rc", "since": "1.5", "ext": (".c",), "main": "main.c"},
-    "java": {"engine": "miniJVM", "version": "2.2.0", "since": "1.5", "ext": (".jar",), "main": "app.jar"},
-    # C/C++: a .nxvmod module ("native": "<file>.nxvmod", ABI id) or a full-screen .nro ("mode": "exclusive",
-    # "minNative"; NATIVE_KIT.en.md). "version" is the Native SDK version of this build.
-    "native": {"engine": "nxn", "version": "1.2", "since": "1.10", "ext": (".nro",), "main": "main.nro"},
-}
-
 NATIVE_VERSION = RUNTIMES["native"]["version"]
 # A full-screen native package carries "minSdk": this SDK, the one that brought the runtime, so older systems say
-# "needs a newer Nexvyn OS" instead of reading the .nro as a script (NATIVE_KIT.en.md section 6).
+# "needs a newer Nexvyn OS" instead of reading the .nro as a script (NATIVE_KIT.md section 6).
 NATIVE_MIN_SDK = RUNTIMES["native"]["since"]
-NATIVE_MODES = ("exclusive", "windowed", "window", "fullscreen")  # window / fullscreen: a .nxvmod in Nexvyn OS (exclusive: retired, old packages only)
 
 VERSION_RE = re.compile(r"v?\d+(\.\d+)*")
 
@@ -73,15 +60,15 @@ def runtime_of(app):
     if isinstance(app.get("native"), str):
         return "native"
     r = str(app.get("runtime") or "").strip().lower()
-    if r == "javascript":
-        return "js"
+    if r in ALIASES:
+        return ALIASES[r]
     if r:
         return r
     ext = os.path.splitext(str(app.get("main") or ""))[1].lower()
     for rid, info in RUNTIMES.items():
         if ext in info["ext"]:
             return rid
-    return "lua"
+    return DEFAULT_RUNTIME
 
 
 def main_file(app):

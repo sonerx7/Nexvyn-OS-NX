@@ -1,7 +1,5 @@
 # Fonts
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="bebas-neue/icon.png" width="32"> | [Bebas Neue](bebas-neue/) | 2.000 | Tall, bold capitals for titles |

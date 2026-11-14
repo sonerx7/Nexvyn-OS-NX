@@ -1,5 +1,5 @@
 # Nexvyn Native SDK - libnexvyn_native.a, the exclusive-mode implementation of the nxn_* ABI, and libnexvyn_window.a,
-# the windowed-mode support object (NATIVE_KIT.en.md).
+# the windowed-mode support object (NATIVE_KIT.md).
 # Built with the pinned devkitPro toolchain (tools/toolchain.json):
 #   make -C sdk/native/lib            -> sdk/native/lib/libnexvyn_native.a
 #   make -C sdk/native/lib clean
@@ -23,7 +23,7 @@ ARCH    := -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE
 CFLAGS  := -g -std=gnu11 -Wall -Wextra -Wno-unused-parameter -Wno-format-truncation -O2 -fno-omit-frame-pointer -ffunction-sections -fdata-sections $(ARCH) \
            -D__SWITCH__ -I$(HERE)../include -I$(LOADER) -I$(DEVKITPRO)/libnx/include -I$(DEVKITPRO)/portlibs/switch/include
 
-# windowed mode (NATIVE_KIT.en.md 3.2): libnexvyn_window.a, -fPIC, linked into every .nxvmod. Nexvyn OS
+# windowed mode (NATIVE_KIT.md 3.2): libnexvyn_window.a, -fPIC, linked into every .nxvmod. Nexvyn OS
 # implements nxn_* for windowed apps; this archive only carries the module's identity and __dso_handle.
 WIN_TARGET := $(HERE)libnexvyn_window.a
 WIN_OBJS   := $(BUILD)/win/nxwin_support.o $(BUILD)/win/nxwin_gles.o $(BUILD)/win/nxwin_glcore.o

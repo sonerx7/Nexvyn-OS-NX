@@ -1,7 +1,5 @@
 # arcade
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="airhockey/icon.png" width="32"> | [Air Hockey](airhockey/) | 1.1.0 | Fast table hockey, solo or with a friend |

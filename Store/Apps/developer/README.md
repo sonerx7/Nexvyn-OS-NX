@@ -1,7 +1,5 @@
 # developer
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="hashtool/icon.png" width="32"> | [Base64 & Hash](hashtool/) | 1.1.0 | Encode text and verify checksums |

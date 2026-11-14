@@ -1,7 +1,5 @@
 # Stopwatch
 
-**English** · [Türkçe](README.tr.md)
-
 A stopwatch with laps: the fastest lap green, the slowest red; time and laps survive closing the app.
 
 | | |

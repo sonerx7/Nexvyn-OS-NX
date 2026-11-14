@@ -1,7 +1,5 @@
 # internet
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="dictionary/icon.png" width="32"> | [Dictionary](dictionary/) · ships with Nexvyn OS | 1.0 | Turkish TDK and English definitions |

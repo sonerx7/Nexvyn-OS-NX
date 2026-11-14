@@ -18,7 +18,7 @@
 //     J.vignette(w, h, 0.55); /* HUD */ J.overlay(w, h); J.endFrame();
 //   };
 //
-// Guide with before / after descriptions: SDK/Guides/GAME_FEEL.en.md.
+// Guide with before / after descriptions: SDK/Guides/GAME_FEEL.md.
 
 const J = { folder: "fx", version: 1 };
 const { floor, sqrt, sin, cos, exp, abs, min, max, PI } = Math;

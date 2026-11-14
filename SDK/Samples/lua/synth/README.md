@@ -1,7 +1,5 @@
 # Synth Demo
 
-**English** · [Türkçe](README.tr.md)
-
 An on-screen piano (2-3 octaves), four waveforms, an ADSR envelope made with timers, chords and strumming, an envelope graph and a scope.
 
 | | |

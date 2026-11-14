@@ -1,7 +1,5 @@
 # Terrain Demo
 
-**English** · [Türkçe](README.tr.md)
-
 An island made from value noise and fBm, coloured by height and slope, with a see-through sea, fog, a minimap, an autopilot and a fly camera.
 
 | | |

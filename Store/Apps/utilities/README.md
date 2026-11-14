@@ -1,7 +1,5 @@
 # utilities
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="graph3d/icon.png" width="32"> | [3D Surface](graph3d/) | 1.1.0 | Plot z = f(x, y) as a 3D surface |

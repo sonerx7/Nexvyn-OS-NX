@@ -1788,7 +1788,7 @@ end
 
 ## Chapter 12: Automated Testing with `nxvtest`
 
-Automated testing is driven by the `SDK/Tools/nxvtest` runner. For comprehensive setup guidelines, refer to [AutomatedTesting.en.md](AutomatedTesting.en.md).
+Automated testing is driven by the `SDK/Tools/nxvtest` runner. For comprehensive setup guidelines, refer to [AutomatedTesting.md](AutomatedTesting.md).
 
 ### 12.1 The `nxvtest` Architecture
 

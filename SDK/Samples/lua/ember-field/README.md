@@ -1,8 +1,6 @@
 # Ember Field
 
-**English** · [Türkçe](README.tr.md)
-
-A small, complete 3D game built the way [Make a game](../../../Guides/MAKE_A_GAME.en.md) describes: a round courier
+A small, complete 3D game built the way [Make a game](../../../Guides/MAKE_A_GAME.md) describes: a round courier
 bird collects embers on a floating island at dusk while stones roll across it. Three lamps, then it is over.
 
 | | |

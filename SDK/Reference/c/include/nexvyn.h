@@ -1,4 +1,4 @@
-/* nexvyn.h - the Nexvyn OS app SDK (1.5) for C apps (sdk/SDK.en.md, section "C").
+/* nexvyn.h - the Nexvyn OS app SDK (1.5) for C apps (sdk/SDK.md, section "C").
  *
  * A C app is a .nxvapp bundle whose app.json has "runtime": "c" (or "main": "main.c"). Every .c file of the bundle is
  * compiled on the console by TinyCC when the app starts; there is no build step on the PC. Define the callbacks you need
@@ -339,7 +339,7 @@ void g3d_drawInstanced(int obj, const float* transforms, int count, const char* 
 void g3d_drawInstancedMatrices(int obj, const float* matrices, int count, const char* tint, const char* flags);
 /* END GENERATED api:g3d_renderer:c-header */
 
-/* SDK 1.11: folder picker, kept folders, save backups (sdk/SDK.en.md "SDK 1.11"). */
+/* SDK 1.11: folder picker, kept folders, save backups (sdk/SDK.md "SDK 1.11"). */
 /* BEGIN GENERATED api:ui_folder:c-header (tools/api/gen.py; do not edit) */
 /* the folder picker: callback(JSON path, NULL), JSON null when the user cancels, or (NULL, error). options: {"title": "...", "remember": true} */
 void ui_chooseFolder(const char* options, nxv_json_fn fn, void* user);
@@ -357,7 +357,7 @@ void fs_saveDeleteBackup(const char* slot, nxv_json_fn fn, void* user);
 /* END GENERATED api:fs_keep:c-header */
 
 /* ------------------------------------------------------------------ SDK 1.9: feeds, media, network
- * sdk/SDK.en.md section 8d. Options are JSON text ("{\"retry\": 2, \"cache\": 300}"), NULL for none. Returned
+ * sdk/SDK.md section 8d. Options are JSON text ("{\"retry\": 2, \"cache\": 300}"), NULL for none. Returned
  * strings stay valid for the next 15 SDK calls, like every other returned string: copy them to keep them. */
 /* HTTP with every SDK 1.9 option (method, headers, json, form, multipart, file, saveTo, timeout, retry, cache,
  * cookies, responseType...). fn gets the response; progress(now, total) runs while it moves. Returns the id. */

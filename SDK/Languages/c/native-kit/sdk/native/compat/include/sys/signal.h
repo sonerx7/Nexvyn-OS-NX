@@ -2,7 +2,7 @@
  *
  * newlib's struct sigaction has no sa_sigaction and its flag set is only SA_NOCLDSTOP, so PC code that installs
  * SA_SIGINFO handlers does not compile. This header renames newlib's structure and defines the Linux style one.
- * Signals are emulated (docs/NATIVE_COMPAT.en.md): delivery happens at safe points, see nxc_signal_poll(). */
+ * Signals are emulated (docs/NATIVE_COMPAT.md): delivery happens at safe points, see nxc_signal_poll(). */
 #ifndef NEXVYN_COMPAT_SYS_SIGNAL_H
 #define NEXVYN_COMPAT_SYS_SIGNAL_H
 

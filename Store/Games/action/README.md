@@ -1,7 +1,5 @@
 # action
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="ash-protocol/icon.png" width="32"> | [Ash Protocol](ash-protocol/) | 1.5.0 | Six chapters. Four weapons. One last order. |

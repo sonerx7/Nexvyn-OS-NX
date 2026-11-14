@@ -1,7 +1,5 @@
 # Game of Life (C)
 
-**English** · [Türkçe](README.tr.md)
-
 Conway's Game of Life: paint cells, run, step; the board is saved when you close the app.
 
 | | |

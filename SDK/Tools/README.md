@@ -1,7 +1,5 @@
 # PC tools
 
-**English** · [Türkçe](README.tr.md)
-
 Tools for people who make Nexvyn OS apps and games on a PC. Each is plain Python 3.8+.
 
 | Tool | What it does | Needs |
@@ -10,7 +8,7 @@ Tools for people who make Nexvyn OS apps and games on a PC. Each is plain Python
 | [`icon/`](icon/README.md) | Key-art store icons from your game's own model: `hero_render.py` renders the model with key and rim lights on a transparent background, `finish_icon.py` builds the background, glow, rim, vignette and every size with a 256 / 128 / 64 px preview. Styles `clean` (default), `bold`, `loud`; a title only when asked for | Pillow; `hero_render.py` runs in a free, open-source 3D suite from the command line (see its README) |
 | [`textures/`](textures/README.md) | PBR texture sets for the pbr renderer (SDK 1.9): `check` (sets, sizes, missing maps), `resize` (scale maps down, originals kept), `orm` (pack glTF ORM), `smoothness` (MetallicSmoothness to roughness and metallic), `flipgreen` (-Y to +Y normal maps: green down to green up) | Pillow |
 | [`theme/`](theme/README.md) | Theme packs: `themecheck.py` checks `theme.json`, the limits and WCAG AA contrast; `--pack` writes the `.nxvtheme` | nothing but Python |
-| [`nxvtest/`](nxvtest/README.en.md) | Automatic app tests in an emulator: installs Nexvyn OS on a fresh virtual SD card, launches your app, runs a scenario (waits, clicks, keys, screenshots), checks logs, crashes, "not responding" and screenshots, prints PASS / FAIL with an exit code for CI; guide: [AutomatedTesting](../Guides/AutomatedTesting.en.md) | Python 3.9+ and an emulator that already runs homebrew |
+| [`nxvtest/`](nxvtest/README.md) | Automatic app tests in an emulator: installs Nexvyn OS on a fresh virtual SD card, launches your app, runs a scenario (waits, clicks, keys, screenshots), checks logs, crashes, "not responding" and screenshots, prints PASS / FAIL with an exit code for CI; guide: [AutomatedTesting](../Guides/AutomatedTesting.md) | Python 3.9+ and an emulator that already runs homebrew |
 
 C / C++ apps use the separate command line `nxv-native` of the [Native SDK kit](../Languages/c/native-kit/README.md) (`python tools/nxv_native ...` from the kit folder).
 

@@ -10,7 +10,7 @@ project(@NAME@ VERSION 1.0.0 LANGUAGES C CXX)
 #   python fetch.py
 #   nxv-native build <dir> --sysroot <sysroot with windowed/>      -> build/@NAME@.nxvmod
 #   nxv-native package <dir>                                        -> build/@NAME@.nxvapp
-# Ship the upstream licence and source link inside the package (docs/NATIVE_GUIDE.en.md, "Ports"): a port is its own
+# Ship the upstream licence and source link inside the package (docs/NATIVE_GUIDE.md, "Ports"): a port is its own
 # program, installed from the App Market, never linked into Nexvyn OS. No BIOS, firmware, system files or game data.
 if(NOT DEFINED NEXVYN_KIT)
   get_filename_component(NEXVYN_KIT "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)

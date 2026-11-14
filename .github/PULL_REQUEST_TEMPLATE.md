@@ -1,6 +1,6 @@
 <!-- Nexvyn OS App Market submission. Fill it in in English or Turkish. / İngilizce ya da Türkçe doldurun.
-     Guide / Rehber: SDK/Publishing/PUBLISHING.en.md · PUBLISHING.tr.md
-     The maintainer reviews every submission with SDK/Publishing/REVIEW.en.md before it is published. -->
+     Guide / Rehber: SDK/Publishing/PUBLISHING.md · PUBLISHING.md
+     The maintainer reviews every submission with SDK/Publishing/REVIEW.md before it is published. -->
 
 ## Item / Öğe
 

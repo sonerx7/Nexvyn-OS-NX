@@ -1,8 +1,6 @@
 # Test demo
 
-**English** · [Türkçe](README.tr.md)
-
-Two tiny Lua apps and three scenarios for the automatic test tool [`nxvtest`](../../Tools/nxvtest/README.en.md).
+Two tiny Lua apps and three scenarios for the automatic test tool [`nxvtest`](../../Tools/nxvtest/README.md).
 
 | Path | What it is |
 |---|---|

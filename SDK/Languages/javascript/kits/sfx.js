@@ -20,7 +20,7 @@
 //   // sfx.ready() / sfx.progress() for a loading screen; then sfx.play("coin"), sfx.music("theme"),
 //   // sfx.ambience("wind"), sfx.setBus("music", 0.4)
 //
-// Guide (how to make sounds feel good, levels, variation): SDK/Guides/SOUND_DESIGN.en.md.
+// Guide (how to make sounds feel good, levels, variation): SDK/Guides/SOUND_DESIGN.md.
 
 const S = {
   rate: 22050,      // samples per second of the files (the mixer resamples to 48 kHz)

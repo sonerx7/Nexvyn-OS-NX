@@ -1,5 +1,5 @@
 /* Nexvyn Native SDK - JIT code memory of a stand-alone .nro (exclusive mode); fault handler and guard pages are
- * windowed-only (NATIVE_KIT.en.md 3.2.11). Code memory comes from libnx's Jit (CodeMemory: an rw and an rx
+ * windowed-only (NATIVE_KIT.md 3.2.11). Code memory comes from libnx's Jit (CodeMemory: an rw and an rx
  * view of the same pages, both mapped for the buffer's whole life; transitions only clean the caches). */
 #include <stdlib.h>
 #include <string.h>

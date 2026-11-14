@@ -1,7 +1,5 @@
 # Particles Demo
 
-**English** · [Türkçe](README.tr.md)
-
 Five emitter presets (fire, fountain, sparks, snow, magic), tap bursts and gravity wells placed with a finger.
 
 | | |

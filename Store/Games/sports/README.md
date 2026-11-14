@@ -1,7 +1,5 @@
 # sports
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="bowling/icon.png" width="32"> | [Bowling](bowling/) | 1.1.0 | Ten frames of ten-pin bowling |

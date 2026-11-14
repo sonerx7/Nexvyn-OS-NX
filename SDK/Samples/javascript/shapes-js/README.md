@@ -1,7 +1,5 @@
 # Shapes JS Demo
 
-**English** · [Türkçe](README.tr.md)
-
 The seven g3d primitives on a turntable in JavaScript: textures, wireframe, clickable labels and an intro that runs with async/await.
 
 | | |

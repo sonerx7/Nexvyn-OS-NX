@@ -1,7 +1,5 @@
 # nxv
 
-**English** · [Türkçe](README.tr.md)
-
 A single-file command line tool for Nexvyn OS app developers. Python 3.8+ is enough, no extra packages. Given the
 path of a Nexvyn OS source checkout with `--sdk` (or the `NEXVYN_SDK` environment variable) it also calls the official
 checkers, the Java compiler, the icon painter and the signer.
@@ -14,6 +12,7 @@ python SDK/Tools/nxv/nxv.py <command> ...          # from the root of this repos
 
 | Command | Description |
 |---|---|
+| `create <name> [--profile calculator\|utility\|network\|data\|game\|emulator\|port] [--runtime lua\|js\|python\|native] [--id ID] [--dir DIR]` | **Smart Creator (SDK 2.0 / N2):** Recommends the optimal runtime from the 4 official primary tracks (Lua 5.4.7, QuickJS-ng ES2023, CPython 3.12, Native C/C++) based on the workload profile and scaffolds a ready-to-pack project using the `nxui` Retained UI engine and `"targetSdk": "2.0"`. |
 | `new <lang> <name> [--id ID] [--author NAME] [--dir DIR] [--store]` | Copies `SDK/Languages/<lang>/template` as `<Name>.nxvapp` and fills in the `id` (default `com.<author>.<name>`), the name and the author. `--store`: the App Market layout `<slug>/source/` + `store.json` (with `--kind`, `--features 3d,online`, `--players 1-4` filled in), `README.md`, `screenshots/`. Languages: `lua`, `js`, `py`, `sq`, `c`, `java`. |
 | `check <bundle>... [--sdk PATH] [--frames N] [-v]` | `app.json` (id, names, version, category, runtime, `minSdk`, permissions, `shareTargets`, window), the main file, the icon (PNG, 128/256), the Java jar and main class, `lang/*.json`, `TR()` keys, permissions used but not declared, file limits, and, when the bundle is a `source/` folder, `store.json` (English required, other languages optional; `kind`, `tags`, `features`, `players`, `themeStyle`, `shots` steps) and `README.md` / `screenshots/`. With `--sdk` it also runs the language's official checker. |
 | `build <bundle> --sdk PATH` | Java: `src/**/*.java` → `app.jar`. The other languages have no build step. |

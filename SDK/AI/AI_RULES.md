@@ -1,14 +1,14 @@
-# Nexvyn app rules for AI assistants
+# Nexvyn app rules for AI assistants (N2 Architecture — SDK 2.0 / 1.13 & Native SDK 1.2)
 
-Read this file before writing any Nexvyn app. Short rules first, reasons after. For the full guide read
-`SDK/Guides/DevelopmentGuide.md`. For every API name and signature read `SDK/Reference/API_INDEX.md`.
+Read this file before writing any Nexvyn app. Short rules first, reasons after. For the full SDK contract read
+`SDK/Reference/SDK.md` and `SDK/AI/llms.txt`.
 
 ## 1. MUST
 
-1. Read `app.json` first. Set `minSdk` to the newest SDK function you use. Set `targetSdk` only after you test on the new system.
-2. Use only names that appear in `SDK/Reference/API_INDEX.md`. If a name is not there, do not invent it. Say so.
-3. Pick the runtime with the decision tree in section 3. New apps use Lua, JavaScript, Python or C.
-4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to the version of the newest `nxn_*` function you call. Test every optional call with `nxn_caps_get` bits first.
+1. Read `app.json` first. Set `minSdk` to the newest SDK function you use. Set `targetSdk` to `"2.0"` (or `"1.13"`) for new N2 apps.
+2. Use only names that appear in `SDK/Reference/SDK.md` / `SDK/AI/system-prompt.md`. If a name is not there, do not invent it. Say so.
+3. Pick the runtime from the **4 Official Primary Runtimes** in section 3: **Lua 5.4.7** (`"lua"`), **JavaScript ES2023** (`"js"`), **Python 3.12** (`"python3"` or `"python"` with `"targetSdk": "2.0"`), or **Native C/C++** (`"native"`).
+4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to `"1.2"` (or the version of the newest `nxn_*` function you call). Test every optional call with `nxn_caps_get` bits first. You can use `nxn_nxui_*` (`#include <nexvyn/nxn_nxui.h>`) for retained UI in native apps as well as `nxui.*` in Lua, JS and Python.
 5. Keep all user-visible text in English and in `lang/<code>.json`. Call `TR(key)` (script) or `nxn_tr(key)` (native). Add `lang/en.json` before you use `TR`.
 6. Make saves atomic: write a temporary file, then rename it over the real one. Keep the previous save until the new one is complete.
 7. Do file, network and folder-scan work off the UI thread: `timer`, `net.*`, `fs.unzip`, `g3d.loadModel`, or a background thread that never holds the UI lock.
@@ -40,20 +40,19 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 14. Do not write to `romfs:/` or to the system folders. Do not call `sys.launch` or `nxv://` links without the `launch` permission.
 15. Do not leave debug screens, test buttons or self-tests in the release build.
 
-## 3. Which runtime?
+## 3. Which runtime? (4 Official Primary Tracks)
 
 ```
-Need native C/C++ code, an existing C/C++ engine, SDL2 or raw GL/NexGFX?
-  yes -> Native (C/C++, "runtime": "native", minNative). Needs the Native SDK kit.
-  no  -> Need a small C-only app with no build step?  -> C (TinyCC at launch, "runtime": "c", minSdk >= 1.5)
-         Need a 2D game with scenes, sprites, tilemaps?  -> Lua (nexvyn.game is Lua only)
-         Need 3D voxels (g3d.voxels)?  -> JavaScript (voxels are JavaScript only)
-         Need the most examples and easiest reading?  -> Lua (default)
-         Team knows Python and wants pocketpy / CPython 3.12?  -> Python ("python" or "python3")
-         Web-style async code, Promises, JSON-heavy app?  -> JavaScript
+Need native C/C++ code, an existing C/C++ engine, SDL2, emulators, or raw GL/NexGFX?
+  yes -> Native C/C++ ("runtime": "native", "minNative": "1.2", .nxvmod). Uses SDK/Languages/c/native-kit.
+  no  -> Need a 2D game with scenes, sprites, tilemaps?  -> Lua 5.4.7 (nexvyn.game is Lua only)
+         Need 3D voxels (g3d.voxels)?  -> JavaScript ES2023 (voxels are JavaScript only)
+         Need the fastest startup, lowest RAM, utilities, or 3D PBR apps?  -> Lua 5.4.7 (default)
+         Need full Python 3.12 stdlib, data analysis, or scientific math?  -> Python 3.12 ("runtime": "python3" or "targetSdk": "2.0")
+         Need web-style async code, Promises, REST/WebSocket, JSON-heavy feeds?  -> JavaScript ES2023 ("runtime": "js")
 ```
 
-Lua is the default for new script apps. Use the same names in every script language; only syntax and callbacks differ.
+Lua 5.4.7 is the default for new script apps. All script tracks share `gfx`, `ui`, `nxui` (Retained UI), `g3d` (NexGFX PBR), `fs`, `store`, `net`, `sys`, `audio`, `input`, `timer` and `TR`.
 
 ## 4. Compatibility checklist (run before every release)
 
@@ -93,7 +92,7 @@ Each step ends with a visible result. Repeat the loop after every change.
 1. **Build (native only).** Use the Native SDK kit command `nxv-native` from the kit folder (`SDK/Languages/c/native-kit` in the kit). Script apps have no build step.
 2. **Package.** Pack the app folder into a `.nxvapp` with the SDK packer (`python tools/nxvapp_pack.py MyApp.nxvapp`, as in the SDK reference section 1). Native and library packages use the same packer with the kit's options. Check that `manifest.sha256` is written.
 3. **Install for test.** Copy the `.nxvapp` folder or zip to the SD card folder the SDK reference names (`sdmc:/NexvynOS/Applications/`). Reopen the Launcher.
-4. **Write a scenario.** One JSON file in your project's `tests/` folder. See `SDK/Guides/AutomatedTesting.en.md` section 3. Add `expect_log` lines your app prints at start and at each action.
+4. **Write a scenario.** One JSON file in your project's `tests/` folder. See `SDK/Guides/AutomatedTesting.md` section 3. Add `expect_log` lines your app prints at start and at each action.
 5. **Run the test.** `python SDK/Tools/nxvtest/nxvtest.py run tests/start.json`. Only one emulator run at a time. Exit code 0 is PASS, 1 is FAIL, 2 is a setup problem.
 6. **Read the result.** Open `result.json` in the run folder. Check `result`, every `checks[*].ok` and `detail`, `not_responding`, `crash_lines`, `app_errors`. Read `app.log` for your own prints.
 7. **Look at screenshots.** Open one or two key screenshots (start screen and the screen after the main action). Do not scan every file.
@@ -110,6 +109,6 @@ Notes for the loop:
 
 - `SDK/Guides/DevelopmentGuide.md`: full guide (in progress).
 - `SDK/Reference/API_INDEX.md`: every public name, signature, version and runtime.
-- `SDK/Guides/AutomatedTesting.en.md`: test tool setup and scenarios.
+- `SDK/Guides/AutomatedTesting.md`: test tool setup and scenarios.
 - `SDK/Samples/test-demo/`: a small app and test scenarios for the test tool.
 - `SDK/Guides/README.md`: list of all guides.

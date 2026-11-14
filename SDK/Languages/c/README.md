@@ -1,7 +1,5 @@
 # Nexvyn OS in C
 
-**English** · [Türkçe](README.tr.md)
-
 Nexvyn OS compiles the bundle's `.c` files **on the console** with TinyCC when the app opens; there is no build step
 on the PC. The API is the same as in the other languages with an underscore instead of the dot
 (`gfx.rect` → `gfx_rect`). The header is `<nexvyn.h>` ([SDK/c/include](../../Reference/README.md)). Needs SDK 1.5.
@@ -55,5 +53,5 @@ function or a wrong argument type fails here. It also checks the `TR` keys and t
 
 ## More
 
-- SDK: [SDK.md](../../Reference/SDK.en.md) section 14 and `nexvyn.h` · Guide: [C_APPS.md](../../Guides/C_APPS.en.md)
+- SDK: [SDK.md](../../Reference/SDK.md) section 14 and `nexvyn.h` · Guide: [C_APPS.md](../../Guides/C_APPS.md)
 - Samples: [Samples/c](../../Samples/README.md#c) (Hello C, Game of Life, Tip Splitter)

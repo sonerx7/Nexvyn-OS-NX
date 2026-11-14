@@ -1,7 +1,5 @@
 # Dice Roller (Java)
 
-**English** · [Türkçe](README.tr.md)
-
 Roll one to six dice from d4 to d20, hold some, see your last twelve rolls.
 
 | | |

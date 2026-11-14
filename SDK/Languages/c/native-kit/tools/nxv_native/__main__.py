@@ -66,7 +66,7 @@ def run_dkp(script, cwd=None):
         full = "export DEVKITPRO=/opt/devkitpro; export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitA64/bin:$PATH; " + script
         return subprocess.call([DKP_BASH, "-lc", full], cwd=cwd)
     if not os.environ.get("DEVKITPRO"):
-        die("devkitPro not found (set DEVKITPRO or DKP_BASH); see docs/NATIVE_KIT.en.md")
+        die("devkitPro not found (set DEVKITPRO or DKP_BASH); see docs/NATIVE_KIT.md")
     return subprocess.call(["sh", "-c", script], cwd=cwd)
 
 
@@ -329,7 +329,7 @@ def configure_and_build(a, d):
 
 
 def uses_sdl(d):
-    """True when the project's sources include SDL (the SDL2 driver for windows comes with W1, docs/plans/NATIVE_SDK_PLANI.md)."""
+    """True when the project's sources include SDL (the SDL2 driver for windows comes with W1, docs/reference/plans/NATIVE_SDK_PLANI.md)."""
     for root, _dirs, files in os.walk(os.path.join(d, "src")):
         for fn in files:
             if fn.endswith((".c", ".cc", ".cpp", ".h", ".hpp")):

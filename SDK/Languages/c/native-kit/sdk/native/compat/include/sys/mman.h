@@ -1,5 +1,5 @@
 /* Nexvyn compat: <sys/mman.h>. Memory comes from the heap (4 KiB aligned); protections are advisory, there is no
- * guard page and PROT_EXEC is refused (JIT needs the future JIT service). See docs/NATIVE_COMPAT.en.md. */
+ * guard page and PROT_EXEC is refused (JIT needs the future JIT service). See docs/NATIVE_COMPAT.md. */
 #ifndef NEXVYN_COMPAT_SYS_MMAN_H
 #define NEXVYN_COMPAT_SYS_MMAN_H
 

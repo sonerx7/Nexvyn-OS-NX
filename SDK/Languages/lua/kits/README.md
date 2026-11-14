@@ -1,15 +1,13 @@
 # Game kits for Lua
 
-**English** · [Türkçe](README.tr.md)
-
 Two dependency-free files to copy next to your game's `main.lua`, and a demo app ("Forge") that uses both. Run this
 folder as an app to see and hear them (Studio: open the folder, **Run**; or copy it to
 `sdmc:/NexvynOS/Applications/KitDemo.nxvapp/`).
 
 | File | What it gives | Guide |
 |---|---|---|
-| [`sfx.lua`](sfx.lua) | Sound design: layered procedural recipes (impact, coin, jump, laser, explosion, power-up, hurt, whoosh, UI clicks, footsteps on five surfaces, jingles, ambience beds and details, music loops from a chord progression) rendered once into WAV files in the data folder; variants, buses, ducking, voice limits, cooldowns | [SOUND_DESIGN.en.md](../../../Guides/SOUND_DESIGN.en.md) |
-| [`juice.lua`](juice.lua) | Graphics, UI and feel: easing and tweens, springs, damping, screen shake, hit-stop, slow motion, flashes, glowing particles, floating text, generated glow / vignette / grain / shadow / ray textures, multi-stop gradients, palettes, styled titles and letter spacing, panels with depth, buttons with states, transitions, 2D and 3D cameras, 3D light moods | [GAME_FEEL.en.md](../../../Guides/GAME_FEEL.en.md) |
+| [`sfx.lua`](sfx.lua) | Sound design: layered procedural recipes (impact, coin, jump, laser, explosion, power-up, hurt, whoosh, UI clicks, footsteps on five surfaces, jingles, ambience beds and details, music loops from a chord progression) rendered once into WAV files in the data folder; variants, buses, ducking, voice limits, cooldowns | [SOUND_DESIGN.md](../../../Guides/SOUND_DESIGN.md) |
+| [`juice.lua`](juice.lua) | Graphics, UI and feel: easing and tweens, springs, damping, screen shake, hit-stop, slow motion, flashes, glowing particles, floating text, generated glow / vignette / grain / shadow / ray textures, multi-stop gradients, palettes, styled titles and letter spacing, panels with depth, buttons with states, transitions, 2D and 3D cameras, 3D light moods | [GAME_FEEL.md](../../../Guides/GAME_FEEL.md) |
 | `main.lua`, `app.json`, `lang/`, `icon.png` | the demo | |
 
 ```lua

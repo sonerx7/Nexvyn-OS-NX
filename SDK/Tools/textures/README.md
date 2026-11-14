@@ -1,7 +1,5 @@
 # Texture tool
 
-**English** · [Türkçe](README.tr.md)
-
 `textures.py` prepares PBR texture sets for the Nexvyn OS pbr renderer (SDK 1.9): textures from asset kits, texture
 generators and 3D programs usually arrive too large, in another channel layout or with DirectX-style normal maps.
 Python 3.8+ with Pillow (`python -m pip install Pillow`).
@@ -28,4 +26,4 @@ python textures.py flipgreen <normal.png> <out.png>       DirectX normal map (gr
 
 Sizes on the console: base colour and normal 1024 px, the other maps 512 px. Every map is loaded at full size, so
 scale them down before you ship. The whole path from a generated model to the game:
-[AI-assisted workflow](../../Guides/AI_WORKFLOW.en.md).
+[AI-assisted workflow](../../Guides/AI_WORKFLOW.md).

@@ -1,7 +1,5 @@
 # Nexvyn OS in Lua
 
-**English** · [Türkçe](README.tr.md)
-
 Lua 5.4 is Nexvyn OS's main language: the fastest scripting runtime, the `nexvyn.game` 2D engine, Studio's sprite,
 tilemap and scene editors and the most samples. It has been there since SDK 1.0.
 
@@ -60,11 +58,11 @@ presses. `nxv check --sdk <checkout>` runs the same checker.
 `sfx.lua` (sound design: layered procedural recipes rendered to WAV once, variants, buses, ducking, ambience, music
 loops) and `juice.lua` (easing and tweens, shake, hit-stop, glowing particles, vignette, gradients, styled titles,
 panels and buttons with depth, transitions, 2D / 3D cameras, 3D light moods). Guides:
-[sound design](../../Guides/SOUND_DESIGN.en.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.en.md).
+[sound design](../../Guides/SOUND_DESIGN.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.md).
 
 ## More
 
-- SDK reference: [SDK.md](../../Reference/SDK.en.md) sections 1-10 (Lua), 8c (`nexvyn.game`), 8b (`g3d`)
-- Guides: [DEVELOPER_GUIDE.md](../../Guides/DEVELOPER_GUIDE.en.md), [GAME_ENGINE.md](../../Guides/GAME_ENGINE.en.md),
-  [LUA_CAPABILITIES.md](../../Guides/LUA_CAPABILITIES.en.md)
+- SDK reference: [SDK.md](../../Reference/SDK.md) sections 1-10 (Lua), 8c (`nexvyn.game`), 8b (`g3d`)
+- Guides: [DEVELOPER_GUIDE.md](../../Guides/DEVELOPER_GUIDE.md), [GAME_ENGINE.md](../../Guides/GAME_ENGINE.md),
+  [LUA_CAPABILITIES.md](../../Guides/LUA_CAPABILITIES.md)
 - Samples: [Samples/lua](../../Samples/README.md#lua)

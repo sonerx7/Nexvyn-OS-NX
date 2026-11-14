@@ -1,7 +1,5 @@
 # Themes
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="aurora/icon.png" width="32"> | [Aurora](aurora/) | 1.1 | Northern lights over a still lake |

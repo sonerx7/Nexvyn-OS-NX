@@ -1,4 +1,4 @@
-"""Host import set of windowed native apps (NATIVE_KIT.en.md, section 3.2.2).
+"""Host import set of windowed native apps (NATIVE_KIT.md, section 3.2.2).
 
 A windowed app (.nxvmod) runs inside Nexvyn OS's process. Its undefined symbols are resolved against one fixed table
 that Nexvyn OS links in: the nxn_* functions, the C library (newlib libc, libm, the POSIX layer of libsysbase) and a
@@ -222,7 +222,7 @@ def cmd_gen():
 
 
 def write_list(sections):
-    lines = ["# Host import set of windowed native apps, generation 1 (NATIVE_KIT.en.md 3.2.2).",
+    lines = ["# Host import set of windowed native apps, generation 1 (NATIVE_KIT.md 3.2.2).",
              "# ADD-ONLY: a name is never removed (modules built against it would stop loading). Edit with",
              "# `python tools/nxwin_imports.py gen` (adds what the toolchain has), then `table`.", ""]
     for sec in ("nxn", "host", "libc", "libm", "libsysbase", "libnx", "compat", "net") + tuple(

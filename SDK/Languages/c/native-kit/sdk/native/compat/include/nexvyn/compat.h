@@ -3,7 +3,7 @@
  * The POSIX calls themselves (mmap, pipe, poll, sigaction, getcontext, ...) keep their normal names and headers
  * (<sys/mman.h>, <ucontext.h>, <sys/eventfd.h>, <dlfcn.h>, <sys/utsname.h>). This header holds what has no POSIX name:
  * setup, signal polling, coroutines, path mapping and the dlsym registry. Plain C, usable from C++.
- * Guide: docs/NATIVE_COMPAT.en.md. */
+ * Guide: docs/NATIVE_COMPAT.md. */
 #ifndef NEXVYN_COMPAT_H
 #define NEXVYN_COMPAT_H
 

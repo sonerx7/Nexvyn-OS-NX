@@ -1,7 +1,5 @@
 # Security policy
 
-**English** · [Türkçe](SECURITY.tr.md)
-
 ## Supported versions
 
 Security fixes go into the newest stable release of Nexvyn OS and the current SDK. Beta releases (pre-releases) are

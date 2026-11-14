@@ -1,6 +1,6 @@
 /* NexGFX backend table: how the kit's ngfx_* shell (sdk/native/nexgfx/nexgfx_native.cpp) reaches a renderer that Nexvyn OS
  * provides. Apps do not call this; they call nexgfx_native.h, whose functions and behaviour stay the same whichever renderer
- * answers (NATIVE_KIT.en.md 3.2.5 "NexGFX in a native app").
+ * answers (NATIVE_KIT.md 3.2.5 "NexGFX in a native app").
  *
  * Rules: the import name, NXN_NGFX_BACKEND_GEN and the table layout are part of the frozen-to-be ABI.
  *  - nxn_ngfx_backend(gen) returns the table of generation `gen`, or NULL: the system has no backend, the user turned it off

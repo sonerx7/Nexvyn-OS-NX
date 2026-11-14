@@ -1,7 +1,5 @@
 # media
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="modeler/icon.png" width="32"> | [3D Modeler](modeler/) · ships with Nexvyn OS | 1.0 | Low-poly 3D modeling, OBJ and STL |

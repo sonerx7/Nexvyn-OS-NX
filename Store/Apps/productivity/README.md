@@ -1,7 +1,5 @@
 # productivity
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="aichat/icon.png" width="32"> | [AI Chat](aichat/) · ships with Nexvyn OS | 1.0 | Claude, Gemini and GPT on your Switch |

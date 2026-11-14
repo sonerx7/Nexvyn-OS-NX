@@ -67,7 +67,7 @@ int nxc_fd_is_virtual(int fd);
 
 
 #if NXC_WINDOWED
-/* In a window (the module is linked -fPIC, win/nxc_win.c; docs/NATIVE_COMPAT.en.md "In a window"): all state of the layer
+/* In a window (the module is linked -fPIC, win/nxc_win.c; docs/NATIVE_COMPAT.md "In a window"): all state of the layer
  * lives in the app's module, so it belongs to one app, and it is released when the app ends (nxc_shutdown runs from
  * atexit). */
 void nxc__win_register_exit(void); /* once: atexit(nxc_shutdown); called when something needs cleaning up later */

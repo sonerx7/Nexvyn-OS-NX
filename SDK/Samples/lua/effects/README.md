@@ -1,7 +1,5 @@
 # Effects Demo
 
-**English** · [Türkçe](README.tr.md)
-
 Three classic demoscene effects drawn with nothing but `gfx.rect`, `gfx.line` and colours: plasma, tunnel and starfield, with four palettes and a cell size control.
 
 | | |

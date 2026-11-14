@@ -1,7 +1,5 @@
 # Theme template
 
-**English** · [Türkçe](README.tr.md)
-
 A minimal valid theme pack. Copy this folder, then:
 
 1. Change `id` (reverse domain, one dot at least), `name`, `description`, `author` and the colors in `theme.json`.
@@ -10,4 +8,4 @@ A minimal valid theme pack. Copy this folder, then:
 4. Open the `.nxvtheme` in Files on the console and choose Install and Apply.
 
 Add `icons/<app id>.png` (128 px), `sounds/*.wav`, `wallpapers`, `wallpaperDark` and `preview.jpg` when you want them.
-Everything must be original work. The full guide: [Making themes](../../../Guides/THEMES.en.md).
+Everything must be original work. The full guide: [Making themes](../../../Guides/THEMES.md).

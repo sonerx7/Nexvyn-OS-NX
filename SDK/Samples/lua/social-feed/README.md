@@ -1,7 +1,5 @@
 # Social Feed
 
-**English** · [Türkçe](README.tr.md)
-
 A photo feed, a photo grid and a vertical clip pager: the building blocks of feed, photo and short-video apps on the
 SDK 1.9 functions. About 250 lines of commented Lua.
 

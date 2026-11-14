@@ -1,4 +1,4 @@
-/* Nexvyn Native SDK - JIT code memory, fault handler, guard pages (NATIVE_KIT.en.md 3.2.11).
+/* Nexvyn Native SDK - JIT code memory, fault handler, guard pages (NATIVE_KIT.md 3.2.11).
  *
  * For recompilers (emulators) and fastmem. Every path here is optional: check the capability bit first and keep an
  * interpreter / slow path as the fallback. Inside Nexvyn OS each path is behind a user setting that is off by default

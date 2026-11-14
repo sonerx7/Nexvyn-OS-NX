@@ -1,7 +1,5 @@
 # Gestures Demo
 
-**English** · [Türkçe](README.tr.md)
-
 Pinch, rotate and two-finger pan that keep the point between the fingers in place. On the second tab you tilt the console to roll a marble that rumbles when it hits a wall.
 
 | | |

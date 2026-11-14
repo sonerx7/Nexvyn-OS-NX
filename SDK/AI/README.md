@@ -1,52 +1,36 @@
-# Building Nexvyn OS apps with AI
+# Building Nexvyn OS Apps & Games with AI (SDK 2.0 / 1.13)
 
-**English** · [Türkçe](README.tr.md)
+This folder provides complete, zero-hallucination context packs, architectural rules, language packs and task prompts
+for AI coding agents (Cursor, Windsurf, Claude Code, GitHub Copilot, Antigravity, ChatGPT, Claude, Gemini, and local
+LLMs).
 
-This folder holds ready-made context packs and prompts for writing Nexvyn OS apps with AI chat assistants, AI
-coding assistants in an editor, or local models. Assistants do not know the SDK; without these files they invent functions that
-do not exist. The packs carry the same facts as `SDK/Reference/SDK.en.md`, only shorter.
+Without these files, AI assistants guess browser, Node.js, LÖVE or standard OS APIs that do not exist on Nexvyn OS.
+With these files, an AI assistant can generate complete, 60 fps apps and games across all **4 Official Primary
+Runtimes** (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, and **Native C/C++ ABI v1**) using the **NXUI
+Retained UI Engine (`nxui.*` / `nxn_nxui_*`)** and **NexGFX PBR 3D Renderer (`g3d.*`)**.
 
-## Files
-
-Every file comes in two versions: English `X.en.md` and Turkish `X.tr.md`. Both carry the same facts and rules.
+## Context Files
 
 | File | Purpose |
 |---|---|
-| [system-prompt.en.md](system-prompt.en.md) · [Turkish](system-prompt.tr.md) | The main context pack (~8k tokens, SDK 1.12): bundle layout, `app.json`, enforced permissions, program structure, rules (3 s, 64 MB, 60 fps, `TR()`), a summary of the whole API, language differences, the store format |
-| [languages/](languages/) | Language packs: [lua](languages/lua.en.md), [javascript](languages/javascript.en.md), [python](languages/python.en.md), [squirrel](languages/squirrel.en.md), [c](languages/c.en.md), [java](languages/java.en.md) (Turkish: `.tr.md`): skeleton, language rules, checker |
-| [tasks/](tasks/) | Task prompts: [make a game](tasks/make-game.en.md), [make a 3D game with models and the pbr renderer](tasks/make-3d-game.en.md), [make a feed, photo, short-video or chat app](tasks/make-social-app.en.md), [the store icon (key art)](tasks/store-icon.en.md), [make a utility](tasks/make-utility.en.md), [make a theme pack](tasks/make-theme.en.md), [port a Lua game to JS](tasks/port-lua-to-js.en.md), [add a UI language](tasks/add-language.en.md), [write store.json and the screenshot script](tasks/store-listing.en.md), [fix a checker failure](tasks/fix-lua-check.en.md), [test the app in the emulator until it passes](tasks/test-on-emulator.en.md) (Turkish: `.tr.md`) |
-| [checklist.en.md](checklist.en.md) · [Turkish](checklist.tr.md) | What the assistant must verify before answering |
+| **[llms.txt](llms.txt)** | **Master AI Index & Quick Contract:** Single-file architecture map, runtime selection matrix, `nxui.*` & `g3d.*` cheat sheet, and verification commands for LLM agents. |
+| **[system-prompt.md](system-prompt.md)** | **Full SDK 2.0 / 1.13 System Prompt (~8k tokens):** Bundle layout, `app.json`, enforced permissions, lifecycle callbacks, hard limits (3 s / 10 s, 64 MB, 60 fps, `TR()`), `gfx`, `ui`, **`nxui` (Retained UI)**, `g3d` (NexGFX PBR & skeletal models), `nexvyn.game`, `sfx` & `juice` kits, `fs`, `store`, `net`, `sys`, `audio`, and store publishing format. |
+| **[AI_RULES.md](AI_RULES.md)** | **Strict Engineering Rules:** MUST / MUST NOT rules, runtime decision tree, Native C/C++ ABI v1 & Dear ImGui rules, and the build-package-test loop. |
+| **[checklist.md](checklist.md)** | **Pre-Answer Verification Checklist:** Every item the AI must verify before delivering code. |
+| **[languages/](languages/)** | Per-language packs: [lua.md](languages/lua.md) (Lua 5.4.7), [javascript.md](languages/javascript.md) (QuickJS-ng ES2023), [python.md](languages/python.md) (CPython 3.12 & PocketPy), [native.md](languages/native.md) (Native C/C++ `.nxvmod` ABI v1), [c.md](languages/c.md) (TinyCC C), [squirrel.md](languages/squirrel.md), [java.md](languages/java.md). |
+| **[tasks/](tasks/)** | Ready-to-fill task prompts: [3D PBR game](tasks/make-3d-game.md), [2D game](tasks/make-game.md), [social/feed/media app](tasks/make-social-app.md), [utility app](tasks/make-utility.md), [store key-art icon](tasks/store-icon.md), [theme pack](tasks/make-theme.md), [port Lua to JS](tasks/port-lua-to-js.md), [add UI language](tasks/add-language.md), [store listing](tasks/store-listing.md), [fix checker failure](tasks/fix-lua-check.md), [test on emulator](tasks/test-on-emulator.md). |
 
-## Which language to use
+## How to Use with Any AI Assistant
 
-- **If you talk to the assistant in English**, or use a small local model, give it the English files (small models
-  usually follow English instructions more strictly).
-- **If you talk to it in Turkish**, you can give it the `.tr.md` files: the instructions, examples and task prompts
-  are in Turkish. Both system prompts tell the model to answer in the language the user writes in, so a question in
-  any language with the English context gets an answer in that language.
-- Do not mix them: the system prompt, the language pack, the task prompt and the checklist should be in the same
-  language.
-- API names, `app.json` keys, file names and checker commands are the same in both versions. The app itself is in
-  English (`lang/en.json`, required) plus every language you ask for (`lang/<code>.json`); Turkish is not required.
-
-## How to use them
-
-1. **Give the context.** `system-prompt.en.md` (or `system-prompt.tr.md`) + the pack of your programming language:
-   - **Chat assistants with projects or knowledge files:** add both files to the project (or paste them into the
-     first message). With a long context, add the whole `SDK/Reference/SDK.en.md` as well.
-   - **Coding assistants in an editor or a terminal:** keep the files in the repository and point the assistant's
-     instruction file (rules, memory or "custom instructions") at them; it can then run the checker itself.
-   - **Local models (7-14B):** put only the system prompt + the language pack into the system prompt and set the
-     context length to at least 8k (16k is better). Small models mix up the language rules: prefer Lua or JavaScript and check every
-     answer.
-   - **On the console:** the **Ask AI** panel in Nexvyn OS Studio uses the API keys from AI Chat; attach the relevant
-     file to your question. The panel never edits your files itself.
-2. **Ask for the task.** Copy a prompt from `tasks/` and fill in the `<...>` parts.
-3. **End the request** with "Before you answer, go through checklist.en.md" (or keep `checklist.en.md` in the context).
-4. **Check it.** The assistant's code must always pass the checker:
-   `python SDK/Tools/nxv/nxv.py check <folder> --sdk <Nexvyn OS checkout>`. If it fails, send the output back with the
-   [tasks/fix-lua-check.en.md](tasks/fix-lua-check.en.md) prompt.
-5. **Try it on the console.** The checkers use a mock SDK; the real test is the console.
-
-Safety: do not give the assistant API keys, passwords or personal data, and do not let it embed such values in the
-code. Store review rejects apps that collect hidden data.
+1. **Attach Context:**
+   - **IDE Agents (Cursor, Windsurf, Claude Code, Antigravity):** Point the agent at `SDK/AI/llms.txt`, `SDK/AI/system-prompt.md`, and `SDK/AI/languages/<lang>.md` (plus `SDK/Reference/SDK.md` for deep lookups).
+   - **Chat Assistants (ChatGPT, Claude, Gemini):** Upload `SDK/AI/system-prompt.md` and the chosen language pack from `SDK/AI/languages/`.
+2. **Pick one of the 4 Official Runtimes:**
+   - **Lua 5.4.7 (`"runtime": "lua"`):** Best for utilities, system tools, 2D games (`nexvyn.game`), and 3D PBR apps.
+   - **JavaScript ES2023 (`"runtime": "js"`):** Best for network/REST/WebSocket apps, social feeds, and voxel games (`g3d.voxels`).
+   - **Python 3.12 (`"runtime": "python3"` or `"targetSdk": "2.0"`):** Best for data processing, scientific tools, and standard-library heavy apps.
+   - **Native C/C++ (`"runtime": "native"`):** Best for high-performance 2D/3D engines, SDL2/OpenGL ports, and emulators (`.nxvmod`).
+3. **Scaffold & Check:**
+   - Scaffold: `python SDK/Tools/nxv/nxv.py create "My App" --profile utility --runtime lua`
+   - Validate: `python SDK/Tools/nxv/nxv.py check <bundle_folder>`
+   - Pack: `python SDK/Tools/nxv/nxv.py pack <bundle_folder>`

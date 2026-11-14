@@ -1,7 +1,5 @@
 # Beatbox Demo
 
-**English** · [Türkçe](README.tr.md)
-
 A 16-step drum machine: six synthesised drums, tempo, swing, accents, mutes, preset beats and automatic saving.
 
 | | |

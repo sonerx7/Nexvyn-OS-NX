@@ -1,7 +1,5 @@
 # racing
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="maze3d/icon.png" width="32"> | [3D Maze](maze3d/) | 1.1.0 | Find the glowing exit of ten labyrinths |

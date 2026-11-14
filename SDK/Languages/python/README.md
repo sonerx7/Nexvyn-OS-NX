@@ -1,7 +1,5 @@
 # Nexvyn OS in Python
 
-**English** · [Türkçe](README.tr.md)
-
 Python apps run on the pocketpy 2 interpreter (Python 3 syntax: classes, comprehensions, f-strings, decorators,
 `match`). The SDK modules are built in, no `import` needed. Needs SDK 1.3.
 
@@ -43,5 +41,5 @@ names fail too).
 
 ## More
 
-- SDK: [SDK.md](../../Reference/SDK.en.md) section 12 · Guide: [PY_APPS.md](../../Guides/PY_APPS.en.md)
+- SDK: [SDK.md](../../Reference/SDK.md) section 12 · Guide: [PY_APPS.md](../../Guides/PY_APPS.md)
 - Samples: [Samples/python](../../Samples/README.md#python)

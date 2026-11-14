@@ -1,7 +1,5 @@
 # Hello Python
 
-**English** · [Türkçe](README.tr.md)
-
 The built-in **Hello Python** app: a to-do list, an analog clock and live weather JSON.
 
 | | |

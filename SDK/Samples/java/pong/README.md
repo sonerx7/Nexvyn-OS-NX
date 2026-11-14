@@ -1,7 +1,5 @@
 # Pong (Java)
 
-**English** · [Türkçe](README.tr.md)
-
 Pong against the console, first to 7, on a court that scales to any window size.
 
 | | |

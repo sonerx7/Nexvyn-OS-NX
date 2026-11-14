@@ -1,7 +1,5 @@
 # 3D Scene Demo
 
-**English** · [Türkçe](README.tr.md)
-
 `g3d.custom` meshes with UVs (crates, an octagonal pedestal, a curved brick wall, a tiled floor), a sun that follows the time of day, fog, glowing lamp halos and an orbit camera.
 
 | | |

@@ -1,0 +1,64 @@
+# Language pack: JavaScript (QuickJS-ng, ES2023)
+
+Add this after `system-prompt.md` when the app is written in JavaScript.
+
+## Skeleton
+
+```js
+// main.js (an ES module, strict mode)
+import { Model } from "./model.js";      // relative imports inside the bundle; "./data.json" gives parsed JSON
+
+const model = new Model();
+
+app.load = (arg) => { model.items = store.get("items", []); };
+app.draw = (w, h) => {
+  gfx.clear(theme.bg);
+  gfx.color(theme.text);
+  gfx.text(TR("title"), 0, 24, 24, "bold", "center", w);
+  if (ui.button(TR("refresh"), 20, 70, 140, 34, "primary")) refresh();   // async, runs in the background
+};
+app.menu = () => [{ title: TR("app"), items: [{ label: TR("reset"), id: 1 }] }];
+app.onmenu = (id) => { if (id === 1) model.reset(); };
+
+async function refresh() {
+  try {
+    const data = await net.fetchJson("https://example.com/api.json");   // rejects on network / HTTP / JSON errors
+    model.items = data.items;
+  } catch (e) {
+    model.error = e.message;
+  }
+}
+```
+
+app.json: `"main": "main.js"` (or `"runtime": "js"`), `"minSdk": "1.1"`, `"permissions": ["network"]` when `net` is used.
+
+## Rules
+
+- Indexes are 0-based. `null` instead of nil. Several results are arrays: `const [w, h] = gfx.size()`,
+  `const [x, y, down, hovering] = ui.mouse()`, `const [scrollY, scrollX] = ui.beginScroll(...)`.
+- `ui.textfield(id, text, ...)` returns the new text only; `ui.submitted(id)` is true on the Enter frame.
+  `ui.row(...)` returns 0, 1 (clicked) or 2 (double-clicked).
+- Promises: every SDK call that takes a callback returns a Promise without it: `await net.get(url)` (never rejects,
+  check `res.ok`), `await net.json(url)` / `await net.fetchJson(url[, headers])` (reject on failure),
+  `await net.fetch(url, {method, headers, body, contentType})`, `await ui.alert(...)` (0-based index),
+  `await ui.prompt(...)`, `await ui.openFile(exts)`, `await ui.saveFile(name)`, `await timer.sleep(s)`.
+  An unhandled rejection opens the error screen: always `try`/`catch`.
+- Extras: `setTimeout`/`setInterval`/`clearTimeout`/`clearInterval` (ms), `console.log`, `fs.readBytes` →
+  `Uint8Array`, `JSON.parse` / `JSON.stringify`, `ui.submitted`, `net.request`.
+- Not available: `window`, `document`, `fetch`, `XMLHttpRequest`, `localStorage`, `require`, `process`, `Intl`.
+  Use `sys.date()` for local time.
+- Meshes: `mesh.setColor(c)` (dot, not colon).
+
+- SDK 1.9 (`"minSdk": "1.9"`): the same names; options are objects, `g3d.lights()` returns an array.
+  `net.request(options)` without a callback returns a Promise of `res` (it cannot be cancelled then);
+  `net.oauth(options)` returns a Promise; `gfx.imageUrl` returns `null` while loading; feed and pager
+  indexes are 0-based (`for (let i = f.first; i <= f.last; i++)`).
+
+## Check
+
+`node tools/js_check.mjs <bundle> --frames 600`: parses every .js file as a module, checks the TR keys, runs the app
+against a mock SDK in both languages and reports uncaught errors and unhandled rejections.
+
+- SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `await ui.chooseFolder({title, remember})` (`null` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `await fs.saveBackup(slot)`, `await fs.saveRestore(slot)`, `await fs.saveDeleteBackup(slot)`, `fs.saveBackups()`
+- SDK 1.12 (`"minSdk": "1.12"`): `ui.tokens()` returns the system look as an object (colors, radii, spacing, text sizes, `textScale`); `audio.stopAll()` stops every sound the app started.
+- SDK 1.13 / 2.0 (`"targetSdk": "2.0"`): **`nxui` Retained & Semantic UI Engine:** `nxui.begin(w, h)` ... `nxui.endFrame()`, `nxui.tokens()`, `nxui.row(id, gap)`/`nxui.rowEnd()`, `nxui.column(id, gap)`/`nxui.columnEnd()`, `nxui.card(id)`/`nxui.cardEnd()`, `nxui.scrollBegin(id, w, h, scrollY)` → `newScrollY` / `nxui.scrollEnd()`, `nxui.canvasBegin(id, w, h)` → `{x, y, w, h}` / `nxui.canvasEnd()`, `nxui.label(id, text, role)`, `nxui.badge(id, text, rgba)`, `nxui.button(id, label, variant)` → `clicked`, `nxui.toggle(id, checked)` → `newChecked`, `nxui.slider(id, val, min, max)` → `newVal`, `nxui.textfield(id, text, placeholder)` → `newText`, `nxui.dropdown(id, options, selected)` → `newSel` (0-based), `nxui.tabs(id, labels, active)` → `newActive` (0-based), `nxui.table(id, cols, rows, selectedRow)` → `{selected, clicked}` (0-based), `nxui.virtuallist(id, items, rowH, viewH, selectedRow)` → `{selected, clicked}` (0-based), `nxui.dialog(id, title, msg, confirm, cancel)` → `0|1|2`, `nxui.spacer(size)`, `nxui.moveFocus(dir)`, `nxui.activateFocused()`.

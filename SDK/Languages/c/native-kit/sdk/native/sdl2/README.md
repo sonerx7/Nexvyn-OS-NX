@@ -1,6 +1,6 @@
 # SDL2 for Nexvyn OS windows
 
-The kit's SDL2 for apps that run inside a Nexvyn OS window or full screen (`docs/NATIVE_KIT.en.md`, "SDL2 in a window").
+The kit's SDL2 for apps that run inside a Nexvyn OS window or full screen (`docs/NATIVE_KIT.md`, "SDL2 in a window").
 
 - Base: the devkitPro Switch fork of SDL 2.28 (commit pinned by sha256 in `sdk/native/sysroot/recipes.json`, recipe
   `sdl2-nexvyn`), zlib license. Everything here is added or changed source of that fork, marked as such in each file.

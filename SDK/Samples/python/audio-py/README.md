@@ -1,7 +1,5 @@
 # Melody Player (Python)
 
-**English** · [Türkçe](README.tr.md)
-
 A note-by-note melody player in Python: piano roll, tempo, waveform, loop, writing your own melody and a live log that shows when each callback runs.
 
 | | |

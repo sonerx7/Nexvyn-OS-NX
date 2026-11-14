@@ -1,7 +1,5 @@
 # UI Gallery
 
-**English** · [Türkçe](README.tr.md)
-
 Every `ui.*` widget of the SDK, live, with the Lua code that draws it beside it: buttons, switches, text fields, choices, feedback, lists, pointer and dialogs.
 
 | | |

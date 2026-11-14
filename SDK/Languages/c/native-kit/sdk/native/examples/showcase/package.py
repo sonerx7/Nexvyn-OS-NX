@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds and packs the windowed Showcase (the exclusive build still compiles, but exclusive mode is retired) (needs devkitPro, see docs/NATIVE_KIT.en.md).
+"""Builds and packs the windowed Showcase (the exclusive build still compiles, but exclusive mode is retired) (needs devkitPro, see docs/NATIVE_KIT.md).
 
     python sdk/native/examples/showcase/package.py [--sysroot DIR] [--out DIR]
 

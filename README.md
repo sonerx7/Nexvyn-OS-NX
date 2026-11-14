@@ -12,9 +12,32 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 
 - One `.nro`, opened from the Homebrew Menu. No reboot, no partitioning.
 - A windowed desktop (Dock or taskbar layout), 70+ built-in apps and an App Market where every item is reviewed.
-- A native C/C++ SDK with a frozen ABI v1, plus Lua, JavaScript and Python, to make apps and games on the console or on a PC.
+- **Nexvyn OS N2 Architecture (SDK 2.0 / 1.13 & Native SDK 1.2):** 4 official primary language tracks (**Lua 5.4.7** with Generational GC, **JavaScript ES2023** on QuickJS-ng 0.17.0, **Python 3.12** on CPython 3.12.16, and **Native C/C++** with Frozen ABI v1), the **NXUI Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)**, the **NexGFX PBR 3D renderer**, and an AI-ready SDK (`SDK/AI/llms.txt`).
 
-### What is new in 1.3.0
+### What is new in 1.3.9 (N2 Architecture Final)
+
+**1. Four Official Primary Runtimes, W^X JIT & On-Demand ComponentService:**
+- **Lua 5.4.7 (`"runtime": "lua"`):** Generational GC (`LUA_GCGEN`, ~0.28 ms frame pause), instant startup, `nexvyn.game` 2D engine, `nxui.*`, and `g3d.*` PBR.
+- **JavaScript ES2023 (`"runtime": "js"`):** QuickJS-ng 0.17.0 with persistent SD bytecode caching, native Promises, `g3d.voxels` streaming voxel worlds, `nxui.*`, and `g3d.*` PBR.
+- **Python 3.12 (`"runtime": "python3"` or `"targetSdk": "2.0"`):** CPython 3.12.16 with full Python 3.12 syntax and standard library (`statistics`, `itertools`, `collections`, `datetime`, `zlib`, `hashlib`, `re`, `urllib.parse`, `uuid`, etc.), `nxui.*`, and `g3d.*` PBR.
+- **Native C/C++ (`"runtime": "native"`, `.nxvmod`):** Ahead-of-Time (AOT) ARM64 compilation with devkitA64 GCC against **Frozen ABI v1** (`nxn_*`), Native SDK 1.2 system integration, hardware W^X dual-mapping JIT (`nxn_vm`), `nxn_nxui_*` Retained UI, SDL2 window driver, and OpenGL / NexGFX.
+- Earlier runtimes (**PocketPy** for `targetSdk < 2.0`, **TinyCC C**, **Squirrel 3.2**, **Java miniJVM**) remain 100% supported via the on-demand `ComponentService` (SHA-256 verified with 256 MB LRU cache).
+
+**2. NXUI — Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`):**
+- Shared identically across Lua, JavaScript, Python and Native C/C++ (`#include <nexvyn/nxn_nxui.h>`).
+- Automatic Flexbox-like layout containers (`row`, `column`, `card`, `scrollBegin`, `canvasBegin`), semantic controls (`label`, `badge`, `button`, `toggle`, `slider`, `textfield`, `dropdown`, `tabs`, `table`, `virtuallist` for 10,000+ rows at 60 fps, `dialog`, `spacer`), design tokens (`nxui.tokens()`), and controller spatial focus navigation (`moveFocus`, `activateFocused`).
+
+**3. Desktop Shell Refinements — Click-to-Restore Session & Live Telemetry Widgets:**
+- **Click-to-Restore Session Notification:** Previous session windows no longer reopen automatically at boot; a top-right notification banner (`Continue where you left off`) reopens them on demand when clicked.
+- **Theme-Adaptive Widgets & CPU/RAM/FPS/GPU System Widget:** All desktop widgets adapt to the active theme palette (including Classic 3D), and the System widget displays live **CPU, RAM, FPS, and GPU** metrics.
+
+**4. Smart Creator, Port Kit & AI-Ready SDK (`SDK/AI/`):**
+- `python SDK/Tools/nxv/nxv.py create "My App" --profile <utility|network|data|game|emulator|port>` recommends the best runtime and scaffolds a complete, ready-to-pack N2 project.
+- `SDK/AI/llms.txt` and `SDK/AI/system-prompt.md` give AI coding assistants and LLMs a zero-hallucination specification of the entire SDK 2.0 / 1.13 surface along with copy-pasteable Golden Templates.
+
+---
+
+### What is in 1.3.0 to 1.3.9
 
 **Browser: desktop websites by default.** The Browser asks for desktop sites, so most pages load their desktop layout. Settings has "Request mobile sites" (off by default), and each site can be switched from the address-bar menu.
 
@@ -166,8 +189,8 @@ Measured on a Switch OLED, first test against the final round (default settings)
 
 60 fps is the screen limit, so some tests are "locked at 60".
 
-### For developers
+### For developers & AI assistants
 
-Native C and C++ with a frozen ABI v1 (add-only from now on): a module built with the 1.0 kit still loads on the current system. Every new API arrives in Lua, JavaScript, Python and C with the same names. A port kit packages ports as separate apps. See [SDK](SDK/README.md).
+Native C and C++ with a frozen ABI v1 (add-only from now on): a module built with the 1.0 kit still loads on the current system. Every new API — including the **NXUI Retained & Semantic UI Engine (`nxui.*` / `nxn_nxui_*`)** and **NexGFX PBR renderer (`g3d.*`)** — arrives across the 4 official primary tracks (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, and **Native C/C++**). Smart Creator (`nxv.py create`) and the Port Kit scaffold apps and ports in one command, and `SDK/AI/llms.txt` + `SDK/AI/system-prompt.md` let AI coding assistants build full Nexvyn OS apps with zero hallucination. See [SDK](SDK/README.md).
 
-The SDK guides cover the new system integration calls: [Native kit](SDK/Guides/NATIVE_KIT.en.md) and [Browser](SDK/Guides/BROWSER.en.md).
+The SDK guides cover the complete platform: [SDK Reference](SDK/Reference/SDK.md), [Native kit](SDK/Guides/NATIVE_KIT.md), [SDK versions](SDK/Guides/SDK_VERSIONS.md), and [Browser](SDK/Guides/BROWSER.md).

@@ -1,7 +1,5 @@
 # word
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="hangman/icon.png" width="32"> | [Hangman](hangman/) | 1.1.0 | Guess the Turkish word letter by letter |

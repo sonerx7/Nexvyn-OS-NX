@@ -1,7 +1,5 @@
 # Platformer Demo
 
-**English** · [Türkçe](README.tr.md)
-
 A small but complete platformer level made with the nexvyn.game engine: tiles drawn by code, camera, animation, one-way platforms and coins.
 
 | | |

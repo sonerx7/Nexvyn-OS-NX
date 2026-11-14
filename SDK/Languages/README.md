@@ -1,7 +1,5 @@
 # Languages
 
-**English** · [Türkçe](README.tr.md)
-
 A quick start and a ready-to-copy `template/` folder that passes its checker, for every language.
 
 | Language | Guide | Template | Checker | SDK |

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 project(@NAME@ VERSION 1.0.0 LANGUAGES C)
 
-# A shared library (greet.nxvlib) and an app that loads it at run time (docs/NATIVE_KIT.en.md, "Shared libraries").
+# A shared library (greet.nxvlib) and an app that loads it at run time (docs/NATIVE_KIT.md, "Shared libraries").
 # Static linking stays the default; a .nxvlib is for code many apps share or that is loaded as a plugin.
 #   python tools/nxv_native build .      -> build/@NAME@.nro + build/greet.nxvlib (checked: -fPIC, no text relocations)
 #   python tools/nxv_native package .    -> the .nxvapp carries greet.nxvlib next to the .nro

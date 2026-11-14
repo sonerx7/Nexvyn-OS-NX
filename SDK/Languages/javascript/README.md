@@ -1,7 +1,5 @@
 # Nexvyn OS in JavaScript
 
-**English** · [Türkçe](README.tr.md)
-
 JavaScript apps run on QuickJS-ng (ES2023: classes, arrow functions, `async`/`await`, ES modules, `Map`/`Set`,
 typed arrays). The API is the Lua one; the differences are below. Needs SDK 1.1.
 
@@ -52,9 +50,9 @@ unhandled Promise rejections too. It is Node.js, not QuickJS: it catches API mis
 `sfx.js` (sound design: layered procedural recipes rendered to WAV once, variants, buses, ducking, ambience, music
 loops) and `juice.js` (easing and tweens, shake, hit-stop, glowing particles, vignette, gradients, styled titles,
 panels and buttons with depth, transitions, 2D / 3D cameras, 3D light moods). Guides:
-[sound design](../../Guides/SOUND_DESIGN.en.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.en.md).
+[sound design](../../Guides/SOUND_DESIGN.md), [graphics, UI and game feel](../../Guides/GAME_FEEL.md).
 
 ## More
 
-- SDK: [SDK.md](../../Reference/SDK.en.md) section 11 · Guide: [JS_APPS.md](../../Guides/JS_APPS.en.md)
+- SDK: [SDK.md](../../Reference/SDK.md) section 11 · Guide: [JS_APPS.md](../../Guides/JS_APPS.md)
 - Samples: [Samples/javascript](../../Samples/README.md#javascript)

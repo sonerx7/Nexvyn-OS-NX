@@ -1,7 +1,5 @@
 # Verlet Physics Demo
 
-**English** · [Türkçe](README.tr.md)
-
 Ropes, a rope bridge and a tearable cloth with Verlet integration; grab and drag points, cut links, pin them, turn on the wind.
 
 | | |

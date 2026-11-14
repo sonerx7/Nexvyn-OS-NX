@@ -1,7 +1,5 @@
 # switch
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="amsconfig/icon.png" width="32"> | [Atmosphère Settings](amsconfig/) · ships with Nexvyn OS | 1.0 | Atmosphère's hidden switches, explained |

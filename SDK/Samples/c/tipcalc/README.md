@@ -1,7 +1,5 @@
 # Tip Splitter (C)
 
-**English** · [Türkçe](README.tr.md)
-
 A small tool that works out the tip, the total and each person's share of a bill, and shares the result.
 
 | | |

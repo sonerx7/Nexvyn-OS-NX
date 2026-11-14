@@ -1,7 +1,5 @@
 # Nexvyn OS in Squirrel
 
-**English** · [Türkçe](README.tr.md)
-
 Squirrel 3.2 is a small language used in game engines, with syntax close to C++ and JavaScript: classes and
 inheritance, closures, lambdas (`@(x) x * 2`), generators, `foreach`, integers and floats (`5 / 2` is `2`). The SDK
 modules are global tables. Needs SDK 1.5.
@@ -46,5 +44,5 @@ the console.
 
 ## More
 
-- SDK: [SDK.md](../../Reference/SDK.en.md) section 13 · Guide: [SQUIRREL_APPS.md](../../Guides/SQUIRREL_APPS.en.md)
+- SDK: [SDK.md](../../Reference/SDK.md) section 13 · Guide: [SQUIRREL_APPS.md](../../Guides/SQUIRREL_APPS.md)
 - Samples: [Samples/squirrel](../../Samples/README.md#squirrel) (Hello Squirrel, Stopwatch, Snake)

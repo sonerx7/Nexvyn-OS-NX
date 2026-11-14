@@ -1,7 +1,5 @@
 # Contributing
 
-**English** · [Türkçe](CONTRIBUTING.tr.md)
-
 This repository holds the App Market (`Store/`), the SDK (`SDK/`) and the release files of Nexvyn OS. The source code
 of Nexvyn OS itself is not here. You can contribute in four ways: publish an app, report a bug, translate, or improve
 the SDK and its documentation. English or Turkish is fine everywhere.
@@ -16,21 +14,21 @@ Every submission is a pull request and is reviewed by the maintainer before it a
 2. **Fork** this repository and add your item in its own folder:
    `Store/Apps/<category>/<slug>/`, `Store/Games/<genre>/<slug>/`, `Store/Themes/<slug>/` or `Store/Fonts/<slug>/`,
    with `source/` (the bundle), `README.md`, `store.json` and, if you have them, `screenshots/`. The layout and every
-   field are in the [publishing guide](SDK/Publishing/PUBLISHING.en.md).
+   field are in the [publishing guide](SDK/Publishing/PUBLISHING.md).
 3. **Check it:** `python SDK/Tools/nxv/nxv.py check Store/<...>/<slug>/source` must pass. Try it on a console (or in
    an emulator), in light and dark mode, handheld and on a TV, with touch and a controller.
 4. **Store page:** a 256x256 key-art icon that shows your game or app ([icon tool](SDK/Tools/icon/README.md)),
    five screenshots with the interface in English (or a `shots` script, and the maintainer makes them), an English
    `subtitle` and `description` in `store.json`.
 5. **Open the pull request** with the template. Only change files of your own item.
-6. The maintainer reviews it with the [review checklist](SDK/Publishing/REVIEW.en.md), builds the package and the
+6. The maintainer reviews it with the [review checklist](SDK/Publishing/REVIEW.md), builds the package and the
    catalog, and merges it. It then appears in the App Market as New.
 
 Updates of your item work the same way: raise `version` in `app.json` and say what changed in the pull request.
 
 **Not accepted:** malware, tracking or hidden data collection, ads that harm users, content for adults only, other
 people's work without the right to publish it, apps that impersonate other products or brands, API keys or passwords
-in the code. The [publishing guide](SDK/Publishing/PUBLISHING.en.md) has the full content rules.
+in the code. The [publishing guide](SDK/Publishing/PUBLISHING.md) has the full content rules.
 
 Questions before you submit: [submission question form](https://github.com/sonerx7/Nexvyn-OS-NX/issues/new?template=submission-question.yml).
 If you cannot open a pull request yourself, use the
@@ -57,8 +55,8 @@ Nexvyn OS is available in 8 languages. To fix a translation or offer a new langu
 ## 4. Improve the SDK and documentation
 
 Pull requests that fix samples, guides or the SDK tools under `SDK/` are welcome. Keep both language versions
-(`NAME.en.md` and `NAME.tr.md`) in step, or say in the pull request which one needs a translation. Code examples must
-use only functions from the [SDK reference](SDK/Reference/SDK.en.md). The guides and the reference are generated from
+(`NAME.md` and `NAME.md`) in step, or say in the pull request which one needs a translation. Code examples must
+use only functions from the [SDK reference](SDK/Reference/SDK.md). The guides and the reference are generated from
 the Nexvyn OS source; the maintainer carries accepted changes over there.
 
 ## Conduct

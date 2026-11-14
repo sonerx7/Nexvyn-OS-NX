@@ -1,7 +1,5 @@
 # system
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="benchmark/icon.png" width="32"> | [Benchmark](benchmark/) | 1.1.0 | Put your console's 3D power to the test |

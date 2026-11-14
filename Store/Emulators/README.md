@@ -1,7 +1,5 @@
 # Emulators
 
-[Türkçe](README.tr.md)
-
 - [Handheld](handheld/) (0)
 - [Console](console/) (0)
 - [PC / Computer](pc/) (0)

@@ -1,7 +1,5 @@
 # Hello C
 
-**English** · [Türkçe](README.tr.md)
-
 The built-in **Hello C** app: a counter, bouncing balls and live JSON, compiled on the console by TinyCC.
 
 | | |

@@ -1,4 +1,4 @@
-/* Nexvyn Native SDK library - the hand-off and return record formats (NATIVE_KIT.en.md, "Hand-off").
+/* Nexvyn Native SDK library - the hand-off and return record formats (NATIVE_KIT.md, "Hand-off").
  * Pure C without libnx, so the host unit tests (tests/test_native.cpp) compile it next to Nexvyn OS's own writer and
  * reader (source/runtimes/native_handoff.cpp) and check that both sides agree.
  *

@@ -1,7 +1,5 @@
 # strategy
 
-[Türkçe](README.tr.md)
-
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="aldmoor/icon.png" width="32"> | [Banners of Aldmoor](aldmoor/) | 1.0.0 | Turn-based tactics: an eight-battle campaign |

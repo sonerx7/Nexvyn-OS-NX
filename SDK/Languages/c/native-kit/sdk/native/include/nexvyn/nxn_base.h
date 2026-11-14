@@ -1,4 +1,4 @@
-/* Nexvyn Native SDK - base types shared by every nxn_* header (NATIVE_KIT.en.md).
+/* Nexvyn Native SDK - base types shared by every nxn_* header (NATIVE_KIT.md).
  *
  * ABI rules (ABI v1, frozen on 2026-11-09; the frozen surface is sdk/native/toolchain/nxn_abi_v1.json and every later
  * version is checked against it: names, signatures, struct layouts and constant values are only ever added):

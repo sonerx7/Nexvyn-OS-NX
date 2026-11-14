@@ -1,7 +1,5 @@
 # Hello SDK
 
-**English** · [Türkçe](README.tr.md)
-
 The built-in **Hello SDK** app: live widgets, animated drawing and system information on three tabs.
 
 | | |

@@ -1,7 +1,5 @@
 # Samples
 
-**English** · [Türkçe](README.tr.md)
-
 **27** samples.
 
 Working sample projects in six languages. Every folder has `source/` (a complete `.nxvapp` bundle), `README.md` (what it teaches, controls, how to run it), `icon.png`, `store.json` (title and description in five languages, kind, tags, screenshot script) and `screenshots/` where available. `Tools/build_store.py` builds a `<slug>.zip` of each sample and `SDK/samples.json`, which Nexvyn OS Studio's *Samples* section reads.

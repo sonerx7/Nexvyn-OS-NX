@@ -640,6 +640,28 @@ def cmd_push(a):
 
 
 # ------------------------------------------------------------------ main
+def cmd_create(a):
+    sys.path.insert(0, HERE)
+    import nxv_create
+    profile = a.profile or "utility"
+    rec = nxv_create.PROFILE_RECOMMENDATIONS.get(profile, nxv_create.PROFILE_RECOMMENDATIONS["utility"])
+    chosen_runtime = a.runtime or rec["runtime"]
+    if a.recommend_only:
+        print(f"Profile:        {profile}")
+        print(f"Recommendation: {rec['runtime']}")
+        print(f"Reason:         {rec['reason']}")
+        print(f"RAM Budget:     {rec['perfBudget']['maxRamMb']} MB")
+        print(f"Target FPS:     {rec['perfBudget']['targetFps']}")
+        return 0
+    from pathlib import Path
+    safe_name = re.sub(r"[^a-zA-Z0-9_\-]", "", a.name.lower())
+    app_id = a.id or f"com.nexvyn.{safe_name}"
+    target_dir = a.dir or str(Path(safe_name))
+    created = nxv_create.create_project(target_dir, app_id, a.name, chosen_runtime, profile)
+    print(f"created {created} (runtime: {chosen_runtime}, profile: {profile})")
+    return 0
+
+
 def main(argv=None):
     for stream in (sys.stdout, sys.stderr):
         try:
@@ -662,6 +684,15 @@ def main(argv=None):
     p.add_argument("--players", help='with --store: store.json players, e.g. "2" or "1-4"')
     p.add_argument("--templates", help="Languages folder (default: SDK/Languages of this repository)")
     p.set_defaults(fn=cmd_new)
+
+    p = sub.add_parser("create", help="create a new N2 app project with smart runtime recommendation (Lua 5.4.7, JS ES2023, Python 3.12, Native C/C++)")
+    p.add_argument("name", nargs="?", default="MyNewApp", help="Application display name")
+    p.add_argument("--id", help="Reverse domain package ID (e.g. com.example.calc)")
+    p.add_argument("--profile", choices=["calculator", "utility", "network", "data", "game", "qemu", "emulator", "port"], help="Target workload profile")
+    p.add_argument("--runtime", choices=["lua", "js", "python", "native"], help="Explicitly force runtime (lua, js, python, native)")
+    p.add_argument("--dir", help="Destination folder (defaults to ./<name>)")
+    p.add_argument("--recommend-only", action="store_true", help="Print recommendation without creating files")
+    p.set_defaults(fn=cmd_create)
 
     p = sub.add_parser("check", help="check one or more bundles")
     p.add_argument("bundle", nargs="+")

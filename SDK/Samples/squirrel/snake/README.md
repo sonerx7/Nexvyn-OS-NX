@@ -1,7 +1,5 @@
 # Snake (Squirrel)
 
-**English** · [Türkçe](README.tr.md)
-
 The classic snake game with controller, keyboard and touch; the walls wrap around and the best score is saved.
 
 | | |

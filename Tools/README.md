@@ -1,7 +1,5 @@
 # Repository tools
 
-**English** · [Türkçe](README.tr.md)
-
 Maintenance of this repository: building and checking the App Market catalog. Tools for app makers (the `nxv` command
 line) are in [SDK/Tools](../SDK/Tools/README.md).
 

@@ -1,7 +1,5 @@
 # PBR, Lights and Shadows
 
-**English** · [Türkçe](README.tr.md)
-
 The NexGFX **pbr renderer** of SDK 1.9 in one small scene: a crate model with all its PBR maps, five spheres from rough
 to polished metal, two moving point lights, a spot light that casts shadows, sun shadows, HDR with tone mapping and
 bloom, and 24 pillars drawn with one instanced call. The same project is the Studio template

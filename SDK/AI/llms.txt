@@ -1,0 +1,83 @@
+# Nexvyn OS N2 (v1.3.9) — AI & LLM Master Context Index (SDK 2.0 / 1.13 & Native SDK 1.2)
+
+> Give this file (`SDK/AI/llms.txt`) together with `SDK/AI/system-prompt.md` to any AI coding assistant or LLM.
+> Everything documented here and in `SDK/Reference/SDK.md` exists in the Nexvyn OS runtime. Do NOT invent browser, Node.js, LÖVE, Pygame, or POSIX calls that are not in the contract.
+
+## 1. Platform Overview
+- **System:** Nexvyn OS 1.3.9 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
+- **Package Format:** `.nxvapp` v2 (folder `<Name>.nxvapp/` or deterministic zip with `app.json`, `icon.png` 256x256, `lang/en.json`, main source/binary, and `manifest.sha256`).
+- **Resolution & Modes:** Handheld 1280x720 and Docked 1920x1080; resizable windows (`gfx.size()` returns current `w, h`) and fullscreen mode; Light & Dark themes (`theme.*` and `nxui.tokens()`).
+- **Input Modes:** Multi-touch (`mousedown`/`mousemove`/`mouseup`, two-finger `pinch`/`rotate`/`scroll`), Controller Cursor (left stick moves pointer, A clicks, X right-clicks, right stick scrolls), Direct Gamepad (`"gamepad": true`, `input.down`/`pressed`/`stick`/`action`), Spatial UI Focus (`nxui.moveFocus`, `nxui.activateFocused`), USB Keyboard & Mouse, and On-Screen Keyboard (OSK).
+
+## 2. The 4 Official Primary Runtimes (N2 Standard)
+
+Always choose one of these 4 official runtimes for new projects:
+
+1. **Lua 5.4.7 (`"runtime": "lua"`, `"main": "main.lua"`):**
+   - **Engine:** PUC Lua 5.4.7 with Generational GC (`LUA_GCGEN`, ~0.28 ms frame pause).
+   - **Strengths:** Fastest cold start, lowest memory overhead, 1-based indexing, multiple return values (`local w, h = gfx.size()`), `nexvyn.game` 2D engine, `sfx` and `juice` kits, `nxui.*`, `g3d.*` NexGFX PBR.
+2. **JavaScript ES2023 (`"runtime": "js"`, `"main": "main.js"`):**
+   - **Engine:** QuickJS-ng 0.17.0 with automatic disk bytecode caching and adaptive GC.
+   - **Strengths:** ES modules (`import`/`export`), native Promises & `async`/`await` (`await net.fetchJson(url)`), `TextEncoder`/`TextDecoder`, `URL`, `structuredClone`, `g3d.voxels` streaming voxel engine, `sfx` and `juice` kits, `nxui.*`, `g3d.*` NexGFX PBR.
+3. **Python 3.12 (`"runtime": "python3"`, or `"runtime": "python"` with `"targetSdk": "2.0"`, `"main": "main.py"`):**
+   - **Engine:** CPython 3.12.16 subinterpreter per window with full Python 3.12 syntax and standard library (`math`, `statistics`, `itertools`, `collections`, `datetime`, `json`, `zlib`, `hashlib`, `struct`, `re`, `urllib.parse`, `uuid`, `csv`, etc.).
+   - **Strengths:** Keyword arguments (`gfx.text("Hi", 10, 10, size=20)`), tuple returns (`w, h = gfx.size()`), `nxui.*`, `g3d.*` NexGFX PBR.
+4. **Native C / C++ (`"runtime": "native"`, `"main": "<id>.nxvmod"`, `"minNative": "1.2"`, `"minSdk": "1.10"`):**
+   - **Engine:** Ahead-of-Time (AOT) ARM64 shared module compiled with devkitA64 GCC against **Frozen ABI v1** (`#include <nexvyn/nexvyn_native.h>`, `#include <nexvyn/nxn_nxui.h>`).
+   - **Strengths:** Full hardware speed (60 fps OpenGL / GLES3 / NexGFX), SDL2 window driver, per-app isolated heap arena, POSIX compatibility layer, `nxn_nxui_*` Retained UI, `nxn_window_set_*`, `nxn_power_get`, `nxn_dialog`/`nxn_prompt`.
+
+*(Legacy runtimes — PocketPy `< 2.0`, TinyCC `"c"`, Squirrel `"squirrel"`, and miniJVM `"java"` — are kept for backward compatibility via the on-demand `ComponentService`, not for new projects.)*
+
+## 3. NXUI — Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)
+
+Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` in `<nexvyn/nxn_nxui.h>`). Use `nxui` for modern, automatic-layout desktop and utility interfaces:
+
+- **Lifecycle (inside `draw(w, h)`):**
+  - `nxui.begin(w, h)` -> starts layout pass
+  - `nxui.endFrame()` -> computes Flexbox-like layout, resolves hit-testing & controller focus, and renders
+  - `nxui.tokens()` -> returns design tokens (`space1`..`space6`, `radiusSm`/`Md`/`Lg`, `fontSm`/`Body`/`Title`/`Hero`, `scale`, `dark`, `highContrast`, `reducedMotion`, RGBA colors)
+- **Layout Containers:**
+  - `nxui.row(id[, gap])` ... `nxui.rowEnd()`
+  - `nxui.column(id[, gap])` ... `nxui.columnEnd()`
+  - `nxui.card(id)` ... `nxui.cardEnd()`
+  - `nxui.scrollBegin(id, w, h[, scrollY])` -> `newScrollY` ... `nxui.scrollEnd()`
+  - `nxui.canvasBegin(id, w, h)` -> `x, y, w, h` (JS/Python: `{x, y, w, h}`) ... `nxui.canvasEnd()` (draw custom `gfx.*` or `g3d.*` inside!)
+  - `nxui.spacer([size])`
+- **Semantic Widgets:**
+  - `nxui.label(id, text[, role])` (`"body"`, `"title"`, `"hero"`, `"muted"`, `"small"`)
+  - `nxui.badge(id, text[, rgbaColor])`
+  - `nxui.button(id, label[, variant])` -> `clicked` (`"primary"`, `"secondary"`, `"ghost"`, `"danger"`)
+  - `nxui.toggle(id, checked)` -> `newChecked` (Lua: `newChecked, changed`)
+  - `nxui.slider(id, value, min, max)` -> `newValue` (Lua: `newValue, changed`)
+  - `nxui.textfield(id, text[, placeholder])` -> `newText` (Lua: `newText, changed`)
+  - `nxui.dropdown(id, options, selected)` -> `newSelected` (Lua 1-based, JS/Py/C 0-based)
+  - `nxui.tabs(id, labels, active)` -> `newActive` (Lua 1-based, JS/Py/C 0-based)
+  - `nxui.table(id, columns, rows, selectedRow)` -> `newRow, clicked` (JS/Py: `{selected, clicked}`)
+  - `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` -> `newRow, clicked` (JS/Py: `{selected, clicked}`)
+  - `nxui.dialog(id, title, message, confirmLabel[, cancelLabel])` -> `0` (open), `1` (confirmed), `2` (cancelled)
+- **Controller Spatial Focus:**
+  - `nxui.moveFocus("up" | "down" | "left" | "right")`
+  - `nxui.activateFocused()`
+
+## 4. Core SDK Modules Summary (Lua / JS / Python)
+- **`gfx` (2D Drawing):** `clear`, `color`, `rect`, `rectLine`, `circle`, `circleLine`, `line`, `lines`, `poly`, `arc`, `pie`, `gradient`, `shadow`, `text`, `textWidth`, `textHeight`, `wrap`, `measureWrap`, `icon`, `image`, `imageUrl`, `imageState`, `draw`, `drawRegion`, `push`, `pop`, `clip`, `unclip`, `alpha`, `unalpha`, `size`.
+- **`ui` (Immediate-Mode Widgets & Dialogs):** `button`, `iconButton`, `toggle`, `checkbox`, `radio`, `slider`, `textfield`, `submitted`, `segmented`, `dropdown`, `label`, `progress`, `spinner`, `row`, `group`, `separator`, `beginScroll`, `endScroll`, `beginFeed`, `feedItem`, `endFeed`, `pager`, `richText`, `measureRichText`, `hit`, `mouse`, `focus`, `contextMenu`, `alert`, `prompt`, `openFile`, `saveFile`, `chooseFolder`, `keyboard`, `tokens`.
+- **`g3d` (3D & NexGFX PBR):** `renderer("pbr")`, `rendererInfo()`, `caps()`, `mesh`, `load`, `custom`, `loadModel` (async `.glb`/`.gltf`/`.fbx`), `model`, `begin`, `camera`, `light`, `addLight`, `updateLight`, `removeLight`, `clearLights`, `lights`, `shadows`, `postfx`, `environment`, `material`, `fog`, `draw`, `drawMatrix`, `drawInstanced`, `line`, `point`, `project`, `finish`, `voxels` (JS).
+- **`fs` & `store` (Storage):** `fs.read`, `readBytes`, `write`, `append`, `exists`, `isdir`, `list`, `mkdir`, `remove`, `rename`, `copy`, `path`, `dir`, `unzip`, `folderGrants`, `folderGranted`, `revokeFolder`, `savePath`, `saveBackup`, `saveRestore`, `saveBackups`, `saveDeleteBackup`; `store.get`, `store.set`, `store.save`.
+- **`net` (Networking, requires `"network"` permission):** `get`, `post`, `json`, `download`, `request` (HTTP methods, JSON/form/multipart, cache, retries, cookies), `cancel`, `clearCookies`, `clearCache`, `ws` / `wsSend` / `wsPoll` / `wsClose` / `wsState`, `oauth`.
+- **`sys`, `audio`, `input`, `timer`, `media`, `TR`:** `sys.time`, `epoch`, `date`, `relativeTime`, `battery`, `online`, `lang`, `username`, `model`, `firmware`, `notify`, `schedule`, `unschedule`, `scheduled`, `share`, `open`, `launch`, `appUrl`, `clipboard`, `speak`, `stopSpeaking`, `games`, `hasPermission`, `requestPermission`, `memory`, `sdkVersion`, `vibrate`, `title`, `exit`, `fps`; `audio.tone`, `play`, `stop`, `stopAll`, `music`, `musicPause`, `musicStop`; `input.down`, `pressed`, `released`, `stick`, `key`, `touch`, `motion`, `action`.
+
+## 5. CLI Commands for AI Agents
+- **Create Project:** `python SDK/Tools/nxv/nxv.py create "App Name" --profile <utility|network|data|game|emulator|port> --runtime <lua|js|python|native>`
+- **Validate Bundle:** `python SDK/Tools/nxv/nxv.py check <bundle_folder>`
+- **Package `.nxvapp`:** `python SDK/Tools/nxv/nxv.py pack <bundle_folder>`
+- **Build Native `.nxvmod`:** `python SDK/Languages/c/native-kit/tools/nxv_native build <project_folder>`
+
+## 6. Document Map
+- Full API Contract: `SDK/Reference/SDK.md`
+- Full AI System Prompt: `SDK/AI/system-prompt.md`
+- Strict AI Rules: `SDK/AI/AI_RULES.md`
+- Pre-Answer Checklist: `SDK/AI/checklist.md`
+- Language Packs: `SDK/AI/languages/{lua,javascript,python,native,c}.md`
+- Native C/C++ Guide & Kit Reference: `SDK/Guides/NATIVE_GUIDE.md`, `SDK/Guides/NATIVE_KIT.md`
+- Game & PBR Guides: `SDK/Guides/MAKE_A_GAME.md`, `SDK/Guides/PBR_GAME_RECIPE.md`, `SDK/Guides/GAME_FEEL.md`, `SDK/Guides/SOUND_DESIGN.md`

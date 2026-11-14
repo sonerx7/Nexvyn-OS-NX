@@ -1,5 +1,5 @@
 /* NexGFX for native apps: the ngfx_* C API a windowed or full-screen native app uses to draw baked 3D scenes with the PBR
- * renderer in its own OpenGL context (docs/NATIVE_KIT.en.md "NexGFX in a native app").
+ * renderer in its own OpenGL context (docs/NATIVE_KIT.md "NexGFX in a native app").
  *
  * Architecture: these functions are a thin shell compiled into the app (sdk/native/nexgfx/nexgfx_native.cpp, listed in the
  * app's SOURCES). ngfx_device_create first asks Nexvyn OS for its renderer (nxn_ngfx_backend, nexgfx_backend.h: a versioned

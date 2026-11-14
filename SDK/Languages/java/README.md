@@ -1,7 +1,5 @@
 # Nexvyn OS in Java
 
-**English** · [Türkçe](README.tr.md)
-
 Java apps are compiled on a PC into `app.jar` (Java 8 class files) and run on the console by the miniJVM interpreter.
 The SDK is the `nexvyn` package (`Gfx.rect`, `Ui.button`, `Sys.date`...); its sources are in
 [SDK/java](../../Reference/README.md). Needs SDK 1.5.
@@ -59,5 +57,5 @@ permission for `Net.*`.
 
 ## More
 
-- SDK: [SDK.md](../../Reference/SDK.en.md) section 15 · Guide: [JAVA_APPS.md](../../Guides/JAVA_APPS.en.md)
+- SDK: [SDK.md](../../Reference/SDK.md) section 15 · Guide: [JAVA_APPS.md](../../Guides/JAVA_APPS.md)
 - Samples: [Samples/java](../../Samples/README.md#java) (Hello Java, Dice Roller, Pong)

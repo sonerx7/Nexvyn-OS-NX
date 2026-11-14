@@ -44,7 +44,7 @@ export APP_ICON	:=	$(LIBNX)/default_icon.jpg
 export NROFLAGS	+=	--icon=$(APP_ICON) --nacp=$(CURDIR)/$(TARGET).nacp
 
 # windowed: -fPIC objects linked as a shared object; nxn_* and the C library come from Nexvyn OS (its host import set),
-# the module carries its identity (libnexvyn_window.a), glad and libgcc. NATIVE_KIT.en.md 3.2.
+# the module carries its identity (libnexvyn_window.a), glad and libgcc. NATIVE_KIT.md 3.2.
 WIN_CFLAGS	:=	$(subst -fPIE,-fPIC,$(CFLAGS)) -I$(PORTLIBS)/include -I$(LIBNX)/include
 WIN_LDFLAGS	:=	-shared -nostartfiles -nostdlib -g $(subst -fPIE,-fPIC,$(ARCH)) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,text 			-Wl,-z,max-page-size=0x1000 -Wl,--hash-style=sysv -Wl,--gc-sections -Wl,--undefined=nxnwin_identity
 WIN_OBJS	:=	$(patsubst %.c,$(BUILD)/win/%.o,$(notdir $(wildcard $(SOURCES)/*.c)))

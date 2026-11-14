@@ -1,7 +1,5 @@
 # Store icon tool (key art)
 
-**English** · [Türkçe](README.tr.md)
-
 The App Market icon of a game or app made with the SDK shows the item itself: its hero, main object or world, not a
 flat placeholder symbol on a gradient. How it looks is the maker's choice. These two scripts make a polished icon
 from your game's own model in a few minutes, in the style you pick.
@@ -84,5 +82,5 @@ Each folder has `icon.png` (256), `icon_512.png` and `preview.png`.
 - It reads at 64 px: one main subject inside the central 80 %.
 - Rendered from your own model, or made with a tool whose terms let you publish the result (name it in the README).
 
-More: [Store icon task for AI assistants](../../AI/tasks/store-icon.en.md) (with a prompt for image generators) and
-[Make a game, section 12](../../Guides/MAKE_A_GAME.en.md#12-store-icon-and-key-art).
+More: [Store icon task for AI assistants](../../AI/tasks/store-icon.md) (with a prompt for image generators) and
+[Make a game, section 12](../../Guides/MAKE_A_GAME.md#12-store-icon-and-key-art).

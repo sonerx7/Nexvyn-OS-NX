@@ -1,7 +1,5 @@
 # Village Bench
 
-[Türkçe](README.tr.md)
-
 A benchmark for Nexvyn OS. It flies a fixed 60 second camera path over a fully textured 3D village and shows the average, minimum and 1% low frame times, the frame rate and a score.
 
 - Three quality presets: Low (render scale 60%, no shadows, no anti-aliasing), Medium (80%, sun shadows, anti-aliasing), High (100%, sun shadows, anti-aliasing).
