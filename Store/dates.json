@@ -3229,10 +3229,14 @@
   "system.nexbench": {
     "added": "2026-11-15",
     "updated": "2026-11-15",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "history": [
       {
         "version": "2.1.0",
+        "date": "2026-11-15"
+      },
+      {
+        "version": "2.2.0",
         "date": "2026-11-15"
       }
     ]
