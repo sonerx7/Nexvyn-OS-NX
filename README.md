@@ -14,7 +14,7 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 - A windowed desktop (Dock or taskbar layout), 70+ built-in apps and an App Market where every item is reviewed.
 - **Nexvyn OS N2 Architecture (SDK 2.0 / 1.13 & Native SDK 1.2):** 4 official primary language tracks (**Lua 5.4.7** with Generational GC, **JavaScript ES2023** on QuickJS-ng 0.17.0, **Python 3.12** on CPython 3.12.16, and **Native C/C++** with Frozen ABI v1), the **NXUI Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)**, the **NexGFX PBR 3D renderer**, and an AI-ready SDK (`SDK/AI/llms.txt`).
 
-### What is new in 1.3.10-beta.2 (Beta Channel)
+### What is new in 1.3.10
 
 - **App Market & SDK Parity (`1.13` / Native `1.2`):** All `112` Store packages (`181` catalog items, `4` beta items) updated to `targetSdk: "1.13"`, explicit `runtime` declarations, and `"minNative": "1.2"` / `"targetNative": "1.2"` for native apps and emulators (`Store/catalog.json` & `Store/beta.json` pass `catalog_check` with `0` errors and `0` warnings).
 - **Porting & Maximum Input (`sdl2-nexvyn` & `<nexvyn/nxn_port_input.h>`):** Added 16-finger multi-touch, pinch-to-zoom, two-finger tap right-click, two-finger pan scroll, long-press right-click, `nxn_rumble` haptics, and `<nexvyn/nxn_port_input.h>` for porting strategy/CRPG/FPS/arcade games (`SDK/Porting/`).

@@ -85,46 +85,18 @@ costs decides the frame rate:
 - Keep save files small and write them on a worker thread, through a temp file and a rename.
 - The log shows the read speed at module load (`module load ... MB/s`); compare it with your own read loop.
 
-## 7. Maximum Input Support: Gamepad, Multi-Touch, Gestures & Keyboard
+## 7. Input
 
-Map to what the user holds: Joy-Con pair, single Joy-Con, Pro Controller, 10-point multi-touch screen, and USB/Bluetooth keyboard & mouse. Always set `"minNative": "1.2"` in `app.json` (multi-touch is disabled for `1.0` manifests).
+Map to what the user holds: a Joy-Con pair, a single Joy-Con, a controller, and the touch screen. The game expects a
+mouse and a keyboard, so the host layer has to provide them:
 
-### A. Automatic SDL2 Input & Gesture Bridge (Zero-Code for SDL2 Ports)
-
-Nexvyn's bundled `sdl2-nexvyn` driver automatically provides:
-- **16-Finger Multi-Touch:** `SDL_FINGERDOWN`, `SDL_FINGERMOTION`, `SDL_FINGERUP`, and `SDL_MULTIGESTURE`.
-- **Two-Finger Pinch-to-Zoom -> Mouse Wheel (`SDL_MOUSEWHEEL`):** Moving two fingers apart/together emits wheel `+1`/`-1` at the pinch center (so RTS/strategy/map ports like Red Alert 2, OpenTTD, OpenRCT2, or Bochs zoom out of the box).
-  - Set `SDL_SetHint("NEXVYN_PINCH_MODE", "ctrl_pm")` if the game expects `Ctrl + '+' / '-'` instead of wheel, or `"none"` to keep raw multi-touch only.
-  - Disable all gesture-to-mouse synthesis with `SDL_SetHint("NEXVYN_TOUCH_GESTURES", "0")`.
-- **Two-Finger Tap -> Right Click (`SDL_BUTTON_RIGHT`):** Quick tap with two fingers emits a right-click at the midpoint.
-- **Two-Finger Pan -> Horizontal/Vertical Wheel (`SDL_MOUSEWHEEL`):** Sliding two fingers together scrolls maps/lists.
-- **Single-Finger Long-Press (~550 ms) -> Right Click:** Emits `SDL_BUTTON_RIGHT` (disable with `SDL_SetHint("NEXVYN_LONG_PRESS_RIGHT", "0")`).
-- **Gamepad -> Virtual Mouse & Zoom (`NEXVYN_GAMEPAD_MOUSE=1`):** For PC/RTS/CRPG ports without controller support, `SDL_SetHint("NEXVYN_GAMEPAD_MOUSE", "1")` maps Left Stick to cursor, Right Stick to wheel scroll, `ZR/A` to Left Click, `ZL/X` to Right Click, `L/R` to Zoom Out/In, and `Y` to OSK toggle.
-- **Gamepad Rumble & USB/BT Keyboard:** `SDL_JoystickRumble` maps to `nxn_rumble`; USB/BT keyboards deliver `SDL_KEYDOWN`/`SDL_KEYUP` with HID scancodes; call `SDL_StopTextInput()` in games so the OSK does not pop up unintentionally.
-
-### B. Universal Port Input System (`<nexvyn/nxn_port_input.h>`)
-
-For custom engines, non-SDL2 renderers, static recompilations, or ports needing custom button/gesture bindings, include the header-only `<nexvyn/nxn_port_input.h>`:
-
-```c
-#include <nexvyn/nxn_port_input.h>
-
-nxn_pi_ctx pi;
-nxn_pi_init(&pi, NXN_PI_PROFILE_RTS, 1280.0f, 720.0f); // RTS / CRPG / FPS / GAMEPAD
-// Optional: Red Alert 2 style Ctrl + +/- pinch, or keep default NXN_PI_PINCH_WHEEL
-// pi.pinch_mode = NXN_PI_PINCH_CTRL_PM;
-// Custom button binding:
-// nxn_pi_bind(&pi, NXN_BTN_MINUS, NXN_PI_BIND_KEY, 43); // Tab
-
-// Per frame:
-nxn_pi_update(&pi, dt_sec);
-nxn_pi_event ev;
-while (nxn_pi_poll_event(&pi, &ev)) {
-    // Handles NXN_PI_EV_MOUSE_MOVE, MOUSE_DOWN/UP, MOUSE_WHEEL, KEY_DOWN/UP, PINCH, TWO_FINGER_TAP, TEXT
-}
-```
-
-- Read input once per frame on the main thread; do not poll `nxn_input_poll()` from two threads (edge flags `pressed`/`released` are consumed per call).
+- **Touch:** a tap is a left click, a long press is a right click, a two-finger drag scrolls the map. Move the cursor to
+  the touch point first, then press, or the game sees a click in the wrong place.
+- **Stick:** moves a software cursor with acceleration; one button is left click, another right click. Draw the cursor
+  yourself if the game hides the system one.
+- **D-pad and shoulder buttons:** map to the game's keyboard shortcuts (camera groups, hotkeys); show the mapping in
+  the app's menu.
+- Read input once per frame from the `nxn_input_state` snapshot or the event queue; do not poll devices on a second thread.
 
 ## 8. Measure the right way
 
