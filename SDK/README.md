@@ -5,7 +5,7 @@ the complete SDK reference, the 4 official language tracks, the **NXUI Retained 
 PBR 3D renderer**, the **Native C/C++ ABI v1 kit**, working samples, AI context packs (`AI/llms.txt` &
 `AI/system-prompt.md`), the publishing guide and command-line tools. All documentation is in English.
 
-**Current version: SDK 2.0 / 1.13 & Native SDK 1.2** (Nexvyn OS 1.3.8). Apps made for SDK 1.0 to 1.12 and Native SDK
+**Current version: SDK 2.0 / 1.13 & Native SDK 1.2** (Nexvyn OS 1.3.9). Apps made for SDK 1.0 to 1.12 and Native SDK
 1.0 to 1.1 run unchanged ([SDK versions](Guides/SDK_VERSIONS.md)).
 
 ---

@@ -43,7 +43,7 @@ PC'nizdeki Yuri's Revenge kurulum klasöründen şu dosyaları hazırlayın:
 ### Kurulum Adımları
 
 1. Nexvyn OS App Market uygulamasını açın ve **Beta** sekmesinden **RA2 Yuri Port**'u indirin (Yükle).
-2. Nintendo Switch SD kartınızı bilgisayarınıza takın veya Nexvyn OS Dosyalar uygulamasını kullanın.
+2. Konsolunuzun SD kartını bilgisayarınıza takın veya Nexvyn OS Dosyalar uygulamasını kullanın.
 3. Uygulamanın kurulu olduğu klasöre gidin:
    ```text
    sdmc:/NexvynOS/Applications/com.sonerx7.redalert2.nxvapp/game/

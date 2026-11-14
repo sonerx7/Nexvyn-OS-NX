@@ -73,7 +73,15 @@ Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` i
 - **Package `.nxvapp`:** `python SDK/Tools/nxv/nxv.py pack <bundle_folder>`
 - **Build Native `.nxvmod`:** `python SDK/Languages/c/native-kit/tools/nxv_native build <project_folder>`
 
-## 6. Document Map
+## 6. Copy-Paste Starter Map (Templates A-F in `SDK/AI/system-prompt.md`)
+- **Template A (Lua 5.4.7 NXUI Utility):** `app.json` + `main.lua` + `lang/en.json`
+- **Template B (Lua 5.4.7 60 FPS Game):** Custom `gfx` + `audio` + `input` + pause/title/play state machine
+- **Template C (Native C/C++ `.nxvmod` ABI v1):** `nxn_run` + `nxn_display_open` + `gladLoadGLLoader` + `nxn_nxui_*`
+- **Template D (JavaScript ES2023 Network + NXUI):** `await net.fetchJson` + `nxui.table` + `store`
+- **Template E (Python 3.12 Data/Utility + NXUI):** `"runtime": "python3"` + `nxui.tabs` + `nxui.slider`
+- **Template F (Lua 3D PBR Scene):** `g3d.renderer("pbr")` + `g3d.shadows` + `g3d.postfx` + `g3d.addLight`
+
+## 7. Document Map
 - Full API Contract: `SDK/Reference/SDK.md`
 - Full AI System Prompt: `SDK/AI/system-prompt.md`
 - Strict AI Rules: `SDK/AI/AI_RULES.md`

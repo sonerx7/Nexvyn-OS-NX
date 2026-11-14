@@ -9,8 +9,8 @@
         "tr": "Bochs x86 PC"
       },
       "description": {
-        "en": "Boot MS-DOS, FreeDOS, Windows 95/98/XP/7/10 Lite, ReactOS, and lightweight Linux on Nexvyn OS using the Bochs 3.1 core tuned for Cortex-A57. Ported to Nexvyn OS by sonerx7.\n\nIncludes open-source Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, Switch-tuned OS presets, instant growing disk creator up to 32 GB (and async flat RAW), external persistent VM/checkpoint folder support, Sound Blaster 16 & ES1370 audio, SLIRP NAT networking, PC virtual keyboard, full controller/touch UI navigation, and checkpoints.\n\nNo commercial operating systems or proprietary ROMs are included.",
-        "tr": "Cortex-A57 için optimize edilmiş Bochs 3.1 çekirdeğiyle MS-DOS, FreeDOS, Windows 95/98/XP/7/10 Lite, ReactOS ve hafif Linux dağıtımlarını Nexvyn OS üzerinde çalıştırın. sonerx7 tarafından Nexvyn OS için port edilmiştir.\n\nAçık kaynak Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, Switch uyumlu işletim sistemi profilleri, 32 GB'a kadar anlık growing (ve asenkron flat RAW) sanal disk oluşturucu, kalıcı harici klasör koruması, Sound Blaster 16 & ES1370 ses, SLIRP ağ, ekran PC klavyesi, tam kontrolcü/dokunmatik arayüz ve durum kaydı içerir.\n\nTicari işletim sistemi veya telifli ROM içermez."
+        "en": "Boot MS-DOS, FreeDOS, Win9x/XP/7/10 Lite, ReactOS, and lightweight Linux on Nexvyn OS using the Bochs 3.1 core tuned for Cortex-A57. Ported to Nexvyn OS by sonerx7.\n\nIncludes open-source Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, console-tuned OS presets, instant growing disk creator up to 32 GB (and async flat RAW), external persistent VM/checkpoint folder support, Sound Blaster 16 & ES1370 audio, SLIRP NAT networking, PC virtual keyboard, full controller/touch UI navigation, and checkpoints.\n\nNo commercial operating systems or proprietary ROMs are included.",
+        "tr": "Cortex-A57 için optimize edilmiş Bochs 3.1 çekirdeğiyle MS-DOS, FreeDOS, Win9x/XP/7/10 Lite, ReactOS ve hafif Linux dağıtımlarını Nexvyn OS üzerinde çalıştırın. sonerx7 tarafından Nexvyn OS için port edilmiştir.\n\nAçık kaynak Bochs BIOS, SeaBIOS 1.16, LGPL VGABIOS, konsol uyumlu işletim sistemi profilleri, 32 GB'a kadar anlık growing (ve asenkron flat RAW) sanal disk oluşturucu, kalıcı harici klasör koruması, Sound Blaster 16 & ES1370 ses, SLIRP ağ, ekran PC klavyesi, tam kontrolcü/dokunmatik arayüz ve durum kaydı içerir.\n\nTicari işletim sistemi veya telifli ROM içermez."
       },
       "version": "3.1.1",
       "author": "Bochs Project, Port by sonerx7",
@@ -54,7 +54,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-11"
+      "updated": "2026-11-14"
     },
     {
       "id": "com.nexvyn.emu.dosbox",
@@ -71,8 +71,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Emulators/pc/dosbox/dosbox.nxvapp",
-      "size": 2482378,
-      "sha256": "de3bd4ea9b9c0908e01036907512a483072c02ffea3593ed46657510e782136e",
+      "size": 2482153,
+      "sha256": "26caa873e49a30136cb689da6039a1f586e6af2a178b393dc74f2e76f01c0c0a",
       "minSdk": "1.13",
       "permissions": [
         "files"
@@ -103,7 +103,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-11"
+      "updated": "2026-11-14"
     },
     {
       "id": "com.sonerx7.redalert2",
@@ -146,7 +146,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-11"
+      "updated": "2026-11-14"
     },
     {
       "id": "com.nexvyn.emu.tinyemu",
@@ -196,7 +196,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-11"
+      "updated": "2026-11-14"
     }
   ]
 }

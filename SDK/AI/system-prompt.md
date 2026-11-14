@@ -563,40 +563,213 @@ return app
 
 ### Template C — Native C / C++ Windowed Module (`.nxvmod`, Native SDK 1.2)
 ```c
-/* src/main.c ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10") */
+/* src/main.c ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10", "targetSdk": "2.0") */
 #include <nexvyn/nexvyn_native.h>
 #include <nexvyn/nxn_nxui.h>
+#include <glad/glad.h>
 
-static int g_counter = 0;
-static int g_toggle = 1;
-
-NXN_EXPORT int nxn_app_init(int argc, const char* const* argv) {
+static int app_main(int argc, char** argv) {
     (void)argc; (void)argv;
-    nxn_window_set_title("Native NXUI App");
-    nxn_window_set_min_size(360, 260);
+    nxn_display* disp = NULL;
+    if (nxn_display_open(NULL, &disp) != NXN_OK) {
+        nxn_request_return(NXN_RETURN_ERROR, 1, "Failed to open display");
+        return 1;
+    }
+    gladLoadGLLoader((GLADloadproc)nxn_display_proc);
+
+    uint32_t w = 960, h = 540;
+    nxn_display_size(disp, &w, &h);
+    int counter = 0;
+    bool toggle_on = true;
+
+    while (!nxn_should_quit()) {
+        nxn_event ev = NXN_STRUCT_INIT(nxn_event);
+        while (nxn_event_poll(&ev) > 0) {
+            if (ev.type == NXN_EVENT_RESIZE && nxn_display_resize(disp, ev.width, ev.height) == NXN_OK) {
+                nxn_display_size(disp, &w, &h);
+                glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+            }
+            ev.size = sizeof(ev);
+        }
+
+        glClearColor(0.08f, 0.10f, 0.14f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        nxn_nxui_begin((float)w, (float)h);
+        nxn_nxui_column_begin("main_col", 12.0f);
+        nxn_nxui_card_begin("hero_card");
+            nxn_nxui_label("title_lbl", nxn_tr("title"), NXN_TYPO_TITLE);
+            if (nxn_nxui_button("inc_btn", nxn_tr("increment"), NXN_BTN_PRIMARY)) {
+                counter++;
+            }
+            nxn_nxui_toggle("opt_tog", &toggle_on);
+        nxn_nxui_card_end();
+        nxn_nxui_column_end();
+        nxn_nxui_end();
+
+        nxn_display_swap(disp);
+    }
+
+    nxn_display_close(disp);
     return 0;
 }
 
-NXN_EXPORT void nxn_app_frame(float dt) {
-    (void)dt;
-    int w = 640, h = 480;
-    nxn_gfx_size(&w, &h);
-    nxn_nxui_begin((float)w, (float)h);
-    nxn_nxui_column("main_col", 12.0f);
+int main(int argc, char** argv) {
+    return nxn_run(argc, argv, app_main, NULL);
+}
+```
 
-    nxn_nxui_card("hero_card");
-    nxn_nxui_label("title_lbl", "Nexvyn Native SDK 1.2", "title");
-    if (nxn_nxui_button("inc_btn", "Increment Counter", "primary")) {
-        g_counter++;
-    }
-    g_toggle = nxn_nxui_toggle("opt_tog", g_toggle);
-    nxn_nxui_card_end();
+### Template D — JavaScript ES2023 Network + NXUI App
+```json
+// app.json
+{
+  "id": "com.example.jsnews",
+  "name": {"en": "JS Feed"},
+  "description": {"en": "Async network app using QuickJS-ng ES2023 and NXUI"},
+  "version": "1.0.0",
+  "runtime": "js",
+  "main": "main.js",
+  "minSdk": "1.13",
+  "targetSdk": "2.0",
+  "window": {"width": 680, "height": 460, "resizable": true},
+  "permissions": ["network"]
+}
+```
+```js
+// main.js (ES module)
+let status = "Ready";
+let items = store.get("cached_items", []);
+let loading = false;
 
-    nxn_nxui_column_end();
-    nxn_nxui_end();
+async function refresh() {
+  if (!sys.online()) { status = TR("offline"); return; }
+  loading = true;
+  status = TR("loading");
+  try {
+    const data = await net.fetchJson("https://jsonplaceholder.typicode.com/posts?_limit=15");
+    items = data.map(p => [String(p.id), p.title.slice(0, 42)]);
+    store.set("cached_items", items);
+    status = TR("loaded", items.length);
+  } catch (e) {
+    status = e.message;
+  } finally {
+    loading = false;
+  }
 }
 
-NXN_EXPORT void nxn_app_shutdown(void) {}
+app.load = () => { if (items.length === 0) refresh(); };
+app.draw = (w, h) => {
+  const t = nxui.tokens();
+  gfx.clear(t.windowBg);
+  nxui.begin(w, h);
+  nxui.column("root", t.space3);
+    nxui.row("hdr", t.space3);
+      nxui.label("title", TR("title"), "title");
+      nxui.spacer(0);
+      if (nxui.button("btn_ref", loading ? "..." : TR("refresh"), "primary") && !loading) refresh();
+    nxui.rowEnd();
+    nxui.label("st", status, "caption");
+    nxui.table("tbl", ["ID", "Title"], items, 0);
+  nxui.columnEnd();
+  nxui.endFrame();
+};
+```
+```json
+// lang/en.json
+{"title": "JS Feed", "refresh": "Refresh", "loading": "Loading...", "offline": "You are offline.", "loaded": "Loaded {0} items"}
+```
+
+### Template E — Python 3.12 (`"runtime": "python3"`) Data / Utility App
+```json
+// app.json
+{
+  "id": "com.example.pydata",
+  "name": {"en": "Unit Converter"},
+  "description": {"en": "CPython 3.12 utility with NXUI retained layout"},
+  "version": "1.0.0",
+  "runtime": "python3",
+  "main": "main.py",
+  "minSdk": "1.13",
+  "targetSdk": "2.0",
+  "window": {"width": 520, "height": 380, "resizable": true},
+  "permissions": []
+}
+```
+```python
+# main.py (built-in gfx, ui, nxui, store, sys, TR — no import needed)
+class App:
+    def load(self, arg):
+        self.celsius = store.get("celsius", 22.0)
+        self.mode = 0  # 0-based
+
+    def draw(self, w, h):
+        t = nxui.tokens()
+        gfx.clear(t["windowBg"])
+        nxui.begin(w, h)
+        nxui.column("col", t["space3"])
+        nxui.label("hdr", TR("title"), "title")
+        self.mode = nxui.tabs("tabs", [TR("temp"), TR("dist")], self.mode)
+        nxui.card("card")
+        if self.mode == 0:
+            self.celsius = nxui.slider("c_sld", self.celsius, -40.0, 100.0)
+            fahr = self.celsius * 9.0 / 5.0 + 32.0
+            nxui.label("res", f"{self.celsius:.1f} C = {fahr:.1f} F", "headline")
+        else:
+            km = max(0.0, self.celsius)
+            nxui.label("res_d", f"{km:.1f} km = {km * 0.621371:.2f} mi", "headline")
+        nxui.cardEnd()
+        nxui.columnEnd()
+        nxui.endFrame()
+
+    def autosave(self):
+        store.set("celsius", self.celsius)
+
+app = App()
+```
+```json
+// lang/en.json
+{"title": "Quick Converter", "temp": "Temperature", "dist": "Distance"}
+```
+
+### Template F — 3D PBR Scene (`g3d.renderer("pbr")`, Lua 5.4.7)
+```lua
+-- main.lua ("runtime": "lua", "minSdk": "1.9", "targetSdk": "2.0", "gamepad": true)
+local app = {}
+local ground, box, t = nil, nil, 0
+
+function app.load()
+  g3d.renderer("pbr")
+  g3d.shadows({enabled = true, quality = "medium", distance = 24})
+  g3d.postfx({exposure = 1.0, tonemap = "aces", bloom = 0.08, threshold = 1.0})
+  g3d.environment({sky = "#9DB8E8", ground = "#4A4038", intensity = 1.0, sun = 2.4})
+
+  ground = g3d.mesh("plane", 24, 24, 1)
+  ground:setColor("#5A626A")
+  g3d.material(ground, {metallic = 0.0, roughness = 0.85})
+
+  box = g3d.mesh("box", 1.2, 1.2, 1.2)
+  box:setColor("#E0A84B")
+  g3d.material(box, {metallic = 0.85, roughness = 0.25})
+
+  g3d.addLight({type = "point", x = 2.5, y = 2.2, z = 2.0, color = "#FF9A3C", intensity = 8, range = 10})
+end
+
+function app.update(dt)
+  t = t + dt
+end
+
+function app.draw(w, h)
+  gfx.clear("#0E1116")
+  g3d.begin(0, 0, w, h, 55, 0.1, 100)
+  g3d.camera(math.sin(t * 0.4) * 5.0, 2.8, math.cos(t * 0.4) * 5.0, 0, 0.6, 0)
+  g3d.light(0.5, 0.8, 0.4, 0.3, "#FFF2DF")
+  g3d.fog("#0E1116", 20, 60)
+  g3d.draw(ground, 0, 0, 0)
+  g3d.draw(box, 0, 0.6, 0, 0, t * 0.8, 0)
+  g3d.finish()
+end
+
+return app
 ```
 
 ### Top 10 AI Mistakes to NEVER Make

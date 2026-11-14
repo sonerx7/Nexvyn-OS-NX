@@ -60,8 +60,8 @@ static int app_main(int argc, char** argv) {
         /* NXUI Retained & Semantic UI overlay */
         nxn_nxui_begin((float)w, (float)h);
         nxn_nxui_card_begin("panel");
-            nxn_nxui_label("title", nxn_tr("title"), NXN_NXUI_TEXT_TITLE);
-            if (nxn_nxui_button("btn_add", "+1", NXN_NXUI_BTN_PRIMARY)) {
+            nxn_nxui_label("title", nxn_tr("title"), NXN_TYPO_TITLE);
+            if (nxn_nxui_button("btn_add", "+1", NXN_BTN_PRIMARY)) {
                 counter++;
             }
             nxn_nxui_slider("sld", &slider_val, 0.0f, 1.0f);

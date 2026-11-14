@@ -1,7 +1,7 @@
 # Nexvyn OS SDK Reference
 
 The complete contract for Nexvyn OS applications and games (**SDK 2.0 / 1.13** and **Native SDK 1.2**, shipped with
-**Nexvyn OS 1.3.8**). Apps read the system's SDK version with `sys.sdkVersion()` (`"1.13"`) and declare the oldest
+**Nexvyn OS 1.3.9**). Apps read the system's SDK version with `sys.sdkVersion()` (`"1.13"`) and declare the oldest
 version they need with `"minSdk"` in `app.json`.
 
 ## In this folder

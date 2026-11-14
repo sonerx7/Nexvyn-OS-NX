@@ -18,7 +18,7 @@ rules behind this page are in [COMPATIBILITY.md](COMPATIBILITY.md).
 
 | Number | Example | Meaning |
 |---|---|---|
-| **Nexvyn OS** | `1.3.8` | the system release (major.minor.patch), shown in Settings > About |
+| **Nexvyn OS** | `1.3.9` | the system release (major.minor.patch), shown in Settings > About |
 | **SDK** | `1.13` / `2.0` | the API surface apps are written against (major.minor); `sys.sdkVersion()` returns it |
 | **Runtime engine** | Lua 5.4.7, QuickJS-ng 0.17.0, CPython 3.12.16, Native AOT ABI v1 | the interpreter or compiler behind one language |
 

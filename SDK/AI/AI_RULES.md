@@ -19,8 +19,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 12. Store the app's icon as a real picture of the app (not a flat symbol on a gradient). Use the Store screenshot rules from the kit.
 13. Use plain ASCII identifiers. Comments in English.
 14. Tell the user, in the user's language, what you changed and what you did not test.
-
-11. Dear ImGui apps (native, nxn_imgui.h): every visible widget needs a UNIQUE ID in its window. Two buttons with the same label (for example a toolbar "Rescan" and an empty-state "Rescan") trigger the red "2 visible items with conflicting ID!" banner on screen. Always give repeated labels a suffix: `ImGui::Button("Rescan##toolbar")`, `ImGui::Button("Rescan##empty")`; inside loops use `ImGui::PushID(i)` / `PopID()`; never use an empty label (`Button("")`), use `Button("##name")`. Test every screen state (empty library, first run, error) with the test tool and fail on this banner text.
+15. Dear ImGui apps (native, nxn_imgui.h): every visible widget needs a UNIQUE ID in its window. Two buttons with the same label (for example a toolbar "Rescan" and an empty-state "Rescan") trigger the red "2 visible items with conflicting ID!" banner on screen. Always give repeated labels a suffix: `ImGui::Button("Rescan##toolbar")`, `ImGui::Button("Rescan##empty")`; inside loops use `ImGui::PushID(i)` / `PopID()`; never use an empty label (`Button("")`), use `Button("##name")`. Test every screen state (empty library, first run, error) with the test tool and fail on this banner text.
 
 ## 2. MUST NOT
 

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Türkçe**
 
-Nintendo Switch (`Cortex-A57`, `-O3 -fno-strict-aliasing`) için optimize edilmiş Dear ImGui + OpenGL 4.3 Core arayüzlü **Bochs `REL_3_1_FINAL`** yerel AArch64 pencere modu portu (`runtime: "native"`, `mode: "window"`, Native SDK `1.2`, Store Beta kanalı `Store/Beta/Emulators/pc/bochs/` -> `Store/beta.json`, `kind: "emulator"`, `emuCategory: "pc"`).
+Konsol (`Cortex-A57`, `-O3 -fno-strict-aliasing`) için optimize edilmiş Dear ImGui + OpenGL 4.3 Core arayüzlü **Bochs `REL_3_1_FINAL`** yerel AArch64 pencere modu portu (`runtime: "native"`, `mode: "window"`, Native SDK `1.2`, Store Beta kanalı `Store/Beta/Emulators/pc/bochs/` -> `Store/beta.json`, `kind: "emulator"`, `emuCategory: "pc"`).
 
 | Alan | Değer |
 |---|---|
@@ -17,7 +17,7 @@ Nintendo Switch (`Cortex-A57`, `-O3 -fno-strict-aliasing`) için optimize edilmi
 | Lisans | LGPL-2.1-or-later (Bochs ve LGPL VGABIOS), LGPL-3.0 / GPL-3.0 (SeaBIOS), MIT (Dear ImGui) |
 
 ## Özellikler
-- **x86 / x86-64 İşlemci Emülasyonu & Switch Profilleri:** i386 ile Core i7 arası seçilebilir işlemciler; MS-DOS/FreeDOS, Windows 95/98 (`pentium`, PIIX3/ISA kararlılığı), Windows XP (`p3_katmai`, `512 MB`, `fastboot`, `imps2`, ES1370/NE2000), ReactOS (`core_duo_t2400_yonah`), hafif Linux (`core2_penryn_t9600`, E1000) ve Windows 7/10 Lite (`corei7_sandy_bridge_2600k`, `640 MB`, E1000) için hazır ayarlar.
+- **x86 / x86-64 İşlemci Emülasyonu & Konsol Profilleri:** i386 ile Core i7 arası seçilebilir işlemciler; MS-DOS/FreeDOS, Win9x (`pentium`, PIIX3/ISA kararlılığı), WinXP (`p3_katmai`, `512 MB`, `fastboot`, `imps2`, ES1370/NE2000), ReactOS (`core_duo_t2400_yonah`), hafif Linux (`core2_penryn_t9600`, E1000) ve Win7/10 Lite (`corei7_sandy_bridge_2600k`, `640 MB`, E1000) için hazır ayarlar.
 - **Dahili Açık Kaynak BIOS & VGABIOS:** Paket içinde açık kaynak `BIOS-bochs-latest`, `BIOS-bochs-legacy`, `SeaBIOS 1.16` (`bios.bin-1.16.0`) ve LGPL VGA BIOS ROM'ları (`VGABIOS-lgpl-latest.bin`, `Cirrus`, `Voodoo Banshee`) gelir; harici ROM seçimi de desteklenir. Ticari veya telifli hiçbir BIOS ya da işletim sistemi kalıbı içermez.
 - **Depolama, Büyüyen Diskler ve Veri Güvenliği:** Çalışırken takılıp çıkarılabilen çift disket sürücüsü, otomatik CHS geometrili birincil/ikincil ATA diskler ve CD-ROM'lar; anında oluşturulan 32 GB'a kadar Bochs `growing` (büyüyen) diskler ve 4095 MB'a kadar iptal edilebilir `flat` RAW disk oluşturucu; `.bochsrc` içe/dışa aktarma, silme onayları ve profil/checkpoint'leri sistem güncellemelerinden koruyan harici kalıcı klasör (`NXN_PICK_FOLDER | NXN_PICK_REMEMBER`) desteği.
 - **Ses ve Ağ:** `Sound Blaster 16`, `Ensoniq ES1370` ve dahili PC hoparlörü (`nxn_audio_*`); `SLIRP` NAT ve yalıtılmış `VNET` sanal ağları (`e1000`, `ne2000`, `pcipnic`).

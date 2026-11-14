@@ -1,6 +1,6 @@
 # Bochs x86 / x86-64 PC Emulator for Nexvyn OS
 
-Native AArch64 windowed port (`runtime: "native"`, `mode: "window"`, Native SDK `1.2`, Store Beta channel `Store/Beta/Emulators/pc/bochs/` -> `Store/beta.json`, `kind: "emulator"`, `emuCategory: "pc"`) of **Bochs `REL_3_1_FINAL`**, featuring a Dear ImGui + OpenGL 4.3 Core frontend tuned for Nintendo Switch (`Cortex-A57`, `-O3 -fno-strict-aliasing`).
+Native AArch64 windowed port (`runtime: "native"`, `mode: "window"`, Native SDK `1.2`, Store Beta channel `Store/Beta/Emulators/pc/bochs/` -> `Store/beta.json`, `kind: "emulator"`, `emuCategory: "pc"`) of **Bochs `REL_3_1_FINAL`**, featuring a Dear ImGui + OpenGL 4.3 Core frontend tuned for the console (`Cortex-A57`, `-O3 -fno-strict-aliasing`).
 
 | Field | Value |
 |---|---|
@@ -15,7 +15,7 @@ Native AArch64 windowed port (`runtime: "native"`, `mode: "window"`, Native SDK 
 | License | LGPL-2.1-or-later (Bochs & LGPL VGABIOS), LGPL-3.0 / GPL-3.0 (SeaBIOS), MIT (Dear ImGui) |
 
 ## Features
-- **x86 / x86-64 CPU emulation & Switch-tuned OS presets:** Configurable CPUs (`i386` .. `corei7_sandy_bridge_2600k`) with curated profiles for MS-DOS/FreeDOS, Windows 95/98 (`pentium`, PIIX3/ISA stability), Windows XP (`p3_katmai`, `512 MB`, `fastboot`, `imps2`, ES1370/NE2000), ReactOS (`core_duo_t2400_yonah`), lightweight Linux (`core2_penryn_t9600`, E1000), and Windows 7/10 Lite (`corei7_sandy_bridge_2600k`, `640 MB`, E1000).
+- **x86 / x86-64 CPU emulation & console-tuned OS presets:** Configurable CPUs (`i386` .. `corei7_sandy_bridge_2600k`) with curated profiles for MS-DOS/FreeDOS, Win9x (`pentium`, PIIX3/ISA stability), WinXP (`p3_katmai`, `512 MB`, `fastboot`, `imps2`, ES1370/NE2000), ReactOS (`core_duo_t2400_yonah`), lightweight Linux (`core2_penryn_t9600`, E1000), and Win7/10 Lite (`corei7_sandy_bridge_2600k`, `640 MB`, E1000).
 - **Bundled open-source firmware:** Ships open-source `BIOS-bochs-latest`, `BIOS-bochs-legacy`, `SeaBIOS 1.16` (`bios.bin-1.16.0`), and LGPL VGA BIOS ROMs (`VGABIOS-lgpl-latest.bin`, `Cirrus`, `Voodoo Banshee`) under `source/data/bios/`, plus custom ROM selection. No proprietary ROMs, commercial BIOS, or OS images are included.
 - **Storage, growing disks & data protection:** Dual floppy drives (live swap), primary/secondary ATA disks and CD-ROMs with automatic CHS geometry, instant async Bochs `growing` disk creator up to `32 GiB` + cancellable buffered `flat` RAW creator up to `4095 MiB`, `.bochsrc` import/export, delete confirmations, and mirror backup + external persistent folder (`NXN_PICK_FOLDER | NXN_PICK_REMEMBER`) for VM profiles and checkpoints across OS/app updates.
 - **Audio & Networking:** `Sound Blaster 16`, `Ensoniq ES1370`, and PC Speaker audio mixed through `nxn_audio_*`; `SLIRP` NAT and isolated `VNET` networking with `e1000`, `ne2000`, and `pcipnic`.
