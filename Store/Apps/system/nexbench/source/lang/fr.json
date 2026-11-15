@@ -123,6 +123,7 @@
   "preflight.clean_ok": "PROPRE (Isolé)",
   "preflight.clean_busy": "OCCUPÉ (Fermer l'arrière-plan)",
   "preflight.yes_no_prompt": "Confirmez-vous la fermeture des applis en arrière-plan pour verrouiller en plein écran ? (Oui / Non)",
-  "explore.scene_prison": "Scène 1 : Prison (602K)",
+  "explore.scene_chamber": "Scène 1 : Chambre Quantique (520K)",
+  "explore.scene_prison": "Scène 1 : Chambre Quantique (520K)",
   "explore.scene_reactor": "Scène 2 : Réacteur (457K)"
 }

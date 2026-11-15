@@ -123,6 +123,7 @@
   "preflight.clean_ok": "纯净 (已隔离)",
   "preflight.clean_busy": "繁忙 (请关闭后台应用)",
   "preflight.yes_no_prompt": "确认已关闭所有后台应用，并立即进入全屏锁定测试？(是 / 否)",
-  "explore.scene_prison": "场景1: 监狱 (602K)",
+  "explore.scene_chamber": "场景1: 量子室 (520K)",
+  "explore.scene_prison": "场景1: 量子室 (520K)",
   "explore.scene_reactor": "场景2: 反应堆 (457K)"
 }

@@ -28,7 +28,7 @@
   "preflight.check_fullscreen": "Display Mode",
   "preflight.check_power": "Power & Dock State",
   "preflight.check_applet": "Memory Profile",
-  "preflight.check_asset": "3D Prison Asset (602K Polys)",
+  "preflight.check_asset": "3D Quantum Chamber (520K Polys)",
   "preflight.confirm": "Yes - Clean RAM & Start",
   "preflight.cancel": "No - Cancel",
   "state.fullscreen": "Fullscreen Active",
@@ -51,7 +51,7 @@
   "stage.3": "3. Memory Hierarchy (L1 / L2 / DRAM Bandwidth & Latency)",
   "stage.4": "4. Storage I/O & Serialization (Seq, 4K Random, JSON)",
   "stage.5": "5. GPU 2D Raster & Fill-Rate (12K Particles & 48x Overdraw)",
-  "stage.6": "6. GPU 3D Heavy PBR Prison (602K+ Polys, 2K PCF Shadows)",
+  "stage.6": "6. GPU 3D Heavy PBR Quantum Chamber (520K+ Polys, 2K PCF Shadows)",
   "stage.7": "7. GPU 3D Orbital Reactor (457K+ Polys, 64 Lights, Vortex)",
   "stage.8": "8. Platform Frameworks (Audio, Haptics, POSIX, NXUI Tokens)",
   "score.total": "TOTAL SCORE",
@@ -123,6 +123,7 @@
   "preflight.clean_ok": "CLEAN (Isolated)",
   "preflight.clean_busy": "BUSY (Close Background Apps)",
   "preflight.yes_no_prompt": "Confirm background apps are closed and enter Fullscreen Lock now? (Yes / No)",
-  "explore.scene_prison": "Scene 1: Prison (602K)",
+  "explore.scene_chamber": "Scene 1: Quantum Chamber (520K)",
+  "explore.scene_prison": "Scene 1: Quantum Chamber (520K)",
   "explore.scene_reactor": "Scene 2: Reactor (457K)"
 }

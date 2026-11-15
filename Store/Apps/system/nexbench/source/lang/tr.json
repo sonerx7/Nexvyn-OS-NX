@@ -28,7 +28,7 @@
   "preflight.check_fullscreen": "Ekran Modu",
   "preflight.check_power": "Güç ve Dock Durumu",
   "preflight.check_applet": "Bellek Profili",
-  "preflight.check_asset": "3D Hapishane Sahnesi (602K Poligon)",
+  "preflight.check_asset": "3D Kuantum Odası (520K Poligon)",
   "preflight.confirm": "Evet - RAM Temizle & Başlat",
   "preflight.cancel": "Hayır - Vazgeç",
   "state.fullscreen": "Tam Ekran Aktif",
@@ -51,7 +51,7 @@
   "stage.3": "3. Bellek Hiyerarşisi (L1 / L2 / DRAM Bant Genişliği & Gecikme)",
   "stage.4": "4. Depolama I/O & JSON (Sıralı, 4K Rastgele Okuma, Kayıt)",
   "stage.5": "5. GPU 2D Dolgu Hızı (12K Parçacık & 48x Overdraw)",
-  "stage.6": "6. GPU 3D PBR Hapishane (602K+ Poligon, 2K PCF Gölge)",
+  "stage.6": "6. GPU 3D PBR Kuantum Odası (520K+ Poligon, 2K PCF Gölge)",
   "stage.7": "7. GPU 3D Yörünge Reaktörü (457K+ Poligon, 64 Işık, Girdap)",
   "stage.8": "8. Sistem Frameworkleri (Ses, Titreşim, POSIX, NXUI)",
   "score.total": "TOPLAM PUAN",
@@ -123,6 +123,7 @@
   "preflight.clean_ok": "TEMİZ (İzole)",
   "preflight.clean_busy": "YOĞUN (Arka Planı Kapatın)",
   "preflight.yes_no_prompt": "Arka plandaki her şeyin kapatıldığını onaylıyor ve Tam Ekran Kilidine geçmek istiyor musunuz? (Evet / Hayır)",
-  "explore.scene_prison": "Sahne 1: Hapishane (602K)",
+  "explore.scene_chamber": "Sahne 1: Kuantum Odası (520K)",
+  "explore.scene_prison": "Sahne 1: Kuantum Odası (520K)",
   "explore.scene_reactor": "Sahne 2: Reaktör (457K)"
 }

@@ -123,6 +123,7 @@
   "preflight.clean_ok": "SAUBER (Isoliert)",
   "preflight.clean_busy": "AUSGELASTET (Apps schließen)",
   "preflight.yes_no_prompt": "Sind alle Hintergrund-Apps geschlossen? Jetzt Vollbild-Sperre aktivieren? (Ja / Nein)",
-  "explore.scene_prison": "Szene 1: Gefängnis (602K)",
+  "explore.scene_chamber": "Szene 1: Quantenkammer (520K)",
+  "explore.scene_prison": "Szene 1: Quantenkammer (520K)",
   "explore.scene_reactor": "Szene 2: Reaktor (457K)"
 }

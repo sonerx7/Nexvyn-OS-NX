@@ -11,14 +11,14 @@
     "zh": "Nexy Benchmark 2"
   },
   "description": {
-    "en": "Hardware & OS benchmark suite featuring 600K+ polygon PBR 3D prison & reactor stress scenes, 2D fill-rate test, multi-core raytracing, memory/storage I/O, platform diagnostics, and persistent scoring.",
-    "tr": "600K+ poligonlu PBR 3D hapishane ve reaktör stres sahneleri, 2D dolgu hızı, çok çekirdekli raytracing, bellek/depolama I/O, platform tanılaması ve kalıcı puanlama sunan donanım benchmark paketi.",
-    "de": "Hardware- & OS-Benchmark mit 600K+ Polygon-PBR-3D-Szenen, 2D-Füllrate, Multi-Core-Raytracing, Speicher-/I/O-Tests, Plattformdiagnose und Verlaufsbewertung.",
-    "fr": "Suite de benchmark matériel et OS : scènes 3D PBR 600K+ polygones, remplissage 2D, raytracing multicœur, E/S mémoire et stockage, diagnostics système et historique.",
-    "es": "Suite de benchmark de hardware y OS con escenas 3D PBR de 600K+ polígonos, relleno 2D, raytracing multinúcleo, E/S de memoria y almacenamiento, diagnóstico y puntuación persistente.",
-    "ja": "60万ポリゴン超のPBR 3Dストレスシーン、2Dフィルレート、マルチコアレイトレーシング、メモリ/ストレージI/O、システム診断・スコア履歴を搭載したベンチマークスイート。",
-    "ko": "60만+ 폴리곤 PBR 3D 스트레스 씬, 2D 필레이트, 멀티코어 레이트레이싱, 메모리/스토리지 I/O, 플랫폼 진단 및 누적 점수를 제공하는 벤치마크.",
-    "zh": "硬件与系统基准测试套件：支持60万+多边形PBR 3D压力场景、2D填充率、多核光线追踪、内存与存储I/O、系统诊断及历史评分。"
+    "en": "Hardware & OS benchmark suite featuring 500K+ polygon PBR 3D Quantum Monolith & Orbital Reactor scenes, 2D fill-rate test, multi-core raytracing, memory/storage I/O, platform diagnostics, and persistent scoring.",
+    "tr": "500K+ poligonlu PBR 3D Kuantum Monoliti ve Yörünge Reaktörü sahneleri, 2D dolgu hızı, çok çekirdekli raytracing, bellek/depolama I/O, platform tanılaması ve kalıcı puanlama sunan donanım benchmark paketi.",
+    "de": "Hardware- & OS-Benchmark mit 500K+ Polygon-PBR-3D-Quantenmonolith- und Reaktorszenen, 2D-Füllrate, Multi-Core-Raytracing, Speicher-/I/O-Tests, Plattformdiagnose und Verlaufsbewertung.",
+    "fr": "Suite de benchmark matériel et OS : scènes 3D PBR Monolithe Quantique et Réacteur Orbital 500K+ polygones, remplissage 2D, raytracing multicœur, E/S mémoire et stockage, diagnostics et historique.",
+    "es": "Suite de benchmark de hardware y OS con escenas 3D PBR de Monolito Cuántico y Reactor Orbital de 500K+ polígonos, relleno 2D, raytracing multinúcleo, E/S de memoria y almacenamiento, diagnóstico y puntuación persistente.",
+    "ja": "50万ポリゴン超のPBR 3Dクァンタムモノリス＆軌道リアクター、2Dフィルレート、マルチコアレイトレーシング、メモリ/ストレージI/O、システム診断・スコア履歴を搭載したベンチマークスイート。",
+    "ko": "50만+ 폴리곤 PBR 3D 퀀텀 모놀리스 및 궤도 리액터 씬, 2D 필레이트, 멀티코어 레이트레이싱, 메모리/스토리지 I/O, 플랫폼 진단 및 누적 점수를 제공하는 벤치마크.",
+    "zh": "硬件与系统基准测试套件：支持50万+多边形PBR 3D量子巨石与轨道反应堆、2D填充率、多核光线追踪、内存与存储I/O、系统诊断及历史评分。"
   },
   "version": "2.2.1",
   "author": "sonerx7",

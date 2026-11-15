@@ -123,6 +123,7 @@
   "preflight.clean_ok": "LIMPIO (Aislado)",
   "preflight.clean_busy": "OCUPADO (Cerrar apps)",
   "preflight.yes_no_prompt": "¿Confirmas que todo en segundo plano está cerrado para bloquear pantalla completa? (Sí / No)",
-  "explore.scene_prison": "Escena 1: Prisión (602K)",
+  "explore.scene_chamber": "Escena 1: Cámara Cuántica (520K)",
+  "explore.scene_prison": "Escena 1: Cámara Cuántica (520K)",
   "explore.scene_reactor": "Escena 2: Reactor (457K)"
 }

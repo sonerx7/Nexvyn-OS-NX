@@ -123,6 +123,7 @@
   "preflight.clean_ok": "깨끗함 (격리됨)",
   "preflight.clean_busy": "혼잡 (백그라운드 종료)",
   "preflight.yes_no_prompt": "백그라운드 앱을 모두 닫았으며 전체 화면 잠금을 시작할까요? (예 / 아니오)",
-  "explore.scene_prison": "장면 1: 교도소 (602K)",
+  "explore.scene_chamber": "장면 1: 퀀텀 챔버 (520K)",
+  "explore.scene_prison": "장면 1: 퀀텀 챔버 (520K)",
   "explore.scene_reactor": "장면 2: 리액터 (457K)"
 }

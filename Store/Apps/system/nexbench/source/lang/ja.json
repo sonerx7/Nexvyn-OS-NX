@@ -123,6 +123,7 @@
   "preflight.clean_ok": "正常 (分離済み)",
   "preflight.clean_busy": "高負荷 (他アプリ終了推奨)",
   "preflight.yes_no_prompt": "バックグラウンドを閉じたことを確認し、全画面ロックで開始しますか？ (はい / いいえ)",
-  "explore.scene_prison": "シーン1: 刑務所 (602K)",
+  "explore.scene_chamber": "シーン1: クァンタムチャンバー (520K)",
+  "explore.scene_prison": "シーン1: クァンタムチャンバー (520K)",
   "explore.scene_reactor": "シーン2: リアクター (457K)"
 }
