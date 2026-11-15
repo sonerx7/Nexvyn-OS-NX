@@ -113,8 +113,14 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
 5. **All visible text through `TR("key", ...)`** with every key in `lang/en.json` (required). Add `lang/<code>.json`
    for each other language the user wants; missing keys fall back to English. `{0}`, `{1}` are replaced by the extra
    arguments. System keys like `TR("common.ok")` exist.
-6. **Apps: use `theme` colors** so light and dark mode work. Touch targets ≥ 28 px tall; 16-20 px margins; 13-15 px
-   body text. Games do not: see rule 11.
+6. **Apps: Unified OS Design System & Cross-Runtime Parity:**
+   Apps in any of the 4 runtimes (Lua, JS, Python, Native C/C++) must share an identical design language (colors, padding, typography, control sizing):
+   - Use `theme` colors or `nxui.tokens()` / `nxn_ui_tokens_get()` so Light/Dark and accent colors adapt dynamically.
+   - Touch targets ≥ 28 px tall (canonical button height: 30 px, radius 8 px; segmented tab: 32 px, radius 7 px; switch: 38x22 px, thumb 17 px).
+   - Margins: 20 px window margin, 16 px horizontal / 13 px vertical card padding, 12 px gap.
+   - Strict Typography Hierarchy: Title 19.2 pt, Card Header 15.2 pt, Body/Controls 13.8 pt, Badge/Subtitle 12.0 pt.
+   - **Native C/C++ Parity Rule:** Always include `<nexvyn/nxn_os_ui.h>` and scale font sizes by `1.21f` (`2478 / 2048` FreeType EM factor, e.g. `floorf(13.8f * 1.21f * sc + 0.5f)`), use integer pixel snapping, and set OpenGL clear color with `nxn_os_clear_color(tok)` to prevent thin/small text and guarantee exact 1:1 visual parity with OS `ui.*`/`nxui.*` apps.
+   Games do not follow this: see rule 11.
 7. **Save immediately** with `store.set` / `fs.write`; `store` is flushed on suspend/autosave too.
 8. **Check `sys.online()`** before network work and show a friendly offline message.
 9. No `io`, `os.execute`, `debug`, `package`, `dofile`, `loadfile` in Lua; no browser/Node API in JS; no `open()`/`os`
@@ -191,7 +197,7 @@ SDK 1.12 (`"minSdk": "1.12"`; Lua, JavaScript, Python, C): `ui.tokens()` (C: `ui
 
 ## 5a. nxui (Retained & Semantic UI Engine, SDK 1.13 / 2.0)
 
-Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` in `<nexvyn/nxn_nxui.h>`). Prefer `nxui` for structured desktop apps, utilities, settings, tables and forms (no manual pixel math needed):
+Available in Lua, JavaScript, and Python (`nxui.*`). Both `ui.*` and `nxui.*` read live OS theme tokens (`theme::p()` Light/Dark/High-Contrast) so script utilities share one consistent Nexvyn OS design language. (For Native C/C++ OpenGL `.nxvmod` apps, use `<nexvyn/nxn_imgui.h>` + `<nexvyn/nxn_os_ui.h>` driven live by `nxn_ui_tokens_get`; `nxn_nxui_*` computes layout/focus state only and does not paint inside an OpenGL `nxn_display` framebuffer.) Prefer `nxui` for structured script apps, utilities, settings, tables and forms:
 - Frame: `nxui.begin([w, h])` ... `nxui.endFrame()` · `nxui.tokens()` → `{space1..space6, radiusSm/Md/Lg, fontSm/Body/Title/Hero, scale, dark, highContrast, reducedMotion, bgPrimary, bgSecondary, bgCard, fgPrimary, fgMuted, accent, danger, success, warning, border}`.
 - Containers: `nxui.row(id[, gap])` … `nxui.rowEnd()` · `nxui.column(id[, gap])` … `nxui.columnEnd()` · `nxui.card(id)` … `nxui.cardEnd()` · `nxui.scrollBegin(id, w, h[, scrollY])` → `newScrollY` … `nxui.scrollEnd()` · `nxui.canvasBegin(id, w, h)` → `x, y, w, h` (JS/Py: `{x, y, w, h}`) … `nxui.canvasEnd()` · `nxui.spacer([size])`.
 - Controls: `nxui.label(id, text[, role])` (`"body"|"title"|"hero"|"muted"|"small"`) · `nxui.badge(id, text[, rgba])` · `nxui.button(id, label[, variant])` → `clicked` (`"primary"|"secondary"|"ghost"|"danger"`) · `nxui.toggle(id, checked)` → `newChecked[, changed]` · `nxui.slider(id, val, min, max)` → `newVal[, changed]` · `nxui.textfield(id, text[, placeholder])` → `newText[, changed]` · `nxui.dropdown(id, options, selected)` → `newSel[, changed]` (Lua 1-based; JS/Py/C 0-based) · `nxui.tabs(id, labels, active)` → `newActive[, changed]` (Lua 1-based; JS/Py/C 0-based) · `nxui.table(id, cols, rows, selectedRow)` → `newRow, clicked` (JS/Py `{selected, clicked}`) · `nxui.virtuallist(id, items, rowH, viewH, selectedRow)` → `newRow, clicked` (JS/Py `{selected, clicked}`) · `nxui.dialog(id, title, msg, confirm[, cancel])` → `0|1|2`.
@@ -561,12 +567,15 @@ end
 return app
 ```
 
-### Template C — Native C / C++ Windowed Module (`.nxvmod`, Native SDK 1.2)
-```c
-/* src/main.c ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10", "targetSdk": "2.0") */
+### Template C — Native C++ Utility Window (`.nxvmod`, Native SDK 1.2 + `nxn_os_ui.h`)
+```cpp
+/* src/main.cpp ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10", "targetSdk": "2.0") */
 #include <nexvyn/nexvyn_native.h>
-#include <nexvyn/nxn_nxui.h>
 #include <glad/glad.h>
+#include "imgui.h"
+#include "imgui_impl_opengl3.h"
+#include <nexvyn/nxn_imgui.h>
+#include <nexvyn/nxn_os_ui.h>
 
 static int app_main(int argc, char** argv) {
     (void)argc; (void)argv;
@@ -579,37 +588,64 @@ static int app_main(int argc, char** argv) {
 
     uint32_t w = 960, h = 540;
     nxn_display_size(disp, &w, &h);
-    int counter = 0;
-    bool toggle_on = true;
+    nxn_ui_tokens tok = NXN_STRUCT_INIT(nxn_ui_tokens);
+    nxn_ui_tokens_get(&tok);
 
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    nxn_imgui_enable_gamepad(ImGui::GetIO());
+    // Scale OS point sizes by 1.21x (Inter FreeType EM factor) so stb_truetype matches OS FreeType at 1:1 resolution
+    float sc = tok.text_scale > 0.5f ? tok.text_scale : 1.0f;
+    ImFont* f_body   = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_MEDIUM, floorf(13.8f * 1.21f * sc + 0.5f), 0, NULL);
+    ImFont* f_card   = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_BOLD,   floorf(15.2f * 1.21f * sc + 0.5f), 0, NULL);
+    ImFont* f_title  = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_BOLD,   floorf(19.2f * 1.21f * sc + 0.5f), 0, NULL);
+    ImFont* f_small  = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_MEDIUM, floorf(12.0f * 1.21f * sc + 0.5f), 0, NULL);
+    ImGui::GetIO().FontDefault = f_body;
+    nxn_os_apply_style(tok);
+    ImGui_ImplOpenGL3_Init("#version 330 core");
+
+    int tab = 0;
+    bool toggle_on = true;
+    const char* tabs[] = {nxn_tr("general"), nxn_tr("options")};
     while (!nxn_should_quit()) {
         nxn_event ev = NXN_STRUCT_INIT(nxn_event);
         while (nxn_event_poll(&ev) > 0) {
             if (ev.type == NXN_EVENT_RESIZE && nxn_display_resize(disp, ev.width, ev.height) == NXN_OK) {
                 nxn_display_size(disp, &w, &h);
-                glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+            } else if (ev.type == NXN_EVENT_THEME) {
+                nxn_ui_tokens_get(&tok);
+                nxn_os_apply_style(tok);
             }
-            ev.size = sizeof(ev);
+            ev = NXN_STRUCT_INIT(nxn_event);
         }
 
-        glClearColor(0.08f, 0.10f, 0.14f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        ImGui::GetIO().DisplaySize = ImVec2((float)w, (float)h);
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui::NewFrame();
+        ImGui::SetNextWindowPos(ImVec2(0, 0));
+        ImGui::SetNextWindowSize(ImVec2((float)w, (float)h));
+        ImGui::Begin("##main", NULL, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
+        nxn_os_segmented_tabs("nav", tabs, 2, &tab, tok);
+        ImGui::Spacing();
+        nxn_os_card_begin("hero_card", tok);
+            nxn_os_kv_row(nxn_tr("title"), "v1.0", tok, true);
+            nxn_os_switch("opt_tog", &toggle_on, tok);
+            nxn_os_separator(tok);
+            nxn_os_button(nxn_tr("increment"), NXN_OS_BTN_PRIMARY, tok);
+        nxn_os_card_end();
+        ImGui::End();
+        ImGui::Render();
 
-        nxn_nxui_begin((float)w, (float)h);
-        nxn_nxui_column_begin("main_col", 12.0f);
-        nxn_nxui_card_begin("hero_card");
-            nxn_nxui_label("title_lbl", nxn_tr("title"), NXN_TYPO_TITLE);
-            if (nxn_nxui_button("inc_btn", nxn_tr("increment"), NXN_BTN_PRIMARY)) {
-                counter++;
-            }
-            nxn_nxui_toggle("opt_tog", &toggle_on);
-        nxn_nxui_card_end();
-        nxn_nxui_column_end();
-        nxn_nxui_end();
-
+        glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+        ImVec4 bg = nxn_os_clear_color(tok);
+        glClearColor(bg.x, bg.y, bg.z, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         nxn_display_swap(disp);
     }
 
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui::DestroyContext();
     nxn_display_close(disp);
     return 0;
 }

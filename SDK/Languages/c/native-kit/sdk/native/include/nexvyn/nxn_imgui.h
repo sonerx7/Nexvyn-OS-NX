@@ -242,6 +242,13 @@ static inline ImFont* nxn_imgui_add_font(ImFontAtlas* atlas, nxn_ui_font font, f
     }
     ImFontConfig fc;
     fc.FontDataOwnedByAtlas = false;  // the system keeps the font bytes until the app ends
+    // Rasterize <=28px UI fonts at 2x atlas density without 2x2 box-filter muddiness, so Inter curves and stems
+    // stay crisp and uniform instead of jagged or misshapen at small point sizes.
+    fc.OversampleH = 1;
+    fc.OversampleV = 1;
+    fc.PixelSnapH = true;
+    fc.RasterizerDensity = (px <= 28.0f && font != NXN_UI_FONT_ICONS) ? 2.0f : 1.0f;
+    fc.RasterizerMultiply = 1.08f;
     ImFont* f = atlas->AddFontFromMemoryTTF((void*)data, (int)size, px, &fc, nxn_imgui_ranges(flags));
     if (font != NXN_UI_FONT_ICONS && !(flags & NXN_IMGUI_NO_CJK) && (px <= 30.f || (flags & NXN_IMGUI_CJK_LARGE))) {
         char lang[3];
@@ -253,6 +260,10 @@ static inline ImFont* nxn_imgui_add_font(ImFontAtlas* atlas, nxn_ui_font font, f
             ImFontConfig mc;
             mc.FontDataOwnedByAtlas = false;  // the system keeps the font bytes until the app ends
             mc.MergeMode = true;
+            mc.OversampleH = 2;
+            mc.OversampleV = 1;
+            mc.PixelSnapH = true;
+            mc.RasterizerMultiply = 1.12f;
             atlas->AddFontFromMemoryTTF((void*)cd, (int)cs, px, &mc, cjk);
         }
     }
@@ -263,6 +274,10 @@ static inline ImFont* nxn_imgui_add_font(ImFontAtlas* atlas, nxn_ui_font font, f
             ImFontConfig mc;
             mc.FontDataOwnedByAtlas = false;
             mc.MergeMode = true;
+            mc.OversampleH = 1;
+            mc.OversampleV = 1;
+            mc.PixelSnapH = true;
+            mc.RasterizerDensity = fc.RasterizerDensity;
             mc.GlyphMinAdvanceX = px;
             mc.GlyphOffset = ImVec2(0, px * 0.12f);
             atlas->AddFontFromMemoryTTF((void*)id, (int)is, px * 1.1f, &mc, icon_ranges);

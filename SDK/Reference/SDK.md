@@ -327,14 +327,53 @@ The on-screen keyboard appears automatically when a text field is focused.
 ## 4a. NXUI — Retained & Semantic UI Engine (`nxui`, SDK 1.13 / 2.0)
 
 In addition to immediate-mode `ui.*` (where you pass pixel `x, y, w, h` for every control), Nexvyn OS N2 provides
-**`nxui`**: a semantic, automatic-layout UI engine shared identically across **Lua**, **JavaScript**, **Python** and
-**Native C/C++ (`nxn_nxui_*`)**.
+**`nxui`**: a semantic, automatic-layout UI engine shared across **Lua**, **JavaScript**, and **Python** (with matching
+live OS theme tokens in **Light**, **Dark**, and **High Contrast** modes).
 
 Instead of calculating pixel coordinates manually, you open a layout frame with `nxui.begin(w, h)` (or `nxui.begin()`
 to use the window's content size), nest `row`, `column`, `card` and `scrollBegin` containers, emit semantic widgets by
-stable ID, and finish with `nxui.endFrame()`. NXUI computes Flexbox-like layout, DPI scaling (`textScale`), theme token
+stable ID, and finish with `nxui.endFrame()`. NXUI computes Flexbox-like layout, DPI scaling (`textScale`), live OS theme token
 styling, touch hit-testing, and D-pad / Joy-Con spatial focus navigation (`nxui.moveFocus`, `nxui.activateFocused`)
 automatically.
+
+> **UI Parity in Native C/C++ (`"runtime": "native"`):** Native `.nxvmod` apps render into their own OpenGL framebuffer (`nxn_display`). `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>` computes semantic layout/focus on the native thread and does not paint inside an OpenGL FBO. For OS-consistent utility, benchmark, tool, and dashboard UIs that match Lua/JS/Python `ui.*` & `nxui.*`, include **`<nexvyn/nxn_imgui.h>`** and **`<nexvyn/nxn_os_ui.h>`** (header-only over Dear ImGui, driven live by `nxn_ui_tokens_get`). Use `nxn_os_apply_style`, `nxn_os_clear_color`, `nxn_os_segmented_tabs`, `nxn_os_card_begin/end`, `nxn_os_switch`, `nxn_os_dropdown`, `nxn_os_button`, `nxn_os_badge`, `nxn_os_progress_bar`, `nxn_os_kv_row`, and `nxn_os_separator` instead of raw unstyled `ImGui::*` widgets. Games build their own art direction directly in OpenGL / NexGFX.
+
+## 4b. Unified OS Design System & 4-Runtime Visual Parity Standard
+
+To guarantee that applications never look fragmented across the **4 Official Primary Runtimes** (**Lua 5.4.7**, **JavaScript ES2023**, **Python 3.12**, and **Native C/C++**), all utilities, tools, settings panels, HUDs, and dashboards MUST adhere to the canonical Nexvyn OS Design System rules below.
+
+### 1. Canvas & Color Tokens
+* **Window Background:** Clear the screen with `theme.window` (Script) or `glClearColor` with `nxn_os_clear_color(tok)` (Native C++). Never leave raw black or default ImGui gray.
+* **Card Surface:** `theme.bg` / `tok.content_bg`, bordered by `1px` `theme.border` / `tok.border` with `10px` corner radius. In Light mode, script cards use `gfx.shadow(x, y, w, h, 10, 6, 1.5)` and native cards use `nxn_os_card_begin_ex(...)` with soft ambient drop shadows.
+* **Separators:** `1px` hairlines with `theme.separator` / `tok.separator`.
+* **Text Hierarchy:** Primary labels use `theme.text` / `tok.text`, secondary metadata uses `theme.text2` / `tok.text_secondary`, and footer/subtle hints use `theme.text3` / `tok.text_tertiary`.
+
+### 2. Strict Typography Hierarchy
+FreeType (used by Script `gfx.text`) measures font point sizes by **Em-Box height** (`upem = 2048`), whereas Dear ImGui (`stbtt_ScaleForPixelHeight`) measures by typographic bounding height (`ascent - descent = 2478`). For pixel-perfect optical weight and width parity, Native C/C++ MUST scale points by the **`1.21f` Inter FreeType factor** (`bpx = floorf(pt * 1.21f * scale + 0.5f)`):
+
+| Element | Script (`gfx.text` / `nxui`) | Native C/C++ (`nxn_os_ui.h` + ImGui) | Visual Spec |
+| :--- | :--- | :--- | :--- |
+| **App Title** | `19pt "bold"` | `NXN_UI_FONT_BOLD` @ `bpx(19.2 * 1.21)` | Top header, ~157 px width |
+| **Card Header** | `15pt "bold"` | `NXN_UI_FONT_BOLD` @ `bpx(15.2 * 1.21)` | Card section title, ~200 px width |
+| **Row Labels & Keys** | `13–14pt "sans"` | `NXN_UI_FONT_MEDIUM` @ `bpx(13.8 * 1.21)` | Form field & table row labels |
+| **Values & Highlights** | `13–14pt "medium"` | `NXN_UI_FONT_MEDIUM` @ `bpx(13.8 * 1.21)` | Right-aligned row statistics |
+| **Controls (Buttons/Tabs)**| `13–14pt "medium"` | `NXN_UI_FONT_MEDIUM` @ `bpx(13.8 * 1.21)` | Segmented tabs, buttons, dropdowns |
+| **Subtitles & Footers** | `12pt "sans"` | `NXN_UI_FONT_MEDIUM` @ `bpx(12.0 * 1.21)` | Subtitles and bottom status lines |
+| **Pill Badges** | `11.5–12pt "semibold"` | `NXN_UI_FONT_MEDIUM` @ `bpx(11.5 * 1.21)` | Centered status pill text |
+
+> **Native C/C++ Font Rules:**
+> - Keep `io.FontGlobalScale = 1.0f`. Never downscale a pre-baked atlas.
+> - Bake directly at window resolution; rebuild font texture on `NXN_EVENT_RESIZE` when window scale changes.
+> - Snap all text, badge, and tab coordinates to integer pixels with `floorf(v + 0.5f)` to prevent subpixel stem blurring.
+
+### 3. Canonical Component Dimensions
+* **Outer Window Margins:** `20px` left/right padding.
+* **Card Interior Padding:** `16px` horizontal, `13px` vertical.
+* **Control Heights:** Standard buttons `30px` (radius `6px`), segmented tabs `32px` (track radius `7px`, active pill radius `5.5px`).
+* **Switches / Toggles:** `38 × 22px` pill (radius `11px`, knob radius `9px`).
+* **Dropdown Selectors:** `30px` height (radius `6px`) with trailing accent chip and double chevrons.
+* **Pill Badges:** `22px` height, radius `11px`, minimum width `58px`, padding `9px` horizontal.
+* **Touch / Mouse Hitboxes:** All interactive controls maintain at least `28–32px` touch targets.
 
 | Function (Lua / JS / Python) | Native C/C++ (`nxn_nxui.h`) | Description & Return Value |
 |---|---|---|

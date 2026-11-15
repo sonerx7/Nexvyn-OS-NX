@@ -23,14 +23,17 @@ Always choose one of these 4 official runtimes for new projects:
    - **Engine:** CPython 3.12.16 subinterpreter per window with full Python 3.12 syntax and standard library (`math`, `statistics`, `itertools`, `collections`, `datetime`, `json`, `zlib`, `hashlib`, `struct`, `re`, `urllib.parse`, `uuid`, `csv`, etc.).
    - **Strengths:** Keyword arguments (`gfx.text("Hi", 10, 10, size=20)`), tuple returns (`w, h = gfx.size()`), `nxui.*`, `g3d.*` NexGFX PBR.
 4. **Native C / C++ (`"runtime": "native"`, `"main": "<id>.nxvmod"`, `"minNative": "1.2"`, `"minSdk": "1.10"`):**
-   - **Engine:** Ahead-of-Time (AOT) ARM64 shared module compiled with devkitA64 GCC against **Frozen ABI v1** (`#include <nexvyn/nexvyn_native.h>`, `#include <nexvyn/nxn_nxui.h>`).
-   - **Strengths:** Full hardware speed (60 fps OpenGL / GLES3 / NexGFX), SDL2 window driver, per-app isolated heap arena, POSIX compatibility layer, `nxn_nxui_*` Retained UI, `nxn_window_set_*`, `nxn_power_get`, `nxn_dialog`/`nxn_prompt`.
+   - **Engine:** Ahead-of-Time (AOT) ARM64 shared module compiled with devkitA64 GCC against **Frozen ABI v1** (`#include <nexvyn/nexvyn_native.h>`, `#include <nexvyn/nxn_imgui.h>`, `#include <nexvyn/nxn_os_ui.h>`).
+   - **Strengths:** Full hardware speed (60 fps OpenGL / GLES3 / NexGFX), SDL2 window driver, per-app isolated heap arena, POSIX compatibility layer, Unified OS Design Kit (`nxn_os_ui.h` driven live by `nxn_ui_tokens_get`), `nxn_window_set_*`, `nxn_power_get`, `nxn_dialog`/`nxn_prompt`.
 
 *(Legacy runtimes — PocketPy `< 2.0`, TinyCC `"c"`, Squirrel `"squirrel"`, and miniJVM `"java"` — are kept for backward compatibility via the on-demand `ComponentService`, not for new projects.)*
 
-## 3. NXUI — Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)
+## 3. Unified Cross-Language UI & 4-Runtime Parity (`ui.*` / `nxui.*` / `nxn_os_ui.h`)
 
-Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` in `<nexvyn/nxn_nxui.h>`). Use `nxui` for modern, automatic-layout desktop and utility interfaces:
+Lua, JavaScript, and Python support **`ui.*`** (immediate mode) and **`nxui.*`** (retained Flexbox layout), both synced live with OS `theme::p()` Light/Dark/High-Contrast appearance. Native C++ `.nxvmod` OpenGL utility apps use **`<nexvyn/nxn_os_ui.h>` + `<nexvyn/nxn_imgui.h>`** driven by `nxn_ui_tokens_get` so they match the exact same OS look (segmented tabs, grouped cards, switches, badges, chevron dropdowns). *(Note: `<nexvyn/nxn_nxui.h>` runs layout/focus solvers in memory and does not paint inside an OpenGL `nxn_display` framebuffer.)*
+- **Cross-Runtime Parity Standard:** Buttons: 30 px height (8 px radius); Segmented tabs: 32 px height (7 px radius); Switch: 38x22 px (17 px thumb); Badges: 22 px height (11 px radius); Windows: 20 px padding; Cards: 16 px horizontal / 13 px vertical padding.
+- **Native C++ Typography (1.21x Scale Factor):** stb_truetype in Dear ImGui scales font glyphs relative to `(ascent - descent)` rather than the 2048 Em-square used by FreeType. Native C++ apps must scale OS font sizes by `1.21f` (`floorf(pt * 1.21f * sc + 0.5f)`: Title 19.2 pt, Card Header 15.2 pt, Body/Controls 13.8 pt, Badge/Subtitle 12.0 pt) and set clear color using `nxn_os_clear_color(tok)` to guarantee exact 1:1 visual parity with script apps.
+- Use `nxui` for structured script apps, utilities, settings, tables and forms:
 
 - **Lifecycle (inside `draw(w, h)`):**
   - `nxui.begin(w, h)` -> starts layout pass
@@ -76,7 +79,7 @@ Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` i
 ## 6. Copy-Paste Starter Map (Templates A-F in `SDK/AI/system-prompt.md`)
 - **Template A (Lua 5.4.7 NXUI Utility):** `app.json` + `main.lua` + `lang/en.json`
 - **Template B (Lua 5.4.7 60 FPS Game):** Custom `gfx` + `audio` + `input` + pause/title/play state machine
-- **Template C (Native C/C++ `.nxvmod` ABI v1):** `nxn_run` + `nxn_display_open` + `gladLoadGLLoader` + `nxn_nxui_*`
+- **Template C (Native C++ Utility `.nxvmod` ABI v1):** `nxn_run` + `nxn_display_open` + `gladLoadGLLoader` + `nxn_imgui.h` + `nxn_os_ui.h` (`nxn_ui_tokens_get`)
 - **Template D (JavaScript ES2023 Network + NXUI):** `await net.fetchJson` + `nxui.table` + `store`
 - **Template E (Python 3.12 Data/Utility + NXUI):** `"runtime": "python3"` + `nxui.tabs` + `nxui.slider`
 - **Template F (Lua 3D PBR Scene):** `g3d.renderer("pbr")` + `g3d.shadows` + `g3d.postfx` + `g3d.addLight`

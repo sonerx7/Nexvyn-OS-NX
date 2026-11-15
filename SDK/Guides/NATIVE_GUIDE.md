@@ -23,7 +23,7 @@ python tools/nxv_native package notes                 # -> notes/build/notes.nxv
 
 | Template | What you get | Not included |
 |---|---|---|
-| `app` | A small real UI app: file picker (`nxn_pick`), a setting kept between runs, texts in `lang/en.json` + `lang/tr.json` (`nxn_tr`), colours, sizes and fonts from the system tokens (`nxn_ui_tokens_get`), so it follows theme, accent and text size | A theme of its own: an app looks like Nexvyn OS |
+| `app` | A small real UI app: file picker (`nxn_pick`), a setting kept between runs, texts in `lang/en.json` + `lang/tr.json` (`nxn_tr`), unified Nexvyn OS cards/switches/buttons via `<nexvyn/nxn_os_ui.h>` + `<nexvyn/nxn_imgui.h>` driven live by `nxn_ui_tokens_get`, so it matches script `ui.*` apps across Light/Dark/accent/text scale | A theme of its own: a utility app looks like Nexvyn OS |
 | `game` | Loop with a fixed update step, resize / focus / suspend, a GL quad batch, an action map (pad, keyboard), sound from the OS mixer, a save file | A menu or any look: a game gets its own art direction |
 | `port` | The glue for an existing CMake project: `fetch.py` (pinned tag + commit, patches), `CMakeLists.txt` (toolchain, SDL2, compat layer, the Nexvyn target), `patches/`, a stand-in `example-upstream/` so it builds before you fetch anything | The upstream code, BIOS, firmware, game data |
 
@@ -114,9 +114,25 @@ stops native code from writing into Nexvyn OS's memory: a wild write can damage 
 before native code runs, and why the Store reviews native packages. Test on the emulator before the console, and keep your
 data in `nxn_fs_*` folders.
 
+### Unified UI and Design Tokens (`<nexvyn/nxn_os_ui.h>`)
+
+To prevent native utilities from having an inconsistent visual appearance compared to Lua/JS/Python apps, native utility and dashboard apps MUST use `<nexvyn/nxn_os_ui.h>` parameterized by live OS tokens (`nxn_ui_tokens_get(&tok)`):
+
+* **Window Clear:** Clear the OpenGL framebuffer with `nxn_os_clear_color(tok)` (`theme.window` parity).
+* **Cards & Surfaces:** Use `nxn_os_card_begin_ex("card_id", width, 16.0f, 13.0f, tok)` … `nxn_os_card_end()` for grouped white/dark panels with 10px radius, 1px border (`tok.border`), and soft drop shadows.
+* **Component Kit:**
+  - `nxn_os_segmented_tabs`: 32px height capsule tabs matching OS `ui.segmented`.
+  - `nxn_os_switch`: 38×22px animated smooth pill toggle matching `ui.toggle`.
+  - `nxn_os_dropdown`: 30px height select box with trailing accent chevron chip.
+  - `nxn_os_button`: 30px height buttons (`NXN_OS_BTN_PRIMARY`, `DEFAULT`, `DESTRUCTIVE`, `PLAIN`).
+  - `nxn_os_badge`: 22px height pill badges with tinted background and crisp text.
+  - `nxn_os_separator`: 1px hairline dividers with `tok.separator`.
+
 ### Text and fonts
 
-Dear ImGui draws Latin-1 only unless it gets glyph ranges, so Turkish `ı ğ ş İ`, Cyrillic or Greek letters show as `?`. Load the system font through `nxn_imgui_add_font()` from `<nexvyn/nxn_imgui.h>` (the `app` template does): it adds the ranges of the app's language and keeps the atlas small. Japanese, Korean and Chinese text needs the system's CJK font, which windowed apps cannot get yet (see `NATIVE_KIT.md`, *Text and fonts*). Test your app in more than one language: `lang/*.json` plus Settings > Language.
+Dear ImGui draws Latin-1 only unless it gets glyph ranges, so Turkish `ı ğ ş İ`, Cyrillic or Greek letters show as `?`. Load the system font through `nxn_imgui_add_font()` from `<nexvyn/nxn_imgui.h>` (the `app` template does): it adds the ranges of the app's language, keeps the atlas small, and rasterizes UI fonts (`<= 28 px`) at `2x` atlas density (`OversampleH = 1`, `OversampleV = 1`, `PixelSnapH = true`, `RasterizerDensity = 2.0f`, `RasterizerMultiply = 1.08f`) so glyph stems and curves remain crisp without muddiness.
+
+To strictly match script UI size and stroke weight: pass `floorf(pt * 1.21f * scale + 0.5f)` (Inter FreeType EM factor `2478 / 2048`) using `NXN_UI_FONT_BOLD` (`19.2pt`) for app titles, `NXN_UI_FONT_BOLD` (`15.2pt`) for card headers, `NXN_UI_FONT_MEDIUM` (`13.8pt`) for body/controls, and `NXN_UI_FONT_MEDIUM` (`12.0pt`) for badges/subtitles; keep `io.FontGlobalScale = 1.0f` instead of downscaling a baked atlas (rebuild on `NXN_EVENT_RESIZE` if scale changes), and round `AddText` `(x, y)` coordinates with `floorf(v + 0.5f)`. Japanese, Korean and Chinese text needs the system's CJK font, which windowed apps cannot get yet (see `NATIVE_KIT.md`, *Text and fonts*). Test your app in more than one language: `lang/*.json` plus Settings > Language.
 
 ## 6. Before you publish
 

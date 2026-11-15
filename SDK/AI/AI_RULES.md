@@ -8,7 +8,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 1. Read `app.json` first. Set `minSdk` to the newest SDK function you use. Set `targetSdk` to `"2.0"` (or `"1.13"`) for new N2 apps.
 2. Use only names that appear in `SDK/Reference/SDK.md` / `SDK/AI/system-prompt.md`. If a name is not there, do not invent it. Say so.
 3. Pick the runtime from the **4 Official Primary Runtimes** in section 3: **Lua 5.4.7** (`"lua"`), **JavaScript ES2023** (`"js"`), **Python 3.12** (`"python3"` or `"python"` with `"targetSdk": "2.0"`), or **Native C/C++** (`"native"`).
-4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to `"1.2"` (or the version of the newest `nxn_*` function you call). Test every optional call with `nxn_caps_get` bits first. You can use `nxn_nxui_*` (`#include <nexvyn/nxn_nxui.h>`) for retained UI in native apps as well as `nxui.*` in Lua, JS and Python.
+4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to `"1.2"` (or the version of the newest `nxn_*` function you call). Test every optional call with `nxn_caps_get` bits first. For utility/tool/HUD interfaces over OpenGL + Dear ImGui, include `<nexvyn/nxn_imgui.h>` and `<nexvyn/nxn_os_ui.h>` driven by `nxn_ui_tokens_get(&tok)` (never ship raw unstyled ImGui or hardcoded dark clear colors when matching the OS look; `nxui.*` is for Lua/JS/Python, while `nxn_os_ui.h` gives Native C++ the exact same Light/Dark OS design system).
 5. Keep all user-visible text in English and in `lang/<code>.json`. Call `TR(key)` (script) or `nxn_tr(key)` (native). Add `lang/en.json` before you use `TR`.
 6. Make saves atomic: write a temporary file, then rename it over the real one. Keep the previous save until the new one is complete.
 7. Do file, network and folder-scan work off the UI thread: `timer`, `net.*`, `fs.unzip`, `g3d.loadModel`, or a background thread that never holds the UI lock.
@@ -20,6 +20,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 13. Use plain ASCII identifiers. Comments in English.
 14. Tell the user, in the user's language, what you changed and what you did not test.
 15. Dear ImGui apps (native, nxn_imgui.h): every visible widget needs a UNIQUE ID in its window. Two buttons with the same label (for example a toolbar "Rescan" and an empty-state "Rescan") trigger the red "2 visible items with conflicting ID!" banner on screen. Always give repeated labels a suffix: `ImGui::Button("Rescan##toolbar")`, `ImGui::Button("Rescan##empty")`; inside loops use `ImGui::PushID(i)` / `PopID()`; never use an empty label (`Button("")`), use `Button("##name")`. Test every screen state (empty library, first run, error) with the test tool and fail on this banner text.
+16. Cross-runtime Design System parity (strict): all 4 primary runtimes (Lua, JS, Python, C/C++) MUST share the identical OS visual grammar in utility/tool apps — Title `19pt Bold`, Card Header `15pt Bold`, Body/Control/Button `13.8pt Medium`, Badge/Caption `11.5–12pt Medium`; outer margin `20px`, card padding `16px/13px`, card radius `10px`, control height `30px` (segmented tabs `32px`), control radius `6–8px`, toggle `38x22px`, pill badge `22px`, `1px` `separator` hairlines. In Native C/C++, map OS `pt` to ImGui pixel height with `floorf(pt * 1.21f * s + 0.5f)` (FreeType EM-to-stb_truetype ratio for Inter) using `NXN_UI_FONT_BOLD` for headers and `NXN_UI_FONT_MEDIUM` for body/controls, keep `io.FontGlobalScale = 1.0f`, clear with `nxn_os_clear_color(tok)`, and snap all text/component positions with `floorf(v + 0.5f)`. Never ship arbitrary font sizes or unstyled ImGui widgets.
 
 ## 2. MUST NOT
 
@@ -38,6 +39,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 13. Do not rely on a function that exists only in one runtime. Check the runtime column in the index.
 14. Do not write to `romfs:/` or to the system folders. Do not call `sys.launch` or `nxv://` links without the `launch` permission.
 15. Do not leave debug screens, test buttons or self-tests in the release build.
+16. Do not set `io.FontGlobalScale < 1.0f` to downscale a pre-baked Dear ImGui font atlas, and do not place UI text at unrounded fractional `(x, y)` coordinates (always rebuild fonts at target resolution on resize and snap positions to integer pixels).
 
 ## 3. Which runtime? (4 Official Primary Tracks)
 

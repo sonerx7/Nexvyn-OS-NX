@@ -6,6 +6,7 @@
 // Controls: touch or mouse, D-pad + A (the user's confirm button), B or the window's close button to leave.
 #include <glad/glad.h>
 #include <float.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,6 +15,7 @@
 #include "imgui.h"
 #include "imgui_impl_opengl3.h"
 #include <nexvyn/nxn_imgui.h>
+#include <nexvyn/nxn_os_ui.h>
 
 static nxn_display* g_disp;
 static uint32_t g_w = 720, g_h = 480;
@@ -39,40 +41,18 @@ static void settings_save() {
     if (nxn_fs_write(NXN_DIR_DATA, "settings.txt", buf, (size_t)n) != NXN_OK) nxn_log(NXN_LOG_WARN, "settings not saved");
 }
 
-// ---- the OS look: ImGui colours from the tokens
-static ImVec4 col(uint32_t argb) {
-    return ImVec4(((argb >> 16) & 255) / 255.f, ((argb >> 8) & 255) / 255.f, (argb & 255) / 255.f, ((argb >> 24) & 255) / 255.f);
-}
+// ---- the OS look: ImGui colours and widgets from nxn_os_ui.h + live OS tokens
 static void apply_tokens() {
     nxn_ui_tokens_get(&g_tok);
-    ImGuiStyle& s = ImGui::GetStyle();
-    ImVec4* c = s.Colors;
-    c[ImGuiCol_WindowBg] = col(g_tok.window_bg);
-    c[ImGuiCol_ChildBg] = col(g_tok.content_bg);
-    c[ImGuiCol_Text] = col(g_tok.text);
-    c[ImGuiCol_TextDisabled] = col(g_tok.text_secondary);
-    c[ImGuiCol_Border] = col(g_tok.border);
-    c[ImGuiCol_Separator] = col(g_tok.separator);
-    c[ImGuiCol_Button] = col(g_tok.surface);
-    c[ImGuiCol_ButtonHovered] = col(g_tok.surface_hover);
-    c[ImGuiCol_ButtonActive] = col(g_tok.surface_pressed);
-    c[ImGuiCol_FrameBg] = col(g_tok.field_bg);
-    c[ImGuiCol_FrameBgHovered] = col(g_tok.surface_hover);
-    c[ImGuiCol_FrameBgActive] = col(g_tok.surface_pressed);
-    c[ImGuiCol_CheckMark] = col(g_tok.accent);
-    c[ImGuiCol_Header] = col(g_tok.selection);
-    c[ImGuiCol_NavHighlight] = col(g_tok.accent);
-    s.FrameRounding = g_tok.corner_radius;
-    s.WindowRounding = 0;
-    s.ItemSpacing = ImVec2(g_tok.spacing[2], g_tok.spacing[1]);
-    s.FramePadding = ImVec2(g_tok.spacing[2], g_tok.spacing[1] * 0.75f);
+    nxn_os_apply_style(g_tok);
 }
 
 static void setup_fonts() {
     // the system font with the glyph ranges of the user's language (nxn_imgui.h): Turkish "ı ğ ş İ" and the other
     // languages' letters are not drawn as "?" (ImGui itself loads Latin-1 only)
-    float px = g_tok.font_body > 1.f ? g_tok.font_body : 16.f;
-    nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_SANS, px, 0, NULL);
+    float sc = g_tok.text_scale > 0.5f ? g_tok.text_scale : 1.0f;
+    float px = (g_tok.font_body > 1.f ? g_tok.font_body : 16.f) * sc;
+    nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_MEDIUM, floorf(px + 0.5f), 0, NULL);
 }
 
 // ---- input: the game pad and the first finger drive ImGui
@@ -126,43 +106,58 @@ static bool draw_ui() {
     ImGui::Begin("##main", NULL, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
     ImGui::SetWindowFontScale(g_tok.text_scale * (g_set.large_text ? 1.25f : 1.f));
 
-    ImGui::TextColored(col(g_tok.accent), "%s", nxn_tr("title"));
-    ImGui::Separator();
+    ImGui::TextColored(nxn_os_imvec4(g_tok.accent), "%s", nxn_tr("title"));
+    ImGui::SameLine();
+    nxn_os_badge("Native OS Kit", g_tok.accent, g_tok);
+    nxn_os_separator(g_tok);
+    ImGui::Spacing();
 
-    ImGui::TextDisabled("%s", nxn_tr("files.heading"));
-    if (ImGui::Button(nxn_tr("files.open"))) choose_file();
+    nxn_os_section_label(nxn_tr("files.heading"), g_tok);
+    nxn_os_card_begin("files_card", g_tok);
+    if (nxn_os_button(nxn_tr("files.open"), NXN_OS_BTN_PRIMARY, g_tok)) choose_file();
     if (g_path[0]) {
+        nxn_os_separator(g_tok);
         ImGui::TextWrapped("%s", g_path);
         if (g_file_size >= 0) {
             char num[32], text[96];
             snprintf(num, sizeof num, "%ld", g_file_size);
             const char* args[1] = {num};
-            if (nxn_tr_format("files.size", text, sizeof text, args, 1) == NXN_OK) ImGui::TextDisabled("%s", text);
+            if (nxn_tr_format("files.size", text, sizeof text, args, 1) == NXN_OK)
+                nxn_os_kv_row("Size", text, g_tok, false);
         }
     } else {
         ImGui::TextDisabled("%s", nxn_tr("files.none"));
     }
+    nxn_os_card_end();
 
     ImGui::Spacing();
-    ImGui::TextDisabled("%s", nxn_tr("settings.heading"));
+    nxn_os_section_label(nxn_tr("settings.heading"), g_tok);
+    nxn_os_card_begin("settings_card", g_tok);
     {
         char num[16], text[96];
         snprintf(num, sizeof num, "%d", g_set.opened);
         const char* args[1] = {num};
-        if (nxn_tr_format("settings.counter", text, sizeof text, args, 1) == NXN_OK) ImGui::TextUnformatted(text);
+        if (nxn_tr_format("settings.counter", text, sizeof text, args, 1) == NXN_OK) {
+            nxn_os_kv_row(text, num, g_tok, true);
+        }
     }
-    if (ImGui::Button(nxn_tr("settings.reset"))) {
-        g_set.opened = 0;
-        settings_save();
-    }
+    ImGui::AlignTextToFramePadding();
+    ImGui::TextUnformatted(nxn_tr("settings.large_text"));
+    ImGui::SameLine(ImGui::GetContentRegionAvail().x - 42.0f);
     bool large = g_set.large_text != 0;
-    if (ImGui::Checkbox(nxn_tr("settings.large_text"), &large)) {
+    if (nxn_os_switch("large_sw", &large, g_tok)) {
         g_set.large_text = large ? 1 : 0;
         settings_save();
     }
+    nxn_os_separator(g_tok);
+    if (nxn_os_button(nxn_tr("settings.reset"), NXN_OS_BTN_DEFAULT, g_tok)) {
+        g_set.opened = 0;
+        settings_save();
+    }
+    nxn_os_card_end();
 
     ImGui::Spacing();
-    if (ImGui::Button(nxn_tr("quit"))) quit = true;
+    if (nxn_os_button(nxn_tr("quit"), NXN_OS_BTN_DESTRUCTIVE, g_tok)) quit = true;
     ImGui::End();
     return quit;
 }
@@ -216,7 +211,7 @@ static int app_main(int, char**) {
         ImGui::Render();
         glViewport(0, 0, (GLsizei)g_w, (GLsizei)g_h);
         glDisable(GL_SCISSOR_TEST);
-        ImVec4 bg = col(g_tok.window_bg);
+        ImVec4 bg = nxn_os_clear_color(g_tok);
         glClearColor(bg.x, bg.y, bg.z, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

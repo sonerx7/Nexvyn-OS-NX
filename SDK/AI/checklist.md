@@ -48,6 +48,7 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
 - [ ] Every visible string goes through `TR()`; every key exists in `lang/en.json` (and in each other lang file I
       delivered, or it falls back to English); placeholders `{0}` match the arguments.
 - [ ] Apps: `theme` colors (light and dark mode); controls ≥ 28 px; the layout fits the minimum window size.
+- [ ] Cross-Runtime Visual Parity (Unified OS Design System): script apps (Lua/JS/Python) use `ui.*` / `nxui.*`; Native C/C++ tools/utilities include `<nexvyn/nxn_os_ui.h>` (`nxn_os_apply_style`, `nxn_os_card_begin/end`, `nxn_os_segmented_tabs`, `nxn_os_switch`, `nxn_os_button`, `nxn_os_dropdown`, `nxn_os_badge`). For Native C/C++, font sizes are scaled by `1.21f` (`tok.font_body * 1.21f * sc`), positions are pixel-snapped, and `nxn_os_clear_color(tok)` is used to guarantee 1:1 visual parity across all 4 runtimes.
 - [ ] Widget ids are unique in the window (`"Delete##" + i` in lists).
 
 ## Games: look and identity
