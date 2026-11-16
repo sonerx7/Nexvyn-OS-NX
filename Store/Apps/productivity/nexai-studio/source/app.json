@@ -1,0 +1,48 @@
+{
+  "id": "com.sonerx7.nexai.studio",
+  "name": {
+    "en": "Nex Local AI Studio",
+    "tr": "Nex Local AI Studio",
+    "de": "Nex Local AI Studio",
+    "es": "Nex Local AI Studio",
+    "fr": "Nex Local AI Studio",
+    "ja": "Nex Local AI Studio",
+    "ko": "Nex Local AI Studio",
+    "zh": "Nex Local AI Studio"
+  },
+  "description": {
+    "en": "Local GGUF LLM runner, AI Model Store, persistent chat history, image/video studio, and hybrid LAN/cloud AI workspace.",
+    "tr": "Yerel GGUF LLM motoru, AI Model Mağazası, kalıcı sohbet geçmişi, görsel/video stüdyosu ve hibrit AI çalışma alanı.",
+    "de": "Lokaler GGUF-LLM-Runner, KI-Modell-Store, Chat-Verlauf, Bild-/Videostudio und hybride LAN/Cloud-KI-Brücke.",
+    "es": "Ejecutor local de LLM GGUF, tienda de modelos IA, historial de chat, estudio de imagen/vídeo y puente LAN/nube.",
+    "fr": "Moteur LLM GGUF local, boutique de modèles IA, historique de chat, studio image/vidéo et pont LAN/cloud.",
+    "ja": "ローカルGGUF LLM実行、AIモデルストア、チャット履歴保存、画像/動画生成、LAN/クラウド連携ワークスペース。",
+    "ko": "로컬 GGUF LLM 실행기, AI 모델 스토어, 대화 기록, 이미지/비디오 스튜디오 및 하이브리드 AI 작업 공간.",
+    "zh": "本地 GGUF 大模型运行器、AI 模型商店、持久化聊天记录、图像视频工作室与局域网混合桥接。"
+  },
+  "version": "1.2.0",
+  "author": "sonerx7",
+  "category": "productivity",
+  "runtime": "native",
+  "mode": "window",
+  "main": "nexai_studio.nxvmod",
+  "minNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.13",
+  "loadingHint": true,
+  "gamepad": true,
+  "icon": "icon.png",
+  "window": {
+    "width": 1120,
+    "height": 680,
+    "minWidth": 720,
+    "minHeight": 460,
+    "resizable": true
+  },
+  "permissions": [
+    "network",
+    "files",
+    "notifications"
+  ],
+  "license": "MIT"
+}

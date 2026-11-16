@@ -8,6 +8,7 @@
 | <img src="habits/icon.png" width="32"> | [Habits](habits/) | 1.1.0 | Streaks, rest days and milestones |
 | <img src="interval/icon.png" width="32"> | [Interval Timer](interval/) | 1.1.0 | HIIT and Tabata timer for every workout |
 | <img src="linkwise/icon.png" width="32"> | [Linkwise](linkwise/) | 1.0 | Linked notes, backlinks and a graph |
+| <img src="nexai-studio/icon.png" width="32"> | [Nex Local AI Studio](nexai-studio/) | 1.2.0 | Local GGUF LLM, AI Store & Media Studio |
 | <img src="pomodoro/icon.png" width="32"> | [Pomodoro](pomodoro/) | 1.1.0 | Focus sprints, tasks and a daily goal |
 | <img src="reading/icon.png" width="32"> | [Reading List](reading/) | 1.1.0 | Track your books, pages and reading goal |
 | <img src="recipebox/icon.png" width="32"> | [Recipe Box](recipebox/) | 1.0 | Recipes, cooking mode and shopping |

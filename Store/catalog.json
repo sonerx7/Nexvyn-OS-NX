@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 182,
+  "count": 183,
   "apps": [
     {
       "id": "aichat",
@@ -421,6 +421,83 @@
         {
           "version": "1.0",
           "date": "2026-11-01"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.nexai.studio",
+      "name": {
+        "en": "Nex Local AI Studio",
+        "tr": "Nex Local AI Studio",
+        "de": "Nex Local AI Studio",
+        "es": "Nex Local AI Studio",
+        "fr": "Nex Local AI Studio",
+        "ja": "Nex Local AI Studio",
+        "ko": "Nex Local AI Studio",
+        "zh": "Nex Local AI Studio"
+      },
+      "description": {
+        "en": "Run compact GGUF language models locally on your console with a live Memory Guard, browse and download from a built-in catalog of 29 verified models or the Hugging Face Hub, and chat in an LM Studio-style window with a conversation list, markdown code blocks and generation settings.\n\n• Local GGUF runner with a Memory Guard that checks free RAM before a model loads\n• AI Model Store: speed tags, memory-fit badges, filters, sorting and live Hugging Face search\n• Live web knowledge: weather, clock, currency and web search with sources, on by default when online\n• Persistent multi-session chats, personas and Markdown export\n• Image and animated GIF/AVI video studio\n• Summarize or translate documents and code; bridge to LAN or cloud Ollama, LM Studio or OpenAI-compatible servers\n• Gamepad, touch and keyboard/mouse support, 8 languages",
+        "tr": "Kompakt GGUF dil modellerini konsolunuzda canlı Bellek Koruması ile yerel olarak çalıştırın, 29 doğrulanmış modellik dahili katalogdan veya Hugging Face'ten model indirin ve sohbet listesi, markdown kod blokları ve üretim ayarları olan LM Studio tarzı bir pencerede konuşun.\n\n• Model yüklenmeden önce boş RAM'i denetleyen Bellek Korumalı yerel GGUF motoru\n• AI Model Mağazası: hız etiketleri, bellek uyumu rozetleri, filtreler, sıralama ve canlı Hugging Face araması\n• Canlı web bilgisi: hava durumu, saat, döviz ve kaynaklı web araması; çevrimiçiyken varsayılan olarak açık\n• Kalıcı çoklu oturum sohbetleri, personalar ve Markdown dışa aktarma\n• Görsel ve animasyonlu GIF/AVI video stüdyosu\n• Belge ve kod özetleme veya çevirisi; LAN ya da bulut Ollama, LM Studio veya OpenAI uyumlu sunuculara köprü\n• Gamepad, dokunmatik ve klavye/fare desteği, 8 dil",
+        "de": "Führen Sie kompakte GGUF-Sprachmodelle (Gemma 3 270M, SmolLM2 135M/360M, Qwen2.5 0.5B, Qwen3 0.6B) lokal mit Speicherschutz aus, laden Sie Modelle über den integrierten KI-Store oder Hugging Face herunter, speichern Sie Chat-Verläufe, erzeugen Sie Bilder und GIF/AVI-Videos oder verbinden Sie sich mit LAN-Ollama/OpenAI-APIs.",
+        "es": "Ejecuta modelos GGUF ultraligeros (Gemma 3 270M, SmolLM2 135M/360M, Qwen2.5 0.5B, Qwen3 0.6B) en tu dispositivo con protección de memoria, descarga modelos desde la tienda integrada o Hugging Face, guarda tu historial de chat, genera imágenes y vídeos GIF/AVI o conéctate a servidores Ollama/OpenAI en LAN.",
+        "fr": "Exécutez localement des modèles GGUF compacts (Gemma 3 270M, SmolLM2 135M/360M, Qwen2.5 0.5B, Qwen3 0.6B) avec protection mémoire, téléchargez des modèles depuis la boutique intégrée ou Hugging Face, conservez vos discussions, créez des images et vidéos GIF/AVI ou connectez-vous à Ollama/OpenAI en réseau local.",
+        "ja": "超軽量GGUFモデル（Gemma 3 270M、SmolLM2 135M/360M、Qwen2.5 0.5B、Qwen3 0.6B）をメモリ保護付きでローカル実行。内蔵モデルストアやHugging Faceからの直接ダウンロード、チャット履歴保存、画像・GIF/AVI動画生成、ドキュメント解析、LAN上のOllama/OpenAI連携に対応。",
+        "ko": "초경량 GGUF 언어 모델(Gemma 3 270M, SmolLM2 135M/360M, Qwen2.5 0.5B, Qwen3 0.6B)을 메모리 보호와 함께 로컬에서 실행하고, 내장 모델 스토어 및 Hugging Face에서 모델을 다운로드하며, 대화 기록 보관, 이미지·GIF/AVI 영상 생성, 문서 분석, LAN Ollama/OpenAI 연결을 지원합니다.",
+        "zh": "在设备上本地运行超轻量 GGUF 语言模型（Gemma 3 270M、SmolLM2 135M/360M、Qwen2.5 0.5B、Qwen3 0.6B）并配备实时内存保护，支持内置模型商店与 Hugging Face 直接下载、多会话聊天持久化、图像与 GIF/AVI 视频生成、文档代码分析及局域网 Ollama/OpenAI 桥接。"
+      },
+      "version": "1.2.0",
+      "author": "sonerx7",
+      "category": "productivity",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/nexai-studio/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/nexai-studio/nexai-studio.nxvapp",
+      "size": 3963237,
+      "sha256": "b85bfd11891189af0e504e09838aa69297b298895ae62a21a6737e0edf6be748",
+      "minSdk": "1.10",
+      "permissions": [
+        "network",
+        "files",
+        "notifications"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/nexai-studio/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/nexai-studio/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/nexai-studio/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/nexai-studio/screenshots/4.png"
+      ],
+      "featured": false,
+      "license": "MIT",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/nexai-studio",
+      "targetSdk": "1.13",
+      "subtitle": {
+        "en": "Local GGUF LLM, AI Store & Media Studio",
+        "tr": "Yerel LLM, Model Mağazası ve Medya",
+        "de": "Lokale GGUF-LLM, Store & Medienstudio",
+        "es": "LLM GGUF local, tienda IA y multimedia",
+        "fr": "LLM GGUF local, boutique IA et média",
+        "ja": "ローカルLLM・モデルストア・メディア生成",
+        "ko": "로컬 LLM, 모델 스토어 & 미디어 스튜디오",
+        "zh": "本地大模型、模型商店与媒体工作室"
+      },
+      "changelog": {
+        "en": "v1.2.0: LM Studio-style layout with icon rail, model picker bar, conversation list and a collapsible settings panel. Built-in AI Model Store grows to 29 verified GGUF models with speed tags and memory-fit badges. Live web knowledge for weather, time, currency and web search with sources. Settings for default city and search behaviour. Stability and Memory Guard improvements.",
+        "tr": "v1.2.0: Simge çubuğu, model seçici, sohbet listesi ve katlanabilir ayar paneli olan LM Studio tarzı düzen. Dahili AI Model Mağazası hız etiketleri ve bellek uyumu rozetleriyle 29 doğrulanmış GGUF modele yükseldi. Hava durumu, saat, döviz ve kaynaklı web araması için canlı web bilgisi. Varsayılan şehir ve arama davranışı ayarları. Kararlılık ve Bellek Koruması iyileştirmeleri."
+      },
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "online",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-16",
+      "updated": "2026-11-16",
+      "history": [
+        {
+          "version": "1.2.0",
+          "date": "2026-11-16"
         }
       ]
     },
