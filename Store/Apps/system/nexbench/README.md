@@ -5,7 +5,7 @@ Nexy Benchmark 2 measures CPU, memory, storage, 2D and 3D graphics and shows the
 | Field | Value |
 |---|---|
 | **ID** | `system.nexbench` |
-| **Version** | `2.4.1` |
+| **Version** | `2.4.2` |
 | **Category** | `system` |
 | **Runtime** | `native` (window mode, Native 1.2; OS 1.3.26 or later) |
 | **Target SDK** | `1.13` (`minSdk 1.10`) |
@@ -38,7 +38,7 @@ The app opens as a normal 1120x680 window that you can resize; the layout scales
 
 Scores are on a thousands scale (CPU, Graphics, Memory, Storage and system, plus a total and a tier). The three Kepler scene packs remain intact; Station has 137,324 scene triangles. Only one scene is resident at a time. Worker threads read and decompress packs; GPU uploads remain on the render thread in small slices. Safe mode and the Explore quality settings are retained.
 
-Version 2.4.1 uses **workload profile 3**: fixed 640x360 3D targets (49.83% fewer pixels than 2.4.0 and 75% fewer than 1280x720). The 2D target stays 1280x720. A diffuse shader keeps directional and baked ambient lighting plus emissive surfaces. Dynamic shadows, bloom, HDR targets, FXAA, normal/ORM sampling, point lights and specular shading are disabled. Texture caps are 256 pixels compressed and 128 pixels decoded; unused normal/ORM textures are not uploaded. Explore has a 204,800-pixel maximum (640x320 at a 2:1 aspect ratio), reduced further at Low quality. Quality settings cannot re-enable the removed effects. Explore does not force periodic GPU completion.
+Version 2.4.2 uses **workload profile 4 (Balanced)**: 904x508 3D targets, twice the pixels of 2.4.1, and 512-pixel compressed / 256-pixel decoded texture caps. Explore uses up to 460,800 pixels before the Low scaling. A small directional specular highlight restores material definition. Dynamic shadows, bloom, HDR, FXAA, normal/ORM sampling, full PBR and point lights remain disabled. Geometry is unchanged. Previous history remains readable and cross-profile score comparisons are rejected.
 
 These are pixel and effect reductions, not a measured 50% decrease in frame time, polygon count or total memory. Older history stays readable. Reports persist the workload profile; comparison refuses different profiles, unknown render dimensions or different render sizes. Best-in-mode scores use the current profile. Console modes remain labeled; emulator timings are not physical-device timings. See [changes](CHANGELOG.md) and the private development validation record.
 
