@@ -41,7 +41,11 @@ nxn_input_action_pressed
 nxn_input_key_held
 nxn_input_key_poll
 nxn_input_mouse
+nxn_input_mouse_delta
+nxn_input_pad_count
+nxn_input_pad_poll
 nxn_input_poll
+nxn_input_relative_mouse
 nxn_input_text
 nxn_input_text_request
 nxn_input_touch
@@ -78,6 +82,7 @@ nxn_nxui_column_end
 nxn_nxui_dialog
 nxn_nxui_dropdown
 nxn_nxui_end
+nxn_nxui_end_ex
 nxn_nxui_feed_pointer
 nxn_nxui_label
 nxn_nxui_move_focus
@@ -112,6 +117,10 @@ nxn_sfx_stop_all
 nxn_should_quit
 nxn_shutdown
 nxn_sleep_ns
+nxn_stream_close
+nxn_stream_open
+nxn_stream_prefetch
+nxn_stream_read
 nxn_system_battery_level
 nxn_system_ticks_ms
 nxn_thread_join

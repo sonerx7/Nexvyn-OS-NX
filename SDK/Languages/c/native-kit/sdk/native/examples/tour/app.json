@@ -8,6 +8,6 @@
   "window": {"width": 1100, "height": 680, "resizable": true},
   "minNative": "1.2",
   "minSdk": "1.10",
-  "targetSdk": "2.0",
+  "targetSdk": "1.13",
   "permissions": ["files", "notifications"]
 }

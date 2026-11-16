@@ -118,6 +118,10 @@ NXN_API void nxn_request_return(nxn_return_reason reason, int32_t code, const ch
 #define NXN_CAP_DIALOG (UINT64_C(1) << 35)
 /* nxn_input_text_request: the app can ask for the Nexvyn OS on-screen keyboard (nxn_input.h) */
 #define NXN_CAP_TEXT_REQUEST (UINT64_C(1) << 36)
+/* Native 1.2 add-on: nxn_input_relative_mouse / nxn_input_mouse_delta and nxn_input_pad_count / nxn_input_pad_poll (nxn_input.h) */
+#define NXN_CAP_INPUT_ROUTER (UINT64_C(1) << 37)
+/* nxn_stream_* through the system's shared block cache (nxn_stream.h) */
+#define NXN_CAP_STREAM (UINT64_C(1) << 38)
 
 typedef struct nxn_caps {
     uint32_t size;

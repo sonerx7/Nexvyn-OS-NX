@@ -8,7 +8,7 @@ Nexvyn OS apps (`.nxvapp`) can be written in JavaScript as well as Lua. The API 
 Make `main.js` the main file in `app.json`:
 
 ```json
-{"id": "com.adiniz.sayac", "name": {"tr": "Sayaç", "en": "Counter"}, "category": "utilities",
+{"id": "com.adiniz.sayac", "name": {"tr": "Sayac", "en": "Counter"}, "category": "utilities",
  "main": "main.js", "window": {"width": 360, "height": 260, "resizable": false}}
 ```
 
@@ -42,7 +42,7 @@ The callbacks are the same as in Lua: `app.load(arg)`, `app.open(arg)`, `app.upd
 - **`ui.textfield` returns only the text;** `ui.submitted("id")` tells you Enter was pressed.
   **`ui.row`** returns 0 (nothing), 1 (clicked) or 2 (double-clicked).
 - **Promises:** every asynchronous function you call without a callback returns a Promise:
-  `const veri = await net.fetchJson(url)`, `const i = await ui.alert(baslik, mesaj, ["Tamam", "İptal"])`,
+  `const veri = await net.fetchJson(url)`, `const i = await ui.alert(baslik, mesaj, ["Tamam", "Iptal"])`,
   `await timer.sleep(0.5)`. `net.fetchJson` throws an Error on failure (no connection, HTTP error, broken JSON);
   catch it with `try { ... } catch (e) { e.message }`. An uncaught Promise error opens the error screen like any other
   error.

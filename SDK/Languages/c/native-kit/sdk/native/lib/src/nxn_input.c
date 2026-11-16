@@ -81,6 +81,26 @@ int nxn_input_text(char* out, size_t cap) {
     return 0;
 }
 
+/* Relative mouse and extra controllers are windowed-mode features (NXN_CAP_INPUT_ROUTER is not set here). */
+nxn_result nxn_input_relative_mouse(int enabled) {
+    (void)enabled;
+    return NXN_ERR_UNSUPPORTED;
+}
+
+nxn_result nxn_input_mouse_delta(float* dx, float* dy) {
+    if (dx) *dx = 0.f;
+    if (dy) *dy = 0.f;
+    return NXN_ERR_UNSUPPORTED;
+}
+
+int nxn_input_pad_count(void) { return 0; }
+
+nxn_result nxn_input_pad_poll(uint32_t pad, nxn_pad_state* out) {
+    (void)pad;
+    (void)out;
+    return NXN_ERR_UNSUPPORTED;
+}
+
 nxn_result nxn_input_text_request(int wanted) {
     (void)wanted;
     return NXN_ERR_UNSUPPORTED;

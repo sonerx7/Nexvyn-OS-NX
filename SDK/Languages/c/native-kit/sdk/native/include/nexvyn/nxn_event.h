@@ -46,9 +46,11 @@ typedef enum nxn_event_type {
     NXN_EVENT_MENU = 8,   /* Native 1.1 (NXN_CAP_MENU): the user picked an item of the app's window menu (nxn_menu.h);
                              item_id is the id the app gave it. Never merged: every pick arrives. Only apps with "minNative"
                              1.1 or later get it */
-    NXN_EVENT_POWER = 9   /* Native 1.2 (NXN_CAP_POWER_STATE): battery (by 1 percent or more), charger, dock or network state changed;
+    NXN_EVENT_POWER = 9,  /* Native 1.2 (NXN_CAP_POWER_STATE): battery (by 1 percent or more), charger, dock or network state changed;
                              read it with nxn_power_get (nxn_power.h). At most one per second, unread ones merge. Only apps with
                              "minNative" 1.2 or later get it */
+    NXN_EVENT_LANGUAGE = 10 /* Native 1.2 add-on: the system language changed while the app runs. Read nxn_app_language() again and
+                             reload your own text. Unread ones merge into one. Only apps with "minNative" 1.1 or later get it */
 } nxn_event_type;
 
 typedef struct nxn_event {

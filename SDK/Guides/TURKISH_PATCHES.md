@@ -7,7 +7,7 @@ patches" and why the `turkceyama` app works the way it does. Research date: 27 O
 
 - **What:** an SDL2-based Turkish patch installer written by SertAy (a homebrew `.nro`, an `.nsp` shortcut for the home
   menu, an `.exe` for PC emulators, an `.apk` for mobile emulators). The archive has more than 650 games. Most of
-  the patches belong to Swatalk (more than 470 free patches), the rest to translators such as Soner Çakır, Profesör
+  the patches belong to Swatalk (more than 470 free patches), the rest to translators such as Soner Cakir, Profesor
   Pikachu, Dede00, emre, davetsiz57. The developer clearly states that he did not make the patches himself.
   - Source: <https://github.com/sertay1/YamaNX> (README, releases: v2.1.0 is the latest)
   - Announcement thread: <https://forum.donanimarsivi.com/posts/11130968/>
@@ -27,7 +27,7 @@ patches" and why the `turkceyama` app works the way it does. Research date: 27 O
   Internet Archive. Neither the gist nor the archive item has a license or terms of use; there is no statement allowing
   other clients to use this list either. These files are YamaNX's own internal data source; not a documented, stable
   interface or one opened to others.
-- **Installation format:** the patches are Atmosphère LayeredFS mods. The zip is extracted into
+- **Installation format:** the patches are Atmosphere LayeredFS mods. The zip is extracted into
   `sdmc:/atmosphere/contents/` (`<TID>/romfs/...` inside the zip). YamaNX writes the full path of every file it
   installs, line by line, to `atmosphere/contents/<TID>/YamaNX_manifest.txt`; it uses this list when uninstalling.
   The version information is just a label (e.g. `V1.0.4`); it is not compared with the game version.
@@ -40,8 +40,8 @@ patches" and why the `turkceyama` app works the way it does. Research date: 27 O
 | Source | Link | Note |
 | --- | --- | --- |
 | Swatalk | <https://discord.com/invite/xshWw2jBK6> | Hundreds of free patches, a request channel |
-| Soner Çakır | <https://discord.com/invite/tB93ZUsRYE> | Translator community server |
-| SinnerClown Çeviri | <https://sinnerclownceviri.com/forumlar/nintendo-tuerkce-yama.74/> | The console patch section of the team's forum ([source](https://forum.donanimhaber.com/nintendo-switch-turkce-yama-arsivi-ariyorum--156348798)) |
+| Soner Cakir | <https://discord.com/invite/tB93ZUsRYE> | Translator community server |
+| SinnerClown Ceviri | <https://sinnerclownceviri.com/> | The console patch section of the team's forum ([source](https://forum.donanimhaber.com/)) |
 | Techolay guide | <https://techolay.net/sosyal/konu/guvenilir-turkce-yama-ekipleri-ve-siteler.147247/> | A list of trustworthy teams (general) |
 
 None of them publishes a public API or terms that allow third-party clients.
@@ -99,8 +99,8 @@ text and the list of modifications are in `yamanx.app/LICENSE` and `yamanx.app/N
   - "Project page" opens the GitHub page in the Browser. Patches installed by YamaNX keep appearing in the list below.
 - **Records:** `sdmc:/NexvynOS/System/TurkcePatches/installed.json`
   ```json
-  {"format": 1, "patches": [{"id": "0100ABCD12345000-1761600000", "tid": "0100ABCD12345000", "name": "Oyun",
-    "version": "1.2", "gameVersion": "1.0.4", "team": "Ekip", "page": "https://...", "source": "dosya.zip",
+  {"format": 1, "patches": [{"id": "0100ABCD12345000-1761600000", "tid": "0100ABCD12345000", "name": "Game",
+    "version": "1.2", "gameVersion": "1.0.4", "team": "Team", "page": "https://...", "source": "file.zip",
     "installed": 1761600000, "enabled": true, "bytes": 123456,
     "files": ["atmosphere/contents/0100ABCD12345000/romfs/..."], "backedUp": ["atmosphere/..."]}]}
   ```
@@ -120,13 +120,13 @@ text and the list of modifications are in `yamanx.app/LICENSE` and `yamanx.app/N
   "format": 1,
   "revision": 2,
   "sources": [
-    {"name": "Ekip adı", "kind": "web|chat|code", "url": "https://...",
-     "about": {"tr": "Kısa tanıtım", "en": "Short intro"}}
+    {"name": "Team name", "kind": "web|chat|code", "url": "https://...",
+     "about": {"tr": "Kisa tanitim", "en": "Short intro"}}
   ],
   "patches": [
-    {"tid": "0100ABCD12345000", "game": "Oyun adı", "team": "Ekip adı",
+    {"tid": "0100ABCD12345000", "game": "Game name", "team": "Team name",
      "patchVersion": "1.2", "gameVersion": "1.0.4", "page": "https://ekibin-yama-sayfasi",
-     "credits": {"tr": "Çeviri: A, B · Test: C", "en": "Translation: A, B · Testing: C"},
+     "credits": {"tr": "Ceviri: A, B · Test: C", "en": "Translation: A, B · Testing: C"},
      "notes": {"tr": "DLC gerekir", "en": "Requires the DLC"}}
   ]
 }

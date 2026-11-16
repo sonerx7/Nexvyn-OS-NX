@@ -276,15 +276,16 @@ static inline void nxn_os_card_end() {
     st.splitter.Merge(st.dl);
 }
 
-/* Segmented capsule tabs matching OS `ui::segmented` (source/core/ui.cpp). Zero-based index. */
+/* Segmented capsule tabs matching OS `ui::segmented` (source/core/ui.cpp). Zero-based index. Default height 28 = the
+   script ui.segmented default (the OS draws it 26-34 px depending on the panel; pass `height` for another one). */
 static inline bool nxn_os_segmented_tabs(const char* id, const char* const* labels, int count, int* active,
-                                         const nxn_ui_tokens& tok, float height = 32.0f, float width = 0.0f) {
+                                         const nxn_ui_tokens& tok, float height = 28.0f, float width = 0.0f) {
     if (!labels || count <= 0 || !active) return false;
     ImGui::PushID(id ? id : "seg");
 
     ImDrawList* dl = ImGui::GetWindowDrawList();
     ImVec2 p = ImGui::GetCursorScreenPos();
-    float h = height > 22.0f ? height : 32.0f;
+    float h = height > 22.0f ? height : 28.0f;
 
     float total_w = width;
     if (total_w <= 0.0f) {
@@ -357,7 +358,7 @@ static inline bool nxn_os_segmented_tabs(const char* id, const char* const* labe
 
 /* OS Pill Switch matching `ui::toggle` with smooth animation in ImGui state storage. */
 static inline bool nxn_os_switch(const char* id, bool* v, const nxn_ui_tokens& tok,
-                                 float width = 40.0f, float height = 22.0f) {
+                                 float width = 38.0f, float height = 22.0f) {
     if (!v) return false;
     ImGui::PushID(id ? id : "sw");
     ImGuiID anim_id = ImGui::GetID("##anim");
@@ -450,11 +451,12 @@ static inline bool nxn_os_button(const char* label, nxn_os_btn_variant variant, 
 
 /* OS Dropdown matching `ui::popup`: rounded control + accent right chip with double chevron. Zero-based index. */
 static inline bool nxn_os_dropdown(const char* id, const char* const* items, int count, int* selected,
-                                   float width, const nxn_ui_tokens& tok) {
+                                   float width, const nxn_ui_tokens& tok, float height = 0.0f) {
     if (!items || count <= 0 || !selected) return false;
     ImGui::PushID(id ? id : "dd");
 
-    float h = tok.control_height > 14.0f ? tok.control_height : 30.0f;
+    /* height: the argument when given, else the OS token (recommended control height), else 28 = the script ui.dropdown default */
+    float h = height > 14.0f ? height : (tok.control_height > 14.0f ? tok.control_height : 28.0f);
     float w = width > 40.0f ? width : ImGui::GetContentRegionAvail().x;
     ImVec2 p = ImGui::GetCursorScreenPos();
 
@@ -527,10 +529,13 @@ static inline bool nxn_os_dropdown(const char* id, const char* const* items, int
 static inline void nxn_os_badge(const char* text, uint32_t color_argb, const nxn_ui_tokens& tok) {
     const char* s = text ? text : "";
     ImVec2 tsz = ImGui::CalcTextSize(s);
-    float px = 10.0f;
-    float py = 3.5f;
+    /* canonical pill: 22 px high, 9 px side padding, at least 58 px wide, text centred */
+    float px = 9.0f;
+    float bh = 22.0f;
     float bw = tsz.x + px * 2.0f;
-    float bh = tsz.y + py * 2.0f;
+    if (bw < 58.0f) bw = 58.0f;
+    float py = (bh - tsz.y) * 0.5f;
+    px = (bw - tsz.x) * 0.5f;
     ImVec2 p = ImGui::GetCursorScreenPos();
     ImDrawList* dl = ImGui::GetWindowDrawList();
 

@@ -82,6 +82,10 @@ typedef struct {
     char title[128], body[256], arg[256];
 } nxv_scheduled;
 
+typedef struct {
+    char id[64], name[128], version[32], publisher[128];
+} nxv_game;  /* SDK 1.14: one installed title (sys_games) */
+
 /* ------------------------------------------------------------------ callback types */
 typedef void (*nxv_fn)(void* user);
 typedef void (*nxv_int_fn)(int value, void* user);
@@ -179,12 +183,14 @@ void ui_keyboard(const char* text, nxv_str_fn fn, void* user, const char* guide)
 
 /* ------------------------------------------------------------------ files (relative paths: the app's data folder) */
 char* fs_read(const char* path, size_t* len);  /* malloc'd and 0-terminated (free it), NULL on failure */
+char* fs_readBytes(const char* path, size_t* len);  /* SDK 1.14: the exact bytes, same as fs_read (malloc'd, free it) */
 bool fs_write(const char* path, const char* data, size_t len);
 bool fs_append(const char* path, const char* data, size_t len);
 bool fs_exists(const char* path);
 bool fs_isdir(const char* path);
 int fs_list(const char* path, bool hidden, nxv_entry* out, int max);  /* returns the number of entries (may be > max) */
 bool fs_mkdir(const char* path);
+void fs_unzip(const char* zipPath, const char* destDir, nxv_done_fn fn, nxv_progress_fn progress, void* user);  /* SDK 1.14: fn(ok, error or the extracted file count as text); progress(doneBytes, totalBytes) may be NULL */
 bool fs_remove(const char* path, bool permanently);
 bool fs_rename(const char* from, const char* to);
 bool fs_copy(const char* from, const char* to);
@@ -240,6 +246,7 @@ bool sys_share(const char* textOrPath);
 int sys_schedule(int64_t epoch, const char* title, const char* body, const char* arg);  /* id, 0 on failure (see the log) */
 bool sys_unschedule(int id);
 int sys_scheduled(nxv_scheduled* out, int max);
+int sys_games(nxv_game* out, int max);     /* SDK 1.14: installed titles (needs the "games" permission), returns the count (may be > max) */
 bool sys_hasPermission(const char* name);
 void sys_requestPermission(const char* name, nxv_bool_fn fn, void* user);
 void sys_memory(size_t* used, size_t* limit);
@@ -264,6 +271,10 @@ bool input_key(const char* name);
 bool input_action(const char* name);  /* a button the user mapped to this function ("back", "select"...) was pressed this frame */
 bool input_touch(void);
 void input_motion(float out[9]);  /* ax ay az gx gy gz pitch roll yaw */
+bool input_relativeMouse(bool on);  /* mouse look: the cursor stays put and input_mouseDelta reports the motion; false when refused (setting off, no focus) */
+void input_mouseDelta(float* dx, float* dy);  /* motion since the previous call (0, 0 while the mode is off) */
+int input_padCount(void);  /* connected controllers */
+bool input_padDown(int pad, const char* button);  /* is the button held on controller `pad` (0 = player 1) */
 
 /* ------------------------------------------------------------------ timers */
 int timer_after(double seconds, nxv_fn fn, void* user);

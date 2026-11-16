@@ -105,7 +105,7 @@ step's defaults as they are. If you choose a large interface size, the assistant
 screen; the size you chose is applied as soon as setup ends.
 
 On the last screen Nexvyn OS prepares your home folder, your settings and your desktop. It writes a short note called
-"Nexvyn OS'a Hoş Geldiniz.txt" (Welcome to Nexvyn OS) on the desktop. A log of these steps is written to
+"Welcome to Nexvyn OS.txt" on the desktop. A log of these steps is written to
 `System/Logs/setup.log`.
 
 Every choice can be changed later in **System Settings**.
@@ -201,7 +201,6 @@ The change applies immediately.
   Start with the side panel expanded**.
 
 ---
-
 ## 4. Windows
 
 ### Basic operations
@@ -583,7 +582,6 @@ Put `_meta.json` and the module `.json` files (or a single `key,en,tr,...` CSV f
 `sdmc:/NexvynOS/System/Library/Languages/<code>/`. The language appears in **System Settings > Language and Region**.
 
 ---
-
 ## 9. Built-in apps
 
 Nexvyn OS comes with more than 90 apps. They are all sorted into categories on the Apps screen. The highlights are
@@ -670,7 +668,7 @@ token.
 
 Plays internet radio stations from the Radio Browser community directory.
 
-- **Favorites**, **Recently Played**, **Popular**, countries (Türkiye first) and genres in the sidebar; station search
+- **Favorites**, **Recently Played**, **Popular**, countries (Turkey first) and genres in the sidebar; station search
   at the top.
 - The name of the song playing (if the station sends it), favorites (star), a sleep timer (moon icon).
 - It keeps playing after you close the window; if the stream drops it reconnects by itself.
@@ -910,16 +908,15 @@ side panel (it works with the keys from AI Chat) answers questions; it does not 
 
 ### Resource warnings and Task Manager
 
-When system resources are under heavy load (free RAM < 12% or used RAM > 90%, sustained CPU load > 90% for 10 seconds, or OS frame time > 40 ms for 8 seconds), a dismissible warning banner appears at the top of the screen under the menu bar.
+When system resources are under heavy load (free RAM < 12% or used RAM > 90%, sustained CPU load > 90% for 10 seconds, or OS frame time > 55 ms for 10 seconds), a dismissible warning banner appears at the top of the screen under the menu bar.
 
 The banner presents current RAM, CPU, and GPU metrics and offers two quick actions:
 - **Task Manager**: Opens the System Monitor (`activity.app`) to inspect active windows, per-window CPU time, and memory usage. A dedicated Task Manager icon (`monitor_heart`) is also available in the top menu bar status area next to the battery indicator.
 - **Close background apps**: Opens the Force Quit panel to let you choose and close memory-heavy or non-responding applications. Nexvyn OS never closes user applications automatically.
 
-Resource warnings can be toggled in **System Settings > Performance > Resource warnings** (setting `shell.resourceWarn`, default on). Warnings clear automatically once resources recover (RAM free >= 15% and used < 85%, CPU < 75%, frame time < 33 ms) and auto-hide after 12 seconds unless heavy load persists. To prevent interruption, warnings appear at most once per 5 minutes per cause unless load worsens significantly.
+Resource warnings can be toggled in **System Settings > Performance > Resource warnings** (setting `shell.resourceWarn`, default on). Warnings clear automatically once resources recover (RAM free >= 15% and used < 85%, CPU < 75%, frame time < 42 ms) and auto-hide after 12 seconds unless heavy load persists. To prevent interruption, warnings appear at most once per 5 minutes per cause unless load worsens significantly.
 
 ---
-
 ## 10. Troubleshooting and FAQ
 
 ### Nexvyn OS says it is "running with limited memory"

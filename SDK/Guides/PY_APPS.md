@@ -9,7 +9,7 @@ reference is `sdk/SDK.md` (section 12 "Python"), and a working sample is `romfs/
 Make `main.py` the main file in `app.json`:
 
 ```json
-{"id": "com.adiniz.sayac", "name": {"tr": "Sayaç", "en": "Counter"}, "category": "utilities",
+{"id": "com.adiniz.sayac", "name": {"tr": "Sayac", "en": "Counter"}, "category": "utilities",
  "main": "main.py", "minSdk": "1.3", "window": {"width": 360, "height": 260, "resizable": false}}
 ```
 
@@ -68,7 +68,7 @@ are built in; no `import` is needed. Other files of the bundle are loaded with `
   **`ui.row`** returns 0, 1 (clicked) or 2 (double-clicked).
 - **Asynchronous calls take callbacks** (there are no Promises):
   `net.json(url, lambda veri, hata: ...)`, `net.get(url, geri_cagirma)`, `ui.alert(baslik, mesaj, ["Tamam",
-  "İptal"], lambda i: ...)`, `net.download(url, yol, lambda ok, yol_veya_hata: ...)`. Without a callback the result is
+  "Iptal"], lambda i: ...)`, `net.download(url, yol, lambda ok, yol_veya_hata: ...)`. Without a callback the result is
   dropped.
 - **Menu:** `menu()` returns a list of dicts:
   `[{"title": TR("dosya"), "items": [{"label": TR("yeni"), "id": 1}, "-"]}]`.

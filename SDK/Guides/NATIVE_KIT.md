@@ -258,7 +258,7 @@ For apps that should look like part of Nexvyn OS (tools, editors, front ends). *
 - Live resize (setting `native.liveResize`, default off; not verified on a console): while the user drags a window edge the app gets `NXN_EVENT_RESIZE` about every 0.12 s with the new content size, not only after release. Apps with `"minNative": "1.1"` or later get it when the setting is on; an older app only with `"liveResize": true` in `app.json` (`false` keeps the stretch-until-release behaviour). Handle it like any resize: `nxn_display_resize`.
 - `NXN_EVENT_THEME`: the look changed; read the tokens again. Only apps with `"minNative": "1.1"` get it; older apps can compare `revision` once a frame.
 - `nxn_ui_font_get` gives the system font bytes (for example ImGui `AddFontFromMemoryTTF`, `FontDataOwnedByAtlas = false`), `nxn_ui_icon_code("folder")` the code point in the `NXN_UI_FONT_ICONS` font.
-- **Text and fonts.** ImGui loads Latin-1 only unless it is given glyph ranges, so Turkish `ı ğ ş İ`, Cyrillic, Greek or Japanese text would show as `?`. `#include <nexvyn/nxn_imgui.h>` (header only, after `imgui.h`) and call `nxn_imgui_add_font(io.Fonts, NXN_UI_FONT_SANS, px, 0, icon_ranges)`: it adds the system font with the ranges the app's language needs (`nxn_info_string(NXN_INFO_LANGUAGE)`): Latin-1 and Latin Extended-A always (en, tr, de, es, fr), Latin Extended-B for `vi`, Greek for `el`, Cyrillic for `ru uk bg sr`; the flag `NXN_IMGUI_ALL_SCRIPTS` adds all of them for text the app did not translate (file names). The atlas stays small because only those ranges are loaded. Icons are merged into the same font when `icon_ranges` is given. The system font is Inter (Latin, Greek, Cyrillic); the Han / Kana / Hangul font comes as `NXN_UI_FONT_CJK` (`NXN_CAP_UI_FONT_CJK`, bit 32; the console's shared font, else a font pack on the SD card, cut to the face of the app's language) and the same helper merges it for `ja`, `ko` and `zh` with no change in the app: a compact set of common characters (about 2400-3000: ImGui's Japanese and Simplified Chinese tables, the 2350 syllables of KS X 1001 for Korean), not the whole font. Each font that gets it grows the atlas by about 1 MB per 20 px, so pass `NXN_IMGUI_NO_CJK` for digit / monospace fonts; fonts above 30 px skip it unless `NXN_IMGUI_CJK_LARGE`. A system without the font (older Nexvyn OS, no font installed) draws Latin only and nothing fails. The `app` template, the Showcase and the Tour use the helper; use it in your own ImGui apps and keep texts in `lang/*.json`.
+- **Text and fonts.** ImGui loads Latin-1 only unless it is given glyph ranges, so Turkish (dotless i, g-breve, s-cedilla, capital I with dot), Cyrillic, Greek or Japanese text would show as `?`. `#include <nexvyn/nxn_imgui.h>` (header only, after `imgui.h`) and call `nxn_imgui_add_font(io.Fonts, NXN_UI_FONT_SANS, px, 0, icon_ranges)`: it adds the system font with the ranges the app's language needs (`nxn_info_string(NXN_INFO_LANGUAGE)`): Latin-1 and Latin Extended-A always (en, tr, de, es, fr), Latin Extended-B for `vi`, Greek for `el`, Cyrillic for `ru uk bg sr`; the flag `NXN_IMGUI_ALL_SCRIPTS` adds all of them for text the app did not translate (file names). The atlas stays small because only those ranges are loaded. Icons are merged into the same font when `icon_ranges` is given. The system font is Inter (Latin, Greek, Cyrillic); the Han / Kana / Hangul font comes as `NXN_UI_FONT_CJK` (`NXN_CAP_UI_FONT_CJK`, bit 32; the console's shared font, else a font pack on the SD card, cut to the face of the app's language) and the same helper merges it for `ja`, `ko` and `zh` with no change in the app: a compact set of common characters (about 2400-3000: ImGui's Japanese and Simplified Chinese tables, the 2350 syllables of KS X 1001 for Korean), not the whole font. Each font that gets it grows the atlas by about 1 MB per 20 px, so pass `NXN_IMGUI_NO_CJK` for digit / monospace fonts; fonts above 30 px skip it unless `NXN_IMGUI_CJK_LARGE`. A system without the font (older Nexvyn OS, no font installed) draws Latin only and nothing fails. The `app` template, the Showcase and the Tour use the helper; use it in your own ImGui apps and keep texts in `lang/*.json`.
   - **4-Runtime Typography Scaling Parity (1.21x Factor):** FreeType scales glyphs relative to its Em-box (`upem = 2048`), while Dear ImGui's `stb_truetype` scales relative to `(ascent - descent)` (`2478` for Inter). To ensure pixel-perfect parity with Lua/JS/Python OS apps without blurry or thin text, native C/C++ apps must multiply target point sizes by `1.21f` (`2478 / 2048`):
     - Title / Hero: `floorf(19.2f * 1.21f * sc + 0.5f)` (`NXN_UI_FONT_BOLD`)
     - Card Header: `floorf(15.2f * 1.21f * sc + 0.5f)` (`NXN_UI_FONT_BOLD`)
@@ -269,7 +269,8 @@ For apps that should look like part of Nexvyn OS (tools, editors, front ends). *
 - **Unified OS Widget Kit for ImGui (`<nexvyn/nxn_os_ui.h>`, header-only).** Never ship raw unstyled Dear ImGui checkboxes, thick tables, or hardcoded dark `glClearColor(...)` in utility/tool/HUD apps. Include `<nexvyn/nxn_os_ui.h>` after `imgui.h` and pass live `nxn_ui_tokens`:
   - `nxn_os_apply_style(tok)` & `nxn_os_clear_color(tok)` — syncs Light/Dark/High-Contrast `ImGuiStyle` and window clear color on start and on `NXN_EVENT_THEME`.
   - `nxn_os_segmented_tabs(...)`, `nxn_os_card_begin/end(...)`, `nxn_os_kv_row(...)`, `nxn_os_switch(...)`, `nxn_os_dropdown(...)`, `nxn_os_button(..., NXN_OS_BTN_PRIMARY | DEFAULT | DESTRUCTIVE | PLAIN)`, `nxn_os_badge(...)`, `nxn_os_progress_bar(...)`, `nxn_os_separator(...)` — renders the same visual language as OS `ui.*` & `nxui.*` widgets.
-  - Note: `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>` runs layout/focus solvers in memory and does not paint inside an OpenGL `nxn_display` framebuffer; GL-based C++ apps should use `<nexvyn/nxn_os_ui.h>` for UI overlays.
+  - Note: `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>` runs layout/focus solvers in memory and never paints inside an OpenGL `nxn_display` framebuffer (an app thread must not use the shared OS renderer). `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED` in that case; GL-based C++ apps use `<nexvyn/nxn_os_ui.h>` for the UI.
+  - **Strict design rules:** `python tools/design_check.py` FAILs an ImGui app that lacks `nxn_os_apply_style` / `nxn_os_clear_color`, uses a constant `glClearColor` behind its UI, sets `io.FontGlobalScale` other than 1.0 or loads a literal font size outside the role table (23, 18, 17, 14, 15 px); raw `ImGui::Button`, `Checkbox`, `SliderFloat`, `Combo`, `BeginTabBar`, `ProgressBar` are warnings. Scene/benchmark examples are capped at warnings (marker `nxn-design: scene`). Reference: `showcase/com.nexvyn.parity.cpp` (SysMatrix Studio).
 - `nxn_tr(key)` / `nxn_tr_format(key, out, cap, args, argc)`: texts from the package's `lang/<code>.json` (the package tool copies the `lang` folder). Same rule as `TR()` of the script SDK: nested keys joined with dots, `{0}` placeholders, fallback language -> base language -> `en` -> the key. The language is the one at start; the system's own strings are not available.
 - Caps: `NXN_CAP_UI_TOKENS`, `NXN_CAP_TEXT`. In a stand-alone .nro the calls return `NXN_ERR_UNSUPPORTED` and `nxn_tr` returns the key.
 - The showcase has a "UI tokens" page and self-test rows for all of it.
@@ -315,7 +316,6 @@ What changed for native apps, measured on a console (nothing here needs a code c
 
 C11 and C++17 (GNU dialect), `-O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer` in Release (crash backtraces, `-DNEXVYN_FRAME_POINTER=OFF` drops it; aarch64 already keeps a frame record in every non-leaf function, so the first flag alone changes nothing: the second one gives leaf functions a record too, which keeps the caller of a crashing leaf on the chain; measured on a template app: .text 713332 -> 725500 bytes, +1.7 %), exceptions and RTTI on, `-march=armv8-a+crc+crypto -mtp=soft`, devkitPro
 portlibs on the search path. Every module link adds a build-id and moves the debug information to `<name>.nxvmod.debug` (`.nxvlib.debug` for libraries) in the build folder; it is never packaged (`nxv-native symbolize`, guide section 4). `nexvyn_add_nro(target TITLE AUTHOR VERSION ICON ROMFS)` makes the `.nro`.
-
 ## Templates
 
 | Template | What it is |
@@ -482,15 +482,55 @@ Rules:
   (`comp.incompatible`); never loaded.
 - `kind: "compat"` is a legacy compatibility framework (PocketPy 2 for `python`, TinyCC for `c`, miniJVM for `java`,
   Squirrel 3.2): it is a dependency of a runtime, never an engine, and it never replaces the resolver's choice.
-- Built-in engines stay available, so the OS, Settings and Native apps open with no provider installed. Until the OS
-  ships a provider loader (shared-library loader in the app process), an installed provider resolves as `unavailable`
-  (`comp.unavailable`) with its name and path; it is never started by the wrong interpreter.
+- Built-in engines stay available, so the OS, Settings and Native apps open with no provider installed. The provider
+  loader (`source/core/provider_loader.h`, `<package>/provider.nxvlib`) is behind the setting `runtime.providerLoader`,
+  **off by default** until installed providers pass the equivalence tests against the built-in engines. While it is off
+  an installed provider resolves as `unavailable` (`comp.unavailable`) with its name and path, exactly as before; it is
+  never started by the wrong interpreter.
 - C contract: `sdk/native/include/nexvyn/nxn_provider.h` (`NXN_PROVIDER_ABI_GEN 1`). Exported symbols:
   `nxn_provider_query`, `nxn_provider_create`, `nxn_provider_start`, `nxn_provider_stop`, `nxn_provider_destroy`.
   `query` writes `nxn_provider_info` (id, version, kind, runtime, capabilities) and must not allocate or start a thread;
   `create` receives the host table and a NUL-terminated UTF-8 JSON object of the app's manifest subset.
 - Packaging/checking: `python tools/nxv.py pack` / `check` validates the object (only for `lib`/`runtime`; a `runtime`
   package without it is refused). Layout, entry points and failure rules are documented on the header.
+
+### Provider ABI v1.1: drawing surface (add-only)
+
+`NXN_PROVIDER_ABI_GEN` stays `1`. A provider that shows something in its app window also exports two optional symbols
+(`NXN_PROVIDER_ABI_MINOR 1`):
+
+| Symbol | Type | When |
+| --- | --- | --- |
+| `nxn_provider_surface` | `nxn_provider_surface_fn` (optional) | asks for the surface size inside the available window area |
+| `nxn_provider_draw` | `nxn_provider_draw_fn` | one frame into the host-owned `nxn_provider_surface` |
+
+- The host owns the pixels: one RGBA8 CPU surface per instance (`width`, `height`, `stride`, `frame`, `time`), valid only
+  during the call. Sizes are clamped to `NXN_PROVIDER_SURFACE_MAX` (2048).
+- The provider never calls a graphics API and never waits for the UI thread from these calls: `draw` may run on a host
+  worker thread. The host holds no lock during the provider call and publishes the finished frame with a pointer swap
+  (`provider_loader::SurfaceBridge`); the UI thread only try-locks, so it never waits for a provider frame. This build
+  calls `draw` on the UI thread inside the crash guard (a fault there is isolated; on a worker it would not be).
+- `draw` returns `NXN_OK` for a new frame and `NXN_ERR_BUSY` when nothing changed. Any other result, or a crash, stops
+  drawing for that instance and shows the clean problem screen.
+- A v1 provider (five symbols only) keeps loading and running; its window shows the provider identity.
+- Tests: `n2e_provider_v1_and_v11_both_load`, `n2e_provider_surface_bridge_worker_producer_never_blocks_ui`.
+
+### Loading, safe mode and Settings
+
+- At each launch of a script app the OS asks `provider_loader::plan` (loader on: `compmgr::resolveSafe`). A provider
+  package fails the health check when its `provider.nxvlib` is missing or empty, or when an earlier start of that exact
+  version failed (setting `runtime.providerFailed`, keyed `<id>@<version>`). A failing package is skipped: the next older
+  healthy version runs, and when none is left the built-in engine runs the app in safe mode (`comp.safemode`). The user
+  is told once per version (setting `runtime.safeModeSeen`). The OS, the desktop and other runtimes are never affected.
+- The library file is read and checked on the background worker; the main thread maps and binds it and calls
+  `create` / `start` inside the crash guard. Any failure records the version and shows the problem screen.
+- Settings > Runtimes & Frameworks lists the built-in engines and every installed runtime / compat package with version,
+  ABI compatibility and state (active, standby, safe mode, damaged, incompatible, off). It can switch the loader, remove
+  a version, roll back (remove the newest when an older version is installed), retry a version whose start failed, and
+  open the App Market's Runtimes & Libraries section, which downloads and installs packages. The list is read on a
+  worker; the pane needs no network.
+- Tests: `compmgr_canary_broken_installed_provider_safe_mode_os_opens`, `compmgr_frameworks_states_for_settings`, and the
+  install / update / rollback / power-cut canaries in `tests/test_compmgr_canary.cpp`.
 
 ## Canary projects
 

@@ -121,16 +121,18 @@ To prevent native utilities from having an inconsistent visual appearance compar
 * **Window Clear:** Clear the OpenGL framebuffer with `nxn_os_clear_color(tok)` (`theme.window` parity).
 * **Cards & Surfaces:** Use `nxn_os_card_begin_ex("card_id", width, 16.0f, 13.0f, tok)` … `nxn_os_card_end()` for grouped white/dark panels with 10px radius, 1px border (`tok.border`), and soft drop shadows.
 * **Component Kit:**
-  - `nxn_os_segmented_tabs`: 32px height capsule tabs matching OS `ui.segmented`.
+  - `nxn_os_segmented_tabs`: capsule tabs matching OS `ui.segmented`, default height 28px (the script default; pass `height` for another one).
   - `nxn_os_switch`: 38×22px animated smooth pill toggle matching `ui.toggle`.
-  - `nxn_os_dropdown`: 30px height select box with trailing accent chevron chip.
+  - `nxn_os_dropdown`: select box with trailing accent chevron chip; height from the OS token (`control_height`), 28px without one, or the `height` argument.
   - `nxn_os_button`: 30px height buttons (`NXN_OS_BTN_PRIMARY`, `DEFAULT`, `DESTRUCTIVE`, `PLAIN`).
   - `nxn_os_badge`: 22px height pill badges with tinted background and crisp text.
   - `nxn_os_separator`: 1px hairline dividers with `tok.separator`.
+* **Strict rules (checked by `python tools/design_check.py`):** an ImGui app includes `nxn_os_ui.h`, calls `nxn_os_apply_style(tok)` (again on `NXN_EVENT_THEME`) and `nxn_os_clear_color(tok)`, never sets `io.FontGlobalScale` other than `1.0f`, loads fonts only from the role table (Title 23 px, Card Header 18 px, Body 17 px, Caption 14-15 px = `floorf(pt * 1.21f + 0.5f)`), and uses the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Checkbox`, `SliderFloat`, `Combo`, `BeginTabBar`, `ProgressBar`. Card padding is `16 x 13`; pass it with `nxn_os_card_begin_ex`.
+* **NXUI in a GL window:** `nxn_nxui_*` never paints in a Native OpenGL window (its own thread; only the OS main thread may use the shared renderer). The tree is still built and laid out, input is routed, and `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`. Use ImGui with `nxn_os_ui.h` there. The four SysMatrix Studio canaries (`showcase/com.nexvyn.parity.*`) show the same screen in Lua, JavaScript, Python and Native C++; `tests/test_design_parity.py` keeps them identical.
 
 ### Text and fonts
 
-Dear ImGui draws Latin-1 only unless it gets glyph ranges, so Turkish `ı ğ ş İ`, Cyrillic or Greek letters show as `?`. Load the system font through `nxn_imgui_add_font()` from `<nexvyn/nxn_imgui.h>` (the `app` template does): it adds the ranges of the app's language, keeps the atlas small, and rasterizes UI fonts (`<= 28 px`) at `2x` atlas density (`OversampleH = 1`, `OversampleV = 1`, `PixelSnapH = true`, `RasterizerDensity = 2.0f`, `RasterizerMultiply = 1.08f`) so glyph stems and curves remain crisp without muddiness.
+Dear ImGui draws Latin-1 only unless it gets glyph ranges, so Turkish characters (dotless i, g-breve, s-cedilla, capital I-dot), Cyrillic or Greek letters show as `?`. Load the system font through `nxn_imgui_add_font()` from `<nexvyn/nxn_imgui.h>` (the `app` template does): it adds the ranges of the app's language, keeps the atlas small, and rasterizes UI fonts (`<= 28 px`) at `2x` atlas density (`OversampleH = 1`, `OversampleV = 1`, `PixelSnapH = true`, `RasterizerDensity = 2.0f`, `RasterizerMultiply = 1.08f`) so glyph stems and curves remain crisp without muddiness.
 
 To strictly match script UI size and stroke weight: pass `floorf(pt * 1.21f * scale + 0.5f)` (Inter FreeType EM factor `2478 / 2048`) using `NXN_UI_FONT_BOLD` (`19.2pt`) for app titles, `NXN_UI_FONT_BOLD` (`15.2pt`) for card headers, `NXN_UI_FONT_MEDIUM` (`13.8pt`) for body/controls, and `NXN_UI_FONT_MEDIUM` (`12.0pt`) for badges/subtitles; keep `io.FontGlobalScale = 1.0f` instead of downscaling a baked atlas (rebuild on `NXN_EVENT_RESIZE` if scale changes), and round `AddText` `(x, y)` coordinates with `floorf(v + 0.5f)`. Japanese, Korean and Chinese text needs the system's CJK font, which windowed apps cannot get yet (see `NATIVE_KIT.md`, *Text and fonts*). Test your app in more than one language: `lang/*.json` plus Settings > Language.
 

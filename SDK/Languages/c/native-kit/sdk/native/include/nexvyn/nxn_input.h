@@ -124,6 +124,33 @@ NXN_API nxn_result nxn_input_mouse(nxn_mouse* out);
  * Thread: any app thread (it reads a snapshot the OS main thread keeps per window). Memory: none. */
 NXN_API nxn_result nxn_input_action_buttons(const char* action, uint64_t* mask);
 
+/* ---- relative mouse and several controllers (NXN_CAP_INPUT_ROUTER; add-on, ABI v1 is unchanged).
+ * Without the cap every function here returns NXN_ERR_UNSUPPORTED (nxn_input_pad_count: 0). */
+
+/* Relative mouse (mouse look): enabled = 1 asks Nexvyn OS to stop moving its cursor over the window and to collect the
+ * mouse motion for nxn_input_mouse_delta; 0 gives the cursor back. It works only while the window has focus, only when
+ * the user did not turn "Relative mouse" off in Settings (then it returns NXN_ERR_DENIED) and ends with the window.
+ * Thread: any app thread. Memory: none. */
+NXN_API nxn_result nxn_input_relative_mouse(int enabled);
+/* Mouse motion in display pixels since the previous call (sum, then zero). Both outputs are 0 while the mode is off. */
+NXN_API nxn_result nxn_input_mouse_delta(float* dx, float* dy);
+
+typedef struct nxn_pad_state {
+    uint32_t size;
+    uint32_t index;      /* 0 = player 1 (or the handheld controls), up to 7 */
+    uint32_t connected;  /* 1 when the controller is connected */
+    uint32_t active;     /* 1 for the controller that pressed a button last */
+    uint64_t buttons;    /* NXN_BTN_* held */
+    uint64_t pressed;    /* went down since the previous nxn_input_pad_poll of this pad */
+    uint64_t released;   /* went up since the previous nxn_input_pad_poll of this pad */
+} nxn_pad_state;
+
+/* Number of connected controllers (0 while the window has no focus). Thread: any app thread. */
+NXN_API int nxn_input_pad_count(void);
+/* State of controller `pad` (0 <= pad < 8). Edges are kept per pad between two polls of that pad. NXN_ERR_NOT_FOUND for
+ * a pad that is not connected, NXN_ERR_INVALID for a bad argument. Thread: one consumer thread per pad. */
+NXN_API nxn_result nxn_input_pad_poll(uint32_t pad, nxn_pad_state* out);
+
 NXN_EXTERN_C_END
 
 #endif /* NEXVYN_NXN_INPUT_H */

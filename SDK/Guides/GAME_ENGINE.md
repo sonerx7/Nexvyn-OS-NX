@@ -280,7 +280,6 @@ Solid tiles block, one-way platforms can be passed. `cost(tx, ty)` gives the ext
 danger). `maxNodes` limits the search; a long search gives up instead of freezing the frame. The working arrays are
 reused; only the result table is created. For enemies, compute the path a few times per second, not every frame.
 Example: the **Dungeon** template in Studio.
-
 ## 9. Input: actions
 
 The game does not ask for "the A button" but for the "jump" action. Controller buttons, keyboard keys, stick

@@ -42,7 +42,7 @@ NXN_EXTERN_C_BEGIN
 
 typedef enum nxn_provider_kind {
     NXN_PROVIDER_RUNTIME = 1, /* runs one script language */
-    NXN_PROVIDER_COMPAT = 2,  /* compatibility framework a legacy runtime needs (docs/NATIVE_SDK_N2_PLANI.md 9.8) */
+    NXN_PROVIDER_COMPAT = 2,  /* compatibility framework a legacy runtime needs (docs/NATIVE_SDK_N2_PLAN.md 9.8) */
 } nxn_provider_kind;
 
 /* Identity of a provider. `runtime` is the canonical runtime id it serves ("lua", "js", "python", ...);
@@ -85,6 +85,52 @@ typedef void (*nxn_provider_stop_fn)(nxn_provider* provider);
 
 /* Releases the instance; may be NULL only when create never succeeded. */
 typedef void (*nxn_provider_destroy_fn)(nxn_provider* provider);
+
+/* ---- Provider ABI v1.1: drawing surface (add-only; NXN_PROVIDER_ABI_GEN stays 1)
+ *
+ * A provider that shows something in its app window exports nxn_provider_draw (and optionally nxn_provider_surface).
+ * A v1 provider without them keeps loading and working exactly as before; the window then shows the provider identity.
+ *
+ * Surface contract:
+ *  - The host owns the pixels. It allocates one CPU surface per instance (RGBA8, `stride` bytes per row, rows top to
+ *    bottom) and passes it to nxn_provider_draw; the pointer is valid only during that call. The provider writes the
+ *    whole frame and keeps no pointer to it afterwards. The host uploads the finished frame to the screen itself.
+ *  - The provider never calls a graphics API (EGL, GL, the window system) from these entry points and never waits for
+ *    the UI thread: draw may run on a host worker thread. The host holds no lock of its own during the call and
+ *    publishes the finished frame with a short swap, so the UI thread never waits for a provider frame.
+ *  - draw returns NXN_OK when it wrote a new frame and NXN_ERR_BUSY when the previous frame is still current (nothing
+ *    is uploaded). Any other result stops drawing for this instance; the app window shows a clean problem screen.
+ *  - nxn_provider_surface (optional) asks for the surface size the provider wants inside the available window area.
+ *    Without it the host uses the window size. The host clamps both sizes to NXN_PROVIDER_SURFACE_MAX.
+ *  - draw is only called between a successful start and the next stop. */
+#define NXN_PROVIDER_ABI_MINOR 1
+#define NXN_PROVIDER_SURFACE_SYMBOL "nxn_provider_surface"
+#define NXN_PROVIDER_DRAW_SYMBOL "nxn_provider_draw"
+#define NXN_PROVIDER_SURFACE_MAX 2048
+
+typedef enum nxn_provider_surface_format {
+    NXN_PROVIDER_SURFACE_RGBA8 = 1, /* 4 bytes per pixel: R, G, B, A (straight alpha) */
+} nxn_provider_surface_format;
+
+/* One frame of the host-owned surface. */
+typedef struct nxn_provider_surface {
+    uint32_t size;      /* sizeof(nxn_provider_surface) */
+    uint32_t width;     /* pixels */
+    uint32_t height;    /* pixels */
+    uint32_t stride;    /* bytes per row (>= width * 4) */
+    uint32_t format;    /* nxn_provider_surface_format */
+    uint32_t reserved;  /* zero */
+    void* pixels;       /* host-owned, valid during the draw call only */
+    uint64_t frame;     /* frames drawn before this one */
+    double time;        /* seconds since start */
+} nxn_provider_surface;
+
+/* Optional: the surface size the provider wants inside an available area of avail_w x avail_h pixels. */
+typedef nxn_result (*nxn_provider_surface_fn)(nxn_provider* provider, uint32_t avail_w, uint32_t avail_h,
+                                              uint32_t* want_w, uint32_t* want_h);
+
+/* Optional (v1.1): draws one frame into the host-owned surface (see the surface contract above). */
+typedef nxn_result (*nxn_provider_draw_fn)(nxn_provider* provider, nxn_provider_surface* surface);
 
 NXN_EXTERN_C_END
 

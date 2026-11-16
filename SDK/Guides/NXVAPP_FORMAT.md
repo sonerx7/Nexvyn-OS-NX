@@ -343,7 +343,7 @@ hours (while online).
       "name": {"en": "Notes Plus", "tr": "Notlar Plus"},
       "description": {"en": "...", "tr": "..."},
       "version": "1.3",
-      "author": "Örnek",
+      "author": "Ornek",
       "category": "productivity",
       "icon": "https://.../icon.png",
       "download": "https://.../NotlarPlus.nxvapp",
@@ -357,7 +357,7 @@ hours (while online).
       "recommendedOrder": 10,
       "added": "2026-09-20",
       "updated": "2026-10-01",
-      "changelog": {"en": "Faster search.", "tr": "Daha hızlı arama."},
+      "changelog": {"en": "Faster search.", "tr": "Daha hizli arama."},
       "signer": "AB12:CD34:EF56:7890",
       "runtime": "lua",
       "tags": ["not", "metin"],
@@ -480,7 +480,6 @@ A file in `sdmc:/NexvynOS/System/Overlay/` is used instead of the file at the sa
   comparison. Changes take full effect when Nexvyn OS restarts.
 - The status is visible in System Settings > About. "Reset system updates" moves the folder aside as `Overlay.off`
   (it does not delete it).
-
 ## 9. Themes (.nxvtheme)
 
 > **Summary.** A `.nxvtheme` is a zip with `theme.json` at its root (or in one top-level folder) plus the
@@ -512,10 +511,10 @@ Aurora.nxvtheme  (zip)
 ```json
 {
   "id": "com.sonerx7.theme.aurora",
-  "name": {"en": "Aurora", "tr": "Kutup Işıkları", "de": "Polarlicht", "fr": "Aurore", "es": "Aurora"},
-  "description": {"en": "Northern lights over a dark sky.", "tr": "Koyu gökyüzünde kuzey ışıkları."},
+  "name": {"en": "Aurora", "tr": "Kutup Isiklari", "de": "Polarlicht", "fr": "Aurore", "es": "Aurora"},
+  "description": {"en": "Northern lights over a dark sky.", "tr": "Koyu gokyuzunde kuzey isiklari."},
   "version": "1.0",
-  "author": "Soner Çakır (sonerx7)",
+  "author": "Soner Cakir (sonerx7)",
   "appearance": "dark",
   "accent": "#3DDC97",
   "wallpaper": "wallpaper.jpg",

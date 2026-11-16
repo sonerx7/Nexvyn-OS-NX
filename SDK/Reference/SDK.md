@@ -108,7 +108,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.13"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.14"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -126,6 +126,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
 | 1.11 | Folder picker and kept folders: `ui.chooseFolder` (`remember` keeps the folder across runs), `fs.folderGrants` / `folderGranted` / `revokeFolder`; the save folder and its backups: `fs.savePath`, `saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python and C, the same names as the native `nxn_pick` / `nxn_grant_*` / `nxn_save_*`; one core unit for both). Apps built for older SDKs behave as before |
 | 1.12 | Language parity with the native SDK (`docs/PARITY.md`): `ui.tokens()` (the OS look as one table: colors, corner radii, spacing, text sizes, text scale, bold text; like the native `nxn_ui_tokens_get`), `audio.stopAll()` (stops every sound the app started; like `nxn_sfx_stop_all`), and the C function `input_action(name)` (Lua, JavaScript and Python already had `input.action`); Lua, JavaScript, Python and C. Apps built for older SDKs behave as before |
 | 1.13 / 2.0 | **Nexvyn OS N2 Architecture:** App manifest field `loadingHint` (`"loadingHint": true` gives 120 s loading grace); **NXUI Retained & Semantic UI Engine** (`nxui.*` in Lua, JavaScript, Python; `nxn_nxui_*` in Native C/C++, section 4a): declarative Flexbox-like rows, columns, cards, scroll containers, custom canvases, semantic buttons/toggles/sliders/textfields/dropdowns/tabs/tables/virtualized lists/dialogs, and spatial focus navigation (`moveFocus`, `activateFocused`); **4 Official Primary Runtimes** (Lua 5.4.7 with Generational GC, QuickJS-ng 0.17.0 ES2023, CPython 3.12.16 as default for `"targetSdk": "2.0"`, Native C/C++ AOT `.nxvmod` ABI v1); **On-Demand ComponentService** for legacy runtimes (PocketPy `< 2.0`, TinyCC C, Squirrel 3.2, miniJVM Java); **Unified Input Router** (Touch, Controller Cursor, Focus Grid, Raw Gamepad, Text Composition); **Smart Creator** (`python tools/nxv.py create <lang> <id> --template <basic|game|social|port>`) and **Port Kit** (`python tools/nxv_port.py`). Apps built for older SDKs behave as before |
+| 1.14 | Language parity gaps closed: `fs.readBytes(path)` in Lua (the exact bytes as one Lua string, nil when unreadable; like `Uint8Array` in JavaScript and `bytes` in Python), `nxui.feedPointer(x, y[, down, pressed, released])` → `consumed` in JavaScript and Python (like Lua and the native `nxn_nxui_feed_pointer`), and the C functions `fs_readBytes`, `fs_unzip` (SDK 1.6) and `sys_games` (SDK 1.6) in `nexvyn.h`. The Python functions are in the canonical CPython 3.12 runtime (`"python3"`); the frozen pocketpy runtime gains nothing. No native ABI change. Scripts that use them carry `"minSdk": "1.14"`. Apps built for older SDKs behave as before |
 
 **Official Runtimes (N2 Architecture).** New applications target one of the **4 Official Primary Runtimes**:
 1. **Lua 5.4.7** (`"runtime": "lua"`, Generational GC enabled per frame)
@@ -144,6 +145,16 @@ integration for windows: window control (`nxn_window_set_title` / `set_mode` / `
 dock / network state (`nxn_power_get`, `NXN_EVENT_POWER`, `NXN_CAP_POWER_STATE`), OS dialogs (`nxn_dialog`, `nxn_prompt`, `NXN_CAP_DIALOG`).
 A newer Native SDK only adds; apps built for an older one run unchanged. The table and the rules: `docs/COMPATIBILITY.md`, *Native
 SDK*; the guide: `docs/NATIVE_GUIDE.md`.
+
+### Runtime providers and frameworks
+
+A language engine can also come as a package: a runtime provider (`"type": "lib"`, `"kind": "runtime"`, a `"provider"`
+object in `app.json`) runs the apps of one runtime, a compatibility framework (`"kind": "compat"`) is a dependency of a
+legacy runtime. Apps do not change: they still state `"runtime"`, and the system picks the engine. The provider contract
+is `nxn_provider.h` (Provider ABI v1; v1.1 adds an optional drawing surface); loading is off by default (setting
+`runtime.providerLoader`). A broken package never stops an app: the previous version or the built-in engine runs it (safe
+mode). Users see and manage them in Settings > Runtimes & Frameworks. Details: `docs/NATIVE_KIT.md`, *Runtime providers*;
+versions: `docs/COMPATIBILITY.md`, *Runtime providers*.
 
 ### Compatibility: targetSdk and deprecation
 
@@ -177,7 +188,6 @@ optional `wallpaperDark`) and a few whitelisted settings (`dock.size`, `appearan
 Opening the file in Files offers **Install** / **Install and Apply**; installed themes live in `~/Library/Themes/<id>/`
 and are managed in *System Settings > Appearance > Themes*. Full format, limits and the settings keys:
 `docs/NXVAPP_FORMAT.md` section 9.
-
 ## 2. Program structure
 
 `main.lua` returns a table of callbacks. All callbacks are optional.
@@ -219,6 +229,7 @@ function app.suspend() end        -- Nexvyn OS goes to the background (HOME menu
 function app.resume() end         -- back in the foreground / the console woke up (the network may have dropped)
 function app.focus(focused) end   -- the window gained (true) / lost (false) keyboard focus
 function app.autosave() end       -- periodic save point and before quit / restart / power off: save quietly
+function app.language_changed(code) end  -- the system language changed while the app runs (N2): reload your own text; code is "tr", "de" ... (JavaScript / Python: the same name; Native: NXN_EVENT_LANGUAGE, then nxn_app_language())
 function app.unsaved()            -- true while work would be lost; the shell lists such apps before quitting
   return false
 end
@@ -369,17 +380,29 @@ FreeType (used by Script `gfx.text`) measures font point sizes by **Em-Box heigh
 ### 3. Canonical Component Dimensions
 * **Outer Window Margins:** `20px` left/right padding.
 * **Card Interior Padding:** `16px` horizontal, `13px` vertical.
-* **Control Heights:** Standard buttons `30px` (radius `6px`), segmented tabs `32px` (track radius `7px`, active pill radius `5.5px`).
+* **Control Heights:** Standard buttons `30px` (radius `6px`), segmented tabs default `28px` (script `ui.segmented` default and native `nxn_os_segmented_tabs` default; track radius `7px`, active pill radius `5.5px`; the OS draws them 26-34 px depending on the panel, so pass the height your layout needs).
 * **Switches / Toggles:** `38 × 22px` pill (radius `11px`, knob radius `9px`).
-* **Dropdown Selectors:** `30px` height (radius `6px`) with trailing accent chip and double chevrons.
+* **Dropdown Selectors:** default `28px` (script `ui.dropdown` default; native `nxn_os_dropdown` takes the OS control-height token, 28 px without one, or its `height` argument) with radius `6px`, trailing accent chip and double chevrons.
 * **Pill Badges:** `22px` height, radius `11px`, minimum width `58px`, padding `9px` horizontal.
 * **Touch / Mouse Hitboxes:** All interactive controls maintain at least `28–32px` touch targets.
+### 4. One design language, four languages (strict rules)
+The goal is fixed: whatever language writes the app (Lua, JavaScript, Python, Native C/C++) and whoever (or whatever AI) writes it, the app looks like Nexvyn OS. A Native C++ app must never look like raw Dear ImGui. Rules:
+* **Native + ImGui:** `#include <nexvyn/nxn_os_ui.h>`, call `nxn_os_apply_style(tok)` at start and on `NXN_EVENT_THEME`, clear the framebuffer with `nxn_os_clear_color(tok)` (no constant `glClearColor` behind a UI), keep `io.FontGlobalScale = 1.0f`, use the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Checkbox`, `SliderFloat`, `Combo`, `BeginTabBar`, `ProgressBar`.
+* **Fonts only from the role table:** Title `19.2pt` bold, Card Header `15.2pt` bold, Body/Controls `13.8pt` medium, Caption/Badge `11.5-12pt` semibold/medium. Native pixel size is `floorf(pt * 1.21f + 0.5f)`: Title 23, Card Header 18, Body 17, Caption 14 (12pt: 15). Script apps pass the pt value to `gfx.text` / `ui.label` (`19`, `15`, `13.8`, `11.5`, `12`).
+* **Scripts:** colours come from `theme.*` (never `0xRRGGBB`, `"#RRGGBB"` or `rgb(...)` literals) and text sizes from the table above. Games and canvas/`g3d` areas are exempt: games build their own look.
+* **Metrics:** margin 20, card padding 16x13, card radius 10, button 30, segmented 28 (default; the showcase passes 32), switch 38x22, dropdown 28 (default; the showcase passes 30), text field 30, slider 22, badge 22 (min width 58), progress 6, row 30. Pass them explicitly when a script default differs (`ui.segmented` defaults to 28).
+
+### 5. NXUI and ImGui in a GL window (decision D1)
+`nxui.*` / `nxn_nxui_*` draw into the OS renderer, which only the OS main thread may touch (it holds the GPU lock). A Native window runs on its own app thread with its own OpenGL context, so **NXUI never draws there**: `nxn_nxui_begin ... nxn_nxui_end` still builds the tree, runs layout, routes pad/touch input and answers the control calls, but paints nothing. `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED` in that case (`NXN_OK` when the frame was drawn); `nxn_nxui_end()` is unchanged. In a Native GL window draw the UI with Dear ImGui and `<nexvyn/nxn_os_ui.h>`, which renders the same visual language from the live OS tokens. `nxui.*` stays the structured-UI API of Lua, JavaScript and Python.
+
+### 6. Design checker
+`python tools/design_check.py` scans `romfs/Applications/*.nxvapp`, `showcase/*`, `sdk/native/templates/*`, `sdk/native/examples/*` and `tools/tests/recipes/*`, prints PASS / WARN / FAIL per package and writes `qa/n2/design_report.json`. FAIL (breaks `tools/gate.sh --only design` and `tools/n2_gate.py`): ImGui without `nxn_os_ui.h` / `nxn_os_apply_style` / `nxn_os_clear_color`, a constant `glClearColor` without `nxn_os_clear_color`, `FontGlobalScale` other than 1.0, a literal font pixel size outside the role table. WARN: raw ImGui widgets, raw colour literals and off-table text sizes in scripts. Benchmark/scene packages (`sdk/native/examples`, non-`app` templates, a source marked `nxn-design: scene`) are capped at WARN. `tests/test_design_parity.py` checks the four SysMatrix Studio canaries (`showcase/com.nexvyn.parity.*`) against these numbers.
 
 | Function (Lua / JS / Python) | Native C/C++ (`nxn_nxui.h`) | Description & Return Value |
 |---|---|---|
 | `nxui.tokens()` | `nxn_nxui_tokens_get(&out)` | Returns the design-system token table: `space1`..`space6`, `radiusSm`/`Md`/`Lg`, `fontSm`/`Body`/`Title`/`Hero`, `scale`, `dark`, `highContrast`, `reducedMotion`, and RGBA colors (`bgPrimary`, `bgSecondary`, `bgCard`, `fgPrimary`, `fgMuted`, `accent`, `danger`, `success`, `warning`, `border`) |
 | `nxui.begin([w, h])` | `nxn_nxui_begin(w, h)` | Starts an NXUI layout pass for the current frame |
-| `nxui.endFrame()` | `nxn_nxui_end()` | Computes layout, resolves focus/hit tests, and renders the retained tree |
+| `nxui.endFrame()` | `nxn_nxui_end()` / `nxn_nxui_end_ex()` | Computes layout, resolves focus/hit tests, and renders the retained tree. In a Native GL window nothing is drawn (section 5 above); `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED` there |
 | `nxui.row(id[, gap])` … `nxui.rowEnd()` | `nxn_nxui_row_begin(id, gap)` / `nxn_nxui_row_end()` | Horizontal container (`gap` defaults to `space2` = 8 px) |
 | `nxui.column(id[, gap])` … `nxui.columnEnd()` | `nxn_nxui_column_begin(id, gap)` / `nxn_nxui_column_end()` | Vertical container (`gap` defaults to `space2` = 8 px) |
 | `nxui.card(id)` … `nxui.cardEnd()` | `nxn_nxui_card_begin(id)` / `nxn_nxui_card_end()` | Rounded surface card with system border and padding |
@@ -399,6 +422,7 @@ FreeType (used by Script `gfx.text`) measures font point sizes by **Em-Box heigh
 | `nxui.spacer([size])` | `nxn_nxui_spacer(size)` | Adds vertical/horizontal spacing (`size` defaults to `space3` = 12 px) |
 | `nxui.moveFocus(dir)` | `nxn_nxui_move_focus(dir)` | Moves controller focus across focusable widgets (`"up"`, `"down"`, `"left"`, `"right"` or `0..3`) |
 | `nxui.activateFocused()` | `nxn_nxui_activate_focused()` | Triggers click/toggle on the currently focused widget |
+| `nxui.feedPointer(x, y[, down, pressed, released])` → `consumed` | `nxn_nxui_feed_pointer(x, y, down, pressed, released)` | Feeds one pointer sample (content coordinates) into the tree, for apps that route their own input (SDK 1.14 for JavaScript and Python; Lua had it) |
 
 Example (Lua):
 ```lua
@@ -460,6 +484,15 @@ Polling: `input.down(button)`, `input.pressed(button)` / `input.released(button)
 `input.stick("left"|"right")` → x, y in -1..1 (y up = positive), `input.key(name)` (pressed this frame),
 `input.touch()` (the user is on the touch screen).
 
+Mouse look and several controllers (N2, Lua, JavaScript, Python, C; Native: `nxn_input_relative_mouse`,
+`nxn_input_mouse_delta`, `nxn_input_pad_count`, `nxn_input_pad_poll`, capability `NXN_CAP_INPUT_ROUTER`):
+`input.relativeMouse(on)` → `true` when the mode is on (it is refused with `false` while the window has no focus or the
+user turned "Relative mouse" off, setting `input.relativeMouse`); while on, the cursor stays put and
+`input.mouseDelta()` → `dx, dy` (motion since the previous call; `0, 0` while off) drives the camera. The mode ends
+when the window loses focus or closes. `input.padCount()` → number of connected controllers and
+`input.padDown(pad, button)` (pad 0 = player 1, up to 7) reads a button of one controller. C: `input_relativeMouse`,
+`input_mouseDelta`, `input_padCount`, `input_padDown`.
+
 Every app and game should work with touch, the controller (Joy-Con pair or single), handheld and docked (no touch on a
 TV), in a window and full screen, with moderate sound: see `docs/INPUT_AND_PLAY_MODES.md` (public
 `SDK/Guides/INPUT_AND_PLAY_MODES.md`) for the API of each and a checklist.
@@ -469,7 +502,7 @@ TV), in a window and full screen, with moderate sound: see `docs/INPUT_AND_PLAY_
 Relative paths live in the app's private data folder (`~/Library/Application Support/<id>/`, created for you).
 `"bundle:/..."` reads files shipped in your package. Absolute paths (`"sdmc:/..."`, `"romfs:/..."`) work too.
 
-`fs.read(path)` → string or nil,err · `fs.write(path, data)` → ok · `fs.append(path, data)` ·
+`fs.read(path)` → string or nil,err · `fs.readBytes(path)` → the exact bytes as one string or nil,err (SDK 1.14; same call as `fs.read` in Lua, whose strings hold any byte; the name matches JavaScript and Python) · `fs.write(path, data)` → ok · `fs.append(path, data)` ·
 `fs.exists(path)` · `fs.isdir(path)` · `fs.list(path[, showHidden])` → `{ {name, path, dir, size, mtime}, ... }`
 (folders first) · `fs.mkdir(path)` · `fs.remove(path[, permanently])` (default: to the Trash) ·
 `fs.rename(a, b)` · `fs.copy(a, b)` · `fs.path(relative)` → absolute ·
@@ -552,7 +585,7 @@ offline cache, WebSockets and sign-in are in section 8d (`net.request`, SDK 1.9)
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.13"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.14"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -1590,7 +1623,7 @@ app.draw = (w, h) => {
 };
 
 app.event = (e) => {
-  if (e.type === "keydown" && e.key === "space") {
+  if (e.type === "keydown" and e.key === "space") {
     count++;
     store.set("count", count);
   }
@@ -1599,7 +1632,6 @@ app.event = (e) => {
 
 A larger example (to-do list with `store`, a clock drawn with `gfx`, `await net.fetchJson`, ES modules) is
 `romfs/Applications/hellojs.nxvapp`. Check a bundle on the PC with `node tools/js_check.mjs path/to/App.nxvapp`.
-
 ## 12. Python
 
 Everything in sections 1–10 applies to Python apps too; this section lists only what is different. Python needs
@@ -1956,7 +1988,7 @@ void app_onmenu(int id) { if (id == 1) store_setNum("count", count = 0); }
   numbers are `0` and optional strings `NULL` for "the default". Colors are strings (`"#RRGGBB"`, `theme_color("accent")`,
   `rgba(r, g, b, a)`). Several results come through pointers (`gfx_size(&w, &h)`, `ui_mouse(&x, &y, &down, &hover)`),
   records as structs (`nxv_hit`, `nxv_date`, `nxv_entry`, `nxv_response`). `ui_textfield` edits a `char` buffer in place.
-  `fs_read` returns a `malloc`'d buffer (free it). Images are drawn by path (`gfx_draw("bundle:/a.png", ...)`), meshes
+  `fs_read` and `fs_readBytes` (SDK 1.14, the same bytes) return a `malloc`'d buffer (free it); `fs_unzip(zip, dest, on_done, on_progress, user)` and `sys_games(out, max)` (SDK 1.14; `nxv_game` records, permission `"games"`) complete the C side of SDK 1.6. Images are drawn by path (`gfx_draw("bundle:/a.png", ...)`), meshes
   are `int` ids. Returned strings stay valid for the next 15 SDK calls: copy them to keep them. `nxv_fmt` formats into
   such a string: `TR1("score", nxv_fmt("%d", n))`. The whole list is in `nexvyn.h`.
 - **Callbacks for async calls** are function pointers with a `void* user` argument:

@@ -132,7 +132,7 @@ Clipboard: `ui::clipboard()`, `ui::setClipboard()`.
   movies, applications, sdcard, system, trash, favorites, locations, recents, screenshots, album), `date.months.N`,
   `date.days.N` (0 = Sunday) or `i18n::monthName/weekdayName/dateLong/dateShort`, `cat.*`, `color.*`, `sys.*`.
 - Every key you use must exist in both files. `python tools/lang_check.py` verifies this.
-- Turkish text must be proper Turkish with correct characters (ç ğ ı İ ö ş ü).
+- Turkish text must be proper Turkish with correct characters (c-cedilla, g-breve, dotless i, dotted capital I, o-umlaut, s-cedilla, u-umlaut).
 
 ## Files and data (`paths.h`, `fsutil.h`, `json.h`, `settings.h`)
 
@@ -147,7 +147,7 @@ Clipboard: `ui::clipboard()`, `ui::setClipboard()`.
   `Json::array()/object()`, `push`, `elements()`, `items()`.
 - System settings (theme, dock, clock format…): `settings::i/f/b/s("dotted.key", def)`, `settings::set(key, Json)`.
 - **Shared data formats** (the desktop/Notification Center widgets read these — keep them exactly):
-  - Weather `appSupport("weather")/cache.json`: `{"city":"İstanbul","temp":21.5,"code":3,"high":24,"low":15,
+  - Weather `appSupport("weather")/cache.json`: `{"city":"Istanbul","temp":21.5,"code":3,"high":24,"low":15,
     "updated":<epoch>}` (`code` = WMO weather code from open-meteo).
   - Notes `appSupport("notes")/notes.json`: `{"notes":[{"id":"…","title":"…","body":"…","folder":"…",
     "modified":<epoch>,"created":<epoch>,"pinned":false}]}`.
@@ -175,8 +175,7 @@ Background work that must run while your app is closed (alarms, reminders): `REG
 in your app file. Keep it cheap: check the clock once per second, reload your JSON only when its mtime changes.
 
 App registry (`registry.h`): `registry::all()`, `find(id)`, `installPackage(path, &err)`, `uninstall(id, &err)`,
-`rescanExternal()`, `revision()`.
-
+`rescanExternal()`, `revision()`
 ## Hardware and Horizon services (`source/core/sysinfo.h`)
 
 Real data only: `sys::localTime()` (`DateTime` with year, month 1-12, day, hour, minute, second, wday, yday, epoch,

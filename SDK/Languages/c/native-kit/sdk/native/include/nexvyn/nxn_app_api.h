@@ -47,6 +47,14 @@ bool nxn_input_action_down(const char* action);
 /** Checks if mapped semantic action was pressed in the current frame. (since 2.0) */
 bool nxn_input_action_pressed(const char* action);
 
+/* nxn_input_relative_mouse: see <nexvyn/nxn_input.h> */
+
+/* nxn_input_mouse_delta: see <nexvyn/nxn_input.h> */
+
+/* nxn_input_pad_count: see <nexvyn/nxn_input.h> */
+
+/* nxn_input_pad_down: see <nexvyn/nxn_input.h> */
+
 /* Module: system - Time, power and device capabilities */
 /** Monotonic millisecond timer since system start. (since 1.0) */
 int32_t nxn_system_ticks_ms(void);

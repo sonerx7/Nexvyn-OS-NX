@@ -77,12 +77,12 @@ Every app has an `app.json` at its root. The most important fields:
 
 ```json
 {
-  "id": "com.adiniz.uygulama",
+  "id": "com.yourname.app",
   "name": {"en": "My App", "tr": "Uygulamam"},
-  "description": {"en": "What it does", "tr": "Ne yaptığı"},
+  "description": {"en": "What it does", "tr": "Ne yaptigi"},
   "version": "1.0",
-  "author": "Adınız",
-  "homepage": "https://github.com/kullaniciadiniz",
+  "author": "Your Name",
+  "homepage": "https://github.com/yourusername",
   "category": "utilities",
   "main": "main.lua",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
@@ -192,7 +192,7 @@ with a pause menu, saving and a debug overlay.
 
 - Step-by-step guide: [GAME_ENGINE.md](GAME_ENGINE.md).
 - Function list: [SDK.md section 8c](../Reference/SDK.md#8c-2d-game-engine-nexvyngame).
-- Sample games: **Pixel Koşu** (`romfs/Applications/pixelrun.nxvapp`) and **Uzay Arenası**
+- Sample games: **Pixel Run** (`romfs/Applications/pixelrun.nxvapp`) and **Space Arena**
   (`romfs/Applications/spacearena.nxvapp`).
 - Known limits: a single touch point, no sloped tiles, no camera rotation (details in GAME_ENGINE.md section 16).
 
@@ -216,7 +216,6 @@ settings, variables, event rules (`on` / `if` / `do`), levels (tile strings and 
 The project format, behaviours, events and the whole API: [GAME_ENGINE_PROJECTS.md](GAME_ENGINE_PROJECTS.md).
 
 ---
-
 ## 5. 3D with g3d
 
 Making a 3D game with models from a 3D tool? Follow [MAKE_A_GAME.md](MAKE_A_GAME.md), the complete recipe.
@@ -484,7 +483,7 @@ controller focus and right click (X button, long press) are handled by the widge
   `save_title` in `notes.app` → `TR("notes.save_title")`. `TRF("key", a, b)` fills `{0}`, `{1}`.
 - Shared strings are ready: `common.*`, `places.*`, `date.*`, `cat.*`, `color.*`, `sys.*`.
 - Every key must exist in both languages: `python tools/lang_check.py`.
-- Turkish strings are written with the correct characters (ç ğ ı İ ö ş ü).
+- Turkish strings are written with the correct characters (c-cedilla, g-breve, dotless i, capital I-dot, o-umlaut, s-cedilla, u-umlaut).
 
 ### The modding core: modkit
 
@@ -541,7 +540,7 @@ repeating them: [sdk/SDK.md](../Reference/SDK.md) (full API), [JS_APPS.md](JS_AP
 3. **Languages:** Lua 5.4, JavaScript (QuickJS-ng) and Python (pocketpy, SDK 1.3) share one API. `nexvyn.game` is
    Lua-only. Two-finger gestures arrive as `"pinch"` (`e.scale`, a factor since the last event) and `"rotate"`
    (`e.angle`, radians) events in all three languages.
-4. **nexvyn.game:** a 2D engine in `romfs:/System/Lua/nexvyn/` (`require("nexvyn.game")`); samples Pixel Koşu and Uzay Arenası.
+4. **nexvyn.game:** a 2D engine in `romfs:/System/Lua/nexvyn/` (`require("nexvyn.game")`); samples Pixel Kosu and Uzay Arenasi.
    Game Engine (`gamemaker`, formerly Game Workshop) projects are `project.json` files interpreted by `nexvyn.workshop` /
    `nexvyn.workshop3d` and exported as standalone `.nxvapp` bundles; see [GAME_ENGINE_PROJECTS.md](GAME_ENGINE_PROJECTS.md).
 5. **g3d:** GPU 3D renderer with a CPU fallback. The `"glow"` flag draws additively (stars, sparks, light trails);

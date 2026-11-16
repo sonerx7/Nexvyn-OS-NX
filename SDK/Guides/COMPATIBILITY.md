@@ -42,6 +42,7 @@ Every SDK version so far shipped in the development of Nexvyn OS 1.0.0, the firs
 | 1.11 | 1.2.2 (same build for now) | kept folders and save backups for script apps: `ui.chooseFolder`, `fs.folderGrants` / `folderGranted` / `revokeFolder`, `fs.savePath`, `fs.saveBackup` / `saveRestore` / `saveBackups` / `saveDeleteBackup` (Lua, JavaScript, Python, C; the same functions as the native `nxn_pick` / `nxn_grant_*` / `nxn_save_*`); apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.11"` |
 | 1.12 | 1.2.2 (same build for now) | language parity with the native SDK: `ui.tokens`, `audio.stopAll`, C `input_action` (Lua, JavaScript, Python, C); apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.12"` |
 | 1.13 | 1.2.4 | app.json `"loadingHint": true` for apps that load a lot (a large recompiled port): the "not responding" dialog waits 120 s instead of 5 s; no new function, no native ABI change, the same field for Lua, JavaScript, Python, C and native apps; older systems ignore it. Choosing *Wait* in that dialog now silences it for 60 s and until the window has responded once (every app) |
+| 1.14 | 1.3.18 | language parity gaps closed: `fs.readBytes` in Lua, `nxui.feedPointer` in JavaScript and Python (the canonical CPython runtime; pocketpy stays frozen), C `fs_readBytes` / `fs_unzip` / `sys_games`; no native ABI change; apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.14"` |
 
 The full list of functions per version is in the SDK reference (`sdk/SDK.md`, "SDK versions").
 
@@ -66,6 +67,22 @@ host generation stay hand-raised numbers, never derived from a version.
 Native apps need no change when Nexvyn OS is updated; the kit's own rules are in `docs/NATIVE_COMPAT.md`. Load errors
 (missing function, other interface generation, `thread_local`) are shown in the user's language with what to do about
 them, and written to the app's log; see `docs/NATIVE_GUIDE.md`.
+
+### Runtime providers
+
+Runtime provider packages (`"type": "lib"`, `"kind": "runtime"` or `"compat"`, a `"provider"` object) follow their own
+contract, `sdk/native/include/nexvyn/nxn_provider.h`, frozen with the Native ABI v1 and only added to:
+
+| Provider ABI | What it contains |
+|---|---|
+| v1 (`NXN_PROVIDER_ABI_GEN 1`) | identity (`nxn_provider_query`) and one instance per app (`create` / `start` / `stop` / `destroy`) |
+| v1.1 (`NXN_PROVIDER_ABI_MINOR 1`) | optional drawing surface: `nxn_provider_surface`, `nxn_provider_draw` (host-owned RGBA8 surface). A v1 provider loads unchanged |
+
+A provider of another generation is refused with a clean reason (`comp.incompatible`). The OS never needs a provider
+to start: a damaged package, or a version whose start failed, is skipped for the previous version or the built-in
+engine (safe mode, `comp.safemode`). Provider loading is off by default (setting `runtime.providerLoader`); with it off,
+apps and packages behave exactly as in earlier versions. This is not an app API: `targetSdk` and the SDK version do not
+change with it. Details: `docs/NATIVE_KIT.md`, *Runtime providers*.
 
 ### Runtimes
 

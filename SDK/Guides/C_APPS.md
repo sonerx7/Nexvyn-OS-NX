@@ -8,7 +8,7 @@ on the PC. The API is the same as in the other languages, with underscores inste
 ## How to choose it
 
 ```json
-{"id": "com.adiniz.sayac", "name": {"tr": "Sayaç", "en": "Counter"}, "category": "utilities",
+{"id": "com.adiniz.sayac", "name": {"tr": "Sayac", "en": "Counter"}, "category": "utilities",
  "runtime": "c", "main": "main.c", "minSdk": "1.5",
  "window": {"width": 360, "height": 260, "resizable": false}, "permissions": []}
 ```

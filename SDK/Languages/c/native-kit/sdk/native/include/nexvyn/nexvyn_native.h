@@ -29,5 +29,6 @@
 #include "nxn_power.h"
 #include "nxn_dialog.h"
 #include "nxn_jit.h"
+#include "nxn_stream.h"
 
 #endif /* NEXVYN_NATIVE_H */

@@ -68,6 +68,10 @@ typedef enum nxn_nxui_btn_variant {
 /* Declarative NXUI Frame Lifecycle (Per-Window Retained State) */
 NXN_API void nxn_nxui_begin(float width, float height);
 NXN_API void nxn_nxui_end(void);
+/* Like nxn_nxui_end, and reports whether the frame was drawn: NXN_OK, or NXN_ERR_UNSUPPORTED when it was not. A Native
+ * window (OpenGL, its own thread) is never drawn by NXUI: the tree is built and laid out and input is routed, but the
+ * shared OS renderer is not touched. Draw such a window with ImGui and <nexvyn/nxn_os_ui.h> (the OS look), not NXUI. */
+NXN_API int nxn_nxui_end_ex(void);
 NXN_API void nxn_nxui_release_window(int window_id);
 
 /* Semantic Container Layouts */
