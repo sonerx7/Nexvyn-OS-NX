@@ -61,7 +61,7 @@ SAMPLES = os.path.join(SDK, "samples.json")
 DATES = os.path.join(STORE, "dates.json")
 DEFAULT_LICENSE = "GPL-3.0-or-later"  # the repository's license (README): what an item is under unless it says otherwise
 
-CATEGORIES = ["productivity", "office", "utilities", "media", "internet", "developer", "system", "switch", "other", "showcase", "games",
+CATEGORIES = ["productivity", "office", "ai", "utilities", "media", "internet", "developer", "system", "switch", "other", "showcase", "games",
               "themes", "fonts"]
 EMU_CATEGORIES = ["handheld", "console", "pc", "arcade", "multi", "other"]
 EMU_CAT_ALIASES = {"handled": "handheld", "handhelds": "handheld", "consoles": "console", "computer": "pc", "others": "other"}
@@ -88,10 +88,10 @@ USES = {
 }
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
 CAT_NAMES = {
-    "en": {"office": "Office", "productivity": "Productivity", "utilities": "Utilities", "media": "Media", "internet": "Internet",
+    "en": {"ai": "AI", "office": "Office", "productivity": "Productivity", "utilities": "Utilities", "media": "Media", "internet": "Internet",
            "developer": "Developer", "system": "System", "switch": "Switch Tools", "other": "Other", "games": "Games",
            "themes": "Themes", "fonts": "Fonts", "showcase": "Showcase"},
-    "tr": {"office": "Ofis", "productivity": "Verimlilik", "utilities": "Araçlar", "media": "Medya", "internet": "İnternet",
+    "tr": {"ai": "Yapay Zekâ", "office": "Ofis", "productivity": "Verimlilik", "utilities": "Araçlar", "media": "Medya", "internet": "İnternet",
            "developer": "Geliştirici", "system": "Sistem", "switch": "Switch Araçları", "other": "Diğer",
            "games": "Oyunlar", "themes": "Temalar", "fonts": "Yazı Tipleri", "showcase": "Vitrin"},
 }
