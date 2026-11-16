@@ -642,7 +642,8 @@ working.
   requires signing in and granting the comment permission.
 - **Share:** copy the link, a "from this moment" link, or a QR code to scan with a phone.
 - **Watch Later:** a local list kept on this device. Google does not share the account's Watch Later list with apps.
-- **There are no downloads.** Tube does not save videos; it only plays them as streams.
+- **Downloads:** choose Download on a watch page (or press Ctrl+D), select an offered MP4 quality and choose a folder. Progress and Cancel remain available in the toolbar while browsing. Keep the app open until completion; closing it cancels the transfer. Save only videos you own or have permission to download. HD HLS remains streaming-only; downloads never silently convert an HLS playlist into an offline video.
+- **YousTube Music:** a separate listening launcher with its own preferences, music discovery and a themed now-playing card. It shares YousTube?s player, queues, repeat, background audio and sleep timer. It does not implement the Google Music account service. A YousTube watch page can open the current track in YousTube Music.
 
 **Signing in (optional).** Needed for your subscription feed, your playlists, your liked videos, liking / subscribing /
 saving to a list, writing comments and notifications about new videos from your subscriptions. Tube does not use the

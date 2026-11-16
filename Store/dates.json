@@ -3345,6 +3345,17 @@
       }
     ]
   },
+  "tube_music": {
+    "added": "2026-11-17",
+    "updated": "2026-11-17",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-17"
+      }
+    ]
+  },
   "turkceyama": {
     "added": "2026-10-29",
     "updated": "2026-10-29",

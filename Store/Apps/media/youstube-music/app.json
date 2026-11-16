@@ -1,0 +1,36 @@
+{
+  "id": "tube_music",
+  "name": {
+    "en": "YousTube Music",
+    "tr": "YousTube Music",
+    "de": "YousTube Music",
+    "es": "YousTube Music",
+    "fr": "YousTube Music",
+    "ja": "YousTube Music",
+    "ko": "YousTube Music",
+    "zh": "YousTube Music"
+  },
+  "version": "1.0.0",
+  "category": "media",
+  "description": {
+    "en": "Discover music with background audio, queues, shuffle, repeat and a sleep timer. Independent preferences and a system-themed player. Google Music account features are not provided.",
+    "tr": "Müzik keşfi, arka planda ses, sıra, karıştırma, tekrar ve uyku zamanlayıcısı. Ayrı tercihler ve sistem temasına uyumlu oynatıcı. Google Music hesap özellikleri sunulmaz.",
+    "de": "Musik entdecken, Hintergrundwiedergabe, Warteschlange, Zufall, Wiederholung und Einschlaftimer. Eigene Einstellungen und ein Player im Systemdesign. Keine Google-Music-Kontofunktionen.",
+    "es": "Descubre música con audio en segundo plano, cola, reproducción aleatoria, repetición y temporizador. Preferencias propias y un reproductor con el tema del sistema. Sin funciones de cuenta de Google Music.",
+    "fr": "Découvrez la musique avec audio en arrière-plan, file, lecture aléatoire, répétition et minuterie. Préférences indépendantes et lecteur suivant le thème du système. Sans fonctions de compte Google Music.",
+    "ja": "音楽の発見、バックグラウンド再生、キュー、シャッフル、リピート、スリープタイマー。独立した設定とシステムテーマに合うプレーヤー。Google Musicのアカウント機能はありません。",
+    "ko": "음악 탐색, 백그라운드 오디오, 대기열, 셔플, 반복 및 수면 타이머. 별도 설정과 시스템 테마를 따르는 플레이어입니다. Google Music 계정 기능은 제공하지 않습니다.",
+    "zh": "音乐发现、后台音频、队列、随机播放、重复和睡眠定时器。拥有独立设置及随系统主题变化的播放器。不提供 Google Music 账户功能。"
+  },
+  "license": "GPL-3.0-or-later",
+  "icon": "icon.png",
+  "native": true,
+  "optional": true,
+  "window": {
+    "width": 1100,
+    "height": 620,
+    "minWidth": 720,
+    "minHeight": 420,
+    "resizable": true
+  }
+}
