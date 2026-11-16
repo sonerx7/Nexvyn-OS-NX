@@ -108,7 +108,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.14"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.15"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -127,6 +127,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
 | 1.12 | Language parity with the native SDK (`docs/PARITY.md`): `ui.tokens()` (the OS look as one table: colors, corner radii, spacing, text sizes, text scale, bold text; like the native `nxn_ui_tokens_get`), `audio.stopAll()` (stops every sound the app started; like `nxn_sfx_stop_all`), and the C function `input_action(name)` (Lua, JavaScript and Python already had `input.action`); Lua, JavaScript, Python and C. Apps built for older SDKs behave as before |
 | 1.13 / 2.0 | **Nexvyn OS N2 Architecture:** App manifest field `loadingHint` (`"loadingHint": true` gives 120 s loading grace); **NXUI Retained & Semantic UI Engine** (`nxui.*` in Lua, JavaScript, Python; `nxn_nxui_*` in Native C/C++, section 4a): declarative Flexbox-like rows, columns, cards, scroll containers, custom canvases, semantic buttons/toggles/sliders/textfields/dropdowns/tabs/tables/virtualized lists/dialogs, and spatial focus navigation (`moveFocus`, `activateFocused`); **4 Official Primary Runtimes** (Lua 5.4.7 with Generational GC, QuickJS-ng 0.17.0 ES2023, CPython 3.12.16 as default for `"targetSdk": "2.0"`, Native C/C++ AOT `.nxvmod` ABI v1); **On-Demand ComponentService** for legacy runtimes (PocketPy `< 2.0`, TinyCC C, Squirrel 3.2, miniJVM Java); **Unified Input Router** (Touch, Controller Cursor, Focus Grid, Raw Gamepad, Text Composition); **Smart Creator** (`python tools/nxv.py create <lang> <id> --template <basic|game|social|port>`) and **Port Kit** (`python tools/nxv_port.py`). Apps built for older SDKs behave as before |
 | 1.14 | Language parity gaps closed: `fs.readBytes(path)` in Lua (the exact bytes as one Lua string, nil when unreadable; like `Uint8Array` in JavaScript and `bytes` in Python), `nxui.feedPointer(x, y[, down, pressed, released])` → `consumed` in JavaScript and Python (like Lua and the native `nxn_nxui_feed_pointer`), and the C functions `fs_readBytes`, `fs_unzip` (SDK 1.6) and `sys_games` (SDK 1.6) in `nexvyn.h`. The Python functions are in the canonical CPython 3.12 runtime (`"python3"`); the frozen pocketpy runtime gains nothing. No native ABI change. Scripts that use them carry `"minSdk": "1.14"`. Apps built for older SDKs behave as before |
+| 1.15 | 3D collision `phys` (section 8e): worlds of static meshes, boxes and model collision proxies (`COL_` parts, else the triangles reduced to a budget), `raycast` / `raycastAll`, `sweepSphere` / `sweepCapsule`, `overlap`, capsule character controllers (`controller`, `move`, `jump`: slopes, steps, ground snapping, sliding along walls, moving platforms) and box / sphere / capsule `trigger`s with `events`; 3D navigation `nav` (section 8f): a walkable grid baked from a `phys` world on a worker thread, A* `path`, `block` / `cost` areas, walking `agent`s with re-planning and separation; Lua, JavaScript, Python (`"python3"`; pocketpy stays frozen) and C, native `nxn_phys_*` (`nxn_phys.h`, `NXN_CAP_PHYS`) and `nxn_nav_*` (`nxn_nav.h`, `NXN_CAP_NAV`). Scripts that use them carry `"minSdk": "1.15"`. Apps built for older SDKs behave as before |
 
 **Official Runtimes (N2 Architecture).** New applications target one of the **4 Official Primary Runtimes**:
 1. **Lua 5.4.7** (`"runtime": "lua"`, Generational GC enabled per frame)
@@ -638,7 +639,7 @@ offline cache, WebSockets and sign-in are in section 8d (`net.request`, SDK 1.9)
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.14"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.15"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -1432,6 +1433,146 @@ Nothing new is needed: `sys.schedule` (section 8a) posts reminders while the app
 opens the share sheet; `sys.appUrl(id, arg)` makes a link (`nxv://app/<id>?arg=post:42`) that opens the app at a post
 (`app.load(arg)` / `app.open(arg)`). A background feed check cannot run while the app is closed: refresh in
 `app.resume` and when the app opens.
+
+## 8e. 3D collision — `phys` (SDK 1.15)
+
+Collision for 3D games: static level geometry, raycasts, projectiles, a walking character and trigger zones. It is a
+collision engine (no rigid bodies yet): things move where your code moves them, and `phys` says what they touch.
+The same functions with the same names exist in Lua, JavaScript, Python (`"runtime": "python3"`) and C (`phys_raycast`
+...); native apps use `nxn_phys_*` (`nxn_phys.h`). Apps that use it carry `"minSdk": "1.15"`.
+
+```lua
+local W, hero
+function app.load()
+  W = phys.world()
+  phys.addBox(W, 0, -0.5, 0, 50, 0.5, 50)              -- floor: centre, half extents
+  local level = g3d.model("level.glb")
+  phys.addModel(W, level)                              -- its COL_ parts, else its triangles
+  hero = phys.controller(W, 0, 0, 0, {radius = 0.35, height = 1.8})
+  phys.trigger(W, "box", 10, 1, 0, 1, 1, 1)            -- a goal zone
+end
+function app.update(dt)
+  local sx, sy = input.stick("left")                    -- -1..1, up = positive
+  if input.pressed("a") then phys.jump(W, hero) end
+  local s = phys.move(W, hero, sx * 5, -sy * 5, dt)    -- speed in m/s; s.x, s.y, s.z, s.grounded ...
+  for _, e in ipairs(phys.events(W)) do
+    if e.type == "enter" then print("goal!") end
+  end
+  local hit = phys.raycast(W, s.x, s.y + 1.5, s.z, 0, 0, 1, 30)   -- what the hero looks at
+end
+```
+
+| Function | Result |
+|---|---|
+| `phys.world([options])` | a world id. `options.budget`: MB of collision data it may hold (default 64, 1–512). At most 16 per app; freed with the app |
+| `phys.free(world)` | frees the world and everything in it |
+| `phys.addMesh(world, vertices, indices[, options])` | a static triangle mesh: `vertices` `{x, y, z, x, y, z, ...}`, `indices` 3 per triangle, counted like `g3d.custom` (from 1 in Lua, from 0 in JavaScript, Python and C; `{}`: every 3 vertices). `options`: `x, y, z` (its position), `layer` |
+| `phys.addModel(world, modelOrMesh[, options])` | the collision of a `g3d.model` or `g3d.mesh`: the model's nodes named `COL_...` when it has any (Game Engine packs name their proxies so), otherwise all its triangles, reduced to `maxTriangles` (default 20000) when there are more. `options`: `x, y, z, rx, ry, rz` (radians, as in `g3d.draw`), `scale`, `layer`, `maxTriangles` |
+| `phys.addBox(world, x, y, z, hx, hy, hz[, layer])` | a solid box: centre and half extents |
+| `phys.setPos(world, id, x, y, z)` | moves a body (a moving platform: controllers standing on it ride along) or a trigger, teleports a controller |
+| `phys.pos(world, id)` | `{x, y, z}` (a controller: its feet), nil when unknown |
+| `phys.setLayer(world, id, layer)` · `phys.remove(world, id)` | true when the id exists |
+| `phys.raycast(world, x, y, z, dx, dy, dz[, maxDist[, mask]])` | the nearest hit `{x, y, z, nx, ny, nz, dist, id, tri}` or nil. Hits bodies and controllers |
+| `phys.raycastAll(...)` | every hit, nearest first (at most 256) |
+| `phys.sweepSphere(world, x, y, z, radius, dx, dy, dz[, maxDist[, mask]])` | the first contact of a moving sphere: a bullet or a thrown object does not pass a thin wall, however fast |
+| `phys.sweepCapsule(world, x, y, z, radius, height, dx, dy, dz[, maxDist[, mask]])` | the same for a standing capsule (bottom at `x, y, z`) |
+| `phys.overlap(world, x, y, z, radius[, mask])` | ids a sphere touches: bodies, controllers and triggers |
+| `phys.controller(world, x, y, z[, options])` | a capsule character with its feet at `x, y, z`. `options`: `radius` (0.35), `height` (1.8), `slope` (steepest walkable ground, 45°), `step` (highest step, 0.35), `gravity` (20 m/s²), `jump` (6.5 m/s), `layer`, `mask` |
+| `phys.move(world, id, vx, vz[, dt])` | one step: walks with speed `vx, vz` for `dt` s (default 1/60, at most 0.1), applies gravity, slides along walls, walks up steps and walkable slopes, stays on the ground going down stairs, rides moving platforms. Returns `{x, y, z, vy, grounded, wall, ceiling, ground, nx, ny, nz}` |
+| `phys.jump(world, id)` | jumps on the next `move` when on the ground (false otherwise) |
+| `phys.trigger(world, shape, x, y, z, a[, b[, c[, layer]]])` | a trigger volume: `"box"` (half extents `a, b, c`), `"sphere"` (radius `a`), `"capsule"` (radius `a`, height `b`, bottom at `y`) |
+| `phys.events(world)` | `{{trigger, other, type = "enter" \| "exit"}, ...}` since the last call: controllers entering and leaving triggers, in id order |
+| `phys.stats(world)` | `{bodies, controllers, triggers, triangles, memory, budget}` |
+
+- **Ids** are numbers. A world's bodies, controllers and triggers share one id sequence.
+- **Hits**: `dist` along the (normalised) direction, the contact point, the unit normal facing the query, the `id`
+  hit and the triangle number `tri` of that body's mesh (from 1 in Lua, from 0 elsewhere; -1 for a controller).
+- **Layers** are bit masks: bodies are on layer 1, controllers on 2, triggers on 4 by default. A query sees an object
+  when `object layer & mask ~= 0`; leave `mask` out (or pass 0 / -1) for every layer. Rays and sweeps never hit
+  triggers. Example: put the player on layer 8 (`phys.setLayer`) and shoot with mask `1 | 2` so a shot does not hit
+  its shooter.
+- **Zero means default** for every optional number: `maxDist` 0 = 1000, `mask` 0 = every layer, `dt` 0 = 1/60 s
+  (C passes 0 for an argument it leaves out).
+- **Cost**: queries walk a bounding volume hierarchy, so they stay fast in big levels; 100 raycasts and 4 controllers
+  take well under a millisecond per frame. A world refuses geometry over its budget with an error (nothing is added
+  half). Build big worlds in `app.load`.
+- The feet of a controller float about 1 cm above the ground (its contact gap). A controller does not push other
+  controllers in this version.
+
+JavaScript and Python: the same calls (`phys.raycast(W, 0, 5, 0, 0, -1, 0)` returns an object / dict or null / None;
+options are objects / dicts). C: `int phys_world(const char* options)`, results and options are JSON text, and
+`phys_addMesh(world, xyz, vertices, indices, count, options)` takes float and int arrays.
+
+## 8f. 3D navigation — `nav` (SDK 1.15)
+
+Walking AI for 3D games: bake the walkable surface of a `phys` world once, ask for paths, close a door at run time, and let
+agents walk, turn, avoid each other and re-plan. The same functions with the same names exist in Lua, JavaScript, Python
+(`"runtime": "python3"`) and C (`nav_bake` ...); native apps use `nxn_nav_*` (`nxn_nav.h`). Apps that use it carry
+`"minSdk": "1.15"`. `nav` reads the bodies of a `phys` world (section 8e): the level you collide with is the level you
+navigate.
+
+```lua
+local W, N, guard
+function app.load()
+  W = phys.world()
+  phys.addBox(W, 0, -0.5, 0, 20, 0.5, 20)                 -- floor
+  phys.addBox(W, 0, 1, 0, 0.5, 1, 10)                     -- a wall with gaps at both ends
+  N = nav.bake(W, {cell = 0.5, radius = 0.35})            -- returns at once: the bake runs on a worker thread
+end
+function app.update(dt)
+  local s = nav.state(N)
+  if s.state == "baking" then return end                  -- s.progress goes 0..1: draw a bar
+  if not guard then
+    guard = nav.agent(N, -10, 0, 0, {speed = 3})
+    nav.goTo(N, guard, 10, 0, 0)                          -- walks around the wall
+  end
+  for _, e in ipairs(nav.update(N, dt)) do                -- e.agent, e.type = "arrived" | "failed" | "replan"
+    if e.type == "arrived" then print("there") end
+  end
+  local a = nav.agentState(N, guard)                      -- a.x, a.y, a.z, a.yaw (draw the model here)
+end
+```
+
+| Function | Result |
+|---|---|
+| `nav.bake(world[, options])` | starts baking a walkable grid and returns a nav id at once. `options`: `cell` (cell edge in metres, 0.5; 0.05–10), `radius` (capsule radius of the walker, 0.35), `height` (1.8), `slope` (steepest walkable floor, 45°), `step` (highest step, 0.35), `minx` `miny` `minz` `maxx` `maxy` `maxz` (the box to scan; default: the bounds of the world's bodies), `mask` (layers that count, default the static bodies), `maxColumns` (cell columns, default 1048576, at most 4194304), `budget` (MB of grid memory, 16; 1–64). At most 8 grids per app and 64 MB in all; freed with the app |
+| `nav.state(nav)` | `{state, progress, nodes, columns, nx, nz, memory, budget, bakeMs, blockers, costAreas, agents, version[, error]}`; `state` is `"baking"`, `"ready"`, `"failed"` or `"cancelled"` |
+| `nav.cancel(nav)` · `nav.free(nav)` | stops a running bake / frees the grid and its agents (a running bake is cancelled) |
+| `nav.path(nav, x, y, z, tx, ty, tz[, options])` | `{found, partial, length, cost, points = {{x, y, z}, ...}[, reason]}`. `options`: `smooth` (default true: waypoints a straight walk can skip are dropped), `partial` (walk to the closest reachable spot when the goal cannot be reached), `snap` (how far the ends may be from the walkable surface, 1.5 m). `reason` says why not found: an end is off the surface, or no route |
+| `nav.snap(nav, x, y, z[, maxDist])` | `{x, y, z}` of the walkable spot nearest to a point, nil when none is within `maxDist` (1.5) |
+| `nav.block(nav, x, y, z, radius[, height])` | closes the spots inside a cylinder (base `x, y, z`, `height` 2 m up, 0.5 m down): a door, a barricade. Returns an id |
+| `nav.cost(nav, x, y, z, radius, mult[, height])` | multiplies the cost of walking over the spots inside the cylinder (`mult` 1–32): mud, a guarded area. Paths prefer to go around it. Returns an id |
+| `nav.unblock(nav, id)` | removes a blocker or a cost area (true when the id exists) |
+| `nav.agent(nav, x, y, z[, options])` | an agent standing at a point. `options`: `radius` (0.35, used to keep agents apart), `speed` (3 m/s), `turn` (8 rad/s), `stop` (0.2 m: arrived when this close). At most 256 per grid |
+| `nav.goTo(nav, agent, x, y, z)` | sends the agent along a path; false when none exists (its state becomes `"failed"`) |
+| `nav.stop(nav, agent)` · `nav.removeAgent(nav, agent)` | stands still / removes (true when the agent exists) |
+| `nav.update(nav[, dt])` | moves every agent by `dt` seconds (default 1/60, at most 0.1). Returns the events since the last call: `{{agent, type = "arrived" \| "failed" \| "replan"}, ...}` |
+| `nav.agentState(nav, agent)` | `{x, y, z, yaw, state, remaining, replans, gx, gy, gz}`; `state` is `"idle"`, `"moving"`, `"arrived"` or `"failed"`; `yaw` 0 looks along +z and turns towards +x; nil when the agent is unknown |
+
+- **What is walkable**: the upward-facing triangles of the world's bodies (counter-clockwise seen from above, like every
+  Game Engine mesh) up to `slope` degrees. A spot is kept when a capsule of `radius` and `height` fits (head room, free
+  space around the cell centre). Neighbouring spots link when the height difference is a step (or a slope's rise per
+  cell) and nothing stands between them; diagonals need both of their straight links. A column holds up to 4 floors (a
+  bridge and the ground under it).
+- **Cell size**: a corridor needs about `2 * (radius + cell / 2)` metres. A 1 m corridor needs `cell` 0.25 with a radius
+  of 0.3; a 2 m corridor works with the defaults. An area that needs too many columns for its cell, or more memory than
+  `budget`, is refused with an error that says to use a larger cell or a smaller area (nothing is half baked).
+- **Baking is asynchronous**: `nav.bake` copies the world's bodies (so you may keep changing the world) and scans on a
+  worker thread; the frame loop never waits. Every other function except `state`, `cancel` and `free` needs `"ready"` and
+  raises a state error before that.
+- **Agents** follow the smoothed path, turn at `turn` rad/s (they slow while turning), and keep apart by `radius`. When a
+  blocker closes part of the path they re-plan (a `"replan"` event); when they make no progress for about a second and a
+  half they re-plan too; after 4 re-plans, or when no path exists, the state is `"failed"`. An agent that cannot get
+  closer to a crowded goal counts as arrived when it is close enough. An agent standing in a spot that a blocker has just
+  closed (a door shut on it) walks out by the shortest way, then goes on round; a path never enters a closed spot from open
+  ground. At most 4 agents re-plan per `nav.update` (the rest wait a frame: a search that fails visits the whole grid).
+- **Determinism**: the same calls in the same order give the same grid, paths and agent positions.
+- **Cost (measured on a PC host, not a console number)**: a 64 x 64 cell bake (3848 spots) takes about 10 ms; a 192 x 192
+  one about 80 ms, always off the frame loop. Updating 50 agents takes a few microseconds per frame. A path over a few
+  thousand spots takes well under a millisecond.
+
+JavaScript and Python: the same calls (`nav.path(N, 0, 0, 0, 5, 0, 5)` returns an object / dict; options are objects /
+dicts). C: `int nav_bake(int world, const char* options)`, results and options are JSON text.
 
 ## 9. Design guidelines
 

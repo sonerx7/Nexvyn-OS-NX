@@ -192,7 +192,8 @@ and `ws::saveProject`, so the built-in app and the module share it) enforces the
 ## Format v2 (`nexvyn-ge`)
 
 Format v2 is the scene / entity-component model of Game Engine 2 (WP4). The full schema, the component registry and
-the migration rules are in `docs/GAME_ENGINE_FORMAT_V2.md`; the short version:
+the migration rules are in `docs/GAME_ENGINE_FORMAT_V2.md`; the 76 ready-made behaviours, state machines, messages and
+"Open as code" (Logic 2.0) are in `docs/GAME_ENGINE_LOGIC.md`; the short version:
 
 - **Off by default.** The setting `gameengine.projectV2` (default `false`) decides whether v1 projects become v2. Off:
   everything behaves as before (v1 stays v1, no extra file). On: new projects and the first save of a v1 project write

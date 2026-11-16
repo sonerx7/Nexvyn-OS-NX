@@ -10,9 +10,9 @@ import re
 
 from sdkinfo_runtime import ALIASES, DEFAULT_RUNTIME, NATIVE_MODES, RUNTIMES  # noqa: F401  (re-exported)
 
-SDK_VERSION = "1.14"
+SDK_VERSION = "1.15"
 # newest SDK that changed the script API: new script projects use it as minSdk (NEXVYN_SCRIPT_SDK_VERSION)
-SCRIPT_SDK_VERSION = "1.14"
+SCRIPT_SDK_VERSION = "1.15"
 
 NATIVE_VERSION = RUNTIMES["native"]["version"]
 # A full-screen native package carries "minSdk": this SDK, the one that brought the runtime, so older systems say

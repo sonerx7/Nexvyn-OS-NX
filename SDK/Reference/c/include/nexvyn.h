@@ -366,6 +366,57 @@ void fs_saveRestore(const char* slot, nxv_json_fn fn, void* user);
 const char* fs_saveBackups(void);
 void fs_saveDeleteBackup(const char* slot, nxv_json_fn fn, void* user);
 /* END GENERATED api:fs_keep:c-header */
+/* BEGIN GENERATED api:phys:c-header (tools/api/gen.py; do not edit) */
+/* SDK 1.15: 3D collision (sdk/SDK.md section 8e): worlds of static meshes and boxes, ray / sphere / capsule queries,
+ * capsule character controllers and trigger volumes. Ids are ints; results are JSON text, options JSON text or NULL. */
+int phys_world(const char* json);                               /* a collision world id > 0; options JSON {"budget": MB} or NULL */
+bool phys_free(int world);                                      /* frees the world and everything in it; false for an unknown id */
+/* a static triangle mesh: xyz has 3 floats per vertex, indices 3 per triangle (count 0: every 3 vertices); options JSON {"x","y","z","layer"} */
+int phys_addMesh(int world, const float* xyz, int vertices, const int* indices, int count, const char* options);
+int phys_addModel(int world, int obj, const char* json);        /* a model's COL_ parts (else its triangles, simplified) or a mesh;
+                                                                 * options JSON {"x","y","z","rx","ry","rz","scale","layer","maxTriangles"} */
+int phys_addBox(int world, double x, double y, double z, double hx, double hy, double hz, int layer);/* a solid box: centre and half extents; layer 0 = 1 */
+bool phys_setPos(int world, int id, double x, double y, double z);/* moves a body (moving platform) or trigger, teleports a controller */
+const char* phys_pos(int world, int id);                        /* JSON [x, y, z] (a controller: its feet), null for an unknown id */
+bool phys_setLayer(int world, int id, int layer);               /* layer bits (1 bodies, 2 controllers, 4 triggers by default) */
+bool phys_remove(int world, int id);
+const char* phys_raycast(int world, double x, double y, double z, double dx, double dy, double dz, double maxDist, int mask);/* the nearest hit: JSON {"x","y","z","nx","ny","nz","dist","id","tri"} or null;
+                                                                 * maxDist 0 = 1000, mask 0 = every layer */
+const char* phys_raycastAll(int world, double x, double y, double z, double dx, double dy, double dz, double maxDist, int mask);/* JSON array of hits, nearest first (at most 256) */
+const char* phys_sweepSphere(int world, double x, double y, double z, double radius, double dx, double dy, double dz, double maxDist, int mask);/* a sphere moved from x, y, z: the first hit or null (projectiles) */
+const char* phys_sweepCapsule(int world, double x, double y, double z, double radius, double height, double dx, double dy, double dz, double maxDist, int mask);/* a standing capsule (feet at x, y, z) moved: the first hit or null */
+const char* phys_overlap(int world, double x, double y, double z, double radius, int mask);/* JSON array of the ids a sphere touches (bodies, controllers, triggers) */
+int phys_controller(int world, double x, double y, double z, const char* json);/* a capsule character (feet at x, y, z); options JSON {"radius","height","slope","step","gravity","jump","layer","mask"} */
+const char* phys_move(int world, int id, double vx, double vz, double dt);/* walks with speed vx, vz for dt s (0 = 1/60): JSON {"x","y","z","vy","grounded",
+                                                                 * "wall","ceiling","ground","nx","ny","nz"}, null for an unknown id */
+bool phys_jump(int world, int id);                              /* jumps on the next move when on the ground */
+int phys_trigger(int world, const char* shape, double x, double y, double z, double a, double b, double c, int layer);/* box: half extents a, b, c; sphere: radius a; capsule: radius a, height b */
+const char* phys_events(int world);                             /* JSON [{"trigger", "other", "type": "enter" | "exit"}] since the last call */
+const char* phys_stats(int world);                              /* JSON {"bodies","controllers","triggers","triangles","memory","budget"} */
+/* END GENERATED api:phys:c-header */
+
+/* BEGIN GENERATED api:nav:c-header (tools/api/gen.py; do not edit) */
+/* SDK 1.15: 3D navigation (sdk/SDK.md section 8f): a walkable grid baked from a phys world on a worker thread, A* paths,
+ * blockers and cost areas, walking agents. Ids are ints; results are JSON text, options JSON text or NULL. */
+int nav_bake(int world, const char* json);                      /* starts baking a walkable grid from a phys world on a worker thread: a nav id > 0; options JSON
+                                                                 * {"cell","radius","height","slope","step","minx".."maxz","mask","maxColumns","budget"} or NULL; poll nav_state */
+bool nav_free(int nav);                                         /* frees the grid (a running bake is cancelled) and its agents; false for an unknown id */
+const char* nav_state(int nav);                                 /* JSON {"state": "baking" | "ready" | "failed" | "cancelled", "progress", "nodes", "columns", "memory", "budget", "bakeMs",
+                                                                 * "blockers", "costAreas", "agents", "version", "error"?}, null for an unknown id */
+bool nav_cancel(int nav);                                       /* stops a running bake (its state becomes "cancelled"); false when it is not running */
+const char* nav_path(int nav, double x, double y, double z, double tx, double ty, double tz, const char* json);/* a path from x, y, z to tx, ty, tz: JSON {"found", "partial", "length", "cost", "points": [[x, y, z]...], "reason"?}; options JSON
+                                                                 * {"smooth": true, "partial": false, "snap": 1.5} or NULL */
+const char* nav_snap(int nav, double x, double y, double z, double maxDist);/* the walkable spot nearest to x, y, z within maxDist (0 = 1.5): JSON [x, y, z] or null */
+int nav_block(int nav, double x, double y, double z, double radius, double height);/* closes the spots inside a cylinder (base x, y, z; height 0 = 2) until nav_unblock: an id > 0 */
+int nav_cost(int nav, double x, double y, double z, double radius, double mult, double height);/* multiplies the cost of walking over the spots inside a cylinder (mult 1-32; height 0 = 2): an id > 0 */
+bool nav_unblock(int nav, int id);                              /* removes a blocker or a cost area; false for an unknown id */
+int nav_agent(int nav, double x, double y, double z, const char* json);/* an agent standing at x, y, z: an id > 0; options JSON {"radius", "speed", "turn", "stop"} or NULL */
+bool nav_goTo(int nav, int agent, double x, double y, double z);/* sends the agent to x, y, z along a path; false when no path exists (the agent's state becomes "failed") */
+bool nav_stop(int nav, int agent);                              /* the agent stands still (state "idle"); false for an unknown agent */
+const char* nav_update(int nav, double dt);                     /* moves every agent by dt seconds (0 = 1/60, at most 0.1): JSON [{"agent", "type": "arrived" | "failed" | "replan"}] */
+const char* nav_agentState(int nav, int agent);                 /* JSON {"x","y","z","yaw","state": "idle" | "moving" | "arrived" | "failed","remaining","replans","gx","gy","gz"}, null for an unknown agent */
+bool nav_removeAgent(int nav, int agent);                       /* removes the agent; false for an unknown agent */
+/* END GENERATED api:nav:c-header */
 
 /* ------------------------------------------------------------------ SDK 1.9: feeds, media, network
  * sdk/SDK.md section 8d. Options are JSON text ("{\"retry\": 2, \"cache\": 300}"), NULL for none. Returned

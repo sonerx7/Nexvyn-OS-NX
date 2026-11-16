@@ -30,5 +30,7 @@
 #include "nxn_dialog.h"
 #include "nxn_jit.h"
 #include "nxn_stream.h"
+#include "nxn_phys.h"
+#include "nxn_nav.h"
 
 #endif /* NEXVYN_NATIVE_H */

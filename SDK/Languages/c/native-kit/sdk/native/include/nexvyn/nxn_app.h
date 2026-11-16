@@ -122,6 +122,10 @@ NXN_API void nxn_request_return(nxn_return_reason reason, int32_t code, const ch
 #define NXN_CAP_INPUT_ROUTER (UINT64_C(1) << 37)
 /* nxn_stream_* through the system's shared block cache (nxn_stream.h) */
 #define NXN_CAP_STREAM (UINT64_C(1) << 38)
+/* nxn_phys_* inside Nexvyn OS: 3D collision worlds, queries, character controllers, triggers (nxn_phys.h) */
+#define NXN_CAP_PHYS (UINT64_C(1) << 39)
+/* nxn_nav_* inside Nexvyn OS: walkable grid bake, A* paths, blockers, walking agents (nxn_nav.h) */
+#define NXN_CAP_NAV (UINT64_C(1) << 40)
 
 typedef struct nxn_caps {
     uint32_t size;

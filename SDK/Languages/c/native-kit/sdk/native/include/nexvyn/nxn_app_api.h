@@ -62,6 +62,76 @@ int32_t nxn_system_ticks_ms(void);
 /** Returns current battery percentage (0-100). (since 1.0) */
 int32_t nxn_system_battery_level(void);
 
+/* Module: phys - 3D collision (SDK 1.15, core/phys3d.h): mesh BVH, ray / sweep / overlap queries, capsule controllers, triggers */
+/* nxn_phys_world_create: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_world_destroy: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_add_mesh: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_add_box: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_set_pos: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_pos: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_set_layer: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_remove: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_raycast: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_raycast_all: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_sweep_sphere: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_sweep_capsule: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_overlap: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_controller: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_move: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_jump: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_trigger: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_events: see <nexvyn/nxn_phys.h> */
+
+/* nxn_phys_stats: see <nexvyn/nxn_phys.h> */
+
+/* Module: nav - 3D navigation (SDK 1.15, core/nav3d.h): walkable grid bake on a worker thread, A* paths, blockers, cost areas, walking agents */
+/* nxn_nav_bake: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_destroy: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_state: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_cancel: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_path: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_snap: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_block: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_cost: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_unblock: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_agent_add: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_agent_goto: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_agent_stop: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_agent_remove: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_agent_state_get: see <nexvyn/nxn_nav.h> */
+
+/* nxn_nav_update: see <nexvyn/nxn_nav.h> */
+
 #ifdef __cplusplus
 }
 #endif
