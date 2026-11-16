@@ -7168,8 +7168,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/chocolate-doom.nxvapp",
-      "size": 11279949,
-      "sha256": "2826fcb5c2d97699050d8a8f2db22dfae9a983258e167dbd46d151eab8fe5d0d",
+      "size": 11279715,
+      "sha256": "99d62c9c28c473707c998dd94beb5b58bc00b74f40f003449da0a01133c6fe10",
       "minSdk": "1.10",
       "permissions": [
         "files"
@@ -7608,8 +7608,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/gambatte.nxvapp",
-      "size": 943838,
-      "sha256": "8cf87fc7adb0f5d7ee6b819081094fe3ed7314fba25e5e187b5f93eda7912f1a",
+      "size": 943623,
+      "sha256": "2ce5d31b021509118405292f71656a208cb10c9a50c850507a3c3ae9e7ddb85d",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -7834,8 +7834,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/ironwail.nxvapp",
-      "size": 55451269,
-      "sha256": "7a2e27b4ed63fca9c761b26e7680b4c2f663b080e1f9d3cdecd27d8a3b7e501a",
+      "size": 55451166,
+      "sha256": "ca478f5e0f77124a9b23c64d173e5a59e9628e0b908c1d60f6de05561aa08fdc",
       "minSdk": "1.10",
       "permissions": [
         "files"
@@ -8187,8 +8187,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/genesis-plus-gx.nxvapp",
-      "size": 1788131,
-      "sha256": "12f30a52491d0356d0fa09ebba5f728313d9a967f887b582f8bebd14b84564f4",
+      "size": 1787360,
+      "sha256": "f2e3da4f523197fefcd8d096ab6a5c6e0e8755cb47a67c34fc71144c38873aaa",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -8342,8 +8342,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/mgba.nxvapp",
-      "size": 1546979,
-      "sha256": "bf0a43d729408bbf3499182640a86bebe63dbb16a025d0a19809f987fc80c251",
+      "size": 1546683,
+      "sha256": "f480ed55e6ad34a43217b63962cd4c71313127972c43f46e835374440b9f116c",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -8647,8 +8647,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/fceumm.nxvapp",
-      "size": 1373553,
-      "sha256": "171074469c3ec5ce828cdeca73a82120514b86c321b7dc3e8defe353c169c826",
+      "size": 1373345,
+      "sha256": "c033cbada5c28f8ab5cff8bbf43391d4062cd9f9184e12c90b86172f1154970a",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -9710,8 +9710,8 @@
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/snes9x.nxvapp",
-      "size": 2052482,
-      "sha256": "c33e95136dca576f346991c3c6fdfb77b00ac555da5b11234c9a1e3e94c071d3",
+      "size": 2052321,
+      "sha256": "a7cc45686c8d6a17467a0afbab026e8c03c32c1fcafa846cf6220779c787565b",
       "minSdk": "1.10",
       "permissions": [
         "files",
