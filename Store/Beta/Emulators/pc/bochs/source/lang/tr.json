@@ -28,6 +28,8 @@
     "mouse_locked": "Fareyi Bırak",
     "keyboard": "Klavye",
     "config": "Ayarlar",
+    "manager": "Sihirbaz",
+    "new_machine": "Yeni Makine",
     "new_profile": "Yeni",
     "dup_profile": "Çoğalt",
     "rename": "Adlandır",
@@ -44,7 +46,16 @@
     "choose_location": "Konum Seç (SD)...",
     "choose_vm_folder": "Kalıcı SD Klasörü Seç...",
     "cancel": "İptal",
-    "continue": "Sürdür"
+    "continue": "Sürdür",
+    "cad": "Ctrl+Alt+Del",
+    "close": "Kapat",
+    "create_only": "Sadece oluştur",
+    "create_start": "Oluştur ve başlat",
+    "eject_iso": "CD / ISO çıkar",
+    "fullscreen": "Tam ekran",
+    "start_machine": "Bu makineyi başlat",
+    "system_picker": "Sistem seçici...",
+    "windowed": "Pencere"
   },
   "tab": {
     "system": "Sistem",
@@ -63,7 +74,8 @@
     "none": "Yok",
     "quick_keys": "Hızlı PC Tuşları",
     "persist_folder": "Kalıcı Klasör",
-    "app_data_only": "Uygulama Verisi (Güncellemede Korunur)"
+    "app_data_only": "Uygulama Verisi (Güncellemede Korunur)",
+    "locked": "Çalışırken değiştirilemez"
   },
   "cfg": {
     "cpu_model": "İşlemci Modeli",
@@ -90,7 +102,10 @@
     "network": "Ağ Altyapısı",
     "nic": "Ağ Kartı",
     "usb": "USB Denetleyicisi (UHCI / EHCI)",
-    "gamepad": "Kumanda Düzeni"
+    "gamepad": "Kumanda Düzeni",
+    "floppy_type": "Disket türü",
+    "profile_name": "Makine adı",
+    "voodoo": "3dfx Voodoo grafik (Glide / 3D)"
   },
   "sync": {
     "none": "Sınırsız (Yok)",
@@ -134,6 +149,7 @@
     "ok": "Tamam"
   },
   "modal": {
+    "manager": "Makineler",
     "create_disk_title": "Boş Disk Kalıbı Oluştur",
     "disk_size": "Kalıp Boyutu",
     "preset_custom": "Özel Boyut (MB)...",
@@ -142,7 +158,19 @@
     "growing_hint": "1 saniyeden kısa sürede oluşur ve SD kartta yalnızca yazılan veri kadar yer kaplar. FAT32/exFAT üzerinde 32 GB'a kadar sorunsuz çalışır.",
     "flat_hint": "Tam boyutu baştan sıfırlar (FAT32 sınırı: 4095 MB). Arka planda iptal edilebilir şekilde oluşur.",
     "save_dir": "Hedef Klasör",
-    "mount_after": "Oluşturulduktan sonra etkin profile bağla"
+    "mount_after": "Oluşturulduktan sonra etkin profile bağla",
+    "badge_alert": "Dikkat",
+    "badge_flat": "Sabit RAW",
+    "badge_growing": "Büyüyen",
+    "creating": "Sanal disk oluşturuluyor...",
+    "p0": "1,44 MB disket (1440 KB)",
+    "p1": "512 MB HDD (MS-DOS / Win95)",
+    "p2": "1 GB HDD (Win98 SE)",
+    "p3": "2 GB HDD",
+    "p4": "4 GB HDD (WinXP asgari / ReactOS)",
+    "p5": "8 GB HDD (WinXP önerilen)",
+    "p6": "16 GB HDD (Win7 / Linux)",
+    "p7": "32 GB HDD (Win10 / geniş depolama)"
   },
   "logs": {
     "errors_only": "Yalnızca Hata ve Uyarılar"
@@ -173,14 +201,123 @@
     "pasting_text": "Pano metni sanal klavyeye yazılıyor...",
     "stop_before_switch": "Profil değiştirmek veya düzenlemek için etkin makineyi durdurun.",
     "cannot_delete_last": "En az bir makine profili kalmalıdır.",
-    "logs_copied": "Günlükler panoya kopyalandı."
+    "logs_copied": "Günlükler panoya kopyalandı.",
+    "cannot_delete_running": "Çalışan makine silinemez.",
+    "disk_create_failed": "Sanal disk oluşturulamadı: {0}",
+    "iso_selected": "ISO seçildi: {0}",
+    "media_attached": "Medya bağlandı: {0}",
+    "profile_created": "Yeni makine eklendi: {0}",
+    "profile_created_started": "Yeni makine oluşturuldu ve başlatıldı: {0}",
+    "tier_balanced": "Dengeli donanım profili uygulandı (akıcı).",
+    "tier_max": "Maksimum donanım profili uygulandı (en yüksek hız).",
+    "tier_normal": "Normal donanım profili uygulandı (düşük pil kullanımı)."
   },
   "welcome": {
     "title": "Bochs x86 / x86-64 PC Emülatörü",
-    "subtitle": "İşlemci, RAM, VGA, Disket, ATA sabit disk, CD-ROM, Sound Blaster 16 / ES1370 ve SLIRP ağ ayarlarını seçin ya da özel bir .bochsrc bağlayın."
+    "subtitle": "Makine seçin, kurulum ISO'sunu bağlayın ve başlatın.",
+    "no_media": "Önyükleme diski veya ISO bağlı değil. ISO seçin ya da disk oluşturun.",
+    "warn_badge": "Medya yok"
+  },
+  "wizard": {
+    "title": "Yeni Sanal Makine",
+    "normal": "Normal",
+    "balanced": "Dengeli",
+    "maximum": "Maksimum",
+    "compat_hint": "Makineyi oluşturduktan sonra işlemci, görüntü, ses ve girdi ayarlarını değiştirebilirsiniz.",
+    "stop_first": "Yeni profil oluşturmadan veya değiştirmeden önce çalışan makineyi durdurun.",
+    "growing_note": "Büyüyen disk: SD kartta yalnızca misafirin yazdığı kadar yer kaplar.",
+    "install_iso": "Kurulum ISO (D:)",
+    "iso_none": "Yok (isteğe bağlı)",
+    "os0_name": "Windows 7 / 10 Lite",
+    "os0_tag": "Modern x86/x64 (Switch Ultra)",
+    "os1_name": "Windows XP SP3",
+    "os1_tag": "Klasik 2000'ler (Switch Extreme)",
+    "os2_name": "Windows 95 / 98 SE",
+    "os2_tag": "Retro 3dfx Voodoo Glide",
+    "os3_name": "Linux Lite / TinyCore",
+    "os3_tag": "Ultra hafif masaüstü ve terminal",
+    "os4_name": "MS-DOS 6.22 / FreeDOS",
+    "os4_tag": "Klasik 90'lar DOS oyunları",
+    "os5_name": "ReactOS 0.4.x",
+    "os5_tag": "Açık kaynak Windows NT klonu",
+    "pick_iso": "ISO seç",
+    "step1": "1. İşletim sistemi şablonu",
+    "step2": "2. Donanım güç seviyesi",
+    "step3": "3. Depolama ve kurulum medyası",
+    "suffix_max": "(Maks)",
+    "suffix_normal": "(Normal)",
+    "suffix_opt": "(Opt)",
+    "virtual_hdd": "Sanal HDD (C:)"
   },
   "hint": {
     "idle": "Ctrl+Alt+P Ayarlar | Ctrl+Alt+K Klavye | Ctrl+G Fare | (+) Panel | (-) Sanal Klavye | L/R Sekme",
     "mouse_captured": "Fare sanal makinede kilitli - Bırakmak için Ctrl+G, Sağ Çubuk Tıklaması veya (+) kullanın"
+  },
+  "bios": {
+    "latest": "Bochs Güncel",
+    "legacy": "Bochs Eski"
+  },
+  "boot": {
+    "cdrom": "CD-ROM",
+    "disk": "Sabit disk",
+    "floppy": "Disket"
+  },
+  "browser": {
+    "default_title": "Dosya seç",
+    "disks": "Disk kalıpları klasörü",
+    "empty": "Bu klasörde uyumlu dosya yok.",
+    "filter": "Filtre: {0}",
+    "hint": "Yön tuşları: gez   A: seç   B: geri",
+    "k_cd": "CD",
+    "k_cfg": "AYAR",
+    "k_dir": "KLS",
+    "k_disk": "DİSK",
+    "k_file": "DOSYA",
+    "path": "Yol",
+    "persist": "SD kalıcı klasör",
+    "places": "Konumlar",
+    "sdroot": "SD kart kökü",
+    "up": "Üst klasör"
+  },
+  "lib": {
+    "count": "Makineler ({0})",
+    "selected": "Seçili"
+  },
+  "mgr": {
+    "actions": "İşlemler",
+    "new_empty": "Yeni boş profil",
+    "not_attached": "Takılı değil",
+    "storage": "Depolama",
+    "wizard": "Sihirbaz"
+  },
+  "os": {
+    "dos": "DOS",
+    "linux": "Linux",
+    "other": "PC",
+    "reactos": "ReactOS",
+    "windows": "Windows"
+  },
+  "sec": {
+    "audio": "Ses",
+    "boot": "Açılış sırası",
+    "display": "Görüntü",
+    "files": "Dosyalar",
+    "input": "Giriş",
+    "logs": "Kayıtlar",
+    "media": "Çıkarılabilir medya",
+    "net": "Ağ",
+    "perf": "Performans seviyesi",
+    "profile": "Makine profili",
+    "state": "Durum kayıtları"
+  },
+  "tabs": {
+    "devices": "Kol",
+    "logs": "Kayıt",
+    "storage": "Disk",
+    "system": "Sistem",
+    "video": "Video"
+  },
+  "vga": {
+    "std": "Standart VGA"
   }
 }

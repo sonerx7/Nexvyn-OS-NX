@@ -28,6 +28,8 @@
     "mouse_locked": "Release Mouse",
     "keyboard": "Keyboard",
     "config": "Config",
+    "manager": "Machines",
+    "new_machine": "New Machine",
     "new_profile": "New",
     "dup_profile": "Clone",
     "rename": "Rename",
@@ -44,7 +46,16 @@
     "choose_location": "Save As (SD)...",
     "choose_vm_folder": "Set Persistent SD Folder...",
     "cancel": "Cancel",
-    "continue": "Continue"
+    "continue": "Continue",
+    "cad": "Ctrl+Alt+Del",
+    "close": "Close",
+    "create_only": "Create only",
+    "create_start": "Create and start",
+    "eject_iso": "Eject CD / ISO",
+    "fullscreen": "Fullscreen",
+    "start_machine": "Start this machine",
+    "system_picker": "System picker...",
+    "windowed": "Windowed"
   },
   "tab": {
     "system": "System",
@@ -63,7 +74,8 @@
     "none": "None",
     "quick_keys": "Quick PC Keys",
     "persist_folder": "Persistent Folder",
-    "app_data_only": "App Data (Kept on Updates)"
+    "app_data_only": "App Data (Kept on Updates)",
+    "locked": "Locked while running"
   },
   "cfg": {
     "cpu_model": "CPU Model",
@@ -90,7 +102,10 @@
     "network": "Network Backend",
     "nic": "NIC Adapter",
     "usb": "Enable USB (UHCI / EHCI)",
-    "gamepad": "Controller Preset"
+    "gamepad": "Controller Preset",
+    "floppy_type": "Floppy type",
+    "profile_name": "Machine name",
+    "voodoo": "3dfx Voodoo graphics (Glide / 3D)"
   },
   "sync": {
     "none": "Unthrottled (None)",
@@ -134,6 +149,7 @@
     "ok": "OK"
   },
   "modal": {
+    "manager": "Machines",
     "create_disk_title": "Create Blank Disk Image",
     "disk_size": "Image Size",
     "preset_custom": "Custom Size (MB)...",
@@ -142,7 +158,19 @@
     "growing_hint": "Creates in <1 sec and allocates SD space only as guest writes data. Works cleanly on FAT32/exFAT up to 32 GB.",
     "flat_hint": "Allocates full RAW file upfront (max 4095 MB on FAT32). Runs in background with cancel support.",
     "save_dir": "Target Folder",
-    "mount_after": "Mount image to active profile after creation"
+    "mount_after": "Mount image to active profile after creation",
+    "badge_alert": "Attention",
+    "badge_flat": "Fixed RAW",
+    "badge_growing": "Growing",
+    "creating": "Creating virtual disk...",
+    "p0": "1.44 MB floppy (1440 KB)",
+    "p1": "512 MB HDD (MS-DOS / Win95)",
+    "p2": "1 GB HDD (Win98 SE)",
+    "p3": "2 GB HDD",
+    "p4": "4 GB HDD (WinXP minimum / ReactOS)",
+    "p5": "8 GB HDD (WinXP recommended)",
+    "p6": "16 GB HDD (Win7 / Linux)",
+    "p7": "32 GB HDD (Win10 / large storage)"
   },
   "logs": {
     "errors_only": "Errors & Warnings Only"
@@ -173,14 +201,123 @@
     "pasting_text": "Typing clipboard text into guest...",
     "stop_before_switch": "Stop the active VM before switching or modifying profiles.",
     "cannot_delete_last": "At least one machine profile must remain.",
-    "logs_copied": "Logs copied to clipboard."
+    "logs_copied": "Logs copied to clipboard.",
+    "cannot_delete_running": "A running machine cannot be deleted.",
+    "disk_create_failed": "Could not create virtual disk: {0}",
+    "iso_selected": "ISO selected: {0}",
+    "media_attached": "Media attached: {0}",
+    "profile_created": "New machine added: {0}",
+    "profile_created_started": "New machine created and started: {0}",
+    "tier_balanced": "Balanced hardware profile applied (smooth).",
+    "tier_max": "Maximum hardware profile applied (fastest).",
+    "tier_normal": "Normal hardware profile applied (low battery use)."
   },
   "welcome": {
     "title": "Bochs x86 / x86-64 PC Emulator",
-    "subtitle": "Configure CPU, RAM, VGA, Floppy, ATA hard disks, CD-ROM, Sound Blaster 16 / ES1370, and SLIRP networking, or attach a custom .bochsrc."
+    "subtitle": "Choose a machine, attach an installation ISO, and start.",
+    "no_media": "No boot disk or ISO is attached. Choose an ISO or create a disk.",
+    "warn_badge": "No media"
+  },
+  "wizard": {
+    "title": "New Virtual Machine",
+    "normal": "Normal",
+    "balanced": "Balanced",
+    "maximum": "Maximum",
+    "compat_hint": "You can change CPU, display, sound, and input settings after creating the machine.",
+    "stop_first": "Stop the running machine before creating or switching profiles.",
+    "growing_note": "Growing disk: uses SD space only as the guest writes data.",
+    "install_iso": "Install ISO (D:)",
+    "iso_none": "None (optional)",
+    "os0_name": "Windows 7 / 10 Lite",
+    "os0_tag": "Modern x86/x64 (Switch Ultra)",
+    "os1_name": "Windows XP SP3",
+    "os1_tag": "Classic 2000s (Switch Extreme)",
+    "os2_name": "Windows 95 / 98 SE",
+    "os2_tag": "Retro 3dfx Voodoo Glide",
+    "os3_name": "Linux Lite / TinyCore",
+    "os3_tag": "Ultra-light desktop and terminal",
+    "os4_name": "MS-DOS 6.22 / FreeDOS",
+    "os4_tag": "Classic 90s DOS games",
+    "os5_name": "ReactOS 0.4.x",
+    "os5_tag": "Open-source Windows NT clone",
+    "pick_iso": "Choose ISO",
+    "step1": "1. Operating system template",
+    "step2": "2. Hardware power level",
+    "step3": "3. Storage and install media",
+    "suffix_max": "(Max)",
+    "suffix_normal": "(Normal)",
+    "suffix_opt": "(Opt)",
+    "virtual_hdd": "Virtual HDD (C:)"
   },
   "hint": {
     "idle": "Ctrl+Alt+P Config | Ctrl+Alt+K Keyboard | Ctrl+G Capture Mouse | (+) Panel | (-) VKB | L/R Switch Tab",
     "mouse_captured": "Mouse captured by VM - press Ctrl+G or R-Stick Click / (+) to release cursor"
+  },
+  "bios": {
+    "latest": "Bochs Latest",
+    "legacy": "Bochs Legacy"
+  },
+  "boot": {
+    "cdrom": "CD-ROM",
+    "disk": "Hard disk",
+    "floppy": "Floppy"
+  },
+  "browser": {
+    "default_title": "Choose a file",
+    "disks": "Disk images folder",
+    "empty": "No matching files in this folder.",
+    "filter": "Filter: {0}",
+    "hint": "D-Pad: move   A: choose   B: back",
+    "k_cd": "CD",
+    "k_cfg": "CFG",
+    "k_dir": "DIR",
+    "k_disk": "DISK",
+    "k_file": "FILE",
+    "path": "Path",
+    "persist": "SD persistent folder",
+    "places": "Places",
+    "sdroot": "SD card root",
+    "up": "Parent folder"
+  },
+  "lib": {
+    "count": "Machines ({0})",
+    "selected": "Selected"
+  },
+  "mgr": {
+    "actions": "Actions",
+    "new_empty": "New empty profile",
+    "not_attached": "Not attached",
+    "storage": "Storage",
+    "wizard": "Wizard"
+  },
+  "os": {
+    "dos": "DOS",
+    "linux": "Linux",
+    "other": "PC",
+    "reactos": "ReactOS",
+    "windows": "Windows"
+  },
+  "sec": {
+    "audio": "Audio",
+    "boot": "Boot order",
+    "display": "Display",
+    "files": "Files",
+    "input": "Input",
+    "logs": "Logs",
+    "media": "Removable media",
+    "net": "Network",
+    "perf": "Performance tier",
+    "profile": "Machine profile",
+    "state": "Checkpoints"
+  },
+  "tabs": {
+    "devices": "Pad",
+    "logs": "Logs",
+    "storage": "Disks",
+    "system": "System",
+    "video": "Video"
+  },
+  "vga": {
+    "std": "Standard VGA"
   }
 }
