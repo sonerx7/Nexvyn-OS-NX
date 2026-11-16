@@ -23,7 +23,7 @@ python tools/nxv_native package notes                 # -> notes/build/notes.nxv
 
 | Template | What you get | Not included |
 |---|---|---|
-| `app` | A small real UI app: file picker (`nxn_pick`), a setting kept between runs, texts in `lang/en.json` + `lang/tr.json` (`nxn_tr`), unified Nexvyn OS cards/switches/buttons via `<nexvyn/nxn_os_ui.h>` + `<nexvyn/nxn_imgui.h>` driven live by `nxn_ui_tokens_get`, so it matches script `ui.*` apps across Light/Dark/accent/text scale | A theme of its own: a utility app looks like Nexvyn OS |
+| `app` | A small real UI app: file picker (`nxn_pick`), a setting kept between runs, texts in `lang/en.json` + `lang/tr.json` (`nxn_tr`), unified Nexvyn OS cards/switches/buttons via the frame layer of `<nexvyn/nxn_os_ui.h>` (UI scale, fonts, style, rows) driven live by `nxn_ui_tokens_get`, so it matches script `ui.*` apps across Light/Dark/accent/text size/interface size | A theme of its own: a utility app looks like Nexvyn OS |
 | `game` | Loop with a fixed update step, resize / focus / suspend, a GL quad batch, an action map (pad, keyboard), sound from the OS mixer, a save file | A menu or any look: a game gets its own art direction |
 | `port` | The glue for an existing CMake project: `fetch.py` (pinned tag + commit, patches), `CMakeLists.txt` (toolchain, SDL2, compat layer, the Nexvyn target), `patches/`, a stand-in `example-upstream/` so it builds before you fetch anything | The upstream code, BIOS, firmware, game data |
 
@@ -114,6 +114,37 @@ stops native code from writing into Nexvyn OS's memory: a wild write can damage 
 before native code runs, and why the Store reviews native packages. Test on the emulator before the console, and keep your
 data in `nxn_fs_*` folders.
 
+### Choose the language first
+
+UI-heavy tools, utilities and productivity apps (chat clients, editors, settings, dashboards) are better written in
+Lua, JavaScript or Python with `nxui.*`: they draw through the OS renderer itself (its text engine, focus navigation,
+on-screen keyboard and themes) and need no build. Native C/C++ is for heavy computation (LLM inference, emulators, 3D,
+codecs, ports). A hybrid (native engine, script UI) is not available yet: a script app cannot load native code today
+(`sdk/SDK.md` 4b, section 8).
+
+### The frame layer (required for ImGui apps)
+
+Every frame of a native UI app goes through `nxn_os_frame_begin(&tok, fb_w, fb_h)` ... `nxn_os_frame_end()`. It
+replaces `ImGui_ImplOpenGL3_NewFrame()` / `ImGui::NewFrame()` / `ImGui::Render()` and owns what apps used to get wrong:
+
+* **UI scale.** 1.0 is the OS's 1280 x 720 layout. Inside Nexvyn OS the system reports the window surface scale
+  (`nxn_ui_tokens.ui_scale`: the interface size of Settings > Display, handheld or TV); in a stand-alone .nro it is the
+  screen height / 720. Every kit size is multiplied by it; the app writes its own numbers as `NXN_S(px)`.
+* **Fonts.** The kit builds the text roles (Title, Header, Body, Caption, Strong, Mono) at
+  `floorf(pt * 1.21f + 0.5f)` x text size x scale, with the glyphs of the user's language, and rebuilds them (0.2 s
+  debounce, new GL texture) when the scale or the accessibility text size changes. The app adds no fonts and never
+  touches `FontGlobalScale` / `SetWindowFontScale`; an app text size option is `nxn_os_set_text_zoom()`.
+* **Style.** `nxn_os_apply_style()` x scale every frame: theme, accent and contrast changes need no code.
+* **Minimum sizes.** Text controls never go below the 30 px control height (x scale), icon buttons, rail items, list rows
+  and dropdown menu rows never below 44 px; each widget draws its text with its role font.
+* **Rows.** `nxn_os_row_begin()` ... `nxn_os_row_end()` puts widgets on one line with equal height, vertically centred;
+  `nxn_os_fill(frac)` gives a share of the width left; `nxn_os_labeled(label, widget)` is a form row.
+
+Start from the `app` template; `showcase/com.nexvyn.uikit.cpp` is a complete reference screen (sidebar, toolbar, card,
+message field) without one pixel literal. `python tools/nxv_native check-design <dir>` (and `python tools/nxv.py check
+<dir>`) fail an ImGui app that skips the frame layer, uses raw ImGui widgets, adds fonts, scales fonts or writes pixel
+literals outside `NXN_S()`; each finding names the fix. `nxv_native package` lists the same findings.
+
 ### Unified UI and Design Tokens (`<nexvyn/nxn_os_ui.h>`)
 
 To prevent native utilities from having an inconsistent visual appearance compared to Lua/JS/Python apps, native utility and dashboard apps MUST use `<nexvyn/nxn_os_ui.h>` parameterized by live OS tokens (`nxn_ui_tokens_get(&tok)`):
@@ -127,12 +158,12 @@ To prevent native utilities from having an inconsistent visual appearance compar
   - `nxn_os_button`: 30px height buttons (`NXN_OS_BTN_PRIMARY`, `DEFAULT`, `DESTRUCTIVE`, `PLAIN`).
   - `nxn_os_badge`: 22px height pill badges with tinted background and crisp text.
   - `nxn_os_separator`: 1px hairline dividers with `tok.separator`.
-* **Strict rules (checked by `python tools/design_check.py`):** an ImGui app includes `nxn_os_ui.h`, calls `nxn_os_apply_style(tok)` (again on `NXN_EVENT_THEME`) and `nxn_os_clear_color(tok)`, never sets `io.FontGlobalScale` other than `1.0f`, loads fonts only from the role table (Title 23 px, Card Header 18 px, Body 17 px, Caption 14-15 px = `floorf(pt * 1.21f + 0.5f)`), and uses the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Checkbox`, `SliderFloat`, `Combo`, `BeginTabBar`, `ProgressBar`. Card padding is `16 x 13`; pass it with `nxn_os_card_begin_ex`.
+* **Strict rules (checked by `python tools/design_check.py`):** an ImGui app includes `nxn_os_ui.h`, runs the frame layer (`nxn_os_frame_begin` / `nxn_os_frame_end`), clears with `nxn_os_clear_color(tok)`, never sets `io.FontGlobalScale` or `SetWindowFontScale`, adds no fonts (the kit builds the role table: Title 23 px, Card Header 18 px, Body 17 px, Caption 14-15 px at scale 1), uses the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`, `BeginTabBar`, `ProgressBar`, and writes every pixel size as `NXN_S(px)`. Card padding is `16 x 13`; pass it with `nxn_os_card_begin_ex(id, 0, NXN_S(16), NXN_S(13), tok)` or use `nxn_os_card_begin`.
 * **NXUI in a GL window:** `nxn_nxui_*` never paints in a Native OpenGL window (its own thread; only the OS main thread may use the shared renderer). The tree is still built and laid out, input is routed, and `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`. Use ImGui with `nxn_os_ui.h` there. The four SysMatrix Studio canaries (`showcase/com.nexvyn.parity.*`) show the same screen in Lua, JavaScript, Python and Native C++; `tests/test_design_parity.py` keeps them identical.
 
 ### Text and fonts
 
-Dear ImGui draws Latin-1 only unless it gets glyph ranges, so Turkish characters (dotless i, g-breve, s-cedilla, capital I-dot), Cyrillic or Greek letters show as `?`. Load the system font through `nxn_imgui_add_font()` from `<nexvyn/nxn_imgui.h>` (the `app` template does): it adds the ranges of the app's language, keeps the atlas small, and rasterizes UI fonts (`<= 28 px`) at `2x` atlas density (`OversampleH = 1`, `OversampleV = 1`, `PixelSnapH = true`, `RasterizerDensity = 2.0f`, `RasterizerMultiply = 1.08f`) so glyph stems and curves remain crisp without muddiness.
+Dear ImGui draws Latin-1 only unless it gets glyph ranges, so Turkish characters (dotless i, g-breve, s-cedilla, capital I-dot), Cyrillic or Greek letters show as `?`. The frame layer loads the system fonts through `nxn_imgui_add_font()` from `<nexvyn/nxn_imgui.h>` for UI apps; games and scenes without the frame layer call it themselves: it adds the ranges of the app's language, keeps the atlas small, and rasterizes UI fonts (`<= 28 px`) at `2x` atlas density (`OversampleH = 1`, `OversampleV = 1`, `PixelSnapH = true`, `RasterizerDensity = 2.0f`, `RasterizerMultiply = 1.08f`) so glyph stems and curves remain crisp without muddiness.
 
 To strictly match script UI size and stroke weight: pass `floorf(pt * 1.21f * scale + 0.5f)` (Inter FreeType EM factor `2478 / 2048`) using `NXN_UI_FONT_BOLD` (`19.2pt`) for app titles, `NXN_UI_FONT_BOLD` (`15.2pt`) for card headers, `NXN_UI_FONT_MEDIUM` (`13.8pt`) for body/controls, and `NXN_UI_FONT_MEDIUM` (`12.0pt`) for badges/subtitles; keep `io.FontGlobalScale = 1.0f` instead of downscaling a baked atlas (rebuild on `NXN_EVENT_RESIZE` if scale changes), and round `AddText` `(x, y)` coordinates with `floorf(v + 0.5f)`. Japanese, Korean and Chinese text needs the system's CJK font, which windowed apps cannot get yet (see `NATIVE_KIT.md`, *Text and fonts*). Test your app in more than one language: `lang/*.json` plus Settings > Language.
 

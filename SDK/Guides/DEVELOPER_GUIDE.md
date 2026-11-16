@@ -66,6 +66,31 @@ Studio's other tools:
 - The **Ask AI** panel answers questions with the API keys from AI Chat. It does not change files by itself; you add
   the suggested code.
 
+### From idea to App Market (SDK 1.14 and the N2 design language)
+
+1. **What do you want to make?** In *New Project*, pick Tool, Data, Network, Game or Port. Studio recommends the same
+   language as `python tools/nxv.py create` (Tool: Lua, Network: JavaScript, Data: Python, Game and Port: Native C/C++)
+   and selects the matching N2 starter (*Lua / JavaScript / Python starter (N2)*). The starters use `nxui` on the OS
+   design tokens, set `"uiApi": 2`, `minSdk`/`targetSdk` of the current SDK, generate an icon and carry
+   `lang/<code>.json` for all eight languages. Native C/C++ cannot be compiled on the console: the *Native on PC*
+   button shows the PC steps (`nxv.py create ... --runtime native`, build, `nxv.py pack`); there is no build button.
+2. **Check.** *Run > Check Project* (or the toolbar package menu) runs the editor lint and then, on a background worker:
+   `app.json` (SDK versions, `permissions`, icon size, `uiApi` for `nxui` apps), the eight language files and the
+   `TR()` keys of JavaScript and Python, JavaScript / Python quote and bracket balance, and the design rules of
+   `tools/design_check.py` (raw colour literals and off-table text sizes; Native sources get the ImGui rules). The
+   tables are shared: `tools/studio_n2_check.py` fails when the C++ and Python copies differ. Results open as a list;
+   each row jumps to its file and line.
+3. **Run / Install.** A Studio project is already installed in `Applications`, so *Run* (also *Install and Run* in the
+   package menu) starts it. *Export* writes the `.nxvapp` to Documents; opening that file installs it like a user would.
+4. **Publish.** *Publish to App Market* checks the Store rules (id, English name and description, version, category,
+   permissions, 256x256 icon) and *Create Package* writes `Documents/Nexvyn Submissions/<slug>/` with `source/`,
+   `store.json` (including the screenshot script), `README.md` and `screenshots/` plus a `.zip`. It works offline. The
+   sheet then lists the GitHub steps (fork, folder, `build_store.py`, pull request). Screenshots: 3 to 5 are
+   recommended; PNGs in the project's `screenshots/` folder are copied, otherwise the maintainer's script takes them.
+   The Store wants an icon with art of the app itself; Studio's generated icon is a working placeholder.
+5. **Ask AI** knows the SDK version, the four languages, the `nxui` roles and variants, the design rules and the
+   language-file rule, so its suggestions follow them.
+
 If you prefer to work on a computer, create a `Name.nxvapp/` folder, write it with any editor and copy the folder into
 `sdmc:/NexvynOS/Applications/`. The app appears on the Apps screen and in Search.
 
@@ -531,7 +556,7 @@ This guide takes a developer from zero to a published Nexvyn OS app. It links to
 repeating them: [sdk/SDK.md](../Reference/SDK.md) (full API), [JS_APPS.md](JS_APPS.md), [PY_APPS.md](PY_APPS.md),
 [GAME_ENGINE.md](GAME_ENGINE.md), [NXVAPP_FORMAT.md](NXVAPP_FORMAT.md) and [APP_GUIDE.md](APP_GUIDE.md).
 
-1. **Studio:** *New Project* opens a gallery of ten templates (blank Lua, blank JS, utility, platformer, arena
+1. **Studio:** *New Project* starts with *What do you want to make?* (Tool, Data, Network, Game, Port) and opens a gallery of templates, led by the N2 starters (Lua, JavaScript, Python) with eight-language files, and *Check Project* plus *Publish* produce the App Market submission package (see the section above). The classic gallery has ten templates (blank Lua, blank JS, utility, platformer, arena
    shooter, puzzle, 3D scene, network app, blank Python, Snake in Python). `.py` files open with Python
    highlighting; Python templates use `minSdk` 1.3. Studio has live error checking, completion, Run with a console, sprite,
    tilemap and scene editors, an *Ask AI* panel that never edits files, and *Export Package*.

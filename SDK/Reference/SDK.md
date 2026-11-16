@@ -372,10 +372,11 @@ FreeType (used by Script `gfx.text`) measures font point sizes by **Em-Box heigh
 | **Subtitles & Footers** | `12pt "sans"` | `NXN_UI_FONT_MEDIUM` @ `bpx(12.0 * 1.21)` | Subtitles and bottom status lines |
 | **Pill Badges** | `11.5–12pt "semibold"` | `NXN_UI_FONT_MEDIUM` @ `bpx(11.5 * 1.21)` | Centered status pill text |
 
-> **Native C/C++ Font Rules:**
-> - Keep `io.FontGlobalScale = 1.0f`. Never downscale a pre-baked atlas.
-> - Bake directly at window resolution; rebuild font texture on `NXN_EVENT_RESIZE` when window scale changes.
-> - Snap all text, badge, and tab coordinates to integer pixels with `floorf(v + 0.5f)` to prevent subpixel stem blurring.
+> **Native C/C++ Font Rules (the frame layer, section 7, does all of this; the app adds no fonts):**
+> - `io.FontGlobalScale` stays `1.0f` and `SetWindowFontScale` is not used: a stretched atlas is blurry.
+> - The atlas is baked at the window's real resolution (role size x accessibility text size x UI scale, 2x density,
+>   PixelSnap) and rebuilt, debounced, when the UI scale or the text size changes.
+> - Text, badge and tab coordinates are snapped to integer pixels with `floorf(v + 0.5f)`.
 
 ### 3. Canonical Component Dimensions
 * **Outer Window Margins:** `20px` left/right padding.
@@ -384,11 +385,18 @@ FreeType (used by Script `gfx.text`) measures font point sizes by **Em-Box heigh
 * **Switches / Toggles:** `38 × 22px` pill (radius `11px`, knob radius `9px`).
 * **Dropdown Selectors:** default `28px` (script `ui.dropdown` default; native `nxn_os_dropdown` takes the OS control-height token, 28 px without one, or its `height` argument) with radius `6px`, trailing accent chip and double chevrons.
 * **Pill Badges:** `22px` height, radius `11px`, minimum width `58px`, padding `9px` horizontal.
-* **Touch / Mouse Hitboxes:** All interactive controls maintain at least `28–32px` touch targets.
+* **Touch / Mouse Hitboxes:** text controls (buttons, fields, dropdowns, toggle buttons) are never lower than the
+  `30px` control height and never narrower than `44px`; icon-only buttons, sidebar/rail items, list rows and dropdown
+  menu rows are at least `44px` (the touch target). Under the native frame layer the kit enforces both, scaled.
 ### 4. One design language, four languages (strict rules)
 The goal is fixed: whatever language writes the app (Lua, JavaScript, Python, Native C/C++) and whoever (or whatever AI) writes it, the app looks like Nexvyn OS. A Native C++ app must never look like raw Dear ImGui. Rules:
-* **Native + ImGui:** `#include <nexvyn/nxn_os_ui.h>`, call `nxn_os_apply_style(tok)` at start and on `NXN_EVENT_THEME`, clear the framebuffer with `nxn_os_clear_color(tok)` (no constant `glClearColor` behind a UI), keep `io.FontGlobalScale = 1.0f`, use the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Checkbox`, `SliderFloat`, `Combo`, `BeginTabBar`, `ProgressBar`.
-* **Fonts only from the role table:** Title `19.2pt` bold, Card Header `15.2pt` bold, Body/Controls `13.8pt` medium, Caption/Badge `11.5-12pt` semibold/medium. Native pixel size is `floorf(pt * 1.21f + 0.5f)`: Title 23, Card Header 18, Body 17, Caption 14 (12pt: 15). Script apps pass the pt value to `gfx.text` / `ui.label` (`19`, `15`, `13.8`, `11.5`, `12`).
+* **Native + ImGui:** `#include <nexvyn/nxn_os_ui.h>` and run every frame through the frame layer
+  (`nxn_os_frame_begin(&tok, fb_w, fb_h)` ... `nxn_os_frame_end()`, section 7): it owns the UI scale, the fonts, the
+  style and the minimum control sizes. Clear the framebuffer with `nxn_os_clear_color(tok)` (no constant `glClearColor`
+  behind a UI). No `io.FontGlobalScale`, no `SetWindowFontScale`, no fonts of the app's own (`AddFont*`,
+  `nxn_imgui_add_font`). Use the `nxn_os_*` widgets, never raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`,
+  `InputText`, `BeginTabBar`, `ProgressBar`. Every pixel size the app writes goes through `NXN_S()`.
+* **Fonts only from the role table:** Title `19.2pt` bold, Card Header `15.2pt` bold, Body/Controls `13.8pt` medium, Caption/Badge `11.5-12pt` semibold/medium. Native pixel size is `floorf(pt * 1.21f + 0.5f)` at scale 1: Title 23, Card Header 18, Body 17, Caption 14 (12pt: 15); the frame layer builds them (`nxn_os_text(NXN_OS_TEXT_TITLE, ...)`). Script apps pass the pt value to `gfx.text` / `ui.label` (`19`, `15`, `13.8`, `11.5`, `12`).
 * **Scripts:** colours come from `theme.*` (never `0xRRGGBB`, `"#RRGGBB"` or `rgb(...)` literals) and text sizes from the table above. Games and canvas/`g3d` areas are exempt: games build their own look.
 * **Metrics:** margin 20, card padding 16x13, card radius 10, button 30, segmented 28 (default; the showcase passes 32), switch 38x22, dropdown 28 (default; the showcase passes 30), text field 30, slider 22, badge 22 (min width 58), progress 6, row 30. Pass them explicitly when a script default differs (`ui.segmented` defaults to 28).
 
@@ -396,7 +404,52 @@ The goal is fixed: whatever language writes the app (Lua, JavaScript, Python, Na
 `nxui.*` / `nxn_nxui_*` draw into the OS renderer, which only the OS main thread may touch (it holds the GPU lock). A Native window runs on its own app thread with its own OpenGL context, so **NXUI never draws there**: `nxn_nxui_begin ... nxn_nxui_end` still builds the tree, runs layout, routes pad/touch input and answers the control calls, but paints nothing. `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED` in that case (`NXN_OK` when the frame was drawn); `nxn_nxui_end()` is unchanged. In a Native GL window draw the UI with Dear ImGui and `<nexvyn/nxn_os_ui.h>`, which renders the same visual language from the live OS tokens. `nxui.*` stays the structured-UI API of Lua, JavaScript and Python.
 
 ### 6. Design checker
-`python tools/design_check.py` scans `romfs/Applications/*.nxvapp`, `showcase/*`, `sdk/native/templates/*`, `sdk/native/examples/*` and `tools/tests/recipes/*`, prints PASS / WARN / FAIL per package and writes `qa/n2/design_report.json`. FAIL (breaks `tools/gate.sh --only design` and `tools/n2_gate.py`): ImGui without `nxn_os_ui.h` / `nxn_os_apply_style` / `nxn_os_clear_color`, a constant `glClearColor` without `nxn_os_clear_color`, `FontGlobalScale` other than 1.0, a literal font pixel size outside the role table. WARN: raw ImGui widgets, raw colour literals and off-table text sizes in scripts. Benchmark/scene packages (`sdk/native/examples`, non-`app` templates, a source marked `nxn-design: scene`) are capped at WARN. `tests/test_design_parity.py` checks the four SysMatrix Studio canaries (`showcase/com.nexvyn.parity.*`) against these numbers.
+`python tools/design_check.py` scans `romfs/Applications/*.nxvapp`, `showcase/*`, `sdk/native/templates/*`, `sdk/native/examples/*` and `tools/tests/recipes/*`, prints PASS / WARN / FAIL per package and writes `qa/n2/design_report.json`; `python tools/design_check.py <folder>` checks one project. FAIL (breaks `tools/gate.sh --only design` and `tools/n2_gate.py`) for a native ImGui app: no `nxn_os_ui.h`, no frame layer (`nxn_os_frame_begin`), no `nxn_os_clear_color` (or a constant `glClearColor` without it), `FontGlobalScale` / `SetWindowFontScale`, fonts added by the app, raw ImGui widgets that have an `nxn_os_*` counterpart, and pixel literals (2 or more) outside `NXN_S()` / `nxn_os_s()` in `SetNextItemWidth`, `PushItemWidth`, `Dummy`, `SameLine`, `SetCursorPos*`, `Indent`, `BeginChild`, `SetNextWindowSize`, `ImVec2(...)` and the size arguments of `nxn_os_*` widgets. Each finding names its fix. WARN: raw colour literals and off-table text sizes in scripts. Sample packages (`sdk/native/examples`, `tools/tests/recipes`) are capped at WARN; a game (`"category": "games"`) or a source marked `nxn-design: scene` is exempt from the widget, font and pixel rules. The same native rules run in `python tools/nxv.py check <project>` and `python tools/nxv_native check-design <project>` (exit 1), and `nxv_native package` lists them. `tests/test_design_parity.py` checks the four SysMatrix Studio canaries (`showcase/com.nexvyn.parity.*`) against these numbers; `tests/test_design_check.py` checks the rules on the counter-example `tests/fixtures/design_bad_native` and the reference screen `showcase/com.nexvyn.uikit.cpp`.
+
+### 7. Native frame layer (`nxn_os_ui.h`, required for ImGui apps)
+The frame layer makes the native kit hard to use wrong: the app writes no scale, font, style or minimum-size code.
+
+```cpp
+ImGui_ImplOpenGL3_Init("#version 330 core");          // once, after ImGui::CreateContext()
+// every frame, after feeding input:
+nxn_os_frame_begin(&tok, (int)fb_w, (int)fb_h);       // scale, fonts, style, ImGui::NewFrame, full-window root
+nxn_os_text(NXN_OS_TEXT_TITLE, nxn_tr("title"));
+nxn_os_row_begin();                                   // one line: equal height, vertically centred
+    nxn_os_select("mode", modes, 3, &mode, nxn_os_fill(0.5f));
+    nxn_os_toggle_button(nxn_tr("web"), &web);
+    nxn_os_icon_button("search", "search", "?");
+nxn_os_row_end();
+nxn_os_labeled(nxn_tr("context"), [&] { nxn_os_select("ctx", sizes, 3, &ctx); });
+nxn_os_switch_row(nxn_tr("stream"), &stream);
+nxn_os_frame_end();                                   // ImGui::Render()
+// clear with nxn_os_clear_color(tok), then ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData())
+```
+
+| Need | Call |
+| :--- | :--- |
+| Frame | `nxn_os_frame_begin(tok, fb_w, fb_h)` / `nxn_os_frame_begin_ex(..., NXN_OS_FRAME_NO_WINDOW \| NXN_OS_FRAME_NO_BACKEND)` / `nxn_os_frame_end()` |
+| UI scale | `nxn_os_scale()` (1.0 = the 1280 x 720 layout; from `nxn_ui_tokens.ui_scale`, the window surface scale of the interface size setting; 1.0 on older systems; screen height / 720 in a stand-alone .nro) |
+| Pixels | `NXN_S(px)` / `nxn_os_s(px)`, spacing `nxn_os_sp(NXN_OS_SP_XS..XXL)` (4 8 12 16 24 32), radius `nxn_os_radius(NXN_OS_R_CONTROL/FIELD/ROW/CARD)`, `nxn_os_gap(step)` |
+| Text | `nxn_os_text(role, s)`, `nxn_os_text_colored`, `nxn_os_text_wrapped`, `nxn_os_font(role)`, `nxn_os_push_role` (roles `NXN_OS_TEXT_TITLE / HEADER / BODY / CAPTION / STRONG / MONO`); an app text size option: `nxn_os_set_text_zoom(1.25f)` |
+| Layout | `nxn_os_row_begin(h, gap)` / `nxn_os_row_end()`, `nxn_os_fill(frac)` (share of the width left), `nxn_os_align_right(w)`, `nxn_os_labeled(label, widget)` / `nxn_os_labeled_begin`, `nxn_os_sidebar_begin(id, w)` / `_end`, cards `nxn_os_card_begin` |
+| Widgets | `nxn_os_button`, `nxn_os_icon_button` (44 px), `nxn_os_toggle_button` (clear ON / OFF), `nxn_os_select` (dropdown, 44 px menu rows), `nxn_os_input` / `nxn_os_input_multiline`, `nxn_os_switch` / `nxn_os_switch_row`, `nxn_os_slider` / `nxn_os_slider_int`, `nxn_os_segmented_tabs`, `nxn_os_rail_item`, `nxn_os_list_row`, `nxn_os_badge`, `nxn_os_progress_bar`, `nxn_os_kv_row` |
+| Icons | `nxn_os_use_icons(names, n)` (merged into the role fonts; a new name is added on first use), `nxn_os_icon(name)` |
+
+Widget size arguments are surface pixels (pass `NXN_S(x)`, `nxn_os_fill()` or `0` for the default); the kit never lets a
+control fall below its minimum and always draws its text with its role font. Without `nxn_os_frame_begin` every
+`nxn_os_*` widget behaves as before (scale 1, no minimum), so existing apps build and look unchanged. Reference screens:
+`showcase/com.nexvyn.uikit.cpp` (assistant window), `showcase/com.nexvyn.parity.cpp`; screenshots `qa/screens/uikit/`.
+
+### 8. Choosing a language
+* **UI-heavy tools, utilities and productivity apps** (chat clients, editors, settings, dashboards, store fronts) are
+  written in **Lua, JavaScript or Python with `nxui.*` / `ui.*`**: they draw through the OS renderer itself, with the
+  OS's FreeType text, focus navigation, OSK and themes, and need no build.
+* **Native C/C++** is for heavy computation: LLM inference, emulators, 3D engines, codecs, ports. Its UI uses the frame
+  layer above.
+* **Hybrid (heavy engine native, UI in script)** is the goal pattern but not available yet: a script app cannot load or
+  call native code today (no script-side native extension API; runtime providers are OS-internal and off by default).
+  Until it exists, an app that needs both is a native app with the frame layer, or a script app that uses an OS service
+  or a network API for the heavy part.
 
 | Function (Lua / JS / Python) | Native C/C++ (`nxn_nxui.h`) | Description & Return Value |
 |---|---|---|
@@ -408,9 +461,9 @@ The goal is fixed: whatever language writes the app (Lua, JavaScript, Python, Na
 | `nxui.card(id)` … `nxui.cardEnd()` | `nxn_nxui_card_begin(id)` / `nxn_nxui_card_end()` | Rounded surface card with system border and padding |
 | `nxui.scrollBegin(id, w, h[, scrollY])` → `newScrollY` … `nxui.scrollEnd()` | `nxn_nxui_scroll_begin(id, w, h, &scroll_y)` / `nxn_nxui_scroll_end()` | Clipped scrollable region with touch drag and wheel/stick support |
 | `nxui.canvasBegin(id, w, h)` → `x, y, w, h` … `nxui.canvasEnd()` | `nxn_nxui_canvas_begin(id, w, h, &x, &y, &cw, &ch)` / `nxn_nxui_canvas_end()` | Reserves a layout box for custom `gfx.*` or `g3d.*` drawing and returns its resolved screen rectangle (JS/Python: `{x, y, w, h}`) |
-| `nxui.label(id, text[, role])` | `nxn_nxui_label(id, text, role)` | Semantic text (`role`: `"body"` (0), `"title"` (1), `"hero"` (2), `"muted"` (3), `" small"` (4)) |
+| `nxui.label(id, text[, role])` | `nxn_nxui_label(id, text, role)` | Semantic text (Lua / JavaScript / Python `role`: `"body"` (default), `"title"`, `"headline"`, `"largeTitle"`, `"caption"`; any other string is `"body"`) |
 | `nxui.badge(id, text[, rgbaColor])` | `nxn_nxui_badge(id, text, rgba)` | Pill status badge |
-| `nxui.button(id, label[, variant])` → `clicked` | `nxn_nxui_button(id, label, variant)` | Semantic button (`variant`: `"primary"` (0), `"secondary"` (1), `"ghost"` (2), `"danger"` (3)); returns `true` when clicked or activated via controller focus |
+| `nxui.button(id, label[, variant])` → `clicked` | `nxn_nxui_button(id, label, variant)` | Semantic button (`variant`: `"default"` (default), `"primary"`, `"destructive"`, `"plain"`; any other string is `"default"`); returns `true` when clicked or activated via controller focus |
 | `nxui.toggle(id, checked)` → `newChecked, changed` | `nxn_nxui_toggle(id, &checked)` | Switch toggle (JS/Python: returns `newChecked` boolean) |
 | `nxui.slider(id, value, min, max)` → `newValue, changed` | `nxn_nxui_slider(id, &val, min, max)` | Horizontal slider (JS/Python: returns `newValue` number) |
 | `nxui.textfield(id, text[, placeholder])` → `newText, changed` | `nxn_nxui_textfield(id, buf, cap, placeholder)` | Single-line text input with automatic OSK invocation (JS/Python: returns `newText` string) |
@@ -442,7 +495,7 @@ function app.draw(w, h)
           notifications = nxui.toggle("notif_tgl", notifications)
         nxui.rowEnd()
       else
-        nxui.label("vol_lbl", TR("master_volume"), "muted")
+        nxui.label("vol_lbl", TR("master_volume"), "caption")
         volume = nxui.slider("vol_sld", volume, 0, 100)
       end
     nxui.cardEnd()

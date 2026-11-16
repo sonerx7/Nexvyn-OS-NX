@@ -1668,8 +1668,8 @@
       "category": "ai",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/nexbench.nxvapp",
-      "size": 23253181,
-      "sha256": "493a0728038eb6f484106b9e327a034f881360013287ad0d70026e0606566f6f",
+      "size": 23253070,
+      "sha256": "c339224d3c98a14a02318f96dad78327eb38333459d3f873be353027e3e1d05d",
       "minSdk": "1.10",
       "permissions": [
         "files",

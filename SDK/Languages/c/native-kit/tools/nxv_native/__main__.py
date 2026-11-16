@@ -8,6 +8,8 @@
   python tools/nxv_native package [DIR] [-o FILE] [--sign key.pem]    (-> build/<name>.nxvapp)
   python tools/nxv_native run [DIR] [--sd SDCARD_ROOT]  (copies into <sd>/NexvynOS/Applications, never starts anything)
   python tools/nxv_native check-win FILE.nxvmod   (identity, no TLS / text relocations, every import in the host set)
+  python tools/nxv_native check-design [DIR]      (the OS design rules of an ImGui app: frame layer, nxn_os_* widgets,
+                                                   no FontGlobalScale / own fonts / pixel literals; `package` runs it too)
 
 The app is a .nxvmod that runs in Nexvyn OS's process: app.json "mode" is "window" (default) or "fullscreen". The same
 build serves both; the user can switch while it runs.
@@ -485,8 +487,33 @@ def stage_bundle(d, windowed=False):
     return stage, app
 
 
+def design_findings(d):
+    """tools/design_check.py on the project's sources: [(severity, message)] ([] when the checker is not in the kit)."""
+    try:
+        import design_check  # noqa: E402  (tools/design_check.py)
+    except ImportError:
+        return []
+    return design_check.check_folder(d)
+
+
+def cmd_check_design(a):
+    d = project_dir(a.dir)
+    found = design_findings(d)
+    for sev, msg in found:
+        print("%-4s %s" % (sev, msg))
+    fails = sum(1 for sev, _ in found if sev == "FAIL")
+    print("design: %s (%d FAIL, %d WARN)" % ("FAIL" if fails else "ok", fails, len(found) - fails))
+    return 1 if fails else 0
+
+
 def cmd_package(a):
     d = project_dir(a.dir)
+    found = [m for sev, m in design_findings(d) if sev == "FAIL"]
+    if found:  # reported, not blocking: `check-design` (and `nxv check`) fail on it
+        print("design: %d problem(s) with the OS design rules, fix them before publishing (nxv-native check-design):"
+              % len(found))
+        for m in found[:8]:
+            print("  " + m)
     stage, app = stage_bundle(d, a.windowed)
     import nxvapp_pack  # noqa: E402
     out = os.path.abspath(a.output or os.path.join(d, "build", project_name(d) + ".nxvapp"))
@@ -570,6 +597,9 @@ def main():
     p.add_argument("files", nargs="+")
     p.add_argument("-o", "--output", required=True)
     p.set_defaults(fn=cmd_exports)
+    p = sub.add_parser("check-design", help="OS design rules of an ImGui app (frame layer, nxn_os_* widgets, NXN_S)")
+    p.add_argument("dir", nargs="?", default=".")
+    p.set_defaults(fn=cmd_check_design)
     p = sub.add_parser("package", help="wrap the built module + icon + app.json into <name>.nxvapp")
     p.add_argument("dir", nargs="?")
     p.add_argument("-o", "--output")
@@ -592,7 +622,9 @@ def main():
     a = ap.parse_args()
     if hasattr(a, "exclusive"):
         a.windowed = not a.exclusive  # in-process module by default; --exclusive is the hidden fallback (own .nro)
-    a.fn(a)
+    rc = a.fn(a)
+    if a.fn is cmd_check_design:
+        sys.exit(rc)
 
 
 if __name__ == "__main__":

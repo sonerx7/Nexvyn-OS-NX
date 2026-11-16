@@ -1,6 +1,9 @@
 // App template: a small real UI app in the look of Nexvyn OS.
-//   - colours, sizes and fonts come from the system (nxn_ui_tokens_get, nxn_ui_font_get): the app follows the theme,
-//     the accent colour and the accessibility settings, and updates when NXN_EVENT_THEME arrives
+//   - the frame layer of nxn_os_ui.h (nxn_os_frame_begin / nxn_os_frame_end) owns the UI scale, the fonts (text roles),
+//     the style and the minimum control sizes: the app follows the theme, the accent colour, the interface size and the
+//     accessibility settings without code of its own. Widgets are nxn_os_*; any pixel size goes through NXN_S().
+//   - UI-heavy tools are often better as a Lua / JavaScript / Python app (the OS renderer); a native app is for heavy
+//     work (see "Choosing a language" in the SDK guide)
 //   - every text is a key of lang/<code>.json (nxn_tr): add a language by adding a file; lang/en.json is required
 //   - a file picker (nxn_pick) and a setting kept between runs (nxn_fs_write / nxn_fs_read in the data folder)
 // Controls: touch or mouse, D-pad + A (the user's confirm button), B or the window's close button to leave.
@@ -14,7 +17,6 @@
 
 #include "imgui.h"
 #include "imgui_impl_opengl3.h"
-#include <nexvyn/nxn_imgui.h>
 #include <nexvyn/nxn_os_ui.h>
 
 static nxn_display* g_disp;
@@ -41,24 +43,13 @@ static void settings_save() {
     if (nxn_fs_write(NXN_DIR_DATA, "settings.txt", buf, (size_t)n) != NXN_OK) nxn_log(NXN_LOG_WARN, "settings not saved");
 }
 
-// ---- the OS look: ImGui colours and widgets from nxn_os_ui.h + live OS tokens
-static void apply_tokens() {
-    nxn_ui_tokens_get(&g_tok);
-    nxn_os_apply_style(g_tok);
-}
-
-static void setup_fonts() {
-    // the system font with the glyph ranges of the user's language (nxn_imgui.h): Turkish "ı ğ ş İ" and the other
-    // languages' letters are not drawn as "?" (ImGui itself loads Latin-1 only)
-    float sc = g_tok.text_scale > 0.5f ? g_tok.text_scale : 1.0f;
-    float px = (g_tok.font_body > 1.f ? g_tok.font_body : 16.f) * sc;
-    nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_MEDIUM, floorf(px + 0.5f), 0, NULL);
-}
+// ---- the OS look: live OS tokens (colours for the nxn_os_* widgets). The frame layer reads them too and builds the
+// fonts with the glyphs of the user's language (Turkish "ı ğ ş İ", Cyrillic, CJK ...): the app adds no fonts.
+static void apply_tokens() { nxn_ui_tokens_get(&g_tok); }
 
 // ---- input: the game pad and the first finger drive ImGui
 static void feed_imgui(float dt) {
     ImGuiIO& io = ImGui::GetIO();
-    io.DisplaySize = ImVec2((float)g_w, (float)g_h);
     io.DeltaTime = dt > 0.0001f ? dt : 0.0001f;
     io.AddKeyEvent(ImGuiKey_GamepadFaceDown, (g_in.actions & NXN_ACT_CONFIRM) != 0);
     io.AddKeyEvent(ImGuiKey_GamepadDpadLeft, (g_in.buttons & NXN_BTN_LEFT) != 0);
@@ -101,23 +92,21 @@ static void choose_file() {
 
 static bool draw_ui() {
     bool quit = false;
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGui::SetNextWindowSize(ImVec2((float)g_w, (float)g_h));
-    ImGui::Begin("##main", NULL, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
-    ImGui::SetWindowFontScale(g_tok.text_scale * (g_set.large_text ? 1.25f : 1.f));
+    nxn_os_set_text_zoom(g_set.large_text ? 1.25f : 1.f);  // the app's own "Large text": fonts rebuilt, never stretched
 
-    ImGui::TextColored(nxn_os_imvec4(g_tok.accent), "%s", nxn_tr("title"));
-    ImGui::SameLine();
+    nxn_os_row_begin();
+    nxn_os_text(NXN_OS_TEXT_TITLE, nxn_tr("title"));
     nxn_os_badge("Native OS Kit", g_tok.accent, g_tok);
+    nxn_os_row_end();
     nxn_os_separator(g_tok);
-    ImGui::Spacing();
+    nxn_os_gap(NXN_OS_SP_S);
 
     nxn_os_section_label(nxn_tr("files.heading"), g_tok);
     nxn_os_card_begin("files_card", g_tok);
     if (nxn_os_button(nxn_tr("files.open"), NXN_OS_BTN_PRIMARY, g_tok)) choose_file();
     if (g_path[0]) {
         nxn_os_separator(g_tok);
-        ImGui::TextWrapped("%s", g_path);
+        nxn_os_text_wrapped(NXN_OS_TEXT_BODY, g_path);
         if (g_file_size >= 0) {
             char num[32], text[96];
             snprintf(num, sizeof num, "%ld", g_file_size);
@@ -126,11 +115,11 @@ static bool draw_ui() {
                 nxn_os_kv_row("Size", text, g_tok, false);
         }
     } else {
-        ImGui::TextDisabled("%s", nxn_tr("files.none"));
+        nxn_os_text(NXN_OS_TEXT_CAPTION, nxn_tr("files.none"));
     }
     nxn_os_card_end();
 
-    ImGui::Spacing();
+    nxn_os_gap(NXN_OS_SP_S);
     nxn_os_section_label(nxn_tr("settings.heading"), g_tok);
     nxn_os_card_begin("settings_card", g_tok);
     {
@@ -141,11 +130,8 @@ static bool draw_ui() {
             nxn_os_kv_row(text, num, g_tok, true);
         }
     }
-    ImGui::AlignTextToFramePadding();
-    ImGui::TextUnformatted(nxn_tr("settings.large_text"));
-    ImGui::SameLine(ImGui::GetContentRegionAvail().x - 42.0f);
     bool large = g_set.large_text != 0;
-    if (nxn_os_switch("large_sw", &large, g_tok)) {
+    if (nxn_os_switch_row(nxn_tr("settings.large_text"), &large)) {
         g_set.large_text = large ? 1 : 0;
         settings_save();
     }
@@ -156,9 +142,8 @@ static bool draw_ui() {
     }
     nxn_os_card_end();
 
-    ImGui::Spacing();
+    nxn_os_gap(NXN_OS_SP_S);
     if (nxn_os_button(nxn_tr("quit"), NXN_OS_BTN_DESTRUCTIVE, g_tok)) quit = true;
-    ImGui::End();
     return quit;
 }
 
@@ -174,14 +159,12 @@ static int app_main(int, char**) {
     g_set.opened++;
     settings_save();
 
-    nxn_ui_tokens_get(&g_tok);
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     io.IniFilename = nullptr;
     io.LogFilename = nullptr;
     nxn_imgui_enable_gamepad(io);
-    setup_fonts();
     apply_tokens();
     ImGui_ImplOpenGL3_Init("#version 330 core");
 
@@ -205,10 +188,9 @@ static int app_main(int, char**) {
         uint64_t now = nxn_time_ns();
         feed_imgui((float)((now - last) / 1e9));
         last = now;
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui::NewFrame();
+        nxn_os_frame_begin(&g_tok, (int)g_w, (int)g_h);  // scale, fonts, style, ImGui frame, root window
         if (draw_ui()) quit = true;
-        ImGui::Render();
+        nxn_os_frame_end();                              // ImGui::Render()
         glViewport(0, 0, (GLsizei)g_w, (GLsizei)g_h);
         glDisable(GL_SCISSOR_TEST);
         ImVec4 bg = nxn_os_clear_color(g_tok);

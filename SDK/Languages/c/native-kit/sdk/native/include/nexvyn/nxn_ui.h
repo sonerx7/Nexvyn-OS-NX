@@ -43,6 +43,11 @@ typedef struct nxn_ui_tokens {
     float font_small, font_body, font_large, font_title; /* recommended text sizes (before the user's text-size scale) */
     float text_scale;         /* Settings > Accessibility text size (0.85 .. 1.3); multiply the font sizes by it */
     uint32_t bold_text;       /* 1: the user wants bold text */
+    /* Added after ABI v1 (0 on systems before it): surface pixels per OS UI point of the app's window. 1.0 at the default
+     * interface size (1280 x 720 handheld, 1920 x 1080 TV at 67 %), 1.5 when the user picks 150 % or a full-screen TV
+     * surface shows the 1280 x 720 layout. Multiply the sizes above by it (nxn_os_ui.h's frame layer does). It changes
+     * with the window's surface (a NXN_EVENT_RESIZE follows); it is not a look change (no NXN_EVENT_THEME for it). */
+    float ui_scale;
 } nxn_ui_tokens;
 
 /* Fills min(out->size, sizeof(nxn_ui_tokens)) bytes from a snapshot the system refreshes when the look changes.
