@@ -1,0 +1,38 @@
+{
+  "id": "kanban",
+  "name": {
+    "en": "Kanban",
+    "tr": "Görev Panosu",
+    "de": "Kanban",
+    "fr": "Kanban",
+    "es": "Kanban",
+    "ja": "かんばん",
+    "zh": "看板",
+    "ko": "칸반"
+  },
+  "description": {
+    "en": "Drag-and-drop boards with card checklists, due dates, labels, a filter, Markdown export and backups.",
+    "tr": "Kart kontrol listeleri, son tarihler, etiketler, filtre, Markdown dışa aktarma ve yedeklemeli sürükle-bırak panolar.",
+    "de": "Drag-and-drop-Boards mit Checklisten, Fälligkeiten, Labels, Filter, Markdown-Export und Sicherung.",
+    "fr": "Des tableaux glisser-déposer avec listes de contrôle, échéances, étiquettes, filtre, export Markdown et sauvegardes.",
+    "es": "Tableros de arrastrar y soltar con listas en las tarjetas, fechas, etiquetas, filtro, exportación Markdown y copias.",
+    "ja": "カードのチェックリスト、期日、ラベル、絞り込み、Markdown 書き出し、バックアップつきのドラッグ＆ドロップボード。",
+    "zh": "拖放看板：卡片清单、截止日期、标签、筛选、Markdown 导出和备份。",
+    "ko": "카드 체크리스트, 마감일, 라벨, 필터, Markdown 내보내기, 백업이 있는 드래그 앤 드롭 보드."
+  },
+  "category": "office",
+  "version": "1.1.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 980,
+    "height": 600,
+    "resizable": false
+  },
+  "gamepad": false,
+  "permissions": [],
+  "minSdk": "1.0",
+  "targetSdk": "1.13"
+}

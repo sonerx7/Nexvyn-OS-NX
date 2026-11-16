@@ -483,6 +483,7 @@
         "en": "v1.2.0: LM Studio-style layout with icon rail, model picker bar, conversation list and a collapsible settings panel. Built-in AI Model Store grows to 29 verified GGUF models with speed tags and memory-fit badges. Live web knowledge for weather, time, currency and web search with sources. Settings for default city and search behaviour. Stability and Memory Guard improvements.",
         "tr": "v1.2.0: Simge çubuğu, model seçici, sohbet listesi ve katlanabilir ayar paneli olan LM Studio tarzı düzen. Dahili AI Model Mağazası hız etiketleri ve bellek uyumu rozetleriyle 29 doğrulanmış GGUF modele yükseldi. Hava durumu, saat, döviz ve kaynaklı web araması için canlı web bilgisi. Varsayılan şehir ve arama davranışı ayarları. Kararlılık ve Bellek Koruması iyileştirmeleri."
       },
+      "minNative": "1.2",
       "kind": "app",
       "tech": "native",
       "features": [
@@ -961,22 +962,22 @@
       "version": "1.1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/budget.nxvapp",
-      "size": 54887,
-      "sha256": "f2fee5b1791ff196ae8f784c7f9a5176f7a242b574d7ad3d31be68a8edc407dc",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/budget.nxvapp",
+      "size": 54891,
+      "sha256": "6f4d5cbd71e82a00ff3ee9f5bdde360e3c541ac1c3459f541f888fc7d7663a46",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/budget/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/budget",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/office/budget",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Budgets, repeats and monthly charts",
@@ -1034,12 +1035,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/contacts/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/contacts/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/contacts/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/contacts/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/contacts/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/contacts/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/contacts/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/contacts/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -1091,12 +1092,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/dictionary/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/dictionary/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/dictionary/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/dictionary/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/dictionary/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/dictionary/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/dictionary/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/dictionary/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -1150,21 +1151,21 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/flowmap.nxvapp",
-      "size": 72747,
-      "sha256": "b94b0fa3c19433e0a9b188be2658316305d34a072a5bea2827f0bbbd7ac24d9e",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/flowmap.nxvapp",
+      "size": 72750,
+      "sha256": "20618a7d85000f013d93a99a6c7cbae65ee213be106fb0a1a45559290078fa8b",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/flowmap/screenshots/4.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/screenshots/4.jpg"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/flowmap",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/office/flowmap",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Flowcharts and mind maps",
@@ -1217,22 +1218,22 @@
       "version": "1.1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/journal.nxvapp",
-      "size": 55156,
-      "sha256": "3e60b176f99eac3981dd388a158ea139f50baf0b1315c703435c2999a69eb736",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/journal.nxvapp",
+      "size": 55159,
+      "sha256": "8068f55abe23f41307599a1a02ba0cfd6dcea931e19069e5648aeffa639d64d9",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/journal/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/journal",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/office/journal",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Daily lines, moods, insights, memories",
@@ -1292,20 +1293,20 @@
       "version": "1.1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/kanban.nxvapp",
-      "size": 49784,
-      "sha256": "7a82de02d44249dae6ea178bc826229c8d70f41411282e20e0982ffd21385c3d",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/kanban.nxvapp",
+      "size": 49787,
+      "sha256": "5a7afb6b900dfa1313dedfadd1817784e21c1bd46969f039a7b8660f13f21e21",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/kanban/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/kanban",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/office/kanban",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Boards, checklists and drag-and-drop",
@@ -1363,12 +1364,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/slides/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/slides/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/slides/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/slides/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/slides/screenshots/3.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/slides/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/slides/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/slides/screenshots/3.jpg"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -1420,12 +1421,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/sheets/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/sheets/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/sheets/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/sheets/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/sheets/screenshots/3.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/sheets/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/sheets/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/sheets/screenshots/3.jpg"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -1477,12 +1478,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/stickies/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/stickies/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/stickies/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/stickies/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/stickies/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/stickies/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/stickies/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/stickies/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -1536,20 +1537,20 @@
       "version": "1.1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/todo.nxvapp",
-      "size": 53058,
-      "sha256": "4f980d7518c02b0911c18584d7e843effef7a0ca6de8846c84f8574626597175",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/todo.nxvapp",
+      "size": 53061,
+      "sha256": "258aa8f8feded05fb84a712a5ff8d91809a2b2ab1356756b54b065673023fa13",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/todo/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/productivity/todo",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/office/todo",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Projects, steps, repeats and due dates",
@@ -1607,12 +1608,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "office",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/writer/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/writer/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/writer/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/writer/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/productivity/writer/screenshots/3.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/writer/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/writer/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/writer/screenshots/3.jpg"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -1638,99 +1639,6 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
-        }
-      ]
-    },
-    {
-      "id": "system.nexbench",
-      "name": {
-        "en": "Nexy Benchmark 2",
-        "tr": "Nexy Benchmark 2",
-        "de": "Nexy Benchmark 2",
-        "fr": "Nexy Benchmark 2",
-        "es": "Nexy Benchmark 2",
-        "ja": "Nexy Benchmark 2",
-        "ko": "Nexy Benchmark 2",
-        "zh": "Nexy Benchmark 2"
-      },
-      "description": {
-        "en": "Nexy Benchmark 2 measures how your console performs. The result appears in a calm Nexvyn OS window with a sidebar, a detail panel on wide windows and a status bar. The window scales from handheld to docked size and goes full screen only while a test runs.\n\n• Full test in about a minute: CPU single-core, CPU multi-core, memory, storage, 2D graphics, two 3D scenes (Kepler Reactor and Kepler Cryo Bay) and a platform frameworks check\n• Thousands-scale scores with a tier badge, a radar chart and per-stage bars; the detail panel explains the selected stage and shows its recent results\n• Physically based 3D scenes with soft shadows, image-based lighting, ambient occlusion, reflections and bloom\n• History with a bar chart of past runs and a side-by-side comparison of any two runs\n• Run any single category by hand from the Benchmark page\n• 3D Explore: fly around Kepler Reactor, Kepler Cryo Bay and Kepler Station with live fps and polygon count\n• System page with capability probes and runtime information\n• Status bar with live fps, memory use, console mode and battery\n• Fixed 1280x720 rendering in every test, so docked and handheld scores are comparable; each run is tagged Docked or Handheld\n• Gamepad, touch and keyboard/mouse support, 8 languages, light and dark themes",
-        "tr": "Nexy Benchmark 2, konsolunuzun performansını ölçer. Sonuç; kenar çubuğu, geniş pencerelerde ayrıntı paneli ve durum çubuğu olan sakin bir Nexvyn OS penceresinde gösterilir. Pencere portatif boyuttan dock boyutuna kadar ölçeklenir ve yalnızca test çalışırken tam ekrana geçer.\n\n• Yaklaşık bir dakikalık tam test: CPU tek çekirdek, CPU çok çekirdek, bellek, depolama, 2D grafik, iki 3D sahne (Kepler Reactor ve Kepler Cryo Bay) ve platform altyapı kontrolü\n• Seviye rozeti, radar grafiği ve aşama çubuklarıyla binler ölçeğinde puanlar; ayrıntı paneli seçili aşamayı açıklar ve son sonuçlarını gösterir\n• Yumuşak gölgeler, görüntü tabanlı aydınlatma, ortam tıkanması, yansımalar ve bloom içeren fiziksel tabanlı 3D sahneler\n• Geçmiş çalıştırmaların çubuk grafiği ve iki çalıştırmanın yan yana karşılaştırması\n• Benchmark sayfasından istediğiniz tek kategoriyi elle çalıştırma\n• 3D Keşif: Kepler Reactor, Kepler Cryo Bay ve Kepler Station sahnelerinde canlı fps ve poligon sayısıyla gezinme\n• Yetenek sınamaları ve çalışma zamanı bilgisi veren Sistem sayfası\n• Canlı fps, bellek kullanımı, konsol modu ve pil gösteren durum çubuğu\n• Her testte sabit 1280x720 çizim; dock ve portatif puanlar karşılaştırılabilir, her çalıştırma Dock veya Portatif olarak etiketlenir\n• Gamepad, dokunmatik ve klavye/fare desteği, 8 dil, açık ve koyu tema",
-        "de": "Nexy Benchmark 2 misst die Leistung Ihrer Konsole. Das Ergebnis erscheint in einem ruhigen Nexvyn-OS-Fenster mit Seitenleiste, Detailbereich bei breiten Fenstern und Statusleiste. Das Fenster skaliert von Handheld- bis Dock-Größe und wechselt nur während eines Tests in den Vollbildmodus.\n\n• Vollständiger Test in etwa einer Minute: CPU Single-Core, CPU Multi-Core, Speicher, Datenträger, 2D-Grafik, zwei 3D-Szenen (Kepler Reactor und Kepler Cryo Bay) und ein Plattform-Check\n• Punkte im Tausenderbereich mit Stufen-Badge, Radardiagramm und Balken je Test; der Detailbereich erklärt den gewählten Test und zeigt die letzten Ergebnisse\n• Physikalisch basierte 3D-Szenen mit weichen Schatten, bildbasierter Beleuchtung, Ambient Occlusion, Reflexionen und Bloom\n• Verlauf mit Balkendiagramm früherer Läufe und direktem Vergleich zweier Läufe\n• Einzelne Kategorien lassen sich auf der Seite Benchmark manuell starten\n• 3D Explore: Kepler Reactor, Kepler Cryo Bay und Kepler Station frei erkunden, mit Live-fps und Polygonzahl\n• Seite System mit Funktionsprüfungen und Laufzeitinfos\n• Statusleiste mit Live-fps, Speichernutzung, Konsolenmodus und Akku\n• Feste Auflösung 1280x720 in jedem Test, damit Dock- und Handheld-Werte vergleichbar sind; jeder Lauf trägt das Badge Dock oder Handheld\n• Gamepad-, Touch- und Tastatur/Maus-Bedienung, 8 Sprachen, helles und dunkles Design",
-        "fr": "Nexy Benchmark 2 mesure les performances de votre console. Le résultat s'affiche dans une fenêtre Nexvyn OS calme, avec barre latérale, panneau de détails sur les fenêtres larges et barre d'état. La fenêtre s'adapte du format portable au format dock et ne passe en plein écran que pendant un test.\n\n• Test complet en environ une minute : CPU mono-cœur, CPU multicœur, mémoire, stockage, graphismes 2D, deux scènes 3D (Kepler Reactor et Kepler Cryo Bay) et vérification des services de la plateforme\n• Scores en milliers avec badge de niveau, graphique radar et barres par étape ; le panneau de détails explique l'étape choisie et montre ses derniers résultats\n• Scènes 3D à rendu physique avec ombres douces, éclairage par image, occlusion ambiante, réflexions et bloom\n• Historique avec diagramme en barres des exécutions passées et comparaison côte à côte de deux exécutions\n• Lancement manuel d'une seule catégorie depuis la page Benchmark\n• 3D Explore : parcourez Kepler Reactor, Kepler Cryo Bay et Kepler Station avec fps et nombre de polygones en direct\n• Page Système avec sondes de capacités et informations d'exécution\n• Barre d'état avec fps en direct, mémoire utilisée, mode de la console et batterie\n• Rendu fixe en 1280x720 pour chaque test : scores sur dock et en portable comparables ; chaque exécution est étiquetée Dock ou Portable\n• Manette, tactile et clavier/souris, 8 langues, thèmes clair et sombre",
-        "es": "Nexy Benchmark 2 mide el rendimiento de tu consola. El resultado se muestra en una ventana tranquila de Nexvyn OS con barra lateral, panel de detalles en ventanas anchas y barra de estado. La ventana se adapta del tamaño portátil al de dock y solo pasa a pantalla completa mientras se ejecuta una prueba.\n\n• Prueba completa en aproximadamente un minuto: CPU de un núcleo, CPU multinúcleo, memoria, almacenamiento, gráficos 2D, dos escenas 3D (Kepler Reactor y Kepler Cryo Bay) y comprobación de servicios de la plataforma\n• Puntuaciones en miles con insignia de nivel, gráfico radial y barras por fase; el panel de detalles explica la fase elegida y muestra sus últimos resultados\n• Escenas 3D de render físico con sombras suaves, iluminación basada en imagen, oclusión ambiental, reflejos y bloom\n• Historial con gráfico de barras de ejecuciones anteriores y comparación lado a lado de dos ejecuciones\n• Ejecuta a mano una sola categoría desde la página Benchmark\n• 3D Explore: recorre Kepler Reactor, Kepler Cryo Bay y Kepler Station con fps y polígonos en vivo\n• Página Sistema con sondas de capacidades e información de ejecución\n• Barra de estado con fps en vivo, memoria en uso, modo de la consola y batería\n• Render fijo a 1280x720 en cada prueba: puntuaciones en dock y portátil comparables; cada ejecución se etiqueta como Dock o Portátil\n• Mando, táctil y teclado/ratón, 8 idiomas, temas claro y oscuro",
-        "ja": "Nexy Benchmark 2 は本体の性能を計測します。結果は、サイドバー、広いウィンドウで表示される詳細パネル、ステータスバーを備えた落ち着いた Nexvyn OS ウィンドウに表示されます。ウィンドウは携帯サイズからドックサイズまで拡縮し、テスト実行中だけ全画面になります。\n\n• 約1分のフルテスト：CPU シングルコア、CPU マルチコア、メモリ、ストレージ、2D グラフィックス、2つの 3D シーン（Kepler Reactor と Kepler Cryo Bay）、プラットフォーム機能チェック\n• 千単位のスコア、ティアバッジ、レーダーチャート、ステージ別バー。詳細パネルが選択したステージを説明し、最近の結果を表示\n• ソフトシャドウ、イメージベースドライティング、アンビエントオクルージョン、反射、ブルームを備えた物理ベースの 3D シーン\n• 過去の実行を棒グラフで表示する履歴と、2つの実行の並べて比較\n• Benchmark ページから任意のカテゴリを手動で単独実行\n• 3D Explore：Kepler Reactor、Kepler Cryo Bay、Kepler Station を fps とポリゴン数のライブ表示付きで自由に見て回れます\n• 機能プローブとランタイム情報を表示するシステムページ\n• リアルタイムの fps、メモリ使用量、本体モード、バッテリーを表示するステータスバー\n• すべてのテストを固定の 1280x720 で描画し、ドックと携帯のスコアを比較可能に。各実行に「ドック」または「携帯」のラベルを付与\n• コントローラー、タッチ、キーボード/マウス対応、8言語、ライト/ダークテーマ",
-        "zh": "Nexy Benchmark 2 用于测量主机性能。结果显示在平和的 Nexvyn OS 窗口中，窗口带有侧边栏、宽窗口下的详情面板和状态栏，可从掌机尺寸缩放到底座尺寸，仅在测试运行期间进入全屏。\n\n• 约一分钟的完整测试：CPU 单核、CPU 多核、内存、存储、2D 图形、两个 3D 场景（Kepler Reactor 与 Kepler Cryo Bay）以及平台功能检查\n• 千级分制评分，附等级徽章、雷达图和各阶段进度条；详情面板解释所选阶段并显示最近结果\n• 基于物理渲染的 3D 场景，含柔和阴影、基于图像的光照、环境光遮蔽、反射和泛光\n• 历史记录以柱状图显示过往成绩，并可并排对比任意两次测试\n• 可在 Benchmark 页面手动单独运行任意类别\n• 3D Explore：自由浏览 Kepler Reactor、Kepler Cryo Bay 和 Kepler Station，实时显示 fps 与多边形数\n• 系统页面提供功能探测与运行时信息\n• 状态栏显示实时 fps、内存占用、主机模式和电量\n• 所有测试均以固定 1280x720 渲染，底座与掌机得分可比较；每次测试标注底座或掌机\n• 支持手柄、触控、键盘/鼠标，8 种语言，浅色与深色主题",
-        "ko": "Nexy Benchmark 2는 콘솔 성능을 측정합니다. 결과는 사이드바, 넓은 창의 상세 패널, 상태 표시줄이 있는 차분한 Nexvyn OS 창에 표시됩니다. 창은 휴대 모드 크기부터 독 크기까지 크기가 조절되며, 테스트가 실행되는 동안에만 전체 화면으로 전환됩니다.\n\n• 약 1분의 전체 테스트: CPU 싱글코어, CPU 멀티코어, 메모리, 저장소, 2D 그래픽, 두 개의 3D 씬(Kepler Reactor, Kepler Cryo Bay), 플랫폼 기능 점검\n• 천 단위 점수와 등급 배지, 레이더 차트, 단계별 막대. 상세 패널이 선택한 단계를 설명하고 최근 결과를 표시\n• 소프트 섀도, 이미지 기반 조명, 앰비언트 오클루전, 반사, 블룸을 갖춘 물리 기반 3D 씬\n• 지난 실행을 막대 차트로 보여 주는 기록과 두 실행의 나란히 비교\n• Benchmark 페이지에서 원하는 카테고리만 수동으로 실행\n• 3D Explore: Kepler Reactor, Kepler Cryo Bay, Kepler Station을 실시간 fps와 폴리곤 수와 함께 자유롭게 둘러보기\n• 기능 점검과 런타임 정보를 보여 주는 시스템 페이지\n• 실시간 fps, 메모리 사용량, 콘솔 모드, 배터리를 보여 주는 상태 표시줄\n• 모든 테스트를 1280x720 고정 해상도로 렌더링하여 독/휴대 점수를 비교할 수 있으며, 각 실행에 독 또는 휴대 라벨이 붙습니다\n• 게임패드, 터치, 키보드/마우스 지원, 8개 언어, 라이트·다크 테마"
-      },
-      "version": "2.3.1",
-      "author": "sonerx7",
-      "category": "ai",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/nexbench.nxvapp",
-      "size": 23253070,
-      "sha256": "c339224d3c98a14a02318f96dad78327eb38333459d3f873be353027e3e1d05d",
-      "minSdk": "1.10",
-      "permissions": [
-        "files",
-        "notifications"
-      ],
-      "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/screenshots/3.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/screenshots/4.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/ai/nexbench/screenshots/5.png"
-      ],
-      "featured": false,
-      "license": "MIT",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/ai/nexbench",
-      "targetSdk": "1.13",
-      "subtitle": {
-        "en": "CPU, memory, storage, 2D and 3D benchmark",
-        "tr": "CPU, bellek, depolama, 2D ve 3D testi",
-        "de": "CPU-, Speicher-, 2D- und 3D-Benchmark",
-        "fr": "Benchmark CPU, mémoire, stockage, 2D, 3D",
-        "es": "Benchmark de CPU, memoria, disco, 2D y 3D",
-        "ja": "CPU・メモリ・ストレージ・2D・3Dを計測",
-        "zh": "CPU、内存、存储、2D 与 3D 基准测试",
-        "ko": "CPU, 메모리, 저장소, 2D·3D 벤치마크"
-      },
-      "changelog": {
-        "en": "v2.3.1: Redesigned window with a left sidebar, a detail panel on wide windows and a status bar; it scales from handheld to docked size. Benchmark renders at a fixed 1280x720 so docked and handheld scores are comparable; runs are tagged Docked/Handheld and history compare shows the mode.",
-        "tr": "v2.3.1: Sol kenar çubuğu, geniş pencerelerde ayrıntı paneli ve durum çubuğu olan yenilenmiş pencere; portatif boyuttan dock boyutuna ölçeklenir. Benchmark sabit 1280x720'de çizilir; dock ve portatif puanlar karşılaştırılabilir. Çalıştırmalar Dock/Portatif olarak etiketlenir; geçmiş karşılaştırması modu gösterir."
-      },
-      "kind": "app",
-      "tech": "native",
-      "features": [
-        "3d",
-        "offline",
-        "touch",
-        "controller",
-        "keyboard"
-      ],
-      "added": "2026-11-15",
-      "updated": "2026-11-16",
-      "history": [
-        {
-          "version": "2.3.1",
-          "date": "2026-11-16"
-        },
-        {
-          "version": "2.3.0",
-          "date": "2026-11-16"
-        },
-        {
-          "version": "2.2.1",
-          "date": "2026-11-15"
-        },
-        {
-          "version": "2.2.0",
-          "date": "2026-11-15"
-        },
-        {
-          "version": "2.1.0",
-          "date": "2026-11-15"
         }
       ]
     },
@@ -5084,21 +4992,21 @@
       "version": "1.0.0",
       "author": "",
       "category": "system",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/nexbench.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench-n2/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench-n2/nexbench-n2.nxvapp",
       "size": 4295800,
       "sha256": "bd03093a8342707b80b1e4d6847e5f0dca16f8924e81a9b79bdfc020764568d6",
       "minSdk": "1.13",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/3.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/nexbench/screenshots/4.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench-n2/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench-n2/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench-n2/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench-n2/screenshots/4.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/nexbench",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/system/nexbench-n2",
       "runtime": "lua",
       "targetSdk": "1.13",
       "subtitle": {
@@ -5120,6 +5028,104 @@
         {
           "version": "1.0.0",
           "date": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "system.nexbench",
+      "name": {
+        "en": "Nexy Benchmark 2",
+        "tr": "Nexy Benchmark 2",
+        "de": "Nexy Benchmark 2",
+        "fr": "Nexy Benchmark 2",
+        "es": "Nexy Benchmark 2",
+        "ja": "Nexy Benchmark 2",
+        "ko": "Nexy Benchmark 2",
+        "zh": "Nexy Benchmark 2"
+      },
+      "description": {
+        "en": "Nexy Benchmark 2 measures how your console performs. The result appears in a calm Nexvyn OS window with a sidebar, a detail panel on wide windows and a status bar. The window scales from handheld to docked size and goes full screen only while a test runs.\n\n• Full test in about a minute: CPU single-core, CPU multi-core, memory, storage, 2D graphics, two 3D scenes (Kepler Reactor and Kepler Cryo Bay) and a platform frameworks check\n• Thousands-scale scores with a tier badge, a radar chart and per-stage bars; the detail panel explains the selected stage and shows its recent results\n• Physically based 3D scenes with soft shadows, image-based lighting, ambient occlusion, reflections and bloom\n• History with a bar chart of past runs and a side-by-side comparison of any two runs\n• Run any single category by hand from the Benchmark page\n• 3D Explore: fly around Kepler Reactor, Kepler Cryo Bay and Kepler Station with live fps and polygon count\n• System page with capability probes and runtime information\n• Status bar with live fps, memory use, console mode and battery\n• Fixed 1280x720 rendering in every test, so docked and handheld scores are comparable; each run is tagged Docked or Handheld\n• Gamepad, touch and keyboard/mouse support, 8 languages, light and dark themes",
+        "tr": "Nexy Benchmark 2, konsolunuzun performansını ölçer. Sonuç; kenar çubuğu, geniş pencerelerde ayrıntı paneli ve durum çubuğu olan sakin bir Nexvyn OS penceresinde gösterilir. Pencere portatif boyuttan dock boyutuna kadar ölçeklenir ve yalnızca test çalışırken tam ekrana geçer.\n\n• Yaklaşık bir dakikalık tam test: CPU tek çekirdek, CPU çok çekirdek, bellek, depolama, 2D grafik, iki 3D sahne (Kepler Reactor ve Kepler Cryo Bay) ve platform altyapı kontrolü\n• Seviye rozeti, radar grafiği ve aşama çubuklarıyla binler ölçeğinde puanlar; ayrıntı paneli seçili aşamayı açıklar ve son sonuçlarını gösterir\n• Yumuşak gölgeler, görüntü tabanlı aydınlatma, ortam tıkanması, yansımalar ve bloom içeren fiziksel tabanlı 3D sahneler\n• Geçmiş çalıştırmaların çubuk grafiği ve iki çalıştırmanın yan yana karşılaştırması\n• Benchmark sayfasından istediğiniz tek kategoriyi elle çalıştırma\n• 3D Keşif: Kepler Reactor, Kepler Cryo Bay ve Kepler Station sahnelerinde canlı fps ve poligon sayısıyla gezinme\n• Yetenek sınamaları ve çalışma zamanı bilgisi veren Sistem sayfası\n• Canlı fps, bellek kullanımı, konsol modu ve pil gösteren durum çubuğu\n• Her testte sabit 1280x720 çizim; dock ve portatif puanlar karşılaştırılabilir, her çalıştırma Dock veya Portatif olarak etiketlenir\n• Gamepad, dokunmatik ve klavye/fare desteği, 8 dil, açık ve koyu tema",
+        "de": "Nexy Benchmark 2 misst die Leistung Ihrer Konsole. Das Ergebnis erscheint in einem ruhigen Nexvyn-OS-Fenster mit Seitenleiste, Detailbereich bei breiten Fenstern und Statusleiste. Das Fenster skaliert von Handheld- bis Dock-Größe und wechselt nur während eines Tests in den Vollbildmodus.\n\n• Vollständiger Test in etwa einer Minute: CPU Single-Core, CPU Multi-Core, Speicher, Datenträger, 2D-Grafik, zwei 3D-Szenen (Kepler Reactor und Kepler Cryo Bay) und ein Plattform-Check\n• Punkte im Tausenderbereich mit Stufen-Badge, Radardiagramm und Balken je Test; der Detailbereich erklärt den gewählten Test und zeigt die letzten Ergebnisse\n• Physikalisch basierte 3D-Szenen mit weichen Schatten, bildbasierter Beleuchtung, Ambient Occlusion, Reflexionen und Bloom\n• Verlauf mit Balkendiagramm früherer Läufe und direktem Vergleich zweier Läufe\n• Einzelne Kategorien lassen sich auf der Seite Benchmark manuell starten\n• 3D Explore: Kepler Reactor, Kepler Cryo Bay und Kepler Station frei erkunden, mit Live-fps und Polygonzahl\n• Seite System mit Funktionsprüfungen und Laufzeitinfos\n• Statusleiste mit Live-fps, Speichernutzung, Konsolenmodus und Akku\n• Feste Auflösung 1280x720 in jedem Test, damit Dock- und Handheld-Werte vergleichbar sind; jeder Lauf trägt das Badge Dock oder Handheld\n• Gamepad-, Touch- und Tastatur/Maus-Bedienung, 8 Sprachen, helles und dunkles Design",
+        "fr": "Nexy Benchmark 2 mesure les performances de votre console. Le résultat s'affiche dans une fenêtre Nexvyn OS calme, avec barre latérale, panneau de détails sur les fenêtres larges et barre d'état. La fenêtre s'adapte du format portable au format dock et ne passe en plein écran que pendant un test.\n\n• Test complet en environ une minute : CPU mono-cœur, CPU multicœur, mémoire, stockage, graphismes 2D, deux scènes 3D (Kepler Reactor et Kepler Cryo Bay) et vérification des services de la plateforme\n• Scores en milliers avec badge de niveau, graphique radar et barres par étape ; le panneau de détails explique l'étape choisie et montre ses derniers résultats\n• Scènes 3D à rendu physique avec ombres douces, éclairage par image, occlusion ambiante, réflexions et bloom\n• Historique avec diagramme en barres des exécutions passées et comparaison côte à côte de deux exécutions\n• Lancement manuel d'une seule catégorie depuis la page Benchmark\n• 3D Explore : parcourez Kepler Reactor, Kepler Cryo Bay et Kepler Station avec fps et nombre de polygones en direct\n• Page Système avec sondes de capacités et informations d'exécution\n• Barre d'état avec fps en direct, mémoire utilisée, mode de la console et batterie\n• Rendu fixe en 1280x720 pour chaque test : scores sur dock et en portable comparables ; chaque exécution est étiquetée Dock ou Portable\n• Manette, tactile et clavier/souris, 8 langues, thèmes clair et sombre",
+        "es": "Nexy Benchmark 2 mide el rendimiento de tu consola. El resultado se muestra en una ventana tranquila de Nexvyn OS con barra lateral, panel de detalles en ventanas anchas y barra de estado. La ventana se adapta del tamaño portátil al de dock y solo pasa a pantalla completa mientras se ejecuta una prueba.\n\n• Prueba completa en aproximadamente un minuto: CPU de un núcleo, CPU multinúcleo, memoria, almacenamiento, gráficos 2D, dos escenas 3D (Kepler Reactor y Kepler Cryo Bay) y comprobación de servicios de la plataforma\n• Puntuaciones en miles con insignia de nivel, gráfico radial y barras por fase; el panel de detalles explica la fase elegida y muestra sus últimos resultados\n• Escenas 3D de render físico con sombras suaves, iluminación basada en imagen, oclusión ambiental, reflejos y bloom\n• Historial con gráfico de barras de ejecuciones anteriores y comparación lado a lado de dos ejecuciones\n• Ejecuta a mano una sola categoría desde la página Benchmark\n• 3D Explore: recorre Kepler Reactor, Kepler Cryo Bay y Kepler Station con fps y polígonos en vivo\n• Página Sistema con sondas de capacidades e información de ejecución\n• Barra de estado con fps en vivo, memoria en uso, modo de la consola y batería\n• Render fijo a 1280x720 en cada prueba: puntuaciones en dock y portátil comparables; cada ejecución se etiqueta como Dock o Portátil\n• Mando, táctil y teclado/ratón, 8 idiomas, temas claro y oscuro",
+        "ja": "Nexy Benchmark 2 は本体の性能を計測します。結果は、サイドバー、広いウィンドウで表示される詳細パネル、ステータスバーを備えた落ち着いた Nexvyn OS ウィンドウに表示されます。ウィンドウは携帯サイズからドックサイズまで拡縮し、テスト実行中だけ全画面になります。\n\n• 約1分のフルテスト：CPU シングルコア、CPU マルチコア、メモリ、ストレージ、2D グラフィックス、2つの 3D シーン（Kepler Reactor と Kepler Cryo Bay）、プラットフォーム機能チェック\n• 千単位のスコア、ティアバッジ、レーダーチャート、ステージ別バー。詳細パネルが選択したステージを説明し、最近の結果を表示\n• ソフトシャドウ、イメージベースドライティング、アンビエントオクルージョン、反射、ブルームを備えた物理ベースの 3D シーン\n• 過去の実行を棒グラフで表示する履歴と、2つの実行の並べて比較\n• Benchmark ページから任意のカテゴリを手動で単独実行\n• 3D Explore：Kepler Reactor、Kepler Cryo Bay、Kepler Station を fps とポリゴン数のライブ表示付きで自由に見て回れます\n• 機能プローブとランタイム情報を表示するシステムページ\n• リアルタイムの fps、メモリ使用量、本体モード、バッテリーを表示するステータスバー\n• すべてのテストを固定の 1280x720 で描画し、ドックと携帯のスコアを比較可能に。各実行に「ドック」または「携帯」のラベルを付与\n• コントローラー、タッチ、キーボード/マウス対応、8言語、ライト/ダークテーマ",
+        "zh": "Nexy Benchmark 2 用于测量主机性能。结果显示在平和的 Nexvyn OS 窗口中，窗口带有侧边栏、宽窗口下的详情面板和状态栏，可从掌机尺寸缩放到底座尺寸，仅在测试运行期间进入全屏。\n\n• 约一分钟的完整测试：CPU 单核、CPU 多核、内存、存储、2D 图形、两个 3D 场景（Kepler Reactor 与 Kepler Cryo Bay）以及平台功能检查\n• 千级分制评分，附等级徽章、雷达图和各阶段进度条；详情面板解释所选阶段并显示最近结果\n• 基于物理渲染的 3D 场景，含柔和阴影、基于图像的光照、环境光遮蔽、反射和泛光\n• 历史记录以柱状图显示过往成绩，并可并排对比任意两次测试\n• 可在 Benchmark 页面手动单独运行任意类别\n• 3D Explore：自由浏览 Kepler Reactor、Kepler Cryo Bay 和 Kepler Station，实时显示 fps 与多边形数\n• 系统页面提供功能探测与运行时信息\n• 状态栏显示实时 fps、内存占用、主机模式和电量\n• 所有测试均以固定 1280x720 渲染，底座与掌机得分可比较；每次测试标注底座或掌机\n• 支持手柄、触控、键盘/鼠标，8 种语言，浅色与深色主题",
+        "ko": "Nexy Benchmark 2는 콘솔 성능을 측정합니다. 결과는 사이드바, 넓은 창의 상세 패널, 상태 표시줄이 있는 차분한 Nexvyn OS 창에 표시됩니다. 창은 휴대 모드 크기부터 독 크기까지 크기가 조절되며, 테스트가 실행되는 동안에만 전체 화면으로 전환됩니다.\n\n• 약 1분의 전체 테스트: CPU 싱글코어, CPU 멀티코어, 메모리, 저장소, 2D 그래픽, 두 개의 3D 씬(Kepler Reactor, Kepler Cryo Bay), 플랫폼 기능 점검\n• 천 단위 점수와 등급 배지, 레이더 차트, 단계별 막대. 상세 패널이 선택한 단계를 설명하고 최근 결과를 표시\n• 소프트 섀도, 이미지 기반 조명, 앰비언트 오클루전, 반사, 블룸을 갖춘 물리 기반 3D 씬\n• 지난 실행을 막대 차트로 보여 주는 기록과 두 실행의 나란히 비교\n• Benchmark 페이지에서 원하는 카테고리만 수동으로 실행\n• 3D Explore: Kepler Reactor, Kepler Cryo Bay, Kepler Station을 실시간 fps와 폴리곤 수와 함께 자유롭게 둘러보기\n• 기능 점검과 런타임 정보를 보여 주는 시스템 페이지\n• 실시간 fps, 메모리 사용량, 콘솔 모드, 배터리를 보여 주는 상태 표시줄\n• 모든 테스트를 1280x720 고정 해상도로 렌더링하여 독/휴대 점수를 비교할 수 있으며, 각 실행에 독 또는 휴대 라벨이 붙습니다\n• 게임패드, 터치, 키보드/마우스 지원, 8개 언어, 라이트·다크 테마"
+      },
+      "version": "2.3.2",
+      "author": "sonerx7",
+      "category": "system",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/nexbench.nxvapp",
+      "size": 23253081,
+      "sha256": "13c375e870145e2a7e6249a06191015dd1e714793833bb076470c3ef65e7e874",
+      "minSdk": "1.10",
+      "permissions": [
+        "files",
+        "notifications"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "MIT",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/system/nexbench",
+      "targetSdk": "1.13",
+      "subtitle": {
+        "en": "CPU, memory, storage, 2D and 3D benchmark",
+        "tr": "CPU, bellek, depolama, 2D ve 3D testi",
+        "de": "CPU-, Speicher-, 2D- und 3D-Benchmark",
+        "fr": "Benchmark CPU, mémoire, stockage, 2D, 3D",
+        "es": "Benchmark de CPU, memoria, disco, 2D y 3D",
+        "ja": "CPU・メモリ・ストレージ・2D・3Dを計測",
+        "zh": "CPU、内存、存储、2D 与 3D 基准测试",
+        "ko": "CPU, 메모리, 저장소, 2D·3D 벤치마크"
+      },
+      "changelog": {
+        "en": "v2.3.1: Redesigned window with a left sidebar, a detail panel on wide windows and a status bar; it scales from handheld to docked size. Benchmark renders at a fixed 1280x720 so docked and handheld scores are comparable; runs are tagged Docked/Handheld and history compare shows the mode.",
+        "tr": "v2.3.1: Sol kenar çubuğu, geniş pencerelerde ayrıntı paneli ve durum çubuğu olan yenilenmiş pencere; portatif boyuttan dock boyutuna ölçeklenir. Benchmark sabit 1280x720'de çizilir; dock ve portatif puanlar karşılaştırılabilir. Çalıştırmalar Dock/Portatif olarak etiketlenir; geçmiş karşılaştırması modu gösterir."
+      },
+      "minNative": "1.2",
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-15",
+      "updated": "2026-11-16",
+      "history": [
+        {
+          "version": "2.3.2",
+          "date": "2026-11-16"
+        },
+        {
+          "version": "2.3.1",
+          "date": "2026-11-16"
+        },
+        {
+          "version": "2.3.0",
+          "date": "2026-11-16"
+        },
+        {
+          "version": "2.2.1",
+          "date": "2026-11-15"
+        },
+        {
+          "version": "2.2.0",
+          "date": "2026-11-15"
+        },
+        {
+          "version": "2.1.0",
+          "date": "2026-11-15"
         }
       ]
     },
@@ -6316,6 +6322,7 @@
         "en": "First release: a tech demo of the Native SDK.",
         "tr": "İlk sürüm: Native SDK için teknik demo."
       },
+      "minNative": "1.2",
       "kind": "demo",
       "tech": "native",
       "features": [
@@ -6327,6 +6334,64 @@
         {
           "version": "1.0.0",
           "date": "2026-11-09"
+        }
+      ]
+    },
+    {
+      "id": "techdemo",
+      "name": {
+        "en": "Showcase",
+        "tr": "Gösteri",
+        "de": "Schaufenster",
+        "fr": "Vitrine",
+        "es": "Escaparate",
+        "ko": "쇼케이스"
+      },
+      "description": {
+        "en": "Sit back and watch what Nexvyn OS can draw and play. Showcase is a cinematic tour through six scenes, from a procedural island with a rolling sea to a city at night, a spiral galaxy of stars, a physics playground, a plasma tunnel and a particle finale. Everything, including the soundtrack from a real-time synthesizer, is generated from code while it runs: no downloaded models, textures or sound files.\n\n• Six scenes with camera paths, crossfades and captions\n• Live stats: FPS, triangles, draw calls and render path\n• Free camera with the sticks, touch drag or pinch\n• Controls: A or Right next, B or Left back, + pause\n• X stats, Y music, − quality (automatic, low, medium, high)\n• Synthesized music that pulses with the visuals",
+        "tr": "Arkana yaslan ve Nexvyn OS'un neler çizip çalabildiğini izle. Gösteri, altı sahnelik sinematik bir tur: dalgalı denizli prosedürel bir adadan gece şehrine, yıldızlardan oluşan sarmal bir galaksiye, fizik oyun alanına, plazma tüneline ve parçacıklı bir finale. Gerçek zamanlı bir sentezleyiciden gelen müzik dahil her şey çalışırken koddan üretilir: indirilen model, doku ya da ses dosyası yok.\n\n• Kamera yolları, geçişler ve açıklamalarla altı sahne\n• Canlı istatistik: FPS, üçgen, çizim çağrısı ve çizim yolu\n• Çubuklarla, dokunup sürükleyerek ya da kıstırarak serbest kamera\n• Kontroller: A ya da Sağ ileri, B ya da Sol geri, + duraklat\n• X istatistik, Y müzik, − kalite (otomatik, düşük, orta, yüksek)\n• Görüntüyle birlikte nabız gibi atan sentez müzik",
+        "de": "Lehn dich zurück und sieh, was Nexvyn OS zeichnen und spielen kann. Schaufenster ist eine filmische Tour durch sechs Szenen: von einer prozeduralen Insel mit wogendem Meer über eine Stadt bei Nacht, eine Spiralgalaxie aus Sternen und einen Physik-Spielplatz bis zu einem Plasmatunnel und einem Partikel-Finale. Alles, auch der Soundtrack aus einem Echtzeit-Synthesizer, entsteht während der Laufzeit aus Code: keine geladenen Modelle, Texturen oder Sounddateien.\n\n• Sechs Szenen mit Kamerafahrten, Überblendungen und Untertiteln\n• Live-Statistik: FPS, Dreiecke, Draw Calls und Renderpfad\n• Freie Kamera mit Sticks, Touch-Ziehen oder Pinch\n• Steuerung: A oder Rechts weiter, B oder Links zurück, + Pause\n• X Statistik, Y Musik, − Qualität (automatisch, niedrig, mittel, hoch)\n• Synthesizer-Musik, die im Takt der Bilder pulsiert",
+        "fr": "Installez-vous et regardez ce que Nexvyn OS sait dessiner et jouer. Vitrine est une visite cinématique en six scènes : d’une île procédurale bordée d’une mer houleuse à une ville de nuit, une galaxie spirale d’étoiles, un terrain de jeu physique, un tunnel de plasma et un final en particules. Tout, y compris la bande-son d’un synthétiseur temps réel, est généré par le code pendant l’exécution : aucun modèle, texture ou son téléchargé.\n\n• Six scènes avec trajets de caméra, fondus et légendes\n• Statistiques en direct : FPS, triangles, appels de dessin, rendu\n• Caméra libre aux sticks, au toucher ou au pincement\n• Commandes : A ou Droite suivant, B ou Gauche retour, + pause\n• X statistiques, Y musique, − qualité (auto, basse, moyenne, haute)\n• Musique synthétisée qui bat au rythme des images",
+        "es": "Ponte cómodo y mira lo que Nexvyn OS sabe dibujar y tocar. Escaparate es un recorrido cinematográfico por seis escenas: de una isla procedural con mar en movimiento a una ciudad de noche, una galaxia espiral de estrellas, un patio de física, un túnel de plasma y un final de partículas. Todo, incluida la banda sonora de un sintetizador en tiempo real, se genera con código mientras se ejecuta: sin modelos, texturas ni sonidos descargados.\n\n• Seis escenas con recorridos de cámara, fundidos y rótulos\n• Estadísticas en directo: FPS, triángulos, llamadas de dibujo y modo de render\n• Cámara libre con los sticks, arrastrando o pellizcando\n• Controles: A o Derecha siguiente, B o Izquierda atrás, + pausa\n• X estadísticas, Y música, − calidad (automática, baja, media, alta)\n• Música sintetizada que late al ritmo de la imagen",
+        "ja": "くつろいで、Nexvyn OS が描き、奏でられるものを眺めましょう。ショーケースは、うねる海のあるプロシージャルな島から、夜の街、星々の渦巻銀河、物理演算プレイグラウンド、プラズマのトンネル、パーティクルのフィナーレまで、6 つのシーンをめぐる映画のようなツアーです。リアルタイムのシンセサイザーによるサウンドトラックを含め、すべてが実行中にコードから生成されます: ダウンロードしたモデル、テクスチャ、サウンドファイルは一切ありません。\n\n• カメラワーク、クロスフェード、キャプション付きの 6 つのシーン\n• リアルタイムの統計: FPS、三角形、ドローコール、描画パス\n• スティック、タッチのドラッグ、ピンチで操作するフリーカメラ\n• 操作: A または右で次へ、B または左で戻る、+ で一時停止\n• X で統計、Y で音楽、− で画質 (自動、低、中、高)\n• 映像に合わせて脈打つシンセサイズされた音楽",
+        "zh": "坐下来欣赏 Nexvyn OS 能绘制和演奏些什么。展示是一场穿越六个场景的电影式之旅，从有着起伏海面的程序化岛屿，到城市之夜、由恒星组成的旋涡星系、物理游乐场、等离子隧道以及粒子终章。包括来自实时合成器的配乐在内，一切都是运行时由代码生成的：没有下载任何模型、纹理或声音文件。\n\n• 六个场景，带镜头路径、交叉淡化和字幕\n• 实时统计：FPS、三角形、绘制调用和渲染路径\n• 用摇杆、触控拖移或捏合控制的自由视角\n• 操作：A 或右键下一个，B 或左键返回，+ 暂停\n• X 统计，Y 音乐，− 画质（自动、低、中、高）\n• 随画面律动的合成音乐",
+        "ko": "편히 앉아 Nexvyn OS가 그리고 연주할 수 있는 것을 감상하세요. 쇼케이스는 출렁이는 바다가 있는 절차적 섬부터 밤의 도시, 별들의 나선 은하, 물리 놀이터, 플라스마 터널, 입자 피날레까지 여섯 장면을 지나는 영화 같은 투어입니다. 실시간 신시사이저로 만든 배경 음악을 포함해 모든 것이 실행 중에 코드로 생성되며, 다운로드한 모델, 텍스처, 사운드 파일은 없습니다.\n\n• 카메라 경로, 크로스페이드, 자막이 있는 장면 6개\n• 실시간 통계: FPS, 삼각형, 드로우 콜, 렌더링 경로\n• 스틱, 터치 드래그, 핀치로 자유 카메라\n• 조작: A 또는 오른쪽 다음, B 또는 왼쪽 뒤로, + 일시 정지\n• X 통계, Y 음악, − 품질(자동, 낮음, 보통, 높음)\n• 영상과 함께 고동치는 합성 음악"
+      },
+      "version": "1.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "showcase",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/techdemo/icon.png",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/techdemo/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/techdemo/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/techdemo/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/techdemo/screenshots/4.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "builtin": true,
+      "subtitle": {
+        "en": "A real-time 3D and music demo tour",
+        "tr": "Gerçek zamanlı 3D ve müzik gösterisi",
+        "de": "Eine Echtzeit-Demo mit 3D und Musik",
+        "fr": "Une démo 3D et musicale en temps réel",
+        "es": "Una demo en tiempo real de 3D y música",
+        "ja": "リアルタイムの 3D と音楽のデモツアー",
+        "zh": "实时 3D 与音乐演示之旅",
+        "ko": "실시간 3D와 음악 데모 투어"
+      },
+      "kind": "demo",
+      "tech": "native",
+      "features": [
+        "offline"
+      ],
+      "added": "2026-10-29",
+      "updated": "2026-10-29",
+      "history": [
+        {
+          "version": "1.0",
+          "date": "2026-10-29"
         }
       ]
     },
@@ -6346,8 +6411,8 @@
       "version": "1.0.0",
       "author": "Nexvyn OS",
       "category": "showcase",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/townbench.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/townbench.nxvapp",
       "size": 44670029,
       "sha256": "2d467ca1758a4e93f4d144a8418204f3531f7e026e57144bcd8819906ab27682",
       "minSdk": "1.10",
@@ -6355,15 +6420,15 @@
         "files"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/townbench/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/showcase/townbench/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/showcase/townbench",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/showcase/townbench",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "A 60 second village flight benchmark",
@@ -6378,6 +6443,7 @@
       "changelog": {
         "en": "First release. Requires Nexvyn OS 1.2.2 (SDK 1.12)."
       },
+      "minNative": "1.2",
       "kind": "demo",
       "tech": "native",
       "features": [
@@ -6444,6 +6510,7 @@
         "ko": "타일을 밀어 순서대로 맞추세요"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -6519,6 +6586,7 @@
         "ko": "네 가지 보드, 타임 어택, 힌트"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -6594,6 +6662,7 @@
         "ko": "열 개 미로의 빛나는 출구를 찾으세요"
       },
       "kind": "game",
+      "genre": "racing",
       "tech": "lua",
       "features": [
         "3d",
@@ -6671,6 +6740,7 @@
         "ko": "혼자 또는 친구와 즐기는 빠른 테이블 하키"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "python",
       "features": [
         "offline",
@@ -6742,6 +6812,7 @@
         "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Bölgeye göre gölgeli ışık, parlayan lamba ve ekranlar, yansımalar, ıslak zeminler, cam, katmanlı silah sesleri ve ortam sesleri, efekt kalitesi ayarı."
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "3d",
@@ -6817,6 +6888,7 @@
         "ko": "턴제 전술: 여덟 전투 캠페인"
       },
       "kind": "game",
+      "genre": "strategy",
       "tech": "lua",
       "features": [
         "offline",
@@ -6895,6 +6967,7 @@
         "ko": "1.1.2: 현재 시스템에서 다시 플레이할 수 있습니다. 월드를 거부하고 별도의 시스템 파일을 요구하던 시작 검사를 없앴으며, 모든 시스템 버전에서 3D 리소스를 안전하게 해제합니다. 월드와 설정은 유지됩니다."
       },
       "kind": "game",
+      "genre": "sandbox",
       "tech": "javascript",
       "features": [
         "3d",
@@ -6980,6 +7053,7 @@
         "ko": "10프레임 텐핀 볼링"
       },
       "kind": "game",
+      "genre": "sports",
       "tech": "lua",
       "features": [
         "offline"
@@ -7052,6 +7126,7 @@
         "ko": "15스테이지, 폭탄, 레이저, 불덩이"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "lua",
       "features": [
         "offline",
@@ -7127,6 +7202,7 @@
         "ko": "뛰어넘고, 잡고, 왕을 만드세요"
       },
       "kind": "game",
+      "genre": "board",
       "tech": "lua",
       "features": [
         "offline",
@@ -7166,8 +7242,8 @@
       "version": "3.1.0",
       "author": "Chocolate Doom team (port: Nexvyn OS)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/chocolate-doom.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/chocolate-doom.nxvapp",
       "size": 11279715,
       "sha256": "99d62c9c28c473707c998dd94beb5b58bc00b74f40f003449da0a01133c6fe10",
       "minSdk": "1.10",
@@ -7175,15 +7251,15 @@
         "files"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/chocolate-doom/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/chocolate-doom/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "GPL-2.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/chocolate-doom",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Ports/action/chocolate-doom",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Classic shooter engine with Freedoom",
@@ -7205,7 +7281,9 @@
         "zh": "App Market 首个版本。使用 Native SDK 1.1 为 Nexvyn OS 1.2.3 构建，内置 Freedoom 0.13.0。",
         "ko": "App Market 첫 릴리스. Nexvyn OS 1.2.3용 Native SDK 1.1로 빌드. Freedoom 0.13.0 포함."
       },
+      "minNative": "1.2",
       "kind": "port",
+      "genre": "action",
       "tech": "native",
       "features": [
         "offline",
@@ -7274,6 +7352,7 @@
         "ko": "10번 안에 비밀 색상 암호를 푸세요"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -7349,6 +7428,7 @@
         "ko": "40레벨의 상자 밀기 퍼즐"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -7425,6 +7505,7 @@
         "ko": "굶주린 어둠에 맞선 랜턴 하나"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "3d",
@@ -7494,6 +7575,7 @@
         "ko": "마라톤, 스프린트, 울트라, 파내기"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -7569,6 +7651,7 @@
         "ko": "원판을 떨어뜨려 네 개를 한 줄로"
       },
       "kind": "game",
+      "genre": "board",
       "tech": "lua",
       "features": [
         "multiplayer",
@@ -7642,6 +7725,7 @@
         "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Katmanlı ses ve ortam sesleri, vuruşta duraklama ve fener parlaması, atmosfer ayarı."
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -7676,8 +7760,8 @@
       "version": "1.0.1",
       "author": "Gambatte contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/gambatte.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/gambatte.nxvapp",
       "size": 943623,
       "sha256": "2ce5d31b021509118405292f71656a208cb10c9a50c850507a3c3ae9e7ddb85d",
       "minSdk": "1.10",
@@ -7686,15 +7770,15 @@
         "network"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/gambatte/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/gambatte/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "GPL-2.0-only",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/gambatte",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Emulators/handheld/gambatte",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Game Boy emulator",
@@ -7716,6 +7800,7 @@
         "zh": "首个版本：Gambatte，带共享游戏库、设置、即时存档和触控按键。",
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Gambatte."
       },
+      "minNative": "1.2",
       "kind": "emulator",
       "emuCategory": "handheld",
       "tech": "native",
@@ -7790,6 +7875,7 @@
         "ko": "던지고, 감고, 물고기 도감을 채우세요"
       },
       "kind": "game",
+      "genre": "casual",
       "tech": "lua",
       "features": [
         "offline"
@@ -7863,6 +7949,7 @@
         "ko": "터키어 단어를 한 글자씩 맞히세요"
       },
       "kind": "game",
+      "genre": "word",
       "tech": "lua",
       "features": [
         "offline",
@@ -7902,8 +7989,8 @@
       "version": "0.8.0",
       "author": "Ironwail team (port: Nexvyn OS)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/ironwail.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/ironwail/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/ironwail/ironwail.nxvapp",
       "size": 55451166,
       "sha256": "ca478f5e0f77124a9b23c64d173e5a59e9628e0b908c1d60f6de05561aa08fdc",
       "minSdk": "1.10",
@@ -7911,13 +7998,13 @@
         "files"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/ironwail/screenshots/3.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/ironwail/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/ironwail/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Ports/action/ironwail/screenshots/3.jpg"
       ],
       "featured": false,
       "license": "GPL-2.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/ironwail",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Ports/action/ironwail",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Fast classic 3D engine with LibreQuake",
@@ -7939,7 +8026,9 @@
         "zh": "App Market 首个版本。使用 Native SDK 1.1 为 Nexvyn OS 1.2.3 构建，内置 LibreQuake v0.09-beta lite。",
         "ko": "App Market 첫 릴리스. Nexvyn OS 1.2.3용 Native SDK 1.1로 빌드. LibreQuake v0.09-beta lite 포함."
       },
+      "minNative": "1.2",
       "kind": "port",
+      "genre": "action",
       "tech": "native",
       "features": [
         "3d",
@@ -8010,6 +8099,7 @@
         "ko": "섬을 지키고 심장을 지켜라"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "3d",
@@ -8079,6 +8169,7 @@
         "ko": "랜턴 플랫포머: 세 세계, 세 보스"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -8145,6 +8236,7 @@
         "ko": "최소한의 이동으로 모든 불을 끄세요"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -8216,6 +8308,7 @@
         "tr": "Nexvyn OS 1.2.2 (SDK 1.9) gerekir. Yeni PBR görünüm: gerçek zamanlı ışıklar, bloom, dünyaya göre atmosfer, yansımalar, metal ve cam malzemeler, katmanlı ses ve ortam sesleri, efekt kalitesi ayarı."
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "3d",
@@ -8286,6 +8379,7 @@
         "ko": "네 개의 미로, 세 유령"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "lua",
       "features": [
         "offline",
@@ -8325,8 +8419,8 @@
       "version": "1.0.1",
       "author": "Genesis Plus GX contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/genesis-plus-gx.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/genesis-plus-gx.nxvapp",
       "size": 1787360,
       "sha256": "f2e3da4f523197fefcd8d096ab6a5c6e0e8755cb47a67c34fc71144c38873aaa",
       "minSdk": "1.10",
@@ -8335,15 +8429,15 @@
         "network"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/genesis-plus-gx/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/genesis-plus-gx/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "LicenseRef-GenesisPlusGX-NonCommercial",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/genesis-plus-gx",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Emulators/console/genesis-plus-gx",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Mega Drive emulator",
@@ -8365,6 +8459,7 @@
         "zh": "首个版本：Genesis Plus GX，带共享游戏库、设置、即时存档和触控按键。",
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Genesis Plus GX."
       },
+      "minNative": "1.2",
       "kind": "emulator",
       "emuCategory": "console",
       "tech": "native",
@@ -8439,6 +8534,7 @@
         "ko": "카드를 뒤집어 모든 짝을 찾으세요"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "multiplayer",
@@ -8480,8 +8576,8 @@
       "version": "0.11.1",
       "author": "mGBA contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/mgba.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/mgba.nxvapp",
       "size": 1546683,
       "sha256": "f480ed55e6ad34a43217b63962cd4c71313127972c43f46e835374440b9f116c",
       "minSdk": "1.10",
@@ -8490,15 +8586,15 @@
         "network"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/mgba/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/handheld/mgba/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "MPL-2.0",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/mgba",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Emulators/handheld/mgba",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "Game Boy Advance emulator",
@@ -8520,6 +8616,7 @@
         "zh": "现已加入游戏库：网格与列表视图、封面、详细信息、收藏、搜索、设置、即时存档和触摸按钮。早期版本的游戏和存档均会保留。",
         "ko": "이제 게임 라이브러리를 지원합니다: 격자와 목록 보기, 커버, 상세 정보, 즐겨찾기, 검색, 설정, 세이브 스테이트, 터치 버튼. 이전 버전의 게임과 세이브는 그대로 유지됩니다."
       },
+      "minNative": "1.2",
       "kind": "emulator",
       "emuCategory": "handheld",
       "tech": "native",
@@ -8598,6 +8695,7 @@
         "ko": "사용자 보드, 통계, 연승 기록"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -8673,6 +8771,7 @@
         "ko": "까다로운 탑다운 퍼팅 9홀"
       },
       "kind": "game",
+      "genre": "sports",
       "tech": "lua",
       "features": [
         "offline"
@@ -8746,6 +8845,7 @@
         "ko": "도시 여섯 개, 포대 세 개: 하늘을 지키세요"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -8832,6 +8932,7 @@
         "ko": "1.0.0: 첫 출시."
       },
       "kind": "game",
+      "genre": "racing",
       "tech": "lua",
       "features": [
         "3d",
@@ -8864,8 +8965,8 @@
       "version": "1.0.1",
       "author": "FCEUmm contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/fceumm.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/fceumm.nxvapp",
       "size": 1373345,
       "sha256": "c033cbada5c28f8ab5cff8bbf43391d4062cd9f9184e12c90b86172f1154970a",
       "minSdk": "1.10",
@@ -8874,15 +8975,15 @@
         "network"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/fceumm/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/fceumm/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "GPL-2.0-or-later",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/fceumm",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Emulators/console/fceumm",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "NES emulator",
@@ -8904,6 +9005,7 @@
         "zh": "首个版本：FCEUmm，带共享游戏库、设置、即时存档和触控按键。",
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 FCEUmm."
       },
+      "minNative": "1.2",
       "kind": "emulator",
       "emuCategory": "console",
       "tech": "native",
@@ -8978,6 +9080,7 @@
         "ko": "격자를 채워 숨은 그림을 드러내세요"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -9052,6 +9155,7 @@
         "ko": "네온 아레나에서 끝없는 웨이브를 버텨 내세요"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline"
@@ -9096,12 +9200,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/pcgames/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/pc/pcgames/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/pcgames/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/pcgames/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/pcgames/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/pc/pcgames/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/pc/pcgames/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/pc/pcgames/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -9183,6 +9287,7 @@
         "ko": "빛을 꺾는 퍼즐 120개와 레벨 에디터"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -9249,6 +9354,7 @@
         "ko": "플리퍼, 범퍼, 진짜 플런저"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "lua",
       "features": [
         "offline"
@@ -9321,6 +9427,7 @@
         "ko": "세 개의 세계를 달리고, 점프하고, 밟으세요"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "lua",
       "features": [
         "offline"
@@ -9393,6 +9500,7 @@
         "ko": "AI 라이벌과 3랩 3D 레이스"
       },
       "kind": "game",
+      "genre": "racing",
       "tech": "lua",
       "features": [
         "3d",
@@ -9440,12 +9548,12 @@
       "version": "1.0",
       "author": "Soner Çakır (sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/retro/icon.png",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/multi/retro/icon.png",
       "permissions": [],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/retro/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/retro/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/platforms/retro/screenshots/3.png"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/multi/retro/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/multi/retro/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/multi/retro/screenshots/3.png"
       ],
       "featured": false,
       "license": "GPL-3.0-or-later",
@@ -9531,6 +9639,7 @@
         "ko": "돌을 뒤집어 보드를 차지하세요"
       },
       "kind": "game",
+      "genre": "board",
       "tech": "lua",
       "features": [
         "multiplayer",
@@ -9608,6 +9717,7 @@
         "ko": "음표를 맞혀 직접 노래를 연주하세요"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "lua",
       "features": [
         "offline"
@@ -9681,6 +9791,7 @@
         "ko": "길을 건너고, 강을 타고, 집으로 가세요"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -9756,6 +9867,7 @@
         "ko": "바위를 부수고 뒤를 조심하라"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -9773,64 +9885,6 @@
           "version": "1.0.1",
           "date": "2026-11-01"
         },
-        {
-          "version": "1.0",
-          "date": "2026-10-29"
-        }
-      ]
-    },
-    {
-      "id": "techdemo",
-      "name": {
-        "en": "Showcase",
-        "tr": "Gösteri",
-        "de": "Schaufenster",
-        "fr": "Vitrine",
-        "es": "Escaparate",
-        "ko": "쇼케이스"
-      },
-      "description": {
-        "en": "Sit back and watch what Nexvyn OS can draw and play. Showcase is a cinematic tour through six scenes, from a procedural island with a rolling sea to a city at night, a spiral galaxy of stars, a physics playground, a plasma tunnel and a particle finale. Everything, including the soundtrack from a real-time synthesizer, is generated from code while it runs: no downloaded models, textures or sound files.\n\n• Six scenes with camera paths, crossfades and captions\n• Live stats: FPS, triangles, draw calls and render path\n• Free camera with the sticks, touch drag or pinch\n• Controls: A or Right next, B or Left back, + pause\n• X stats, Y music, − quality (automatic, low, medium, high)\n• Synthesized music that pulses with the visuals",
-        "tr": "Arkana yaslan ve Nexvyn OS'un neler çizip çalabildiğini izle. Gösteri, altı sahnelik sinematik bir tur: dalgalı denizli prosedürel bir adadan gece şehrine, yıldızlardan oluşan sarmal bir galaksiye, fizik oyun alanına, plazma tüneline ve parçacıklı bir finale. Gerçek zamanlı bir sentezleyiciden gelen müzik dahil her şey çalışırken koddan üretilir: indirilen model, doku ya da ses dosyası yok.\n\n• Kamera yolları, geçişler ve açıklamalarla altı sahne\n• Canlı istatistik: FPS, üçgen, çizim çağrısı ve çizim yolu\n• Çubuklarla, dokunup sürükleyerek ya da kıstırarak serbest kamera\n• Kontroller: A ya da Sağ ileri, B ya da Sol geri, + duraklat\n• X istatistik, Y müzik, − kalite (otomatik, düşük, orta, yüksek)\n• Görüntüyle birlikte nabız gibi atan sentez müzik",
-        "de": "Lehn dich zurück und sieh, was Nexvyn OS zeichnen und spielen kann. Schaufenster ist eine filmische Tour durch sechs Szenen: von einer prozeduralen Insel mit wogendem Meer über eine Stadt bei Nacht, eine Spiralgalaxie aus Sternen und einen Physik-Spielplatz bis zu einem Plasmatunnel und einem Partikel-Finale. Alles, auch der Soundtrack aus einem Echtzeit-Synthesizer, entsteht während der Laufzeit aus Code: keine geladenen Modelle, Texturen oder Sounddateien.\n\n• Sechs Szenen mit Kamerafahrten, Überblendungen und Untertiteln\n• Live-Statistik: FPS, Dreiecke, Draw Calls und Renderpfad\n• Freie Kamera mit Sticks, Touch-Ziehen oder Pinch\n• Steuerung: A oder Rechts weiter, B oder Links zurück, + Pause\n• X Statistik, Y Musik, − Qualität (automatisch, niedrig, mittel, hoch)\n• Synthesizer-Musik, die im Takt der Bilder pulsiert",
-        "fr": "Installez-vous et regardez ce que Nexvyn OS sait dessiner et jouer. Vitrine est une visite cinématique en six scènes : d’une île procédurale bordée d’une mer houleuse à une ville de nuit, une galaxie spirale d’étoiles, un terrain de jeu physique, un tunnel de plasma et un final en particules. Tout, y compris la bande-son d’un synthétiseur temps réel, est généré par le code pendant l’exécution : aucun modèle, texture ou son téléchargé.\n\n• Six scènes avec trajets de caméra, fondus et légendes\n• Statistiques en direct : FPS, triangles, appels de dessin, rendu\n• Caméra libre aux sticks, au toucher ou au pincement\n• Commandes : A ou Droite suivant, B ou Gauche retour, + pause\n• X statistiques, Y musique, − qualité (auto, basse, moyenne, haute)\n• Musique synthétisée qui bat au rythme des images",
-        "es": "Ponte cómodo y mira lo que Nexvyn OS sabe dibujar y tocar. Escaparate es un recorrido cinematográfico por seis escenas: de una isla procedural con mar en movimiento a una ciudad de noche, una galaxia espiral de estrellas, un patio de física, un túnel de plasma y un final de partículas. Todo, incluida la banda sonora de un sintetizador en tiempo real, se genera con código mientras se ejecuta: sin modelos, texturas ni sonidos descargados.\n\n• Seis escenas con recorridos de cámara, fundidos y rótulos\n• Estadísticas en directo: FPS, triángulos, llamadas de dibujo y modo de render\n• Cámara libre con los sticks, arrastrando o pellizcando\n• Controles: A o Derecha siguiente, B o Izquierda atrás, + pausa\n• X estadísticas, Y música, − calidad (automática, baja, media, alta)\n• Música sintetizada que late al ritmo de la imagen",
-        "ja": "くつろいで、Nexvyn OS が描き、奏でられるものを眺めましょう。ショーケースは、うねる海のあるプロシージャルな島から、夜の街、星々の渦巻銀河、物理演算プレイグラウンド、プラズマのトンネル、パーティクルのフィナーレまで、6 つのシーンをめぐる映画のようなツアーです。リアルタイムのシンセサイザーによるサウンドトラックを含め、すべてが実行中にコードから生成されます: ダウンロードしたモデル、テクスチャ、サウンドファイルは一切ありません。\n\n• カメラワーク、クロスフェード、キャプション付きの 6 つのシーン\n• リアルタイムの統計: FPS、三角形、ドローコール、描画パス\n• スティック、タッチのドラッグ、ピンチで操作するフリーカメラ\n• 操作: A または右で次へ、B または左で戻る、+ で一時停止\n• X で統計、Y で音楽、− で画質 (自動、低、中、高)\n• 映像に合わせて脈打つシンセサイズされた音楽",
-        "zh": "坐下来欣赏 Nexvyn OS 能绘制和演奏些什么。展示是一场穿越六个场景的电影式之旅，从有着起伏海面的程序化岛屿，到城市之夜、由恒星组成的旋涡星系、物理游乐场、等离子隧道以及粒子终章。包括来自实时合成器的配乐在内，一切都是运行时由代码生成的：没有下载任何模型、纹理或声音文件。\n\n• 六个场景，带镜头路径、交叉淡化和字幕\n• 实时统计：FPS、三角形、绘制调用和渲染路径\n• 用摇杆、触控拖移或捏合控制的自由视角\n• 操作：A 或右键下一个，B 或左键返回，+ 暂停\n• X 统计，Y 音乐，− 画质（自动、低、中、高）\n• 随画面律动的合成音乐",
-        "ko": "편히 앉아 Nexvyn OS가 그리고 연주할 수 있는 것을 감상하세요. 쇼케이스는 출렁이는 바다가 있는 절차적 섬부터 밤의 도시, 별들의 나선 은하, 물리 놀이터, 플라스마 터널, 입자 피날레까지 여섯 장면을 지나는 영화 같은 투어입니다. 실시간 신시사이저로 만든 배경 음악을 포함해 모든 것이 실행 중에 코드로 생성되며, 다운로드한 모델, 텍스처, 사운드 파일은 없습니다.\n\n• 카메라 경로, 크로스페이드, 자막이 있는 장면 6개\n• 실시간 통계: FPS, 삼각형, 드로우 콜, 렌더링 경로\n• 스틱, 터치 드래그, 핀치로 자유 카메라\n• 조작: A 또는 오른쪽 다음, B 또는 왼쪽 뒤로, + 일시 정지\n• X 통계, Y 음악, − 품질(자동, 낮음, 보통, 높음)\n• 영상과 함께 고동치는 합성 음악"
-      },
-      "version": "1.0",
-      "author": "Soner Çakır (sonerx7)",
-      "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/techdemo/icon.png",
-      "permissions": [],
-      "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/techdemo/screenshots/1.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/techdemo/screenshots/2.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/techdemo/screenshots/3.png",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/showcase/techdemo/screenshots/4.png"
-      ],
-      "featured": false,
-      "license": "GPL-3.0-or-later",
-      "builtin": true,
-      "subtitle": {
-        "en": "A real-time 3D and music demo tour",
-        "tr": "Gerçek zamanlı 3D ve müzik gösterisi",
-        "de": "Eine Echtzeit-Demo mit 3D und Musik",
-        "fr": "Une démo 3D et musicale en temps réel",
-        "es": "Una demo en tiempo real de 3D y música",
-        "ja": "リアルタイムの 3D と音楽のデモツアー",
-        "zh": "实时 3D 与音乐演示之旅",
-        "ko": "실시간 3D와 음악 데모 투어"
-      },
-      "kind": "demo",
-      "tech": "native",
-      "features": [
-        "offline"
-      ],
-      "added": "2026-10-29",
-      "updated": "2026-10-29",
-      "history": [
         {
           "version": "1.0",
           "date": "2026-10-29"
@@ -9888,6 +9942,7 @@
         "ko": "네 가지 모드, 미로 스테이지, 메달"
       },
       "kind": "game",
+      "genre": "arcade",
       "tech": "lua",
       "features": [
         "offline",
@@ -9927,8 +9982,8 @@
       "version": "1.0.1",
       "author": "Snes9x contributors (port and frontend: sonerx7, https://github.com/sonerx7)",
       "category": "games",
-      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/icon.png",
-      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/snes9x.nxvapp",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/snes9x.nxvapp",
       "size": 2052321,
       "sha256": "a7cc45686c8d6a17467a0afbab026e8c03c32c1fcafa846cf6220779c787565b",
       "minSdk": "1.10",
@@ -9937,15 +9992,15 @@
         "network"
       ],
       "screenshots": [
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/screenshots/1.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/screenshots/2.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/screenshots/3.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/screenshots/4.jpg",
-        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/arcade/snes9x/screenshots/5.jpg"
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Emulators/console/snes9x/screenshots/5.jpg"
       ],
       "featured": false,
       "license": "LicenseRef-Snes9x-NonCommercial",
-      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/arcade/snes9x",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Emulators/console/snes9x",
       "targetSdk": "1.13",
       "subtitle": {
         "en": "SNES emulator",
@@ -9967,6 +10022,7 @@
         "zh": "首个版本：Snes9x，带共享游戏库、设置、即时存档和触控按键。",
         "ko": "첫 릴리스: 공용 게임 라이브러리, 설정, 상태 저장, 터치 버튼을 갖춘 Snes9x."
       },
+      "minNative": "1.2",
       "kind": "emulator",
       "emuCategory": "console",
       "tech": "native",
@@ -10041,6 +10097,7 @@
         "ko": "그들은 진격하고, 당신은 버틴다"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -10118,6 +10175,7 @@
         "ko": "드론을 피해 스테이션을 탈출하라"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "3d",
@@ -10187,6 +10245,7 @@
         "ko": "네 난이도, 오늘의 퍼즐, 연속 기록"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "lua",
       "features": [
         "offline",
@@ -10262,6 +10321,7 @@
         "ko": "부서지는 지형에서 펼치는 턴제 포격전"
       },
       "kind": "game",
+      "genre": "strategy",
       "tech": "lua",
       "features": [
         "multiplayer",
@@ -10337,6 +10397,7 @@
         "ko": "세 맵, 15웨이브, 그리고 무한"
       },
       "kind": "game",
+      "genre": "strategy",
       "tech": "lua",
       "features": [
         "offline"
@@ -10419,6 +10480,7 @@
         "ko": "1.1.0: 모든 곳에 실제 텍스처: 차선이 그려진 아스팔트, 빨강·하양 연석, 잔디, 모래, 바다, 바위, 야자수, 건물, 구름 낀 하늘 파노라마, 번호와 도색이 들어간 차량. 아케이드식 접촉: 차나 벽에 부딪혀도 더 이상 스핀하지 않고 옆으로 살짝 밀리며 속도가 조금 줄어듭니다. 끼어 버린 차는 트랙으로 돌아옵니다. 뭉치지 않고 추월하는 더 똑똑한 라이벌. 더 섬세한 스틱 조향, 차분한 카메라, 읽기 쉬운 HUD, 게임을 끝내면 음악과 엔진 소리가 바로 멈춥니다."
       },
       "kind": "game",
+      "genre": "racing",
       "tech": "lua",
       "features": [
         "3d",
@@ -10490,6 +10552,7 @@
         "ko": "유물과 보스의 로그라이트"
       },
       "kind": "game",
+      "genre": "action",
       "tech": "lua",
       "features": [
         "offline",
@@ -10557,6 +10620,7 @@
         "ko": "관마다 한 가지 색이 될 때까지 부으세요"
       },
       "kind": "game",
+      "genre": "puzzle",
       "tech": "javascript",
       "features": [
         "offline",
@@ -10636,6 +10700,7 @@
         "ko": "다섯 글자 터키어 단어를 찾으세요"
       },
       "kind": "game",
+      "genre": "word",
       "tech": "lua",
       "features": [
         "offline",

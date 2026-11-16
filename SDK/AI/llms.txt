@@ -4,7 +4,7 @@
 > Everything documented here and in `SDK/Reference/SDK.md` exists in the Nexvyn OS runtime. Do NOT invent browser, Node.js, LÖVE, Pygame, or POSIX calls that are not in the contract.
 
 ## 1. Platform Overview
-- **System:** Nexvyn OS 1.3.24 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
+- **System:** Nexvyn OS 1.3.26 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
 - **Package Format:** `.nxvapp` v2 (folder `<Name>.nxvapp/` or deterministic zip with `app.json`, `icon.png` 256x256, `lang/en.json`, main source/binary, and `manifest.sha256`).
 - **Resolution & Modes:** Handheld 1280x720 and Docked 1920x1080; resizable windows (`gfx.size()` returns current `w, h`) and fullscreen mode; Light & Dark themes (`theme.*` and `nxui.tokens()`).
 - **Input Modes:** Multi-touch (`mousedown`/`mousemove`/`mouseup`, two-finger `pinch`/`rotate`/`scroll`), Controller Cursor (left stick moves pointer, A clicks, X right-clicks, right stick scrolls), Direct Gamepad (`"gamepad": true`, `input.down`/`pressed`/`stick`/`action`), Spatial UI Focus (`nxui.moveFocus`, `nxui.activateFocused`), USB Keyboard & Mouse, and On-Screen Keyboard (OSK).

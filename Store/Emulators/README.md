@@ -1,8 +1,8 @@
 # Emulators
 
-- [Handheld](handheld/) (0)
-- [Console](console/) (0)
-- [PC / Computer](pc/) (0)
+- [Handheld](handheld/) (2)
+- [Console](console/) (3)
+- [PC / Computer](pc/) (1)
 - [Arcade](arcade/) (0)
-- [Multi-System](multi/) (0)
+- [Multi-System](multi/) (1)
 - [Others](other/) (0)

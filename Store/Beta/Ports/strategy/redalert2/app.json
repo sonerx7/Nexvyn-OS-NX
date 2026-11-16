@@ -1,0 +1,36 @@
+{
+  "id": "com.sonerx7.redalert2",
+  "name": {
+    "en": "RA2 Yuri Port",
+    "tr": "RA2 Yuri Port",
+    "de": "RA2 Yuri Port",
+    "es": "RA2 Yuri Port",
+    "fr": "RA2 Yuri Port",
+    "ja": "RA2 Yuri Port",
+    "ko": "RA2 Yuri Port",
+    "zh": "RA2 Yuri Port"
+  },
+  "version": "1.0.1",
+  "author": "Westwood Studios / sonerx7",
+  "category": "games",
+  "targetSdk": "1.15",
+  "description": "Yuri's Revenge beta runtime with an eight-language setup launcher. Original game data is required.",
+  "minSdk": "1.10",
+  "minNative": "1.2",
+  "runtime": "native",
+  "main": "ra2.nxvmod",
+  "mode": "window",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "resizable": true
+  },
+  "loadingHint": true,
+  "gamepad": true,
+  "permissions": [
+    "files"
+  ],
+  "icon": "icon.png",
+  "targetNative": "1.2",
+  "minOs": "1.3.26"
+}

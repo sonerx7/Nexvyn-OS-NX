@@ -3,10 +3,8 @@
 | | Item | Version | Description |
 |---|---|---|---|
 | <img src="ash-protocol/icon.png" width="32"> | [Ash Protocol](ash-protocol/) | 1.5.0 | Six chapters. Four weapons. One last order. |
-| <img src="chocolate-doom/icon.png" width="32"> | [Chocolate Doom](chocolate-doom/) | 3.1.0 | Classic shooter engine with Freedoom |
 | <img src="crypt-light/icon.png" width="32"> | [Crypt Light](crypt-light/) | 1.0.0 | One lantern against a hungry dark |
 | <img src="frost-lantern/icon.png" width="32"> | [Frost Lantern](frost-lantern/) | 1.4.0 | Five realms. Thirty boons. A lost dawn. |
-| <img src="ironwail/icon.png" width="32"> | [Ironwail](ironwail/) | 0.8.0 | Fast classic 3D engine with LibreQuake |
 | <img src="isle-defense/icon.png" width="32"> | [Isle Defense](isle-defense/) | 1.0.0 | Hold the island, guard its heart |
 | <img src="lanternfall/icon.png" width="32"> | [Lanternfall](lanternfall/) | 1.0.0 | Lantern-lit platformer: 3 worlds, 3 bosses |
 | <img src="luma/icon.png" width="32"> | [Luma: Starfall Islands](luma/) | 1.7.0 | Explore ten worlds. Outsmart eight enemies. |

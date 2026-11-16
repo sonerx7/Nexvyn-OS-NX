@@ -4,6 +4,7 @@
 App Market items (Store/catalog.json, read by the App Market on the console):
     Store/Apps/<category>/<slug>/       an app:      source/ (the .nxvapp bundle), README.md, store.json, screenshots/
     Store/Games/<genre>/<slug>/         a game:      same layout
+    Store/Ports/<genre>/<slug>/         a port:      same layout
     Store/Emulators/<subcat>/<slug>/    an emulator: same layout (handheld, console, pc, arcade, multi, other)
     Store/Themes/<slug>/                a theme:     source/ (theme.json + images [+ sounds/]), store.json, icon.png
     Store/Fonts/<slug>/                 a font:      font.json, the font files, LICENSE, store.json, icon.png, screenshots/
@@ -47,6 +48,8 @@ import re
 import shutil
 import sys
 import zipfile
+
+import store_layout
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/"
@@ -196,12 +199,22 @@ def normalize_emu_cat(val):
 def store_meta(entry, app, src, extra, default_kind, where, warnings, default_emu_cat=None):
     """Adds kind, emuCategory, tech, features, players and themeStyle to a catalog entry. The maker's store.json value wins; what it
     leaves out is derived from the package (tech, 3d, online / offline, input) where that is possible."""
+    # Forward existing package requirements so the UI can reject an unsupported
+    # download before fetching it. The installer remains the final authority.
+    for requirement in ("minOs", "minNative"):
+        if app.get(requirement):
+            entry[requirement] = str(app[requirement])
     kind = extra.get("kind", default_kind)
     if kind not in STORE_KINDS:
         fail("%s: store.json kind %r is not one of %s" % (where, kind, ", ".join(sorted(STORE_KINDS))))
     if default_kind in ("theme", "font") and kind != default_kind:
         fail("%s: a %s folder cannot have kind %r" % (where, default_kind, kind))
     entry["kind"] = kind
+    if kind in ("game", "port"):
+        parts = where.split("/")
+        if "Games" in parts or "Ports" in parts:
+            section = "Ports" if "Ports" in parts else "Games"
+            entry["genre"] = extra.get("genre") or parts[parts.index(section) + 1]
     if kind == "emulator":
         raw_ec = extra.get("emuCategory", default_emu_cat)
         if raw_ec is not None:
@@ -230,7 +243,7 @@ def store_meta(entry, app, src, extra, default_kind, where, warnings, default_em
                 if os.path.splitext(n)[1] in (".lua", ".js", ".mjs", ".py"):
                     with open(os.path.join(root, n), encoding="utf-8", errors="replace") as f:
                         code += f.read() + "\n"
-    if default_kind in ("app", "game", "emulator"):
+    if default_kind in ("app", "game", "port", "emulator"):
         rt = app.get("runtime") or "lua"
         tech = extra.get("tech") or ("native" if entry.get("builtin") else TECH_OF.get(rt, rt))
         if tech not in TECHS:
@@ -341,6 +354,9 @@ def load_font(item):
 
 
 def build(check):
+    layout_errors = store_layout.validate(STORE)
+    if layout_errors:
+        fail("store layout conflicts:\n  " + "\n  ".join(layout_errors))
     stale = []
     today = datetime.date.today().isoformat()
 
@@ -545,9 +561,10 @@ def build(check):
 
     # ---- apps, games and emulators (.nxvapp packages)
     for app_json in sorted(glob.glob(os.path.join(STORE, "Apps", "*", "*", "source", "app.json")) +
-                           glob.glob(os.path.join(STORE, "Games", "*", "*", "source", "app.json"))):
+                           glob.glob(os.path.join(STORE, "Games", "*", "*", "source", "app.json")) +
+                           glob.glob(os.path.join(STORE, "Ports", "*", "*", "source", "app.json"))):
         item = os.path.dirname(os.path.dirname(app_json))
-        add_bundle_item(item, "game" if rel(item).startswith("Store/Games/") else "app", None, claim, entries)
+        add_bundle_item(item, "port" if rel(item).startswith("Store/Ports/") else "game" if rel(item).startswith("Store/Games/") else "app", None, claim, entries)
 
     for app_json in sorted(glob.glob(os.path.join(EMU_DIR, "*", "*", "source", "app.json"))):
         item = os.path.dirname(os.path.dirname(app_json))
@@ -566,12 +583,13 @@ def build(check):
 
     # ---- C++ apps / modules without source/
     builtin = (glob.glob(os.path.join(STORE, "Apps", "*", "*", "app.json")) +
-               glob.glob(os.path.join(STORE, "Games", "*", "*", "app.json")))
+               glob.glob(os.path.join(STORE, "Games", "*", "*", "app.json")) +
+               glob.glob(os.path.join(STORE, "Ports", "*", "*", "app.json")))
     for app_json in sorted(builtin):
         item = os.path.dirname(app_json)
         if os.path.isdir(os.path.join(item, "source")):
             continue
-        add_builtin_item(item, "game" if rel(item).startswith("Store/Games/") else "app", None, claim, entries)
+        add_builtin_item(item, "port" if rel(item).startswith("Store/Ports/") else "game" if rel(item).startswith("Store/Games/") else "app", None, claim, entries)
 
     for app_json in sorted(glob.glob(os.path.join(EMU_DIR, "*", "*", "app.json"))):
         item = os.path.dirname(app_json)
@@ -620,6 +638,8 @@ def build(check):
                 app_raw = read_json(meta_src, {}) or {}
                 if parts[:1] == ["Emulators"] or extra.get("kind") == "emulator" or "emuCategory" in extra:
                     dk = "emulator"
+                elif parts[:1] == ["Ports"]:
+                    dk = "port"
                 elif parts[:1] == ["Games"] or app_raw.get("category") == "games" or extra.get("kind") == "game":
                     dk = "game"
                 else:
@@ -693,6 +713,18 @@ def build(check):
         for sub in EMU_CATEGORIES:
             el.append("- [%s](%s/) (%d)" % (EMU_CAT_NAMES[lang][sub], sub, len(groups.get(os.path.join(EMU_DIR, sub), []))))
         put(os.path.join(EMU_DIR, L["file"]), ("\n".join(el) + "\n").encode("utf-8"))
+        # Section indexes follow the actual folders, so moved items cannot remain
+        # in an obsolete category listing.
+        for section in ("Apps", "Games", "Ports"):
+            section_dir = os.path.join(STORE, section)
+            rows = ["# " + section, ""]
+            for folder in sorted(groups):
+                if os.path.dirname(folder) != section_dir:
+                    continue
+                sub = os.path.basename(folder)
+                title = CAT_NAMES[lang].get(sub, sub) if section == "Apps" else sub
+                rows.append("- [%s](%s/) (%d)" % (title, sub, len(groups[folder])))
+            put(os.path.join(section_dir, L["file"]), ("\n".join(rows) + "\n").encode("utf-8"))
         # Store/Beta/README.md
         bl = ["# Beta", "",
               "In-development apps, games and emulators tested via `Store/beta.json`. Promote one to the public store with "
@@ -768,33 +800,19 @@ def release_beta(target):
     rrel = os.path.relpath(root, BETA).replace(os.sep, "/")
     parts = rrel.split("/")
     slug = os.path.basename(root)
-    if len(parts) >= 2 and parts[0] in ("Apps", "Games", "Emulators", "Themes", "Fonts"):
-        dst = os.path.join(STORE, *parts)
+    extra = read_json(os.path.join(root, "store.json"), {}) or {}
+    if is_theme:
+        dst = os.path.join(STORE, "Themes", slug)
+    elif is_font:
+        dst = os.path.join(STORE, "Fonts", slug)
     else:
-        extra = read_json(os.path.join(root, "store.json"), {}) or {}
-        kind = extra.get("kind") or ("theme" if is_theme else "font" if is_font else ("emulator" if "emuCategory" in extra else None))
-        if kind == "theme":
-            dst = os.path.join(STORE, "Themes", slug)
-        elif kind == "font":
-            dst = os.path.join(STORE, "Fonts", slug)
-        elif kind == "emulator":
-            ec = extra.get("emuCategory", "other")
-            if isinstance(ec, list):
-                ec = ec[0] if ec else "other"
-            sub = normalize_emu_cat(ec) if isinstance(ec, str) else "other"
-            if sub not in EMU_CATEGORIES:
-                sub = "other"
-            dst = os.path.join(EMU_DIR, sub, slug)
-        elif kind == "game" or meta.get("category") == "games":
-            genre = extra.get("genre") if isinstance(extra.get("genre"), str) and extra.get("genre") else "more"
-            dst = os.path.join(STORE, "Games", genre, slug)
-        else:
-            cat = extra.get("category") if extra.get("category") in CATEGORIES else meta.get("category", "other")
-            if cat not in CATEGORIES or cat in ("games", "themes", "fonts"):
-                cat = "other"
-            dst = os.path.join(STORE, "Apps", cat, slug)
+        try:
+            section, sub, _, _ = store_layout.placement(meta, extra, parts[0], parts[1] if len(parts) >= 3 else "other")
+        except ValueError as exc:
+            fail(str(exc))
+        dst = os.path.join(STORE, section, sub, slug)
     if os.path.exists(dst):
-        shutil.rmtree(dst)
+        fail("destination already exists; merge builds explicitly: " + rel(dst))
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     shutil.move(root, dst)
     cur = os.path.dirname(root)
