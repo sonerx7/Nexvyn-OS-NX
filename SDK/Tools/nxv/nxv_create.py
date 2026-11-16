@@ -272,107 +272,38 @@ app = App()
         (dest / "main.py").write_text(code, encoding="utf-8")
 
     elif runtime == "native":
-        if profile != "game":
-            # Native utilities start with the same reviewed widget/input kit as
-            # the normal native creator, rather than an empty private GL screen.
-            candidates = [base / rel for base in Path(__file__).resolve().parents for rel in (
-                "sdk/native/templates/app", "Languages/c/native-kit/sdk/native/templates/app",
-                "SDK/Languages/c/native-kit/sdk/native/templates/app")]
-            template = next((path for path in candidates if path.is_dir()), None)
-            if template is None:
-                raise FileNotFoundError("Native app template missing: install the complete Native SDK kit")
-            project_name = re.sub(r"[^a-z0-9_]", "_", app_id.lower())
-            for source in template.rglob("*"):
-                if not source.is_file():
-                    continue
-                target = dest / source.relative_to(template)
+        template_kind = "game" if profile == "game" else "app"
+        candidates = [base / rel for base in Path(__file__).resolve().parents for rel in (
+            f"sdk/native/templates/{template_kind}", f"Languages/c/native-kit/sdk/native/templates/{template_kind}",
+            f"SDK/Languages/c/native-kit/sdk/native/templates/{template_kind}")]
+        template = next((path for path in candidates if path.is_dir()), None)
+        if template is None:
+            raise FileNotFoundError("Native app template missing: install the complete Native SDK kit")
+        overrides = template / "template.json"
+        if overrides.is_file():
+            manifest.update(json.loads(overrides.read_text(encoding="utf-8")))
+        project_name = re.sub(r"[^a-z0-9_]", "_", app_id.lower())
+        for source in template.rglob("*"):
+            if not source.is_file():
+                continue
+            target = dest / source.relative_to(template)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            title = json.dumps(name, ensure_ascii=False)[1:-1] if source.suffix == ".json" else name
+            text = source.read_text(encoding="utf-8").replace("@NAME@", project_name).replace("@TITLE@", title).replace("@ID@", app_id)
+            target.write_text(text, encoding="utf-8")
+        manifest["main"] = project_name + ".nxvmod"
+        (dest / "app.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        if profile == "game":
+            manifest["type"] = "game"
+            manifest["category"] = "games"
+            manifest["mode"] = "fullscreen"
+            app_locales = template.parent / "app/lang"
+            for source in app_locales.glob("*.json"):
+                target = dest / "lang" / source.name
                 target.parent.mkdir(parents=True, exist_ok=True)
-                title = json.dumps(name, ensure_ascii=False)[1:-1] if source.suffix == ".json" else name
-                text = source.read_text(encoding="utf-8").replace("@NAME@", project_name).replace("@TITLE@", title).replace("@ID@", app_id)
-                target.write_text(text, encoding="utf-8")
-            manifest["main"] = project_name + ".nxvmod"
+                target.write_text(source.read_text(encoding="utf-8").replace("@TITLE@", json.dumps(name, ensure_ascii=False)[1:-1]), encoding="utf-8")
             (dest / "app.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-            return dest
-        src_dir = dest / "source"
-        src_dir.mkdir(exist_ok=True)
-        c_code = f"""/* {name} (Nexvyn OS N2 — Official devkitA64 GCC AOT Native C/C++ Track) */
-#include <nexvyn/nexvyn_native.h>
-#include <nexvyn/nxn_nxui.h>
-#include <glad/glad.h>
-#include <stdio.h>
-
-static int app_main(int argc, char** argv) {{
-    (void)argc;
-    (void)argv;
-
-    nxn_display* disp = NULL;
-    if (nxn_display_open(NULL, &disp) != NXN_OK) {{
-        nxn_request_return(NXN_RETURN_ERROR, 1, "Failed to open OpenGL display");
-        return 1;
-    }}
-    gladLoadGLLoader((GLADloadproc)nxn_display_proc);
-
-    uint32_t sw = 920, sh = 580;
-    nxn_display_size(disp, &sw, &sh);
-    glViewport(0, 0, (GLsizei)sw, (GLsizei)sh);
-
-    nxn_log(NXN_LOG_INFO, "[{name}] Native ABI v1 module started (%ux%u)", sw, sh);
-
-    while (!nxn_should_quit()) {{
-        nxn_event ev = NXN_STRUCT_INIT(nxn_event);
-        while (nxn_event_poll(&ev) > 0) {{
-            if (ev.type == NXN_EVENT_RESIZE && nxn_display_resize(disp, ev.width, ev.height) == NXN_OK) {{
-                nxn_display_size(disp, &sw, &sh);
-                glViewport(0, 0, (GLsizei)sw, (GLsizei)sh);
-            }}
-            ev.size = sizeof(ev);
-        }}
-
-        nxn_input_state in = NXN_STRUCT_INIT(nxn_input_state);
-        nxn_input_poll(&in);
-        if (in.pressed & NXN_BTN_PLUS) {{
-            nxn_request_return(NXN_RETURN_USER, 0, NULL);
-        }}
-
-        glClearColor(0.08f, 0.10f, 0.14f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        nxn_display_swap(disp);
-    }}
-
-    nxn_display_close(disp);
-    return 0;
-}}
-
-int main(int argc, char** argv) {{
-    return nxn_run(argc, argv, app_main, NULL);
-}}
-"""
-        (src_dir / "main.c").write_text(c_code, encoding="utf-8")
-
-        makefile_code = f"""# Nexvyn OS N2 — Windowed Native Module (.nxvmod) Makefile
-ifeq ($(strip $(DEVKITPRO)),)
-$(error "Please set DEVKITPRO in your environment.")
-endif
-include $(DEVKITPRO)/libnx/switch_rules
-
-TARGET   := {app_id}
-NXN_SDK  ?= $(abspath ../../sdk/native)
-ARCH     := -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIC
-CFLAGS   := -g -Wall -O2 -ffunction-sections $(ARCH) -D__SWITCH__ -I$(NXN_SDK)/include -I$(PORTLIBS)/include -I$(LIBNX)/include
-LDFLAGS  := -shared -nostartfiles -nostdlib -g $(ARCH) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,text -Wl,-z,max-page-size=0x1000 -Wl,--hash-style=sysv -Wl,--gc-sections -Wl,--undefined=nxnwin_identity
-
-all: $(TARGET).nxvmod
-
-$(TARGET).nxvmod: source/main.c
-\t$(CC) $(CFLAGS) -c source/main.c -o main.o
-\t$(CC) $(LDFLAGS) main.o -L$(NXN_SDK)/lib -lnexvyn_window -L$(PORTLIBS)/lib -lglad -lgcc -o $@
-\t@rm -f main.o
-
-clean:
-\t@rm -f main.o $(TARGET).nxvmod
-"""
-        (dest / "Makefile").write_text(makefile_code, encoding="utf-8")
-
+        return dest
     return dest
 
 def main():

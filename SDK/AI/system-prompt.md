@@ -1,4 +1,4 @@
-# Nexvyn OS app SDK 2.0 (1.13) & Native SDK 1.2: context pack for AI assistants
+# Nexvyn OS app SDK 1.15 & Native SDK 1.2: context pack for AI assistants
 
 ## Current authoring contract
 
@@ -56,7 +56,7 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
 }
 ```
 
-- `name` / `description`: a string or a language map; `"en"` is required, other languages are optional.
+- `name` / `description`: a string or a language map; `"en"` is required, all eight locales are required for new products; invariant product names may be strings.
 - `category`: system, productivity, utilities, media, internet, games, developer, other.
 - **4 Official Primary Runtimes (`runtime`):**
   1. `"lua"` (default, Lua 5.4.7 with Generational GC)
@@ -121,7 +121,7 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
    across frames, timers or a coroutine resumed a few ms per frame. C has no such guard (after 12 s the user gets
    Force Quit / Wait): every C loop must be bounded.
 2. **64 MB** script memory per window; `sys.memory()` → used, limit.
-3. **60 fps:** `app.draw` runs every frame. Never load images, read files, build large tables/strings or call `net`
+3. **Frame cadence:** `app.draw` runs on scheduled frames; actual performance depends on workload and hardware. Never load images, read files, build large tables/strings or call `net`
    in draw. Load images once in `load` (`gfx.image` caches), precompute, reuse. Create `g3d` meshes once.
 4. **Immediate-mode UI:** call widgets every frame inside `draw`; ids/labels must be unique per window (`"Del##3"`).
 5. **All visible text through `TR("key", ...)`** with every key in `lang/en.json` (required). Add `lang/<code>.json`
@@ -328,7 +328,7 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
   external base colour file, metallic, roughness and AO maps the FBX does not link are also found in files next to it,
   named like it (`X_BaseColor.png` -> `X_MetallicSmoothness.png`: metallic R, smoothness A; `X_Metallic.png`,
   `X_Roughness.png`, `X_AO.png`). Normal and emissive maps are never found this way: link them in the FBX (or embed
-  them in a .glb). Budgets: a hero 3-8k triangles, 30-60k per frame, 8-16 skinned characters at 60 fps.
+  them in a .glb). Start with low-cost meshes and a small visible character count; profile the complete scene on hardware before increasing the budget.
 - pbr renderer (NexGFX, SDK 1.9, opt-in per app; settings stay until changed, set them in load):
   `g3d.rendererInfo()` → {name="NexGFX", version, backend, renderer};
   `g3d.renderer("pbr")` → "pbr" or "basic" (no GLES 3: the same calls draw with the basic renderer, without

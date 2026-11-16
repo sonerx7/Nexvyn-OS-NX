@@ -14,5 +14,9 @@
   },
   "quit": "关闭",
   "size_label": "大小",
-  "kit": "原生界面工具包"
+  "kit": "原生界面工具包",
+  "error": {
+    "opengl": "OpenGL不可用",
+    "shader": "无法初始化图形着色器"
+  }
 }

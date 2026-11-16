@@ -14,5 +14,9 @@
   },
   "quit": "Cerrar",
   "size_label": "Tamaño",
-  "kit": "Kit de interfaz nativa"
+  "kit": "Kit de interfaz nativa",
+  "error": {
+    "opengl": "OpenGL no está disponible",
+    "shader": "No se pudo iniciar el sombreador gráfico"
+  }
 }

@@ -14,5 +14,9 @@
   },
   "quit": "Kapat",
   "size_label": "Boyut",
-  "kit": "Yerel arayüz kiti"
+  "kit": "Yerel arayüz kiti",
+  "error": {
+    "opengl": "OpenGL kullanılamıyor",
+    "shader": "Grafik gölgelendiricisi başlatılamadı"
+  }
 }

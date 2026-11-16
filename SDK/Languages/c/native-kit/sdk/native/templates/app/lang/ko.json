@@ -14,5 +14,9 @@
   },
   "quit": "닫기",
   "size_label": "크기",
-  "kit": "네이티브 UI 키트"
+  "kit": "네이티브 UI 키트",
+  "error": {
+    "opengl": "OpenGL을 사용할 수 없습니다",
+    "shader": "그래픽 셰이더를 초기화할 수 없습니다"
+  }
 }

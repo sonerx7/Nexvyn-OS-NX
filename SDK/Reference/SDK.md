@@ -2312,3 +2312,20 @@ The Input Lab samples in all five runtime lanes stack their fields below 620 log
 Test nested scrolling, fast release/stop, keyboard focus reveal, focus loss, pinch contact
 changes and resize while controls contain user input. Existing compiled app-side UI code
 requires rebuilding to receive new header helpers. Games retain their own visual direction.
+
+## Production authoring: eight locales and complete input
+
+New apps, games, ports and launchers ship complete `lang/en.json`, `tr.json`, `de.json`,
+`es.json`, `fr.json`, `ja.json`, `ko.json`, and `zh.json`. Use the supported translation calls,
+keep keys and placeholder counts equal, and review actual text rendering and language quality.
+The downloaded SDK includes `nxv_i18n.py --check <folder>`; its public authoring check/packer
+rejects incomplete locale dictionaries. Existing installed packages retain runtime compatibility.
+SDK Markdown is English only; store screenshots may use English UI.
+
+System utilities use shared live theme/typography and controls. Games have their own art
+identity and semantic input actions. Native utility input uses the shared ImGui adapter;
+raw stable-ID contacts serve game controls/canvases, not independent ordinary ImGui widgets.
+The native game starter now has real simultaneous steering/jump touch controls and a persisted
+single-contact/multitouch preference (Minus/M or the upper-right indicator); switching modes
+cancels captures. Native Creator uses the canonical app/game templates. See the downloaded
+SDK Product Quality, Input Contract, Localization Contract and Port and Launcher guides.

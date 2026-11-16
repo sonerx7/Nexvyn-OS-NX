@@ -14,5 +14,9 @@
   },
   "quit": "Fermer",
   "size_label": "Taille",
-  "kit": "Kit d’interface native"
+  "kit": "Kit d’interface native",
+  "error": {
+    "opengl": "OpenGL n’est pas disponible",
+    "shader": "Impossible d’initialiser le shader graphique"
+  }
 }

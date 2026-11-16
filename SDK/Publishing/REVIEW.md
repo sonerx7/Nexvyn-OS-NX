@@ -65,8 +65,7 @@ items the rules do not allow at all).
 - [ ] Smooth: nothing heavy in `app.draw`, no callback near 3 seconds (`app.load` near 10); big models load with
       `g3d.loadModel`
 - [ ] Data is saved right away and survives `suspend` / `autosave`
-- [ ] Every on-screen text goes through `TR()`; `lang/en.json` complete (other languages optional, missing keys fall
-      back to English)
+- [ ] Every on-screen text goes through `TR()`; `lang/` has complete en/tr/de/es/fr/ja/ko/zh dictionaries with matching keys and placeholders
 - [ ] Games: the look is the game's own. Title, HUD and pause screens are drawn by the game in its art direction (not
       `ui.*` widgets or `theme` colors) and do not copy the menu layout, colours or title composition of a sample or
       another game

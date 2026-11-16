@@ -14,5 +14,9 @@
   },
   "quit": "Close",
   "size_label": "Size",
-  "kit": "Native OS Kit"
+  "kit": "Native OS Kit",
+  "error": {
+    "opengl": "OpenGL is not available",
+    "shader": "The graphics shader could not be initialized"
+  }
 }

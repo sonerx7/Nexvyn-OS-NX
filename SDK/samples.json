@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 27,
+  "count": 31,
   "samples": [
     {
       "id": "helloc",
@@ -56,6 +56,23 @@
       ],
       "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/hello/README.md",
       "added": "2026-10-29"
+    },
+    {
+      "id": "com.nexvyn.inputlab.c",
+      "slug": "inputlab",
+      "language": "c",
+      "kind": "app",
+      "name": "Input Lab (C)",
+      "subtitle": {},
+      "description": "Touch, drag, nested scrolling, text input and gesture interaction diagnostics.",
+      "tags": [],
+      "minSdk": "1.12",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/inputlab/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/c/inputlab/inputlab.zip",
+      "size": 13618,
+      "sha256": "9ca3a2cef903cc12449279832d46e2f821fe80e39c49547ef8579e9be347e5b1",
+      "screenshots": [],
+      "added": "2026-11-16"
     },
     {
       "id": "com.sonerx7.sample.life",
@@ -386,6 +403,23 @@
       "added": "2026-10-29"
     },
     {
+      "id": "com.nexvyn.inputlab.js",
+      "slug": "inputlab",
+      "language": "javascript",
+      "kind": "app",
+      "name": "Input Lab (js)",
+      "subtitle": {},
+      "description": "Touch, drag, nested scrolling, text input and gesture interaction diagnostics.",
+      "tags": [],
+      "minSdk": "1.12",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/inputlab/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/javascript/inputlab/inputlab.zip",
+      "size": 14000,
+      "sha256": "5c8522ce11d442e11367a9c47ddb20c8eb3091646d2c0007b522e3f203bcb270",
+      "screenshots": [],
+      "added": "2026-11-16"
+    },
+    {
       "id": "com.sonerx7.demo.shapes-js",
       "slug": "shapes-js",
       "language": "javascript",
@@ -690,6 +724,23 @@
       ],
       "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/hello/README.md",
       "added": "2026-10-29"
+    },
+    {
+      "id": "com.nexvyn.inputlab.lua",
+      "slug": "inputlab",
+      "language": "lua",
+      "kind": "app",
+      "name": "Input Lab (lua)",
+      "subtitle": {},
+      "description": "Touch, drag, nested scrolling, text input and gesture interaction diagnostics.",
+      "tags": [],
+      "minSdk": "1.12",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/inputlab/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/lua/inputlab/inputlab.zip",
+      "size": 13442,
+      "sha256": "6aaf269339d2a33c51f101ec3f7838e98e08379286a60c6e5e7d7852ce2e5a3f",
+      "screenshots": [],
+      "added": "2026-11-16"
     },
     {
       "id": "com.sonerx7.demo.particles",
@@ -1287,6 +1338,23 @@
       ],
       "readme": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/hello/README.md",
       "added": "2026-10-29"
+    },
+    {
+      "id": "com.nexvyn.inputlab.py",
+      "slug": "inputlab",
+      "language": "python",
+      "kind": "app",
+      "name": "Input Lab (py)",
+      "subtitle": {},
+      "description": "Touch, drag, nested scrolling, text input and gesture interaction diagnostics.",
+      "tags": [],
+      "minSdk": "1.12",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/inputlab/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/SDK/Samples/python/inputlab/inputlab.zip",
+      "size": 13751,
+      "sha256": "862e1015b6f75f724fa3e625a0729093ff660d802f5367776fa68de370e112a9",
+      "screenshots": [],
+      "added": "2026-11-16"
     },
     {
       "id": "hellosq",

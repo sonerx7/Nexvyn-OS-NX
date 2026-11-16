@@ -1,0 +1,16 @@
+{
+  "os": "1.3.24",
+  "sdk": "1.15",
+  "native": "1.2",
+  "nativeAbi": 1,
+  "requiredLocales": [
+    "en",
+    "tr",
+    "de",
+    "es",
+    "fr",
+    "ja",
+    "ko",
+    "zh"
+  ]
+}

@@ -395,8 +395,9 @@ def check_store_item(bundle, rep):
         if not isinstance(v, dict):
             rep.error("store.json: %s must be a {language: text} map" % field)
             continue
-        if not str(v.get("en", "")).strip():  # English is required; other languages are optional
-            rep.error("store.json: %s has no en text" % field)
+        for required in ("en", "tr", "de", "es", "fr", "ja", "ko", "zh"):
+            if not isinstance(v.get(required), str) or not v[required].strip():
+                rep.error("store.json: %s has no %s text" % (field, required))
         for code, text in v.items():
             if code != "en" and not str(text).strip():
                 rep.warn("store.json: %s has an empty %s text (remove it or fill it in)" % (field, code))

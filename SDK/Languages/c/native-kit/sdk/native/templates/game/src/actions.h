@@ -4,7 +4,7 @@
 #pragma once
 #include <nexvyn/nexvyn_native.h>
 
-enum Action { ACT_LEFT, ACT_RIGHT, ACT_UP, ACT_DOWN, ACT_JUMP, ACT_PAUSE, ACT_COUNT };
+enum Action { ACT_LEFT, ACT_RIGHT, ACT_UP, ACT_DOWN, ACT_JUMP, ACT_PAUSE, ACT_TOUCH_MODE, ACT_COUNT };
 
 struct Binding {
     uint64_t pad;     // NXN_BTN_* bits (any of them triggers)
@@ -18,6 +18,7 @@ static const Binding kBindings[ACT_COUNT] = {
     /* ACT_DOWN  */ {NXN_BTN_DOWN, {81, 22}},
     /* ACT_JUMP  */ {NXN_BTN_A, {44, 0}},
     /* ACT_PAUSE */ {NXN_BTN_PLUS, {41, 0}},
+    /* Touch mode */ {NXN_BTN_MINUS, {16, 0}},
 };
 
 struct ActionState {
@@ -26,10 +27,10 @@ struct ActionState {
     float axis_x, axis_y;     // left stick, or the d-pad as -1 / 0 / 1; y is up
 };
 
-static inline void actions_update(ActionState& s, const nxn_input_state& in) {
+static inline void actions_update(ActionState& s, const nxn_input_state& in, uint32_t touch_held = 0) {
     for (int a = 0; a < ACT_COUNT; a++) {
         const Binding& b = kBindings[a];
-        bool now = (in.buttons & b.pad) != 0;
+        bool now = (in.buttons & b.pad) != 0 || (touch_held & (1u << a)) != 0;
         for (uint32_t k : b.keys)
             if (k && nxn_input_key_held(k) > 0) now = true;
         s.pressed[a] = now && !s.held[a];

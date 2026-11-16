@@ -132,7 +132,7 @@ static bool draw_ui() {
 
 static int app_main(int, char**) {
     if (nxn_display_open(NULL, &g_disp) != NXN_OK) {
-        nxn_request_return(NXN_RETURN_ERROR, 1, "OpenGL is not available");
+        nxn_request_return(NXN_RETURN_ERROR, 1, nxn_tr("error.opengl"));
         return 1;
     }
     gladLoadGLLoader((GLADloadproc)nxn_display_proc);

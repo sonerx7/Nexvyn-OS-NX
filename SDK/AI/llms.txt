@@ -1,10 +1,10 @@
-# Nexvyn OS N2 (v1.3.9) — AI & LLM Master Context Index (SDK 1.15 & Native SDK 1.2)
+# Nexvyn OS N2 (SDK 1.15) — AI & LLM Master Context Index (SDK 1.15 & Native SDK 1.2)
 
 > Give this file (`SDK/AI/llms.txt`) together with `SDK/AI/system-prompt.md` to any AI coding assistant or LLM.
 > Everything documented here and in `SDK/Reference/SDK.md` exists in the Nexvyn OS runtime. Do NOT invent browser, Node.js, LÖVE, Pygame, or POSIX calls that are not in the contract.
 
 ## 1. Platform Overview
-- **System:** Nexvyn OS 1.3.22 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
+- **System:** Nexvyn OS 1.3.24 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
 - **Package Format:** `.nxvapp` v2 (folder `<Name>.nxvapp/` or deterministic zip with `app.json`, `icon.png` 256x256, `lang/en.json`, main source/binary, and `manifest.sha256`).
 - **Resolution & Modes:** Handheld 1280x720 and Docked 1920x1080; resizable windows (`gfx.size()` returns current `w, h`) and fullscreen mode; Light & Dark themes (`theme.*` and `nxui.tokens()`).
 - **Input Modes:** Multi-touch (`mousedown`/`mousemove`/`mouseup`, two-finger `pinch`/`rotate`/`scroll`), Controller Cursor (left stick moves pointer, A clicks, X right-clicks, right stick scrolls), Direct Gamepad (`"gamepad": true`, `input.down`/`pressed`/`stick`/`action`), Spatial UI Focus (`nxui.moveFocus`, `nxui.activateFocused`), USB Keyboard & Mouse, and On-Screen Keyboard (OSK).
@@ -24,7 +24,7 @@ Always choose one of these 4 official runtimes for new projects:
    - **Strengths:** Keyword arguments (`gfx.text("Hi", 10, 10, size=20)`), tuple returns (`w, h = gfx.size()`), `nxui.*`, `g3d.*` NexGFX PBR.
 4. **Native C / C++ (`"runtime": "native"`, `"main": "<id>.nxvmod"`, `"minNative": "1.2"`, `"minSdk": "1.10"`):**
    - **Engine:** Ahead-of-Time (AOT) ARM64 shared module compiled with devkitA64 GCC against **Frozen ABI v1** (`#include <nexvyn/nexvyn_native.h>`, `#include <nexvyn/nxn_nxui.h>`).
-   - **Strengths:** Native graphics (OpenGL / GLES3 / NexGFX), SDL2 window driver, per-app isolated heap arena, POSIX compatibility layer, `nxn_window_set_*`, `nxn_power_get`, `nxn_dialog`/`nxn_prompt`.
+   - **Strengths:** Native graphics (OpenGL / GLES3 / NexGFX), SDL2 window driver, app-owned heap arena (same process), POSIX compatibility layer, `nxn_window_set_*`, `nxn_power_get`, `nxn_dialog`/`nxn_prompt`.
    - **Use it for heavy computation only** (LLM inference, emulators, 3D, codecs, ports). UI-heavy tools, utilities and productivity apps are Lua / JavaScript / Python with `nxui.*`. A native UI uses Dear ImGui with the frame layer of `<nexvyn/nxn_os_ui.h>` (`nxn_os_frame_begin` / `nxn_os_frame_end`, `nxn_os_*` widgets, `NXN_S()` sizes; `nxv_native check-design` must pass); `nxn_nxui_*` does not paint in a GL window.
 
 *(Legacy runtimes — PocketPy `< 2.0`, TinyCC `"c"`, Squirrel `"squirrel"`, and miniJVM `"java"` — are kept for backward compatibility via the on-demand `ComponentService`, not for new projects.)*

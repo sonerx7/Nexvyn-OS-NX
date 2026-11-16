@@ -13,6 +13,7 @@
 #include <nexvyn/nexvyn_native.h>
 
 #include "actions.h"
+#include "touch_actions.h"
 #include "quads.h"
 
 static nxn_display* g_disp;
@@ -20,6 +21,8 @@ static uint32_t g_w = 1280, g_h = 720;
 static QuadBatch g_quads;
 static nxn_input_state g_in = NXN_STRUCT_INIT(nxn_input_state);
 static ActionState g_act;
+static TouchActions g_touch;
+static bool g_multitouch = true;
 
 struct World {
     float x = 600, y = 0, vy = 0;
@@ -30,13 +33,16 @@ static World g_world;
 
 static void save_game() {
     char buf[32];
-    int n = snprintf(buf, sizeof buf, "%d\n", g_world.jumps);
+    int n = snprintf(buf, sizeof buf, "%d %d\n", g_world.jumps, g_multitouch ? 1 : 0);
     nxn_fs_write(NXN_DIR_DATA, "save.txt", buf, (size_t)n);
 }
 static void load_game() {
     char buf[32] = {0};
     size_t got = 0;
-    if (nxn_fs_read(NXN_DIR_DATA, "save.txt", buf, sizeof buf - 1, &got) == NXN_OK && got > 0) sscanf(buf, "%d", &g_world.jumps);
+    int multiple = 1;
+    if (nxn_fs_read(NXN_DIR_DATA, "save.txt", buf, sizeof buf - 1, &got) == NXN_OK && got > 0)
+        sscanf(buf, "%d %d", &g_world.jumps, &multiple);  // old one-field saves retain the default
+    g_multitouch = multiple != 0;
 }
 
 // One fixed step (1/120 s): game rules only, no drawing, no waiting.
@@ -68,20 +74,28 @@ static void render() {
     glClear(GL_COLOR_BUFFER_BIT);
     g_quads.rect(0, (float)g_h - 92.f, (float)g_w, 92.f, 0.14f, 0.16f, 0.22f);
     g_quads.rect(g_world.x, g_world.y, 48.f, 48.f, 0.95f, 0.72f, 0.25f);
+    // Touch controls: steering across the left two thirds, jump on the right;
+    // upper-left pause, upper-right one/two contact indicator toggles touch mode.
+    g_quads.rect(8.f, 8.f, 16.f, 40.f, .6f, .7f, .8f);
+    g_quads.rect(30.f, 8.f, 16.f, 40.f, .6f, .7f, .8f);
+    g_quads.rect((float)g_w - 56.f, 16.f, 16.f, 24.f, .4f, .8f, .6f);
+    if (g_multitouch) g_quads.rect((float)g_w - 32.f, 16.f, 16.f, 24.f, .4f, .8f, .6f);
+    g_quads.rect(16.f, (float)g_h - 72.f, (float)g_w * 2.f / 3.f - 32.f, 48.f, .2f, .3f, .4f);
+    g_quads.rect((float)g_w * 2.f / 3.f + 16.f, (float)g_h - 72.f, (float)g_w / 3.f - 32.f, 48.f, .4f, .3f, .2f);
     for (int i = 0; i < g_world.jumps % 20; i++) g_quads.rect(16.f + i * 14.f, 16.f, 10.f, 10.f, 0.4f, 0.8f, 0.6f);
     g_quads.flush((float)g_w, (float)g_h);
 }
 
 static int app_main(int, char**) {
     if (nxn_display_open(NULL, &g_disp) != NXN_OK) {
-        nxn_request_return(NXN_RETURN_ERROR, 1, "OpenGL is not available");
+        nxn_request_return(NXN_RETURN_ERROR, 1, nxn_tr("error.opengl"));
         return 1;
     }
     gladLoadGLLoader((GLADloadproc)nxn_display_proc);
     nxn_display_size(g_disp, &g_w, &g_h);
     if (!g_quads.init()) {
         nxn_log(NXN_LOG_ERROR, "the quad shader did not compile");
-        nxn_request_return(NXN_RETURN_ERROR, 2, "shader error");
+        nxn_request_return(NXN_RETURN_ERROR, 2, nxn_tr("error.shader"));
         nxn_display_close(g_disp);
         return 2;
     }
@@ -97,9 +111,10 @@ static int app_main(int, char**) {
             if (ev.type == NXN_EVENT_RESIZE) {
                 if (nxn_display_resize(g_disp, ev.width, ev.height) == NXN_OK) nxn_display_size(g_disp, &g_w, &g_h);
             } else if (ev.type == NXN_EVENT_FOCUS) {
-                if (!ev.focused) paused = true;
+                if (!ev.focused) { paused = true; g_touch.cancel(); }
             } else if (ev.type == NXN_EVENT_SUSPEND) {
                 paused = true;
+                g_touch.cancel();
                 nxn_sfx_stop_all();
                 save_game();
             } else if (ev.type == NXN_EVENT_QUIT) {
@@ -108,7 +123,15 @@ static int app_main(int, char**) {
             ev = NXN_STRUCT_INIT(nxn_event);
         }
         nxn_input_poll(&g_in);
-        actions_update(g_act, g_in);
+        nxn_touch contacts[16];
+        unsigned contact_count = 0;
+        for (unsigned i = 0; i < g_in.touch_count && contact_count < 16; ++i) {
+            nxn_touch contact = NXN_STRUCT_INIT(nxn_touch);
+            if (nxn_input_touch(i, &contact) == NXN_OK) contacts[contact_count++] = contact;
+        }
+        g_touch.update(contacts, contact_count, (float)g_w, (float)g_h, g_multitouch);
+        actions_update(g_act, g_in, g_touch.held);
+        if (g_act.pressed[ACT_TOUCH_MODE]) { g_multitouch = !g_multitouch; g_touch.cancel(); save_game(); }
         if (g_act.pressed[ACT_PAUSE]) paused = !paused;
 
         uint64_t now = nxn_time_ns();
