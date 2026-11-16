@@ -950,7 +950,9 @@ after the opaque scene, sorted back to front per object, with premultiplied alph
 strength and the surface gets more opaque at grazing angles (Fresnel), as glass does; double-sided ones draw their
 far side first. A material with `transmission` is thin glass: the opaque scene behind it shows through, tinted by
 its base colour and bent by its normal map (screen-space refraction from a copy of the scene; without a float
-target it blends instead). Reflections come from `g3d.environment`: the sky hemisphere, or a 6-face cube map that
+target it blends instead). The tint is the full base colour (factor times texture, as glTF defines it): a glass whose
+base colour texture is nearly black stays dark with any `transmission`; give it a light base colour, or use alpha glass
+(`alphaMode` `BLEND`, base colour alpha 0.2-0.35). Only what is drawn opaque before the glass is seen through it. Reflections come from `g3d.environment`: the sky hemisphere, or a 6-face cube map that
 can be a **reflection probe** captured at a point of your level (render the 6 faces in your 3D tool from there);
 rough surfaces read its blurred levels (prefiltered on load). Not available: screen-space reflections, planar
 mirrors and probes captured by the console at run time (the GPU budget of a 720p frame does not allow them; a

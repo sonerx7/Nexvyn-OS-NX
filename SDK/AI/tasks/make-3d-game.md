@@ -35,7 +35,9 @@ Requirements:
   g3d.shadows({quality = "medium", distance = <visible play area>}); g3d.postfx({exposure, tonemap = "aces" or
   "filmic", bloom = 0.03-0.1}); emissive parts above 1 glow. Models keep their PBR maps (glTF base colour, normal,
   ORM, emissive; FBX with its texture folder next to it); plain meshes get g3d.material(mesh, {metallic, roughness,
-  ...}); glass gets {transmission = 0.9, roughness = 0.05}. Repeated props (grass, pillars, crates) use
+  ...}); glass gets {transmission = 0.9, roughness = 0.05} when its base colour is light (transmission is tinted by
+  the base colour: a dark glass texture stays dark), else glTF alphaMode BLEND with base colour alpha 0.2-0.35.
+  Repeated props (grass, pillars, crates) use
   g3d.drawInstanced. Show the renderer and fps in a debug line I can turn off.
 - Camera: <follow / orbit / fixed / first person>, eased, with a short shake on impacts. Movement relative to the
   camera; a model faces +Z at yaw 0 (yaw = math.atan(vx, vz)).
