@@ -11,16 +11,16 @@
     "zh": "Nexy Benchmark 2"
   },
   "description": {
-    "en": "Measure CPU, memory, storage and graphics with a calm, colourful benchmark: animated score gauge, per-category charts, 3D scenes, history and comparison. Tests render at a fixed 1280x720, so docked and handheld scores are comparable.",
-    "tr": "CPU, bellek, depolama ve grafik performansını sakin ve renkli bir arayüzle ölçün: animasyonlu puan göstergesi, kategori grafikleri, 3D sahneler, geçmiş ve karşılaştırma. Testler sabit 1280x720'de çizilir; dock ve portatif puanlar karşılaştırılabilir.",
-    "de": "Messen Sie CPU, Speicher, Datenträger und Grafik mit einem ruhigen, farbigen Benchmark: animierte Punkteanzeige, Diagramme, 3D-Szenen, Verlauf und Vergleich. Tests rendern in fester Auflösung 1280x720, daher sind Dock- und Handheld-Werte vergleichbar.",
-    "fr": "Mesurez CPU, mémoire, stockage et graphismes avec un benchmark calme et coloré : jauge de score animée, graphiques par catégorie, scènes 3D, historique et comparaison. Les tests s'affichent en 1280x720 fixe : les scores sur dock et en portable sont comparables.",
-    "es": "Mide CPU, memoria, almacenamiento y gráficos con un benchmark tranquilo y colorido: indicador de puntuación animado, gráficos por categoría, escenas 3D, historial y comparación. Las pruebas se renderizan a 1280x720 fijo, así que las puntuaciones en dock y portátil son comparables.",
-    "ja": "CPU、メモリ、ストレージ、グラフィックスを計測。アニメーションするスコアゲージ、カテゴリ別グラフ、3Dシーン、履歴と比較を備えた、落ち着いたカラフルなベンチマーク。テストは固定の 1280x720 で描画されるため、ドックと携帯のスコアを比較できます。",
-    "ko": "CPU, 메모리, 저장소, 그래픽을 측정합니다. 애니메이션 점수 게이지, 카테고리별 차트, 3D 씬, 기록 및 비교를 제공하는 차분하고 다채로운 벤치마크. 테스트는 1280x720 고정 해상도로 렌더링되어 독과 휴대 모드 점수를 비교할 수 있습니다.",
-    "zh": "测量 CPU、内存、存储和图形性能：动画评分仪表、分类图表、3D 场景、历史记录与对比，界面平和而多彩。测试以固定 1280x720 渲染，底座与掌机的得分可直接比较。"
+    "en": "Measure CPU, memory, storage, 2D and 3D performance offline. Shared Nexvyn OS controls support touch, gamepad and keyboard/mouse, with history and reports. 3D Lite renders scenes at 904×508 (50.2% fewer pixels); the 2D test stays at 1280×720. Results use a separate workload profile and are not comparable with previous graphics scores. Explore three Kepler scenes with camera reset and Back controls.",
+    "tr": "CPU, bellek, depolama, 2D ve 3D performansını çevrimdışı ölçün. Ortak Nexvyn OS kontrolleri; dokunmatik, gamepad ve klavye/fare ile geçmiş ve raporları destekler. 3D Lite sahneleri 904×508 çizer (%50,2 daha az piksel); 2D testi 1280×720 kalır. Sonuçlar ayrı yük profili kullanır ve eski grafik puanlarıyla karşılaştırılamaz. Üç Kepler sahnesini kamera sıfırlama ve Geri kontrolleriyle keşfedin.",
+    "de": "CPU-, Speicher-, Datenträger-, 2D- und 3D-Leistung offline messen. Gemeinsame Nexvyn-OS-Steuerelemente unterstützen Touch, Gamepad sowie Tastatur/Maus, Verlauf und Berichte. 3D Lite rendert mit 904×508 (50,2 % weniger Pixel); der 2D-Test bleibt bei 1280×720. Das separate Lastprofil ist nicht mit früheren Grafikwerten vergleichbar. Drei Kepler-Szenen mit Kamera-Reset und Zurück erkunden.",
+    "es": "Mide CPU, memoria, almacenamiento, 2D y 3D sin conexión. Los controles de Nexvyn OS admiten pantalla táctil, mando y teclado/ratón, historial e informes. 3D Lite renderiza a 904×508 (50,2 % menos píxeles); 2D conserva 1280×720. El perfil de carga independiente no es comparable con puntuaciones gráficas anteriores. Explora tres escenas Kepler con restablecimiento de cámara y botón Volver.",
+    "fr": "Mesurez hors ligne CPU, mémoire, stockage, 2D et 3D. Les contrôles Nexvyn OS prennent en charge tactile, manette et clavier/souris, historique et rapports. 3D Lite utilise 904×508 (50,2 % de pixels en moins) ; la 2D reste à 1280×720. Le profil de charge distinct ne se compare pas aux anciens scores graphiques. Explorez trois scènes Kepler avec réinitialisation de caméra et Retour.",
+    "ja": "CPU、メモリ、ストレージ、2D・3D性能をオフラインで測定。Nexvyn OS共通のコントロールでタッチ、ゲームパッド、キーボード・マウスに対応し、履歴とレポートを提供します。3D Liteは904×508（ピクセル数50.2%削減）、2Dテストは1280×720。負荷プロファイルが異なるため、従来のグラフィックススコアとは比較できません。カメラリセットと戻るボタンで3つのKeplerシーンを探索できます。",
+    "ko": "CPU, 메모리, 저장소, 2D·3D 성능을 오프라인으로 측정합니다. 공통 Nexvyn OS 컨트롤로 터치, 게임패드, 키보드·마우스와 기록·보고서를 지원합니다. 3D Lite는 904×508로 렌더링해 픽셀을 50.2% 줄이며, 2D 테스트는 1280×720입니다. 별도 작업 부하 프로필이므로 이전 그래픽 점수와 비교할 수 없습니다. 카메라 초기화와 뒤로 버튼으로 Kepler 장면 3개를 탐색하세요.",
+    "zh": "离线测量CPU、内存、存储、2D和3D性能。共享Nexvyn OS控件支持触摸、手柄、键盘鼠标、历史记录和报告。3D Lite使用904×508（像素减少50.2%），2D测试仍为1280×720。独立负载配置的图形分数无法与旧版比较。使用重置相机和返回按钮探索三个Kepler场景。"
   },
-  "version": "2.3.2",
+  "version": "2.4.0",
   "author": "sonerx7",
   "category": "system",
   "runtime": "native",
@@ -33,11 +33,14 @@
   "window": {
     "width": 1120,
     "height": 680,
-    "resizable": true
+    "resizable": true,
+    "liveResize": true
   },
   "gamepad": true,
   "permissions": [
     "files",
     "notifications"
-  ]
+  ],
+  "minOs": "1.3.26",
+  "targetNative": "1.2"
 }

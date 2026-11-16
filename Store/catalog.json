@@ -964,8 +964,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/budget/budget.nxvapp",
-      "size": 54891,
-      "sha256": "6f4d5cbd71e82a00ff3ee9f5bdde360e3c541ac1c3459f541f888fc7d7663a46",
+      "size": 54884,
+      "sha256": "6c39afbbe84ece1fccf5396b3f473659a1d1236a4d8198c6def589ebf47bd438",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -1153,8 +1153,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/flowmap/flowmap.nxvapp",
-      "size": 72750,
-      "sha256": "20618a7d85000f013d93a99a6c7cbae65ee213be106fb0a1a45559290078fa8b",
+      "size": 72743,
+      "sha256": "f4376a83e78fc177d562e2a919783e2023ce683268a0384bdd943f38e1f9fbcd",
       "minSdk": "1.6",
       "permissions": [],
       "screenshots": [
@@ -1220,8 +1220,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/journal/journal.nxvapp",
-      "size": 55159,
-      "sha256": "8068f55abe23f41307599a1a02ba0cfd6dcea931e19069e5648aeffa639d64d9",
+      "size": 55152,
+      "sha256": "a1540e818663ca6356ff4f0e30285a5301a8466f98a7669fa1f2077710b77d5c",
       "minSdk": "1.0",
       "permissions": [
         "notifications"
@@ -1295,8 +1295,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/kanban/kanban.nxvapp",
-      "size": 49787,
-      "sha256": "5a7afb6b900dfa1313dedfadd1817784e21c1bd46969f039a7b8660f13f21e21",
+      "size": 49778,
+      "sha256": "063975a57494ffff9d67f80c1da6560153ae0c8f182e22f592a94d65ffbd47fc",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -1539,8 +1539,8 @@
       "category": "office",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/office/todo/todo.nxvapp",
-      "size": 53061,
-      "sha256": "258aa8f8feded05fb84a712a5ff8d91809a2b2ab1356756b54b065673023fa13",
+      "size": 53056,
+      "sha256": "32ddfed8d716a3b3aa60b2c8153dfdd8d89a606f05005f2ca7a1e5c6ea01f1cb",
       "minSdk": "1.0",
       "permissions": [],
       "screenshots": [
@@ -5044,22 +5044,22 @@
         "zh": "Nexy Benchmark 2"
       },
       "description": {
-        "en": "Nexy Benchmark 2 measures how your console performs. The result appears in a calm Nexvyn OS window with a sidebar, a detail panel on wide windows and a status bar. The window scales from handheld to docked size and goes full screen only while a test runs.\n\n• Full test in about a minute: CPU single-core, CPU multi-core, memory, storage, 2D graphics, two 3D scenes (Kepler Reactor and Kepler Cryo Bay) and a platform frameworks check\n• Thousands-scale scores with a tier badge, a radar chart and per-stage bars; the detail panel explains the selected stage and shows its recent results\n• Physically based 3D scenes with soft shadows, image-based lighting, ambient occlusion, reflections and bloom\n• History with a bar chart of past runs and a side-by-side comparison of any two runs\n• Run any single category by hand from the Benchmark page\n• 3D Explore: fly around Kepler Reactor, Kepler Cryo Bay and Kepler Station with live fps and polygon count\n• System page with capability probes and runtime information\n• Status bar with live fps, memory use, console mode and battery\n• Fixed 1280x720 rendering in every test, so docked and handheld scores are comparable; each run is tagged Docked or Handheld\n• Gamepad, touch and keyboard/mouse support, 8 languages, light and dark themes",
-        "tr": "Nexy Benchmark 2, konsolunuzun performansını ölçer. Sonuç; kenar çubuğu, geniş pencerelerde ayrıntı paneli ve durum çubuğu olan sakin bir Nexvyn OS penceresinde gösterilir. Pencere portatif boyuttan dock boyutuna kadar ölçeklenir ve yalnızca test çalışırken tam ekrana geçer.\n\n• Yaklaşık bir dakikalık tam test: CPU tek çekirdek, CPU çok çekirdek, bellek, depolama, 2D grafik, iki 3D sahne (Kepler Reactor ve Kepler Cryo Bay) ve platform altyapı kontrolü\n• Seviye rozeti, radar grafiği ve aşama çubuklarıyla binler ölçeğinde puanlar; ayrıntı paneli seçili aşamayı açıklar ve son sonuçlarını gösterir\n• Yumuşak gölgeler, görüntü tabanlı aydınlatma, ortam tıkanması, yansımalar ve bloom içeren fiziksel tabanlı 3D sahneler\n• Geçmiş çalıştırmaların çubuk grafiği ve iki çalıştırmanın yan yana karşılaştırması\n• Benchmark sayfasından istediğiniz tek kategoriyi elle çalıştırma\n• 3D Keşif: Kepler Reactor, Kepler Cryo Bay ve Kepler Station sahnelerinde canlı fps ve poligon sayısıyla gezinme\n• Yetenek sınamaları ve çalışma zamanı bilgisi veren Sistem sayfası\n• Canlı fps, bellek kullanımı, konsol modu ve pil gösteren durum çubuğu\n• Her testte sabit 1280x720 çizim; dock ve portatif puanlar karşılaştırılabilir, her çalıştırma Dock veya Portatif olarak etiketlenir\n• Gamepad, dokunmatik ve klavye/fare desteği, 8 dil, açık ve koyu tema",
-        "de": "Nexy Benchmark 2 misst die Leistung Ihrer Konsole. Das Ergebnis erscheint in einem ruhigen Nexvyn-OS-Fenster mit Seitenleiste, Detailbereich bei breiten Fenstern und Statusleiste. Das Fenster skaliert von Handheld- bis Dock-Größe und wechselt nur während eines Tests in den Vollbildmodus.\n\n• Vollständiger Test in etwa einer Minute: CPU Single-Core, CPU Multi-Core, Speicher, Datenträger, 2D-Grafik, zwei 3D-Szenen (Kepler Reactor und Kepler Cryo Bay) und ein Plattform-Check\n• Punkte im Tausenderbereich mit Stufen-Badge, Radardiagramm und Balken je Test; der Detailbereich erklärt den gewählten Test und zeigt die letzten Ergebnisse\n• Physikalisch basierte 3D-Szenen mit weichen Schatten, bildbasierter Beleuchtung, Ambient Occlusion, Reflexionen und Bloom\n• Verlauf mit Balkendiagramm früherer Läufe und direktem Vergleich zweier Läufe\n• Einzelne Kategorien lassen sich auf der Seite Benchmark manuell starten\n• 3D Explore: Kepler Reactor, Kepler Cryo Bay und Kepler Station frei erkunden, mit Live-fps und Polygonzahl\n• Seite System mit Funktionsprüfungen und Laufzeitinfos\n• Statusleiste mit Live-fps, Speichernutzung, Konsolenmodus und Akku\n• Feste Auflösung 1280x720 in jedem Test, damit Dock- und Handheld-Werte vergleichbar sind; jeder Lauf trägt das Badge Dock oder Handheld\n• Gamepad-, Touch- und Tastatur/Maus-Bedienung, 8 Sprachen, helles und dunkles Design",
-        "fr": "Nexy Benchmark 2 mesure les performances de votre console. Le résultat s'affiche dans une fenêtre Nexvyn OS calme, avec barre latérale, panneau de détails sur les fenêtres larges et barre d'état. La fenêtre s'adapte du format portable au format dock et ne passe en plein écran que pendant un test.\n\n• Test complet en environ une minute : CPU mono-cœur, CPU multicœur, mémoire, stockage, graphismes 2D, deux scènes 3D (Kepler Reactor et Kepler Cryo Bay) et vérification des services de la plateforme\n• Scores en milliers avec badge de niveau, graphique radar et barres par étape ; le panneau de détails explique l'étape choisie et montre ses derniers résultats\n• Scènes 3D à rendu physique avec ombres douces, éclairage par image, occlusion ambiante, réflexions et bloom\n• Historique avec diagramme en barres des exécutions passées et comparaison côte à côte de deux exécutions\n• Lancement manuel d'une seule catégorie depuis la page Benchmark\n• 3D Explore : parcourez Kepler Reactor, Kepler Cryo Bay et Kepler Station avec fps et nombre de polygones en direct\n• Page Système avec sondes de capacités et informations d'exécution\n• Barre d'état avec fps en direct, mémoire utilisée, mode de la console et batterie\n• Rendu fixe en 1280x720 pour chaque test : scores sur dock et en portable comparables ; chaque exécution est étiquetée Dock ou Portable\n• Manette, tactile et clavier/souris, 8 langues, thèmes clair et sombre",
-        "es": "Nexy Benchmark 2 mide el rendimiento de tu consola. El resultado se muestra en una ventana tranquila de Nexvyn OS con barra lateral, panel de detalles en ventanas anchas y barra de estado. La ventana se adapta del tamaño portátil al de dock y solo pasa a pantalla completa mientras se ejecuta una prueba.\n\n• Prueba completa en aproximadamente un minuto: CPU de un núcleo, CPU multinúcleo, memoria, almacenamiento, gráficos 2D, dos escenas 3D (Kepler Reactor y Kepler Cryo Bay) y comprobación de servicios de la plataforma\n• Puntuaciones en miles con insignia de nivel, gráfico radial y barras por fase; el panel de detalles explica la fase elegida y muestra sus últimos resultados\n• Escenas 3D de render físico con sombras suaves, iluminación basada en imagen, oclusión ambiental, reflejos y bloom\n• Historial con gráfico de barras de ejecuciones anteriores y comparación lado a lado de dos ejecuciones\n• Ejecuta a mano una sola categoría desde la página Benchmark\n• 3D Explore: recorre Kepler Reactor, Kepler Cryo Bay y Kepler Station con fps y polígonos en vivo\n• Página Sistema con sondas de capacidades e información de ejecución\n• Barra de estado con fps en vivo, memoria en uso, modo de la consola y batería\n• Render fijo a 1280x720 en cada prueba: puntuaciones en dock y portátil comparables; cada ejecución se etiqueta como Dock o Portátil\n• Mando, táctil y teclado/ratón, 8 idiomas, temas claro y oscuro",
-        "ja": "Nexy Benchmark 2 は本体の性能を計測します。結果は、サイドバー、広いウィンドウで表示される詳細パネル、ステータスバーを備えた落ち着いた Nexvyn OS ウィンドウに表示されます。ウィンドウは携帯サイズからドックサイズまで拡縮し、テスト実行中だけ全画面になります。\n\n• 約1分のフルテスト：CPU シングルコア、CPU マルチコア、メモリ、ストレージ、2D グラフィックス、2つの 3D シーン（Kepler Reactor と Kepler Cryo Bay）、プラットフォーム機能チェック\n• 千単位のスコア、ティアバッジ、レーダーチャート、ステージ別バー。詳細パネルが選択したステージを説明し、最近の結果を表示\n• ソフトシャドウ、イメージベースドライティング、アンビエントオクルージョン、反射、ブルームを備えた物理ベースの 3D シーン\n• 過去の実行を棒グラフで表示する履歴と、2つの実行の並べて比較\n• Benchmark ページから任意のカテゴリを手動で単独実行\n• 3D Explore：Kepler Reactor、Kepler Cryo Bay、Kepler Station を fps とポリゴン数のライブ表示付きで自由に見て回れます\n• 機能プローブとランタイム情報を表示するシステムページ\n• リアルタイムの fps、メモリ使用量、本体モード、バッテリーを表示するステータスバー\n• すべてのテストを固定の 1280x720 で描画し、ドックと携帯のスコアを比較可能に。各実行に「ドック」または「携帯」のラベルを付与\n• コントローラー、タッチ、キーボード/マウス対応、8言語、ライト/ダークテーマ",
-        "zh": "Nexy Benchmark 2 用于测量主机性能。结果显示在平和的 Nexvyn OS 窗口中，窗口带有侧边栏、宽窗口下的详情面板和状态栏，可从掌机尺寸缩放到底座尺寸，仅在测试运行期间进入全屏。\n\n• 约一分钟的完整测试：CPU 单核、CPU 多核、内存、存储、2D 图形、两个 3D 场景（Kepler Reactor 与 Kepler Cryo Bay）以及平台功能检查\n• 千级分制评分，附等级徽章、雷达图和各阶段进度条；详情面板解释所选阶段并显示最近结果\n• 基于物理渲染的 3D 场景，含柔和阴影、基于图像的光照、环境光遮蔽、反射和泛光\n• 历史记录以柱状图显示过往成绩，并可并排对比任意两次测试\n• 可在 Benchmark 页面手动单独运行任意类别\n• 3D Explore：自由浏览 Kepler Reactor、Kepler Cryo Bay 和 Kepler Station，实时显示 fps 与多边形数\n• 系统页面提供功能探测与运行时信息\n• 状态栏显示实时 fps、内存占用、主机模式和电量\n• 所有测试均以固定 1280x720 渲染，底座与掌机得分可比较；每次测试标注底座或掌机\n• 支持手柄、触控、键盘/鼠标，8 种语言，浅色与深色主题",
-        "ko": "Nexy Benchmark 2는 콘솔 성능을 측정합니다. 결과는 사이드바, 넓은 창의 상세 패널, 상태 표시줄이 있는 차분한 Nexvyn OS 창에 표시됩니다. 창은 휴대 모드 크기부터 독 크기까지 크기가 조절되며, 테스트가 실행되는 동안에만 전체 화면으로 전환됩니다.\n\n• 약 1분의 전체 테스트: CPU 싱글코어, CPU 멀티코어, 메모리, 저장소, 2D 그래픽, 두 개의 3D 씬(Kepler Reactor, Kepler Cryo Bay), 플랫폼 기능 점검\n• 천 단위 점수와 등급 배지, 레이더 차트, 단계별 막대. 상세 패널이 선택한 단계를 설명하고 최근 결과를 표시\n• 소프트 섀도, 이미지 기반 조명, 앰비언트 오클루전, 반사, 블룸을 갖춘 물리 기반 3D 씬\n• 지난 실행을 막대 차트로 보여 주는 기록과 두 실행의 나란히 비교\n• Benchmark 페이지에서 원하는 카테고리만 수동으로 실행\n• 3D Explore: Kepler Reactor, Kepler Cryo Bay, Kepler Station을 실시간 fps와 폴리곤 수와 함께 자유롭게 둘러보기\n• 기능 점검과 런타임 정보를 보여 주는 시스템 페이지\n• 실시간 fps, 메모리 사용량, 콘솔 모드, 배터리를 보여 주는 상태 표시줄\n• 모든 테스트를 1280x720 고정 해상도로 렌더링하여 독/휴대 점수를 비교할 수 있으며, 각 실행에 독 또는 휴대 라벨이 붙습니다\n• 게임패드, 터치, 키보드/마우스 지원, 8개 언어, 라이트·다크 테마"
+        "en": "Measure CPU, memory, storage, 2D and 3D performance offline. Shared Nexvyn OS controls support touch, gamepad and keyboard/mouse, with history and reports. 3D Lite renders scenes at 904×508 (50.2% fewer pixels); the 2D test stays at 1280×720. Results use a separate workload profile and are not comparable with previous graphics scores. Explore three Kepler scenes with camera reset and Back controls.",
+        "tr": "CPU, bellek, depolama, 2D ve 3D performansını çevrimdışı ölçün. Ortak Nexvyn OS kontrolleri; dokunmatik, gamepad ve klavye/fare ile geçmiş ve raporları destekler. 3D Lite sahneleri 904×508 çizer (%50,2 daha az piksel); 2D testi 1280×720 kalır. Sonuçlar ayrı yük profili kullanır ve eski grafik puanlarıyla karşılaştırılamaz. Üç Kepler sahnesini kamera sıfırlama ve Geri kontrolleriyle keşfedin.",
+        "de": "CPU-, Speicher-, Datenträger-, 2D- und 3D-Leistung offline messen. Gemeinsame Nexvyn-OS-Steuerelemente unterstützen Touch, Gamepad sowie Tastatur/Maus, Verlauf und Berichte. 3D Lite rendert mit 904×508 (50,2 % weniger Pixel); der 2D-Test bleibt bei 1280×720. Das separate Lastprofil ist nicht mit früheren Grafikwerten vergleichbar. Drei Kepler-Szenen mit Kamera-Reset und Zurück erkunden.",
+        "es": "Mide CPU, memoria, almacenamiento, 2D y 3D sin conexión. Los controles de Nexvyn OS admiten pantalla táctil, mando y teclado/ratón, historial e informes. 3D Lite renderiza a 904×508 (50,2 % menos píxeles); 2D conserva 1280×720. El perfil de carga independiente no es comparable con puntuaciones gráficas anteriores. Explora tres escenas Kepler con restablecimiento de cámara y botón Volver.",
+        "fr": "Mesurez hors ligne CPU, mémoire, stockage, 2D et 3D. Les contrôles Nexvyn OS prennent en charge tactile, manette et clavier/souris, historique et rapports. 3D Lite utilise 904×508 (50,2 % de pixels en moins) ; la 2D reste à 1280×720. Le profil de charge distinct ne se compare pas aux anciens scores graphiques. Explorez trois scènes Kepler avec réinitialisation de caméra et Retour.",
+        "ja": "CPU、メモリ、ストレージ、2D・3D性能をオフラインで測定。Nexvyn OS共通のコントロールでタッチ、ゲームパッド、キーボード・マウスに対応し、履歴とレポートを提供します。3D Liteは904×508（ピクセル数50.2%削減）、2Dテストは1280×720。負荷プロファイルが異なるため、従来のグラフィックススコアとは比較できません。カメラリセットと戻るボタンで3つのKeplerシーンを探索できます。",
+        "ko": "CPU, 메모리, 저장소, 2D·3D 성능을 오프라인으로 측정합니다. 공통 Nexvyn OS 컨트롤로 터치, 게임패드, 키보드·마우스와 기록·보고서를 지원합니다. 3D Lite는 904×508로 렌더링해 픽셀을 50.2% 줄이며, 2D 테스트는 1280×720입니다. 별도 작업 부하 프로필이므로 이전 그래픽 점수와 비교할 수 없습니다. 카메라 초기화와 뒤로 버튼으로 Kepler 장면 3개를 탐색하세요.",
+        "zh": "离线测量CPU、内存、存储、2D和3D性能。共享Nexvyn OS控件支持触摸、手柄、键盘鼠标、历史记录和报告。3D Lite使用904×508（像素减少50.2%），2D测试仍为1280×720。独立负载配置的图形分数无法与旧版比较。使用重置相机和返回按钮探索三个Kepler场景。"
       },
-      "version": "2.3.2",
+      "version": "2.4.0",
       "author": "sonerx7",
       "category": "system",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/nexbench.nxvapp",
-      "size": 23253081,
-      "sha256": "13c375e870145e2a7e6249a06191015dd1e714793833bb076470c3ef65e7e874",
+      "size": 8378573,
+      "sha256": "0bbaacd5ddc5b62b95bdb51d726caccb3a38e89ce19b25a6640cda284b043887",
       "minSdk": "1.10",
       "permissions": [
         "files",
@@ -5087,9 +5087,16 @@
         "ko": "CPU, 메모리, 저장소, 2D·3D 벤치마크"
       },
       "changelog": {
-        "en": "v2.3.1: Redesigned window with a left sidebar, a detail panel on wide windows and a status bar; it scales from handheld to docked size. Benchmark renders at a fixed 1280x720 so docked and handheld scores are comparable; runs are tagged Docked/Handheld and history compare shows the mode.",
-        "tr": "v2.3.1: Sol kenar çubuğu, geniş pencerelerde ayrıntı paneli ve durum çubuğu olan yenilenmiş pencere; portatif boyuttan dock boyutuna ölçeklenir. Benchmark sabit 1280x720'de çizilir; dock ve portatif puanlar karşılaştırılabilir. Çalıştırmalar Dock/Portatif olarak etiketlenir; geçmiş karşılaştırması modu gösterir."
+        "en": "v2.4.0: Shared OS input and controls, responsive UI, touch Stop/Reset, and a separate 3D Lite profile with half the scene pixel budget.",
+        "tr": "v2.4.0: Ortak OS giriş ve kontrolleri, uyarlanabilir arayüz, dokunmatik Durdur/Sıfırla ve yarı sahne piksel bütçeli ayrı 3D Lite profili.",
+        "de": "v2.4.0: Gemeinsame OS-Eingabe und Steuerelemente, anpassbare Oberfläche, Touch-Stopp und Kamera-Reset sowie separates 3D-Lite-Profil mit halbem Szenenpixelbudget.",
+        "es": "v2.4.0: Entrada y controles del sistema, interfaz adaptable, botones táctiles para detener y restablecer y perfil 3D Lite independiente con la mitad de píxeles de escena.",
+        "fr": "v2.4.0: Entrées et contrôles du système, interface adaptable, arrêt et caméra tactiles, profil 3D Lite distinct avec la moitié des pixels de scène.",
+        "ja": "v2.4.0: OS共通の入力・コントロール、可変レイアウト、タッチ停止・カメラリセット、描画ピクセル数を半減した独立3D Liteプロファイル。",
+        "ko": "v2.4.0: 공통 OS 입력과 컨트롤, 반응형 UI, 터치 중지·카메라 초기화, 장면 픽셀 예산을 절반으로 줄인 별도 3D Lite 프로필.",
+        "zh": "v2.4.0: 共享系统输入与控件、自适应界面、触摸停止和相机重置，以及场景像素预算减半的独立3D Lite配置。"
       },
+      "minOs": "1.3.26",
       "minNative": "1.2",
       "kind": "app",
       "tech": "native",
@@ -5101,8 +5108,12 @@
         "keyboard"
       ],
       "added": "2026-11-15",
-      "updated": "2026-11-16",
+      "updated": "2026-11-17",
       "history": [
+        {
+          "version": "2.4.0",
+          "date": "2026-11-17"
+        },
         {
           "version": "2.3.2",
           "date": "2026-11-16"
