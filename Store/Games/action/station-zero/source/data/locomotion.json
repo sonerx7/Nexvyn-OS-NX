@@ -1,0 +1,359 @@
+{
+ "name": "character_locomotion",
+ "initial": "idle",
+ "params": {
+  "speed": 0,
+  "vy": 0,
+  "grounded": true,
+  "dead": false,
+  "jump": 0,
+  "attack": 0,
+  "hit": 0,
+  "interact": 0,
+  "walkScale": 1,
+  "runScale": 1
+ },
+ "states": [
+  {
+   "name": "idle",
+   "clip": "idle",
+   "loop": true
+  },
+  {
+   "name": "walk",
+   "clip": "walk",
+   "loop": true,
+   "speedParam": "walkScale"
+  },
+  {
+   "name": "run",
+   "clip": "run",
+   "loop": true,
+   "speedParam": "runScale"
+  },
+  {
+   "name": "jump",
+   "clip": "jump",
+   "loop": false
+  },
+  {
+   "name": "fall",
+   "clip": "fall",
+   "loop": true
+  },
+  {
+   "name": "land",
+   "clip": "land",
+   "loop": false
+  },
+  {
+   "name": "attack",
+   "clip": "attack",
+   "loop": false
+  },
+  {
+   "name": "hit",
+   "clip": "hit",
+   "loop": false
+  },
+  {
+   "name": "death",
+   "clip": "death",
+   "loop": false
+  },
+  {
+   "name": "interact",
+   "clip": "interact",
+   "loop": false
+  }
+ ],
+ "transitions": [
+  {
+   "from": "*",
+   "to": "death",
+   "when": [
+    [
+     "dead",
+     "true"
+    ]
+   ],
+   "fade": 0.1
+  },
+  {
+   "from": "*",
+   "to": "hit",
+   "when": [
+    [
+     "hit",
+     "trigger"
+    ],
+    [
+     "dead",
+     "false"
+    ]
+   ],
+   "fade": 0.06
+  },
+  {
+   "from": "*",
+   "to": "attack",
+   "when": [
+    [
+     "attack",
+     "trigger"
+    ],
+    [
+     "dead",
+     "false"
+    ]
+   ],
+   "fade": 0.08
+  },
+  {
+   "from": "*",
+   "to": "interact",
+   "when": [
+    [
+     "interact",
+     "trigger"
+    ],
+    [
+     "dead",
+     "false"
+    ],
+    [
+     "speed",
+     "<",
+     0.2
+    ]
+   ],
+   "fade": 0.12
+  },
+  {
+   "from": "*",
+   "to": "jump",
+   "when": [
+    [
+     "jump",
+     "trigger"
+    ],
+    [
+     "dead",
+     "false"
+    ]
+   ],
+   "fade": 0.08
+  },
+  {
+   "from": "hit",
+   "to": "idle",
+   "exit": 1,
+   "fade": 0.12
+  },
+  {
+   "from": "attack",
+   "to": "run",
+   "when": [
+    [
+     "speed",
+     ">=",
+     3.5
+    ]
+   ],
+   "exit": 0.75,
+   "fade": 0.12
+  },
+  {
+   "from": "attack",
+   "to": "walk",
+   "when": [
+    [
+     "speed",
+     ">",
+     0.2
+    ]
+   ],
+   "exit": 0.75,
+   "fade": 0.12
+  },
+  {
+   "from": "attack",
+   "to": "idle",
+   "exit": 1,
+   "fade": 0.15
+  },
+  {
+   "from": "interact",
+   "to": "idle",
+   "exit": 1,
+   "fade": 0.15
+  },
+  {
+   "from": "jump",
+   "to": "land",
+   "when": [
+    [
+     "grounded",
+     "true"
+    ]
+   ],
+   "exit": 0.3,
+   "fade": 0.05
+  },
+  {
+   "from": "jump",
+   "to": "fall",
+   "when": [
+    [
+     "grounded",
+     "false"
+    ],
+    [
+     "vy",
+     "<",
+     -1
+    ]
+   ],
+   "fade": 0.15
+  },
+  {
+   "from": "fall",
+   "to": "land",
+   "when": [
+    [
+     "grounded",
+     "true"
+    ]
+   ],
+   "fade": 0.05
+  },
+  {
+   "from": "land",
+   "to": "run",
+   "when": [
+    [
+     "speed",
+     ">=",
+     3.5
+    ]
+   ],
+   "exit": 0.35,
+   "fade": 0.12
+  },
+  {
+   "from": "land",
+   "to": "walk",
+   "when": [
+    [
+     "speed",
+     ">",
+     0.2
+    ]
+   ],
+   "exit": 0.35,
+   "fade": 0.12
+  },
+  {
+   "from": "land",
+   "to": "idle",
+   "exit": 1,
+   "fade": 0.15
+  },
+  {
+   "from": "idle",
+   "to": "fall",
+   "when": [
+    [
+     "grounded",
+     "false"
+    ],
+    [
+     "vy",
+     "<",
+     -1.5
+    ]
+   ],
+   "fade": 0.2
+  },
+  {
+   "from": "walk",
+   "to": "fall",
+   "when": [
+    [
+     "grounded",
+     "false"
+    ],
+    [
+     "vy",
+     "<",
+     -1.5
+    ]
+   ],
+   "fade": 0.2
+  },
+  {
+   "from": "run",
+   "to": "fall",
+   "when": [
+    [
+     "grounded",
+     "false"
+    ],
+    [
+     "vy",
+     "<",
+     -1.5
+    ]
+   ],
+   "fade": 0.2
+  },
+  {
+   "from": "idle",
+   "to": "walk",
+   "when": [
+    [
+     "speed",
+     ">",
+     0.2
+    ]
+   ],
+   "fade": 0.2
+  },
+  {
+   "from": "walk",
+   "to": "idle",
+   "when": [
+    [
+     "speed",
+     "<=",
+     0.2
+    ]
+   ],
+   "fade": 0.25
+  },
+  {
+   "from": "walk",
+   "to": "run",
+   "when": [
+    [
+     "speed",
+     ">=",
+     3.5
+    ]
+   ],
+   "fade": 0.2
+  },
+  {
+   "from": "run",
+   "to": "walk",
+   "when": [
+    [
+     "speed",
+     "<",
+     3.2
+    ]
+   ],
+   "fade": 0.2
+  }
+ ]
+}

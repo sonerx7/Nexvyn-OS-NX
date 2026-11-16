@@ -1,0 +1,35 @@
+{
+  "id": "com.sonerx7.stationzero",
+  "type": "game",
+  "name": {
+    "en": "Station Zero",
+    "tr": "Station Zero",
+    "de": "Station Zero",
+    "fr": "Station Zero",
+    "es": "Station Zero",
+    "ja": "Station Zero",
+    "zh": "Station Zero",
+    "ko": "Station Zero"
+  },
+  "description": {
+    "en": "Third-person stealth and escape on a dead orbital station.",
+    "tr": "Ölü bir yörünge istasyonunda üçüncü şahıs gizlilik ve kaçış.",
+    "de": "Schleichen und Flucht in der dritten Person auf einer toten Orbitalstation.",
+    "fr": "Infiltration et évasion à la troisième personne sur une station orbitale morte.",
+    "es": "Sigilo y huida en tercera persona en una estación orbital muerta.",
+    "ja": "停止した軌道ステーションからの三人称ステルス脱出。",
+    "zh": "在死寂的轨道空间站中进行第三人称潜行与逃脱。",
+    "ko": "멈춰 버린 궤도 스테이션에서의 3인칭 잠입 탈출."
+  },
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "category": "games",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "runtime": "lua",
+  "window": {"width": 1280, "height": 720, "resizable": true},
+  "gamepad": true,
+  "minSdk": "1.9",
+  "targetSdk": "1.15",
+  "permissions": []
+}

@@ -1,0 +1,39 @@
+{
+  "id": "com.sonerx7.cryptlight",
+  "name": {
+    "en": "Crypt Light",
+    "tr": "Mezar Işığı",
+    "de": "Gruftlicht",
+    "fr": "Lueur de la crypte",
+    "es": "Luz de la cripta",
+    "ja": "クリプト・ライト",
+    "zh": "墓穴之光",
+    "ko": "크립트 라이트"
+  },
+  "description": {
+    "en": "First-person tomb exploration and survival. One lantern, three levels, creatures that hunt by light and sound.",
+    "tr": "Birinci şahıs mezar keşfi ve hayatta kalma. Tek fener, üç bölüm, ışığa ve sese göre avlanan yaratıklar.",
+    "de": "Gruft-Erkundung und Überleben aus der Ich-Perspektive. Eine Laterne, drei Level, Kreaturen, die nach Licht und Klang jagen.",
+    "fr": "Exploration de tombeau et survie à la première personne. Une lanterne, trois niveaux, des créatures qui chassent à la lumière et au bruit.",
+    "es": "Exploración de tumbas y supervivencia en primera persona. Un farol, tres niveles, criaturas que cazan por la luz y el sonido.",
+    "ja": "一人称視点の墓所探索サバイバル。ランタンひとつ、3 つのステージ、光と音で獲物を追う怪物たち。",
+    "zh": "第一人称墓穴探索与生存。一盏灯、三个关卡，循光与声狩猎的怪物。",
+    "ko": "1인칭 무덤 탐험 서바이벌. 랜턴 하나, 세 개의 레벨, 빛과 소리로 사냥하는 괴물들."
+  },
+  "category": "games",
+  "version": "1.0.0",
+  "author": "sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "minWidth": 640,
+    "minHeight": 360,
+    "resizable": true
+  },
+  "gamepad": true,
+  "permissions": []
+}

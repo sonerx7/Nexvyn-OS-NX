@@ -1,0 +1,9 @@
+Neon Drift audio licenses
+=========================
+
+Every audio file in this folder (music/*.ogg and sfx/*.wav) was synthesized
+by tools/neondrift_audio.py for this game. The generator uses only numpy and
+the Python standard library (ffmpeg/libvorbis encodes the music). No samples,
+recordings or third-party audio were used.
+
+License: GPL-3.0-or-later, the same as the game.

@@ -580,6 +580,17 @@
       }
     ]
   },
+  "com.sonerx7.cryptlight": {
+    "added": "2026-11-16",
+    "updated": "2026-11-16",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-16"
+      }
+    ]
+  },
   "com.sonerx7.datecalc": {
     "added": "2026-10-29",
     "updated": "2026-11-01",
@@ -849,6 +860,17 @@
       {
         "version": "1.1.0",
         "date": "2026-11-01"
+      }
+    ]
+  },
+  "com.sonerx7.isledefense": {
+    "added": "2026-11-16",
+    "updated": "2026-11-16",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-16"
       }
     ]
   },
@@ -1230,6 +1252,17 @@
       {
         "version": "1.1.0",
         "date": "2026-11-01"
+      }
+    ]
+  },
+  "com.sonerx7.neondrift": {
+    "added": "2026-11-16",
+    "updated": "2026-11-16",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-16"
       }
     ]
   },
@@ -1637,6 +1670,17 @@
       {
         "version": "1.0.1",
         "date": "2026-11-01"
+      }
+    ]
+  },
+  "com.sonerx7.stationzero": {
+    "added": "2026-11-16",
+    "updated": "2026-11-16",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-16"
       }
     ]
   },

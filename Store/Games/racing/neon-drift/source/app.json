@@ -1,0 +1,44 @@
+{
+  "id": "com.sonerx7.neondrift",
+  "name": {
+    "en": "Neon Drift",
+    "tr": "Neon Drift",
+    "de": "Neon Drift",
+    "fr": "Neon Drift",
+    "es": "Neon Drift",
+    "ja": "ネオンドリフト",
+    "zh": "霓虹漂移",
+    "ko": "네온 드리프트"
+  },
+  "description": {
+    "en": "A night-city arcade racer: wet neon streets, drift-charged nitro and five rivals on three circuits.",
+    "tr": "Gece şehri arcade yarışı: ıslak neon sokaklar, drift ile dolan nitro ve üç pistte beş rakip.",
+    "de": "Ein Arcade-Racer in der Nachtstadt: nasse Neonstraßen, Nitro durch Drift und fünf Rivalen auf drei Strecken.",
+    "fr": "Un jeu de course arcade en ville la nuit : rues néon mouillées, nitro chargé par le drift et cinq rivaux sur trois circuits.",
+    "es": "Un arcade de carreras en la ciudad de noche: calles de neón mojadas, nitro cargado con derrapes y cinco rivales en tres circuitos.",
+    "ja": "夜の街を駆けるアーケードレーサー。濡れたネオンの道、ドリフトで溜めるニトロ、3コースで戦う5人のライバル。",
+    "zh": "夜城街机竞速：湿漉漉的霓虹街道、靠漂移充能的氮气，以及三条赛道上的五名对手。",
+    "ko": "밤의 도시를 달리는 아케이드 레이서: 비에 젖은 네온 거리, 드리프트로 채우는 니트로, 세 개의 서킷과 다섯 라이벌."
+  },
+  "category": "games",
+  "type": "game",
+  "genre": "racing",
+  "version": "1.0.0",
+  "author": "Soner Çakır (sonerx7)",
+  "homepage": "https://github.com/sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "minWidth": 800,
+    "minHeight": 450,
+    "resizable": true
+  },
+  "singleInstance": true,
+  "gamepad": true,
+  "loadingHint": true,
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "permissions": []
+}

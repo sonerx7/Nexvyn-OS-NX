@@ -1,0 +1,33 @@
+{
+  "id": "com.sonerx7.isledefense",
+  "name": {
+    "en": "Isle Defense",
+    "tr": "Ada Savunması",
+    "de": "Inselverteidigung",
+    "fr": "Défense de l'île",
+    "es": "Defensa de la isla",
+    "ja": "アイル・ディフェンス",
+    "zh": "海岛守卫",
+    "ko": "아일 디펜스"
+  },
+  "description": {
+    "en": "3D tower defense on a tropical island. Build and upgrade towers on stone pads and stop raiders landing from a sea portal before they reach the island's heart.",
+    "tr": "Tropik bir adada 3B kule savunması. Taş kaidelere kule kur, yükselt ve deniz geçidinden çıkan yağmacıları adanın kalbine varmadan durdur.",
+    "de": "3D-Tower-Defense auf einer Tropeninsel. Baue Türme auf Steinsockeln, verbessere sie und halte Plünderer aus einem Meeresportal vom Herz der Insel fern.",
+    "fr": "Tower defense en 3D sur une île tropicale. Construisez et améliorez des tours sur des socles de pierre et arrêtez les pillards venus d'un portail marin avant le cœur de l'île.",
+    "es": "Defensa de torres en 3D en una isla tropical. Construye y mejora torres sobre bases de piedra y detén a los saqueadores de un portal marino antes del corazón de la isla.",
+    "ja": "南の島を舞台にした3Dタワーディフェンス。石の台座に塔を建てて強化し、海の門から上陸する敵を島の心臓に届く前に食い止めよう。",
+    "zh": "热带海岛上的 3D 塔防。在石座上建造并升级防御塔，在海上传送门登陆的敌人抵达海岛核心前阻止他们。",
+    "ko": "열대 섬에서 펼치는 3D 타워 디펜스. 돌 받침대에 탑을 짓고 강화해 바다 관문에서 상륙하는 약탈자를 섬의 심장 앞에서 막으세요."
+  },
+  "category": "games",
+  "version": "1.0.0",
+  "author": "sonerx7",
+  "icon": "icon.png",
+  "main": "main.lua",
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "window": {"width": 1280, "height": 720, "minWidth": 640, "minHeight": 360, "resizable": true},
+  "gamepad": true,
+  "permissions": []
+}

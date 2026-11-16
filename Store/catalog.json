@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 183,
+  "count": 187,
   "apps": [
     {
       "id": "aichat",
@@ -7373,6 +7373,76 @@
       ]
     },
     {
+      "id": "com.sonerx7.cryptlight",
+      "name": {
+        "en": "Crypt Light",
+        "tr": "Mezar Işığı",
+        "de": "Gruftlicht",
+        "fr": "Lueur de la crypte",
+        "es": "Luz de la cripta",
+        "ja": "クリプト・ライト",
+        "zh": "墓穴之光",
+        "ko": "크립트 라이트"
+      },
+      "description": {
+        "en": "Climb down through a sealed tomb gate, flooded catacombs and a buried temple with nothing but an oil lantern. Its light is your map, your shield and the thing that gives you away: the creatures below hunt by light and by sound, and the oil runs out.\n\n• Three handcrafted levels: the Sealed Gate, the Catacombs and the Temple of the Last Flame\n• A living lantern: flickering real-time light and shadows, oil to find and ration, a flare that stuns what comes too close\n• Hollows that patrol and hunt, hounds that sleep until they hear you, wisps that drink your light\n• Keys, locked doors, levers, pressure plates, timed gates, spike traps and three seals to wake\n• Ward flames as checkpoints and three save slots\n• Adaptive horror soundtrack that rises with danger, footsteps on stone, water and sand\n• Controller, keyboard and touch controls, handheld and docked",
+        "tr": "Mühürlü bir mezar kapısından, su basmış katakomplardan ve gömülü bir tapınaktan yalnızca bir yağ feneriyle aşağı in. Işığı senin haritan, kalkanın ve seni ele veren şey: aşağıdaki yaratıklar ışığa ve sese göre avlanır, yağ ise tükenir.\n\n• El yapımı üç bölüm: Mühürlü Kapı, Katakomplar ve Son Alevin Tapınağı\n• Yaşayan bir fener: titreyen gerçek zamanlı ışık ve gölgeler, bulup idareli kullanacağın yağ, fazla yaklaşanı sersemleten parlama\n• Devriye gezip avlanan Oyuklar, seni duyana dek uyuyan tazılar, ışığını içen ruhlar\n• Anahtarlar, kilitli kapılar, kollar, basınç plakaları, süreli kapılar, diken tuzakları ve uyandırılacak üç mühür\n• Kayıt noktası olarak koruyucu alevler ve üç kayıt yuvası\n• Tehlikeyle yükselen uyarlanabilir korku müziği; taş, su ve kum üzerinde ayak sesleri\n• Kumanda, klavye ve dokunmatik kontroller, el ve dock modu",
+        "de": "Steige mit nichts als einer Öllaterne durch ein versiegeltes Grufttor, überflutete Katakomben und einen verschütteten Tempel hinab. Ihr Licht ist deine Karte, dein Schild und das, was dich verrät: Die Kreaturen dort unten jagen nach Licht und Klang, und das Öl wird knapp.\n\n• Drei handgebaute Level: das versiegelte Tor, die Katakomben und der Tempel der letzten Flamme\n• Eine lebendige Laterne: flackerndes Echtzeitlicht und Schatten, Öl zum Finden und Einteilen, eine Flamme, die zu Nahes betäubt\n• Hohle, die patrouillieren und jagen, Hunde, die schlafen, bis sie dich hören, Irrlichter, die dein Licht trinken\n• Schlüssel, verschlossene Türen, Hebel, Druckplatten, Zeittore, Stachelfallen und drei Siegel zum Wecken\n• Wächterflammen als Kontrollpunkte und drei Spielstände\n• Adaptive Horror-Musik, die mit der Gefahr steigt, Schritte auf Stein, Wasser und Sand\n• Controller, Tastatur und Touch, Handheld und Dock",
+        "fr": "Descendez par une porte de tombeau scellée, des catacombes inondées et un temple enseveli avec pour seule aide une lanterne à huile. Sa lumière est votre carte, votre bouclier et ce qui vous trahit : les créatures d'en bas chassent à la lumière et au bruit, et l'huile s'épuise.\n\n• Trois niveaux faits main : la Porte scellée, les Catacombes et le Temple de la dernière flamme\n• Une lanterne vivante : lumière et ombres en temps réel qui vacillent, de l'huile à trouver et à économiser, un éclat qui étourdit ce qui approche\n• Des Creux qui patrouillent et traquent, des molosses qui dorment jusqu'à vous entendre, des feux follets qui boivent votre lumière\n• Clés, portes verrouillées, leviers, plaques de pression, grilles minutées, pièges à pics et trois sceaux à éveiller\n• Flammes gardiennes comme points de contrôle et trois emplacements de sauvegarde\n• Musique d'horreur adaptative qui monte avec le danger, pas sur la pierre, l'eau et le sable\n• Manette, clavier et tactile, en mode portable et sur téléviseur",
+        "es": "Desciende por una puerta de tumba sellada, unas catacumbas inundadas y un templo enterrado sin más ayuda que un farol de aceite. Su luz es tu mapa, tu escudo y lo que te delata: las criaturas de abajo cazan por la luz y el sonido, y el aceite se acaba.\n\n• Tres niveles hechos a mano: la Puerta sellada, las Catacumbas y el Templo de la última llama\n• Un farol vivo: luz y sombras en tiempo real que parpadean, aceite que encontrar y racionar, un destello que aturde a quien se acerca\n• Huecos que patrullan y cazan, sabuesos que duermen hasta oírte, fuegos fatuos que se beben tu luz\n• Llaves, puertas cerradas, palancas, placas de presión, rejas con tiempo, trampas de pinchos y tres sellos que despertar\n• Llamas guardianas como puntos de control y tres ranuras de guardado\n• Música de terror adaptativa que crece con el peligro, pasos sobre piedra, agua y arena\n• Mando, teclado y pantalla táctil, en modo portátil y en la base",
+        "ja": "封じられた墓所の門、水没した地下墓所、埋もれた神殿を、油ランタンひとつで降りていこう。その光は地図であり、盾であり、そして居場所を知らせてしまうもの。地下の怪物は光と音で獲物を追い、油は尽きていく。\n\n• 手作りの 3 ステージ：封じられた門、地下墓所、最後の炎の神殿\n• 生きているランタン：揺らめくリアルタイムの光と影、見つけて節約する油、近づく者をひるませる閃光\n• 巡回して獲物を追う「うつろ」、音を聞くまで眠る猟犬、光を飲む鬼火\n• 鍵、施錠された扉、レバー、感圧板、時限式の格子戸、トゲの罠、目覚めさせる 3 つの封印\n• チェックポイントとなる守りの炎、3 つのセーブスロット\n• 危険に合わせて高まるホラー音楽、石・水・砂を踏む足音\n• コントローラー、キーボード、タッチ操作。携帯モードとテレビモード",
+        "zh": "只带一盏油灯，穿过封印的墓门、被水淹没的地下墓穴和埋没的神殿一路向下。灯光是你的地图、你的盾牌，也是暴露你的东西：地下的怪物循光与声狩猎，而灯油终将耗尽。\n\n• 三个精心打造的关卡：封印之门、地下墓穴、最后之焰神殿\n• 活生生的灯：闪烁的实时光影，需要寻找与节省的灯油，能震慑近身怪物的闪焰\n• 巡逻追猎的空壳者、听到声音才会醒来的猎犬、吞噬光芒的鬼火\n• 钥匙、上锁的门、拉杆、压力板、限时铁门、尖刺陷阱和三道待唤醒的封印\n• 守护之焰作为存档点，三个存档位\n• 随危险升腾的自适应恐怖配乐，石地、水面与沙地上的脚步声\n• 支持手柄、键盘和触屏，掌机与主机模式",
+        "ko": "봉인된 무덤 문, 물에 잠긴 카타콤, 묻혀 버린 신전을 기름 랜턴 하나에 의지해 내려가세요. 그 빛은 지도이자 방패이며, 당신의 위치를 알리는 것이기도 합니다. 지하의 괴물들은 빛과 소리로 사냥하고, 기름은 줄어듭니다.\n\n• 직접 만든 세 레벨: 봉인된 문, 카타콤, 마지막 불꽃의 신전\n• 살아 있는 랜턴: 흔들리는 실시간 빛과 그림자, 찾아서 아껴 써야 하는 기름, 다가오는 것을 기절시키는 섬광\n• 순찰하며 사냥하는 텅 빈 자, 소리를 들을 때까지 잠든 사냥개, 빛을 마시는 도깨비불\n• 열쇠, 잠긴 문, 레버, 압력판, 시간제 철문, 가시 함정, 깨워야 할 세 개의 봉인\n• 체크포인트가 되는 수호의 불꽃과 세 개의 저장 슬롯\n• 위험에 따라 고조되는 적응형 공포 음악, 돌·물·모래 위의 발소리\n• 컨트롤러, 키보드, 터치 조작, 휴대 모드와 독 모드"
+      },
+      "version": "1.0.0",
+      "author": "sonerx7",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/crypt-light.nxvapp",
+      "size": 16497320,
+      "sha256": "59f92912520baa43b61dab06171372231993193b996b77d226cafb282155fe22",
+      "minSdk": "1.15",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/crypt-light/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/crypt-light",
+      "targetSdk": "1.15",
+      "subtitle": {
+        "en": "One lantern against a hungry dark",
+        "tr": "Aç bir karanlığa karşı tek fener",
+        "de": "Eine Laterne gegen hungriges Dunkel",
+        "fr": "Une lanterne contre l'obscurité",
+        "es": "Un farol contra la oscuridad",
+        "ja": "飢えた闇に挑む灯ひとつ",
+        "zh": "一盏孤灯，对抗噬人的黑暗",
+        "ko": "굶주린 어둠에 맞선 랜턴 하나"
+      },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-16",
+      "updated": "2026-11-16",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-16"
+        }
+      ]
+    },
+    {
       "id": "com.sonerx7.blocks",
       "name": {
         "en": "Falling Blocks",
@@ -7884,6 +7954,76 @@
         {
           "version": "0.8.0",
           "date": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.isledefense",
+      "name": {
+        "en": "Isle Defense",
+        "tr": "Ada Savunması",
+        "de": "Inselverteidigung",
+        "fr": "Défense de l'île",
+        "es": "Defensa de la isla",
+        "ja": "アイル・ディフェンス",
+        "zh": "海岛守卫",
+        "ko": "아일 디펜스"
+      },
+      "description": {
+        "en": "Raiders pour out of a portal in the sea and march on Sunspray Cove. Build towers on the old stone pads along their road and stop them before they reach the crystal heart of the island.\n\n• A sunlit 3D island with real-time shadows, moving water, shore foam and a village to protect\n• Four towers with three upgrade tiers: Archer Tower, Cannon Bastion, Frost Stone and Storm Spire with chain lightning\n• Five kinds of raiders: foot raiders, fast scuttlers, flying wasps, armoured ironclads and huge brutes\n• Ten waves, a gold economy, early-call bonus, wave preview, tower ranges, selling and 1x/2x/3x speed\n• Three save slots with stars, resume between waves, pause and options\n• Touch (tap or drag a seal onto a pad, pinch, rotate), controller and keyboard, handheld and docked\n• Adventure music with a battle layer, a war horn for every wave\n\nMore islands, towers and raiders come in a later update.",
+        "tr": "Yağmacılar denizdeki bir geçitten akın edip Köpüklü Koy'a yürüyor. Yollarının kenarındaki eski taş kaidelere kuleler kur ve adanın kristal kalbine varmadan onları durdur.\n\n• Gerçek zamanlı gölgeler, hareketli su, kıyı köpüğü ve korunacak bir köyle güneşli bir 3B ada\n• Üç yükseltme kademeli dört kule: Okçu Kulesi, Top Burcu, Ayaz Taşı ve zincirleme yıldırımlı Fırtına Kulesi\n• Beş tür yağmacı: yaya yağmacılar, hızlı yengeçler, uçan eşek arıları, zırhlı demirdöşler ve iri kabadayılar\n• On dalga, altın ekonomisi, erken çağrı ödülü, dalga önizlemesi, kule menzilleri, satış ve 1x/2x/3x hız\n• Yıldızlı üç kayıt yuvası, dalga arasında devam, duraklatma ve ayarlar\n• Dokunmatik (kaideye dokun ya da mührü sürükle, kıstır, döndür), kumanda ve klavye, el ve dock modu\n• Savaş katmanlı macera müziği, her dalgada bir savaş borusu\n\nYeni adalar, kuleler ve yağmacılar sonraki bir güncellemeyle gelecek.",
+        "de": "Plünderer strömen aus einem Portal im Meer und marschieren auf die Gischtbucht. Baue Türme auf den alten Steinsockeln an ihrem Weg und halte sie auf, bevor sie das Kristallherz der Insel erreichen.\n\n• Eine sonnige 3D-Insel mit Echtzeitschatten, bewegtem Wasser, Brandung und einem Dorf zum Beschützen\n• Vier Türme mit drei Ausbaustufen: Bogenturm, Kanonenbastion, Froststein und Sturmspitze mit Kettenblitz\n• Fünf Arten von Plünderern: Fußvolk, flinke Krabbler, fliegende Wespen, gepanzerte Eisenkrieger und riesige Rohlinge\n• Zehn Wellen, Gold-Wirtschaft, Bonus für frühes Rufen, Wellenvorschau, Reichweiten, Verkauf und 1x/2x/3x-Tempo\n• Drei Speicherplätze mit Sternen, Fortsetzen zwischen Wellen, Pause und Optionen\n• Touch (Sockel antippen oder Siegel daraufziehen, zoomen, drehen), Controller und Tastatur, Handheld und Dock\n• Abenteuermusik mit Kampfebene und ein Kriegshorn für jede Welle\n\nWeitere Inseln, Türme und Plünderer folgen in einem späteren Update.",
+        "fr": "Des pillards jaillissent d'un portail marin et marchent sur la Crique d'Écume. Construisez des tours sur les vieux socles de pierre le long de leur route et arrêtez-les avant le cœur de cristal de l'île.\n\n• Une île 3D ensoleillée avec ombres en temps réel, eau animée, écume et un village à protéger\n• Quatre tours à trois niveaux : Tour d'archers, Bastion à canon, Pierre de givre et Flèche des orages à éclair en chaîne\n• Cinq types de pillards : fantassins, crabes rapides, guêpes volantes, cuirassés et brutes géantes\n• Dix vagues, économie d'or, bonus d'appel anticipé, aperçu des vagues, portées, vente et vitesse 1x/2x/3x\n• Trois emplacements avec étoiles, reprise entre les vagues, pause et options\n• Tactile (toucher un socle ou y glisser un sceau, pincer, tourner), manette et clavier, portable et sur téléviseur\n• Musique d'aventure avec une couche de bataille et un cor de guerre à chaque vague\n\nD'autres îles, tours et pillards arriveront dans une mise à jour.",
+        "es": "Los saqueadores salen de un portal en el mar y marchan sobre Cala Espuma. Construye torres sobre las viejas bases de piedra junto a su camino y detenlos antes de que lleguen al corazón de cristal de la isla.\n\n• Una isla 3D soleada con sombras en tiempo real, agua en movimiento, espuma en la orilla y un poblado que proteger\n• Cuatro torres con tres niveles: Torre de arqueros, Bastión de cañón, Piedra de escarcha y Aguja de tormenta con rayo en cadena\n• Cinco tipos de saqueadores: infantes, cangrejos veloces, avispas voladoras, acorazados y brutos enormes\n• Diez oleadas, economía de oro, bonificación por llamar antes, vista previa, alcances, venta y velocidad 1x/2x/3x\n• Tres ranuras de guardado con estrellas, continuar entre oleadas, pausa y opciones\n• Táctil (toca una base o arrastra un sello, pellizca, gira), mando y teclado, modo portátil y base\n• Música de aventura con capa de batalla y un cuerno de guerra en cada oleada\n\nMás islas, torres y saqueadores llegarán en una actualización.",
+        "ja": "海に開いた門から敵があふれ出し、しぶき入り江へ進軍してくる。道沿いの古い石の台座に塔を建て、島の水晶の心臓に届く前に食い止めよう。\n\n• リアルタイムの影、動く水面、波打ち際の泡、守るべき村がある陽光の3Dアイランド\n• 3段階に強化できる4種の塔：弓兵の塔、大砲の砦、霜の石、連鎖する雷の嵐の尖塔\n• 5種類の敵：歩兵、すばしこいカニ、空飛ぶハチ、装甲兵、巨大な荒くれ者\n• 10ウェーブ、ゴールド経済、早期呼出ボーナス、ウェーブ予告、射程表示、売却、1x/2x/3x速度\n• 星つきの3つのセーブ枠、ウェーブ間の再開、一時停止と設定\n• タッチ（台座をタップ／印章をドラッグ、ピンチ、回転）、コントローラー、キーボード、携帯モードとTVモード\n• 戦闘レイヤーつきの冒険音楽と、ウェーブごとの角笛\n\n新しい島・塔・敵は今後のアップデートで登場します。",
+        "zh": "敌人从海上的传送门涌出，向浪花湾进军。在他们必经之路旁的古老石座上建造防御塔，在他们抵达海岛水晶核心之前将其击退。\n\n• 阳光明媚的 3D 海岛：实时阴影、流动的海水、岸边浪花和需要守护的村庄\n• 四种可升级三级的防御塔：弓箭塔、火炮堡垒、寒霜石，以及释放连锁闪电的风暴尖塔\n• 五种敌人：步兵、迅捷的蟹兵、飞行的胡蜂、重甲铁卫和巨型蛮兵\n• 十波进攻、金币经济、提前召唤奖励、波次预览、射程显示、出售与 1x/2x/3x 速度\n• 三个带星级的存档位，波次间继续、暂停与设置\n• 触屏（点按基座或拖动印章、双指缩放、旋转）、手柄和键盘，掌机与主机模式\n• 带战斗层的冒险音乐，每波响起的战争号角\n\n更多海岛、防御塔和敌人将在后续更新中推出。",
+        "ko": "바다에 열린 관문에서 약탈자들이 쏟아져 나와 물보라 만으로 진군합니다. 길가의 오래된 돌 받침대에 탑을 세우고 섬의 수정 심장에 닿기 전에 막아내세요.\n\n• 실시간 그림자, 움직이는 물결, 해안 거품, 지켜야 할 마을이 있는 햇살 가득한 3D 섬\n• 3단계로 강화하는 탑 4종: 궁수 탑, 대포 보루, 서리 돌, 연쇄 번개의 폭풍 첨탑\n• 약탈자 5종: 보병, 재빠른 게, 날아다니는 말벌, 중갑 철갑병, 거대한 짐승\n• 10웨이브, 골드 경제, 조기 호출 보너스, 웨이브 미리보기, 사거리 표시, 판매, 1x/2x/3x 속도\n• 별이 기록되는 저장 슬롯 3개, 웨이브 사이 이어하기, 일시 정지와 설정\n• 터치(받침대 탭 또는 인장 끌어 놓기, 핀치, 회전), 컨트롤러와 키보드, 휴대 모드와 독 모드\n• 전투 레이어가 있는 모험 음악과 웨이브마다 울리는 뿔피리\n\n더 많은 섬과 탑, 약탈자는 이후 업데이트로 추가됩니다."
+      },
+      "version": "1.0.0",
+      "author": "sonerx7",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/isle-defense.nxvapp",
+      "size": 12673349,
+      "sha256": "e7a205fe4d64752430566c1d8871df005b21a9445646fa9b08d2e01fd8d1228f",
+      "minSdk": "1.15",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/isle-defense/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/isle-defense",
+      "targetSdk": "1.15",
+      "subtitle": {
+        "en": "Hold the island, guard its heart",
+        "tr": "Adayı tut, kalbini koru",
+        "de": "Halte die Insel, schütze ihr Herz",
+        "fr": "Tenez l'île, gardez son cœur",
+        "es": "Defiende la isla y su corazón",
+        "ja": "島を守れ、その心臓を守れ",
+        "zh": "守住海岛，守护核心",
+        "ko": "섬을 지키고 심장을 지켜라"
+      },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-16",
+      "updated": "2026-11-16",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-16"
         }
       ]
     },
@@ -8626,6 +8766,85 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.neondrift",
+      "name": {
+        "en": "Neon Drift",
+        "tr": "Neon Drift",
+        "de": "Neon Drift",
+        "fr": "Neon Drift",
+        "es": "Neon Drift",
+        "ja": "ネオンドリフト",
+        "zh": "霓虹漂移",
+        "ko": "네온 드리프트"
+      },
+      "description": {
+        "en": "Race through a rain-soaked city at midnight. Three circuits are built from real 3D city blocks: the tight downtown Midnight Grid, the Dockside Run along the harbour and the Neon Expressway with its raised highway and long tunnel. Hold a drift through the bends to fill your nitro, then burn it on the straights while up to five rivals fight for every place. The wet asphalt mirrors every sign and street lamp, the synthwave soundtrack picks up when you go fast, and your best laps are saved.\n\n• Three night circuits with neon, rain and reflections\n• Drift to charge the nitro, let go for a boost\n• 3 to 5 rivals, three difficulty levels, 2, 3 or 5 laps\n• Chase, close and bumper cameras\n• Controller, keyboard or touch\n• Best lap and best race records",
+        "tr": "Gece yarısı yağmura teslim bir şehirde yarış. Üç pist gerçek 3D şehir bloklarından kuruldu: dar Midnight Grid, liman boyunca Dockside Run ve yükseltilmiş otoyolu ile uzun tüneliyle Neon Expressway. Virajlarda drift yaparak nitronu doldur, düzlüklerde yak; beş rakibe kadar her sıra için savaşır. Islak asfalt her tabelayı ve sokak lambasını yansıtır, synthwave müziği hızlandıkça yükselir ve en iyi turların kaydedilir.\n\n• Neon, yağmur ve yansımalarla üç gece pisti\n• Nitroyu drift ile doldur, bırakınca hız patlaması\n• 3 ila 5 rakip, üç zorluk seviyesi, 2, 3 veya 5 tur\n• Takip, yakın ve tampon kameraları\n• Kumanda, klavye veya dokunmatik\n• En iyi tur ve en iyi yarış rekorları",
+        "de": "Rase um Mitternacht durch eine regennasse Stadt. Drei Strecken bestehen aus echten 3D-Stadtblöcken: das enge Midnight Grid in der Innenstadt, der Dockside Run am Hafen und der Neon Expressway mit Hochstraße und langem Tunnel. Halte den Drift in den Kurven, um dein Nitro zu laden, und verbrenne es auf den Geraden, während bis zu fünf Rivalen um jeden Platz kämpfen. Der nasse Asphalt spiegelt jedes Schild und jede Laterne, der Synthwave-Soundtrack zieht an, wenn du schnell wirst, und deine besten Runden werden gespeichert.\n\n• Drei nächtliche Strecken mit Neon, Regen und Spiegelungen\n• Driften lädt das Nitro, Loslassen gibt einen Boost\n• 3 bis 5 Rivalen, drei Schwierigkeitsgrade, 2, 3 oder 5 Runden\n• Verfolger-, Nah- und Stoßstangenkamera\n• Controller, Tastatur oder Touch\n• Rekorde für beste Runde und bestes Rennen",
+        "fr": "Fonce dans une ville détrempée par la pluie à minuit. Trois circuits sont bâtis à partir de vrais blocs urbains en 3D : le Midnight Grid étroit du centre-ville, le Dockside Run le long du port et le Neon Expressway avec son autoroute surélevée et son long tunnel. Tiens ton drift dans les virages pour remplir ton nitro, puis brûle-le dans les lignes droites pendant que jusqu'à cinq rivaux se battent pour chaque place. L'asphalte mouillé reflète chaque enseigne et chaque lampadaire, la bande-son synthwave monte quand tu vas vite, et tes meilleurs tours sont enregistrés.\n\n• Trois circuits de nuit avec néons, pluie et reflets\n• Dérape pour charger le nitro, relâche pour un boost\n• 3 à 5 rivaux, trois niveaux de difficulté, 2, 3 ou 5 tours\n• Caméras poursuite, proche et pare-chocs\n• Manette, clavier ou tactile\n• Records du meilleur tour et de la meilleure course",
+        "es": "Corre por una ciudad empapada de lluvia a medianoche. Tres circuitos están construidos con manzanas urbanas reales en 3D: el estrecho Midnight Grid del centro, el Dockside Run a lo largo del puerto y el Neon Expressway con su autopista elevada y su largo túnel. Mantén el derrape en las curvas para llenar el nitro y quémalo en las rectas mientras hasta cinco rivales luchan por cada puesto. El asfalto mojado refleja cada letrero y cada farola, la banda sonora synthwave sube cuando vas rápido y se guardan tus mejores vueltas.\n\n• Tres circuitos nocturnos con neón, lluvia y reflejos\n• Derrapa para cargar el nitro, suelta para un impulso\n• 3 a 5 rivales, tres niveles de dificultad, 2, 3 o 5 vueltas\n• Cámaras de persecución, cercana y de parachoques\n• Mando, teclado o táctil\n• Récords de mejor vuelta y mejor carrera",
+        "ja": "真夜中、雨に濡れた街を駆け抜けよう。3つのコースは本物の3D街区で作られています。タイトなダウンタウンのミッドナイトグリッド、港沿いのドックサイドラン、高架道路と長いトンネルを持つネオンエクスプレスウェイ。カーブでドリフトを保ってニトロを溜め、直線で燃焼。最大5人のライバルが順位を争います。濡れた路面はあらゆる看板と街灯を映し、スピードが上がるとシンセウェイブのサウンドトラックが盛り上がり、ベストラップは保存されます。\n\n• ネオン、雨、反射の3つの夜コース\n• ドリフトでニトロを溜め、離してブースト\n• ライバル3～5人、3段階の難易度、2・3・5周\n• チェイス、クローズ、バンパーカメラ\n• コントローラー、キーボード、タッチ対応\n• ベストラップとベストレースの記録",
+        "zh": "午夜时分，在雨水浸润的城市中飞驰。三条赛道由真实的 3D 城市街区构成：狭窄的市中心午夜网格、沿港口的码头冲刺，以及拥有高架公路和长隧道的霓虹高速。在弯道中保持漂移来充能氮气，再在直道上燃烧，最多五名对手会争夺每一个名次。湿滑的沥青映出每一块招牌和路灯，速度越快合成波配乐越激昂，你的最佳单圈会被保存。\n\n• 三条夜间赛道，霓虹、雨天与倒影\n• 漂移充能氮气，松开获得加速\n• 3 到 5 名对手，三档难度，2、3 或 5 圈\n• 追尾、近景和保险杠视角\n• 支持手柄、键盘或触屏\n• 最佳单圈与最佳比赛记录",
+        "ko": "한밤중, 비에 젖은 도시를 질주하세요. 세 개의 서킷은 실제 3D 도시 블록으로 만들었습니다. 좁은 도심의 미드나이트 그리드, 항구를 따라가는 덕사이드 런, 고가도로와 긴 터널이 있는 네온 익스프레스웨이. 커브에서 드리프트를 유지해 니트로를 채우고 직선에서 태우세요. 최대 다섯 명의 라이벌이 모든 순위를 두고 다툽니다. 젖은 아스팔트는 모든 간판과 가로등을 비추고, 빨라질수록 신스웨이브 사운드트랙이 고조되며, 최고 랩은 저장됩니다.\n\n• 네온, 비, 반사가 있는 세 개의 야간 서킷\n• 드리프트로 니트로 충전, 떼면 부스트\n• 라이벌 3~5명, 난이도 3단계, 2·3·5랩\n• 추격, 근접, 범퍼 카메라\n• 컨트롤러, 키보드, 터치\n• 최고 랩과 최고 레이스 기록"
+      },
+      "version": "1.0.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/neon-drift.nxvapp",
+      "size": 5684009,
+      "sha256": "794e4305964f3ebdb535f72ec4270ffeda97022d270b098a8f6043dbff9897cd",
+      "minSdk": "1.15",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/screenshots/1.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/screenshots/2.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/screenshots/3.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/screenshots/4.jpg",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/racing/neon-drift/screenshots/5.jpg"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/racing/neon-drift",
+      "targetSdk": "1.15",
+      "subtitle": {
+        "en": "Night-city racing on wet neon streets",
+        "tr": "Islak neon sokaklarda gece şehir yarışı",
+        "de": "Nachtrennen auf nassen Neonstraßen",
+        "fr": "Courses de nuit sur rues néon mouillées",
+        "es": "Carreras nocturnas en calles de neón mojadas",
+        "ja": "濡れたネオン街の夜間レース",
+        "zh": "雨夜霓虹街头的夜城竞速",
+        "ko": "비 젖은 네온 거리의 야간 레이스"
+      },
+      "changelog": {
+        "en": "1.0.0: First release.",
+        "tr": "1.0.0: İlk sürüm.",
+        "de": "1.0.0: Erste Veröffentlichung.",
+        "fr": "1.0.0 : Première version.",
+        "es": "1.0.0: Primera versión.",
+        "ja": "1.0.0: 初回リリース。",
+        "zh": "1.0.0：首次发布。",
+        "ko": "1.0.0: 첫 출시."
+      },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller"
+      ],
+      "added": "2026-11-16",
+      "updated": "2026-11-16",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-16"
         }
       ]
     },
@@ -9842,6 +10061,77 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.stationzero",
+      "name": {
+        "en": "Station Zero",
+        "tr": "Station Zero",
+        "de": "Station Zero",
+        "fr": "Station Zero",
+        "es": "Station Zero",
+        "ja": "Station Zero",
+        "zh": "Station Zero",
+        "ko": "Station Zero"
+      },
+      "description": {
+        "en": "Kepler station has gone dark. You wake up alone in the crew deck while security drones sweep the corridors with their searchlights, and the only way home is an escape pod on the far side of the ring.\n\nStay out of the light: cyan means patrol, amber means a drone is suspicious, red means it is hunting you. Walk quietly, hide behind cargo and consoles, and keep out of sight of the sentries.\n\n• Four sectors built from detailed modular station architecture: the cargo hangar, the reactor and labs, the command bridge with its view of the planet, and the escape bay\n• Terminal puzzles: reroute the reactor feed, crack the bridge lockdown with digits hidden in the crew logs, find the keycard, pull the levers, hold the pressure gates\n• Drones that patrol, notice you, raise the alarm and chase you through the decks, and sentries that open fire\n• Real-time lights and shadows, bloom on neon strips and screens, searchlights, sparks and steam\n• A final run through the venting escape bay against the clock\n• Opening fly-throughs for every sector, checkpoints and automatic saving\n• Controller, keyboard or touch; handheld and docked",
+        "tr": "Kepler istasyonu karardı. Mürettebat güvertesinde tek başına uyanıyorsun; güvenlik dronları ışıklarıyla koridorları tarıyor ve eve dönmenin tek yolu halkanın öbür ucundaki kaçış kapsülü.\n\nIşıktan uzak dur: camgöbeği devriye, kehribar şüphe, kırmızı ise avlandığın anlamına gelir. Sessiz yürü, kargoların ve konsolların arkasına saklan, nöbetçi robotların görüş alanına girme.\n\n• Ayrıntılı modüler istasyon mimarisiyle kurulmuş dört bölüm: kargo hangarı, reaktör ve laboratuvarlar, gezegene bakan komuta köprüsü ve kaçış bölmesi\n• Terminal bulmacaları: reaktör beslemesini yeniden yönlendir, mürettebat kayıtlarına gizlenmiş hanelerle köprü karantinasını kır, anahtar kartı bul, kolları çek, basınç kapılarını açık tut\n• Devriye gezen, seni fark eden, alarm veren ve güverteler boyunca kovalayan dronlar ve ateş açan nöbetçiler\n• Gerçek zamanlı ışıklar ve gölgeler, neon şeritlerde ve ekranlarda parlama, arama ışıkları, kıvılcımlar ve buhar\n• Boşaltılan kaçış bölmesinde zamana karşı son koşu\n• Her bölüm için açılış sineması, kayıt noktaları ve otomatik kayıt\n• Kumanda, klavye ya da dokunmatik; el ve dock modu",
+        "de": "Die Kepler-Station ist dunkel. Du wachst allein auf dem Crewdeck auf, während Sicherheitsdrohnen die Gänge mit Suchscheinwerfern absuchen, und der einzige Weg nach Hause ist eine Rettungskapsel auf der anderen Seite des Rings.\n\nBleib aus dem Licht: Cyan heißt Patrouille, Bernstein heißt misstrauisch, Rot heißt, die Drohne jagt dich. Geh leise, versteck dich hinter Fracht und Konsolen und meide den Blick der Wachroboter.\n\n• Vier Sektoren aus detaillierter modularer Stationsarchitektur: Frachthangar, Reaktor und Labore, Kommandobrücke mit Blick auf den Planeten und Rettungsbucht\n• Terminal-Rätsel: Reaktoreinspeisung umleiten, die Brückensperre mit Ziffern aus den Crew-Logs knacken, die Schlüsselkarte finden, Hebel ziehen, Druckschotts offen halten\n• Drohnen, die patrouillieren, dich bemerken, Alarm schlagen und dich über die Decks jagen, und Wachroboter, die feuern\n• Echtzeit-Licht und Schatten, Bloom auf Neonstreifen und Bildschirmen, Suchscheinwerfer, Funken und Dampf\n• Ein letzter Lauf gegen die Zeit durch die entlüftete Rettungsbucht\n• Eröffnungsflüge für jeden Sektor, Checkpoints und automatisches Speichern\n• Controller, Tastatur oder Touch; Handheld und Dock",
+        "fr": "La station Kepler s’est éteinte. Vous vous réveillez seul sur le pont de l’équipage pendant que des drones de sécurité balaient les couloirs de leurs projecteurs, et le seul chemin du retour est une capsule de sauvetage de l’autre côté de l’anneau.\n\nRestez hors de la lumière : cyan, c’est la patrouille, ambre, un drone méfiant, rouge, il vous traque. Marchez sans bruit, cachez-vous derrière les caisses et les consoles et évitez le regard des sentinelles.\n\n• Quatre secteurs bâtis à partir d’une architecture modulaire détaillée : le hangar de fret, le réacteur et les labos, la passerelle avec vue sur la planète et la baie d’évacuation\n• Énigmes sur terminal : redirigez l’alimentation du réacteur, levez le confinement avec des chiffres cachés dans les journaux de l’équipage, trouvez la carte d’accès, tirez les leviers, tenez les portes à pression\n• Des drones qui patrouillent, vous repèrent, donnent l’alarme et vous traquent, et des sentinelles qui ouvrent le feu\n• Lumières et ombres en temps réel, bloom sur les néons et les écrans, projecteurs, étincelles et vapeur\n• Une dernière course contre la montre dans la baie en cours de purge\n• Survol d’ouverture pour chaque secteur, points de contrôle et sauvegarde automatique\n• Manette, clavier ou tactile ; portable et sur station",
+        "es": "La estación Kepler se ha apagado. Despiertas solo en la cubierta de la tripulación mientras los drones de seguridad barren los pasillos con sus focos, y el único camino a casa es una cápsula de escape al otro lado del anillo.\n\nNo entres en la luz: cian es patrulla, ámbar es un dron que sospecha y rojo significa que te está cazando. Camina en silencio, escóndete tras la carga y las consolas y evita la vista de los centinelas.\n\n• Cuatro sectores construidos con arquitectura modular detallada: el hangar de carga, el reactor y los laboratorios, el puente de mando con vista al planeta y la bahía de escape\n• Puzles de terminal: desvía la energía del reactor, rompe el cierre del puente con dígitos ocultos en los registros, encuentra la tarjeta, tira de las palancas, mantén abiertas las compuertas de presión\n• Drones que patrullan, te detectan, dan la alarma y te persiguen por las cubiertas, y centinelas que disparan\n• Luces y sombras en tiempo real, bloom en neones y pantallas, focos, chispas y vapor\n• Una carrera final contra el reloj por la bahía que se vacía\n• Sobrevuelo inicial en cada sector, puntos de control y guardado automático\n• Mando, teclado o táctil; portátil y en base",
+        "ja": "ケプラー・ステーションは沈黙した。乗員デッキでひとり目覚めると、警備ドローンがサーチライトで通路を照らしている。帰る手段は、リングの反対側にある脱出ポッドだけ。\n\n光に入るな。シアンは巡回、琥珀は警戒、赤は追跡の合図。足音を殺し、貨物やコンソールの陰に隠れ、警備ロボットの視界を避けよう。\n\n• 精密なモジュール式ステーション建築で作られた4つのセクター：貨物ハンガー、原子炉とラボ、惑星を望む司令ブリッジ、脱出ベイ\n• 端末パズル：原子炉の給電ルートを組み直し、乗員ログに隠された数字でブリッジの封鎖を解き、カードキーを探し、レバーを引き、圧力ゲートを開け続ける\n• 巡回し、気づき、警報を鳴らし、デッキを越えて追ってくるドローンと、発砲する警備ロボット\n• リアルタイムの光と影、ネオンやスクリーンのブルーム、サーチライト、火花と蒸気\n• 排気が迫る脱出ベイでのタイムアタック\n• 各セクターのオープニング映像、チェックポイントとオートセーブ\n• コントローラー、キーボード、タッチ対応。携帯モードとドックモード",
+        "zh": "开普勒空间站陷入黑暗。你独自在船员甲板上醒来，安保无人机正用探照灯扫过走廊，而回家的唯一途径，是环带另一端的逃生舱。\n\n别进入光束：青色代表巡逻，琥珀色代表怀疑，红色代表正在追捕你。放轻脚步，躲在货箱和控制台后面，避开哨兵机器人的视线。\n\n• 四个由精细模块化空间站建筑搭建的区域：货运机库、反应堆与实验室、可眺望行星的指挥舰桥，以及逃生舱湾\n• 终端谜题：重新规划反应堆供电，用藏在船员日志里的数字解除舰桥封锁，找到门禁卡，拉动拉杆，守住压力闸门\n• 会巡逻、会发现你、会拉响警报并穿越甲板追捕你的无人机，以及会开火的哨兵\n• 实时光影、霓虹灯带与屏幕的泛光、探照灯、火花和蒸汽\n• 在正在排气的逃生舱湾中与时间赛跑\n• 每个区域都有开场镜头，检查点与自动存档\n• 支持手柄、键盘或触屏；掌机模式与底座模式",
+        "ko": "케플러 스테이션이 정지했습니다. 승무원 갑판에서 홀로 깨어나 보니 보안 드론들이 탐조등으로 복도를 훑고 있고, 집으로 돌아갈 길은 링 반대편의 탈출 포드뿐입니다.\n\n빛을 피하세요. 청록은 순찰, 호박색은 의심, 빨강은 추격 중이라는 뜻입니다. 조용히 걷고, 화물과 콘솔 뒤에 숨고, 경비 로봇의 시야를 피하세요.\n\n• 정교한 모듈식 스테이션 건축으로 만든 네 개의 섹터: 화물 격납고, 원자로와 연구실, 행성이 보이는 지휘 함교, 탈출 베이\n• 터미널 퍼즐: 원자로 급전 경로를 바꾸고, 승무원 로그에 숨은 숫자로 함교 봉쇄를 풀고, 키카드를 찾고, 레버를 당기고, 압력 게이트를 열어 두세요\n• 순찰하고, 눈치채고, 경보를 울리며 갑판을 넘어 쫓아오는 드론과 사격하는 경비 로봇\n• 실시간 조명과 그림자, 네온과 화면의 블룸, 탐조등, 불꽃과 증기\n• 배기 중인 탈출 베이에서 펼치는 시간과의 마지막 경주\n• 섹터마다 오프닝 비행 장면, 체크포인트와 자동 저장\n• 컨트롤러, 키보드, 터치 지원, 휴대 모드와 독 모드"
+      },
+      "version": "1.0.0",
+      "author": "Soner Çakır (sonerx7)",
+      "category": "games",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/station-zero.nxvapp",
+      "size": 13157467,
+      "sha256": "8a74ec3dc5659fca437854dbb713618687a05b6048f43d1a163f0ac658d8f55c",
+      "minSdk": "1.9",
+      "permissions": [],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/screenshots/1.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/screenshots/2.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/screenshots/3.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/screenshots/4.png",
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Games/action/station-zero/screenshots/5.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Games/action/station-zero",
+      "runtime": "lua",
+      "targetSdk": "1.15",
+      "subtitle": {
+        "en": "Sneak past the drones, escape the station",
+        "tr": "Dronlardan sıyrıl, istasyondan kaç",
+        "de": "Schleich an Drohnen vorbei, flieh von Bord",
+        "fr": "Échappez aux drones, fuyez la station",
+        "es": "Esquiva los drones y huye de la estación",
+        "ja": "ドローンをかわして宇宙ステーションから脱出",
+        "zh": "避开无人机，逃离空间站",
+        "ko": "드론을 피해 스테이션을 탈출하라"
+      },
+      "kind": "game",
+      "tech": "lua",
+      "features": [
+        "3d",
+        "offline",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-16",
+      "updated": "2026-11-16",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-16"
         }
       ]
     },

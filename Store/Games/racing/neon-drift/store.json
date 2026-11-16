@@ -1,0 +1,63 @@
+{
+  "kind": "game",
+  "license": "GPL-3.0-or-later",
+  "age": "everyone",
+  "tags": [
+    "3d",
+    "racing",
+    "arcade",
+    "drift",
+    "night",
+    "neon",
+    "controller"
+  ],
+  "subtitle": {
+    "en": "Night-city racing on wet neon streets",
+    "tr": "Islak neon sokaklarda gece şehir yarışı",
+    "de": "Nachtrennen auf nassen Neonstraßen",
+    "fr": "Courses de nuit sur rues néon mouillées",
+    "es": "Carreras nocturnas en calles de neón mojadas",
+    "ja": "濡れたネオン街の夜間レース",
+    "zh": "雨夜霓虹街头的夜城竞速",
+    "ko": "비 젖은 네온 거리의 야간 레이스"
+  },
+  "description": {
+    "en": "Race through a rain-soaked city at midnight. Three circuits are built from real 3D city blocks: the tight downtown Midnight Grid, the Dockside Run along the harbour and the Neon Expressway with its raised highway and long tunnel. Hold a drift through the bends to fill your nitro, then burn it on the straights while up to five rivals fight for every place. The wet asphalt mirrors every sign and street lamp, the synthwave soundtrack picks up when you go fast, and your best laps are saved.\n\n• Three night circuits with neon, rain and reflections\n• Drift to charge the nitro, let go for a boost\n• 3 to 5 rivals, three difficulty levels, 2, 3 or 5 laps\n• Chase, close and bumper cameras\n• Controller, keyboard or touch\n• Best lap and best race records",
+    "tr": "Gece yarısı yağmura teslim bir şehirde yarış. Üç pist gerçek 3D şehir bloklarından kuruldu: dar Midnight Grid, liman boyunca Dockside Run ve yükseltilmiş otoyolu ile uzun tüneliyle Neon Expressway. Virajlarda drift yaparak nitronu doldur, düzlüklerde yak; beş rakibe kadar her sıra için savaşır. Islak asfalt her tabelayı ve sokak lambasını yansıtır, synthwave müziği hızlandıkça yükselir ve en iyi turların kaydedilir.\n\n• Neon, yağmur ve yansımalarla üç gece pisti\n• Nitroyu drift ile doldur, bırakınca hız patlaması\n• 3 ila 5 rakip, üç zorluk seviyesi, 2, 3 veya 5 tur\n• Takip, yakın ve tampon kameraları\n• Kumanda, klavye veya dokunmatik\n• En iyi tur ve en iyi yarış rekorları",
+    "de": "Rase um Mitternacht durch eine regennasse Stadt. Drei Strecken bestehen aus echten 3D-Stadtblöcken: das enge Midnight Grid in der Innenstadt, der Dockside Run am Hafen und der Neon Expressway mit Hochstraße und langem Tunnel. Halte den Drift in den Kurven, um dein Nitro zu laden, und verbrenne es auf den Geraden, während bis zu fünf Rivalen um jeden Platz kämpfen. Der nasse Asphalt spiegelt jedes Schild und jede Laterne, der Synthwave-Soundtrack zieht an, wenn du schnell wirst, und deine besten Runden werden gespeichert.\n\n• Drei nächtliche Strecken mit Neon, Regen und Spiegelungen\n• Driften lädt das Nitro, Loslassen gibt einen Boost\n• 3 bis 5 Rivalen, drei Schwierigkeitsgrade, 2, 3 oder 5 Runden\n• Verfolger-, Nah- und Stoßstangenkamera\n• Controller, Tastatur oder Touch\n• Rekorde für beste Runde und bestes Rennen",
+    "fr": "Fonce dans une ville détrempée par la pluie à minuit. Trois circuits sont bâtis à partir de vrais blocs urbains en 3D : le Midnight Grid étroit du centre-ville, le Dockside Run le long du port et le Neon Expressway avec son autoroute surélevée et son long tunnel. Tiens ton drift dans les virages pour remplir ton nitro, puis brûle-le dans les lignes droites pendant que jusqu'à cinq rivaux se battent pour chaque place. L'asphalte mouillé reflète chaque enseigne et chaque lampadaire, la bande-son synthwave monte quand tu vas vite, et tes meilleurs tours sont enregistrés.\n\n• Trois circuits de nuit avec néons, pluie et reflets\n• Dérape pour charger le nitro, relâche pour un boost\n• 3 à 5 rivaux, trois niveaux de difficulté, 2, 3 ou 5 tours\n• Caméras poursuite, proche et pare-chocs\n• Manette, clavier ou tactile\n• Records du meilleur tour et de la meilleure course",
+    "es": "Corre por una ciudad empapada de lluvia a medianoche. Tres circuitos están construidos con manzanas urbanas reales en 3D: el estrecho Midnight Grid del centro, el Dockside Run a lo largo del puerto y el Neon Expressway con su autopista elevada y su largo túnel. Mantén el derrape en las curvas para llenar el nitro y quémalo en las rectas mientras hasta cinco rivales luchan por cada puesto. El asfalto mojado refleja cada letrero y cada farola, la banda sonora synthwave sube cuando vas rápido y se guardan tus mejores vueltas.\n\n• Tres circuitos nocturnos con neón, lluvia y reflejos\n• Derrapa para cargar el nitro, suelta para un impulso\n• 3 a 5 rivales, tres niveles de dificultad, 2, 3 o 5 vueltas\n• Cámaras de persecución, cercana y de parachoques\n• Mando, teclado o táctil\n• Récords de mejor vuelta y mejor carrera",
+    "ja": "真夜中、雨に濡れた街を駆け抜けよう。3つのコースは本物の3D街区で作られています。タイトなダウンタウンのミッドナイトグリッド、港沿いのドックサイドラン、高架道路と長いトンネルを持つネオンエクスプレスウェイ。カーブでドリフトを保ってニトロを溜め、直線で燃焼。最大5人のライバルが順位を争います。濡れた路面はあらゆる看板と街灯を映し、スピードが上がるとシンセウェイブのサウンドトラックが盛り上がり、ベストラップは保存されます。\n\n• ネオン、雨、反射の3つの夜コース\n• ドリフトでニトロを溜め、離してブースト\n• ライバル3～5人、3段階の難易度、2・3・5周\n• チェイス、クローズ、バンパーカメラ\n• コントローラー、キーボード、タッチ対応\n• ベストラップとベストレースの記録",
+    "zh": "午夜时分，在雨水浸润的城市中飞驰。三条赛道由真实的 3D 城市街区构成：狭窄的市中心午夜网格、沿港口的码头冲刺，以及拥有高架公路和长隧道的霓虹高速。在弯道中保持漂移来充能氮气，再在直道上燃烧，最多五名对手会争夺每一个名次。湿滑的沥青映出每一块招牌和路灯，速度越快合成波配乐越激昂，你的最佳单圈会被保存。\n\n• 三条夜间赛道，霓虹、雨天与倒影\n• 漂移充能氮气，松开获得加速\n• 3 到 5 名对手，三档难度，2、3 或 5 圈\n• 追尾、近景和保险杠视角\n• 支持手柄、键盘或触屏\n• 最佳单圈与最佳比赛记录",
+    "ko": "한밤중, 비에 젖은 도시를 질주하세요. 세 개의 서킷은 실제 3D 도시 블록으로 만들었습니다. 좁은 도심의 미드나이트 그리드, 항구를 따라가는 덕사이드 런, 고가도로와 긴 터널이 있는 네온 익스프레스웨이. 커브에서 드리프트를 유지해 니트로를 채우고 직선에서 태우세요. 최대 다섯 명의 라이벌이 모든 순위를 두고 다툽니다. 젖은 아스팔트는 모든 간판과 가로등을 비추고, 빨라질수록 신스웨이브 사운드트랙이 고조되며, 최고 랩은 저장됩니다.\n\n• 네온, 비, 반사가 있는 세 개의 야간 서킷\n• 드리프트로 니트로 충전, 떼면 부스트\n• 라이벌 3~5명, 난이도 3단계, 2·3·5랩\n• 추격, 근접, 범퍼 카메라\n• 컨트롤러, 키보드, 터치\n• 최고 랩과 최고 레이스 기록"
+  },
+  "changelog": {
+    "en": "1.0.0: First release.",
+    "tr": "1.0.0: İlk sürüm.",
+    "de": "1.0.0: Erste Veröffentlichung.",
+    "fr": "1.0.0 : Première version.",
+    "es": "1.0.0: Primera versión.",
+    "ja": "1.0.0: 初回リリース。",
+    "zh": "1.0.0：首次发布。",
+    "ko": "1.0.0: 첫 출시."
+  },
+  "shots": [
+    [
+      "wait 3"
+    ],
+    [
+      "key enter",
+      "wait 2"
+    ],
+    [
+      "key enter",
+      "wait 1"
+    ]
+  ],
+  "features": [
+    "3d",
+    "offline",
+    "touch",
+    "controller"
+  ]
+}
