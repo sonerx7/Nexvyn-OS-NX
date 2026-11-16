@@ -752,7 +752,7 @@ end
 | `g3d.load(path[, size])` → mesh or nil,err | load a `.obj` (v/vn/vt/f, optional vertex colors `v x y z r g b`) or `.stl` (binary/ASCII) file, centered and scaled to `size` (default 2). If the `.obj` names a material library (`mtllib`) whose material has a diffuse map (`map_Kd`), that image becomes the mesh texture |
 | `g3d.custom({x,y,z,...}, {i1,i2,i3,...}[, {colors per vertex}[, flat[, {u1,v1,u2,v2,...}]]])` | your own triangles (1-based, counter-clockwise when seen from outside), optionally with texture coordinates per vertex |
 | `mesh:setColor(c)`, `mesh:flat(true)`, `mesh:triangles()` | |
-| `mesh:setTexture(path)` → exists | image (png/jpg/webp/bmp) mapped with the mesh's texture coordinates; `nil` removes it. Paths resolve like `fs` paths (`"bundle:/wood.png"` for a file in your bundle). `mesh:texture()` returns the current path |
+| `mesh:setTexture(path)` → exists | image (png/jpg/webp/bmp, or a `.ktx` / `.ktx2` ETC2 / EAC texture: smaller in GPU memory, NexGFX 1.1) mapped with the mesh's texture coordinates; `nil` removes it. Paths resolve like `fs` paths (`"bundle:/wood.png"` for a file in your bundle). `mesh:texture()` returns the current path |
 | `g3d.gpu()` → bool | `true` when 3D renders on the GPU |
 | `g3d.begin`, `g3d.camera`, `g3d.light`, `g3d.fog`, `g3d.draw`, `g3d.line`, `g3d.point`, `g3d.project`, `g3d.finish` | as shown above; draw calls are collected between `begin` and `finish` |
 
@@ -878,7 +878,7 @@ Native apps (C++, `source/core/g3d_model.h`): `g3d::loadModel` / `loadModelShare
 
 The **pbr renderer** draws the same meshes and models with physically based materials, real-time lights, shadows,
 HDR with tone mapping and bloom, and GPU instancing. It is **NexGFX**, Nexvyn OS's versioned graphics core (1.0 in
-Nexvyn OS 1.2.2; `g3d.rendererInfo()` names it and its backend). It runs on the console's OpenGL ES 3 GPU path and is
+Nexvyn OS 1.2.2, 1.1 with compressed KTX textures; `g3d.rendererInfo()` names it and its backend). It runs on the console's OpenGL ES 3 GPU path and is
 **opt-in per app**: an app that never calls the functions below renders exactly as before.
 
 ```lua
@@ -911,7 +911,7 @@ need to. They apply to every `g3d.begin` of the app; other apps never see them.
 |---|---|
 | `g3d.renderer([name])` → name | `"pbr"` or `"basic"` (the renderer of SDK 1.0–1.8). Returns the renderer frames will use: `"basic"` when the GPU path is off or offers no OpenGL ES 3 (the reason is in the system log). The first `"pbr"` call builds the shaders (about half a second): call it in `app.load` |
 | `g3d.caps()` → table | `{gpu, pbr, hdr, shadows, instancing, msaa, maxLights, maxLightsPerDraw, maxTextureSize, gl, glsl, device}`: what this console offers |
-| `g3d.rendererInfo()` → table | `{name = "NexGFX", version = "1.0", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: what draws this app's frames |
+| `g3d.rendererInfo()` → table | `{name = "NexGFX", version = "1.1", backend = "gles3" \| "gles2" \| "cpu", renderer = "pbr" \| "basic"}`: what draws this app's frames |
 | `g3d.addLight(options)` → id | a light: `type` (`"point"`, `"spot"`, `"directional"`), `x, y, z` (position), `dx, dy, dz` (the direction it shines to), `color`, `intensity` (1 = a white surface 1 m away gets the full color; rooms need 5–20), `range` (m; the light fades out smoothly there), `inner` / `outer` (spot cone half angles in degrees), `shadow` (spot: casts shadows; the first spot that asks gets them). Up to 16 lights; each object is lit by the 8 strongest near it |
 | `g3d.updateLight(id, options)` → bool | changes the given fields; false for an unknown id |
 | `g3d.removeLight(id)` → bool | removes a light; false for an unknown id |

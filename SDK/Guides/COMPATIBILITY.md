@@ -200,6 +200,7 @@ Frozen is not removed: rule 5 still holds, and a bug or security fix in these ru
 | app ids `finder`, `launchpad` | `files`, `launcher` | 1.0.0 | `sys.launch`, `nxv://` links and shortcuts resolve them |
 | `sdmc:/SnxOS` and the old file extensions | `sdmc:/NexvynOS`, `.nxv*` | 1.0.0 | moved and renamed once at start |
 | `"snx-workshop"` projects | `"nexvyn-workshop"` | 1.0.0 | the Game Engine still opens them |
+| `"nexvyn-workshop"` (v1) projects | `"nexvyn-ge"` version 2 | WP4 (setting `gameengine.projectV2`, off by default) | v1 opens forever; with the setting on, the first save keeps `project.v1.json` and writes v2 in place; builds before WP0's guard refuse v2 (`docs/GAME_ENGINE_FORMAT_V2.md`) |
 
 ## 5. The compat suite
 

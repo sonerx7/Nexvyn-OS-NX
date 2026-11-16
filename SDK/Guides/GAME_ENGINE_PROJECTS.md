@@ -172,6 +172,49 @@ Textures are 64-colour PNGs. Music is not files but synthesized tunes played wit
   `ifNoPlayer`), `player` (`style`, `kind` for every hero), `vars`, `events` (added when missing) and `settings`
   (merged); `ws::applySetup` and its twin `apply_setup` in `tools/lua_check.py` apply them.
 
+## Versioning and the format guard
+
+`project.json` carries `"format"` and an integer `"version"` (missing = 1). `core/ge_guard` (used by `ws::loadProject`
+and `ws::saveProject`, so the built-in app and the module share it) enforces these rules:
+
+- **Newer is refused:** a `format` this build does not know, a `nexvyn-workshop` `version` above 1 or a `nexvyn-ge`
+  `version` above 2 (`ge_guard::kGeVersion`) is never opened. Builds from before format v2 refuse every `nexvyn-ge`
+  file the same way. The user sees "This project was made with a newer Game Engine. Update Game Engine to open it."
+  (`gamemaker.err_newer`, all 8 languages). There is no read-only mode. Nothing is written for such a project, autosave
+  and rename included; saving over an existing newer file fails and leaves it byte for byte as it was.
+- **Old opens as it is:** projects without `version` open unchanged and are saved with `"version": 1`.
+- **Safe saves:** before each save the last good `project.json` is copied to `project.json.bak` (never a corrupt or
+  newer file), then the new file replaces it atomically (`atomic_file`). If `project.json` is torn or unreadable, load
+  falls back to the `.bak` and the next save rewrites the file.
+- **Bumping the format:** a new project format must raise `format` or `version` so older builds refuse it; keep the
+  old file as `project.v1.json` when migrating. Host tests: `tests/test_geguard.cpp`.
+
+## Format v2 (`nexvyn-ge`)
+
+Format v2 is the scene / entity-component model of Game Engine 2 (WP4). The full schema, the component registry and
+the migration rules are in `docs/GAME_ENGINE_FORMAT_V2.md`; the short version:
+
+- **Off by default.** The setting `gameengine.projectV2` (default `false`) decides whether v1 projects become v2. Off:
+  everything behaves as before (v1 stays v1, no extra file). On: new projects and the first save of a v1 project write
+  v2. A project already in v2 always stays v2, whatever the setting says.
+- **In place, crash safe.** The first migration copies the v1 `project.json` byte for byte to `project.v1.json` (only
+  when that file does not exist; it is never overwritten or deleted), then the v2 file replaces `project.json`
+  atomically (the usual `.bak` is kept too). A power cut before either step leaves the v1 project as it was; the next
+  save finishes the job. User projects never move.
+- **Lossless.** Every v1 field comes back: lowering the migrated project gives the original v1 document (format and
+  version set to `nexvyn-workshop` / 1). Fields v2 does not model yet live under `v1extra`, `v1keys`, `v1omit` and
+  `v1raw` and are written back exactly.
+- **The editor and the runtime still work on v1.** `ws::loadProject` lowers a v2 file to the v1 document the editor
+  edits and the Lua runtime plays; `ws::saveProject` raises it again and keeps everything only v2 has (packs, audio,
+  HUD, input map, save schema, state machines, prefab links, tags, parents, components v1 cannot show, unknown
+  fields). Entities the editor did not touch are written back unchanged. Exported games get the lowered v1 document,
+  so they run on the same embedded runtime as before.
+- **No v2 to v1 export.** There is no "save as version 1". The way back is the backup: copy `project.v1.json` over
+  `project.json` (edits made after the migration are then lost).
+- **Checks.** `python tools/ge_schema.py validate <folder>` (issues with line numbers), `python tools/lua_check.py
+  --workshop` (adds the v2 parity of every template and sample and runs them) and `--workshop-project <folder>`.
+  Host tests: `tests/test_geschema.cpp`, `tests/test_ge_schema.py`.
+
 ## Runtime
 
 Instead of generating code, the project JSON is interpreted directly (`nexvyn.workshop`):
@@ -206,7 +249,8 @@ Instead of generating code, the project JSON is interpreted directly (`nexvyn.wo
 `python tools/lua_check.py --workshop` runs every template and sample against the fake SDK both from the title screen
 and in play-test mode; then it plays every genre of the wizard with every theme (17 × 7) in play-test mode, every genre
 with Quick Game options (hard, one life, 60 s; easy with each other control style) and every Ready setup on the empty
-2D / 3D templates and on a template that already has a hero.
+2D / 3D templates and on a template that already has a hero. Every template and sample is also migrated to format v2,
+validated, lowered back (it must equal the original) and played as `<key>-v2-test` ("v2 parity 24/24").
 
 ---
 
