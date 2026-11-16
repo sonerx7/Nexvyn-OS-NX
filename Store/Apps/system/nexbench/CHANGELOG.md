@@ -1,5 +1,10 @@
 # Nexy Benchmark 2 changes
 
+## 2.4.2
+
+- Balance image quality after user feedback: 904x508 3D targets, 512/256-pixel texture caps and a small directional material highlight.
+- Retain the reduced effect pipeline and separate results as workload profile 4.
+
 ## 2.4.1
 
 - Reduce 3D stages to 640x360 and diffuse directional/ambient lighting.
