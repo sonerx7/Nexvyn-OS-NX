@@ -1,5 +1,13 @@
 # Nexy Benchmark 2 changes
 
+## 2.4.1
+
+- Reduce 3D stages to 640x360 and diffuse directional/ambient lighting.
+- Disable dynamic shadows, bloom, HDR targets, FXAA, normal/ORM maps and point-light/specular shading.
+- Halve texture dimensions; keep only base and emissive textures on the GPU.
+- Identify the lighter workload as profile 3 and retain previous results without cross-profile score comparisons.
+- Physical-device crash resolution remains unverified.
+
 ## 2.4.0
 
 - Use the shared native OS frame, typography, scale, focus, touch scrolling and input backend.
