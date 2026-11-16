@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Nexvyn OS N2 Smart App Creator & 4-Track Generator.
+Nexvyn OS N2 Smart App Creator & 4-Track Generator (N2 Plan Section 8, 13 & Phase 2).
 Guides language selection based on workload profile and generates ready-to-pack project templates.
 
 Official 4 Tracks:
@@ -8,7 +8,10 @@ Official 4 Tracks:
   2. JavaScript ES2023 (QuickJS-ng 0.17.0 - default for dynamic/network/REST/JSON apps)
   3. Python 3.12 (CPython 3.12.16 - default for data processing, stdlib, automation tools)
   4. Native C/C++ (devkitA64 GCC AOT - default for 2D/3D games, OpenGL, emulators, heavy ports)
+
+Legacy compatibility engines (PocketPy, TinyCC, miniJVM Java, Squirrel) are strictly excluded from creator options.
 """
+import os
 import sys
 import json
 import re
@@ -16,6 +19,7 @@ import struct
 import zlib
 import argparse
 from pathlib import Path
+from nxv_i18n import starter_tables
 
 VALID_RUNTIMES = ("lua", "js", "python", "native")
 VALID_PROFILES = ("calculator", "utility", "network", "data", "game", "qemu", "emulator", "port")
@@ -77,7 +81,11 @@ def make_png(size=256):
             + chunk(b"IDAT", zlib.compress(bytes(rows), 9)) + chunk(b"IEND", b""))
 
 def score_workload(answers):
+    """
+    Evaluates questionnaire answers to recommend the optimal language track (Section 8.1).
+    """
     scores = {"lua": 0, "js": 0, "python": 0, "native": 0}
+
     if answers.get("has_c_deps"):
         scores["native"] += 12
     if answers.get("is_emulator_or_vm"):
@@ -92,6 +100,7 @@ def score_workload(answers):
         scores["lua"] += 12
     if answers.get("fast_startup_low_ram"):
         scores["lua"] += 8
+
     best = max(scores, key=scores.get)
     return best, scores
 
@@ -141,19 +150,19 @@ def create_project(dest_dir, app_id, name, runtime, profile="utility"):
     elif runtime == "python":
         manifest["main"] = "main.py"
 
+    # Write app.json
     (dest / "app.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    # All eight locales are required for new apps and games.
     lang_dir = dest / "lang"
     lang_dir.mkdir(exist_ok=True)
-    lang_en = {
-        "title": name,
-        "greeting": f"Welcome to {name}!",
-        "action.confirm": "Confirm",
-        "action.back": "Back"
-    }
-    (lang_dir / "en.json").write_text(json.dumps(lang_en, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    for code, table in starter_tables(name).items():
+        (lang_dir / (code + ".json")).write_text(json.dumps(table, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    # Write icon.png
     (dest / "icon.png").write_bytes(make_png())
 
+    # Write main code file with real Nexvyn OS lifecycle callbacks (load, update, draw, event)
     if runtime == "lua":
         code = f"""-- {name} (Nexvyn OS N2 — Official Lua 5.4.7 Track)
 local app = {{
@@ -166,6 +175,7 @@ function app.load(arg)
 end
 
 function app.update(dt)
+    -- Per-frame logic update
 end
 
 function app.draw(w, h)
@@ -173,7 +183,7 @@ function app.draw(w, h)
     nxui.begin(w, h)
     nxui.card("main_card")
         nxui.label("hdr", TR("greeting"), "title")
-        nxui.label("sub", "Counter: " .. tostring(app.count), "body")
+        nxui.label("sub", TR("counter") .. ": " .. tostring(app.count), "body")
         if nxui.button("btn_inc", TR("action.confirm") .. " (+1)", "primary") then
             app.count = app.count + 1
         end
@@ -183,6 +193,7 @@ function app.draw(w, h)
 end
 
 function app.event(e)
+    -- Handle raw input/window events if needed
 end
 
 return app
@@ -201,6 +212,7 @@ export default {{
     }},
 
     update(dt) {{
+        // Per-frame state update
     }},
 
     draw(w, h) {{
@@ -208,7 +220,7 @@ export default {{
         nxui.begin(w, h);
         nxui.card("main_card");
             nxui.label("hdr", TR("greeting"), "title");
-            nxui.label("sub", `Counter: ${{this.count}}`, "body");
+            nxui.label("sub", `${{TR("counter")}}: ${{this.count}}`, "body");
             if (nxui.button("btn_inc", `${{TR("action.confirm")}} (+1)`, "primary")) {{
                 this.count += 1;
             }}
@@ -218,6 +230,7 @@ export default {{
     }},
 
     event(e) {{
+        // Optional event handler
     }}
 }};
 """
@@ -243,7 +256,7 @@ class App:
         nxui.begin(w, h)
         nxui.card("main_card")
         nxui.label("hdr", TR("greeting"), "title")
-        nxui.label("sub", f"Counter: {{self.count}}", "body")
+        nxui.label("sub", TR("counter") + ": " + str(self.count), "body")
         if nxui.button("btn_inc", f"{{TR('action.confirm')}} (+1)", "primary"):
             self.count += 1
         self.slider_val = nxui.slider("sl_demo", self.slider_val, 0.0, 1.0)
@@ -259,6 +272,27 @@ app = App()
         (dest / "main.py").write_text(code, encoding="utf-8")
 
     elif runtime == "native":
+        if profile != "game":
+            # Native utilities start with the same reviewed widget/input kit as
+            # the normal native creator, rather than an empty private GL screen.
+            candidates = [base / rel for base in Path(__file__).resolve().parents for rel in (
+                "sdk/native/templates/app", "Languages/c/native-kit/sdk/native/templates/app",
+                "SDK/Languages/c/native-kit/sdk/native/templates/app")]
+            template = next((path for path in candidates if path.is_dir()), None)
+            if template is None:
+                raise FileNotFoundError("Native app template missing: install the complete Native SDK kit")
+            project_name = re.sub(r"[^a-z0-9_]", "_", app_id.lower())
+            for source in template.rglob("*"):
+                if not source.is_file():
+                    continue
+                target = dest / source.relative_to(template)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                title = json.dumps(name, ensure_ascii=False)[1:-1] if source.suffix == ".json" else name
+                text = source.read_text(encoding="utf-8").replace("@NAME@", project_name).replace("@TITLE@", title).replace("@ID@", app_id)
+                target.write_text(text, encoding="utf-8")
+            manifest["main"] = project_name + ".nxvmod"
+            (dest / "app.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            return dest
         src_dir = dest / "source"
         src_dir.mkdir(exist_ok=True)
         c_code = f"""/* {name} (Nexvyn OS N2 — Official devkitA64 GCC AOT Native C/C++ Track) */
@@ -322,7 +356,7 @@ endif
 include $(DEVKITPRO)/libnx/switch_rules
 
 TARGET   := {app_id}
-NXN_SDK  ?= $(abspath ../../SDK/Languages/c/native-kit)
+NXN_SDK  ?= $(abspath ../../sdk/native)
 ARCH     := -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIC
 CFLAGS   := -g -Wall -O2 -ffunction-sections $(ARCH) -D__SWITCH__ -I$(NXN_SDK)/include -I$(PORTLIBS)/include -I$(LIBNX)/include
 LDFLAGS  := -shared -nostartfiles -nostdlib -g $(ARCH) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,text -Wl,-z,max-page-size=0x1000 -Wl,--hash-style=sysv -Wl,--gc-sections -Wl,--undefined=nxnwin_identity
@@ -376,8 +410,8 @@ def main():
 
     created = create_project(target_dir, app_id, args.name, chosen_runtime, profile)
     print(f"\nSUCCESS: Project created at {created}")
-    print(f"To pack:   python SDK/Tools/nxv/nxv.py pack {target_dir}")
-    print(f"To check:  python SDK/Tools/nxv/nxv.py check {target_dir}")
+    print(f"To pack:   python tools/nxv.py pack {target_dir}")
+    print(f"To check:  python tools/nxv.py check {target_dir}")
 
 if __name__ == "__main__":
     main()

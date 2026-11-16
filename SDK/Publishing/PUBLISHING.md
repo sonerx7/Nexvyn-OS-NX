@@ -1,5 +1,14 @@
 # Publishing in the App Market
 
+New app, game, port and launcher submissions require complete eight-language UI: en, tr, de,
+es, fr, ja, ko, zh. Run `python SDK/Tools/nxv/nxv_i18n.py --check <bundle>` and the SDK's
+`nxv.py check` before submission. All user-facing text, including launcher/settings/errors,
+needs translation. Review translation quality and actual CJK layout; matching keys alone is
+not enough. English UI store screenshots are accepted; eight screenshot sets are unnecessary.
+Follow `../Guides/PRODUCT_QUALITY.md`, `INPUT_CONTRACT.md`, `LOCALIZATION_CONTRACT.md` and
+`PORT_AND_LAUNCHER.md`. SDK Markdown is English only.
+
+
 The Nexvyn OS App Market is fed from this repository. Every item is a folder under `Store/`; `Tools/build_store.py`
 builds the packages and `Store/catalog.json`, and the App Market on the console reads that catalog from
 `https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/catalog.json`.

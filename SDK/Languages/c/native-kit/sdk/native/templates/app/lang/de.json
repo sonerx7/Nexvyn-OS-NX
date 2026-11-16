@@ -1,0 +1,18 @@
+{
+  "title": "@TITLE@",
+  "files": {
+    "heading": "Datei",
+    "open": "Datei auswählen...",
+    "none": "Keine Datei ausgewählt",
+    "size": "{0} Bytes"
+  },
+  "settings": {
+    "heading": "Einstellungen",
+    "counter": "{0}-mal geöffnet",
+    "reset": "Zähler zurücksetzen",
+    "large_text": "Große Schrift"
+  },
+  "quit": "Schließen",
+  "size_label": "Größe",
+  "kit": "Natives UI-Kit"
+}

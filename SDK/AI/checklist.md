@@ -1,5 +1,19 @@
 # Checklist for the assistant (run through it before answering)
 
+## Current authoring contract
+
+Use SDK 1.15 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+- Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
+- Keep SDK Markdown English only. Store screenshots may use English UI.
+- OS apps use shared theme/typography/controls; games require their own art direction.
+- Native ImGui UI uses `nxn_os_ui.h`, `nxn_imgui_input` before the frame and `nxn_imgui_input_event` for lifecycle events.
+- Use stable contact IDs for real game/canvas multitouch; ordinary widgets use one primary pointer.
+- Include compact/wide resize, nested scroll, keyboard/pad focus, focus-loss cancellation, loading, save/reopen and clean exit.
+- Read exact signatures from the installed reference/headers. Do not invent APIs, multitouch manifest flags, a sandbox, a future backend or a guaranteed frame rate.
+- Complete one polished playable/useful vertical slice, then profile actual hardware and review all eight translations.
+
+See the Product Quality, Input Contract, Localization Contract and Port and Launcher guides.
+
 Give this file to the assistant together with `system-prompt.md`, or paste it at the end of a request:
 "Before you answer, go through checklist.md and fix anything that fails."
 
@@ -18,6 +32,13 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
       `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9; Native `.nxvmod` 1.10; `ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup` and friends 1.11; `ui.tokens`, `audio.stopAll` 1.12; `nxui.*`, `loadingHint` 1.13 / 2.0). New N2 apps set
       `"targetSdk": "2.0"` (or `"1.13"`).
 - [ ] New apps use one of the **4 Official Primary Runtimes** (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, or **Native C/C++ ABI v1**) unless the user explicitly requested a compatibility runtime.
+- [ ] Language fits the job: a UI-heavy tool / utility / productivity app is Lua, JavaScript or Python with `nxui.*`;
+      Native C/C++ only for heavy computation (LLM inference, emulator, 3D, codecs). No native-engine + script-UI hybrid
+      (not possible yet).
+- [ ] Native ImGui UI: `nxn_os_frame_begin` / `nxn_os_frame_end` every frame; only `nxn_os_*` widgets (no raw
+      `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`); text with `nxn_os_text(NXN_OS_TEXT_*)`; every
+      pixel number as `NXN_S(px)`, `nxn_os_sp()` or `nxn_os_fill()`; no `FontGlobalScale`, `SetWindowFontScale` or
+      own fonts; `python tools/nxv_native check-design <dir>` passes.
 
 ## app.json
 
@@ -48,7 +69,6 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
 - [ ] Every visible string goes through `TR()`; every key exists in `lang/en.json` (and in each other lang file I
       delivered, or it falls back to English); placeholders `{0}` match the arguments.
 - [ ] Apps: `theme` colors (light and dark mode); controls ≥ 28 px; the layout fits the minimum window size.
-- [ ] Cross-Runtime Visual Parity (Unified OS Design System): script apps (Lua/JS/Python) use `ui.*` / `nxui.*`; Native C/C++ tools/utilities include `<nexvyn/nxn_os_ui.h>` (`nxn_os_apply_style`, `nxn_os_card_begin/end`, `nxn_os_segmented_tabs`, `nxn_os_switch`, `nxn_os_button`, `nxn_os_dropdown`, `nxn_os_badge`). For Native C/C++, font sizes are scaled by `1.21f` (`tok.font_body * 1.21f * sc`), positions are pixel-snapped, and `nxn_os_clear_color(tok)` is used to guarantee 1:1 visual parity across all 4 runtimes.
 - [ ] Widget ids are unique in the window (`"Delete##" + i` in lists).
 
 ## Games: look and identity
@@ -90,3 +110,10 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
 - [ ] I listed what I am unsure about instead of guessing silently.
 - [ ] For a store submission: `store.json` with `subtitle` / `description` in English at least (more languages when
       wanted), `kind`, `tags` and `shots` (5 recommended) using only `wait`, `wclick`, `wmove`, `key`, `hold`, `dpad`, `text`, `dark`.
+
+- [ ] Native OS-look app calls `nxn_imgui_input` once per frame before the frame layer; no second input feeder.
+- [ ] Drag a slider outside its bounds, swipe the inner frame without moving the outer frame, type text, and use keyboard/gamepad focus. Test one additional finger joining/leaving.
+- [ ] Interpreted C bundle passes `nxv check` with its real SDK header compile check (compiler skips do not count as device validation).
+
+- [ ] Forward focus events with `nxn_imgui_input_event(event)`; test losing focus while a key or touch is held.
+- [ ] Resize from wide to compact and back without losing edits, selection or scroll position. New touch stops a fling without activating its moving row; keyboard focus remains visible inside scroll views.

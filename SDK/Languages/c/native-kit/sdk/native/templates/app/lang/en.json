@@ -12,5 +12,7 @@
     "reset": "Reset counter",
     "large_text": "Large text"
   },
-  "quit": "Close"
+  "quit": "Close",
+  "size_label": "Size",
+  "kit": "Native OS Kit"
 }

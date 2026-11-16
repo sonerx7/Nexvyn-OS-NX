@@ -35,7 +35,6 @@ TEMPLATES = os.path.join(KIT, "templates")
 TEMPLATE_NAMES = ("app", "game", "port", "sdl2", "gl", "emu-skeleton", "decomp-skeleton", "shared-lib")
 DKP_BASH = os.environ.get("DKP_BASH", "C:/devkitPro/msys2/usr/bin/bash.exe")
 sys.path.insert(0, os.path.join(REPO, "tools"))
-import ryu_env  # noqa: E402
 import sdkinfo  # noqa: E402  (the SDK facts: Native SDK version and the SDK that brought it)
 
 NATIVE_VERSION = sdkinfo.NATIVE_VERSION
@@ -124,7 +123,7 @@ def cmd_new(a):
                 f.write(text)
     app = {"id": "com.example." + a.name.replace("_", "-"), "name": title, "version": "1.0.0", "author": "Unknown",
            "category": "games", "runtime": "native", "mode": "window", "main": a.name + ".nxvmod",
-           "minNative": NATIVE_VERSION, "icon": "icon.png", "permissions": ["files"], "minSdk": NATIVE_MIN_SDK, "targetSdk": NATIVE_MIN_SDK}
+           "minNative": NATIVE_VERSION, "targetNative": NATIVE_VERSION, "icon": "icon.png", "permissions": ["files"], "minSdk": NATIVE_MIN_SDK, "targetSdk": NATIVE_MIN_SDK}
     over = os.path.join(src, "template.json")
     if os.path.isfile(over):
         with open(over, encoding="utf-8") as f:
@@ -137,6 +136,16 @@ def cmd_new(a):
         f.write(make_png())
     with open(os.path.join(dst, ".gitignore"), "w", newline="\n") as f:
         f.write("build/\n" + "".join(line + "\n" for line in extra_ignore))
+    if app.get("type", "app") not in ("lib", "runtime"):
+        locale_dir = os.path.join(dst, "lang")
+        os.makedirs(locale_dir, exist_ok=True)
+        for locale in os.listdir(os.path.join(TEMPLATES, "app", "lang")):
+            target = os.path.join(locale_dir, locale)
+            if locale.endswith(".json") and not os.path.exists(target):
+                with open(os.path.join(TEMPLATES, "app", "lang", locale), encoding="utf-8") as f:
+                    content = f.read().replace("@TITLE@", title)
+                with open(target, "w", encoding="utf-8") as f:
+                    f.write(content)
     print("created %s (template %s)\nnext: python tools/nxv_native build %s" % (dst, a.template, dst))
 
 
@@ -508,6 +517,13 @@ def cmd_check_design(a):
 
 def cmd_package(a):
     d = project_dir(a.dir)
+    with open(os.path.join(d, "app.json"), encoding="utf-8") as manifest_file:
+        authoring_manifest = json.load(manifest_file)
+    if authoring_manifest.get("type", "app") in ("app", "game"):
+        from nxv_i18n import check_app_locales
+        ok, locale_errors = check_app_locales(d)
+        if not ok:
+            die("eight complete locales required before packaging: " + "; ".join(locale_errors))
     found = [m for sev, m in design_findings(d) if sev == "FAIL"]
     if found:  # reported, not blocking: `check-design` (and `nxv check`) fail on it
         print("design: %d problem(s) with the OS design rules, fix them before publishing (nxv-native check-design):"
@@ -536,7 +552,15 @@ def cmd_package(a):
 def cmd_run(a):
     d = project_dir(a.dir)
     stage, app = stage_bundle(d, a.windowed)
-    sd = a.sd or ryu_env.SDROOT
+    sd = a.sd or os.environ.get("NEXVYN_SD")
+    if not sd:
+        try:
+            import ryu_env  # optional private development environment, not part of the public kit
+            sd = ryu_env.SDROOT
+        except ModuleNotFoundError as error:
+            if error.name != "ryu_env":
+                raise
+            die("pass --sd with the SD card root, or set NEXVYN_SD")
     if not os.path.isdir(sd):
         die("SD card folder not found: %s (pass --sd)" % sd)
     dest = os.path.join(sd, "NexvynOS", "Applications", os.path.basename(stage))

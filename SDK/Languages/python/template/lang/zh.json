@@ -1,0 +1,7 @@
+{
+  "app": "应用",
+  "hello": "你好！",
+  "edit_me": "在Nexvyn OS Studio中编辑main.py，然后按运行（Ctrl+R）。",
+  "tap": "已点击 {0} 次",
+  "reset": "重置计数"
+}

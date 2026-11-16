@@ -1,0 +1,30 @@
+{
+  "id": "com.nexvyn.inputlab.c",
+  "name": "Input Lab (C)",
+  "version": "1.0.0",
+  "build": 1,
+  "type": "app",
+  "runtime": "c",
+  "minSdk": "1.12",
+  "targetSdk": "2.0",
+  "targetNative": "2.0",
+  "uiApi": 2,
+  "uiTheme": 2,
+  "dataSchema": 1,
+  "author": "Nexvyn Team",
+  "category": "utilities",
+  "permissions": [],
+  "description": "Touch, drag, nested scrolling, text input and gesture interaction diagnostics.",
+  "window": {
+    "width": 860,
+    "height": 560,
+    "minWidth": 360,
+    "minHeight": 440
+  },
+  "perfBudget": {
+    "maxRamMb": 16,
+    "targetFps": 60,
+    "profile": "utility"
+  },
+  "main": "main.c"
+}

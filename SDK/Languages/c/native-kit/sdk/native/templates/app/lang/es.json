@@ -1,0 +1,18 @@
+{
+  "title": "@TITLE@",
+  "files": {
+    "heading": "Archivo",
+    "open": "Elegir archivo...",
+    "none": "Ningún archivo elegido",
+    "size": "{0} bytes"
+  },
+  "settings": {
+    "heading": "Ajustes",
+    "counter": "Abierto {0} veces",
+    "reset": "Reiniciar contador",
+    "large_text": "Texto grande"
+  },
+  "quit": "Cerrar",
+  "size_label": "Tamaño",
+  "kit": "Kit de interfaz nativa"
+}

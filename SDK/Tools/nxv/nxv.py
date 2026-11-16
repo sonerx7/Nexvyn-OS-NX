@@ -32,6 +32,7 @@ import struct
 import subprocess
 import sys
 import zipfile
+from nxv_i18n import check_app_locales
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RELEASE_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))  # Nexvyn-OS-NX/ (this file: SDK/Tools/nxv/)
@@ -40,7 +41,7 @@ TEMPLATES = os.path.join(RELEASE_ROOT, "SDK", "Languages")
 LANGS = {"lua": "lua", "js": "javascript", "javascript": "javascript", "py": "python", "python": "python",
          "sq": "squirrel", "nut": "squirrel", "squirrel": "squirrel", "c": "c", "java": "java", "native": "native"}
 # app.json "runtime" value and main-file extension of each language (docs/NXVAPP_FORMAT.md)
-RUNTIME_OF = {"lua": "lua", "js": "javascript", "python": "python", "squirrel": "squirrel", "c": "c", "java": "java",
+RUNTIME_OF = {"lua": "lua", "js": "javascript", "javascript": "javascript", "python": "python", "python3": "python", "squirrel": "squirrel", "c": "c", "java": "java",
               "native": "native"}
 EXT_OF = {".lua": "lua", ".js": "javascript", ".mjs": "javascript", ".py": "python", ".nut": "squirrel", ".c": "c",
           ".jar": "java", ".nxvmod": "native"}
@@ -200,7 +201,7 @@ def cmd_new(a):
     if not re.fullmatch(r"[A-Za-z0-9_\-][A-Za-z0-9_.\-]{0,127}", app_id):
         die("bad id %r: letters, digits, '.', '-', '_' (reverse domain: com.you.app)" % app_id)
     m["id"] = app_id
-    m["name"] = {"en": a.name}  # English is required; add other languages as more keys ("de": "...")
+    m["name"] = {code: a.name for code in ("en", "tr", "de", "es", "fr", "ja", "ko", "zh")}  # Product names may be invariant.
     if a.author:
         m["author"] = a.author
     write_json(os.path.join(dest, "app.json"), m)
@@ -456,6 +457,10 @@ def cmd_check(a):
                 lang, perms = res
                 check_sources(bundle, lang, perms, rep)
         check_store_item(bundle, rep)
+        if m is not None and m.get("type", "app") in ("app", "game"):
+            _ok, locale_errors = check_app_locales(bundle)
+            for error in locale_errors:
+                rep.error("localization: " + error)
         print("%s %s (%s)" % ("FAIL" if rep.errors else "ok  ", bundle, lang or "?"))
         for e in rep.errors:
             print("  error: " + e)
@@ -524,6 +529,11 @@ def pack_bytes(bundle):
 
 def cmd_pack(a):
     bundle = bundle_dir(a.bundle)
+    manifest = load_json(os.path.join(bundle, "app.json"))
+    if manifest.get("type", "app") in ("app", "game"):
+        ok, errors = check_app_locales(bundle)
+        if not ok:
+            die("eight complete locales required before packaging: " + "; ".join(errors))
     if a.output:
         out = os.path.abspath(a.output)
     elif os.path.basename(bundle) == "source":

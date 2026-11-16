@@ -1,0 +1,18 @@
+{
+  "title": "@TITLE@",
+  "files": {
+    "heading": "ファイル",
+    "open": "ファイルを選択...",
+    "none": "ファイルが選択されていません",
+    "size": "{0} バイト"
+  },
+  "settings": {
+    "heading": "設定",
+    "counter": "起動回数: {0}",
+    "reset": "回数をリセット",
+    "large_text": "大きな文字"
+  },
+  "quit": "閉じる",
+  "size_label": "サイズ",
+  "kit": "ネイティブUIキット"
+}

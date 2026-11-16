@@ -1,4 +1,18 @@
-# Nexvyn app rules for AI assistants (N2 Architecture — SDK 2.0 / 1.13 & Native SDK 1.2)
+# Nexvyn app rules for AI assistants (N2 Architecture — SDK 1.15 & Native SDK 1.2)
+
+## Current authoring contract
+
+Use SDK 1.15 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+- Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
+- Keep SDK Markdown English only. Store screenshots may use English UI.
+- OS apps use shared theme/typography/controls; games require their own art direction.
+- Native ImGui UI uses `nxn_os_ui.h`, `nxn_imgui_input` before the frame and `nxn_imgui_input_event` for lifecycle events.
+- Use stable contact IDs for real game/canvas multitouch; ordinary widgets use one primary pointer.
+- Include compact/wide resize, nested scroll, keyboard/pad focus, focus-loss cancellation, loading, save/reopen and clean exit.
+- Read exact signatures from the installed reference/headers. Do not invent APIs, multitouch manifest flags, a sandbox, a future backend or a guaranteed frame rate.
+- Complete one polished playable/useful vertical slice, then profile actual hardware and review all eight translations.
+
+See the Product Quality, Input Contract, Localization Contract and Port and Launcher guides.
 
 Read this file before writing any Nexvyn app. Short rules first, reasons after. For the full SDK contract read
 `SDK/Reference/SDK.md` and `SDK/AI/llms.txt`.
@@ -8,7 +22,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 1. Read `app.json` first. Set `minSdk` to the newest SDK function you use. Set `targetSdk` to `"2.0"` (or `"1.13"`) for new N2 apps.
 2. Use only names that appear in `SDK/Reference/SDK.md` / `SDK/AI/system-prompt.md`. If a name is not there, do not invent it. Say so.
 3. Pick the runtime from the **4 Official Primary Runtimes** in section 3: **Lua 5.4.7** (`"lua"`), **JavaScript ES2023** (`"js"`), **Python 3.12** (`"python3"` or `"python"` with `"targetSdk": "2.0"`), or **Native C/C++** (`"native"`).
-4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to `"1.2"` (or the version of the newest `nxn_*` function you call). Test every optional call with `nxn_caps_get` bits first. For utility/tool/HUD interfaces over OpenGL + Dear ImGui, include `<nexvyn/nxn_imgui.h>` and `<nexvyn/nxn_os_ui.h>` driven by `nxn_ui_tokens_get(&tok)` (never ship raw unstyled ImGui or hardcoded dark clear colors when matching the OS look; `nxui.*` is for Lua/JS/Python, while `nxn_os_ui.h` gives Native C++ the exact same Light/Dark OS design system).
+4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to `"1.2"` (or the version of the newest `nxn_*` function you call). Test every optional call with `nxn_caps_get` bits first. Pick the language first: UI-heavy tools, utilities and productivity apps are Lua / JavaScript / Python with `nxui.*`; Native C/C++ is for heavy computation (LLM inference, emulators, 3D); a native-engine + script-UI hybrid is not possible yet. In a Native GL window draw the UI with Dear ImGui and the frame layer of `<nexvyn/nxn_os_ui.h>`: `nxn_os_frame_begin(&tok, w, h)` / `nxn_os_frame_end()` every frame (UI scale, fonts, style), `nxn_os_*` widgets only (never raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`), text by role (`nxn_os_text(NXN_OS_TEXT_TITLE, ...)`), rows with `nxn_os_row_begin` / `nxn_os_row_end`, every pixel number as `NXN_S(px)` / `nxn_os_sp()` / `nxn_os_fill()`, no `FontGlobalScale`, no fonts of your own, clear with `nxn_os_clear_color`; `python tools/nxv_native check-design <dir>` must pass: `nxn_nxui_*` never paints there (`nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`). Use `nxui.*` in Lua, JS and Python. Every app, in every language, must look like Nexvyn OS: scripts use `theme.*` colours and the role-table text sizes, Native apps never ship raw ImGui styling; `python tools/design_check.py` checks it.
 5. Keep all user-visible text in English and in `lang/<code>.json`. Call `TR(key)` (script) or `nxn_tr(key)` (native). Add `lang/en.json` before you use `TR`.
 6. Make saves atomic: write a temporary file, then rename it over the real one. Keep the previous save until the new one is complete.
 7. Do file, network and folder-scan work off the UI thread: `timer`, `net.*`, `fs.unzip`, `g3d.loadModel`, or a background thread that never holds the UI lock.
@@ -20,7 +34,6 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 13. Use plain ASCII identifiers. Comments in English.
 14. Tell the user, in the user's language, what you changed and what you did not test.
 15. Dear ImGui apps (native, nxn_imgui.h): every visible widget needs a UNIQUE ID in its window. Two buttons with the same label (for example a toolbar "Rescan" and an empty-state "Rescan") trigger the red "2 visible items with conflicting ID!" banner on screen. Always give repeated labels a suffix: `ImGui::Button("Rescan##toolbar")`, `ImGui::Button("Rescan##empty")`; inside loops use `ImGui::PushID(i)` / `PopID()`; never use an empty label (`Button("")`), use `Button("##name")`. Test every screen state (empty library, first run, error) with the test tool and fail on this banner text.
-16. Cross-runtime Design System parity (strict): all 4 primary runtimes (Lua, JS, Python, C/C++) MUST share the identical OS visual grammar in utility/tool apps — Title `19pt Bold`, Card Header `15pt Bold`, Body/Control/Button `13.8pt Medium`, Badge/Caption `11.5–12pt Medium`; outer margin `20px`, card padding `16px/13px`, card radius `10px`, control height `30px` (segmented tabs `32px`), control radius `6–8px`, toggle `38x22px`, pill badge `22px`, `1px` `separator` hairlines. In Native C/C++, map OS `pt` to ImGui pixel height with `floorf(pt * 1.21f * s + 0.5f)` (FreeType EM-to-stb_truetype ratio for Inter) using `NXN_UI_FONT_BOLD` for headers and `NXN_UI_FONT_MEDIUM` for body/controls, keep `io.FontGlobalScale = 1.0f`, clear with `nxn_os_clear_color(tok)`, and snap all text/component positions with `floorf(v + 0.5f)`. Never ship arbitrary font sizes or unstyled ImGui widgets.
 
 ## 2. MUST NOT
 
@@ -39,7 +52,6 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 13. Do not rely on a function that exists only in one runtime. Check the runtime column in the index.
 14. Do not write to `romfs:/` or to the system folders. Do not call `sys.launch` or `nxv://` links without the `launch` permission.
 15. Do not leave debug screens, test buttons or self-tests in the release build.
-16. Do not set `io.FontGlobalScale < 1.0f` to downscale a pre-baked Dear ImGui font atlas, and do not place UI text at unrounded fractional `(x, y)` coordinates (always rebuild fonts at target resolution on resize and snap positions to integer pixels).
 
 ## 3. Which runtime? (4 Official Primary Tracks)
 
@@ -82,7 +94,8 @@ Lua 5.4.7 is the default for new script apps. All script tracks share `gfx`, `ui
 | `require("snx.foo")` warning in the log | Deprecated module name | Use `require("nexvyn.foo")` |
 | Native app refuses to load after the OS update | `minNative` missing for a newer `nxn_*` name | Set `minNative` to that function's version |
 | Gamepad does nothing in a Native ImGui app | Gamepad navigation not enabled | Call `nxn_imgui_enable_gamepad(io)` after `ImGui::CreateContext()` |
-| Turkish or Cyrillic text shows as `?` in ImGui | Only Latin-1 loaded | Use `nxn_imgui_add_font` with the language ranges |
+| Turkish or Cyrillic text shows as `?` in ImGui | Only Latin-1 loaded | Use the frame layer (`nxn_os_frame_begin`): it loads the language ranges (games: `nxn_imgui_add_font`) |
+| Native UI text tiny or blurry, buttons misaligned | Fixed pixel sizes, `FontGlobalScale`, raw ImGui widgets | Frame layer + `nxn_os_*` widgets + `NXN_S()`; `nxv_native check-design` lists every spot and its fix |
 | Test passes but the real console crashes | Checker or mock differs from the real runtime | Test on the emulator with the test tool; check the real runtime semantics |
 | Screenshot is all black in tests | Frame not drawn before capture | Wait 2-4 s after launch; redraw once before the screenshot step |
 
@@ -113,3 +126,8 @@ Notes for the loop:
 - `SDK/Guides/AutomatedTesting.md`: test tool setup and scenarios.
 - `SDK/Samples/test-demo/`: a small app and test scenarios for the test tool.
 - `SDK/Guides/README.md`: list of all guides.
+
+
+Native interaction is part of the app standard: keep one `nxn_imgui_input_state` per ImGui context; after `nxn_input_poll`, call `nxn_imgui_input(backend, state, dt)` exactly once before `nxn_os_frame_begin`. Do not combine it with a second mouse/key/text feeder. Sliders retain pointer capture, nested frames scroll under the finger, keyboard/gamepad focus is required, and text input uses the system keyboard request. Games retain their own visual direction and may use raw multi-touch by stable finger ID; do not transfer an existing drag to another finger. `nxv check` compiles interpreted C bundles against the real SDK header, including parameter counts and types; use NULL for an unused `ui_beginScroll` scrollX output.
+
+Native ImGui OS apps must forward lifecycle events with `nxn_imgui_input_event(event)`. Preserve UI state during resize, stack crowded fields in compact windows, and use the shared OS touch-motion model rather than private scroll physics. Validate focus loss, fling interruption and focus reveal inside scroll frames.

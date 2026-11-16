@@ -61,6 +61,108 @@
 #endif
 
 #include "nxn_imgui.h"
+#include "nxn_imgui_input.h"
+#include "nxn_scroll_physics.h"
+#include "imgui_internal.h"
+
+/* Per-context touch scroll capture. The innermost hovered scroll window wins;
+ * slider/text edits retain capture. Mouse drags never become touch scrolling. */
+struct NxnOsTouchScroll {
+    ImGuiID window = 0, protected_item = 0;
+    ImVec2 start, last;
+    ImVec2 velocity = ImVec2(0, 0);
+    double moved_at = 0;
+    bool dragging = false;
+};
+static inline float nxn_os_scale();
+static inline NxnOsTouchScroll& nxn_os__touch_scroll() {
+    static NxnOsTouchScroll s;
+    static ImGuiContext* owner = NULL;
+    if (owner != ImGui::GetCurrentContext()) { s = NxnOsTouchScroll(); owner = ImGui::GetCurrentContext(); }
+    return s;
+}
+static inline void nxn_os__touch_scroll_update() {
+    NxnOsTouchScroll& s = nxn_os__touch_scroll();
+    ImGuiIO& io = ImGui::GetIO();
+    if (io.AppFocusLost ||
+        (io.MouseSource != ImGuiMouseSource_TouchScreen &&
+         (io.MouseDown[0] || io.MouseWheel != 0 || io.MouseWheelH != 0))) {
+        s = NxnOsTouchScroll(); return;
+    }
+    ImGuiWindow* w = s.window ? ImGui::FindWindowByID(s.window) : NULL;
+    ImGuiWindow* modal = ImGui::GetTopMostPopupModal();
+    if (modal && w) {
+        ImGuiWindow* ancestor = w;
+        while (ancestor && ancestor != modal) ancestor = ancestor->ParentWindow;
+        if (!ancestor) { s = NxnOsTouchScroll(); return; }
+    }
+    if (ImGui::IsMouseClicked(0)) {
+        bool catch_fling = fabsf(s.velocity.x) > NXN_SCROLL_CATCH || fabsf(s.velocity.y) > NXN_SCROLL_CATCH;
+        ImGuiWindow* hovered = ImGui::GetCurrentContext()->HoveredWindow;
+        while (hovered && hovered != w) hovered = hovered->ParentWindow;
+        if (catch_fling && w && hovered == w) {
+            // A tap stops a moving list without activating the row underneath.
+            ImGui::ClearActiveID();
+            ImGui::SetKeyOwner(ImGuiKey_MouseLeft, w->ID, ImGuiInputFlags_LockUntilRelease);
+        }
+        s = NxnOsTouchScroll();
+        return;
+    }
+    if (w && !io.MouseDown[0] && !s.dragging) {
+        if (s.velocity.x == 0 && s.velocity.y == 0) { s = NxnOsTouchScroll(); return; }
+        float x = w->Scroll.x, y = w->Scroll.y;
+        nxn_scroll_step(&x, &s.velocity.x, io.DeltaTime);
+        nxn_scroll_step(&y, &s.velocity.y, io.DeltaTime);
+        if (x < 0 || x > w->ScrollMax.x) s.velocity.x = 0;
+        if (y < 0 || y > w->ScrollMax.y) s.velocity.y = 0;
+        ImGui::SetScrollX(w, ImClamp(x, 0.f, w->ScrollMax.x));
+        ImGui::SetScrollY(w, ImClamp(y, 0.f, w->ScrollMax.y));
+        if (s.velocity.x == 0 && s.velocity.y == 0) s = NxnOsTouchScroll();
+        return;
+    }
+    if (w && io.MouseDown[0] && !s.protected_item) {
+        float dx = io.MousePos.x - s.start.x, dy = io.MousePos.y - s.start.y;
+        float threshold = 9.0f * nxn_os_scale();
+        if (!s.dragging && ((w->ScrollMax.y > 0 && fabsf(dy) > threshold && fabsf(dy) >= fabsf(dx)) ||
+                           (w->ScrollMax.x > 0 && fabsf(dx) > threshold && fabsf(dx) > fabsf(dy)))) {
+            s.dragging = true;
+            s.last = s.start;
+            if (fabsf(dy) >= fabsf(dx)) s.last.y += copysignf(threshold, dy);
+            else s.last.x += copysignf(threshold, dx);
+            ImGui::ClearActiveID();
+        }
+        if (s.dragging) {
+            float dx = io.MousePos.x - s.last.x, dy = io.MousePos.y - s.last.y;
+            if (w->ScrollMax.y > 0) ImGui::SetScrollY(w, w->Scroll.y - dy);
+            if (w->ScrollMax.x > 0) ImGui::SetScrollX(w, w->Scroll.x - dx);
+            if (fabsf(dx) > 0.01f || fabsf(dy) > 0.01f) {
+                float dt = (float)ImMax(0.001, ImGui::GetTime() - s.moved_at);
+                s.velocity = ImVec2(w->ScrollMax.x > 0 ? -dx / dt : 0, w->ScrollMax.y > 0 ? -dy / dt : 0);
+                s.moved_at = ImGui::GetTime();
+            }
+            /* Keep any child under the finger from acquiring the drag. */
+            ImGui::ClearActiveID();
+        }
+        s.last = io.MousePos;
+    }
+    if (!io.MouseDown[0] && s.dragging) {
+        s.velocity.x = nxn_scroll_release(s.velocity.x, ImGui::GetTime() - s.moved_at);
+        s.velocity.y = nxn_scroll_release(s.velocity.y, ImGui::GetTime() - s.moved_at);
+        s.dragging = false;
+        s.protected_item = 0;
+    }
+}
+static inline void nxn_os__touch_scroll_end() {
+    ImGuiContext& g = *ImGui::GetCurrentContext();
+    if (g.IO.MouseSource != ImGuiMouseSource_TouchScreen || !ImGui::IsMouseClicked(0)) return;
+    NxnOsTouchScroll& s = nxn_os__touch_scroll();
+    ImGuiWindow* w = g.HoveredWindow;
+    while (w && w->ScrollMax.x <= 0 && w->ScrollMax.y <= 0) w = w->ParentWindow;
+    s.window = w ? w->ID : 0;
+    s.start = s.last = g.IO.MousePos;
+    s.moved_at = ImGui::GetTime();
+    if (g.ActiveId && g.InputTextState.ID == g.ActiveId) s.protected_item = g.ActiveId;
+}
 
 #ifndef NXN_OS_UI_NO_GL3
 /* the OpenGL 3 backend of Dear ImGui (imgui_impl_opengl3.cpp): the frame layer starts its frames and refreshes the
@@ -694,7 +796,7 @@ static inline bool nxn_os_segmented_tabs(const char* id, const char* const* labe
         ImVec2 s1(s0.x + sw, p.y + h);
         ImGui::SetCursorScreenPos(s0);
         ImGui::PushID(i);
-        bool clicked = ImGui::InvisibleButton("##tab", ImVec2(sw > 4.0f ? sw : 4.0f, h));
+        bool clicked = ImGui::InvisibleButton("##tab", ImVec2(sw > 4.0f ? sw : 4.0f, h), ImGuiButtonFlags_EnableNav);
         bool hovered = ImGui::IsItemHovered();
         bool held = ImGui::IsItemActive();
         ImGui::PopID();
@@ -761,7 +863,7 @@ static inline bool nxn_os_switch(const char* id, bool* v, const nxn_ui_tokens& t
     }
     nxn_os__place(w, h);
     ImVec2 p = ImGui::GetCursorScreenPos();
-    bool clicked = ImGui::InvisibleButton("##btn", ImVec2(w, h));
+    bool clicked = ImGui::InvisibleButton("##btn", ImVec2(w, h), ImGuiButtonFlags_EnableNav);
     bool held = ImGui::IsItemActive();
     if (clicked) *v = !*v;
 
@@ -881,7 +983,7 @@ static inline bool nxn_os_dropdown(const char* id, const char* const* items, int
     nxn_os__place(w, h);
     ImVec2 p = ImGui::GetCursorScreenPos();
 
-    bool clicked = ImGui::InvisibleButton("##ddbtn", ImVec2(w, h));
+    bool clicked = ImGui::InvisibleButton("##ddbtn", ImVec2(w, h), ImGuiButtonFlags_EnableNav);
     bool hovered = ImGui::IsItemHovered();
     bool held = ImGui::IsItemActive();
 
@@ -1033,11 +1135,30 @@ static inline bool nxn_os_slider(const char* id, float* v, float vmin, float vma
     nxn_os__place(w, h);
     ImVec2 p = ImGui::GetCursorScreenPos();
 
-    ImGui::InvisibleButton("##sld", ImVec2(w, h));
+    /* Use ImGui's slider behavior for navigation/activation, while keeping the
+     * OS drawing below. A plain InvisibleButton is neither focusable nor a slider. */
+    ImGui::SetNextItemWidth(w);
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, (h > ImGui::GetFontSize() ? h - ImGui::GetFontSize() : 0) * 0.5f));
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_SliderGrab, ImVec4(0, 0, 0, 0));
+    ImGui::PushStyleColor(ImGuiCol_SliderGrabActive, ImVec4(0, 0, 0, 0));
+    float before = *v;
+    ImVec2 old_touch_padding = ImGui::GetStyle().TouchExtraPadding;
+    if (ImGui::GetIO().MouseSource == ImGuiMouseSource_TouchScreen) {
+        float extra = (nxn_os_s(NXN_OS_TOUCH_MIN) - h) * 0.5f;
+        if (extra > ImGui::GetStyle().TouchExtraPadding.y) ImGui::GetStyle().TouchExtraPadding.y = extra;
+    }
+    ImGui::SliderFloat("##sld", v, vmin, vmax, "", ImGuiSliderFlags_NoInput);
+    ImGui::GetStyle().TouchExtraPadding = old_touch_padding;
+    ImGui::PopStyleColor(5);
+    ImGui::PopStyleVar();
     bool held = ImGui::IsItemActive();
     bool hovered = ImGui::IsItemHovered();
-    bool changed = false;
-    float kr = h * 0.42f;
+    bool changed = before != *v;
+    if (held) nxn_os__touch_scroll().protected_item = ImGui::GetItemID();
+    float kr = nxn_os_s(10.f);
     float x0 = p.x + kr;
     float x1 = p.x + w - kr;
     if (held && ImGui::IsMouseDown(0) && x1 > x0) {
@@ -1053,14 +1174,14 @@ static inline bool nxn_os_slider(const char* id, float* v, float vmin, float vma
     if (frac > 1.0f) frac = 1.0f;
     float kx = x0 + (x1 - x0) * frac;
     float cy = p.y + h * 0.5f;
-    float th = h * 0.18f;
-    if (th < 2.5f) th = 2.5f;
+    float th = nxn_os_s(4.f);
+    float track_left = p.x + nxn_os_s(2.f), track_right = p.x + w - nxn_os_s(2.f);
 
     ImDrawList* dl = ImGui::GetWindowDrawList();
-    ImU32 track = tok.dark ? IM_COL32(255, 255, 255, 28) : IM_COL32(0, 0, 0, 24);
-    dl->AddRectFilled(ImVec2(x0, cy - th * 0.5f), ImVec2(x1, cy + th * 0.5f), track, th * 0.5f);
+    ImU32 track = tok.dark ? IM_COL32(255, 255, 255, 40) : IM_COL32(0, 0, 0, 30);
+    dl->AddRectFilled(ImVec2(track_left, cy - th * 0.5f), ImVec2(track_right, cy + th * 0.5f), track, th * 0.5f);
     if (kx > x0 + 1.0f) {
-        dl->AddRectFilled(ImVec2(x0, cy - th * 0.5f), ImVec2(kx, cy + th * 0.5f), nxn_os_u32(tok.accent), th * 0.5f);
+        dl->AddRectFilled(ImVec2(track_left, cy - th * 0.5f), ImVec2(kx, cy + th * 0.5f), nxn_os_u32(tok.accent), th * 0.5f);
     }
     dl->AddCircleFilled(ImVec2(kx, cy + 1.0f), kr, IM_COL32(0, 0, 0, 36));
     dl->AddCircleFilled(ImVec2(kx, cy), kr, (held || hovered) ? IM_COL32(246, 246, 248, 255) : IM_COL32(255, 255, 255, 255));
@@ -1151,7 +1272,7 @@ static inline bool nxn_os_icon_button(const char* id, const char* icon_name, con
     ImGui::PushID(id ? id : "ib");
     nxn_os__place(w, w);
     ImVec2 p = ImGui::GetCursorScreenPos();
-    bool clicked = ImGui::InvisibleButton("##ib", ImVec2(w, w));
+    bool clicked = ImGui::InvisibleButton("##ib", ImVec2(w, w), ImGuiButtonFlags_EnableNav);
     bool hov = ImGui::IsItemHovered(), held = ImGui::IsItemActive();
     ImDrawList* dl = ImGui::GetWindowDrawList();
     float r = nxn_os_radius(NXN_OS_R_CONTROL);
@@ -1203,7 +1324,7 @@ static inline bool nxn_os_toggle_button(const char* label, bool* on, float width
     if (w < nxn_os_s(NXN_OS_TOUCH_MIN)) w = nxn_os_s(NXN_OS_TOUCH_MIN);
     nxn_os__place(w, h);
     ImVec2 p = ImGui::GetCursorScreenPos();
-    bool clicked = ImGui::InvisibleButton("##tg", ImVec2(w, h));
+    bool clicked = ImGui::InvisibleButton("##tg", ImVec2(w, h), ImGuiButtonFlags_EnableNav);
     bool hov = ImGui::IsItemHovered(), held = ImGui::IsItemActive();
     if (clicked) *on = !*on;
     ImDrawList* dl = ImGui::GetWindowDrawList();
@@ -1307,7 +1428,7 @@ static inline bool nxn_os_switch_row(const char* label, bool* v) {
     ImVec2 p = ImGui::GetCursorScreenPos();
     float w = nxn_os__avail();
     ImGui::SetNextItemAllowOverlap();
-    bool clicked = ImGui::InvisibleButton("##row", ImVec2(w > 1.0f ? w : 1.0f, h));
+    bool clicked = ImGui::InvisibleButton("##row", ImVec2(w > 1.0f ? w : 1.0f, h), ImGuiButtonFlags_EnableNav);
     ImGui::SetCursorScreenPos(p);
     nxn_os_row_begin(h);
     nxn_os_text(NXN_OS_TEXT_BODY, label);
@@ -1365,7 +1486,7 @@ static inline bool nxn_os_rail_item(const char* id, const char* icon_name, const
     float w = nxn_os__avail();
     nxn_os__place(w, h);
     ImVec2 p = ImGui::GetCursorScreenPos();
-    bool clicked = ImGui::InvisibleButton("##rail", ImVec2(w > 1.0f ? w : 1.0f, h));
+    bool clicked = ImGui::InvisibleButton("##rail", ImVec2(w > 1.0f ? w : 1.0f, h), ImGuiButtonFlags_EnableNav);
     bool hov = ImGui::IsItemHovered(), held = ImGui::IsItemActive();
     ImDrawList* dl = ImGui::GetWindowDrawList();
     float r = nxn_os_radius(NXN_OS_R_ROW);
@@ -1409,7 +1530,7 @@ static inline bool nxn_os_list_row(const char* id, const char* title, const char
     float w = nxn_os__avail();
     nxn_os__place(w, h);
     ImVec2 p = ImGui::GetCursorScreenPos();
-    bool clicked = ImGui::InvisibleButton("##lr", ImVec2(w > 1.0f ? w : 1.0f, h));
+    bool clicked = ImGui::InvisibleButton("##lr", ImVec2(w > 1.0f ? w : 1.0f, h), ImGuiButtonFlags_EnableNav);
     bool hov = ImGui::IsItemHovered(), held = ImGui::IsItemActive();
     ImDrawList* dl = ImGui::GetWindowDrawList();
     float r = nxn_os_radius(NXN_OS_R_ROW);
@@ -1594,6 +1715,7 @@ static inline bool nxn_os_frame_begin_ex(const nxn_ui_tokens* tok, int fb_w, int
 #endif
         ImGui::NewFrame();
     }
+    nxn_os__touch_scroll_update();
     f.row_depth = 0;
     f.card_depth = 0;
     f.own_window = !(flags & NXN_OS_FRAME_NO_WINDOW);
@@ -1621,6 +1743,7 @@ static inline void nxn_os_frame_end() {
     NxnOsFrameState& f = nxn_os_frame_state();
     if (!f.active) return;
     while (f.row_depth > 0) nxn_os_row_end();
+    nxn_os__touch_scroll_end();
     if (f.font[NXN_OS_TEXT_BODY]) ImGui::PopFont();
     if (f.own_window) ImGui::End();
     f.own_window = false;

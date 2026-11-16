@@ -10,7 +10,9 @@
     "heading": "Ayarlar",
     "counter": "{0} kez açıldı",
     "reset": "Sayacı sıfırla",
-    "large_text": "Büyük yazı"
+    "large_text": "Büyük metin"
   },
-  "quit": "Kapat"
+  "quit": "Kapat",
+  "size_label": "Boyut",
+  "kit": "Yerel arayüz kiti"
 }

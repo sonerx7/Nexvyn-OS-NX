@@ -21,6 +21,7 @@
 #include "imgui.h"
 #include "imgui_impl_opengl3.h"
 #include <nexvyn/nexvyn_native.h>
+#include <nexvyn/nxn_imgui_input.h>
 #include <nexvyn/nexgfx_native.h>
 #include "nexgfx_math.h"  /* V3 / M4 helpers, shared with the library */
 
@@ -170,18 +171,8 @@ static void screenshot(const char* name) {
 static const ImGuiKey kPadKeys[] = {ImGuiKey_GamepadDpadLeft, ImGuiKey_GamepadDpadRight, ImGuiKey_GamepadDpadUp, ImGuiKey_GamepadDpadDown};
 static const uint64_t kPadBits[] = {NXN_BTN_LEFT, NXN_BTN_RIGHT, NXN_BTN_UP, NXN_BTN_DOWN};
 static void feed_imgui(float dt) {
-    ImGuiIO& io = ImGui::GetIO();
-    io.DisplaySize = ImVec2((float)g_w, (float)g_h);
-    io.DeltaTime = dt > 0.0001f ? dt : 0.0001f;
-    io.AddKeyEvent(ImGuiKey_GamepadFaceDown, (g_in.actions & NXN_ACT_CONFIRM) != 0);
-    for (int i = 0; i < 4; i++) io.AddKeyEvent(kPadKeys[i], (g_in.buttons & kPadBits[i]) != 0);
-    static int was_down;
-    if (g_in.touch_count > 0) {
-        nxn_touch t = NXN_STRUCT_INIT(nxn_touch);
-        if (nxn_input_touch(0, &t) == NXN_OK) {
-            io.AddMouseSourceEvent(ImGuiMouseSource_TouchScreen); io.AddMousePosEvent(t.x, t.y); io.AddMouseButtonEvent(0, true); was_down = 1;
-        }
-    } else if (was_down) { io.AddMouseButtonEvent(0, false); io.AddMousePosEvent(-FLT_MAX, -FLT_MAX); was_down = 0; }
+    static nxn_imgui_input_state backend;
+    nxn_imgui_input(backend, g_in, dt);
 }
 
 static double g_fps, g_ms;
@@ -277,6 +268,7 @@ static int app_main(int, char**) {
         
         nxn_event ev = NXN_STRUCT_INIT(nxn_event);
         while (nxn_event_poll(&ev) > 0) {
+            nxn_imgui_input_event(ev);
             if (ev.type == NXN_EVENT_RESIZE && ev.width && ev.height) { nxn_display_resize(g_disp, ev.width, ev.height); nxn_display_size(g_disp, &g_w, &g_h); }
             ev.size = sizeof ev;
         }

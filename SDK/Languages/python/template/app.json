@@ -6,26 +6,32 @@
     "de": "Meine App",
     "fr": "Mon appli",
     "es": "Mi app",
-    "ko": "내 앱"
+    "ko": "내 앱",
+    "ja": "アプリ",
+    "zh": "应用"
   },
   "description": {
     "en": "A new Nexvyn OS app",
     "tr": "Yeni bir Nexvyn OS uygulaması",
     "de": "Eine neue Nexvyn-OS-App",
     "fr": "Une nouvelle appli Nexvyn OS",
-    "es": "Una nueva app de Nexvyn OS"
+    "es": "Una nueva app de Nexvyn OS",
+    "ja": "新しいNexvyn OSアプリ",
+    "ko": "새 Nexvyn OS 앱",
+    "zh": "新的Nexvyn OS应用"
   },
   "version": "1.0",
   "author": "Your Name",
   "category": "utilities",
   "icon": "icon.png",
   "main": "main.py",
-  "minSdk": "1.3",
+  "minSdk": "1.6",
   "window": {
     "width": 560,
     "height": 400,
     "resizable": true
   },
   "gamepad": false,
-  "permissions": []
+  "permissions": [],
+  "runtime": "python3"
 }

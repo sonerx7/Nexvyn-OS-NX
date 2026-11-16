@@ -44,7 +44,7 @@ typedef struct nxn_input_state {
 typedef struct nxn_touch {
     uint32_t size;
     uint32_t id;      /* stable while the finger stays down */
-    float x, y;       /* screen pixels of a 1280x720 space */
+    float x, y;       /* window surface pixels; standalone: 1280x720 screen pixels */
 } nxn_touch;
 
 /* Reads the controllers and the touch screen. Call once per frame. */

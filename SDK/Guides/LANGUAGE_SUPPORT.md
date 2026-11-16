@@ -1,6 +1,6 @@
-# Nexvyn OS — Language Runtimes & N2 Architecture (SDK 1.5 to 2.0)
+# Nexvyn OS — Language Runtimes & N2 Architecture (SDK 1.5 to 1.15)
 
-This document summarizes the language runtime architecture of Nexvyn OS. In **Nexvyn OS N2 (SDK 1.13 / 2.0)**, the
+This document summarizes the language runtime architecture of Nexvyn OS. In **Nexvyn OS N2 (SDK 1.15)**, the
 platform standardizes on **4 Official Primary Runtimes** for all new apps and games while preserving earlier runtimes
 through the on-demand `ComponentService`:
 
@@ -100,8 +100,7 @@ the CPython APIs within the subset pocketpy supports, and were tested by compari
 - **SDK**: `romfs:/System/C/include/nexvyn.h` (the Lua/Python SDK with underscores: `gfx_rect`, `ui_button`...) and a
   small libc bound to newlib (`stdio.h`, `stdlib.h`, `string.h`, `math.h`, `ctype.h`...). `malloc` is counted (64 MB),
   `printf` writes to the app's log. arm64 `long double` arithmetic is linked from libgcc.
-- **Limits**: native code is not sandboxed and an endless loop cannot be stopped, so third-party C apps ask the user
-  once on their first launch (`apps.trustedC`). Running in an emulator depends on its CodeMemory support.
+- **Limits**: native code is not sandboxed and an endless loop cannot be stopped, so use trusted packages. Apps open directly without a separate runtime warning. Running in an emulator depends on its CodeMemory support.
 - **License**: with static linking, LGPL-2.1 requires that the user can modify the library and relink. Since the source
   code is open (once the project is made public) this condition is met; a closed-source distribution would also have
   to ship the object files (`THIRD_PARTY_NOTICES.md`).

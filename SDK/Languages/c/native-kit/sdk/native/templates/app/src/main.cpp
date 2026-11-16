@@ -44,30 +44,13 @@ static void settings_save() {
 }
 
 // ---- the OS look: live OS tokens (colours for the nxn_os_* widgets). The frame layer reads them too and builds the
-// fonts with the glyphs of the user's language (Turkish "ı ğ ş İ", Cyrillic, CJK ...): the app adds no fonts.
+// fonts with the glyphs of the user's language (Turkish "Ä± ÄŸ ÅŸ Ä°", Cyrillic, CJK ...): the app adds no fonts.
 static void apply_tokens() { nxn_ui_tokens_get(&g_tok); }
 
 // ---- input: the game pad and the first finger drive ImGui
 static void feed_imgui(float dt) {
-    ImGuiIO& io = ImGui::GetIO();
-    io.DeltaTime = dt > 0.0001f ? dt : 0.0001f;
-    io.AddKeyEvent(ImGuiKey_GamepadFaceDown, (g_in.actions & NXN_ACT_CONFIRM) != 0);
-    io.AddKeyEvent(ImGuiKey_GamepadDpadLeft, (g_in.buttons & NXN_BTN_LEFT) != 0);
-    io.AddKeyEvent(ImGuiKey_GamepadDpadRight, (g_in.buttons & NXN_BTN_RIGHT) != 0);
-    io.AddKeyEvent(ImGuiKey_GamepadDpadUp, (g_in.buttons & NXN_BTN_UP) != 0);
-    io.AddKeyEvent(ImGuiKey_GamepadDpadDown, (g_in.buttons & NXN_BTN_DOWN) != 0);
-    static int was_down;
-    nxn_touch t = NXN_STRUCT_INIT(nxn_touch);
-    if (g_in.touch_count > 0 && nxn_input_touch(0, &t) == NXN_OK) {
-        io.AddMouseSourceEvent(ImGuiMouseSource_TouchScreen);
-        io.AddMousePosEvent(t.x, t.y);
-        io.AddMouseButtonEvent(0, true);
-        was_down = 1;
-    } else if (was_down) {
-        io.AddMouseButtonEvent(0, false);
-        io.AddMousePosEvent(-FLT_MAX, -FLT_MAX);
-        was_down = 0;
-    }
+    static nxn_imgui_input_state backend;
+    nxn_imgui_input(backend, g_in, dt);
 }
 
 // ---- the UI
@@ -96,7 +79,7 @@ static bool draw_ui() {
 
     nxn_os_row_begin();
     nxn_os_text(NXN_OS_TEXT_TITLE, nxn_tr("title"));
-    nxn_os_badge("Native OS Kit", g_tok.accent, g_tok);
+    nxn_os_badge(nxn_tr("kit"), g_tok.accent, g_tok);
     nxn_os_row_end();
     nxn_os_separator(g_tok);
     nxn_os_gap(NXN_OS_SP_S);
@@ -112,7 +95,7 @@ static bool draw_ui() {
             snprintf(num, sizeof num, "%ld", g_file_size);
             const char* args[1] = {num};
             if (nxn_tr_format("files.size", text, sizeof text, args, 1) == NXN_OK)
-                nxn_os_kv_row("Size", text, g_tok, false);
+                nxn_os_kv_row(nxn_tr("size_label"), text, g_tok, false);
         }
     } else {
         nxn_os_text(NXN_OS_TEXT_CAPTION, nxn_tr("files.none"));
@@ -173,6 +156,7 @@ static int app_main(int, char**) {
     while (!quit && !nxn_should_quit()) {
         nxn_event ev = NXN_STRUCT_INIT(nxn_event);
         while (nxn_event_poll(&ev) > 0) {
+            nxn_imgui_input_event(ev);
             if (ev.type == NXN_EVENT_RESIZE) {
                 if (nxn_display_resize(g_disp, ev.width, ev.height) == NXN_OK) nxn_display_size(g_disp, &g_w, &g_h);
             } else if (ev.type == NXN_EVENT_THEME) {

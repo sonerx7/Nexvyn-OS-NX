@@ -471,7 +471,7 @@ control fall below its minimum and always draws its text with its role font. Wit
 | `nxui.dropdown(id, options, selected)` → `newSelected, changed` | `nxn_nxui_dropdown(id, opts, count, &sel)` | Popover selector (Lua: 1-based `selected`; JS/Python/C: 0-based) |
 | `nxui.tabs(id, labels, active)` → `newActive, changed` | `nxn_nxui_tabs(id, labels, count, &active)` | Segmented tab bar (Lua: 1-based `active`; JS/Python/C: 0-based) |
 | `nxui.table(id, columns, rows, selectedRow)` → `newRow, clicked` | `nxn_nxui_table(id, cols, n_cols, rows, n_rows, &sel)` | Multi-column data table (`rows` is a flat list of cell strings `n_rows * n_cols`) |
-| `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` → `newRow, clicked` | `nxn_nxui_virtuallist(id, items, count, row_h, view_h, &sel)` | High-speed virtualized list that renders only visible rows (10,000+ items at 60 fps) |
+| `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` → `newRow, clicked` | `nxn_nxui_virtuallist(id, items, count, row_h, view_h, &sel)` | Virtualized list that renders visible rows; profile frame time with your actual row content |
 | `nxui.dialog(id, title, message, confirmLabel[, cancelLabel])` → `result` | `nxn_nxui_dialog(id, title, msg, confirm, cancel)` | Modal sheet overlay (`result`: `0` = open, `1` = confirmed, `2` = cancelled) |
 | `nxui.spacer([size])` | `nxn_nxui_spacer(size)` | Adds vertical/horizontal spacing (`size` defaults to `space3` = 12 px) |
 | `nxui.moveFocus(dir)` | `nxn_nxui_move_focus(dir)` | Moves controller focus across focusable widgets (`"up"`, `"down"`, `"left"`, `"right"` or `0..3`) |
@@ -504,6 +504,8 @@ function app.draw(w, h)
   nxui.endFrame()
 end
 ```
+
+Native C++ ImGui utilities: use the header-only `nxn_imgui_input` backend from `nxn_os_ui.h` before the frame layer, once per frame after `nxn_input_poll`. The native app design checker requires this backend; C source-folder checks also compile against the SDK header. It feeds keyboard/text, mouse/wheel, stable touch capture and gamepad input. The frame layer provides finger scrolling inside nested child windows and preserves slider/text capture. Script and interpreted C widgets use the shared OS controls. See the Native guide's interaction backend section. Existing compiled modules retain their behavior until rebuilt.
 
 ## 5. Input — `app.event`, `input`
 
@@ -2280,19 +2282,33 @@ public class CounterApp extends App {
 Third-party script apps are written in Lua, JavaScript or Python (sections 1-12), while third-party native C/C++ apps use `"runtime": "native"` and the Frozen ABI v1 (`nxn_*` and `nxn_nxui_*`, see `docs/NATIVE_GUIDE.md` and `docs/NATIVE_KIT.md`). You may also meet
 packages of Nexvyn OS's own optional C++ apps in the App Market, so this section explains both.
 
-A `.nxvapp` may carry a C++ app instead of a script: `"native": "<id>.nxvmod"` (an AArch64 shared object) and
-`"abi"` (the 16-hex-digit ABI id of the Nexvyn OS build it was compiled against). The module is built from the Nexvyn
-OS source tree with `tools/build_modules.py` (listed in `tools/modules.json`; `./build.sh` builds the modules, leaves
-those apps out of `NexvynOS.nro` and writes `build/modules/<id>.nxvapp`). It is the app's ordinary C++ source: a class
-derived from `App` and `REGISTER_APP("<id>", Class)`. Nexvyn OS maps the module into JIT code memory on the first
-launch, binds it to the symbols the NRO exports and runs its constructors. A module made for another build is refused
-("rebuilt for Nexvyn OS x.y needed"); the App Market only offers modules that match the running build. Native code is
-not sandboxed, so the user is warned once, at install: the App Installer and App Market sheets carry the native-code
-warning after App Guard has scanned the package, and the app then gets a trust record (`apps.nativeTrust`: id, SHA-256
-of the module file, source) and never asks at launch. A package copied into `Applications` by hand has no record: the
-first launch scans it with App Guard and asks once, remembered by the file's hash (a changed build asks again). Nothing
-is ever blocked or killed by this; Settings > Privacy > App Guard "Ask before running unsandboxed native apps"
-(`apps.askNativeUnknown`, default on) turns the question off for such copies. Apps that were already installed keep their
-answer (`apps.trustedNative`) or, when the App Market installed them, get a record silently. `"permissions"` is informational.
+Installed and manually copied native apps open directly without a runtime-specific warning.
+Package verification, install review, permissions and ABI checks remain independent. Native
+code shares the host process; direct launch does not imply a sandbox. Legacy trust records
+remain readable, but the retired launch-question setting no longer controls a modal.
+
 This is not a third-party SDK: the C++ API is Nexvyn OS's internal one and changes with every build, and the modules
 are rebuilt by the release pipeline together with each NexvynOS.nro.
+
+## Responsive interaction quality
+
+Native ImGui OS apps forward every polled lifecycle event to `nxn_imgui_input_event(event)`
+before the next frame, in addition to calling `nxn_imgui_input` once per frame. Focus loss
+releases held keys and cancels touch motion. The frame layer supplies kinetic touch scrolling;
+a new press stops a fast list without activating a moving row. Mouse-wheel and gamepad input
+remain direct. All UI adapters use the shared header-only `nxn_scroll_physics.h` finite-stop
+model; frame-rate-independent integration avoids a longer fling at a lower refresh rate.
+
+Native apps targeting Native 2.0, or explicitly opting in with `liveResize: true`, receive coalesced live resize events on shell draws by default. Legacy targets retain their default. Existing
+`native.liveResize: false` settings and manifest opt-outs are respected; legacy apps keep the
+settled path. Handle the newest size, keep UI state, and call `nxn_display_resize`; do not
+recreate the ImGui context or font atlas just because the window dimensions changed. Follow
+OS UI scale and text scale separately from viewport size. Native resize diagnostics report
+build and request-to-compose distributions; these are not input-to-photon measurements.
+
+OS apps preserve common tokens, typography, focus, control states and behavior across languages.
+Use a compact layout when rows no longer fit; do not shrink every control to fit the window.
+The Input Lab samples in all five runtime lanes stack their fields below 620 logical pixels.
+Test nested scrolling, fast release/stop, keyboard focus reveal, focus loss, pinch contact
+changes and resize while controls contain user input. Existing compiled app-side UI code
+requires rebuilding to receive new header helpers. Games retain their own visual direction.

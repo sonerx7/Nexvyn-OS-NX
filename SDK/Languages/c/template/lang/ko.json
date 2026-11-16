@@ -1,0 +1,7 @@
+{
+  "app": "앱",
+  "hello": "안녕하세요!",
+  "edit_me": "Nexvyn OS Studio에서 main.c 파일을 편집하고 실행(Ctrl+R)을 누르세요.",
+  "tap": "누른 횟수: {0}",
+  "reset": "횟수 초기화"
+}

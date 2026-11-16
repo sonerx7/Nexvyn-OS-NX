@@ -1,5 +1,19 @@
 # Nexvyn OS app SDK 2.0 (1.13) & Native SDK 1.2: context pack for AI assistants
 
+## Current authoring contract
+
+Use SDK 1.15 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+- Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
+- Keep SDK Markdown English only. Store screenshots may use English UI.
+- OS apps use shared theme/typography/controls; games require their own art direction.
+- Native ImGui UI uses `nxn_os_ui.h`, `nxn_imgui_input` before the frame and `nxn_imgui_input_event` for lifecycle events.
+- Use stable contact IDs for real game/canvas multitouch; ordinary widgets use one primary pointer.
+- Include compact/wide resize, nested scroll, keyboard/pad focus, focus-loss cancellation, loading, save/reopen and clean exit.
+- Read exact signatures from the installed reference/headers. Do not invent APIs, multitouch manifest flags, a sandbox, a future backend or a guaranteed frame rate.
+- Complete one polished playable/useful vertical slice, then profile actual hardware and review all eight translations.
+
+See the Product Quality, Input Contract, Localization Contract and Port and Launcher guides.
+
 You write apps for **Nexvyn OS**, a desktop shell that runs as Switch homebrew (Atmosphère). Apps are `.nxvapp` bundles that run in
 a window of the shell. Use ONLY the API listed here (it is a condensed copy of `SDK/Reference/SDK.md`, the complete
 contract). If something is not listed, it does not exist: say so and build it from what exists. Never invent
@@ -113,14 +127,8 @@ Coordinates: pixels, (0,0) top-left of the content, y down. Angles: radians, 0 =
 5. **All visible text through `TR("key", ...)`** with every key in `lang/en.json` (required). Add `lang/<code>.json`
    for each other language the user wants; missing keys fall back to English. `{0}`, `{1}` are replaced by the extra
    arguments. System keys like `TR("common.ok")` exist.
-6. **Apps: Unified OS Design System & Cross-Runtime Parity:**
-   Apps in any of the 4 runtimes (Lua, JS, Python, Native C/C++) must share an identical design language (colors, padding, typography, control sizing):
-   - Use `theme` colors or `nxui.tokens()` / `nxn_ui_tokens_get()` so Light/Dark and accent colors adapt dynamically.
-   - Touch targets ≥ 28 px tall (canonical button height: 30 px, radius 8 px; segmented tab: 32 px, radius 7 px; switch: 38x22 px, thumb 17 px).
-   - Margins: 20 px window margin, 16 px horizontal / 13 px vertical card padding, 12 px gap.
-   - Strict Typography Hierarchy: Title 19.2 pt, Card Header 15.2 pt, Body/Controls 13.8 pt, Badge/Subtitle 12.0 pt.
-   - **Native C/C++ Parity Rule:** Always include `<nexvyn/nxn_os_ui.h>` and scale font sizes by `1.21f` (`2478 / 2048` FreeType EM factor, e.g. `floorf(13.8f * 1.21f * sc + 0.5f)`), use integer pixel snapping, and set OpenGL clear color with `nxn_os_clear_color(tok)` to prevent thin/small text and guarantee exact 1:1 visual parity with OS `ui.*`/`nxui.*` apps.
-   Games do not follow this: see rule 11.
+6. **Apps: use `theme` colors** so light and dark mode work. Touch targets ≥ 28 px tall; 16-20 px margins; 13-15 px
+   body text. Games do not: see rule 11.
 7. **Save immediately** with `store.set` / `fs.write`; `store` is flushed on suspend/autosave too.
 8. **Check `sys.online()`** before network work and show a friendly offline message.
 9. No `io`, `os.execute`, `debug`, `package`, `dofile`, `loadfile` in Lua; no browser/Node API in JS; no `open()`/`os`
@@ -197,7 +205,7 @@ SDK 1.12 (`"minSdk": "1.12"`; Lua, JavaScript, Python, C): `ui.tokens()` (C: `ui
 
 ## 5a. nxui (Retained & Semantic UI Engine, SDK 1.13 / 2.0)
 
-Available in Lua, JavaScript, and Python (`nxui.*`). Both `ui.*` and `nxui.*` read live OS theme tokens (`theme::p()` Light/Dark/High-Contrast) so script utilities share one consistent Nexvyn OS design language. (For Native C/C++ OpenGL `.nxvmod` apps, use `<nexvyn/nxn_imgui.h>` + `<nexvyn/nxn_os_ui.h>` driven live by `nxn_ui_tokens_get`; `nxn_nxui_*` computes layout/focus state only and does not paint inside an OpenGL `nxn_display` framebuffer.) Prefer `nxui` for structured script apps, utilities, settings, tables and forms:
+Available in Lua, JavaScript, Python (`nxui.*`). Native C/C++ has `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>`, but it never paints in a Native GL window (`nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`): native apps draw with ImGui + the frame layer of `<nexvyn/nxn_os_ui.h>` (`nxn_os_frame_begin` / `nxn_os_frame_end`, `nxn_os_*` widgets, `NXN_S()` sizes). Every app in every language must look like Nexvyn OS (`theme.*` colours, role-table text sizes; `python tools/design_check.py`). Prefer `nxui` for structured desktop apps, utilities, settings, tables and forms (no manual pixel math needed):
 - Frame: `nxui.begin([w, h])` ... `nxui.endFrame()` · `nxui.tokens()` → `{space1..space6, radiusSm/Md/Lg, fontSm/Body/Title/Hero, scale, dark, highContrast, reducedMotion, bgPrimary, bgSecondary, bgCard, fgPrimary, fgMuted, accent, danger, success, warning, border}`.
 - Containers: `nxui.row(id[, gap])` … `nxui.rowEnd()` · `nxui.column(id[, gap])` … `nxui.columnEnd()` · `nxui.card(id)` … `nxui.cardEnd()` · `nxui.scrollBegin(id, w, h[, scrollY])` → `newScrollY` … `nxui.scrollEnd()` · `nxui.canvasBegin(id, w, h)` → `x, y, w, h` (JS/Py: `{x, y, w, h}`) … `nxui.canvasEnd()` · `nxui.spacer([size])`.
 - Controls: `nxui.label(id, text[, role])` (`"body"|"title"|"hero"|"muted"|"small"`) · `nxui.badge(id, text[, rgba])` · `nxui.button(id, label[, variant])` → `clicked` (`"primary"|"secondary"|"ghost"|"danger"`) · `nxui.toggle(id, checked)` → `newChecked[, changed]` · `nxui.slider(id, val, min, max)` → `newVal[, changed]` · `nxui.textfield(id, text[, placeholder])` → `newText[, changed]` · `nxui.dropdown(id, options, selected)` → `newSel[, changed]` (Lua 1-based; JS/Py/C 0-based) · `nxui.tabs(id, labels, active)` → `newActive[, changed]` (Lua 1-based; JS/Py/C 0-based) · `nxui.table(id, cols, rows, selectedRow)` → `newRow, clicked` (JS/Py `{selected, clicked}`) · `nxui.virtuallist(id, items, rowH, viewH, selectedRow)` → `newRow, clicked` (JS/Py `{selected, clicked}`) · `nxui.dialog(id, title, msg, confirm[, cancel])` → `0|1|2`.
@@ -567,92 +575,38 @@ end
 return app
 ```
 
-### Template C — Native C++ Utility Window (`.nxvmod`, Native SDK 1.2 + `nxn_os_ui.h`)
+### Template C — Native C / C++ Windowed Module (`.nxvmod`, Native SDK 1.2)
+**Choose the language first:** UI-heavy tools, utilities and productivity apps (chat clients, editors, settings, dashboards, store fronts) are written in Lua, JavaScript or Python with `nxui.*` / `ui.*` (the OS renderer and its text: the best typography, no build). Native C/C++ only for heavy computation (LLM inference, emulators, 3D engines, codecs, ports). A hybrid (native engine + script UI) is not possible yet: a script app cannot load native code.
 ```cpp
 /* src/main.cpp ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10", "targetSdk": "2.0") */
-#include <nexvyn/nexvyn_native.h>
-#include <glad/glad.h>
-#include "imgui.h"
-#include "imgui_impl_opengl3.h"
-#include <nexvyn/nxn_imgui.h>
-#include <nexvyn/nxn_os_ui.h>
-
-static int app_main(int argc, char** argv) {
-    (void)argc; (void)argv;
-    nxn_display* disp = NULL;
-    if (nxn_display_open(NULL, &disp) != NXN_OK) {
-        nxn_request_return(NXN_RETURN_ERROR, 1, "Failed to open display");
-        return 1;
-    }
-    gladLoadGLLoader((GLADloadproc)nxn_display_proc);
-
-    uint32_t w = 960, h = 540;
-    nxn_display_size(disp, &w, &h);
-    nxn_ui_tokens tok = NXN_STRUCT_INIT(nxn_ui_tokens);
-    nxn_ui_tokens_get(&tok);
-
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-    nxn_imgui_enable_gamepad(ImGui::GetIO());
-    // Scale OS point sizes by 1.21x (Inter FreeType EM factor) so stb_truetype matches OS FreeType at 1:1 resolution
-    float sc = tok.text_scale > 0.5f ? tok.text_scale : 1.0f;
-    ImFont* f_body   = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_MEDIUM, floorf(13.8f * 1.21f * sc + 0.5f), 0, NULL);
-    ImFont* f_card   = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_BOLD,   floorf(15.2f * 1.21f * sc + 0.5f), 0, NULL);
-    ImFont* f_title  = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_BOLD,   floorf(19.2f * 1.21f * sc + 0.5f), 0, NULL);
-    ImFont* f_small  = nxn_imgui_add_font(ImGui::GetIO().Fonts, NXN_UI_FONT_MEDIUM, floorf(12.0f * 1.21f * sc + 0.5f), 0, NULL);
-    ImGui::GetIO().FontDefault = f_body;
-    nxn_os_apply_style(tok);
-    ImGui_ImplOpenGL3_Init("#version 330 core");
-
-    int tab = 0;
-    bool toggle_on = true;
-    const char* tabs[] = {nxn_tr("general"), nxn_tr("options")};
-    while (!nxn_should_quit()) {
-        nxn_event ev = NXN_STRUCT_INIT(nxn_event);
-        while (nxn_event_poll(&ev) > 0) {
-            if (ev.type == NXN_EVENT_RESIZE && nxn_display_resize(disp, ev.width, ev.height) == NXN_OK) {
-                nxn_display_size(disp, &w, &h);
-            } else if (ev.type == NXN_EVENT_THEME) {
-                nxn_ui_tokens_get(&tok);
-                nxn_os_apply_style(tok);
-            }
-            ev = NXN_STRUCT_INIT(nxn_event);
-        }
-
-        ImGui::GetIO().DisplaySize = ImVec2((float)w, (float)h);
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui::NewFrame();
-        ImGui::SetNextWindowPos(ImVec2(0, 0));
-        ImGui::SetNextWindowSize(ImVec2((float)w, (float)h));
-        ImGui::Begin("##main", NULL, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
-        nxn_os_segmented_tabs("nav", tabs, 2, &tab, tok);
-        ImGui::Spacing();
-        nxn_os_card_begin("hero_card", tok);
-            nxn_os_kv_row(nxn_tr("title"), "v1.0", tok, true);
-            nxn_os_switch("opt_tog", &toggle_on, tok);
-            nxn_os_separator(tok);
-            nxn_os_button(nxn_tr("increment"), NXN_OS_BTN_PRIMARY, tok);
-        nxn_os_card_end();
-        ImGui::End();
-        ImGui::Render();
-
-        glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-        ImVec4 bg = nxn_os_clear_color(tok);
-        glClearColor(bg.x, bg.y, bg.z, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-        nxn_display_swap(disp);
-    }
-
-    ImGui_ImplOpenGL3_Shutdown();
-    ImGui::DestroyContext();
-    nxn_display_close(disp);
-    return 0;
-}
-
-int main(int argc, char** argv) {
-    return nxn_run(argc, argv, app_main, NULL);
-}
+/* Native GL apps draw their UI with Dear ImGui + the FRAME LAYER of <nexvyn/nxn_os_ui.h> (the OS look). nxn_nxui_* never
+ * paints in a GL window. Start from the app template (nxv_native new myapp --template app).
+ * Setup once: ImGui::CreateContext(); nxn_imgui_enable_gamepad(io); nxn_ui_tokens_get(&tok);
+ *             ImGui_ImplOpenGL3_Init("#version 330 core");          -- NO fonts, NO style code: the kit does both
+ * Every frame (replaces ImGui_ImplOpenGL3_NewFrame / ImGui::NewFrame / ImGui::Render): */
+nxn_os_frame_begin(&tok, (int)fb_w, (int)fb_h);   /* UI scale, fonts (text roles), style, full-window root */
+nxn_os_text(NXN_OS_TEXT_TITLE, nxn_tr("title"));
+nxn_os_card_begin("panel", tok);
+    nxn_os_row_begin();                            /* one line: equal height, vertically centred */
+        nxn_os_select("mode", modes, 3, &mode, nxn_os_fill(0.5f));
+        if (nxn_os_button(nxn_tr("increment"), NXN_OS_BTN_PRIMARY, tok)) counter++;
+        nxn_os_toggle_button(nxn_tr("web"), &web);
+    nxn_os_row_end();
+    nxn_os_switch_row(nxn_tr("sync"), &sync);
+    nxn_os_labeled(nxn_tr("volume"), [&] { nxn_os_slider("vol", &volume, 0.0f, 1.0f, tok); });
+    nxn_os_input("name", nxn_tr("name_hint"), name, sizeof name);
+nxn_os_card_end();
+nxn_os_frame_end();                               /* ImGui::Render() */
+ImVec4 bg = nxn_os_clear_color(tok);              /* never a constant glClearColor */
+glViewport(0, 0, fb_w, fb_h);
+glClearColor(bg.x, bg.y, bg.z, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT);
+ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+nxn_display_swap(disp);
+/* Rules (python tools/nxv_native check-design / nxv.py check FAIL otherwise): no raw ImGui::Button / Combo / Checkbox /
+ * SliderFloat / InputText (use nxn_os_*), no FontGlobalScale / SetWindowFontScale / AddFont*, every pixel number as
+ * NXN_S(px) (spacing nxn_os_sp(NXN_OS_SP_M), widths nxn_os_fill(frac), 0 = the widget default). On NXN_EVENT_THEME
+ * read the tokens again (nxn_ui_tokens_get); the kit re-applies the style itself. */
 ```
 
 ### Template D — JavaScript ES2023 Network + NXUI App
@@ -828,3 +782,8 @@ the user how to check it on a PC (`python tools/lua_check.py`, `node tools/js_ch
 `python tools/rt_check.py` from the Nexvyn OS source repository, or `python SDK/Tools/nxv/nxv.py check <folder> --sdk <checkout>`)
 and how to run it (copy to `sdmc:/NexvynOS/Applications/<Name>.nxvapp/`, or open it in Nexvyn OS Studio and press Run).
 Follow `SDK/AI/checklist.md` before answering.
+
+
+Native interaction is part of the app standard: keep one `nxn_imgui_input_state` per ImGui context; after `nxn_input_poll`, call `nxn_imgui_input(backend, state, dt)` exactly once before `nxn_os_frame_begin`. Do not combine it with a second mouse/key/text feeder. Sliders retain pointer capture, nested frames scroll under the finger, keyboard/gamepad focus is required, and text input uses the system keyboard request. Games retain their own visual direction and may use raw multi-touch by stable finger ID; do not transfer an existing drag to another finger. `nxv check` compiles interpreted C bundles against the real SDK header, including parameter counts and types; use NULL for an unused `ui_beginScroll` scrollX output.
+
+Native ImGui OS apps must forward lifecycle events with `nxn_imgui_input_event(event)`. Preserve UI state during resize, stack crowded fields in compact windows, and use the shared OS touch-motion model rather than private scroll physics. Validate focus loss, fling interruption and focus reveal inside scroll frames.

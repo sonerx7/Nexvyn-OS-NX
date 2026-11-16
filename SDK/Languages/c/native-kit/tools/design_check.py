@@ -237,6 +237,10 @@ def check_native(pkg, relaxed, issues):
                 issues.append((sev, "ImGui used without nxn_os_apply_style(tok) or nxn_os_frame_begin()"))
         else:
             issues.append((sev, "ImGui used without the frame layer: " + FIX["frame"]))
+    if not scene and not re.search(r"\bnxn_imgui_input\s*\(", blob):
+        issues.append((sev, "no shared input backend: call nxn_imgui_input(backend, state, dt) once before nxn_os_frame_begin(); it handles touch capture, mouse/wheel, keyboard/text and gamepad"))
+    if not scene and not re.search(r"\bnxn_imgui_input_event\s*\(", blob):
+        issues.append((sev, "no input lifecycle forwarding: call nxn_imgui_input_event(event) for each polled event so focus loss releases held keys and touch motion"))
     has_clear = "nxn_os_clear_color(" in blob
     if not has_clear:
         issues.append((sev, "no nxn_os_clear_color(tok): the window clears to a private colour"))
@@ -340,6 +344,7 @@ def packages():
 
     add_apps(os.path.join(ROOT, "romfs", "Applications"), "app")
     add(os.path.join(ROOT, "showcase"), "app")
+    add(os.path.join(ROOT, "sdk", "samples", "inputlab"), "app")
     for n in sorted(os.listdir(os.path.join(ROOT, "sdk", "native", "templates"))) if os.path.isdir(os.path.join(ROOT, "sdk", "native", "templates")) else []:
         out.append(("sdk/native/templates/" + n, os.path.join(ROOT, "sdk", "native", "templates", n), "app"))
     add(os.path.join(ROOT, "sdk", "native", "examples"), "scene")

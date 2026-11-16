@@ -1,0 +1,18 @@
+{
+  "title": "@TITLE@",
+  "files": {
+    "heading": "파일",
+    "open": "파일 선택...",
+    "none": "선택한 파일 없음",
+    "size": "{0}바이트"
+  },
+  "settings": {
+    "heading": "설정",
+    "counter": "실행 횟수: {0}",
+    "reset": "횟수 초기화",
+    "large_text": "큰 글자"
+  },
+  "quit": "닫기",
+  "size_label": "크기",
+  "kit": "네이티브 UI 키트"
+}

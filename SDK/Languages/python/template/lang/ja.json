@@ -1,0 +1,7 @@
+{
+  "app": "アプリ",
+  "hello": "こんにちは！",
+  "edit_me": "Nexvyn OS Studioでmain.pyを編集し、実行（Ctrl+R）を押してください。",
+  "tap": "タップ回数: {0}",
+  "reset": "回数をリセット"
+}

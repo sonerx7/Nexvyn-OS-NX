@@ -103,3 +103,65 @@ What to do:
 - Two fingers at once: the autorun test command `finger <n> down|move|up <x> <y>` injects them (two ids make
   pinch, rotate and two-finger pan); the SDL2 check example prints the most fingers down at once.
 - Put the console to sleep during play and wake it: sound and saved state must be right.
+
+
+## Native UI interaction backend
+
+Native ImGui utilities should include `nxn_os_ui.h` and use one shared input backend. After `nxn_input_poll`, call `nxn_imgui_input(backend, state, dt)` before `nxn_os_frame_begin`. Keep `nxn_imgui_input_state backend` alive for the lifetime of the ImGui context. Do not feed another platform backend or consume mouse/key/text queues a second time. The helper is header-only; it adds no host ABI imports beyond existing Native 1.1 USB input functions (use `minNative: 1.1` or newer).
+
+```cpp
+static nxn_imgui_input_state backend;
+nxn_input_state state = NXN_STRUCT_INIT(nxn_input_state);
+nxn_input_poll(&state);
+nxn_imgui_input(backend, state, dt);
+nxn_os_frame_begin(&tokens, width, height);
+// nxn_os_slider, nxn_os_input, nxn_os_dropdown, buttons, child frames ...
+nxn_os_frame_end();
+```
+
+The backend handles HID keyboard events, UTF-8 text, the system keyboard request, mouse buttons including short taps, wheels, mapped confirm/cancel, D-pad and left-stick focus navigation, and right-stick scrolling. Standalone libraries that do not provide USB input keep touch/gamepad input. Keyboard/gamepad sliders use normal ImGui activation and arrow adjustment; custom OS switches, tabs and list controls participate in navigation.
+
+The frame layer supports finger dragging in the innermost scrollable child window (including raw `ImGui::BeginChild`). A drag becomes scrolling after a small movement threshold. It cancels a pending row click. Sliders and text editing retain capture. Mouse dragging keeps its usual control behavior. Existing compiled modules keep their existing headers and behavior; rebuild with the updated kit to adopt this backend.
+
+Multi-touch UI capture follows the original finger ID, even if array indices change. Releasing that finger does not transfer its drag to a second finger. Games and gesture canvases should read all `nxn_input_touch` contacts by stable `id`; never treat the array index as identity. Reset pinch/rotation baselines when either participating ID changes. The regular UI remains a single-pointer interface; this does not make two independent ImGui widgets concurrently editable.
+
+Script and interpreted C apps use the shared OS `ui.beginScroll` / `ui_beginScroll`, sliders and text fields. Lua, JavaScript, Python and C receive `pinch` and `rotate` events with `scale`, `angle`, local `x`/`y`, and `touch`; apply these only in a canvas or document that supports gestures. Pairing the OS renderer and a native OpenGL ImGui renderer is not supported in one frame.
+
+
+
+## Interaction contract for every app language
+
+An OS application uses the same theme tokens, text roles, scaled dimensions and control behavior in Lua, JavaScript, Python, interpreted C and native C++. Native utilities use `nxn_os_ui.h` with its shared input backend. Games may choose their own visual style; controls still obey capture, cancellation and stable contact identity.
+
+| Control | Touch / mouse | Keyboard / gamepad |
+|---|---|---|
+| Button, switch, list row | Activate on release inside the target; a scroll drag cancels the click | Reach by focus navigation, activate with confirm |
+| Slider | Keep the initial pointer until release, including outside bounds; preserve capture inside a scroll pane | Focus, activate, adjust left/right; cancel exits editing |
+| Text field | Focus opens the system keyboard when needed; typing is UTF-8 | Tab/Shift+Tab focus, text and editing keys, modifiers and shortcuts |
+| Scroll pane | Drag inside the deepest eligible pane; inner movement leaves the outer pane in place; mouse wheel scrolls the hovered pane | Right stick scrolls the hovered or focused pane, left stick/D-pad navigates controls |
+| Gesture canvas | Pinch/rotate only where supported; track stable IDs and reset the baseline when a contact changes | Provide a reachable control for the same operation |
+
+C source packages must pass the real-header compilation check as well as manifest/design validation. Compiler skips are reported explicitly. Native OS-look source projects that omit the shared input backend fail the design check. Rebuilding an existing native module adopts the new app-side backend; previously compiled modules keep their existing widget code. The native host supplies one coherent touch snapshot per `nxn_input_poll` and clears access while unfocused.
+
+## Responsive interaction quality
+
+Native ImGui OS apps forward every polled lifecycle event to `nxn_imgui_input_event(event)`
+before the next frame, in addition to calling `nxn_imgui_input` once per frame. Focus loss
+releases held keys and cancels touch motion. The frame layer supplies kinetic touch scrolling;
+a new press stops a fast list without activating a moving row. Mouse-wheel and gamepad input
+remain direct. All UI adapters use the shared header-only `nxn_scroll_physics.h` finite-stop
+model; frame-rate-independent integration avoids a longer fling at a lower refresh rate.
+
+Native apps targeting Native 2.0, or explicitly opting in with `liveResize: true`, receive coalesced live resize events on shell draws by default. Legacy targets retain their default. Existing
+`native.liveResize: false` settings and manifest opt-outs are respected; legacy apps keep the
+settled path. Handle the newest size, keep UI state, and call `nxn_display_resize`; do not
+recreate the ImGui context or font atlas just because the window dimensions changed. Follow
+OS UI scale and text scale separately from viewport size. Native resize diagnostics report
+build and request-to-compose distributions; these are not input-to-photon measurements.
+
+OS apps preserve common tokens, typography, focus, control states and behavior across languages.
+Use a compact layout when rows no longer fit; do not shrink every control to fit the window.
+The Input Lab samples in all five runtime lanes stack their fields below 620 logical pixels.
+Test nested scrolling, fast release/stop, keyboard focus reveal, focus loss, pinch contact
+changes and resize while controls contain user input. Existing compiled app-side UI code
+requires rebuilding to receive new header helpers. Games retain their own visual direction.
