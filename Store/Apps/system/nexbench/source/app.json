@@ -11,16 +11,16 @@
     "zh": "Nexy Benchmark 2"
   },
   "description": {
-    "en": "Hardware & OS benchmark suite featuring 500K+ polygon PBR 3D Quantum Monolith & Orbital Reactor scenes, 2D fill-rate test, multi-core raytracing, memory/storage I/O, platform diagnostics, and persistent scoring.",
-    "tr": "500K+ poligonlu PBR 3D Kuantum Monoliti ve Yörünge Reaktörü sahneleri, 2D dolgu hızı, çok çekirdekli raytracing, bellek/depolama I/O, platform tanılaması ve kalıcı puanlama sunan donanım benchmark paketi.",
-    "de": "Hardware- & OS-Benchmark mit 500K+ Polygon-PBR-3D-Quantenmonolith- und Reaktorszenen, 2D-Füllrate, Multi-Core-Raytracing, Speicher-/I/O-Tests, Plattformdiagnose und Verlaufsbewertung.",
-    "fr": "Suite de benchmark matériel et OS : scènes 3D PBR Monolithe Quantique et Réacteur Orbital 500K+ polygones, remplissage 2D, raytracing multicœur, E/S mémoire et stockage, diagnostics et historique.",
-    "es": "Suite de benchmark de hardware y OS con escenas 3D PBR de Monolito Cuántico y Reactor Orbital de 500K+ polígonos, relleno 2D, raytracing multinúcleo, E/S de memoria y almacenamiento, diagnóstico y puntuación persistente.",
-    "ja": "50万ポリゴン超のPBR 3Dクァンタムモノリス＆軌道リアクター、2Dフィルレート、マルチコアレイトレーシング、メモリ/ストレージI/O、システム診断・スコア履歴を搭載したベンチマークスイート。",
-    "ko": "50만+ 폴리곤 PBR 3D 퀀텀 모놀리스 및 궤도 리액터 씬, 2D 필레이트, 멀티코어 레이트레이싱, 메모리/스토리지 I/O, 플랫폼 진단 및 누적 점수를 제공하는 벤치마크.",
-    "zh": "硬件与系统基准测试套件：支持50万+多边形PBR 3D量子巨石与轨道反应堆、2D填充率、多核光线追踪、内存与存储I/O、系统诊断及历史评分。"
+    "en": "Measure CPU, memory, storage and graphics with a calm, colourful benchmark: animated score gauge, per-category charts, 3D scenes, history and comparison.",
+    "tr": "CPU, bellek, depolama ve grafik performansını sakin ve renkli bir arayüzle ölçün: animasyonlu puan göstergesi, kategori grafikleri, 3D sahneler, geçmiş ve karşılaştırma.",
+    "de": "Messen Sie CPU, Speicher, Datenträger und Grafik mit einem ruhigen, farbigen Benchmark: animierte Punkteanzeige, Diagramme, 3D-Szenen, Verlauf und Vergleich.",
+    "fr": "Mesurez CPU, mémoire, stockage et graphismes avec un benchmark calme et coloré : jauge de score animée, graphiques par catégorie, scènes 3D, historique et comparaison.",
+    "es": "Mide CPU, memoria, almacenamiento y gráficos con un benchmark tranquilo y colorido: indicador de puntuación animado, gráficos por categoría, escenas 3D, historial y comparación.",
+    "ja": "CPU、メモリ、ストレージ、グラフィックスを計測。アニメーションするスコアゲージ、カテゴリ別グラフ、3Dシーン、履歴と比較を備えた、落ち着いたカラフルなベンチマーク。",
+    "ko": "CPU, 메모리, 저장소, 그래픽을 측정합니다. 애니메이션 점수 게이지, 카테고리별 차트, 3D 씬, 기록 및 비교를 제공하는 차분하고 다채로운 벤치마크.",
+    "zh": "测量 CPU、内存、存储和图形性能：动画评分仪表、分类图表、3D 场景、历史记录与对比，界面平和而多彩。"
   },
-  "version": "2.2.1",
+  "version": "2.3.0",
   "author": "sonerx7",
   "category": "system",
   "runtime": "native",
@@ -31,8 +31,10 @@
   "minSdk": "1.10",
   "targetSdk": "1.13",
   "window": {
-    "width": 960,
-    "height": 620,
+    "width": 1120,
+    "height": 680,
+    "minWidth": 720,
+    "minHeight": 460,
     "resizable": true
   },
   "gamepad": true,
