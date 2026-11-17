@@ -1,5 +1,11 @@
 # Nexy Benchmark 2 changes
 
+## 2.4.4
+
+- Increase quality to 720p with normal maps, a bounded 512px directional shadow and FXAA.
+- Retain all restored models; turn Reactor opening camera toward the existing stairs. Heavy screen-space effects remain off.
+- Separate measurements as graphics workload profile 6; no fixed FPS guarantee.
+
 ## 2.4.3
 
 - Restore all original Reactor, Cryo Bay and Station model placements from the previous Store scene packs.
