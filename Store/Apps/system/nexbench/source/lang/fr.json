@@ -146,7 +146,7 @@
   "sys.scene_mem": "Mémoire de la scène 3D",
   "safe.notice": "La dernière session s'est fermée de façon inattendue. Mode sans échec actif.",
   "hist.diff_profile": "Ces tests utilisent des charges graphiques différentes. Leurs scores ne sont pas comparables.",
-  "profile.half": "3D Lite : moitié des pixels, profil de score distinct",
+  "profile.half": "Test 3D · 720p",
   "explore.reset": "Réinitialiser la caméra",
   "explore.back": "Retour",
   "state.on": "Activé",

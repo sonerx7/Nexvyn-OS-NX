@@ -146,7 +146,7 @@
   "sys.scene_mem": "3D 场景内存",
   "safe.notice": "上次会话意外关闭，已开启安全模式。",
   "hist.diff_profile": "这些测试使用不同的图形负载，分数无法比较。",
-  "profile.half": "3D Lite：场景像素减半，使用独立评分配置",
+  "profile.half": "3D性能测试 · 720p",
   "explore.reset": "重置相机",
   "explore.back": "返回",
   "state.on": "开",

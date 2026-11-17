@@ -146,7 +146,7 @@
   "sys.scene_mem": "3D 장면 메모리",
   "safe.notice": "지난 세션이 예기치 않게 종료되었습니다. 안전 모드가 켜졌습니다.",
   "hist.diff_profile": "그래픽 작업 부하가 달라 이 실행 결과의 점수를 비교할 수 없습니다.",
-  "profile.half": "3D Lite: 장면 픽셀 절반, 별도 점수 프로필",
+  "profile.half": "3D 벤치마크 · 720p",
   "explore.reset": "카메라 초기화",
   "explore.back": "뒤로",
   "state.on": "켜짐",

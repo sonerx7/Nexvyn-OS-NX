@@ -146,7 +146,7 @@
   "sys.scene_mem": "Speicher der 3D-Szene",
   "safe.notice": "Die letzte Sitzung wurde unerwartet beendet. Abgesicherter Modus ist an.",
   "hist.diff_profile": "Diese Läufe verwenden unterschiedliche Grafiklasten. Ihre Werte sind nicht vergleichbar.",
-  "profile.half": "3D Lite: halbe Pixelanzahl, separates Punkteprofil",
+  "profile.half": "3D-Benchmark · 720p",
   "explore.reset": "Kamera zurücksetzen",
   "explore.back": "Zurück",
   "state.on": "Ein",

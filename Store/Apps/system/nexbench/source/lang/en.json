@@ -146,7 +146,7 @@
   "sys.scene_mem": "3D scene memory",
   "safe.notice": "The last session closed unexpectedly. Safe mode is on.",
   "hist.diff_profile": "These runs use different graphics workloads. Their scores cannot be compared.",
-  "profile.half": "3D Lite: half the scene pixels, separate score profile",
+  "profile.half": "3D benchmark · 720p",
   "explore.reset": "Reset camera",
   "explore.back": "Back",
   "state.on": "On",

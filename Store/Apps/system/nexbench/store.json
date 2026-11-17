@@ -10,14 +10,14 @@
     "ko": "CPU, 메모리, 저장소, 2D·3D 벤치마크"
   },
   "description": {
-    "en": "Measure CPU, memory, storage, 2D and 3D performance offline. Shared Nexvyn OS controls support touch, gamepad and keyboard/mouse, with history and reports. 3D Lite renders scenes at 904×508; the 2D test stays at 1280×720. Results use a separate workload profile and are not comparable with previous graphics scores. Explore three Kepler scenes with camera reset and Back controls.",
-    "tr": "CPU, bellek, depolama, 2D ve 3D performansını çevrimdışı ölçün. Ortak Nexvyn OS kontrolleri; dokunmatik, gamepad ve klavye/fare ile geçmiş ve raporları destekler. 3D Lite sahneleri 904×508 çizer; 2D testi 1280×720 kalır. Sonuçlar ayrı yük profili kullanır ve eski grafik puanlarıyla karşılaştırılamaz. Üç Kepler sahnesini kamera sıfırlama ve Geri kontrolleriyle keşfedin.",
-    "de": "CPU-, Speicher-, Datenträger-, 2D- und 3D-Leistung offline messen. Gemeinsame Nexvyn-OS-Steuerelemente unterstützen Touch, Gamepad sowie Tastatur/Maus, Verlauf und Berichte. 3D Lite rendert mit 904×508; der 2D-Test bleibt bei 1280×720. Das separate Lastprofil ist nicht mit früheren Grafikwerten vergleichbar. Drei Kepler-Szenen mit Kamera-Reset und Zurück erkunden.",
-    "es": "Mide CPU, memoria, almacenamiento, 2D y 3D sin conexión. Los controles de Nexvyn OS admiten pantalla táctil, mando y teclado/ratón, historial e informes. 3D Lite renderiza a 904×508; 2D conserva 1280×720. El perfil de carga independiente no es comparable con puntuaciones gráficas anteriores. Explora tres escenas Kepler con restablecimiento de cámara y botón Volver.",
-    "fr": "Mesurez hors ligne CPU, mémoire, stockage, 2D et 3D. Les contrôles Nexvyn OS prennent en charge tactile, manette et clavier/souris, historique et rapports. 3D Lite utilise 904×508 ; la 2D reste à 1280×720. Le profil de charge distinct ne se compare pas aux anciens scores graphiques. Explorez trois scènes Kepler avec réinitialisation de caméra et Retour.",
-    "ja": "CPU、メモリ、ストレージ、2D・3D性能をオフラインで測定。Nexvyn OS共通のコントロールでタッチ、ゲームパッド、キーボード・マウスに対応し、履歴とレポートを提供します。3D Liteは904×508（ピクセル数50.2%削減）、2Dテストは1280×720。負荷プロファイルが異なるため、従来のグラフィックススコアとは比較できません。カメラリセットと戻るボタンで3つのKeplerシーンを探索できます。",
-    "ko": "CPU, 메모리, 저장소, 2D·3D 성능을 오프라인으로 측정합니다. 공통 Nexvyn OS 컨트롤로 터치, 게임패드, 키보드·마우스와 기록·보고서를 지원합니다. 3D Lite는 904×508로 렌더링해 픽셀을 50.2% 줄이며, 2D 테스트는 1280×720입니다. 별도 작업 부하 프로필이므로 이전 그래픽 점수와 비교할 수 없습니다. 카메라 초기화와 뒤로 버튼으로 Kepler 장면 3개를 탐색하세요.",
-    "zh": "离线测量CPU、内存、存储、2D和3D性能。共享Nexvyn OS控件支持触摸、手柄、键盘鼠标、历史记录和报告。3D Lite使用904×508（像素减少50.2%），2D测试仍为1280×720。独立负载配置的图形分数无法与旧版比较。使用重置相机和返回按钮探索三个Kepler场景。"
+    "en": "Measure CPU, memory, storage, 2D and 3D performance offline. Explore three detailed Kepler scenes rendered at 720p with normal maps and directional shadows. Supports touch, gamepad and keyboard/mouse, with history and reports.",
+    "tr": "CPU, bellek, depolama, 2D ve 3D performansını çevrimdışı ölçün. Normal haritaları ve yönlü gölgelerle 720p çizilen üç ayrıntılı Kepler sahnesini keşfedin. Dokunmatik, gamepad ve klavye/fare desteği; geçmiş ve raporlar sunar.",
+    "de": "CPU-, Speicher-, Datenträger-, 2D- und 3D-Leistung offline messen. Drei detaillierte Kepler-Szenen in 720p mit Normalmaps und gerichteten Schatten erkunden. Mit Touch, Gamepad, Tastatur/Maus, Verlauf und Berichten.",
+    "es": "Mide CPU, memoria, almacenamiento, 2D y 3D sin conexión. Explora tres escenas Kepler detalladas a 720p con mapas de normales y sombras direccionales. Admite pantalla táctil, mando, teclado/ratón, historial e informes.",
+    "fr": "Mesurez hors ligne CPU, mémoire, stockage, 2D et 3D. Explorez trois scènes Kepler détaillées en 720p avec cartes de normales et ombres directionnelles. Compatible tactile, manette, clavier/souris, avec historique et rapports.",
+    "ja": "CPU、メモリ、ストレージ、2D・3D性能をオフラインで測定。法線マップと方向光の影を備えた、720pの詳細なKeplerシーン3つを探索できます。タッチ、ゲームパッド、キーボード・マウス、履歴とレポートに対応。",
+    "ko": "CPU, 메모리, 저장소, 2D·3D 성능을 오프라인으로 측정합니다. 노멀 맵과 방향광 그림자를 적용한 세밀한 Kepler 장면 3개를 720p로 탐색하세요. 터치, 게임패드, 키보드·마우스, 기록과 보고서를 지원합니다.",
+    "zh": "离线测量CPU、内存、存储、2D和3D性能。探索三个以720p绘制的精细Kepler场景，支持法线贴图和方向光阴影。支持触摸、手柄、键盘鼠标、历史记录和报告。"
   },
   "kind": "app",
   "category": "system",
@@ -41,14 +41,14 @@
   "age": "everyone",
   "license": "MIT",
   "changelog": {
-    "en": "v2.4.0: Shared OS input and controls, responsive UI, touch Stop/Reset, and a separate 3D Lite profile with half the scene pixel budget.",
-    "tr": "v2.4.0: Ortak OS giriş ve kontrolleri, uyarlanabilir arayüz, dokunmatik Durdur/Sıfırla ve yarı sahne piksel bütçeli ayrı 3D Lite profili.",
-    "de": "v2.4.0: Gemeinsame OS-Eingabe und Steuerelemente, anpassbare Oberfläche, Touch-Stopp und Kamera-Reset sowie separates 3D-Lite-Profil mit halbem Szenenpixelbudget.",
-    "es": "v2.4.0: Entrada y controles del sistema, interfaz adaptable, botones táctiles para detener y restablecer y perfil 3D Lite independiente con la mitad de píxeles de escena.",
-    "fr": "v2.4.0: Entrées et contrôles du système, interface adaptable, arrêt et caméra tactiles, profil 3D Lite distinct avec la moitié des pixels de scène.",
-    "ja": "v2.4.0: OS共通の入力・コントロール、可変レイアウト、タッチ停止・カメラリセット、描画ピクセル数を半減した独立3D Liteプロファイル。",
-    "ko": "v2.4.0: 공통 OS 입력과 컨트롤, 반응형 UI, 터치 중지·카메라 초기화, 장면 픽셀 예산을 절반으로 줄인 별도 3D Lite 프로필.",
-    "zh": "v2.4.0: 共享系统输入与控件、自适应界面、触摸停止和相机重置，以及场景像素预算减半的独立3D Lite配置。"
+    "en": "v2.4.5: Standard 720p 3D benchmark wording; remove outdated Lite and half-pixel claims. Graphics and models are unchanged.",
+    "tr": "v2.4.5: Standart 720p 3D test metinleri; eski Lite ve yarı piksel açıklamaları kaldırıldı. Grafikler ve modeller aynı.",
+    "de": "v2.4.5: Texte für den regulären 720p-3D-Benchmark; veraltete Lite- und Halb-Pixel-Angaben entfernt. Grafik und Modelle unverändert.",
+    "es": "v2.4.5: Textos de la prueba 3D estándar a 720p; eliminadas las referencias antiguas a Lite y la mitad de píxeles. Gráficos y modelos sin cambios.",
+    "fr": "v2.4.5 : textes du test 3D standard en 720p ; retrait des anciennes mentions Lite et de réduction des pixels. Graphismes et modèles inchangés.",
+    "ja": "v2.4.5: 標準720pの3Dテスト表記に更新。古いLite・ピクセル半減の説明を削除。グラフィックスとモデルは変更なし。",
+    "ko": "v2.4.5: 표준 720p 3D 테스트 문구로 변경하고 오래된 Lite 및 픽셀 절반 설명을 제거했습니다. 그래픽과 모델은 그대로입니다.",
+    "zh": "v2.4.5：使用标准720p 3D测试说明，移除过时的Lite及像素减半说明。图形和模型保持不变。"
   },
   "shots": [
     [
@@ -74,5 +74,5 @@
       "wait 2"
     ]
   ],
-  "version": "2.4.4"
+  "version": "2.4.5"
 }

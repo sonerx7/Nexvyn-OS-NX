@@ -146,7 +146,7 @@
   "sys.scene_mem": "3D シーンのメモリ",
   "safe.notice": "前回のセッションが予期せず終了しました。セーフモードで起動しました。",
   "hist.diff_profile": "グラフィックスの処理負荷が異なるため、これらのスコアは比較できません。",
-  "profile.half": "3D Lite：描画ピクセル数を半減、専用スコアプロファイル",
+  "profile.half": "3Dベンチマーク・720p",
   "explore.reset": "カメラをリセット",
   "explore.back": "戻る",
   "state.on": "オン",

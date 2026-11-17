@@ -1,5 +1,10 @@
 # Nexy Benchmark 2 changes
 
+## 2.4.5
+
+- Present the application as the standard 720p 3D benchmark in all eight languages.
+- Correct stale half-pixel claims in the UI, manifest and Store listing. Graphics, geometry and workload profile 6 are unchanged.
+
 ## 2.4.4
 
 - Increase quality to 720p with normal maps, a bounded 512px directional shadow and FXAA.
