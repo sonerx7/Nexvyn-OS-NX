@@ -1,5 +1,10 @@
 # Nexy Benchmark 2 changes
 
+## 2.4.3
+
+- Restore all original Reactor, Cryo Bay and Station model placements from the previous Store scene packs.
+- Retain balanced 904x508 rendering, bounded texture mips and disabled heavy effects; separate geometry workload as profile 5.
+
 ## 2.4.2
 
 - Balance image quality after user feedback: 904x508 3D targets, 512/256-pixel texture caps and a small directional material highlight.

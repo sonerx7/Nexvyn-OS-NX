@@ -5,7 +5,7 @@ Nexy Benchmark 2 measures CPU, memory, storage, 2D and 3D graphics and shows the
 | Field | Value |
 |---|---|
 | **ID** | `system.nexbench` |
-| **Version** | `2.4.2` |
+| **Version** | `2.4.3` |
 | **Category** | `system` |
 | **Runtime** | `native` (window mode, Native 1.2; OS 1.3.26 or later) |
 | **Target SDK** | `1.13` (`minSdk 1.10`) |
@@ -32,13 +32,13 @@ The app opens as a normal 1120x680 window that you can resize; the layout scales
 3. **Memory:** streaming read/write/copy bandwidth and pointer-chase latency.
 4. **Storage:** sequential write/read, random 4K reads and serialization throughput.
 5. **2D graphics:** layered alpha-blended fill rate and instanced particles.
-6. **3D scene 1, Kepler Reactor:** 139,366 scene triangles in the single geometry pass.
-7. **3D scene 2, Kepler Cryo Bay:** 132,764 scene triangles in the single geometry pass.
+6. **3D scene 1, Kepler Reactor:** 275,820 scene triangles in the single geometry pass.
+7. **3D scene 2, Kepler Cryo Bay:** 363,160 scene triangles in the single geometry pass.
 8. **Frameworks:** a live check of Native SDK services.
 
 Scores are on a thousands scale (CPU, Graphics, Memory, Storage and system, plus a total and a tier). The three Kepler scene packs remain intact; Station has 137,324 scene triangles. Only one scene is resident at a time. Worker threads read and decompress packs; GPU uploads remain on the render thread in small slices. Safe mode and the Explore quality settings are retained.
 
-Version 2.4.2 uses **workload profile 4 (Balanced)**: 904x508 3D targets, twice the pixels of 2.4.1, and 512-pixel compressed / 256-pixel decoded texture caps. Explore uses up to 460,800 pixels before the Low scaling. A small directional specular highlight restores material definition. Dynamic shadows, bloom, HDR, FXAA, normal/ORM sampling, full PBR and point lights remain disabled. Geometry is unchanged. Previous history remains readable and cross-profile score comparisons are rejected.
+Version 2.4.3 uses **workload profile 5 (Restored scenes)**: 904x508 3D targets, twice the pixels of 2.4.1, and 512-pixel compressed / 256-pixel decoded texture caps. Explore uses up to 460,800 pixels before the Low scaling. A small directional specular highlight restores material definition. Dynamic shadows, bloom, HDR, FXAA, normal/ORM sampling, full PBR and point lights remain disabled. Original scene placements are restored: Reactor 356, Cryo Bay 394 and Station 360 (275,820 / 363,160 / 295,448 triangles). Texture mip chains are capped offline to 512 pixels. Previous history remains readable and cross-profile score comparisons are rejected.
 
 These are pixel and effect reductions, not a measured 50% decrease in frame time, polygon count or total memory. Older history stays readable. Reports persist the workload profile; comparison refuses different profiles, unknown render dimensions or different render sizes. Best-in-mode scores use the current profile. Console modes remain labeled; emulator timings are not physical-device timings. See [changes](CHANGELOG.md) and the private development validation record.
 

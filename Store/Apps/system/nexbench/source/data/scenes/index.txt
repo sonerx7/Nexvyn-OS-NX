@@ -1,3 +1,3 @@
-reactor 139366
-cryobay 132764
-station 137324
+reactor 275820
+cryobay 363160
+station 295448
