@@ -1,0 +1,9 @@
+{
+  "title": "Connection probe",
+  "refresh": "Check connection",
+  "ready": "Ready",
+  "loading": "Loading…",
+  "success": "Request succeeded",
+  "error": "Request failed; retry",
+  "offline": "Offline"
+}

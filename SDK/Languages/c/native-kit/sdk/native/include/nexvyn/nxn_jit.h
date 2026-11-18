@@ -21,6 +21,9 @@
  *    that uses pc-relative data must be written for the rx address.
  *  - nxn_jit_end_write cleans the data cache of [offset, offset + len) in rw and invalidates the instruction cache of
  *    the same range in rx (len 0: the whole buffer). Run code only after it.
+ *  - Host metadata/cache operations serialize with destroy. The app must still
+ *    coordinate all raw rw writes and rx execution before rewriting or destroying
+ *    a buffer; begin_write is not an execution lease or a cross-thread code lock.
  *  - Up to 256 MB per app in total, up to 64 buffers. Everything is given back when the app ends or crashes.
  *
  * Fault handler (NXN_CAP_FAULT_HANDLER), for fastmem:

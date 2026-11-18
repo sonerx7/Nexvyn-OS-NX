@@ -19,7 +19,7 @@ size_t nxc_path_device_len(const char* p);
 /* PC path -> Switch path (see nexvyn/compat.h). 0 on success, -1 when it does not fit. in == out is allowed. */
 int nxc_path_translate(const nxc_pathcfg* cfg, const char* in, char* out, size_t cap);
 
-/* Lexical clean-up: "//" -> "/", "." dropped, ".." resolved (never above the root of the path). 0 / -1. in == out allowed. */
+/* Lexical clean-up: "//" -> "/", "." dropped, ".." resolved (never above an absolute root; unresolved relative parents stay). 0 / -1. in == out allowed. */
 int nxc_path_normalize(const char* in, char* out, size_t cap);
 
 /* "<root>/a/b" -> "/a/b" (and the root itself -> "/"); anything else is copied unchanged. 0 / -1. */

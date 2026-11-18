@@ -1,5 +1,8 @@
 /* Nexvyn Native SDK library - the app's folders (nxn_fs.h). */
 #include "nxn_internal.h"
+#include "nxn_file_io.h"
+
+static Mutex s_fileMu;  /* helper reads/writes only; separate from logs/return records */
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
@@ -50,33 +53,23 @@ nxn_result nxn_fs_mkdirs(nxn_dir dir, const char* rel) {
 nxn_result nxn_fs_write(nxn_dir dir, const char* rel, const void* data, size_t bytes) {
     if (dir == NXN_DIR_BUNDLE) return NXN_ERR_DENIED;
     if (!rel || !rel[0] || (!data && bytes)) return NXN_ERR_INVALID;
-    char path[NXN__PATH], tmp[NXN__PATH + 8];
+    char path[NXN__PATH];
     nxn_result r = nxn_fs_path(dir, rel, path, sizeof path);
     if (r != NXN_OK) return r;
+    mutexLock(&s_fileMu);
     char* slash = strrchr(path, '/');
     if (slash) {
         *slash = 0;
         nxn__mkdirs(path);
         *slash = '/';
     }
-    snprintf(tmp, sizeof tmp, "%s.tmp", path);
-    FILE* f = fopen(tmp, "wb");
-    if (!f) {
-        int e = errno;
-        nxn__set_error("cannot write %s", tmp);
-        nxn_result er = err_from_errno(e);
-        return er == NXN_ERR_NOT_FOUND ? NXN_ERR_IO : er;  /* the parent folder could not be made: an I/O failure */
-    }
-    int ok = bytes == 0 || fwrite(data, 1, bytes, f) == bytes;
-    ok = fclose(f) == 0 && ok;
-    if (ok) {
-        remove(path);
-        ok = rename(tmp, path) == 0;
-    }
+    int ok = nxn__file_write(path, data, bytes);
+    int e = errno;
+    mutexUnlock(&s_fileMu);
     if (!ok) {
-        remove(tmp);
         nxn__set_error("cannot write %s", path);
-        return NXN_ERR_IO;
+        nxn_result er = err_from_errno(e);
+        return er == NXN_ERR_NOT_FOUND ? NXN_ERR_IO : er;
     }
     return NXN_OK;
 }
@@ -87,22 +80,30 @@ nxn_result nxn_fs_read(nxn_dir dir, const char* rel, void* buf, size_t cap, size
     char path[NXN__PATH];
     nxn_result r = nxn_fs_path(dir, rel, path, sizeof path);
     if (r != NXN_OK) return r;
-    FILE* f = fopen(path, "rb");
-    if (!f) return err_from_errno(errno);
+    mutexLock(&s_fileMu);
+    FILE* f = dir == NXN_DIR_BUNDLE ? fopen(path, "rb") : nxn__file_open_read(path);
+    if (!f) {
+        int e = errno;
+        mutexUnlock(&s_fileMu);
+        return err_from_errno(e);
+    }
     fseek(f, 0, SEEK_END);
     long size = ftell(f);
     fseek(f, 0, SEEK_SET);
     if (size < 0) {
         fclose(f);
+        mutexUnlock(&s_fileMu);
         return NXN_ERR_IO;
     }
     if (read_bytes) *read_bytes = (size_t)size;
     if ((size_t)size > cap) {
         fclose(f);
+        mutexUnlock(&s_fileMu);
         return NXN_ERR_TOO_SMALL;
     }
     size_t got = fread(buf, 1, (size_t)size, f);
     fclose(f);
+    mutexUnlock(&s_fileMu);
     if (got != (size_t)size) return NXN_ERR_IO;
     return NXN_OK;
 }

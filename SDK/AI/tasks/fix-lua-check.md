@@ -6,7 +6,7 @@ Send after `system-prompt.md` + the language pack. Paste the checker's full outp
 The Nexvyn OS checker reports the problems below for my app. Fix them without changing what the app does.
 
 Checker output:
-<paste the whole output of python tools/lua_check.py ... (or js_check / py_check / rt_check / nxv check)>
+<paste the whole output of python SDK/Tools/nxv/nxv.py check ... (or the language checker report from the Store review)>
 
 Files:
 <paste app.json, the files named in the output and lang/en.json (plus the other lang files named in the output)>
@@ -23,7 +23,7 @@ How to read the output:
 - "uses net.* but app.json permissions has no network": add "network" to "permissions".
 - "does not compile" (C) or "Java sources do not compile": fix the reported line; for Java, the API may not exist in
   miniJVM's class library.
-- "app.jar missing" / "is not in app.jar": rebuild with python tools/java_build.py app <bundle>.
+- "app.jar missing" / "is not in app.jar": rebuild app.jar with a JDK 8+ against SDK/Reference/java/.
 
 Return each changed file in full and one line per problem saying what caused it.
 ```

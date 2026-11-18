@@ -1,0 +1,18 @@
+{
+  "title": "Laboratoire de saisie",
+  "hint.compact": "Touchez, glissez, deux doigts",
+  "hint.wide": "Glissez les curseurs et les panneaux, écrivez et essayez deux doigts",
+  "mode.touch": "Tactile",
+  "mode.pad": "Manette",
+  "mode.keyboard": "Clavier / souris",
+  "placeholder": "Écrivez ici",
+  "frame.compact": "Panneau imbriqué : glissez",
+  "frame.wide": "Panneau extérieur : glissez le texte ou les lignes",
+  "row.inner": "Ligne intérieure",
+  "row.outer": "Ligne extérieure",
+  "value": "Valeur",
+  "pinch": "Échelle",
+  "rotation": "Rotation",
+  "fingers": "Doigts",
+  "error.gl": "OpenGL est indisponible"
+}

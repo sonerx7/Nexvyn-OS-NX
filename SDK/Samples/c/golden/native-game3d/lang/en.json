@@ -1,0 +1,7 @@
+{
+  "title": "native-game3d",
+  "hint": "Confirm / Enter / touch acts; Plus pauses; Back exits.",
+  "score": "Score: {0}",
+  "success": "Result verified",
+  "error": "Unexpected result"
+}

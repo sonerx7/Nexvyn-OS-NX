@@ -36,8 +36,8 @@ public class MyApp extends App {
 }
 ```
 
-app.json: `"runtime": "java"`, `"main": "app.jar"`, `"mainClass": "myapp.MyApp"`, `"minSdk": "1.5"`. Build with
-`python tools/java_build.py app <bundle>` (JDK 8+). The console only runs `app.jar`.
+app.json: `"runtime": "java"`, `"main": "app.jar"`, `"mainClass": "myapp.MyApp"`, `"minSdk": "1.5"`. Build
+`app.jar` with a JDK 8+ against the classes in `SDK/Reference/java/`. The console only runs `app.jar`.
 
 ## Rules
 
@@ -64,5 +64,6 @@ app.json: `"runtime": "java"`, `"main": "app.jar"`, `"mainClass": "myapp.MyApp"`
 
 ## Check
 
-`python tools/rt_check.py <bundle>`: compiles the sources against the console's class library, checks that app.jar
+`python SDK/Tools/nxv/nxv.py check <bundle>` runs the public checks (app.json, the main file, the icon, `lang/*.json`,
+TR keys, undeclared permissions). The maintainers' review of a Store submission also runs the full language checker, which compiles the sources against the console's class library, checks that app.jar
 exists and holds the main class, the TR keys and the network permission. Rebuild app.jar after every source change.

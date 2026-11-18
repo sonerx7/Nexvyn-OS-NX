@@ -123,7 +123,7 @@ BSD sockets (`socket`, `bind`, `listen`, `accept`, `connect`, `send*`, `recv*`, 
 | Readiness | `poll`, `ppoll`, `select`, `pselect` | Work on pipes, eventfds, sockets and regular files in one set (regular files are always ready). Waits are woken at once when another thread writes; sockets are checked every 2 ms while waiting. `select(0, ...)` and `poll(NULL, 0, ms)` sleep. |
 | Environment | `getenv`, `setenv`, `putenv`, `unsetenv`, `clearenv`, `secure_getenv` | newlib's table with argument checks (`EINVAL`) and a `clearenv`. |
 | Directory | `getcwd`, `chdir`, `realpath` | Work on `sdmc:/...` paths; `realpath` resolves `.` and `..`, checks the file exists and does not follow links (there are none). With `NXC_FS_VROOT` they show `/` as the app folder. `chdir` keeps `$PWD` true. |
-| Time | `clock_gettime`, `clock_getres`, `clock_nanosleep`, `nanosleep`, `sleep`, `usleep`, `sched_yield` | All clock ids work; the CPU time clocks report time since the first call (the kernel gives no CPU time). Sleeps are interrupted by signals like on a PC. |
+| Time | `clock_gettime`, `clock_getres`, `clock_nanosleep`, `nanosleep`, `sleep`, `usleep`, `sched_yield` | Recognized clock ids are mapped to the real-time/monotonic implementation; unknown ids fail with EINVAL. CPU-time ids report elapsed time since the first call, not CPU usage (the kernel gives no CPU time). Sleeps are interrupted by signals like on a PC. |
 | Libraries | `dlopen`, `dlsym`, `dlclose`, `dlerror`, `dladdr` | `dlopen(file)` loads a Nexvyn shared library (`.nxvlib`) through `nxn_lib_open` (section "Shared libraries (dlopen)"). `dlopen(NULL)` and `dlsym(RTLD_DEFAULT, name)` search `nxc_dl_register(name, address)`, then the app's exports and every open library, so ports that probe for optional functions get a clean answer. `dladdr` finds nothing. |
 
 ## Coroutines
@@ -145,6 +145,11 @@ nxc_coro_destroy(c);
 Coroutines nest (a coroutine may resume another). `nxc_coro_stack_free()` reports the untouched part of a stack, and a
 stack overflow that reaches the guard is detected at the next switch and reported once in the log.
 
+Poll scratch storage is bounded by the call's fixed `nfds` (maximum4096), including
+when descriptor classifications change between internal scans. This prevents scratch
+underallocation; it does not establish defined ordering for arbitrary concurrent
+close/reuse. Coordinate descriptor lifetime with the owner of the wait.
+
 ## Signals (emulation)
 
 There is no kernel signal delivery here. A signal is a pending bit; its handler runs at a safe point on a thread that is
@@ -160,10 +165,15 @@ inside this layer:
 - A blocking call that is interrupted returns `-1` with `EINTR`; `sleep` returns the seconds left. `read` / `write` on pipes
   restart when the handler has `SA_RESTART`; `poll`, `select` and the sleeps never restart (as on Linux).
 - One process-wide signal mask. Standard signals only, coalescing (no queue, no real-time signals).
+- The compat header uses unsigned `sigset_t` shifts for mask helpers, including console signal31
+  (`SIGUSR2`). Rebuild callers and the app-linked compat library to adopt this correction;
+  an OS update alone does not replace macros already compiled into a port.
 - A default action of "terminate" ends the app with exit code 128 + signal after one log line; "ignore" signals (`SIGCHLD`,
   `SIGPIPE`, `SIGWINCH`, ...) are dropped. `SIGPIPE` is therefore harmless unless the program installs a handler.
-- `SIGSEGV`, `SIGBUS`, `SIGILL`, `SIGFPE` handlers are accepted and never called (Native v2). A real crash goes to the
-  Nexvyn crash handler.
+- `SIGSEGV`, `SIGBUS`, `SIGILL`, `SIGFPE` handlers are accepted and never called. A real crash goes to the
+  Nexvyn crash handler; registration is not fault recovery.
+- `sigaltstack` currently returns success without installing an alternate stack. Handlers use the caller's stack.
+  Do not use a successful return as proof that stack-overflow recovery or an alternate signal stack exists.
 
 ## Paths (opt-in)
 
@@ -180,6 +190,13 @@ or add `compat/fsmap_on.c` and `$(NXC_FSMAP_LDFLAGS)` in a Makefile. At run time
 
 Paths that carry a device (`sdmc:/`, `romfs:/`) are never touched by the drive and root rules. `nxc_fs_translate()` exposes
 the translation alone. Set the flags before starting threads.
+
+Lexical normalization preserves unresolved parents in relative paths (`../../assets`
+stays `../../assets`); it cancels only an actual preceding directory component.
+Absolute/device roots remain clamped (`sdmc:/../../assets` becomes `sdmc:/assets`).
+This is string normalization, not symbolic-link resolution or a filesystem sandbox.
+The correction is in the app-linked compat library: rebuild/relink a port to adopt it;
+updating the OS alone does not replace an already linked archive.
 
 ## PC types
 
@@ -286,3 +303,11 @@ registers and `fpcr`, guard check), signals (masks, `SA_SIGINFO`, `sigwait`, `si
 The link behaviour (plain `nexvyn_use_compat()`, and libraries after the layer on the link line) is tested by
 `python sdk/native/compat/tests/link_check.py` (builds `tests/link_test`: `link_test` uses the core with no other helper,
 `link_order` reaches the layer only through a library that CMake places behind it).
+
+### Shared mapping descriptor failure
+
+A writable shared file mapping duplicates its descriptor before it is published.
+If duplication fails, mmap returns MAP_FAILED with the original descriptor error
+(such as EMFILE or ENFILE), releases its backing and leaves the caller descriptor
+open. Success must never silently disable writeback. This static-library correction
+requires rebuilding linked applications; it does not add enforced page protection.

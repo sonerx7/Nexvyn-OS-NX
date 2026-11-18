@@ -1,7 +1,7 @@
 # Native SDK guide: from a clean machine to a running app
 
 This is the short path. The reference is `docs/NATIVE_KIT.md` (every command and header), the rules are in
-`docs/NATIVE_COMPAT.md` and `docs/COMPATIBILITY.md` (*Native SDK*).`.
+`docs/NATIVE_COMPAT.md` and `docs/COMPATIBILITY.md` (*Native SDK*).
 
 ## 1. Install (once)
 
@@ -13,6 +13,13 @@ This is the short path. The reference is `docs/NATIVE_KIT.md` (every command and
 4. Apps that use SDL2 in a window also need the kit's SDL2: `python sdk/native/sysroot/build.py sdl2-nexvyn` (once; pass the
    result with `--sysroot`).
 
+On Windows, extract the kit and create projects under a short path (for example
+`C:/NexvynSDK`). Deeply nested paths can exceed the compiler's object/dependency-file
+limit even when CMake configures successfully. If a build reports an overlong object
+path or cannot create an `.o.d` file, use a fresh build from a shorter location.
+Keep the original project and debug artifacts; changing global Windows path settings
+alone does not establish support in every toolchain component.
+
 ## 2. New, build, package
 
 ```
@@ -23,11 +30,12 @@ python tools/nxv_native package notes                 # -> notes/build/notes.nxv
 
 | Template | What you get | Not included |
 |---|---|---|
-| `app` | A small real UI app: file picker (`nxn_pick`), a setting kept between runs, texts in `lang/en.json` + `lang/tr.json` (`nxn_tr`), unified Nexvyn OS cards/switches/buttons via the frame layer of `<nexvyn/nxn_os_ui.h>` (UI scale, fonts, style, rows) driven live by `nxn_ui_tokens_get`, so it matches script `ui.*` apps across Light/Dark/accent/text size/interface size | A theme of its own: a utility app looks like Nexvyn OS |
-| `game` | Loop with a fixed update step, resize / focus / suspend, a GL quad batch, an action map (pad, keyboard), sound from the OS mixer, a save file | A menu or any look: a game gets its own art direction |
+| `app` | A small real UI app: file picker (`nxn_pick`), a setting kept between runs, texts in all eight required `lang/*.json` dictionaries (`nxn_tr`), unified Nexvyn OS cards/switches/buttons via the frame layer of `<nexvyn/nxn_os_ui.h>` (UI scale, fonts, style, rows) driven live by `nxn_ui_tokens_get`, so it matches script `ui.*` apps across Light/Dark/accent/text size/interface size | A theme of its own: a utility app looks like Nexvyn OS |
+| `game` | Loop with a fixed update step, resize / focus / suspend, a GL quad batch, an action map (pad, keyboard), sound from the OS mixer, a save file | Finished game art/content; ordinary launcher/settings controls still use OS helpers |
 | `port` | The glue for an existing CMake project: `fetch.py` (pinned tag + commit, patches), `CMakeLists.txt` (toolchain, SDL2, compat layer, the Nexvyn target), `patches/`, a stand-in `example-upstream/` so it builds before you fetch anything | The upstream code, BIOS, firmware, game data |
 
-Every template has `"minNative": "1.1"` and builds and packs with the two commands above. Edit `app.json` (id, name,
+The generator records the installed Native SDK version (currently `1.2`) in `minNative`
+and `targetNative`. Build and package the generated project with the commands above. Edit `app.json` (id, name,
 author, category, permissions) before you ship. Release builds use `-O2` and LTO (`-DNEXVYN_LTO=OFF` turns LTO off); the
 toolchain already targets `-march=armv8-a+crc+crypto -mtune=cortex-a57` (NEON included). `--debug` makes a separate
 `-O0 -g` build. The ImGui in the `app` template is a source you compile in, not a system shell: its shell helpers
@@ -140,7 +148,7 @@ replaces `ImGui_ImplOpenGL3_NewFrame()` / `ImGui::NewFrame()` / `ImGui::Render()
 * **Rows.** `nxn_os_row_begin()` ... `nxn_os_row_end()` puts widgets on one line with equal height, vertically centred;
   `nxn_os_fill(frac)` gives a share of the width left; `nxn_os_labeled(label, widget)` is a form row.
 
-Start from the `app` template; `showcase/com.nexvyn.uikit.cpp` is a complete reference screen (sidebar, toolbar, card,
+Start from the `app` template; `product/showcase/com.nexvyn.uikit.cpp` is a complete reference screen (sidebar, toolbar, card,
 message field) without one pixel literal. `python tools/nxv_native check-design <dir>` (and `python tools/nxv.py check
 <dir>`) fail an ImGui app that skips the frame layer, uses raw ImGui widgets, adds fonts, scales fonts or writes pixel
 literals outside `NXN_S()`; each finding names the fix. `nxv_native package` lists the same findings.
@@ -159,7 +167,7 @@ To prevent native utilities from having an inconsistent visual appearance compar
   - `nxn_os_badge`: 22px height pill badges with tinted background and crisp text.
   - `nxn_os_separator`: 1px hairline dividers with `tok.separator`.
 * **Strict rules (checked by `python tools/design_check.py`):** an ImGui app includes `nxn_os_ui.h`, runs the frame layer (`nxn_os_frame_begin` / `nxn_os_frame_end`), clears with `nxn_os_clear_color(tok)`, never sets `io.FontGlobalScale` or `SetWindowFontScale`, adds no fonts (the kit builds the role table: Title 23 px, Card Header 18 px, Body 17 px, Caption 14-15 px at scale 1), uses the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`, `BeginTabBar`, `ProgressBar`, and writes every pixel size as `NXN_S(px)`. Card padding is `16 x 13`; pass it with `nxn_os_card_begin_ex(id, 0, NXN_S(16), NXN_S(13), tok)` or use `nxn_os_card_begin`.
-* **NXUI in a GL window:** `nxn_nxui_*` never paints in a Native OpenGL window (its own thread; only the OS main thread may use the shared renderer). The tree is still built and laid out, input is routed, and `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`. Use ImGui with `nxn_os_ui.h` there. The four SysMatrix Studio canaries (`showcase/com.nexvyn.parity.*`) show the same screen in Lua, JavaScript, Python and Native C++; `tests/test_design_parity.py` keeps them identical.
+* **NXUI in a GL window:** `nxn_nxui_*` never paints in a Native OpenGL window (its own thread; only the OS main thread may use the shared renderer). The tree is still built and laid out, input is routed, and `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`. Use ImGui with `nxn_os_ui.h` there. The four SysMatrix Studio canaries (`product/showcase/com.nexvyn.parity.*`) show the same screen in Lua, JavaScript, Python and Native C++; `tests/test_design_parity.py` keeps them identical.
 
 ### Text and fonts
 
@@ -222,7 +230,7 @@ a new press stops a fast list without activating a moving row. Mouse-wheel and g
 remain direct. All UI adapters use the shared header-only `nxn_scroll_physics.h` finite-stop
 model; frame-rate-independent integration avoids a longer fling at a lower refresh rate.
 
-Native apps targeting Native 2.0, or explicitly opting in with `liveResize: true`, receive coalesced live resize events on shell draws by default. Legacy targets retain their default. Existing
+Lifecycle-capable native apps (`minNative` 1.1 or later) can opt in with `liveResize: true`; the current app template does so explicitly. Hosts also recognize a responsive default for targets 2.0 or later. Keep `targetNative` at the SDK version actually tested; do not invent a newer SDK target to select behavior. Responsive apps receive the latest coalesced content size while resizing. Existing
 `native.liveResize: false` settings and manifest opt-outs are respected; legacy apps keep the
 settled path. Handle the newest size, keep UI state, and call `nxn_display_resize`; do not
 recreate the ImGui context or font atlas just because the window dimensions changed. Follow
@@ -235,3 +243,23 @@ The Input Lab samples in all five runtime lanes stack their fields below 620 log
 Test nested scrolling, fast release/stop, keyboard focus reveal, focus loss, pinch contact
 changes and resize while controls contain user input. Existing compiled app-side UI code
 requires rebuilding to receive new header helpers. Games retain their own visual direction.
+
+### Complete settings writes and recovery
+
+Use nxn_fs_write/nxn_fs_read for whole app settings files. Both adapters share a
+recoverable commit policy and serialize these helpers per app. Overwrite rename
+is preferred; a filesystem rejecting overwrite uses an old-copy swap and rollback.
+Helper readers can recover a missing target from its old copy after interruption;
+they never accept an incomplete temporary file. Reserve .tmp and .nxn-old~ sibling
+names. Raw stdio/POSIX readers are outside this lock and can observe a missing
+target during fallback. No fsync or physical power-loss durability is promised.
+Windowed apps receive the host change; exclusive apps must relink the SDK.
+Parse the entire settings record into temporary values before applying it, as in
+the app template; reject incomplete, out-of-range and trailing data.
+
+Native streaming admission counts open handles and opens in flight together under
+the existing per-app limit. NXN_ERR_LIMIT leaves the output handle null and size
+zero; close a stream before retrying. File I/O runs outside the registry mutex.
+This is a host fix for windowed modules; existing compiled callers need no rebuild.
+It does not change stream format, cache budget, exclusive-mode services or offline
+access. Closing an app still requires actual producer quiescence before reclaim.

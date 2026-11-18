@@ -1,0 +1,22 @@
+{
+  "title": "Native App",
+  "files": {
+    "heading": "File",
+    "open": "Choose a file...",
+    "none": "No file chosen",
+    "size": "{0} bytes"
+  },
+  "settings": {
+    "heading": "Settings",
+    "counter": "Opened {0} times",
+    "reset": "Reset counter",
+    "large_text": "Large text"
+  },
+  "quit": "Close",
+  "size_label": "Size",
+  "kit": "Native OS Kit",
+  "error": {
+    "opengl": "OpenGL is not available",
+    "shader": "The graphics shader could not be initialized"
+  }
+}

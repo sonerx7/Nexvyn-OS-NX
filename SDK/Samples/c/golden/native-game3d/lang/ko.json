@@ -1,0 +1,7 @@
+{
+  "title": "native-game3d",
+  "hint": "확인 / Enter / 터치로 동작; Plus 일시 정지; 뒤로 종료.",
+  "score": "점수: {0}",
+  "success": "결과 확인됨",
+  "error": "예상하지 못한 결과"
+}

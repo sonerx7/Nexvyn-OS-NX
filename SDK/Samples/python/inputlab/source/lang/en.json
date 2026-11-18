@@ -1,0 +1,18 @@
+{
+  "title": "Input Lab",
+  "hint.compact": "Touch, scroll and use two fingers",
+  "hint.wide": "Drag sliders, swipe frames, type and try two fingers",
+  "mode.touch": "Touch",
+  "mode.pad": "Gamepad",
+  "mode.keyboard": "Keyboard / mouse",
+  "placeholder": "Type here",
+  "frame.compact": "Nested frame: swipe rows",
+  "frame.wide": "Outer frame: swipe this text or any row",
+  "row.inner": "Inner row",
+  "row.outer": "Outer row",
+  "value": "Value",
+  "pinch": "Pinch",
+  "rotation": "Rotation",
+  "fingers": "Fingers",
+  "error.gl": "OpenGL is not available"
+}

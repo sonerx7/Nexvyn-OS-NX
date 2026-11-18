@@ -38,8 +38,9 @@ typedef struct nxn_thread_params {
  * thread before it returns); `params` and `name` are read during the call only (the name is copied); `arg` is passed
  * to `fn` as is and stays the app's. Inside Nexvyn OS the thread's priority is clamped and core 3 is avoided. */
 NXN_API nxn_result nxn_thread_start(const nxn_thread_params* params, nxn_thread** out);
-/* Waits, then frees the handle. Thread: any app thread except the thread being joined. Memory: `t` must not be used
- * afterwards. */
+/* Waits, then frees the handle on NXN_OK. Thread: any app thread except the thread being joined.
+ * Memory: after NXN_OK, `t` must not be used. NXN_ERR_SYSTEM keeps `t` allocated for a later retry;
+ * a failed wait never closes a possibly running thread. Keep its shared data alive until joining succeeds. */
 NXN_API nxn_result nxn_thread_join(nxn_thread* t);
 
 /* ---------------------------------------------------------------- logging */

@@ -1,4 +1,4 @@
-# Gemini & AI Agent End-to-End Workflow (Nexvyn OS 1.3.10-beta.2 / SDK 1.13 & Native 1.2)
+# Gemini & AI Agent End-to-End Workflow (Nexvyn OS 1.3.28 / SDK 1.15 & Native 1.2)
 
 This document is the complete operational specification for **Gemini** and any AI coding assistant building, porting, validating, or publishing apps, games, and system updates for **Nexvyn OS**. Follow every section strictly so generated code runs on real hardware without freezes, checker errors, or Store rejections.
 
@@ -12,7 +12,7 @@ This document is the complete operational specification for **Gemini** and any A
    - `SDK/AI/AI_RULES.md` — MUST / MUST NOT engineering rules
    - `SDK/AI/languages/<lang>.md` — exact bindings for `lua`, `javascript`, `python`, or `native`
 2. **Never Invent APIs:** If a function, module, or `app.json` field does not appear in `SDK/Reference/SDK.md` or `SDK/AI/system-prompt.md`, it does not exist. Do not assume LÖVE2D, Node.js, browser DOM (`window`, `document`), or standard desktop OS calls inside script apps.
-3. **No Secret / Local Path / Brand Leakage:** Never commit tokens, passwords, server IPs, local machine paths (`<user>` home paths), or third-party console/emulator/engine brand names into public files (`tools/release.py --only leakcheck` enforces this).
+3. **No Secret / Local Path / Brand Leakage:** Never commit tokens, passwords, server IPs, local machine paths (`<user>` home paths), or third-party console/emulator/engine brand names into public files (the maintainers' release leak check enforces this).
 
 ---
 
@@ -25,7 +25,7 @@ Every `.nxvapp` bundle requires `app.json` at its root.
 |---|---|---|---|
 | `"runtime"` | `"lua"` / `"js"` / `"python"` / `"python3"` | `"native"` | Always declare `"runtime"` explicitly. Do not omit it even for non-Lua `main.js` / `main.py`. |
 | `"minSdk"` | `"1.0"` (Lua), `"1.1"` (JS), `"1.3"` (Py), `"1.6"` (Py3), `"1.12"` (NXUI/tokens) | `"1.10"` (or `"1.13"` with `loadingHint`) | Use the lowest SDK version that contains all APIs your app calls. |
-| `"targetSdk"` | **`"1.13"`** | **`"1.13"`** | Current OS SDK is `1.13`. Do **not** set `"targetSdk": "2.0"` in Store manifests (`catalog_check.py` warns when `targetSdk > 1.13`). |
+| `"targetSdk"` | **`"1.15"`** (Python 3.12: `"runtime": "python3"`, or `"python"` with `"targetSdk": "2.0"`) | **`"1.15"`** | Current OS SDK is `1.15`. |
 | `"minNative"` | — | **`"1.2"`** | Current Native ABI runtime is `1.2` (`nxnative::kVersion = "1.2"`). Never set `"minNative": "2.0"` — the loader rejects it. |
 | `"targetNative"` | — | **`"1.2"`** | Use `"1.2"` for existing SDL2/Native 1.2 apps (`2.0` enables N2-only coordinate/router gates). |
 | `"loadingHint"` | optional `bool` | `true` for large ports | Extends initial loading watchdog from `5 s` to `120 s` (SDK `1.13`). |
@@ -66,7 +66,7 @@ When porting C/C++ games or engines (RTS, CRPG, FPS, arcade, emulators), use the
 - **Header-Only Input Helper (`<nexvyn/nxn_port_input.h>`):**
   - Supports profiles `NXN_PI_PROFILE_GAMEPAD`, `NXN_PI_PROFILE_RTS`, `NXN_PI_PROFILE_CRPG`, `NXN_PI_PROFILE_FPS`.
   - Pinch modes: `NXN_PI_PINCH_WHEEL` (default for RTS like Red Alert 2 / OpenTTD), `NXN_PI_PINCH_CTRL_PM` (`Ctrl + =/-`), or `NXN_PI_PINCH_EVENT_ONLY`.
-  - Note for ABI checks: `nxn_port_input.h` is header-only (`static inline`) and listed in `SKIP_HEADERS` in `tools/abi_check.py`.
+  - Note for ABI checks: `nxn_port_input.h` is header-only (`static inline`) so the frozen ABI check skips it.
 
 ---
 
@@ -94,9 +94,9 @@ Run this exact loop after every change before claiming completion or publishing:
 
 1. **Bundle & Runtime Check (`nxv check`):**
    ```sh
-   python SDK/Tools/nxv/nxv.py check <bundle_or_source_dir> --sdk <SnxOS_checkout> --frames 5
+   python SDK/Tools/nxv/nxv.py check <bundle_or_source_dir>
    ```
-   - Supports `"lua"`, `"js"`, `"python"`, `"python3"`, `"squirrel"`, `"c"`, `"java"`, and `"native"` (checks manifest, `.nxvmod` presence, `lang/*.json`, permissions, and `store.json`; runs language checkers for script apps).
+   - Supports `"lua"`, `"js"`, `"python"`, `"python3"`, `"squirrel"`, `"c"`, `"java"`, and `"native"` (checks manifest, `.nxvmod` presence, `lang/*.json`, permissions, and `store.json`; the maintainers' Store review also runs the language checkers).
 2. **Pack `.nxvapp`:**
    ```sh
    python SDK/Tools/nxv/nxv.py pack <bundle_dir> -o <out.nxvapp>
@@ -107,25 +107,6 @@ Run this exact loop after every change before claiming completion or publishing:
    python Tools/build_store.py --check
    ```
    - Deterministically packs all Store `.nxvapp` / `.nxvtheme` / `.nxvfont` bundles and updates `Store/catalog.json`, `Store/beta.json`, `Store/dates.json`, and `SDK/samples.json`.
-4. **Catalog Validation (`SnxOS-NX`):**
-   ```sh
-   python tools/catalog_check.py ../Nexvyn-OS-NX/Store/catalog.json ../Nexvyn-OS-NX/Store/beta.json
-   ```
-   - Must report `0 errors, 0 warnings`.
-5. **Compatibility & Native ABI Verification (`SnxOS-NX`):**
-   ```sh
-   python tools/compat_check.py --release-repo ../Nexvyn-OS-NX
-   ```
-   - Validates all built-in apps, templates, SDK samples, Store apps, and frozen Native ABI v1 (`tools/abi_check.py`). Must report `0 fail`.
-6. **OS Build & Live Smoke Test:**
-   ```sh
-   ./build.sh
-   python tools/ui_smoke.py --apps terminal,files,browser,settings,appstore,notes,calculator,textedit,games,studio,sysinfo,console
-   ```
-   - Verifies clean NRO version matching (`NACP` == `Makefile` `APP_VERSION`), zero crashes, and captured window screenshots.
-7. **Public Repo Leak Check & Release:**
-   ```sh
-   python tools/release.py --only leakcheck
-   python tools/release.py --beta
-   ```
-   - Ensures no internal docs, secrets, local paths, or restricted brand names exist in `Nexvyn-OS-NX` before committing or publishing a beta pre-release.
+4. **Maintainer gates (not needed by app makers):** before accepting a submission or publishing a release, the
+   maintainers run their own catalog validation, compatibility and frozen Native ABI checks, an OS build smoke test and a
+   leak check (no internal docs, secrets, local paths or restricted brand names in this repository).

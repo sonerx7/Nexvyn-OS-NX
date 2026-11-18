@@ -76,8 +76,8 @@ int nxc_path_normalize(const char* in, char* out, size_t cap) {
             while (k > floor_len && out[k - 1] == '/') k--;
             size_t cut = k;
             while (cut > floor_len && out[cut - 1] != '/') cut--;
-            if (cut == k && !absolute) {
-                /* leading ".." of a relative path stays */
+            if (!absolute && (cut == k || (k - cut == 2 && out[cut] == '.' && out[cut + 1] == '.'))) {
+                /* An unresolved parent is not a directory to cancel: ../../x stays ../../x. */
                 if (n > floor_len && out[n - 1] != '/' && put(out, cap, &n, "/", 1)) return -1;
                 if (put(out, cap, &n, "..", 2)) return -1;
             } else if (cut < k) {

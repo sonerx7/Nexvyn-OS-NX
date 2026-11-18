@@ -1,0 +1,7 @@
+{
+  "title": "native-port",
+  "hint": "Bestätigen / Enter / Tippen; Plus pausiert; Zurück beendet.",
+  "score": "Punkte: {0}",
+  "success": "Ergebnis geprüft",
+  "error": "Unerwartetes Ergebnis"
+}

@@ -25,5 +25,5 @@ Do this carefully:
    rewriting the game loop with plain gfx/input in JS.
 
 Deliver every file in full, then list each place where the behaviour could differ and how to verify it with
-node tools/js_check.mjs.
+python SDK/Tools/nxv/nxv.py check and a run on the console.
 ```

@@ -7,7 +7,9 @@
  * Threads: poll from one thread (normally the main thread, once per frame): "pressed" and "released" are kept per
  * app between two polls, so two polling threads would each miss edges the other consumed. nxn_input_touch and
  * nxn_input_key_held read the state of the last poll and may be called from any app thread. Inside Nexvyn OS input is
- * empty while the window has no focus. Memory: written into the caller's structs; nothing to free. */
+ * inactive while the window has no focus or is suspended/stopping. Focus loss, suspend and quit cancel pending
+ * activations; an observed pad hold may report one release. Handle lifecycle cancellation separately from a click.
+ * A focused short press between polls stays latched. Memory: written into the caller's structs; nothing to free. */
 #ifndef NEXVYN_NXN_INPUT_H
 #define NEXVYN_NXN_INPUT_H
 
@@ -75,6 +77,10 @@ enum {
 
 /* Takes the oldest key event off the queue (64 deep, in the order the keys went down and up: a tap inside one frame is
  * not lost). Returns 1 when an event was written, 0 when there is none, a negative nxn_result for a bad argument.
+ * Windowed host overflow policy: if the app falls behind the 64-transition buffer, intermediate taps/repeats are
+ * discarded and the consumer receives releases before new downs to restore current held state. Drain until 0, as a
+ * repair can span more than 64 events. Focus loss/suspend discard pending presses and preserve releases owed to this
+ * consumer, even if focus returns before it polls. No typed text is reconstructed from key state.
  * Thread: one consumer thread. Memory: written into the caller's struct. */
 NXN_API int nxn_input_key_poll(nxn_key_event* out);
 
@@ -147,8 +153,10 @@ typedef struct nxn_pad_state {
 
 /* Number of connected controllers (0 while the window has no focus). Thread: any app thread. */
 NXN_API int nxn_input_pad_count(void);
-/* State of controller `pad` (0 <= pad < 8). Edges are kept per pad between two polls of that pad. NXN_ERR_NOT_FOUND for
- * a pad that is not connected, NXN_ERR_INVALID for a bad argument. Thread: one consumer thread per pad. */
+/* State of controller `pad` (0 <= pad < 8). Edges belong to this app, kept per pad between polls.
+ * Focus acquisition or connection with a button held suppresses that button until release; shell/other-app presses
+ * are not replayed. Disconnect cancels the slot and its pending edges. On NXN_ERR_NOT_FOUND, cancel that controller's
+ * held actions/captures; a reconnect starts fresh. NXN_ERR_INVALID for a bad argument. Thread: one consumer per pad. */
 NXN_API nxn_result nxn_input_pad_poll(uint32_t pad, nxn_pad_state* out);
 
 NXN_EXTERN_C_END

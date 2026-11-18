@@ -62,18 +62,18 @@ static void draw_ui() {
         nxn_log(NXN_LOG_INFO, layout); lastw = g_w; lasth = g_h;
     }
     ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(16)));
-    nxn_os_text(NXN_OS_TEXT_TITLE, "Input Lab");
+    nxn_os_text(NXN_OS_TEXT_TITLE, nxn_tr("title"));
     ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(48)));
-    nxn_os_text(NXN_OS_TEXT_BODY, compact ? "Touch, scroll, type and try two fingers" : "Drag sliders, swipe inside frames, type and try two fingers");
-    static const char* const modes[] = {"Touch", "Gamepad", "Keyboard / mouse"};
+    nxn_os_text(NXN_OS_TEXT_BODY, nxn_tr(compact ? "hint.compact" : "hint.wide"));
+    const char* const modes[] = {nxn_tr("mode.touch"), nxn_tr("mode.pad"), nxn_tr("mode.keyboard")};
     ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(80)));
     nxn_os_row_begin(NXN_S(30), NXN_S(20));
     nxn_os_dropdown("mode", modes, 3, &mode, NXN_S(230), g_tok);
-    if (!compact) nxn_os_input("name", "Type here", name, sizeof name, nxn_os_fill());
+    if (!compact) nxn_os_input("name", nxn_tr("placeholder"), name, sizeof name, nxn_os_fill());
     nxn_os_row_end();
     if (compact) {
         ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(126)));
-        nxn_os_input("name", "Type here", name, sizeof name, nxn_os_fill());
+        nxn_os_input("name", nxn_tr("placeholder"), name, sizeof name, nxn_os_fill());
     }
     ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(126) + shift));
     nxn_os_slider("volume", &volume, 0, 1, g_tok, nxn_os_fill(), NXN_S(24));
@@ -82,7 +82,10 @@ static void draw_ui() {
     snprintf(status, sizeof status, "Value %.2f | Pinch %.2f | Rotation %.2f | Fingers %u", volume, zoom, angle, (unsigned)g_in.touch_count);
     static char last[160] = "";
     if (strcmp(last, status)) { nxn_log(NXN_LOG_INFO, status); snprintf(last, sizeof last, "%s", status); }
-    if (compact) snprintf(status, sizeof status, "Value %.2f | Pinch %.2f", volume, zoom);
+    if (compact) snprintf(status, sizeof status, "%s %.2f | %s %.2f", nxn_tr("value"), volume, nxn_tr("pinch"), zoom);
+    else snprintf(status, sizeof status, "%s %.2f | %s %.2f | %s %.2f | %s %u",
+                  nxn_tr("value"), volume, nxn_tr("pinch"), zoom, nxn_tr("rotation"), angle,
+                  nxn_tr("fingers"), (unsigned)g_in.touch_count);
     ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(164) + shift));
     nxn_os_text(NXN_OS_TEXT_BODY, status);
     ImGui::SetCursorPos(ImVec2(NXN_S(20), NXN_S(200) + shift));
@@ -90,17 +93,17 @@ static void draw_ui() {
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
     ImGui::BeginChild("outer", ImVec2(0, (float)g_h - NXN_S(220) - shift));
     ImGui::SetCursorPos(ImVec2(NXN_S(12), NXN_S(8)));
-    nxn_os_text(NXN_OS_TEXT_HEADER, compact ? "Nested frame: swipe rows" : "Outer frame: swipe this text or any row");
+    nxn_os_text(NXN_OS_TEXT_HEADER, nxn_tr(compact ? "frame.compact" : "frame.wide"));
     ImGui::SetCursorPos(ImVec2(NXN_S(12), NXN_S(44)));
     ImGui::BeginChild("inner", ImVec2(ImGui::GetWindowWidth() - NXN_S(50), NXN_S(180)));
     for (int i = 0; i < 20; ++i) {
-        char label[40]; snprintf(label, sizeof label, "Inner row %d", i + 1);
+        char label[96]; snprintf(label, sizeof label, "%s %d", nxn_tr("row.inner"), i + 1);
         ImGui::SetCursorPos(ImVec2(NXN_S(8), NXN_S(i * 44)));
         nxn_os_button(label, NXN_OS_BTN_DEFAULT, g_tok, ImVec2(ImGui::GetWindowWidth() - NXN_S(40), NXN_S(36)));
     }
     ImGui::EndChild();
     for (int i = 0; i < 18; ++i) {
-        char label[40]; snprintf(label, sizeof label, "Outer row %d", i + 1);
+        char label[96]; snprintf(label, sizeof label, "%s %d", nxn_tr("row.outer"), i + 1);
         ImGui::SetCursorPos(ImVec2(NXN_S(12), NXN_S(244 + i * 44)));
         nxn_os_button(label, NXN_OS_BTN_DEFAULT, g_tok, ImVec2(ImGui::GetWindowWidth() - NXN_S(50), NXN_S(36)));
     }
@@ -111,7 +114,7 @@ static void draw_ui() {
 
 static int app_main(int, char**) {
     if (nxn_display_open(NULL, &g_disp) != NXN_OK) {
-        nxn_request_return(NXN_RETURN_ERROR, 1, "OpenGL is not available");
+        nxn_request_return(NXN_RETURN_ERROR, 1, nxn_tr("error.gl"));
         return 1;
     }
     gladLoadGLLoader((GLADloadproc)nxn_display_proc);

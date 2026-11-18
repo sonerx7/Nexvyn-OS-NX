@@ -1,0 +1,18 @@
+{
+  "title": "Laboratorio de entrada",
+  "hint.compact": "Toca, desliza y usa dos dedos",
+  "hint.wide": "Arrastra controles, desliza paneles, escribe y prueba dos dedos",
+  "mode.touch": "Táctil",
+  "mode.pad": "Mando",
+  "mode.keyboard": "Teclado / ratón",
+  "placeholder": "Escribe aquí",
+  "frame.compact": "Panel anidado: desliza filas",
+  "frame.wide": "Panel exterior: desliza el texto o las filas",
+  "row.inner": "Fila interior",
+  "row.outer": "Fila exterior",
+  "value": "Valor",
+  "pinch": "Escala",
+  "rotation": "Rotación",
+  "fingers": "Dedos",
+  "error.gl": "OpenGL no está disponible"
+}

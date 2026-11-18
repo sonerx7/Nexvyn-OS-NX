@@ -41,10 +41,10 @@ void nxn_ui_label(const char* text, const char* style);
 /** Returns number of active touches on content surface. (since 1.0) */
 int32_t nxn_input_touch_count(void);
 
-/** Checks if mapped semantic action (confirm, cancel, menu) is held down. (since 2.0) */
+/** Non-consuming system-mapped semantic held query (confirm, cancel, menu, up/down/left/right, next/prev). Native host reads this app's mutex-protected shared-action snapshot; false without focus, during suspend/quit, or for an unknown name. (since 2.0) */
 bool nxn_input_action_down(const char* action);
 
-/** Checks if mapped semantic action was pressed in the current frame. (since 2.0) */
+/** Non-consuming press query for the current shell input frame from the same app snapshot. Not a latched event queue: slower app loops needing every button edge use nxn_input_poll once per app frame. (since 2.0) */
 bool nxn_input_action_pressed(const char* action);
 
 /* nxn_input_relative_mouse: see <nexvyn/nxn_input.h> */

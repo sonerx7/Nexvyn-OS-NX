@@ -41,7 +41,10 @@ NXN_API nxn_result nxn_stream_open(nxn_dir dir, const char* rel, nxn_stream** ou
 NXN_API nxn_result nxn_stream_read(nxn_stream* s, uint64_t offset, void* buf, uint64_t len, uint32_t flags,
                                    uint64_t* got);
 /* Starts loading a range in the background and returns at once (a hint: the system may load less when memory is low).
- * Thread: any app thread. Memory: none. */
+ * Windowed host: duplicate cached/queued blocks share the existing job. NXN_ERR_BUSY means the shared admission
+ * budget cannot accept the rest yet; part may already be queued. Retry later; do not spin on the render/audio thread.
+ * Blocking reads still work, and NXN_STREAM_NOWAIT continues to return cached bytes or Busy while requesting the rest.
+ * Thread: any app thread. Memory: no caller buffer; the host retains charged work through cancellation/close. */
 NXN_API nxn_result nxn_stream_prefetch(nxn_stream* s, uint64_t offset, uint64_t len);
 /* Closes the stream; its cached blocks are given back. NULL is ignored. Thread: any app thread, after every read on
  * it returned. Memory: the handle may not be used afterwards. */

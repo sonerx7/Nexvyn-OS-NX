@@ -1,0 +1,9 @@
+{
+  "title": "Test de connexion",
+  "refresh": "Vérifier la connexion",
+  "ready": "Prêt",
+  "loading": "Chargement…",
+  "success": "Requête réussie",
+  "error": "Échec ; réessayez",
+  "offline": "Hors ligne"
+}

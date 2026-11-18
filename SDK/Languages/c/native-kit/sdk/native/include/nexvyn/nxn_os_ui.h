@@ -71,6 +71,7 @@ struct NxnOsTouchScroll {
     ImGuiID window = 0, protected_item = 0;
     ImVec2 start, last;
     ImVec2 velocity = ImVec2(0, 0);
+    nxn_imgui_scroll_position scroll_position;
     double moved_at = 0;
     bool dragging = false;
 };
@@ -84,7 +85,7 @@ static inline NxnOsTouchScroll& nxn_os__touch_scroll() {
 static inline void nxn_os__touch_scroll_update() {
     NxnOsTouchScroll& s = nxn_os__touch_scroll();
     ImGuiIO& io = ImGui::GetIO();
-    if (io.AppFocusLost ||
+    if (io.AppFocusLost || nxn_imgui_lifecycle().cancel_frame == ImGui::GetFrameCount() ||
         (io.MouseSource != ImGuiMouseSource_TouchScreen &&
          (io.MouseDown[0] || io.MouseWheel != 0 || io.MouseWheelH != 0))) {
         s = NxnOsTouchScroll(); return;
@@ -109,20 +110,45 @@ static inline void nxn_os__touch_scroll_update() {
         return;
     }
     if (w && !io.MouseDown[0] && !s.dragging) {
+        // Programmatic reveal/navigation owns its pending target. Never replace
+        // it with a leftover touch fling (targets clear when ImGui applies them).
+        if (w->ScrollTarget.x != FLT_MAX || w->ScrollTarget.y != FLT_MAX) {
+            s = NxnOsTouchScroll(); return;
+        }
         if (s.velocity.x == 0 && s.velocity.y == 0) { s = NxnOsTouchScroll(); return; }
-        float x = w->Scroll.x, y = w->Scroll.y;
+        ImVec2 position = s.scroll_position.read(w);
+        float x = position.x, y = position.y;
         nxn_scroll_step(&x, &s.velocity.x, io.DeltaTime);
         nxn_scroll_step(&y, &s.velocity.y, io.DeltaTime);
         if (x < 0 || x > w->ScrollMax.x) s.velocity.x = 0;
         if (y < 0 || y > w->ScrollMax.y) s.velocity.y = 0;
-        ImGui::SetScrollX(w, ImClamp(x, 0.f, w->ScrollMax.x));
-        ImGui::SetScrollY(w, ImClamp(y, 0.f, w->ScrollMax.y));
+        s.scroll_position.write(w, ImVec2(x, y));
         if (s.velocity.x == 0 && s.velocity.y == 0) s = NxnOsTouchScroll();
         return;
     }
     if (w && io.MouseDown[0] && !s.protected_item) {
         float dx = io.MousePos.x - s.start.x, dy = io.MousePos.y - s.start.y;
         float threshold = 9.0f * nxn_os_scale();
+        bool vertical = fabsf(dy) >= fabsf(dx);
+        if (fabsf(vertical ? dy : dx) > threshold) {
+            float delta = vertical ? io.MousePos.y - s.last.y : io.MousePos.x - s.last.x;
+            auto can_move = [&](ImGuiWindow* pane) {
+                return vertical ? nxn_scroll_can_move(pane->Scroll.y, pane->ScrollMax.y, delta)
+                                : nxn_scroll_can_move(pane->Scroll.x, pane->ScrollMax.x, delta);
+            };
+            if (delta != 0 && !can_move(w)) {
+                ImGuiWindow* parent = w;
+                while (parent && (parent->Flags & ImGuiWindowFlags_ChildWindow)) {
+                    parent = parent->ParentWindow;
+                    if (!parent || !can_move(parent)) continue;
+                    w = parent;
+                    s.window = w->ID;
+                    s.velocity = ImVec2(0, 0);
+                    s.scroll_position = nxn_imgui_scroll_position();
+                    break;
+                }
+            }
+        }
         if (!s.dragging && ((w->ScrollMax.y > 0 && fabsf(dy) > threshold && fabsf(dy) >= fabsf(dx)) ||
                            (w->ScrollMax.x > 0 && fabsf(dx) > threshold && fabsf(dx) > fabsf(dy)))) {
             s.dragging = true;

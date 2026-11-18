@@ -1,0 +1,18 @@
+{
+  "title": "입력 실험실",
+  "hint.compact": "터치, 스크롤, 두 손가락",
+  "hint.wide": "슬라이더, 패널 스크롤, 문자 입력과 두 손가락을 시험하세요",
+  "mode.touch": "터치",
+  "mode.pad": "게임패드",
+  "mode.keyboard": "키보드 / 마우스",
+  "placeholder": "여기에 입력",
+  "frame.compact": "안쪽 패널: 행을 미세요",
+  "frame.wide": "바깥 패널: 글자나 행을 미세요",
+  "row.inner": "안쪽 행",
+  "row.outer": "바깥 행",
+  "value": "값",
+  "pinch": "확대",
+  "rotation": "회전",
+  "fingers": "손가락",
+  "error.gl": "OpenGL을 사용할 수 없습니다"
+}

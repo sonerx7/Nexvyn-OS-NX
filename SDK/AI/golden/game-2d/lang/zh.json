@@ -1,0 +1,6 @@
+{
+  "title": "琥珀追逐",
+  "score": "得分：{0}  最高：{1}",
+  "hint": "点击方块；Enter得分；Escape / Plus暂停。",
+  "paused": "已暂停"
+}

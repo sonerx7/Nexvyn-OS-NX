@@ -1,0 +1,22 @@
+{
+  "title": "Native App",
+  "files": {
+    "heading": "Archivo",
+    "open": "Elegir archivo...",
+    "none": "Ningún archivo elegido",
+    "size": "{0} bytes"
+  },
+  "settings": {
+    "heading": "Ajustes",
+    "counter": "Abierto {0} veces",
+    "reset": "Reiniciar contador",
+    "large_text": "Texto grande"
+  },
+  "quit": "Cerrar",
+  "size_label": "Tamaño",
+  "kit": "Kit de interfaz nativa",
+  "error": {
+    "opengl": "OpenGL no está disponible",
+    "shader": "No se pudo iniciar el sombreador gráfico"
+  }
+}

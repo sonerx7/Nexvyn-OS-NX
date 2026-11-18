@@ -1,0 +1,34 @@
+{
+  "id": "com.nexvyn.script-network",
+  "name": "script-network",
+  "version": "1.0.0",
+  "build": 1,
+  "type": "app",
+  "runtime": "js",
+  "minSdk": "2.0",
+  "targetSdk": "2.0",
+  "targetNative": "2.0",
+  "dataSchema": 1,
+  "uiApi": 2,
+  "uiTheme": 2,
+  "perfBudget": {
+    "maxRamMb": 32,
+    "targetFps": 60,
+    "profile": "media/network"
+  },
+  "author": "Nexvyn Developer",
+  "description": "A user-initiated HTTPS connection probe.",
+  "window": {
+    "width": 920,
+    "height": 580,
+    "minWidth": 480,
+    "minHeight": 320,
+    "resizable": true
+  },
+  "permissions": [
+    "network"
+  ],
+  "main": "main.js",
+  "category": "internet",
+  "icon": "icon.png"
+}

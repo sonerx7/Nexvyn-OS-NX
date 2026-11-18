@@ -5119,8 +5119,8 @@
       "category": "system",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/system/nexbench/nexbench.nxvapp",
-      "size": 16056664,
-      "sha256": "6330e5e7e14596e496dbd1e9954106b5ed1f20d01a967939644db9df14ec9225",
+      "size": 16056553,
+      "sha256": "7dc7e01cbc7c988e4a5a9551b1eebb794d7fa5499a81127ebfe0c5fe98cbc86b",
       "minSdk": "1.10",
       "permissions": [
         "files",

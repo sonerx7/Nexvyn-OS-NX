@@ -7,6 +7,10 @@
 #define NXN_SCROLL_CATCH 90.f
 #define NXN_SCROLL_MAX 8000.f
 
+static inline int nxn_scroll_can_move(float position, float limit, float finger_delta) {
+    return limit > 0 && (finger_delta < 0 ? position < limit : finger_delta > 0 && position > 0);
+}
+
 static inline float nxn_scroll_release(float velocity, double idle_seconds) {
     if (!isfinite(velocity) || idle_seconds > 0.08 || idle_seconds < 0) return 0;
     velocity = fmaxf(-NXN_SCROLL_MAX, fminf(NXN_SCROLL_MAX, velocity));

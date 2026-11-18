@@ -1,0 +1,18 @@
+{
+  "title": "输入实验室",
+  "hint.compact": "触摸、滚动与双指操作",
+  "hint.wide": "拖动滑块、滑动面板、输入文字并尝试双指操作",
+  "mode.touch": "触摸",
+  "mode.pad": "手柄",
+  "mode.keyboard": "键盘／鼠标",
+  "placeholder": "在此输入",
+  "frame.compact": "内层面板：滑动行",
+  "frame.wide": "外层面板：滑动文字或行",
+  "row.inner": "内层行",
+  "row.outer": "外层行",
+  "value": "数值",
+  "pinch": "缩放",
+  "rotation": "旋转",
+  "fingers": "手指",
+  "error.gl": "OpenGL不可用"
+}

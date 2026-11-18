@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Strict OS design-language checker ("one design language, four languages").
 
-Scans app packages (romfs/Applications/*.nxvapp, showcase/*, sdk/native/templates/*, sdk/native/examples/*,
+Scans app packages (romfs/Applications/*.nxvapp, product/showcase/*, sdk/native/templates/*, sdk/native/examples/*,
 tools/tests/recipes/*.nxvapp) and reports PASS / WARN / FAIL per package. Only FAIL breaks the gate.
 
 Native C/C++ (a source that uses ImGui::). Every finding names the fix (the nxn_os_* replacement):
@@ -343,7 +343,7 @@ def packages():
                     out.append((os.path.relpath(p, ROOT).replace("\\", "/"), p, tier))
 
     add_apps(os.path.join(ROOT, "romfs", "Applications"), "app")
-    add(os.path.join(ROOT, "showcase"), "app")
+    add(os.path.join(ROOT, "product", "showcase"), "app")
     add(os.path.join(ROOT, "sdk", "samples", "inputlab"), "app")
     for n in sorted(os.listdir(os.path.join(ROOT, "sdk", "native", "templates"))) if os.path.isdir(os.path.join(ROOT, "sdk", "native", "templates")) else []:
         out.append(("sdk/native/templates/" + n, os.path.join(ROOT, "sdk", "native", "templates", n), "app"))

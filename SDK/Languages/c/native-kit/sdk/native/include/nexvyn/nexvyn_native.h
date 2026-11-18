@@ -16,6 +16,7 @@
 
 #include "nxn_base.h"
 #include "nxn_app.h"
+#include "nxn_caps.h"
 #include "nxn_display.h"
 #include "nxn_input.h"
 #include "nxn_event.h"
@@ -32,5 +33,9 @@
 #include "nxn_stream.h"
 #include "nxn_phys.h"
 #include "nxn_nav.h"
+
+/* Frozen ABI family, independent of SDK release versions and build identities.
+ * v1 permits append-only additions. Incompatible v2 headers must coexist with v1. */
+#define NXN_ABI_VERSION 1
 
 #endif /* NEXVYN_NATIVE_H */

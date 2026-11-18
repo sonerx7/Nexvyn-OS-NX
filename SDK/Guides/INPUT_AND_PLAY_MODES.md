@@ -26,11 +26,16 @@ What to do:
 - **No touch in docked mode.** On a TV the user has no touch screen: nothing may need a touch (no "tap to start",
   no touch-only close or back button), and the controller must work from the first screen. Show button glyphs
   (`A`, `B`) when `input.touch()` is false and tap hints when it is true.
-- **Handheld and docked.** The output is 1280x720 handheld and 1920x1080 docked. Native apps get
+- **Handheld and docked.** Handheld normally uses 1280x720; docked defaults to 1920x1080,
+  with 720p selectable and also used by the applet fallback. Do not infer mode from resolution.
+  Native apps get
   `NXN_EVENT_DOCK` / `NXN_EVENT_RESIZE`; follow with `nxn_display_resize` or keep your size and let the system scale.
   Lay out in relative units (a fraction of `gfx.size()` / the surface size), scale text by the OS text scale
   (`ui.tokens().textScale`, `nxn_ui_tokens_get`), keep important things inside a 5 % safe margin on a TV, and never
   hard-code 1280x720.
+  Check both modes at meaningful integration milestones, including a dock/undock transition.
+  Record the actual surface size separately from framebuffer/capture size; emulation alone
+  does not establish console frame pacing, power or thermal behavior.
 
 ## 2. Window and full screen
 
@@ -150,9 +155,13 @@ before the next frame, in addition to calling `nxn_imgui_input` once per frame. 
 releases held keys and cancels touch motion. The frame layer supplies kinetic touch scrolling;
 a new press stops a fast list without activating a moving row. Mouse-wheel and gamepad input
 remain direct. All UI adapters use the shared header-only `nxn_scroll_physics.h` finite-stop
-model; frame-rate-independent integration avoids a longer fling at a lower refresh rate.
+model; frame-rate-independent integration avoids a longer fling at a lower refresh rate. Native OS helpers carry fractional scroll distance across ImGui pixel rounding;
+explicit application reveal/scroll requests interrupt the remaining fling. Focused-pane
+right-stick motion uses the same fractional-position adapter, including low stick
+deflection; explicit reveal targets retain priority. Rebuild
+app-side helpers to adopt these corrections; the host cannot replace compiled widget code.
 
-Native apps targeting Native 2.0, or explicitly opting in with `liveResize: true`, receive coalesced live resize events on shell draws by default. Legacy targets retain their default. Existing
+Lifecycle-capable native apps (`minNative` 1.1 or later) opt in through `liveResize: true`; the app template already declares it. Hosts also recognize responsive defaults for targets 2.0 or later. The declared target must remain the SDK version actually tested. See the canonical [responsive interaction contract](NATIVE_GUIDE.md#responsive-interaction-quality). Existing
 `native.liveResize: false` settings and manifest opt-outs are respected; legacy apps keep the
 settled path. Handle the newest size, keep UI state, and call `nxn_display_resize`; do not
 recreate the ImGui context or font atlas just because the window dimensions changed. Follow

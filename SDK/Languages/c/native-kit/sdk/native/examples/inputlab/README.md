@@ -7,3 +7,10 @@ Drag the slider outside its bounds, type in the field, choose a mode, swipe insi
 The script and interpreted C variants use the same OS controls and interaction inventory. UI applications follow OS tokens and control rules; games keep their own visual direction.
 
 The panel switches to a stacked form below 620 logical pixels. Resize it to the 360 px minimum and back: edits, slider value, gesture state and pane offsets remain intact. Each geometry change records `Layout compact|wide width height` so automation verifies content reflow rather than only the window border. Lifecycle events go through `nxn_imgui_input_event`; touch fling uses `nxn_scroll_physics.h`.
+
+The panel ships complete `en tr de es fr ja ko zh` dictionaries and translates
+visible controls with `nxn_tr`; the script variants use their `TR` binding. Numeric
+interaction diagnostics keep a stable English schema and never log the text field.
+Rebuild to adopt fractional touch-fling distance and programmatic-scroll interruption
+from the current OS helper. The helper preserves subpixel motion until rasterization;
+this does not claim a new physical-console frame rate.

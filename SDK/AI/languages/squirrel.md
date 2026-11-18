@@ -61,5 +61,6 @@ app.json: `"runtime": "squirrel"`, `"main": "main.nut"`, `"minSdk": "1.5"`.
 
 ## Check
 
-`python tools/rt_check.py <bundle>`: balanced brackets and strings, every SDK call exists with a valid argument
+`python SDK/Tools/nxv/nxv.py check <bundle>` runs the public checks (app.json, the main file, the icon, `lang/*.json`,
+TR keys, undeclared permissions). The maintainers' review of a Store submission also runs the full language checker, which checks balanced brackets and strings, that every SDK call exists with a valid argument
 count, imported files exist, TR keys, the network permission. It does not execute the code.

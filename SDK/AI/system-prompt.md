@@ -778,8 +778,7 @@ return app
 
 Give complete files (app.json, every source file, lang/en.json and a lang file for every other language the user
 wants), not fragments. Then tell
-the user how to check it on a PC (`python tools/lua_check.py`, `node tools/js_check.mjs`, `python tools/py_check.py`,
-`python tools/rt_check.py` from the Nexvyn OS source repository, or `python SDK/Tools/nxv/nxv.py check <folder> --sdk <checkout>`)
+the user how to check it on a PC (`python SDK/Tools/nxv/nxv.py check <folder>` from the public SDK)
 and how to run it (copy to `sdmc:/NexvynOS/Applications/<Name>.nxvapp/`, or open it in Nexvyn OS Studio and press Run).
 Follow `SDK/AI/checklist.md` before answering.
 

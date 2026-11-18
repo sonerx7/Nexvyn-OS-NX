@@ -1,0 +1,33 @@
+{
+  "id": "com.example.native-app",
+  "name": "Native App",
+  "version": "1.0.0",
+  "author": "SDK examples",
+  "category": "utilities",
+  "runtime": "native",
+  "mode": "window",
+  "main": "native-app.nxvmod",
+  "minNative": "1.2",
+  "targetNative": "1.2",
+  "icon": "icon.png",
+  "permissions": [
+    "files"
+  ],
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "liveResize": true,
+  "window": {
+    "width": 720,
+    "height": 480,
+    "resizable": true,
+    "minWidth": 480,
+    "minHeight": 320
+  },
+  "description": {
+    "en": "Small source reference for native-app."
+  },
+  "perfBudget": {
+    "maxRamMb": 24,
+    "targetFps": 60
+  }
+}

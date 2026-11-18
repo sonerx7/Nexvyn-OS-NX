@@ -1,11 +1,20 @@
 {
   "id": "com.nexvyn.inputlab.cpp",
-  "name": "Input Lab (cpp)",
+  "name": {
+    "de": "Eingabelabor (cpp)",
+    "en": "Input Lab (cpp)",
+    "es": "Laboratorio de entrada (cpp)",
+    "fr": "Laboratoire de saisie (cpp)",
+    "ja": "入力ラボ (cpp)",
+    "ko": "입력 실험실 (cpp)",
+    "tr": "Girdi Laboratuvarı (cpp)",
+    "zh": "输入实验室 (cpp)"
+  },
   "version": "1.0.0",
   "build": 1,
   "type": "app",
   "runtime": "native",
-  "targetNative": "2.0",
+  "targetNative": "1.2",
   "uiApi": 2,
   "uiTheme": 2,
   "dataSchema": 1,
@@ -26,5 +35,7 @@
   },
   "mode": "window",
   "main": "inputlab_cpp.nxvmod",
-  "minNative": "1.2"
+  "minNative": "1.2",
+  "targetSdk": "1.15",
+  "liveResize": true
 }

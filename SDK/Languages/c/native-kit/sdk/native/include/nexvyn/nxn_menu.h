@@ -4,6 +4,9 @@
  * it draws its own pause menu in its own art direction. The OS draws the menus with its own look; the app only says
  * what is in them. Same model as the script SDK's app.menu() / app.onmenu(id): menus with a title and items (label,
  * id, shortcut, enabled, checked, separator); a pick arrives as NXN_EVENT_MENU with the item's id.
+ * Drain nxn_event_poll each frame. The windowed host admits at most 16 pending menu commands, separately from lifecycle
+ * state. At that limit it temporarily disables this app's commands, leaving OS window/recovery commands usable. A stale
+ * callback at a full queue is not admitted; already admitted commands are never evicted to make room for a state update.
  *
  *     nxn_menu_item file_items[] = {
  *         {sizeof(nxn_menu_item), 1, "menu.new", "Ctrl+N", 0, 0},          // size, id, label, shortcut, flags, reserved

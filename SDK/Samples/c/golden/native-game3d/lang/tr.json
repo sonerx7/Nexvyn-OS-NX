@@ -1,0 +1,7 @@
+{
+  "title": "native-game3d",
+  "hint": "Onay / Enter / dokunma eylem; Plus duraklatır; Geri çıkar.",
+  "score": "Puan: {0}",
+  "success": "Sonuç doğrulandı",
+  "error": "Beklenmeyen sonuç"
+}

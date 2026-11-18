@@ -1,0 +1,31 @@
+{
+  "id": "com.example.native-tool",
+  "name": "Native Tool",
+  "version": "1.0.0",
+  "author": "SDK examples",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "window",
+  "main": "native-tool.nxvmod",
+  "minNative": "1.2",
+  "targetNative": "1.2",
+  "icon": "icon.png",
+  "permissions": [],
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "description": {
+    "en": "Small source reference for native-tool."
+  },
+  "perfBudget": {
+    "maxRamMb": 24,
+    "targetFps": 60
+  },
+  "type": "app",
+  "window": {
+    "width": 960,
+    "height": 600,
+    "resizable": true,
+    "minWidth": 480,
+    "minHeight": 320
+  }
+}

@@ -56,7 +56,8 @@ app.json: `"main": "main.js"` (or `"runtime": "js"`), `"minSdk": "1.1"`, `"permi
 
 ## Check
 
-`node tools/js_check.mjs <bundle> --frames 600`: parses every .js file as a module, checks the TR keys, runs the app
+`python SDK/Tools/nxv/nxv.py check <bundle>` runs the public checks (app.json, the main file, the icon, `lang/*.json`,
+TR keys, undeclared permissions). The maintainers' review of a Store submission also runs the full language checker, which parses every .js file as a module, checks the TR keys, runs the app
 against a mock SDK in both languages and reports uncaught errors and unhandled rejections.
 
 - SDK 1.11 (`"minSdk": "1.11"`, no permission: the user picks the folder, a cancel is not an error): `await ui.chooseFolder({title, remember})` (`null` when cancelled), `fs.folderGrants()`, `fs.folderGranted(path)`, `fs.revokeFolder(path)`, `fs.savePath()`, `await fs.saveBackup(slot)`, `await fs.saveRestore(slot)`, `await fs.saveDeleteBackup(slot)`, `fs.saveBackups()`

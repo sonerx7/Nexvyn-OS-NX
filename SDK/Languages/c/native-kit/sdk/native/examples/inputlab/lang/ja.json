@@ -1,0 +1,18 @@
+{
+  "title": "入力ラボ",
+  "hint.compact": "タッチ・スクロール・2本指",
+  "hint.wide": "スライダー、枠内スクロール、文字入力、2本指を試す",
+  "mode.touch": "タッチ",
+  "mode.pad": "ゲームパッド",
+  "mode.keyboard": "キーボード／マウス",
+  "placeholder": "ここに入力",
+  "frame.compact": "内側の枠：行をスワイプ",
+  "frame.wide": "外側の枠：文字や行をスワイプ",
+  "row.inner": "内側の行",
+  "row.outer": "外側の行",
+  "value": "値",
+  "pinch": "拡大率",
+  "rotation": "回転",
+  "fingers": "指",
+  "error.gl": "OpenGLを利用できません"
+}

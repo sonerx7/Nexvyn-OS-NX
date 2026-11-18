@@ -1,0 +1,9 @@
+{
+  "title": "Prueba de conexión",
+  "refresh": "Comprobar conexión",
+  "ready": "Listo",
+  "loading": "Cargando…",
+  "success": "Solicitud completada",
+  "error": "Error; vuelve a intentarlo",
+  "offline": "Sin conexión"
+}

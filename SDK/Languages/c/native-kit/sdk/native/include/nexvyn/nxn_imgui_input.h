@@ -10,18 +10,83 @@
 #include <math.h>
 #include "imgui_internal.h"
 
+/* Adapter-local rounding, shared by direct stick motion and touch inertia.
+ * Logical position stays fractional; ImGui's applied integer coordinate is
+ * tracked so a layout/programmatic scroll re-anchors the affected axis. */
+struct nxn_imgui_scroll_position {
+    ImGuiID window = 0;
+    ImGuiContext* context = NULL;
+    ImVec2 remainder = ImVec2(0, 0), expected = ImVec2(0, 0);
+    ImVec2 read(ImGuiWindow* w) {
+        if (window != w->ID || context != ImGui::GetCurrentContext()) {
+            window = w->ID; context = ImGui::GetCurrentContext();
+            remainder = ImVec2(0, 0); expected = w->Scroll;
+        }
+        if (w->Scroll.x != expected.x) remainder.x = 0;
+        if (w->Scroll.y != expected.y) remainder.y = 0;
+        return ImVec2(w->Scroll.x + remainder.x, w->Scroll.y + remainder.y);
+    }
+    void write(ImGuiWindow* w, ImVec2 logical, bool horizontal = true, bool vertical = true) {
+        if (horizontal) {
+            logical.x = ImClamp(logical.x, 0.f, w->ScrollMax.x);
+            expected.x = ImMin(IM_ROUND(logical.x), w->ScrollMax.x);
+            remainder.x = logical.x - expected.x;
+            ImGui::SetScrollX(w, logical.x);
+        }
+        if (vertical) {
+            logical.y = ImClamp(logical.y, 0.f, w->ScrollMax.y);
+            expected.y = ImMin(IM_ROUND(logical.y), w->ScrollMax.y);
+            remainder.y = logical.y - expected.y;
+            ImGui::SetScrollY(w, logical.y);
+        }
+    }
+};
+
 struct nxn_imgui_input_state {
     bool finger_down = false;
     bool wait_all_up = false;
     uint32_t finger_id = 0;
     float x = 0, y = 0;
+    nxn_imgui_scroll_position pad_scroll;
+    bool wait_mouse_up = false;
 };
+
+/* One app UI context is active at a time, like the scroll helper. Keep the
+ * cancellation latch outside caller-allocated input state to preserve its prefix.
+ * External inline storage shares the latch across the app's translation units. */
+struct nxn_imgui_lifecycle_state {
+    ImGuiContext* context = NULL;
+    bool focused = true, suspended = false, closed = false, cancel_pending = false;
+    int cancel_frame = -1, observed_frame = -1;
+};
+inline nxn_imgui_lifecycle_state& nxn_imgui_lifecycle() {
+    static nxn_imgui_lifecycle_state state;
+    ImGuiContext* context = ImGui::GetCurrentContext();
+    int frame = ImGui::GetFrameCount();
+    if (state.context != context || frame < state.observed_frame) {
+        state = nxn_imgui_lifecycle_state(); state.context = context;
+    }
+    state.observed_frame = frame;
+    return state;
+}
 
 /* Forward lifecycle events before NewFrame so ImGui releases keys, active edits
  * and touch motion when the window loses focus or is minimized. */
 static inline void nxn_imgui_input_event(const nxn_event& event) {
-    if (event.type == NXN_EVENT_FOCUS && event.size >= offsetof(nxn_event, focused) + sizeof(event.focused))
-        ImGui::GetIO().AddFocusEvent(event.focused != 0);
+    if (event.size < offsetof(nxn_event, type) + sizeof(event.type)) return;
+    nxn_imgui_lifecycle_state& state = nxn_imgui_lifecycle();
+    switch (event.type) {
+    case NXN_EVENT_FOCUS:
+        if (event.size < offsetof(nxn_event, focused) + sizeof(event.focused)) return;
+        state.focused = event.focused != 0;
+        if (!state.focused) state.cancel_pending = true;
+        break;
+    case NXN_EVENT_SUSPEND: state.suspended = true; state.cancel_pending = true; break;
+    case NXN_EVENT_RESUME: state.suspended = false; break;
+    case NXN_EVENT_QUIT: state.closed = true; state.cancel_pending = true; break;
+    default: return;
+    }
+    ImGui::GetIO().AddFocusEvent(state.focused && !state.suspended && !state.closed);
 }
 
 static inline ImGuiKey nxn_imgui_hid_key(uint32_t u) {
@@ -54,6 +119,26 @@ static inline ImGuiKey nxn_imgui_hid_key(uint32_t u) {
 static inline void nxn_imgui_input(nxn_imgui_input_state& s, const nxn_input_state& in, float dt) {
     ImGuiIO& io = ImGui::GetIO();
     io.DeltaTime = isfinite(dt) && dt > 0.0f ? fminf(dt, 1.f) : 1.0f / 60.0f;
+    nxn_imgui_lifecycle_state& lifecycle = nxn_imgui_lifecycle();
+    bool accepting = lifecycle.focused && !lifecycle.suspended && !lifecycle.closed;
+    if (lifecycle.cancel_pending || !accepting) {
+        // ImGui intentionally merges focus false/true in one frame. Our OS
+        // lifecycle contract requires the intervening cancellation to survive.
+        io.ClearEventsQueue(); io.ClearInputKeys(); io.ClearInputMouse();
+        ImGui::ClearActiveID();
+        s = nxn_imgui_input_state();
+        s.wait_all_up = in.touch_count != 0;
+        nxn_mouse m = NXN_STRUCT_INIT(nxn_mouse);
+        if (nxn_input_mouse(&m) == NXN_OK) s.wait_mouse_up = m.buttons != 0;
+        nxn_key_event key = NXN_STRUCT_INIT(nxn_key_event);
+        for (int n = 0; n < 64 && nxn_input_key_poll(&key) > 0; ++n) {}
+        char discard[512]; nxn_input_text(discard, sizeof discard);
+        nxn_input_text_request(0);
+        io.AddFocusEvent(accepting);
+        lifecycle.cancel_pending = false;
+        lifecycle.cancel_frame = ImGui::GetFrameCount() + 1;
+        return;
+    }
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_NavEnableGamepad;
     io.BackendFlags |= ImGuiBackendFlags_HasGamepad;
     io.AddKeyEvent(ImGuiKey_GamepadFaceDown, (in.actions & NXN_ACT_CONFIRM) != 0);
@@ -85,6 +170,7 @@ static inline void nxn_imgui_input(nxn_imgui_input_state& s, const nxn_input_sta
 
     nxn_mouse m = NXN_STRUCT_INIT(nxn_mouse);
     bool mouse_ok = nxn_input_mouse(&m) == NXN_OK;
+    if (mouse_ok && !m.buttons) s.wait_mouse_up = false;
     nxn_touch finger = NXN_STRUCT_INIT(nxn_touch);
     bool found = false;
     if (!in.touch_count) s.wait_all_up = false;
@@ -110,7 +196,7 @@ static inline void nxn_imgui_input(nxn_imgui_input_state& s, const nxn_input_sta
         io.AddMouseButtonEvent(0, false);
         s.finger_down = false;
         s.wait_all_up = in.touch_count != 0;
-    } else if (mouse_ok && !s.wait_all_up) {
+    } else if (mouse_ok && !s.wait_all_up && !s.wait_mouse_up) {
         io.AddMouseSourceEvent(ImGuiMouseSource_Mouse);
         io.AddMousePosEvent(m.present || m.buttons ? m.x : -FLT_MAX, m.present || m.buttons ? m.y : -FLT_MAX);
         for (int b = 0; b < 3; ++b) {
@@ -120,19 +206,23 @@ static inline void nxn_imgui_input(nxn_imgui_input_state& s, const nxn_input_sta
         }
         io.AddMouseWheelEvent(m.wheel_x, m.wheel_y);
     }
-    if (!s.finger_down && !s.wait_all_up) {
+    if (s.finger_down || s.wait_all_up || s.wait_mouse_up) s.pad_scroll = nxn_imgui_scroll_position();
+    if (!s.finger_down && !s.wait_all_up && !s.wait_mouse_up) {
         float x = axis(in.rx) - axis(-in.rx), y = axis(in.ry) - axis(-in.ry);
         if (mouse_ok && m.present) {
+            s.pad_scroll = nxn_imgui_scroll_position();
             io.AddMouseWheelEvent(-x * io.DeltaTime * 12.0f, y * io.DeltaTime * 12.0f);
         } else if (x != 0 || y != 0) {
             // A pad can scroll the focused pane without a visible mouse cursor.
             ImGuiWindow* w = ImGui::GetCurrentContext()->NavWindow;
             while (w && w->ScrollMax.x <= 0 && w->ScrollMax.y <= 0) w = w->ParentWindow;
-            if (w) {
-                if (w->ScrollMax.x > 0) ImGui::SetScrollX(w, w->Scroll.x + x * io.DeltaTime * 720.0f);
-                if (w->ScrollMax.y > 0) ImGui::SetScrollY(w, w->Scroll.y - y * io.DeltaTime * 720.0f);
-            }
-        }
+            if (w && w->ScrollTarget.x == FLT_MAX && w->ScrollTarget.y == FLT_MAX) {
+                ImVec2 p = s.pad_scroll.read(w);
+                p.x += x * io.DeltaTime * 720.0f;
+                p.y -= y * io.DeltaTime * 720.0f;
+                s.pad_scroll.write(w, p, w->ScrollMax.x > 0 && x != 0, w->ScrollMax.y > 0 && y != 0);
+            } else s.pad_scroll = nxn_imgui_scroll_position();
+        } else s.pad_scroll = nxn_imgui_scroll_position();
     }
 }
 #endif

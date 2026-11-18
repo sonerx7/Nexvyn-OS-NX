@@ -60,5 +60,6 @@ share / schedule / the permission API / lifecycle callbacks).
 
 ## Check
 
-`python tools/lua_check.py <bundle> --frames 600` (needs `pip install lupa`): compiles every file, checks the TR keys
+`python SDK/Tools/nxv/nxv.py check <bundle>` runs the public checks (app.json, the main file, the icon, `lang/*.json`,
+TR keys, undeclared permissions). The maintainers' review of a Store submission also runs the full language checker, which compiles every file, checks the TR keys
 (en + tr), runs the app against a mock SDK with random input, menus and lifecycle callbacks.

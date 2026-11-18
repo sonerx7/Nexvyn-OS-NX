@@ -18,7 +18,50 @@ that version: an older Nexvyn OS refuses a module that imports an `nxn_*` name i
 `NXN_STRUCT_INIT(type)` for every struct you pass, test capability bits (`NXN_CAP_*`, `uint64_t` masks) before optional
 calls, and treat any negative result you do not know as a plain failure.
 
+## Capability queries and migration
+
+Existing apps can keep using `nxn_caps_get` and its feature mask. New code can use
+`nxn_capability_query` from `<nexvyn/nxn_caps.h>` for JIT, VM guards and fault
+handlers, module TLS, and the GL/GLES/NexGFX paths. This header-only helper uses
+the existing import, so adopting it requires no `minNative` bump. It returns
+`NXN_OK` for an advertised path, `NXN_ERR_UNSUPPORTED` for an absent path,
+`NXN_ERR_INVALID` for an unknown selector, `NXN_ERR_NOT_READY` for an unavailable
+snapshot, or `NXN_ERR_SYSTEM` for other snapshot failures.
+
+Flags and GL version ceilings describe the current runtime's advertised paths.
+Check each operation's result, the actual GL context and required entry points.
+Keep an interpreter for JIT failures, checked memory accesses when guards or
+fault handlers are unavailable, and a serial path if worker start fails.
+TLS availability does not guarantee worker admission or change synchronization
+requirements. Use an available GL profile or a non-GL path if context creation
+fails. Keep display and GL operations on the display owner thread.
+
 ## Install
+
+### SDK product tools (source checkout)
+
+Short form through the main CLI: `python tools/nxv.py create com.example.app --lang cpp|lua|js|python`
+(same generator as below; refuses an existing destination), `python tools/nxv.py abi`
+(ABI version plus export diff) and `python tools/nxv.py changelog --since <ref>`
+(sdk/ header changes from git log, printed only).
+
+`python tools/nxv_sdk.py new cpp my_app --dir /new/project` creates an app from
+the maintained templates and refuses any existing destination. Languages are
+`cpp`, `lua`, `javascript`, `python`, `c`, `squirrel`, and `java`; the last three
+compatibility templates retain their existing runtime lanes (Python uses CPython).
+Each project includes a manifest, eight locale stubs, a placeholder icon,
+README, and `build.py`. Run `python build.py --sdk /path/to/exported-kit`:
+C++ uses the kit's native build/package CLI; scripts are packaged from source.
+Java additionally needs `tools/java_build.py` and a JDK in the supplied SDK.
+Replace the placeholder icon before distribution.
+
+`python tools/nxv_sdk.py abi` reports the Native version, ABI generation and
+added/removed/changed exported symbols against the frozen manifest, reusing the
+existing ABI checker; incompatible changes return failure. It never records a baseline.
+`python tools/nxv_sdk.py changelog` appends committed `sdk/` header paths and commit
+identities to `docs/sdk/CHANGELOG.md`. Existing notes remain byte-for-byte intact;
+repeated runs skip recorded commits. These inspection/history commands require
+the source checkout; they do not install, launch, publish or change runtime behavior.
 
 1. Install devkitPro with the Switch packages (`switch-dev`, `switch-sdl2`, `switch-mesa`, ...). The tested versions are
    in `tools/toolchain.json`; `python tools/nxv_native doctor` compares them.
@@ -216,6 +259,14 @@ its own input owner and never calls `nxn_input_poll` itself.
   stays "alive" for the not-responding check); put `nxn_pick`, `nxn_perm_request` and the save calls on a worker thread
   when the frame loop must go on. `examples/showcase` has a row and a self-test for each.
 
+**Large read-only assets.** With `NXN_CAP_STREAM`, `nxn_stream_*` uses the windowed host's shared block cache.
+Use `NXN_STREAM_NOWAIT` on a render/audio path and retry Busy on a later frame; blocking reads belong on a suitable
+worker. Prefetch is an advisory bounded window, not a completion signal: cached or already queued blocks share work,
+and `NXN_ERR_BUSY` means the rest could not be admitted yet (some blocks may already be queued). Do not spin on it or
+load the whole asset as a fallback. Keep the stream until current calls return, then close it; the host retains any
+in-flight ownership until its worker finishes. Stand-alone builds still read files directly and ignore Nowait, as
+documented in `nxn_stream.h`; do not infer asynchronous behavior without the windowed capability.
+
 **Who owns the controller.** By default the input owner is `nxn_input`: `nxn_input_poll` reads the pads through libnx,
 maps the buttons to Nexvyn's bit order and adds the user's confirm / cancel buttons (`NXN_ACT_CONFIRM` / `NXN_ACT_CANCEL`,
 also `nxn_info_get`). The library touches no HID state until the first `nxn_input_poll` or `nxn_input_key_held` call.
@@ -253,15 +304,20 @@ For apps that should feel like part of Nexvyn OS. Each call is announced by an `
 
 ## OS look and the app's own texts (Native 1.1, `nxn_ui.h`)
 
-For apps that should look like part of Nexvyn OS (tools, editors, front ends). **Games do not use this**: a game builds its own look and never copies the OS menu; there is no ready-made menu template.
+For ordinary apps, tools, editors and game/port launchers, use the OS frame layer and shared controls. Games keep their own art direction and may build custom gameplay HUDs; a companion launcher or settings form can reuse the OS controls. Start from the app, game or port template as appropriate.
 
 - `nxn_ui_tokens_get`: one sized struct with the colours (background, surface, text, secondary text, accent, error, warning, success, border...), sizes (corner radius, spacing steps, row / control height, text sizes, text scale) and `revision`. The values come from the OS's own palette, not from copies, and follow light / dark, accent and high contrast. `ui_scale` (field added at the end, 0 on systems before it) is the window surface's pixels per OS UI point: 1.0 at the default interface size, 1.5 for 150 % or a full-screen TV surface that shows the 1280 x 720 layout; it follows the window (a `NXN_EVENT_RESIZE` comes with a change) and does not raise `revision` or send `NXN_EVENT_THEME`.
 - `NXN_EVENT_MENU` (`nxn_menu.h`, `NXN_CAP_MENU`, setting `native.windowMenu`, default on for apps with `"minNative": "1.1"` or later, `false` turns it off; not verified on a console): the user picked an item of the app's window menu (`nxn_menu_set`); `item_id` is its id. Only apps with `"minNative": "1.1"` get it. Not for games. `NATIVE_SDK_DESIGN.md` 3.2.12.
-- Live resize (setting `native.liveResize`, default off; not verified on a console): while the user drags a window edge the app gets `NXN_EVENT_RESIZE` about every 0.12 s with the new content size, not only after release. Apps with `"minNative": "1.1"` or later get it when the setting is on; an older app only with `"liveResize": true` in `app.json` (`false` keeps the stretch-until-release behaviour). Handle it like any resize: `nxn_display_resize`.
+  Drain events every frame. The windowed host admits up to 16 pending menu commands and temporarily disables app
+  commands at that limit; OS close/recovery controls remain available. Stale callbacks at capacity are not admitted.
+  Admitted commands arrive once in order, independently of coalesced resize/focus/lifecycle state. No app rebuild is
+  required for this host correction; event structs and imports are unchanged.
+- **Cancellation edges.** The current host preserves a pending focus loss or suspend before its final restore. Forward every lifecycle event to `nxn_imgui_input_event` before the shared input/frame helpers. Rebuild apps with the updated kit to cancel same-frame loss/regain, discard the cancelled press and wait for held contacts/mouse buttons to lift. Resume preserves prior focus; it does not grant focus. Frozen event layouts and imports are unchanged.
+- **Responsive resize.** The current app template explicitly opts in with `"liveResize": true`. The host requires lifecycle support (`"minNative": "1.1"` or later), coalesces unread sizes and does not deliberately delay the responsive path by 120 ms. Existing saved `native.liveResize: false` settings and manifest opt-outs remain authoritative; legacy/opted-out apps retain settled resizing. Current hosts also recognize a responsive default for `targetNative` 2.0 or later, but keep `targetNative` at the SDK version actually tested rather than raising it to select behavior. Process `NXN_EVENT_RESIZE`, call `nxn_display_resize`, query the resulting dimensions and reflow from those dimensions while retaining edits, focus and scroll state. This is an interaction contract, not a hardware frame-rate guarantee. See [responsive interaction quality](NATIVE_GUIDE.md#responsive-interaction-quality).
 - `NXN_EVENT_THEME`: the look changed; read the tokens again. Only apps with `"minNative": "1.1"` get it; older apps can compare `revision` once a frame.
 - `nxn_ui_font_get` gives the system font bytes (for example ImGui `AddFontFromMemoryTTF`, `FontDataOwnedByAtlas = false`), `nxn_ui_icon_code("folder")` the code point in the `NXN_UI_FONT_ICONS` font.
 - **Text and fonts.** ImGui loads Latin-1 only unless it is given glyph ranges, so Turkish (dotless i, g-breve, s-cedilla, capital I with dot), Cyrillic, Greek or Japanese text would show as `?`. `#include <nexvyn/nxn_imgui.h>` (header only, after `imgui.h`) and call `nxn_imgui_add_font(io.Fonts, NXN_UI_FONT_SANS, px, 0, icon_ranges)`: it adds the system font with the ranges the app's language needs (`nxn_info_string(NXN_INFO_LANGUAGE)`): Latin-1 and Latin Extended-A always (en, tr, de, es, fr), Latin Extended-B for `vi`, Greek for `el`, Cyrillic for `ru uk bg sr`; the flag `NXN_IMGUI_ALL_SCRIPTS` adds all of them for text the app did not translate (file names). The atlas stays small because only those ranges are loaded. Icons are merged into the same font when `icon_ranges` is given. The system font is Inter (Latin, Greek, Cyrillic); the Han / Kana / Hangul font comes as `NXN_UI_FONT_CJK` (`NXN_CAP_UI_FONT_CJK`, bit 32; the console's shared font, else a font pack on the SD card, cut to the face of the app's language) and the same helper merges it for `ja`, `ko` and `zh` with no change in the app: a compact set of common characters (about 2400-3000: ImGui's Japanese and Simplified Chinese tables, the 2350 syllables of KS X 1001 for Korean), not the whole font. Each font that gets it grows the atlas by about 1 MB per 20 px, so pass `NXN_IMGUI_NO_CJK` for digit / monospace fonts; fonts above 30 px skip it unless `NXN_IMGUI_CJK_LARGE`. A system without the font (older Nexvyn OS, no font installed) draws Latin only and nothing fails. The `app` template, the Showcase and the Tour use the helper; use it in your own ImGui apps and keep texts in `lang/*.json`.
-  - **4-Runtime Typography Scaling Parity (1.21x Factor; the frame layer applies it, this is for games and scenes that build their own fonts):** FreeType scales glyphs relative to its Em-box (`upem = 2048`), while Dear ImGui's `stb_truetype` scales relative to `(ascent - descent)` (`2478` for Inter). To ensure pixel-perfect parity with Lua/JS/Python OS apps without blurry or thin text, native C/C++ apps must multiply target point sizes by `1.21f` (`2478 / 2048`):
+  - **4-Runtime Typography Scaling Parity (1.21x Factor; the frame layer applies it, this is for games and scenes that build their own fonts):** FreeType scales glyphs relative to its Em-box (`upem = 2048`), while Dear ImGui's `stb_truetype` scales relative to `(ascent - descent)` (`2478` for Inter). The shared OS frame layer owns this calibration for ordinary apps. For a custom font setup using the same Inter face, `1.21f` (`2478 / 2048`) is the current reference calibration; validate baselines, text scale and each supported locale rather than assuming that one factor guarantees parity for every font:
     - Title / Hero: `floorf(19.2f * 1.21f * sc + 0.5f)` (`NXN_UI_FONT_BOLD`)
     - Card Header: `floorf(15.2f * 1.21f * sc + 0.5f)` (`NXN_UI_FONT_BOLD`)
     - Body / Controls: `floorf(13.8f * 1.21f * sc + 0.5f)` (`NXN_UI_FONT_MEDIUM`) -> Assign to `ImGui::GetIO().FontDefault`
@@ -269,11 +325,11 @@ For apps that should look like part of Nexvyn OS (tools, editors, front ends). *
     Keep `io.FontGlobalScale = 1.0f` and snap custom drawing coordinates to integer pixels.
 - **Controller and touch in ImGui.** ImGui moves its focus with a pad only when the app sets `ImGuiConfigFlags_NavEnableGamepad` and the backend sets `ImGuiBackendFlags_HasGamepad`; the OpenGL3 backend never does, so a Joy-Con did nothing. Call `nxn_imgui_enable_gamepad(io)` (`nxn_imgui.h`, also done by `nxn_imgui_add_font`) after `ImGui::CreateContext()` and feed the pad with `io.AddKeyEvent(ImGuiKey_Gamepad...)`. In a window `nxn_input_touch` already gives pixels of the app's surface (the same space as `DisplaySize`): pass them to `io.AddMousePosEvent` unchanged. Only a full-screen build gets a 1280x720 space and scales (`#ifndef NEXVYN_WINDOWED`).
 - **Unified OS Widget Kit for ImGui (`<nexvyn/nxn_os_ui.h>`, header-only).** Never ship raw unstyled Dear ImGui checkboxes, thick tables, or hardcoded dark `glClearColor(...)` in utility/tool/HUD apps. Include `<nexvyn/nxn_os_ui.h>` after `imgui.h` (it includes `nexvyn_native.h` and `nxn_imgui.h` itself):
-  - **Frame layer (required):** `nxn_os_frame_begin(&tok, fb_w, fb_h)` ... `nxn_os_frame_end()` replace `ImGui_ImplOpenGL3_NewFrame` / `ImGui::NewFrame` / `ImGui::Render`. They read the tokens and `ui_scale`, build the text roles (Title, Header, Body, Caption, Strong, Mono at `floorf(pt * 1.21f + 0.5f)` x text size x scale; rebuilt with a 0.2 s debounce and a new GL texture when the scale or text size changes), apply `nxn_os_apply_style` x scale every frame, open a full-window root with the OS margins and enforce the minimum sizes (text controls 30 px high and 44 px wide, icon buttons / rail items / list rows / menu rows 44 px, all x scale). Sizes the app writes go through `NXN_S(px)`; spacing `nxn_os_sp(NXN_OS_SP_*)`, radii `nxn_os_radius(NXN_OS_R_*)`, widths `nxn_os_fill(frac)`. Text by role: `nxn_os_text(NXN_OS_TEXT_*, s)`. Rows: `nxn_os_row_begin` / `_end` (equal height, vertically centred), `nxn_os_labeled(label, widget)`, `nxn_os_align_right(w)`. New widgets: `nxn_os_select`, `nxn_os_input` / `_multiline`, `nxn_os_toggle_button` (ON / OFF), `nxn_os_icon_button` (44 px, system icons merged into the role fonts), `nxn_os_switch_row`, `nxn_os_slider_int`, `nxn_os_sidebar_begin` / `_end` + `nxn_os_rail_item`, `nxn_os_list_row`. `nxn_os_set_text_zoom()` is an app's own text size option (sharp, rebuilt fonts). Another renderer than imgui_impl_opengl3: `NXN_OS_UI_NO_GL3`, `NXN_OS_FRAME_NO_BACKEND`, `nxn_os_set_font_uploader`. Without the frame layer every `nxn_os_*` widget behaves as before (scale 1, no minimum). Reference: `showcase/com.nexvyn.uikit.cpp`; counter-example (must fail the checker): `tests/fixtures/design_bad_native`.
+  - **Frame layer (required):** `nxn_os_frame_begin(&tok, fb_w, fb_h)` ... `nxn_os_frame_end()` replace `ImGui_ImplOpenGL3_NewFrame` / `ImGui::NewFrame` / `ImGui::Render`. They read the tokens and `ui_scale`, build the text roles (Title, Header, Body, Caption, Strong, Mono at `floorf(pt * 1.21f + 0.5f)` x text size x scale; rebuilt with a 0.2 s debounce and a new GL texture when the scale or text size changes), apply `nxn_os_apply_style` x scale every frame, open a full-window root with the OS margins and enforce the minimum sizes (text controls 30 px high and 44 px wide, icon buttons / rail items / list rows / menu rows 44 px, all x scale). Sizes the app writes go through `NXN_S(px)`; spacing `nxn_os_sp(NXN_OS_SP_*)`, radii `nxn_os_radius(NXN_OS_R_*)`, widths `nxn_os_fill(frac)`. Text by role: `nxn_os_text(NXN_OS_TEXT_*, s)`. Rows: `nxn_os_row_begin` / `_end` (equal height, vertically centred), `nxn_os_labeled(label, widget)`, `nxn_os_align_right(w)`. New widgets: `nxn_os_select`, `nxn_os_input` / `_multiline`, `nxn_os_toggle_button` (ON / OFF), `nxn_os_icon_button` (44 px, system icons merged into the role fonts), `nxn_os_switch_row`, `nxn_os_slider_int`, `nxn_os_sidebar_begin` / `_end` + `nxn_os_rail_item`, `nxn_os_list_row`. `nxn_os_set_text_zoom()` is an app's own text size option (sharp, rebuilt fonts). Another renderer than imgui_impl_opengl3: `NXN_OS_UI_NO_GL3`, `NXN_OS_FRAME_NO_BACKEND`, `nxn_os_set_font_uploader`. Without the frame layer every `nxn_os_*` widget behaves as before (scale 1, no minimum). Reference: `product/showcase/com.nexvyn.uikit.cpp`; counter-example (must fail the checker): `tests/fixtures/design_bad_native`.
   - `nxn_os_apply_style(tok)` & `nxn_os_clear_color(tok)` — syncs Light/Dark/High-Contrast `ImGuiStyle` and window clear color (the frame layer calls the first one every frame; the app clears with the second).
   - `nxn_os_segmented_tabs(...)`, `nxn_os_card_begin/end(...)`, `nxn_os_kv_row(...)`, `nxn_os_switch(...)`, `nxn_os_dropdown(...)`, `nxn_os_button(..., NXN_OS_BTN_PRIMARY | DEFAULT | DESTRUCTIVE | PLAIN)`, `nxn_os_badge(...)`, `nxn_os_progress_bar(...)`, `nxn_os_separator(...)` — renders the same visual language as OS `ui.*` & `nxui.*` widgets.
   - Note: `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>` runs layout/focus solvers in memory and never paints inside an OpenGL `nxn_display` framebuffer (an app thread must not use the shared OS renderer). `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED` in that case; GL-based C++ apps use `<nexvyn/nxn_os_ui.h>` for the UI.
-  - **Strict design rules:** `python tools/design_check.py` FAILs an ImGui app that skips the frame layer, lacks `nxn_os_clear_color` (or clears to a constant behind its UI), sets `io.FontGlobalScale` or `SetWindowFontScale`, adds fonts itself (`AddFont*`, `nxn_imgui_add_font`), uses a raw ImGui widget that has an `nxn_os_*` counterpart (`Button`, `Combo`, `Checkbox`, `SliderFloat`, `SliderInt`, `InputText*`, `RadioButton`, `ProgressBar`, `BeginTabBar`) or writes a pixel literal outside `NXN_S()` (`SetNextItemWidth`, `Dummy`, `SameLine`, `BeginChild`, `ImVec2(...)`, `nxn_os_*` size arguments); each finding names the fix. The same rules run in `python tools/nxv_native check-design <dir>` and `python tools/nxv.py check <dir>` (exit 1) and are listed by `nxv_native package`. Examples are capped at warnings; games and sources marked `nxn-design: scene` are exempt from the widget, font and pixel rules. Reference: `showcase/com.nexvyn.parity.cpp` (SysMatrix Studio), `showcase/com.nexvyn.uikit.cpp`.
+  - **Strict design rules:** `python tools/design_check.py` FAILs an ImGui app that skips the frame layer, lacks `nxn_os_clear_color` (or clears to a constant behind its UI), sets `io.FontGlobalScale` or `SetWindowFontScale`, adds fonts itself (`AddFont*`, `nxn_imgui_add_font`), uses a raw ImGui widget that has an `nxn_os_*` counterpart (`Button`, `Combo`, `Checkbox`, `SliderFloat`, `SliderInt`, `InputText*`, `RadioButton`, `ProgressBar`, `BeginTabBar`) or writes a pixel literal outside `NXN_S()` (`SetNextItemWidth`, `Dummy`, `SameLine`, `BeginChild`, `ImVec2(...)`, `nxn_os_*` size arguments); each finding names the fix. The same rules run in `python tools/nxv_native check-design <dir>` and `python tools/nxv.py check <dir>` (exit 1) and are listed by `nxv_native package`. Examples are capped at warnings; games and sources marked `nxn-design: scene` are exempt from the widget, font and pixel rules. Reference: `product/showcase/com.nexvyn.parity.cpp` (SysMatrix Studio), `product/showcase/com.nexvyn.uikit.cpp`.
 - `nxn_tr(key)` / `nxn_tr_format(key, out, cap, args, argc)`: texts from the package's `lang/<code>.json` (the package tool copies the `lang` folder). Same rule as `TR()` of the script SDK: nested keys joined with dots, `{0}` placeholders, fallback language -> base language -> `en` -> the key. The language is the one at start; the system's own strings are not available.
 - Caps: `NXN_CAP_UI_TOKENS`, `NXN_CAP_TEXT`. In a stand-alone .nro the calls return `NXN_ERR_UNSUPPORTED` and `nxn_tr` returns the key.
 - The showcase has a "UI tokens" page and self-test rows for all of it.

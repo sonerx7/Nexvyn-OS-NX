@@ -9,6 +9,9 @@
 // Controls: touch or mouse, D-pad + A (the user's confirm button), B or the window's close button to leave.
 #include <glad/glad.h>
 #include <float.h>
+#include <errno.h>
+#include <limits.h>
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,8 +37,20 @@ static Settings g_set;
 static void settings_load() {
     char buf[64] = {0};
     size_t got = 0;
-    if (nxn_fs_read(NXN_DIR_DATA, "settings.txt", buf, sizeof buf - 1, &got) == NXN_OK && got > 0)
-        sscanf(buf, "%d %d", &g_set.opened, &g_set.large_text);  // a missing or damaged file is just the defaults
+    if (nxn_fs_read(NXN_DIR_DATA, "settings.txt", buf, sizeof buf - 1, &got) != NXN_OK || !got) return;
+    if (memchr(buf, 0, got)) return;
+    char* end = NULL;
+    errno = 0;
+    long opened = strtol(buf, &end, 10);
+    if (end == buf || errno == ERANGE || opened < 0 || opened > INT_MAX || !isspace((unsigned char)*end)) return;
+    char* next = end;
+    errno = 0;
+    long large = strtol(next, &end, 10);
+    if (end == next || errno == ERANGE || (large != 0 && large != 1)) return;
+    while (isspace((unsigned char)*end)) ++end;
+    if (*end) return;
+    g_set.opened = (int)opened;
+    g_set.large_text = (int)large;
 }
 static void settings_save() {
     char buf[64];

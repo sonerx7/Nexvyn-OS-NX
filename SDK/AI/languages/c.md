@@ -73,5 +73,6 @@ app.json: `"runtime": "c"`, `"main": "main.c"`, `"minSdk": "1.5"`. Every `.c` fi
 
 ## Check
 
-`python tools/rt_check.py <bundle>`: compiles each .c file with devkitA64 gcc `-fsyntax-only` against the console's
+`python SDK/Tools/nxv/nxv.py check <bundle>` runs the public checks (app.json, the main file, the icon, `lang/*.json`,
+TR keys, undeclared permissions). The maintainers' review of a Store submission also runs the full language checker, which compiles each .c file with devkitA64 gcc `-fsyntax-only` against the console's
 headers (implicit declarations and wrong pointer types are errors), checks the TR keys and the network permission.

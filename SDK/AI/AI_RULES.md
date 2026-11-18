@@ -38,7 +38,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 ## 2. MUST NOT
 
 1. Do not rescale window pointer coordinates. Use the coordinates the SDK gives (`e.x`, `e.y`, `ui.mouse()`, `nxn_input_touch`) as they are.
-2. Do not block the UI thread with file reads, folder scans, network calls, or sleeps. Do not hold a lock that the UI thread also needs while you wait on something else.
+2. Do not block the UI thread with file reads, folder scans, network calls, or sleeps. Do not hold a lock that the UI thread also needs while you wait on something else. In a windowed native app with `NXN_CAP_STREAM`, prefetch is a hint: `NXN_ERR_BUSY` can mean partial admission. Retry on a later frame, never spin, and use `NXN_STREAM_NOWAIT` for render/audio reads. Stand-alone file reads do not become asynchronous by using that flag.
 3. Do not start a background thread that takes a shared lock (SDL, GL, memory pool) while the main thread may wait for it. This freezes the desktop.
 4. Do not store secrets in code, `app.json`, `lang` files, logs, screenshots or saves: no tokens, passwords, server addresses or `.env` values.
 5. Do not remove or rename a public SDK function. Mark it deprecated instead; the SDK never removes a name.
@@ -129,5 +129,9 @@ Notes for the loop:
 
 
 Native interaction is part of the app standard: keep one `nxn_imgui_input_state` per ImGui context; after `nxn_input_poll`, call `nxn_imgui_input(backend, state, dt)` exactly once before `nxn_os_frame_begin`. Do not combine it with a second mouse/key/text feeder. Sliders retain pointer capture, nested frames scroll under the finger, keyboard/gamepad focus is required, and text input uses the system keyboard request. Games retain their own visual direction and may use raw multi-touch by stable finger ID; do not transfer an existing drag to another finger. `nxv check` compiles interpreted C bundles against the real SDK header, including parameter counts and types; use NULL for an unused `ui_beginScroll` scrollX output.
+
+Semantic action queries are non-consuming views of this app's current shell-frame snapshot. They return false without focus or during suspend/quit. They are not an event queue: native app loops needing every button edge use `nxn_input_poll` and its existing latches. Do not replace that poll with repeated semantic queries or a second global input feeder.
+
+Semantic gamepad controls follow the user's system button mapping. Physical raw pad masks and per-controller slots remain physical; do not hard-code A/B as universal Confirm/Cancel or add a second remapping table in an app helper.
 
 Native ImGui OS apps must forward lifecycle events with `nxn_imgui_input_event(event)`. Preserve UI state during resize, stack crowded fields in compact windows, and use the shared OS touch-motion model rather than private scroll physics. Validate focus loss, fling interruption and focus reveal inside scroll frames.

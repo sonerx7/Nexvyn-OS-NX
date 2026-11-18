@@ -1,0 +1,9 @@
+{
+  "title": "Bağlantı denetimi",
+  "refresh": "Bağlantıyı denetle",
+  "ready": "Hazır",
+  "loading": "Yükleniyor…",
+  "success": "İstek başarılı",
+  "error": "İstek başarısız; tekrar deneyin",
+  "offline": "Çevrimdışı"
+}

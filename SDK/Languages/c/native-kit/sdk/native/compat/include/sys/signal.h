@@ -10,6 +10,16 @@
 #include_next <sys/signal.h>
 #undef sigaction
 
+/* newlib shifts a signed int in these macros. On this target SIGUSR2 is 31;
+ * use the unsigned sigset_t width so valid high-bit signals have defined masks.
+ * No layout/function/ordinal change; callers adopting this fix must rebuild. */
+#undef sigaddset
+#undef sigdelset
+#undef sigismember
+#define sigaddset(what, sig) (*(what) |= ((sigset_t)1u << (sig)), 0)
+#define sigdelset(what, sig) (*(what) &= ~((sigset_t)1u << (sig)), 0)
+#define sigismember(what, sig) (((*(what)) & ((sigset_t)1u << (sig))) != 0)
+
 #undef SA_NOCLDSTOP
 #define SA_NOCLDSTOP 0x1
 #undef SA_SIGINFO

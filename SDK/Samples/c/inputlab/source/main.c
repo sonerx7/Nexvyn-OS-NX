@@ -17,23 +17,24 @@ void app_draw(float w, float h) {
         sys_log("Layout %s %.0f %.0f", compact ? "compact" : "wide", w, h);
         lastw = w; lasth = h;
     }
-    const char* modes[] = {"Touch", "Gamepad", "Keyboard / mouse"};
-    char status[128], label[40];
+    const char* modes[] = {TR("mode.touch"), TR("mode.pad"), TR("mode.keyboard")};
+    char status[128], label[96];
     gfx_clear(theme_color("window")); gfx_color(theme_color("text"));
-    gfx_text("Input Lab", 20, 16, 19, "bold", "left", 0);
-    gfx_text(compact ? "Touch, scroll, type and try two fingers" : "Drag sliders, swipe inside frames, type and try two fingers", 20, 48, 13.8f, NULL, "left", 0);
+    gfx_text(TR("title"), 20, 16, 19, "bold", "left", 0);
+    gfx_text(compact ? TR("hint.compact") : TR("hint.wide"), 20, 48, 13.8f, NULL, "left", 0);
     selected = ui_dropdown("mode", modes, 3, selected, 20, 80, 230, 30);
-    ui_textfield("name", name, sizeof name, compact ? 20 : 270, 80+shift, compact ? w-40 : w-290, 30, "Type here", NULL);
+    ui_textfield("name", name, sizeof name, compact ? 20 : 270, 80+shift, compact ? w-40 : w-290, 30, TR("placeholder"), NULL);
     volume = ui_slider("volume", volume, 0, 1, 20, 126+shift, w-40, 0);
     snprintf(status, sizeof status, "Value %.2f | Pinch %.2f | Rotation %.2f", volume, zoom, angle);
     if (strcmp(status, last)) { sys_log("%s", status); snprintf(last, sizeof last, "%s", status); }
-    if (compact) snprintf(status, sizeof status, "Value %.2f | Pinch %.2f", volume, zoom);
+    if (compact) snprintf(status, sizeof status, "%s %.2f | %s %.2f", TR("value"), volume, TR("pinch"), zoom);
+    else snprintf(status, sizeof status, "%s %.2f | %s %.2f | %s %.2f", TR("value"), volume, TR("pinch"), zoom, TR("rotation"), angle);
     gfx_text(status, 20, 164+shift, 13.8f, NULL, "left", 0);
     ui_beginScroll("outer", 20, 200+shift, w-40, h-220-shift, 1100, 0, NULL);
-    gfx_text(compact ? "Nested frame: swipe rows" : "Outer frame: swipe this text or any row", 12, 8, 15, "bold", "left", 0);
+    gfx_text(compact ? TR("frame.compact") : TR("frame.wide"), 12, 8, 15, "bold", "left", 0);
     ui_beginScroll("inner", 12, 44, w-90, 180, 900, 0, NULL);
-    for (int i=0;i<20;++i) { snprintf(label,sizeof label,"Inner row %d",i+1); ui_button(label,8,i*44,w-130,36,"default",NULL,true); }
+    for (int i=0;i<20;++i) { snprintf(label,sizeof label,"%s %d",TR("row.inner"),i+1); ui_button(label,8,i*44,w-130,36,"default",NULL,true); }
     ui_endScroll();
-    for (int i=0;i<18;++i) { snprintf(label,sizeof label,"Outer row %d",i+1); ui_button(label,12,244+i*44,w-90,36,"default",NULL,true); }
+    for (int i=0;i<18;++i) { snprintf(label,sizeof label,"%s %d",TR("row.outer"),i+1); ui_button(label,12,244+i*44,w-90,36,"default",NULL,true); }
     ui_endScroll();
 }

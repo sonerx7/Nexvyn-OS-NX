@@ -138,6 +138,8 @@ typedef struct nxn_caps {
 } nxn_caps;
 
 /* Fills min(out->size, sizeof(nxn_caps)) bytes. out->size must be set (NXN_STRUCT_INIT).
+ * NXN_OK, or NXN_ERR_INVALID for NULL or a size smaller than the size field.
+ * Features and GL ceilings are runtime advertisements, not hardware verification.
  * Thread: any thread (it needs no app state). Memory: written into the caller's struct. */
 NXN_API nxn_result nxn_caps_get(nxn_caps* out);
 

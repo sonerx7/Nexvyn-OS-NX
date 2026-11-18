@@ -105,7 +105,7 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
 
 - [ ] Every file is complete (no "..." or "rest unchanged"), with its path in the bundle.
 - [ ] I answered in the user's language; the app's texts are in English plus the languages the user asked for.
-- [ ] I said how to check it (`lua_check.py` / `js_check.mjs` / `py_check.py` / `rt_check.py`, or `nxv check`) and
+- [ ] I said how to check it (`python SDK/Tools/nxv/nxv.py check <folder>`) and
       how to run it (copy to `sdmc:/NexvynOS/Applications/<Name>.nxvapp/`, or Studio → Run).
 - [ ] I listed what I am unsure about instead of guessing silently.
 - [ ] For a store submission: `store.json` with `subtitle` / `description` in English at least (more languages when

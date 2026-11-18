@@ -1,11 +1,20 @@
 # Release notes / Changelog
 
+## [1.3.28] - 2026-11-18
+
+### Smoother desktop and bulk installs
+
+- A focused or hovered window that is idle is redrawn only when focus, text input or the pointer changes (`perf.focusIdle`, default on; `false` restores the old behaviour).
+- The system widget reports CPU and GPU load against the current frame rate instead of showing 100% while idle.
+- Installing several packages together paces the main-thread commits and retries a briefly locked app folder without blocking frames; the old version stays in place until the new one loads.
+- The SDK ships an AI starter pack with recipes and golden projects for script, network, 2D game and native apps.
+
 ## [1.3.27] - 2026-11-17
 
 ### YousTube playback and listening
 
 - Use the system CA bundle and TLS policy for media transfers; omit signed media URLs from diagnostics.
-- Add visitor-aware VISIONOS HLS discovery while retaining progressive MP4 and custom client configuration.
+- Add visitor-aware HLS discovery while retaining progressive MP4 and custom client configuration.
 - Add YousTube Music with independent preferences and a themed now-playing card, using the shared player and controls.
 - Add direct MP4 downloads with format selection, folder choice, progress, cancellation and separate staging files.
 - Localize the new controls in en, tr, de, es, fr, ja, ko and zh.

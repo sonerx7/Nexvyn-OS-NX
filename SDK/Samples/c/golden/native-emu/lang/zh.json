@@ -1,0 +1,7 @@
+{
+  "title": "native-emu",
+  "hint": "确认 / Enter / 触摸操作；Plus暂停；返回退出。",
+  "score": "得分：{0}",
+  "success": "结果已验证",
+  "error": "意外结果"
+}

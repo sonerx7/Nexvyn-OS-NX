@@ -1,0 +1,7 @@
+{
+  "title": "native-emu",
+  "hint": "Confirmar / Enter / tocar; Plus pausa; Atrás sale.",
+  "score": "Puntos: {0}",
+  "success": "Resultado verificado",
+  "error": "Resultado inesperado"
+}

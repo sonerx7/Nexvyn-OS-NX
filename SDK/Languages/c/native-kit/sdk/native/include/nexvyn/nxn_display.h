@@ -47,6 +47,7 @@ NXN_API nxn_result nxn_display_open(const nxn_display_params* params, nxn_displa
 /* Thread: the display's thread. Memory: frees the handle; it must not be used afterwards. */
 NXN_API void nxn_display_close(nxn_display* d);
 /* Publishes the frame and paces to the display (counts as "alive" for the not-responding check).
+ * NXN_ERR_SYSTEM: Nexvyn OS could not track the frame on the GPU (a lost context); the frame is dropped.
  * Thread: the display's thread. Memory: none. */
 NXN_API nxn_result nxn_display_swap(nxn_display* d);
 /* Thread: the display's thread. Memory: written into the caller's variables (either may be NULL). */
@@ -55,7 +56,8 @@ NXN_API nxn_result nxn_display_size(nxn_display* d, uint32_t* width, uint32_t* h
  * (0, 0: the size of the current mode) and the same context stays current. Call it on the thread that owns the
  * context, between frames; reset glViewport afterwards. The size is never changed behind the app's back: an app that
  * does not call this keeps its surface and the system scales it. On failure the old size is restored when possible
- * (NXN_ERR_SYSTEM; nxn_last_error() says why). Thread: the display's thread. Memory: none. */
+ * (NXN_ERR_SYSTEM; nxn_last_error() says why). NXN_ERR_BUSY: zero-copy frames are still in flight on the GPU after about
+ * 250 ms; the old size stays and the call can be repeated on a later frame. Thread: the display's thread. Memory: none. */
 NXN_API nxn_result nxn_display_resize(nxn_display* d, uint32_t width, uint32_t height);
 /* GL / GLES entry points for a loader (glad: gladLoadGLLoader((GLADloadproc)nxn_display_proc)).
  * Thread: call it, and the functions it returns, only on the display's thread. Memory: the returned pointers are

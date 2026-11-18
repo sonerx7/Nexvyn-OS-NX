@@ -551,8 +551,11 @@ int __wrap_poll(struct pollfd* fds, nfds_t nfds, int timeout) {
 
         if (nsock) {
             if (!socks) {
-                socks = (struct pollfd*)malloc(nsock * sizeof *socks);
-                sock_idx = (nfds_t*)malloc(nsock * sizeof *sock_idx);
+                // nfds is fixed for the whole call (and capped at 4096). A later
+                // readiness scan can classify more entries as sockets after fd reuse;
+                // scratch must not retain only the first scan's smaller nsock count.
+                socks = (struct pollfd*)malloc(nfds * sizeof *socks);
+                sock_idx = (nfds_t*)malloc(nfds * sizeof *sock_idx);
                 if (!socks || !sock_idx) {
                     result = NXC_FAIL(ENOMEM);
                     break;

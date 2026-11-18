@@ -8,8 +8,11 @@
  * sandboxed by the kernel; these helpers keep a well-behaved app inside its folders, and Store review checks that
  * apps use them.
  *
- * Threads: every function may be called from any app thread; two threads writing the same file race like any file
- * access (nxn_fs_write replaces the whole file atomically, so a reader sees the old or the new content). Memory: the
+ * Threads: every function may be called from any app thread. Helper reads/writes are serialized per app, so
+ * nxn_fs_read observes complete old or new bytes. Raw stdio/POSIX access through nxn_fs_path is outside that lock.
+ * Replacement uses rename when available, otherwise a recoverable two-rename swap: raw readers can see a temporary
+ * missing target. After interruption, helper reads can use the old backup; incomplete temporary bytes are not read.
+ * Reserve the .tmp and .nxn-old~ siblings of helper-written files. This is not fsync/power-loss durability. Memory: the
  * caller owns every buffer it passes in; the library keeps none of them and returns no allocation. */
 #ifndef NEXVYN_NXN_FS_H
 #define NEXVYN_NXN_FS_H
@@ -33,7 +36,7 @@ typedef enum nxn_dir {
 NXN_API nxn_result nxn_fs_path(nxn_dir dir, const char* rel, char* out, size_t out_size);
 /* Creates the folder rel (and its parents) inside a writable dir. */
 NXN_API nxn_result nxn_fs_mkdirs(nxn_dir dir, const char* rel);
-/* Writes a whole file atomically (temporary file, then rename). Refused for NXN_DIR_BUNDLE. */
+/* Writes a complete file with recoverable replacement (see above). Refused for NXN_DIR_BUNDLE. */
 NXN_API nxn_result nxn_fs_write(nxn_dir dir, const char* rel, const void* data, size_t bytes);
 /* Reads a whole file into buf. *read_bytes gets the size; NXN_ERR_TOO_SMALL when it does not fit (nothing read). */
 NXN_API nxn_result nxn_fs_read(nxn_dir dir, const char* rel, void* buf, size_t cap, size_t* read_bytes);

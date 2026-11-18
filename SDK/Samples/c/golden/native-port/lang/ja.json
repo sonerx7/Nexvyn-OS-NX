@@ -1,0 +1,7 @@
+{
+  "title": "native-port",
+  "hint": "確認 / Enter / タップで操作。Plusで一時停止、戻るで終了。",
+  "score": "スコア: {0}",
+  "success": "結果を確認しました",
+  "error": "予期しない結果"
+}

@@ -188,7 +188,12 @@ void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset)
     live_set_range(m, 0, pages);
     if (!anon && shared && (prot & PROT_WRITE)) {
         m->fd = dup(fd);
-        m->shared_file = m->fd >= 0;
+        if (m->fd < 0) {
+            int e = errno;
+            free_map(m); /* Not published: release all backing without closing the caller's fd. */
+            return (errno = e, MAP_FAILED);
+        }
+        m->shared_file = 1;
     }
     mutexLock(&g_map_mu);
     m->next = g_maps;

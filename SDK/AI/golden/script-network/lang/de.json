@@ -1,0 +1,9 @@
+{
+  "title": "Verbindungstest",
+  "refresh": "Verbindung prüfen",
+  "ready": "Bereit",
+  "loading": "Lädt…",
+  "success": "Anfrage erfolgreich",
+  "error": "Anfrage fehlgeschlagen; erneut versuchen",
+  "offline": "Offline"
+}

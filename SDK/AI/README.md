@@ -9,6 +9,13 @@ With these files, an AI assistant can generate complete, profiled apps and games
 Runtimes** (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, and **Native C/C++ ABI v1**) using the **NXUI
 Retained UI Engine (`nxui.*` / `nxn_nxui_*`)** and **NexGFX PBR 3D Renderer (`g3d.*`)**.
 
+## Start here (AI agents)
+
+Open **[AGENT.md](AGENT.md)** first. It gives the read order, the keyword lookup map ([map/](map/)), the
+capability and limits matrix ([CAPABILITIES.md](CAPABILITIES.md)), one recipe per project type
+([recipes/](recipes/)), a golden project per recipe that builds with this kit ([golden/](golden/)) and the
+validation flow ([CHECK.md](CHECK.md)).
+
 ## Context Files
 
 | File | Purpose |

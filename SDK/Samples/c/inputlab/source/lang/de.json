@@ -1,0 +1,18 @@
+{
+  "title": "Eingabelabor",
+  "hint.compact": "Tippen, wischen, zwei Finger",
+  "hint.wide": "Regler ziehen, Bereiche wischen, tippen und zwei Finger testen",
+  "mode.touch": "Touch",
+  "mode.pad": "Gamepad",
+  "mode.keyboard": "Tastatur / Maus",
+  "placeholder": "Hier eingeben",
+  "frame.compact": "Innenbereich: Zeilen wischen",
+  "frame.wide": "Außenbereich: Text oder Zeilen wischen",
+  "row.inner": "Innere Zeile",
+  "row.outer": "Äußere Zeile",
+  "value": "Wert",
+  "pinch": "Zoom",
+  "rotation": "Drehung",
+  "fingers": "Finger",
+  "error.gl": "OpenGL ist nicht verfügbar"
+}

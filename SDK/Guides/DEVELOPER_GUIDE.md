@@ -53,6 +53,20 @@ with real input. Multitouch uses stable contact IDs and explicit ownership; do n
 assume a single-pointer widget supports concurrent fingers. Cancel interactions
 on focus loss, suspend and close without generating a click.
 
+Treat direct button, stick, semantic-action and touch queries as foreground input.
+Background, hidden and modal-blocked callbacks receive neutral activation values
+on hosts with the foreground-query fix; controller count remains readable topology.
+Do not use a raw held query as a new press after focus changes. Cancel app-owned
+gestures and pending actions explicitly, and keep events tied to their window.
+Test focus handoff with held controls on the actual minimum supported host; older
+hosts may still expose global direct-query state. This host fix needs no app rebuild.
+
+Hosts with script frame cancellation also discard pending `pressed`, `released`
+and key-press queries on focus loss/suspend before calling your lifecycle handler.
+A rapid focus return cannot replay those host-held edges. Clear your own cached
+presses, gestures and camera movement in that handler; host cancellation does not
+rewrite application variables or generate a final click/release event.
+
 Use one event owner per input stream. In an SDL port, use the shared driver
 before adding a second controller-to-mouse implementation. Avoid duplicate clicks
 from simultaneous physical, synthetic and touch events. See the

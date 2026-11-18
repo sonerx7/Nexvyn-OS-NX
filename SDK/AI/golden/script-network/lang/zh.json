@@ -1,0 +1,9 @@
+{
+  "title": "连接测试",
+  "refresh": "检查连接",
+  "ready": "就绪",
+  "loading": "加载中…",
+  "success": "请求成功",
+  "error": "请求失败，请重试",
+  "offline": "离线"
+}

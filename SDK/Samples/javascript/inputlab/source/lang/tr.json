@@ -1,0 +1,18 @@
+{
+  "title": "Girdi Laboratuvarı",
+  "hint.compact": "Dokun, kaydır, iki parmağı dene",
+  "hint.wide": "Sürgüyü sürükle, panelleri kaydır, yaz ve iki parmağı dene",
+  "mode.touch": "Dokunmatik",
+  "mode.pad": "Oyun kumandası",
+  "mode.keyboard": "Klavye / fare",
+  "placeholder": "Buraya yaz",
+  "frame.compact": "İç panel: satırları kaydır",
+  "frame.wide": "Dış panel: metni veya satırları kaydır",
+  "row.inner": "İç satır",
+  "row.outer": "Dış satır",
+  "value": "Değer",
+  "pinch": "Ölçek",
+  "rotation": "Dönüş",
+  "fingers": "Parmak",
+  "error.gl": "OpenGL kullanılamıyor"
+}
