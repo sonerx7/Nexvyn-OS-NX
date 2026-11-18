@@ -133,6 +133,17 @@
       }
     ]
   },
+  "com.nexvyn.blender": {
+    "added": "2026-11-18",
+    "updated": "2026-11-18",
+    "version": "4.2.0",
+    "history": [
+      {
+        "version": "4.2.0",
+        "date": "2026-11-18"
+      }
+    ]
+  },
   "com.nexvyn.demo.graphics": {
     "added": "2026-11-09",
     "updated": "2026-11-09",

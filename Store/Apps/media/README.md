@@ -4,6 +4,7 @@
 |---|---|---|---|
 | <img src="modeler/icon.png" width="32"> | [3D Modeler](modeler/) · ships with Nexvyn OS | 1.0 | Low-poly 3D modeling, OBJ and STL |
 | <img src="viewer3d/icon.png" width="32"> | [3D Viewer](viewer3d/) | 1.1.0 | Spin, zoom and inspect OBJ and STL models |
+| <img src="blender-nx/icon.png" width="32"> | [Blender-NX](blender-nx/) | 4.2.0 | 3D modeling, sculpting & nodes (by sonerx7) |
 | <img src="chiptrack/icon.png" width="32"> | [Chiptrack](chiptrack/) | 1.0 | Make chiptune music, export WAV |
 | <img src="chordbook/icon.png" width="32"> | [Chordbook](chordbook/) | 1.0 | Chords, scales and progressions |
 | <img src="drums/icon.png" width="32"> | [Drum Machine](drums/) | 1.1.0 | 16 steps, accents and nine styles |

@@ -1,0 +1,68 @@
+{
+  "kind": "app",
+  "features": [
+    "3d",
+    "offline",
+    "touch",
+    "controller",
+    "keyboard"
+  ],
+  "tech": "native",
+  "tags": [
+    "blender",
+    "3d",
+    "modeling",
+    "sculpting",
+    "geonodes",
+    "cad"
+  ],
+  "age": "4+",
+  "license": "GPL-3.0",
+  "subtitle": {
+    "en": "3D modeling, sculpting & nodes (by sonerx7)",
+    "tr": "3D modelleme, heykel ve düğüm (by sonerx7)",
+    "de": "3D-Modellierung & Sculpting (by sonerx7)",
+    "es": "Modelado 3D, escultura y nodos (sonerx7)",
+    "fr": "Modélisation 3D, sculpture & nœuds (sonerx7)",
+    "ja": "3Dモデリング・スカルプト・ノード (sonerx7)",
+    "ko": "3D 모델링·스컬프팅·노드 (by sonerx7)",
+    "zh": "3D建模、雕刻与几何节点 (by sonerx7)"
+  },
+  "description": {
+    "en": "Blender-NX brings the Blender 4.2 LTS creation suite natively to Nexvyn OS on Nintendo Switch (N3-N4 256MB profile). Orbit, sculpt, unwrap UVs, inspect Principled BSDF v2 materials, build Geometry Nodes graphs and play keyframe animations at 60 FPS with full Joy-Con, Pro Controller, touch and mouse support. Port by sonerx7.\n\n• 7 dedicated workspaces: Layout, Modeling, Sculpting, UV Edit, Shading, Animation and GeoNodes\n• OpenGL 4.3 EEVEE Next viewport with Studio, Red Wax MatCap, Wireframe and Material Preview\n• Interactive 3D Sculpting brushes (Draw, Clay, Smooth, Flatten, Inflate, Grab) with X-Symmetry\n• Modifier stack (Subdivision Surface, Mirror, Solidify) and Principled BSDF v2 shader inspector\n• Export scenes directly to .blend, .obj, .gltf and .stl formats\n• Full controller mapping: L-Stick orbit, R-Stick pan, ZL/ZR zoom, L/R switch workspaces",
+    "tr": "Blender-NX, Blender 4.2 LTS 3D tasarım paketini Nexvyn OS N3-N4 (256MB) altyapısıyla Nintendo Switch'e yerel olarak getirir. Tam Joy-Con, Pro Controller, dokunmatik ve fare desteğiyle 60 FPS'de 3D modelleme, Red Wax heykel tıraşlık, UV düzenleme, Principled BSDF v2 materyaller, Geometry Nodes ve Dope Sheet animasyonları oluşturun. Port by sonerx7.\n\n• 7 çalışma alanı: Layout, Modeling, Sculpting, UV Edit, Shading, Animasyon ve GeoNodes\n• Studio, Red Wax MatCap, Wireframe ve Material Preview modlu OpenGL 4.3 EEVEE Next görünümü\n• X-Simetrisi destekli interaktif 3D Heykel fırçaları (Draw, Clay, Smooth, Flatten, Inflate, Grab)\n• Modifikatör yığını (Subdivision Surface, Mirror, Solidify) ve Principled BSDF v2 denetleyicisi\n• Sahneleri .blend, .obj, .gltf ve .stl formatlarında dışa aktarma\n• Tam kumanda uyumu: L-Stick Orbit, R-Stick Pan, ZL/ZR Zoom, L/R sekme geçişi",
+    "de": "Blender-NX bringt die Blender 4.2 LTS 3D-Suite nativ auf Nexvyn OS. Port by sonerx7.\n\n• 7 Arbeitsbereiche inkl. Sculpting, UV Edit, Shading, Animation und GeoNodes\n• OpenGL 4.3 EEVEE Next Viewport mit MatCap und Principled BSDF v2\n• Export als .blend, .obj, .gltf und .stl",
+    "es": "Blender-NX trae la suite 3D Blender 4.2 LTS de forma nativa a Nexvyn OS. Port by sonerx7.\n\n• 7 espacios de trabajo con Escultura, UV, Shading, Animación y GeoNodes\n• Visor OpenGL 4.3 EEVEE Next con MatCap y Principled BSDF v2\n• Exportación a .blend, .obj, .gltf y .stl",
+    "fr": "Blender-NX apporte la suite 3D Blender 4.2 LTS nativement sur Nexvyn OS. Port by sonerx7.\n\n• 7 espaces de travail : Modélisation, Sculpture, UV, Shading, Animation et GeoNodes\n• Vue OpenGL 4.3 EEVEE Next avec MatCap et Principled BSDF v2\n• Export aux formats .blend, .obj, .gltf et .stl",
+    "ja": "Blender-NX は Blender 4.2 LTS 3D制作スイートを Nexvyn OS にネイティブ移植。Port by sonerx7。\n\n• Layout、Modeling、Sculpting、UV Edit、Shading、Anim、GeoNodes の7ワークスペース\n• OpenGL 4.3 EEVEE Next / Red Wax MatCap / Principled BSDF v2\n• .blend / .obj / .gltf / .stl エクスポート対応",
+    "ko": "Blender-NX는 Blender 4.2 LTS 3D 제작 스위트를 Nexvyn OS에 네이티브로 포팅했습니다. Port by sonerx7.\n\n• Layout, Modeling, Sculpting, UV Edit, Shading, Anim, GeoNodes 7개 작업 공간\n• OpenGL 4.3 EEVEE Next 및 Principled BSDF v2\n• .blend, .obj, .gltf, .stl 내보내기",
+    "zh": "Blender-NX 将 Blender 4.2 LTS 原生移植至 Nexvyn OS N3-N4 平台。Port by sonerx7。\n\n• 7大工作区：Layout、Modeling、Sculpting、UV Edit、Shading、Anim、GeoNodes\n• OpenGL 4.3 EEVEE Next 与 Principled BSDF v2 材质检视\n• 支持导出 .blend、.obj、.gltf 与 .stl"
+  },
+  "shots": [
+    [
+      "wait 5",
+      "wclick 0.31 0.58",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.365 0.02",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.42 0.02",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.57 0.02",
+      "wait 2.5"
+    ],
+    [
+      "wclick 0.615 0.02",
+      "wait 2.5"
+    ]
+  ],
+  "changelog": {
+    "en": "v4.2.0: Full Blender 4.2 LTS UI redesign with vector icons, dynamic 3D navigation gizmo, vertical Properties icon rail, UV Editor, Dope Sheet, Geometry Nodes and native N3-N4 fullscreen support. Port by sonerx7.",
+    "tr": "v4.2.0: Vektörel ikonlar, dinamik 3D navigation gizmo, dikey Properties ikon şeridi, UV Editörü, Dope Sheet, Geometry Nodes ve yerel N3-N4 tam ekran desteğiyle tam Blender 4.2 LTS arayüzü. Port by sonerx7."
+  }
+}

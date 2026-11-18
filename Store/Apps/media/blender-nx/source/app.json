@@ -1,0 +1,57 @@
+{
+  "id": "com.nexvyn.blender",
+  "name": {
+    "en": "Blender-NX",
+    "tr": "Blender-NX",
+    "de": "Blender-NX",
+    "es": "Blender-NX",
+    "fr": "Blender-NX",
+    "ja": "Blender-NX",
+    "ko": "Blender-NX",
+    "zh": "Blender-NX"
+  },
+  "description": {
+    "en": "Blender 4.2 LTS native 3D creation suite — modeling, sculpting, Principled BSDF v2, Geometry Nodes & animation on Nexvyn OS N3-N4. Port by sonerx7.",
+    "tr": "Blender 4.2 LTS yerel 3D tasarım paketi — modelleme, heykeltıraşlık, Principled BSDF v2, Geometry Nodes ve animasyon; Nexvyn OS N3-N4. Port by sonerx7.",
+    "de": "Blender 4.2 LTS native 3D-Suite — Modellierung, Sculpting, Principled BSDF v2, Geometry Nodes & Animation auf Nexvyn OS N3-N4. Port by sonerx7.",
+    "es": "Suite 3D nativa Blender 4.2 LTS — modelado, escultura, Principled BSDF v2, Geometry Nodes y animación en Nexvyn OS N3-N4. Port by sonerx7.",
+    "fr": "Suite 3D native Blender 4.2 LTS — modélisation, sculpture, Principled BSDF v2, Geometry Nodes et animation sur Nexvyn OS N3-N4. Port by sonerx7.",
+    "ja": "Blender 4.2 LTS ネイティブ3D制作スイート — モデリング、スカルプト、Principled BSDF v2、Geometry Nodes、アニメーション対応。Port by sonerx7.",
+    "ko": "Blender 4.2 LTS 네이티브 3D 제작 제품군 — 모델링, 스컬프팅, Principled BSDF v2, Geometry Nodes 및 애니메이션. Port by sonerx7.",
+    "zh": "Blender 4.2 LTS 原生3D创作套件 — 建模、雕刻、Principled BSDF v2、几何节点与动画。Port by sonerx7."
+  },
+  "version": "4.2.0",
+  "author": "sonerx7",
+  "homepage": "https://github.com/sonerx7/Blender-NX",
+  "category": "media",
+  "runtime": "native",
+  "mode": "fullscreen",
+  "main": "nexvyn-blender.nxvmod",
+  "minNative": "1.2",
+  "targetNative": "2.0",
+  "minSdk": "1.13",
+  "targetSdk": "1.15",
+  "icon": "icon.png",
+  "liveResize": true,
+  "loadingHint": false,
+  "singleInstance": true,
+  "gamepad": true,
+  "fileTypes": [
+    ".blend",
+    ".obj",
+    ".gltf",
+    ".stl",
+    ".ply"
+  ],
+  "permissions": [
+    "files"
+  ],
+  "memory": 256,
+  "window": {
+    "width": 1280,
+    "height": 720,
+    "minWidth": 640,
+    "minHeight": 400,
+    "resizable": true
+  }
+}
