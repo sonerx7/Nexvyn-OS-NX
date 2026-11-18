@@ -1,5 +1,13 @@
 # Release notes / Changelog
 
+## [1.3.28-beta.2] - 2026-11-19
+
+### Fixes in-OS beta install
+
+- The updater accepts a pre-release build after installing it: 1.3.28-beta.1 reported `1.3.28` while its tag was `v1.3.28-beta.1`, so the placed file was taken for a wrong build and the backup was restored. The build now carries the full version (`1.3.28-beta.2`), and a release-only build matches its pre-release tag.
+- Update offers follow version order: pre-releases sort by numeric identifiers (`beta.2` < `beta.10`) and come before their final release; a beta user is offered later betas and the final, a final user never an older beta.
+- A failed install for a version mismatch shows its own message (`settings.upd_err_version`) in eight languages.
+
 ## [1.3.28] - 2026-11-18
 
 ### Smoother desktop and bulk installs

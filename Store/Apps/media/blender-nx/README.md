@@ -1,6 +1,6 @@
 # Blender-NX (Blender 4.2 LTS)
 
-**Port by sonerx7** — Native 3D creation suite ported for **Nexvyn OS** (Nintendo Switch, N3-N4 Execution Foundation).
+**Port by sonerx7** — Native 3D creation suite ported for **Nexvyn OS** (on the console, N3-N4 Execution Foundation).
 
 | Property | Value |
 | :--- | :--- |
