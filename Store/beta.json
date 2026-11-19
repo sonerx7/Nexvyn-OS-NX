@@ -120,16 +120,16 @@
         "zh": "RA2 Yuri Port"
       },
       "description": {
-        "en": "Choose your installed game folder. Original game files are not included. Your files stay in place.\nRequired: gamemd.exe, ra2.mix and ra2md.mix, plus the remaining files from your game installation.\nLeft stick: cursor. A/ZR: select or drag. X/ZL: right click. D-pad: pan map. B/Plus: Escape. Minus: Tab. Y: keyboard. Touch: tap or drag. Mouse and keyboard keep their normal controls. Optional multitouch enables the shared two-finger/long-press gestures; engine zoom support is not promised. Original in-game text follows your game files, not the launcher's eight languages.",
-        "tr": "Kurulu oyun klasörünüzü seçin. Orijinal oyun dosyaları dahil değildir. Dosyalarınız yerinde kalır.\nGerekli: gamemd.exe, ra2.mix, ra2md.mix ve oyun kurulumunuzdaki diğer dosyalar.\nSol analog: imleç. A/ZR: seç veya sürükle. X/ZL: sağ tık. Yön tuşları: haritayı kaydır. B/Plus: Escape. Minus: Tab. Y: klavye. Dokunmatik: dokun veya sürükle. Fare ve klavye normal kontrollerini korur. Çoklu dokunma seçeneği ortak iki parmak/uzun basma hareketlerini açar; motorun yakınlaştırma desteği garanti edilmez. Oyun içi metinlerin dili başlatıcıdan değil oyun dosyalarınızdan gelir.",
-        "de": "Wähle deinen installierten Spielordner. Originaldateien sind nicht enthalten. Deine Dateien bleiben unverändert.\nBenötigt: gamemd.exe, ra2.mix, ra2md.mix und die übrigen Dateien deiner Installation.\nLinker Stick: Zeiger. A/ZR: wählen oder ziehen. X/ZL: Rechtsklick. Steuerkreuz: Karte bewegen. B/Plus: Escape. Minus: Tab. Y: Tastatur. Touch: tippen oder ziehen. Maus und Tastatur behalten ihre Steuerung. Optionales Multitouch aktiviert gemeinsame Zwei-Finger-/Langdruckgesten; Spielzoom ist nicht zugesichert. Spieltexte richten sich nach deinen Spieldateien, nicht den acht Launcher-Sprachen.",
-        "es": "Elige la carpeta del juego instalado. No se incluyen archivos originales. Tus archivos permanecen en su sitio.\nSe necesitan gamemd.exe, ra2.mix, ra2md.mix y los demás archivos de tu instalación.\nStick izquierdo: cursor. A/ZR: seleccionar o arrastrar. X/ZL: clic derecho. Cruceta: mover mapa. B/Plus: Escape. Minus: Tab. Y: teclado. Pantalla: tocar o arrastrar. Ratón y teclado conservan sus controles. El modo multitáctil opcional activa gestos compartidos de dos dedos/pulsación larga; no garantiza zoom del motor. El idioma del juego depende de tus archivos, no de los ocho idiomas del lanzador.",
-        "fr": "Choisissez le dossier du jeu installé. Les fichiers originaux ne sont pas inclus. Vos fichiers restent en place.\nRequis : gamemd.exe, ra2.mix, ra2md.mix et les autres fichiers de votre installation.\nStick gauche : curseur. A/ZR : sélectionner ou glisser. X/ZL : clic droit. Croix : déplacer la carte. B/Plus : Échap. Minus : Tab. Y : clavier. Écran tactile : toucher ou glisser. Souris et clavier gardent leurs commandes. Le multitouch optionnel active les gestes communs à deux doigts/appui long ; le zoom du moteur n'est pas garanti. La langue du jeu dépend de vos fichiers, pas des huit langues du lanceur.",
-        "ja": "インストール済みゲームのフォルダーを選択してください。元のゲームファイルは含まれません。ファイルは移動されません。\n必要：gamemd.exe、ra2.mix、ra2md.mix、およびゲームのインストール先にある残りのファイル。\n左スティック：カーソル。A/ZR：選択・ドラッグ。X/ZL：右クリック。方向ボタン：マップ移動。B/Plus：Escape。Minus：Tab。Y：キーボード。タッチ：タップ・ドラッグ。マウスとキーボードは通常通り使用できます。任意のマルチタッチで2本指・長押しジェスチャーを有効にできますが、ゲームのズームは保証されません。ゲーム内言語はランチャーの8言語とは別で、ゲームファイルに従います。",
-        "ko": "설치된 게임 폴더를 선택하세요. 원본 게임 파일은 포함되지 않습니다. 파일은 그대로 유지됩니다.\n필수: gamemd.exe, ra2.mix, ra2md.mix 및 게임 설치의 나머지 파일.\n왼쪽 스틱: 커서. A/ZR: 선택 또는 끌기. X/ZL: 오른쪽 클릭. 방향 버튼: 지도 이동. B/Plus: Escape. Minus: Tab. Y: 키보드. 터치: 누르기 또는 끌기. 마우스와 키보드는 일반 조작을 유지합니다. 선택적 멀티터치는 두 손가락/길게 누르기 동작을 켭니다. 게임 확대 기능은 보장되지 않습니다. 게임 내 언어는 런처의 8개 언어가 아닌 게임 파일에 따릅니다.",
-        "zh": "请选择已安装游戏的文件夹。不包含原版游戏文件，您的文件会保留在原处。\n需要：gamemd.exe、ra2.mix、ra2md.mix，以及游戏安装目录中的其余文件。\n左摇杆：光标。A/ZR：选择或拖动。X/ZL：右键。方向键：移动地图。B/Plus：Escape。Minus：Tab。Y：键盘。触屏：轻触或拖动。鼠标和键盘保持常规操作。可选多点触控启用双指和长按手势，不保证游戏缩放功能。游戏内语言由游戏文件决定，与启动器的八种语言不同。"
+        "en": "Native Command & Conquer: Red Alert 2 & Yuri's Revenge port for Nexvyn OS with full native launcher, fast MIX I/O cache, Turkish RA2.CSF overlay, auto system language, Yuri mod selector, Auto Dock/Handheld resolution, live FPS HUD, customizable Gamepad/Touch/Keyboard+Mouse RTS controls, and in-game OS menu bar. Original game files are not included.",
+        "tr": "Nexvyn OS için yerel Command & Conquer: Red Alert 2 & Yuri's Revenge portu. Tam kapsamlı başlatıcı, hızlı MIX I/O önbelleği, Türkçe RA2.CSF yaması, otomatik sistem dili, Yuri mod seçici, Otomatik Dock/El modu çözünürlüğü, canlı FPS sayacı (HUD), özelleştirilebilir Gamepad/Dokunmatik/Klavye+Fare RTS kamera kontrolleri ve oyun içi OS üst menüsü içerir. Orijinal oyun dosyaları dahil değildir.",
+        "de": "Nativer Port von Command & Conquer: Red Alert 2 & Yuris Rache für Nexvyn OS mit nativem Launcher, schnellem MIX-I/O-Cache, automatischer Systemsprache, türkischem RA2.CSF-Overlay, Mod-Auswahl, Auto-Dock/Handheld-Auflösung, Live-FPS-HUD, anpassbarer Gamepad-/Touch-/Maus-Steuerung und OS-Menüleiste im Spiel. Originaldateien sind nicht enthalten.",
+        "es": "Port nativo de Command & Conquer: Red Alert 2 y Yuri's Revenge para Nexvyn OS con lanzador nativo, caché I/O rápido, idioma automático del sistema, parche turco RA2.CSF, selector de mods, resolución automática Dock/Portátil, contador FPS HUD, controles RTS personalizables y barra de menú del sistema. No incluye archivos originales.",
+        "fr": "Port natif de Command & Conquer : Red Alert 2 & La Revanche de Yuri pour Nexvyn OS avec lanceur natif, cache I/O rapide, langue système automatique, patch turc RA2.CSF, sélecteur de mods, résolution auto Dock/Portable, compteur FPS HUD, commandes RTS personnalisables et barre de menu OS en jeu. Fichiers originaux non inclus.",
+        "ja": "Nexvyn OS向けネイティブ版Red Alert 2 & ユリの復讐ポート。ネイティブランチャー、高速MIX I/Oキャッシュ、自動システム言語、Mod選択、ドック/携帯自動解像度、FPS HUDカウンター、カスタマイズ可能なRTSカメラ操作、ゲーム内OSメニューバーを搭載。元のゲームファイルは含まれません。",
+        "ko": "Nexvyn OS용 네이티브 Red Alert 2 & 유리의 복수 포트. 네이티브 런처, 고속 MIX I/O 캐시, 자동 시스템 언어, 모드 선택기, 독/휴대 자동 해상도, 실시간 FPS HUD, 사용자 지정 RTS 조작 및 게임 내 OS 메뉴 바 지원. 원본 게임 파일은 포함되지 않습니다.",
+        "zh": "Nexvyn OS 原生《红色警戒2：尤里的复仇》移植版，内置原生启动器、高速 MIX I/O 缓存、自动系统语言、Mod 选择器、底座/掌机自动分辨率、实时 FPS 计数器、可自定义手柄/触屏/键鼠 RTS 操作及游戏内系统菜单栏。不包含原版游戏文件。"
       },
-      "version": "1.0.1",
+      "version": "1.2.0",
       "author": "Westwood Studios / sonerx7",
       "category": "games",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/strategy/redalert2/icon.png",
@@ -146,8 +146,8 @@
       "featured": false,
       "license": "MIT",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Ports/strategy/redalert2/redalert2.nxvapp",
-      "size": 50856401,
-      "sha256": "19827ac8d14c409e31ada52ae6dbffd71ae03fc83bcf154905fd7ddc09757fee",
+      "size": 55597546,
+      "sha256": "1a8a39201244640315b70b3fd5013b0b91251f7a65c5e66ce9ae726ba0429670",
       "minSdk": "1.10",
       "targetSdk": "1.15",
       "subtitle": {
@@ -161,14 +161,14 @@
         "zh": "尤里的复仇：原生RTS测试版"
       },
       "changelog": {
-        "en": "Eight-language setup, persistent folders, safe legacy-data import and optional multitouch. Requires Nexvyn OS 1.3.26.",
-        "tr": "Sekiz dilli kurulum, kalıcı klasörler, güvenli eski veri aktarımı ve isteğe bağlı çoklu dokunma. Nexvyn OS 1.3.26 gerekir.",
-        "de": "Einrichtung in acht Sprachen, dauerhafte Ordner, sicherer Import alter Daten und optionales Multitouch. Benötigt Nexvyn OS 1.3.26.",
-        "es": "Configuración en ocho idiomas, carpetas permanentes, importación segura de datos anteriores y multitáctil opcional. Requiere Nexvyn OS 1.3.26.",
-        "fr": "Configuration en huit langues, dossiers persistants, import sûr des anciennes données et multitouch optionnel. Nécessite Nexvyn OS 1.3.26.",
-        "ja": "8言語の設定、永続フォルダー、旧データの安全な取り込み、任意のマルチタッチを追加。Nexvyn OS 1.3.26が必要です。",
-        "ko": "8개 언어 설정, 영구 폴더, 이전 데이터의 안전한 가져오기 및 선택적 멀티터치를 추가했습니다. Nexvyn OS 1.3.26이 필요합니다.",
-        "zh": "新增八种语言的设置、持久文件夹、安全导入旧数据和可选多点触控。需要Nexvyn OS 1.3.26。"
+        "en": "v1.2.0: Full native launcher, fast Switch MIX I/O cache for quicker loading, Auto system language + langmd_eng.mix & Turkish RA2.CSF support, Auto Dock/Handheld resolution toggle, live FPS HUD counter, 3-tab Gamepad/Touch/KB+M controls with button remapping, and expanded in-game OS menu bar. Built for Nexvyn OS 1.3.28 Beta 2 (Native SDK 1.2).",
+        "tr": "v1.2.0: Tam kapsamlı yerel başlatıcı, hızlı yükleme için Switch MIX I/O önbelleği, Otomatik sistem dili + İngilizce langmd_eng.mix ve Türkçe RA2.CSF desteği, Otomatik Dock/El modu çözünürlük ayarı, canlı FPS sayacı (HUD), tuş atamalı 3 sekmeli kontrol arayüzü ve genişletilmiş oyun içi OS üst menüsü. Nexvyn OS 1.3.28 Beta 2 (Native SDK 1.2) ile derlendi.",
+        "de": "v1.2.0: Nativer Launcher, schneller MIX-I/O-Cache, automatische Systemsprache + langmd_eng.mix & RA2.CSF, Auto-Dock/Handheld-Auflösung, Live-FPS-HUD, 3-Tab-Steuerung mit Tastenbelegung und erweiterte OS-Menüleiste im Spiel.",
+        "es": "v1.2.0: Lanzador nativo completo, caché I/O rápido, idioma automático + langmd_eng.mix y RA2.CSF, resolución automática Dock/Portátil, contador FPS HUD, controles en 3 pestañas y barra de menú OS ampliada.",
+        "fr": "v1.2.0 : Lanceur natif complet, cache I/O rapide, langue auto + langmd_eng.mix et RA2.CSF, résolution auto Dock/Portable, compteur FPS HUD, contrôles en 3 onglets et barre de menu OS enrichie.",
+        "ja": "v1.2.0: ネイティブランチャー、高速MIX I/Oキャッシュ、自動システム言語・英語/トルコ語対応、ドック/携帯自動解像度、FPS HUD、3タブ操作設定、拡張OSメニューバーを追加。",
+        "ko": "v1.2.0: 네이티브 런처, 고속 MIX I/O 캐시, 자동 시스템 언어 및 영어/터키어 지원, 독/휴대 자동 해상도, 실시간 FPS HUD, 3탭 조작 설정 및 확장된 게임 내 OS 메뉴 바 추가.",
+        "zh": "v1.2.0：全新原生启动器、高速 MIX I/O 缓存、自动系统语言与多语种支持、底座/掌机自动分辨率、实时 FPS HUD 计数器、三标签页操作自定义及扩展游戏内系统菜单栏。"
       },
       "minOs": "1.3.26",
       "minNative": "1.2",
@@ -183,7 +183,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-18"
+      "updated": "2026-11-19"
     },
     {
       "id": "com.nexvyn.emu.tinyemu",

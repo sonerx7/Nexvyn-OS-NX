@@ -10,27 +10,37 @@
     "ko": "RA2 Yuri Port",
     "zh": "RA2 Yuri Port"
   },
-  "version": "1.0.1",
+  "version": "1.2.0",
   "author": "Westwood Studios / sonerx7",
   "category": "games",
-  "targetSdk": "1.15",
-  "description": "Yuri's Revenge beta runtime with an eight-language setup launcher. Original game data is required.",
   "minSdk": "1.10",
+  "targetSdk": "1.15",
   "minNative": "1.2",
+  "targetNative": "1.2",
+  "minOs": "1.3.26",
   "runtime": "native",
   "main": "ra2.nxvmod",
+  "icon": "icon.png",
   "mode": "window",
   "window": {
     "width": 1280,
     "height": 720,
     "resizable": true
   },
-  "loadingHint": true,
+  "liveResize": true,
   "gamepad": true,
+  "loadingHint": true,
+  "description": {
+    "en": "Command & Conquer: Red Alert 2 & Yuri's Revenge native port for Nexvyn OS with full launcher, Turkish RA2.CSF support, mod selector, stable profile and RTS camera controls.",
+    "tr": "Nexvyn OS için tam kapsamlı Red Alert 2 & Yuri's Revenge native portu: havalı başlatıcı, Türkçe RA2.CSF yaması, mod seçimi, stabil profil ve pratik RTS kamera kontrolleri.",
+    "de": "Nativer Port von Red Alert 2 & Yuri's Revenge für Nexvyn OS mit Launcher, türkischem RA2.CSF-Patch, Mod-Auswahl, stabilem Profil und RTS-Kamerasteuerung.",
+    "es": "Port nativo de Red Alert 2 y Yuri's Revenge para Nexvyn OS con lanzador, soporte turco RA2.CSF, selector de mods, perfil estable y controles de cámara RTS.",
+    "fr": "Portage natif de Red Alert 2 & La Revanche de Yuri pour Nexvyn OS avec lanceur, patch turc RA2.CSF, sélecteur de mods, profil stable et caméra RTS.",
+    "ja": "Nexvyn OS向けRed Alert 2＆ユリの復讐ネイティブ移植。ランチャー、トルコ語RA2.CSF対応、Mod切替、安定プロファイル、RTSカメラ操作を搭載。",
+    "ko": "Nexvyn OS용 레드 얼럿 2 & 유리의 복수 네이티브 포트: 런처, 터키어 RA2.CSF 지원, 모드 선택, 안정 프로필 및 RTS 카메라 조작 지원.",
+    "zh": "适用于 Nexvyn OS 的红色警戒2及尤里的复仇原生移植版，内置启动器、土耳其语 RA2.CSF 补丁、Mod 切换、稳定配置与 RTS 镜头控制。"
+  },
   "permissions": [
     "files"
-  ],
-  "icon": "icon.png",
-  "targetNative": "1.2",
-  "minOs": "1.3.26"
+  ]
 }
