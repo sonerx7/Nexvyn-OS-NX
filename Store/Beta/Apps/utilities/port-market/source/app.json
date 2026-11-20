@@ -1,0 +1,44 @@
+{
+  "id": "com.sonerx7.portmarket",
+  "name": {
+    "en": "Port Market",
+    "tr": "Port Market",
+    "de": "Port Market",
+    "es": "Port Market",
+    "fr": "Port Market",
+    "ja": "Port Market",
+    "ko": "Port Market",
+    "zh": "Port Market"
+  },
+  "description": {
+    "en": "Your Nexvyn OS port library",
+    "tr": "Nexvyn OS port kitaplığın",
+    "de": "Deine Nexvyn-OS-Portbibliothek",
+    "es": "Tu biblioteca de ports de Nexvyn OS",
+    "fr": "Votre bibliothèque de portages Nexvyn OS",
+    "ja": "Nexvyn OSの移植アプリライブラリ",
+    "ko": "Nexvyn OS 포트 라이브러리",
+    "zh": "你的 Nexvyn OS 移植库"
+  },
+  "version": "0.2.1",
+  "build": 3,
+  "type": "app",
+  "author": "sonerx7",
+  "license": "GPL-3.0-or-later",
+  "category": "utilities",
+  "runtime": "js",
+  "main": "main.js",
+  "icon": "icon.png",
+  "permissions": [
+    "network"
+  ],
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "gamepad": true,
+  "liveResize": true,
+  "window": {
+    "width": 760,
+    "height": 520,
+    "resizable": true
+  }
+}

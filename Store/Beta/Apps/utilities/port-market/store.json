@@ -1,0 +1,49 @@
+{
+  "kind": "app",
+  "category": "utilities",
+  "features": [
+    "online",
+    "touch",
+    "controller",
+    "keyboard"
+  ],
+  "tags": [
+    "port",
+    "library",
+    "package"
+  ],
+  "age": "everyone",
+  "subtitle": {
+    "en": "Your Nexvyn OS port library",
+    "tr": "Nexvyn OS port kitaplığın",
+    "de": "Deine Nexvyn-OS-Portbibliothek",
+    "es": "Tu biblioteca de ports de Nexvyn OS",
+    "fr": "Votre bibliothèque de portages Nexvyn OS",
+    "ja": "Nexvyn OSの移植アプリライブラリ",
+    "ko": "Nexvyn OS 포트 라이브러리",
+    "zh": "你的 Nexvyn OS 移植库"
+  },
+  "description": {
+    "en": "Add an Internet Archive item to see its uploaded packages.",
+    "tr": "Yüklenen paketleri görmek için bir Internet Archive öğesi ekle.",
+    "de": "Füge ein Internet-Archive-Objekt hinzu, um hochgeladene Pakete zu sehen.",
+    "es": "Añade un elemento de Internet Archive para ver sus paquetes.",
+    "fr": "Ajoutez un élément Internet Archive pour afficher ses paquets.",
+    "ja": "Internet Archive の項目を追加するとパッケージが表示されます。",
+    "ko": "Internet Archive 항목을 추가하면 업로드된 패키지가 표시됩니다.",
+    "zh": "添加 Internet Archive 条目以查看已上传的软件包。"
+  },
+  "shots": [
+    [
+      "wait 2"
+    ],
+    [
+      "wclick 0.15 0.21",
+      "wait 2"
+    ],
+    [
+      "key escape",
+      "wait 1"
+    ]
+  ]
+}
