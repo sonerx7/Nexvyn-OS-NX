@@ -134,8 +134,8 @@
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/port-market.nxvapp",
-      "size": 34085,
-      "sha256": "29f21b86984c1cc99618e7c91040104a8e87c9509e7c911d929f6c21d1a5247b",
+      "size": 34032,
+      "sha256": "53b77467020d94d8b06e9fb078ebfc5f3695ebd2bf996b397a86af3da5724b3a",
       "minSdk": "1.15",
       "permissions": [
         "network"
