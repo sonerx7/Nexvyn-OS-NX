@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 4,
+  "count": 5,
   "apps": [
     {
       "id": "com.nexvyn.emu.bochs",
@@ -55,7 +55,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-18"
+      "updated": "2026-11-20"
     },
     {
       "id": "com.nexvyn.emu.dosbox",
@@ -105,7 +105,67 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-18"
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "com.sonerx7.portmarket",
+      "name": {
+        "en": "Port Market",
+        "tr": "Port Market",
+        "de": "Port Market",
+        "es": "Port Market",
+        "fr": "Port Market",
+        "ja": "Port Market",
+        "ko": "Port Market",
+        "zh": "Port Market"
+      },
+      "description": {
+        "en": "Add an Internet Archive item to see its uploaded packages.",
+        "tr": "Yüklenen paketleri görmek için bir Internet Archive öğesi ekle.",
+        "de": "Füge ein Internet-Archive-Objekt hinzu, um hochgeladene Pakete zu sehen.",
+        "es": "Añade un elemento de Internet Archive para ver sus paquetes.",
+        "fr": "Ajoutez un élément Internet Archive pour afficher ses paquets.",
+        "ja": "Internet Archive の項目を追加するとパッケージが表示されます。",
+        "ko": "Internet Archive 항목을 추가하면 업로드된 패키지가 표시됩니다.",
+        "zh": "添加 Internet Archive 条目以查看已上传的软件包。"
+      },
+      "version": "0.2.1",
+      "author": "sonerx7",
+      "category": "utilities",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/port-market.nxvapp",
+      "size": 34085,
+      "sha256": "29f21b86984c1cc99618e7c91040104a8e87c9509e7c911d929f6c21d1a5247b",
+      "minSdk": "1.15",
+      "permissions": [
+        "network"
+      ],
+      "screenshots": [],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Beta/Apps/utilities/port-market",
+      "runtime": "js",
+      "targetSdk": "1.15",
+      "subtitle": {
+        "en": "Your Nexvyn OS port library",
+        "tr": "Nexvyn OS port kitaplığın",
+        "de": "Deine Nexvyn-OS-Portbibliothek",
+        "es": "Tu biblioteca de ports de Nexvyn OS",
+        "fr": "Votre bibliothèque de portages Nexvyn OS",
+        "ja": "Nexvyn OSの移植アプリライブラリ",
+        "ko": "Nexvyn OS 포트 라이브러리",
+        "zh": "你的 Nexvyn OS 移植库"
+      },
+      "kind": "app",
+      "tech": "javascript",
+      "features": [
+        "online",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "beta": true,
+      "updated": "2026-11-20"
     },
     {
       "id": "com.sonerx7.redalert2",
@@ -183,7 +243,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-19"
+      "updated": "2026-11-20"
     },
     {
       "id": "com.nexvyn.emu.tinyemu",
@@ -234,7 +294,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-18"
+      "updated": "2026-11-20"
     }
   ]
 }
