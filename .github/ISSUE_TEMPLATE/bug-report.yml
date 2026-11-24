@@ -9,13 +9,13 @@ body:
         Thank you! English or Turkish is fine. / Teşekkürler! İngilizce ya da Türkçe yazabilirsiniz.
         If an App Market item is the problem, use the report form instead. / Sorun bir Uygulama Mağazası öğesindeyse
         bildirim formunu kullanın.
-        Security problems: never here, see SECURITY.md. / Güvenlik sorunları: burada değil, SECURITY.tr.md'ye bakın.
+        Security problems: never here, see SECURITY.md. / Güvenlik sorunları: burada değil, SECURITY.md'ye bakın.
   - type: input
     id: version
     attributes:
       label: Nexvyn OS version / sürümü
       description: System Settings > About / Sistem Ayarları > Hakkında
-      placeholder: "1.3.0"
+      placeholder: "1.4.0"
     validations:
       required: true
   - type: input

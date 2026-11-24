@@ -49,7 +49,7 @@ void app_draw(float w, float h) {
 ## Security and limits
 
 C code is native code: unlike Lua/JS/Python it is not sandboxed, and an endless loop or a crash cannot be stopped
-(there is no 3-second limit). That is why a C app installed from the SD card asks the user once, on its first launch.
+(there is no 3-second limit). The install sheet warns about it; a C app starts without a launch-time question.
 `malloc` is limited to 64 MB and whatever memory is left is freed when the window closes. Compile errors appear on the
 error screen with file and line number. C apps need JIT code memory (Atmosphère's homebrew loader provides it).
 

@@ -79,6 +79,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
   extension such as `".txt"`. The shared item arrives like a file the app was opened with: `app.load(arg)` when the
   app was not running, `app.open(arg)` when it was.
 - `loadingHint` → optional, `true` for an app that loads a lot and has long frames meanwhile (SDK 1.13). The "not responding" dialog waits 120 s instead of 5 s; after that it may appear anyway. Nothing is ever closed automatically.
+- `fullscreenPause` → optional, `true` for a native app that runs fullscreen and wants the most free memory. While it is fullscreen and focused, the shell pauses its own desktop composition and releases its rebuildable caches (about 18 MiB of heap measured in the emulator), then restores them when the app leaves fullscreen, loses focus, is suspended or stops. This is the pause the shell setting `native.compositorPause` turns on for every app; the field turns it on for this app only, and the setting still works on its own. Older systems ignore the field.
 - `permissions` → what the app needs beyond its own folders. **Every permission is enforced** for apps installed on
   the SD card (SDK 1.4; before, only `network` and `files` were):
 
@@ -108,7 +109,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
 
 ### SDK versions
 
-`sys.sdkVersion()` returns the version this system provides (`"1.15"`). Bump `minSdk` when you use something newer.
+`sys.sdkVersion()` returns the version this system provides (`"1.16"`). Bump `minSdk` when you use something newer.
 
 | SDK | Nexvyn OS adds |
 |-----|-------------|
@@ -128,6 +129,7 @@ library packages (`docs/NXVAPP_FORMAT.md` section 2 and 5).
 | 1.13 / 2.0 | **Nexvyn OS N2 Architecture:** App manifest field `loadingHint` (`"loadingHint": true` gives 120 s loading grace); **NXUI Retained & Semantic UI Engine** (`nxui.*` in Lua, JavaScript, Python; `nxn_nxui_*` in Native C/C++, section 4a): declarative Flexbox-like rows, columns, cards, scroll containers, custom canvases, semantic buttons/toggles/sliders/textfields/dropdowns/tabs/tables/virtualized lists/dialogs, and spatial focus navigation (`moveFocus`, `activateFocused`); **4 Official Primary Runtimes** (Lua 5.4.7 with Generational GC, QuickJS-ng 0.17.0 ES2023, CPython 3.12.16 as default for `"targetSdk": "2.0"`, Native C/C++ AOT `.nxvmod` ABI v1); **On-Demand ComponentService** for legacy runtimes (PocketPy `< 2.0`, TinyCC C, Squirrel 3.2, miniJVM Java); **Unified Input Router** (Touch, Controller Cursor, Focus Grid, Raw Gamepad, Text Composition); **Smart Creator** (`python tools/nxv.py create <lang> <id> --template <basic|game|social|port>`) and **Port Kit** (`python tools/nxv_port.py`). Apps built for older SDKs behave as before |
 | 1.14 | Language parity gaps closed: `fs.readBytes(path)` in Lua (the exact bytes as one Lua string, nil when unreadable; like `Uint8Array` in JavaScript and `bytes` in Python), `nxui.feedPointer(x, y[, down, pressed, released])` → `consumed` in JavaScript and Python (like Lua and the native `nxn_nxui_feed_pointer`), and the C functions `fs_readBytes`, `fs_unzip` (SDK 1.6) and `sys_games` (SDK 1.6) in `nexvyn.h`. The Python functions are in the canonical CPython 3.12 runtime (`"python3"`); the frozen pocketpy runtime gains nothing. No native ABI change. Scripts that use them carry `"minSdk": "1.14"`. Apps built for older SDKs behave as before |
 | 1.15 | 3D collision `phys` (section 8e): worlds of static meshes, boxes and model collision proxies (`COL_` parts, else the triangles reduced to a budget), `raycast` / `raycastAll`, `sweepSphere` / `sweepCapsule`, `overlap`, capsule character controllers (`controller`, `move`, `jump`: slopes, steps, ground snapping, sliding along walls, moving platforms) and box / sphere / capsule `trigger`s with `events`; 3D navigation `nav` (section 8f): a walkable grid baked from a `phys` world on a worker thread, A* `path`, `block` / `cost` areas, walking `agent`s with re-planning and separation; Lua, JavaScript, Python (`"python3"`; pocketpy stays frozen) and C, native `nxn_phys_*` (`nxn_phys.h`, `NXN_CAP_PHYS`) and `nxn_nav_*` (`nxn_nav.h`, `NXN_CAP_NAV`). Scripts that use them carry `"minSdk": "1.15"`. Apps built for older SDKs behave as before |
+| 1.16 (current, Nexvyn OS 1.4.0) | Script frame pacing and multitouch in Lua, JavaScript and Python (`"python3"`): `update` returning `false` lets the app idle, `ui.requestFrame()` wakes it, events carry `touches` and `input.touches()` returns every finger (section 5, *Multitouch* and *Idle apps*). Apps that use them carry `"minSdk": "1.16"`. Apps built for older SDKs behave as before |
 
 **Official Runtimes (N2 Architecture).** New applications target one of the **4 Official Primary Runtimes**:
 1. **Lua 5.4.7** (`"runtime": "lua"`, Generational GC enabled per frame)
@@ -202,7 +204,7 @@ end
 function app.open(arg)            -- the app was asked to open something else while running
 end
 
-function app.update(dt)           -- every frame (~60 fps), dt in seconds
+function app.update(dt)           -- every frame (~60 fps), dt in seconds; return false when nothing animates (§5)
 end
 
 function app.draw(w, h)           -- every frame: draw AND handle widgets; w,h = content size in pixels
@@ -253,6 +255,19 @@ and **Close**. Long work belongs in the background (`g3d.loadModel`, `net`, `fs.
 SDK 1.4, like JavaScript and Python): past it the app stops with `MemoryError: out of memory (the app used more than
 64 MB)` and an out-of-memory screen; the rest of the system keeps running. `sys.memory()` tells how close you are.
 `store` is written to disk on `app.suspend` / `app.autosave` too, so a sleeping console does not lose it.
+
+**Script safety (Nexvyn OS 1.4.0).** A faulty app is stopped alone; the rest of the system keeps running. This covers
+errors and endless loops in callbacks, a broken theme or menu table, and a runaway Lua pattern: `string.find`,
+`match`, `gmatch` and `gsub` check the same time limit as any callback, so a catastrophic pattern (for example a
+nested `(.-)*` on a long text) is cut off after the limit instead of freezing the desktop. What you see: the same
+error or "stopped responding" screen as for any callback that runs too long (see above), with Reload, Close and Copy.
+Keep patterns anchored and simple, or split long text first.
+
+**Performance panel.** Switch on the on-screen panel with Ctrl+Alt+P (or L+R+ZL+ZR on a controller; it is the setting
+`perf.overlay`, off by default). It shows frame time and its phases, skipped frames, RAM and GPU lock time for the
+whole system. Use it to tune your app: open the app, watch the numbers while it is busy and again while it idles
+(see *Idle apps*: returning `false` from `update` should lower the frame cost). Quote numbers from the console, not from an emulator.
+`fullscreenPause` (section 1) is documented for native apps; script apps do not need it.
 
 Available standard Lua: `string`, `table`, `math`, `utf8`, `coroutine`, `os.time/os.clock/os.date/os.difftime`,
 `pcall`, `select`, `ipairs`/`pairs`, `tostring`… (`io`, `debug`, `package`, `dofile`, `loadfile` are not available —
@@ -345,7 +360,7 @@ live OS theme tokens in **Light**, **Dark**, and **High Contrast** modes).
 Instead of calculating pixel coordinates manually, you open a layout frame with `nxui.begin(w, h)` (or `nxui.begin()`
 to use the window's content size), nest `row`, `column`, `card` and `scrollBegin` containers, emit semantic widgets by
 stable ID, and finish with `nxui.endFrame()`. NXUI computes Flexbox-like layout, DPI scaling (`textScale`), live OS theme token
-styling, touch hit-testing, and D-pad / Joy-Con spatial focus navigation (`nxui.moveFocus`, `nxui.activateFocused`)
+styling, touch hit-testing, and D-pad / controller spatial focus navigation (`nxui.moveFocus`, `nxui.activateFocused`)
 automatically.
 
 > **UI Parity in Native C/C++ (`"runtime": "native"`):** Native `.nxvmod` apps render into their own OpenGL framebuffer (`nxn_display`). `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>` computes semantic layout/focus on the native thread and does not paint inside an OpenGL FBO. For OS-consistent utility, benchmark, tool, and dashboard UIs that match Lua/JS/Python `ui.*` & `nxui.*`, include **`<nexvyn/nxn_imgui.h>`** and **`<nexvyn/nxn_os_ui.h>`** (header-only over Dear ImGui, driven live by `nxn_ui_tokens_get`). Use `nxn_os_apply_style`, `nxn_os_clear_color`, `nxn_os_segmented_tabs`, `nxn_os_card_begin/end`, `nxn_os_switch`, `nxn_os_dropdown`, `nxn_os_button`, `nxn_os_badge`, `nxn_os_progress_bar`, `nxn_os_kv_row`, and `nxn_os_separator` instead of raw unstyled `ImGui::*` widgets. Games build their own art direction directly in OpenGL / NexGFX.
@@ -439,7 +454,7 @@ nxn_os_frame_end();                                   // ImGui::Render()
 Widget size arguments are surface pixels (pass `NXN_S(x)`, `nxn_os_fill()` or `0` for the default); the kit never lets a
 control fall below its minimum and always draws its text with its role font. Without `nxn_os_frame_begin` every
 `nxn_os_*` widget behaves as before (scale 1, no minimum), so existing apps build and look unchanged. Reference screens:
-`product/showcase/com.nexvyn.uikit.cpp` (assistant window), `product/showcase/com.nexvyn.parity.cpp`; screenshots `qa/screens/uikit/`.
+`product/showcase/com.nexvyn.uikit.cpp` (assistant window), `product/showcase/com.nexvyn.parity.cpp`.
 
 ### 8. Choosing a language
 * **UI-heavy tools, utilities and productivity apps** (chat clients, editors, settings, dashboards, store fronts) are
@@ -454,33 +469,33 @@ control fall below its minimum and always draws its text with its role font. Wit
 
 | Function (Lua / JS / Python) | Native C/C++ (`nxn_nxui.h`) | Description & Return Value |
 |---|---|---|
-| `nxui.tokens()` | `nxn_nxui_tokens_get(&out)` | Returns the design-system token table: `space1`..`space6`, `radiusSm`/`Md`/`Lg`, `fontSm`/`Body`/`Title`/`Hero`, `scale`, `dark`, `highContrast`, `reducedMotion`, and RGBA colors (`bgPrimary`, `bgSecondary`, `bgCard`, `fgPrimary`, `fgMuted`, `accent`, `danger`, `success`, `warning`, `border`) |
+| `nxui.tokens()` | `nxn_nxui_tokens_get(&out)` | Returns the design-system token table. RGBA integer colors: `accent`, `windowBg`, `surface`, `border`, `text`, `textSecondary`, `focusRing`, `error`, `success`; numbers: `controlRegular`, `radiusSmall`, `radiusMedium`, `space2`, `space4`, `space8` (Lua only, in addition: `controlCompact`, `controlLarge`, `radiusLarge`, `space1`, `space3`, `space6`; JavaScript and Python have no `space3`) |
 | `nxui.begin([w, h])` | `nxn_nxui_begin(w, h)` | Starts an NXUI layout pass for the current frame |
 | `nxui.endFrame()` | `nxn_nxui_end()` / `nxn_nxui_end_ex()` | Computes layout, resolves focus/hit tests, and renders the retained tree. In a Native GL window nothing is drawn (section 5 above); `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED` there |
 | `nxui.row(id[, gap])` … `nxui.rowEnd()` | `nxn_nxui_row_begin(id, gap)` / `nxn_nxui_row_end()` | Horizontal container (`gap` defaults to `space2` = 8 px) |
 | `nxui.column(id[, gap])` … `nxui.columnEnd()` | `nxn_nxui_column_begin(id, gap)` / `nxn_nxui_column_end()` | Vertical container (`gap` defaults to `space2` = 8 px) |
 | `nxui.card(id)` … `nxui.cardEnd()` | `nxn_nxui_card_begin(id)` / `nxn_nxui_card_end()` | Rounded surface card with system border and padding |
 | `nxui.scrollBegin(id, w, h[, scrollY])` → `newScrollY` … `nxui.scrollEnd()` | `nxn_nxui_scroll_begin(id, w, h, &scroll_y)` / `nxn_nxui_scroll_end()` | Clipped scrollable region with touch drag and wheel/stick support |
-| `nxui.canvasBegin(id, w, h)` → `x, y, w, h` … `nxui.canvasEnd()` | `nxn_nxui_canvas_begin(id, w, h, &x, &y, &cw, &ch)` / `nxn_nxui_canvas_end()` | Reserves a layout box for custom `gfx.*` or `g3d.*` drawing and returns its resolved screen rectangle (JS/Python: `{x, y, w, h}`) |
+| `nxui.canvasBegin(id, w, h)` … `nxui.canvasEnd()` | `nxn_nxui_canvas_begin(id, w, h)` / `nxn_nxui_canvas_end()` | Reserves a layout box for custom `gfx.*` or `g3d.*` drawing; returns nothing in every language |
 | `nxui.label(id, text[, role])` | `nxn_nxui_label(id, text, role)` | Semantic text (Lua / JavaScript / Python `role`: `"body"` (default), `"title"`, `"headline"`, `"largeTitle"`, `"caption"`; any other string is `"body"`) |
 | `nxui.badge(id, text[, rgbaColor])` | `nxn_nxui_badge(id, text, rgba)` | Pill status badge |
 | `nxui.button(id, label[, variant])` → `clicked` | `nxn_nxui_button(id, label, variant)` | Semantic button (`variant`: `"default"` (default), `"primary"`, `"destructive"`, `"plain"`; any other string is `"default"`); returns `true` when clicked or activated via controller focus |
 | `nxui.toggle(id, checked)` → `newChecked, changed` | `nxn_nxui_toggle(id, &checked)` | Switch toggle (JS/Python: returns `newChecked` boolean) |
 | `nxui.slider(id, value, min, max)` → `newValue, changed` | `nxn_nxui_slider(id, &val, min, max)` | Horizontal slider (JS/Python: returns `newValue` number) |
 | `nxui.textfield(id, text[, placeholder])` → `newText, changed` | `nxn_nxui_textfield(id, buf, cap, placeholder)` | Single-line text input with automatic OSK invocation (JS/Python: returns `newText` string) |
-| `nxui.dropdown(id, options, selected)` → `newSelected, changed` | `nxn_nxui_dropdown(id, opts, count, &sel)` | Popover selector (Lua: 1-based `selected`; JS/Python/C: 0-based) |
-| `nxui.tabs(id, labels, active)` → `newActive, changed` | `nxn_nxui_tabs(id, labels, count, &active)` | Segmented tab bar (Lua: 1-based `active`; JS/Python/C: 0-based) |
-| `nxui.table(id, columns, rows, selectedRow)` → `newRow, clicked` | `nxn_nxui_table(id, cols, n_cols, rows, n_rows, &sel)` | Multi-column data table (`rows` is a flat list of cell strings `n_rows * n_cols`) |
-| `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` → `newRow, clicked` | `nxn_nxui_virtuallist(id, items, count, row_h, view_h, &sel)` | Virtualized list that renders visible rows; profile frame time with your actual row content |
-| `nxui.dialog(id, title, message, confirmLabel[, cancelLabel])` → `result` | `nxn_nxui_dialog(id, title, msg, confirm, cancel)` | Modal sheet overlay (`result`: `0` = open, `1` = confirmed, `2` = cancelled) |
-| `nxui.spacer([size])` | `nxn_nxui_spacer(size)` | Adds vertical/horizontal spacing (`size` defaults to `space3` = 12 px) |
-| `nxui.moveFocus(dir)` | `nxn_nxui_move_focus(dir)` | Moves controller focus across focusable widgets (`"up"`, `"down"`, `"left"`, `"right"` or `0..3`) |
+| `nxui.dropdown(id, options, selected)` → `newSelected, changed` | `nxn_nxui_dropdown(id, opts, count, &sel)` | Popover selector (0-based `selected` in every language; JS/Python return only `newSelected`) |
+| `nxui.tabs(id, labels, active)` → `newActive, changed` | `nxn_nxui_tabs(id, labels, count, &active)` | Segmented tab bar (0-based `active` in every language; JS/Python return only `newActive`) |
+| `nxui.table(id, columns, rows, selectedRow)` → `newRow, changed` | `nxn_nxui_table(id, cols, n_cols, rows, n_rows, &sel)` | Multi-column data table (`selectedRow` is 0-based, `-1` = none; in scripts `rows` is a list of row lists with one cell string per column; JS/Python return only the integer `newRow`; native `rows` is `const char***`) |
+| `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` → `newRow, changed` | `nxn_nxui_virtuallist(id, items, count, row_h, view_h, &sel)` | Virtualized list that renders visible rows (0-based `selectedRow`, `-1` = none; JS/Python return only the integer `newRow`); profile frame time with your actual row content |
+| `nxui.dialog(id, title, message, confirmLabel[, cancelLabel])` → `confirmed` | `nxn_nxui_dialog(id, title, msg, confirm, cancel)` | Modal sheet overlay; returns a boolean, `true` when a dialog button was activated |
+| `nxui.spacer([size])` | `nxn_nxui_spacer(size)` | Adds vertical/horizontal spacing (`size` defaults to 8 px) |
+| `nxui.moveFocus(dir)` → `moved` | `nxn_nxui_move_focus(dir)` | Moves controller focus across focusable widgets; `dir` is an integer: `0` up, `1` down, `2` left, `3` right (strings are not accepted); returns a boolean |
 | `nxui.activateFocused()` | `nxn_nxui_activate_focused()` | Triggers click/toggle on the currently focused widget |
 | `nxui.feedPointer(x, y[, down, pressed, released])` → `consumed` | `nxn_nxui_feed_pointer(x, y, down, pressed, released)` | Feeds one pointer sample (content coordinates) into the tree, for apps that route their own input (SDK 1.14 for JavaScript and Python; Lua had it) |
 
 Example (Lua):
 ```lua
-local tab = 1
+local tab = 0 -- nxui indices are 0-based
 local notifications = true
 local volume = 75
 
@@ -490,7 +505,7 @@ function app.draw(w, h)
   nxui.column("root", 12)
     tab = nxui.tabs("nav", {TR("general"), TR("audio")}, tab)
     nxui.card("settings_card")
-      if tab == 1 then
+      if tab == 0 then
         nxui.row("notif_row", 16)
           nxui.label("notif_lbl", TR("enable_notifications"), "body")
           notifications = nxui.toggle("notif_tgl", notifications)
@@ -549,7 +564,49 @@ when the window loses focus or closes. `input.padCount()` → number of connecte
 `input.padDown(pad, button)` (pad 0 = player 1, up to 7) reads a button of one controller. C: `input_relativeMouse`,
 `input_mouseDelta`, `input_padCount`, `input_padDown`.
 
-Every app and game should work with touch, the controller (Joy-Con pair or single), handheld and docked (no touch on a
+### Multitouch — `touches` and `input.touches()` (SDK 1.16; Lua, JavaScript, Python `"python3"`)
+
+Native apps see up to 16 fingers; scripts now see them too. A finger is `{id, x, y, phase}`: `id` is a small stable
+number (the first finger is `0`), `x, y` are window content coordinates (the same space as `e.x, e.y`; a finger
+can be outside the window), `phase` is `"began"`, `"moved"`, `"stationary"` or `"ended"` (an ended finger is listed
+once, at its last position).
+
+- Touch-made `"mousedown"` / `"mousemove"` / `"mouseup"` events and `"pinch"` / `"rotate"` / `"gesture"` events carry
+  `e.touches`, the list of every finger when the event was delivered. Other events have no `touches` field.
+- `input.touches()` (JavaScript `input.touches()` → array, Python `input.touches()` → list of dicts) returns the
+  fingers now, once per frame; phases compare against the last frame that asked. It is empty while the window has no
+  input focus. Mouse and controller input never produce touches.
+
+```lua
+local dots = {}
+function app.update(dt)
+  dots = input.touches()
+end
+function app.draw(w, h)
+  gfx.clear(theme.bg)
+  for _, t in ipairs(dots) do gfx.circle(t.x, t.y, 30, theme.accent) end
+end
+```
+
+### Idle apps — `update` returning false and `ui.requestFrame()` (SDK 1.16; Lua, JavaScript, Python `"python3"`)
+
+An app that defines `app.update` is drawn every frame, so the shell never idles while it is open. When there is
+nothing to animate, return `false` from `update`: the window is then drawn only when something changes, and the idle
+shell frame cost drops. Any other result (nothing, `nil` / `undefined` / `None`, `true`) keeps the old behaviour, so
+existing apps are unaffected. The app wakes again on any input event, when a `timer.after` / `timer.every` callback
+fires, when `ui.requestFrame()` is called (for example after a network or job result), or when `update` stops returning
+`false`. `update` itself keeps being called; the window is drawn once more when it first returns `false`.
+
+```lua
+local dirty = true
+function app.update(dt)
+  if animating then advance(dt) return end   -- keep drawing
+  return false                               -- idle: no frames until input or ui.requestFrame()
+end
+net.get(url, function(res) data = res.body; ui.requestFrame() end)
+```
+
+Every app and game should work with touch, the controller (attached pair or a single detached controller), handheld and docked (no touch on a
 TV), in a window and full screen, with moderate sound: see `docs/INPUT_AND_PLAY_MODES.md` (public
 `SDK/Guides/INPUT_AND_PLAY_MODES.md`) for the API of each and a checklist.
 
@@ -641,7 +698,7 @@ offline cache, WebSockets and sign-in are in section 8d (`net.request`, SDK 1.9)
 `sys.model()` · `sys.firmware()` · `sys.notify(title, body)` (notification banner) · `sys.open(path)` (opens with the
 right app) · `sys.launch(appId[, arg])` · `sys.clipboard([text])` get/set (no permission needed) · `sys.log(...)` / `print(...)` ·
 `sys.title(text)` window title · `sys.exit()` close the window · `sys.fps()` · `sys.vibrate([strength 0..1[, ms]])` (non-blocking; at most 2000 ms, only while the window has focus, `sys.vibrate(0)` stops)
-(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.15"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
+(HD rumble) · `sys.appid()` · `sys.sdkVersion()` → `"1.16"` (see *SDK versions*). `sys.notify`, `sys.launch` (of
 another app), `sys.games` and `nxv://` links need their permissions (section 1).
 
 `sys.speak(text[, lang])` (SDK 1.6, no permission) reads text aloud with the built-in voice, after whatever is being
@@ -788,7 +845,7 @@ drawn for 30 seconds may be released; they load again the next time they are dra
 frame later). Older apps keep every texture while they run. Settings > Developer turns both off.
 
 Motion controls: `input.motion()` → `ax, ay, az` (acceleration in G), `gx, gy, gz` (angular velocity in rad/s),
-`pitch, roll, yaw` (accumulated rotation in radians) from the Joy-Con / Pro Controller / handheld gyroscope.
+`pitch, roll, yaw` (accumulated rotation in radians) from the detached controllers / wireless full-size controller / handheld gyroscope.
 
 ### 3D models — `g3d.model` (SDK 1.8)
 
@@ -1655,6 +1712,21 @@ Optional keys the App Market uses for its tabs, sorting and filters. An older Ap
 
 Everything in sections 1–10 applies to JavaScript apps too; this section lists only what is different.
 
+SDK 1.16 in JavaScript (`"minSdk": "1.16"`): `input.touches()` returns an array of `{id, x, y, phase}`, touch events
+carry `e.touches`, and `update` returning `false` idles the app until input, a timer or `ui.requestFrame()`.
+
+```js
+let dots = [], animating = false;
+app.update = (dt) => {
+  dots = input.touches();
+  if (dots.length === 0 && !animating) return false;   // idle
+};
+app.draw = (w, h) => { gfx.clear(theme.bg); for (const t of dots) gfx.circle(t.x, t.y, 30, theme.accent); };
+net.get(url).then(res => { data = res.body; ui.requestFrame(); });
+```
+
+Squirrel, C, Java and PocketPy Python (`"runtime": "python"` below `targetSdk` 2.0): the 1.16 functions are documented for Lua, JavaScript and Python 3 (`"python3"`) only. Do not rely on them there.
+
 ### Choosing JavaScript
 
 Set `"main": "main.js"` in `app.json` (any `.js`/`.mjs` file works, or keep another name and add `"runtime": "js"`).
@@ -1831,6 +1903,25 @@ app.event = (e) => {
 A larger example (to-do list with `store`, a clock drawn with `gfx`, `await net.fetchJson`, ES modules) is
 `romfs/Applications/hellojs.nxvapp`. Check a bundle on the PC with `node tools/js_check.mjs path/to/App.nxvapp`.
 ## 12. Python
+
+**Start-up (`"python3"`, Nexvyn OS 1.4.0).** The CPython interpreter and your imports start on a background thread
+while the window shows "Loading". The desktop keeps running and is not frozen. Expect the first frame later than
+with Lua or JavaScript (the first python3 app starts the main interpreter, so it is the slowest); `app.load` and the
+first `draw` run when the interpreter is ready. Do not poll for readiness: write the app as usual. Python code is
+stopped at the next loop jump or call when it runs too long, but work inside one C call (a regular expression with
+catastrophic backtracking, `sum(range(10**15))`, a huge int power) cannot be interrupted: avoid those. Idle and
+multitouch (section 5) work as in Lua: `return False` from `update`, `ui.requestFrame()`, `input.touches()` (list of
+dicts with `id`, `x`, `y`, `phase`).
+
+```python
+dots = []
+animating = False
+def update(dt):
+    global dots
+    dots = input.touches()
+    if not dots and not animating:
+        return False        # idle until input, a timer or ui.requestFrame()
+```
 
 Everything in sections 1–10 applies to Python apps too; this section lists only what is different. Python needs
 SDK 1.3: put `"minSdk": "1.3"` in `app.json` (or `"targetSdk": "2.0"` to default to **CPython 3.12**).

@@ -44,12 +44,12 @@ When the app is opened for the first time, the loader (`source/runtimes/nxvmod.c
 Modules stay in memory for the whole session (there may be callbacks tied to their code). An updated module file is
 loaded again at the next launch; the old code stays mapped until shutdown.
 
-Native code is not sandboxed: the user is asked once on the first launch (Settings key `apps.trustedNative`, an
-array of app ids). The permission system (`permissions`) cannot be applied to native code; therefore no permission
+Native code is not sandboxed. A module starts without a launch-time question: `nxvmod::confirmUnknown` launches it
+directly and records it as `copied-allowed`. The Settings key `apps.trustedNative` (an array of app ids) only marks
+legacy and shipped-module trust. The permission system (`permissions`) cannot be applied to native code; therefore no permission
 question is asked, and the list in `app.json` is for information only.
 
-Not supported: `thread_local` variables (`PT_TLS`; the module is refused), text relocations (`-fPIC` is required), C++
-exceptions and RTTI (Nexvyn OS is built with `-fno-exceptions -fno-rtti` anyway).
+Not supported: `thread_local` variables (`PT_TLS`; refused without `native.windowedTls`), text relocations (`-fPIC` is required). The OS's own internal modules are built with `-fno-exceptions -fno-rtti`; external ports and windowed apps can use C++ exceptions via setting `native.windowedEh` (`NXN_CAP_CXX_EXCEPTIONS`) and their own toolchain flags.
 
 Shared loader (Native SDK 1.0): steps 1-4 (ELF checks, JIT code memory, segment copy and clearing, relocations, symbol
 lookup) live in one plain C unit, `sdk/native/loader/nxelf.c`, that Nexvyn OS compiles (the Makefile's `SOURCES`) and
@@ -137,9 +137,10 @@ A list can also name `"bundles"`: script apps of `romfs/Applications` (the sampl
 become ordinary App Market packages (`build/modules/<id>.nxvapp`, no ABI). They are listed in `System/Modules.json`
 like the modules, so the same placeholders and the same automatic return after an update apply to them.
 
-The split is staged and switched by the list alone. `tools/modules.json` is **empty in 1.2.0** (a beta that ships only
-the NRO, with no Store changes): every app stays built in, `System/Modules.json` does not exist, so the Recommended
-packs step, the Launcher placeholders and the update migration have nothing to do. Ready to flip, together with the
+The split is staged and switched by the list alone. `tools/modules.json` holds only the `gameengine` entry
+(`"keepBuiltIn": true`: built as a module and also kept in the NRO, not listed in `System/Modules.json`, see
+[GAME_ENGINE_MODULE.md](GAME_ENGINE_MODULE.md)): every other app stays built in, `System/Modules.json` is not
+produced, so the Recommended packs step, the Launcher placeholders and the update migration have nothing to do. Ready to flip, together with the
 Store builds (`tools/store_pending/README.md`):
 
 - `tools/modules.lowrisk.json`: small, self-contained apps (Color Meter, Controller Test, Fonts, Dictionary, Currency,
@@ -189,7 +190,7 @@ App Market download (SHA-256, signature, App Guard) and installs it. A failure i
 queue only when the app is installed and, for a module, built for this ABI. A changed signing key or a package App
 Guard calls dangerous is never installed this way. When the queue is empty, one notification says how many apps
 arrived. Nexvyn OS's own modules (ids in `System/Modules.json`) installed from the App Market are trusted at once
-(`apps.trustedNative`); a module from anywhere else still asks on its first launch.
+(`apps.trustedNative`); a module from anywhere else starts without a question too.
 
 **Updating from a version that had the app built in** (`registry.cpp`, `migrateModules`): at the first boot of the new
 version every app of `System/Modules.json` the user used is queued (`upgrade`). Used = pinned in the Dock, the taskbar
@@ -228,7 +229,7 @@ runs at boot except the queue's service, which never blocks: a missing network o
 - To turn it off: empty the list in `tools/modules.json`; the apps are embedded in the NRO again (as optional apps).
 - Trying it in the emulator: unpack `build/modules/<id>.nxvapp` into the folder `sdmc:/NexvynOS/Applications/<id>.nxvapp/`
   (or open and install it from Files; a zip named `<id>.nxvapp` dropped into Applications is not unpacked), open the
-  app and confirm the trust question (in autorun: `set apps.trustedNative ["colorpicker"]`). Log: the `nxvmod` tag
+  app (no trust question appears; in autorun `trust <id>` still records trust). Log: the `nxvmod` tag
   ("loaded ... at ...", or the reason for the error).
 
 ## 10. Result (1.2)

@@ -59,6 +59,13 @@ def check_v2(app, warnings):
     arch = app.get("arch")
     if arch is not None and arch != "aarch64":
         errors.append('"arch" must be "aarch64" (the only architecture Nexvyn OS runs)')
+    if "vulkan" in app:
+        if not isinstance(app["vulkan"], bool):
+            errors.append('"vulkan" must be a boolean')
+        elif app["vulkan"]:
+            mode = str(app.get("mode") or "exclusive").strip().lower()
+            if sdkinfo.runtime_of(app) != "native" or mode not in ("window", "fullscreen"):
+                errors.append('"vulkan" requires a windowed or fullscreen native module')
     for key in ("minOs", "minNative", "minSdk", "targetNative"):
         if key in app:
             v = sdkinfo.version_field(app.get(key))

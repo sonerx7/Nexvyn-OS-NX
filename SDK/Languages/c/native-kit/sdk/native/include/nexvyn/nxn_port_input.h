@@ -2,8 +2,8 @@
  *
  * Header-only C99/C++ helper for porting PC games, RTS/CRPG/FPS engines, and emulators to Nexvyn OS N2.
  * Provides:
- *   1. Multi-touch gesture recognizer: two-finger pinch-to-zoom, two-finger pan/scroll, two-finger tap -> right-click,
- *      and single-finger long-press -> right-click.
+ *   1. Multi-touch gesture recognizer: two-finger pinch-to-zoom, two-finger pan/scroll, two-finger rotate,
+ *      two-finger tap -> right-click, single-finger double-tap, and single-finger long-press -> right-click.
  *   2. Configurable Gamepad -> Virtual Mouse / Keyboard / Scroll mapping with ready presets:
  *      - NXN_PI_PROFILE_GAMEPAD (native gamepad + multi-touch gestures)
  *      - NXN_PI_PROFILE_RTS     (Red Alert 2 / C&C / OpenTTD / OpenRCT2: pinch zoom, 2-finger right-click, stick cursor)
@@ -53,7 +53,9 @@ typedef enum nxn_pi_ev_type {
     NXN_PI_EV_KEY_UP,        /* hid_usage, mods */
     NXN_PI_EV_PINCH,         /* pinch_delta (>0 zoom in, <0 zoom out), x, y */
     NXN_PI_EV_TWO_FINGER_TAP,/* x, y */
-    NXN_PI_EV_TEXT           /* text[64] UTF-8 */
+    NXN_PI_EV_TEXT,          /* text[64] UTF-8 */
+    NXN_PI_EV_ROTATE,        /* angle_delta (radians/frame, +clockwise), angle_total (total radians), x, y */
+    NXN_PI_EV_DOUBLE_TAP     /* x, y */
 } nxn_pi_ev_type;
 
 typedef enum nxn_pi_bind_kind {
@@ -80,6 +82,8 @@ typedef struct nxn_pi_event {
     uint32_t hid_usage;
     uint32_t mods;
     char text[64];
+    float angle_delta; /* per-frame two-finger rotation in radians (+ = clockwise, y down) */
+    float angle_total; /* cumulative two-finger rotation in radians since gesture start */
 } nxn_pi_event;
 
 #define NXN_PI_MAX_EVENTS   128
@@ -127,6 +131,29 @@ typedef struct nxn_pi_ctx {
     nxn_pi_event queue[NXN_PI_MAX_EVENTS];
     int q_head, q_tail, q_count;
     float wheel_acc;
+
+    /* Configurable rotate & double-tap thresholds (appended for ABI compatibility) */
+    float rotate_deadzone;   /* radians from gesture start before rotate activates (default 0.08) */
+    uint32_t double_tap_ms;  /* max interval between two taps in ms (default 300) */
+    float double_tap_dist;   /* max distance between two taps in px (default 20.0) */
+
+    /* Two-finger rotate state */
+    int g_rot_have_ang;
+    int g_rot_active;
+    float g_rot_last_ang;
+    float g_rot_total;
+
+    /* Single-finger double-tap state */
+    int tap_active;
+    uint32_t tap_id;
+    float tap_start_x, tap_start_y;
+    float tap_last_x, tap_last_y;
+    uint64_t tap_start_ms;
+    int tap_moved;
+    int tap_wait_all_up;
+    int dt_pending;
+    uint64_t dt_last_ms;
+    float dt_last_x, dt_last_y;
 } nxn_pi_ctx;
 
 static inline uint64_t nxn_pi_now_ms(void) {
@@ -214,7 +241,52 @@ static inline void nxn_pi_init(nxn_pi_ctx* ctx, nxn_pi_profile profile, float vi
     ctx->long_press_right = 1;
     ctx->two_finger_gestures = 1;
     ctx->pinch_mode = NXN_PI_PINCH_WHEEL;
+    ctx->rotate_deadzone = 0.08f;
+    ctx->double_tap_ms = 300u;
+    ctx->double_tap_dist = 20.0f;
     nxn_pi_apply_profile(ctx, profile);
+}
+
+static inline float nxn_pi_wrap_angle(float a) {
+    const float pi = 3.14159265358979323846f;
+    const float two_pi = 6.28318530717958647692f;
+    if (!(a >= -100.0f && a <= 100.0f)) return 0.0f;
+    while (a > pi) a -= two_pi;
+    while (a < -pi) a += two_pi;
+    return a;
+}
+
+static inline void nxn_pi_finish_tap(nxn_pi_ctx* ctx, uint64_t now_ms) {
+    if (!ctx->tap_active) return;
+    ctx->tap_active = 0;
+    if (ctx->double_tap_ms == 0 || ctx->double_tap_dist < 0.0f) {
+        ctx->dt_pending = 0;
+        return;
+    }
+    if (ctx->tap_moved || (now_ms - ctx->tap_start_ms) > 320ULL) {
+        ctx->dt_pending = 0;
+        return;
+    }
+    if (ctx->dt_pending) {
+        uint64_t dt_ms = now_ms - ctx->dt_last_ms;
+        float dx = ctx->tap_last_x - ctx->dt_last_x;
+        float dy = ctx->tap_last_y - ctx->dt_last_y;
+        float max_d = ctx->double_tap_dist;
+        if (dt_ms <= (uint64_t)ctx->double_tap_ms && (dx * dx + dy * dy) <= max_d * max_d) {
+            nxn_pi_event ev;
+            memset(&ev, 0, sizeof(ev));
+            ev.type = NXN_PI_EV_DOUBLE_TAP;
+            ev.x = ctx->tap_last_x;
+            ev.y = ctx->tap_last_y;
+            nxn_pi_push(ctx, &ev);
+            ctx->dt_pending = 0;
+            return;
+        }
+    }
+    ctx->dt_pending = 1;
+    ctx->dt_last_ms = now_ms;
+    ctx->dt_last_x = ctx->tap_last_x;
+    ctx->dt_last_y = ctx->tap_last_y;
 }
 
 static inline void nxn_pi_emit_zoom(nxn_pi_ctx* ctx, float cx, float cy, int dir) {
@@ -318,6 +390,9 @@ static inline void nxn_pi_update(nxn_pi_ctx* ctx, float dt_sec) {
     }
     if (ctx->two_finger_gestures && tc >= 2) {
         ctx->lp_active = 0;
+        ctx->tap_active = 0;
+        ctx->dt_pending = 0;
+        ctx->tap_wait_all_up = 1;
         float dx = tx[1] - tx[0], dy = ty[1] - ty[0];
         float dist = sqrtf(dx * dx + dy * dy);
         float cx = (tx[0] + tx[1]) * 0.5f, cy = (ty[0] + ty[1]) * 0.5f;
@@ -330,6 +405,15 @@ static inline void nxn_pi_update(nxn_pi_ctx* ctx, float dt_sec) {
             ctx->g_pinch_acc = ctx->g_pan_x = ctx->g_pan_y = 0.0f;
             ctx->g_start_ms = now_ms;
             ctx->g_moved = 0;
+            ctx->g_rot_active = 0;
+            ctx->g_rot_total = 0.0f;
+            if (dist >= 20.0f) {
+                ctx->g_rot_have_ang = 1;
+                ctx->g_rot_last_ang = atan2f(dy, dx);
+            } else {
+                ctx->g_rot_have_ang = 0;
+                ctx->g_rot_last_ang = 0.0f;
+            }
         } else {
             float ddist = dist - ctx->g_last_dist;
             float dcx = cx - ctx->g_last_cx, dcy = cy - ctx->g_last_cy;
@@ -350,6 +434,39 @@ static inline void nxn_pi_update(nxn_pi_ctx* ctx, float dt_sec) {
                     ctx->g_pinch_acc += 26.0f;
                     ctx->g_moved = 1;
                 }
+                float ang = atan2f(dy, dx);
+                if (!ctx->g_rot_have_ang) {
+                    ctx->g_rot_have_ang = 1;
+                    ctx->g_rot_last_ang = ang;
+                } else {
+                    float da = nxn_pi_wrap_angle(ang - ctx->g_rot_last_ang);
+                    float dz = ctx->rotate_deadzone >= 0.0f ? ctx->rotate_deadzone : 0.0f;
+                    if (!ctx->g_rot_active) {
+                        if (fabsf(da) > dz) {
+                            ctx->g_rot_active = 1;
+                            ctx->g_moved = 1;
+                            ctx->g_rot_total += da;
+                            ctx->g_rot_last_ang = ang;
+                            nxn_pi_event ev; memset(&ev, 0, sizeof(ev));
+                            ev.type = NXN_PI_EV_ROTATE;
+                            ev.x = cx; ev.y = cy;
+                            ev.angle_delta = da;
+                            ev.angle_total = ctx->g_rot_total;
+                            nxn_pi_push(ctx, &ev);
+                        }
+                    } else if (fabsf(da) > 0.001f) {
+                        ctx->g_rot_total += da;
+                        ctx->g_rot_last_ang = ang;
+                        nxn_pi_event ev; memset(&ev, 0, sizeof(ev));
+                        ev.type = NXN_PI_EV_ROTATE;
+                        ev.x = cx; ev.y = cy;
+                        ev.angle_delta = da;
+                        ev.angle_total = ctx->g_rot_total;
+                        nxn_pi_push(ctx, &ev);
+                    }
+                }
+            } else {
+                ctx->g_rot_have_ang = 0;
             }
             if (fabsf(ddist) < 10.0f) {
                 ctx->g_pan_x += dcx;
@@ -378,6 +495,36 @@ static inline void nxn_pi_update(nxn_pi_ctx* ctx, float dt_sec) {
                 ev.type = NXN_PI_EV_MOUSE_UP;   ev.button = NXN_MOUSE_RIGHT; nxn_pi_push(ctx, &ev);
             }
             ctx->g_active = 0;
+            ctx->g_rot_have_ang = 0;
+            ctx->g_rot_active = 0;
+            ctx->g_rot_total = 0.0f;
+        }
+        if (tc >= 2) {
+            ctx->tap_active = 0;
+            ctx->dt_pending = 0;
+            ctx->tap_wait_all_up = 1;
+        } else if (tc == 0) {
+            nxn_pi_finish_tap(ctx, now_ms);
+            ctx->tap_wait_all_up = 0;
+        } else if (!ctx->g_active && !ctx->tap_wait_all_up) {
+            if (!ctx->tap_active || ctx->tap_id != ids[0]) {
+                if (ctx->tap_active) nxn_pi_finish_tap(ctx, now_ms);
+                ctx->tap_active = 1;
+                ctx->tap_id = ids[0];
+                ctx->tap_start_x = ctx->tap_last_x = tx[0];
+                ctx->tap_start_y = ctx->tap_last_y = ty[0];
+                ctx->tap_start_ms = now_ms;
+                ctx->tap_moved = 0;
+            } else {
+                float tdx = tx[0] - ctx->tap_start_x;
+                float tdy = ty[0] - ctx->tap_start_y;
+                float max_move = ctx->double_tap_dist > 0.0f ? ctx->double_tap_dist : 20.0f;
+                ctx->tap_last_x = tx[0];
+                ctx->tap_last_y = ty[0];
+                if (tdx * tdx + tdy * tdy > max_move * max_move) {
+                    ctx->tap_moved = 1;
+                }
+            }
         }
         if (tc == 1 && ctx->long_press_right && !ctx->g_active) {
             if (!ctx->lp_active || ctx->lp_id != ids[0]) {

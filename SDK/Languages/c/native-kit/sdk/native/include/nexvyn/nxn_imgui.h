@@ -46,7 +46,7 @@ enum {
     NXN_IMGUI_CJK_COMMON = 1u << 3  /* ja / ko / zh: the common characters of the script, not only the app's own texts */
 };
 
-/* Gamepad / Joy-Con navigation. ImGui moves focus with the pad only when the app asks for it (NavEnableGamepad) AND the
+/* Gamepad navigation. ImGui moves focus with the pad only when the app asks for it (NavEnableGamepad) AND the
  * backend says it can deliver a pad (HasGamepad); the OpenGL3 backend never sets the second flag, so call this once after
  * ImGui::CreateContext() (nxn_imgui_add_font() calls it too). Feed the pad with io.AddKeyEvent(ImGuiKey_Gamepad...). */
 static inline void nxn_imgui_enable_gamepad(ImGuiIO& io) {

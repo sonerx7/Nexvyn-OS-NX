@@ -22,11 +22,12 @@ Rules:
   each one real feature found in the code. No claims that are not in the code. No superlatives.
 - English is required. Add exactly the other languages the app's lang/ folder has (<list them>), natural wording
   (not word-for-word), the same facts in each.
-- shots: 3 or 4 shots; each shot is a list of steps run before that screenshot, and the state carries over to the
+- shots: 3 to 5 shots (5 recommended, the store page shows five); each shot is a list of steps run before that screenshot, and the state carries over to the
   next shot. Allowed steps only:
     wait <seconds>          e.g. "wait 1.5"
     wclick <fx> <fy>        click at a fraction 0..1 of the app window's content, e.g. "wclick 0.5 0.3"
     wmove <fx> <fy>         move the pointer there
+    hold <key> <seconds>    holds a key down, e.g. "hold right 1.5"
     key <name>              enter, space, escape, tab, left, right, up, down, a..z, 0..9, pageup, pagedown...
     dpad <direction>        up, down, left, right
     text <string>           types text into the focused field

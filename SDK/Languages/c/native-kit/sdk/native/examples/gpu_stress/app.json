@@ -1,0 +1,29 @@
+{
+  "id": "com.nexvyn.example.gpu-stress",
+  "name": {
+    "en": "GPU Stress",
+    "tr": "GPU Yük Testi",
+    "de": "GPU-Lasttest",
+    "es": "Prueba de carga de GPU",
+    "fr": "Test de charge GPU",
+    "ja": "GPU 負荷テスト",
+    "ko": "GPU 부하 테스트",
+    "zh": "GPU 负载测试"
+  },
+  "author": "Nexvyn OS",
+  "version": "1.0.0",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "window",
+  "main": "gpu_stress.nxvmod",
+  "minNative": "1.2",
+  "targetNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "window": {
+    "width": 800,
+    "height": 450,
+    "resizable": false
+  },
+  "permissions": []
+}

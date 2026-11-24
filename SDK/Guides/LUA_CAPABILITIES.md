@@ -8,19 +8,19 @@ This document explains what kinds of programs and games can realistically be bui
 |---|---|---|
 | Desktop programs: notes, budget, kanban, journal, calculator, dictionary, RSS reader, weather | **Yes, easily** | UI widgets, files, JSON, internet (HTTPS) are ready |
 | 2D games: cards, puzzles, platformers, shoot 'em ups, tower defense, top-down racing | **Yes, easily** | 60 FPS, touch + controller + keyboard |
-| Simple 3D games: low-poly car racing, flight, maze, Rubik's cube, 3D puzzles | **Yes** | Untextured, colored triangles; a few thousand triangles per scene |
+| Simple 3D games: low-poly car racing, flight, maze, Rubik's cube, 3D puzzles | **Yes** | GPU path with a depth buffer, textures and lighting; the CPU fallback has colored triangles only; a few thousand triangles per scene on the CPU path |
 | GTA 1 / GTA 2 style (top-down open city) | **Yes** | Fully possible with 2D drawing |
-| GTA 3 / GTA V style (3D open world, textured city, physics) | **No** | Needs textures, a depth buffer and GPU shaders (see below) |
+| GTA 3 / GTA V style (3D open world, textured city, physics) | **No** | Needs hundreds of thousands of triangles, shadows, physics and world streaming (see below) |
 | Full-scale programs (office, IDE, media player) | **Partly** | The UI and logic work in Lua; heavy work (video decoding, large document layout) is done in the built-in C++ apps |
 
-**Proof:** the built-in **Racer** (`romfs/Applications/racer.nxvapp`) is a 3D racing game written entirely in Lua: a hilly track, curbs, trees, 3 AI opponents, lap times, a minimap, touch pedals and gyro steering. About 1,200 lines of Lua.
+**Proof:** the **Racer** app (App Store, id `racer`) is a 3D racing game written entirely in Lua: a hilly track, curbs, trees, 3 AI opponents, lap times, a minimap, touch pedals and gyro steering. About 1,200 lines of Lua.
 
 ## What does the Lua environment provide?
 
 - **Drawing (`gfx`)**: rectangles, rounded boxes, circles, lines, polygons, gradients, images (PNG/JPG), text (including Turkish characters), Material icons, clipping.
 - **UI (`ui`)**: buttons, text fields (the on-screen keyboard opens automatically), sliders, switches, lists, scroll areas, menus. The system look, compatible with the light/dark theme.
 - **Input**: touch, controller (buttons, analog sticks, gyro/accelerometer `input.motion()`), USB keyboard/mouse. D-pad navigation between buttons is done automatically by the system.
-- **3D (`g3d`)**: cube, sphere, cylinder, cone, torus, plane; loading `.obj` / `.stl` models; your own triangles; lighting, fog, wireframe, camera, 3D→2D projection.
+- **3D (`g3d`)**: cube, sphere, cylinder, cone, torus, plane; loading `.obj` / `.stl` models; your own triangles; lighting, fog, textures, wireframe, camera, 3D→2D projection; optional `"pbr"` renderer on GLES 3 contexts (SDK 1.9).
 - **Files and data**: an app-specific folder, `store` (settings saved automatically), JSON, user folders (Documents, Pictures…).
 - **Internet (`net`)**: HTTPS GET/POST, JSON, file downloads (with progress).
 - **Sound**: synthesized tones (sine, square, saw, triangle, noise), WAV/OGG/MP3 effects, music streaming, vibration (HD Rumble).
@@ -31,11 +31,11 @@ This document explains what kinds of programs and games can realistically be bui
 
 1. **Lua is an interpreted language.** Game logic runs on a single core. For the Switch's CPU (4× Cortex-A57, ~1 GHz) that means updating thousands of objects per frame, not tens of thousands.
 2. **Every call may take at most 3 seconds.** Long jobs (AI search, puzzle generation) must be split across frames or done piece by piece with `coroutine`. The chess engine works this way.
-3. **`g3d` has no textures and no depth buffer.** Triangles are colored and lit, but no picture (texture) can be put on them. Visibility is solved by sorting triangles from far to near (painter's algorithm); errors can show up on large intersecting surfaces. Transformation and lighting are computed on the CPU, drawing is done on the GPU.
+3. **The `g3d` CPU fallback has no textures and no depth buffer.** The default GPU path (GLES2) has a real depth buffer, per-pixel lighting, fog and textures. Only when the GPU is unavailable or the setting `g3d.gpu` is false does `g3d` fall back to the CPU path: colored lit triangles sorted far to near (painter's algorithm), where errors can show up on large intersecting surfaces.
 4. **Triangle budget**: according to the SDK, a few thousand triangles per frame are drawn at 60 FPS. Measure the figure on real hardware with the system's **Benchmark** app; the result in the emulator may differ.
 5. **Native (C/C++) libraries cannot be loaded**, threads cannot be created, and network sockets cannot be reached directly (HTTP/HTTPS only). This is a deliberate choice for security: a `.nxvapp` downloaded from elsewhere cannot break the system.
 
-A GTA 3 style game needs textured buildings, hundreds of thousands of triangles, a depth buffer, shadows, vehicle and character physics, and streaming the world in pieces. None of these exist in the current Lua 3D layer.
+A GTA 3 style game needs hundreds of thousands of triangles, shadows, vehicle and character physics, and streaming the world in pieces. The current Lua 3D layer is not built for that scale.
 
 ## Example 1: a simple 3D car (the camera follows the car)
 
@@ -147,8 +147,8 @@ Yes, but it needs work on the system side (C++):
 
 | Improvement | What it brings |
 |---|---|
-| GPU-based drawing + a depth buffer for `g3d` | No more intersection errors, 10× more triangles |
-| Textured models (`.obj` + `.png`) | Realistic cars/buildings, a PS1–PS2 era look |
+| Larger GPU budgets for `g3d` (the GPU path and its depth buffer already exist) | 10× more triangles |
+| More textured model content (textures already work on the GPU path) | Realistic cars/buildings, a PS1–PS2 era look |
 | Built-in physics (collision boxes, vehicle physics) | Solid collision without writing it in Lua |
 | Scene partitioning (not drawing invisible areas) | Larger 3D worlds |
 

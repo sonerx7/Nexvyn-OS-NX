@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         The maintainer looks at every report. Items that break the
-        [rules](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/REVIEW.en.md) are removed from the
+        [rules](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/REVIEW.md) are removed from the
         App Market. / Bakımcı her bildirime bakar; kurallara uymayan öğeler Uygulama Mağazası'ndan kaldırılır.
   - type: input
     id: app-id

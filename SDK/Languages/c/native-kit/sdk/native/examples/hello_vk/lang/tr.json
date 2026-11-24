@@ -1,0 +1,7 @@
+{
+  "vulkan": {
+    "unavailable": "Bu sistemde Vulkan kullanılamıyor",
+    "create_failed": "Vulkan örneği oluşturulamadı",
+    "created": "Vulkan örneği oluşturuldu"
+  }
+}

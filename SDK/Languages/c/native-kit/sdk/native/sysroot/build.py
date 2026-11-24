@@ -275,7 +275,7 @@ def mrun(log, cmd, env):
 def strip_debug(r, log):
     """Debug sections only: the kit libraries are for linking, not for debugging them (OpenAL alone was 40 MB)."""
     for rel in provides_paths(r):
-        if os.path.isfile(os.path.join(OUT, rel)):
+        if rel.endswith(".a") and os.path.isfile(os.path.join(OUT, rel)):
             log.run([A64M + "/aarch64-none-elf-strip", "--strip-debug", M(os.path.join(OUT, rel))])
 
 
@@ -522,10 +522,15 @@ def copy_licenses(rec):
         src = os.path.join(CACHE, "src", name + "-" + r["version"])
         dst = os.path.join(OUT, "licenses", name)
         os.makedirs(dst, exist_ok=True)
-        for fn in sorted(os.listdir(src)) if os.path.isdir(src) else []:
-            low = fn.lower()
-            if os.path.isfile(os.path.join(src, fn)) and low.startswith(("license", "licence", "copying", "copyright", "unlicense")):
-                shutil.copy2(os.path.join(src, fn), os.path.join(dst, fn))
+        files = set()
+        if os.path.isdir(src):
+            files.update(fn for fn in os.listdir(src) if os.path.isfile(os.path.join(src, fn))
+                         and fn.lower().startswith(("license", "licence", "copying", "copyright", "unlicense")))
+        license_file = r.get("license_file")
+        if license_file:
+            files.add(license_file)
+        for fn in sorted(files):
+            shutil.copy2(os.path.join(src, fn), os.path.join(dst, os.path.basename(fn)))
 
 
 def package(rec):

@@ -50,8 +50,9 @@ Rules:
 - At most 20000 files and 1 GiB unpacked: larger packages are refused before anything is extracted (zip-bomb
   protection).
 - `"native": true` is only for the C++ apps that ship with the system. A C++ app package carries a compiled native
-  module: `"native": "<id>.nxvmod"` and `"abi"` (section 2, `docs/NATIVE_MODULES.md`). This is an internal mechanism for
-  Nexvyn OS's own apps only; third-party apps are written in Lua, JavaScript or Python.
+  module: `"native": "<id>.nxvmod"` and `"abi"` (section 2, `docs/NATIVE_MODULES.md`). Third-party native apps
+  (C/C++ built with the Native SDK, `"mode": "window"` / `"fullscreen"`, see the runtime table below) use the same
+  package form; most third-party apps are still written in Lua, JavaScript or Python.
 
 ## 2. app.json
 
@@ -65,10 +66,11 @@ Rules:
 | `category` | string | `system`, `productivity`, `utilities`, `media`, `internet`, `games`, `developer`, `other`. |
 | `icon` | string | Default `icon.png`. |
 | `main` | string | Entry file; without it, the runtime's default (table below). Its extension also selects the runtime. |
-| `runtime` | `"lua"`, `"js"`, `"python"`, `"squirrel"`, `"c"`, `"java"` | Selects the runtime explicitly (takes precedence over the extension). |
+| `runtime` | `"lua"`, `"js"`, `"python"`, `"python3"`, `"squirrel"`, `"c"`, `"java"`, `"native"` | Selects the runtime explicitly (takes precedence over the extension). |
 | `mainClass` | string | Java only: the class that extends `nexvyn.App` (`"hello.HelloApp"`); without it, `Main-Class` from the jar's manifest. |
 | `window` | object | `width`, `height`, `minWidth`, `minHeight`, `resizable`. |
 | `singleInstance`, `gamepad`, `dpadArrows`, `hidden` | boolean | See `sdk/SDK.md`. |
+| `vulkan` | boolean | Declares a Vulkan-aware windowed or fullscreen native module. `nxv_native package` runs the windowed module import check for this declaration. The declaration leaves host activation unchanged. Releases include the Vulkan driver, opt-in: numeric `native.vulkan=1` at boot and a successful driver check are required (a plain `./build.sh` build leaves it off). Probe at runtime and handle unavailability. See [the native kit](NATIVE_KIT.md#vulkan-in-the-native-kit). |
 | `fileTypes` | string array | Extensions it can open (`[".txt"]`). |
 | `minSdk` | string | The minimum SDK version required (`"1.2"`). Without it, the app runs on every version. |
 | `permissions` | string array | Requested permissions (section 3). Without it, the package counts as an old package. |
@@ -110,15 +112,16 @@ Runtimes (`tools/registry/runtimes.json`, generated into `source/runtimes/runtim
 |---|---|---|---|---|
 | `"lua"` (default) | `.lua` | `main.lua` | Lua 5.4 | 1.0 |
 | `"js"` | `.js`, `.mjs` | `main.js` | JavaScript (QuickJS-ng) | 1.1 |
-| `"python"` | `.py` | `main.py` | Python (pocketpy 2) | 1.3 |
+| `"python"` | `.py` | `main.py` | Python (pocketpy 2, frozen since SDK 1.14) | 1.3 |
+| `"python3"` | none (only by name) | `main.py` | Python (CPython 3.12.16) | 1.6 |
 | `"squirrel"` | `.nut` | `main.nut` | Squirrel 3.2 | 1.5 |
 | `"c"` | `.c` | `main.c` | C, compiled on the console with TinyCC; every `.c` file in the package | 1.5 |
 | `"java"` | `.jar` | `app.jar` | Java 8 class files (miniJVM); the jar is built on the PC with `tools/java_build.py` | 1.5 |
 | `"native"` | `.nxvmod` | the `"native"` field | C++ native module, compiled with the same compiler as the NRO; runs only on a system with the same ABI (`docs/NATIVE_MODULES.md`) | ABI id instead of SDK |
-| `"native"` + `"mode": "window"` / `"fullscreen"` | `.nxvmod` | `<name>.nxvmod` | C/C++ app built with the Native SDK (`NATIVE_KIT.md`): runs inside Nexvyn OS in a window or full screen, the user can switch. (Older packages with `"mode": "exclusive"` and a `.nro` main still start as before.) `"minNative"` = the Native SDK version it needs; `"minSdk": "1.10"` is required (older systems then say "needs a newer Nexvyn OS"); a newer mode or Native SDK is shown as "needs a newer Nexvyn OS" | `"minNative"` |
+| `"native"` + `"mode": "window"` / `"fullscreen"` | `.nxvmod` | `<name>.nxvmod` | C/C++ app built with the Native SDK ([native kit guide](NATIVE_KIT.md)): runs inside Nexvyn OS in a window or full screen, the user can switch. (Older packages with `"mode": "exclusive"` and a `.nro` main still start as before.) `"minNative"` = the Native SDK version it needs; `"minSdk": "1.10"` is required (older systems then say "needs a newer Nexvyn OS"); a newer mode or Native SDK is shown as "needs a newer Nexvyn OS" | `"minNative"` |
 
-Because `"c"`, `"java"` and `"native"` apps do not run sandboxed, those installed from the SD card ask the user once on
-their first launch (`apps.trustedC`, `apps.trustedJava`, `apps.trustedNative`).
+`"c"`, `"java"` and `"native"` apps do not run sandboxed. They start without a launch-time confirmation
+(`ScriptApp::trusted` returns true; `nxvmod::confirmUnknown` launches directly); the install sheets carry the warning.
 
 ### SDK versions
 
@@ -136,6 +139,8 @@ The system carries the `NEXVYN_SDK_VERSION` value (`source/core/sdk_version.h`);
 | 1.3 | Python runtime (pocketpy) |
 | 1.4 | all permissions enforced, `sys.share`, `sys.schedule`, `sys.hasPermission` / `requestPermission`, `sys.memory`, `sys.appUrl`, `nxv://` links, `app.search` and the lifecycle callbacks, `shareTargets`, `manifest.sig` |
 | 1.5 | Squirrel (`"squirrel"`), C (`"c"`, TinyCC) and Java (`"java"`, miniJVM) runtimes, `mainClass`; Python system library (`itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys`) |
+
+The table stops at SDK 1.5; later versions (current: SDK 1.16) are listed in [COMPATIBILITY.md](COMPATIBILITY.md#sdk-versions).
 
 A minor version (1.x) only adds things; if something is removed or changes meaning, the major version goes up.
 
@@ -324,8 +329,9 @@ a different engine for the same runtime). `kind: "compat"` names a legacy compat
 miniJVM, Squirrel): it is a dependency, never an engine. `abi` must be `1`, the only Runtime Provider ABI this system
 knows; another generation is refused with a clean message. The C contract is
 `sdk/native/include/nexvyn/nxn_provider.h`. Built-in engines always stay available, so the OS, Settings and Native
-apps open with no provider installed; until the OS ships a provider loader, an installed provider resolves as
-unavailable (named, with a reason) instead of being started by the wrong interpreter.
+apps open with no provider installed. The provider loader is off by default (setting `runtime.providerLoader`); while
+it is off, an installed provider resolves as unavailable (named, with a reason) instead of being started by the wrong
+interpreter.
 
 ## 6. Community repository (index.json)
 

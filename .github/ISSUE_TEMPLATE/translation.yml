@@ -7,8 +7,8 @@ body:
     attributes:
       value: |
         A new language can be tried on your console first: see "Adding a new language" in the
-        [user guide](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Guides/USER_GUIDE.en.md#adding-a-new-language).
-        / Yeni bir dil önce konsolunuzda denenebilir: [kullanım rehberinde](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Guides/USER_GUIDE.tr.md#yeni-dil-eklemek)
+        [user guide](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Guides/USER_GUIDE.md#adding-a-new-language).
+        / Yeni bir dil önce konsolunuzda denenebilir: [kullanım rehberinde](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Guides/USER_GUIDE.md#adding-a-new-language)
         "Yeni dil eklemek" bölümü.
   - type: dropdown
     id: kind

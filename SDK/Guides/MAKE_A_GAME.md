@@ -348,7 +348,7 @@ built in for 2D games (`game.switch`, `game.push`, `game.pop`, transitions).
 
 ### Input: actions, not buttons
 
-Players use the Joy-Con, a Pro Controller, the touch screen or a keyboard. Read actions, never raw buttons, so every
+Players use an attached or detached controller, a wireless full-size controller, the touch screen or a keyboard. Read actions, never raw buttons, so every
 one of them works and can be remapped. `actions.lua`:
 
 ```lua

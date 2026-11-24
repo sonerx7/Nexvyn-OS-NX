@@ -91,9 +91,9 @@
   "live": "Auf der Konsole gemessen: 0.10-0.22 ms"
  },
  "c4": {
-  "name": "Touch und Joy-Con",
+  "name": "Touch und Controller",
   "what": "Sticks, Tasten und Touchscreen erreichen die App im selben Frame, im Fenster oder im Vollbild. Probiere es jetzt.",
-  "r0": "Touch, Joy-Con und 3D-Welten",
+  "r0": "Touch, Controller und 3D-Welten",
   "b": "ging nicht",
   "a": "funktioniert"
  },

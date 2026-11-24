@@ -67,8 +67,8 @@ public class SayacApp extends App {
 ## Limits
 
 One Java app runs at a time. The Java heap is 64 MB; callbacks on the main thread are stopped after 3 seconds. Java's
-own class library is not limited by the app's permissions, so a Java app installed from the SD card asks the user
-once, on its first launch. There are no Java sockets; use `Net` for networking (`network` permission). miniJVM is an
+own class library is not limited by the app's permissions, so the install sheet warns about it; a Java app starts
+without a launch-time question. There are no Java sockets; use `Net` for networking (`network` permission). miniJVM is an
 interpreter: for drawing-heavy games Lua is faster.
 
 Checking on the PC: `python tools/rt_check.py Sayac.nxvapp`.

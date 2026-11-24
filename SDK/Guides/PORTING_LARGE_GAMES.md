@@ -87,7 +87,7 @@ costs decides the frame rate:
 
 ## 7. Input
 
-Map to what the user holds: a Joy-Con pair, a single Joy-Con, a controller, and the touch screen. The game expects a
+Map to what the user holds: an attached controller pair, a single detached controller, a controller, and the touch screen. The game expects a
 mouse and a keyboard, so the host layer has to provide them:
 
 - **Touch:** a tap is a left click, a long press is a right click, a two-finger drag scrolls the map. Move the cursor to
@@ -149,6 +149,6 @@ mouse and a keyboard, so the host layer has to provide them:
 - [ ] vsync off in the port; dirty rectangles; no extra passes
 - [ ] no lock held across I/O; open / close test ten times
 - [ ] reads in large chunks, nothing per frame
-- [ ] touch, controller and Joy-Con mapped; mapping shown in a menu
+- [ ] touch, controller and controller mapped; mapping shown in a menu
 - [ ] measured with the console profile; numbers written down with the profile
 - [ ] licence files, source link, no game data in the package

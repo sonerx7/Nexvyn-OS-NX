@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Vulkan 测试",
+    "unavailable": "此系统不支持 Vulkan",
+    "init_failed": "Vulkan 初始化失败",
+    "device_lost": "Vulkan 设备已丢失",
+    "completed": "Vulkan 测试已完成"
+  }
+}

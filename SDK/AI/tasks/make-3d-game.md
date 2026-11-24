@@ -21,7 +21,7 @@ Models in the bundle (from model:info()):
 - models/<prop>.glb: ...
 
 Requirements:
-- app.json: "category": "games", "gamepad": true, a resizable "window", "minSdk": "1.9", "targetSdk": "1.9",
+- app.json: "category": "games", "gamepad": true, a resizable "window", "minSdk": "1.9", "targetSdk": "1.16",
   "permissions": [] unless needed.
 - Load every model with g3d.loadModel in app.load (never g3d.model for big files) and show a loading screen drawn
   in the game's style until they arrive; handle a failed load with a message. No callback may come near 3 seconds
@@ -42,7 +42,7 @@ Requirements:
 - Camera: <follow / orbit / fixed / first person>, eased, with a short shake on impacts. Movement relative to the
   camera; a model faces +Z at yaw 0 (yaw = math.atan(vx, vz)).
 - Collision: write small helpers (sphere vs sphere, sphere vs box with a push-out, ray vs box, ray vs triangle for a
-  simple collision mesh, ground height from a heightmap); clamp dt; there is no physics engine for g3d scenes.
+  simple collision mesh, ground height from a heightmap); clamp dt. SDK 1.15 adds `phys.*` (collision, character controller) and `nav.*` (pathfinding) for g3d scenes in Lua, JavaScript and Python (`"python3"`); use them when `minSdk` is 1.15 or newer, otherwise keep the helpers.
 - Budget for 60 fps on the console (pbr: start with msaa 0, shadows "medium", textures up to 1024 px): 30-60k triangles per frame, 8-16 skinned characters, about 150 draw calls, fog
   to hide the far plane, static props merged into one g3d.custom mesh where possible. No table creation or image
   loading in update/draw loops.

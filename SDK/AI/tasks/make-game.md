@@ -16,7 +16,7 @@ Languages of the game: English<, plus any others, e.g. Spanish, German>
 
 Requirements:
 - app.json: "category": "games", "gamepad": true, "window" resizable, the right "runtime"/"main",
-  "minSdk" for the newest feature used, "targetSdk": "1.8", "permissions": [] unless the game really needs one.
+  "minSdk" for the newest feature used, "targetSdk": "1.16", "permissions": [] unless the game really needs one.
 - Art direction first: before any code, write a short art direction as a comment at the top of the main file
   (the feeling in one line, a palette of 3-4 colours, typography, camera or framing, motion style, sound palette,
   UI shape language). Everything on screen follows it. Draw the title screen, HUD and pause screen yourself with

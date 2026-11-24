@@ -9,9 +9,10 @@ Summarizes `.nxvapp` bundle layout, `app.json` and `store.json` fields, icon rul
 | `id` / `version` / `category` | `app.json` | Reverse-domain ID, version string, and store category (`utilities`, `games`, etc.) |
 | `name` / `description` | `app.json` | String or locale map (`"en"` required; all 8 locales required for new products) |
 | `runtime` / `main` / `mode` | `app.json` | `"lua"`, `"js"`, `"python3"`/`"python"`, `"native"` (`.nxvmod`, `"mode": "window"`/`"fullscreen"`) |
-| `minSdk` / `targetSdk` / `minNative` | `app.json` | Script SDK floor/target (`"2.0"` for N2) and Native SDK floor (`"1.2"`, requires `minSdk >= "1.10"`) |
+| `minSdk` / `targetSdk` / `minNative` | `app.json` | Script SDK floor/target (current SDK `"1.16"`; `"2.0"` is only a target marker) and Native SDK floor (`"1.2"`, requires `minSdk >= "1.10"`) |
 | `window` (`width`, `height`, `resizable`) | `app.json` | Initial content dimensions, `minWidth`/`minHeight`, and resize flag |
 | `gamepad` / `loadingHint` / `liveResize` | `app.json` | Gamepad routing (`L+R` returns cursor), 120 s load grace, and live resize opt-in |
+| `fullscreenPause` | `app.json` | `true`: pause the shell compositor while this native app is fullscreen and focused (same as `native.compositorPause`, per app) |
 | `permissions` / `fileTypes` / `shareTargets` | `app.json` | Enforced perms (`network`, `files`, `launch`, `notifications`, `games`), open-with, share types |
 | `memory` | `app.json` | Optional native heap pre-check in MB (`1..16384`) |
 | `kind` / `features` / `players` / `tech` | `store.json` | Optional App Market catalog metadata (`app`/`game`/`port`/`emulator`, input/3d tags) |

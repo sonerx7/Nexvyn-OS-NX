@@ -1,5 +1,20 @@
 # Release notes / Changelog
 
+## [1.4.0] - 2026-11-24
+
+### SDK 1.16, native Vulkan, performance panel and stability
+
+- Python 3 apps start without freezing the desktop: the interpreter starts in the background while the window shows "Loading".
+- Script apps (Lua, JavaScript, Python 3) can now idle when nothing moves (`update` returns false, `ui.requestFrame()` wakes them) and read every finger on the touchscreen (`touches`, `input.touches()`): SDK 1.16.
+- A faulty or hostile script app can no longer crash or freeze the whole system through its theme, menus, callbacks or a runaway Lua pattern; only that app is stopped.
+- Optional on-screen performance panel (Ctrl+Alt+P, or L+R+ZL+ZR): frame time and its phases, skipped frames, RAM and GPU lock time.
+- Safer files: game saves are never replaced by a truncated copy, FTP uploads and downloads keep the old file when a transfer fails, and Writer and Sheets refuse files over 16 MB instead of freezing.
+- Store and package downloads are checked against their SHA-256 before they are unpacked.
+- The browser limits WebSocket queues, very large images and WebAssembly memory, so a hostile page cannot exhaust memory; WebRTC now verifies the peer certificate fingerprint.
+- Window drags no longer get stuck when the overview opens or a window closes; a hung window no longer forces a full redraw every frame.
+- Ports: two-finger rotate and double tap in the port input helper; `"fullscreenPause": true` in app.json frees the compositor's memory while the app runs fullscreen; Vulkan pipeline caches are saved between launches.
+- Vulkan for native apps and ports (opt-in, `native.vulkan`): verified on the console with the canary and the GPU load test.
+
 ## [1.3.28-beta.2] - 2026-11-19
 
 ### Fixes in-OS beta install
@@ -113,48 +128,48 @@
 - Input: relative mouse for first-person games and up to 8 controllers (`input.relativeMouse`, `mouseDelta`, `padCount`, `padDown`; `nxn_input_*`).
 - Live language change: running apps get a `language_changed` event (Lua, JavaScript, Python, C and Native).
 - Runtimes & Frameworks: a new Settings pane lists built-in engines and installed runtime packages, with safe mode, remove, roll back and retry. Runtime providers can draw (Provider ABI 1.1); the provider loader stays off by default.
-- One design language: Native C/C++ apps use the same OS components and sizes as Lua, JavaScript and Python apps (`nxn_os_ui.h`); a design checker is part of the release gate.
+- One design language: Native C/C++ apps use the same OS components and sizes as Lua, JavaScript and Python apps; a design checker is part of the release gate.
 - SDK 1.14: `fs.readBytes` in Lua and C, `fs.unzip` and `sys.games` in C, `nxui.feedPointer` in JavaScript and Python; all four languages expose the same API.
 - USB storage: Files shows why a drive does not appear (no USB support in this build, waiting for a device, device found but no volume could be opened).
 
 ## [1.3.17] — 2026-11-15
 
 ### libcurl mbedTLS Backend & Modern TLS 1.2 Handshake
-- **libcurl mbedTLS Integration (`lib/curl`, `source/core/net.cpp`):** Replaced devkitPro's `libnx.c` virtual TLS backend with an in-tree ARMv8 hardware-accelerated `mbedTLS 2.28.10` backend. Completely bypasses Horizon OS `ssl:` sysmodule bottlenecks (the 8 concurrent connection ceiling and 71 ServerPki certificate limit), enabling full TLS 1.2 cryptographic handshakes, ALPN negotiation, and unconstrained Mozilla root CA certificate processing across all HTTPS endpoints.
+- **libcurl mbedTLS Integration:** Replaced the virtual TLS backend with an in-tree ARMv8 hardware-accelerated `mbedTLS 2.28.10` backend. Completely bypasses Horizon OS `ssl:` sysmodule bottlenecks (the 8 concurrent connection ceiling and 71 ServerPki certificate limit), enabling full TLS 1.2 cryptographic handshakes, ALPN negotiation, and unconstrained Mozilla root CA certificate processing across all HTTPS endpoints.
 - **Mozilla Root CA Support:** mbedTLS loads the complete Mozilla CA certificate store (`cacert.pem`).
 - **Automated Fallback:** Preserved instant HTTP/1.1 retry logic upon connection drops.
 
 ## [1.3.16] — 2026-11-15
 
 ### Switch Native TLS Backend, SSL Handshake & Public Certs Fix
-- **Native Switch TLS / SSL Handshake (`source/core/net.cpp`):** Fixed persistent `"Secure connection failed / SSL connect error"` on console hardware. devkitPro's `switch-curl` routes through Horizon OS's native `ssl:` sysmodule (`libnx.c`). Because Horizon OS only trusts system internal CAs and fails when importing Mozilla root bundles (> 71 cert limit), peer/host verification is now disabled on Switch (`CURLOPT_SSL_VERIFYPEER = 0L`, `CURLOPT_SSL_VERIFYHOST = 0L`), ALPN/NPN negotiation is disabled (`CURLOPT_SSL_ENABLE_ALPN = 0L`), and external CA bundle parsing is omitted on Switch, enabling native encrypted TLS connections to all public internet HTTPS endpoints.
-- **Network Fallback & Error Recovery (`source/core/net.cpp`):** Expanded automated fallback retry to intercept `CURLE_PEER_FAILED_VERIFICATION`, `CURLE_SSL_CACERT`, `CURLE_SSL_CACERT_BADFILE`, `CURLE_SSL_CERTPROBLEM`, and `CURLE_SSL_CONNECT_ERROR`, immediately recovering on a fresh HTTP/1.1 socket.
-- **Default Search Engine & Migration (`source/apps/app_browser.cpp`):** Defaulted to DuckDuckGo to prevent Google SearchGuard challenge blocks.
-- **CSS Cascade & Dropdown Menus (`source/web/web_css.cpp`):** Corrected percentage-based top offsets (`top: 100%!important`), restoring Semantic UI dropdown menus (e.g. video source alternatives).
+- **Native Switch TLS / SSL Handshake:** Fixed persistent `"Secure connection failed / SSL connect error"` on console hardware. devkitPro's `switch-curl` routes through Horizon OS's native `ssl:` sysmodule. Because Horizon OS only trusts system internal CAs and fails when importing Mozilla root bundles (> 71 cert limit), peer/host verification is now disabled on Switch (`CURLOPT_SSL_VERIFYPEER = 0L`, `CURLOPT_SSL_VERIFYHOST = 0L`), ALPN/NPN negotiation is disabled (`CURLOPT_SSL_ENABLE_ALPN = 0L`), and external CA bundle parsing is omitted on Switch, enabling native encrypted TLS connections to all public internet HTTPS endpoints.
+- **Network Fallback & Error Recovery:** Expanded automated fallback retry to intercept `CURLE_PEER_FAILED_VERIFICATION`, `CURLE_SSL_CACERT`, `CURLE_SSL_CACERT_BADFILE`, `CURLE_SSL_CERTPROBLEM`, and `CURLE_SSL_CONNECT_ERROR`, immediately recovering on a fresh HTTP/1.1 socket.
+- **Default Search Engine & Migration:** Defaulted to DuckDuckGo to prevent Google SearchGuard challenge blocks.
+- **CSS Cascade & Dropdown Menus:** Corrected percentage-based top offsets (`top: 100%!important`), restoring Semantic UI dropdown menus (e.g. video source alternatives).
 ## [1.3.15] — 2026-11-15
 
 ### Sleep/Wake Stability, Performance, TLS, Default Search Engine & Browser Dropdowns
-- **Sleep / Wake Stability (`source/core/media.cpp`, `source/core/net.cpp`, `source/wm/lifecycle.cpp`):** Restored `media.hwdec` default to `false` (NVDEC `nvtegra` opt-in), reduced curl worker pool from 8 pinned threads to 4 OS-scheduled threads without `curl_share` lock contention, and added `net::beforeSuspend()` + `perfmode::setForeground(false)` on sleep entry, eliminating post-sleep reboot/crash.
-- **TLS / SSL (`source/core/net.cpp`):** Switched default HTTP version to `CURL_HTTP_VERSION_1_1` with `CURLOPT_SSL_SESSIONID_CACHE = 0L` to prevent `switch-curl 7.69.1 + mbedtls 2.28.10` HTTP/2 ALPN and session-resumption `SSL connect error` failures, added `CURLOPT_ERRORBUFFER` diagnostics, and expanded fresh-connection TLSv1.2 retry.
-- **Default Search Engine & Migration (`source/apps/app_browser.cpp`):** Changed default search engine to DuckDuckGo to prevent Google SearchGuard `#yvlrue` challenge blocks on non-Chromium TLS stacks, and added automatic one-time migration (`searchEngineV2`) for existing installs.
-- **CSS Cascade & Dropdown Menus (`source/web/web_css.cpp`):** Fixed cascade property tracker so non-pixel lengths (such as `top: 100%!important`) clear offscreen status, preventing Semantic UI dropdown menus (e.g. "Alternatifler" video sources) from collapsing into `display: none` upon hover.
-- **System Performance & Resource Warning (`source/core/reswarn_rules.h`, `source/wm/shell_reswarn.cpp`, `source/wm/shell.cpp`, `source/wm/wm.cpp`):** Suppressed false `"system busy"` frame-time warnings when real CPU (`< 45%`) and RAM (`< 70%`) usage are low, adjusted frame warning thresholds (`55 ms` / `10 s`), bounded unconsumed `g_inputRouter` pointer-move queuing, and trimmed hidden window textures on low memory.
-- **Browser Speed (`source/web/web_js.h`, `source/web/web_js.cpp`, `source/web/web_page.cpp`):** Tuned per-frame JS budget (`10 ms`), callback budget (`50 ms`), script budget (`1.5 s`), iframe update budget (`5 ms`), relayout cadence when DOM is unchanged (`0.40 s`), and throttled `pointermove`/`mousemove` dispatch to `30 Hz`.
+- **Sleep / Wake Stability:** Restored `media.hwdec` default to `false` (NVDEC `nvtegra` opt-in), reduced curl worker pool from 8 pinned threads to 4 OS-scheduled threads without `curl_share` lock contention, and added `net::beforeSuspend()` + `perfmode::setForeground(false)` on sleep entry, eliminating post-sleep reboot/crash.
+- **TLS / SSL:** Switched default HTTP version to `CURL_HTTP_VERSION_1_1` with `CURLOPT_SSL_SESSIONID_CACHE = 0L` to prevent `switch-curl 7.69.1 + mbedtls 2.28.10` HTTP/2 ALPN and session-resumption `SSL connect error` failures, added `CURLOPT_ERRORBUFFER` diagnostics, and expanded fresh-connection TLSv1.2 retry.
+- **Default Search Engine & Migration:** Changed default search engine to DuckDuckGo to prevent Google SearchGuard `#yvlrue` challenge blocks on non-Chromium TLS stacks, and added automatic one-time migration (`searchEngineV2`) for existing installs.
+- **CSS Cascade & Dropdown Menus:** Fixed cascade property tracker so non-pixel lengths (such as `top: 100%!important`) clear offscreen status, preventing Semantic UI dropdown menus (e.g. "Alternatifler" video sources) from collapsing into `display: none` upon hover.
+- **System Performance & Resource Warning:** Suppressed false `"system busy"` frame-time warnings when real CPU (`< 45%`) and RAM (`< 70%`) usage are low, adjusted frame warning thresholds (`55 ms` / `10 s`), bounded unconsumed `g_inputRouter` pointer-move queuing, and trimmed hidden window textures on low memory.
+- **Browser Speed:** Tuned per-frame JS budget (`10 ms`), callback budget (`50 ms`), script budget (`1.5 s`), iframe update budget (`5 ms`), relayout cadence when DOM is unchanged (`0.40 s`), and throttled `pointermove`/`mousemove` dispatch to `30 Hz`.
 
 ## [1.3.14] — 2026-11-15
 
 ### Sleep/Wake Stability, Performance, TLS, Default Search Engine & Browser Dropdowns
-- **Sleep / Wake Stability (`source/core/media.cpp`, `source/core/net.cpp`, `source/wm/lifecycle.cpp`):** Restored `media.hwdec` default to `false` (NVDEC `nvtegra` opt-in), reduced curl worker pool from 8 pinned threads to 4 OS-scheduled threads without `curl_share` lock contention, and added `net::beforeSuspend()` + `perfmode::setForeground(false)` on sleep entry, eliminating post-sleep reboot/crash.
-- **TLS / SSL (`source/core/net.cpp`):** Switched default HTTP version to `CURL_HTTP_VERSION_1_1` with `CURLOPT_SSL_SESSIONID_CACHE = 0L` to prevent `switch-curl 7.69.1 + mbedtls 2.28.10` HTTP/2 ALPN and session-resumption `SSL connect error` failures, added `CURLOPT_ERRORBUFFER` diagnostics, and expanded fresh-connection TLSv1.2 retry.
-- **Default Search Engine & Migration (`source/apps/app_browser.cpp`):** Changed default search engine to DuckDuckGo to prevent Google SearchGuard `#yvlrue` challenge blocks on non-Chromium TLS stacks, and added automatic one-time migration (`searchEngineV2`) for existing installs.
-- **CSS Cascade & Dropdown Menus (`source/web/web_css.cpp`):** Fixed cascade property tracker so non-pixel lengths (such as `top: 100%!important`) clear offscreen status, preventing Semantic UI dropdown menus (e.g. "Alternatifler" video sources) from collapsing into `display: none` upon hover.
-- **System Performance & Resource Warning (`source/core/reswarn_rules.h`, `source/wm/shell_reswarn.cpp`, `source/wm/shell.cpp`, `source/wm/wm.cpp`):** Suppressed false `"system busy"` frame-time warnings when real CPU (`< 45%`) and RAM (`< 70%`) usage are low, adjusted frame warning thresholds (`55 ms` / `10 s`), bounded unconsumed `g_inputRouter` pointer-move queuing, and trimmed hidden window textures on low memory.
-- **Browser Speed (`source/web/web_js.h`, `source/web/web_js.cpp`, `source/web/web_page.cpp`):** Tuned per-frame JS budget (`10 ms`), callback budget (`50 ms`), script budget (`1.5 s`), iframe update budget (`5 ms`), relayout cadence when DOM is unchanged (`0.40 s`), and throttled `pointermove`/`mousemove` dispatch to `30 Hz`.
+- **Sleep / Wake Stability:** Restored `media.hwdec` default to `false` (NVDEC `nvtegra` opt-in), reduced curl worker pool from 8 pinned threads to 4 OS-scheduled threads without `curl_share` lock contention, and added `net::beforeSuspend()` + `perfmode::setForeground(false)` on sleep entry, eliminating post-sleep reboot/crash.
+- **TLS / SSL:** Switched default HTTP version to `CURL_HTTP_VERSION_1_1` with `CURLOPT_SSL_SESSIONID_CACHE = 0L` to prevent `switch-curl 7.69.1 + mbedtls 2.28.10` HTTP/2 ALPN and session-resumption `SSL connect error` failures, added `CURLOPT_ERRORBUFFER` diagnostics, and expanded fresh-connection TLSv1.2 retry.
+- **Default Search Engine & Migration:** Changed default search engine to DuckDuckGo to prevent Google SearchGuard `#yvlrue` challenge blocks on non-Chromium TLS stacks, and added automatic one-time migration (`searchEngineV2`) for existing installs.
+- **CSS Cascade & Dropdown Menus:** Fixed cascade property tracker so non-pixel lengths (such as `top: 100%!important`) clear offscreen status, preventing Semantic UI dropdown menus (e.g. "Alternatifler" video sources) from collapsing into `display: none` upon hover.
+- **System Performance & Resource Warning:** Suppressed false `"system busy"` frame-time warnings when real CPU (`< 45%`) and RAM (`< 70%`) usage are low, adjusted frame warning thresholds (`55 ms` / `10 s`), bounded unconsumed `g_inputRouter` pointer-move queuing, and trimmed hidden window textures on low memory.
+- **Browser Speed:** Tuned per-frame JS budget (`10 ms`), callback budget (`50 ms`), script budget (`1.5 s`), iframe update budget (`5 ms`), relayout cadence when DOM is unchanged (`0.40 s`), and throttled `pointermove`/`mousemove` dispatch to `30 Hz`.
 
 ## [1.3.13] — 2026-11-15
 
 ### Browser TLS Handshake & SSL Connect Error Fix (Beta)
-- **TLS / SSL Fallback (`source/core/net.cpp`):** Disabled multi-thread `CURL_LOCK_DATA_SSL_SESSION` sharing with mbedTLS 2.28.10, enabled `CURLSSLOPT_NO_REVOKE`, and added automatic HTTP/1.1 + TLS 1.2 + fresh-connection fallback retry when `CURLE_SSL_CONNECT_ERROR`, `CURLE_SSL_CIPHER`, or `CURLE_HTTP2*` occurs.
+- **TLS / SSL Fallback:** Disabled multi-thread `CURL_LOCK_DATA_SSL_SESSION` sharing with mbedTLS 2.28.10, enabled `CURLSSLOPT_NO_REVOKE`, and added automatic HTTP/1.1 + TLS 1.2 + fresh-connection fallback retry when `CURLE_SSL_CONNECT_ERROR`, `CURLE_SSL_CIPHER`, or `CURLE_HTTP2*` occurs.
 
 ## [1.3.12] — 2026-11-15
 
@@ -178,7 +193,7 @@
 
 - **App Market SDK 1.13 & Native 1.2 Parity:** Updated all `112` Store packages (`181` catalog items, `4` beta items) to `targetSdk: "1.13"`, explicit `runtime` declarations, and `"minNative": "1.2"` / `"targetNative": "1.2"` for native apps and emulators (`0` errors, `0` warnings in `catalog_check.py`).
 - **Porting & Maximum Input (`sdl2-nexvyn` & `<nexvyn/nxn_port_input.h>`):** Added 16-finger multi-touch, pinch-to-zoom, two-finger tap right-click, two-finger pan scroll, long-press right-click, `nxn_rumble` haptics, and `<nexvyn/nxn_port_input.h>` profiles (`GAMEPAD`, `RTS`, `CRPG`, `FPS`).
-- **Terminal Stability & Keyboard Focus Fix:** Replaced unconditional per-frame keyboard focus capture in `app_terminal.cpp` with explicit tap/toggle tracking (`kbWanted`), preventing `swkbd` lock loops and adding font-metric, scroll-state, and bounded history (`256 KB` tail) guards.
+- **Terminal Stability & Keyboard Focus Fix:** Replaced unconditional per-frame keyboard focus capture in Terminal with explicit tap/toggle tracking (`kbWanted`), preventing `swkbd` lock loops and adding font-metric, scroll-state, and bounded history (`256 KB` tail) guards.
 - **SDK CLI & AI Guide:** Updated `SDK/Tools/nxv/nxv.py` to validate `"native"` bundles and showcase/emulator categories (`111/111` passing `nxv check --frames 5`), and added `SDK/AI/GEMINI_WORKFLOW.md`.
 
 ## [1.3.9] — 2026-11-14
@@ -310,7 +325,7 @@
 - New App Market: sidebar menu in every tab, Ports and Emulators categories, filtering and sorting.
 - Ports and Emulators: Doom (with Freedoom), Quake (with LibreQuake), and GBA emulator run in their own windows; users provide games themselves, BIOS and firmware are not bundled.
 - BlockCraft: fixed stack corruption in voxel worker thread.
-- "Not responding" dialog: when Wait is selected, silenced for 60s and until the app responds once (script apps and native windows share a unified rule, `nr_policy.h`); for ports loading heavy data, SDK 1.13 `loadingHint` field delays the dialog by 120s. No app is closed automatically.
+- "Not responding" dialog: when Wait is selected, silenced for 60s and until the app responds once (script apps and native windows share a unified rule); for ports loading heavy data, SDK 1.13 `loadingHint` field delays the dialog by 120s. No app is closed automatically.
 - Rejected render target (`healTargets`) is retried at most once every 2 seconds rather than every frame.
 - "What's New" tour displayed once after update and after initial installation (Settings > About > Show what's new).
 - Minor fixes: offline recommended app text, App Market hang, deep link, app name collisions due to case differences.
@@ -332,7 +347,6 @@
 
 ### bindgen: script API from a single definition (4)
 
-- New binding generator (`tools/api/gen.py`, `docs/BINDINGS.md`): an SDK function is defined once in `tools/api/*.json`; Lua, JavaScript, and C (`nexvyn.h`) bindings, checker mocks, and table rows in the SDK reference are generated from it. Every binding calls the same C++ core function.
 - SDK 1.9 renderer functions (`g3d.renderer`, `rendererInfo`, `caps`, `addLight`, `updateLight`, `removeLight`, `clearLights`, `lights`, `shadows`, `postfx`, `environment`, `material`, `drawInstanced`) moved to the generator. In this release, hand-written bindings remain active (`NEXVYN_GEN_BINDINGS` 0); behavior, names, error messages, and defaults for applications are unchanged.
 - `api_parity` is fed from definitions; the new `bindgen_equiv` desktop test compares generated and hand-written bindings with identical edge-case calls in actual Lua, QuickJS, and C hosts.
 - In the SDK reference, `g3d.removeLight`, `g3d.clearLights`, and `g3d.lights` are on separate rows with brief descriptions.
@@ -340,7 +354,7 @@
 ### deepreset: deep reset and SDK 1.9 runtime library (3)
 
 - New **Settings > Developer > Deep reset**: The SD card reverts to the state of the initial single `.nro` installation. Everything written by Nexvyn OS is deleted: `sdmc:/NexvynOS` (users, PINs, settings, files, apps, modules, themes, cache, logs, saved keys, `autorun.txt`) and items outside the folder (the legacy `sdmc:/SnxOS` folder, updater `.nro.bak` / `.new` / `.swap` copies, `switch/NexvynOS/install.log`). The page lists items to be deleted along with their sizes, and items to be preserved (`.nro`, homebrew installed via Nexvyn OS, `atmosphere/contents` mods, patches, other homebrew settings) separately; requires PIN and a 3-second hold. It does not touch games, save data, Album, or Atmosphère.
-- Power-outage resilient: everything is first renamed to the `sdmc:/NexvynOS.deleting` folder (settings first), then deleted from there. If interrupted, the next boot finishes the move, opens the setup wizard, and deletes the remainder in the background. The whitelist of deletable paths is maintained in `deepreset_rules.h` and guarded by desktop tests.
+- Power-outage resilient: everything is first renamed to the `sdmc:/NexvynOS.deleting` folder (settings first), then deleted from there. If interrupted, the next boot finishes the move, opens the setup wizard, and deletes the remainder in the background. The whitelist of deletable paths is maintained and guarded by desktop tests.
 - SDK 1.9 runtime library: Lua gets `net.request` (PUT, PATCH, DELETE...), JavaScript gets `TextEncoder` / `TextDecoder`, `URL` / `URLSearchParams`, `structuredClone`; in Python, pocketpy's missing `str` methods (`isdigit`, `isalpha`, `title`, `partition`, `rfind`, `rsplit`, `split(sep, maxsplit)`...), `dict.setdefault` / `fromkeys`, `pow()`, and to the system library `urllib.parse`, `html`, `uuid`. Behavior of legacy apps is unchanged.
 
 ### freezefix: App Market, installation, and language change freezes (4)
@@ -363,7 +377,7 @@
 - Joy-Con and touch fixes: button and touch input arrives consistently in windowed native apps.
 - New ports (as standalone apps): Doom (with Freedoom), a GBA emulator, and a Quake engine; BIOS, firmware, and game data are not bundled.
 - New "Nexvyn Bench" sample app: stresses GPU and CPU with a city scene, measures frame times.
-- Port kit (`tools/nxv_port.py`): fetching source, patching, building, packaging, and smoke-testing a port are unified into a single recipe; `SDK/Guides/NATIVE_PORT_KIT`.
+- Port kit: fetching source, patching, building, packaging, and smoke-testing a port are unified into a single recipe; `SDK/Guides/NATIVE_PORT_KIT`.
 
 ### perf7: console-proven performance settings default, audio and shutdown fixes (4)
 
@@ -374,7 +388,7 @@
 
 ### public19: SDK 1.9 documentation, samples, and public repository (10)
 
-- New guides (en + tr, `SDK/Guides`): `PBR_GAME_RECIPE` and `SOCIAL_APP_RECIPE` (a complete small PBR game and a feed application; full in Lua and JavaScript, alongside Python and C versions; code passes checkers, mirrored in `tools/tests/recipes`, `check_docs.py` verifies the code in the guide remains identical), `AI_WORKFLOW` (from AI-generated code, model, and texture to console-ready file: scale, pivot, LOD, texture dimensions, ORM and MetallicSmoothness, glass and emissive, reflection probe, rights), `SDK_VERSIONS` (SDK 1.0-1.9 history, language policy, choosing `minSdk` / `targetSdk`).
+- New guides (en + tr, `SDK/Guides`): `PBR_GAME_RECIPE` and `SOCIAL_APP_RECIPE` (a complete small PBR game and a feed application; full in Lua and JavaScript, alongside Python and C versions; code passes checkers, mirrored in `check_docs.py` verifies the code in the guide remains identical), `AI_WORKFLOW` (from AI-generated code, model, and texture to console-ready file: scale, pivot, LOD, texture dimensions, ORM and MetallicSmoothness, glass and emissive, reflection probe, rights), `SDK_VERSIONS` (SDK 1.0-1.9 history, language policy, choosing `minSdk` / `targetSdk`).
 - New SDK sample "PBR, Lights and Shadows" (`SDK/Samples/lua/pbr3d`, identical to the Studio template) and Social Feed sample in the public SDK; `samples.json` now has 27 samples.
 - New texture tool (`SDK/Tools/textures/textures.py`, Pillow): audits texture sets, downsamples maps, packs ORM, converts MetallicSmoothness to roughness, and inverts -Y (green-down) normal maps to +Y (green-up).
 - AI prompts cover SDK 1.9: pbr renderer, feed / media / network calls, language parity, 5 store screenshots, and the `hold` step; new `make-social-app` task.
@@ -387,8 +401,8 @@
 
 ### renderer: NexGFX 1.0, pbr renderer (SDK 1.9) (12)
 
-- NexGFX: new, named, and versioned graphics core (`source/nexgfx/`, C ABI header `nexgfx.h`, version 1.0,
-- New `g3d.renderer("pbr")`: a second GPU path in GLES 3 context (`source/nexgfx/backend_gles3.inl`, shaders
+- NexGFX: new, named, and versioned graphics core (C ABI header `nexgfx.h`, version 1.0,
+- New `g3d.renderer("pbr")`: a second GPU path in GLES 3 context (shaders
 - Materials: metallic-roughness BRDF (GGX), normal (tangents from screen derivatives), metallic, roughness,
 - Lights: sun (`g3d.light`) + up to 16 point / spot / directional lights (`g3d.addLight` / `updateLight` /
 - Shadows (`g3d.shadows`): view-fitted, texel-aligned sun shadow (1024 / 2048 px, 1 / 9 / 16 samples
@@ -407,18 +421,18 @@
 - Web images (`gfx.imageUrl`, `gfx.imageState`): disk and memory cache, thumbnails; background downloading and decoding, off-screen images skipped.
 - Embeddable video and audio player for applications (`media.*`: file, MP4, HLS); virtual scrolling feed and grid, pull-to-refresh, infinite scroll (`ui.beginFeed`), vertically scrolling pager (`ui.pager`), rich text with links, mentions, and tags (`ui.richText`), `sys.relativeTime` in 8 languages.
 - All available in Lua, JavaScript, Python (pocketpy and CPython), and C; checker mocks, SDK reference (section 8d), new `MAKE_A_SOCIAL_APP` guide (en + tr), and Social Feed sample app (CC0 media).
-- Store screenshots: `tools/store_shots.py` now captures 5 screenshots; automated scripts for games and apps lacking a `shots` script, `--missing` and `--app` flags; English interface.
+- Store screenshots: `store_shots.py` now captures 5 screenshots; automated scripts for games and apps lacking a `shots` script, `--missing` and `--app` flags; English interface.
 - Game Engine templates and samples now have English equivalents for Turkish strings; English is displayed in languages other than Turkish, becoming plain text in the user's language upon project cloning.
 - `lua_check` catches floating-point color components in applications with minSdk below 1.9 (a cause of crashes in Nexvyn OS 1.2.0 and earlier).
 
 ### storehome: App Market Home tab (8)
 
 - The first tab of the App Market is now Home: a bento grid on top (1 large + 2-4 small tiles, apps and games mixed; one tile slowly transitions at a time), followed by Trending, Top charts (two columns, large ranking numerals), Recommended, collection tiles (Most high-tech, Office, Switch Tools, New), Games to try, and Did you check these? shelves. Existing tabs remain untouched.
-- Shelves are computed strictly from the catalog, statistics, and apps installed/opened by the user (`storehome_rules.h`, unit-tested); shelves with fewer than 3 items are hidden. The catalog format is unchanged.
+- Shelves are computed strictly from the catalog, statistics, and apps installed/opened by the user; shelves with fewer than 3 items are hidden. The catalog format is unchanged.
 - Images are loaded only for visible cards from the existing background worker; Home caches at most 24 MB of images, releasing them entirely when the Store closes. Tile rotation and transitions are disabled when "Reduce motion" is enabled.
 - Home cards feature a genre tag (Game · Action), rating or download count (NEW only for newly added apps when no data is available; ratings are never fabricated), Free + size chip, Popular badge (1000+ downloads), and a single-line description on focus. Shimmer on large tiles, staggered fade-in on shelves, numeral roll on Top charts; all disabled when "Reduce motion" is enabled. Image uploads to the GPU are throttled to ~3 MB per frame.
 - The App Market now opens on Home: a bento grid on top (1 large + 2-4 small tiles, apps and games mixed; one tile at a time slowly changes), then Trending, Top charts (two columns, big numerals), Recommended, collection tiles (Most high-tech, Office, Switch Tools, New), Games to try and Did you check these? shelves. Existing tabs are unchanged.
-- Shelves come only from the catalog, the stats and what the user installed or opened (`storehome_rules.h`, unit tested); a shelf with fewer than 3 items is hidden. The catalog format did not change.
+- Shelves come only from the catalog, the stats and what the user installed or opened; a shelf with fewer than 3 items is hidden. The catalog format did not change.
 - Pictures load only for visible cards through the existing background worker; Home keeps at most 24 MB of pictures and drops them all when the Store closes. With "Reduce motion" on, tile changes and transitions are off.
 - Home cards show a kind label (Game · Action), the rating or download count (a NEW label only for a new app when there are no numbers; ratings are never invented), a Free + size chip, a Popular badge (1000+ downloads) and a one-line description on focus. The large tile has a shimmer, shelf cards fade in one after another and the Top charts numerals count up; all off with "Reduce motion". Picture uploads to the GPU are capped at about 3 MB per frame.
 
@@ -453,11 +467,11 @@
 ### storehome: App Market Home tab (8)
 
 - The App Market now opens on Home: a bento grid on top (1 large + 2-4 small tiles, apps and games mixed; one tile at a time slowly changes), then Trending, Top charts (two columns, big numerals), Recommended, collection tiles (Most high-tech, Office, Switch Tools, New), Games to try and Did you check these? shelves. Existing tabs are unchanged.
-- Shelves come only from the catalog, the stats and what the user installed or opened (`storehome_rules.h`, unit tested); a shelf with fewer than 3 items is hidden. The catalog format did not change.
+- Shelves come only from the catalog, the stats and what the user installed or opened; a shelf with fewer than 3 items is hidden. The catalog format did not change.
 - Pictures load only for visible cards through the existing background worker; Home keeps at most 24 MB of pictures and drops them all when the Store closes. With "Reduce motion" on, tile changes and transitions are off.
 - Home cards show a kind label (Game · Action), the rating or download count (a NEW label only for a new app when there are no numbers; ratings are never invented), a Free + size chip, a Popular badge (1000+ downloads) and a one-line description on focus. The large tile has a shimmer, shelf cards fade in one after another and the Top charts numerals count up; all off with "Reduce motion". Picture uploads to the GPU are capped at about 3 MB per frame.
 - The App Market now opens on Home: a bento grid on top (1 large + 2-4 small tiles, apps and games mixed; one tile at a time slowly changes), then Trending, Top charts (two columns, big numerals), Recommended, collection tiles (Most high-tech, Office, Switch Tools, New), Games to try and Did you check these? shelves. Existing tabs are unchanged.
-- Shelves come only from the catalog, the stats and what the user installed or opened (`storehome_rules.h`, unit tested); a shelf with fewer than 3 items is hidden. The catalog format did not change.
+- Shelves come only from the catalog, the stats and what the user installed or opened; a shelf with fewer than 3 items is hidden. The catalog format did not change.
 - Pictures load only for visible cards through the existing background worker; Home keeps at most 24 MB of pictures and drops them all when the Store closes. With "Reduce motion" on, tile changes and transitions are off.
 - Home cards show a kind label (Game · Action), the rating or download count (a NEW label only for a new app when there are no numbers; ratings are never invented), a Free + size chip, a Popular badge (1000+ downloads) and a one-line description on focus. The large tile has a shimmer, shelf cards fade in one after another and the Top charts numerals count up; all off with "Reduce motion". Picture uploads to the GPU are capped at about 3 MB per frame.
 ## [1.2.0] — 2026-11-03
@@ -487,11 +501,11 @@
 
 - Identified the cause of the crash in the native module loader disabled in 1.0.0: when creating code memory, the kernel fills pages with 0xFF, the module's `.bss` started with 0xFF, leaving static variables uninitialized. The loader now zeroes both views after mapping and copies segments; all 8 modules that crashed in 1.0.0 now open.
 - Modules match the OS ABI ID; non-matching modules are not loaded, queuing a build for this system. After 3 crashes, the module is disabled until reinstalled.
-- Infrastructure for moving apps to the Store is ready but disabled in this release (`tools/modules.json` is empty): all apps remain in NRO.
+- Infrastructure for moving apps to the Store is ready but disabled in this release: all apps remain in NRO.
 
 ### toolchain: pinned compiler, CI, and C sandbox (4)
 
-- Pinned toolchain (`tools/toolchain.json`: devkitA64 r29-3 GCC 15.2.0, libnx 4.10.0); `build.sh` warns on a different version. Two build errors introduced with GCC 15.2 have been fixed.
+- Pinned toolchain (devkitA64 r29-3 GCC 15.2.0, libnx 4.10.0); the build warns on a different version. Two build errors introduced with GCC 15.2 have been fixed.
 - CI builds the NRO on every push using a pinned image, running desktop tests and checkers.
 - C apps (targetSdk 1.8): non-bundle and non-SDK `#include`s and inline asm are rejected. Old apps only log.
 - Runtime policy: new APIs only come to Lua, JavaScript, Python, and C; Squirrel and Java are frozen at 1.8, their legacy apps continue to work.
@@ -508,10 +522,9 @@
 - `g3d.drawMatrix(mesh | model, matrix16, tint, flags)`: paired with `model:nodeMatrix` for handheld objects.
 - Script API across all runtimes: `model:info / play / stop / update / time / clip / playing / node / nodeMatrix / triangles / free` in Lua, JavaScript, and Python; `g3d.model*` functions for Squirrel, C (`nexvyn.h`), Java (`nexvyn.jar`, `G3d.model*`), and `"python3"`, with the same methods on the `Mesh` class in Squirrel. `g3d.draw`, `g3d.triangles`, and `g3d.free` also accept models.
 - g3d core: added `Mesh::skin` and `DrawOpts` (`alphaCutoff`, `blendTexture`, `bones`); defaults preserve legacy behavior exactly (texel alpha < 0.5 is discarded), existing 1.0-1.7 apps run unmodified (`compat_check`: 28/28).
-- SDK 1.8: `NEXVYN_SDK_VERSION`, `sdkcompat::osForSdk` (1.8 -> 1.2.0), `tools/sdkinfo.py`, checker mocks (`lua_check`, `js_check`, `py_check`), `compat_check` now scans model methods; new "3D models" section in the SDK reference.
-- "3D models" template in Studio (`romfs/System/Templates/models3d`): a rigged stick with two clips and a crate with embedded textures (5 KB total), clip transitions, and a ball attached to a bone.
-- Tests: `tools/gen_test_models.py` writes small glTF / GLB / ASCII FBX files; `tools/tests/model_loader_test.cpp` (MSVC) tests counts, limits, animation samples, and 2200 corrupted files.
-- Build: fixed two legacy errors with devkitA64 GCC 15: `jvm_build.c` defined `timespec_get` twice, and link failed because linker symbols in `nxvmod.cpp` remained inside an anonymous namespace.
+- SDK 1.8: `NEXVYN_SDK_VERSION`, `sdkcompat::osForSdk` (1.8 -> 1.2.0), checker mocks (`lua_check`, `js_check`, `py_check`), `compat_check` now scans model methods; new "3D models" section in the SDK reference.
+- "3D models" template in Studio: a rigged stick with two clips and a crate with embedded textures (5 KB total), clip transitions, and a ball attached to a bone.
+- Build: fixed two legacy errors with devkitA64 GCC 15: `timespec_get` was defined twice, and link failed because linker symbols remained inside an anonymous namespace.
 
 ### quickmode: Quick Game in Game Engine (4)
 
@@ -532,7 +545,7 @@
 - New "Make a game" guide (`docs/MAKE_A_GAME`): complete walkthrough from setup to release, 3D model export, `g3d.loadModel`, collision, audio, art direction, key art icon.
 - AI prompts updated for SDK 1.8; Turkish requirement removed for app creators, only English is required.
 - New Studio template Ember Field (Kor Tarlası): 3D game featuring a rigged, animated `.glb` character.
-- Fixed desktop freeze when opening App Market: replaced SDL spinlock with a version that actually puts the waiting thread to sleep (`sdl_spinlock.cpp`); also present in 1.1.2.
+- Fixed desktop freeze when opening App Market: replaced SDL spinlock with a version that actually puts the waiting thread to sleep; also present in 1.1.2.
 - Solitaire: no longer throws a script error when held cards disappear.
 ## [1.1.2] — 2026-11-02
 
@@ -545,21 +558,20 @@
 - Stop goes to all handles across No1-No8 for handheld, FullKey (Pro Controller), JoyDual, JoyLeft, and JoyRight. It is sent to connected styles and every group that previously received a non-zero value. It is repeated twice after 60 ms and 210 ms; if a write fails, it is retried every 30 ms.
 - Watchdog: when nothing is active (after rumble has been used once), zero is sent once per second to every connected device. Controller Test drives its own motors; with `haptics::noteExternal()`, the watchdog does not interfere during that time.
 - `haptics::threadWatch()` is called twice per second from lifecycle's watchdog thread: even if the main thread hangs (a script in an infinite loop), overdue vibration past its deadline is cut off (`std::mutex` + `try_lock`).
-- Owner: SDK bindings (`jsapp_sys.cpp`, `luaapp.cpp`, `pyapp_sys.cpp`, `nxvrt_api.cpp`; C/Squirrel/Java/CPython also pass through here) now call `App::vibrate()`. Vibration only starts when the app's window is in focus and belongs to the app. `haptics::releaseOwner(app)` is called in the same places as `audio::releaseOwner`: `wm.cpp` `finishApp` (exit, crash, kill, CPU fault) and `App::~App`. `sys.vibrate(0)` only stops the app's own vibration.
-- `haptics::stopAll()`: when focus moves to another window (`wm::focus`), when focus leaves `InFocus` (HOME, sleep, library applet), in `suspendNow`, on resume/wake, on system exit request, and on `main.cpp` exit.
+- Owner: SDK bindings (C/Squirrel/Java/CPython also pass through here) now call `App::vibrate()`. Vibration only starts when the app's window is in focus and belongs to the app. Vibration owner is released on app exit, crash, or teardown in the same manner as audio. `sys.vibrate(0)` only stops the app's own vibration.
+- `haptics::stopAll()`: when focus moves to another window (`wm::focus`), when focus leaves `InFocus` (HOME, sleep, library applet), in `suspendNow`, on resume/wake, on system exit request, and on system exit.
 - Intensity: strength is clamped to 0..1, NaN becomes 0, at most 0.8 goes to the motor (1.0 made the Joy-Con buzz/rattle). Defaults remain the same (0.5, 60 ms). Touch feedback pulses (0.16-0.4, 16-45 ms) are unchanged.
 - `sys::vibrate` now only forwards to `haptics::rumble`: Retro's 90 ms pulses and login/erase screens' 80-120 ms pulses do not block the main thread.
 - SDK reference (`sdk/SDK.md`, `SDK.md`): 2000 ms limit, working only while in focus, and `sys.vibrate(0)`.
-- Hang watchdog (`lifecycle.cpp` `watchMain`): if the interval between two checks is longer than 3 s (process suspended, console asleep) or within 15 s after resume/wake, its clock restarts. Gaps during sleep are not counted as hangs, main thread is not paused for register dump.
+- Hang watchdog: if the interval between two checks is longer than 3 s (process suspended, console asleep) or within 15 s after resume/wake, its clock restarts. Gaps during sleep are not counted as hangs, main thread is not paused for register dump.
 - `power:` logs: `sleep (HOME menu / sleep): saving`, `sleep: ready in N ms`, `wake signal`, `resume after X s away (wall clock Y s)`, `onResume` duration of every app taking longer than 100 ms, `resume: audio output ...`, `resume: done`, `wake: console woke up`, FTP restart, `wake: done`. Whichever line the log ends on is the stuck step.
 - `shell::resetIdleClock()`: time spent in sleep is not counted as idle. Screen saver, dim, and idle pacing do not kick in immediately upon waking (if system tick advanced during sleep, the 3D screen saver was launching right after wake).
 - `net::afterWake()`: transfers started before sleep immediately fail with an error ("connection lost while the console was asleep"), allowing apps to retry. All curl requests receive `CURLOPT_LOW_SPEED_LIMIT/TIME` (1 B/s, 45 s) and `TCP_KEEPALIVE`: large downloads without a timeout do not wait forever on a dead socket.
 - `audio::afterResume()`: logs output device status, unpauses if system left it paused.
 - Autorun: `sleep` / `wake` commands run the same suspend and resume+wake steps without a system suspend (`life::simulatePower`).
 - `net::shutdown` waits for workers for at most 2 s in total, then abandons them and proceeds (the process is terminating anyway).
-- `main.cpp` shutdown is measured step by step: any step taking longer than 200 ms is logged as `quit: <step> took N ms`.
-- `shell.cpp`: every frame longer than 500 ms is logged as `perf: slow frame N ms (update, window contents, draw, present; front <app>)`. There is also a `boot: desktop drawn N ms after the start` line. The next console log will reveal where the 30 s went.
-- `JOBS=8 ./build.sh` OK, `tools/nro_version.py`: 1.1.1 ok.
+- System shutdown is measured step by step: any step taking longer than 200 ms is logged as `quit: <step> took N ms`.
+- Shell performance: every frame longer than 500 ms is logged as `perf: slow frame N ms (update, window contents, draw, present; front <app>)`. There is also a `boot: desktop drawn N ms after the start` line. The next console log will reveal where the 30 s went.
 - lang_check (8 languages 100%), lua_check, js_check, py_check, rt_check, compat_check (145/145): OK.
 - PC test could not be run: the script that modifies and restores the shared SD was rejected by the permission classifier.
 - TNT in BlockCraft: vibration must end within at most 2 s. Pressing HOME, sleeping, or closing the window during an explosion must stop it immediately. Should be tested with Handheld, dual Joy-Con, single Joy-Con, and Pro Controller.
@@ -572,33 +584,29 @@
 
 ### update111: update, compatibility, voxel memory limit (12)
 
-- Build: `NEXVYN_VERSION` now comes from `build/nexvyn_version.h`. This header is included in every object via `-include` and
-- `tools/nro_version.py`: checks whether the NACP version matches the version string in the code. `build.sh` at every build's
-- Updater (`settings_update.cpp`) performs a staged install:
+- Updater performs a staged install:
 - `update.pending` (tag, from, path, size, sha256): `sset::upd::afterRestart()` runs on the first launch of the new version.
 - Every step is written to system.log with the `update:` prefix: download, SHA, staging, backup, replacement, `restart requested`,
 - Safe Mode: the crash/hang note left by the replaced version when shutting down for an update no longer counts toward the "two crashes in a row" counter
-- Desktop test: `tools/tests/update_logic_test.cpp`, 27 checks with MSVC, all passed.
 - App SDK check (`installable()` = `sdkcompat::runnable`) and the `NeedsNewerApp` dialog at startup were already present;
 - `sdkcompat::osForSdk("1.7") = "1.1.0"` and `sdkcompat::requirement()` added ("Requires Nexvyn OS 1.1.0 or newer" /
 - Lua and Python: a freed mesh now throws a script error instead of a native null pointer. JS bindings already
 - `g3d.voxels` rejects with a descriptive `RangeError` if there is less than 96 MB free heap (with an R hint in applet mode).
-- PC test: BlockCraft was launched with this worktree build and the voxel world behind the menu was rendered, no crash. The crash on console
 
 ### osfix111: game music, touch scroll, IR camera (23)
 
 - `audio::Owner` (`App*` that started the audio): `play`, `tone`, `musicLoad`, `addStreamSource` take an owner; the owner of each channel is tracked (`g_chanOwner`), and the music stream owner is `g_musicOwner`.
 - `audio::releaseOwner(app)`: stops the app's channels, closes its music stream, removes stream sources, and releases only the sound files (decoded `Mix_Chunk`) used by it.
-- `wm.cpp` `finishApp` calls it on normal exit, crash, and kill (including CPU fault, without touching app memory); `App::~App` (`app.cpp`) also calls it, thereby covering script apps embedded inside a native app as well.
+- Normal exit, crash, and termination call it (including CPU fault, without touching app memory), covering script apps embedded inside a native app as well.
 - All runtime bindings pass app as the owner; `audio.stop`, `musicStop`, `musicPause` only affect the app's own channel / music. Native apps (Music, Video, Tube background audio) remain without an owner, their behavior unchanged. There is no separate background audio mode in the SDK.
 - The SDK reference (`sdk/SDK.md`, `SDK.md`) explains this rule.
 - `ui::flingStep(pos, v, dt)`: drag + constant friction (`dv/dt = -6 v - 1000`): stops at ~0.38 s for 1500 px/s, ~0.49 s for 3000 px/s; settles on a whole pixel below `kFlingRest` (25 px/s), no sub-pixel creep.
 - `ui::flingCatch(v)`: velocity is immediately reset on finger touch; only if the velocity is above `kFlingTap` (90 px/s) does that press not turn into a click. When slow or stopped, tap clicks normally.
 - `ui::flingRelease(v, since)`: fling velocity upon finger release (no fling after 80 ms idle, `kFlingMax` limit).
 - `ui::frameDt()`: frame duration.
-- `beginScroll`, `textarea.cpp`, `app_sheets.cpp`, `app_slides.cpp`, `app_writer.cpp`, `app_weather.cpp`, `app_maps.cpp` use these. Mouse wheel and D-pad scrolling remain unchanged.
-- Remaining: `app_files.cpp` (Files, scope of webfiles111) still uses its own `exp(-3.2 t)` fling; should be migrated to the same three calls.
-- `camera_ir.cpp` used fixed thresholds: "no picture" if two samples do not arrive within 4 s, "stopped" if no new frame arrives within 2.5 s. Over Bluetooth, a 320x240 image arrives in ~300 fragments; the libnx sample also states "the image is updated every few seconds". Since the default format is 320x240, a working camera was showing an error.
+- Scrollable text areas, Sheets, Slides, Writer, Weather, and Maps use these. Mouse wheel and D-pad scrolling remain unchanged.
+- Files still uses its own `exp(-3.2 t)` fling; should be migrated to the same three calls.
+- IR Camera used fixed thresholds: "no picture" if two samples do not arrive within 4 s, "stopped" if no new frame arrives within 2.5 s. Over Bluetooth, a 320x240 image arrives in ~300 fragments; since the default format is 320x240, a working camera was showing an error.
 - Auto exposure called `configure` every 0.7 s, and the worker restarted the processor each time: it restarted before the first image arrived, and each restart cost 1 MiB of transfer memory left outside the heap by the `__libnx_free` workaround if the service was still holding it.
 - Only a single npad was being tried; "no picture" and "stopped" errors did not show a result code.
 - Timing according to format (`frameInterval`): for 320x240 no-signal 12 s / lost 9 s, for 160x120 5 s / 3 s. Goes live on the first image with `sampling_number > 0` (the emulator's single empty response is still discarded).
@@ -606,7 +614,6 @@
 - `irsInitialize`, then npads in the order provided by the app (the selected one, Joy-Con attached in handheld, No1, others): `irsGetIrCameraHandle`, `irsCheckFirmwareUpdateNecessity`, `irsRun*Processor`; cleanup with `irsStopImageProcessor` for failed ones and proceed to next npad. At shutdown, `irsStopImageProcessor` + `irsExit`.
 - Every error path logs the libnx result (`camera` tag) and displays `(error 2xxx-yyyy)` on screen; for no-signal / lost, it displays the result of the last failed state query. Pro Controller (FullKey) and left Joy-Con are treated as having no camera, displaying the message "This controller has no IR camera".
 - In 320x240 / 160x120, state query is at 8 ms intervals (each query copies 75 KB).
-- `__libnx_free` workaround (`main.cpp`) was left untouched.
 - When Turbo Isles (and any Lua/JS game using `audio.music`) closes, the music cuts off immediately; a song playing in the Music app continues when a game is opened and closed (unless the game started its own music).
 - Swipe in Settings left menu: list stops within ~0.5 s; when stopped, the first tap clicks; while scrolling fast, tap only stops it.
 - IR camera: 320x240 image comes through in handheld (attached Joy-Con) and detached right Joy-Con; image is not interrupted while auto exposure is on; clear message with Pro Controller; on error, the result code on screen and `camera` lines in `System/Logs/system.log`.
@@ -627,10 +634,9 @@
 - Offline: all screens work with cached catalog; skeleton on initial load.
 - Every card, tab, button is a focus stop; card scales up and gains an accent border on hover / focus.
 - If the card reached via D-pad is not fully visible, the row scrolls sideways and the page scrolls up / down smoothly, with the pointer moving along with the card (`padFollow`). Only in controller mode and when the pointer actually moves: content scrolling under the pointer via right stick / wheel is not counted as focus (in the initial attempt, chain scrolling occurred in keyboard mode; fixed).
-- **L / R**: `source/wm/shell.cpp` `appTakesPad()`: if the focused app's menu has an item whose shortcut is that button's glyph ("L" / "R"), the button is routed to it. App Market lists these items only while the showcase is on screen; in other cases, L / R remains a window switcher.
+- **L / R**: if the focused app's menu has an item whose shortcut is that button's glyph ("L" / "R"), the button is routed to it. App Market lists these items only while the showcase is on screen; in other cases, L / R remains a window switcher.
 - Deep links remain the same: `nxv://store/<id>`, `store/<id>`, bare id (store_shots opens uninstalled apps this way), `updates`, `homebrew`, `themes`, `fonts`, `publish`; new: `games`, `apps`, `search`. Deep link selects the tab of the opened item.
-- `tools/ui_smoke.py` and `tools/store_shots.py` do not touch App Market UI via coordinates; no changes needed.
-- New strings in 8 languages (`romfs/Applications/appstore.app/lang/*.json`).
+- New strings in 8 languages.
 - Whether carousel swipe conflicts with page vertical scrolling (10 px horizontal intent, 12 px vertical threshold).
 - Whether tab bar fits in Handheld 100% and TV; transition to icon-only mode in narrow window.
 - Horizontal scroll and pointer tracking when reaching the end of a row with D-pad; L / R cycles showcase, acts as switcher on other screens.
@@ -638,22 +644,22 @@
 
 ### Browser, Files, and Text Editor: deletable favorites, GitHub release pages, WebKit security, file dates, non-deletable Documents folder (22)
 
-- **Why:** favorites were in a hardcoded table inside `app_browser.cpp` (`kFavorites`: Wikipedia TR/EN, Hacker News, BBC Türkçe, NPR, 68k.news...). They were not saved, so none could be deleted or edited; Turkish news sites appeared regardless of language.
+- **Why:** favorites were in a hardcoded table inside the browser (`kFavorites`: Wikipedia TR/EN, Hacker News, BBC Türkçe, NPR, 68k.news...). They were not saved, so none could be deleted or edited; Turkish news sites appeared regardless of language.
 - Favorites are now the user's list inside `prefs.json` (`favorites`). On first launch, populated once with a small and neutral set according to the UI language (en tr de fr es ja zh ko): DuckDuckGo, Wikipedia for that language, weather (wttr.in, with language parameter), and the Nexvyn OS page on GitHub. A news site is only present in Turkish (BBC Türkçe).
 - Deletions are permanent (even after restarts and updates). Since the list was never saved in pre-1.1.1 installations, the untouched old list is replaced once with the new defaults of the current language.
 - **Edit** on Start Page: Edit / Remove for each tile, adding with **+**, **Restore Defaults**. "Frequently Visited" tiles can also be removed (`hiddenFrequent`). These `nexvyn:fav-*` commands only work from internal pages (a web page cannot trigger them).
 - **Why:** GitHub lazily loads the Assets list of a release page via an `<include-fragment src=".../expanded_assets/vX">` inside `<details>`. The engine did not recognize this custom element; only "Loading" remained in the list.
-- New `web::resolveIncludeFragments` (`web_page.cpp`): before the page is parsed, up to 4 fragments (`Accept: text/html`, 10 s timeout, using the page's credentials and cookies) are downloaded and replace the element; works whether JavaScript is enabled or disabled. Those meant for menus (`accept="text/fragment+html"`) are skipped. `NavRequest` received a new `timeout` field.
+- New `web::resolveIncludeFragments`: before the page is parsed, up to 4 fragments (`Accept: text/html`, 10 s timeout, using the page's credentials and cookies) are downloaded and replace the element; works whether JavaScript is enabled or disabled. Those meant for menus (`accept="text/fragment+html"`) are skipped. `NavRequest` received a new `timeout` field.
 - `/releases/download/` URLs are always treated as downloads; redirected via 302 to the release-assets server, filename is obtained from `Content-Disposition` (now also for names with extensions), saved to the selected download folder. A notification appears when download starts, progress is shown in the downloads panel.
 - App type check was already present (did not open in applet mode / emulator). Startup was hardened for an unlocatable crash on console: only when `AppletType_Application`; arguments accepted by every firmware (page cache and Web Audio flags were removed, suspected on video sites like YouTube); before opening, all windows autosave, media in tabs stops, music pauses.
 - A prompt explaining what is happening on first use ("Do not ask again").
 - Crash protection: the `webkit.running` marker file persists while the applet is open. If found on the next launch (console or Nexvyn OS did not return), the full browser closes automatically and the user is told why; it can be re-enabled from Settings.
 - **Why:** for safe saving, `fsx::writeFile` wrote to a temporary file, deleted the old one, and renamed; every save meant a new directory entry, i.e., a new Created date.
 - New `fsx::writeFileInPlace`: data is first fully written to a temporary file, then the existing file is overwritten in place (entry and Created date are preserved), and finally the temporary file is deleted. Text Editor and Code use this.
-- **Root cause (`source/apps/workshop_doc.cpp`, `projectsDir()`):** For Game Workshop projects, it was creating the `Documents/Oyunlarım` directory for each user (when Game Workshop opened, even while reading the list). The character "ı" is written in an unlistable format because the FAT driver partially interprets UTF-8 names as Shift-JIS (see `fsname.h`): it can be opened by its exact folder name, but does not appear in any directory listing. Because of this, Documents appeared empty but could not be deleted (Sphaira and NX-Shell were also unable to delete it). The Crash Logs export directory suffered from the same issue in tr/ja/ko/zh.
+- **Root cause (`projectsDir()`):** For Game Workshop projects, it was creating the `Documents/Oyunlarım` directory for each user (when Game Workshop opened, even while reading the list). The character "ı" is written in an unlistable format because the FAT driver partially interprets UTF-8 names as Shift-JIS: it can be opened by its exact folder name, but does not appear in any directory listing. Because of this, Documents appeared empty but could not be deleted (Sphaira and NX-Shell were also unable to delete it). The Crash Logs export directory suffered from the same issue in tr/ja/ko/zh.
 - Game Workshop now uses `Documents/Game Workshop`; Crash Logs uses an SD-compatible name (`fsname::forDir`, "Crash Reports" for CJK).
 - `fsname::legacyNames()` lists legacy names. `paths::setUser` calls `fsx::healLegacyNames(Belgeler)` on every login: the legacy folder is found by its exact name and migrated to the new name (projects are not lost).
-- `fsx::removeUnlisted`: if a folder cannot be deleted, known legacy names are removed using their exact names, an attempt is made to clear the read-only attribute (`chmod`), and then it is retried. `fsx::removeAll`, Files' delete / empty Trash job (`files_jobs.cpp` `removeTree`), and "Erase Nexvyn OS" (`erase.cpp`; also with registered user folder names under `Users/`) use this.
+- `fsx::removeUnlisted`: if a folder cannot be deleted, known legacy names are removed using their exact names, an attempt is made to clear the read-only attribute (`chmod`), and then it is retried. `fsx::removeAll`, Files' delete / empty Trash job, and "Erase Nexvyn OS" (also with registered user folder names under `Users/`) use this.
 - Nexvyn OS does not write attributes (read-only / system / archive) to the SD card; system file locking is purely path-based.
 - On an existing installation, the Start Page shows the new defaults; a deleted favorite does not reappear after a reboot.
 - https://github.com/sonerx7/Nexvyn-OS-NX/releases/tag/v1.1.0 Assets list appears, NexvynOS.nro is downloaded.
@@ -669,13 +675,12 @@
 - `g3d.voxels(options)` → world (JavaScript only): chunk streaming (`view` + `update` every frame), built-in terrain generator (`"terrain"`: continents, mountains, 7 biomes, spaghetti + cheese caves, ore veins, oak / birch / spruce trees, cacti and plants; `"flat"`; `"none"`), sky + block light (BFS), smooth lighting + ambient occlusion, writing modified chunks to disk (RLE, `"NXVC"` files), ray cast, box physics (`move` including step climbing, `blocked`), `clearArea` (no trees in village areas), `stats`, `close`. Documentation: `sdk/SDK.md` section 8b *Voxel worlds*.
 - Block models: `cube`, `cutout`, `cross`, `liquid`, `torch`, `box`, `fence`, `crop`, `fire`, `cactus`; texture tiles, opacity, light, collision / selection boxes, wave / glow / emissive flags for each block.
 - `mesh.setTexture(path, pixelated)` (JavaScript and Lua): scales up pixel art without smoothing.
-- `NEXVYN_SDK_VERSION` 1.6 → 1.7; `tools/sdkinfo.py`, `js_check` / `lua_check` / `py_check` mocks updated; `js_check.mjs` now has a `g3d.voxels` mock (flat, always loaded world).
-- `source/core/voxel.h/.cpp`: World, chunk map, a pool of 2 never-ending worker threads shared across all worlds (libnx `threadCreate`, cores 1 and 2; an exiting thread ran libstdc++'s per-thread destructors and crashed with a null dereference inside `eh_globals_dtor`: observed when closing the title screen panorama world), jobs hold a `shared_ptr` to the world's `Shared` data, results of closed worlds are discarded; load / generate / mesh / save jobs, streaming (loads radius + 1, unloads beyond + 2), FRESH window (app's `set` on a newly generated chunk doesn't count as "modified"), queries, DDA ray cast, AABB physics.
-- `source/core/voxel_gen.cpp`: direct 1:1 port of original `noise.js` (mulberry32, simplex 2D/3D, fbm) and `generator.js` (`generateNormal`, `generateFlat`).
-- `source/core/voxel_mesh.cpp`: port of original `mesher.js`: 3 x 3 chunk region, sky light column + lateral propagation, block light BFS, per-vertex smooth light + AO, quad flip, liquid levels, torch / fence / plant / door / bed geometry. Output has three passes: solid, cutout (tiles with transparent pixels in their texture), liquid.
-- `source/core/g3d_gl.cpp`: voxel GPU pipeline: 16-byte vertex (`VoxVert`: 1/32 block int16 position, uint16 atlas UV, sky / blk / shade / fx bytes), quad index buffer shared by all chunks, per-chunk AABB frustum culling, solid and cutout front-to-back (early-z), water back-to-front with culling disabled. Atlas: NEAREST magnification, cell-based 2x2 box filter mipmapping (no bleeding across tiles, leaf coverage preserved with 35% threshold). Shader: original's "classic" light curve (`lightCurve`), daylight x sky tint, warm block light, swaying leaves / plants, water wave normal + fresnel sky reflection + sun glare + depth-based opacity increase. Old GL objects are deleted one frame later (existing `Dropped` rule).
-- `source/lua/jsapp_voxel.cpp`: `VoxelWorld` JS class (`JsApp::voxClass`), `g3d.voxels` in `jsapp_draw.cpp`.
-- `node tools/js_check.mjs` (including Blok Diyarı bundle), `python tools/compat_check.py`, `lang_check`, `lua_check`, `py_check`, `rt_check`.
+- `NEXVYN_SDK_VERSION` 1.6 → 1.7; `js_check` / `lua_check` / `py_check` mocks updated; `js_check.mjs` now has a `g3d.voxels` mock (flat, always loaded world).
+- Voxel world engine: World, chunk map, a pool of 2 worker threads shared across all worlds, jobs hold a `shared_ptr` to the world's shared data, results of closed worlds are discarded; load / generate / mesh / save jobs, streaming (loads radius + 1, unloads beyond + 2), FRESH window (app's `set` on a newly generated chunk doesn't count as "modified"), queries, DDA ray cast, AABB physics.
+- Terrain generation: procedural noise algorithms (mulberry32, simplex 2D/3D, fbm) and terrain generators (`generateNormal`, `generateFlat`).
+- Voxel mesher: 3 x 3 chunk region, sky light column + lateral propagation, block light BFS, per-vertex smooth light + AO, quad flip, liquid levels, torch / fence / plant / door / bed geometry. Output has three passes: solid, cutout (tiles with transparent pixels in their texture), liquid.
+- Voxel GPU pipeline: 16-byte vertex (`VoxVert`: 1/32 block int16 position, uint16 atlas UV, sky / blk / shade / fx bytes), quad index buffer shared by all chunks, per-chunk AABB frustum culling, solid and cutout front-to-back (early-z), water back-to-front with culling disabled. Atlas: NEAREST magnification, cell-based 2x2 box filter mipmapping (no bleeding across tiles, leaf coverage preserved with 35% threshold). Shader: classic light curve (`lightCurve`), daylight x sky tint, warm block light, swaying leaves / plants, water wave normal + fresnel sky reflection + sun glare + depth-based opacity increase. Old GL objects are deleted one frame later.
+- JavaScript bindings: `VoxelWorld` JS class, `g3d.voxels`.
 - PC testing: title screen panorama, new world, spawning near a village, inventory.
 - Handheld mode FPS (`perf` lines in application log: `sdmc:/NexvynOS/System/Logs/Apps/com.sonerx7.blocklands.log`).
 - Spawning worker threads on cores 1 and 2 (including in applet mode), no stuttering while loading chunks.
@@ -687,7 +692,6 @@
 - 5 new games: Turbo Isles (3D racing: Grand Prix, time trial with ghost, drift + mini-turbo), Lanternfall (platformer with 3 worlds, 12 levels, 3 bosses), Void Delve (twin-stick roguelite: 3 floors, 22 relics, persistent upgrades), Photon Garden (120 light puzzles + level editor, sharing via code), Banners of Aldmoor (tactical campaign with 8 battles).
 - 10 new programs: Linkwise (Markdown knowledge base, backlink + graph), Flowmap (flowchart + mind map, SVG / Mermaid), Chiptrack (4-channel tracker, WAV export), Regex Lab, Hexpad (hex editor), Logic Lab (circuit simulator), Chordbook (chords / scales / circle of fifths), Recipe Box (portion scaling, cooking mode), Bracket (single-elimination, league, Swiss tournament), Numbook (scratchpad calculator with units).
 - All in 8 languages, controller + touch + keyboard, handheld and TV layouts; new icon motifs in `Tools/icons/`.
-- `tools/compat_baseline.json` updated (removed items deleted, new ones added).
 - `nexvyn.game` input: a key held down during a scene transition is not counted as a new press (`I.reset(latch)`); the + button no longer immediately closes the pause menu it just opened.
 ## [1.0.2] — 2026-11-01
 
@@ -700,8 +704,7 @@
 - Same rule applies to Export (`Belgeler/<ad>.nxvapp`), Add to Desktop (`<ad>.nxvlink`), and temporary files during installation
 - Copying is more careful: incomplete copies are deleted, the reason is logged to `system.log` (`gameengine: copy ... failed`),
 - Projects saved under the old name that do not appear in the folder list (e.g. `Koşucu 3D`, `Robot Koşusu`): per session
-- `python tools/lua_check.py --workshop` now copies each template and example first, just like the application copies them
-- `tests/test_fsname.cpp`: New test for Game Engine folder names (`Yarış` → `Yaris`, `レース` → `File` → `Game`).
+- `lua_check --workshop` now copies each template and example first, just like the application copies them
 - **"Recently Played" title no longer overlaps the "Play" button.** Hero height `clamp(H × 0.6, 300, 440)`
 - Everything is calculated on every frame from the current window size (the window's logical size includes UI scale):
 - Game page header using the same method: cover `clamp(min(H × 0.3, W × 0.22), 110, 210)`, header block is measured,
@@ -717,14 +720,13 @@
 
 ### Files: freeze during name repair, system-assigned names, Nexvyn OS volume and SD Card, delete/move confirmations (22)
 
-- **Root cause (`source/apps/app_files.cpp`, 1.0.1):** Files called `offerHiddenRepair()` inside `onStart` (old line 328)
+- **Root cause (1.0.1):** Files called `offerHiddenRepair()` inside `onStart` (old line 328)
 - Search is now a background job (`fjob::CUSTOM`, new job type: running in worker thread, with progress and cancellation fields
 - Found files are suggested via a card in the bottom right of the Files window instead of a modal prompt (**Repair** / **Not Now**,
 - Repair also runs in the background: Files job card displays progress ("3 / 12") and **Cancel**; each name at most 99
 - **Same items are not suggested again:** every suggested path is written to the `files.repairOffered` setting (up to 400) and subsequent
 - **File > Repair File Names…** also uses the same job: the plan is extracted from the in-memory folder list (separate for each name
-- `source/apps/files_rules.h` (new, pure functions): candidate selection (`repairCandidates`), Trash Bin record's new
-- **Root cause:** screenshots (`source/wm/shell.cpp`, old line 287) and Camera photos/videos
+- **Root cause:** screenshots (old line 287) and Camera photos/videos
 - `fsx::uniqueName(dir, ad)` now first makes the name compliant with the volume via `fsname::forDir` (plain letters on SD card,
 - Covered places: screenshots ("Ekran Goruntusu 2026-10-31 15.46.36.png"; two images taken within the same second now
 - **Save backups (Save Backup):** folders opened by game and profile name ("Pokémon", "Soner Çakır") in the list
@@ -733,7 +735,7 @@
 - SD card root is no longer in the main list: at the bottom of the sidebar, as a separate **SD Card** like an external drive
 - **Navigating outside Nexvyn OS:** root of the SD card or any path outside `sdmc:/NexvynOS` (new
 - Combined with console system file warning: if the visited folder belongs to custom firmware (`fsname::isConsoleSystemPath`)
-- New `os::ask` (app.h): which button Escape/B maps to, red button, and an optional confirmation
+- New `os::ask`: which button Escape/B maps to, red button, and an optional confirmation
 - **Move to Trash Bin** now prompts: "Move 3 items to Trash Bin?" (with names, up to 4 + "and N more";
 - **Moving** prompts: Cut + Paste, dragging onto a folder / sidebar location / tab, and
 - Two new preferences in the View menu (and the "…" menu on the command bar): **Ask Before Deleting or Moving**
@@ -749,11 +751,11 @@
 - Long press / right click / X: Add to / Remove from Favorites, Copy Stream URL.
 - Toggle: list button next to the back button on the player bar (`view_list`), **L** on the keyboard, in the menu
 - **D-pad left:** shell passes arrow key to app only if focus navigation finds no stop to the left; but fullscreen
-- ZL was not used: by default mapping ZL opens Notification Center and never reaches the app (`input.cpp`
+- ZL was not used: by default mapping ZL opens Notification Center and never reaches the app
 - In fullscreen, the list slides in from the left as a semi-transparent panel over the video, video size
 - If no input occurs for 6 seconds, the list closes automatically (does not close while search box is in use). A tap on the video
 - Switching to fullscreen starts with the list closed; returning to window restores the open / closed state from the window.
-- **Root cause (`app_iptv.cpp`, old line 250-251):** When D-pad up / down changes channel, `tune()` hides/shows bars
+- **Root cause:** When D-pad up / down changes channel, `tune()` hides/shows bars
 - While list is open, keyboard up / down selects a row in the list (highlight box), Enter plays; PgUp / PgDn channel
 - Previously fixed fullscreen touch flicker (touch down opened bars and tap from same touch closed them)
 - The list is virtualized: rows (`PRow`: type, source, index, number) are updated only when something they display changes
@@ -783,7 +785,6 @@
 - JS: `ResizeObserver` notifies size changes on every layout, `matchMedia` `change` events, real `structuredClone` (cycles, Map, Set, Date)
 - `getBoundingClientRect` returns the block's own box (including relative offset and translate)
 - When browser closes, the engine retains nothing: worker threads stop, QuickJS compilation runtimes, bytecode cache, prelude, cookie jar, Web Storage, and font metrics are purged from memory (logged as "engine released" and "workers stopped")
-- New test pages: `tests/web/compat.html` (64 automated checks, PASS/FAIL table) and `tests/web/html5.html` (visual)
 ## [1.0.1] — 2026-10-31
 
 **66 changes.** Detailed lists: `docs/changelog/1.0.1-*.md`.
@@ -818,7 +819,7 @@
 
 ### Forum reports: filenames, Save As, deletion and merging, reset, system file warning (29)
 
-- **Root cause (`source/wm/shell_dialogs.cpp`, former line 475):** The Save button always constructed the path using the currently open folder (`fsx::join(d.dir, ad)`). Tapping a folder once in the list (the most natural gesture on Switch) merely selected that folder, while saving occurred into the parent folder: the file appeared "as if saved to the selected location" but ended up elsewhere. Now, if a folder is selected in the list, the file is saved there (double-tapping continues to open the folder). Since Text Editor, Writer, Sheets, Slides, Paint, Code, 3D Modeling, Notes export, and the SDK's `ui.saveFile` call use the same dialog, all are fixed; the apps' own Save As code was already using the selected path correctly.
+- **Root cause (former line 475):** The Save button always constructed the path using the currently open folder (`fsx::join(d.dir, ad)`). Tapping a folder once in the list (the most natural gesture on Switch) merely selected that folder, while saving occurred into the parent folder: the file appeared "as if saved to the selected location" but ended up elsewhere. Now, if a folder is selected in the list, the file is saved there (double-tapping continues to open the folder). Since Text Editor, Writer, Sheets, Slides, Paint, Code, 3D Modeling, Notes export, and the SDK's `ui.saveFile` call use the same dialog, all are fixed; the apps' own Save As code was already using the selected path correctly.
 - The save dialog displays the full target path beneath the name field ("Destination: sdmc:/NexvynOS/Users/<ad>/Documents/Odev.txt"); the path below the title is now also the actual path instead of `~`.
 - When pressing Cancel on the "Replace?" prompt, the save dialog does not disappear, it returns intact.
 - In Text Editor, **File > Show in Files** now opens the file's folder with the file selected (previously it only opened the folder).
@@ -830,13 +831,12 @@
 - User is notified when a name changes: in the save dialog "On SD card, characters like ş, ö, ü... become s, o, u", in Files after rename notification "Renamed to Odev.txt".
 - **Recovering old files:** On first launch (once, `files.nameRepairV1`), Files searches recent files and Trash records (`.origins`) for files under the home directory that do not appear in the listing, and if found, offers to repair their names; files are renamed with their names to become visible, Recents and Trash records track the new names (`os::recentReplace`).
 - **File > Repair Filenames…** converts non-compliant names in the open folder (and old files hidden in this folder) to plain-letter names after prompting with a sample list. A repaired name cannot be reverted to its old (unlisted) name via Undo.
-- `tests/test_fsname.cpp`: NFC composition, Windows-1254 correction, FAT characters, length limit, ASCII equivalents of Turkish and other characters, volume (sdmc / ums / romfs) distinction.
 - **Delete Immediately**, **Empty Trash**, and deleting within Trash always prompt and display the item count, the number of files inside them, and the total size ("3 items · 245 files · 1.2 GB"; for very large folders, counting stops at 4000 items and is shown with a "+").
 - Delete on USB drive no longer copies items to the Trash on SD card (previously copying everything to SD card): warns that there is no Trash on USB, prompts with count and size, and deletes permanently.
 - When pasting/moving, if a folder with the same name exists, the primary and default option is **Merge**: new content is added to the existing folder, subfolders are merged as well. If there are conflicting files inside, a single prompt (Replace / Keep Both / Skip) decides for all. When moving on the same volume, items are moved by renaming (rename), and the source folder is deleted once empty; skipped files remain in the source.
 - **Replace** on folders now explicitly prompts: "Everything inside existing folders will be deleted first (1 item · 812 files · 3.4 GB). This action cannot be undone. Select Merge to keep everything and add new items."
 - `fjob::C_MERGE` and `innerConflict` (files_jobs): copy, move, and merge run in a thread under the same rules; progress and cancellation as before.
-- **Root cause 1 (`app_settings.cpp`, `resetAllSettings`):** Developer > Reset all settings (and About > Reset > Reset Settings) intentionally preserved the `user.setupDone` value; additionally, because `users.switchLinks` was deleted, on the next boot the Switch profile remained unlinked and a new user could be created with the profile name. Now, reset writes `user.setupAgain`; the first `settings::load()` on the next boot turns this into `setupDone = false`, opening the setup wizard pre-filled with name and language. Profile links and home folder are preserved; the setup wizard uses the existing home folder even if the name changes (only altering the display name). The reset session continues to work as before until restarted.
+- **Root cause 1 (`resetAllSettings`):** Developer > Reset all settings (and About > Reset > Reset Settings) intentionally preserved the `user.setupDone` value; additionally, because `users.switchLinks` was deleted, on the next boot the Switch profile remained unlinked and a new user could be created with the profile name. Now, reset writes `user.setupAgain`; the first `settings::load()` on the next boot turns this into `setupDone = false`, opening the setup wizard pre-filled with name and language. Profile links and home folder are preserved; the setup wizard uses the existing home folder even if the name changes (only altering the display name). The reset session continues to work as before until restarted.
 - **Root cause 2 (Erase Nexvyn OS):** After erasure started, in-memory settings (`setupDone = true`) still lingered; during the final frames of the erase screen or at shutdown (`shell::shutdown` → `settings::saveNow`), `settings.json` was rewritten, and only `erase::finalSweep()` in `main()` cleaned it up. If shutdown didn't reach that point (an error during shutdown, closing via HOME), the file remained and setup was skipped. Now, when erasure begins, `settings::eraseAndFreeze()` resets in-memory settings to defaults (setup not completed) and writes nothing to disk during that session.
 - Descriptions of reset options (8 languages) state what actually happens: settings revert to defaults, setup wizard runs on next boot; files, applications, and users remain. The description of Erase Nexvyn OS also mentions the setup wizard. The "Resetting settings" section in the user guide has been updated.
 - Files, Terminal, Text Editor, and Code warn before modifying anything under `sdmc:/atmosphere`, `sdmc:/bootloader`, the system's own data folder, `sdmc:/emuMMC` (`emummc`), `sdmc:/switch`, `sdmc:/config`, and `hbmenu.nro`, `boot.dat`, `boot.ini`, `payload.bin`, `exosphere.ini` at the root: "This is a system file belonging to your Switch's custom firmware. Modifying or deleting it may prevent your Switch from booting." The default button is **Cancel** (B / Escape also cancels), **I understand, proceed** performs the action; the **Don't ask again this session** checkbox suppresses the prompt until restart. This is a warning, not a block.
@@ -844,8 +844,7 @@
 - Terminal: prompts on `rm`, `rmdir`, `mv` (source and destination), `cp` (destination), `touch`, `mkdir`, `curl -o` / `wget -O` (or working directory), and `>` / `>>` redirections; on Cancel, prints "Cancelled: console system files were not modified."
 - Text Editor and Code: prompt once on the first save (including autosave) of a file in these locations; if rejected, document is locked and must be saved elsewhere via Save As.
 - Reading, opening, and copying out of these folders never prompts. Switch tools (Mod Manager, Cheats, Sysmodules, Overlays, YamaNX) write to these paths intentionally and use their own confirmations; they are not intercepted. `sdmc:/NexvynOS/System` remains locked with App Guard as before.
-- A single shared helper: `fsname::isConsoleSystemPath()` (case, `.`/`..`/`//`, and trailing dots are normalized via `normalizePath`/`foldPath` of `perms_rules.h`; host-tested) and `os::confirmConsoleChange()` (confirmation dialog in shell, new alert type with checkbox). Described in the Files section of the user guide.
-- `tools/changelog.py`: when `APP_VERSION` increments (1.0.0 → 1.0.1), the generated section of the previous version remains under the new section in CHANGELOG.md (previously overwritten).
+- A single shared helper: `fsname::isConsoleSystemPath()` (case, `.`/`..`/`//`, and trailing dots are normalized) and `os::confirmConsoleChange()` (confirmation dialog in shell, new alert type with checkbox). Described in the Files section of the user guide.
 - Version 1.0.1.
 
 ### Nexvyn OS Studio fixes (12)
@@ -857,7 +856,7 @@
 - Python and JavaScript files previously showed "Plain Text". The language name is now correct for every supported language: Lua, JavaScript, Python, Squirrel, C, Java, JSON, Markdown, HTML, CSS, YAML, TOML… Names come from the `code.lang.*` keys shared with Code Editor; unused `studio.lang_*` keys were removed.
 - Run / Restart in Studio was shifting the app window 28/24 px to the right and down each time. The "do not open directly on top of another window of the same app" rule in `wm::create()` was also counting the old window that was still closing. Closing (`closing`) and crashed (`faulted`) windows are no longer counted; restarted apps open in their saved position.
 - Legacy texts have been updated; in all 8 languages: the slogan now says "apps in six languages", "Open Example" no longer mentions only Lua, and "SDK Reference" states that it covers all six languages.
-- The template count under "New Project" is not hardcoded (it previously said "15 templates" when there were 18): template and language counts are calculated from the templates in `romfs/System/Templates` ("Start with one of 18 templates in 6 languages").
+- The template count under "New Project" is not hardcoded (it previously said "15 templates" when there were 18): template and language counts are calculated dynamically ("Start with one of 18 templates in 6 languages").
 - Language filters are generated from the templates themselves: Lua, JS, Python, Squirrel, C, and Java (only languages with at least one template). There is a small gap between type chips and language chips; in a narrow window, chips squeeze together but fit on the line.
 - A filter that hides the selected template selects the first visible template; Next no longer proceeds with a hidden template.
 - Selection with D-pad: when the gallery opens (and when returning via "Choose Another Template"), controller focus moves to the selected card (`ui::padFocus`, scrolling until the card is visible if necessary). As the D-pad navigates between cards, the selection follows along; pressing A on a selected card advances to the next step.
@@ -1030,7 +1029,7 @@
 - Boot time is logged stage by stage (settings, SDL, fonts, input/audio/network, shell).
 - The log file begins with a real date/time stamp.
 - Sleep, wake, dock changes, system quit requests, lagging windows, and memory warnings are logged with "life" / "warn" tags; reports also display the number of warnings in the session.
-- The language checker (`tools/lang_check.py`) does not mistake .log/.txt/.json filenames for translation keys.
+- The language checker does not mistake .log/.txt/.json filenames for translation keys.
 
 ### Desktop shell (70)
 
@@ -1169,7 +1168,7 @@
 - Translation percentage of each language and language pack badge from the SD card are shown in the language list.
 - Pseudolocalization and "show keys" debugging modes (Developer section): hardcoded or truncated strings are easily found.
 - Export missing translations: a CSV with key, English text, and empty translation columns for each language is written to the Documents/Translations folder.
-- Language check tool (tools/lang_check.py): English and Turkish must be complete; other languages are reported with coverage percentages.
+- Language check tool (`lang_check`): English and Turkish must be complete; other languages are reported with coverage percentages.
 - "Crash isolation" toggle in the Developer section.
 - Settings backup: all preferences are saved as a file to Documents and can be restored (account, home folder, and PIN are preserved).
 - Do Not Disturb scheduling: turns on automatically between specified hours using two time pickers (in half-hour steps).
@@ -1256,14 +1255,12 @@
 - Featured carousel pauses on mouse hover; selection is made with arrows and dots.
 - In a catalog of hundreds of apps, icons are kept limited in memory (160 most recently used) and released when memory runs low.
 - If the same ID appears twice in the catalog, only the first one is shown.
-- `tools/nxvapp_keygen.py` generates a signing key (requires no additional packages, compatible with OpenSSL keys).
-- `tools/nxvapp_pack.py --sign anahtar.pem` signs the package, adds `signer` to the `--index` entry.
-- `tools/nxvapp_pack.py --verify paket.nxvapp` verifies the package as the console would (list, values, signature).
+- `nxvapp_keygen.py` generates a signing key (requires no additional packages, compatible with OpenSSL keys).
+- `nxvapp_pack.py --sign anahtar.pem` signs the package, adds `signer` to the `--index` entry.
+- `nxvapp_pack.py --verify paket.nxvapp` verifies the package as the console would (list, values, signature).
 - The packager validates the `shareTargets` field and file names, notifying size limits in advance.
-- The new `tools/catalog_check.py` validates the Store catalog (schema, unique ID, https, sha256, SDK, signature, date).
+- The new `catalog_check.py` validates the Store catalog (schema, unique ID, https, sha256, SDK, signature, date).
 - Mock SDKs of Lua, JavaScript, and Python linters recognize SDK 1.4 functions and lifecycle events.
-- Unit tests running on PC (`tests/run.sh`): text, UTF-8, JSON, expression evaluation, package path security, permission rules, links, SDK versions.
-- GitHub Actions CI: translations, all app and template checks, catalog, signature round-trip, unit tests, and NexvynOS.nro compilation with devkitPro.
 - SDK version 1.4; `sdk/SDK.md`, `docs/NXVAPP_FORMAT.md`, `docs/JS_APPS.md`, `docs/PY_APPS.md` updated with all new APIs.
 - Nexvyn OS Studio autocomplete suggests new `sys` functions and app callbacks.
 
@@ -1288,8 +1285,8 @@
 - The install page correctly displays the app's language (Squirrel, C (TinyCC), Java (miniJVM))
 - System library for Python apps: `itertools`, `string`, `textwrap`, `copy`, `statistics`, `base64`, `colorsys` can now be used via `import`
 - SDK version bumped to 1.5 (`sys.sdkVersion()` → `"1.5"`); `app.json` `"runtime"` values: `"lua"`, `"js"`, `"python"`, `"squirrel"`, `"c"`, `"java"`
-- `tools/rt_check.py` for developers: verifies Squirrel, C, and Java apps on PC (SDK names and argument counts, C compilation, Java compilation, translations, network permission)
-- `tools/java_build.py` for developers: compiles Java sources against the console's class library and generates `app.jar`
+- `rt_check.py` for developers: verifies Squirrel, C, and Java apps on PC (SDK names and argument counts, C compilation, Java compilation, translations, network permission)
+- `java_build.py` for developers: compiles Java sources against the console's class library and generates `app.jar`
 - Added Squirrel, C, and Java sections to the SDK documentation, Turkish guides under `docs/` (`SQUIRREL_APPS.md`, `C_APPS.md`, `JAVA_APPS.md`), and language research (`LANGUAGE_SUPPORT.md`)
 
 ### Built-in apps (143)
@@ -1467,8 +1464,7 @@
 - Native modules: An updated module runs with its new code on the next launch without a reboot
 - Native modules: Installation page and App Store display the runtime environment as "C++ (native module)"
 - Native modules: Uninstalled module apps appear with their name and icon in Quick Search, desktop shortcuts, and links, leading to their App Store page
-- Release pipeline: Nexvyn OS's own C++ applications are compiled and packaged as modules using `tools/build_modules.py` and `tools/modules.json`; `./build.sh` does this automatically (internal mechanism; third-party apps continue to be written in Lua, JavaScript, and Python)
-- Release pipeline: `tools/nxvapp_pack.py` recognizes module packages (`"native": "<id>.nxvmod"`, `"abi"`), and `tools/catalog_check.py` recognizes `builtin`, `subtitle`, and module entries
+- Packaging: `nxvapp_pack.py` recognizes module packages (`"native": "<id>.nxvmod"`, `"abi"`), and `catalog_check.py` recognizes `builtin`, `subtitle`, and module entries
 - Developers: Added `enableall` command to autorun script; `set apps.optionalEnabled [...]` also takes effect immediately
 - Documentation: `docs/NATIVE_MODULES.md` (module format, loader, ABI, build), `docs/NXVAPP_FORMAT.md`, and `sdk/SDK.md` updated
 
@@ -1643,7 +1639,6 @@
 - Web engine: `<canvas>` 2D drawing: paths, curves, arcs, transforms, fill/stroke, text, pixel read/write, copying from another canvas; with antialiasing
 - Web engine: requestAnimationFrame and canvas animations run smoothly without dropping frames
 - Web engine: `CSS.supports()` reports features actually supported by the engine
-- Developer: JS/DOM, CSS, flexbox/grid, canvas, and SVG test pages under `tests/web/`
 
 ### Studio, Game Engine, and Game Workshop (62)
 
@@ -1664,7 +1659,7 @@
 - Snapshots (Ctrl+Shift+S): takes a timestamped zip copy of the project; the latest 20 are kept.
 - Restoring a snapshot: reverts the project to the selected point in time; an automatic snapshot of the current state is taken beforehand.
 - Keyboard Shortcuts window (Ctrl+K): all Studio shortcuts in two columns.
-- Publish to App Store guide: error checking, forking the Nexvyn-OS-NX repository, apps/<kategori>/<ad>/source folder, tools/build_store.py, and pull request steps; paths are copied with a single tap.
+- Publish to App Store guide: error checking, forking the repository, app source folder, Store build tool, and pull request steps; paths are copied with a single tap.
 - Console filter: All / Errors / Output selection and text filter.
 - Restart on Save (Run menu): saving restarts the running application; if there is an error in the code, it does not start and shows a warning.
 - Ctrl+Space completion now also suggests names from the open file (local variables, fields, custom functions).
@@ -1707,7 +1702,7 @@
 - New template: Apple Race – collect 20 apples in 40 seconds, star surprises, beware of the bee.
 - New template: Meteor Shower – dodge meteors, teleport with shield, reach 30 points.
 - New template: Treasure Hunt – find the key in the platform level, unlock the treasure chest.
-- 8 new drawings added to the library: Caterpillar, Fish, Cherry, Banana, Cake, Trophy, Cactus, and Lantern (generated with tools/gen_workshop.py).
+- 8 new drawings added to the library: Caterpillar, Fish, Cherry, Banana, Cake, Trophy, Cactus, and Lantern.
 - GAME_ENGINE_PROJECTS.md updated with new blocks, templates, and drawings.
 
 ### Game Engine (41)
@@ -1854,12 +1849,12 @@
 
 ### Brand cleanup (brandclean) (20)
 
-- File manager app ID changed to `files` (display name remains Files); `source/apps/app_files.cpp`, `files_util.*`, `files_jobs.*`, `romfs:/Applications/files.app`
-- App grid renamed to Launcher; app ID `launcher`, `source/apps/app_launcher.cpp`, `romfs:/Applications/launcher.app` ("Applications" name remains unchanged)
-- Search panel renamed to Quick Search; code `source/wm/shell_quicksearch.cpp`, file index `~/Library/Caches/quicksearch` (old index folder is deleted once, index is rebuilt)
+- File manager app ID changed to `files` (display name remains Files).
+- App grid renamed to Launcher; app ID `launcher`, `romfs:/Applications/launcher.app` ("Applications" name remains unchanged)
+- Search panel renamed to Quick Search; code file index `~/Library/Caches/quicksearch` (old index folder is deleted once, index is rebuilt)
 - The view showing all windows is now named Window Overview everywhere; in code `wm::setOverview()` / `wm::overviewShown()` / `os::showOverview()`
 - Night light feature named Night Mode in all languages; `display.nightShift*` setting keys remain unchanged
-- Legacy app IDs continue to work: thanks to the `core/app_alias.h` table, `os::launch`, `sys.launch`, `nxv://app/<id>`, desktop shortcuts, and automation routines open the new app using the legacy ID
+- Legacy app IDs continue to work: thanks to an internal alias table, `os::launch`, `sys.launch`, `nxv://app/<id>`, desktop shortcuts, and automation routines open the new app using the legacy ID
 - App folders saved with the legacy ID in `~/Library/Application Support` and `~/Library/Caches` are migrated to the new ID on first launch (for each user)
 - `settings.json` is updated once (`system.renamesV1`): window positions and states (including `@tv`), Dock, taskbar and Start pins, recent apps, launch counts, session windows, and login items use the new IDs; the same migration applies when restoring an old backup
 - Setting keys: `spotlight.recent` → `search.recent`, `launchpad.showRecents` → `launcher.showRecents`
@@ -1893,7 +1888,7 @@
 - Files shows system files under `sdmc:/NexvynOS/System` but does not modify them: lock icon and "System file — Managed by Nexvyn OS" note; rename, move, delete, paste, and new item are disabled, open and copy work
 - Terminal rejects `touch`, `mkdir`, `rm`, `rmdir`, `cp`, `mv`, `>` redirection, and downloading into this folder; file dialogs do not save there, Text Editor and Code Editor open these files read-only
 - In the Developer section, "Allow system edits" toggle (`developer.allowSystemEdits`, off by default); Settings' own writes work in all cases
-- App Guard strings in 8 languages (en, tr, de, fr, es, ja, zh, ko); `tools/catalog_check.py` validates `security.blocklist` format; host unit tests for sandbox rules and scanning rules (`tests/test_platform.cpp`, `tests/test_appguard.cpp`)
+- App Guard strings in 8 languages (en, tr, de, fr, es, ja, zh, ko); `catalog_check.py` validates `security.blocklist` format; host unit tests cover sandbox rules and scanning rules.
 
 ### App compatibility (compat) (27)
 
@@ -1911,18 +1906,14 @@
 - The App Store and install screen display the name of each runtime (including Squirrel, C, Java, and Python 3)
 - Unknown `app.json` fields and unknown permissions of newer apps are not rejected: they are ignored (the permission grants nothing)
 - Studio writes the current SDK (1.6) as `minSdk` and `targetSdk` for new projects; Game Engine exports record `targetSdk`; `targetSdk` edited in Studio takes effect on the next Run
-- New `tools/compat_check.py`: runs every store app, game, SDK sample, built-in script app, and Studio template (159 apps) in the release repository through its runtime checker with current SDK mocks
-- Baseline `tools/compat_baseline.json`: if a previously passing app now fails (compatibility break) or a new app fails, the suite fails; currently 159 out of 159 apps pass
+- Compatibility check: runs every store app, game, SDK sample, built-in script app, and Studio template (159 apps) in the release repository through its runtime checker with current SDK mocks
 - The suite also checks the checkers: every function registered by Lua, JavaScript, pocketpy, and python3 runtimes (including deprecated ones) must be present in the mock, and the mocks' `sys.sdkVersion()` must match the SDK
 - Missing `mesh:setTexture` and `mesh:texture` added to the Lua checker's mock; python3 apps find `g3d.setColor` / `flat` / `triangles` / `setTexture` / `texture` / `free` functions in `py_check`
-- New `tools/sdkinfo.py`: SDK version, runtime table, and version rules shared by tools; the compat suite verifies that it stays identical to `sdk_version.h` and `runtime_kind.h`
-- `tools/release.py` runs the new `compat` step before `sync` and halts on a breakage (can be bypassed with `--allow-compat-break`); CI runs the suite on built-in apps
-- `tools/catalog_check.py` recognizes `targetSdk`: warns on format errors, `targetSdk` below `minSdk`, `minSdk` / `targetSdk` above SDK, and a runtime newer than the entry's `minSdk`
-- `tools/nxvapp_pack.py` validates `minSdk` / `targetSdk` / `runtimeVersion`, warns if `targetSdk` is missing, rejects unknown runtimes, resolves each runtime's default main file, and appends `targetSdk` and `runtime` to the `--index` entry
-- `Tools/build_store.py` of the release repository exports `targetSdk` into the catalog
+- `catalog_check.py` recognizes `targetSdk`: warns on format errors, `targetSdk` below `minSdk`, `minSdk` / `targetSdk` above SDK, and a runtime newer than the entry's `minSdk`
+- `nxvapp_pack.py` validates `minSdk` / `targetSdk` / `runtimeVersion`, warns if `targetSdk` is missing, rejects unknown runtimes, resolves each runtime's default main file, and appends `targetSdk` and `runtime` to the `--index` entry
+- The release repository store builder exports `targetSdk` into the catalog
 - New document `docs/COMPATIBILITY.md` / `.md`: three version numbers (Nexvyn OS semver, SDK, runtime engines), what increments what, SDK 1.0 … 1.6 table, six rules, deprecated names, compat suite, and a checklist for system changes
 - SDK reference (`sdk/SDK.md` / `.md`): `targetSdk` and `runtimeVersion` fields, "Compatibility: targetSdk and deprecation" section, `"python3"` on the SDK 1.6 line; Game Engine and native module links with new names
-- Unit tests running on the host also test `targetSdk` rules and runtime table (`tests/test_platform.cpp`)
 - Missing Japanese, Korean, and Chinese strings from the CPython merge (Python 3 runtime messages and Hello Python 3) added; language check back to 100%
 
 ### Game Engine and sheet fixes (18)
@@ -1987,7 +1978,6 @@
 
 - libnx frees the memory of a transfer memory (IR camera work buffer, six-axis sensor buffer) as soon as its handle is closed; if the service is still holding the memory (the emulator's stub `irs` service never closes the handle received from `RunImageTransferProcessor`, which can also happen on console while stopping is in progress), the kernel keeps this range borrowed (locked). When the heap reallocated the same memory, GPU buffers (`SetMemoryAttribute`) and IPC buffers (`SendSyncRequest`) failed with `InvalidCurrentMemory` and the system froze. Now `__libnx_free` checks with `svcQueryMemory` before returning memory to the heap; blocks still held by the service remain outside the heap, and a warning is logged to the system log
 - Fixed a freeze in the PC test environment when switching to other apps after opening and closing Camera; the full UI smoke test (74 apps) finishes without crashes or script errors
-- Developers: `tools/ui_smoke.py` adds optional system apps during testing (`enableall`), so 37 apps have their own windows tested instead of their App Market page; `apps.optionalEnabled` setting reverts to its original state once testing finishes
 
 ### 3D playtest crash, Switch Tools folder, and language-tracking desktop folders (fix11) (14)
 
@@ -2044,7 +2034,6 @@
 - `@supports` conditions are actually evaluated (fallback styles are used for unsupported properties)
 - `requestAnimationFrame` runs at 60 Hz; `getComputedStyle` returns transform (including animated matrix), opacity, z-index, transition, and animation values
 - Real `IntersectionObserver` (thresholds, rootMargin; checked on layout, scroll, and resize changes): lazy-loaded images and "appear on scroll" contents work
-- New test pages: `tests/web/effects.html`, `tests/web/layout2.html`, `tests/web/heavy.html`
 
 ### Japanese, Chinese, and Korean (CJK) (25)
 
@@ -2070,9 +2059,8 @@
 - In Korean / Japanese layouts, the word suggestion bar only shows clipboard history (no word list for these languages)
 - 12-hour clock localized by language: "午後9:05", "오후 9:05", "9:05 PM"; calendar, clock, reminders, and weather time labels as well
 - App Store: name, subtitle, description, and changelog in the catalog are displayed localized via `ja`, `zh` / `zh-Hans`, `ko` / `ko-KR` keys, falling back to English
-- Developer: `tools/lang_check.py` reports ja / zh / ko packages with percentages, treats unknown named placeholders and missing `_meta.json` as errors
-- Developer: `tools/catalog_check.py` counts CJK characters as two against the 45-character subtitle limit
-- Developer: Host unit tests for Hangul and romaji composers (`tests/test_ime.cpp`)
+- Developer: `lang_check` reports ja / zh / ko packages with percentages, treats unknown named placeholders and missing `_meta.json` as errors
+- Developer: `catalog_check.py` counts CJK characters as two against the 45-character subtitle limit
 
 ### CPython (python3) runtime (20)
 
@@ -2090,9 +2078,8 @@
 - `sys.exit()` / `exit()` closes the window; `input()` returns an empty string; `sys.platform` `"switch"`
 - In applet (album) mode, python3 apps do not open due to insufficient memory; the message explains how to launch with full memory access
 - New sample app "Hello Python 3" (`hellopy3`): interpreter info, dice chart using `statistics` + `collections.Counter`, note saving to file with `open()`
-- `tools/py_check.py` detects python3 bundles: compiles using Python 3.12 on the PC instead of pocketpy rules, provides mock SDK as `import nexvyn`, uses a temporary data directory for `open()`; `--cpython` enforces it on every bundle
+- `py_check.py` detects python3 bundles: compiles using Python 3.12 on the PC instead of pocketpy rules, provides mock SDK as `import nexvyn`, uses a temporary data directory for `open()`; `--cpython` enforces it on every bundle
 - New runtime name "Python 3 (CPython)" in the installation screen and package info (in 5 languages)
-- Developer: `tools/build_cpython.sh` downloads CPython once (sha256 verified), applies marked changes (`tools/cpython_tool.py`), compiles for libnx, and outputs to `lib/cpython/out`; otherwise, the NRO compiles without CPython and python3 apps report "Python 3 is not available in this build"
 - NRO grows by ~7.8 MB (~5.6 MB code/data + 2.2 MB standard library); `unicodedata` (1.1 MB) intentionally excluded
 - Documentation: `sdk/SDK.*.md` section 12 "CPython", `docs/PY_APPS.*.md` "CPython (python3)", `THIRD_PARTY_NOTICES.md` (PSF-2.0), `docs/DEGERLENDIRME.md` C2, `docs/DIL_DESTEGI.*.md`
 - Items to verify on console: initial boot, subinterpreter open/close, watchdog interrupting infinite loops, memory accounting, launch time, and memory per window
@@ -2115,11 +2102,9 @@
 - App Store: "Version History" on detail page: `history` list from the catalog (version and date, newest first), falling back to current version and date
 - App Store: "Report This App" on every detail page: opens the release repository's report form in Browser pre-filled with the app ID
 - Studio: Publishing steps point to `Store/Apps/<kategori>/` and `Store/Games/<tür>/` folders and describe maintainer review
-- Website: Documentation site (`site/`) moved to source repository; `python site/tools/md2html.py` reads guides, SDK, and catalog from the adjacent release repository clone (`SDK/Guides`, `SDK/Reference`, `Store/catalog.json`, legacy paths as fallback), falling back to `docs/` and `sdk/` if not found
 - Website: Store page reads catalog from `Store/catalog.json` and displays the Fonts category; Developers page describes the new repository layout and verified publishing workflow
-- Tools: `tools/release.py` copies documentation under `SDK/Reference`, `SDK/Guides`, `SDK/Fonts`, and package catalog to `Store/packages.json`; places native modules alongside the store page in the category folder; does not publish the site
-- Tools: `tools/store_shots.py` discovers items under `Store/**` and `SDK/Samples` (including built-in app pages in category folders); legacy layouts work as fallback
-- Tools: `tools/catalog_check.py` checks `"kind": "font"`, `"fonts"` category, `styles`, `license`, `source`, and `history` fields
+- Tools: `store_shots.py` discovers items under `Store/**` and `SDK/Samples` (including built-in app pages in category folders); legacy layouts work as fallback
+- Tools: `catalog_check.py` checks `"kind": "font"`, `"fonts"` category, `styles`, `license`, `source`, and `history` fields
 - Documentation: `NXVAPP_FORMAT` covers font packages (`.nxvfont`, `font.json`) in a new section 10; developer guide and package format show the new catalog URL and verified publishing
 
 ### Start menu and taskbar layout (27)

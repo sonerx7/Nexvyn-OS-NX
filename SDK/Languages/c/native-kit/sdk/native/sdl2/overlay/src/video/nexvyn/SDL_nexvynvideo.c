@@ -18,8 +18,129 @@
 #include "../../events/SDL_windowevents_c.h"
 
 #include "SDL_nexvynvideo.h"
+#include <nexvyn/nxn_vk.h>
 
 static NEXVYN_VideoData *g_video;
+
+#if SDL_VIDEO_VULKAN
+/* Optional host WSI hooks, resolved through the same boundary as vk*.
+ * The host associates the surface with the calling app's content area. */
+typedef VkResult(VKAPI_PTR *NEXVYN_VkExtensions)(uint32_t *count, const char **names);
+typedef VkResult(VKAPI_PTR *NEXVYN_VkCreateSurface)(VkInstance instance, VkSurfaceKHR *surface);
+
+static const char *const vulkan_unavailable = "Vulkan is not available on this system";
+
+static int NEXVYN_VulkanLoadLibrary(SDL_VideoDevice *_this, const char *path)
+{
+    PFN_vkGetInstanceProcAddr lookup;
+    if (path && *path) {
+        return SDL_SetError("Vulkan uses the host lookup and accepts no library path");
+    }
+    if (!nxn_vk_available()) {
+        return SDL_SetError("%s", vulkan_unavailable);
+    }
+    lookup = (PFN_vkGetInstanceProcAddr)nxn_vk_proc("vkGetInstanceProcAddr");
+    if (!lookup) {
+        return SDL_SetError("%s", vulkan_unavailable);
+    }
+    _this->vulkan_config.vkGetInstanceProcAddr = lookup;
+    return 0;
+}
+
+static void NEXVYN_VulkanUnloadLibrary(SDL_VideoDevice *_this)
+{
+    _this->vulkan_config.vkGetInstanceProcAddr = NULL;
+}
+
+static SDL_bool NEXVYN_VulkanGetInstanceExtensions(SDL_VideoDevice *_this, SDL_Window *window,
+                                                    unsigned *count, const char **names)
+{
+    NEXVYN_VkExtensions get_extensions = nxn_vk_available() ?
+        (NEXVYN_VkExtensions)nxn_vk_proc("nxn_vk_wsi_instance_extensions") : NULL;
+    uint32_t host_count = names ? *count : 0;
+    VkResult result;
+    if (!get_extensions) {
+        SDL_SetError("%s", vulkan_unavailable);
+        return SDL_FALSE;
+    }
+    result = get_extensions(&host_count, names);
+    *count = host_count;
+    if (result != VK_SUCCESS) {
+        SDL_SetError("Host Vulkan extension query failed (%d)", (int)result);
+        return SDL_FALSE;
+    }
+    return SDL_TRUE;
+}
+
+/* The window's content area decides the extent, not the size the app asked for (a 1280x720 request can land in a
+   1280x586 window). The host reports no resize for that initial clamp, so report the surface extent as a resize:
+   the next PumpEvents sends it, SDL then sends SIZE_CHANGED and the app's swapchain extent matches currentExtent. */
+static void NEXVYN_VulkanSyncWindowSize(SDL_Window *window, VkInstance instance, VkSurfaceKHR surface)
+{
+    PFN_vkEnumeratePhysicalDevices enumerate =
+        (PFN_vkEnumeratePhysicalDevices)nxn_vk_proc("vkEnumeratePhysicalDevices");
+    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR capabilities =
+        (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)nxn_vk_proc("vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+    VkPhysicalDevice physical = VK_NULL_HANDLE;
+    VkSurfaceCapabilitiesKHR caps;
+    uint32_t count = 1;
+    VkResult listed;
+    if (!enumerate || !capabilities) {
+        return;
+    }
+    listed = enumerate(instance, &count, &physical);
+    if ((listed != VK_SUCCESS && listed != VK_INCOMPLETE) || !count || physical == VK_NULL_HANDLE) {
+        return;
+    }
+    SDL_zero(caps);
+    if (capabilities(physical, surface, &caps) != VK_SUCCESS) {
+        return;
+    }
+    if (caps.currentExtent.width == 0xFFFFFFFFu || !caps.currentExtent.width || !caps.currentExtent.height) {
+        return;
+    }
+    if (g_video && ((int)caps.currentExtent.width != window->w || (int)caps.currentExtent.height != window->h)) {
+        /* sent from PumpEvents: the surface may be created on a render thread while the main thread reads the size */
+        g_video->vk_pending_w = (int)caps.currentExtent.width;
+        g_video->vk_pending_h = (int)caps.currentExtent.height;
+    }
+}
+
+static SDL_bool NEXVYN_VulkanCreateSurface(SDL_VideoDevice *_this, SDL_Window *window,
+                                           VkInstance instance, VkSurfaceKHR *surface)
+{
+    NEXVYN_VkCreateSurface create_surface;
+    VkResult result;
+    *surface = VK_NULL_HANDLE;
+    if (!window || !g_video || window != g_video->window) {
+        SDL_SetError("Vulkan surface requires the app's SDL window");
+        return SDL_FALSE;
+    }
+    create_surface = nxn_vk_available() ?
+        (NEXVYN_VkCreateSurface)nxn_vk_proc("nxn_vk_wsi_create_surface") : NULL;
+    if (!create_surface) {
+        SDL_SetError("%s", vulkan_unavailable);
+        return SDL_FALSE;
+    }
+    result = create_surface(instance, surface);
+    if (result != VK_SUCCESS) {
+        *surface = VK_NULL_HANDLE;
+        if (result == VK_ERROR_NATIVE_WINDOW_IN_USE_KHR) {
+            SDL_SetError("The app's window already has a Vulkan surface or is closing");
+        } else {
+            SDL_SetError("Host Vulkan surface creation failed (%d)", (int)result);
+        }
+        return SDL_FALSE;
+    }
+    NEXVYN_VulkanSyncWindowSize(window, instance, *surface);
+    return SDL_TRUE;
+}
+
+static void NEXVYN_VulkanGetDrawableSize(SDL_VideoDevice *_this, SDL_Window *window, int *w, int *h)
+{
+    SDL_GetWindowSize(window, w, h);
+}
+#endif
 
 /* ------------------------------------------------------------------ input sample shared with the joystick driver */
 
@@ -553,10 +674,25 @@ static void NEXVYN_PumpEvents(SDL_VideoDevice *_this)
     if (!vd) {
         return;
     }
+#if SDL_VIDEO_VULKAN
+    if (vd->vk_pending_w && vd->vk_pending_h) {
+        if (vd->window) {
+            SDL_SendWindowEvent(vd->window, SDL_WINDOWEVENT_RESIZED, vd->vk_pending_w, vd->vk_pending_h);
+        }
+        vd->vk_pending_w = vd->vk_pending_h = 0;
+    }
+#endif
     nxn_event e = NXN_STRUCT_INIT(nxn_event);
     while (nxn_event_poll(&e) > 0) {
         switch (e.type) {
         case NXN_EVENT_RESIZE:
+#if SDL_VIDEO_VULKAN
+            if (vd->window && (vd->window->flags & SDL_WINDOW_VULKAN) && e.width && e.height) {
+                /* The host WSI already changed extent and invalidated its old swapchain. */
+                SDL_SendWindowEvent(vd->window, SDL_WINDOWEVENT_RESIZED, (int)e.width, (int)e.height);
+                break;
+            }
+#endif
             if (vd->window && vd->gl && vd->gl->follow && e.width && e.height) {
                 if (nxn_display_resize(vd->gl->display, e.width, e.height) == NXN_OK) {
                     SDL_SendWindowEvent(vd->window, SDL_WINDOWEVENT_RESIZED, (int)e.width, (int)e.height);
@@ -681,6 +817,13 @@ static SDL_VideoDevice *NEXVYN_CreateDevice(void)
     device->StartTextInput = NEXVYN_StartTextInput;
     device->StopTextInput = NEXVYN_StopTextInput;
     device->GL_LoadLibrary = NEXVYN_GLLoadLibrary;
+#if SDL_VIDEO_VULKAN
+    device->Vulkan_LoadLibrary = NEXVYN_VulkanLoadLibrary;
+    device->Vulkan_UnloadLibrary = NEXVYN_VulkanUnloadLibrary;
+    device->Vulkan_GetInstanceExtensions = NEXVYN_VulkanGetInstanceExtensions;
+    device->Vulkan_CreateSurface = NEXVYN_VulkanCreateSurface;
+    device->Vulkan_GetDrawableSize = NEXVYN_VulkanGetDrawableSize;
+#endif
     device->GL_GetProcAddress = NEXVYN_GLGetProcAddress;
     device->GL_UnloadLibrary = NEXVYN_GLUnloadLibrary;
     device->GL_CreateContext = NEXVYN_GLCreateContext;

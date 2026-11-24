@@ -1,0 +1,180 @@
+# Nexvyn OS SDK
+
+> Public app-developer kit for Nexvyn OS: scripts (Lua, JavaScript, Python, C script) and native C/C++ modules, with
+> templates, headers, tools and guides. Current: SDK 1.16, Native SDK 1.2, native ABI v1 (`VERSION.json`). Paths are
+> relative to the `SDK/` folder. Start with `AI_GUIDE.md`. Do not invent APIs: a name that is not in
+> `Reference/SDK.md` or a header does not exist. Vulkan for native apps is opt-in since 1.4.0 (setting `native.vulkan`):
+> check `NXN_CAP_VULKAN` at run time and fall back to GL. Documentation is English; apps must ship eight locales
+> (en, tr, de, es, fr, ja, ko, zh).
+
+## Start here
+
+- [AI_GUIDE.md](AI_GUIDE.md): operational manual for AI agents: runtime choice, toolchain, manifest, build, package, test, localization, input, graphics, limits, debugging, Store, common errors
+- [README.md](README.md): human overview of the kit, starting points and product contracts
+- [CHANGELOG.md](CHANGELOG.md): SDK-facing changes since Nexvyn OS 1.3.0
+- [SOURCES.md](SOURCES.md): version identity of the kit and what it contains
+- [VERSION.json](VERSION.json): machine-readable versions: os, sdk, native, nativeAbi, requiredLocales
+
+## Reference
+
+- [Reference/SDK.md](Reference/SDK.md) (SDK 1.16 adds `update` returning false to idle, `ui.requestFrame()`, `touches` and `input.touches()` for Lua, JavaScript, Python `"python3"`): complete script SDK contract: package layout, app.json, lifecycle, gfx, ui, nxui, input, fs, net, sys, audio, g3d, nexvyn.game, phys, nav, per-language sections
+- [Reference/c/include/nexvyn.h](Reference/c/include/nexvyn.h): C-script SDK header (TinyCC runtime); the other headers in that folder are the freestanding C library
+- [Reference/java/](Reference/java/): Java SDK base classes (nexvyn.App and bindings) for the Java runtime
+
+## AI packs
+
+- [AI/README.md](AI/README.md): how to use the AI pack with an assistant
+- [AI/AGENT.md](AI/AGENT.md): working method for an AI agent: lookup order and verification
+- [AI/AI_RULES.md](AI/AI_RULES.md): MUST and MUST NOT rules for AI-made apps
+- [AI/system-prompt.md](AI/system-prompt.md): condensed API context pack to give an LLM
+- [AI/llms.txt](AI/llms.txt): long master context index for LLMs (runtimes, NXUI, API summaries)
+- [AI/checklist.md](AI/checklist.md): acceptance checklist to run before answering
+- [AI/CHECK.md](AI/CHECK.md): validating AI-made apps with the check flow
+- [AI/CAPABILITIES.md](AI/CAPABILITIES.md): capabilities and limits per runtime
+- [AI/GEMINI_WORKFLOW.md](AI/GEMINI_WORKFLOW.md): end-to-end workflow with exact manifest values
+- [AI/map/INDEX.md](AI/map/INDEX.md): keyword lookup map (audio, files, graphics, input, lifecycle, native ABI, network, packaging, script SDK, system, NXUI)
+- [AI/languages/lua.md](AI/languages/lua.md): language pack: Lua
+- [AI/languages/javascript.md](AI/languages/javascript.md): language pack: JavaScript
+- [AI/languages/python.md](AI/languages/python.md): language pack: Python
+- [AI/languages/native.md](AI/languages/native.md): language pack: native C/C++
+- [AI/languages/c.md](AI/languages/c.md): language pack: C script (TinyCC)
+- [AI/languages/squirrel.md](AI/languages/squirrel.md): language pack: Squirrel (frozen)
+- [AI/languages/java.md](AI/languages/java.md): language pack: Java (frozen)
+- [AI/recipes/README.md](AI/recipes/README.md): recipes per product type: 2D game, 3D game, port, emulator port, productivity app, script app, tool
+- [AI/tasks/make-game.md](AI/tasks/make-game.md): task: make a game
+- [AI/tasks/make-3d-game.md](AI/tasks/make-3d-game.md): task: make a 3D game
+- [AI/tasks/make-utility.md](AI/tasks/make-utility.md): task: make a utility
+- [AI/tasks/make-social-app.md](AI/tasks/make-social-app.md): task: make a social app
+- [AI/tasks/make-theme.md](AI/tasks/make-theme.md): task: make a theme pack
+- [AI/tasks/add-language.md](AI/tasks/add-language.md): task: add a user-interface language
+- [AI/tasks/fix-lua-check.md](AI/tasks/fix-lua-check.md): task: fix a checker failure
+- [AI/tasks/port-lua-to-js.md](AI/tasks/port-lua-to-js.md): task: port a Lua app to JavaScript
+- [AI/tasks/store-icon.md](AI/tasks/store-icon.md): task: the store icon
+- [AI/tasks/store-listing.md](AI/tasks/store-listing.md): task: store.json and the screenshot script
+- [AI/tasks/test-on-emulator.md](AI/tasks/test-on-emulator.md): task: test in the emulator until it passes
+- [AI/golden/RESULTS.md](AI/golden/RESULTS.md): executed commands and evidence for the golden samples
+- [AI/golden/game-2d/README.md](AI/golden/game-2d/README.md): reviewed Lua 2D game starter with eight locales
+- [AI/golden/script-utility/README.md](AI/golden/script-utility/README.md): reviewed Lua utility starter
+- [AI/golden/script-network/README.md](AI/golden/script-network/README.md): reviewed JavaScript network app starter
+
+## Guides
+
+- [Guides/DEVELOPER_GUIDE.md](Guides/DEVELOPER_GUIDE.md): build and deliver a product: lifecycle, services, delivery
+- [Guides/APP_GUIDE.md](Guides/APP_GUIDE.md): app guide for OS-style apps
+- [Guides/NXVAPP_FORMAT.md](Guides/NXVAPP_FORMAT.md): the .nxvapp package format, app.json fields, permissions, signing, install and update
+- [Guides/SDK_VERSIONS.md](Guides/SDK_VERSIONS.md): what each SDK version added; minSdk and targetSdk
+- [Guides/COMPATIBILITY.md](Guides/COMPATIBILITY.md): versions, targetSdk gates, deprecation rules
+- [Guides/LANGUAGE_SUPPORT.md](Guides/LANGUAGE_SUPPORT.md): runtimes and the N2 architecture
+- [Guides/PRODUCT_QUALITY.md](Guides/PRODUCT_QUALITY.md): product identity and production quality bar
+- [Guides/INPUT_CONTRACT.md](Guides/INPUT_CONTRACT.md): gamepad, touch, multitouch, focus and cancellation contract
+- [Guides/INPUT_AND_PLAY_MODES.md](Guides/INPUT_AND_PLAY_MODES.md): touch, controller, handheld and docked, window and full screen, sound, exit
+- [Guides/LOCALIZATION_CONTRACT.md](Guides/LOCALIZATION_CONTRACT.md): eight-language contract and checks
+- [Guides/PORT_AND_LAUNCHER.md](Guides/PORT_AND_LAUNCHER.md): native ports and launchers
+- [Guides/PORTING_LARGE_GAMES.md](Guides/PORTING_LARGE_GAMES.md): porting a large PC game or engine
+- [Guides/TEST_WORKFLOW.md](Guides/TEST_WORKFLOW.md): testing without a console: autorun script, logs, screenshots, console profile
+- [Guides/NATIVE_GUIDE.md](Guides/NATIVE_GUIDE.md): native SDK from a clean machine to a running app
+- [Guides/NATIVE_KIT.md](Guides/NATIVE_KIT.md): native kit reference: commands, windowed apps, SDL2, Vulkan, shared libraries, providers
+- [Guides/NATIVE_COMPAT.md](Guides/NATIVE_COMPAT.md): POSIX and Win32 compatibility layer for ports
+- [Guides/NATIVE_MODULES.md](Guides/NATIVE_MODULES.md): native modules (.nxvmod) installed from the App Market
+- [Guides/C_APPS.md](Guides/C_APPS.md): C script runtime guide
+- [Guides/JS_APPS.md](Guides/JS_APPS.md): JavaScript runtime guide
+- [Guides/PY_APPS.md](Guides/PY_APPS.md): Python runtime guide
+- [Guides/SQUIRREL_APPS.md](Guides/SQUIRREL_APPS.md): Squirrel runtime guide (frozen)
+- [Guides/JAVA_APPS.md](Guides/JAVA_APPS.md): Java runtime guide (frozen)
+- [Guides/LUA_CAPABILITIES.md](Guides/LUA_CAPABILITIES.md): what can be built with Lua
+- [Guides/MAKE_A_GAME.md](Guides/MAKE_A_GAME.md): complete game recipe
+- [Guides/GAME_FEEL.md](Guides/GAME_FEEL.md): graphics, UI and game feel
+- [Guides/SOUND_DESIGN.md](Guides/SOUND_DESIGN.md): sound design for games
+- [Guides/PBR_GAME_RECIPE.md](Guides/PBR_GAME_RECIPE.md): 3D PBR game in one file
+- [Guides/MAKE_A_SOCIAL_APP.md](Guides/MAKE_A_SOCIAL_APP.md): social app guide
+- [Guides/SOCIAL_APP_RECIPE.md](Guides/SOCIAL_APP_RECIPE.md): feed and short-video app in one file
+- [Guides/AI_WORKFLOW.md](Guides/AI_WORKFLOW.md): AI-assisted models, textures and code
+- [Guides/THEMES.md](Guides/THEMES.md): making themes
+- [Guides/APP_GUARD.md](Guides/APP_GUARD.md): protected folders and app guard
+- [Guides/BROWSER.md](Guides/BROWSER.md): the Browser app engine: supported web features and limits
+- [Guides/FORWARDER.md](Guides/FORWARDER.md): forwarders that start another program
+- [Guides/USER_GUIDE.md](Guides/USER_GUIDE.md): end-user guide for Nexvyn OS
+- [Guides/TURKISH_PATCHES.md](Guides/TURKISH_PATCHES.md): Turkish patches design
+- [Guides/GAME_ENGINE.md](Guides/GAME_ENGINE.md): 2D game engine nexvyn.game
+- [Guides/GAME_ENGINE_PROJECTS.md](Guides/GAME_ENGINE_PROJECTS.md): Game Engine projects and editor
+- [Guides/GAME_ENGINE_FORMAT_V2.md](Guides/GAME_ENGINE_FORMAT_V2.md): Game Engine project format v2
+- [Guides/GAME_ENGINE_MODULE.md](Guides/GAME_ENGINE_MODULE.md): Game Engine as an App Market module
+- [Guides/GAME_ENGINE_PACKS.md](Guides/GAME_ENGINE_PACKS.md): Game Engine asset packs
+- [Guides/GAME_ENGINE_PACK_PIPELINE.md](Guides/GAME_ENGINE_PACK_PIPELINE.md): prepare a portable asset pack
+- [Guides/GAME_ENGINE_EDITOR3D.md](Guides/GAME_ENGINE_EDITOR3D.md): 3D level editor
+- [Guides/GAME_ENGINE_CHARACTERS.md](Guides/GAME_ENGINE_CHARACTERS.md): base characters
+- [Guides/GAME_ENGINE_ANIMATION.md](Guides/GAME_ENGINE_ANIMATION.md): animation timeline and state machines
+- [Guides/GAME_ENGINE_PARTICLES.md](Guides/GAME_ENGINE_PARTICLES.md): 3D particles
+- [Guides/GAME_ENGINE_TERRAIN.md](Guides/GAME_ENGINE_TERRAIN.md): terrain and scatter
+- [Guides/GAME_ENGINE_HUD.md](Guides/GAME_ENGINE_HUD.md): HUD, menus, controls and save slots
+- [Guides/GAME_ENGINE_LOGIC.md](Guides/GAME_ENGINE_LOGIC.md): behaviours and logic
+- [Guides/GAME_ENGINE_SOUND.md](Guides/GAME_ENGINE_SOUND.md): sound lab and mixer
+- [Guides/GAME_ENGINE_AI.md](Guides/GAME_ENGINE_AI.md): AI helpers
+- [Guides/GAME_ENGINE_WIZARD.md](Guides/GAME_ENGINE_WIZARD.md): offline wizard and level generators
+
+## Publishing
+
+- [Publishing/README.md](Publishing/README.md): how an item reaches the App Market
+- [Publishing/PUBLISHING.md](Publishing/PUBLISHING.md): folder layout, app.json, permissions, store.json, screenshots, rules, updates, signing
+- [Publishing/REVIEW.md](Publishing/REVIEW.md): the maintainer review checklist
+
+## Tools
+
+- [Tools/nxv/nxv.py](Tools/nxv/nxv.py): CLI: new, create, check, build, pack, icon, install, push
+- [Tools/nxv/nxv_i18n.py](Tools/nxv/nxv_i18n.py): eight-locale checker and pseudo-localizer: --check <bundle>, --pseudo <text>
+- [Tools/nxv/nxv_create.py](Tools/nxv/nxv_create.py): N2 project creator with runtime recommendation (nxv.py create)
+- [Languages/c/native-kit/tools/nxv_native/](Languages/c/native-kit/tools/nxv_native/): native CLI: new, build, lib, check-lib, check-win, check-design, shader, package, run, symbolize, doctor
+- [Languages/c/native-kit/tools/toolchain.json](Languages/c/native-kit/tools/toolchain.json): pinned devkitPro package versions
+- [Languages/c/native-kit/tools/design_check.py](Languages/c/native-kit/tools/design_check.py): OS design-rule checker for ImGui apps
+- [Languages/c/native-kit/tools/nxvapp_pack.py](Languages/c/native-kit/tools/nxvapp_pack.py): package packer and verifier (--verify)
+
+## Templates and samples
+
+- [Languages/lua/template/](Languages/lua/template/): lua app template (app.json, icon, eight lang files, main file)
+- [Languages/javascript/template/](Languages/javascript/template/): javascript app template (app.json, icon, eight lang files, main file)
+- [Languages/python/template/](Languages/python/template/): python app template (app.json, icon, eight lang files, main file)
+- [Languages/squirrel/template/](Languages/squirrel/template/): squirrel app template (app.json, icon, eight lang files, main file)
+- [Languages/c/template/](Languages/c/template/): c app template (app.json, icon, eight lang files, main file)
+- [Languages/java/template/](Languages/java/template/): java app template (app.json, icon, eight lang files, main file)
+- [Languages/c/native-kit/sdk/native/templates/](Languages/c/native-kit/sdk/native/templates/): native templates: app, game, port, sdl2, gl, vulkan, emu-skeleton, decomp-skeleton, shared-lib
+- [Languages/c/native-kit/sdk/native/examples/](Languages/c/native-kit/sdk/native/examples/): native examples: hello_gl, showcase, scenes, sdl2_check, inputlab, services12, hello_vk, vk_canary, tour, bench, graphics, gpu_stress, prism, townbench
+- [Samples/c/golden/](Samples/c/golden/): reviewed native samples: native-app, native-tool, native-game3d, native-port, native-emu
+- [Samples/](Samples/): interaction samples (InputLab) per language
+- [Fonts/](Fonts/): system fonts for apps and mock-ups
+
+## Native headers (Languages/c/native-kit/sdk/native/include/nexvyn/)
+
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nexvyn_native.h](Languages/c/native-kit/sdk/native/include/nexvyn/nexvyn_native.h): single include for the whole nxn_* API; ABI v1
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_base.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_base.h): base types, result codes, NXN_STRUCT_INIT
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_app.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_app.h): lifecycle (nxn_init, nxn_run, nxn_should_quit), capability bits NXN_CAP_*, nxn_caps_get, nxn_info_get
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_caps.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_caps.h): header-only capability query helper (nxn_capability_query)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_display.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_display.h): display: GL core or GLES context, swap, resize, nxn_display_proc
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_event.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_event.h): event queue: resize, quit, focus, dock, suspend, resume, theme, menu, power, language
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_input.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_input.h): controller, touch (up to 16 with stable id), USB keyboard and mouse, text
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_audio.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_audio.h): audio stream, OS mixer effects and tones
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_fs.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_fs.h): app data, cache and bundle folders; recoverable writes
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_sys.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_sys.h): time, threads, thread hints, logging, permissions, notify, clipboard, rumble, picker, save backups, memory budget
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_ui.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_ui.h): OS look tokens, system fonts, icon names, nxn_tr translated texts
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_os_ui.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_os_ui.h): OS design system and widget kit for Dear ImGui (frame layer, nxn_os_* widgets)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui.h): Dear ImGui font helper
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_input.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_input.h): shared native UI input backend for ImGui
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_scroll_physics.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_scroll_physics.h): shared kinetic scrolling math (header-only)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_nxui.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_nxui.h): retained semantic UI (not painted in a GL window)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_menu.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_menu.h): window menu in the OS menu bar
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_window.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_window.h): window title, mode and modified mark (Native 1.2)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_power.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_power.h): battery, charger, dock and network state (Native 1.2)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_dialog.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_dialog.h): OS alert, question and text prompt (Native 1.2)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_lib.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_lib.h): shared libraries (.nxvlib): nxn_lib_open
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_jit.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_jit.h): JIT code memory, fault handler, guard pages (off by default)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_stream.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_stream.h): streaming reads of big files through a shared block cache
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_phys.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_phys.h): 3D collision (SDK 1.15)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_nav.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_nav.h): 3D navigation (SDK 1.15)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_port_input.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_port_input.h): universal port input: gamepad, multi-touch gestures, mouse, keyboard
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_native.h](Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_native.h): ngfx_* baked 3D scene renderer
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_backend.h](Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_backend.h): host table behind ngfx_*
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_vk.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_vk.h): Vulkan availability helper (preview)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_vk.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_vk.h): Dear ImGui Vulkan backend glue (opt-in, preview)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_provider.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_provider.h): runtime provider ABI v1
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_app_api.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_app_api.h): generated app API table (do not edit)
+- [Languages/c/native-kit/sdk/native/toolchain/nxn_abi_v1.json](Languages/c/native-kit/sdk/native/toolchain/nxn_abi_v1.json): the frozen ABI v1 surface (add-only)
+- [Languages/c/native-kit/sdk/native/toolchain/nxwin_imports.txt](Languages/c/native-kit/sdk/native/toolchain/nxwin_imports.txt): every host import a windowed module may use

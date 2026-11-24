@@ -8,6 +8,16 @@
 #include <time.h>
 #include <unistd.h>
 
+nxn_result nxn_memory_budget_get(nxn_memory_budget* out) {
+    if (!out || out->size < sizeof(uint32_t)) return NXN_ERR_INVALID;
+    return NXN_ERR_UNSUPPORTED;
+}
+
+nxn_result nxn_memory_budget_request(uint64_t working_set_bytes) {
+    (void)working_set_bytes;
+    return NXN_ERR_UNSUPPORTED;
+}
+
 /* ---------------------------------------------------------------- time */
 uint64_t nxn_time_ns(void) { return armTicksToNs(armGetSystemTick()); }
 int64_t nxn_time_unix(void) { return (int64_t)time(NULL); }

@@ -43,7 +43,7 @@ Makefile (devkitPro style): `include <kit>/compat/compat.mk`, then add `$(NXC_CF
 `$(NXC_LDFLAGS)` to the link flags and `$(NXC_LIBS_END)` as the **last** item of `LIBS` (it is
 `-Wl,--start-group -lnexvyn_compat -lnx -Wl,--end-group`: a static library is searched once, so it must come after every
 library that calls a wrapped function). `$(NXC_LIBS)` is only `-lnexvyn_compat`, for projects that place it themselves.
-`tests/compat_test/Makefile` is a complete example.
+`sdk/native/compat/tests/compat_test/Makefile` is a complete example.
 
 Makefile projects that build a window (`.nxvmod`, `-fPIC`, `-shared`) link the objects with `$(NXC_WIN_LDFLAGS) $(NXC_WIN_LIBS)`
 (the archive goes after the objects, before `-lnexvyn_window`); a hand-written `nexvyn_add_windowed()` uses
@@ -291,7 +291,7 @@ as a `.nxvlib`.
 | Plain C parts (path rules, ring buffer) | `python sdk/native/compat/tests/host/run_host.py` (gcc, clang or MSVC on the PC) |
 | Public headers in C and C++, wrap lists | `python sdk/native/compat/tests/header_check.py` |
 | `NXC_STRICT` warnings and errors | `python sdk/native/compat/tests/strict_check.py` |
-| Everything else on the console or emulator | `python tools/nxv_native build sdk/native/compat/tests/compat_test` builds the window / full screen module (`--exclusive`: the `.nro`), run it, read `sdmc:/switch/compat_test/results.txt` (a hung test is cut by a watchdog; the `.nro` also exits 0 when all passed). Also builds with `make` (`tests/compat_test/Makefile`, uses `compat.mk`). |
+| Everything else on the console or emulator | `python tools/nxv_native build sdk/native/compat/tests/compat_test` builds the window / full screen module (`--exclusive`: the `.nro`), run it, read `sdmc:/switch/compat_test/results.txt` (a hung test is cut by a watchdog; the `.nro` also exits 0 when all passed). Also builds with `make` (`sdk/native/compat/tests/compat_test/Makefile`, uses `compat.mk`). |
 | The same test in the emulator: window, full screen, exclusive | `python sdk/native/compat/tests/window_run.py --mode window\|fullscreen --net allow\|deny` (and `--exclusive <nro>`): follows the one-the emulator lock, starts minimized, puts the SD card back. `--net deny` removes `"network"` from the answers and expects `EACCES` |
 
 The on-device test has about 390 checks (385 in a window: no `romfs:/`; its socket part reports `net=allowed` or `net=denied`): memory maps, pipes (a 1.5 MiB transfer between threads), eventfd, poll and select
@@ -301,7 +301,7 @@ registers and `fpcr`, guard check), signals (masks, `SA_SIGINFO`, `sigwait`, `si
 `poll`), the runtime hooks (`alarm()` delivered while the app only calls `nxn_event_poll()`; `nxn_sleep_ns`) paths (drives, backslashes, case-insensitive `romfs:/`), `fcntl` on files, the `/dev` devices and `timespec_get`.
 
 The link behaviour (plain `nexvyn_use_compat()`, and libraries after the layer on the link line) is tested by
-`python sdk/native/compat/tests/link_check.py` (builds `tests/link_test`: `link_test` uses the core with no other helper,
+`python sdk/native/compat/tests/link_check.py` (builds `sdk/native/compat/tests/link_test`: `link_test` uses the core with no other helper,
 `link_order` reaches the layer only through a library that CMake places behind it).
 
 ### Shared mapping descriptor failure

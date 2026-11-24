@@ -1,0 +1,5 @@
+{
+  "stress": {
+    "failed": "GPU stress test failed."
+  }
+}

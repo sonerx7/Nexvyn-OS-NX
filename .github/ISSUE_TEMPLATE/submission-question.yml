@@ -6,8 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Read [the publishing guide](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.en.md)
-        first ([Türkçe](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.tr.md)).
+        Read [the publishing guide](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/SDK/Publishing/PUBLISHING.md)
+        first.
         English or Turkish is fine. / İngilizce ya da Türkçe yazabilirsiniz.
   - type: dropdown
     id: kind

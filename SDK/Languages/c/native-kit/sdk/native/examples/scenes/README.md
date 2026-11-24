@@ -29,7 +29,7 @@ Needs devkitPro, a host C compiler (gcc, clang or MSVC) and Python with Pillow, 
 meshes by material, splits them into 16 m chunks, generates tangents and writes `.nxsc`, then resizes the textures
 (2048 / 1024 / 512 by object size), builds mip chains and compresses to `.nxtx`. A damaged input stops with one plain
 message and leaves no output; `python tools/nxv_asset check FILE...` verifies baked files.
-The package is `com.nexvyn.example.scenes`; put it into `NexvynOS/Applications` as `com.nexvyn.example.scenes.zip`.
+The package is `com.nexvyn.example.scenes`; `package.py` writes `com.nexvyn.example.scenes.nxvapp`; put it into `NexvynOS/Applications`.
 
-Limits today: the frame is copied out of the GL context in windowed mode and the GPU is shared with the desktop, so fps
+Limits today: in windowed mode the frame goes to the compositor zero-copy by default (`native.frameZeroCopy`, with a copying fallback) and the GPU is shared with the desktop, so fps
 depends on the window size; there is no collision (free fly); the start point is a heuristic when the FBX has no camera.

@@ -91,9 +91,9 @@
   "live": "Medido en consola: 0.10-0.22 ms"
  },
  "c4": {
-  "name": "Táctil y Joy-Con",
+  "name": "Táctil y mando",
   "what": "Sticks, botones y pantalla táctil llegan a la app en el mismo fotograma, en ventana o a pantalla completa. Pruébalo.",
-  "r0": "Táctil, Joy-Con y mundos 3D",
+  "r0": "Táctil, mando y mundos 3D",
   "b": "no funcionaba",
   "a": "funciona"
  },

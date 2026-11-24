@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Vulkan Kanarya",
+    "unavailable": "Bu sistemde Vulkan kullanılamıyor",
+    "init_failed": "Vulkan başlatılamadı",
+    "device_lost": "Vulkan aygıtı kaybedildi",
+    "completed": "Vulkan kanarya tamamlandı"
+  }
+}

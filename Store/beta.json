@@ -55,7 +55,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-20"
+      "updated": "2026-11-25"
     },
     {
       "id": "com.nexvyn.emu.dosbox",
@@ -105,7 +105,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-20"
+      "updated": "2026-11-25"
     },
     {
       "id": "com.sonerx7.portmarket",
@@ -165,7 +165,7 @@
         "keyboard"
       ],
       "beta": true,
-      "updated": "2026-11-20"
+      "updated": "2026-11-25"
     },
     {
       "id": "com.sonerx7.redalert2",
@@ -243,7 +243,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-20"
+      "updated": "2026-11-25"
     },
     {
       "id": "com.nexvyn.emu.tinyemu",
@@ -294,7 +294,7 @@
       ],
       "players": "1",
       "beta": true,
-      "updated": "2026-11-20"
+      "updated": "2026-11-25"
     }
   ]
 }

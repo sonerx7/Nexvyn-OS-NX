@@ -21,12 +21,12 @@ body:
     id: file
     attributes:
       label: File or page / Dosya ya da sayfa
-      placeholder: SDK/Reference/SDK.en.md
+      placeholder: SDK/Reference/SDK.md
   - type: input
     id: version
     attributes:
       label: Nexvyn OS version / sürümü
-      placeholder: "1.0.0"
+      placeholder: "1.4.0"
   - type: textarea
     id: what
     attributes:

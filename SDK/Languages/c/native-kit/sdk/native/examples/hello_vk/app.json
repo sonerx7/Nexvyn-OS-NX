@@ -1,0 +1,12 @@
+{
+  "id": "com.nexvyn.example.hellovk",
+  "name": "Hello Vulkan",
+  "author": "Nexvyn OS",
+  "version": "1.0.0",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "window",
+  "main": "hello_vk.nxvmod",
+  "permissions": [],
+  "vulkan": true
+}

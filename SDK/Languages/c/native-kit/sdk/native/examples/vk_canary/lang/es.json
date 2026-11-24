@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Prueba Vulkan",
+    "unavailable": "Vulkan no está disponible en este sistema",
+    "init_failed": "Error al inicializar Vulkan",
+    "device_lost": "Se perdió el dispositivo Vulkan",
+    "completed": "Prueba Vulkan completada"
+  }
+}

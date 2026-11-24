@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Vulkan Canary",
+    "unavailable": "Vulkan is not available on this system",
+    "init_failed": "Vulkan initialization failed",
+    "device_lost": "Vulkan device lost",
+    "completed": "Vulkan canary completed"
+  }
+}

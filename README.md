@@ -7,12 +7,25 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 <p align="center"><b>A full desktop, native 3D, a real App Market and a browser, on a Switch.</b><br>
 <i>Native 3D from 10 to 60 fps. A GBA game at full speed. Desktop websites, WebGL and video in the browser. Measured on a console.</i></p>
 
-<p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30-second Nexvyn OS tour: click to play the video"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4">Watch the 30-second tour</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/overview.mp4">2-minute overview</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft trailer</a></p>
+<p align="center"><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4"><img src=".github/assets/video/hero_30s.gif" width="70%" alt="30-second Nexvyn OS tour: click to play the video"></a><br><a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/whatsnew_1.4.mp4">What's new in 1.4 (30 s tour)</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/hero_30s.mp4">Watch the 30-second tour</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/overview.mp4">2-minute overview</a> · <a href="https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/.github/assets/video/blockcraft_trailer.mp4">BlockCraft trailer</a></p>
 <p align="center"><b>On YouTube:</b> <a href="https://www.youtube.com/@NexvynOSNX">channel</a> · <a href="https://www.youtube.com/watch?v=_DQouwS2TYQ">full showcase</a> · <a href="https://www.youtube.com/watch?v=3aze4gmaLnI">themes and the Doom port</a> · <a href="https://www.youtube.com/watch?v=5R1F_wDSVAM">BlockCraft</a> · <a href="https://www.youtube.com/watch?v=Wvk8iQVjDMw">WebGL in the browser</a></p>
 
 - One `.nro`, opened from the Homebrew Menu. No reboot, no partitioning.
 - A windowed desktop (Dock or taskbar layout), 70+ built-in apps and an App Market where every item is reviewed.
-- **Nexvyn OS N2 Architecture (SDK 2.0 / 1.13 & Native SDK 1.2):** 4 official primary language tracks (**Lua 5.4.7** with Generational GC, **JavaScript ES2023** on QuickJS-ng 0.17.0, **Python 3.12** on CPython 3.12.16, and **Native C/C++** with Frozen ABI v1), the **NXUI Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)**, the **NexGFX PBR 3D renderer**, and an AI-ready SDK (`SDK/AI/llms.txt`).
+- **Nexvyn OS 1.4.0 (SDK 1.16 & Native SDK 1.2):** 4 official primary language tracks (**Lua 5.4.7** with Generational GC, **JavaScript ES2023** on QuickJS-ng 0.17.0, **Python 3.12** on CPython 3.12.16, and **Native C/C++** with Frozen ABI v1), the **NXUI Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)**, the **NexGFX PBR 3D renderer**, and an AI-ready SDK (`SDK/AI/llms.txt`).
+
+### What's new in 1.4
+
+- **Smooth Python 3 startup:** Python 3 apps start without freezing the desktop — the interpreter starts in the background while the window shows "Loading".
+- **Idle frame pacing & touchscreen multitouch:** Script apps (Lua, JavaScript, Python 3) can now idle when nothing moves (`update` returns false, `ui.requestFrame()` wakes them) and read every finger on the touchscreen (`touches`, `input.touches()`): SDK 1.16.
+- **Fault-isolated scripts:** A faulty or hostile script app can no longer crash or freeze the whole system through its theme, menus, callbacks or a runaway Lua pattern; only that app is stopped.
+- **On-screen performance panel:** Optional real-time HUD (Ctrl+Alt+P, or L+R+ZL+ZR) displaying frame time and its phases, skipped frames, RAM and GPU lock time.
+- **Safer files & transfers:** Game saves are never replaced by a truncated copy, FTP uploads and downloads keep the old file when a transfer fails, and Writer and Sheets refuse files over 16 MB instead of freezing.
+- **Verified downloads:** Store and package downloads are checked against their SHA-256 digest before they are unpacked.
+- **Protected web browsing:** The browser limits WebSocket queues, very large images and WebAssembly memory so a hostile page cannot exhaust memory; WebRTC now verifies the peer certificate fingerprint.
+- **Responsive window management:** Window drags no longer get stuck when the overview opens or a window closes; a hung window no longer forces a full redraw every frame.
+- **Enhanced port inputs & caching:** Two-finger rotate and double tap in the port input helper, `"fullscreenPause": true` in app.json frees the compositor's memory while the app runs fullscreen, and Vulkan pipeline caches are saved between launches.
+- **Native Vulkan backend (opt-in):** Modern Vulkan graphics backend for native apps and ports (`native.vulkan`), verified on the console with the canary and the GPU load test.
 
 ### What is new in 1.3.10
 
@@ -23,12 +36,12 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 
 ### What is new in 1.3.9 (N2 Architecture Final)
 
-**1. Four Official Primary Runtimes, W^X JIT & On-Demand ComponentService:**
+**1. Four Official Primary Runtimes, W^X JIT:**
 - **Lua 5.4.7 (`"runtime": "lua"`):** Generational GC (`LUA_GCGEN`, ~0.28 ms frame pause), instant startup, `nexvyn.game` 2D engine, `nxui.*`, and `g3d.*` PBR.
 - **JavaScript ES2023 (`"runtime": "js"`):** QuickJS-ng 0.17.0 with persistent SD bytecode caching, native Promises, `g3d.voxels` streaming voxel worlds, `nxui.*`, and `g3d.*` PBR.
 - **Python 3.12 (`"runtime": "python3"` or `"targetSdk": "2.0"`):** CPython 3.12.16 with full Python 3.12 syntax and standard library (`statistics`, `itertools`, `collections`, `datetime`, `zlib`, `hashlib`, `re`, `urllib.parse`, `uuid`, etc.), `nxui.*`, and `g3d.*` PBR.
 - **Native C/C++ (`"runtime": "native"`, `.nxvmod`):** Ahead-of-Time (AOT) ARM64 compilation with devkitA64 GCC against **Frozen ABI v1** (`nxn_*`), Native SDK 1.2 system integration, hardware W^X dual-mapping JIT (`nxn_vm`), `nxn_nxui_*` Retained UI, SDL2 window driver, and OpenGL / NexGFX.
-- Earlier runtimes (**PocketPy** for `targetSdk < 2.0`, **TinyCC C**, **Squirrel 3.2**, **Java miniJVM**) remain 100% supported via the on-demand `ComponentService` (SHA-256 verified with 256 MB LRU cache).
+- Earlier runtimes (**PocketPy** for `targetSdk < 2.0`, **TinyCC C**, **Squirrel 3.2**, **Java miniJVM**) remain supported as built-in compatibility runtimes.
 
 **2. NXUI — Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`):**
 - Shared identically across Lua, JavaScript, Python and Native C/C++ (`#include <nexvyn/nxn_nxui.h>`).
@@ -52,7 +65,7 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 
 - Canvas 2D: linear and radial gradients, patterns, `clip()` with `save()` / `restore()`, composite operations, affine `drawImage`, `OffscreenCanvas` and `createImageBitmap`, `setLineDash`, approximate shadows.
 - WebGL 1 for 3D libraries, and early WebGL 2 (instancing, uniform buffers, 3D and array textures, multiple render targets, transform feedback). Known WebGL 2 gaps: rendering to one layer of a 2D-array texture, sampling 3D textures, and `drawArraysInstanced` after the vertex array object or instance count changes. A failing call returns wrong pixels; the page does not crash.
-- ES modules, Web Workers (same-origin, module workers included), IndexedDB, Gamepad API, WebAssembly (off by default, in Settings), and link navigation with the gamepad.
+- ES modules, Web Workers (same-origin, module workers included), IndexedDB, Gamepad API, WebAssembly (on by default), and link navigation with the gamepad.
 - Video in the page: MP4, WebM and HLS play with the system media player (software decoding). MediaSource works for H.264 + AAC fragmented MP4 and WebM. Clear-key encrypted video (EME ClearKey) plays.
 - Cookies, sign-in forms and third-party cookie blocking (on by default). Tested on a local sign-in suite; signing in to live sites is experimental.
 
@@ -60,7 +73,7 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 
 - **Netflix and other DRM streaming do not play.** There is no Widevine, FairPlay or PlayReady support, so protected video is refused.
 - **YouTube is experimental.** The page loads and the player starts, but playback is not yet reliable on every video.
-- Web fonts (`@font-face`), Service Workers and WebSocket are not supported yet.
+- Service Workers are not supported yet.
 
 **Browser: speed and memory.** Background tabs are freed from memory when many are open or when the console reports low memory, and they reload when shown. Large scripts are kept as compiled code on the SD card, so a revisit starts faster. A stuck script is cut after one second, so the Browser no longer shows a "not responding" window for it.
 
@@ -106,7 +119,7 @@ Older native apps (1.0 and 1.1) run unchanged. See [SDK/Reference](SDK/Reference
 
 ### 10 things that make it different
 
-1. **Native apps at full speed.** C and C++ apps run in their own windows on the desktop. Measured on a console: 3D scenes went from 10 to 59 fps, the OpenGL showcase from 10-16 to 60 fps, frame handoff from 15-24 ms to 0.1 ms, scene loading from about 30 s to 0.6 s. Classic game ports (a Doom engine, a Quake engine, a GBA emulator) run in windows or full screen.
+1. **Native apps at full speed.** C and C++ apps run in their own windows on the desktop. Measured on a console: 3D scenes went from 10 to 59 fps, the OpenGL showcase from 10-16 to 60 fps, frame handoff from 15-24 ms to 0.1 ms, scene loading from about 30 s to 0.6 s. Classic game ports (a Doom engine, a GBA emulator) run in windows or full screen.
 
    <img src=".github/assets/hero-doom.webp" width="31%" alt="Doom engine with Freedoom"> <img src=".github/assets/hero-showcase.webp" width="31%" alt="Native SDK Showcase">
 
@@ -115,6 +128,8 @@ Older native apps (1.0 and 1.1) run unchanged. See [SDK/Reference](SDK/Reference
    <img src=".github/assets/hero-webgl.webp" width="31%" alt="WebGL cube in the browser">
 
 3. **One SDK, four languages.** Lua, JavaScript, Python and C use the same API with the same names: windows, UI, files, network, sound, input, 2D and 3D. Each new feature reaches all four. The kit has guides, samples, checkers and AI prompts for makers.
+
+   <img src=".github/assets/python3-start.gif" width="31%" alt="Python 3 app starting without freezing">
 4. **A modern 3D renderer.** NexGFX has a physically based renderer: metal and roughness materials, normal and emissive maps, real-time lights, sun and spot shadows, HDR, tone mapping, bloom, MSAA and instancing. Apps opt in, and old apps look the same.
 
    <img src=".github/assets/nexgfx-materials.webp" width="31%" alt="PBR materials">
@@ -127,7 +142,7 @@ Older native apps (1.0 and 1.1) run unchanged. See [SDK/Reference](SDK/Reference
 
 8. **Performance mode.** Official maximum clocks are on by default, with faster loading and an optional overclock that warns first. Installs run in the background, and a stuck app never freezes the desktop: there is an exit watchdog, and the system asks before it closes anything.
 
-   <img src=".github/assets/settings-performance.webp" width="31%" alt="Performance settings">
+   <img src=".github/assets/settings-performance.webp" width="31%" alt="Performance settings"> <img src=".github/assets/perf-overlay.webp" width="31%" alt="On-screen performance panel">
 
 9. **App Market.** About 170 apps, games, themes and fonts, with tabs, categories, a Showcase of tech demos, full-page details with screenshots, live install progress (MB, speed, time left) and one-tap updates. Some built-in apps update from it too.
 
@@ -135,7 +150,7 @@ Older native apps (1.0 and 1.1) run unchanged. See [SDK/Reference](SDK/Reference
 
 10. **A real desktop for the Switch.** Movable windows, multi-touch gestures, Joy-Con, touch, handheld and docked play, 8 languages, a first-start wizard that works offline, safe mode, deep reset, and an AI Chat app that works with several providers.
 
-   <img src=".github/assets/anim-window-snap.gif" width="31%" alt="Window snapping">
+   <img src=".github/assets/anim-window-snap.gif" width="31%" alt="Window snapping"> <img src=".github/assets/anim-window-overview.gif" width="31%" alt="Window drag and overview">
 
 
 
@@ -176,8 +191,8 @@ Discover, Apps, Games, Showcase, Themes and Updates. Full-page app details with 
 | | |
 |---|---|
 | **Native SDK Showcase**<br>A C++ app in a window with its own 3D view, tests and live status. <img src=".github/assets/hero-showcase.webp" alt="The Native SDK Showcase app in a window"> | **Doom engine with Freedoom**<br>Free game data, clean sound, touch and Joy-Con. <img src=".github/assets/hero-doom.webp" alt="Doom engine running with the free Freedoom data"> |
-| **GBA at full speed**<br>A free homebrew GBA game (MIT license) at 59.2 fps in the first console test; the first build gave 4-5. <img src=".github/assets/hero-gba.webp" alt="A free homebrew GBA game running in a window"> | **WebGL in the browser**<br>A three.js cube at about 57-58 fps in testing (experimental, off by default). <img src=".github/assets/hero-webgl.webp" alt="A spinning WebGL cube in the browser"> |
-| **What is new in 1.2.2**<br>A short tour of the release the first time you open it, and any time from Settings. <img src=".github/assets/hero-whatsnew.webp" alt="The What's new screen: A new App Market"> | **Official max clocks**<br>On by default, plus an optional overclock behind a warning. <img src=".github/assets/settings-performance.webp" alt="Settings, Performance pane with the official maximum clocks"> |
+| **GBA at full speed**<br>A free homebrew GBA game (MIT license) at 59.2 fps in the first console test; the first build gave 4-5. <img src=".github/assets/hero-gba.webp" alt="A free homebrew GBA game running in a window"> | **WebGL in the browser**<br>A three.js cube at about 48 fps on the console (on by default; early WebGL 2). <img src=".github/assets/hero-webgl.webp" alt="A spinning WebGL cube in the browser"> |
+| **What is new in 1.4**<br>A short tour of the release the first time you open it, and any time from Settings. <img src=".github/assets/whatsnew-1.4.webp" alt="The What's new screen: What's new in 1.4"> | **Official max clocks**<br>On by default, plus an optional overclock behind a warning. <img src=".github/assets/settings-performance.webp" alt="Settings, Performance pane with the official maximum clocks"> |
 
 <p align="center"><img src=".github/assets/anim-doom-play.gif" width="80%" alt="Playing the Doom engine with the free Freedoom data"></p>
 
@@ -197,6 +212,8 @@ Measured on a Switch OLED, first test against the final round (default settings)
 60 fps is the screen limit, so some tests are "locked at 60".
 
 ### For developers & AI assistants
+
+**For developers (SDK 1.16 & Native Platform):** SDK 1.16 introduces frame pacing for script apps (`update` returns false when idle, `ui.requestFrame()` wakes them) and full multitouch gesture handling (`touches`, `input.touches()`) across Lua, JavaScript, and Python 3. For native C/C++ apps and ports, native Vulkan (`native.vulkan`) is available as an opt-in graphics backend alongside OpenGL, with persistent Vulkan pipeline disk caching between launches. Native runtimes also gain windowed JIT (`native.windowedJit` with dual-mapped W^X memory) and explicit memory budget management (`nxn_memory_budget_get`, `nxn_memory_budget_request`). See [SDK](SDK/README.md).
 
 Native C and C++ with a frozen ABI v1 (add-only from now on): a module built with the 1.0 kit still loads on the current system. Every new API — including the **NXUI Retained & Semantic UI Engine (`nxui.*` / `nxn_nxui_*`)** and **NexGFX PBR renderer (`g3d.*`)** — arrives across the 4 official primary tracks (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, and **Native C/C++**). Smart Creator (`nxv.py create`) and the Port Kit scaffold apps and ports in one command, and `SDK/AI/llms.txt` + `SDK/AI/system-prompt.md` let AI coding assistants build full Nexvyn OS apps with zero hallucination. See [SDK](SDK/README.md).
 

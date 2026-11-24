@@ -1,4 +1,4 @@
-/* Nexvyn Native SDK N2 - Apple-Grade NXUI Retained & Semantic UI Library.
+/* Nexvyn Native SDK N2 - NXUI retained and semantic UI library.
  * Provides unified design tokens, responsive containers, buttons, cards, typography,
  * hardware clipping, visible gamepad focus rings, and touch coordinate adapters.
  */

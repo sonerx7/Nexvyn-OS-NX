@@ -1,4 +1,4 @@
-# SDK versions: 1.0 to 2.0 (1.13)
+# SDK versions: 1.0 to 1.16
 
 What each version of the Nexvyn OS app SDK added, which Nexvyn OS release shipped it and which languages have it. The
 function-by-function contract is the [SDK reference](../Reference/SDK.md) (section 1, *SDK versions*); the compatibility
@@ -43,7 +43,10 @@ existing function behaves would raise the SDK major version, and only apps that 
 | 1.10 | 1.2.2 (same build for now) | native runtime: full-screen C / C++ apps, Native SDK 1.0 (no script API change) | C / C++ (`nxn_*`) |
 | 1.11 | 1.2.2 | kept folders and save backups for script apps (`ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup`...) | Lua, JavaScript, Python, C |
 | 1.12 | 1.2.2 | language parity with the native SDK (`ui.tokens`, `audio.stopAll`, C `input_action`) | Lua, JavaScript, Python, C |
-| 1.13 / 2.0 | 1.3.8 | **Nexvyn OS N2 Architecture:** NXUI Retained & Semantic UI Engine (`nxui.*` / `nxn_nxui_*`), 4 Official Primary Runtimes (Lua 5.4.7 Generational GC, QuickJS-ng ES2023, CPython 3.12 default for `targetSdk: "2.0"`, Native C/C++ ABI v1), `loadingHint`, Unified Input Router, Smart Creator & Port Kit | Lua, JavaScript, Python 3.12, Native C/C++ |
+| 1.13 | 1.2.4 | `loadingHint` in `app.json` (no new function, no native ABI change) | all |
+| 1.14 | 1.3.18 | language parity gaps closed: `fs.readBytes` in Lua, `nxui.feedPointer` in JavaScript and Python, C `fs_readBytes` / `fs_unzip` / `sys_games`; no native ABI change | Lua, JavaScript, Python (`"python3"`), C |
+| 1.15 | 1.3.21 | 3D collision `phys` and 3D navigation `nav`; native `nxn_phys_*` and `nxn_nav_*` | Lua, JavaScript, Python (`"python3"`), C, Native |
+| 1.16 (current) | 1.4.0 | script frame pacing (`update` returning false idles the app, `ui.requestFrame()` wakes it) and multitouch (`touches` on events, `input.touches()`) | Lua, JavaScript, Python (`"python3"`) |
 
 SDK 1.0 to 1.6 were all built during the development of Nexvyn OS 1.0.0, the first public release, which has SDK 1.6.
 A language that arrived later got the whole earlier SDK with it: Squirrel, C and Java started at SDK 1.5 with
@@ -156,23 +159,56 @@ everything from 1.0 to 1.4.
   `audio.stopAll()` stops every sound (like `nxn_sfx_stop_all`), and C gets `input_action` (the other languages had
   `input.action`). Lua, JavaScript, Python and C. Older apps are not affected.
 
-### SDK 1.13 / 2.0 (Nexvyn OS 1.3.8 — N2 Architecture)
+### SDK 1.13 (Nexvyn OS 1.2.4)
 
-- **NXUI Retained & Semantic UI Engine (`nxui.*` and `nxn_nxui_*`):** Declarative, automatic-layout containers (`row`,
+- `"loadingHint": true` in `app.json` for a large port that loads a lot: the "not responding" dialog waits 120 s
+  instead of 5 s. No new function and no native ABI change. Older systems ignore the field.
+
+### The N2 architecture (Nexvyn OS 1.3.8 and 1.3.9; not an SDK number)
+
+N2 changed the engines and added the NXUI library; the SDK number stayed 1.13 until 1.14 (the SDK number tracks script
+API changes; NXUI and the four runtimes arrived with Nexvyn OS 1.3.8 and 1.3.9).
+
+- **NXUI Retained & Semantic UI Engine (`nxui.*` and `nxn_nxui_*`):** declarative, automatic-layout containers (`row`,
   `column`, `card`, `scrollBegin`, `canvasBegin`) and semantic controls (`label`, `badge`, `button`, `toggle`, `slider`,
   `textfield`, `dropdown`, `tabs`, `table`, `virtuallist`, `dialog`, `spacer`, `moveFocus`, `activateFocused`,
-  `tokens`), shared identically across Lua, JavaScript, Python and Native C/C++ (`#include <nexvyn/nxn_nxui.h>`).
-- **4 Official Primary Runtimes:**
-  1. **Lua 5.4.7** (`"runtime": "lua"`, Generational GC step per frame).
-  2. **JavaScript ES2023** (`"runtime": "js"`, QuickJS-ng 0.17.0 with bytecode cache and adaptive GC).
-  3. **Python 3.12** (`"runtime": "python3"` or `"runtime": "python"` with `"targetSdk": "2.0"`, running on CPython 3.12.16).
-  4. **Native C/C++** (`"runtime": "native"`, devkitA64 GCC AOT `.nxvmod` / `.nro` with Frozen ABI v1 and Native SDK 1.2).
-- **On-Demand Compatibility Runtimes (`ComponentService`):** PocketPy (`"runtime": "python"` with `targetSdk < 2.0`),
-  TinyCC JIT C (`"runtime": "c"`), Squirrel 3.2 (`"runtime": "squirrel"`) and Java miniJVM (`"runtime": "java"`) are
-  managed as on-demand system components (`romfs:/System/Components/`) with 100% backward compatibility.
-- **Manifest & Tools:** `"loadingHint": true` extends the loading watchdog threshold to 120 s. Smart Creator
-  (`python tools/nxv.py create <lang> <id> --template <basic|game|social|port>`) and Port Kit (`python tools/nxv_port.py`)
-  generate ready-to-run projects.
+  `tokens`), shared across Lua, JavaScript, Python and native C/C++ (`#include <nexvyn/nxn_nxui.h>`).
+- **Four primary runtimes:** Lua 5.4.7 (`"runtime": "lua"`), JavaScript ES2023 (`"runtime": "js"`, QuickJS-ng 0.17.0),
+  Python 3.12 (`"runtime": "python3"`, CPython 3.12.16) and native C/C++ (`"runtime": "native"`, `.nxvmod`, frozen ABI
+  v1, Native SDK 1.2).
+- **Compatibility runtimes** stay supported: PocketPy (`"runtime": "python"` with a target below 2.0), TinyCC C
+  (`"runtime": "c"`), Squirrel 3.2 and Java (miniJVM).
+- **Project creator:** `python SDK/Tools/nxv/nxv.py create "<Name>" --id com.you.app --profile <profile> --runtime
+  <lua|js|python|native> --dir <folder>` (see `SDK/AI_GUIDE.md` section 4). New projects use `"runtime": "python3"` for
+  Python.
+
+### SDK 1.14 (Nexvyn OS 1.3.18)
+
+- Language parity gaps closed: `fs.readBytes(path)` in Lua (the exact bytes as one string), `nxui.feedPointer` in
+  JavaScript and Python, and the C functions `fs_readBytes`, `fs_unzip` and `sys_games`. The Python functions are in the
+  `"python3"` runtime; the frozen PocketPy runtime gains nothing. No native ABI change. Scripts that use them carry
+  `"minSdk": "1.14"`.
+
+### SDK 1.15 (Nexvyn OS 1.3.21)
+
+- 3D collision `phys` (worlds of static meshes, boxes and model collision proxies, raycasts, sphere and capsule sweeps,
+  capsule character controllers, triggers) and 3D navigation `nav` (a walkable grid baked from a `phys` world, A*
+  paths, walking agents), with the same names in Lua, JavaScript, Python (`"python3"`) and C; native apps get
+  `nxn_phys_*` and `nxn_nav_*`. Scripts that use them carry `"minSdk": "1.15"`. Apps built for older SDKs behave as
+  before.
+
+### SDK 1.16 (Nexvyn OS 1.4.0, current)
+
+- Frame pacing: an app whose `update` returns `false` is drawn only when something changes; any input, a timer
+  callback or `ui.requestFrame()` wakes it. Any other return value keeps the old behaviour.
+- Multitouch: `input.touches()` returns every finger as `{id, x, y, phase}`; touch-made mouse and gesture events carry
+  `e.touches`. Same names in Lua, JavaScript and Python (`"python3"`). Scripts that use them carry
+  `"minSdk": "1.16"`. Apps built for older SDKs behave as before. No native ABI change.
+
+**The number 2.0.** SDK releases are 1.x; the current one is 1.16 (`sys.sdkVersion()`). The value `"2.0"` in
+`targetSdk` or `targetNative` is a behavior marker for the N2 architecture, not a release: `"runtime": "python"` with an
+effective `targetSdk` of 2.0 or newer runs on CPython 3.12 instead of PocketPy, and a native app with a target of 2.0 or
+newer gets the responsive live-resize default. The packer warns that a `targetSdk` of 2.0 is above SDK 1.16. New projects write `"targetSdk": "1.16"` and `"runtime": "python3"`.
 
 ## 4. minSdk and targetSdk
 
@@ -237,6 +273,13 @@ Set `minSdk` to the highest row whose feature you use (and at least the row of y
 | `g3d.voxels`, pixel-art textures | 1.7 |
 | `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` | 1.8 |
 | `g3d.renderer("pbr")` and the rest of *Modern rendering*, `net.request` options, `net.ws`, `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed` / `ui.pager` / `ui.richText`, `sys.relativeTime` | 1.9 |
+| native runtime (`"runtime": "native"`) | 1.10 (plus `minNative`) |
+| kept folders and save backups (`ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup`...) | 1.11 |
+| `ui.tokens`, `audio.stopAll`, C `input_action` | 1.12 |
+| `loadingHint` in `app.json` | 1.13 |
+| `fs.readBytes` (Lua), `nxui.feedPointer` (JavaScript, Python), C `fs_readBytes` / `fs_unzip` / `sys_games` | 1.14 |
+| `phys` and `nav` | 1.15 |
+| `update` returning false, `ui.requestFrame`, `touches`, `input.touches()` | 1.16 |
 
 To use something newer only where it exists, check at run time and keep a fallback:
 

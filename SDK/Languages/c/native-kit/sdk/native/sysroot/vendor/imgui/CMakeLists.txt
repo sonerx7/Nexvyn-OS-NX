@@ -14,3 +14,18 @@ target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURREN
 # no shell on the console: ImGui's default "open URL" would call fork / execvp
 target_compile_definitions(imgui PUBLIC IMGUI_IMPL_OPENGL_ES3 IMGUI_DISABLE_DEFAULT_SHELL_FUNCTIONS)
 target_link_libraries(imgui PUBLIC PkgConfig::SDL2 PkgConfig::GLES)
+
+option(NEXVYN_IMGUI_VULKAN "Build the optional Dear ImGui Vulkan backend" OFF)
+if(NEXVYN_IMGUI_VULKAN)
+  set(NEXVYN_IMGUI_VULKAN_BACKENDS "" CACHE PATH "Dear ImGui 1.91.5 backends directory")
+  if(NOT EXISTS "${NEXVYN_IMGUI_VULKAN_BACKENDS}/imgui_impl_vulkan.cpp" OR
+     NOT EXISTS "${NEXVYN_IMGUI_VULKAN_BACKENDS}/imgui_impl_vulkan.h")
+    message(FATAL_ERROR "Set NEXVYN_IMGUI_VULKAN_BACKENDS to the backends directory of Dear ImGui 1.91.5.")
+  endif()
+  if(NOT EXISTS "${NEXVYN_SYSROOT}/include/vulkan/vulkan_core.h")
+    message(FATAL_ERROR "The ImGui Vulkan backend requires the vulkan-headers sysroot recipe.")
+  endif()
+  target_sources(imgui PRIVATE "${NEXVYN_IMGUI_VULKAN_BACKENDS}/imgui_impl_vulkan.cpp")
+  target_include_directories(imgui PUBLIC "${NEXVYN_IMGUI_VULKAN_BACKENDS}" "${NEXVYN_SYSROOT}/include")
+  target_compile_definitions(imgui PUBLIC IMGUI_IMPL_VULKAN_NO_PROTOTYPES)
+endif()

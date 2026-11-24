@@ -1,0 +1,7 @@
+{
+  "vulkan": {
+    "unavailable": "Vulkan no está disponible en este sistema",
+    "create_failed": "No se pudo crear la instancia de Vulkan",
+    "created": "Instancia de Vulkan creada"
+  }
+}

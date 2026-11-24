@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -2897,6 +2897,53 @@
+@@ -2897,6 +2897,55 @@
      list(APPEND EXTRA_LIBS ${lib})
    endforeach()
  
@@ -42,6 +42,8 @@
 +    set(SDL_VIDEO_OPENGL 1)
 +    set(HAVE_VIDEO_OPENGL TRUE)
 +    set(HAVE_VIDEO_OPENGLES TRUE)
++    # Build the overlay's host lookup and window-system hooks without a dynamic loader.
++    set(SDL_VIDEO_VULKAN 1)
 +  endif()
 +  set(SDL_STATIC_PIC ON)
 +  list(APPEND EXTRA_LIBS m)
@@ -54,6 +56,14 @@
  elseif(NINTENDO_SWITCH)
    if(SDL_AUDIO)
      set(SDL_AUDIO_DRIVER_SWITCH 1)
+--- a/src/video/SDL_vulkan_internal.h
++++ b/src/video/SDL_vulkan_internal.h
+@@ -28,4 +28,4 @@
+ #if SDL_VIDEO_VULKAN
+-#if SDL_LOADSO_DISABLED || SDL_LOADSO_DUMMY
++#if (SDL_LOADSO_DISABLED || SDL_LOADSO_DUMMY) && !defined(SDL_NEXVYN_WINDOWED)
+ #error You should not be here.
+ #endif
 --- a/include/SDL_config.h.cmake
 +++ b/include/SDL_config.h.cmake
 @@ -330,6 +330,7 @@

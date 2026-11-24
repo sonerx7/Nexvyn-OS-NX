@@ -1,6 +1,6 @@
-# Nexvyn OS — Language Runtimes & N2 Architecture (SDK 1.5 to 1.15)
+# Nexvyn OS — Language Runtimes & N2 Architecture (SDK 1.5 to 1.16)
 
-This document summarizes the language runtime architecture of Nexvyn OS. In **Nexvyn OS N2 (SDK 1.15)**, the
+This document summarizes the language runtime architecture of Nexvyn OS. In **Nexvyn OS N2 (SDK 1.16 today)**, the
 platform standardizes on **4 Official Primary Runtimes** for all new apps and games while preserving earlier runtimes
 through the on-demand `ComponentService`:
 
@@ -31,7 +31,7 @@ Compatibility runtimes — **PocketPy 2.2** (`"runtime": "python"` with `targetS
 ## 2. Shared architecture: one SDK implementation, thin language bindings
 
 The three existing runtimes bind every SDK function separately (~2500 lines each). For the new languages a
-language-independent layer was written first: `source/runtimes/nxvrt.h/.cpp/_api.cpp`.
+language-independent layer was written first: `source/runtimes/nxvrt.h`, `nxvrt.cpp` and `nxvrt_api.cpp`.
 
 - `nxvrt::Value`: nil, bool, number, string, list, dict, callback (function reference), mesh.
 - `nxvrt::api()`: every SDK function (`gfx`, `ui`, `g3d`, `fs`, `json`, `store`, `net`, `sys`, `audio`, `input`,
@@ -69,7 +69,8 @@ asynchronous calls take callbacks, `ui.textfield` returns the text and `ui.submi
    state.
 4. **Time limit**: the 3 seconds per callback can be enforced with `PyErr_SetInterrupt` / `Py_AddPendingCall`.
 5. **Effort**: too large to finish reliably in one session (patching + testing, trying on the device), so it was not
-   done in this release.
+   done in the early releases. It has been done since: CPython 3.12 (`"python3"`, `source/runtimes/py3app.cpp`) is
+   linked in statically and is the active Python; pocketpy is frozen.
 
 ### What was done: extending pocketpy compatibility
 `import x` now looks for modules not found in the bundle in `romfs:/System/Python/x.py`. The added modules implement
@@ -140,8 +141,8 @@ text. **PC side**: `python tools/java_build.py app MyApp.nxvapp` compiles the so
 (an API the console does not have fails on the PC) and produces `app.jar`.
 
 **Limits**: miniJVM keeps a single VM per process, so one Java app runs at a time. Java's own class library (`java.io`
-files, `sun.misc.Unsafe`) can get around the permissions, so Java apps also ask once on their first launch
-(`apps.trustedJava`). The interpreter is slower than Lua/JS; Lua is recommended for drawing-heavy games.
+files, `sun.misc.Unsafe`) can get around the permissions; Java apps start without a launch-time question
+(`ScriptApp::trusted` always returns true). The interpreter is slower than Lua/JS; Lua is recommended for drawing-heavy games.
 
 ## 7. Other small languages
 

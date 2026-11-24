@@ -5,6 +5,9 @@ Nexvyn OS is distributed under the **GPL-3.0-or-later** license (see [LICENSE](L
 | Component | License | Use |
 |---|---|---|
 | libnx (switchbrew) | ISC | Switch system services |
+| Mesa 20.1 (devkitPro `switch-mesa` 20.1.0, nouveau) | MIT | OpenGL / OpenGL ES and EGL for the desktop and native apps |
+| Mesa NVK Vulkan driver (Mesa 26.2.4 tree, commit `0ff52079`) | MIT | Vulkan for native apps and ports (opt-in, setting `native.vulkan`), since 1.4.0 |
+| Expat 2.10.0 | MIT | XML parser used by the NVK driver |
 | SDL2, SDL2_image, SDL2_ttf, SDL2_mixer | zlib (devkitPro package may include LGPL components) | Windowing, rendering, audio |
 | SDL2 (devkitPro Switch fork with Nexvyn OS window drivers) | zlib (altered source: `sdk/native/sdl2`, `sdk/native/sysroot/patches/sdl2-nexvyn.patch`) | Native kit: SDL2 in windows |
 | FFmpeg (devkitPro `switch-ffmpeg`) | GPL | Video / audio decoding |
@@ -14,7 +17,7 @@ Nexvyn OS is distributed under the **GPL-3.0-or-later** license (see [LICENSE](L
 | minizip / zlib | zlib | Zip archives |
 | Lua 5.4 | MIT | Application language |
 | QuickJS-ng | MIT | JavaScript engine (single patch: `JS_ReadRegExp` registers to the object reference table, `lib/quickjs/quickjs.c`) |
-| wasm3 (`lib/wasm3`, commit 28ecb9af6d2040e474a70f7cb7f43666740141fb = v0.9.1-beta.1 + 18, Steven Massey, Volodymyr Shymanskyy) | MIT (`lib/wasm3/LICENSE`) | Browser's `WebAssembly` support (`web.wasm`) / browser WebAssembly engine; only interpreter core included (no `m3_api_*`, extensions, or platforms), custom file `source/nexvyn_shim.c/.h`, feature flags in Makefile (`W3DEFS`), details in `lib/wasm3/README.nexvyn` |
+| wasm3 (`lib/wasm3`, commit 28ecb9af6d2040e474a70f7cb7f43666740141fb = v0.9.1-beta.1 + 18, Steven Massey, Volodymyr Shymanskyy) | MIT (`lib/wasm3/LICENSE`) | Browser's `WebAssembly` support (`web.wasm`) / browser WebAssembly engine; only interpreter core included (no `m3_api_*`, extensions, or platforms), custom file `lib/wasm3/source/nexvyn_shim.c` and `nexvyn_shim.h`, feature flags in Makefile (`W3DEFS`), details in `lib/wasm3/README.nexvyn` |
 | pocketpy 2.2.0 (`lib/pocketpy`) | MIT | Python interpreter |
 | CPython 3.12.16 (`tools/build_cpython.sh`, Python Software Foundation) and standard library (`romfs/System/Python3/lib.zip`) | PSF-2.0 (Python Software Foundation License Version 2; GPL-compatible) | `"python3"` runtime; changes marked "Nexvyn OS" in `tools/cpython_tool.py`. Includes bundled HACL* (MIT/Apache-2.0) and BLAKE2 (CC0) code |
 | Squirrel 3.2 (`lib/squirrel`, Alberto Demichelis) | MIT | Squirrel runtime (SDK 1.5); marked change in `sqvm.cpp` |
@@ -70,13 +73,14 @@ Not used: cores with "non-commercial" licenses (Snes9x 2010, Genesis Plus GX, Pi
 
 ## Native SDK kit
 
-Third-party code in the Native SDK kit (`sdk/native/`) is not linked into Nexvyn OS; it is only compiled into the developer's own app.
+The Native SDK kit (`sdk/native/`) includes the following UI library for developers' apps.
 
 - **Dear ImGui** 1.91.5 (`sdk/native/sysroot/vendor/imgui/`) — MIT License, Copyright (c) 2014-2024 Omar Cornut. https://github.com/ocornut/imgui
 
 Sysroot libraries (built as static libraries by `sdk/native/sysroot/build.py`; the kit archive includes the source version and license file):
 
 - **zstd** 1.5.6 — BSD-3-Clause (Meta Platforms). https://facebook.github.io/zstd/
+- **Expat** 2.10.0 — MIT. Nexvyn OS 1.4.0 and later also link it for the NVK driver. The kit carries the [upstream license](https://github.com/libexpat/libexpat/blob/a70841d9ffa64ddde29ab824ed6305035ebe4c47/expat/COPYING) at `licenses/expat/COPYING`.
 - **LZ4** 1.10.0 (library) — BSD-2-Clause (Yann Collet). https://lz4.org/
 - **SQLite** 3.47.2 — Public Domain. https://www.sqlite.org/
 - **libarchive** 3.7.7 — BSD-2-Clause (Tim Kientzle and contributors). https://libarchive.org/

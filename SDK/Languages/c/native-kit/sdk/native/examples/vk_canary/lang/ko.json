@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Vulkan 테스트",
+    "unavailable": "이 시스템에서는 Vulkan을 사용할 수 없습니다",
+    "init_failed": "Vulkan 초기화에 실패했습니다",
+    "device_lost": "Vulkan 장치가 손실되었습니다",
+    "completed": "Vulkan 테스트가 완료되었습니다"
+  }
+}

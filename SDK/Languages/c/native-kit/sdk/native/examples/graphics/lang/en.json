@@ -91,9 +91,9 @@
   "live": "Handoff measured on console: 0.10-0.22 ms"
  },
  "c4": {
-  "name": "Touch and Joy-Con",
+  "name": "Touch and controller",
   "what": "Sticks, buttons and the touch screen reach the app in the same frame, in a window or full screen. Try them now.",
-  "r0": "Touch, Joy-Con and 3D worlds",
+  "r0": "Touch, controller and 3D worlds",
   "b": "not working",
   "a": "working"
  },

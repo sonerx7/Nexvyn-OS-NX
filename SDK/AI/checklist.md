@@ -2,7 +2,7 @@
 
 ## Current authoring contract
 
-Use SDK 1.15 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+Use SDK 1.16 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
 - Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
 - Keep SDK Markdown English only. Store screenshots may use English UI.
 - OS apps use shared theme/typography/controls; games require their own art direction.
@@ -29,8 +29,8 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
 - [ ] `minSdk` matches the newest feature used and the language (JS 1.1, Python 1.3, Squirrel/C/Java 1.5,
       `nexvyn.game` 1.2, share/schedule/permission API/lifecycle callbacks 1.4, `fs.unzip`/`sys.games`/`sys.speak`
       1.6, `g3d.voxels` 1.7, `g3d.model`/`g3d.loadModel`/`g3d.drawMatrix` 1.8, the pbr renderer, `net.request` options, `net.ws`,
-      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9; Native `.nxvmod` 1.10; `ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup` and friends 1.11; `ui.tokens`, `audio.stopAll` 1.12; `nxui.*`, `loadingHint` 1.13 / 2.0). New N2 apps set
-      `"targetSdk": "2.0"` (or `"1.13"`).
+      `net.oauth`, `gfx.imageUrl`, `media.*`, `ui.beginFeed`/`ui.pager`/`ui.richText` 1.9; Native `.nxvmod` 1.10; `ui.chooseFolder`, `fs.folderGrants`, `fs.saveBackup` and friends 1.11; `ui.tokens`, `audio.stopAll` 1.12; `nxui.*`, `loadingHint` 1.13 / 2.0; `phys.*`/`nav.*` 1.15; idle frame pacing, `input.touches` 1.16). New apps set
+      `"targetSdk": "1.16"` (the current SDK; `"2.0"` is only a target marker, see `SDK/AI_GUIDE.md` section 1).
 - [ ] New apps use one of the **4 Official Primary Runtimes** (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, or **Native C/C++ ABI v1**) unless the user explicitly requested a compatibility runtime.
 - [ ] Language fits the job: a UI-heavy tool / utility / productivity app is Lua, JavaScript or Python with `nxui.*`;
       Native C/C++ only for heavy computation (LLM inference, emulator, 3D, codecs). No native-engine + script-UI hybrid
@@ -47,7 +47,7 @@ Give this file to the assistant together with `system-prompt.md`, or paste it at
 - [ ] `runtime` / `main` (and `mainClass` for Java) match the files I delivered.
 - [ ] `permissions` lists exactly what the code uses (`network`, `files`, `launch`, `notifications`, `games`);
       `[]` when nothing.
-- [ ] `category` is one of system, productivity, utilities, media, internet, games, developer, other. Games have
+- [ ] `category` is one of system, productivity, office, utilities, media, internet, games, switch, developer, emulator, showcase, education, themes, fonts, runtimes, other (the packer rejects any other value). Games have
       `"gamepad": true` and a resizable window.
 
 ## Behaviour

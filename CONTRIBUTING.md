@@ -10,7 +10,7 @@ Every submission is a pull request and is reviewed by the maintainer before it a
 ([CODEOWNERS](.github/CODEOWNERS)).
 
 1. **Make it** with the [SDK](SDK/README.md), on your computer or in Nexvyn OS Studio on the console. Apps are written
-   in English; add `lang/<code>.json` files for more languages (Turkish is not required).
+   in English; the UI needs complete `lang/<code>.json` files for all eight locales (`en`, `tr`, `de`, `es`, `fr`, `ja`, `ko`, `zh`).
 2. **Fork** this repository and add your item in its own folder:
    `Store/Apps/<category>/<slug>/`, `Store/Games/<genre>/<slug>/`, `Store/Themes/<slug>/` or `Store/Fonts/<slug>/`,
    with `source/` (the bundle), `README.md`, `store.json` and, if you have them, `screenshots/`. The layout and every
@@ -54,8 +54,8 @@ Nexvyn OS is available in 8 languages. To fix a translation or offer a new langu
 
 ## 4. Improve the SDK and documentation
 
-Pull requests that fix samples, guides or the SDK tools under `SDK/` are welcome. Keep both language versions
-(`NAME.md` and `NAME.md`) in step, or say in the pull request which one needs a translation. Code examples must
+Pull requests that fix samples, guides or the SDK tools under `SDK/` are welcome. SDK Markdown is English only:
+keep one canonical `.md` file per page. Code examples must
 use only functions from the [SDK reference](SDK/Reference/SDK.md). The guides and the reference are generated from
 the Nexvyn OS source; the maintainer carries accepted changes over there.
 

@@ -72,7 +72,7 @@ plus minus up down left right lstick rstick dpad`; keys one character or `space 
   and `stickFx`, `stickFy`, `stickScale`, `opacity` on the control set (`game/input.lua`, additive).
 * **Script access**: `ws.action("jump")` (held), `ws.action("jump", "pressed")`, `"released"`, `ws.action("move", "axis")` -> x, y.
   Without an input map the same call answers the built-in names, so v1 templates run unchanged. Multiple pads and the
-  relative mouse come from the OS input router (`input.padCount`, `input.padDown`, SDK 1.14/1.15); the map names inputs
+  relative mouse come from the OS input router (`input.padCount`, `input.padDown`, SDK 1.13); the map names inputs
   of "a pad", the router decides which one.
 
 ## Saving (`saveSchema`)
@@ -118,4 +118,4 @@ file's own when the editor's view has none; odd values (a number instead of an o
 preset; conflicts, re-map, dead zone, touch layout; save round trip, a power cut before every step, torn files, migration,
 newer / foreign saves, random corruption; validation cases), `tests/test_ge_hud.py`, `tools/ge_hud_check.py` (the Lua module
 in lupa: the same layout fixture `tests/fixtures/ge_hud/layout.json`, saves with a simulated file system that fails at
-every step, a runtime smoke test of the HUD, menus, action map, inventory and slots). Emulator evidence: `qa/screens/ge/`.
+every step, a runtime smoke test of the HUD, menus, action map, inventory and slots).

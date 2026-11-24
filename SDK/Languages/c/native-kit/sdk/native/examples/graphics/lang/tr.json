@@ -91,9 +91,9 @@
   "live": "Konsolda ölçülen aktarım: 0.10-0.22 ms"
  },
  "c4": {
-  "name": "Dokunma ve Joy-Con",
+  "name": "Dokunma ve kontrolcü",
   "what": "Çubuklar, düğmeler ve dokunmatik ekran aynı karede app'e ulaşır; pencerede ya da tam ekranda. Şimdi dene.",
-  "r0": "Dokunma, Joy-Con ve 3B dünyalar",
+  "r0": "Dokunma, kontrolcü ve 3B dünyalar",
   "b": "çalışmıyordu",
   "a": "çalışıyor"
  },

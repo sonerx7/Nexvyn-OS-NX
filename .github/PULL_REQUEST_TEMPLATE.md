@@ -1,5 +1,5 @@
 <!-- Nexvyn OS App Market submission. Fill it in in English or Turkish. / İngilizce ya da Türkçe doldurun.
-     Guide / Rehber: SDK/Publishing/PUBLISHING.md · PUBLISHING.md
+     Guide / Rehber: SDK/Publishing/PUBLISHING.md
      The maintainer reviews every submission with SDK/Publishing/REVIEW.md before it is published. -->
 
 ## Item / Öğe
@@ -41,7 +41,7 @@
 - [ ] Light and dark mode, handheld and TV / açık ve koyu mod, el modu ve TV
 - [ ] Touch + cursor (+ controller for games) / dokunmatik + imleç (+ oyunlarda kumanda)
 - [ ] `store.json`: `subtitle` + `description` (English at least / en az İngilizce), `kind`, `tags`, `shots`
-- [ ] `README.md` English + Turkish, `icon.png` 128 or / ya da 256 px
+- [ ] `README.md` English (more optional), `icon.png` 256 px, `lang/` all 8 locales (`en`, `tr`, `de`, `es`, `fr`, `ja`, `ko`, `zh`)
 - [ ] No tracking, ads that harm users, personal data, API keys or passwords /
       izleme, zararlı reklam, kişisel veri, API anahtarı ya da parola yok
 

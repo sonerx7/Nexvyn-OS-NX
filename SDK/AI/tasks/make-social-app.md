@@ -14,7 +14,7 @@ Server API: <base URL, endpoints with request / response JSON, how sign-in works
             token header), WebSocket URL if any>
 
 Requirements:
-- app.json: "minSdk": "1.9", "targetSdk": "1.9", ONLY the permissions the code uses ("network"; "notifications" for
+- app.json: "minSdk": "1.9", "targetSdk": "1.16", ONLY the permissions the code uses ("network"; "notifications" for
   sys.schedule; "launch" for sys.launch and sys.open("nxv://...") - sys.appUrl only builds a link and needs none). No
   secrets in the bundle.
 - Data with net.request: responseType = "json", retry = 2 for GETs, cache = 300 for the first feed page (show

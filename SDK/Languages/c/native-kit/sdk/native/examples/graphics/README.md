@@ -1,7 +1,7 @@
 # Graphics Power
 
 A native 3D keynote of Nexvyn OS (Store category `showcase`, id `com.nexvyn.demo.graphics`): a cinematic intro, seven chapters
-(PBR and sun shadows, dynamic resolution, instant streaming, zero-copy frames, touch and Joy-Con, sound, under the hood), each
+(PBR and sun shadows, dynamic resolution, instant streaming, zero-copy frames, touch and controller, sound, under the hood), each
 with an animated card (what it is, driving library, languages, before -> after numbers from `qa/PERFORMANS.md`), a live HUD
 and a benchmark with a local top-ten score list (`scores.txt` in the app data folder, no network).
 

@@ -1,0 +1,7 @@
+{
+  "vulkan": {
+    "unavailable": "このシステムではVulkanを利用できません",
+    "create_failed": "Vulkanインスタンスの作成に失敗しました",
+    "created": "Vulkanインスタンスを作成しました"
+  }
+}

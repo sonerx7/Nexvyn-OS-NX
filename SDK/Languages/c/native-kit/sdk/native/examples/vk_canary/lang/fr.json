@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Test Vulkan",
+    "unavailable": "Vulkan n’est pas disponible sur ce système",
+    "init_failed": "Échec de l’initialisation de Vulkan",
+    "device_lost": "Périphérique Vulkan perdu",
+    "completed": "Test Vulkan terminé"
+  }
+}

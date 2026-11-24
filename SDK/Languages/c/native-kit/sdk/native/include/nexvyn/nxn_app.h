@@ -126,6 +126,16 @@ NXN_API void nxn_request_return(nxn_return_reason reason, int32_t code, const ch
 #define NXN_CAP_PHYS (UINT64_C(1) << 39)
 /* nxn_nav_* inside Nexvyn OS: walkable grid bake, A* paths, blockers, walking agents (nxn_nav.h) */
 #define NXN_CAP_NAV (UINT64_C(1) << 40)
+/* Reserved for Vulkan (N5 plan); left unset until Vulkan is built and enabled. */
+#define NXN_CAP_VULKAN (UINT64_C(1) << 41)
+#define NXN_CAP_MEMORY_BUDGET (UINT64_C(1) << 42)
+
+/* Build-time graphics API availability bits of nxn_caps.gfx_apis (never starts a driver). */
+enum {
+    NXN_GFX_API_GL_CORE = 1u << 0, /* desktop OpenGL core profile (up to gl_max_major.gl_max_minor) */
+    NXN_GFX_API_GLES = 1u << 1,    /* OpenGL ES (up to gles_max_major.gles_max_minor) */
+    NXN_GFX_API_VULKAN = 1u << 2   /* Vulkan (up to vk_max_major.vk_max_minor; unset until built and enabled) */
+};
 
 typedef struct nxn_caps {
     uint32_t size;
@@ -135,11 +145,14 @@ typedef struct nxn_caps {
     uint64_t features;         /* NXN_CAP_* */
     uint16_t gl_max_major, gl_max_minor;
     uint16_t gles_max_major, gles_max_minor;
+    uint32_t gfx_apis;         /* NXN_GFX_API_* build-time availability (0 when filled by an older OS) */
+    uint16_t vk_max_major, vk_max_minor; /* Vulkan max API version (0, 0 when unavailable) */
 } nxn_caps;
 
 /* Fills min(out->size, sizeof(nxn_caps)) bytes. out->size must be set (NXN_STRUCT_INIT).
  * NXN_OK, or NXN_ERR_INVALID for NULL or a size smaller than the size field.
- * Features and GL ceilings are runtime advertisements, not hardware verification.
+ * Reports build-time/runtime capability advertisements and API version ceilings only; never starts a graphics driver
+ * or probes hardware.
  * Thread: any thread (it needs no app state). Memory: written into the caller's struct. */
 NXN_API nxn_result nxn_caps_get(nxn_caps* out);
 

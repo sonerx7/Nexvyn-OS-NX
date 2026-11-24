@@ -14,11 +14,11 @@ local game = require("nexvyn.game")
 (`romfs:/System/Lua/`). So if you copy one of the engine's files into your bundle and change it, your copy is used.
 
 This document walks you through making a game step by step. For the list of all functions:
-[`sdk/SDK.md`](../Reference/SDK.md), section 8c. Two working sample games ship with the system:
+[`sdk/SDK.md`](../Reference/SDK.md), section 8c. Two working sample games install from the App Store:
 
-- **Pixel Koşu** (`romfs/Applications/pixelrun.nxvapp`): a platformer. Tilemap, gravity, coins, enemies you stomp,
+- **Pixel Koşu** (app id `pixelrun`): a platformer. Tilemap, gravity, coins, enemies you stomp,
   checkpoints, three levels, a sprite sheet and animation.
-- **Uzay Arenası** (`romfs/Applications/spacearena.nxvapp`): a top-down shooter. Waves, particles, power-ups, a
+- **Uzay Arenası** (app id `spacearena`): a top-down shooter. Waves, particles, power-ups, a
   multiplier, a saved high score. All drawing is done with shapes.
 
 ## 1. Package
@@ -302,7 +302,7 @@ Built-in actions: `left`, `right`, `up`, `down` (D-pad, WASD, left stick, touch 
 
 **Touch:** when the screen is touched, a virtual stick appears on the left half, buttons at the bottom right and a
 pause button at the top right; they hide when the controller or keyboard is used (as in the Retro app). The scene must
-have `controls = true`. The SDK reports only one finger, so a button cannot be pressed while holding the stick. Binding
+have `controls = true`. The engine tracks only one finger (it does not use the SDK 1.16 `touches` list yet), so a button cannot be pressed while holding the stick. Binding
 jump to `"stick:up"` as well solves this (pushing the stick up jumps). The "Touch controls" setting in the pause menu
 switches between Automatic / On / Off; when On, it can be used with the mouse too.
 
@@ -446,7 +446,7 @@ yuva:copyTo(3); game.save.slot(1):delete(); yuva:exists()
 - The SDK has no focus query. The engine guesses the focus: if a controller button is pressed but no event reaches the
   game, or the window is not drawn (minimized), the game pauses. Touching another window and then moving only the left
   stick is not detected.
-- A single touch point (no multi-touch).
+- A single touch point in the engine's input (the SDK 1.16 `touches` list is not used by it yet).
 - Image regions cannot be mirrored or tinted (a `flipped` copy is needed; `tint` only on a single image, without
   rotation).
 - Tilemap collision uses rectangular tiles; there are no sloped tiles. In Tiled, only the first tileset and CSV layers.
@@ -480,5 +480,5 @@ wins). `main.lua` ends with `return game.run{width, height, scene, ...}`, which 
   `game.randInt`, `game.weighted`.
 
 Full API: `sdk/SDK.md` section 8c. Samples: `pixelrun.nxvapp` (platformer) and `spacearena.nxvapp` (arena shooter).
-Known limits: focus is inferred (no SDK focus query), single touch point, no mirrored or tinted image regions in the
+Known limits: focus is inferred (no SDK focus query), engine input follows a single touch point, no mirrored or tinted image regions in the
 SDK, no slopes, first Tiled tileset only, no camera rotation.

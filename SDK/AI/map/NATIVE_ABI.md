@@ -15,8 +15,8 @@ Defines the frozen C-only Native ABI v1 boundary, struct versioning, capability 
 | `nxn_run` | `nxn_app.h` | Recommended entry wrapper with crash guard and clean shutdown |
 | `nxn_should_quit` | `nxn_app.h` | Per-frame quit check; also signals liveness to watchdog |
 | `nxn_request_return` | `nxn_app.h` | Sets return reason (`NXN_RETURN_*`) and triggers `nxn_should_quit()` |
-| `nxn_caps_get` / `nxn_caps` | `nxn_app.h` | Queries `abi_gen`, native version, `features` (`NXN_CAP_*`), and GL/GLES ceilings |
-| `nxn_capability_query` | `nxn_caps.h` | Header-only inline query (`NXN_QUERY_*` -> `NXN_OK` or `NXN_ERR_UNSUPPORTED`) |
+| `nxn_caps_get` / `nxn_caps` | `nxn_app.h` | Queries `abi_gen`, native version, `features` (`NXN_CAP_*`), `gfx_apis` (`NXN_GFX_API_*`), and GL/GLES/Vulkan ceilings (no driver start) |
+| `nxn_capability_query` / `nxn_gfx_api_query` | `nxn_caps.h` | Header-only inline queries (`NXN_QUERY_*`, `nxn_caps_has_gfx_api`, `nxn_caps_gfx_version` -> `NXN_OK` or `NXN_ERR_UNSUPPORTED`) |
 | `nxn_info_get` / `nxn_info_string` | `nxn_app.h` | Reads hosted flag, theme, accent, confirm/cancel masks, and `NXN_INFO_*` strings |
 | `nxn_last_error` | `nxn_app.h` | Per-thread error string for `NXN_ERR_SYSTEM` / `NXN_ERR_IO` |
 | `nxn_app_exit` / `nxn_app_info` | `nxn_app_api.h` | Generated C module helpers (`nxn_app_language`, `nxn_app_theme`) |

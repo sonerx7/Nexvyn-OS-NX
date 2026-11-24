@@ -44,6 +44,7 @@ Every SDK version so far shipped in the development of Nexvyn OS 1.0.0, the firs
 | 1.13 | 1.2.4 | app.json `"loadingHint": true` for apps that load a lot (a large recompiled port): the "not responding" dialog waits 120 s instead of 5 s; no new function, no native ABI change, the same field for Lua, JavaScript, Python, C and native apps; older systems ignore it. Choosing *Wait* in that dialog now silences it for 60 s and until the window has responded once (every app) |
 | 1.14 | 1.3.18 | language parity gaps closed: `fs.readBytes` in Lua, `nxui.feedPointer` in JavaScript and Python (the canonical CPython runtime; pocketpy stays frozen), C `fs_readBytes` / `fs_unzip` / `sys_games`; no native ABI change; apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.14"` |
 | 1.15 | 1.3.21 | 3D collision `phys` (`raycast`, `raycastAll`, `sweepSphere`, `sweepCapsule`, `overlap`, capsule `controller` / `move` / `jump`, `trigger` / `events`, mesh, box and model bodies with `COL_` proxies) in Lua, JavaScript, Python (`"python3"`; pocketpy stays frozen) and C; native `nxn_phys_*` (`nxn_phys.h`, `NXN_CAP_PHYS`, add-only, no ABI generation change); 3D navigation `nav` (`bake` on a worker thread, `path`, `block` / `cost`, `agent` / `goTo` / `update`) in the same four languages and native `nxn_nav_*` (`nxn_nav.h`, `NXN_CAP_NAV`, add-only); apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.15"` |
+| 1.16 | 1.4.0 | script frame pacing and multitouch: `update` returning false lets a script app idle, `ui.requestFrame()` wakes it, events carry `touches` (`{id, x, y, phase}`) and `input.touches()` returns the current fingers, in Lua, JavaScript and Python (`"python3"`; pocketpy stays frozen); apps built for older SDKs behave as before; scripts that use them carry `"minSdk": "1.16"` |
 
 The full list of functions per version is in the SDK reference (`sdk/SDK.md`, "SDK versions").
 
@@ -103,9 +104,11 @@ change with it. Details: `docs/NATIVE_KIT.md`, *Runtime providers*.
 
 ### Which languages get new APIs
 
-New SDK functions come to **Lua, JavaScript, Python** (`"python"` and `"python3"`) **and C**. **Squirrel and Java
+New SDK functions come to **Lua, JavaScript, Python** (`"python3"`, CPython) **and C**. **Squirrel and Java
 are frozen**: everything they have today, SDK 1.8's `g3d.model` functions included, stays and keeps working, and the
-compat suite keeps checking it, but SDK 1.8 is the last version that adds anything to them.
+compat suite keeps checking it, but SDK 1.8 is the last version that adds anything to them. PocketPy (`"python"`) is
+frozen too since SDK 1.14: it keeps running, but new functions are added to `"python3"` only. Some SDK 1.16 additions
+(`touches`, `ui.requestFrame()`) exist in Lua, JavaScript and `"python3"` only, not in C.
 
 What this means for you:
 
@@ -130,7 +133,7 @@ Frozen is not removed: rule 5 still holds, and a bug or security fix in these ru
 - **`minSdk`**: the oldest SDK the app runs on. A system with an older SDK does not install it.
 - **`targetSdk`**: the SDK the app was built and tested against. The system keeps behaving the way that SDK did for
   this app. Default: `minSdk`, or `"1.0"` when neither is given (a `targetSdk` below `minSdk` counts as `minSdk`).
-  Studio writes `targetSdk` = the current SDK and `minSdk` = the newest SDK that changed the script API (1.9) into
+  Studio writes `targetSdk` = the current SDK and `minSdk` = the newest SDK that changed the script API (1.16) into
   every new script project, so SDK versions that only add the native runtime (1.10) do not lock new apps out.
 - **`runtime`**: the language (default from the main file's extension; `"python3"` only by name).
 - **`runtimeVersion`** (optional): the engine version the app was tested on. Without it, the engine that came with

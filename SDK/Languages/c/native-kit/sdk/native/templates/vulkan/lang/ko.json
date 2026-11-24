@@ -1,0 +1,7 @@
+{
+  "vulkan": {
+    "unavailable": "이 시스템에서는 Vulkan을 사용할 수 없습니다",
+    "create_failed": "Vulkan 인스턴스를 만들지 못했습니다",
+    "created": "Vulkan 인스턴스를 만들었습니다"
+  }
+}

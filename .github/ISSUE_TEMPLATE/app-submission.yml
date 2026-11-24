@@ -9,7 +9,7 @@ body:
         The usual way is a pull request ([CONTRIBUTING.md](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/CONTRIBUTING.md)).
         Use this form only if you cannot open one; the maintainer then adds the item for you after the review.
         English or Turkish is fine. / Olağan yol bir pull request'tir
-        ([CONTRIBUTING.tr.md](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/CONTRIBUTING.tr.md)). Bu formu yalnızca
+        ([CONTRIBUTING.md](https://github.com/sonerx7/Nexvyn-OS-NX/blob/main/CONTRIBUTING.md)). Bu formu yalnızca
         pull request açamıyorsanız kullanın; bakımcı incelemeden sonra öğeyi sizin için ekler.
   - type: dropdown
     id: kind

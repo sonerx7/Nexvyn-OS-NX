@@ -91,9 +91,9 @@
   "live": "Mesuré sur console : 0.10-0.22 ms"
  },
  "c4": {
-  "name": "Tactile et Joy-Con",
+  "name": "Tactile et manette",
   "what": "Sticks, boutons et écran tactile arrivent dans l'app dans la même image, en fenêtre ou en plein écran. Essayez.",
-  "r0": "Tactile, Joy-Con et mondes 3D",
+  "r0": "Tactile, manette et mondes 3D",
   "b": "ne marchait pas",
   "a": "fonctionne"
  },

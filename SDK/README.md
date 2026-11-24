@@ -1,12 +1,28 @@
 # Nexvyn SDK: build complete applications and distinctive games
 
-Current API: **SDK 1.15, Native SDK 1.2, native ABI v1**. Download the complete `SDK/` folder;
+Current API: **SDK 1.16, Native SDK 1.2, native ABI v1**. Download the complete `SDK/` folder;
 keep its directory layout. Documentation is English. Product interfaces must support English,
 Turkish, German, Spanish, French, Japanese, Korean and Chinese.
 
 This kit provides the APIs, native headers, templates, fonts, examples and developer tools used
 by the system. High production quality also requires your own art direction, content, profiling,
 accessibility and real-device testing. The SDK does not guarantee a game's frame rate or scope.
+
+**AI coding agents: start with [AI_GUIDE.md](AI_GUIDE.md)**, an operational manual (runtime choice, toolchain setup,
+`app.json`, build, package, test, localization, input, graphics, limits, debugging, Store submission, common errors).
+[llms.txt](llms.txt) indexes every document and header; [CHANGELOG.md](CHANGELOG.md) lists SDK-facing changes.
+
+## What's new in SDK 1.16 (Nexvyn OS 1.4.0)
+
+- **Idle apps.** Return `false` from `update` when nothing moves: the app is drawn only on input, a timer or
+  `ui.requestFrame()`. Lua, JavaScript, Python 3 (`"python3"`).
+- **Multitouch for scripts.** `input.touches()` returns `{id, x, y, phase}` per finger; touch events carry
+  `e.touches`. Lua, JavaScript, Python 3 (`"python3"`). Set `"minSdk": "1.16"` when you use these.
+- **Python 3 apps start in the background** behind a "Loading" window, so the desktop does not freeze.
+- **Script safety.** A faulty script app, including one with a runaway Lua pattern, is stopped alone.
+- **Performance panel** (Ctrl+Alt+P, or L+R+ZL+ZR): frame time, skipped frames, RAM and GPU lock time, for tuning.
+
+Details: [Reference/SDK.md](Reference/SDK.md) section 5 and [CHANGELOG.md](CHANGELOG.md).
 
 ## Choose a starting point
 

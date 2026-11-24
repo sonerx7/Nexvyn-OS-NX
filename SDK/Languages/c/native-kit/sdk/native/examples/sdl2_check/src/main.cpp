@@ -4,6 +4,12 @@
 //   green bar = that kind of event arrived, grey = not yet. After 30 s (or SDL_QUIT) about 7 s of present checks follow
 //   (rows present-*: GL renderer direct and through a target texture, software renderer, window surface), then it ends.
 #include <SDL.h>
+#if defined(NEXVYN_SDL2_CHECK_VULKAN)
+#define VK_NO_PROTOTYPES
+#include <vulkan/vulkan.h>
+#include <SDL_vulkan.h>
+#include <nexvyn/nxn_vk.h>
+#endif
 #include <nexvyn/nexvyn_native.h>
 #include <cmath>
 #include <cstdlib>
@@ -58,6 +64,110 @@ void row(const char* name, bool ok, const char* fmt, ...) {
     int n = snprintf(g_report + g_reportLen, sizeof g_report - g_reportLen, "%-14s %s %s\n", name, ok ? "OK  " : "FAIL", detail);
     if (n > 0 && g_reportLen + (size_t)n < sizeof g_report) g_reportLen += (size_t)n;
 }
+
+#if defined(NEXVYN_SDL2_CHECK_VULKAN)
+int vulkanResult(bool ok, const char* detail) {
+    const char* status = ok ? "PASS" : "FAIL";
+    nxn_log(NXN_LOG_INFO, "N5SDL: %s %s", status, detail);
+    const int n = snprintf(g_report, sizeof g_report, "N5SDL: %s %s\n", status, detail);
+    if (n > 0 && static_cast<size_t>(n) < sizeof g_report) g_reportLen = static_cast<size_t>(n);
+    return ok ? 0 : 1;
+}
+
+bool probeVulkanWindow(SDL_Window* window) {
+    unsigned count = 0;
+    const char* names[1]{};
+    if (!SDL_Vulkan_GetInstanceExtensions(window, &count, nullptr) || count != 1 ||
+        !SDL_Vulkan_GetInstanceExtensions(window, &count, names) || count != 1 ||
+        !names[0] || std::strcmp(names[0], VK_KHR_SURFACE_EXTENSION_NAME) != 0) {
+        nxn_log(NXN_LOG_INFO, "N5SDL: FAIL extensions count=%u %s", count, SDL_GetError());
+        return false;
+    }
+    nxn_log(NXN_LOG_INFO, "N5SDL: extension %s", names[0]);
+
+    int w = 0, h = 0, drawableW = 0, drawableH = 0;
+    SDL_PumpEvents();
+    SDL_GetWindowSize(window, &w, &h);
+    SDL_Vulkan_GetDrawableSize(window, &drawableW, &drawableH);
+    if (w <= 0 || h <= 0 || w != drawableW || h != drawableH) {
+        nxn_log(NXN_LOG_INFO, "N5SDL: FAIL drawable %dx%d window %dx%d", drawableW, drawableH, w, h);
+        return false;
+    }
+    nxn_log(NXN_LOG_INFO, "N5SDL: drawable %dx%d", drawableW, drawableH);
+
+    const auto lookup = reinterpret_cast<PFN_vkGetInstanceProcAddr>(SDL_Vulkan_GetVkGetInstanceProcAddr());
+    const auto create = lookup ? reinterpret_cast<PFN_vkCreateInstance>(lookup(VK_NULL_HANDLE, "vkCreateInstance")) : nullptr;
+    if (!create) {
+        nxn_log(NXN_LOG_INFO, "N5SDL: FAIL Vulkan instance lookup");
+        return false;
+    }
+
+    VkInstanceCreateInfo info{};
+    info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    info.enabledExtensionCount = count;
+    info.ppEnabledExtensionNames = names;
+    VkInstance instance = VK_NULL_HANDLE;
+    const VkResult result = create(&info, nullptr, &instance);
+    if (result != VK_SUCCESS) {
+        nxn_log(NXN_LOG_INFO, "N5SDL: FAIL vkCreateInstance (%d)", static_cast<int>(result));
+        return false;
+    }
+
+    const auto destroyInstance = reinterpret_cast<PFN_vkDestroyInstance>(lookup(instance, "vkDestroyInstance"));
+    const auto destroySurface = reinterpret_cast<PFN_vkDestroySurfaceKHR>(lookup(instance, "vkDestroySurfaceKHR"));
+    VkSurfaceKHR surface = VK_NULL_HANDLE;
+    bool ok = false;
+    if (!destroyInstance || !destroySurface) {
+        nxn_log(NXN_LOG_INFO, "N5SDL: FAIL Vulkan teardown lookup");
+    } else if (!SDL_Vulkan_CreateSurface(window, instance, &surface) || surface == VK_NULL_HANDLE) {
+        nxn_log(NXN_LOG_INFO, "N5SDL: FAIL SDL_Vulkan_CreateSurface %s", SDL_GetError());
+    } else {
+        nxn_log(NXN_LOG_INFO, "N5SDL: surface created");
+        destroySurface(instance, surface, nullptr);
+        nxn_log(NXN_LOG_INFO, "N5SDL: surface destroyed");
+        ok = true;
+    }
+    if (destroyInstance) destroyInstance(instance, nullptr);
+    return ok;
+}
+
+int checkVulkan() {
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        return vulkanResult(false, SDL_GetError());
+    }
+    const bool available = nxn_vk_available();
+    if (SDL_Vulkan_LoadLibrary(nullptr) != 0) {
+        const bool expected = !available && std::strcmp(SDL_GetError(), "Vulkan is not available on this system") == 0;
+        const int result = vulkanResult(expected, SDL_GetError());
+        SDL_Quit();
+        return result;
+    }
+
+    nxn_log(NXN_LOG_INFO, "N5SDL: library loaded through the host lookup");
+    constexpr Uint32 flags = SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE;
+    bool ok = available;
+    // Recreate the SDL window after destroying its Vulkan objects.
+    for (int i = 0; i < 2 && ok; ++i) {
+        SDL_Window* window = SDL_CreateWindow("SDL2 Check", 0, 0, 960, 540, flags);
+        if (!window) {
+            nxn_log(NXN_LOG_INFO, "N5SDL: FAIL SDL_CreateWindow %s", SDL_GetError());
+            ok = false;
+            break;
+        }
+        if (i == 0) {
+            SDL_Window* second = SDL_CreateWindow("SDL2 Check", 0, 0, 960, 540, flags);
+            ok = !second && std::strstr(SDL_GetError(), "one SDL window") != nullptr;
+            if (second) SDL_DestroyWindow(second);
+            if (!ok) nxn_log(NXN_LOG_INFO, "N5SDL: FAIL second window was not rejected as expected");
+        }
+        ok = ok && probeVulkanWindow(window);
+        SDL_DestroyWindow(window);
+    }
+    SDL_Vulkan_UnloadLibrary();
+    SDL_Quit();
+    return vulkanResult(ok, "surface lifecycle");
+}
+#endif
 
 // ---- audio conversion (SDL_BuildAudioCVT / SDL_ConvertAudio), the path SDL_mixer games take for their sound effects:
 // a 1 kHz sine at -6 dBFS in every source format, rate and channel count, converted to S16 stereo 44.1 kHz (what
@@ -282,6 +392,11 @@ void presentSurface(SDL_Window* win, const Phase& ph, Uint32 ms) {
 }  // namespace
 
 int main(int, char**) {
+#if defined(NEXVYN_SDL2_CHECK_VULKAN)
+    const int result = checkVulkan();
+    nxn_fs_write(NXN_DIR_DATA, "sdl2_check_report.txt", g_report, g_reportLen);
+    return result;
+#endif
     nxn_log(NXN_LOG_INFO, "sdl2check start");
     bool inited = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER | SDL_INIT_TIMER) == 0;
     row("init", inited, "video=%s audio=%s %s", SDL_GetCurrentVideoDriver() ? SDL_GetCurrentVideoDriver() : "-",

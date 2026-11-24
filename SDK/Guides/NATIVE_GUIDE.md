@@ -1,7 +1,8 @@
 # Native SDK guide: from a clean machine to a running app
 
-This is the short path. The reference is `docs/NATIVE_KIT.md` (every command and header), the rules are in
-`docs/NATIVE_COMPAT.md` and `docs/COMPATIBILITY.md` (*Native SDK*).
+This is the short path. The reference is `NATIVE_KIT.md` (every command and header), the rules are in
+`NATIVE_COMPAT.md` and `COMPATIBILITY.md` (*Native SDK*). For an operational overview of all runtimes, the
+manifest, packaging, testing and the Store, read `SDK/AI_GUIDE.md` first.
 
 ## 1. Install (once)
 
@@ -94,7 +95,7 @@ The user sees the message in their language; the log has the technical line (`lo
 | "damaged or built with an unsupported toolchain" | truncated file, wrong architecture, unknown relocation | reinstall; rebuild with `nxv-native build` |
 
 C++ exceptions need setting `native.windowedEh` and a module built with this kit (below). Without them, or when nothing
-catches it, a `throw` ends in `std::terminate`: that is a crash report, not a load error. JIT is not available in a window.
+catches it, a `throw` ends in `std::terminate`: that is a crash report, not a load error. JIT code memory is available via `nxn_jit_*` (`<nexvyn/nxn_jit.h>`, opt-in setting `native.windowedJit`, `NXN_CAP_JIT`); POSIX `PROT_EXEC` is unsupported.
 
 ## 5. Platform limits
 
@@ -104,7 +105,7 @@ catches it, a `throw` ends in `std::terminate`: that is a crash report, not a lo
 | Threads (`pthread`, `std::thread`) | supported; priority is limited and one core stays free for Nexvyn OS |
 | TLS (`thread_local`) | with setting `native.windowedTls` (`NXN_CAP_TLS`), default on for apps with `"minNative": "1.1"` or later (off for 1.0 apps; a setting given explicitly wins); not yet verified on a console; off: the loader refuses `PT_TLS` |
 | C++ exceptions | with setting `native.windowedEh` (`NXN_CAP_CXX_EXCEPTIONS`), default on for apps with `"minNative": "1.1"` or later (off for 1.0 apps; a setting given explicitly wins); not yet verified on a console; off: `throw` ends in `std::terminate` |
-| JIT (`PROT_EXEC`) | **not available** in a window |
+| JIT (`PROT_EXEC`) | POSIX `PROT_EXEC` is unsupported; dual-view RW/RX code memory is available via `nxn_jit_*` (`<nexvyn/nxn_jit.h>`, setting `native.windowedJit`, `NXN_CAP_JIT`) |
 | Dynamic loading | `.nxvlib` only (`nxn_lib_open` / `dlopen`) with setting `native.windowedLibs` (`NXN_CAP_SHARED_LIBS`), default on for apps with `"minNative": "1.1"` or later (off for 1.0 apps; a setting given explicitly wins); not yet verified on a console; no Linux `.so` |
 | Sockets | with the app's network permission |
 | `fork`, `exec`, `system`, `popen`, pty | never |
@@ -112,7 +113,12 @@ catches it, a `throw` ends in `std::terminate`: that is a crash report, not a lo
 
 **Graphics.** The display is OpenGL 4.x core or ES 3.2 on the console's GPU driver (`nxn_display`, glad, or SDL2 windows).
 Programs written against desktop GL usually need small changes. **deko3d is not a path for existing GL ports**: it is a
-different API, and the kit does not translate GL to it. A port keeps using GL through the display (or NexGFX native).
+different API, and the kit does not translate GL to it. A port keeps using GL through the display (or NexGFX native). Vulkan is an opt-in second path (setting `native.vulkan`, `NXN_CAP_VULKAN`, verified on the console with the canary and a GPU load test); always keep the GL path as the fallback (`NATIVE_KIT.md`, *Vulkan in the native kit*).
+
+Useful tools for heavy apps and ports (all in `NATIVE_KIT.md`): the memory budget (`nxn_memory_budget_get`), worker core hints
+(`nxn_thread_hint_request`), the port input helper (`<nexvyn/nxn_port_input.h>`: gamepad profiles, pinch, pan, two-finger rotate,
+double tap), `"fullscreenPause": true` in `app.json` for fullscreen memory, and the on-screen performance panel (Ctrl+Alt+P, or
+L+R+ZL+ZR). The step-by-step list for porting a game is `PORTING_CHECKLIST.md`.
 
 In full screen the user can always leave with the controller by holding − for one second (setting `wm.fullscreenExitHold`); a short press of − reaches the app as usual.
 
@@ -128,7 +134,7 @@ UI-heavy tools, utilities and productivity apps (chat clients, editors, settings
 Lua, JavaScript or Python with `nxui.*`: they draw through the OS renderer itself (its text engine, focus navigation,
 on-screen keyboard and themes) and need no build. Native C/C++ is for heavy computation (LLM inference, emulators, 3D,
 codecs, ports). A hybrid (native engine, script UI) is not available yet: a script app cannot load native code today
-(`sdk/SDK.md` 4b, section 8).
+(the SDK reference, `SDK.md` section 4b).
 
 ### The frame layer (required for ImGui apps)
 
@@ -148,9 +154,8 @@ replaces `ImGui_ImplOpenGL3_NewFrame()` / `ImGui::NewFrame()` / `ImGui::Render()
 * **Rows.** `nxn_os_row_begin()` ... `nxn_os_row_end()` puts widgets on one line with equal height, vertically centred;
   `nxn_os_fill(frac)` gives a share of the width left; `nxn_os_labeled(label, widget)` is a form row.
 
-Start from the `app` template; `product/showcase/com.nexvyn.uikit.cpp` is a complete reference screen (sidebar, toolbar, card,
-message field) without one pixel literal. `python tools/nxv_native check-design <dir>` (and `python tools/nxv.py check
-<dir>`) fail an ImGui app that skips the frame layer, uses raw ImGui widgets, adds fonts, scales fonts or writes pixel
+Start from the `app` template (`sdk/native/templates/app`): a complete reference screen (card, controls, file picker)
+without one pixel literal. `python tools/nxv_native check-design <dir>` fails an ImGui app that skips the frame layer, uses raw ImGui widgets, adds fonts, scales fonts or writes pixel
 literals outside `NXN_S()`; each finding names the fix. `nxv_native package` lists the same findings.
 
 ### Unified UI and Design Tokens (`<nexvyn/nxn_os_ui.h>`)
@@ -167,7 +172,7 @@ To prevent native utilities from having an inconsistent visual appearance compar
   - `nxn_os_badge`: 22px height pill badges with tinted background and crisp text.
   - `nxn_os_separator`: 1px hairline dividers with `tok.separator`.
 * **Strict rules (checked by `python tools/design_check.py`):** an ImGui app includes `nxn_os_ui.h`, runs the frame layer (`nxn_os_frame_begin` / `nxn_os_frame_end`), clears with `nxn_os_clear_color(tok)`, never sets `io.FontGlobalScale` or `SetWindowFontScale`, adds no fonts (the kit builds the role table: Title 23 px, Card Header 18 px, Body 17 px, Caption 14-15 px at scale 1), uses the `nxn_os_*` widgets instead of raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`, `BeginTabBar`, `ProgressBar`, and writes every pixel size as `NXN_S(px)`. Card padding is `16 x 13`; pass it with `nxn_os_card_begin_ex(id, 0, NXN_S(16), NXN_S(13), tok)` or use `nxn_os_card_begin`.
-* **NXUI in a GL window:** `nxn_nxui_*` never paints in a Native OpenGL window (its own thread; only the OS main thread may use the shared renderer). The tree is still built and laid out, input is routed, and `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`. Use ImGui with `nxn_os_ui.h` there. The four SysMatrix Studio canaries (`product/showcase/com.nexvyn.parity.*`) show the same screen in Lua, JavaScript, Python and Native C++; `tests/test_design_parity.py` keeps them identical.
+* **NXUI in a GL window:** `nxn_nxui_*` never paints in a Native OpenGL window (its own thread; only the OS main thread may use the shared renderer). The tree is still built and laid out, input is routed, and `nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`. Use ImGui with `nxn_os_ui.h` there.
 
 ### Text and fonts
 

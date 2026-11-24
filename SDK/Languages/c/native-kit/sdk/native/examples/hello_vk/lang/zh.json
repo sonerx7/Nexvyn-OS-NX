@@ -1,0 +1,7 @@
+{
+  "vulkan": {
+    "unavailable": "此系统不支持 Vulkan",
+    "create_failed": "无法创建 Vulkan 实例",
+    "created": "已创建 Vulkan 实例"
+  }
+}

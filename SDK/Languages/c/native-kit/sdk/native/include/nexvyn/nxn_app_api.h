@@ -37,7 +37,7 @@ bool nxn_ui_button(const char* id, const char* label);
 /** Declares an NXUI label with typography role (largeTitle, title, body, caption). (since 2.0) */
 void nxn_ui_label(const char* text, const char* style);
 
-/* Module: input - Unified input router (Joy-Con/gamepad, touch, mouse, keyboard) */
+/* Module: input - Unified input router (gamepad, touch, mouse, keyboard) */
 /** Returns number of active touches on content surface. (since 1.0) */
 int32_t nxn_input_touch_count(void);
 

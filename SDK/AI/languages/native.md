@@ -15,9 +15,9 @@ Full references: `SDK/Guides/NATIVE_GUIDE.md`, `SDK/Guides/NATIVE_KIT.md`, and `
   "mode": "window",
   "main": "com.yourname.nativeapp.nxvmod",
   "minSdk": "1.10",
-  "targetSdk": "2.0",
+  "targetSdk": "1.16",
   "minNative": "1.2",
-  "targetNative": "2.0",
+  "targetNative": "1.2",
   "window": {"width": 960, "height": 540, "resizable": true},
   "permissions": []
 }

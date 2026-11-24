@@ -16,6 +16,7 @@ Build and package (needs devkitPro; the sysroot is optional, without it the thre
 This builds `build/showcase.nxvmod` and packs `com.nexvyn.example.showcase.nxvapp`. The compat layer (`libnexvyn_compat_pic.a`
 is linked into the module) is tested in a window too: pipe, poll, eventfd, select, mmap, signals, fcntl, `/dev/*`,
 coroutines, own environment + working directory and sockets (OK means the permission check answered as it should: `network`
-in `app.json` allows them, without it the calls fail with `EACCES`). Rows for shared libraries and `dlopen` read
-"not supported in a window yet" (W2). If `<app data>/autotest` exists the app runs
+in `app.json` allows them, without it the calls fail with `EACCES`). Shared libraries (`nxn_lib_open`, capability
+`NXN_CAP_SHARED_LIBS`) and `dlopen` are tested in a window when `native.windowedLibs` is on; with it off, the rows read
+"off in this window (setting native.windowedLibs)" and `dlopen` fails cleanly. If `<app data>/autotest` exists the app runs
 everything, writes the report and returns code 7. `showcase_stage.txt` names the test that is running (finds hangs).

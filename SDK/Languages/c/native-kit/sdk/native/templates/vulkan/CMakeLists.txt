@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.13)
+project(@NAME@ VERSION 1.0.0 LANGUAGES C CXX)
+
+include("${NEXVYN_KIT}/toolchain/nexvyn-native.cmake")
+if(NOT NEXVYN_WINDOWED)
+  message(FATAL_ERROR "The Vulkan starter requires NEXVYN_WINDOWED=ON.")
+endif()
+
+nexvyn_add_windowed(${PROJECT_NAME} SOURCES src/main.c)
+if(NEXVYN_VK_SHIMS)
+  if(NOT EXISTS "${NEXVYN_SYSROOT}/include/vulkan/vulkan_core.h")
+    message(FATAL_ERROR "Build the vulkan-headers sysroot recipe and set NEXVYN_SYSROOT.")
+  endif()
+  target_include_directories(${PROJECT_NAME}_objects PRIVATE "${NEXVYN_SYSROOT}/include")
+  target_compile_definitions(${PROJECT_NAME}_objects PRIVATE NEXVYN_VK_SHIMS=1)
+endif()

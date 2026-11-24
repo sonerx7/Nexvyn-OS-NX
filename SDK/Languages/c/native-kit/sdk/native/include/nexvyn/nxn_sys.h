@@ -20,6 +20,23 @@ NXN_API uint64_t nxn_time_ns(void);   /* monotonic, since boot */
 NXN_API int64_t nxn_time_unix(void);  /* wall clock, seconds since 1970 (UTC) */
 NXN_API void nxn_sleep_ns(uint64_t ns);
 
+/* ---------------------------------------------------------------- memory budget */
+typedef struct nxn_memory_budget {
+    uint32_t size;
+    uint32_t reserved;
+    uint64_t free_heap_bytes;    /* last sampled system heap free */
+    uint64_t shell_reserve_bytes;
+    uint64_t available_bytes;    /* free_heap_bytes minus shell reserve, floored at zero */
+} nxn_memory_budget;
+
+/* Hosted advisory snapshot. Returns NXN_ERR_NOT_READY when no sample is available.
+ * Size-prefixed: set out->size with NXN_STRUCT_INIT. Caller owns out. Any app thread. */
+NXN_API nxn_result nxn_memory_budget_get(nxn_memory_budget* out);
+/* Checks a desired working-set size against the snapshot. NXN_ERR_NO_MEMORY means
+ * the request exceeds the estimate. NXN_OK grants no reservation or guarantee.
+ * The check uses the cached sample, does not allocate and can race other apps. */
+NXN_API nxn_result nxn_memory_budget_request(uint64_t working_set_bytes);
+
 /* ---------------------------------------------------------------- threads */
 typedef struct nxn_thread nxn_thread; /* opaque */
 typedef void (*nxn_thread_fn)(void* arg);
@@ -158,6 +175,23 @@ NXN_API nxn_result nxn_save_restore(const char* slot);
 /* The index-th slot name, sorted by name; NXN_ERR_NOT_FOUND at the end of the list. */
 NXN_API nxn_result nxn_save_backup_get(uint32_t index, char* slot, size_t cap);
 NXN_API nxn_result nxn_save_backup_delete(const char* slot);
+
+/* ---------------------------------------------------------------- optional worker scheduling */
+typedef enum nxn_thread_hint_priority {
+    NXN_THREAD_HINT_NORMAL = 0,
+    NXN_THREAD_HINT_THROUGHPUT = 1
+} nxn_thread_hint_priority;
+
+/* Sets the app-wide hint for future worker threads and returns the number of cores granted (0..2).
+ * Zero clears the hint. Throughput yields to normal-priority work. The grant is advisory.
+ * Older hosts and standalone apps return zero and report normal priority.
+ * Thread: any app thread. Memory: granted_priority may be NULL and is written during the call. */
+uint32_t nxn_thread_hint_request(uint32_t worker_cores, nxn_thread_hint_priority priority,
+                                 nxn_thread_hint_priority* granted_priority);
+
+/* Optional host import used by the kit shim. Apps call nxn_thread_hint_request. */
+NXN_API uint32_t nxn_thread_hint_host_request(uint32_t worker_cores, nxn_thread_hint_priority priority,
+                                           nxn_thread_hint_priority* granted_priority);
 
 NXN_EXTERN_C_END
 

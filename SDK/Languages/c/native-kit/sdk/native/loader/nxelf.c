@@ -583,12 +583,14 @@ int nxelf_map_jit(nxelf_mem* m, const nxelf_layout* l, char* err, size_t errsz) 
      * the emulator does the same), so the image is written and .bss zeroed only once the views are mapped (nxelf_link) */
     Handle ro = INVALID_HANDLE, rw = INVALID_HANDLE;
     const char* step = "svcCreateCodeMemory (read-only segments)";
+    /* a handle is kept only when its object was made: libnx's svc wrapper writes the output register even on failure,
+     * and nxelf_unmap_jit would then close that value and count down an object that was never counted */
     Result rc = cm_create(&ro, m->ro_src, m->ro_size);
-    m->ro_handle = ro;
+    if (R_SUCCEEDED(rc)) m->ro_handle = ro;
     if (R_SUCCEEDED(rc)) {
         step = "svcCreateCodeMemory (writable segments)";
         rc = cm_create(&rw, m->rw_src, m->rw_size);
-        m->rw_handle = rw;
+        if (R_SUCCEEDED(rc)) m->rw_handle = rw;
     }
     if (R_SUCCEEDED(rc)) {
         virtmemLock();

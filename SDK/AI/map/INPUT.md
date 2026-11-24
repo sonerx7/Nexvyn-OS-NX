@@ -15,10 +15,10 @@ Maps unified input polling, semantic actions, multi-touch contacts, USB keyboard
 | `nxn_input_pad_count` / `nxn_input_pad_poll` | `nxn_input.h` | Multi-controller count and per-pad state/edges (`0..7`, `NXN_CAP_INPUT_ROUTER`) |
 | `nxn_input_action_buttons` | `nxn_input.h` | Maps OS action name (`"select"`, `"back"`, `"nav_up"`, etc.) to `NXN_BTN_*` mask |
 | `nxn_input_action_down` / `action_pressed` | `nxn_app_api.h` | Non-consuming semantic action held/pressed queries from app snapshot |
-| `nxn_pi_init` / `nxn_pi_update` / `poll_event` | `nxn_port_input.h` | Port helper: pinch/pan/2-finger-tap gestures + RTS/CRPG/FPS/Gamepad profiles |
+| `nxn_pi_init` / `nxn_pi_update` / `poll_event` | `nxn_port_input.h` | Port helper: pinch/pan/rotate/2-finger-tap/double-tap gestures + RTS/CRPG/FPS/Gamepad profiles |
 | `nxn_imgui_input` / `nxn_imgui_input_event` | `nxn_imgui_input.h` | Feeds `nxn_input_state` and lifecycle events to ImGui before `NewFrame` |
 | `nxn_nxui_move_focus` / `activate_focused` | `nxn_nxui.h` | Moves spatial UI focus (`0..3`) and activates focused widget (`nxui.moveFocus` in scripts) |
-| `input.*` (`down`, `pressed`, `stick`, `motion`) | `input` (Script) | Script polling API plus `app.event(e)` (`pinch`, `rotate`, `paddown`, `keydown`, `text`) |
+| `input.*` (`down`, `pressed`, `stick`, `motion`, `touches`) | `input` (Script) | Script polling API (`touches` in SDK 1.16) plus `app.event(e)` (`e.touches`, `pinch`, `rotate`, `paddown`, `keydown`, `text`) |
 
 ## Rules
 - Poll `nxn_input_poll` on one consumer thread once per frame; focus loss, suspend, and quit suppress new presses and cancel pending activations.
@@ -30,7 +30,7 @@ Maps unified input polling, semantic actions, multi-touch contacts, USB keyboard
 ## Pitfalls
 - Confusing `nxn_nav.h` (`nxn_nav_*`, which is 3D pathfinding/navmesh) with UI focus navigation (`nxui.moveFocus` / `nxn_nxui_move_focus` / `nxn_input_action_buttons("nav_*")`).
 - Treating a button release after focus-loss cancellation as a completed click.
-- Inventing `input.touches()` or a manifest `multitouch` flag in scripts (neither exists).
+- Inventing a manifest `multitouch` flag in scripts (it does not exist; multitouch uses `input.touches()` returning `{id, x, y, phase}` per finger and `e.touches` on events in Lua/JavaScript/Python `"python3"`, `"minSdk": "1.16"`).
 
 ## See also
 - [INDEX](INDEX.md)

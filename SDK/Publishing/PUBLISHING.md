@@ -209,7 +209,7 @@ place and the app's data is kept. An update that adds a permission asks the user
 
 ## 11. Signing (optional)
 
-The App Market compares every download with the catalog's `sha256`, and store packages are rebuilt from source by
+The App Market compares every download with the catalog's `sha256` (section 12), and store packages are rebuilt from source by
 `build_store.py`, so they need no signature. If you also distribute the package yourself (a website, your own
 catalog), sign it with your nxvapp key from the source repository:
 
@@ -223,6 +223,29 @@ python tools/nxvapp_pack.py --verify MyApp.nxvapp                    # the check
 "Signed by AB12:CD34:EF56:7890" and warns when a later update is signed with another key: sign every update with the
 same key. When your key's fingerprint is in the catalog entry (`signer`, ask in the pull request), the App Market only
 installs packages signed with it.
+
+## 12. Download verification (SHA-256)
+
+From Nexvyn OS 1.4.0 every Store and package download is checked against its SHA-256 **before it is unpacked**. A mismatch
+stops the install and shows "checksum failed"; the package is not unpacked or installed.
+
+What a publisher provides:
+
+- In the Store repository you provide nothing by hand: `build_store.py` packs the `.nxvapp` (deterministic zip) and writes
+  `download` (an `https://` URL), `size` and `sha256` into `Store/catalog.json`. Never edit those fields, and never replace a
+  published `.nxvapp` without rebuilding the catalog: the hash would no longer match.
+- In your own catalog (or any repository index the App Market reads), every entry needs `"download"` starting with
+  `https://` and `"sha256"`: the 64-character hexadecimal SHA-256 of the exact `.nxvapp` file (upper or lower case; Nexvyn OS
+  lower-cases it). An entry that lacks either is skipped and never shown. Compute it with `sha256sum MyApp.nxvapp`.
+- For a delta update, the hash that is checked is the hash of the delta package; the completed full package is held to the
+  same rules afterwards.
+- A homebrew package entry may carry an optional `sha256` of its downloaded asset; when it is present the download is
+  verified the same way, when it is absent that check is skipped. Always provide it.
+- The hash proves the file is the one you published. It does not replace the optional developer signature (section 11),
+  which proves who made it.
+
+Publish a new version by changing the file, the `version` and the hash together, and test the update on a console that has
+the old version installed.
 
 ## See also
 

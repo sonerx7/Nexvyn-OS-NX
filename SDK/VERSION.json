@@ -1,6 +1,6 @@
 {
-  "os": "1.3.28-beta.2",
-  "sdk": "1.15",
+  "os": "1.4.0",
+  "sdk": "1.16",
   "native": "1.2",
   "nativeAbi": 1,
   "requiredLocales": [

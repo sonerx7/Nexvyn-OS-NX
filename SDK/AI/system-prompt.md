@@ -1,8 +1,8 @@
-# Nexvyn OS app SDK 1.15 & Native SDK 1.2: context pack for AI assistants
+# Nexvyn OS app SDK 1.16 & Native SDK 1.2: context pack for AI assistants
 
 ## Current authoring contract
 
-Use SDK 1.15 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+Use SDK 1.16 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
 - Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
 - Keep SDK Markdown English only. Store screenshots may use English UI.
 - OS apps use shared theme/typography/controls; games require their own art direction.
@@ -48,7 +48,7 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "category": "utilities",
   "icon": "icon.png",
   "runtime": "lua", "main": "main.lua",
-  "minSdk": "1.12", "targetSdk": "2.0",
+  "minSdk": "1.12", "targetSdk": "1.16",
   "window": {"width": 640, "height": 480, "minWidth": 320, "minHeight": 240, "resizable": true},
   "singleInstance": true, "gamepad": false, "loadingHint": false,
   "fileTypes": [".txt"], "shareTargets": ["text", "url", ".txt"],
@@ -69,8 +69,8 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   "python3" runtime "1.6"; `g3d.voxels` (JS) "1.7"; `g3d.model`, `g3d.loadModel`, `g3d.drawMatrix` "1.8"; the pbr renderer (`g3d.renderer`,
   `g3d.rendererInfo`, `g3d.addLight`, `g3d.shadows`, `g3d.postfx`, `g3d.environment`, `g3d.material`,
   `g3d.drawInstanced`, `g3d.caps`), the section 7 SDK 1.9 network calls and the feed / media calls "1.9" (Lua,
-  JavaScript, Python, C only), the folder picker, kept-folder and save-backup calls "1.11" (same four), `ui.tokens` / `audio.stopAll` "1.12" (same four), `nxui.*` Retained UI and `loadingHint` "1.13" / "2.0". Use the lowest `minSdk` that has every call the app makes.
-- `targetSdk`: the SDK the app was tested on; new N2 apps use `"2.0"` (or `"1.13"`). `loadingHint: true` extends the initial loading watchdog threshold from 5 s to 120 s.
+  JavaScript, Python, C only), the folder picker, kept-folder and save-backup calls "1.11" (same four), `ui.tokens` / `audio.stopAll` "1.12" (same four), `nxui.*` Retained UI and `loadingHint` "1.13" / "2.0", `phys.*` / `nav.*` "1.15", idle app frame pacing and multitouch `input.touches` "1.16". Use the lowest `minSdk` that has every call the app makes.
+- `targetSdk`: the SDK the app was tested on; new apps use `"1.16"` (the current SDK; `"2.0"` is only a target marker that selects CPython for `"runtime": "python"`). `loadingHint: true` extends the initial loading watchdog threshold from 5 s to 120 s.
 - `window.width/height` is the content size. `gamepad: true` sends the controller to the app (L+R gives the cursor
   back); games set `"gamepad": true, "resizable": true`.
 - `shareTargets`: "text", "url", "file", "image" or an extension; the item arrives as `arg` in load/open.
@@ -97,7 +97,7 @@ Store build refuses a bundle that calls a gated function without the permission.
 local app = {}
 function app.load(arg) end        -- once; arg = file path / URL / "" the app was opened with
 function app.open(arg) end        -- asked to open something else while running
-function app.update(dt) end       -- every frame (~60 fps)
+function app.update(dt) end       -- every frame (~60 fps; return false to idle the app, SDK 1.16)
 function app.draw(w, h)           -- every frame: draw AND handle widgets; w,h = content size
   gfx.clear(theme.bg)
 end
@@ -206,10 +206,10 @@ SDK 1.12 (`"minSdk": "1.12"`; Lua, JavaScript, Python, C): `ui.tokens()` (C: `ui
 ## 5a. nxui (Retained & Semantic UI Engine, SDK 1.13 / 2.0)
 
 Available in Lua, JavaScript, Python (`nxui.*`). Native C/C++ has `nxn_nxui_*` in `<nexvyn/nxn_nxui.h>`, but it never paints in a Native GL window (`nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`): native apps draw with ImGui + the frame layer of `<nexvyn/nxn_os_ui.h>` (`nxn_os_frame_begin` / `nxn_os_frame_end`, `nxn_os_*` widgets, `NXN_S()` sizes). Every app in every language must look like Nexvyn OS (`theme.*` colours, role-table text sizes; `python tools/design_check.py`). Prefer `nxui` for structured desktop apps, utilities, settings, tables and forms (no manual pixel math needed):
-- Frame: `nxui.begin([w, h])` ... `nxui.endFrame()` · `nxui.tokens()` → `{space1..space6, radiusSm/Md/Lg, fontSm/Body/Title/Hero, scale, dark, highContrast, reducedMotion, bgPrimary, bgSecondary, bgCard, fgPrimary, fgMuted, accent, danger, success, warning, border}`.
-- Containers: `nxui.row(id[, gap])` … `nxui.rowEnd()` · `nxui.column(id[, gap])` … `nxui.columnEnd()` · `nxui.card(id)` … `nxui.cardEnd()` · `nxui.scrollBegin(id, w, h[, scrollY])` → `newScrollY` … `nxui.scrollEnd()` · `nxui.canvasBegin(id, w, h)` → `x, y, w, h` (JS/Py: `{x, y, w, h}`) … `nxui.canvasEnd()` · `nxui.spacer([size])`.
-- Controls: `nxui.label(id, text[, role])` (`"body"|"title"|"hero"|"muted"|"small"`) · `nxui.badge(id, text[, rgba])` · `nxui.button(id, label[, variant])` → `clicked` (`"primary"|"secondary"|"ghost"|"danger"`) · `nxui.toggle(id, checked)` → `newChecked[, changed]` · `nxui.slider(id, val, min, max)` → `newVal[, changed]` · `nxui.textfield(id, text[, placeholder])` → `newText[, changed]` · `nxui.dropdown(id, options, selected)` → `newSel[, changed]` (Lua 1-based; JS/Py/C 0-based) · `nxui.tabs(id, labels, active)` → `newActive[, changed]` (Lua 1-based; JS/Py/C 0-based) · `nxui.table(id, cols, rows, selectedRow)` → `newRow, clicked` (JS/Py `{selected, clicked}`) · `nxui.virtuallist(id, items, rowH, viewH, selectedRow)` → `newRow, clicked` (JS/Py `{selected, clicked}`) · `nxui.dialog(id, title, msg, confirm[, cancel])` → `0|1|2`.
-- Focus: `nxui.moveFocus("up"|"down"|"left"|"right")` · `nxui.activateFocused()`.
+- Frame: `nxui.begin([w, h])` ... `nxui.endFrame()` · `nxui.tokens()` → table/object/dict of RGBA integer colors `accent`, `windowBg`, `surface`, `border`, `text`, `textSecondary` and numbers `controlRegular`, `radiusSmall`, `radiusMedium`, `space2`, `space4`, `space8` plus `focusRing`, `error`, `success` (colors). Lua only: `controlCompact`, `controlLarge`, `radiusLarge`, `space1`, `space3`, `space6`. Only `space2`, `space4`, `space8` exist in every language; JS/Python have no `space3`.
+- Containers: `nxui.row(id[, gap])` … `nxui.rowEnd()` · `nxui.column(id[, gap])` … `nxui.columnEnd()` · `nxui.card(id)` … `nxui.cardEnd()` · `nxui.scrollBegin(id, w, h[, scrollY])` → `newScrollY` … `nxui.scrollEnd()` · `nxui.canvasBegin(id, w, h)` (returns nothing; draw into the reserved box with your own layout math) … `nxui.canvasEnd()` · `nxui.spacer([size])`.
+- Controls: `nxui.label(id, text[, role])` (`"body"` (default)`|"title"|"headline"|"largeTitle"|"caption"`) · `nxui.badge(id, text[, rgba])` · `nxui.button(id, label[, variant])` → `clicked` (`"default"` (default)`|"primary"|"destructive"|"plain"`) · `nxui.toggle(id, checked)` → `newChecked[, changed]` · `nxui.slider(id, val, min, max)` → `newVal[, changed]` · `nxui.textfield(id, text[, placeholder])` → `newText[, changed]` · `nxui.dropdown(id, options, selected)` → `newSel[, changed]` (0-based in every language; `changed` is Lua only) · `nxui.tabs(id, labels, active)` → `newActive[, changed]` (0-based in every language; `changed` is Lua only) · `nxui.table(id, cols, rows, selectedRow)` → `newRow[, clicked]` (0-based row, `-1` = none; `rows` is a list of row lists, one cell string per column; JS/Py return only the integer `newRow`) · `nxui.virtuallist(id, items, rowH, viewH, selectedRow)` → `newRow[, clicked]` (0-based row, `-1` = none; JS/Py return only the integer `newRow`) · `nxui.dialog(id, title, msg, confirm[, cancel])` → boolean `confirmed`.
+- Focus: `nxui.moveFocus(dir)` (integer `0` up, `1` down, `2` left, `3` right; returns boolean) · `nxui.activateFocused()`.
 
 ## 6. Input
 
@@ -223,9 +223,13 @@ D-pad = arrow keys, B = Escape.
 Polling: `input.down(b)`, `input.pressed(b)`, `input.released(b)`, `input.stick("left"|"right")` → x,y (-1..1, y up
 positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,gy,gz,pitch,roll,yaw.
 
+- **Multitouch & Idle (SDK 1.16; Lua, JavaScript, Python `"python3"`; requires `"minSdk": "1.16"`):**
+  - `input.touches()` returns list/array of `{id, x, y, phase}` (`"began"|"moved"|"stationary"|"ended"`). Touch and gesture events carry `e.touches`. Mouse and controller never produce touches. Do not invent a manifest `multitouch` flag.
+  - Returning `false` from `app.update(dt)` lets the app idle (the shell pauses drawing until an input event, timer callback, or `ui.requestFrame()` arrives). `ui.requestFrame()` explicitly wakes it.
+
 **Every game and app must support all input methods** (`Guides/INPUT_AND_PLAY_MODES.md`):
 - touch (targets of at least 44 px, no hover-only actions; `pinch` / `rotate` / two-finger `scroll` where zoom or pan makes sense),
-  controller (`"gamepad": true` for games; confirm / back through `input.action`; a single Joy-Con has one stick),
+  controller (`"gamepad": true` for games; confirm / back through `input.action`; a single detached controller has one stick),
   keyboard and mouse;
 - docked mode has no touch: nothing may need a touch, the pad works from the first screen; show button glyphs when
   `input.touch()` is false;
@@ -254,7 +258,7 @@ positive), `input.key(name)`, `input.touch()`, `input.motion()` → ax,ay,az,gx,
 - `sys`: `time()` (monotonic s), `epoch()`, `date([epoch])` → {year,month,day,hour,min,sec,wday,yday,epoch},
   `battery()` → percent,charging, `online()`, `lang()`, `username()`, `model()`, `firmware()`, `notify(title,body)`,
   `open(pathOrUrl)`, `launch(appId[,arg])`, `clipboard([text])`, `log(...)`, `title(text)`, `exit()`, `fps()`,
-  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.12". SDK 1.4: `share(textOrPath)`,
+  `vibrate([strength[,ms]])`, `appid()`, `sdkVersion()` → "1.16". SDK 1.4: `share(textOrPath)`,
   `schedule(epoch,title[,body[,arg]])` → id or nil,err, `unschedule(id)`, `scheduled()`, `hasPermission(name)`,
   `requestPermission(name[,fn(granted)])`, `memory()`, `appUrl(id[,arg])`. Links: `nxv://app/<id>?arg=...`,
   `nxv://store/<id>`, `nxv://settings/<pane>`.
@@ -398,12 +402,12 @@ When building a new app or game, start from one of these verified skeletons and 
 
 ### Template A — Modern NXUI Desktop / Utility App (Lua 5.4.7)
 ```lua
--- main.lua ("runtime": "lua", "minSdk": "1.13", "targetSdk": "2.0")
+-- main.lua ("runtime": "lua", "minSdk": "1.13", "targetSdk": "1.16")
 local app = {}
 local items = {}
 local inputText = ""
-local selectedRow = 1
-local activeTab = 1
+local selectedRow = -1
+local activeTab = 0
 local notificationsOn = true
 
 function app.load(arg)
@@ -421,7 +425,7 @@ function app.draw(w, h)
 
   activeTab = nxui.tabs("nav_tabs", {TR("tab_tasks"), TR("tab_settings")}, activeTab)
 
-  if activeTab == 1 then
+  if activeTab == 0 then
     nxui.card("add_card")
     nxui.label("hdr", TR("title"), "title")
     nxui.row("input_row", 8)
@@ -436,8 +440,9 @@ function app.draw(w, h)
     nxui.cardEnd()
 
     selectedRow, clicked = nxui.table("tasks_tbl", {TR("col_task"), TR("col_priority"), TR("col_status")}, items, selectedRow)
-    if clicked and items[selectedRow] then
-      items[selectedRow][3] = (items[selectedRow][3] == "Done") and "Pending" or "Done"
+    if clicked and items[selectedRow + 1] then
+      local row = items[selectedRow + 1]
+      row[3] = (row[3] == "Done") and "Pending" or "Done"
       store.set("items", items)
       audio.play("click")
     end
@@ -458,8 +463,9 @@ end
 
 function app.event(e)
   if e.type == "paddown" then
-    if e.pad == "up" or e.pad == "down" or e.pad == "left" or e.pad == "right" then
-      nxui.moveFocus(e.pad)
+    local dirs = {up = 0, down = 1, left = 2, right = 3}
+    if dirs[e.pad] then
+      nxui.moveFocus(dirs[e.pad])
     elseif e.pad == "a" then
       nxui.activateFocused()
     end
@@ -471,7 +477,7 @@ return app
 
 ### Template B — 60 FPS Arcade / Action Game with Controller + Touch + Audio (Lua 5.4.7)
 ```lua
--- main.lua ("runtime": "lua", "gamepad": true, "minSdk": "1.12", "targetSdk": "2.0")
+-- main.lua ("runtime": "lua", "gamepad": true, "minSdk": "1.12", "targetSdk": "1.16")
 -- Art Direction: Cyber-Amber palette (#0D0E15 deep void, #FFB000 amber hero, #FF3366 hazard, #00F0FF energy)
 local app = {}
 local state = "title" -- "title", "play", "paused", "gameover"
@@ -578,7 +584,7 @@ return app
 ### Template C — Native C / C++ Windowed Module (`.nxvmod`, Native SDK 1.2)
 **Choose the language first:** UI-heavy tools, utilities and productivity apps (chat clients, editors, settings, dashboards, store fronts) are written in Lua, JavaScript or Python with `nxui.*` / `ui.*` (the OS renderer and its text: the best typography, no build). Native C/C++ only for heavy computation (LLM inference, emulators, 3D engines, codecs, ports). A hybrid (native engine + script UI) is not possible yet: a script app cannot load native code.
 ```cpp
-/* src/main.cpp ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10", "targetSdk": "2.0") */
+/* src/main.cpp ("runtime": "native", "main": "myapp.nxvmod", "minNative": "1.2", "minSdk": "1.10", "targetSdk": "1.16") */
 /* Native GL apps draw their UI with Dear ImGui + the FRAME LAYER of <nexvyn/nxn_os_ui.h> (the OS look). nxn_nxui_* never
  * paints in a GL window. Start from the app template (nxv_native new myapp --template app).
  * Setup once: ImGui::CreateContext(); nxn_imgui_enable_gamepad(io); nxn_ui_tokens_get(&tok);
@@ -620,7 +626,7 @@ nxn_display_swap(disp);
   "runtime": "js",
   "main": "main.js",
   "minSdk": "1.13",
-  "targetSdk": "2.0",
+  "targetSdk": "1.16",
   "window": {"width": 680, "height": 460, "resizable": true},
   "permissions": ["network"]
 }
@@ -652,8 +658,8 @@ app.draw = (w, h) => {
   const t = nxui.tokens();
   gfx.clear(t.windowBg);
   nxui.begin(w, h);
-  nxui.column("root", t.space3);
-    nxui.row("hdr", t.space3);
+  nxui.column("root", t.space4);
+    nxui.row("hdr", t.space4);
       nxui.label("title", TR("title"), "title");
       nxui.spacer(0);
       if (nxui.button("btn_ref", loading ? "..." : TR("refresh"), "primary") && !loading) refresh();
@@ -680,7 +686,7 @@ app.draw = (w, h) => {
   "runtime": "python3",
   "main": "main.py",
   "minSdk": "1.13",
-  "targetSdk": "2.0",
+  "targetSdk": "1.16",
   "window": {"width": 520, "height": 380, "resizable": true},
   "permissions": []
 }
@@ -696,7 +702,7 @@ class App:
         t = nxui.tokens()
         gfx.clear(t["windowBg"])
         nxui.begin(w, h)
-        nxui.column("col", t["space3"])
+        nxui.column("col", t["space4"])
         nxui.label("hdr", TR("title"), "title")
         self.mode = nxui.tabs("tabs", [TR("temp"), TR("dist")], self.mode)
         nxui.card("card")
@@ -723,7 +729,7 @@ app = App()
 
 ### Template F — 3D PBR Scene (`g3d.renderer("pbr")`, Lua 5.4.7)
 ```lua
--- main.lua ("runtime": "lua", "minSdk": "1.9", "targetSdk": "2.0", "gamepad": true)
+-- main.lua ("runtime": "lua", "minSdk": "1.9", "targetSdk": "1.16", "gamepad": true)
 local app = {}
 local ground, box, t = nil, nil, 0
 

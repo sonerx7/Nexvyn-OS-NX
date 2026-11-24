@@ -1,0 +1,5 @@
+{
+  "stress": {
+    "failed": "Le test de charge du GPU a échoué."
+  }
+}

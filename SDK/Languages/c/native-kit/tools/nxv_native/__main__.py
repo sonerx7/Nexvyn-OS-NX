@@ -1,6 +1,6 @@
 """nxv-native: command line for the Nexvyn native SDK (C/C++ apps that run inside Nexvyn OS, in a window or full screen).
 
-  python tools/nxv_native new <name> [--template app|game|port|sdl2|gl|emu-skeleton|decomp-skeleton|shared-lib] [--dir DIR]
+  python tools/nxv_native new <name> [--template app|game|port|sdl2|gl|vulkan|emu-skeleton|decomp-skeleton|shared-lib] [--dir DIR]
   python tools/nxv_native build [DIR] [--debug] [--clean] [--sysroot PATH]
   python tools/nxv_native lib [DIR] [--debug] [--clean] [--sysroot PATH]   (a project with only nexvyn_add_lib())
   python tools/nxv_native check-lib FILE.nxvlib [--host APP.elf]
@@ -8,6 +8,9 @@
   python tools/nxv_native package [DIR] [-o FILE] [--sign key.pem]    (-> build/<name>.nxvapp)
   python tools/nxv_native run [DIR] [--sd SDCARD_ROOT]  (copies into <sd>/NexvynOS/Applications, never starts anything)
   python tools/nxv_native check-win FILE.nxvmod   (identity, no TLS / text relocations, every import in the host set)
+  python tools/nxv_native shader FILE --target vulkan -o FILE.spv
+  python tools/nxv_native shader FILE --target gl
+  python tools/nxv_native clang-build NAME SOURCE... --llvm DIR [--std 17|20|23]
   python tools/nxv_native check-design [DIR]      (the OS design rules of an ImGui app: frame layer, nxn_os_* widgets,
                                                    no FontGlobalScale / own fonts / pixel literals; `package` runs it too)
 
@@ -21,18 +24,20 @@ msys2 shell (like build.sh), elsewhere it expects the devkitPro environment (DEV
 import argparse
 import json
 import os
+from pathlib import Path
 import re
 import shutil
 import struct
 import subprocess
 import sys
+import tempfile
 import zlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 KIT = os.path.join(REPO, "sdk", "native")
 TEMPLATES = os.path.join(KIT, "templates")
-TEMPLATE_NAMES = ("app", "game", "port", "sdl2", "gl", "emu-skeleton", "decomp-skeleton", "shared-lib")
+TEMPLATE_NAMES = ("app", "game", "port", "sdl2", "gl", "vulkan", "emu-skeleton", "decomp-skeleton", "shared-lib")
 DKP_BASH = os.environ.get("DKP_BASH", "C:/devkitPro/msys2/usr/bin/bash.exe")
 sys.path.insert(0, os.path.join(REPO, "tools"))
 import sdkinfo  # noqa: E402  (the SDK facts: Native SDK version and the SDK that brought it)
@@ -276,6 +281,23 @@ def cmd_exports(a):
     print("%s: %d imported symbols (link it into the app with -Wl,--export-dynamic -Wl,--hash-style=sysv)" % (a.output, len(names)))
 
 
+VK_RESOLVER_SYM = "nxn_vk_proc"
+
+
+def vk_shim_names():
+    """Generated Vulkan link-time shim names (sdk/native/lib/win/nxwin_vk.txt)."""
+    path = os.path.join(KIT, "lib", "win", "nxwin_vk.txt")
+    if not os.path.isfile(path):
+        return set()
+    names = set()
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            s = line.split("#", 1)[0].strip()
+            if s:
+                names.add(s)
+    return names
+
+
 def check_win(path):
     """Problems of a windowed app module (empty list: fine): ELF, identity, TLS / text relocations, imports."""
     info = elf_info(path)
@@ -295,10 +317,21 @@ def check_win(path):
     sys.path.insert(0, os.path.join(REPO, "tools"))
     import nxwin_imports  # noqa: E402 (the host import set of Nexvyn OS)
     have = nxwin_imports.all_names(nxwin_imports.read_list())
-    missing = [n for n in nxwin_imports.nm_undefined(path) if n not in have]
+    missing = [n for n in nxwin_imports.nm_undefined(path) if n not in have or n == VK_RESOLVER_SYM]
     if missing:
-        problems.append("%s imports what Nexvyn OS does not offer to windowed apps: %s" %
-                        (name, ", ".join(missing)))  # the whole list: a port misses dozens, one pass should name them all
+        vk_names = vk_shim_names()
+        vk_res = [n for n in missing if n == VK_RESOLVER_SYM]
+        vk_syms = [n for n in missing if n in vk_names]
+        other = [n for n in missing if n not in vk_names and n != VK_RESOLVER_SYM]
+        if vk_res:
+            problems.append("%s imports %s as a strong symbol (must be weak/optional so apps fail cleanly on an OS without Vulkan)" %
+                            (name, VK_RESOLVER_SYM))
+        if vk_syms:
+            problems.append("%s leaves generated Vulkan shim entry point(s) unresolved (%s): link libnexvyn_window.a with NEXVYN_VK_SHIMS=1 or load via volk" %
+                            (name, ", ".join(vk_syms)))
+        if other:
+            problems.append("%s imports what Nexvyn OS does not offer to windowed apps: %s" %
+                            (name, ", ".join(other)))  # the whole list: a port misses dozens, one pass should name them all
     return problems
 
 
@@ -309,30 +342,45 @@ def cmd_check_win(a):
     print("%s: ok" % a.file)
 
 
+def native_sysroot(explicit=None):
+    sysroot = explicit or os.environ.get("NEXVYN_SYSROOT")
+    default = os.path.join(REPO, "build", "native-sysroot")
+    return sysroot or (default if os.path.isdir(default) else "")
+
+
 def configure_and_build(a, d):
     bdir = os.path.join(d, "build")
     if a.clean and os.path.isdir(bdir):
         shutil.rmtree(bdir)
-    sysroot = a.sysroot or os.environ.get("NEXVYN_SYSROOT") or ""
-    if not sysroot and os.path.isdir(os.path.join(REPO, "build", "native-sysroot")):
-        sysroot = os.path.join(REPO, "build", "native-sysroot")  # the kit's own build tree
-    if getattr(a, "windowed", False) and uses_sdl(d) and not os.path.isdir(os.path.join(sysroot or "-", "windowed")):
+    sysroot = native_sysroot(a.sysroot)
+    windowed = getattr(a, "windowed", False)
+    vk_shims = windowed and os.environ.get("NEXVYN_VK_SHIMS") == "1"
+    if vk_shims and not os.path.isfile(os.path.join(sysroot, "include", "vulkan", "vulkan_core.h")):
+        die("Vulkan shims need Vulkan headers: build the vulkan-headers sysroot recipe or pass --sysroot")
+    if windowed and uses_sdl(d) and not os.path.isdir(os.path.join(sysroot or "-", "windowed")):
         die("this project includes SDL: a windowed build needs the SDL2 of the kit (<sysroot>/windowed). Build it with "
             "`python sdk/native/sysroot/build.py sdl2-nexvyn` or pass --sysroot of a kit that has it.")
     cfg = ("cmake -S %s -B %s -G Ninja -DCMAKE_TOOLCHAIN_FILE=%s -DNEXVYN_KIT=%s -DCMAKE_BUILD_TYPE=%s -DNEXVYN_ABI=%s"
            % (sh_quote(msys_path(d)), sh_quote(msys_path(bdir)),
               sh_quote(msys_path(os.path.join(KIT, "toolchain", "nexvyn-switch.cmake"))),
               sh_quote(msys_path(KIT)), "Debug" if a.debug else "Release",
-              "ON" if a.abi or getattr(a, "windowed", False) else "OFF"))
-    cfg += " -DNEXVYN_WINDOWED=" + ("ON" if getattr(a, "windowed", False) else "OFF")  # explicit: the cache keeps old values
+              "ON" if a.abi or windowed else "OFF"))
+    cfg += " -DNEXVYN_WINDOWED=" + ("ON" if windowed else "OFF")  # explicit: the cache keeps old values
+    cfg += " -DNEXVYN_VK_SHIMS=" + ("1" if vk_shims else "0")
     if sysroot:
         cfg += " -DNEXVYN_SYSROOT=" + sh_quote(msys_path(sysroot))
     # Ninja when the shell has it, plain make otherwise
     # the kit's own libraries (libnexvyn_native.a, libnexvyn_window.a) are build output: make them when they are missing
     klib = sh_quote(msys_path(os.path.join(KIT, "lib")))
-    script = ("[ -f %s/libnexvyn_native.a ] && [ -f %s/libnexvyn_window.a ] || make -s -C %s || exit 1; "
-              % (klib, klib, klib)
-              + "GEN=Ninja; command -v ninja >/dev/null 2>&1 || GEN='Unix Makefiles'; "
+    script = (f"[ -f {klib}/libnexvyn_native.a ] && [ -f {klib}/libnexvyn_window.a ] || "
+              f"make -s -C {klib} NEXVYN_VK_SHIMS=0 || exit 1; ")
+    if vk_shims:
+        script += (f"make -s -C {klib} window NEXVYN_VK_SHIMS=1 "
+                   f"NEXVYN_SYSROOT={sh_quote(msys_path(sysroot))} || exit 1; ")
+    else:
+        script += (f"[ ! -f {klib}/build/win/.vk-shims-1 ] || "
+                   f"make -s -C {klib} window NEXVYN_VK_SHIMS=0 || exit 1; ")
+    script += ("GEN=Ninja; command -v ninja >/dev/null 2>&1 || GEN='Unix Makefiles'; "
               + cfg.replace("-G Ninja", '-G "$GEN"') + " && cmake --build " + sh_quote(msys_path(bdir)) + " -j 8")
     rc = run_dkp(script)
     if rc:
@@ -519,6 +567,15 @@ def cmd_package(a):
     d = project_dir(a.dir)
     with open(os.path.join(d, "app.json"), encoding="utf-8") as manifest_file:
         authoring_manifest = json.load(manifest_file)
+    if authoring_manifest.get("vulkan") is True:
+        if not a.windowed:
+            die("the Vulkan manifest flag requires a windowed or fullscreen native module")
+        mod = os.path.join(d, "build", project_name(d) + ".nxvmod")
+        if not os.path.isfile(mod):
+            die(mod + " not found: run `build --windowed` first")
+        problems = check_win(mod)
+        if problems:
+            die("\n  ".join(problems))
     if authoring_manifest.get("type", "app") in ("app", "game"):
         from nxv_i18n import check_app_locales
         ok, locale_errors = check_app_locales(d)
@@ -571,7 +628,7 @@ def cmd_run(a):
     print("copied to %s\nstart Nexvyn yourself; nothing was launched." % dest)
 
 
-def cmd_doctor(_a):
+def cmd_doctor(a):
     ok = True
     def line(label, good, detail=""):
         nonlocal ok
@@ -584,7 +641,95 @@ def cmd_doctor(_a):
     line("kit", os.path.isfile(os.path.join(KIT, "toolchain", "nexvyn-switch.cmake")), KIT)
     has_abi = os.path.isfile(os.path.join(KIT, "include", "nexvyn", "nexvyn_native.h"))
     print("%-22s %s (optional until the ABI kit exists)" % ("Nexvyn ABI header", "ok     " if has_abi else "absent "))
+    sysroot = native_sysroot(a.sysroot)
+    vk_headers = bool(sysroot) and os.path.isfile(os.path.join(sysroot, "include", "vulkan", "vulkan_core.h"))
+    vk_sources = os.path.isfile(os.path.join(KIT, "lib", "win", "nxwin_vk.c"))
+    print("%-22s %s (optional, host build only)" % ("Vulkan SDK", "ok     " if vk_headers and vk_sources else "absent "))
     sys.exit(0 if ok else 1)
+
+
+def cmd_clang_build(args):
+    """Compile an explicit source list with the experimental AArch64 profile."""
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", args.name):
+        die("clang module name may contain only ASCII letters, digits, hyphens and underscores")
+    llvm = Path(args.llvm).resolve()
+    suffix = ".exe" if os.name == "nt" else ""
+    for tool in ("clang", "clang++", "llvm-ar", "ld.lld"):
+        if not (llvm / "bin" / (tool + suffix)).is_file():
+            die(f"LLVM tool missing: {llvm / 'bin' / (tool + suffix)}")
+    sources = [Path(name).resolve() for name in args.sources]
+    for source in sources:
+        if not source.is_file() or source.suffix not in (".c", ".cc", ".cpp"):
+            die(f"expected a C or C++ source: {source}")
+    if len({source.stem.lower() for source in sources}) != len(sources):
+        die("clang profile source basenames must be unique")
+
+    out = Path(args.output_dir).resolve()
+    script = Path(KIT) / "toolchain" / "clang" / "build_clang.py"
+    common = [sys.executable, str(script), "--llvm", str(llvm), "--std", args.std]
+    if args.sysroot:
+        sysroot = Path(args.sysroot).resolve()
+        if not (sysroot / "windowed" / "include").is_dir():
+            die("--sysroot must contain windowed/include")
+        common += ["--sysroot", str(sysroot)]
+    out.mkdir(parents=True, exist_ok=True)
+    result = out / (args.name + ".nxvmod")
+    with tempfile.TemporaryDirectory(prefix=".nxv-clang-", dir=out) as temporary:
+        builder = [*common, "--out", temporary]
+        for stage in (["window"], ["app", args.name, *map(str, sources)]):
+            if rc := subprocess.call([*builder, *stage]):
+                die("experimental Clang build failed", rc)
+        candidate = Path(temporary) / result.name
+        if not candidate.is_file():
+            die("Clang build completed without a module")
+        if problems := check_win(str(candidate)):
+            die("\n  ".join(problems))
+        candidate.replace(result)
+    print(f"built {result} (experimental Clang, checked)")
+    return 0
+
+
+def cmd_shader(args):
+    source = Path(args.source).resolve()
+    if not source.is_file():
+        die(f"shader source not found: {source}")
+    compiler = shutil.which(args.glslang) if args.glslang else (
+        shutil.which("glslang") or shutil.which("glslangValidator")
+    )
+    if not compiler:
+        die("install glslang or specify --glslang")
+    command = [compiler]
+    if args.stage:
+        command += ["-S", args.stage]
+    if args.target == "gl":
+        if args.output:
+            die("--output applies to the vulkan target only")
+        try:
+            subprocess.run([*command, str(source)], check=True)
+        except (OSError, subprocess.CalledProcessError) as error:
+            die(f"GLSL validation failed: {error}")
+        return 0
+
+    if not args.output:
+        die("the vulkan target requires --output")
+    validator = shutil.which(args.spirv_val)
+    if not validator:
+        die("install SPIRV-Tools or specify --spirv-val")
+    output = Path(args.output).resolve()
+    if output == source:
+        die("shader output must differ from its source")
+    environment = "vulkan1.3"
+    try:
+        with tempfile.TemporaryDirectory(prefix=".nxv-shader-", dir=output.parent) as temporary:
+            candidate = Path(temporary) / "shader.spv"
+            subprocess.run([*command, "-V", "--target-env", environment, str(source),
+                            "-o", str(candidate)], check=True)
+            subprocess.run([validator, "--target-env", environment, str(candidate)], check=True)
+            candidate.replace(output)
+    except (OSError, subprocess.CalledProcessError) as error:
+        die(f"SPIR-V build failed: {error}")
+    print(f"validated {output}")
+    return 0
 
 
 def main():
@@ -617,6 +762,22 @@ def main():
     p = sub.add_parser("check-win", help="check a windowed app (.nxvmod): identity, -fPIC, imports Nexvyn OS offers")
     p.add_argument("file")
     p.set_defaults(fn=cmd_check_win)
+    p = sub.add_parser("shader", help="validate GLSL or compile and validate a Vulkan SPIR-V shader")
+    p.add_argument("source")
+    p.add_argument("--target", choices=("gl", "vulkan"), required=True)
+    p.add_argument("--stage", choices=("vert", "frag", "comp", "geom", "tesc", "tese"))
+    p.add_argument("-o", "--output")
+    p.add_argument("--glslang", help="optional path to glslang")
+    p.add_argument("--spirv-val", default="spirv-val", help="optional path to SPIRV-Tools validator")
+    p.set_defaults(fn=cmd_shader)
+    p = sub.add_parser("clang-build", help="experimental AArch64 windowed build for explicit C/C++ sources")
+    p.add_argument("name")
+    p.add_argument("sources", nargs="+")
+    p.add_argument("--llvm", required=True, help="LLVM toolchain root containing bin/")
+    p.add_argument("--std", choices=("17", "20", "23"), default="17")
+    p.add_argument("--output-dir", default="build/clang")
+    p.add_argument("--sysroot", help="optional assembled native sysroot with windowed headers")
+    p.set_defaults(fn=cmd_clang_build)
     p = sub.add_parser("exports", help="EXTERN linker script of the symbols shared libraries import (Makefile apps)")
     p.add_argument("files", nargs="+")
     p.add_argument("-o", "--output", required=True)
@@ -642,6 +803,7 @@ def main():
     p.add_argument("--elf", action="append", help="debug ELF of a module (<name>.nxvmod.debug); default: the project's build folder")
     p.set_defaults(fn=cmd_symbolize)
     p = sub.add_parser("doctor", help="check the toolchain")
+    p.add_argument("--sysroot", help="sysroot to inspect for optional SDK headers")
     p.set_defaults(fn=cmd_doctor)
     a = ap.parse_args()
     if hasattr(a, "exclusive"):

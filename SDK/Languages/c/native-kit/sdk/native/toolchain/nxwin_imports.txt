@@ -65,6 +65,8 @@ nxn_lib_version
 nxn_log
 nxn_log_write
 nxn_mem_guard
+nxn_memory_budget_get
+nxn_memory_budget_request
 nxn_menu_clear
 nxn_menu_set
 nxn_nav_agent_add
@@ -173,6 +175,7 @@ nxn_ui_tokens_get
 nxn_window_set_mode
 nxn_window_set_modified
 nxn_window_set_title
+nxn_thread_hint_host_request
 
 ## host
 eglGetProcAddress
@@ -1792,3 +1795,7 @@ socketInitialize
 
 ## rt
 __tls_get_addr
+
+## optional
+# Weak import, published only by the Vulkan build.
+nxn_vk_proc

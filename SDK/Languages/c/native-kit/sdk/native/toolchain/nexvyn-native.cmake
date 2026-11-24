@@ -43,6 +43,7 @@ if(NEXVYN_LTO)
 endif()
 
 option(NEXVYN_WINDOWED "Build nexvyn_add_nro() targets as windowed apps (.nxvmod) instead of .nro" OFF)
+option(NEXVYN_VK_SHIMS "Use the kit Vulkan link-time shims in Vulkan-aware projects" OFF)
 
 # Directory of this file, captured at include time: inside a function CMAKE_CURRENT_LIST_DIR is the caller's folder.
 set(_NEXVYN_NATIVE_TOOLCHAIN_DIR "${CMAKE_CURRENT_LIST_DIR}")

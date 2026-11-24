@@ -1,4 +1,4 @@
-# Gemini & AI Agent End-to-End Workflow (Nexvyn OS 1.3.28 / SDK 1.15 & Native 1.2)
+# Gemini & AI Agent End-to-End Workflow (Nexvyn OS 1.4.0 / SDK 1.16 & Native 1.2)
 
 This document is the complete operational specification for **Gemini** and any AI coding assistant building, porting, validating, or publishing apps, games, and system updates for **Nexvyn OS**. Follow every section strictly so generated code runs on real hardware without freezes, checker errors, or Store rejections.
 
@@ -25,7 +25,7 @@ Every `.nxvapp` bundle requires `app.json` at its root.
 |---|---|---|---|
 | `"runtime"` | `"lua"` / `"js"` / `"python"` / `"python3"` | `"native"` | Always declare `"runtime"` explicitly. Do not omit it even for non-Lua `main.js` / `main.py`. |
 | `"minSdk"` | `"1.0"` (Lua), `"1.1"` (JS), `"1.3"` (Py), `"1.6"` (Py3), `"1.12"` (NXUI/tokens) | `"1.10"` (or `"1.13"` with `loadingHint`) | Use the lowest SDK version that contains all APIs your app calls. |
-| `"targetSdk"` | **`"1.15"`** (Python 3.12: `"runtime": "python3"`, or `"python"` with `"targetSdk": "2.0"`) | **`"1.15"`** | Current OS SDK is `1.15`. |
+| `"targetSdk"` | **`"1.16"`** (Python 3.12: `"runtime": "python3"`, or `"python"` with `"targetSdk": "2.0"`) | **`"1.16"`** | Current OS SDK is `1.16`. |
 | `"minNative"` | — | **`"1.2"`** | Current Native ABI runtime is `1.2` (`nxnative::kVersion = "1.2"`). Never set `"minNative": "2.0"` — the loader rejects it. |
 | `"targetNative"` | — | **`"1.2"`** | Use `"1.2"` for existing SDL2/Native 1.2 apps (`2.0` enables N2-only coordinate/router gates). |
 | `"loadingHint"` | optional `bool` | `true` for large ports | Extends initial loading watchdog from `5 s` to `120 s` (SDK `1.13`). |
@@ -66,6 +66,7 @@ When porting C/C++ games or engines (RTS, CRPG, FPS, arcade, emulators), use the
 - **Header-Only Input Helper (`<nexvyn/nxn_port_input.h>`):**
   - Supports profiles `NXN_PI_PROFILE_GAMEPAD`, `NXN_PI_PROFILE_RTS`, `NXN_PI_PROFILE_CRPG`, `NXN_PI_PROFILE_FPS`.
   - Pinch modes: `NXN_PI_PINCH_WHEEL` (default for RTS like Red Alert 2 / OpenTTD), `NXN_PI_PINCH_CTRL_PM` (`Ctrl + =/-`), or `NXN_PI_PINCH_EVENT_ONLY`.
+  - Built-in multi-touch gestures: pinch-to-zoom, two-finger pan, two-finger rotate (`NXN_PI_EV_ROTATE` with `angle_delta` and `angle_total` in radians, positive clockwise, configurable `rotate_deadzone`), two-finger tap right-click (`NXN_PI_EV_TWO_FINGER_TAP`), single-finger double-tap (`NXN_PI_EV_DOUBLE_TAP`, configurable `double_tap_ms` default 300 ms and `double_tap_dist` default 20 px), and long-press right-click.
   - Note for ABI checks: `nxn_port_input.h` is header-only (`static inline`) so the frozen ABI check skips it.
 
 ---

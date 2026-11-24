@@ -266,6 +266,10 @@ nxn_result nxn_caps_get(nxn_caps* out) {
     c.gl_max_minor = 3;
     c.gles_max_major = 3;
     c.gles_max_minor = 2;
+    /* Build-time graphics API availability only; never start a driver here. NXN_CAP_VULKAN stays unset. */
+    c.gfx_apis = NXN_GFX_API_GL_CORE | NXN_GFX_API_GLES;
+    c.vk_max_major = 0;
+    c.vk_max_minor = 0;
     size_t n = out->size < sizeof c ? out->size : sizeof c;
     memcpy(out, &c, n);
     return NXN_OK;

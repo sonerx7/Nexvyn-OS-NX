@@ -20,6 +20,8 @@ typedef struct NEXVYN_VideoData {
     SDL_Window *window;
     NEXVYN_GLContext *gl;
     int focused;
+    /* surface extent found at Vulkan surface creation, sent as a resize from PumpEvents (0: none) */
+    int vk_pending_w, vk_pending_h;
     int touch_added;
     uint32_t touch_ids[16];
     int touch_count;

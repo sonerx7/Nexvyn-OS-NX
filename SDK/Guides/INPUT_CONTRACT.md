@@ -113,8 +113,9 @@ selection and retains keyboard/gamepad focus. This policy does not discard
 admitted native menu commands from their separate host queue.
 
 Scripts receive normal UI input and gesture events; `pinch` provides `e.scale`, and `rotate`
-provides `e.angle`. Verify the exact runtime event shape in the reference/InputLab. Do not invent
-`input.touches()` or a manifest `multitouch` flag because another platform uses those names.
+provides `e.angle`. From SDK 1.16 (Lua, JavaScript, Python `"python3"`; requires `"minSdk": "1.16"`), touch
+and gesture events carry `e.touches`, and `input.touches()` returns `{id, x, y, phase}` per finger.
+Do not invent a manifest `multitouch` flag because another platform uses that name (it does not exist).
 
 ## Native simultaneous contacts
 

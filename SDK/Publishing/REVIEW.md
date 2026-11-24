@@ -28,7 +28,7 @@ items the rules do not allow at all).
 
 - [ ] `id` is unique, reverse domain, and unchanged for an update
 - [ ] `version` is higher than the published one for an update; the README's versions table has the new line
-- [ ] `minSdk` matches the newest SDK feature used; new items set `targetSdk` ("1.8")
+- [ ] `minSdk` matches the newest SDK feature used; new items set `targetSdk` ("1.16")
 - [ ] The folder is in the right place: `Store/Apps/<category>/`, `Store/Games/<genre>/`, `Store/Themes/`, `Store/Fonts/`
 
 ## 3. Safety and privacy

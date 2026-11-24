@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Spike: builds Nexvyn windowed apps (.nxvmod) with clang/LLVM instead of devkitA64's gcc.
 
-  python sdk/native/toolchain/clang/build_clang.py [--llvm DIR] [--out DIR] window | app NAME SRC... | all
+  python sdk/native/toolchain/clang/build_clang.py [--llvm DIR] [--out DIR] [--std 17|20|23] window | app NAME SRC... | all
 
 LLVM comes from build/llvm/llvm20 (official release, never installed system-wide). The sysroot is devkitPro's: newlib
 headers/libs, libnx, portlibs (glad), libstdc++ / libsupc++ / libgcc / crtend.o of devkitA64's pic multilib. Linking uses
 lld (ld.lld). Same flags as nexvyn_add_windowed() except what clang does not have (see the report, qa/reports/2026-11-09_clang_spike.md):
-no -mtp=soft (invalid for aarch64), no -mtls-dialect (rejected for aarch64-none-elf; clang's default is traditional TLS).
+Clang 20 rejects -mtp=soft and -mtls-dialect=trad for this target, and emits TLSDESC for
+thread_local. The native module loader currently rejects that relocation model.
 """
 import argparse
 import os
@@ -16,7 +17,9 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 KIT = os.path.abspath(os.path.join(HERE, "..", ".."))
 REPO = os.path.abspath(os.path.join(KIT, "..", ".."))
-DKP = os.environ.get("DEVKITPRO_WIN") or "C:/devkitPro"
+DKP = (os.environ.get("DEVKITPRO_WIN") or "C:/devkitPro") if os.name == "nt" else (
+    os.environ.get("DEVKITPRO") or "/opt/devkitpro"
+)
 A64 = DKP + "/devkitA64"
 NEWLIB = A64 + "/aarch64-none-elf"
 GCCLIB = A64 + "/lib/gcc/aarch64-none-elf/15.2.0"
@@ -28,7 +31,7 @@ COMMON = ARCH + ["-fPIC", "-ftls-model=global-dynamic", "-ffunction-sections", "
                  "-isystem", NEWLIB + "/include", "-isystem", DKP + "/libnx/include",
                  "-isystem", DKP + "/portlibs/switch/include"]
 CFLAGS = ["-std=gnu11", "-Wall", "-Wextra", "-Wno-unused-parameter"]
-CXXFLAGS = ["-std=gnu++17", "-fexceptions", "-frtti", "-nostdinc++", "-isystem", CXXINC,
+CXXFLAGS = ["-fexceptions", "-frtti", "-nostdinc++", "-isystem", CXXINC,
             "-isystem", CXXINC + "/aarch64-none-elf/pic", "-isystem", CXXINC + "/backward"]
 
 
@@ -43,13 +46,15 @@ def tool(llvm, name):
     return os.path.join(llvm, "bin", name + (".exe" if os.name == "nt" else ""))
 
 
-def compile_one(llvm, src, obj, defs=()):
+def compile_one(llvm, src, obj, defs=(), std=None, includes=()):
     cxx = src.endswith((".cpp", ".cc"))
     # the C++ include dirs come first: libstdc++ headers #include_next the newlib ones
-    cmd = [tool(llvm, "clang++" if cxx else "clang")] + (CXXFLAGS + COMMON if cxx else COMMON + CFLAGS) + ["-D" + d for d in defs] + ["-c", src, "-o", obj]
-    cmd[1:1] = os.environ.get("NXN_CFLAGS", "").split()  # extra flags, e.g. NXN_CFLAGS=-flto=thin
-    if "STL_STD20" in defs:
-        cmd = [("-std=gnu++20" if c == "-std=gnu++17" else c) for c in cmd]
+    flags = COMMON + CFLAGS
+    if cxx:
+        mode = std or ("20" if "STL_STD20" in defs else "17")
+        flags = ["-std=gnu++" + mode, *CXXFLAGS, *COMMON]
+    cmd = [tool(llvm, "clang++" if cxx else "clang"), *os.environ.get("NXN_CFLAGS", "").split(),
+           *("-I" + path for path in includes), *flags, *("-D" + name for name in defs), "-c", src, "-o", obj]
     run(cmd)
 
 
@@ -60,6 +65,9 @@ def build_window(llvm, out):
         o = "%s/win/%s.o" % (out, f)
         compile_one(llvm, "%s/lib/win/%s.c" % (KIT, f), o)
         objs.append(o)
+    hint = out + "/win/nxn_thread_hint.o"
+    compile_one(llvm, KIT + "/lib/src/nxn_thread_hint.c", hint)
+    objs.append(hint)
     lib = out + "/libnexvyn_window.a"
     if os.path.exists(lib):
         os.remove(lib)
@@ -76,12 +84,12 @@ def link_module(llvm, objs, out_file, window_lib_dir):
     run(cmd)
 
 
-def build_app(llvm, out, name, srcs, defs=()):
+def build_app(llvm, out, name, srcs, defs=(), std=None, includes=()):
     os.makedirs(out + "/" + name, exist_ok=True)
     objs = []
     for s in srcs:
         o = "%s/%s/%s.o" % (out, name, os.path.splitext(os.path.basename(s))[0])
-        compile_one(llvm, s, o, defs)
+        compile_one(llvm, s, o, defs, std=std, includes=includes)
         objs.append(o)
     mod = "%s/%s.nxvmod" % (out, name)
     link_module(llvm, objs, mod, out)
@@ -93,19 +101,29 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--llvm", default=os.path.join(REPO, "build", "llvm", "llvm20"))
     ap.add_argument("--out", default=os.path.join(REPO, "build", "clangspike"))
+    ap.add_argument("--std", choices=("17", "20", "23"))
+    ap.add_argument("--sysroot", help="optional assembled native sysroot with windowed headers")
     ap.add_argument("what", choices=["window", "app", "all"])
     ap.add_argument("rest", nargs="*")
     a = ap.parse_args()
+    includes = ()
+    if a.sysroot:
+        include = os.path.join(os.path.abspath(a.sysroot), "windowed", "include")
+        if not os.path.isdir(include):
+            ap.error("--sysroot must contain windowed/include")
+        includes = (include,)
     if a.what in ("window", "all"):
         build_window(a.llvm, a.out)
     if a.what == "app":
+        if len(a.rest) < 2:
+            ap.error("app requires a name and at least one source file")
         build_app(a.llvm, a.out, a.rest[0], [os.path.abspath(s) for s in a.rest[1:]],
-                  os.environ.get("NXN_DEFS", "").split())  # e.g. NXN_DEFS=STL_STD20 (-DSTL_STD20, and -std=gnu++20)
+                  os.environ.get("NXN_DEFS", "").split(), std=a.std, includes=includes)
     if a.what == "all":
         build_app(a.llvm, a.out, "hello_c", [KIT + "/examples/hello_gl/source/main.c"])
-        build_app(a.llvm, a.out, "cxx_probe", [HERE + "/tests/cxx_probe.cpp"])
-        build_app(a.llvm, a.out, "cxx_probe_notls", [HERE + "/tests/cxx_probe.cpp"], ["PROBE_NO_TLS"])
-        build_app(a.llvm, a.out, "stl_app", [HERE + "/tests/stl_app.cpp", HERE + "/tests/stl_heavy.cpp"])
+        build_app(a.llvm, a.out, "cxx_probe", [HERE + "/tests/cxx_probe.cpp"], std=a.std)
+        build_app(a.llvm, a.out, "cxx_probe_notls", [HERE + "/tests/cxx_probe.cpp"], ["PROBE_NO_TLS"], std=a.std)
+        build_app(a.llvm, a.out, "stl_app", [HERE + "/tests/stl_app.cpp", HERE + "/tests/stl_heavy.cpp"], std=a.std)
 
 
 if __name__ == "__main__":

@@ -33,6 +33,10 @@
 #ifdef HAVE_GLIB_2_0
 #include <glib.h>
 #endif
+#ifdef HAVE_CURL
+#include <curl/curl.h>
+#include <mbedtls/sha256.h>
+#endif
 
 static FILE *g_out;
 static int g_pass, g_fail;
@@ -322,6 +326,38 @@ static void test_glib(void)
 }
 #endif
 
+#ifdef HAVE_CURL
+static void test_curl(void)
+{
+    char msg[160];
+    int curl_ok = 0;
+    const char *cver = curl_version();
+    CURL *c = curl_easy_init();
+    if (c) {
+        curl_ok = 1;
+        curl_easy_cleanup(c);
+    }
+
+    // SHA-256("nexvyn") = fdd84c505316f0d53de4f92113e90f920a176f44271b9305efc3f4c03bad3910
+    static const unsigned char expected[32] = {
+        0xfd, 0xd8, 0x4c, 0x50, 0x53, 0x16, 0xf0, 0xd5,
+        0x3d, 0xe4, 0xf9, 0x21, 0x13, 0xe9, 0x0f, 0x92,
+        0x0a, 0x17, 0x6f, 0x44, 0x27, 0x1b, 0x93, 0x05,
+        0xef, 0xc3, 0xf4, 0xc0, 0x3b, 0xad, 0x39, 0x10
+    };
+    unsigned char hash[32];
+    int sha_res = mbedtls_sha256_ret((const unsigned char *)"nexvyn", 6, hash, 0);
+    int sha_ok = (sha_res == 0 && memcmp(hash, expected, 32) == 0);
+
+    int ok = curl_ok && sha_ok;
+    snprintf(msg, sizeof msg, "curl %s init=%s mbedtls sha256=%s",
+             cver ? cver : "unknown",
+             curl_ok ? "ok" : "fail",
+             sha_ok ? "ok" : "fail");
+    report("curl", ok, msg);
+}
+#endif
+
 int main(int argc, char **argv)
 {
     (void)argc;
@@ -369,6 +405,11 @@ int main(int argc, char **argv)
     test_glib();
 #else
     skip("glib");
+#endif
+#ifdef HAVE_CURL
+    test_curl();
+#else
+    skip("curl");
 #endif
 #ifdef HAVE_OPENAL
     test_openal(); // last: it brings up SDL audio

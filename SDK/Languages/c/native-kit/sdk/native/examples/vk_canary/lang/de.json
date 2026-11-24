@@ -1,0 +1,9 @@
+{
+  "canary": {
+    "title": "Vulkan-Kanarienvogel",
+    "unavailable": "Vulkan ist auf diesem System nicht verfügbar",
+    "init_failed": "Vulkan-Initialisierung fehlgeschlagen",
+    "device_lost": "Vulkan-Gerät verloren",
+    "completed": "Vulkan-Test abgeschlossen"
+  }
+}

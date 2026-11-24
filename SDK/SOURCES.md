@@ -4,7 +4,7 @@ This folder is the public app-developer kit for Nexvyn OS. It contains applicati
 helpers, compatibility libraries, templates, examples, fonts and tools. The system implementation,
 internal test infrastructure and unreleased architecture plans are not included.
 
-- General callable SDK: **1.15**; native SDK: **1.2**; frozen native ABI: **v1**.
+- General callable SDK: **1.16**; native SDK: **1.2**; frozen native ABI: **v1**.
 - Language/reference declarations: `Reference/SDK.md` and `Reference/c/include`.
 - Native application-side sources: `Languages/c/native-kit/sdk/native`.
 - Native compiler/toolchain requirements: the kit's `tools/toolchain.json` and native guides.

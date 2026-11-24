@@ -22,7 +22,7 @@ Maps asynchronous HTTPS requests, WebSockets, OAuth browser sign-in, web image c
 - Declare `"network"` in `app.json` `permissions` for both script `net.*` and native BSD sockets; without it, script callbacks get `"permission denied: network"` and native sockets fail with `EACCES`.
 - Always check `sys.online()` (or `nxn_power.online`) before network requests and present a friendly offline message.
 - Never call `net.*` inside `app.draw`.
-- Poll `net.wsPoll(id)` every frame (unread backlog > 16 MB closes the socket; max 4 sockets, 4 MB messages, 64 concurrent `net.request` calls).
+- Poll `net.wsPoll(id)` every frame (unread backlog > 16 MB closes the socket; max 4 sockets per app (8 system-wide), 4 MB messages, 64 concurrent `net.request` calls).
 - Never embed OAuth client secrets in an app bundle; use `net.oauth` with `pkce = true`.
 
 ## Pitfalls

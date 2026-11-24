@@ -1,10 +1,10 @@
-# Nexvyn OS N2 (SDK 1.15) — AI & LLM Master Context Index (SDK 1.15 & Native SDK 1.2)
+# Nexvyn OS N2 (SDK 1.16) — AI & LLM Master Context Index (SDK 1.16 & Native SDK 1.2)
 
 > Give this file (`SDK/AI/llms.txt`) together with `SDK/AI/system-prompt.md` to any AI coding assistant or LLM.
 > Everything documented here and in `SDK/Reference/SDK.md` exists in the Nexvyn OS runtime. Do NOT invent browser, Node.js, LÖVE, Pygame, or POSIX calls that are not in the contract.
 
 ## 1. Platform Overview
-- **System:** Nexvyn OS 1.3.28 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
+- **System:** Nexvyn OS 1.4.0 (N2 Architecture), a windowed desktop operating environment running as Switch homebrew (`NexvynOS.nro`).
 - **Package Format:** `.nxvapp` v2 (folder `<Name>.nxvapp/` or deterministic zip with `app.json`, `icon.png` 256x256, `lang/en.json`, main source/binary, and `manifest.sha256`).
 - **Resolution & Modes:** Handheld 1280x720 and Docked 1920x1080; resizable windows (`gfx.size()` returns current `w, h`) and fullscreen mode; Light & Dark themes (`theme.*` and `nxui.tokens()`).
 - **Input Modes:** Multi-touch (`mousedown`/`mousemove`/`mouseup`, two-finger `pinch`/`rotate`/`scroll`), Controller Cursor (left stick moves pointer, A clicks, X right-clicks, right stick scrolls), Direct Gamepad (`"gamepad": true`, `input.down`/`pressed`/`stick`/`action`), Spatial UI Focus (`nxui.moveFocus`, `nxui.activateFocused`), USB Keyboard & Mouse, and On-Screen Keyboard (OSK).
@@ -36,28 +36,28 @@ Available in Lua, JavaScript, Python (`nxui.*`) and Native C/C++ (`nxn_nxui_*` i
 - **Lifecycle (inside `draw(w, h)`):**
   - `nxui.begin(w, h)` -> starts layout pass
   - `nxui.endFrame()` -> computes Flexbox-like layout, resolves hit-testing & controller focus, and renders
-  - `nxui.tokens()` -> returns design tokens (`space1`..`space6`, `radiusSm`/`Md`/`Lg`, `fontSm`/`Body`/`Title`/`Hero`, `scale`, `dark`, `highContrast`, `reducedMotion`, RGBA colors)
+  - `nxui.tokens()` -> returns design tokens: RGBA integer colors `accent`, `windowBg`, `surface`, `border`, `text`, `textSecondary`, `focusRing`, `error`, `success`; numbers `controlRegular`, `radiusSmall`, `radiusMedium`, `space2`, `space4`, `space8` (Lua also `controlCompact`, `controlLarge`, `radiusLarge`, `space1`, `space3`, `space6`; JS/Python have no `space3`)
 - **Layout Containers:**
   - `nxui.row(id[, gap])` ... `nxui.rowEnd()`
   - `nxui.column(id[, gap])` ... `nxui.columnEnd()`
   - `nxui.card(id)` ... `nxui.cardEnd()`
   - `nxui.scrollBegin(id, w, h[, scrollY])` -> `newScrollY` ... `nxui.scrollEnd()`
-  - `nxui.canvasBegin(id, w, h)` -> `x, y, w, h` (JS/Python: `{x, y, w, h}`) ... `nxui.canvasEnd()` (draw custom `gfx.*` or `g3d.*` inside!)
+  - `nxui.canvasBegin(id, w, h)` (returns nothing) ... `nxui.canvasEnd()` (draw custom `gfx.*` or `g3d.*` inside!)
   - `nxui.spacer([size])`
 - **Semantic Widgets:**
-  - `nxui.label(id, text[, role])` (`"body"`, `"title"`, `"hero"`, `"muted"`, `"small"`)
+  - `nxui.label(id, text[, role])` (`"body"` (default), `"title"`, `"headline"`, `"largeTitle"`, `"caption"`)
   - `nxui.badge(id, text[, rgbaColor])`
-  - `nxui.button(id, label[, variant])` -> `clicked` (`"primary"`, `"secondary"`, `"ghost"`, `"danger"`)
+  - `nxui.button(id, label[, variant])` -> `clicked` (`"default"` (default), `"primary"`, `"destructive"`, `"plain"`)
   - `nxui.toggle(id, checked)` -> `newChecked` (Lua: `newChecked, changed`)
   - `nxui.slider(id, value, min, max)` -> `newValue` (Lua: `newValue, changed`)
   - `nxui.textfield(id, text[, placeholder])` -> `newText` (Lua: `newText, changed`)
-  - `nxui.dropdown(id, options, selected)` -> `newSelected` (Lua 1-based, JS/Py/C 0-based)
-  - `nxui.tabs(id, labels, active)` -> `newActive` (Lua 1-based, JS/Py/C 0-based)
-  - `nxui.table(id, columns, rows, selectedRow)` -> `newRow, clicked` (JS/Py: `{selected, clicked}`)
-  - `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` -> `newRow, clicked` (JS/Py: `{selected, clicked}`)
-  - `nxui.dialog(id, title, message, confirmLabel[, cancelLabel])` -> `0` (open), `1` (confirmed), `2` (cancelled)
+  - `nxui.dropdown(id, options, selected)` -> `newSelected` (0-based in every language; Lua: `newSelected, changed`)
+  - `nxui.tabs(id, labels, active)` -> `newActive` (0-based in every language; Lua: `newActive, changed`)
+  - `nxui.table(id, columns, rows, selectedRow)` -> `newRow` (0-based, `-1` = none; `rows` is a list of row lists; Lua: `newRow, changed`)
+  - `nxui.virtuallist(id, items, rowHeight, viewHeight, selectedRow)` -> `newRow` (0-based, `-1` = none; Lua: `newRow, changed`)
+  - `nxui.dialog(id, title, message, confirmLabel[, cancelLabel])` -> boolean `confirmed`
 - **Controller Spatial Focus:**
-  - `nxui.moveFocus("up" | "down" | "left" | "right")`
+  - `nxui.moveFocus(dir)` (integer `0` up, `1` down, `2` left, `3` right)
   - `nxui.activateFocused()`
 
 ## 4. Core SDK Modules Summary (Lua / JS / Python)
