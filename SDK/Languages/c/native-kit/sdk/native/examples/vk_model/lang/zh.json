@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Vulkan 模型",
+    "unavailable": "此系统不支持 Vulkan，该应用需要 Vulkan。",
+    "init_failed": "Vulkan 初始化失败",
+    "device_lost": "Vulkan 设备丢失",
+    "model_missing": "此软件包中的模型文件缺失或已损坏",
+    "tris_per_copy": "每个副本的三角形",
+    "tris_total": "绘制的三角形",
+    "draw_calls": "绘制调用",
+    "overlay": "叠加层",
+    "frame_time": "帧时间",
+    "resolution": "分辨率",
+    "driver": "驱动程序"
+  }
+}

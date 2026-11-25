@@ -3,7 +3,7 @@
 > Public app-developer kit for Nexvyn OS: scripts (Lua, JavaScript, Python, C script) and native C/C++ modules, with
 > templates, headers, tools and guides. Current: SDK 1.16, Native SDK 1.2, native ABI v1 (`VERSION.json`). Paths are
 > relative to the `SDK/` folder. Start with `AI_GUIDE.md`. Do not invent APIs: a name that is not in
-> `Reference/SDK.md` or a header does not exist. Vulkan for native apps is opt-in since 1.4.0 (setting `native.vulkan`):
+> `Reference/SDK.md` or a header does not exist. Vulkan for native apps is on by default since 1.4.0 (when the driver check at start passes):
 > check `NXN_CAP_VULKAN` at run time and fall back to GL. Documentation is English; apps must ship eight locales
 > (en, tr, de, es, fr, ja, ko, zh).
 
@@ -172,8 +172,8 @@
 - [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_port_input.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_port_input.h): universal port input: gamepad, multi-touch gestures, mouse, keyboard
 - [Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_native.h](Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_native.h): ngfx_* baked 3D scene renderer
 - [Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_backend.h](Languages/c/native-kit/sdk/native/include/nexvyn/nexgfx_backend.h): host table behind ngfx_*
-- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_vk.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_vk.h): Vulkan availability helper (preview)
-- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_vk.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_vk.h): Dear ImGui Vulkan backend glue (opt-in, preview)
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_vk.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_vk.h): Vulkan availability helper
+- [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_vk.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_imgui_vk.h): Dear ImGui Vulkan backend glue (opt-in at build time)
 - [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_provider.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_provider.h): runtime provider ABI v1
 - [Languages/c/native-kit/sdk/native/include/nexvyn/nxn_app_api.h](Languages/c/native-kit/sdk/native/include/nexvyn/nxn_app_api.h): generated app API table (do not edit)
 - [Languages/c/native-kit/sdk/native/toolchain/nxn_abi_v1.json](Languages/c/native-kit/sdk/native/toolchain/nxn_abi_v1.json): the frozen ABI v1 surface (add-only)

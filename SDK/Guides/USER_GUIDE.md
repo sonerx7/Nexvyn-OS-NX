@@ -594,6 +594,15 @@ downloads, forms and cookies.
 
 - **JavaScript:** pages run JavaScript (DOM, events, fetch/XHR, localStorage). Every page has a time and memory limit.
   It can be turned off per site: **JavaScript on This Site** in the menu.
+- **Touch:** drag to scroll (a mostly vertical drag never moves the page sideways); pinch with two fingers to zoom;
+  pull the top of a page down and let go to reload; swipe in from the left (right) edge of the page to go back
+  (forward). The outermost 12 px of the screen stay the system's edge gestures.
+- **Controller:** right stick scrolls; the D-pad jumps between links with a focus ring (and scrolls where there is no
+  link); A opens the focused link, X opens the link menu, Y opens the keyboard for a text field; B closes a panel or
+  stops loading, then goes back. L/R, ZL/ZR, + and - keep their system functions. D-pad, arrow keys, Page Down and
+  Space scroll smoothly. The list is also in Browser settings, **Controls**.
+- **Downloads:** every finished download gets its SHA-256 (copy button in the downloads list). When the page the file
+  came from lists the same SHA-256, the list shows **Checksum matches the page**.
 - **Passwords:** login details are saved and filled in automatically. The password store is kept encrypted on the
   device; it can be protected with an optional PIN. It is managed from the **Passwords…** menu.
 - **Limits:** very large web apps (webmail, video sites, maps) need a full browser. A bar on those sites offers a lighter version where one exists;
@@ -613,7 +622,7 @@ servers. Answers stream in; chats are saved; Markdown is rendered.
 
 | App | What it does |
 |---|---|
-| **Video Player** | MP4, MKV, WebM, AVI, TS and others; HTTPS and HLS streams; resume where you left off; full screen. |
+| **Video Player** | MP4, MKV, WebM, AVI, TS and others; HTTPS and HLS streams; resume where you left off; full screen; on the touch screen a double tap on the left / right side seeks 10 s. |
 | **Tube** | Searching and watching YouTube, Shorts, comments, optional sign-in. See below. |
 | **Radio** | Internet radio by country and genre. See below. |
 | **Live TV** | IPTV with M3U playlists; ready-made iptv-org lists. While watching, the channel list opens at the left (list button, L, D-pad left, or a swipe from the left edge of the picture); in full screen it opens over the picture and hides itself. Channels and streams belong to whoever provides the list. |

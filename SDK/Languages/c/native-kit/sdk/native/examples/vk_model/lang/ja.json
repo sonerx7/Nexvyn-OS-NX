@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Vulkan モデル",
+    "unavailable": "このシステムでは Vulkan を利用できません。このアプリには Vulkan が必要です。",
+    "init_failed": "Vulkan の初期化に失敗しました",
+    "device_lost": "Vulkan デバイスが失われました",
+    "model_missing": "このパッケージのモデルファイルが見つからないか破損しています",
+    "tris_per_copy": "コピーあたりの三角形",
+    "tris_total": "描画した三角形",
+    "draw_calls": "描画コール",
+    "overlay": "オーバーレイ",
+    "frame_time": "フレーム時間",
+    "resolution": "解像度",
+    "driver": "ドライバー"
+  }
+}

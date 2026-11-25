@@ -1,6 +1,6 @@
 # Release notes / Changelog
 
-## [1.4.0] - 2026-11-24
+## [1.4.0] - 2026-11-25
 
 ### SDK 1.16, native Vulkan, performance panel and stability
 
@@ -13,7 +13,20 @@
 - The browser limits WebSocket queues, very large images and WebAssembly memory, so a hostile page cannot exhaust memory; WebRTC now verifies the peer certificate fingerprint.
 - Window drags no longer get stuck when the overview opens or a window closes; a hung window no longer forces a full redraw every frame.
 - Ports: two-finger rotate and double tap in the port input helper; `"fullscreenPause": true` in app.json frees the compositor's memory while the app runs fullscreen; Vulkan pipeline caches are saved between launches.
-- Vulkan for native apps and ports (opt-in, `native.vulkan`): verified on the console with the canary and the GPU load test.
+- Vulkan for native apps and ports, on by default (verified on the console with the canary and the GPU load test): available when the driver check at start passes; apps check `NXN_CAP_VULKAN` and fall back to GL.
+- The first Japanese, Chinese or Korean title in an app no longer freezes it for about a second: the system probes those fonts in the background after the desktop appears (seen in the music edition of the video client).
+- Music and audio-only video playback no longer keep the whole system drawing at full frame rate: the progress bar still moves, and the console can save power while you listen.
+- Video Player: on the touch screen, a double tap on the left or right side jumps 10 seconds back or forward.
+- The clock's alarm service no longer checks the SD card on the main thread, so a slow card cannot make the desktop hitch.
+- Touch scrolling locks to the drag direction: a mostly vertical drag no longer moves a slightly wider page sideways (all apps).
+- Browser: controller B goes back once no panel is open; the Browser settings list the touch, controller and keyboard controls in every language.
+- Browser: pull the top of a page down with one finger and let go to reload it.
+- Browser: swipe in from the left or right edge of a page to go back or forward; an arrow shows when letting go will navigate.
+- Browser: D-pad, arrow keys, Page Down and Space scroll pages smoothly instead of jumping; the window idles again once the scroll ends.
+- Browser: finished downloads show their SHA-256 (with a copy button) and "Checksum matches the page" when the page they came from lists the same SHA-256.
+- Browser: pages wait for their style sheets (up to 1 s) instead of appearing unstyled and then jumping; images with width and height attributes keep their space before they arrive.
+- Browser: hidden and 0x0 frames get a layout box and load, and messages between frames are trusted, as in other browsers (steps toward verification widgets such as Cloudflare Turnstile, which still do not appear).
+- Browser: `new URL(path, "x:/")` resolves as in other browsers, so sites built with webpack (for example MDN) load their custom elements.
 
 ## [1.3.28-beta.2] - 2026-11-19
 

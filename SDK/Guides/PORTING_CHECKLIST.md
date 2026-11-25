@@ -9,7 +9,7 @@ Do the items in order. Report only what you really tested.
 - [ ] The source is allowed: a licence that lets you distribute it, no game data or firmware in the package, sources pinned
       to a tag and commit (`nxv_native new <name> --template port`).
 - [ ] Choose the path: SDL2 (best for most ports; the kit ships an SDL2 for windows), GL through `nxn_display`, NexGFX native,
-      or Vulkan (opt-in, section 6). deko3d is not a path for existing GL ports.
+      or Vulkan (on by default when available, section 6). deko3d is not a path for existing GL ports.
 - [ ] Not possible in a window: `fork`, `exec`, `system`, `popen`, a second SDL window, Linux `.so` files, POSIX `PROT_EXEC`
       (use `nxn_jit_*` for code memory, see section 5).
 
@@ -63,7 +63,7 @@ Do the items in order. Report only what you really tested.
 
 - [ ] GL (default): the display is OpenGL core 4.x or ES 3.2. Desktop GL ports usually need small changes; the kit links every
       ES 3.2 and OpenGL core 1.0 - 4.3 entry point. Ask `glGetString(GL_VERSION)` and the extensions as on a PC.
-- [ ] Vulkan is opt-in (setting `native.vulkan` = 1 on an OS build with Vulkan, then `NXN_CAP_VULKAN`). Verified on the
+- [ ] Vulkan is on by default on an OS build with Vulkan, but only when the driver check at start passes: check `NXN_CAP_VULKAN`. Verified on the
       console with the canary and a GPU load test; ports that use it are not confirmed yet, so do not promise them.
       Check `nxn_vk_available()` and keep GL as the fallback.
 - [ ] Swapchain rules: `R8G8B8A8_UNORM` + sRGB non-linear, FIFO, 2 or 3 images, usage only color attachment, transfer

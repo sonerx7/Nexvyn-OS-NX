@@ -144,7 +144,7 @@ What the script does:
 GUI. Use the fixed id for Nexvyn OS (D: is the drive letter of the SD card):
 
 ```
-nton build "D:\switch\NexvynOS.nro" --id 054E5856594E0000 --name Nexvyn OS --publisher sonerx7 --version 0.2.0 --icon docs\forwarder\icon.jpg
+nton build "D:\switch\NexvynOS.nro" --id 054E5856594E0000 --name Nexvyn OS --publisher sonerx7 --version <APP_VERSION> --icon docs\forwarder\icon.jpg
 ```
 
 If the `.nro` is on the PC, add `--sdmc /switch/NexvynOS.nro`. The key warning above applies equally to the

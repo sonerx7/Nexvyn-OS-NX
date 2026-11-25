@@ -6,7 +6,7 @@ Nexvyn OS is distributed under the **GPL-3.0-or-later** license (see [LICENSE](L
 |---|---|---|
 | libnx (switchbrew) | ISC | Switch system services |
 | Mesa 20.1 (devkitPro `switch-mesa` 20.1.0, nouveau) | MIT | OpenGL / OpenGL ES and EGL for the desktop and native apps |
-| Mesa NVK Vulkan driver (Mesa 26.2.4 tree, commit `0ff52079`) | MIT | Vulkan for native apps and ports (opt-in, setting `native.vulkan`), since 1.4.0 |
+| Mesa NVK Vulkan driver (Mesa 26.2.4 tree, commit `0ff52079`) | MIT | Vulkan for native apps and ports (on by default when the driver check passes), since 1.4.0 |
 | Expat 2.10.0 | MIT | XML parser used by the NVK driver |
 | SDL2, SDL2_image, SDL2_ttf, SDL2_mixer | zlib (devkitPro package may include LGPL components) | Windowing, rendering, audio |
 | SDL2 (devkitPro Switch fork with Nexvyn OS window drivers) | zlib (altered source: `sdk/native/sdl2`, `sdk/native/sysroot/patches/sdl2-nexvyn.patch`) | Native kit: SDL2 in windows |

@@ -52,7 +52,7 @@ Every `.nxvapp` bundle requires `app.json` at its root.
 
 ## 4. Porting Large Games & Maximum Input Support
 
-When porting C/C++ games or engines (RTS, CRPG, FPS, arcade, emulators), use the dedicated porting kit in `SDK/Porting/` and the updated `sdl2-nexvyn` (`2.28.5-nexvyn.1`) + `<nexvyn/nxn_port_input.h>`:
+When porting C/C++ games or engines (RTS, CRPG, FPS, arcade, emulators), use the dedicated porting kit in `SDK/Porting/` and the updated `sdl2-nexvyn` (`2.28.5-nexvyn.2`) + `<nexvyn/nxn_port_input.h>`:
 
 - **16-Finger Multi-Touch & Gestures (`sdl2-nexvyn`):**
   - 1-finger drag → primary pointer / left click drag

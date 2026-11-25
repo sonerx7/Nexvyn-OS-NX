@@ -188,7 +188,7 @@ log now has a `browser` timeline to measure them on the console):
 | The password store derived its key at startup (PBKDF2-HMAC-SHA256, 2 x 20000 rounds) | ~30-80 ms on the main thread | on a worker |
 | The JavaScript prelude (148 KB) was compiled on the main thread by the first page with scripts; every external script was parsed on the main thread (not interruptible) | ~100-250 ms for the prelude, ~0.3-1 s freeze per large bundle | prelude compiled on a worker at startup; scripts of 8 KB and more are compiled on a worker with its own QuickJS runtime, the page only loads the bytecode; 12 MB bytecode cache for bundles used again |
 | Layout asked for the metrics of the whole ASCII range for every font size (~97 glyphs to rasterize per size) and measured 4 ms per frame; after 1.5 s without input the shell drops to 20 frames a second, so the exact relayout waited for seconds | ~700-900 glyphs on the start page, ~3-6 s until the exact layout | only the characters the text uses (40-60 % fewer), 7 ms per frame, and the window keeps the full frame rate while a page works |
-| First paint waited up to 4 s for parser scripts; images could take all three shared network connections ahead of style sheets and scripts | up to 4 s of "Loading" | at most 2 s; images take one connection until style sheets and parser scripts are in |
+| First paint waited up to 4 s for parser scripts; images could take all three shared network connections ahead of style sheets and scripts | up to 4 s of "Loading" | at most 1 s; images take one connection until style sheets are in (two while only scripts load, since 1.4.0) |
 | Every visited page rewrote `history.json` (up to 1500 entries) on the main thread; DOM snapshots of script pages copied script sources for every relayout | 30-80 ms hitch per page; large copies | batched, written on a worker; script / style text is not copied and relayouts are spaced by the copy's cost |
 
 Session restore already loaded only the active tab (the others load when shown). No network or DNS call runs on the
@@ -284,6 +284,65 @@ prelude) of a 66 MB NRO, and none in RAM, since the code pages of a built-in app
 the engine now frees its heap. Recommendation: keep the Browser built in (it is also what other apps open links
 with); if the owner wants it removable from the lists, the existing optional-app mechanism (`"optional": true`, App
 Market "Get", Settings > Apps) can hide it without moving code, but that only changes the lists, not the NRO size.
+
+### 3.8 1.4.0: touch, controller, smoother loading
+
+- **Touch** (rules in `source/web/web_gestures.h` and `source/core/scroll_policy.h`, host-tested in
+  `tests/test_browser_touch.cpp`): a drag locks to its axis after the 9 px slop (a mostly vertical drag never moves a
+  slightly wider page sideways; a clearly diagonal one pans both ways); pinch zooms; pulling the top of the page down
+  past 64 px of rubber band and letting go reloads; a swipe that starts within 30 px of the page's left (right) edge
+  and travels 110 px inward goes back (forward), with an arrow that fills when the release will navigate. Presses in
+  the outermost 12 px of the screen stay the shell's edge gestures; drags a page captures (canvas, `touch-action:
+  none`, sliders) and second fingers keep the gesture in the page; a cancelled swipe never clicks.
+- **Controller**: right stick scrolls, D-pad hops between links with the focus ring (scrolls where there is none),
+  A opens, X link menu, Y keyboard, B closes a panel or stops loading, then goes back. L/R, ZL/ZR, + and - keep their
+  system functions. Browser settings show this list ("Controls") in all languages.
+- **Eased key scrolling**: D-pad, arrows, Page Up/Down and Space glide to their target (about 0.15 s) and the window
+  idles again when the glide ends; a press or the wheel takes over at once.
+- **Downloads**: a finished file is hashed (SHA-256) on the background job thread; when the page the download
+  started from lists the same digest, the list shows "Checksum matches the page". No digest on the page: the first
+  digits and a copy button.
+- **Loading**: the first layout waits for pending style sheets for up to 1 s (`kCssBlockSeconds`, was 0.35 s;
+  the page area stays empty meanwhile), so pages no longer appear unstyled and then jump. Images with `width`/`height`
+  attributes keep their box before they are decoded. While only scripts load, two image fetches run (was one).
+  Each page load writes one `webjs` line with total time, first paint, last layout and layout passes.
+- **Frames**: hidden (`visibility: hidden`) and 0x0 iframes load and run, as challenge and sign-in widgets need:
+  the style shortcuts that turn hidden absolute layers, 1x1 boxes and off-screen boxes into `display: none` no longer
+  apply to frames (ad frames excepted), and layout gives such a frame a load-only item. `grid-template-columns/rows: subgrid` takes the parent grid's tracks (exact for items that
+  span the parent from its first line; the parent's gap is not inherited). Container queries stay off.
+- **Messages**: `postMessage` between frames, windows and message ports is dispatched with `isTrusted: true`, as
+  browsers do; Turnstile's `api.js` drops untrusted messages from its frame, so the widget never appeared.
+  Diagnosis (emulator, `tsprobe` page with the public always-pass test key): `api.js` loads, `turnstile.render`
+  returns an id and inserts the hidden challenge frame, but the frame is never fetched and its messages would have
+  been ignored. Fixed so far: trusted messages, frames kept by the style shortcuts, load-only layout items (host
+  test passes for the same markup). Still open: the frame that `api.js` creates by script gets no layout item in the
+  running browser (no `frame load` line), so the widget does not appear yet; next step is to follow that
+  script-created node through the DOM snapshot into `Page::syncIframes`. Each frame
+  load now writes one `webjs` line (`frame <url>: HTTP <status>`, or the frame-ancestors refusal).
+- **`URL` with a base without `//`**: `new URL("/static/a.js", "x:/")` (webpack's public-path helper, used by MDN)
+  resolves against the base's path instead of throwing "Invalid URL"; MDN's custom elements load again.
+
+### 3.9 1.4.0: fewer freezes on heavy sites, grid fixes
+
+- **Network completions no longer run page code**: `fetch()` / XHR responses are queued for the next JS tick and run
+  under the frame slice (at least one per frame), instead of inside the network completion pass, where a burst of
+  responses ran all their handlers in one frame; a hidden tab runs two of its queued completions per frame
+  (`Page::backgroundTick`, `drainSliced` with an item cap). Module downloads are scanned for imports and have `import()`
+  rewritten on a worker (`ModuleLoader` async hook); a cached module keeps its import list, so it is not scanned again.
+- **Stall attribution**: new frame parts in `stall` lines: `web js deferred` (queued completions), `web script arrived`,
+  `web fetch done` (a resource's completion), `web snapshot` (the DOM copy a scripted page's layout needs) and
+  `web js layout` (a synchronous layout for a script's geometry read). Web fonts that fail log `font failed` /
+  `font not usable` lines.
+- **Grid**: a `minmax(<length>, <length>)` track gives room back down to its minimum before content tracks shrink
+  (Wikipedia's tools / "Appearance" column was one letter wide next to `minmax(0, 59.25rem)`); `display: contents`
+  children of a flex or grid container are its items (MDN's main column sat in a 32 px gap track), and their
+  absolutely positioned children are kept. `width` on an inline (non-replaced) box no longer counts as its
+  min-content width. A private-use character (an icon of a web font that has not arrived) keeps the width of "?" but
+  draws nothing (`text.cpp`, all apps). Host tests:
+  `tests/test_web_layout_sites.cpp`.
+- **Probe**: `python tools/browser_stall.py --set heavy` loads donanimhaber.com, Wikipedia, GitHub and BBC News, takes
+  a top and a scrolled shot per page and writes a `stats pageN` line (frames, worst frame). Results:
+  `qa/screens/browser-1.4/RESULTS.md` ("Heavy sites").
 
 ## 4. Test pages and results
 
@@ -384,6 +443,15 @@ Limits:
 - **Custom elements and Shadow DOM (basic)**: `customElements.define/get/whenDefined/upgrade/getName` upgrade existing and new elements (constructor, `connectedCallback`, `disconnectedCallback`, `attributeChangedCallback` with `observedAttributes`). `attachShadow()` returns a flattened shadow root (a `display:contents` box that is the host's first child; `host`, `mode`, `shadowRoot` work, `<slot>` projection and style scoping do not).
 - **EME (ClearKey only)**: `navigator.requestMediaKeySystemAccess('org.w3.clearkey')`, `MediaKeys`, `MediaKeySession` (`generateRequest`, `update` with the ClearKey JSON license, `keystatuseschange`), `video.setMediaKeys()` and the `encrypted` event for CENC fMP4 in MSE. The demuxer decrypts cenc-aes-ctr with the key from the page's license (one key per MediaSource). Widevine, PlayReady and FairPlay reject with `NotSupportedError`: they need a content decryption module that is not available here and is not faked. Test: `tests/html5/eme-clearkey.html`.
 
+## WebAssembly
+
+The Nexvyn OS browser runs `WebAssembly.*` on top of wasm3 (`lib/wasm3`, MIT), with a hybrid AArch64 single-pass JIT on Switch (`source/web/web_wasm_jit.h`) that falls back cleanly to the wasm3 interpreter on host or for unsupported opcodes. It is controlled by the `web.wasm` setting (enabled by default in the Browser app; when off, `WebAssembly` is undefined).
+
+- **What works**: `WebAssembly.validate`, `Module` (`imports`, `exports`), `Instance`, `instantiate(bytes | Module, imports)`, `compile`, `instantiateStreaming` / `compileStreaming` (through `Response.arrayBuffer()`), `Memory`, `Table`, `Global`, `CompileError`, `LinkError`, `RuntimeError`. Exports are native functions (`i32`, `f32`, `f64`, `i64` BigInt, multi-value array, `funcref`, `externref`); imports support JS functions (thrown JS exceptions pass through unchanged), `Memory`, `Table`, `Global`, plain numbers for immutable globals, and Emscripten/WASI glue imports from the page. `Memory.buffer` shares linear memory without copying (`grow()` detaches the old buffer). Supports bulk memory, sign extension, saturating conversion, reference types, and multi-value.
+- **Safety and limits**: all linear memories together stay below `min(256 MB, used + free heap - OS reserve)` (reserve = `native.memoryReserveMB`, default 64 MB); a declared maximum above 8192 pages (512 MB) is clamped to 8192 pages. Every outermost call runs under an execution budget (wasm3 gas metering adapted to device speed) tied to the page's remaining script time, ending runaway loops with `RuntimeError` without taking down the page. Traps raise `RuntimeError` (stack overflow raises `RangeError`); wasm -> JS -> wasm nesting is capped at 16 levels, and at most 512 instances may live per page.
+- **Not supported**: SIMD, threads (`Memory({shared:true})` is rejected), exception handling, memory64, and typed function references. Modules over 1 MB are not fully validated on compile (a broken function body fails on first call).
+- **Tests**: `python tools/gen_wasm_tests.py` builds the test modules (`tools/wasm_asm.py`), `tests/test_wasm.cpp` runs the core on the host (`bash tools/gate.sh --only tests`), and `tests/html5/wasm-*.html` run in the OS browser (`python tests/html5/run_ryu.py --set web.wasm=true wasm-core wasm-memory wasm-imports wasm-table-global wasm-trap wasm-perf wasm-hello`).
+
 ## Signing in to sites
 
 The cookie rules follow RFC 6265bis (`source/web/web_cookies.cpp`, host tests in `tests/test_cookies.cpp`):
@@ -419,13 +487,13 @@ a fake pair that works on that server alone.
 
 **Page errors and layout fixes.** Script errors and `console.error` lines in the browser log now carry the source URL with line:column, and a script that runs out of its time budget is logged with its URL. CSS: `mask-image` / `-webkit-mask-image` with a data: or http(s) picture (the picture's shape is painted in the background color, rasterized once and cached), cascade layers (`@layer`: unlayered rules beat layered ones, later layers beat earlier ones, `!important` reverses), `min-width: max-content` (flex items no longer shrink below their natural width), and `grid-template-columns: minmax(0, auto)` is sized by content instead of collapsing to zero (this made button labels wrap one letter per line). Test page: `tests/web/flex-mincontent.html`.
 
-**Desktop sites by default.** The Browser now asks for desktop sites (Chrome-like desktop identity, `(hover: hover)` / `(pointer: fine)` media features, `navigator.platform` `Win32`, no touch points). Settings has "Request mobile sites" (off by default) and a per-site switch in the address-bar menu (the old "desktop by default" value is not read, so updating users get desktop sites; saved zoom is kept). Zoom and device pixel ratio are unchanged. Known gaps (checked on the console profile): github.com still shows a black header band and the compact layout (container queries and some custom properties are not supported yet); en.wikipedia.org stays unstyled for about 40 s because its loader script is cut by the 1 s script budget; old.reddit.com redirects signed-out visitors to a sign-in page and needs `CSSStyleSheet`.
+**Desktop sites by default.** The Browser now asks for desktop sites (Chrome-like desktop identity, `(hover: hover)` / `(pointer: fine)` media features, `navigator.platform` `Win32`, no touch points). Settings has "Request mobile sites" (off by default) and a per-site switch in the address-bar menu (the old "desktop by default" value is not read, so updating users get desktop sites; saved zoom is kept). Zoom and device pixel ratio are unchanged. Known gaps (checked on the console profile): github.com still shows a black header band and the compact layout (container queries and some custom properties are not supported yet); en.wikipedia.org stayed unstyled for about 40 s because its loader script is cut by the 1 s script budget (1.4.0: shown styled 25 s after launch in the emulator sweep, one sample, since the first layout waits for style sheets; the right "Appearance" column is no longer one letter wide in host layout tests; emulator check pending); old.reddit.com redirects signed-out visitors to a sign-in page and needs `CSSStyleSheet`.
 
 ## Performance and memory
 
 - Background tabs run nothing (no JS timers, no rAF, no media); when a tab goes to the background its textures, canvases and players are freed and its JS garbage is collected once.
 - Free memory of old tabs (Browser settings, `browser.discardTabs`, default on): with more than 3 (applet mode) or 6 live background tabs, the least recently used ones are closed in memory. When the OS reports low memory, all background tabs and most idle images go. A discarded tab keeps its address, history and scroll position and reloads when shown. Private tabs, loading tabs, POST pages and `about:` pages are never discarded.
-- Stalls: a frame longer than `perf.stallMs` (default 150 ms) writes one `stall` line in the system log naming the phase (`web page parsed`, `web js start`, `web js tick`, `web layout start`, `web job done` = network/image completion, `web paint`) and the page address. Probe: `python tools/browser_stall.py`.
+- Stalls: a frame longer than `perf.stallMs` (default 150 ms) writes one `stall` line in the system log naming the phase (`web page parsed`, `web js start`, `web js tick`, `web js deferred`, `web script arrived`, `web fetch done`, `web snapshot`, `web js layout`, `web layout start`, `web job done` = worker job completion, `web paint`; `network` = the shell's network completion pass) and the page address. Probe: `python tools/browser_stall.py` (`--set heavy` for real sites with shots).
 - Measurements use the console profile only (`NEXVYN_CONSOLE_PROFILE=1`); see `qa/PERFORMANS.md`.
 
 ## Security

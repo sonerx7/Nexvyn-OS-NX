@@ -25,7 +25,7 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 - **Protected web browsing:** The browser limits WebSocket queues, very large images and WebAssembly memory so a hostile page cannot exhaust memory; WebRTC now verifies the peer certificate fingerprint.
 - **Responsive window management:** Window drags no longer get stuck when the overview opens or a window closes; a hung window no longer forces a full redraw every frame.
 - **Enhanced port inputs & caching:** Two-finger rotate and double tap in the port input helper, `"fullscreenPause": true` in app.json frees the compositor's memory while the app runs fullscreen, and Vulkan pipeline caches are saved between launches.
-- **Native Vulkan backend (opt-in):** Modern Vulkan graphics backend for native apps and ports (`native.vulkan`), verified on the console with the canary and the GPU load test.
+- **Native Vulkan backend (on by default):** Modern Vulkan graphics backend for native apps and ports, available when the driver check at start passes; verified on the console with the canary and the GPU load test.
 
 ### What is new in 1.3.10
 
@@ -213,7 +213,7 @@ Measured on a Switch OLED, first test against the final round (default settings)
 
 ### For developers & AI assistants
 
-**For developers (SDK 1.16 & Native Platform):** SDK 1.16 introduces frame pacing for script apps (`update` returns false when idle, `ui.requestFrame()` wakes them) and full multitouch gesture handling (`touches`, `input.touches()`) across Lua, JavaScript, and Python 3. For native C/C++ apps and ports, native Vulkan (`native.vulkan`) is available as an opt-in graphics backend alongside OpenGL, with persistent Vulkan pipeline disk caching between launches. Native runtimes also gain windowed JIT (`native.windowedJit` with dual-mapped W^X memory) and explicit memory budget management (`nxn_memory_budget_get`, `nxn_memory_budget_request`). See [SDK](SDK/README.md).
+**For developers (SDK 1.16 & Native Platform):** SDK 1.16 introduces frame pacing for script apps (`update` returns false when idle, `ui.requestFrame()` wakes them) and full multitouch gesture handling (`touches`, `input.touches()`) across Lua, JavaScript, and Python 3. For native C/C++ apps and ports, native Vulkan is available by default (when the driver check at start passes) as a graphics backend alongside OpenGL, with persistent Vulkan pipeline disk caching between launches. Native runtimes also gain windowed JIT (`native.windowedJit` with dual-mapped W^X memory) and explicit memory budget management (`nxn_memory_budget_get`, `nxn_memory_budget_request`). See [SDK](SDK/README.md).
 
 Native C and C++ with a frozen ABI v1 (add-only from now on): a module built with the 1.0 kit still loads on the current system. Every new API — including the **NXUI Retained & Semantic UI Engine (`nxui.*` / `nxn_nxui_*`)** and **NexGFX PBR renderer (`g3d.*`)** — arrives across the 4 official primary tracks (**Lua 5.4.7**, **JavaScript ES2023**, **CPython 3.12**, and **Native C/C++**). Smart Creator (`nxv.py create`) and the Port Kit scaffold apps and ports in one command, and `SDK/AI/llms.txt` + `SDK/AI/system-prompt.md` let AI coding assistants build full Nexvyn OS apps with zero hallucination. See [SDK](SDK/README.md).
 

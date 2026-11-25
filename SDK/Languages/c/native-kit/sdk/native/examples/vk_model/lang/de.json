@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Vulkan-Modell",
+    "unavailable": "Vulkan ist auf diesem System nicht verfügbar; diese App benötigt es.",
+    "init_failed": "Vulkan-Initialisierung fehlgeschlagen",
+    "device_lost": "Vulkan-Gerät verloren",
+    "model_missing": "Die Modelldatei in diesem Paket fehlt oder ist beschädigt",
+    "tris_per_copy": "Dreiecke pro Kopie",
+    "tris_total": "Gezeichnete Dreiecke",
+    "draw_calls": "Draw-Calls",
+    "overlay": "Overlay",
+    "frame_time": "Framezeit",
+    "resolution": "Auflösung",
+    "driver": "Treiber"
+  }
+}

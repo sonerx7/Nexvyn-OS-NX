@@ -665,11 +665,23 @@ static void NEXVYN_TextRequest(int wanted)
     if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_TEXT_REQUEST) != 0)
         nxn_input_text_request(wanted);
 }
-static void NEXVYN_StartTextInput(SDL_VideoDevice *_this) { NEXVYN_TextRequest(1); }
+/* SDL_VideoInit turns text input on by itself at start (for platforms it believes have no on-screen keyboard). That
+ * call must not open the system keyboard over a game at launch (vkQuake showed it): it only enables text events (a USB
+ * keyboard still types). An app that asks for text later (SDL_StartTextInput after start) opens the keyboard as before. */
+static int g_nexvyn_init_text_input = 0;
+static void NEXVYN_StartTextInput(SDL_VideoDevice *_this)
+{
+    if (g_nexvyn_init_text_input) {
+        g_nexvyn_init_text_input = 0;
+        return;
+    }
+    NEXVYN_TextRequest(1);
+}
 static void NEXVYN_StopTextInput(SDL_VideoDevice *_this) { NEXVYN_TextRequest(0); }
 
 static void NEXVYN_PumpEvents(SDL_VideoDevice *_this)
 {
+    g_nexvyn_init_text_input = 0; /* start-up is over: any later StartTextInput is the app's */
     NEXVYN_VideoData *vd = g_video;
     if (!vd) {
         return;
@@ -746,6 +758,7 @@ static int NEXVYN_SetRelativeMouseMode(SDL_bool enabled)
 
 static int NEXVYN_VideoInit(SDL_VideoDevice *_this)
 {
+    g_nexvyn_init_text_input = 1; /* the next SDL_StartTextInput is SDL_VideoInit's own, see NEXVYN_StartTextInput */
     NEXVYN_VideoData *vd = (NEXVYN_VideoData *)SDL_calloc(1, sizeof(*vd));
     if (!vd) {
         return SDL_OutOfMemory();

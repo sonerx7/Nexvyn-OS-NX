@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Vulkan Model",
+    "unavailable": "Vulkan bu sistemde kullanılamıyor; bu uygulama Vulkan gerektiriyor.",
+    "init_failed": "Vulkan başlatılamadı",
+    "device_lost": "Vulkan aygıtı kaybedildi",
+    "model_missing": "Bu paketteki model dosyası eksik ya da bozuk",
+    "tris_per_copy": "Kopya başına üçgen",
+    "tris_total": "Çizilen üçgen",
+    "draw_calls": "Çizim çağrısı",
+    "overlay": "katman",
+    "frame_time": "Kare süresi",
+    "resolution": "Çözünürlük",
+    "driver": "Sürücü"
+  }
+}

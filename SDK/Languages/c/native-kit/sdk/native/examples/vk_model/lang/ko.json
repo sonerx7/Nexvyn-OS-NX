@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Vulkan 모델",
+    "unavailable": "이 시스템에서는 Vulkan을 사용할 수 없습니다. 이 앱에는 Vulkan이 필요합니다.",
+    "init_failed": "Vulkan 초기화 실패",
+    "device_lost": "Vulkan 장치가 손실됨",
+    "model_missing": "이 패키지의 모델 파일이 없거나 손상되었습니다",
+    "tris_per_copy": "복사본당 삼각형",
+    "tris_total": "그린 삼각형",
+    "draw_calls": "그리기 호출",
+    "overlay": "오버레이",
+    "frame_time": "프레임 시간",
+    "resolution": "해상도",
+    "driver": "드라이버"
+  }
+}

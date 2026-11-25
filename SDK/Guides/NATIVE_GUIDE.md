@@ -113,7 +113,7 @@ catches it, a `throw` ends in `std::terminate`: that is a crash report, not a lo
 
 **Graphics.** The display is OpenGL 4.x core or ES 3.2 on the console's GPU driver (`nxn_display`, glad, or SDL2 windows).
 Programs written against desktop GL usually need small changes. **deko3d is not a path for existing GL ports**: it is a
-different API, and the kit does not translate GL to it. A port keeps using GL through the display (or NexGFX native). Vulkan is an opt-in second path (setting `native.vulkan`, `NXN_CAP_VULKAN`, verified on the console with the canary and a GPU load test); always keep the GL path as the fallback (`NATIVE_KIT.md`, *Vulkan in the native kit*).
+different API, and the kit does not translate GL to it. A port keeps using GL through the display (or NexGFX native). Vulkan is a second path, on by default when the driver check at start passes (`NXN_CAP_VULKAN`, verified on the console with the canary and a GPU load test); always keep the GL path as the fallback (`NATIVE_KIT.md`, *Vulkan in the native kit*).
 
 Useful tools for heavy apps and ports (all in `NATIVE_KIT.md`): the memory budget (`nxn_memory_budget_get`), worker core hints
 (`nxn_thread_hint_request`), the port input helper (`<nexvyn/nxn_port_input.h>`: gamepad profiles, pinch, pan, two-finger rotate,

@@ -4,6 +4,9 @@
 > pipeline together with every NRO version. The platform for third-party developers is Lua, JavaScript and Python
 > (sandbox, enforced permissions, stable API, editable in Studio); the C++ API changes with every build and is not an
 > SDK.
+>
+> Not to be confused with the App Market's "Runtimes & Libraries" components (shared `lib` packages that apps declare in
+> `needs`): their purpose and the 1.4.0 decision are in `STORE_COMPONENTS.md`.
 
 Nexvyn OS's C++ apps come in two forms:
 

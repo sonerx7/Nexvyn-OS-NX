@@ -1,6 +1,6 @@
 # Nexvyn Native Kit
 
-Graphics overview for app developers: section 10 of `SDK/AI_GUIDE.md` (GL/GLES, NexGFX, Vulkan preview).
+Graphics overview for app developers: section 10 of `SDK/AI_GUIDE.md` (GL/GLES, NexGFX, Vulkan).
 
 The kit builds C and C++ apps that run inside Nexvyn OS: the app is a `.nxvmod` that Nexvyn OS loads into its own
 process, in a window or full screen (`app.json` `"mode": "window"` or `"fullscreen"`; section "Apps in Nexvyn OS"). Use
@@ -131,6 +131,7 @@ the memory the apps' heaps leave free for Nexvyn OS.
 - `examples/hello_gl`: the smallest app (GL, input, tone, files, crash tests).
 - `examples/showcase`: every Native SDK feature with live self-tests and a `showcase_report.txt` (windowed, Dear ImGui). `python sdk/native/examples/showcase/package.py`.
 - `examples/scenes`: windowed 3D scene viewer (worker-thread streaming, PBR, shadow map, culling) for baked FBX scenes you provide. `python sdk/native/examples/scenes/package.py`.
+- `examples/vk_model`: native Vulkan demo: an FBX model baked at package time, drawn 10 times with instancing, an ImGui Vulkan overlay (triangles, draw calls, FPS, frame time) and `VKMODEL:` log lines. `python sdk/native/examples/vk_model/tools/package.py MODEL.fbx`.
 
 ## Assets: `nxv-asset`
 
@@ -241,13 +242,13 @@ Two thin calls onto things Nexvyn OS already has, for windowed apps (without the
 
 ## Vulkan in the native kit
 
-Native Vulkan is **opt-in** and verified on the console with the `vk_canary` example and the GPU load test
-(`gpu_stress`). It is not a default path: never depend on it without a GL fallback. A game port that uses Vulkan
+Native Vulkan is on by default since 1.4.0 and verified on the console with the `vk_canary` example and the GPU load test
+(`gpu_stress`). It is available only when the driver check at start passes: never depend on it without a GL fallback. A game port that uses Vulkan
 (vkQuake, for example) is not confirmed on the console yet.
 
-**Requesting it.** Two things must be true: the Nexvyn OS build has Vulkan compiled in (every release build since 1.4.0 does), and the numeric setting
-`native.vulkan` is `1` (read when Nexvyn OS starts, so restart after changing it). The system then runs a driver
-check; only when it succeeds does it advertise `NXN_CAP_VULKAN` (and `NXN_GFX_API_VULKAN` in the caps snapshot).
+**Availability.** Two things must be true: the Nexvyn OS build has Vulkan compiled in (every release build since 1.4.0 does), and the driver
+check that runs at every start passes. Vulkan is on by default; the hidden numeric setting `native.vulkanOff` = `1` (read at start) turns it off
+for troubleshooting. Only when the check succeeds does the system advertise `NXN_CAP_VULKAN` (and `NXN_GFX_API_VULKAN` in the caps snapshot).
 `"vulkan": true` in `app.json` only declares that the module is Vulkan aware (the packer runs its import check); it
 does not switch Vulkan on. In the app:
 
@@ -292,8 +293,8 @@ destroy it on exit. Do not rely on the cache for correctness.
 
 The SDK builds optional link-time `vk*` shims into `libnexvyn_window.a` with
 `NEXVYN_VK_SHIMS=1` and the `vulkan-headers` sysroot recipe. Try the `vulkan`
-template, the `hello_vk` instance probe, or the windowed and fullscreen
-`vk_canary` example. The `vkquake` port is a separate `.nxvapp` package with a
+template, the `hello_vk` instance probe, the windowed and fullscreen
+`vk_canary` example, or the `vk_model` example (instanced model, depth buffer, ImGui overlay). The `vkquake` port is a separate `.nxvapp` package with a
 host build and package result. Its Vulkan gameplay requires an enabled host and is not yet confirmed on the console.
 
 Windowed SDL2 uses the host lookup and accepts a null library path. Create an
@@ -315,7 +316,7 @@ The probe logs `N5SDL:` lines and reports success after creating and destroying
 a surface across two consecutive SDL windows, or after checking the expected
 unavailable error on a host without Vulkan.
 
-The Dear ImGui Vulkan backend is opt-in for compile checks. Set
+The Dear ImGui Vulkan backend is opt-in for compile checks (a build choice, not a runtime setting). Set
 `NEXVYN_IMGUI_VULKAN=ON` and point `NEXVYN_IMGUI_VULKAN_BACKENDS` to
 the `backends` directory from Dear ImGui 1.91.5. With the Vulkan headers
 in the sysroot, `<nexvyn/nxn_imgui_vk.h>` exposes `nxn_imgui_vulkan_init`,

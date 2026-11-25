@@ -176,6 +176,10 @@ resources must not grow. A hang or a growing number is a bug. Do it again in gro
   `finally`. Kill a stuck emulator only if it is yours.
 - Never use your real accounts, keys or save data in a test profile.
 
+### Parallel emulator instances
+
+All emulator tests default to the primary install (instance A), guarded by the shared lock. A second, fully isolated portable install (instance B, audio output off, with its own firmware, keys, `Config.json` and SD card) lets two functional sessions run in parallel. Select it with `NEXVYN_RYU_INSTANCE=B` (for example `NEXVYN_RYU_INSTANCE=B python tests/html5/run_ryu.py canvas-shadow`), and override its folder with `NEXVYN_RYU_B_DIR` (helper: `tools/ryu_env.py`). Instance B uses its own separate lock file; instance A ignores B's processes and vice versa. B's SD starts empty (`sdcard/switch/NexvynOS.nro` only), so a test that needs apps or packages copies them in (copy the current `NexvynOS.nro` there or pass `NRO=...`). With the console profile (`NEXVYN_CONSOLE_PROFILE=1`), B uses separate P-cores by default (`NEXVYN_CONSOLE_MASK=0x5500`; A uses `0x55`); set `NEXVYN_CONSOLE_MASK` to override. Parallel runs still share CPU, caches and GPU, so run performance measurements alone and use parallel sessions for functional tests only.
+
 ## 10. Public tools
 
 | Tool | Use in the loop |

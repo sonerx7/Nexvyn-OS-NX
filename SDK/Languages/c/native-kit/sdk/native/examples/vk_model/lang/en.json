@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Vulkan Model",
+    "unavailable": "Vulkan is not available on this system; this app needs it.",
+    "init_failed": "Vulkan initialization failed",
+    "device_lost": "Vulkan device lost",
+    "model_missing": "The model file in this package is missing or damaged",
+    "tris_per_copy": "Triangles per copy",
+    "tris_total": "Triangles drawn",
+    "draw_calls": "Draw calls",
+    "overlay": "overlay",
+    "frame_time": "Frame time",
+    "resolution": "Resolution",
+    "driver": "Driver"
+  }
+}

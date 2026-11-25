@@ -1,0 +1,16 @@
+{
+  "vkmodel": {
+    "title": "Modelo Vulkan",
+    "unavailable": "Vulkan no está disponible en este sistema; esta app lo necesita.",
+    "init_failed": "Error al inicializar Vulkan",
+    "device_lost": "Se perdió el dispositivo Vulkan",
+    "model_missing": "Falta el archivo del modelo de este paquete o está dañado",
+    "tris_per_copy": "Triángulos por copia",
+    "tris_total": "Triángulos dibujados",
+    "draw_calls": "Llamadas de dibujo",
+    "overlay": "superposición",
+    "frame_time": "Tiempo de fotograma",
+    "resolution": "Resolución",
+    "driver": "Controlador"
+  }
+}

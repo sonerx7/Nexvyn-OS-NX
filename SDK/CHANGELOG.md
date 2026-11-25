@@ -118,7 +118,7 @@ Read from the headers and tools in this folder, not from release notes; check ca
 
 - Native: `nxn_capability_query` (`nxn_caps.h`, header-only, no `minNative` bump), `nxn_memory_budget_get` /
   `nxn_memory_budget_request` (`NXN_CAP_MEMORY_BUDGET`), `nxn_thread_hint_request` (worker core and priority hint).
-- Vulkan **preview**: `nxn_vk.h` (`nxn_vk_available()`), `NXN_CAP_VULKAN`, `NXN_GFX_API_VULKAN`, the `vulkan` manifest
-  flag, the `vulkan` template and the `hello_vk` / `vk_canary` examples. The default OS build leaves Vulkan disabled;
+- Vulkan: `nxn_vk.h` (`nxn_vk_available()`), `NXN_CAP_VULKAN`, `NXN_GFX_API_VULKAN`, the `vulkan` manifest
+  flag, the `vulkan` template and the `hello_vk` / `vk_canary` examples. Nexvyn OS 1.4.0 turns Vulkan on by default when the driver check at start passes;
   check `NXN_CAP_VULKAN` at run time and fall back to GL. See `AI_GUIDE.md` section 10.4.
 - `nxv_native symbolize` (crash report to function and line), `nxv_native check-design`, `nxv_native shader`.

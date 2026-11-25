@@ -382,7 +382,7 @@
       "notes": "glib dependency (gobject marshalling). Static closure trampolines off: no executable mappings on the Switch."
     },
     "sdl2-nexvyn": {
-      "version": "2.28.5-nexvyn.1",
+      "version": "2.28.5-nexvyn.2",
       "license": "Zlib",
       "url": "https://github.com/devkitPro/SDL/archive/0738d3c9f6993875e2f3dd0e8cc0bb4ae4440b4e.tar.gz",
       "archive_name": "sdl2-devkitpro-0738d3c.tar.gz",

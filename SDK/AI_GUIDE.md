@@ -184,7 +184,7 @@ python tools/nxv_native new notes --template app --dir projects
 
 Templates: `app` (UI app with the OS look, default), `game` (loop, resize/focus/suspend, GL quads, action map,
 mixer sound, save file), `port` (glue for an existing CMake project: `fetch.py`, patches), `sdl2`, `gl`,
-`vulkan` (opt-in, section 10.4), `emu-skeleton`, `decomp-skeleton`, `shared-lib`.
+`vulkan` (Vulkan-aware, GL fallback, section 10.4), `emu-skeleton`, `decomp-skeleton`, `shared-lib`.
 Names: lower-case letters, digits, `-`, `_`, starting with a letter (max 41 characters).
 The generator writes `CMakeLists.txt`, `src/`, `app.json` (id `com.example.<name>`, `"runtime": "native"`,
 `"mode": "window"`, `minNative`/`targetNative` = the kit's Native SDK, `minSdk`/`targetSdk` `1.10`), a placeholder
@@ -495,12 +495,12 @@ repository, so use pre-baked scenes you were given. The calls: `ngfx_device_crea
 `NXN_CAP_NEXGFX` (OpenGL 4.3 core). It draws what you give it; menus, HUD and art direction are yours.
 Example: `sdk/native/examples/scenes`.
 
-### 10.4 Native: Vulkan (opt-in)
+### 10.4 Native: Vulkan
 
-**Vulkan is opt-in. Always keep a GL fallback.**
+**Vulkan is on by default but can be missing. Always keep a GL fallback.**
 
-- Since Nexvyn OS 1.4.0 the release build includes Vulkan. It is off until the user sets the numeric setting
-  `native.vulkan` to `1`, and then only after a driver check succeeds. It was verified on the console with the
+- Since Nexvyn OS 1.4.0 the release build includes Vulkan. It is on by default, but apps get it only when the
+  driver check at start succeeds (a failed check leaves it off). It was verified on the console with the
   `vk_canary` example and the GPU load test. Older releases (1.3.x) have no Vulkan.
 - Apps **must** check the capability `NXN_CAP_VULKAN` at run time and fall back to GL when it is absent. The
   header-only helper `nxn_vk_available()` in `<nexvyn/nxn_vk.h>` checks `NXN_CAP_VULKAN`, the

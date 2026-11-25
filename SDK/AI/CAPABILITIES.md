@@ -10,8 +10,8 @@ device column is not measured yet. Treat every performance number below as a tar
 | Threads: start/stop/join, TLS, mutex, condition variables | Supported | Normal app use. Join workers before exit. |
 | GL core 4.3 / GLES 3.2 context, FBO, depth, fences | Supported | One context, owned by the render thread; resolve GL functions through the display API (`nxn_display.h`). |
 | Shared GL context, GL on a worker thread | Unsupported | A second display is refused. Upload on the render thread; prepare data on workers. |
-| Vulkan (`NXN_CAP_VULKAN`, `NXN_GFX_API_VULKAN`) | Opt-in since Nexvyn OS 1.4.0 | The OS has a Vulkan path (`<nexvyn/nxn_vk.h>`), included in release builds since 1.4.0 and verified on the console with the canary and the GPU load test. With numeric `native.vulkan=1` at boot, a successful driver check publishes bit 41, the Vulkan API flag and the driver's version. Off by default (`0.0`, bit unset); always keep a GL fallback. |
-| Other GPU producers | Unsupported | Apart from GL and the opt-in Vulkan path above, no other GPU producer is available. |
+| Vulkan (`NXN_CAP_VULKAN`, `NXN_GFX_API_VULKAN`) | On by default since Nexvyn OS 1.4.0, when the driver check passes | The OS has a Vulkan path (`<nexvyn/nxn_vk.h>`), included in release builds since 1.4.0 and verified on the console with the canary and the GPU load test. A successful driver check at start publishes bit 41, the Vulkan API flag and the driver's version; a failed check leaves them unset (`0.0`). The hidden setting `native.vulkanOff=1` turns it off for troubleshooting. Always check the capability and keep a GL fallback. |
+| Other GPU producers | Unsupported | Apart from GL and the Vulkan path above, no other GPU producer is available. |
 | Generated machine code (JIT) via RW/RX views (`nxn_jit_*`) | Limited | Requires the OS setting `native.windowedJit` (off by default). 1-64 buffers, at most 256 MiB total, admitted against free heap. Always keep an interpreter fallback. |
 | Running published JIT code from several threads | Limited | Only after the app is quiescent: join workers before rewriting code. |
 | Native worker scheduling hints | Advisory | `nxn_thread_hint_request` in `nxn_sys.h` requests up to two cores for future windowed app workers and reports normal or lower-priority throughput. Older hosts and standalone apps return zero cores and normal priority. |
@@ -83,7 +83,7 @@ without starting a graphics driver or probing hardware:
 |---|---|---|---|---|
 | OpenGL Core | `NXN_GFX_API_GL_CORE` | `NXN_CAP_GL_CORE` (bit 3) | `gl_max_major.gl_max_minor` | Available (`4.3`) |
 | OpenGL ES | `NXN_GFX_API_GLES` | `NXN_CAP_GLES` (bit 4) | `gles_max_major.gles_max_minor` | Available (`3.2`) |
-| Vulkan | `NXN_GFX_API_VULKAN` | `NXN_CAP_VULKAN` (bit 41) | `vk_max_major.vk_max_minor` | Opt-in since 1.4.0 (`native.vulkan=1`; off by default). |
+| Vulkan | `NXN_GFX_API_VULKAN` | `NXN_CAP_VULKAN` (bit 41) | `vk_max_major.vk_max_minor` | On by default since 1.4.0 when the driver check at start passes; check the bit and keep a GL fallback. |
 
 Use the header-only inline helpers in `<nexvyn/nxn_caps.h>` (no new host import; safe on older OS builds where
 `gfx_apis` stays `0`):
