@@ -32,6 +32,22 @@ switched on automatically. Measured on the console:
 Vulkan apps run in windows next to everything else, failures are logged with their cause, a slow GPU frame no longer ends an app,
 and pipeline caches are kept between launches. The Native SDK includes a Vulkan example (`vk_model`) with an ImGui overlay.
 
+#### PC games, ported and running in a window
+
+Real PC games run as native Nexvyn OS apps: in their own desktop window, next to your other apps, with touch, controller and
+keyboard controls and a settings launcher. The game data comes from your own copy; ports never include it.
+
+<p align="center">
+<img src=".github/assets/port-aoe2.webp" width="49%" alt="A strategy game port running in a Nexvyn OS window on the desktop">
+<img src=".github/assets/port-ra2.webp" width="49%" alt="A real-time strategy port with its own Controls menu in the Nexvyn OS menu bar">
+<img src=".github/assets/port-mm3.webp" width="49%" alt="A racing game port running in a Nexvyn OS window">
+<img src=".github/assets/port-mm3-launcher.webp" width="49%" alt="A port's launcher with video presets, mods and file verification">
+</p>
+
+**Make your own port.** [Nexvyn OS Port Studio](https://github.com/sonerx7/NexvynOS_Port_Studio_N-Switch) is the public
+workspace for native ports: **Vulkan**, **OpenGL**, **SDL2** and the Native SDK frameworks are supported, and a port ships as one
+`.nxvapp` package through the App Market.
+
 #### Also new
 
 - **New start-up:** a short animated intro that follows the real start-up steps; any button skips it.
