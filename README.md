@@ -16,6 +16,32 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 
 ### What's new in 1.4
 
+<p align="center"><img src=".github/assets/anim-boot-intro.gif" width="70%" alt="The new Nexvyn OS start-up: the mark forms over a drifting aurora, then the slogan and the credits appear"><br><i>A new era in your hands.</i></p>
+
+#### Native Vulkan, on by default
+
+Nexvyn OS 1.4 ships a real Vulkan driver stack for native apps and ports: **NVK (Mesa 26.2.4), Vulkan 1.4**, checked at start and
+switched on automatically. Measured on the console:
+
+| | Result |
+|---|---|
+| Vulkan Model demo (10 instanced copies, 36,300 triangles) | **60 fps, 16 ms per frame** |
+| Same demo while vkQuake and a second Vulkan app run | 50-58 fps |
+| vkQuake | runs on Vulkan in a desktop window |
+
+Vulkan apps run in windows next to everything else, failures are logged with their cause, a slow GPU frame no longer ends an app,
+and pipeline caches are kept between launches. The Native SDK includes a Vulkan example (`vk_model`) with an ImGui overlay.
+
+#### Also new
+
+- **New start-up:** a short animated intro that follows the real start-up steps; any button skips it.
+- **A smoother desktop:** background services no longer wait for the SD card on the main thread, so heavy web pages and
+  downloads do not freeze the desktop; the system status poll moved off the main thread too.
+- **Browser:** touch scrolling with a locked axis, pull to refresh, edge-swipe back and forward, faster heavy sites (module
+  scanning in the background), and better layout of modern grid pages.
+- **App Market:** runtimes and libraries that apps need can be installed from their own page, checked by SHA-256.
+- **Control Center, Crash Logs, settings backup:** the Wi-Fi and IP buttons work, Crash Logs shows Nexvyn OS's own crash
+  reports, and the settings backup moved to About.
 - **Smooth Python 3 startup:** Python 3 apps start without freezing the desktop — the interpreter starts in the background while the window shows "Loading".
 - **Idle frame pacing & touchscreen multitouch:** Script apps (Lua, JavaScript, Python 3) can now idle when nothing moves (`update` returns false, `ui.requestFrame()` wakes them) and read every finger on the touchscreen (`touches`, `input.touches()`): SDK 1.16.
 - **Fault-isolated scripts:** A faulty or hostile script app can no longer crash or freeze the whole system through its theme, menus, callbacks or a runaway Lua pattern; only that app is stopped.
