@@ -120,22 +120,22 @@
         "zh": "Port Market"
       },
       "description": {
-        "en": "Add an Internet Archive item to see its uploaded packages.",
-        "tr": "Yüklenen paketleri görmek için bir Internet Archive öğesi ekle.",
-        "de": "Füge ein Internet-Archive-Objekt hinzu, um hochgeladene Pakete zu sehen.",
-        "es": "Añade un elemento de Internet Archive para ver sus paquetes.",
-        "fr": "Ajoutez un élément Internet Archive pour afficher ses paquets.",
-        "ja": "Internet Archive の項目を追加するとパッケージが表示されます。",
-        "ko": "Internet Archive 항목을 추가하면 업로드된 패키지가 표시됩니다.",
-        "zh": "添加 Internet Archive 条目以查看已上传的软件包。"
+        "en": "Browse and download Nexvyn OS apps and ports from the Internet Archive catalog.",
+        "tr": "Nexvyn OS uygulama ve portlarını Internet Archive kataloğundan gez ve indir.",
+        "de": "Nexvyn-OS-Apps und -Ports aus dem Internet-Archive-Katalog durchsuchen und laden.",
+        "es": "Explora y descarga apps y ports de Nexvyn OS desde el catálogo de Internet Archive.",
+        "fr": "Parcourez et téléchargez les applications et portages Nexvyn OS du catalogue Internet Archive.",
+        "ja": "Internet Archive のカタログから Nexvyn OS のアプリや移植版を探してダウンロードします。",
+        "ko": "Internet Archive 카탈로그에서 Nexvyn OS 앱과 포트를 찾아 다운로드합니다.",
+        "zh": "从 Internet Archive 目录浏览并下载 Nexvyn OS 应用和移植版。"
       },
-      "version": "0.2.1",
+      "version": "0.3.0",
       "author": "sonerx7",
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/port-market.nxvapp",
-      "size": 34032,
-      "sha256": "53b77467020d94d8b06e9fb078ebfc5f3695ebd2bf996b397a86af3da5724b3a",
+      "size": 43859,
+      "sha256": "bed1e50139d5ef819ab70cc08a784ef484c2cfbd009935da91232d2e3f48bc64",
       "minSdk": "1.15",
       "permissions": [
         "network"
