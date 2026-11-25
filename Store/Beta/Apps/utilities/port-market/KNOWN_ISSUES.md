@@ -1,5 +1,11 @@
 # Port Market known issues
 
+## 0.3.1
+
+- The Store design was checked in the emulator with a local test catalog only (generated sample art). Not tested on a real console yet.
+- `whatsNew` is an optional catalog field read by the app; the owner-only publishing tool must add it before real listings can show What's new.
+- Search opens the system text prompt; there is no live search-as-you-type field in the SDK custom drawing path.
+
 ## 0.3.0
 
 - The SDK has no streaming hash API, so the SHA-256 of a download is verified in the app only for packages up to 8 MiB. Larger packages are checked by exact size, and Nexvyn OS checks the inner manifest hash when the install screen opens the package.

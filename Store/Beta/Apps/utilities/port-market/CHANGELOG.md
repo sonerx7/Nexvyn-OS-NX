@@ -1,5 +1,13 @@
 # Port Market changelog
 
+## 0.3.1
+
+- New Store design: a featured banner with the newest listing's screenshot and a Get button, a New row with screenshot tiles, and a card grid with large icons, a kind label, version and size. Sections have clear headers and item counts.
+- Search field in the top bar (gamepad Y): matches name, subtitle, category and tags; works together with the All, Games and Software chips. Designed empty, no-results, offline and loading states.
+- Detail page: dark header with a large icon and one Get, Update or Open button that shows download progress, an info strip (version, size, age, license, SDK), a screenshot carousel with arrows and page dots, and Information rows. Optional What's new notes (`whatsNew` in the catalog) are shown when present.
+- Polish: hover states, a focus ring that glides between items, eased gamepad scrolling and pulsing placeholders while images load. Colors follow the system light or dark theme.
+- Speed: each icon and screenshot is requested once and kept; truncated text is cached instead of measured every frame.
+
 ## 0.3.0
 
 - New Store tab: reads the Port Market catalog from the Internet Archive and lists apps and ports with icon, name, subtitle, version and size. All, Games and Software filters.

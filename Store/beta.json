@@ -129,13 +129,13 @@
         "ko": "Internet Archive 카탈로그에서 Nexvyn OS 앱과 포트를 찾아 다운로드합니다.",
         "zh": "从 Internet Archive 目录浏览并下载 Nexvyn OS 应用和移植版。"
       },
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": "sonerx7",
       "category": "utilities",
       "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/icon.png",
       "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Beta/Apps/utilities/port-market/port-market.nxvapp",
-      "size": 43859,
-      "sha256": "bed1e50139d5ef819ab70cc08a784ef484c2cfbd009935da91232d2e3f48bc64",
+      "size": 52901,
+      "sha256": "a09006b1f5edb2a4aaa238cff9f03b808a00172d1f3a468ad3ad56c63e1df9ea",
       "minSdk": "1.15",
       "permissions": [
         "network"

@@ -20,8 +20,8 @@
     "ko": "Nexvyn OS 포트 라이브러리",
     "zh": "你的 Nexvyn OS 移植库"
   },
-  "version": "0.3.0",
-  "build": 6,
+  "version": "0.3.1",
+  "build": 7,
   "type": "app",
   "author": "sonerx7",
   "license": "GPL-3.0-or-later",
