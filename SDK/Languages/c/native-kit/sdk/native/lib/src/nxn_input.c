@@ -113,3 +113,22 @@ int nxn_input_key_held(uint32_t hid_usage) {
     if (!hidGetKeyboardStates(&ks, 1)) return 0;
     return hidKeyboardStateGetKey(&ks, (HidKeyboardKey)hid_usage) ? 1 : 0;
 }
+
+/* N6 add-ons: the stand-alone library does not have them (windowed mode only). */
+nxn_result nxn_input_pad_motion(uint32_t pad, nxn_pad_motion* out) {
+    (void)pad;
+    (void)out;
+    return NXN_ERR_UNSUPPORTED;
+}
+
+nxn_result nxn_rumble_pad(uint32_t pad, const nxn_pad_rumble* p) {
+    (void)pad;
+    (void)p;
+    return NXN_ERR_UNSUPPORTED;
+}
+
+nxn_result nxn_input_pad_sticks(uint32_t pad, nxn_pad_sticks* out) {
+    (void)pad;
+    (void)out;
+    return NXN_ERR_UNSUPPORTED;
+}

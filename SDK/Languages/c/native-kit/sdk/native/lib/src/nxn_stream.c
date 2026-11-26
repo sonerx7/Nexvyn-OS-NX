@@ -74,3 +74,11 @@ void nxn_stream_close(nxn_stream* s) {
     fclose(s->f);
     free(s);
 }
+
+/* N6 add-on: reads here go to the file directly, nothing is queued, so there is nothing to cancel. */
+nxn_result nxn_stream_cancel(nxn_stream* s, uint64_t offset, uint64_t len, uint64_t* blocks) {
+    (void)offset;
+    (void)len;
+    if (blocks) *blocks = 0;
+    return s ? NXN_OK : NXN_ERR_INVALID;
+}

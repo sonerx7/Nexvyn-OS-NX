@@ -1,0 +1,21 @@
+{
+  "id": "com.nexvyn.example.sdl3gpudemo",
+  "name": "SDL3 GPU Demo",
+  "author": "Nexvyn OS",
+  "version": "1.0.0",
+  "category": "developer",
+  "runtime": "native",
+  "mode": "window",
+  "main": "sdl3_gpu_demo.nxvmod",
+  "minNative": "1.2",
+  "targetNative": "1.2",
+  "minSdk": "1.10",
+  "targetSdk": "1.10",
+  "window": {
+    "width": 960,
+    "height": 540,
+    "resizable": true
+  },
+  "permissions": [],
+  "vulkan": true
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Fault Demo",
+  "status_ok": "Hardware fault delivered and resumed",
+  "status_none": "No fault delivered (emulator does not enforce page protection)",
+  "status_unsupported": "Fault handler or guard pages are not enabled"
+}

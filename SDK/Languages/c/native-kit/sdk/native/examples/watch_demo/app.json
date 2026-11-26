@@ -1,0 +1,26 @@
+{
+  "id": "com.nexvyn.example.watch_demo",
+  "name": {
+    "en": "Write-Watch Demo",
+    "tr": "Yazma İzleme Örneği",
+    "de": "Demo zur Schreibüberwachung",
+    "es": "Demostración de vigilancia de escritura",
+    "fr": "Démo de surveillance des écritures",
+    "ja": "書き込み監視デモ",
+    "ko": "쓰기 감시 데모",
+    "zh": "写入监视演示"
+  },
+  "version": "1.0.0",
+  "build": 1,
+  "type": "app",
+  "runtime": "native",
+  "main": "watch_demo.nxvmod",
+  "author": "Nexvyn Team",
+  "category": "utilities",
+  "mode": "window",
+  "minNative": "1.3",
+  "targetNative": "1.3",
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "permissions": []
+}

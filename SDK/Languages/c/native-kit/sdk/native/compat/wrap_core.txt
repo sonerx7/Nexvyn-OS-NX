@@ -30,3 +30,6 @@ lstat
 access
 close
 fclose
+utime
+utimes
+readdir

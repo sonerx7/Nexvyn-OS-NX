@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.13)
+project(fault_demo VERSION 1.0.0 LANGUAGES C)
+
+if(NOT DEFINED NEXVYN_KIT)
+  get_filename_component(NEXVYN_KIT "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+endif()
+set(NEXVYN_ABI ON CACHE BOOL "" FORCE)
+include(${NEXVYN_KIT}/toolchain/nexvyn-native.cmake)
+include(${NEXVYN_KIT}/compat/cmake/nexvyn-compat.cmake)
+
+add_executable(fault_demo src/main.c)
+target_compile_options(fault_demo PRIVATE -Wall -Wextra -Werror)
+nexvyn_use_compat(fault_demo)
+nexvyn_add_nro(fault_demo TITLE "Fault Demo" AUTHOR "Nexvyn OS" VERSION "1.0.0")
+if(NEXVYN_WINDOWED)
+  target_compile_options(fault_demo_windowed_objects PRIVATE -Wall -Wextra -Werror)
+endif()

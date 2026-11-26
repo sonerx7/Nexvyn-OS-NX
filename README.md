@@ -12,7 +12,19 @@ Official Discord Community: https://discord.gg/gHfSaBJfFt</h1>
 
 - One `.nro`, opened from the Homebrew Menu. No reboot, no partitioning.
 - A windowed desktop (Dock or taskbar layout), 70+ built-in apps and an App Market where every item is reviewed.
-- **Nexvyn OS 1.4.0 (SDK 1.16 & Native SDK 1.2):** 4 official primary language tracks (**Lua 5.4.7** with Generational GC, **JavaScript ES2023** on QuickJS-ng 0.17.0, **Python 3.12** on CPython 3.12.16, and **Native C/C++** with Frozen ABI v1), the **NXUI Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)**, the **NexGFX PBR 3D renderer**, and an AI-ready SDK (`SDK/AI/llms.txt`).
+- **Nexvyn OS SDK (SDK 1.16 & Native SDK 1.3):** 4 official primary language tracks (**Lua 5.4.7** with Generational GC, **JavaScript ES2023** on QuickJS-ng 0.17.0, **Python 3.12** on CPython 3.12.16, and **Native C/C++** with Frozen ABI v1), the **NXUI Retained & Semantic UI Engine (`nxui.*` & `nxn_nxui_*`)**, the **NexGFX PBR 3D renderer**, and an AI-ready SDK (`SDK/AI/llms.txt`).
+
+### What's new in 1.4.1 (Native SDK 1.3)
+
+Nexvyn OS **1.4.1** delivers **Native SDK 1.3** (additive under frozen ABI v1; script SDK 1.16 unchanged) for heavy native apps, game engines, and emulators (`"minNative": "1.3"`):
+
+- **Sparse virtual memory & write-watch (`nxn_vm_*`):** Reserve large fixed virtual address ranges and commit/decommit 64 KiB granules or protect 4 KiB pages (`NONE`/`R`/`RW`), with 4 KiB write-watch (`nxn_vm_watch`, `nxn_vm_watch_collect`), race-free `nxn_vm_write`, and opt-in `NEXVYN_VM_MMAP=1` for anonymous `MAP_NORESERVE` mappings.
+- **POSIX fault signals bridge:** `sigaction` with `SA_SIGINFO` for `SIGSEGV`/`SIGBUS` bridges AArch64 data aborts to `nxn_fault_handler_set` when enabled (`si_addr`, `SEGV_*`/`BUS_*`, editable `ucontext_t` registers/PC/NZCV).
+- **Frame pacing, CPU info & main stack:** `nxn_display_set_interval` (1 or 2 vsyncs across resizes and dock switches) and `nxn_display_last_present_ns` (OpenGL stays at 4.3 core / GLSL 4.30 with `GL_TIMESTAMP`), `nxn_cpu_info_get` (Cortex-A57 features, `CTR_EL0` cache lines, core masks), and `"mainStackKiB"` in `app.json` (256–8192 KiB, default 512 KiB).
+- **Input, audio, threads & streaming:** Per-pad six-axis motion (`nxn_input_pad_motion`), raw sticks (`nxn_input_pad_sticks`), and dual-band HD rumble (`nxn_rumble_pad`); audio stream underruns and estimated latency (`nxn_audio_stats_get`); thread CPU time (`nxn_thread_cpu_ns`); and queued prefetch cancellation (`nxn_stream_cancel`).
+- **POSIX I/O & network fixes:** `utime`/`utimes`/`futimens`/`utimensat`, 64-bit `pread`/`pwrite`/`lseek64` (>2 GiB offsets), `readdir` `d_type`, and minimal IPv4 `getifaddrs`/`freeifaddrs`.
+- **SDL3 GPU API, limits & crash symbolization:** Windowed SDL3 with Vulkan WSI (`sdl3-nexvyn`, SPIR-V shaders) in the native kit sysroot, consolidated Native Runtime Limits documentation, and `nxv-native symbolize` for split `.debug` files by build ID.
+- **Verification status:** tested on a console (handheld, 2026-11-27): fault delivery to SIGSEGV handlers with register edit and resume, a 256 MiB sparse VM region with 4 writer threads, interval 1/2 pacing (60/30 fps), SDL3 GPU on Vulkan (off-screen draw and present), filesystem and network probes, and crash reports with symbolization. Not yet tested on a console: write-watch (`nxn_vm_watch`) and the 150 MB module case. The largest VM region is bounded by the free stack-region run (about 511 MiB measured); a 4 GiB reservation is not available on this kernel.
 
 ### What's new in 1.4
 

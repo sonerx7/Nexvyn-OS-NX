@@ -35,7 +35,7 @@ python tools/nxv_native package notes                 # -> notes/build/notes.nxv
 | `game` | Loop with a fixed update step, resize / focus / suspend, a GL quad batch, an action map (pad, keyboard), sound from the OS mixer, a save file | Finished game art/content; ordinary launcher/settings controls still use OS helpers |
 | `port` | The glue for an existing CMake project: `fetch.py` (pinned tag + commit, patches), `CMakeLists.txt` (toolchain, SDL2, compat layer, the Nexvyn target), `patches/`, a stand-in `example-upstream/` so it builds before you fetch anything | The upstream code, BIOS, firmware, game data |
 
-The generator records the installed Native SDK version (currently `1.2`) in `minNative`
+The generator records the installed Native SDK version (currently `1.3`) in `minNative`
 and `targetNative`. Build and package the generated project with the commands above. Edit `app.json` (id, name,
 author, category, permissions) before you ship. Release builds use `-O2` and LTO (`-DNEXVYN_LTO=OFF` turns LTO off); the
 toolchain already targets `-march=armv8-a+crc+crypto -mtune=cortex-a57` (NEON included). `--debug` makes a separate

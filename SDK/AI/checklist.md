@@ -2,7 +2,7 @@
 
 ## Current authoring contract
 
-Use SDK 1.16 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+Use SDK 1.16 / Native SDK 1.3 / ABI v1. For all new apps, games, ports and launchers:
 - Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
 - Keep SDK Markdown English only. Store screenshots may use English UI.
 - OS apps use shared theme/typography/controls; games require their own art direction.

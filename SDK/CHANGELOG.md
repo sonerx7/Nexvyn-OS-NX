@@ -2,7 +2,7 @@
 
 SDK-facing changes since Nexvyn OS 1.3.0, newest first. Taken from the release notes of each Nexvyn OS version and,
 where marked, from the headers and tools in this folder. Browser, App Market and desktop changes that do not touch
-the app SDK are left out; see the release notes for them. Current numbers: SDK **1.16**, Native SDK **1.2**,
+the app SDK are left out; see the release notes for them. Current numbers: SDK **1.16**, Native SDK **1.3**,
 native ABI **v1** (`VERSION.json`). Older SDK history: [Guides/SDK_VERSIONS.md](Guides/SDK_VERSIONS.md).
 
 ## 1.4.0 (SDK 1.16)

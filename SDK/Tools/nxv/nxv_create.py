@@ -140,7 +140,7 @@ def create_project(dest_dir, app_id, name, runtime, profile="utility"):
     if runtime == "native":
         manifest["runtime"] = "native"
         manifest["mode"] = "window"
-        manifest["minNative"] = "1.2"
+        manifest["minNative"] = "1.3"
         manifest["targetNative"] = "2.0"
         manifest["main"] = f"{app_id}.nxvmod"
     elif runtime == "lua":

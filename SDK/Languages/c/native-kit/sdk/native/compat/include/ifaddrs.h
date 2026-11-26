@@ -1,5 +1,5 @@
-/* Nexvyn compat layer: <ifaddrs.h>. The OS owns the network interface; getifaddrs() always fails with ENOSYS (one log line),
- * so ports that probe for local addresses compile and fall back cleanly. */
+/* Nexvyn compat layer: <ifaddrs.h>. Returns a minimal interface list (loopback plus the primary IPv4 address from
+ * gethostid() when nonzero). */
 #ifndef NEXVYN_IFADDRS_H
 #define NEXVYN_IFADDRS_H
 #include <sys/socket.h>
@@ -17,6 +17,10 @@ struct ifaddrs {
     struct sockaddr* ifa_dstaddr;
     void* ifa_data;
 };
+
+#ifndef ifa_broadaddr
+#define ifa_broadaddr ifa_dstaddr
+#endif
 
 int getifaddrs(struct ifaddrs** ifap);
 void freeifaddrs(struct ifaddrs* ifa);

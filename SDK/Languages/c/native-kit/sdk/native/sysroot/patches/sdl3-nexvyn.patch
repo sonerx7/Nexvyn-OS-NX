@@ -1,0 +1,1400 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -367,7 +367,7 @@
+ dep_option(SDL_RENDER_METAL        "Enable the Metal render driver" ON "SDL_RENDER;APPLE" OFF)
+ dep_option(SDL_RENDER_GPU          "Enable the SDL_GPU render driver" ON "SDL_RENDER;SDL_GPU" OFF)
+ dep_option(SDL_VIVANTE             "Use Vivante EGL video driver" ON "${UNIX_SYS};SDL_CPU_ARM32" OFF)
+-dep_option(SDL_VULKAN              "Enable Vulkan support" ON "SDL_VIDEO;ANDROID OR APPLE OR LINUX OR FREEBSD OR WINDOWS" OFF)
++dep_option(SDL_VULKAN              "Enable Vulkan support" ON "SDL_VIDEO;ANDROID OR APPLE OR LINUX OR FREEBSD OR WINDOWS OR NINTENDO_SWITCH" OFF)
+ dep_option(SDL_RENDER_VULKAN       "Enable the Vulkan render driver" ON "SDL_RENDER;SDL_VULKAN" OFF)
+ dep_option(SDL_METAL               "Enable Metal support" ON "APPLE" OFF)
+ set_option(SDL_OPENVR              "Use OpenVR video driver" OFF)
+@@ -3407,6 +3407,54 @@
+       scdv
+       gdi
+   )
++elseif(NINTENDO_SWITCH AND NEXVYN_SDL)
++  # Nexvyn OS windowed build: nxn_* ABI + host Vulkan WSI hooks instead of libnx/EGL/audren,
++  # so modules only import Nexvyn OS's host import set.
++  if(SDL_VIDEO)
++    set(SDL_VIDEO_DRIVER_NEXVYN 1)
++    sdl_glob_sources("${SDL3_SOURCE_DIR}/src/video/nexvyn/*.c")
++    set(HAVE_SDL_VIDEO TRUE)
++    set(SDL_VIDEO_OPENGL_ES2 1)
++    set(SDL_VIDEO_RENDER_OGL_ES2 1)
++    set(SDL_VIDEO_OPENGL 1)
++    set(HAVE_OPENGL TRUE)
++    set(HAVE_OPENGLES TRUE)
++    set(SDL_VIDEO_VULKAN 1)
++  endif()
++  if(SDL_AUDIO)
++    set(SDL_AUDIO_DRIVER_NEXVYN 1)
++    sdl_glob_sources("${SDL3_SOURCE_DIR}/src/audio/nexvyn/*.c")
++    set(HAVE_SDL_AUDIO TRUE)
++  endif()
++  if(SDL_JOYSTICK)
++    set(SDL_JOYSTICK_NEXVYN 1)
++    sdl_glob_sources("${SDL3_SOURCE_DIR}/src/joystick/nexvyn/*.c")
++    set(HAVE_SDL_JOYSTICK TRUE)
++  endif()
++  set(SDL_FILESYSTEM_NEXVYN 1)
++  sdl_glob_sources("${SDL3_SOURCE_DIR}/src/filesystem/nexvyn/*.c")
++  set(HAVE_SDL_FILESYSTEM TRUE)
++
++  set(SDL_FSOPS_POSIX 1)
++  sdl_sources("${SDL3_SOURCE_DIR}/src/filesystem/posix/SDL_sysfsops.c")
++  set(HAVE_SDL_FSOPS TRUE)
++
++  set(SDL_TIMER_UNIX 1)
++  sdl_glob_sources("${SDL3_SOURCE_DIR}/src/timer/unix/*.c")
++  set(HAVE_SDL_TIMERS TRUE)
++
++  set(SDL_TIME_SWITCH 1)
++  sdl_glob_sources("${SDL3_SOURCE_DIR}/src/time/switch/*.c")
++  set(HAVE_SDL_TIME TRUE)
++
++  CheckPTHREAD()
++  set(HAVE_CLOCK_GETTIME 1)
++  set(HAVE_SYSCTLBYNAME 0)
++  set(SDL_STATIC_PIC ON)
++  sdl_compile_definitions(PRIVATE "SDL_NEXVYN_WINDOWED=1")
++  sdl_compile_options(PRIVATE -fPIC -mtls-dialect=trad -ftls-model=global-dynamic)
++  sdl_include_directories(PRIVATE "${SDL3_SOURCE_DIR}/nexvyn_kit" SYSTEM "$ENV{DEVKITPRO}/portlibs/switch/include")
++  sdl_link_dependency(math LIBS m)
+ elseif(NINTENDO_SWITCH)
+   sdl_link_dependency(nx LIBS nx)
+ 
+--- a/include/build_config/SDL_build_config.h.cmake
++++ b/include/build_config/SDL_build_config.h.cmake
+@@ -292,6 +292,7 @@
+ #cmakedefine SDL_AUDIO_DRIVER_N3DS 1
+ #cmakedefine SDL_AUDIO_DRIVER_NGAGE 1
+ #cmakedefine SDL_AUDIO_DRIVER_SWITCH 1
++#cmakedefine SDL_AUDIO_DRIVER_NEXVYN 1
+ #cmakedefine SDL_AUDIO_DRIVER_QNX 1
+ 
+ #cmakedefine SDL_AUDIO_DRIVER_PRIVATE 1
+@@ -325,6 +326,7 @@
+ #cmakedefine SDL_JOYSTICK_PRIVATE 1
+ 
+ #cmakedefine SDL_JOYSTICK_SWITCH 1
++#cmakedefine SDL_JOYSTICK_NEXVYN 1
+ #cmakedefine SDL_HAPTIC_DUMMY 1
+ #cmakedefine SDL_HAPTIC_LINUX 1
+ #cmakedefine SDL_HAPTIC_IOKIT 1
+@@ -453,6 +455,7 @@
+ #cmakedefine SDL_VIDEO_DRIVER_X11_XTEST 1
+ #cmakedefine SDL_VIDEO_DRIVER_QNX 1
+ #cmakedefine SDL_VIDEO_DRIVER_SWITCH 1
++#cmakedefine SDL_VIDEO_DRIVER_NEXVYN 1
+ 
+ #cmakedefine SDL_VIDEO_DRIVER_PRIVATE 1
+ 
+@@ -526,6 +529,7 @@
+ #cmakedefine SDL_FILESYSTEM_PS2 1
+ #cmakedefine SDL_FILESYSTEM_N3DS 1
+ #cmakedefine SDL_FILESYSTEM_SWITCH 1
++#cmakedefine SDL_FILESYSTEM_NEXVYN 1
+ 
+ #cmakedefine SDL_FILESYSTEM_PRIVATE 1
+ 
+--- a/src/video/SDL_video.c
++++ b/src/video/SDL_video.c
+@@ -125,6 +125,9 @@
+ #endif
+ #ifdef SDL_VIDEO_DRIVER_NGAGE
+     &NGAGE_bootstrap,
++#endif
++#ifdef SDL_VIDEO_DRIVER_NEXVYN
++    &NEXVYN_bootstrap,
+ #endif
+ #ifdef SDL_VIDEO_DRIVER_SWITCH
+     &SWITCH_bootstrap,
+--- a/src/video/SDL_sysvideo.h
++++ b/src/video/SDL_sysvideo.h
+@@ -536,6 +536,7 @@
+ extern VideoBootStrap N3DS_bootstrap;
+ extern VideoBootStrap NGAGE_bootstrap;
+ extern VideoBootStrap SWITCH_bootstrap;
++extern VideoBootStrap NEXVYN_bootstrap;
+ extern VideoBootStrap RPI_bootstrap;
+ extern VideoBootStrap KMSDRM_bootstrap;
+ extern VideoBootStrap DUMMY_bootstrap;
+--- a/src/audio/SDL_audio.c
++++ b/src/audio/SDL_audio.c
+@@ -80,6 +80,9 @@
+ #ifdef SDL_AUDIO_DRIVER_NGAGE
+     &NGAGEAUDIO_bootstrap,
+ #endif
++#ifdef SDL_AUDIO_DRIVER_NEXVYN
++    &NEXVYNAUDIO_bootstrap,
++#endif
+ #ifdef SDL_AUDIO_DRIVER_SWITCH
+     &SWITCHAUDIO_bootstrap,
+ #endif
+--- a/src/audio/SDL_sysaudio.h
++++ b/src/audio/SDL_sysaudio.h
+@@ -389,6 +389,7 @@
+ extern AudioBootStrap N3DSAUDIO_bootstrap;
+ extern AudioBootStrap NGAGEAUDIO_bootstrap;
+ extern AudioBootStrap SWITCHAUDIO_bootstrap;
++extern AudioBootStrap NEXVYNAUDIO_bootstrap;
+ extern AudioBootStrap EMSCRIPTENAUDIO_bootstrap;
+ extern AudioBootStrap QSAAUDIO_bootstrap;
+ 
+--- a/src/joystick/SDL_joystick.c
++++ b/src/joystick/SDL_joystick.c
+@@ -105,6 +105,9 @@
+ #endif
+ #ifdef SDL_JOYSTICK_N3DS
+     &SDL_N3DS_JoystickDriver,
++#endif
++#ifdef SDL_JOYSTICK_NEXVYN
++    &SDL_NEXVYN_JoystickDriver,
+ #endif
+ #ifdef SDL_JOYSTICK_SWITCH
+     &SDL_SWITCH_JoystickDriver,
+--- a/src/joystick/SDL_sysjoystick.h
++++ b/src/joystick/SDL_sysjoystick.h
+@@ -263,6 +263,7 @@
+ extern SDL_JoystickDriver SDL_VITA_JoystickDriver;
+ extern SDL_JoystickDriver SDL_N3DS_JoystickDriver;
+ extern SDL_JoystickDriver SDL_SWITCH_JoystickDriver;
++extern SDL_JoystickDriver SDL_NEXVYN_JoystickDriver;
+ extern SDL_JoystickDriver SDL_GAMEINPUT_JoystickDriver;
+ 
+ // Ends C function definitions when using C++
+--- a/src/thread/pthread/SDL_systhread.c
++++ b/src/thread/pthread/SDL_systhread.c
+@@ -191,6 +191,10 @@
+ {
+ #ifdef SDL_PLATFORM_RISCOS
+     // FIXME: Setting thread priority does not seem to be supported
++    return true;
++#elif defined(SDL_NEXVYN_WINDOWED)
++    /* Keep the priority Nexvyn OS clamped this app thread to. */
++    (void)priority;
+     return true;
+ #elif SDL_PLATFORM_SWITCH
+     Result res;
+--- a/src/gpu/vulkan/SDL_gpu_vulkan.c
++++ b/src/gpu/vulkan/SDL_gpu_vulkan.c
+@@ -4583,7 +4583,7 @@
+ 
+     Uint32 requestedImageCount = renderer->allowedFramesInFlight;
+ 
+-#ifdef SDL_PLATFORM_APPLE
++#if defined(SDL_PLATFORM_APPLE) || defined(SDL_NEXVYN_WINDOWED)
+     windowData->width = swapchainSupportDetails.capabilities.currentExtent.width;
+     windowData->height = swapchainSupportDetails.capabilities.currentExtent.height;
+ #else
+--- a/src/stdlib/SDL_getenv.c
++++ b/src/stdlib/SDL_getenv.c
+@@ -32,7 +32,7 @@
+ 
+ #if defined(SDL_PLATFORM_WINDOWS)
+ #define HAVE_WIN32_ENVIRONMENT
+-#elif defined(HAVE_GETENV) && \
++#elif !defined(SDL_NEXVYN_WINDOWED) && defined(HAVE_GETENV) && \
+       (defined(HAVE_SETENV) || defined(HAVE_PUTENV)) && \
+       (defined(HAVE_UNSETENV) || defined(HAVE_PUTENV))
+ #define HAVE_LIBC_ENVIRONMENT
+--- a/src/cpuinfo/SDL_cpuinfo.c
++++ b/src/cpuinfo/SDL_cpuinfo.c
+@@ -628,6 +628,18 @@
+ int SDL_GetNumLogicalCPUCores(void)
+ {
+     if (!SDL_NumLogicalCPUCores) {
++#if defined(SDL_NEXVYN_WINDOWED)
++        /* Count the cores the process may run on (InfoType_CoreMask): 3 on console. */
++        {
++            unsigned long long mask = 0;
++            extern unsigned int svcGetInfo(unsigned long long *out, unsigned int id0, unsigned int handle, unsigned long long id1);
++            if (svcGetInfo(&mask, 0 /* InfoType_CoreMask */, 0xFFFF8001u /* CUR_PROCESS_HANDLE */, 0) == 0) {
++                for (; mask; mask >>= 1) {
++                    SDL_NumLogicalCPUCores += (int)(mask & 1);
++                }
++            }
++        }
++#endif
+ #if defined(HAVE_SYSCONF) && defined(_SC_NPROCESSORS_ONLN)
+         if (SDL_NumLogicalCPUCores <= 0) {
+             SDL_NumLogicalCPUCores = (int)sysconf(_SC_NPROCESSORS_ONLN);
+--- /dev/null
++++ b/src/video/nexvyn/SDL_nexvynvideo.h
+@@ -0,0 +1,38 @@
++/* Nexvyn OS SDL3 driver (windowed native apps): video, Vulkan WSI, GL context, window events, input.
++ * Added to SDL3 (zlib license) by the Nexvyn native kit. Not part of upstream SDL. */
++#ifndef SDL_nexvynvideo_h_
++#define SDL_nexvynvideo_h_
++
++#include "SDL_internal.h"
++#include "../SDL_sysvideo.h"
++#include <nexvyn/nexvyn_native.h>
++
++#ifdef SDL_VIDEO_DRIVER_NEXVYN
++
++typedef struct NEXVYN_GLContext
++{
++    nxn_display *display;
++    SDL_Window *window;
++    int follow;
++} NEXVYN_GLContext;
++
++typedef struct NEXVYN_VideoData
++{
++    SDL_Window *window;
++    NEXVYN_GLContext *gl;
++    int focused;
++    int vk_pending_w;
++    int vk_pending_h;
++    int touch_added;
++    uint32_t touch_ids[16];
++    int touch_count;
++    int usb_input;
++    int mouse_seen;
++    int mouse_x;
++    int mouse_y;
++} NEXVYN_VideoData;
++
++const nxn_input_state *NEXVYN_PollInput(int force);
++
++#endif /* SDL_VIDEO_DRIVER_NEXVYN */
++#endif /* SDL_nexvynvideo_h_ */
+--- /dev/null
++++ b/src/video/nexvyn/SDL_nexvynvideo.c
+@@ -0,0 +1,691 @@
++/* Nexvyn OS SDL3 driver (windowed native apps): video, host Vulkan WSI hooks, GL context, events, input.
++ * Added to SDL3 (zlib license) by the Nexvyn native kit. Not part of upstream SDL. */
++#include "SDL_internal.h"
++
++#ifdef SDL_VIDEO_DRIVER_NEXVYN
++
++#include "../SDL_sysvideo.h"
++#include "../SDL_vulkan_internal.h"
++#include "../../events/SDL_events_c.h"
++#include "../../events/SDL_keyboard_c.h"
++#include "../../events/SDL_mouse_c.h"
++#include "../../events/SDL_touch_c.h"
++#include "../../events/SDL_windowevents_c.h"
++
++#include "SDL_nexvynvideo.h"
++#include <nexvyn/nxn_vk.h>
++
++static NEXVYN_VideoData *g_video = NULL;
++static const SDL_KeyboardID NEXVYN_KEYBOARD_ID = 1;
++static const SDL_MouseID NEXVYN_MOUSE_ID = 1;
++
++#ifdef SDL_VIDEO_VULKAN
++/* Host WSI hooks resolved through the weak nxn_vk_proc boundary, matching the SDL2 Nexvyn adapter. */
++typedef VkResult(VKAPI_PTR *NEXVYN_VkExtensions)(uint32_t *count, const char **names);
++typedef VkResult(VKAPI_PTR *NEXVYN_VkCreateSurface)(VkInstance instance, VkSurfaceKHR *surface);
++
++static const char *const kVulkanUnavailable = "Vulkan is not available on this system";
++static const char *g_vk_extensions[8];
++static Uint32 g_vk_extension_count = 0;
++
++static bool NEXVYN_Vulkan_LoadLibrary(SDL_VideoDevice *_this, const char *path)
++{
++    PFN_vkGetInstanceProcAddr lookup;
++    if (path && *path) {
++        return SDL_SetError("Vulkan uses the host lookup and accepts no library path");
++    }
++    if (!nxn_vk_available()) {
++        return SDL_SetError("%s", kVulkanUnavailable);
++    }
++    lookup = (PFN_vkGetInstanceProcAddr)nxn_vk_proc("vkGetInstanceProcAddr");
++    if (!lookup) {
++        return SDL_SetError("%s", kVulkanUnavailable);
++    }
++    _this->vulkan_config.vkGetInstanceProcAddr = (void *)lookup;
++    _this->vulkan_config.vkEnumerateInstanceExtensionProperties =
++        (void *)lookup(VK_NULL_HANDLE, "vkEnumerateInstanceExtensionProperties");
++    return true;
++}
++
++static void NEXVYN_Vulkan_UnloadLibrary(SDL_VideoDevice *_this)
++{
++    _this->vulkan_config.vkGetInstanceProcAddr = NULL;
++    _this->vulkan_config.vkEnumerateInstanceExtensionProperties = NULL;
++    g_vk_extension_count = 0;
++}
++
++static char const * const *NEXVYN_Vulkan_GetInstanceExtensions(SDL_VideoDevice *_this, Uint32 *count)
++{
++    NEXVYN_VkExtensions get_extensions = nxn_vk_available()
++        ? (NEXVYN_VkExtensions)nxn_vk_proc("nxn_vk_wsi_instance_extensions")
++        : NULL;
++    uint32_t host_count = (uint32_t)SDL_arraysize(g_vk_extensions);
++    VkResult result;
++
++    (void)_this;
++    if (!get_extensions) {
++        SDL_SetError("%s", kVulkanUnavailable);
++        if (count) {
++            *count = 0;
++        }
++        return NULL;
++    }
++    result = get_extensions(&host_count, g_vk_extensions);
++    if (result != VK_SUCCESS) {
++        SDL_SetError("Host Vulkan extension query failed (%d)", (int)result);
++        if (count) {
++            *count = 0;
++        }
++        return NULL;
++    }
++    g_vk_extension_count = host_count;
++    if (count) {
++        *count = g_vk_extension_count;
++    }
++    return g_vk_extensions;
++}
++
++static void NEXVYN_Vulkan_SyncWindowSize(SDL_Window *window, VkInstance instance, VkSurfaceKHR surface)
++{
++    PFN_vkEnumeratePhysicalDevices enumerate =
++        (PFN_vkEnumeratePhysicalDevices)nxn_vk_proc("vkEnumeratePhysicalDevices");
++    PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR capabilities =
++        (PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)nxn_vk_proc("vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
++    VkPhysicalDevice physical = VK_NULL_HANDLE;
++    VkSurfaceCapabilitiesKHR caps;
++    uint32_t count = 1;
++    VkResult listed;
++
++    if (!enumerate || !capabilities) {
++        return;
++    }
++    listed = enumerate(instance, &count, &physical);
++    if ((listed != VK_SUCCESS && listed != VK_INCOMPLETE) || !count || physical == VK_NULL_HANDLE) {
++        return;
++    }
++    SDL_zero(caps);
++    if (capabilities(physical, surface, &caps) != VK_SUCCESS) {
++        return;
++    }
++    if (caps.currentExtent.width == 0xFFFFFFFFu || !caps.currentExtent.width || !caps.currentExtent.height) {
++        return;
++    }
++    if (g_video && ((int)caps.currentExtent.width != window->w || (int)caps.currentExtent.height != window->h)) {
++        g_video->vk_pending_w = (int)caps.currentExtent.width;
++        g_video->vk_pending_h = (int)caps.currentExtent.height;
++    }
++}
++
++static bool NEXVYN_Vulkan_CreateSurface(SDL_VideoDevice *_this,
++                                        SDL_Window *window,
++                                        VkInstance instance,
++                                        const struct VkAllocationCallbacks *allocator,
++                                        VkSurfaceKHR *surface)
++{
++    NEXVYN_VkCreateSurface create_surface;
++    VkResult result;
++
++    (void)_this;
++    (void)allocator;
++    *surface = VK_NULL_HANDLE;
++    if (!window || !g_video || window != g_video->window) {
++        return SDL_SetError("Vulkan surface requires the app's SDL window");
++    }
++    create_surface = nxn_vk_available()
++        ? (NEXVYN_VkCreateSurface)nxn_vk_proc("nxn_vk_wsi_create_surface")
++        : NULL;
++    if (!create_surface) {
++        return SDL_SetError("%s", kVulkanUnavailable);
++    }
++    result = create_surface(instance, surface);
++    if (result != VK_SUCCESS) {
++        *surface = VK_NULL_HANDLE;
++        if (result == VK_ERROR_NATIVE_WINDOW_IN_USE_KHR) {
++            return SDL_SetError("The app's window already has a Vulkan surface or is closing");
++        }
++        return SDL_SetError("Host Vulkan surface creation failed (%d)", (int)result);
++    }
++    NEXVYN_Vulkan_SyncWindowSize(window, instance, *surface);
++    return true;
++}
++
++static void NEXVYN_Vulkan_DestroySurface(SDL_VideoDevice *_this,
++                                         VkInstance instance,
++                                         VkSurfaceKHR surface,
++                                         const struct VkAllocationCallbacks *allocator)
++{
++    if (_this->vulkan_config.vkGetInstanceProcAddr) {
++        SDL_Vulkan_DestroySurface_Internal(_this->vulkan_config.vkGetInstanceProcAddr, instance, surface, allocator);
++    }
++}
++
++static bool NEXVYN_Vulkan_GetPresentationSupport(SDL_VideoDevice *_this,
++                                                 VkInstance instance,
++                                                 VkPhysicalDevice physicalDevice,
++                                                 Uint32 queueFamilyIndex)
++{
++    (void)_this;
++    (void)instance;
++    (void)physicalDevice;
++    return nxn_vk_available() && queueFamilyIndex == 0;
++}
++#endif /* SDL_VIDEO_VULKAN */
++
++/* ------------------------------------------------------------------ shared input sample */
++
++const nxn_input_state *NEXVYN_PollInput(int force)
++{
++    static nxn_input_state state;
++    static Uint64 stamp = 0;
++    Uint64 now = SDL_GetPerformanceCounter();
++    if (!force && stamp && (now - stamp) * 1000 < SDL_GetPerformanceFrequency() * 2) {
++        return &state;
++    }
++    nxn_input_state s = NXN_STRUCT_INIT(nxn_input_state);
++    if (nxn_input_poll(&s) == NXN_OK) {
++        s.pressed |= state.pressed & ~s.released;
++        s.released |= state.released & ~s.pressed;
++        state = s;
++    }
++    stamp = now;
++    return &state;
++}
++
++/* ------------------------------------------------------------------ window & display */
++
++static bool NEXVYN_CreateWindow(SDL_VideoDevice *_this, SDL_Window *window, SDL_PropertiesID create_props)
++{
++    NEXVYN_VideoData *vd = g_video;
++    (void)_this;
++    (void)create_props;
++    if (!vd) {
++        return SDL_SetError("nexvyn video driver is not initialized");
++    }
++    if (vd->window) {
++        return SDL_SetError("a Nexvyn OS window holds one SDL window");
++    }
++    window->internal = (SDL_WindowData *)vd;
++    vd->window = window;
++    vd->focused = 1;
++    SDL_SetMouseFocus(window);
++    SDL_SetKeyboardFocus(window);
++    return true;
++}
++
++static void NEXVYN_DestroyWindow(SDL_VideoDevice *_this, SDL_Window *window)
++{
++    NEXVYN_VideoData *vd = g_video;
++    (void)_this;
++    if (vd && vd->window == window) {
++        vd->window = NULL;
++    }
++    window->internal = NULL;
++}
++
++static void NEXVYN_NoWindowOp(SDL_VideoDevice *_this, SDL_Window *window)
++{
++    (void)_this;
++    (void)window;
++}
++
++static bool NEXVYN_GetDisplayModes(SDL_VideoDevice *_this, SDL_VideoDisplay *display)
++{
++    (void)_this;
++    SDL_AddFullscreenDisplayMode(display, &display->desktop_mode);
++    return true;
++}
++
++static bool NEXVYN_SetDisplayMode(SDL_VideoDevice *_this, SDL_VideoDisplay *display, SDL_DisplayMode *mode)
++{
++    (void)_this;
++    (void)display;
++    (void)mode;
++    return true;
++}
++
++/* ------------------------------------------------------------------ GL (nxn_display) */
++
++static void NEXVYN_GL_DefaultProfileConfig(SDL_VideoDevice *_this, int *mask, int *major, int *minor)
++{
++    (void)_this;
++    *mask = SDL_GL_CONTEXT_PROFILE_ES;
++    *major = 2;
++    *minor = 0;
++}
++
++static bool NEXVYN_GL_LoadLibrary(SDL_VideoDevice *_this, const char *path)
++{
++    (void)_this;
++    (void)path;
++    return true;
++}
++
++static void NEXVYN_GL_UnloadLibrary(SDL_VideoDevice *_this)
++{
++    (void)_this;
++}
++
++static SDL_FunctionPointer NEXVYN_GL_GetProcAddress(SDL_VideoDevice *_this, const char *proc)
++{
++    (void)_this;
++    return (SDL_FunctionPointer)nxn_display_proc(proc);
++}
++
++static SDL_GLContext NEXVYN_GL_CreateContext(SDL_VideoDevice *_this, SDL_Window *window)
++{
++    NEXVYN_VideoData *vd = g_video;
++    if (!vd || vd->gl) {
++        SDL_SetError("a Nexvyn OS window holds one GL context");
++        return NULL;
++    }
++    nxn_display_params p = NXN_STRUCT_INIT(nxn_display_params);
++    int mask = _this->gl_config.profile_mask;
++    int major = _this->gl_config.major_version;
++    int minor = _this->gl_config.minor_version;
++    if (mask == SDL_GL_CONTEXT_PROFILE_COMPATIBILITY) {
++        SDL_SetError("OpenGL compatibility profile is not available (core 4.3 or ES 3.2)");
++        return NULL;
++    }
++    if (mask == SDL_GL_CONTEXT_PROFILE_ES) {
++        p.api = NXN_GFX_GLES;
++        if (major >= 3) {
++            p.major = (uint32_t)major;
++            p.minor = (uint32_t)minor;
++        }
++    } else {
++        p.api = NXN_GFX_GL_CORE;
++        if (major > 3 || (major == 3 && minor >= 2)) {
++            p.major = (uint32_t)major;
++            p.minor = (uint32_t)minor;
++        }
++    }
++    p.depth_bits = (uint32_t)_this->gl_config.depth_size;
++    p.stencil_bits = (uint32_t)_this->gl_config.stencil_size;
++    if (_this->gl_config.flags & SDL_GL_CONTEXT_DEBUG_FLAG) {
++        p.flags |= NXN_DISPLAY_DEBUG;
++    }
++    int follow = (window->flags & (SDL_WINDOW_FULLSCREEN | SDL_WINDOW_RESIZABLE)) != 0;
++    if (!follow) {
++        p.width = (uint32_t)window->w;
++        p.height = (uint32_t)window->h;
++    }
++    NEXVYN_GLContext *ctx = (NEXVYN_GLContext *)SDL_calloc(1, sizeof(*ctx));
++    if (!ctx) {
++        return NULL;
++    }
++    if (nxn_display_open(&p, &ctx->display) != NXN_OK) {
++        SDL_SetError("nxn_display_open: %s", nxn_last_error());
++        SDL_free(ctx);
++        return NULL;
++    }
++    ctx->window = window;
++    ctx->follow = follow;
++    vd->gl = ctx;
++    _this->gl_config.depth_size = 24;
++    _this->gl_config.stencil_size = 8;
++    uint32_t w = 0, h = 0;
++    if (nxn_display_size(ctx->display, &w, &h) == NXN_OK && w && h && ((int)w != window->w || (int)h != window->h)) {
++        SDL_SendWindowEvent(window, SDL_EVENT_WINDOW_RESIZED, (int)w, (int)h);
++    }
++    return (SDL_GLContext)ctx;
++}
++
++static bool NEXVYN_GL_MakeCurrent(SDL_VideoDevice *_this, SDL_Window *window, SDL_GLContext context)
++{
++    (void)_this;
++    (void)window;
++    if (context && context != (SDL_GLContext)(g_video ? g_video->gl : NULL)) {
++        return SDL_SetError("unknown GL context");
++    }
++    return true;
++}
++
++static bool NEXVYN_GL_SetSwapInterval(SDL_VideoDevice *_this, int interval)
++{
++    (void)_this;
++    if (interval == 1 || interval == 0 || interval == -1) {
++        return true;
++    }
++    return SDL_SetError("swap interval %d is not available (0, 1 or -1)", interval);
++}
++
++static bool NEXVYN_GL_GetSwapInterval(SDL_VideoDevice *_this, int *interval)
++{
++    (void)_this;
++    if (interval) {
++        *interval = 1;
++    }
++    return true;
++}
++
++static bool NEXVYN_GL_SwapWindow(SDL_VideoDevice *_this, SDL_Window *window)
++{
++    NEXVYN_VideoData *vd = g_video;
++    (void)_this;
++    (void)window;
++    if (!vd || !vd->gl) {
++        return SDL_SetError("no GL context");
++    }
++    if (nxn_display_swap(vd->gl->display) != NXN_OK) {
++        return SDL_SetError("nxn_display_swap: %s", nxn_last_error());
++    }
++    return true;
++}
++
++static bool NEXVYN_GL_DestroyContext(SDL_VideoDevice *_this, SDL_GLContext context)
++{
++    NEXVYN_VideoData *vd = g_video;
++    NEXVYN_GLContext *ctx = (NEXVYN_GLContext *)context;
++    (void)_this;
++    if (!ctx) {
++        return true;
++    }
++    if (ctx->display) {
++        nxn_display_close(ctx->display);
++    }
++    if (vd && vd->gl == ctx) {
++        vd->gl = NULL;
++    }
++    SDL_free(ctx);
++    return true;
++}
++
++/* ------------------------------------------------------------------ events & input */
++
++static void NEXVYN_PollTouch(NEXVYN_VideoData *vd, const nxn_input_state *in, Uint64 ts)
++{
++    SDL_Window *window = vd->window;
++    if (!window) {
++        return;
++    }
++    float tw = window->w > 0 ? (float)window->w : 1280.0f;
++    float th = window->h > 0 ? (float)window->h : 720.0f;
++    if (!vd->touch_added) {
++        SDL_AddTouch((SDL_TouchID)1, SDL_TOUCH_DEVICE_DIRECT, "Switch");
++        vd->touch_added = 1;
++    }
++    uint32_t ids[16];
++    float xs[16], ys[16];
++    int n = 0;
++    for (uint32_t i = 0; i < in->touch_count && n < 16; i++) {
++        nxn_touch t = NXN_STRUCT_INIT(nxn_touch);
++        if (nxn_input_touch(i, &t) == NXN_OK) {
++            ids[n] = t.id;
++            xs[n] = t.x / tw;
++            ys[n] = t.y / th;
++            n++;
++        }
++    }
++    for (int i = 0; i < n; i++) {
++        int was = 0;
++        for (int j = 0; j < vd->touch_count; j++) {
++            was |= (vd->touch_ids[j] == ids[i]);
++        }
++        if (was) {
++            SDL_SendTouchMotion(ts, (SDL_TouchID)1, (SDL_FingerID)(ids[i] + 1), window, xs[i], ys[i], 1.0f);
++        } else {
++            SDL_SendTouch(ts, (SDL_TouchID)1, (SDL_FingerID)(ids[i] + 1), window, SDL_EVENT_FINGER_DOWN, xs[i], ys[i], 1.0f);
++        }
++    }
++    for (int j = 0; j < vd->touch_count; j++) {
++        int still = 0;
++        for (int i = 0; i < n; i++) {
++            still |= (ids[i] == vd->touch_ids[j]);
++        }
++        if (!still) {
++            SDL_SendTouch(ts, (SDL_TouchID)1, (SDL_FingerID)(vd->touch_ids[j] + 1), window, SDL_EVENT_FINGER_UP, 0.0f, 0.0f, 0.0f);
++        }
++    }
++    for (int i = 0; i < n; i++) {
++        vd->touch_ids[i] = ids[i];
++    }
++    vd->touch_count = n;
++}
++
++static void NEXVYN_PollUSB(NEXVYN_VideoData *vd, Uint64 ts)
++{
++    SDL_Window *window = vd->window;
++    nxn_key_event k = NXN_STRUCT_INIT(nxn_key_event);
++    while (nxn_input_key_poll(&k) > 0) {
++        if (vd->focused && window && k.usage > 0 && k.usage < SDL_SCANCODE_COUNT) {
++            SDL_SendKeyboardKey(ts, NEXVYN_KEYBOARD_ID, (int)k.usage, (SDL_Scancode)k.usage, k.down != 0);
++        }
++        k.size = sizeof k;
++    }
++    char text[64];
++    while (nxn_input_text(text, sizeof(text)) > 0) {
++        if (vd->focused && window && SDL_TextInputActive(window)) {
++            SDL_SendKeyboardText(text);
++        }
++    }
++    nxn_mouse m = NXN_STRUCT_INIT(nxn_mouse);
++    if (nxn_input_mouse(&m) != NXN_OK || !vd->focused || !window) {
++        return;
++    }
++    static const struct {
++        uint32_t bit;
++        Uint8 button;
++    } buttons[3] = {
++        {NXN_MOUSE_LEFT, SDL_BUTTON_LEFT},
++        {NXN_MOUSE_MIDDLE, SDL_BUTTON_MIDDLE},
++        {NXN_MOUSE_RIGHT, SDL_BUTTON_RIGHT}
++    };
++    if (m.present) {
++        if (SDL_GetWindowRelativeMouseMode(window)) {
++            if (m.dx != 0.0f || m.dy != 0.0f) {
++                SDL_SendMouseMotion(ts, window, NEXVYN_MOUSE_ID, true, m.dx, m.dy);
++            }
++        } else if (!vd->mouse_seen || (int)m.x != vd->mouse_x || (int)m.y != vd->mouse_y) {
++            SDL_SendMouseMotion(ts, window, NEXVYN_MOUSE_ID, false, m.x, m.y);
++        }
++        vd->mouse_seen = 1;
++        vd->mouse_x = (int)m.x;
++        vd->mouse_y = (int)m.y;
++    }
++    for (int i = 0; i < 3; i++) {
++        if (m.pressed & buttons[i].bit) {
++            SDL_SendMouseButton(ts, window, NEXVYN_MOUSE_ID, buttons[i].button, true);
++        }
++        if (m.released & buttons[i].bit) {
++            SDL_SendMouseButton(ts, window, NEXVYN_MOUSE_ID, buttons[i].button, false);
++        }
++    }
++    if (m.wheel_x != 0.0f || m.wheel_y != 0.0f) {
++        SDL_SendMouseWheel(ts, window, NEXVYN_MOUSE_ID, m.wheel_x, m.wheel_y, SDL_MOUSEWHEEL_NORMAL);
++    }
++}
++
++static bool NEXVYN_StartTextInput(SDL_VideoDevice *_this, SDL_Window *window, SDL_PropertiesID props)
++{
++    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
++    (void)_this;
++    (void)window;
++    (void)props;
++    if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_TEXT_REQUEST) != 0) {
++        nxn_input_text_request(1);
++    }
++    return true;
++}
++
++static bool NEXVYN_StopTextInput(SDL_VideoDevice *_this, SDL_Window *window)
++{
++    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
++    (void)_this;
++    (void)window;
++    if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_TEXT_REQUEST) != 0) {
++        nxn_input_text_request(0);
++    }
++    return true;
++}
++
++static void NEXVYN_PumpEvents(SDL_VideoDevice *_this)
++{
++    NEXVYN_VideoData *vd = g_video;
++    (void)_this;
++    if (!vd) {
++        return;
++    }
++#ifdef SDL_VIDEO_VULKAN
++    if (vd->vk_pending_w && vd->vk_pending_h) {
++        if (vd->window) {
++            SDL_SendWindowEvent(vd->window, SDL_EVENT_WINDOW_RESIZED, vd->vk_pending_w, vd->vk_pending_h);
++        }
++        vd->vk_pending_w = vd->vk_pending_h = 0;
++    }
++#endif
++    nxn_event e = NXN_STRUCT_INIT(nxn_event);
++    while (nxn_event_poll(&e) > 0) {
++        switch (e.type) {
++        case NXN_EVENT_RESIZE:
++#ifdef SDL_VIDEO_VULKAN
++            if (vd->window && (vd->window->flags & SDL_WINDOW_VULKAN) && e.width && e.height) {
++                SDL_SendWindowEvent(vd->window, SDL_EVENT_WINDOW_RESIZED, (int)e.width, (int)e.height);
++                break;
++            }
++#endif
++            if (vd->window && vd->gl && vd->gl->follow && e.width && e.height) {
++                if (nxn_display_resize(vd->gl->display, e.width, e.height) == NXN_OK) {
++                    SDL_SendWindowEvent(vd->window, SDL_EVENT_WINDOW_RESIZED, (int)e.width, (int)e.height);
++                }
++            }
++            break;
++        case NXN_EVENT_QUIT:
++            SDL_SendQuit();
++            break;
++        case NXN_EVENT_SUSPEND:
++            SDL_SendAppEvent(SDL_EVENT_WILL_ENTER_BACKGROUND);
++            SDL_SendAppEvent(SDL_EVENT_DID_ENTER_BACKGROUND);
++            break;
++        case NXN_EVENT_RESUME:
++            SDL_SendAppEvent(SDL_EVENT_WILL_ENTER_FOREGROUND);
++            SDL_SendAppEvent(SDL_EVENT_DID_ENTER_FOREGROUND);
++            break;
++        case NXN_EVENT_FOCUS:
++            vd->focused = e.focused ? 1 : 0;
++            if (vd->window) {
++                if (e.focused) {
++                    SDL_SetKeyboardFocus(vd->window);
++                    SDL_SetMouseFocus(vd->window);
++                } else {
++                    SDL_SetKeyboardFocus(NULL);
++                    SDL_SetMouseFocus(NULL);
++                }
++            }
++            break;
++        default:
++            break;
++        }
++        e.size = sizeof e;
++    }
++    Uint64 ts = SDL_GetTicksNS();
++    const nxn_input_state *in = NEXVYN_PollInput(1);
++    if (vd->focused) {
++        NEXVYN_PollTouch(vd, in, ts);
++    }
++    if (vd->usb_input) {
++        NEXVYN_PollUSB(vd, ts);
++    }
++}
++
++/* ------------------------------------------------------------------ init & bootstrap */
++
++static bool NEXVYN_VideoInit(SDL_VideoDevice *_this)
++{
++    NEXVYN_VideoData *vd = (NEXVYN_VideoData *)SDL_calloc(1, sizeof(*vd));
++    (void)_this;
++    if (!vd) {
++        return false;
++    }
++    g_video = vd;
++    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
++    vd->usb_input = nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_USB_INPUT) != 0;
++    if (vd->usb_input) {
++        SDL_AddKeyboard(NEXVYN_KEYBOARD_ID, "Nexvyn Keyboard");
++        SDL_AddMouse(NEXVYN_MOUSE_ID, "Nexvyn Pointer");
++    }
++    SDL_DisplayMode mode;
++    SDL_zero(mode);
++    mode.w = 1280;
++    mode.h = 720;
++    mode.refresh_rate = 60.0f;
++    mode.format = SDL_PIXELFORMAT_RGBA8888;
++    if (SDL_AddBasicVideoDisplay(&mode) == 0) {
++        g_video = NULL;
++        SDL_free(vd);
++        return false;
++    }
++    return true;
++}
++
++static void NEXVYN_VideoQuit(SDL_VideoDevice *_this)
++{
++    NEXVYN_VideoData *vd = g_video;
++    if (!vd) {
++        return;
++    }
++    if (vd->gl) {
++        NEXVYN_GL_DestroyContext(_this, (SDL_GLContext)vd->gl);
++    }
++    if (vd->touch_added) {
++        SDL_DelTouch((SDL_TouchID)1);
++    }
++    g_video = NULL;
++    SDL_free(vd);
++}
++
++static void NEXVYN_DeleteDevice(SDL_VideoDevice *device)
++{
++    SDL_free(device);
++}
++
++static SDL_VideoDevice *NEXVYN_CreateDevice(void)
++{
++    SDL_VideoDevice *device = (SDL_VideoDevice *)SDL_calloc(1, sizeof(*device));
++    if (!device) {
++        return NULL;
++    }
++    device->free = NEXVYN_DeleteDevice;
++    device->VideoInit = NEXVYN_VideoInit;
++    device->VideoQuit = NEXVYN_VideoQuit;
++    device->GetDisplayModes = NEXVYN_GetDisplayModes;
++    device->SetDisplayMode = NEXVYN_SetDisplayMode;
++    device->CreateSDLWindow = NEXVYN_CreateWindow;
++    device->DestroyWindow = NEXVYN_DestroyWindow;
++    device->ShowWindow = NEXVYN_NoWindowOp;
++    device->HideWindow = NEXVYN_NoWindowOp;
++    device->RaiseWindow = NEXVYN_NoWindowOp;
++    device->SetWindowTitle = NEXVYN_NoWindowOp;
++    device->SetWindowSize = NEXVYN_NoWindowOp;
++    device->PumpEvents = NEXVYN_PumpEvents;
++    device->StartTextInput = NEXVYN_StartTextInput;
++    device->StopTextInput = NEXVYN_StopTextInput;
++
++    device->GL_LoadLibrary = NEXVYN_GL_LoadLibrary;
++    device->GL_GetProcAddress = NEXVYN_GL_GetProcAddress;
++    device->GL_UnloadLibrary = NEXVYN_GL_UnloadLibrary;
++    device->GL_CreateContext = NEXVYN_GL_CreateContext;
++    device->GL_MakeCurrent = NEXVYN_GL_MakeCurrent;
++    device->GL_SetSwapInterval = NEXVYN_GL_SetSwapInterval;
++    device->GL_GetSwapInterval = NEXVYN_GL_GetSwapInterval;
++    device->GL_SwapWindow = NEXVYN_GL_SwapWindow;
++    device->GL_DestroyContext = NEXVYN_GL_DestroyContext;
++    device->GL_DefaultProfileConfig = NEXVYN_GL_DefaultProfileConfig;
++
++#ifdef SDL_VIDEO_VULKAN
++    device->Vulkan_LoadLibrary = NEXVYN_Vulkan_LoadLibrary;
++    device->Vulkan_UnloadLibrary = NEXVYN_Vulkan_UnloadLibrary;
++    device->Vulkan_GetInstanceExtensions = NEXVYN_Vulkan_GetInstanceExtensions;
++    device->Vulkan_CreateSurface = NEXVYN_Vulkan_CreateSurface;
++    device->Vulkan_DestroySurface = NEXVYN_Vulkan_DestroySurface;
++    device->Vulkan_GetPresentationSupport = NEXVYN_Vulkan_GetPresentationSupport;
++#endif
++    return device;
++}
++
++VideoBootStrap NEXVYN_bootstrap = {
++    .name = "nexvyn",
++    .desc = "Nexvyn OS video driver",
++    .create = NEXVYN_CreateDevice
++};
++
++#endif /* SDL_VIDEO_DRIVER_NEXVYN */
+--- /dev/null
++++ b/src/audio/nexvyn/SDL_nexvynaudio.h
+@@ -0,0 +1,19 @@
++/* Nexvyn OS SDL3 driver (windowed native apps): audio output through nxn_audio_*.
++ * Added to SDL3 (zlib license) by the Nexvyn native kit. Not part of upstream SDL. */
++#ifndef SDL_nexvynaudio_h_
++#define SDL_nexvynaudio_h_
++
++#include "SDL_internal.h"
++#include "../SDL_sysaudio.h"
++#include <nexvyn/nexvyn_native.h>
++
++struct SDL_PrivateAudioData
++{
++    nxn_audio *stream;
++    Uint8 *mixbuf;
++    int mixlen;
++    Uint32 keep;
++    Uint32 bytes_per_ms;
++};
++
++#endif /* SDL_nexvynaudio_h_ */
+--- /dev/null
++++ b/src/audio/nexvyn/SDL_nexvynaudio.c
+@@ -0,0 +1,129 @@
++/* Nexvyn OS SDL3 driver (windowed native apps): audio output through the app's nxn audio stream.
++ * Added to SDL3 (zlib license) by the Nexvyn native kit. Not part of upstream SDL. */
++#include "SDL_internal.h"
++
++#ifdef SDL_AUDIO_DRIVER_NEXVYN
++
++#include "../SDL_sysaudio.h"
++#include "SDL_nexvynaudio.h"
++
++static bool NEXVYNAUDIO_OpenDevice(SDL_AudioDevice *device)
++{
++    if (device->recording) {
++        return SDL_SetError("audio recording is not available inside a Nexvyn OS window");
++    }
++    if (SDL_AUDIO_ISFLOAT(device->spec.format) && SDL_AUDIO_BITSIZE(device->spec.format) == 32) {
++        device->spec.format = SDL_AUDIO_F32;
++    } else {
++        device->spec.format = SDL_AUDIO_S16;
++    }
++    if (device->spec.channels < 1) {
++        device->spec.channels = 2;
++    } else if (device->spec.channels > 2) {
++        device->spec.channels = 2;
++    }
++    SDL_UpdatedAudioDeviceFormat(device);
++
++    device->hidden = (struct SDL_PrivateAudioData *)SDL_calloc(1, sizeof(*device->hidden));
++    if (!device->hidden) {
++        return false;
++    }
++    device->hidden->mixlen = device->buffer_size;
++    device->hidden->mixbuf = (Uint8 *)SDL_calloc(1, (size_t)device->buffer_size);
++    if (!device->hidden->mixbuf) {
++        SDL_free(device->hidden);
++        device->hidden = NULL;
++        return false;
++    }
++
++    Uint32 frame = (Uint32)(SDL_AUDIO_BITSIZE(device->spec.format) / 8 * device->spec.channels);
++    device->hidden->bytes_per_ms = (Uint32)((Uint64)device->spec.freq * frame / 1000u);
++    Uint32 target = device->hidden->bytes_per_ms * 100u;
++    if (target < (Uint32)(2 * device->hidden->mixlen)) {
++        target = (Uint32)(2 * device->hidden->mixlen);
++    }
++    device->hidden->keep = target - (Uint32)device->hidden->mixlen;
++
++    nxn_audio_params p = NXN_STRUCT_INIT(nxn_audio_params);
++    p.rate = (uint32_t)device->spec.freq;
++    p.channels = (uint32_t)device->spec.channels;
++    p.format = (device->spec.format == SDL_AUDIO_F32) ? NXN_AUDIO_F32 : NXN_AUDIO_S16;
++    p.frames = (uint32_t)device->sample_frames;
++    if (nxn_audio_open(&p, &device->hidden->stream) != NXN_OK) {
++        SDL_free(device->hidden->mixbuf);
++        SDL_free(device->hidden);
++        device->hidden = NULL;
++        return SDL_SetError("nxn_audio_open: %s", nxn_last_error());
++    }
++    nxn_audio_pause(device->hidden->stream, 0);
++    return true;
++}
++
++static bool NEXVYNAUDIO_WaitDevice(SDL_AudioDevice *device)
++{
++    struct SDL_PrivateAudioData *h = device->hidden;
++    uint32_t q = nxn_audio_queued_bytes(h->stream);
++    while (!SDL_GetAtomicInt(&device->shutdown) && q > h->keep) {
++        Uint32 ms = 1;
++        if (h->bytes_per_ms) {
++            ms = (q - h->keep) / h->bytes_per_ms;
++            if (ms < 1) ms = 1;
++            if (ms > 20) ms = 20;
++        }
++        SDL_Delay(ms);
++        q = nxn_audio_queued_bytes(h->stream);
++    }
++    return true;
++}
++
++static bool NEXVYNAUDIO_PlayDevice(SDL_AudioDevice *device, const Uint8 *buffer, int buflen)
++{
++    nxn_audio_queue(device->hidden->stream, buffer, (uint32_t)buflen);
++    return true;
++}
++
++static Uint8 *NEXVYNAUDIO_GetDeviceBuf(SDL_AudioDevice *device, int *buffer_size)
++{
++    if (buffer_size) {
++        *buffer_size = device->hidden->mixlen;
++    }
++    return device->hidden->mixbuf;
++}
++
++static void NEXVYNAUDIO_CloseDevice(SDL_AudioDevice *device)
++{
++    if (!device->hidden) {
++        return;
++    }
++    if (device->hidden->stream) {
++        nxn_audio_close(device->hidden->stream);
++    }
++    SDL_free(device->hidden->mixbuf);
++    SDL_free(device->hidden);
++    device->hidden = NULL;
++}
++
++static bool NEXVYNAUDIO_Init(SDL_AudioDriverImpl *impl)
++{
++    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
++    if (nxn_caps_get(&caps) != NXN_OK || !(caps.features & NXN_CAP_WINDOWED) || !(caps.features & NXN_CAP_AUDIO)) {
++        return false;
++    }
++    impl->OpenDevice = NEXVYNAUDIO_OpenDevice;
++    impl->WaitDevice = NEXVYNAUDIO_WaitDevice;
++    impl->PlayDevice = NEXVYNAUDIO_PlayDevice;
++    impl->GetDeviceBuf = NEXVYNAUDIO_GetDeviceBuf;
++    impl->CloseDevice = NEXVYNAUDIO_CloseDevice;
++    impl->OnlyHasDefaultPlaybackDevice = true;
++    return true;
++}
++
++AudioBootStrap NEXVYNAUDIO_bootstrap = {
++    .name = "nexvyn",
++    .desc = "Nexvyn OS audio driver",
++    .init = NEXVYNAUDIO_Init,
++    .demand_only = false,
++    .is_preferred = true,
++};
++
++#endif /* SDL_AUDIO_DRIVER_NEXVYN */
+--- /dev/null
++++ b/src/joystick/nexvyn/SDL_sysjoystick.c
+@@ -0,0 +1,232 @@
++/* Nexvyn OS SDL3 driver (windowed native apps): game controller through nxn_input_poll.
++ * Added to SDL3 (zlib license) by the Nexvyn native kit. Not part of upstream SDL. */
++#include "SDL_internal.h"
++
++#ifdef SDL_JOYSTICK_NEXVYN
++
++#include "../SDL_sysjoystick.h"
++#include "../SDL_joystick_c.h"
++#include <nexvyn/nexvyn_native.h>
++
++#define NEXVYN_BUTTONS 16
++
++extern const nxn_input_state *NEXVYN_PollInput(int force);
++
++static uint64_t g_buttons = 0;
++static Sint16 g_axes[4];
++static SDL_JoystickID g_instance = 0;
++
++static Sint16 axis16(float v)
++{
++    if (v > 1.0f) v = 1.0f;
++    if (v < -1.0f) v = -1.0f;
++    return (Sint16)(v * 32767.0f);
++}
++
++static bool NEXVYN_JoystickInit(void)
++{
++    g_instance = SDL_GetNextObjectID();
++    SDL_PrivateJoystickAdded(g_instance);
++    return true;
++}
++
++static int NEXVYN_JoystickGetCount(void)
++{
++    return g_instance ? 1 : 0;
++}
++
++static void NEXVYN_JoystickDetect(void) {}
++
++static bool NEXVYN_JoystickIsDevicePresent(Uint16 vendor_id, Uint16 product_id, Uint16 version, const char *name)
++{
++    (void)vendor_id; (void)product_id; (void)version; (void)name;
++    return false;
++}
++
++static const char *NEXVYN_JoystickGetDeviceName(int device_index)
++{
++    (void)device_index;
++    return "Switch Controller";
++}
++
++static const char *NEXVYN_JoystickGetDevicePath(int device_index)
++{
++    (void)device_index;
++    return NULL;
++}
++
++static int NEXVYN_JoystickGetDeviceSteamVirtualGamepadSlot(int device_index)
++{
++    (void)device_index;
++    return -1;
++}
++
++static int NEXVYN_JoystickGetDevicePlayerIndex(int device_index)
++{
++    (void)device_index;
++    return 0;
++}
++
++static void NEXVYN_JoystickSetDevicePlayerIndex(int device_index, int player_index)
++{
++    (void)device_index; (void)player_index;
++}
++
++static SDL_GUID NEXVYN_JoystickGetDeviceGUID(int device_index)
++{
++    return SDL_CreateJoystickGUIDForName(NEXVYN_JoystickGetDeviceName(device_index));
++}
++
++static SDL_JoystickID NEXVYN_JoystickGetDeviceInstanceID(int device_index)
++{
++    (void)device_index;
++    return g_instance;
++}
++
++static bool NEXVYN_JoystickOpen(SDL_Joystick *joystick, int device_index)
++{
++    (void)device_index;
++    joystick->nbuttons = NEXVYN_BUTTONS;
++    joystick->naxes = 4;
++    joystick->nhats = 0;
++    joystick->instance_id = g_instance;
++    g_buttons = 0;
++    SDL_memset(g_axes, 0, sizeof(g_axes));
++    return true;
++}
++
++static bool NEXVYN_JoystickRumble(SDL_Joystick *joystick, Uint16 low, Uint16 high)
++{
++    (void)joystick;
++    nxn_caps caps = NXN_STRUCT_INIT(nxn_caps);
++    if (nxn_caps_get(&caps) == NXN_OK && (caps.features & NXN_CAP_RUMBLE)) {
++        Uint16 mx = low > high ? low : high;
++        nxn_rumble((float)mx / 65535.0f, mx ? 2000u : 0u);
++        return true;
++    }
++    return SDL_Unsupported();
++}
++
++static bool NEXVYN_JoystickRumbleTriggers(SDL_Joystick *joystick, Uint16 left, Uint16 right)
++{
++    (void)joystick; (void)left; (void)right;
++    return SDL_Unsupported();
++}
++
++static bool NEXVYN_JoystickSetLED(SDL_Joystick *joystick, Uint8 red, Uint8 green, Uint8 blue)
++{
++    (void)joystick; (void)red; (void)green; (void)blue;
++    return SDL_Unsupported();
++}
++
++static bool NEXVYN_JoystickSendEffect(SDL_Joystick *joystick, const void *data, int size)
++{
++    (void)joystick; (void)data; (void)size;
++    return SDL_Unsupported();
++}
++
++static bool NEXVYN_JoystickSetSensorsEnabled(SDL_Joystick *joystick, bool enabled)
++{
++    (void)joystick; (void)enabled;
++    return SDL_Unsupported();
++}
++
++static void NEXVYN_JoystickUpdate(SDL_Joystick *joystick)
++{
++    Uint64 ts = SDL_GetTicksNS();
++    const nxn_input_state *in = NEXVYN_PollInput(0);
++    uint64_t now = in->buttons;
++    uint64_t diff = now ^ g_buttons;
++    for (int i = 0; diff && i < NEXVYN_BUTTONS; i++) {
++        if (diff & (1ull << i)) {
++            SDL_SendJoystickButton(ts, joystick, (Uint8)i, ((now >> i) & 1) != 0);
++        }
++    }
++    g_buttons = now;
++    Sint16 a[4] = {axis16(in->lx), axis16(-in->ly), axis16(in->rx), axis16(-in->ry)};
++    for (int i = 0; i < 4; i++) {
++        if (a[i] != g_axes[i]) {
++            SDL_SendJoystickAxis(ts, joystick, (Uint8)i, a[i]);
++            g_axes[i] = a[i];
++        }
++    }
++}
++
++static void NEXVYN_JoystickClose(SDL_Joystick *joystick)
++{
++    (void)joystick;
++}
++
++static void NEXVYN_JoystickQuit(void)
++{
++    if (g_instance) {
++        SDL_PrivateJoystickRemoved(g_instance);
++        g_instance = 0;
++    }
++}
++
++static bool NEXVYN_JoystickGetGamepadMapping(int device_index, SDL_GamepadMapping *out)
++{
++    (void)device_index;
++    *out = (SDL_GamepadMapping){
++        .a = {EMappingKind_Button, 1},
++        .b = {EMappingKind_Button, 0},
++        .x = {EMappingKind_Button, 3},
++        .y = {EMappingKind_Button, 2},
++        .back = {EMappingKind_Button, 11},
++        .guide = {EMappingKind_None, 255},
++        .start = {EMappingKind_Button, 10},
++        .leftstick = {EMappingKind_Button, 4},
++        .rightstick = {EMappingKind_Button, 5},
++        .leftshoulder = {EMappingKind_Button, 6},
++        .rightshoulder = {EMappingKind_Button, 7},
++        .dpup = {EMappingKind_Button, 13},
++        .dpdown = {EMappingKind_Button, 15},
++        .dpleft = {EMappingKind_Button, 12},
++        .dpright = {EMappingKind_Button, 14},
++        .misc1 = {EMappingKind_None, 255},
++        .misc2 = {EMappingKind_None, 255},
++        .misc3 = {EMappingKind_None, 255},
++        .misc4 = {EMappingKind_None, 255},
++        .misc5 = {EMappingKind_None, 255},
++        .misc6 = {EMappingKind_None, 255},
++        .right_paddle1 = {EMappingKind_None, 255},
++        .left_paddle1 = {EMappingKind_None, 255},
++        .right_paddle2 = {EMappingKind_None, 255},
++        .left_paddle2 = {EMappingKind_None, 255},
++        .leftx = {EMappingKind_Axis, 0},
++        .lefty = {EMappingKind_Axis, 1},
++        .rightx = {EMappingKind_Axis, 2},
++        .righty = {EMappingKind_Axis, 3},
++        .lefttrigger = {EMappingKind_Button, 8},
++        .righttrigger = {EMappingKind_Button, 9},
++        .touchpad = {EMappingKind_None, 255},
++    };
++    return true;
++}
++
++SDL_JoystickDriver SDL_NEXVYN_JoystickDriver = {
++    NEXVYN_JoystickInit,
++    NEXVYN_JoystickGetCount,
++    NEXVYN_JoystickDetect,
++    NEXVYN_JoystickIsDevicePresent,
++    NEXVYN_JoystickGetDeviceName,
++    NEXVYN_JoystickGetDevicePath,
++    NEXVYN_JoystickGetDeviceSteamVirtualGamepadSlot,
++    NEXVYN_JoystickGetDevicePlayerIndex,
++    NEXVYN_JoystickSetDevicePlayerIndex,
++    NEXVYN_JoystickGetDeviceGUID,
++    NEXVYN_JoystickGetDeviceInstanceID,
++    NEXVYN_JoystickOpen,
++    NEXVYN_JoystickRumble,
++    NEXVYN_JoystickRumbleTriggers,
++    NEXVYN_JoystickSetLED,
++    NEXVYN_JoystickSendEffect,
++    NEXVYN_JoystickSetSensorsEnabled,
++    NEXVYN_JoystickUpdate,
++    NEXVYN_JoystickClose,
++    NEXVYN_JoystickQuit,
++    NEXVYN_JoystickGetGamepadMapping,
++};
++
++#endif /* SDL_JOYSTICK_NEXVYN */
+--- /dev/null
++++ b/src/filesystem/nexvyn/SDL_sysfilesystem.c
+@@ -0,0 +1,51 @@
++/* Nexvyn OS SDL3 driver (windowed native apps): base/pref paths from nxn_fs_*.
++ * Added to SDL3 (zlib license) by the Nexvyn native kit. Not part of upstream SDL. */
++#include "SDL_internal.h"
++
++#ifdef SDL_FILESYSTEM_NEXVYN
++
++#include <nexvyn/nexvyn_native.h>
++
++static char *dir_with_slash(nxn_dir dir, int create)
++{
++    char path[512];
++    if (create && nxn_fs_mkdirs(dir, "") != NXN_OK) {
++        SDL_SetError("cannot create app folder: %s", nxn_last_error());
++        return NULL;
++    }
++    if (nxn_fs_path(dir, "", path, sizeof(path)) != NXN_OK) {
++        SDL_SetError("nxn_fs_path: %s", nxn_last_error());
++        return NULL;
++    }
++    size_t n = SDL_strlen(path);
++    if (n + 2 > sizeof(path)) {
++        SDL_SetError("path too long");
++        return NULL;
++    }
++    if (n == 0 || path[n - 1] != '/') {
++        path[n++] = '/';
++        path[n] = '\0';
++    }
++    return SDL_strdup(path);
++}
++
++char *SDL_SYS_GetBasePath(void)
++{
++    return dir_with_slash(NXN_DIR_BUNDLE, 0);
++}
++
++char *SDL_SYS_GetPrefPath(const char *org, const char *app)
++{
++    (void)org;
++    (void)app;
++    return dir_with_slash(NXN_DIR_DATA, 1);
++}
++
++char *SDL_SYS_GetUserFolder(SDL_Folder folder)
++{
++    (void)folder;
++    SDL_Unsupported();
++    return NULL;
++}
++
++#endif /* SDL_FILESYSTEM_NEXVYN */

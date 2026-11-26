@@ -175,7 +175,7 @@ typedef enum nxn_info_key {
     NXN_INFO_APP_VERSION = 1,
     NXN_INFO_OS_VERSION = 2,      /* "" when standalone */
     NXN_INFO_SDK_VERSION = 3,     /* script SDK of the system, "" when standalone */
-    NXN_INFO_NATIVE_VERSION = 4,  /* Native SDK version of the system ("1.2"), "" when standalone */
+    NXN_INFO_NATIVE_VERSION = 4,  /* Native SDK version of the system, "" when standalone */
     NXN_INFO_LANGUAGE = 5,        /* "en", "tr", ... (the system language when standalone) */
     NXN_INFO_USER_NAME = 6,
     NXN_INFO_THEME = 7            /* "dark" / "light" */

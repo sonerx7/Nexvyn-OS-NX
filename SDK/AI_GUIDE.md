@@ -30,7 +30,7 @@ Companion files: [llms.txt](llms.txt) (index of every document and header), [CHA
 |---|---|---|---|
 | Nexvyn OS release | the latest release of the public repository (see `CHANGELOG.md` of the repository root) | Settings > About | the system version |
 | SDK (script API) | **1.16** | `minSdk`, `targetSdk`, `sys.sdkVersion()` | callable API for Lua, JavaScript, Python, C scripts |
-| Native SDK | **1.2** | `minNative`, `targetNative`, `nxn_info_string(NXN_INFO_NATIVE_VERSION)` | `nxn_*` API for C/C++ modules |
+| Native SDK | **1.3** | `minNative`, `targetNative`, `nxn_info_string(NXN_INFO_NATIVE_VERSION)` | `nxn_*` API for C/C++ modules |
 | Native ABI | **v1**, frozen, add-only | `NXN_ABI_VERSION` | a module built with any older kit keeps loading |
 
 `SDK/VERSION.json` carries the same numbers (`os`, `sdk`, `native`, `nativeAbi`, `requiredLocales`).
@@ -45,8 +45,8 @@ Rules:
   documented as "for apps that target SDK x" (for example a stuck callback ends the app from 1.8 on).
 - `minNative` is the oldest Native SDK a native module needs: the newest `nxn_*` function it imports.
   An older system refuses a module that imports a name it does not have. `targetNative` is the Native
-  behavior level you tested (default `minNative`). Write `"1.2"` for both unless you use only 1.0 or 1.1
-  functions and want older systems too (section 9 lists what 1.1 and 1.2 add).
+  behavior level you tested (default `minNative`). Write `"1.3"` for both when using 1.3 APIs. For an older compatibility floor, use only
+  APIs available on the supported systems and test on those systems. Section 9 lists the native API additions.
 - A native package must also carry `"minSdk": "1.10"` (the SDK that introduced the native runtime);
   `nxv_native package` writes it and the packer refuses a native package without it.
 - The value `"2.0"` is not an SDK release. It is accepted as a target marker: `"runtime": "python"` with an
@@ -167,7 +167,7 @@ python SDK/Tools/nxv/nxv.py create --profile network --recommend-only
   edit as section 1 says: `"targetSdk": "1.16"`, `"runtime": "python3"` with `"minSdk": "1.6"` or newer. It writes
   `targetNative`, `uiApi` 2 and `uiTheme` 2 for every runtime: **delete `targetNative` in script apps** (it is a
   native-only field; keep `uiApi`/`uiTheme` only if you need the N2 NXUI behavior levels), and for the native profile set
-  `"targetNative": "1.2"`. It also writes a `perfBudget` object; the OS does not read it
+  `"targetNative": "1.3"` after testing with Native SDK 1.3. It also writes a `perfBudget` object; the OS does not read it
   (it is a note for you and for reviewers).
 - Replace `icon.png` before publishing (section 17).
 
@@ -198,7 +198,7 @@ An existing CMake or SDL2 project: use `--template port` (see [Guides/PORT_AND_L
 [Guides/PORTING_LARGE_GAMES.md](Guides/PORTING_LARGE_GAMES.md), [Guides/NATIVE_COMPAT.md](Guides/NATIVE_COMPAT.md)).
 Before you ship a port, go through [Guides/PORTING_CHECKLIST.md](Guides/PORTING_CHECKLIST.md) (input gestures, memory budget,
 `"fullscreenPause"`, GL or Vulkan, testing).
-The golden samples under `AI/golden/` carry `"targetSdk": "2.0"` (fixtures); new apps use `1.16` / `1.2` as in section 1.
+The golden samples under `AI/golden/` carry `"targetSdk": "2.0"`. The current SDKs are `1.16` / `1.3`.
 Finished, reviewed starting points with all eight locales: `Samples/c/golden/` (`native-app`, `native-game3d`,
 `native-tool`, `native-port`, `native-emu`) and `AI/golden/` (script apps).
 
@@ -450,6 +450,7 @@ What the Native SDK versions add (`minNative`):
 | 1.0 | `nxn_init`/`nxn_run`, display (GL/GLES), input, audio, files, logging, `NXN_EVENT_RESIZE`/`QUIT`/`FOCUS`, crash reports |
 | 1.1 | multi-touch, USB keyboard/mouse/text, `NXN_EVENT_DOCK`/`SUSPEND`/`RESUME`/`THEME`/`MENU`, `nxn_sys.h` services (notify, clipboard, rumble, picker, save backups, permissions), `nxn_ui.h` tokens and `nxn_tr`, `nxn_menu.h`, shared libraries, TLS and C++ exceptions on by default (TLS and exceptions: `native.windowedTls`, `native.windowedEh`), app-owned heap arena, `liveResize` |
 | 1.2 | `nxn_window_set_title`/`set_mode`/`set_modified`, `nxn_power_get` + `NXN_EVENT_POWER`, `nxn_dialog`/`nxn_prompt`; add-ons announced by capability bits: `NXN_EVENT_LANGUAGE` + `nxn_app_language()`, `nxn_input_relative_mouse` / `nxn_input_mouse_delta` and `nxn_input_pad_count` / `nxn_input_pad_poll` (`NXN_CAP_INPUT_ROUTER`, up to 8 controllers) |
+| 1.3 | See [Native SDK releases](Guides/SDK_VERSIONS.md#native-sdk-releases) for sparse VM, frame pacing, CPU information, audio statistics, per-pad input and stream cancellation. |
 
 Capability bits (`nxn_caps_get`, `NXN_CAP_*`) say what the running system offers; test the bit before an optional
 call, and treat any negative result you do not know as a failure.

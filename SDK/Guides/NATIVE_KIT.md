@@ -38,6 +38,24 @@ TLS availability does not guarantee worker admission or change synchronization
 requirements. Use an available GL profile or a non-GL path if context creation
 fails. Keep display and GL operations on the display owner thread.
 
+## Native SDK 1.3 for ports
+
+Set `"minNative": "1.3"` when a package requires the [new imports](SDK_VERSIONS.md#native-sdk-releases).
+Use the region abilities returned by `nxn_vm_get` for VM selection. On the display owner thread,
+use the [GL pacing API](NATIVE_GRAPHICS.md) to set the interval and sample the compositor handoff.
+Use `nxn_cpu_info_get` for CPU dispatch and core masks and `mainStackKiB` for the hosted main thread's stack.
+The [limits reference](NATIVE_LIMITS.md) covers worker placement, wait APIs, JIT and diagnostics.
+
+Use `nxn_input_pad_motion`, `nxn_input_pad_sticks` and `nxn_rumble_pad` with the same pad index as
+`nxn_input_pad_poll`. Use `nxn_audio_stats_get` for per-stream underruns and estimated queued latency,
+`nxn_thread_cpu_ns` for CPU time on the calling thread, and `nxn_stream_cancel` to drop queued prefetch blocks.
+The [POSIX layer](NATIVE_COMPAT.md) adds the data-abort signal bridge and filesystem wrappers.
+
+For Vulkan query and validation paths, use `vkEnumerate*`, `vkGetPhysicalDeviceFeatures2` and
+`vkGetPhysicalDeviceQueueFamilyProperties` through the Vulkan instance dispatch. Check the actual
+extensions, feature chains and queue families on the target. Console coverage of the N6 feature-chain
+and timeline-semaphore cases is pending.
+
 ## Install
 
 ### Project creators
@@ -116,7 +134,7 @@ What changes for the app:
 | Process calls | `exit` / `abort` / a failed `assert` end only the app; `atexit` handlers run when the app ends; `chdir` is refused. |
 | POSIX and sockets | link the compatibility layer (`nexvyn_use_compat()`, `NATIVE_COMPAT.md` "In a window"): pipes, `poll`, `mmap`, signals, an own environment and working directory, all released when the app ends. BSD sockets need `"network"` in `app.json` `"permissions"`; without it every call fails with `EACCES`. |
 | Shared libraries | `nxn_lib_open` / `dlopen` load the package's `.nxvlib` files with setting `native.windowedLibs` (`NXN_CAP_SHARED_LIBS`; off: `NXN_ERR_UNSUPPORTED`). `thread_local` (`native.windowedTls`, `NXN_CAP_TLS`) and C++ exceptions (`native.windowedEh`, `NXN_CAP_CXX_EXCEPTIONS`) work in the module and its libraries when those settings are on (default on for apps with `"minNative": "1.1"` or later, off for 1.0 apps; a value set explicitly holds for every app; verified in the emulator only, not yet on a console); the kit builds every object with `-mtls-dialect=trad -ftls-model=global-dynamic` and links `crtend.o` last (Makefile projects do the same). |
-| JIT and fastmem | `nxn_jit_*` (code memory, rw + rx views; setting `native.windowedJit`, `NXN_CAP_JIT`), `nxn_fault_handler_set` (data aborts to the app first; `native.windowedFaultHandler`, `NXN_CAP_FAULT_HANDLER`), `nxn_mem_guard` (guard pages in the app's heap; `native.windowedGuardPages`, `NXN_CAP_GUARD_PAGES`). All stay off by default until a console has verified them (`NXN_ERR_UNSUPPORTED`); keep an interpreter / slow path. x17 is not restored after a handled fault. |
+| JIT and fastmem | `nxn_jit_*` (code memory, rw + rx views; setting `native.windowedJit`, `NXN_CAP_JIT`), `nxn_fault_handler_set` (app data aborts after VM write-watch; `native.windowedFaultHandler`, `NXN_CAP_FAULT_HANDLER`), `nxn_mem_guard` (guard pages in the app's heap; `native.windowedGuardPages`, `NXN_CAP_GUARD_PAGES`). All stay off by default until a console has verified them (`NXN_ERR_UNSUPPORTED`); keep an interpreter / slow path. x17 is not restored after a handled fault. |
 | 3D collision | `nxn_phys_*` (`nxn_phys.h`, `NXN_CAP_PHYS`, setting `native.phys`, on by default): worlds of meshes and boxes, raycast / sweep / overlap, capsule character controllers, triggers; the core of the script SDK's `phys.*` (SDK 1.15). Inside Nexvyn OS only: a stand-alone `.nro` gets `NXN_ERR_UNSUPPORTED`. |
 | 3D navigation | `nxn_nav_*` (`nxn_nav.h`, `NXN_CAP_NAV`, setting `native.nav`, on by default): a walkable grid baked from an `nxn_phys` world on a worker thread, A* paths, blockers and cost areas, walking agents with re-planning; the core of the script SDK `nav.*` (SDK 1.15). Inside Nexvyn OS only: a stand-alone `.nro` gets `NXN_ERR_UNSUPPORTED` |
 | Memory | the app's `malloc` / `free` / `realloc` / `memalign` / `strdup` come from the app's own heap, not Nexvyn OS's: when the app ends clean, the whole heap goes back in one step, so a leak never outlives the app. There is no fixed limit: the heap grows while the system has memory, and `malloc` returns `NULL` (`errno` = `ENOMEM`) when only the reserve Nexvyn OS needs to keep running is left (the `nxn_*` calls then answer `NXN_ERR_NO_MEMORY`). Optional `"memory"` in `app.json` (MB, 1 to 16384) is the heap the app wants: if that much is not free at the start, Nexvyn OS says so ("needs X MB, Y MB are free; close some open apps") and does not open the app; if it is, the memory is set aside for the app. Memory the C library allocates itself (`fopen`, `asprintf` ...) is not part of the app's heap. |
@@ -132,6 +150,9 @@ the memory the apps' heaps leave free for Nexvyn OS.
 - `examples/showcase`: every Native SDK feature with live self-tests and a `showcase_report.txt` (windowed, Dear ImGui). `python sdk/native/examples/showcase/package.py`.
 - `examples/scenes`: windowed 3D scene viewer (worker-thread streaming, PBR, shadow map, culling) for baked FBX scenes you provide. `python sdk/native/examples/scenes/package.py`.
 - `examples/vk_model`: native Vulkan demo: an FBX model baked at package time, drawn 10 times with instancing, an ImGui Vulkan overlay (triangles, draw calls, FPS, frame time) and `VKMODEL:` log lines. `python sdk/native/examples/vk_model/tools/package.py MODEL.fbx`.
+- `examples/thread_timing`: measures `nxn_cpu_info_get`, `nxn_time_ns` resolution, `nxn_sleep_ns` / `pthread_cond_timedwait` / `svcWaitForAddress` overshoot, wake-up latency, and `nxn_jit` W^X write cost (`THRT` markers).
+- `examples/io_demo`: exercises per-pad motion, sticks and HD rumble, audio stream stats, `nxn_stream_cancel` and `nxn_thread_cpu_ns`, logging `IOD key=value` lines and `IOD END`.
+- `examples/sdl3_gpu_demo`: SDL3 GPU API demo on the Nexvyn Vulkan 1.3 driver: creates a Vulkan window and `SDL_CreateGPUDevice(SDL_GPU_SHADERFORMAT_SPIRV, ...)`, uploads a 64x64 RGBA8 texture, renders it to an off-screen texture using precompiled SPIR-V shaders, blits to the swapchain, presents frames and logs `SDL3G key=value` lines.
 
 ## Assets: `nxv-asset`
 
@@ -380,6 +401,20 @@ start_worker_threads(workers);
 // when the load ends: nxn_thread_hint_request(0, NXN_THREAD_HINT_NORMAL, NULL);
 ```
 
+## SDL3 and GPU API in a window
+
+SDL2 and SDL3 install side by side in the windowed sysroot. Use `include/SDL2` and `libSDL2.a` for SDL2, or `include/SDL3`, `libSDL3.a`, `sdl3.pc` and the SDL3 CMake config for SDL3. Link one SDL major version per module.
+
+- **Build the recipe:** `python sdk/native/sysroot/build.py sdl3-nexvyn` (devkitPro `switch-sdl-3.4` fork, pinned by commit and SHA-256 in `sdk/native/sysroot/recipes.json`, patched with `sdk/native/sysroot/patches/sdl3-nexvyn.patch`). Zlib licensed; the added Nexvyn OS drivers (`video`, `audio`, `joystick`, `filesystem`) call only `nxn_*` and host Vulkan WSI hooks so windowed `.nxvmod` modules stay inside the host import set.
+- **Vulkan hooks:** `Vulkan_LoadLibrary`, `Vulkan_UnloadLibrary`, `Vulkan_GetInstanceExtensions`, `Vulkan_CreateSurface`, `Vulkan_DestroySurface` and `Vulkan_GetPresentationSupport` wire through the weak `nxn_vk_proc` boundary (`<nexvyn/nxn_vk.h>`), matching the SDL2 Vulkan adapter. Swapchain creation follows the host surface's `currentExtent` (`VK_FORMAT_R8G8B8A8_UNORM`, `VK_PRESENT_MODE_FIFO_KHR`, 2-3 images, `COLOR_ATTACHMENT | TRANSFER_DST`).
+- **SDL3 GPU API requirements:** The Vulkan backend of `SDL_CreateGPUDevice` requires `VK_KHR_swapchain` and `VK_KHR_maintenance1` (both advertised by the host dispatch) and the Vulkan 1.0 features `independentBlend`, `imageCubeArray`, `depthClamp`, `shaderClipDistance`, `drawIndirectFirstInstance` (plus `sampleRateShading` and `samplerAnisotropy`). Shaders are **SPIR-V only** (`SDL_GPU_SHADERFORMAT_SPIRV`): compile GLSL/HLSL offline and ship precompiled SPIR-V bytecode. The example uses `glslang -V --target-env vulkan1.0 --spirv-val` so its shaders match the API version requested by the default SDL3 Vulkan device creation path.
+- **Example:** `sdk/native/examples/sdl3_gpu_demo` (`pkg_check_modules(SDL3 REQUIRED IMPORTED_TARGET sdl3)`). Check `nxn_vk_available()` before creating a Vulkan window/GPU device so hosts without Vulkan exit cleanly or fall back to GL. On the emulator, Vulkan runs in handheld mode only (N5); console runs cover both handheld and docked.
+
+```sh
+python sdk/native/sysroot/build.py sdl3-nexvyn
+python tools/nxv_native build sdk/native/examples/sdl3_gpu_demo --windowed
+```
+
 ## Windowed JIT, fault handler and guard pages (`nxn_jit.h`)
 
 For recompilers and fastmem. Everything is optional and off by default: each path sits behind a setting
@@ -465,6 +500,60 @@ The pad also moves the virtual cursor in the RTS and CRPG profiles (`pi.cursor_x
 dead zone `pi.deadzone`). `NXN_BTN_Y` toggles the on-screen keyboard (`NXN_PI_BIND_TOGGLE_OSK`) in those profiles. The
 struct holds the event queue and is large: keep one per app, not on a small thread stack.
 
+## Virtual memory
+
+Windowed native modules can include `<nexvyn/nxn_vm.h>` and reserve a stable address range with
+`nxn_vm_reserve(bytes, flags, &region)`. Initialize `nxn_vm_info.size` to `sizeof(nxn_vm_info)` and call
+`nxn_vm_get` for the base, rounded size, backend, abilities, granules and current RAM charge.
+`nxn_vm_commit` and `nxn_vm_decommit` take offsets and lengths in multiples of the commit granule.
+Newly committed memory is zeroed. Committing an already backed granule preserves its bytes.
+`nxn_vm_protect` sets `NONE`, `R` or `RW` on whole protection pages inside committed granules.
+
+Reserve tries physical mapping (P), stack-region mapping (A), then a contiguous heap block (H). P requires a
+successful kernel self-test and a heap owned by the host. A provides sparse RAM within the largest free stack run.
+H charges the full allocation at reserve, provides page protection and zeroes on decommit. Request
+`NXN_VM_NEED_PROTECT` to select P or H, and `NXN_VM_NEED_SPARSE` to select P or A. Both flags require P.
+Callers can check `NXN_VM_CAN_PROTECT` and `NXN_VM_SPARSE_RAM` in the returned info. The API exposes one view.
+
+The host charges P and A for committed granules and H for its full allocation. VM charges are limited by
+the app's manifest `memory` value when present, and admission accounts for the shell's heap reserve.
+Operations on each region are serialized. Coordinate direct reads and writes with other threads before
+changing protection or backing. Release with `nxn_vm_release`. The host reclaims forgotten regions after
+app threads terminate, including after a crash.
+
+The optional POSIX layer accepts `NEXVYN_VM_MMAP=1` in a windowed app's environment before an anonymous
+private `mmap` with `MAP_NORESERVE`. This requires P. It allows an unbacked `PROT_NONE` reservation,
+anonymous private `MAP_FIXED` replacements inside it, enforced `mprotect`, and `munmap` with backing
+returned once all pages of a granule are unmapped. The VM route treats `madvise` as a hint and returns
+`ENOTSUP` for `mremap`. Other cases use the heap-backed compatibility path.
+
+The windowed `vm_demo` example in `sdk/native/examples` logs a large sparse reservation, a cross-granule copy,
+zeroed recommit, page protection calls and concurrent writer checks. The final marker is
+`VMDEMO END status=...`. Page faults and physical RAM accounting require console validation.
+
+### Write-watch
+
+On P or H with `native.windowedFaultHandler` enabled, `nxn_vm_watch` arms committed RW pages at 4 KiB granularity.
+A direct store fault marks the page dirty, opens it for writing, and retries the instruction before any app fault
+callback. `nxn_vm_watch_collect` reports and clears dirty byte offsets up to the caller's capacity. Rearm pages with
+`nxn_vm_watch` to catch another direct store. Collect with writers quiesced for a snapshot of completed writes.
+
+Call `nxn_vm_write` for the app's own copies into watched pages. It locks each page, copies with RW permission, and
+marks it dirty after restoring R, covering concurrent direct stores in the RW window. A restore failure returns
+`NXN_ERR_SYSTEM` and leaves the copied page RW and dirty. Use `nxn_vm_watch` to rearm it. Call these APIs from app
+threads outside the fault handler. Synchronize overlapping byte accesses, and quiesce direct access before changing
+protection, decommitting, or releasing. Successful plain protect, decommit, and release discard the affected watches
+and marks. The fault handler never waits for the page lock.
+
+The resume path clobbers x17. Compiled code rarely uses x17 in memory instructions. JIT code accessing watched pages
+must avoid x17 in instructions that may fault because replay would use the clobbered value. `examples/watch_demo` logs
+`WATCH key=value` and ends with `WATCH END`. the emulator can let a direct store succeed without a fault. The demo logs
+`protection not enforced` in that case. Verify real fault delivery and resumption on the console.
+With `NXN_VM_CAN_PAGE_COMMIT`, use the reported commit granule and
+`NXN_VM_PROT_COMMIT` to back 4 KiB pages as part of protection. Add `NXN_VM_PROT_REPLACE` when a
+fixed replacement must discard the existing data. Use these flags only on a backend that reports
+the ability.
+
 ## Fullscreen memory: `"fullscreenPause"`
 
 `"fullscreenPause": true` in `app.json` is for a native app or port that runs fullscreen and wants the most free memory.
@@ -518,9 +607,18 @@ its own input owner and never calls `nxn_input_poll` itself.
 Use `NXN_STREAM_NOWAIT` on a render/audio path and retry Busy on a later frame; blocking reads belong on a suitable
 worker. Prefetch is an advisory bounded window, not a completion signal: cached or already queued blocks share work,
 and `NXN_ERR_BUSY` means the rest could not be admitted yet (some blocks may already be queued). Do not spin on it or
-load the whole asset as a fallback. Keep the stream until current calls return, then close it; the host retains any
+load the whole asset as a fallback. `nxn_stream_cancel` returns the count of unstarted queued blocks it cancels in
+`[offset, offset + len)`. Active reads and cached blocks are unaffected. Cancellation is by stream and range because
+`nxn_stream_prefetch` returns no request handle and overlapping hints share blocks. Keep the stream until current
+calls return, then close it; the host retains any
 in-flight ownership until its worker finishes. Stand-alone builds still read files directly and ignore Nowait, as
 documented in `nxn_stream.h`; do not infer asynchronous behavior without the windowed capability.
+
+**Per-pad motion, sticks, HD rumble, audio stats and thread CPU time (N6 add-ons).** Windowed hosts export these additive `nxn_*` entries without changing ABI v1 (an older host rejects an unknown import at load unless resolved as a weak symbol, and the stand-alone library returns `NXN_ERR_UNSUPPORTED` for the pad and audio-stats calls, `NXN_OK` with 0 blocks for `nxn_stream_cancel`, and the kernel query for `nxn_thread_cpu_ns`):
+- **Six-axis and per-pad sticks (`nxn_input.h`):** `nxn_input_pad_motion(pad, &out)` reads accel (g), gyro (rad/s), 3x3 orientation, sample number and `nxn_time_ns()` read timestamp for pads 0..7. Sensors start lazily on the first focused call for that pad (the first sample can arrive a frame later, `valid = 0` until then) and stop about 3 s after the last call. `nxn_input_pad_sticks(pad, &out)` reads raw `-1..1` stick axes per pad (`nxn_input_pad_poll` stays buttons-only). While unfocused, both return `NXN_OK` with zeros (`valid = 0`).
+- **Per-pad HD rumble (`nxn_input.h`):** `nxn_rumble_pad(pad, &p)` drives low/high bands (`low_amp`/`high_amp` 0..1 capped at 0.8 by the OS, `low_freq_hz`/`high_freq_hz` clamped to 40..1250 Hz, `duration_ms` 1..2000) on one controller while leaving `nxn_rumble` skipping active per-pad slots. Background windows never rumble; vibrations end at deadline, focus change or window close.
+- **Audio stream stats (`nxn_audio.h`):** `nxn_audio_stats_get(a, &out)` reports `underruns`, `mixer_reads`, `queued_frames` (in the stream's rate) and `latency_ns` (estimated queued time plus one mixer period; downstream hardware buffering is not included or measured on console).
+- **Thread CPU time (`nxn_sys.h`):** `nxn_thread_cpu_ns()` returns the calling thread's kernel tick count converted at 19.2 MHz (~52 ns resolution, excluding sleep/wait), or `0` when the kernel/emulator does not report it (unverified on console). See `examples/io_demo`.
 
 **Who owns the controller.** By default the input owner is `nxn_input`: `nxn_input_poll` reads the pads through libnx,
 maps the buttons to Nexvyn's bit order and adds the user's confirm / cancel buttons (`NXN_ACT_CONFIRM` / `NXN_ACT_CANCEL`,
@@ -843,7 +941,125 @@ Rules:
   open the App Market's Runtimes & Libraries section, which downloads and installs packages. The list is read on a
   worker; the pane needs no network.
 
+## Crash reports and symbolization
+
+### Where crash logs and reports land
+
+On the SD card (`source/core/paths.cpp`, `source/runtimes/nxwin_host.cpp`, `source/core/crashlog.cpp`):
+
+- **Windowed native crash report (`writeCrash`):**
+  `sdmc:/NexvynOS/System/Logs/Crashes/YYYYMMDD-HHMMSS-native.txt`
+  (also browsable in the Crash Logs app via `paths::crashReports()`, `source/apps/app_crashlogs.cpp`).
+- **App log (`paths::appLog`):**
+  `sdmc:/NexvynOS/System/Logs/Apps/<app id>.log` (512 KiB cap, rotates to `.old`).
+  - On module load (`loadModule`): logs `module build-id <sha1-hex>`.
+  - App `nxn_log(...)` output (e.g. `N6C-ARMED` from `n6_crash_probe`).
+  - On fault (`writeCrash`): appends `crash: <kind> in thread <thread>, pc +0x<rel>, lr +0x<rel>, address 0x<far>`, optional `Graphics device lost (VK_ERROR_DEVICE_LOST)`, `build-id: <hex|none>`, and `backtrace: app+0x<rel> ...`.
+- **OS-level unhandled fault / isolated non-native fault (`source/main.cpp`, `source/wm/lifecycle.cpp`):**
+  Writes `sdmc:/NexvynOS/System/Logs/crash.txt` (`crashlog::notePath()`) first and moves it on next boot to `sdmc:/NexvynOS/System/Logs/Crashes/YYYY-MM-DD HH.MM.SS <kind>.txt` (keeping the newest 10 `.txt` reports in `pruneCrashes()`). Isolated window faults from `lifecycle.cpp:windowFaulted` also write a sibling `.json` via `crash_report::saveReport` (`source/core/crash_report.cpp`); `nxwin_host.cpp:writeCrash` writes only `*-native.txt`.
+- **Repeated-crash guard:** After `kMaxCrashes` (`3`) consecutive crashes of the same module binary (`launchStamp` in `nxwin_host.cpp`, or `stampOf(d->module)` in `source/runtimes/nxvmod.cpp:noteCrash`), Nexvyn OS prompts to close/disable the app until a normal exit or new module file arrives.
+
+### Fields in a `*-native.txt` crash report
+
+Written stack-only without heap allocation (`crashlog::write` in `source/core/crashlog.cpp`):
+
+1. `<app id>` (line 1, e.g. `com.nexvyn.test.n6crashprobe`)
+2. `Nexvyn OS <version>: fault (windowed native app) - <detail>` (thread, kind, module-relative `pc`/`lr`, `address`, `build-id`, inline `backtrace`)
+3. `console uptime: <sec>.<ms> s`
+4. `memory: <used> MB in use of <total> MB (reserved at start: <reserved> MB)`
+5. `log warnings/errors this session: <count>`
+6. `module <name>: base <16-hex>, size 0x<hex>, build-id <sha1-hex|none>` (`nxwin_host.cpp:writeCrash` records `module app` from `a->base..a->end` and `.note.gnu.build-id`)
+7. Fault context (omitted for `abort()`/`assert()` where `ctx == nullptr`):
+   - `error_desc: 0x<hex>  esr: 0x<hex>  far: <16-hex>`
+   - `pc: <16-hex> [(code+0x<off>)]` and `lr: <16-hex> [(code+0x<off>)]`
+   - `sp: <16-hex>  fp: <16-hex>`
+   - `x0`..`x28` general-purpose registers (four per line)
+   - `pc (module-relative): <app+0x... | os+0x... | 0x...>`
+   - `lr (module-relative): <app+0x... | os+0x... | 0x...>`
+8. `backtrace:` up to 16 frames walked in the faulting thread via `crashlog::walk(fp, sp, ...)` (`  #00 <16-hex> (<app+0x... | os+0x... | 0x...>)`, or `(none: no valid frame pointer chain)`)
+9. `--- last log lines ---` followed by recent `system.log` lines (`logx::forEachRecent`).
+
+### Build-id, split debug info, and symbolization command
+
+`sdk/native/toolchain/nexvyn-native.cmake` links every `.nxvmod` and `.nxvlib` with `-g` and `-Wl,--build-id=sha1`, then runs `_nexvyn_split_debug_cmds`:
+
+- `aarch64-none-elf-objcopy --only-keep-debug <module> <module>.debug`
+- `aarch64-none-elf-objcopy --strip-debug <module>`
+
+The stripped `<name>.nxvmod` ships in `<name>.nxvapp`; `<name>.nxvmod.debug` stays in the build directory with the matching `.note.gnu.build-id`. Keep `<name>.nxvmod.debug` for every release build.
+
+Exact symbolization command (`tools/nxv_native/__main__.py:cmd_symbolize`):
+
+```sh
+python tools/nxv_native symbolize <SD>/NexvynOS/System/Logs/Crashes/<report>-native.txt --elf build/<name>.nxvmod.debug
+```
+
+- Omitting `--elf` searches `build/` and `.` (in the current directory and the report's directory) for `.debug`, `.nxvmod`, `.nxvlib`, or `.elf` files whose `.note.gnu.build-id` matches `module <name>: ... build-id <id>`.
+- Requires `aarch64-none-elf-addr2line` on `PATH` (or in `DEVKITPRO/devkitA64/bin`, default `C:/devkitPro/devkitA64/bin` on Windows).
+- Output format per unique `<name>+0x<offset>` before `--- last log lines ---`:
+  `app+0x2fc  n6_crash_here at .../main.c:12`
+
+### Limits
+
+- **Single module table entry (`app`):** `nxwin_host.cpp:writeCrash` currently supplies only `mods[1] = {"app", base, end, buildId}`; frames inside loaded `.nxvlib` plugins do not have separate `module <lib>:` headers and format as `os+0x...` or raw hex.
+- **`os+0x...` offsets:** `nxv-native symbolize` skips `os+0x...` unless a matching OS module header is present; resolve OS offsets against `NexvynOS.elf` directly with `aarch64-none-elf-addr2line -f -C -p -e NexvynOS.elf 0x<offset>`.
+- **Frame-pointer walk bounds:** `crashlog::walk` requires 16-byte-aligned `fp >= sp`, `fp - sp < 8 MiB`, strictly increasing `fp`, readable stack pages (`svcQueryMemory`), and caps at 16 frames. Release builds keep leaf frame records via `-fno-omit-frame-pointer -mno-omit-leaf-frame-pointer` unless `-DNEXVYN_FRAME_POINTER=OFF` is passed.
+- **No registers on `abort()`/`std::terminate`:** `endThisThread` records `crashBt` with `ctx == nullptr`, so `error_desc`/`esr`/`far`, registers, and `pc (module-relative)` lines are absent; `backtrace:` frames still resolve via `app+0x...`.
+- **0-byte PNG on crash (N6 plan, item 8/E11):** Reported from Port Studio's screenshot tool (2026-11-26), not written by Nexvyn OS.
+- **Host vs console proof:** `tests/run_n6_crash_probe.py` verifies `build-id` parity, split `.debug`, packaging without `.debug`, and `nxv-native symbolize` on a sample `*-native.txt` report (`PASS_HOST`). The recorded emulator run stopped the emulator itself. Live `N6C-ARMED`, `*-native.txt` emission, symbolization and shell recovery remain console `NOT_RUN`.
+
+## Large modules and shared libraries
+
+Run `python tests/run_n6_big_module.py` from the worktree. The runner exports the Native SDK kit,
+generates an assembly source in temporary staging and builds a windowed `.nxvmod` with 150 MiB
+of file-backed, read-only padding plus one constructor-bearing `.nxvlib`. It checks the ELF load
+segment, the package manifest and hashes, and the archive entry count and unpacked bytes against
+the installer limits in [nxvpkg_rules.h](../source/core/nxvpkg_rules.h). The repeated
+byte pattern compresses well, so the package size applies to this fixture. The installed module
+still requires the full read and mapping. The reusable artifact is
+`build/n6-big-module/n6_big_module.nxvapp`. The generated source and intermediate binaries
+stay under the ignored build directory.
+
+The fast gate at `8f3504c7` with the E12 fixture produced a 158,734-byte package with 12 ZIP
+entries and 157,297,081 unpacked bytes. The module was 157,291,648 bytes, including a
+157,288,596-byte file-backed read-only load segment. The library was 3,464 bytes.
+
+### Runtime evidence (NOT_RUN)
+
+Install the package and launch `com.nexvyn.test.n6bigmodule` in a hosted window with
+`native.windowedLibs` enabled. Record the OS build and module build ID, target, cold or warm
+launch, open native apps, and number of repeats. Run the fixture on the isolated emulator
+and on the console separately. Use the P7 console row for device timing, heap and kernel
+headroom. Record a failed launch as such even when the app never emits a marker.
+
+- In `System/Logs/system.log`, retain the app's `module load … ms` breakdown (read, layout,
+  map, link and runtime setup), mapped code/data sizes and process-local code-memory count.
+  On mapping failure, retain the error and resource report. In
+  `System/Logs/Apps/com.nexvyn.test.n6bigmodule.log`, record the host's `entering main()`
+  time and check for
+  `N6B-START padding_bytes=157286400 sentinels_ok=1`, `N6B-LIB open_rc=0 load_ns=…`,
+  `N6B-LIB-CHECK symbol_ok=1 close_rc=0` and `N6B-END status=COMPLETE`. A successful
+  symbol call verifies the library constructor ran.
+- `N6B-BUDGET` records cached free heap, shell reserve and available bytes immediately before
+  and after the library-open call, or the API error if a sample is unavailable. Both calls
+  may read the same sample. The module is already mapped when its entry point runs.
+  At link time the loader holds the full file image and the read-only and writable
+  backing allocations together. The image plus the mapping sizes reported by the host
+  give a lower bound on those allocations, excluding allocator overhead and link scratch.
+  For a measured loader peak, a diagnostic OS build needs fresh heap measurements
+  before read, after read, after map, during link and after image release. Record the
+  minimum free heap and distinguish it from process-wide peak resident memory.
+- The loader creates two code-memory objects per successful module or distinct library
+  mapping. The SDK has no public count query. For the successful library delta, use
+  `nxelf_resource_report` in an integrator diagnostic build immediately before and after
+  `loadLib`, with other consumers idle. Expect an increase of two. Closing the library
+  handle keeps its mappings until app exit. Verify the process-local count returns to
+  the pre-launch baseline after exit. Use the separate P7 exhaustion and reopen check
+  for the kernel-wide ceiling, as described in the [N5 budget](current/n5/N5_CODE_MEMORY_BUDGET.md).
+
 ## Target platform limits
+
+The [native runtime limits](NATIVE_LIMITS.md) reference covers `app.json` `"mainStackKiB"`, memory, threads, handles, I/O, audio, and graphics.
 
 | Not available | Workaround |
 | --- | --- |
@@ -853,8 +1069,7 @@ Rules:
 | Real symlinks (FAT) | Copy the file, or keep a path table in the app. Archive extractors must skip symlink entries. |
 | `mmap` of files | Read the file into memory. |
 | `dlopen` of a Linux `.so` | Rebuild the plugin as a `.nxvlib` ("Shared libraries" above); `dlopen` then loads it. |
-| `ucontext` (`makecontext`) | Use the kit's coroutine layer once the compatibility layer lands, or a small context-switch routine in assembly. |
-| `SIGSEGV` handlers | Not available in this kit version; do bounds checks in software. |
+| Hardware fault handling outside the supported data-abort path | Keep software bounds checks. Hosted modules can use the [POSIX data-abort bridge](NATIVE_COMPAT.md#hardware-faults-sigsegv--sigbus) when the host enables it. |
 | Case-sensitive file names | Use `fopen_ci()` (in the `decomp-skeleton` template) for PC data. |
 | Writing next to the program | Write under `sdmc:/` (use the data directory associated with your app). |
 | Fixed fullscreen mode switching | The display is 1280x720 handheld, 1920x1080 docked; query it at start-up. |

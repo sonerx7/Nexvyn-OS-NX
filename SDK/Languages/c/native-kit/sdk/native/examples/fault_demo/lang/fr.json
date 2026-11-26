@@ -1,0 +1,6 @@
+{
+  "title": "Démo de fautes",
+  "status_ok": "Faute matérielle délivrée et reprise",
+  "status_none": "Aucune faute délivrée (l'émulateur n'applique pas la protection des pages)",
+  "status_unsupported": "Le gestionnaire de fautes ou les pages de garde ne sont pas activés"
+}

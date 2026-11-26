@@ -1,10 +1,14 @@
-/* Nexvyn compat layer - signal emulation.
+/* Nexvyn compat layer - signal emulation and hardware fault bridge (nxc_fault.c).
  *
- * There is no kernel signal delivery on this platform, so a signal is a pending bit that a handler call consumes at a
- * safe point: inside raise() / kill(getpid(), sig) / pthread_kill(), inside blocking compat calls (sleep, poll, select,
- * pipe and eventfd reads and writes, sigsuspend, sigwait), and in nxc_signal_poll(). alarm() / setitimer(ITIMER_REAL)
- * run a small timer thread that only sets the pending bit and wakes the waiters; handlers always run on a thread that
- * called into this layer. One process-wide signal mask. SIGSEGV / SIGBUS / SIGILL / SIGFPE are never delivered. */
+ * There is no kernel signal delivery on this platform, so standard signals use a pending bit consumed at a safe point:
+ * inside raise() / kill(getpid(), sig) / pthread_kill(), inside blocking compat calls (sleep, poll, select, pipe and
+ * eventfd reads and writes, sigsuspend, sigwait), and in nxc_signal_poll(). alarm() / setitimer(ITIMER_REAL) run a
+ * small timer thread that only sets the pending bit and wakes the waiters; handlers always run on a thread that called
+ * into this layer. One process-wide signal mask.
+ *
+ * Hardware data aborts (SIGSEGV / SIGBUS installed with SA_SIGINFO) are bridged to nxn_fault_handler_set by nxc_fault.c
+ * when the host enables native.windowedFaultHandler; SIGILL / SIGFPE and non-SA_SIGINFO handlers are never delivered as
+ * hardware faults. */
 #include <errno.h>
 #include <pthread.h>
 #include <signal.h>
@@ -51,6 +55,8 @@ static uint64_t g_it_deadline, g_it_interval; /* 0 = disarmed */
 /* newlib's sigaddset() macro does 1 << sig on an int: SIGUSR2 (31) sign-extends, so only bits 1..31 count */
 static uint64_t mask_of(const sigset_t* s) { return ((uint64_t)*s) & 0xfffffffeull; }
 
+uint64_t nxc__signal_blocked_mask(void) { return __atomic_load_n(&g_blocked, __ATOMIC_RELAXED); }
+
 int nxc_signal_any_pending(void) {
     uint64_t p = __atomic_load_n(&g_pending, __ATOMIC_ACQUIRE);
     return deliverable(p & ~__atomic_load_n(&g_blocked, __ATOMIC_RELAXED)) != 0;
@@ -67,6 +73,17 @@ static void default_terminate(int sig) {
     exit(128 + sig);
 }
 
+static void consume_fault_resets_locked(void) {
+    static const int k_fault_sigs[2] = {SIGSEGV, SIGBUS};
+    for (int i = 0; i < 2; i++) {
+        int s = k_fault_sigs[i];
+        if (nxc__fault_consume_reset(s)) {
+            g_act[s].sa_handler = SIG_DFL;
+            g_act[s].sa_flags &= ~SA_SIGINFO;
+        }
+    }
+}
+
 int nxc_signal_deliver(int* no_restart) {
     int count = 0;
     mutexLock(&g_nxc_mu);
@@ -75,6 +92,7 @@ int nxc_signal_deliver(int* no_restart) {
         if (!ready) break;
         int sig = __builtin_ctzll(ready);
         __atomic_and_fetch(&g_pending, ~SIGBIT(sig), __ATOMIC_ACQ_REL);
+        if (sig == SIGSEGV || sig == SIGBUS) consume_fault_resets_locked();
         struct sigaction act = g_act[sig];
         void (*h)(int) = act.sa_handler;
         if (h == SIG_IGN) continue;
@@ -85,9 +103,14 @@ int nxc_signal_deliver(int* no_restart) {
             return count;
         }
         uint64_t saved = g_blocked;
-        g_blocked |= mask_of(&act.sa_mask);
-        if (!(act.sa_flags & SA_NODEFER)) g_blocked |= SIGBIT(sig);
-        if (act.sa_flags & SA_RESETHAND) g_act[sig].sa_handler = SIG_DFL;
+        uint64_t next_blocked = g_blocked | mask_of(&act.sa_mask);
+        if (!(act.sa_flags & SA_NODEFER)) next_blocked |= SIGBIT(sig);
+        __atomic_store_n(&g_blocked, next_blocked, __ATOMIC_RELEASE);
+        if (act.sa_flags & SA_RESETHAND) {
+            g_act[sig].sa_handler = SIG_DFL;
+            g_act[sig].sa_flags &= ~SA_SIGINFO;
+            if (sig == SIGSEGV || sig == SIGBUS) nxc__fault_sync_locked(&g_act[SIGSEGV], &g_act[SIGBUS]);
+        }
         mutexUnlock(&g_nxc_mu);
         if (act.sa_flags & SA_SIGINFO) {
             siginfo_t si;
@@ -99,7 +122,9 @@ int nxc_signal_deliver(int* no_restart) {
             h(sig);
         }
         mutexLock(&g_nxc_mu);
-        g_blocked = (g_blocked & ~(mask_of(&act.sa_mask) | SIGBIT(sig))) | (saved & (mask_of(&act.sa_mask) | SIGBIT(sig)));
+        uint64_t restored = (g_blocked & ~(mask_of(&act.sa_mask) | SIGBIT(sig))) |
+                            (saved & (mask_of(&act.sa_mask) | SIGBIT(sig)));
+        __atomic_store_n(&g_blocked, restored, __ATOMIC_RELEASE);
         count++;
         if (no_restart && !(act.sa_flags & SA_RESTART)) *no_restart = 1;
     }
@@ -141,13 +166,31 @@ static int sig_changeable(int sig) { return VALID(sig) && sig != SIGKILL && sig 
 
 int sigaction(int sig, const struct sigaction* act, struct sigaction* old) {
     if (!VALID(sig) || (act && !sig_changeable(sig))) return NXC_FAIL(EINVAL);
+    int fault_sync = 0;
     mutexLock(&g_nxc_mu);
+    if (sig == SIGSEGV || sig == SIGBUS) consume_fault_resets_locked();
     if (old) *old = g_act[sig];
-    if (act) g_act[sig] = *act;
+    if (act) {
+        g_act[sig] = *act;
+        if (sig == SIGSEGV || sig == SIGBUS) fault_sync = nxc__fault_sync_locked(&g_act[SIGSEGV], &g_act[SIGBUS]);
+    }
     mutexUnlock(&g_nxc_mu);
-    if (act && act->sa_handler != SIG_DFL && act->sa_handler != SIG_IGN &&
-        (sig == SIGSEGV || sig == SIGBUS || sig == SIGILL || sig == SIGFPE)) {
-        nxc_unsupported("hardware fault signals", "a handler for SIGSEGV / SIGBUS / SIGILL / SIGFPE is accepted but never called (Native v2)");
+#if NXC_WINDOWED
+    if (fault_sync > 0) nxc__win_register_exit();
+#endif
+    if (act && act->sa_handler != SIG_DFL && act->sa_handler != SIG_IGN) {
+        if (sig == SIGSEGV || sig == SIGBUS) {
+            if (!(act->sa_flags & SA_SIGINFO)) {
+                nxc_unsupported("hardware fault signals",
+                                "SIGSEGV / SIGBUS hardware fault delivery requires SA_SIGINFO");
+            } else if (fault_sync < 0) {
+                nxc_unsupported("hardware fault signals",
+                                "nxn_fault_handler_set is unavailable (enable native.windowedFaultHandler in windowed mode)");
+            }
+        } else if (sig == SIGILL || sig == SIGFPE) {
+            nxc_unsupported("hardware fault signals",
+                            "a handler for SIGILL / SIGFPE is accepted but never called (data aborts only)");
+        }
     }
     return 0;
 }
@@ -182,13 +225,15 @@ int sigprocmask(int how, const sigset_t* set, sigset_t* old) {
     if (old) *old = (sigset_t)g_blocked;
     if (set) {
         uint64_t m = mask_of(set) & ~CANNOT_BLOCK;
-        if (how == SIG_BLOCK) g_blocked |= m;
-        else if (how == SIG_UNBLOCK) g_blocked &= ~m;
-        else if (how == SIG_SETMASK) g_blocked = m;
+        uint64_t next = g_blocked;
+        if (how == SIG_BLOCK) next |= m;
+        else if (how == SIG_UNBLOCK) next &= ~m;
+        else if (how == SIG_SETMASK) next = m;
         else {
             mutexUnlock(&g_nxc_mu);
             return NXC_FAIL(EINVAL);
         }
+        __atomic_store_n(&g_blocked, next, __ATOMIC_RELEASE);
     }
     mutexUnlock(&g_nxc_mu);
     if (set && how != SIG_BLOCK) nxc_signal_deliver(NULL); /* unblocked signals that were pending run now */
@@ -207,7 +252,7 @@ int sigsuspend(const sigset_t* mask) {
     if (!mask) return NXC_FAIL(EFAULT);
     mutexLock(&g_nxc_mu);
     uint64_t saved = g_blocked;
-    g_blocked = mask_of(mask) & ~CANNOT_BLOCK;
+    __atomic_store_n(&g_blocked, mask_of(mask) & ~CANNOT_BLOCK, __ATOMIC_RELEASE);
     mutexUnlock(&g_nxc_mu);
     for (;;) {
         if (nxc_signal_deliver(NULL)) break;
@@ -216,7 +261,7 @@ int sigsuspend(const sigset_t* mask) {
         mutexUnlock(&g_nxc_mu);
     }
     mutexLock(&g_nxc_mu);
-    g_blocked = saved;
+    __atomic_store_n(&g_blocked, saved, __ATOMIC_RELEASE);
     mutexUnlock(&g_nxc_mu);
     return NXC_FAIL(EINTR);
 }
@@ -268,6 +313,7 @@ static void timer_main(void* unused) {
 
 void nxc_shutdown(void) {
     mutexLock(&g_nxc_mu);
+    nxc__fault_shutdown_locked();
     g_it_deadline = 0;
     g_it_interval = 0;
     if (!g_timer_started) {

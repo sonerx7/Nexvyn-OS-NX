@@ -10,6 +10,7 @@ Nexvyn OS is distributed under the **GPL-3.0-or-later** license (see [LICENSE](L
 | Expat 2.10.0 | MIT | XML parser used by the NVK driver |
 | SDL2, SDL2_image, SDL2_ttf, SDL2_mixer | zlib (devkitPro package may include LGPL components) | Windowing, rendering, audio |
 | SDL2 (devkitPro Switch fork with Nexvyn OS window drivers) | zlib (altered source: `sdk/native/sdl2`, `sdk/native/sysroot/patches/sdl2-nexvyn.patch`) | Native kit: SDL2 in windows |
+| SDL3 (devkitPro Switch fork `switch-sdl-3.4` with Nexvyn OS window & Vulkan GPU drivers) | zlib (altered source: `sdk/native/sysroot/patches/sdl3-nexvyn.patch`) | Native kit: SDL3 & GPU API in windows |
 | FFmpeg (devkitPro `switch-ffmpeg`) | GPL | Video / audio decoding |
 | dav1d | BSD-2-Clause | AV1 decoding |
 | libcurl | curl (MIT style) | HTTP(S), FTP |

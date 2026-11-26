@@ -11,17 +11,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/select.h>
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
+#include <utime.h>
 
 #include "nexvyn/compat.h"
 #include "nexvyn/nxc_clockids.h"
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#ifndef UTIME_NOW
+#define UTIME_NOW -2L
+#endif
+#ifndef UTIME_OMIT
+#define UTIME_OMIT -1L
+#endif
+#if !defined(_OFF64_T_DECLARED) && !defined(__off64_t_defined)
+typedef _off64_t off64_t;
+#define _OFF64_T_DECLARED
+#define __off64_t_defined
 #endif
 
 #ifndef O_CLOEXEC
@@ -73,6 +87,14 @@ char* secure_getenv(const char* name);
 useconds_t ualarm(useconds_t usecs, useconds_t interval);
 int killpg(pid_t pgrp, int sig);
 int pthread_kill(pthread_t thread, int sig);
+int utimes(const char* path, const struct timeval times[2]);
+int futimens(int fd, const struct timespec times[2]);
+int utimensat(int dirfd, const char* path, const struct timespec times[2], int flags);
+ssize_t pread(int fd, void* buf, size_t count, off_t offset);
+ssize_t pwrite(int fd, const void* buf, size_t count, off_t offset);
+ssize_t pread64(int fd, void* buf, size_t count, off64_t offset);
+ssize_t pwrite64(int fd, const void* buf, size_t count, off64_t offset);
+off64_t lseek64(int fd, off64_t offset, int whence);
 
 /* NXC_STRICT=1: calls that cannot work on this platform warn at compile time; NXC_STRICT=2: they are errors. */
 #if defined(NXC_STRICT) && NXC_STRICT

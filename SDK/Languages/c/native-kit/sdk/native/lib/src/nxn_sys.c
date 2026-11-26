@@ -174,3 +174,12 @@ void nxn_log(nxn_log_level level, const char* fmt, ...) {
     va_end(ap);
     nxn_log_write(level, buf);
 }
+
+/* N6 add-on: CPU time of the calling thread from the kernel's per-thread tick count (the same query as windowed mode). */
+uint64_t nxn_thread_cpu_ns(void) {
+    u64 ticks = 0;
+    if (R_FAILED(svcGetInfo(&ticks, InfoType_ThreadTickCount, CUR_THREAD_HANDLE, TickCountInfo_Total)) &&
+        R_FAILED(svcGetInfo(&ticks, InfoType_ThreadTickCountDeprecated, CUR_THREAD_HANDLE, TickCountInfo_Total)))
+        return 0;
+    return armTicksToNs(ticks);
+}

@@ -1,5 +1,21 @@
 # Release notes / Changelog
 
+## [1.4.1] - 2026-11-26
+
+### Native SDK 1.3 (N6 emulator & port platform)
+
+Native ABI v1 (add-only) and script SDK 1.16 retain their version identities. Packages that use the new native imports set `"minNative": "1.3"`.
+
+- **Sparse virtual memory & write-watch (`nxn_vm_*`):** Windowed native modules can reserve large fixed address spaces and commit/decommit 64 KiB granules or protect 4 KiB pages (`NONE`/`R`/`RW`) across backends P (physical + protection), A (stack-region sparse), and H (contiguous heap with protection). Added 4 KiB write-watch (`nxn_vm_watch`, `nxn_vm_watch_collect`) and race-free `nxn_vm_write`, plus opt-in `NEXVYN_VM_MMAP=1` for anonymous private `MAP_NORESERVE` / `MAP_FIXED` mappings.
+- **POSIX fault signals bridge:** `sigaction` with `SA_SIGINFO` for `SIGSEGV`/`SIGBUS` routes AArch64 data aborts onto `nxn_fault_handler_set` when `native.windowedFaultHandler` is enabled, delivering `si_addr`, `SEGV_*`/`BUS_*` codes, and editable `ucontext_t` (`x0`–`x30`, `sp`, `pc`, `pstate` NZCV, `esr` WnR).
+- **Display pacing & GL ceiling:** `nxn_display_set_interval` (1 or 2 vsyncs, preserved across resize and dock switches) and `nxn_display_last_present_ns` (monotonic CPU-side handoff timestamp). OpenGL remains capped at 4.3 core / GLSL 4.30 with `GL_TIMESTAMP` support verified in the emulator.
+- **CPU info & main stack setting:** `nxn_cpu_info_get` exposes fixed Cortex-A57 features (`NXN_CPU_FLAG_FIXED_FEATURES`), `CTR_EL0` cache-line sizes, and process/worker core masks; `app.json` adds `"mainStackKiB"` (256–8192 KiB, default 512 KiB).
+- **Per-pad motion, sticks & HD rumble:** `nxn_input_pad_motion` (six-axis accel, gyro, 3x3 orientation), `nxn_input_pad_sticks` (raw `-1..1` axes), and `nxn_rumble_pad` (per-pad low/high frequency HD vibration) for pads 0..7.
+- **Audio stats, thread CPU & stream cancel:** `nxn_audio_stats_get` (underruns, mixer reads, queued frames, estimated latency), `nxn_thread_cpu_ns` (19.2 MHz calling-thread CPU ticks), and `nxn_stream_cancel` (cancel unstarted queued prefetch blocks in a byte range).
+- **POSIX filesystem & network compatibility:** Added `utime`/`utimes`/`futimens`/`utimensat` timestamp compatibility (non-failing no-op on FAT when target exists), `pread`/`pwrite`/`pread64`/`pwrite64`/`lseek64` (>2 GiB offsets; fixed beyond-EOF `pread` returning `EIO`), `readdir` `d_type` population (`DT_DIR`/`DT_REG`/`DT_UNKNOWN`), and minimal IPv4 `getifaddrs`/`freeifaddrs` enumeration.
+- **SDL3 GPU API on Vulkan, native limits & crash symbolization:** Added `sdl3-nexvyn` to the native kit sysroot alongside SDL2 with Vulkan WSI hooks for the SDL3 GPU API (SPIR-V shaders), published the Native Runtime Limits reference (`NATIVE_LIMITS.md`), and documented split `.debug` build-id crash symbolization via `nxv-native symbolize`.
+- **Verification scope:** tested on a console (handheld, 2026-11-27): fault delivery to SIGSEGV handlers with register edit and resume, a 256 MiB sparse VM region with 4 writer threads, interval 1/2 pacing (60/30 fps), SDL3 GPU on Vulkan (off-screen draw and present), filesystem and network probes, and crash reports with symbolization. Not yet tested on a console: write-watch (`nxn_vm_watch`) and the 150 MB module case. The largest VM region is bounded by the free stack-region run (about 511 MiB measured); a 4 GiB reservation is not available on this kernel.
+
 ## [1.4.0] - 2026-11-25
 
 ### SDK 1.16, native Vulkan, performance panel and stability

@@ -59,6 +59,17 @@ NXN_API nxn_result nxn_display_size(nxn_display* d, uint32_t* width, uint32_t* h
  * (NXN_ERR_SYSTEM; nxn_last_error() says why). NXN_ERR_BUSY: zero-copy frames are still in flight on the GPU after about
  * 250 ms; the old size stays and the call can be repeated on a later frame. Thread: the display's thread. Memory: none. */
 NXN_API nxn_result nxn_display_resize(nxn_display* d, uint32_t width, uint32_t height);
+/* Presentation interval: 1 = every vsync (default), 2 = every second vsync (up to 30 fps at 60 Hz).
+ * Other values return NXN_ERR_INVALID. NXN_DISPLAY_NO_VSYNC keeps the display unpaced. A stand-alone EGL
+ * surface may return NXN_ERR_UNSUPPORTED if its configuration cannot provide the interval.
+ * The interval applies from the next nxn_display_swap and survives nxn_display_resize and dock mode changes.
+ * Thread: the display's thread. Memory: none. */
+NXN_API nxn_result nxn_display_set_interval(nxn_display* d, uint32_t interval);
+/* The monotonic nxn_time_ns() timestamp of the last frame taken for composition, or of the last
+ * successful EGL swap in a stand-alone NRO. *out is 0 before the first present. Dropped frames leave it unchanged.
+ * Successive timestamps measure CPU-side handoff cadence. NXN_ERR_INVALID if d or out is NULL.
+ * Thread: the display's thread. Memory: written into the caller's variable. */
+NXN_API nxn_result nxn_display_last_present_ns(nxn_display* d, uint64_t* out);
 /* GL / GLES entry points for a loader (glad: gladLoadGLLoader((GLADloadproc)nxn_display_proc)).
  * Thread: call it, and the functions it returns, only on the display's thread. Memory: the returned pointers are
  * static for the life of the app and are never freed. */

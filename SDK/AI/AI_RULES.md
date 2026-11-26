@@ -1,8 +1,8 @@
-# Nexvyn app rules for AI assistants (N2 Architecture — SDK 1.16 & Native SDK 1.2)
+# Nexvyn app rules for AI assistants (N2 Architecture — SDK 1.16 & Native SDK 1.3)
 
 ## Current authoring contract
 
-Use SDK 1.16 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+Use SDK 1.16 / Native SDK 1.3 / ABI v1. For all new apps, games, ports and launchers:
 - Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
 - Keep SDK Markdown English only. Store screenshots may use English UI.
 - OS apps use shared theme/typography/controls; games require their own art direction.
@@ -22,7 +22,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 1. Read `app.json` first. Set `minSdk` to the newest SDK function you use. Set `targetSdk` to `"1.16"` (the current SDK) for new apps. `"2.0"` is only a target marker (it selects CPython for `"runtime": "python"`); the packer warns about it. See `SDK/AI_GUIDE.md` section 1.
 2. Use only names that appear in `SDK/Reference/SDK.md` / `SDK/AI/system-prompt.md`. If a name is not there, do not invent it. Say so.
 3. Pick the runtime from the **4 Official Primary Runtimes** in section 3: **Lua 5.4.7** (`"lua"`), **JavaScript ES2023** (`"js"`), **Python 3.12** (`"python3"` or `"python"` with `"targetSdk": "2.0"`), or **Native C/C++** (`"native"`).
-4. Native apps (C / C++): set `"runtime": "native"` and `"minNative"` to `"1.2"` (or the version of the newest `nxn_*` function you call). Test every optional call with `nxn_caps_get` bits first. Pick the language first: UI-heavy tools, utilities and productivity apps are Lua / JavaScript / Python with `nxui.*`; Native C/C++ is for heavy computation (LLM inference, emulators, 3D); a native-engine + script-UI hybrid is not possible yet. In a Native GL window draw the UI with Dear ImGui and the frame layer of `<nexvyn/nxn_os_ui.h>`: `nxn_os_frame_begin(&tok, w, h)` / `nxn_os_frame_end()` every frame (UI scale, fonts, style), `nxn_os_*` widgets only (never raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`), text by role (`nxn_os_text(NXN_OS_TEXT_TITLE, ...)`), rows with `nxn_os_row_begin` / `nxn_os_row_end`, every pixel number as `NXN_S(px)` / `nxn_os_sp()` / `nxn_os_fill()`, no `FontGlobalScale`, no fonts of your own, clear with `nxn_os_clear_color`; `python tools/nxv_native check-design <dir>` must pass: `nxn_nxui_*` never paints there (`nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`). Use `nxui.*` in Lua, JS and Python. Every app, in every language, must look like Nexvyn OS: scripts use `theme.*` colours and the role-table text sizes, Native apps never ship raw ImGui styling; `python tools/design_check.py` checks it.
+4. Native apps (C / C++): set `"runtime": "native"` and set `"minNative"` to the version of the newest `nxn_*` function you call (1.3 for the N6 imports). Check the relevant capability bit, backend ability or API result for optional features. Pick the language first: UI-heavy tools, utilities and productivity apps are Lua / JavaScript / Python with `nxui.*`; Native C/C++ is for heavy computation (LLM inference, emulators, 3D); a native-engine + script-UI hybrid is not possible yet. In a Native GL window draw the UI with Dear ImGui and the frame layer of `<nexvyn/nxn_os_ui.h>`: `nxn_os_frame_begin(&tok, w, h)` / `nxn_os_frame_end()` every frame (UI scale, fonts, style), `nxn_os_*` widgets only (never raw `ImGui::Button`, `Combo`, `Checkbox`, `SliderFloat`, `InputText`), text by role (`nxn_os_text(NXN_OS_TEXT_TITLE, ...)`), rows with `nxn_os_row_begin` / `nxn_os_row_end`, every pixel number as `NXN_S(px)` / `nxn_os_sp()` / `nxn_os_fill()`, no `FontGlobalScale`, no fonts of your own, clear with `nxn_os_clear_color`; `python tools/nxv_native check-design <dir>` must pass: `nxn_nxui_*` never paints there (`nxn_nxui_end_ex()` returns `NXN_ERR_UNSUPPORTED`). Use `nxui.*` in Lua, JS and Python. Every app, in every language, must look like Nexvyn OS: scripts use `theme.*` colours and the role-table text sizes, Native apps never ship raw ImGui styling; `python tools/design_check.py` checks it.
 5. Keep all user-visible text in English and in `lang/<code>.json`. Call `TR(key)` (script) or `nxn_tr(key)` (native). Add `lang/en.json` before you use `TR`.
 6. Make saves atomic: write a temporary file, then rename it over the real one. Keep the previous save until the new one is complete.
 7. Do file, network and folder-scan work off the UI thread: `timer`, `net.*`, `fs.unzip`, `g3d.loadModel`, or a background thread that never holds the UI lock.
@@ -57,7 +57,7 @@ Read this file before writing any Nexvyn app. Short rules first, reasons after. 
 
 ```
 Need native C/C++ code, an existing C/C++ engine, SDL2, emulators, or raw GL/NexGFX?
-  yes -> Native C/C++ ("runtime": "native", "minNative": "1.2", .nxvmod). Uses SDK/Languages/c/native-kit.
+  yes -> Native C/C++ ("runtime": "native", .nxvmod). Uses SDK/Languages/c/native-kit.
   no  -> Need a 2D game with scenes, sprites, tilemaps?  -> Lua 5.4.7 (nexvyn.game is Lua only)
          Need 3D voxels (g3d.voxels)?  -> JavaScript ES2023 (voxels are JavaScript only)
          Need the fastest startup, lowest RAM, utilities, or 3D PBR apps?  -> Lua 5.4.7 (default)

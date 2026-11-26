@@ -1,4 +1,4 @@
-# Gemini & AI Agent End-to-End Workflow (Nexvyn OS 1.4.0 / SDK 1.16 & Native 1.2)
+# Gemini & AI Agent End-to-End Workflow (SDK 1.16 & Native SDK 1.3)
 
 This document is the complete operational specification for **Gemini** and any AI coding assistant building, porting, validating, or publishing apps, games, and system updates for **Nexvyn OS**. Follow every section strictly so generated code runs on real hardware without freezes, checker errors, or Store rejections.
 
@@ -26,8 +26,8 @@ Every `.nxvapp` bundle requires `app.json` at its root.
 | `"runtime"` | `"lua"` / `"js"` / `"python"` / `"python3"` | `"native"` | Always declare `"runtime"` explicitly. Do not omit it even for non-Lua `main.js` / `main.py`. |
 | `"minSdk"` | `"1.0"` (Lua), `"1.1"` (JS), `"1.3"` (Py), `"1.6"` (Py3), `"1.12"` (NXUI/tokens) | `"1.10"` (or `"1.13"` with `loadingHint`) | Use the lowest SDK version that contains all APIs your app calls. |
 | `"targetSdk"` | **`"1.16"`** (Python 3.12: `"runtime": "python3"`, or `"python"` with `"targetSdk": "2.0"`) | **`"1.16"`** | Current OS SDK is `1.16`. |
-| `"minNative"` | — | **`"1.2"`** | Current Native ABI runtime is `1.2` (`nxnative::kVersion = "1.2"`). Never set `"minNative": "2.0"` — the loader rejects it. |
-| `"targetNative"` | — | **`"1.2"`** | Use `"1.2"` for existing SDL2/Native 1.2 apps (`2.0` enables N2-only coordinate/router gates). |
+| `"minNative"` | — | **`"1.3"`** for 1.3 imports | The current Native SDK is 1.3. Use the oldest version that provides all required imports. |
+| `"targetNative"` | — | **`"1.3"`** for apps tested on 1.3 | Defaults to `minNative`. Use the native behavior level tested by the app. |
 | `"loadingHint"` | optional `bool` | `true` for large ports | Extends initial loading watchdog from `5 s` to `120 s` (SDK `1.13`). |
 
 ### Categories, Permissions & Gamepad

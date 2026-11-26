@@ -1,0 +1,6 @@
+{
+  "title": "Hata Yakalama Demosu",
+  "status_ok": "Donanım hatası iletildi ve yürütme sürdü",
+  "status_none": "Hata iletilmedi (emülatör sayfa korumasını uygulamıyor)",
+  "status_unsupported": "Hata işleyici veya koruma sayfaları etkin değil"
+}

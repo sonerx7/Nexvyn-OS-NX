@@ -1,0 +1,27 @@
+{
+  "id": "com.nexvyn.example.vm_demo",
+  "name": {
+    "en": "Virtual Memory Demo",
+    "tr": "Sanal Bellek Örneği",
+    "de": "Virtueller Speicher",
+    "es": "Demostración de memoria virtual",
+    "fr": "Démo de mémoire virtuelle",
+    "ja": "仮想メモリデモ",
+    "ko": "가상 메모리 데모",
+    "zh": "虚拟内存演示"
+  },
+  "version": "1.0.0",
+  "build": 1,
+  "type": "app",
+  "runtime": "native",
+  "main": "vm_demo.nxvmod",
+  "author": "Nexvyn Team",
+  "category": "utilities",
+  "mode": "window",
+  "minNative": "1.3",
+  "targetNative": "1.3",
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "icon": "icon.png",
+  "permissions": []
+}

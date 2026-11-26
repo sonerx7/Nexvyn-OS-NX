@@ -30,6 +30,7 @@
 #include "nxn_power.h"
 #include "nxn_dialog.h"
 #include "nxn_jit.h"
+#include "nxn_cpu.h"
 #include "nxn_stream.h"
 #include "nxn_phys.h"
 #include "nxn_nav.h"

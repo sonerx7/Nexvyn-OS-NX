@@ -11,7 +11,7 @@ RUNTIMES = {
     "squirrel": {"engine": "Squirrel", "version": "3.2", "since": "1.5", "ext": (".nut",), "main": "main.nut"},
     "c": {"engine": "TinyCC", "version": "0.9.28rc", "since": "1.5", "ext": (".c",), "main": "main.c"},
     "java": {"engine": "miniJVM", "version": "2.2.0", "since": "1.5", "ext": (".jar",), "main": "app.jar"},
-    "native": {"engine": "nxn", "version": "1.2", "since": "1.10", "ext": (".nro",), "main": "main.nro"},
+    "native": {"engine": "nxn", "version": "1.3", "since": "1.10", "ext": (".nro",), "main": "main.nro"},
 }
 
 ALIASES = {

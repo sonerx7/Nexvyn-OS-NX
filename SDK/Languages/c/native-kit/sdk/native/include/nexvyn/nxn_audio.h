@@ -70,6 +70,23 @@ NXN_API nxn_result nxn_tone(float freq_hz, float seconds, float volume, uint32_t
 /* Stops every sound this app started with nxn_sfx_play or nxn_tone. Thread: any app thread. Memory: none. */
 NXN_API nxn_result nxn_sfx_stop_all(void);
 
+/* ---- stream statistics (N6; add-on). NXN_ERR_UNSUPPORTED in the stand-alone library and where the host lacks it. */
+typedef struct nxn_audio_stats {
+    uint32_t size;
+    uint32_t reserved;
+    uint64_t underruns;       /* mixer reads of this stream that found less than one period queued, since open; counted
+                                 only while the stream is not paused (a stream nobody feeds counts every read) */
+    uint64_t mixer_reads;     /* mixer reads of this stream, since open, not paused */
+    uint32_t queued_frames;   /* frames in the stream's ring now, in the stream's own rate */
+    uint32_t reserved2;
+    uint64_t latency_ns;      /* ESTIMATE of queue-to-ear delay: the queued time plus one mixer period; the device's own
+                                 buffer after the mixer is not included and has not been measured on the console */
+} nxn_audio_stats;
+
+/* Fills the statistics of one stream. Thread: any app thread (the counters are atomics the mixer updates; the numbers
+ * may be a read apart). Memory: written into the caller's struct (set size with NXN_STRUCT_INIT). */
+NXN_API nxn_result nxn_audio_stats_get(nxn_audio* a, nxn_audio_stats* out);
+
 NXN_EXTERN_C_END
 
 #endif /* NEXVYN_NXN_AUDIO_H */

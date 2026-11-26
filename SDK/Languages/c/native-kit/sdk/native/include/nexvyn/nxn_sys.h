@@ -193,6 +193,13 @@ uint32_t nxn_thread_hint_request(uint32_t worker_cores, nxn_thread_hint_priority
 NXN_API uint32_t nxn_thread_hint_host_request(uint32_t worker_cores, nxn_thread_hint_priority priority,
                                            nxn_thread_hint_priority* granted_priority);
 
+/* ---------------------------------------------------------------- thread CPU time (N6 add-on) */
+/* CPU time the calling thread has used since it started, in nanoseconds (the kernel's per-thread tick count, converted at
+ * 19.2 MHz: one tick is ~52 ns; time spent sleeping or waiting is not counted). Subtract two readings for the cost of a
+ * stretch of work. It reads the calling thread only. 0 when the kernel does not report it (also in an emulator that does
+ * not implement the query; unverified on the console). Thread: any thread. Memory: none. */
+NXN_API uint64_t nxn_thread_cpu_ns(void);
+
 NXN_EXTERN_C_END
 
 #endif /* NEXVYN_NXN_SYS_H */

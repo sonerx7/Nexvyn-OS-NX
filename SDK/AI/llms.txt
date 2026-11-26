@@ -1,4 +1,4 @@
-# Nexvyn OS N2 (SDK 1.16) — AI & LLM Master Context Index (SDK 1.16 & Native SDK 1.2)
+# Nexvyn OS N2 (SDK 1.16) — AI & LLM Master Context Index (SDK 1.16 & Native SDK 1.3)
 
 > Give this file (`SDK/AI/llms.txt`) together with `SDK/AI/system-prompt.md` to any AI coding assistant or LLM.
 > Everything documented here and in `SDK/Reference/SDK.md` exists in the Nexvyn OS runtime. Do NOT invent browser, Node.js, LÖVE, Pygame, or POSIX calls that are not in the contract.
@@ -22,7 +22,7 @@ Always choose one of these 4 official runtimes for new projects:
 3. **Python 3.12 (`"runtime": "python3"`, or `"runtime": "python"` with `"targetSdk": "2.0"`, `"main": "main.py"`):**
    - **Engine:** CPython 3.12.16 subinterpreter per window with full Python 3.12 syntax and standard library (`math`, `statistics`, `itertools`, `collections`, `datetime`, `json`, `zlib`, `hashlib`, `struct`, `re`, `urllib.parse`, `uuid`, `csv`, etc.).
    - **Strengths:** Keyword arguments (`gfx.text("Hi", 10, 10, size=20)`), tuple returns (`w, h = gfx.size()`), `nxui.*`, `g3d.*` NexGFX PBR.
-4. **Native C / C++ (`"runtime": "native"`, `"main": "<id>.nxvmod"`, `"minNative": "1.2"`, `"minSdk": "1.10"`):**
+4. **Native C / C++ (`"runtime": "native"`, `"main": "<id>.nxvmod"`, `"minNative"` set to the required Native SDK floor, `"minSdk": "1.10"`):**
    - **Engine:** Ahead-of-Time (AOT) ARM64 shared module compiled with devkitA64 GCC against **Frozen ABI v1** (`#include <nexvyn/nexvyn_native.h>`, `#include <nexvyn/nxn_nxui.h>`).
    - **Strengths:** Native graphics (OpenGL / GLES3 / NexGFX), SDL2 window driver, app-owned heap arena (same process), POSIX compatibility layer, `nxn_window_set_*`, `nxn_power_get`, `nxn_dialog`/`nxn_prompt`.
    - **Use it for heavy computation only** (LLM inference, emulators, 3D, codecs, ports). UI-heavy tools, utilities and productivity apps are Lua / JavaScript / Python with `nxui.*`. A native UI uses Dear ImGui with the frame layer of `<nexvyn/nxn_os_ui.h>` (`nxn_os_frame_begin` / `nxn_os_frame_end`, `nxn_os_*` widgets, `NXN_S()` sizes; `nxv_native check-design` must pass); `nxn_nxui_*` does not paint in a GL window.

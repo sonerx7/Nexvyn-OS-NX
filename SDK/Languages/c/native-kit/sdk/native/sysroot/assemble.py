@@ -46,6 +46,7 @@ ITEMS = {
     "glib": ["lib/libglib-2.0.a"],
     "pixman": ["lib/libpixman-1.a"],
     "libiconv": ["lib/libiconv.a"],
+    "sdl3": ["windowed/lib/libSDL3.a"],
 }
 # items solved without the portlibs: (where)
 ALTERNATIVES = {
@@ -53,7 +54,7 @@ ALTERNATIVES = {
 }
 # plan item -> recipe name in recipes.json
 RECIPE_OF = {"zstd": "zstd", "lz4": "lz4", "openal": "openal", "libarchive": "libarchive", "sqlite": "sqlite",
-             "glib": "glib", "pixman": "pixman", "libiconv": "libiconv"}
+             "glib": "glib", "pixman": "pixman", "libiconv": "libiconv", "sdl3": "sdl3-nexvyn"}
 
 
 def dkp_root():

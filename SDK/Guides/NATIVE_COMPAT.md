@@ -52,9 +52,9 @@ Makefile projects that build a window (`.nxvmod`, `-fPIC`, `-shared`) link the o
 How it works: calls that libnx or newlib already define (`poll`, `select`, `fcntl`, `getpid`, `raise`, ...) are taken over
 with the linker's `--wrap` option, so the original stays reachable and nothing is defined twice; calls that do not exist
 (`mmap`, `pipe`, `getcontext`, ...) are plain definitions. Headers that newlib lacks (`<sys/mman.h>`, `<ucontext.h>`,
-`<sys/eventfd.h>`, `<dlfcn.h>`, `<sys/utsname.h>`, `<sys/random.h>`) are in `compat/include/`; `<sys/signal.h>` and
-`<sys/resource.h>` wrap newlib's header and add what it misses (`struct sigaction` with `sa_sigaction`, `SA_RESTART`,
-`getrlimit`).
+`<sys/ucontext.h>`, `<sys/eventfd.h>`, `<dlfcn.h>`, `<sys/utsname.h>`, `<sys/random.h>`) are in `compat/include/`; `<sys/signal.h>` and
+`<sys/resource.h>` wrap newlib's header and add what it misses (`struct sigaction` with `sa_sigaction`, `siginfo_t` with
+`si_addr` and `SEGV_*` / `BUS_*` codes, `SA_RESTART`, `getrlimit`).
 
 `nxc_init()` is optional. It moves the working directory into the app's data folder (`nxn_fs_path(NXN_DIR_DATA)` when
 the Nexvyn ABI is linked, else `sdmc:/switch`) and sets `HOME`, `PWD`, `TMPDIR`, `USER` if they are unset.
@@ -71,7 +71,7 @@ with `NXC_WINDOWED=1`), and Nexvyn OS's host import set offers what it needs fro
 |---|---|---|
 | Whose state | the whole process is the app | every table of the layer lives in the app's module: descriptors, mappings, signals and the timer thread, environment, working directory belong to that app and never mix with another app or with Nexvyn OS |
 | Descriptors (`pipe`, `eventfd`, `/dev/*`) | devoptab `nxcfd:` | a devoptab of its own per window (named after the module's address), closed and removed when the app ends |
-| Working directory | the process's | the app's own: `chdir`, `getcwd`, `realpath` and every relative path of the wrapped calls (`open`, `fopen`, `stat`, `access`, `mkdir`, `opendir`, `rename`, `unlink` ... the file family of `wrap_fsmap.txt`, always wrapped here) use it. The process's directory is Nexvyn OS's and is never changed. Calls outside that family (`creat`, `utime` ...) need an absolute path |
+| Working directory | the process's | the app's own: `chdir`, `getcwd`, `realpath` and every relative path of the wrapped calls (`open`, `fopen`, `stat`, `access`, `mkdir`, `opendir`, `rename`, `unlink`, `utime`, `utimes`, `utimensat` ... the file family of `wrap_fsmap.txt` and `wrap_core.txt`, always wrapped here) use it. The process's directory is Nexvyn OS's and is never changed. Calls outside that family (`creat` ...) need an absolute path |
 | Environment | newlib's table | the app's own table and `environ`: `setenv`, `putenv`, `getenv`, `clearenv` never change Nexvyn OS's environment; `putenv` copies the string and never writes into it (a literal in read-only memory is fine) |
 | `getpid` | the process id | the same (the process is Nexvyn OS's, shared) |
 | Runtime hooks | `libnexvyn_native` calls the layer | the same effect, done with `--wrap` on `nxn_init`, `nxn_event_poll`, `nxn_should_quit`, `nxn_sleep_ns`, `nxn_shutdown`, `nxn_run` (Nexvyn OS implements `nxn_*` and cannot call into the module). `nxn_thread_join` waits normally: a signal is delivered after the join, not during it |
@@ -106,6 +106,43 @@ BSD sockets (`socket`, `bind`, `listen`, `accept`, `connect`, `send*`, `recv*`, 
   `connect` blocks only the app's own thread: Nexvyn OS's main thread makes no socket calls for it.
 - the layer notes the sockets the app opens and closes the ones still open when it ends.
 
+### N6 network fixture
+
+`python tests/run_n6_net_probe.py` builds `build/n6-net-probe/n6_net_probe.nxvapp` from an exported SDK kit and checks its
+windowed module, declared `network` permission, package integrity and marker format. The fixture uses the compatibility
+layer for `ioctl` and `poll`. The native host checks the app's stored permission before forwarding socket and resolver
+calls to libnx. The OS owns the socket service.
+
+`PASS_HOST` covers compilation, import validation, packaging and the parser's sample logs. The recorded emulator run reached `N6N-END status=COMPLETE`. The progress log does not record
+individual syscall results. Each row needs a retained guest log for a verdict.
+
+| Item | Behavior to check in the app log | Evidence level |
+|---|---|---|
+| TCP loopback | Bind and listen on `127.0.0.1` with an OS-assigned port. Connect, accept, send and verify one byte. `N6N-TCP stage=done rc=1` means the byte matched. | Console `NOT_RUN` |
+| Non-blocking TCP connect | Set `FIONBIO`, connect to the local listener, poll for `POLLOUT`, then read `SO_ERROR`. `N6N-CONNECT stage=ready` requires writable readiness and `so_error=0`. Record whether `connect` completed immediately or reported progress. | Console `NOT_RUN` |
+| Poll timeout | Poll the bound, idle UDP socket for `POLLIN` with a 100 ms timeout before sending anything. Expect `N6N-TIMEOUT rc=0 revents=0` and record elapsed monotonic milliseconds. | Console `NOT_RUN` |
+| UDP loopback | Bind to `127.0.0.1` with an OS-assigned port. Send a datagram and verify one byte via `recvfrom`. `N6N-UDP stage=done rc=1` means the byte matched. | Console `NOT_RUN` |
+| Resolver | Record IPv4 `getaddrinfo` return codes for `localhost` and `example.com` in separate `N6N-DNS` rows. Record public lookup failures as observations, including offline. | Console `NOT_RUN` |
+| Broadcast | Record `SO_BROADCAST` and then `sendto` to `255.255.255.255:58466` when the option succeeds. `set_rc=0 send_rc=1` confirms local send acceptance. A LAN listener is required to prove delivery. | Console `NOT_RUN` |
+| Multicast | Record `IP_ADD_MEMBERSHIP` return code for `239.255.0.1` on the default interface. `stage=join rc=0` confirms the join call succeeded. This fixture exercises membership only. | Console `NOT_RUN` |
+| Socket count | Open UDP sockets until the first error or the cap of 64. Record the count, first allocation error and number of close failures. `opened=64` establishes a lower bound for that run. | Console `NOT_RUN` |
+| Completion | `N6N-END status=COMPLETE` means all probes returned and logged. Evaluate each preceding row independently. A return value of `-2` in a syscall field means the call was skipped. | `PASS_EMULATOR` for completion. Console `NOT_RUN`. |
+
+The compatibility layer implements minimal IPv4 interface enumeration through
+`getifaddrs` and `freeifaddrs`. The network fixture exercises the socket surface.
+
+#### Reproduce the fixture
+
+1. Build the package and record its SHA-256 and the candidate OS source/artifact identity. Install on an isolated SD
+   with the `network` permission allowed. Run once on a connected LAN and once offline on each target. If running
+   the emulator, use the shared lock and start minimized without activation. Use a test LAN for the single broadcast packet.
+2. Archive the new lines from `System/Logs/Apps/com.nexvyn.test.n6netprobe.log` per launch. Validate each capture with
+   `python tests/run_n6_net_probe.py --log <capture>`. Review the row values and record the results separately as
+   `PASS_EMULATOR`, `PASS_DEVICE` or `FAIL`, including environment and sample count. Loopback connects use a local
+   listener. Resolver calls have a platform-controlled timeout.
+3. For the permission control, deny `network` in Settings, reopen the app and retain a separate log. Check the one-time
+   permission warning, socket `EACCES` and resolver `EAI_FAIL`. The stored permission is sampled at launch.
+
 ## POSIX calls
 
 | Area | Calls | Behaviour |
@@ -118,13 +155,25 @@ BSD sockets (`socket`, `bind`, `listen`, `accept`, `connect`, `send*`, `recv*`, 
 | Identity | `getpid`, `getppid`, `getuid`..., `umask` | `getpid` is the real process id and never changes; the rest are constants. |
 | The one user | `getuid`, `geteuid`, `getgid`, `getegid`, `getpwuid`, `getpwuid_r`, `getpwnam`, `getpwnam_r`, `getlogin` | There is a single user: name `nexvyn`, uid and gid 1000, home `$HOME` or `sdmc:/`, empty shell. Any other uid or name is "not found" (`NULL`, `errno` 0; the `_r` forms return 0 with `*result == NULL`). Fixed, not the console's user. (Kit 1.1, add-only.) |
 | Text input | `getline`, `getdelim` | Real, on top of newlib's `__getdelim` (newlib has no public name). Declared in `nexvyn/compat_posix.h` (force-included by `nexvyn_use_compat()`). (Kit 1.1, add-only.) |
-| Interfaces | `getifaddrs`, `freeifaddrs` (`<ifaddrs.h>`) | There is no interface list: `getifaddrs` fails with `ENOSYS` (one log line) and sets the list to `NULL`; connect to a name or address directly. |
+| Interfaces | `getifaddrs`, `freeifaddrs` (`<ifaddrs.h>`) | Minimal list (`lo` `127.0.0.1`, plus the primary IPv4 address when available, via `gethostid()` in exclusive mode and the existing libnx `gethostname()` host import in windowed mode); never `ENOSYS`. |
+| Timestamps | `utime`, `utimes`, `futimens`, `utimensat` | FAT timestamps are not settable here: documented no-op returning `0` while keeping existing file times when the path or descriptor exists, and failing with `ENOENT` or `EBADF` for missing targets. `utimensat` supports absolute paths and app-relative paths via `AT_FDCWD`; newlib does not expose directory descriptors for relative lookup. |
+| Positional & 64-bit I/O | `pread`, `pwrite`, `pread64`, `pwrite64`, `lseek64`, `off64_t` | 64-bit offsets (including > 2 GiB); `pread*` / `pwrite*` save and restore the file offset under an internal lock to preserve the descriptor position. Calls through other I/O APIs on the same open file description require caller synchronization. |
+| Directory listing | `readdir` | Ensures `d_type` is filled (`DT_DIR` / `DT_REG` on FAT and romfs, or `DT_UNKNOWN` consistently for unknown entry types). |
 | Pipes | `pipe`, `pipe2`, `eventfd`, `eventfd_read/write` | In-process: a 64 KiB ring buffer (pipe) or counter (eventfd) behind a normal descriptor. `read`, `write`, `close`, `dup`, `fstat`, `fcntl(F_GETFL/F_SETFL/F_GETFD/F_SETFD/F_DUPFD)`, `ioctl(FIONBIO/FIONREAD)`. Blocking and non-blocking, EOF, `EPIPE`, atomic writes up to 4096 bytes. |
 | Readiness | `poll`, `ppoll`, `select`, `pselect` | Work on pipes, eventfds, sockets and regular files in one set (regular files are always ready). Waits are woken at once when another thread writes; sockets are checked every 2 ms while waiting. `select(0, ...)` and `poll(NULL, 0, ms)` sleep. |
 | Environment | `getenv`, `setenv`, `putenv`, `unsetenv`, `clearenv`, `secure_getenv` | newlib's table with argument checks (`EINVAL`) and a `clearenv`. |
 | Directory | `getcwd`, `chdir`, `realpath` | Work on `sdmc:/...` paths; `realpath` resolves `.` and `..`, checks the file exists and does not follow links (there are none). With `NXC_FS_VROOT` they show `/` as the app folder. `chdir` keeps `$PWD` true. |
 | Time | `clock_gettime`, `clock_getres`, `clock_nanosleep`, `nanosleep`, `sleep`, `usleep`, `sched_yield` | Recognized clock ids are mapped to the real-time/monotonic implementation; unknown ids fail with EINVAL. CPU-time ids report elapsed time since the first call, not CPU usage (the kernel gives no CPU time). Sleeps are interrupted by signals like on a PC. |
 | Libraries | `dlopen`, `dlsym`, `dlclose`, `dlerror`, `dladdr` | `dlopen(file)` loads a Nexvyn shared library (`.nxvlib`) through `nxn_lib_open` (section "Shared libraries (dlopen)"). `dlopen(NULL)` and `dlsym(RTLD_DEFAULT, name)` search `nxc_dl_register(name, address)`, then the app's exports and every open library, so ports that probe for optional functions get a clean answer. `dladdr` finds nothing. |
+
+### Anonymous VM-backed mappings
+
+Native SDK 1.3 windowed modules can opt in with `NEXVYN_VM_MMAP=1` before requesting anonymous
+private `MAP_NORESERVE` mappings. The physical backend must support page-granular commits and
+protection. The route supports unbacked `PROT_NONE` reservations, in-range anonymous
+`MAP_FIXED` replacements, `mprotect` and `munmap`. The heap-backed route remains the default.
+See [Virtual memory](NATIVE_KIT.md#virtual-memory) for the backend contract. File mappings still
+read into a buffer. Positional stream reads are the alternative for large read-only files.
 
 ## Coroutines
 
@@ -170,10 +219,59 @@ inside this layer:
   an OS update alone does not replace macros already compiled into a port.
 - A default action of "terminate" ends the app with exit code 128 + signal after one log line; "ignore" signals (`SIGCHLD`,
   `SIGPIPE`, `SIGWINCH`, ...) are dropped. `SIGPIPE` is therefore harmless unless the program installs a handler.
-- `SIGSEGV`, `SIGBUS`, `SIGILL`, `SIGFPE` handlers are accepted and never called. A real crash goes to the
-  Nexvyn crash handler; registration is not fault recovery.
+- Hardware data-abort delivery (`SIGSEGV` / `SIGBUS` with `SA_SIGINFO`): see [Hardware faults (`SIGSEGV` / `SIGBUS`)](#hardware-faults-sigsegv--sigbus) below. `SIGILL` and `SIGFPE` handlers (and non-`SA_SIGINFO` `SIGSEGV` / `SIGBUS` handlers) are accepted and never called for hardware faults.
 - `sigaltstack` currently returns success without installing an alternate stack. Handlers use the caller's stack.
   Do not use a successful return as proof that stack-overflow recovery or an alternate signal stack exists.
+
+### Hardware faults (`SIGSEGV` / `SIGBUS`)
+
+For Native SDK 1.3 modules that link this compatibility layer, the bridge replaces the
+signal-emulation-only fastmem fallback on a protection-capable backend.
+
+In a windowed or Nexvyn full-screen module with `native.windowedFaultHandler` enabled (`NXN_CAP_FAULT_HANDLER`), installing
+a `SIGSEGV` or `SIGBUS` handler with `SA_SIGINFO` registers a single `nxn_fault_handler_set` callback (`nxc_fault.c`) that
+delivers AArch64 data aborts directly to `sa_sigaction(int sig, siginfo_t* si, void* uctx)` on the faulting thread:
+
+- `siginfo_t` (`<sys/signal.h>`):
+  - `si_signo`: `SIGSEGV` or `SIGBUS` (decoded from the AArch64 `ESR_EL1` Data Fault Status Code, bits 5..0).
+  - `si_addr`: the faulting data address (`FAR`, `nxn_fault.addr`).
+  - `si_code`: `SEGV_ACCERR` for permission faults (DFSC `0x0C`..`0x0F`), `SEGV_MAPERR` for translation / address-size /
+    access-flag faults (DFSC `0x00`..`0x0B`) or unknown syndromes, `BUS_ADRALN` for alignment faults (`0x21`), `BUS_ADRERR`
+    for synchronous external aborts (`0x10`, `0x11`, `0x14`..`0x17`), and `BUS_OBJERR` for parity / ECC errors (`0x18`,
+    `0x1C`..`0x1F`).
+  - `si_errno`: `0`.
+- `ucontext_t` (`<ucontext.h>` / `<sys/ucontext.h>`):
+  - `uc_mcontext.regs[0..30]` (`x0`..`x30`; `regs[29]` is `fp`, `regs[30]` is `lr`), `uc_mcontext.sp`, `uc_mcontext.pc`,
+    `uc_mcontext.pstate`, `uc_mcontext.fault_address` (`FAR`), and `uc_mcontext.esr` (the raw AArch64 `ESR_EL1` syndrome).
+  - Read vs. write access is exposed via bit 6 of `uc_mcontext.esr` (`NXC_ESR_WNR`, `1` = write, `0` = read) and the
+    helper `nxc_fault_is_write(const ucontext_t*)`.
+  - When `sa_sigaction` returns, modified `regs[0..30]`, `sp`, `pc` and `pstate` NZCV flags (bits 31..28) are written back
+    to `nxn_fault` and execution resumes at `uc_mcontext.pc`.
+- Crash pass-through: `SIG_DFL`, `SIG_IGN`, no handler, a handler installed without `SA_SIGINFO`, a signal blocked in
+  `sigprocmask`, or an unhandled signal class (e.g. a `SIGBUS` fault when only `SIGSEGV` is handled) returns `0` to the
+  host and keeps the normal Nexvyn crash path. When both `SIGSEGV` and `SIGBUS` return to `SIG_DFL` / `SIG_IGN` (or at
+  `nxc_shutdown()`), the compat layer removes its `nxn_fault_handler_set` callback.
+- `SA_RESETHAND` (`SA_ONESHOT`) clears the slot atomically before invoking the handler, so a subsequent fault takes the
+  crash path unless the handler is reinstalled.
+- Standalone `.nro` builds and hosts with `native.windowedFaultHandler` off receive `NXN_ERR_UNSUPPORTED` from
+  `nxn_fault_handler_set`; `sigaction()` still succeeds and logs one unsupported notice, keeping the normal crash path.
+
+Limits (inherited from `docs/current/n4/N4_FAULT_CONTRACT.md` and `sdk/native/include/nexvyn/nxn_jit.h`):
+
+- **Data aborts only:** instruction aborts, undefined instructions (`SIGILL`), floating-point traps (`SIGFPE`), stack
+  overflows, recursive faults inside the handler, and faults inside a Nexvyn OS function or `malloc` always take the
+  normal crash path.
+- **`x17` (`regs[17]`) is not restored:** the host resume trampoline (`nxw_fault_resume`) uses `x17` to carry the resume
+  address. Code that may fault must not hold a live value in `x17` across the faulting access.
+- **SIMD / FP state is not editable:** `q0`..`q31` are restored unchanged by the host; `uc_mcontext.d[]`, `fpcr`, and
+  `fpsr` are only used by `getcontext` / `setcontext` / `swapcontext` and are neither populated nor written back for
+  hardware faults.
+- **Handler rules:** the handler runs on the faulting thread's own stack (`sp - 512`, 16-byte aligned) and must be
+  reentrant across concurrent faulting threads. It must **not** call `nxn_*` functions (including `nxn_mem_guard` or
+  `nxn_log`), must **not** allocate, must **not** take locks (including `sigaction()`), and must **not** block. `sa_mask`
+  is not switched around hardware fault handlers.
+- **Emulator limit:** the emulator does not enforce page permissions (`docs/current/n6/N6_PROBES.md` row c), so guarded writes
+  do not fault in the emulator; hardware fault delivery must be verified on a console. See `sdk/native/examples/fault_demo`.
 
 ## Paths (opt-in)
 
@@ -227,7 +325,7 @@ warnings that name the replacement; `STRICT_ERROR` (`NXC_STRICT=2`) makes them e
 
 ## Limits
 
-- Fastmem: a real data abort can go to the app first with `nxn_fault_handler_set` (`nxn_jit.h`, setting `native.windowedFaultHandler`, `NXN_CAP_FAULT_HANDLER`); the handler fixes the registers and the thread goes on. Guard pages: `nxn_mem_guard` (`native.windowedGuardPages`). Both are off by default; see `NATIVE_SDK_DESIGN.md` 3.2.11.
+- Fastmem: a real data abort can go to the app first with `nxn_fault_handler_set` (`nxn_jit.h`, setting `native.windowedFaultHandler`, `NXN_CAP_FAULT_HANDLER`) or through POSIX `sigaction` (`SIGSEGV` / `SIGBUS` with `SA_SIGINFO`, see [Hardware faults](#hardware-faults-sigsegv--sigbus)); the handler fixes the registers / `pc` and the thread goes on. Guard pages: `nxn_mem_guard` (`native.windowedGuardPages`). Both are off by default; see `NATIVE_SDK_DESIGN.md` 3.2.11.
 - Pipes and eventfds are for threads of one process. There is no `socketpair`, `epoll`, `timerfd`, `signalfd`, `inotify`.
 - Memory mappings are heap copies: a huge sparse reservation (a 4 GiB `PROT_NONE` address space) fails with `ENOMEM`, and file
   mappings take the file's size in RAM.
@@ -311,3 +409,5 @@ If duplication fails, mmap returns MAP_FAILED with the original descriptor error
 (such as EMFILE or ENFILE), releases its backing and leaves the caller descriptor
 open. Success must never silently disable writeback. This static-library correction
 requires rebuilding linked applications; it does not add enforced page protection.
+
+`pread`/`pwrite` keep the file offset by saving and restoring it under one process-wide lock: positional calls never interleave, but they are serialized across all descriptors (multi-threaded ISO readers see no parallel I/O), and a plain `read`/`write` on the same descriptor from another thread at the same moment is not protected.

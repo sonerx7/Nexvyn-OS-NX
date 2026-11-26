@@ -81,3 +81,10 @@ nxn_result nxn_audio_clear(nxn_audio* a) {
     SDL_ClearQueuedAudio(a->dev);
     return NXN_OK;
 }
+
+/* N6 add-on: statistics need the OS mixer (windowed mode only). */
+nxn_result nxn_audio_stats_get(nxn_audio* a, nxn_audio_stats* out) {
+    (void)a;
+    (void)out;
+    return NXN_ERR_UNSUPPORTED;
+}

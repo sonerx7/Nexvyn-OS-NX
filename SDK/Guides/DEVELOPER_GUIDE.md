@@ -1,6 +1,6 @@
 # Build and deliver a Nexvyn product
 
-Current contract: SDK 1.16, Native SDK 1.2, native ABI v1. Keep the downloaded
+Current contract: SDK 1.16, Native SDK 1.3, native ABI v1. Keep the downloaded
 `SDK/` directory intact. This guide uses the public kit and does not require the
 private OS repository.
 

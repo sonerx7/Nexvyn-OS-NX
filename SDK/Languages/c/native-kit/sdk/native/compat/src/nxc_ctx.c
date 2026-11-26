@@ -9,7 +9,13 @@
 #include "nxc_internal.h"
 
 _Static_assert(offsetof(ucontext_t, uc_mcontext) == 48, "nxc_ctx_asm.S assumes uc_mcontext at offset 48");
-_Static_assert(sizeof(mcontext_t) == 256, "nxc_ctx_asm.S assumes a 256 byte mcontext");
+_Static_assert(offsetof(mcontext_t, regs) == 8, "nxc_ctx_asm.S assumes regs at offset 8");
+_Static_assert(offsetof(mcontext_t, sp) == 256, "nxc_ctx_asm.S assumes sp at offset 256");
+_Static_assert(offsetof(mcontext_t, pc) == 264, "nxc_ctx_asm.S assumes pc at offset 264");
+_Static_assert(offsetof(mcontext_t, d) == 288, "nxc_ctx_asm.S assumes d at offset 288");
+_Static_assert(offsetof(mcontext_t, fpcr) == 352, "nxc_ctx_asm.S assumes fpcr at offset 352");
+_Static_assert(offsetof(mcontext_t, fpsr) == 360, "nxc_ctx_asm.S assumes fpsr at offset 360");
+_Static_assert(sizeof(mcontext_t) == 368, "nxc_ctx_asm.S assumes a 368 byte mcontext");
 
 extern void nxc_ctx_entry(void);
 
@@ -28,12 +34,12 @@ void makecontext(ucontext_t* ucp, void (*func)(void), int argc, ...) {
     memset(m, 0, sizeof *m);
     uintptr_t top = ((uintptr_t)ucp->uc_stack.ss_sp + ucp->uc_stack.ss_size) & ~(uintptr_t)15;
     m->sp = top;
-    m->x19_28[0] = (uint64_t)(uintptr_t)func;
-    m->x19_28[1] = (uint64_t)(uintptr_t)ucp->uc_link;
+    m->regs[19] = (uint64_t)(uintptr_t)func;
+    m->regs[20] = (uint64_t)(uintptr_t)ucp->uc_link;
     m->pc = (uint64_t)(uintptr_t)nxc_ctx_entry;
     va_list ap;
     va_start(ap, argc);
-    for (int i = 0; i < argc; i++) m->x[i] = (uint32_t)va_arg(ap, int);
+    for (int i = 0; i < argc; i++) m->regs[i] = (uint32_t)va_arg(ap, int);
     va_end(ap);
 }
 

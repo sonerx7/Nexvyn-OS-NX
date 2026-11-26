@@ -1,8 +1,8 @@
-# Nexvyn OS app SDK 1.16 & Native SDK 1.2: context pack for AI assistants
+# Nexvyn OS app SDK 1.16 & Native SDK 1.3: context pack for AI assistants
 
 ## Current authoring contract
 
-Use SDK 1.16 / Native SDK 1.2 / ABI v1. For all new apps, games, ports and launchers:
+Use SDK 1.16 / Native SDK 1.3 / ABI v1. For all new apps, games, ports and launchers:
 - Ship complete en, tr, de, es, fr, ja, ko and zh dictionaries; check keys and placeholders with `nxv_i18n.py --check`.
 - Keep SDK Markdown English only. Store screenshots may use English UI.
 - OS apps use shared theme/typography/controls; games require their own art direction.
@@ -62,7 +62,7 @@ Installed at `sdmc:/NexvynOS/Applications/`. Logs: `sdmc:/NexvynOS/System/Logs/A
   1. `"lua"` (default, Lua 5.4.7 with Generational GC)
   2. `"js"` (QuickJS-ng 0.17.0 ES2023)
   3. `"python3"` (or `"python"` with `"targetSdk": "2.0"`, CPython 3.12.16)
-  4. `"native"` (devkitA64 GCC AOT `.nxvmod` / `.nro`, `"minNative": "1.2"`, `"minSdk": "1.10"`)
+  4. `"native"` (devkitA64 GCC AOT `.nxvmod` / `.nro`, set `"minNative"` to the required Native SDK floor, `"minSdk": "1.10"`)
   *(Compatibility runtimes: `"python"` with `targetSdk < 2.0` uses PocketPy; `"c"` uses TinyCC; `"squirrel"` and `"java"` are frozen at SDK 1.8).*
 - Minimum `minSdk`: Lua 1.0 (1.2 with `nexvyn.game`), JS 1.1, Python 1.3, Squirrel/C/Java 1.5. Any 1.4 feature
   (share, schedule, permissions API, lifecycle callbacks) needs "1.4"; `fs.unzip`, `sys.games`, `sys.speak`, the

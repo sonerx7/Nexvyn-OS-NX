@@ -176,6 +176,15 @@ nxn_window_set_mode
 nxn_window_set_modified
 nxn_window_set_title
 nxn_thread_hint_host_request
+nxn_display_set_interval
+nxn_display_last_present_ns
+nxn_cpu_info_get
+nxn_audio_stats_get
+nxn_input_pad_motion
+nxn_input_pad_sticks
+nxn_rumble_pad
+nxn_stream_cancel
+nxn_thread_cpu_ns
 
 ## host
 eglGetProcAddress
@@ -1799,3 +1808,14 @@ __tls_get_addr
 ## optional
 # Weak import, published only by the Vulkan build.
 nxn_vk_proc
+
+## nxn
+nxn_vm_reserve
+nxn_vm_get
+nxn_vm_commit
+nxn_vm_decommit
+nxn_vm_protect
+nxn_vm_release
+nxn_vm_watch
+nxn_vm_watch_collect
+nxn_vm_write

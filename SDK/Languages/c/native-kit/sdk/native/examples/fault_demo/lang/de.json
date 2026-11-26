@@ -1,0 +1,6 @@
+{
+  "title": "Fehlerbehandlung-Demo",
+  "status_ok": "Hardwarefehler zugestellt und fortgesetzt",
+  "status_none": "Kein Fehler zugestellt (Emulator erzwingt keinen Seitenschutz)",
+  "status_unsupported": "Fehlerbehandler oder Schutzseiten sind nicht aktiviert"
+}

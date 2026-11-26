@@ -20,6 +20,7 @@ rules behind this page are in [COMPATIBILITY.md](COMPATIBILITY.md).
 |---|---|---|
 | **Nexvyn OS** | `1.3.8` | the system release (major.minor.patch), shown in Settings > About |
 | **SDK** | `1.13` / `2.0` | the API surface apps are written against (major.minor); `sys.sdkVersion()` returns it |
+| **Native SDK** | `1.3` | C / C++ API floor (`minNative`), versioned independently of the script SDK and native ABI generation |
 | **Runtime engine** | Lua 5.4.7, QuickJS-ng 0.17.0, CPython 3.12.16, Native AOT ABI v1 | the interpreter or compiler behind one language |
 
 A new SDK function raises the SDK minor version and comes with a new Nexvyn OS minor release. A change in how an
@@ -209,6 +210,17 @@ API changes; NXUI and the four runtimes arrived with Nexvyn OS 1.3.8 and 1.3.9).
 `targetSdk` or `targetNative` is a behavior marker for the N2 architecture, not a release: `"runtime": "python"` with an
 effective `targetSdk` of 2.0 or newer runs on CPython 3.12 instead of PocketPy, and a native app with a target of 2.0 or
 newer gets the responsive live-resize default. The packer warns that a `targetSdk` of 2.0 is above SDK 1.16. New projects write `"targetSdk": "1.16"` and `"runtime": "python3"`.
+
+### Native SDK releases
+
+| Native SDK | Additions |
+|---|---|
+| Native SDK 1.3 (current) | New imports: `nxn_vm_reserve`, `nxn_vm_get`, `nxn_vm_commit`, `nxn_vm_decommit`, `nxn_vm_protect`, `nxn_vm_release`, `nxn_display_set_interval`, `nxn_display_last_present_ns`, `nxn_cpu_info_get`, `nxn_input_pad_motion`, `nxn_input_pad_sticks`, `nxn_rumble_pad`, `nxn_audio_stats_get`, `nxn_thread_cpu_ns`, `nxn_stream_cancel`. The kit adds the POSIX `SIGSEGV`/`SIGBUS` bridge, opt-in VM-backed mappings, `utime`/`utimes`/`futimens`/`utimensat`, `pread`/`pwrite` with their 64-bit variants and `lseek64`, `readdir` type handling, minimal `getifaddrs`, and SDL3 Vulkan WSI. Hosted apps can request `mainStackKiB`. |
+| 1.2 | Window control, power and network state, and OS dialogs. |
+
+Set `"minNative": "1.3"` for packages that use the new imports. Native ABI v1 and script SDK 1.16 retain
+their version identities. See the [kit](NATIVE_KIT.md) and [POSIX layer](NATIVE_COMPAT.md) for configuration
+and backend limits.
 
 ## 4. minSdk and targetSdk
 

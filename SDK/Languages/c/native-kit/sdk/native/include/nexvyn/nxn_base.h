@@ -48,8 +48,8 @@
 
 /* Native SDK version of these headers ("minNative" in app.json is compared against the system's version). */
 #define NXN_VERSION_MAJOR 1
-#define NXN_VERSION_MINOR 2
-#define NXN_VERSION_STRING "1.2"
+#define NXN_VERSION_MINOR 3
+#define NXN_VERSION_STRING "1.3"
 
 /* ABI generation: raised by hand only when a struct layout or calling convention changes incompatibly. */
 #define NXN_ABI_GEN 1

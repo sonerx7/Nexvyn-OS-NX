@@ -50,6 +50,15 @@ NXN_API nxn_result nxn_stream_prefetch(nxn_stream* s, uint64_t offset, uint64_t 
  * it returned. Memory: the handle may not be used afterwards. */
 NXN_API void nxn_stream_close(nxn_stream* s);
 
+/* Range cancel (N6 add-on): takes back prefetch work queued for blocks that overlap [offset, offset + len) and
+ * have not started loading. *blocks (may be NULL) gets the number of blocks cancelled. It does NOT interrupt a read that
+ * is already running (a blocking nxn_stream_read, a block already loading) and does not remove cached blocks; a later
+ * nxn_stream_prefetch of the same range requests it again. Overlapping hints share blocks, so a cancel applies to all
+ * hints on that stream and range. Use it when the app seeks away (a streaming video, a level
+ * change) so the card does not load what nobody needs. NXN_ERR_UNSUPPORTED where the host lacks it.
+ * Thread: any app thread. Memory: none. */
+NXN_API nxn_result nxn_stream_cancel(nxn_stream* s, uint64_t offset, uint64_t len, uint64_t* blocks);
+
 NXN_EXTERN_C_END
 
 #endif

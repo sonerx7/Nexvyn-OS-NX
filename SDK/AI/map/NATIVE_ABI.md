@@ -8,7 +8,7 @@ Defines the frozen C-only Native ABI v1 boundary, struct versioning, capability 
 |---|---|---|
 | `NXN_ABI_VERSION` | `nexvyn_native.h` | Frozen ABI family constant (`1`) |
 | `NXN_ABI_GEN` | `nxn_base.h` | Binary ABI generation (`1`), raised only on incompatible changes |
-| `NXN_VERSION_MAJOR` / `MINOR` | `nxn_base.h` | Native header version (`1.2`, `NXN_VERSION_STRING` `"1.2"`) |
+| `NXN_VERSION_MAJOR` / `MINOR` | `nxn_base.h` | Native header version (`1.3`, `NXN_VERSION_STRING` `"1.3"`) |
 | `NXN_STRUCT_INIT(type)` | `nxn_base.h` | Zero-initializes a versioned struct and sets its leading `size` field |
 | `nxn_result` / `NXN_OK` | `nxn_base.h` | Status codes (`NXN_ERR_INVALID`..`NXN_ERR_LIMIT`, negative on error) |
 | `nxn_init` / `nxn_shutdown` | `nxn_app.h` | Initializes/tears down native runtime (already called before `main` in `.nxvmod`) |

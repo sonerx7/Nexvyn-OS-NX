@@ -146,8 +146,21 @@ driver for windows, sound and input events, POSIX calls in a window, system serv
 data, permissions), UI tokens and the app's own texts, NexGFX native, the OS sound mixer and package v2. Native SDK 1.2 adds system
 integration for windows: window control (`nxn_window_set_title` / `set_mode` / `set_modified`, `NXN_CAP_WINDOW_CTL`), battery / charger /
 dock / network state (`nxn_power_get`, `NXN_EVENT_POWER`, `NXN_CAP_POWER_STATE`), OS dialogs (`nxn_dialog`, `nxn_prompt`, `NXN_CAP_DIALOG`).
-A newer Native SDK only adds; apps built for an older one run unchanged. The table and the rules: `docs/COMPATIBILITY.md`, *Native
-SDK*; the guide: `docs/NATIVE_GUIDE.md`.
+Native SDK 1.3 adds these APIs. Set `"minNative": "1.3"` in packages that require them and check
+runtime capabilities or return values before using optional features. Native ABI v1 is preserved.
+
+| Header | Native SDK 1.3 additions |
+|---|---|
+| `nxn_vm.h` | `nxn_vm_reserve`, `nxn_vm_get`, `nxn_vm_commit`, `nxn_vm_decommit`, `nxn_vm_protect`, `nxn_vm_release`. Query each region's backend and abilities. Sparse RAM and page protection depend on the backend. |
+| `nxn_display.h` | `nxn_display_set_interval` selects interval 1 or 2. `nxn_display_last_present_ns` reports the compositor handoff or successful standalone EGL swap in the `nxn_time_ns` clock. |
+| `nxn_cpu.h`, `nxn_sys.h` | `nxn_cpu_info_get` reports AArch64 features, cache geometry and core masks. `nxn_thread_cpu_ns` samples CPU time for the calling thread. Hosted modules can request their main stack with `mainStackKiB`. |
+| `nxn_input.h` | `nxn_input_pad_motion`, `nxn_input_pad_sticks` and `nxn_rumble_pad` expose per-pad motion, raw sticks and dual-band rumble. |
+| `nxn_audio.h`, `nxn_stream.h` | `nxn_audio_stats_get` reports per-stream underruns, queued frames and a latency estimate. `nxn_stream_cancel` removes queued prefetch blocks in a byte range before they start. |
+
+The optional POSIX layer adds a hardware data-abort bridge for `sigaction` with `SA_SIGINFO`, opt-in VM-backed
+anonymous mappings, timestamp compatibility calls, positional and 64-bit file I/O, and minimal IPv4 interface
+enumeration. The kit also adds SDL3 with Vulkan WSI hooks for windowed modules. See `docs/NATIVE_KIT.md` for
+capability checks and examples, and `docs/NATIVE_COMPAT.md` for POSIX behavior and limits.
 
 ### Runtime providers and frameworks
 

@@ -1,13 +1,16 @@
 /* Nexvyn compat: <sys/signal.h> (and so <signal.h>, which newlib builds on it).
  *
- * newlib's struct sigaction has no sa_sigaction and its flag set is only SA_NOCLDSTOP, so PC code that installs
- * SA_SIGINFO handlers does not compile. This header renames newlib's structure and defines the Linux style one.
- * Signals are emulated (docs/NATIVE_COMPAT.md): delivery happens at safe points, see nxc_signal_poll(). */
+ * newlib's struct sigaction has no sa_sigaction, its siginfo_t has no si_addr, and its flag set is only SA_NOCLDSTOP,
+ * so PC code that installs SA_SIGINFO handlers does not compile. This header renames newlib's structures and defines
+ * the POSIX / Linux style ones. Emulated signals deliver at safe points (nxc_signal_poll()); hardware data aborts
+ * deliver directly to SA_SIGINFO handlers for SIGSEGV and SIGBUS via nxn_fault_handler_set (docs/NATIVE_COMPAT.md). */
 #ifndef NEXVYN_COMPAT_SYS_SIGNAL_H
 #define NEXVYN_COMPAT_SYS_SIGNAL_H
 
 #define sigaction __nxc_newlib_sigaction
+#define siginfo_t __nxc_newlib_siginfo_t
 #include_next <sys/signal.h>
+#undef siginfo_t
 #undef sigaction
 
 /* newlib shifts a signed int in these macros. On this target SIGUSR2 is 31;
@@ -40,9 +43,36 @@
 #define SI_QUEUE 4
 #endif
 
+/* SIGSEGV si_code values */
+#ifndef SEGV_MAPERR
+#define SEGV_MAPERR 1
+#endif
+#ifndef SEGV_ACCERR
+#define SEGV_ACCERR 2
+#endif
+
+/* SIGBUS si_code values */
+#ifndef BUS_ADRALN
+#define BUS_ADRALN 1
+#endif
+#ifndef BUS_ADRERR
+#define BUS_ADRERR 2
+#endif
+#ifndef BUS_OBJERR
+#define BUS_OBJERR 3
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef struct siginfo {
+    int          si_signo;    /* Signal number */
+    int          si_errno;    /* Errno value (0 for hardware faults) */
+    int          si_code;     /* Signal code (SI_USER, SEGV_MAPERR, SEGV_ACCERR, BUS_ADRALN, ...) */
+    union sigval si_value;    /* Signal value */
+    void*        si_addr;     /* Faulting memory address (FAR) for SIGSEGV / SIGBUS */
+} siginfo_t;
 
 struct sigaction {
     union {

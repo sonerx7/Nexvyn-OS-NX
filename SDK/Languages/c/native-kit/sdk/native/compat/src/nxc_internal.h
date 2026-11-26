@@ -41,11 +41,15 @@ enum { NXC_WAIT_OK = 0, NXC_WAIT_TIMEOUT = 1, NXC_WAIT_INTR = 2 };
  * style calls) and every handler that ran is marked SA_RESTART; sleep / poll / select pass 0: they never restart. */
 int nxc_block_locked(uint64_t deadline_ns, uint64_t slice_ns, int restartable);
 
-/* Signals (nxc_signal.c). deliver: runs the handlers of pending unblocked signals, *no_restart gets 1 when one of them
- * lacks SA_RESTART. Returns the number of handlers run. Call without g_nxc_mu. */
+/* Signals (nxc_signal.c, nxc_fault.c). deliver: runs the handlers of pending unblocked signals, *no_restart gets 1 when
+ * one of them lacks SA_RESTART. Returns the number of handlers run. Call without g_nxc_mu. */
 int nxc_signal_deliver(int* no_restart);
 int nxc_signal_any_pending(void);
-/* Wakes the signal timer thread bookkeeping (nxc_signal.c) when the program exits. */
+uint64_t nxc__signal_blocked_mask(void);
+struct sigaction;
+int nxc__fault_sync_locked(const struct sigaction* segv_act, const struct sigaction* bus_act);
+int nxc__fault_consume_reset(int sig);
+void nxc__fault_shutdown_locked(void);
 
 /* Paths (nxc_path.c, pure). */
 int nxc_path_normalize(const char* in, char* out, size_t cap);

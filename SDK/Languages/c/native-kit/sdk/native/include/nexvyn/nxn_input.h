@@ -159,6 +159,61 @@ NXN_API int nxn_input_pad_count(void);
  * held actions/captures; a reconnect starts fresh. NXN_ERR_INVALID for a bad argument. Thread: one consumer per pad. */
 NXN_API nxn_result nxn_input_pad_poll(uint32_t pad, nxn_pad_state* out);
 
+/* ---- six-axis motion, per-pad HD rumble and per-pad sticks (N6; add-on, ABI v1 is unchanged). Each function returns
+ * NXN_ERR_UNSUPPORTED in the stand-alone library and when the host does not have it (an older Nexvyn OS refuses the name
+ * at load, so a module that must run there looks the function up with a weak import). Like every other input call
+ * they give nothing while the window has no focus: motion and sticks return NXN_OK with zeros (motion: valid = 0), and
+ * rumble is dropped. */
+
+typedef struct nxn_pad_motion {
+    uint32_t size;
+    uint32_t index;           /* pad, as in nxn_pad_state */
+    uint32_t valid;           /* 1: this is a sample from the controller; 0: none yet (the sensors are starting) */
+    uint32_t reserved;
+    uint64_t sample_number;   /* the controller's sampling counter: equal numbers are the same sample */
+    uint64_t timestamp_ns;    /* nxn_time_ns() when the OS read the sample (not when the controller took it) */
+    float accel[3];           /* g (earth gravity), controller axes */
+    float gyro[3];            /* radians per second, controller axes */
+    float orientation[9];     /* device orientation, the three direction vectors x, y, z row by row (3x3 matrix) */
+    uint32_t reserved2;       /* keeps the struct free of tail padding */
+} nxn_pad_motion;
+
+/* Latest six-axis sample of controller `pad` (0 <= pad < 8): the handheld, a Pro Controller, a single Joy-Con, or the
+ * right Joy-Con of a pair. The sensors start on the first call for a pad and stop by themselves about 3 s after the
+ * last call, so call it once per frame while you use motion and not at all otherwise (the first sample may arrive a
+ * frame after the first call: valid = 0 until then). NXN_ERR_NOT_FOUND: pad not connected. NXN_ERR_INVALID: bad argument.
+ * Thread: any app thread. Memory: written into the caller's struct (set size with NXN_STRUCT_INIT). */
+NXN_API nxn_result nxn_input_pad_motion(uint32_t pad, nxn_pad_motion* out);
+
+typedef struct nxn_pad_rumble {
+    uint32_t size;
+    uint32_t duration_ms;  /* 1..2000 (0 = 2000, the cap); the vibration ends by itself */
+    float low_amp;         /* 0..1: the low-frequency motor band (the OS caps the strength at 0.8 to spare the Joy-Con) */
+    float low_freq_hz;     /* 40..1250 Hz, 0 = 160 */
+    float high_amp;        /* 0..1: the high-frequency band */
+    float high_freq_hz;    /* 40..1250 Hz, 0 = 320 */
+} nxn_pad_rumble;
+
+/* Starts HD vibration on controller `pad` only (both amplitudes 0 stops that pad's vibration). One vibration per pad: a
+ * new call replaces the running one. nxn_rumble (all pads, one strength) stays as it is and skips a pad that runs one of
+ * these. Only while the window has focus: a window in the background never rumbles; a vibration ends with the window,
+ * its deadline, or a focus change. Amplitude and frequency are clamped to the ranges above, then passed to the
+ * controller; how strong or how fine it feels depends on the controller (not measured). NXN_ERR_NOT_FOUND: pad not connected. NXN_ERR_INVALID: NaN or bad size.
+ * Thread: any app thread. Memory: `p` is only read during the call. */
+NXN_API nxn_result nxn_rumble_pad(uint32_t pad, const nxn_pad_rumble* p);
+
+typedef struct nxn_pad_sticks {
+    uint32_t size;
+    uint32_t index;
+    float lx, ly;  /* left stick, -1..1, y up, raw (no dead zone, no response curve) */
+    float rx, ry;  /* right stick */
+} nxn_pad_sticks;
+
+/* Sticks of controller `pad`, sampled once per OS frame. nxn_input_pad_poll (buttons only) is unchanged. A pad that is
+ * connected but whose window has no focus gives zeros with NXN_OK, like the buttons. NXN_ERR_NOT_FOUND: not connected.
+ * Thread: any app thread. Memory: written into the caller's struct (set size with NXN_STRUCT_INIT). */
+NXN_API nxn_result nxn_input_pad_sticks(uint32_t pad, nxn_pad_sticks* out);
+
 NXN_EXTERN_C_END
 
 #endif /* NEXVYN_NXN_INPUT_H */

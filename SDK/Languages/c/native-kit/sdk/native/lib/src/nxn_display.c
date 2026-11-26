@@ -11,7 +11,9 @@ struct nxn_display {
     EGLContext ctx;
     EGLConfig cfg;
     uint32_t w, h;
-    int vsync;
+    int vsync;            /* the EGL swap interval in use (0 = unpaced) */
+    int no_vsync_flag;    /* opened with NXN_DISPLAY_NO_VSYNC: set_interval cannot pace it */
+    uint64_t last_present_ns;
 };
 
 static nxn_display* g_open; /* one display per process */
@@ -90,7 +92,8 @@ nxn_result nxn_display_open(const nxn_display_params* params, nxn_display** out)
     d->ctx = eglCreateContext(d->dpy, cfg, EGL_NO_CONTEXT, ctx_attr);
     if (d->ctx == EGL_NO_CONTEXT) return fail(d, "eglCreateContext");
     if (!eglMakeCurrent(d->dpy, d->surf, d->surf, d->ctx)) return fail(d, "eglMakeCurrent");
-    d->vsync = (p.flags & NXN_DISPLAY_NO_VSYNC) ? 0 : 1;
+    d->no_vsync_flag = (p.flags & NXN_DISPLAY_NO_VSYNC) ? 1 : 0;
+    d->vsync = d->no_vsync_flag ? 0 : 1;
     eglSwapInterval(d->dpy, d->vsync);
     d->w = p.width;
     d->h = p.height;
@@ -118,7 +121,32 @@ int nxn__display_teardown(void) {
 
 nxn_result nxn_display_swap(nxn_display* d) {
     if (!d) return NXN_ERR_INVALID;
-    return eglSwapBuffers(d->dpy, d->surf) ? NXN_OK : NXN_ERR_SYSTEM;
+    if (!eglSwapBuffers(d->dpy, d->surf)) return NXN_ERR_SYSTEM;
+    d->last_present_ns = nxn_time_ns();
+    return NXN_OK;
+}
+
+nxn_result nxn_display_set_interval(nxn_display* d, uint32_t interval) {
+    if (!d || (interval != 1 && interval != 2)) return NXN_ERR_INVALID;
+    if (d->no_vsync_flag) return NXN_OK;
+    EGLint maximum;
+    if (!eglGetConfigAttrib(d->dpy, d->cfg, EGL_MAX_SWAP_INTERVAL, &maximum)) {
+        nxn__set_error("eglGetConfigAttrib failed (EGL 0x%x)", eglGetError());
+        return NXN_ERR_SYSTEM;
+    }
+    if ((EGLint)interval > maximum) return NXN_ERR_UNSUPPORTED;
+    if (!eglSwapInterval(d->dpy, (EGLint)interval)) {
+        nxn__set_error("eglSwapInterval failed (EGL 0x%x)", eglGetError());
+        return NXN_ERR_SYSTEM;
+    }
+    d->vsync = (int)interval; /* Reapplied on resize. */
+    return NXN_OK;
+}
+
+nxn_result nxn_display_last_present_ns(nxn_display* d, uint64_t* out) {
+    if (!d || !out) return NXN_ERR_INVALID;
+    *out = d->last_present_ns;
+    return NXN_OK;
 }
 
 nxn_result nxn_display_size(nxn_display* d, uint32_t* width, uint32_t* height) {

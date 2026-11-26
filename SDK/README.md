@@ -1,6 +1,6 @@
 # Nexvyn SDK: build complete applications and distinctive games
 
-Current API: **SDK 1.16, Native SDK 1.2, native ABI v1**. Download the complete `SDK/` folder;
+Current API: **SDK 1.16, Native SDK 1.3, native ABI v1**. Download the complete `SDK/` folder;
 keep its directory layout. Documentation is English. Product interfaces must support English,
 Turkish, German, Spanish, French, Japanese, Korean and Chinese.
 

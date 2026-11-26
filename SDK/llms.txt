@@ -1,7 +1,7 @@
 # Nexvyn OS SDK
 
 > Public app-developer kit for Nexvyn OS: scripts (Lua, JavaScript, Python, C script) and native C/C++ modules, with
-> templates, headers, tools and guides. Current: SDK 1.16, Native SDK 1.2, native ABI v1 (`VERSION.json`). Paths are
+> templates, headers, tools and guides. Current: SDK 1.16, Native SDK 1.3, native ABI v1 (`VERSION.json`). Paths are
 > relative to the `SDK/` folder. Start with `AI_GUIDE.md`. Do not invent APIs: a name that is not in
 > `Reference/SDK.md` or a header does not exist. Vulkan for native apps is on by default since 1.4.0 (when the driver check at start passes):
 > check `NXN_CAP_VULKAN` at run time and fall back to GL. Documentation is English; apps must ship eight locales

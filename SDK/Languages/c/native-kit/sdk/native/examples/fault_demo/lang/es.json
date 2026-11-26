@@ -1,0 +1,6 @@
+{
+  "title": "Demo de fallos",
+  "status_ok": "Fallo de hardware entregado y reanudado",
+  "status_none": "No se entregó ningún fallo (el emulador no aplica protección de páginas)",
+  "status_unsupported": "El manejador de fallos o las páginas de protección no están habilitados"
+}

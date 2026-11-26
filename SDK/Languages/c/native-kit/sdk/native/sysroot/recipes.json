@@ -456,6 +456,53 @@
         "sdl2-nexvyn"
       ],
       "notes": "SDL2_mixer for windowed apps, built against the windowed SDL2 (sdl2-nexvyn) with only built-in decoders (WAV, MP3 minimp3, Ogg stb_vorbis, MIDI timidity without patches): no external audio libraries, all -fPIC. Zlib license."
+    },
+    "sdl3-nexvyn": {
+      "version": "3.4.0-nexvyn.1",
+      "license": "Zlib",
+      "url": "https://github.com/devkitPro/SDL/archive/c329016c0e338ab4397ad930f83330c9fe058348.tar.gz",
+      "archive_name": "sdl3-devkitpro-c329016.tar.gz",
+      "sha256": "6047e4787f105ab4a0c6293ee3090ce5d1ebad112fcbe2a3e5a8874b0cc6f709",
+      "system": "cmake",
+      "subdir": ".",
+      "prefix_subdir": "windowed",
+      "patches": [
+        "sdl3-nexvyn.patch"
+      ],
+      "copy_in": {
+        "../include/nexvyn": "nexvyn_kit/nexvyn"
+      },
+      "flags": [
+        "-DNEXVYN_SDL=ON",
+        "-DSDL_SHARED=OFF",
+        "-DSDL_STATIC=ON",
+        "-DSDL_TEST_LIBRARY=OFF",
+        "-DSDL_TESTS=OFF",
+        "-DSDL_EXAMPLES=OFF",
+        "-DSDL_INSTALL=ON",
+        "-DSDL_INSTALL_TESTS=OFF",
+        "-DSDL_PTHREADS=ON",
+        "-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON",
+        "-DSDL_VULKAN=ON",
+        "-DSDL_GPU=ON",
+        "-DSDL_RENDER_GPU=ON",
+        "-DSDL_RENDER_VULKAN=OFF",
+        "-DSDL_HIDAPI=OFF",
+        "-DSDL_HAPTIC=OFF",
+        "-DSDL_SENSOR=OFF",
+        "-DSDL_POWER=OFF",
+        "-DSDL_CAMERA=OFF",
+        "-DSDL_DIALOG=OFF",
+        "-DSDL_TRAY=OFF",
+        "-DSDL_OFFSCREEN=OFF"
+      ],
+      "provides": [
+        "windowed/lib/libSDL3.a",
+        "windowed/include/SDL3/SDL.h",
+        "windowed/include/SDL3/SDL_gpu.h"
+      ],
+      "needs": [],
+      "notes": "SDL3 for windowed apps (devkitPro Switch fork switch-sdl-3.4) with the Nexvyn OS drivers (nxn display/audio/input/fs + host Vulkan WSI hooks so SDL3 GPU API runs on the Nexvyn Vulkan 1.3 driver). Installed into <sysroot>/windowed alongside SDL2 (separate include/SDL3 dir and libSDL3.a). Zlib license."
     }
   },
   "vendored": {

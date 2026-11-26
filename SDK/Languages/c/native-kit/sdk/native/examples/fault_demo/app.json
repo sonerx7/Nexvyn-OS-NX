@@ -1,0 +1,31 @@
+{
+  "id": "com.nexvyn.example.faultdemo",
+  "name": {
+    "en": "Fault Demo",
+    "tr": "Hata Yakalama Demosu",
+    "de": "Fehlerbehandlung-Demo",
+    "es": "Demo de fallos",
+    "fr": "Démo de fautes",
+    "ja": "フォルトデモ",
+    "ko": "폴트 데모",
+    "zh": "故障处理演示"
+  },
+  "version": "1.0.0",
+  "build": 1,
+  "type": "app",
+  "runtime": "native",
+  "main": "fault_demo.nxvmod",
+  "author": "Nexvyn OS",
+  "category": "developer",
+  "mode": "window",
+  "minNative": "1.3",
+  "targetNative": "1.3",
+  "minSdk": "1.15",
+  "targetSdk": "1.15",
+  "permissions": [],
+  "window": {
+    "width": 640,
+    "height": 400,
+    "resizable": true
+  }
+}

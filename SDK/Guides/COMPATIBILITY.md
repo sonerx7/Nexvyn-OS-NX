@@ -51,7 +51,7 @@ The full list of functions per version is in the SDK reference (`sdk/SDK.md`, "S
 ### Native SDK
 
 The native runtime (C / C++ apps, `.nxvmod`) has its own version, `NATIVE_VERSION` in `tools/sdkinfo.py`; an app states
-the oldest one it needs as `"minNative"`. A newer Native SDK only adds: every addition is announced by an `nxn_caps` bit,
+the oldest one it needs as `"minNative"`. A newer Native SDK only adds: optional features are discovered through capability bits, backend abilities or API results,
 so an app built for an older one runs unchanged, and an app that needs a newer one says so before it starts.
 
 **ABI v1 is frozen (2026-11-09).** Every function, signature, struct layout, constant value, host import name and the
@@ -64,6 +64,7 @@ host generation stay hand-raised numbers, never derived from a version.
 |---|---|---|
 | 1.0 | 1.10 | `nxn_*` C interface: window display (GL), input, audio streams, files, log, return; `.nxvmod` apps, `.nxvlib` libraries |
 | 1.1 | 1.10 | SDL2 driver for windows; sound and input events (`nxn_audio_clear`, USB keyboard / mouse / text, dock and sleep events); POSIX calls in a window (compat layer); system services (file and folder dialogs, kept folder access, save data, permissions); UI tokens, system fonts and the app's own texts (`nxn_ui.h`, `lang/<code>.json`); NexGFX native (`nexgfx_native.h`); the OS sound mixer (`nxn_sfx_play`, `nxn_tone`); package v2 (`nxvapp` with the module, `lang/`, `data/`) |
+| 1.3 | 1.10 | Sparse VM, GL pacing, CPU info, per-pad input and rumble, audio and thread diagnostics, queued stream cancellation. Optional POSIX fault and file wrappers. See [Native SDK releases](SDK_VERSIONS.md#native-sdk-releases). |
 | 1.2 | 1.10 | System integration for windows: window control (`nxn_window_set_title` / `set_mode` / `set_modified`, `NXN_CAP_WINDOW_CTL`); battery / charger / dock / network state (`nxn_power_get`, `NXN_EVENT_POWER`, `NXN_CAP_POWER_STATE`); OS dialogs (`nxn_dialog`, `nxn_prompt`, `NXN_CAP_DIALOG`). Add-only: apps built for 1.0 and 1.1 run unchanged; an app that uses it says `"minNative": "1.2"` and checks the cap bit  (first in Nexvyn OS 1.3.0) |
 
 Native apps need no change when Nexvyn OS is updated; the kit's own rules are in `docs/NATIVE_COMPAT.md`. Load errors

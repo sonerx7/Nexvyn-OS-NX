@@ -32,7 +32,7 @@ static void win_exit(void) {
     nxc__tls_releaseall();
     nxc__sock_releaseall();
     nxc__fd_releaseall();
-    nxc__mman_releaseall();
+    nxc__mman_releaseall(); /* heap mappings only; VM-backed mappings stay for host teardown after thread termination */
     nxc__env_releaseall();
 }
 

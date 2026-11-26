@@ -1,11 +1,16 @@
 /* Nexvyn compat layer - small POSIX pieces newlib declares badly or not at all (docs/NATIVE_COMPAT.en.md "Identity and
  * text input"): getline / getdelim, the single fixed user (getpwuid, getpwnam, getlogin), getifaddrs.
  * Add-only: nothing here replaces a libc call, so no --wrap entry is needed. */
+#include <arpa/inet.h>
 #include <errno.h>
+#include <ifaddrs.h>
+#include <net/if.h>
+#include <netinet/in.h>
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -96,11 +101,65 @@ int getlogin_r(char* name, size_t len) {
     return 0;
 }
 
-/* ---- getifaddrs: the OS owns the network interface; an app has no list of them ---- */
-struct ifaddrs;
-int getifaddrs(struct ifaddrs** ifap) {
-    if (ifap) *ifap = NULL;
-    nxc_unsupported("getifaddrs", "network interfaces are not listed; connect to a host name or address directly");
-    return NXC_FAIL(ENOSYS);
+/* ---- getifaddrs: minimal list (loopback + primary IPv4 from gethostid() when nonzero) ---- */
+typedef struct nxc_ifaddr_node {
+    struct ifaddrs ifa;
+    struct sockaddr_in addr;
+    struct sockaddr_in netmask;
+    char name[16];
+} nxc_ifaddr_node;
+
+static nxc_ifaddr_node* make_ifaddr(const char* name, unsigned int flags, in_addr_t addr_n, in_addr_t mask_n) {
+    nxc_ifaddr_node* n = (nxc_ifaddr_node*)calloc(1, sizeof *n);
+    if (!n) return NULL;
+    snprintf(n->name, sizeof n->name, "%s", name);
+    n->ifa.ifa_name = n->name;
+    n->ifa.ifa_flags = flags;
+    n->addr.sin_len = sizeof n->addr;
+    n->addr.sin_family = AF_INET;
+    n->addr.sin_addr.s_addr = addr_n;
+    n->netmask.sin_len = sizeof n->netmask;
+    n->netmask.sin_family = AF_INET;
+    n->netmask.sin_addr.s_addr = mask_n;
+    n->ifa.ifa_addr = (struct sockaddr*)&n->addr;
+    if (mask_n) n->ifa.ifa_netmask = (struct sockaddr*)&n->netmask;
+    return n;
 }
-void freeifaddrs(struct ifaddrs* ifa) { (void)ifa; }
+
+int getifaddrs(struct ifaddrs** ifap) {
+    if (!ifap) return NXC_FAIL(EINVAL);
+    *ifap = NULL;
+    nxc_ifaddr_node* lo = make_ifaddr("lo", IFF_UP | IFF_LOOPBACK | IFF_RUNNING,
+                                      htonl(INADDR_LOOPBACK), htonl(0xff000000u));
+    if (!lo) return NXC_FAIL(ENOMEM);
+
+    struct in_addr host = {0};
+#if NXC_WINDOWED
+    /* The existing libnx gethostname import formats gethostid() via inet_ntop. */
+    char address[INET_ADDRSTRLEN];
+    if (gethostname(address, sizeof address) == 0)
+        inet_pton(AF_INET, address, &host);
+#else
+    host.s_addr = (in_addr_t)gethostid();
+#endif
+    /* libnx can return INADDR_LOOPBACK in host order when NIFM is unavailable. */
+    if (host.s_addr != 0 && host.s_addr != INADDR_LOOPBACK &&
+        host.s_addr != htonl(INADDR_LOOPBACK)) {
+        nxc_ifaddr_node* eth = make_ifaddr("en0", IFF_UP, host.s_addr, 0);
+        if (!eth) {
+            free(lo);
+            return NXC_FAIL(ENOMEM);
+        }
+        lo->ifa.ifa_next = &eth->ifa;
+    }
+    *ifap = &lo->ifa;
+    return 0;
+}
+
+void freeifaddrs(struct ifaddrs* ifa) {
+    while (ifa) {
+        struct ifaddrs* next = ifa->ifa_next;
+        free(ifa);
+        ifa = next;
+    }
+}

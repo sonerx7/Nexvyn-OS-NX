@@ -3,7 +3,8 @@
  * A mapping is a 4 KiB aligned heap block. File mappings read the file into it; MAP_SHARED + PROT_WRITE writes the
  * block back on msync() and munmap(). Partial munmap() keeps the block until every page of it is released.
  * MAP_FIXED works inside memory that mmap() returned earlier; protections are recorded but not enforced;
- * PROT_EXEC is refused (the JIT service is a later Native SDK feature). */
+ * PROT_EXEC is refused (the JIT service is a later Native SDK feature). Windowed ports may opt in to sparse
+ * anonymous private MAP_NORESERVE mappings with NEXVYN_VM_MMAP=1. */
 #include <errno.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -13,6 +14,20 @@
 #include <unistd.h>
 
 #include "nxc_internal.h"
+
+#if NXC_WINDOWED && (defined(__SWITCH__) || defined(NXC_TEST_VM))
+#define NXC_VM_MMAP 1
+#include <nexvyn/nxn_vm.h>
+#ifdef __SWITCH__
+#pragma weak nxn_vm_reserve
+#pragma weak nxn_vm_get
+#pragma weak nxn_vm_decommit
+#pragma weak nxn_vm_protect
+#pragma weak nxn_vm_release
+#endif
+#else
+#define NXC_VM_MMAP 0
+#endif
 
 typedef struct nxc_map {
     struct nxc_map* next;
@@ -25,6 +40,9 @@ typedef struct nxc_map {
     size_t file_bytes;   /* bytes of the mapping that belong to the file (the rest is zero tail) */
     uint8_t* live;       /* one bit per page: not unmapped yet */
     size_t live_pages;
+#if NXC_VM_MMAP
+    nxn_vm_region* vm;
+#endif
 } nxc_map;
 
 static Mutex g_map_mu;
@@ -105,6 +123,10 @@ static int flush_range_locked(nxc_map* m, const uint8_t* from, const uint8_t* to
 
 static void free_map(nxc_map* m) {
     if (m->fd >= 0) close(m->fd);
+#if NXC_VM_MMAP
+    if (m->vm) nxn_vm_release(m->vm);
+    else
+#endif
     free(m->base);
     free(m->live);
     free(m);
@@ -119,6 +141,66 @@ static void unlink_locked(nxc_map* m) {
     }
 }
 
+#if NXC_VM_MMAP
+static int vm_errno(nxn_result r) {
+    if (r == NXN_OK) return 0;
+    if (r == NXN_ERR_UNSUPPORTED) return ENOTSUP;
+    if (r == NXN_ERR_INVALID) return EINVAL;
+    if (r == NXN_ERR_SYSTEM) return EIO;
+    if (r == NXN_ERR_IO) return EFAULT; /* Permissions could not be restored; app cannot continue using this region. */
+    return ENOMEM;
+}
+
+static uint32_t vm_prot(int prot) {
+    if (prot & PROT_WRITE) return NXN_VM_PROT_RW;
+    return (prot & PROT_READ) ? NXN_VM_PROT_R : NXN_VM_PROT_NONE;
+}
+
+static int vm_apply(nxc_map* m, size_t at, size_t len, uint32_t prot) {
+    return vm_errno(nxn_vm_protect(m->vm, at, len, NXN_VM_PROT_COMMIT | prot));
+}
+
+static void* vm_mmap(size_t len, int prot) {
+#ifdef __SWITCH__
+    if (!nxn_vm_reserve || !nxn_vm_get || !nxn_vm_decommit || !nxn_vm_protect || !nxn_vm_release)
+        return (errno = ENOTSUP, MAP_FAILED);
+#endif
+    nxn_vm_region* region = NULL;
+    nxn_result r = nxn_vm_reserve(len, NXN_VM_NEED_PAGE_COMMIT, &region);
+    if (r != NXN_OK) return (errno = vm_errno(r), MAP_FAILED);
+    nxn_vm_info info = {.size = sizeof info};
+    r = nxn_vm_get(region, &info);
+    if (r != NXN_OK || !(info.abilities & NXN_VM_CAN_PAGE_COMMIT) || info.commit_granule != NXC_PAGE) {
+        nxn_vm_release(region);
+        return (errno = r == NXN_OK ? ENOTSUP : vm_errno(r), MAP_FAILED);
+    }
+    nxc_map* m = calloc(1, sizeof *m);
+    if (!m) {
+        nxn_vm_release(region);
+        return (errno = ENOMEM, MAP_FAILED);
+    }
+    const size_t pages = len / NXC_PAGE;
+    m->fd = -1;
+    m->vm = region;
+    m->base = info.base;
+    m->len = len;
+    m->prot = prot;
+    m->live = calloc((pages + 7) / 8, 1);
+    int err = m->live ? 0 : ENOMEM;
+    if (!err && vm_prot(prot) != NXN_VM_PROT_NONE) err = vm_apply(m, 0, len, vm_prot(prot));
+    if (err) {
+        free_map(m);
+        return (errno = err, MAP_FAILED);
+    }
+    live_set_range(m, 0, pages);
+    mutexLock(&g_map_mu);
+    m->next = g_maps;
+    g_maps = m;
+    mutexUnlock(&g_map_mu);
+    return info.base;
+}
+#endif
+
 void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset) {
     if (length == 0) return (errno = EINVAL, MAP_FAILED);
     int shared = flags & MAP_SHARED, priv = flags & MAP_PRIVATE;
@@ -132,6 +214,12 @@ void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset)
     if (!anon && (offset < 0 || (offset & (NXC_PAGE - 1)))) return (errno = EINVAL, MAP_FAILED);
     size_t len = round_up(length);
     if (len < length) return (errno = ENOMEM, MAP_FAILED);
+#if NXC_VM_MMAP
+    if (anon && priv && (flags & MAP_NORESERVE) && !(flags & MAP_FIXED)) {
+        const char* opt_in = getenv("NEXVYN_VM_MMAP");
+        if (opt_in && !strcmp(opt_in, "1")) return vm_mmap(len, prot);
+    }
+#endif
 
     /* MAP_FIXED: only inside memory this layer handed out earlier (same block, zero-filled / re-read in place). */
     uint8_t* base = NULL;
@@ -140,7 +228,20 @@ void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset)
         if ((uintptr_t)addr & (NXC_PAGE - 1)) return (errno = EINVAL, MAP_FAILED);
         mutexLock(&g_map_mu);
         nxc_map* m = find_locked((uint8_t*)addr);
-        int inside = m && (uint8_t*)addr + len <= m->base + m->len;
+        int inside = m && len <= (size_t)(m->base + m->len - (uint8_t*)addr);
+#if NXC_VM_MMAP
+        if (inside && m->vm) {
+            int err = ENOTSUP;
+            if (anon && priv) {
+                size_t at = (size_t)((uint8_t*)addr - m->base);
+                err = vm_apply(m, at, len, vm_prot(prot) | NXN_VM_PROT_REPLACE);
+                if (!err) live_set_range(m, at / NXC_PAGE, len / NXC_PAGE);
+            }
+            mutexUnlock(&g_map_mu);
+            if (err == EFAULT) abort();
+            return err ? (errno = err, MAP_FAILED) : addr;
+        }
+#endif
         if (inside) {
             size_t first = (size_t)((uint8_t*)addr - m->base) / NXC_PAGE;
             if (m->shared_file) flush_range_locked(m, (uint8_t*)addr, (uint8_t*)addr + len);
@@ -205,6 +306,7 @@ void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset)
 int munmap(void* addr, size_t length) {
     if (((uintptr_t)addr & (NXC_PAGE - 1)) || length == 0) return NXC_FAIL(EINVAL);
     size_t len = round_up(length);
+    if (len < length || len > UINTPTR_MAX - (uintptr_t)addr) return NXC_FAIL(EINVAL);
     uint8_t* a = (uint8_t*)addr;
     int rc = 0;
     mutexLock(&g_map_mu);
@@ -217,6 +319,22 @@ int munmap(void* addr, size_t length) {
         size_t first = (size_t)(a + done - m->base) / NXC_PAGE;
         size_t end = (size_t)((a + len) - m->base) / NXC_PAGE;
         if (end > m->len / NXC_PAGE) end = m->len / NXC_PAGE;
+#if NXC_VM_MMAP
+        if (m->vm) {
+            size_t at = first * NXC_PAGE;
+            size_t bytes = (end - first) * NXC_PAGE;
+            int err = vm_apply(m, at, bytes, NXN_VM_PROT_NONE);
+            if (err == EFAULT) {
+                mutexUnlock(&g_map_mu);
+                abort();
+            }
+            if (err || nxn_vm_decommit(m->vm, at, bytes) != NXN_OK) {
+                rc = -1;
+                done += bytes;
+                continue;  /* Keep the mapping and its live pages available for a retry. */
+            }
+        }
+#endif
         if (flush_range_locked(m, m->base + first * NXC_PAGE, m->base + end * NXC_PAGE) != 0) rc = -1;
         for (size_t p = first; p < end; p++) live_clear(m, p);
         done += (end - first) * NXC_PAGE;
@@ -238,18 +356,36 @@ int mprotect(void* addr, size_t length, int prot) {
     }
     if (length == 0) return 0;
     size_t len = round_up(length);
-    int rc = 0;
+    if (len < length || len > UINTPTR_MAX - (uintptr_t)addr) return NXC_FAIL(EINVAL);
     mutexLock(&g_map_mu);
+    for (size_t check = 0; check < len; check += NXC_PAGE) {
+        nxc_map* m = find_locked((uint8_t*)addr + check);
+        if (!m || !live_get(m, (size_t)((uint8_t*)addr + check - m->base) / NXC_PAGE)) {
+            mutexUnlock(&g_map_mu);
+            return NXC_FAIL(ENOMEM);
+        }
+    }
     for (size_t done = 0; done < len; done += NXC_PAGE) {
         nxc_map* m = find_locked((uint8_t*)addr + done);
-        if (!m || !live_get(m, (size_t)((uint8_t*)addr + done - m->base) / NXC_PAGE)) {
-            rc = -1;
-            break;
+#if NXC_VM_MMAP
+        if (m->vm) {
+            size_t at = (size_t)((uint8_t*)addr + done - m->base);
+            size_t end = at + NXC_PAGE;
+            while (end < m->len && done + end - at < len && live_get(m, end / NXC_PAGE))
+                end += NXC_PAGE;
+            int err = vm_apply(m, at, end - at, vm_prot(prot));
+            if (err) {
+                mutexUnlock(&g_map_mu);
+                if (err == EFAULT) abort();
+                return NXC_FAIL(err);
+            }
+            done += end - at - NXC_PAGE;
         }
-        m->prot = prot; /* advisory: recorded, never enforced */
+#endif
+        m->prot = prot; /* advisory: recorded, never enforced for heap mappings */
     }
     mutexUnlock(&g_map_mu);
-    return rc ? NXC_FAIL(ENOMEM) : 0;
+    return 0;
 }
 
 int msync(void* addr, size_t length, int flags) {
@@ -282,6 +418,9 @@ int madvise(void* addr, size_t length, int advice) {
         mutexLock(&g_map_mu);
         for (size_t done = 0; done < len; done += NXC_PAGE) {
             nxc_map* m = find_locked((uint8_t*)addr + done);
+#if NXC_VM_MMAP
+            if (m && m->vm) continue;  /* The caller may advise an inaccessible page. */
+#endif
             if (m && !m->shared_file && m->file_bytes == 0) memset((uint8_t*)addr + done, 0, NXC_PAGE);
         }
         mutexUnlock(&g_map_mu);
@@ -304,6 +443,12 @@ void* mremap(void* old_addr, size_t old_size, size_t new_size, int flags, ...) {
     size_t olds = round_up(old_size), news = round_up(new_size);
     mutexLock(&g_map_mu);
     nxc_map* m = find_locked((uint8_t*)old_addr);
+#if NXC_VM_MMAP
+    if (m && m->vm) {
+        mutexUnlock(&g_map_mu);
+        return (errno = ENOTSUP, MAP_FAILED);
+    }
+#endif
     int ok = m && m->base == (uint8_t*)old_addr && m->len == olds && !m->shared_file && m->file_bytes == 0 && m->live_pages == olds / NXC_PAGE;
     int prot = ok ? m->prot : 0;
     mutexUnlock(&g_map_mu);
@@ -322,14 +467,21 @@ void* mremap(void* old_addr, size_t old_size, size_t new_size, int flags, ...) {
 }
 
 #if NXC_WINDOWED
-/* App end (nxc_shutdown): a windowed app's heap is not reclaimed by Nexvyn OS, so every mapping still there is written
- * back (MAP_SHARED) and freed. */
+/* App end (atexit): write back and free heap-backed mappings. VM-backed mappings are left for the host (vmSweep)
+ * to reclaim after kernel thread termination is confirmed, because worker threads may still run during atexit. */
 void nxc__mman_releaseall(void) {
     mutexLock(&g_map_mu);
-    while (g_maps) {
-        nxc_map* m = g_maps;
+    nxc_map** p = &g_maps;
+    while (*p) {
+        nxc_map* m = *p;
+#if NXC_VM_MMAP
+        if (m->vm) {
+            p = &m->next;
+            continue;
+        }
+#endif
         flush_range_locked(m, m->base, m->base + m->len);
-        g_maps = m->next;
+        *p = m->next;
         free_map(m);
     }
     mutexUnlock(&g_map_mu);

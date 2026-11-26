@@ -1,4 +1,4 @@
-# Language pack: Native C / C++ (`.nxvmod` — Frozen ABI v1, Native SDK 1.2)
+# Language pack: Native C / C++ (`.nxvmod` — Frozen ABI v1, Native SDK 1.3)
 
 Add this after `system-prompt.md` when building a Native C or C++ app, game, port or emulator (`"runtime": "native"`).
 Full references: `SDK/Guides/NATIVE_GUIDE.md`, `SDK/Guides/NATIVE_KIT.md`, and `SDK/Languages/c/native-kit/include/nexvyn/`.

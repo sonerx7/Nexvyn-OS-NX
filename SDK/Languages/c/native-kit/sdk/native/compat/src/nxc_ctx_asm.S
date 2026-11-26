@@ -5,26 +5,28 @@
 
 /* Saves the callee-saved state into the mcontext at [x17]. Clobbers x2, x3. Resumes at lr with x0 = 0. */
     .macro SAVE_CTX
-    stp xzr, xzr, [x17, #0]
-    stp xzr, xzr, [x17, #16]
-    stp xzr, xzr, [x17, #32]
-    stp xzr, xzr, [x17, #48]
-    stp x19, x20, [x17, #64]
-    stp x21, x22, [x17, #80]
-    stp x23, x24, [x17, #96]
-    stp x25, x26, [x17, #112]
-    stp x27, x28, [x17, #128]
-    stp x29, x30, [x17, #144]
+    str xzr, [x17, #0]       /* fault_address = 0 */
+    stp xzr, xzr, [x17, #8]  /* regs[0..1] */
+    stp xzr, xzr, [x17, #24] /* regs[2..3] */
+    stp xzr, xzr, [x17, #40] /* regs[4..5] */
+    stp xzr, xzr, [x17, #56] /* regs[6..7] */
+    stp x19, x20, [x17, #160]
+    stp x21, x22, [x17, #176]
+    stp x23, x24, [x17, #192]
+    stp x25, x26, [x17, #208]
+    stp x27, x28, [x17, #224]
+    stp x29, x30, [x17, #240]
     mov x2, sp
-    str x2, [x17, #160]
-    str xzr, [x17, #168]
-    stp d8, d9, [x17, #176]
-    stp d10, d11, [x17, #192]
-    stp d12, d13, [x17, #208]
-    stp d14, d15, [x17, #224]
+    str x2, [x17, #256]      /* sp */
+    str xzr, [x17, #264]     /* pc = 0 (continue at lr) */
+    stp xzr, xzr, [x17, #272] /* pstate = 0, esr = 0 */
+    stp d8, d9, [x17, #288]
+    stp d10, d11, [x17, #304]
+    stp d12, d13, [x17, #320]
+    stp d14, d15, [x17, #336]
     mrs x2, fpcr
     mrs x3, fpsr
-    stp x2, x3, [x17, #240]
+    stp x2, x3, [x17, #352]
     .endm
 
     .global getcontext
@@ -42,26 +44,26 @@ getcontext:
     .p2align 4
 setcontext:
     add x17, x0, #MCTX
-    ldp x19, x20, [x17, #64]
-    ldp x21, x22, [x17, #80]
-    ldp x23, x24, [x17, #96]
-    ldp x25, x26, [x17, #112]
-    ldp x27, x28, [x17, #128]
-    ldp x29, x30, [x17, #144]
-    ldr x2, [x17, #160]
+    ldp x19, x20, [x17, #160]
+    ldp x21, x22, [x17, #176]
+    ldp x23, x24, [x17, #192]
+    ldp x25, x26, [x17, #208]
+    ldp x27, x28, [x17, #224]
+    ldp x29, x30, [x17, #240]
+    ldr x2, [x17, #256]
     mov sp, x2
-    ldp d8, d9, [x17, #176]
-    ldp d10, d11, [x17, #192]
-    ldp d12, d13, [x17, #208]
-    ldp d14, d15, [x17, #224]
-    ldp x2, x3, [x17, #240]
+    ldp d8, d9, [x17, #288]
+    ldp d10, d11, [x17, #304]
+    ldp d12, d13, [x17, #320]
+    ldp d14, d15, [x17, #336]
+    ldp x2, x3, [x17, #352]
     msr fpcr, x2
     msr fpsr, x3
-    ldr x16, [x17, #168]
-    ldp x2, x3, [x17, #16]
-    ldp x4, x5, [x17, #32]
-    ldp x6, x7, [x17, #48]
-    ldp x0, x1, [x17, #0]
+    ldr x16, [x17, #264]
+    ldp x2, x3, [x17, #24]
+    ldp x4, x5, [x17, #40]
+    ldp x6, x7, [x17, #56]
+    ldp x0, x1, [x17, #8]
     cbz x16, 1f
     br x16
 1:
