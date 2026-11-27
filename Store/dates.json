@@ -1559,6 +1559,17 @@
       }
     ]
   },
+  "com.sonerx7.rustdesk": {
+    "added": "2026-11-27",
+    "updated": "2026-11-27",
+    "version": "1.0.0",
+    "history": [
+      {
+        "version": "1.0.0",
+        "date": "2026-11-27"
+      }
+    ]
+  },
   "com.sonerx7.shopping": {
     "added": "2026-10-29",
     "updated": "2026-11-01",

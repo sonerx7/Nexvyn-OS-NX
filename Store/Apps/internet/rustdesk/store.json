@@ -1,0 +1,42 @@
+{
+  "kind": "app",
+  "category": "internet",
+  "features": [
+    "online",
+    "touch",
+    "controller",
+    "keyboard"
+  ],
+  "tags": [
+    "remote",
+    "desktop",
+    "rustdesk",
+    "vnc"
+  ],
+  "age": "everyone",
+  "subtitle": {
+    "en": "RustDesk remote desktop client",
+    "tr": "RustDesk uzak masaüstü istemcisi",
+    "de": "RustDesk-Remote-Desktop-Client",
+    "es": "Cliente remoto RustDesk",
+    "fr": "Client bureau à distance RustDesk",
+    "ja": "RustDeskリモートデスクトップ",
+    "ko": "RustDesk 원격 데스크톱",
+    "zh": "RustDesk 远程桌面客户端"
+  },
+  "description": {
+    "en": "Connect from Nexvyn OS to Windows, macOS, and Linux computers running RustDesk over direct LAN or RustDesk ID/relay servers with end-to-end encryption.",
+    "tr": "Nexvyn OS üzerinden doğrudan yerel ağ (LAN) veya RustDesk ID/relay sunucuları aracılığıyla Windows, macOS ve Linux bilgisayarlara uçtan uca şifreli bağlanın.",
+    "de": "Verbinde dich von Nexvyn OS per LAN oder RustDesk-ID/Relay mit Windows-, macOS- und Linux-PCs.",
+    "es": "Conéctate desde Nexvyn OS a equipos Windows, macOS y Linux con RustDesk por LAN o ID/relay cifrado.",
+    "fr": "Connectez-vous depuis Nexvyn OS à des PC Windows, macOS et Linux exécutant RustDesk en LAN ou via ID/relais.",
+    "ja": "Nexvyn OSからLANまたはRustDesk ID/リレー経由でWindows・macOS・Linuxに接続します。",
+    "ko": "Nexvyn OS에서 LAN 또는 RustDesk ID/릴레이를 통해 Windows, macOS, Linux PC에 연결합니다.",
+    "zh": "从 Nexvyn OS 通过局域网或 RustDesk ID/中继服务器加密连接 Windows、macOS 和 Linux 电脑。"
+  },
+  "shots": [
+    [
+      "wait 2"
+    ]
+  ]
+}

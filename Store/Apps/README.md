@@ -1,7 +1,7 @@
 # Apps
 
 - [Developer](developer/) (4)
-- [Internet](internet/) (6)
+- [Internet](internet/) (7)
 - [Media](media/) (17)
 - [Office](office/) (11)
 - [Other](other/) (4)

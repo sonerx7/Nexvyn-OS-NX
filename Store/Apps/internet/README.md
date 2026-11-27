@@ -7,4 +7,5 @@
 | <img src="maps/icon.png" width="32"> | [Maps](maps/) · ships with Nexvyn OS | 1.0 | OpenStreetMap with search and pins |
 | <img src="netx-browser-mini/icon.png" width="32"> | [NetX-Browser Mini](netx-browser-mini/) | 0.12.0 | Tabs, web search and built-in video |
 | <img src="news/icon.png" width="32"> | [News](news/) · ships with Nexvyn OS | 1.0 | Your RSS and Atom feeds, beautifully |
+| <img src="rustdesk/icon.png" width="32"> | [Remote Desktop (RustDesk)](rustdesk/) | 1.0.0 | RustDesk remote desktop client |
 | <img src="weather/icon.png" width="32"> | [Weather](weather/) · ships with Nexvyn OS | 1.0 | Hourly and 10-day forecasts, beautifully |

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "count": 189,
+  "count": 190,
   "apps": [
     {
       "id": "aichat",
@@ -4640,6 +4640,76 @@
         {
           "version": "1.0",
           "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "com.sonerx7.rustdesk",
+      "name": {
+        "en": "Remote Desktop (RustDesk)",
+        "tr": "Uzak Masaüstü (RustDesk)",
+        "de": "Remote-Desktop (RustDesk)",
+        "es": "Escritorio remoto (RustDesk)",
+        "fr": "Bureau à distance (RustDesk)",
+        "ja": "リモートデスクトップ (RustDesk)",
+        "ko": "원격 데스크톱 (RustDesk)",
+        "zh": "远程桌面 (RustDesk)"
+      },
+      "description": {
+        "en": "Connect from Nexvyn OS to Windows, macOS, and Linux computers running RustDesk over direct LAN or RustDesk ID/relay servers with end-to-end encryption.",
+        "tr": "Nexvyn OS üzerinden doğrudan yerel ağ (LAN) veya RustDesk ID/relay sunucuları aracılığıyla Windows, macOS ve Linux bilgisayarlara uçtan uca şifreli bağlanın.",
+        "de": "Verbinde dich von Nexvyn OS per LAN oder RustDesk-ID/Relay mit Windows-, macOS- und Linux-PCs.",
+        "es": "Conéctate desde Nexvyn OS a equipos Windows, macOS y Linux con RustDesk por LAN o ID/relay cifrado.",
+        "fr": "Connectez-vous depuis Nexvyn OS à des PC Windows, macOS et Linux exécutant RustDesk en LAN ou via ID/relais.",
+        "ja": "Nexvyn OSからLANまたはRustDesk ID/リレー経由でWindows・macOS・Linuxに接続します。",
+        "ko": "Nexvyn OS에서 LAN 또는 RustDesk ID/릴레이를 통해 Windows, macOS, Linux PC에 연결합니다.",
+        "zh": "从 Nexvyn OS 通过局域网或 RustDesk ID/中继服务器加密连接 Windows、macOS 和 Linux 电脑。"
+      },
+      "version": "1.0.0",
+      "author": "sonerx7",
+      "category": "internet",
+      "icon": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/rustdesk/icon.png",
+      "download": "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/rustdesk/rustdesk.nxvapp",
+      "size": 1144981,
+      "sha256": "ded8484ccb3dc6f93f631df33146b9fdb0d615012a2e1a86b9e4186795ce1833",
+      "minSdk": "1.15",
+      "permissions": [
+        "network",
+        "files",
+        "notifications"
+      ],
+      "screenshots": [
+        "https://raw.githubusercontent.com/sonerx7/Nexvyn-OS-NX/main/Store/Apps/internet/rustdesk/screenshots/1.png"
+      ],
+      "featured": false,
+      "license": "GPL-3.0-or-later",
+      "source": "https://github.com/sonerx7/Nexvyn-OS-NX/tree/main/Store/Apps/internet/rustdesk",
+      "targetSdk": "1.15",
+      "subtitle": {
+        "en": "RustDesk remote desktop client",
+        "tr": "RustDesk uzak masaüstü istemcisi",
+        "de": "RustDesk-Remote-Desktop-Client",
+        "es": "Cliente remoto RustDesk",
+        "fr": "Client bureau à distance RustDesk",
+        "ja": "RustDeskリモートデスクトップ",
+        "ko": "RustDesk 원격 데스크톱",
+        "zh": "RustDesk 远程桌面客户端"
+      },
+      "minNative": "1.3",
+      "kind": "app",
+      "tech": "native",
+      "features": [
+        "online",
+        "touch",
+        "controller",
+        "keyboard"
+      ],
+      "added": "2026-11-27",
+      "updated": "2026-11-27",
+      "history": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-27"
         }
       ]
     },
